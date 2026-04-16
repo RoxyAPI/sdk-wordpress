@@ -1,0 +1,63 @@
+{
+  "name": "@roxyapi/wordpress-plugin",
+  "version": "1.0.0",
+  "description": "WordPress plugin for RoxyAPI. Astrology, tarot, numerology, horoscope, I Ching, biorhythm, and more.",
+  "license": "GPL-2.0-or-later",
+  "author": {
+    "name": "RoxyAPI",
+    "email": "hi@roxyapi.com",
+    "url": "https://roxyapi.com"
+  },
+  "homepage": "https://roxyapi.com/docs/wordpress",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RoxyAPI/sdk-wordpress.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RoxyAPI/sdk-wordpress/issues"
+  },
+  "keywords": [
+    "wordpress",
+    "wordpress-plugin",
+    "gutenberg",
+    "block",
+    "shortcode",
+    "astrology",
+    "tarot",
+    "numerology",
+    "horoscope",
+    "iching",
+    "biorhythm",
+    "roxyapi"
+  ],
+  "scripts": {
+    "build": "wp-scripts build --webpack-src-dir=blocks --output-path=build/blocks",
+    "blocks-manifest": "wp-scripts build-blocks-manifest --input=blocks --output=build/blocks-manifest.php",
+    "build:all": "npm run build && npm run blocks-manifest",
+    "start": "wp-scripts start --webpack-src-dir=blocks --output-path=build/blocks",
+    "plugin-zip": "wp-scripts plugin-zip",
+    "format": "wp-scripts format",
+    "lint:js": "wp-scripts lint-js blocks/",
+    "lint:css": "wp-scripts lint-style blocks/",
+    "wp-env": "wp-env",
+    "generate": "node bin/generate.mjs",
+    "generate:check": "node bin/generate.mjs && git diff --exit-code src/Generated blocks/generated"
+  },
+  "devDependencies": {
+    "@wordpress/env": "^10.0.0",
+    "@wordpress/scripts": "^30.0.0",
+    "@wordpress/server-side-render": "^5.0.0"
+  },
+  "files": [
+    "roxyapi.php",
+    "uninstall.php",
+    "readme.txt",
+    "LICENSE",
+    "src/",
+    "templates/",
+    "build/",
+    "assets/",
+    "languages/",
+    "vendor/"
+  ]
+}

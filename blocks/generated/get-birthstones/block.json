@@ -1,0 +1,43 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/get-birthstones",
+	"title": "Birthstone Crystals by Month (Crystals and Healing Stones)",
+	"category": "roxyapi",
+	"icon": "star-filled",
+	"description": "Birthstone Crystals by Month. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"keywords": [
+		"crystals and healing stones",
+		"roxyapi",
+		"get",
+		"birthstones"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"month": {
+			"type": "string",
+			"default": ""
+		},
+		"lang": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php"
+}

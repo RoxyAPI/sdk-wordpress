@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "roxyapi/dreams",
+  "title": "Dream Symbol",
+  "category": "roxyapi",
+  "icon": "lightbulb",
+  "description": "Dream symbol dictionary with meanings and interpretations. Powered by RoxyAPI.",
+  "keywords": [
+    "dream",
+    "interpretation",
+    "symbol",
+    "roxyapi"
+  ],
+  "version": "1.0.0",
+  "textdomain": "roxyapi",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {},
+  "render": "file:./render.php",
+  "editorScript": "file:./index.js",
+  "usesContext": [
+    "roxyapi/sign",
+    "roxyapi/birthDate",
+    "roxyapi/lat",
+    "roxyapi/lon"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "roxyapi/crystal",
+  "title": "Crystal",
+  "category": "roxyapi",
+  "icon": "heart",
+  "description": "Crystal properties, zodiac pairings, and healing guidance. Powered by RoxyAPI.",
+  "keywords": [
+    "crystal",
+    "healing",
+    "chakra",
+    "roxyapi"
+  ],
+  "version": "1.0.0",
+  "textdomain": "roxyapi",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {},
+  "render": "file:./render.php",
+  "editorScript": "file:./index.js",
+  "usesContext": [
+    "roxyapi/sign",
+    "roxyapi/birthDate",
+    "roxyapi/lat",
+    "roxyapi/lon"
+  ]
+}

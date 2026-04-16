@@ -1,0 +1,208 @@
+/*
+ * RoxyAPI frontend styles.
+ *
+ * Uses core CSS variables from theme.json so the output inherits the active
+ * active theme colors, spacing, and typography. Override any class from your theme
+ * stylesheet. All classes are prefixed .roxyapi-*.
+ */
+
+.roxyapi-horoscope,
+.roxyapi-natal-chart,
+.roxyapi-tarot,
+.roxyapi-numerology,
+.roxyapi-iching,
+.roxyapi-generic {
+	color: var(--wp--preset--color--foreground, currentColor);
+	background: var(--wp--preset--color--background, transparent);
+	padding: var(--wp--preset--spacing--40, 1rem);
+	border: 1px solid var(--wp--preset--color--tertiary, rgba(0, 0, 0, 0.1));
+	border-radius: 0.5rem;
+	font-family: var(--wp--preset--font-family--system-font, system-ui, sans-serif);
+	line-height: 1.6;
+}
+
+.roxyapi-horoscope__header {
+	display: flex;
+	align-items: baseline;
+	gap: 1rem;
+	margin-bottom: 1rem;
+}
+
+.roxyapi-horoscope__sign {
+	margin: 0;
+	font-size: var(--wp--preset--font-size--x-large, 1.5rem);
+	text-transform: capitalize;
+}
+
+.roxyapi-horoscope__moon {
+	margin: 0;
+	font-size: var(--wp--preset--font-size--small, 0.875rem);
+	opacity: 0.75;
+}
+
+.roxyapi-horoscope__moon span + span::before {
+	content: " | ";
+	margin: 0 0.25rem;
+	opacity: 0.5;
+}
+
+.roxyapi-horoscope__overview {
+	margin: 0 0 1rem;
+	font-size: var(--wp--preset--font-size--medium, 1rem);
+}
+
+.roxyapi-horoscope__details {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 0.25rem 1rem;
+	margin: 0 0 1rem;
+}
+
+.roxyapi-horoscope__details dt {
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 0.75rem;
+	letter-spacing: 0.05em;
+	opacity: 0.8;
+}
+
+.roxyapi-horoscope__details dd {
+	margin: 0;
+}
+
+.roxyapi-horoscope__footer {
+	padding-top: 0.75rem;
+	border-top: 1px solid var(--wp--preset--color--tertiary, rgba(0, 0, 0, 0.1));
+}
+
+.roxyapi-horoscope__stats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.roxyapi-horoscope__stats li {
+	display: flex;
+	flex-direction: column;
+}
+
+.roxyapi-horoscope__stat-label {
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	opacity: 0.7;
+}
+
+.roxyapi-horoscope__stat-value {
+	font-weight: 600;
+}
+
+.roxyapi-horoscope__compatible {
+	margin-top: 0.75rem;
+	font-size: 0.875rem;
+}
+
+.roxyapi-error {
+	padding: 0.75rem 1rem;
+	border-left: 4px solid #dc3232;
+	background: rgba(220, 50, 50, 0.05);
+	font-size: 0.875rem;
+}
+
+.roxyapi-placeholder {
+	padding: 1rem;
+	border: 1px dashed var(--wp--preset--color--tertiary, rgba(0, 0, 0, 0.2));
+	border-radius: 0.5rem;
+	text-align: center;
+	opacity: 0.8;
+}
+
+.roxyapi-generic dt {
+	font-weight: 600;
+	margin-top: 0.5rem;
+}
+
+.roxyapi-generic dd {
+	margin-left: 0;
+}
+
+.roxyapi-form {
+	display: grid;
+	gap: 1rem;
+	max-width: 32rem;
+	padding: var(--wp--preset--spacing--40, 1rem);
+	border: 1px solid var(--wp--preset--color--tertiary, rgba(0, 0, 0, 0.1));
+	border-radius: 0.5rem;
+	background: var(--wp--preset--color--background, transparent);
+}
+
+.roxyapi-form__field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.375rem;
+}
+
+.roxyapi-form__field label {
+	font-weight: 600;
+	font-size: 0.875rem;
+}
+
+.roxyapi-form__field input,
+.roxyapi-form__field select,
+.roxyapi-form__field textarea {
+	width: 100%;
+	padding: 0.5rem 0.75rem;
+	border: 1px solid var(--wp--preset--color--tertiary, rgba(0, 0, 0, 0.2));
+	border-radius: 0.25rem;
+	background: var(--wp--preset--color--background, #fff);
+	color: var(--wp--preset--color--foreground, currentColor);
+	font: inherit;
+}
+
+.roxyapi-form__field textarea {
+	min-height: 6rem;
+	resize: vertical;
+}
+
+.roxyapi-form__field input:focus-visible,
+.roxyapi-form__field select:focus-visible,
+.roxyapi-form__field textarea:focus-visible {
+	outline: 2px solid var(--wp--preset--color--primary, #2271b1);
+	outline-offset: 2px;
+}
+
+.roxyapi-form__actions {
+	display: flex;
+	gap: 0.75rem;
+}
+
+.roxyapi-form__submit {
+	padding: 0.5rem 1rem;
+	border: 1px solid var(--wp--preset--color--primary, #2271b1);
+	border-radius: 0.25rem;
+	background: var(--wp--preset--color--primary, #2271b1);
+	color: var(--wp--preset--color--background, #fff);
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.roxyapi-form__submit:hover {
+	opacity: 0.9;
+}
+
+.roxyapi-form + .roxyapi-horoscope,
+.roxyapi-horoscope + .roxyapi-form {
+	margin-top: 1.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.roxyapi-horoscope,
+	.roxyapi-natal-chart,
+	.roxyapi-tarot,
+	.roxyapi-numerology {
+		transition: none;
+	}
+}

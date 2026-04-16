@@ -1,0 +1,21 @@
+parameters:
+    level: 6
+    paths:
+        - roxyapi.php
+        - uninstall.php
+        - src/
+    excludePaths:
+        - tests/*
+        - vendor/*
+        - node_modules/*
+        - build/*
+        - src/Generated/*
+    bootstrapFiles:
+        - tests/phpstan-bootstrap.php
+    treatPhpDocTypesAsCertain: false
+    dynamicConstantNames:
+        - ROXYAPI_VERSION
+        - ROXYAPI_PLUGIN_FILE
+        - ROXYAPI_KEY
+        - ROXYAPI_ENCRYPTION_KEY
+        - ROXYAPI_ENCRYPTION_SALT

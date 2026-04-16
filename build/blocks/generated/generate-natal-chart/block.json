@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "roxyapi/generate-natal-chart",
+  "title": "Generate natal chart - Birth chart calculator API with houses and aspects (Western Astrology)",
+  "category": "roxyapi",
+  "icon": "admin-customizer",
+  "description": "Generate natal chart - Birth chart calculator API with houses and aspects. Auto-generated from the RoxyAPI OpenAPI spec.",
+  "keywords": [
+    "western astrology",
+    "roxyapi",
+    "generate",
+    "natal"
+  ],
+  "version": "1.0.0",
+  "textdomain": "roxyapi",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "attributes": {
+    "date": {
+      "type": "string",
+      "default": ""
+    },
+    "time": {
+      "type": "string",
+      "default": ""
+    },
+    "latitude": {
+      "type": "string",
+      "default": ""
+    },
+    "longitude": {
+      "type": "string",
+      "default": ""
+    },
+    "timezone": {
+      "type": "string",
+      "default": ""
+    },
+    "houseSystem": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "render": "file:./render.php"
+}

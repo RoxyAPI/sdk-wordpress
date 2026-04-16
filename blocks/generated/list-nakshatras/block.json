@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/list-nakshatras",
+	"title": "List all 27 Nakshatras - Lunar Mansions Reference (Vedic Astrology)",
+	"category": "roxyapi",
+	"icon": "database",
+	"description": "List all 27 Nakshatras - Lunar Mansions Reference. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"keywords": [
+		"vedic astrology",
+		"roxyapi",
+		"list",
+		"nakshatras"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"lang": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php"
+}

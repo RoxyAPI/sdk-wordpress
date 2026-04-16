@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "roxyapi/list-rashis",
+  "title": "List all 12 Rashis - Vedic Zodiac Signs Reference (Vedic Astrology)",
+  "category": "roxyapi",
+  "icon": "database",
+  "description": "List all 12 Rashis - Vedic Zodiac Signs Reference. Auto-generated from the RoxyAPI OpenAPI spec.",
+  "keywords": [
+    "vedic astrology",
+    "roxyapi",
+    "list",
+    "rashis"
+  ],
+  "version": "1.0.0",
+  "textdomain": "roxyapi",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "attributes": {
+    "lang": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "render": "file:./render.php"
+}

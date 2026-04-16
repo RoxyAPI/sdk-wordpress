@@ -1,0 +1,47 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "roxyapi/calculate-bio-compatibility",
+  "title": "Calculate compatibility - Biorhythm alignment between two people (Biorhythm)",
+  "category": "roxyapi",
+  "icon": "tide",
+  "description": "Calculate compatibility - Biorhythm alignment between two people. Auto-generated from the RoxyAPI OpenAPI spec.",
+  "keywords": [
+    "biorhythm",
+    "roxyapi",
+    "calculate",
+    "bio"
+  ],
+  "version": "1.0.0",
+  "textdomain": "roxyapi",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "attributes": {
+    "person1": {
+      "type": "string",
+      "default": ""
+    },
+    "person2": {
+      "type": "string",
+      "default": ""
+    },
+    "targetDate": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "render": "file:./render.php"
+}

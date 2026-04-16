@@ -1,0 +1,67 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "roxyapi/generate-planetary-return",
+  "title": "Planetary Return Chart - Saturn return, Jupiter return, and inner planet cycles (Western Astrology)",
+  "category": "roxyapi",
+  "icon": "admin-customizer",
+  "description": "Planetary Return Chart - Saturn return, Jupiter return, and inner planet cycles. Auto-generated from the RoxyAPI OpenAPI spec.",
+  "keywords": [
+    "western astrology",
+    "roxyapi",
+    "generate",
+    "planetary"
+  ],
+  "version": "1.0.0",
+  "textdomain": "roxyapi",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "attributes": {
+    "birthDate": {
+      "type": "string",
+      "default": ""
+    },
+    "birthTime": {
+      "type": "string",
+      "default": ""
+    },
+    "planet": {
+      "type": "string",
+      "default": ""
+    },
+    "approximateDate": {
+      "type": "string",
+      "default": ""
+    },
+    "latitude": {
+      "type": "string",
+      "default": ""
+    },
+    "longitude": {
+      "type": "string",
+      "default": ""
+    },
+    "timezone": {
+      "type": "string",
+      "default": ""
+    },
+    "houseSystem": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "render": "file:./render.php"
+}

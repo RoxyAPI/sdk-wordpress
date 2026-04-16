@@ -1,0 +1,36 @@
+pre-commit:
+  parallel: true
+  commands:
+    phpcs:
+      glob: "*.php"
+      exclude: "src/Generated/**"
+      run: vendor/bin/phpcs {staged_files}
+    phpstan:
+      glob: "src/**/*.php"
+      exclude: "src/Generated/**"
+      run: vendor/bin/phpstan analyze --no-progress {staged_files}
+    block-build-check:
+      glob: "blocks/**/*.{js,jsx,json,php}"
+      run: npm run build:all && git diff --exit-code build/
+    openapi-drift-check:
+      glob: "bin/{generate.mjs,ttl-map.json,hero-endpoints.json}"
+      run: npm run generate:check
+
+pre-push:
+  parallel: false
+  commands:
+    openapi-drift-check:
+      run: npm run generate:check
+      priority: 1
+    phpcs-full:
+      run: vendor/bin/phpcs
+      priority: 2
+    phpstan-full:
+      run: vendor/bin/phpstan analyze --no-progress
+      priority: 3
+    phpunit:
+      run: npx wp-env run tests-cli --env-cwd=wp-content/plugins/roxyapi vendor/bin/phpunit
+      priority: 4
+    plugin-check:
+      run: npx wp-env run cli wp plugin check roxyapi --require=/var/www/html/wp-content/plugins/plugin-check/cli.php --severity=5
+      priority: 5

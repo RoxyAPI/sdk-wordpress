@@ -1,0 +1,43 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/lookup-hexagram",
+	"title": "Lookup hexagram by line pattern (I-Ching)",
+	"category": "roxyapi",
+	"icon": "superhero",
+	"description": "Lookup hexagram by line pattern. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"keywords": [
+		"i-ching",
+		"roxyapi",
+		"lookup",
+		"hexagram"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"lang": {
+			"type": "string",
+			"default": ""
+		},
+		"lines": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php"
+}

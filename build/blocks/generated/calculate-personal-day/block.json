@@ -1,0 +1,47 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "roxyapi/calculate-personal-day",
+  "title": "Calculate Personal Day - Daily personalized numerology forecast (Numerology)",
+  "category": "roxyapi",
+  "icon": "chart-line",
+  "description": "Calculate Personal Day - Daily personalized numerology forecast. Auto-generated from the RoxyAPI OpenAPI spec.",
+  "keywords": [
+    "numerology",
+    "roxyapi",
+    "calculate",
+    "personal"
+  ],
+  "version": "1.0.0",
+  "textdomain": "roxyapi",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "attributes": {
+    "month": {
+      "type": "string",
+      "default": ""
+    },
+    "day": {
+      "type": "string",
+      "default": ""
+    },
+    "targetDate": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "render": "file:./render.php"
+}

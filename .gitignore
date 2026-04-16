@@ -1,0 +1,13 @@
+/vendor/
+/node_modules/
+*.log
+.phpunit.result.cache
+.phpcs.cache
+phpstan.cache
+.DS_Store
+.idea/
+.vscode/
+
+# Maintainer-only docs, never published or committed
+CLAUDE.md
+MAINTAINER.md

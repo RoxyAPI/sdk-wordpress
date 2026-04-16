@@ -1,0 +1,63 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "roxyapi/get-kp-cusps",
+  "title": "Get KP Placidus house cusps with sub-lords (Vedic Astrology)",
+  "category": "roxyapi",
+  "icon": "database",
+  "description": "Get KP Placidus house cusps with sub-lords. Auto-generated from the RoxyAPI OpenAPI spec.",
+  "keywords": [
+    "vedic astrology",
+    "roxyapi",
+    "get",
+    "kp"
+  ],
+  "version": "1.0.0",
+  "textdomain": "roxyapi",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "attributes": {
+    "date": {
+      "type": "string",
+      "default": ""
+    },
+    "time": {
+      "type": "string",
+      "default": ""
+    },
+    "latitude": {
+      "type": "string",
+      "default": ""
+    },
+    "longitude": {
+      "type": "string",
+      "default": ""
+    },
+    "timezone": {
+      "type": "string",
+      "default": ""
+    },
+    "ayanamsa": {
+      "type": "string",
+      "default": ""
+    },
+    "ayanamsaValue": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "render": "file:./render.php"
+}

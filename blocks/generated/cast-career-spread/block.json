@@ -1,0 +1,43 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/cast-career-spread",
+	"title": "Career Spread (7 cards) (Tarot)",
+	"category": "roxyapi",
+	"icon": "heart",
+	"description": "Career Spread (7 cards). Auto-generated from the RoxyAPI OpenAPI spec.",
+	"keywords": [
+		"tarot",
+		"roxyapi",
+		"cast",
+		"career"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"question": {
+			"type": "string",
+			"default": ""
+		},
+		"seed": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php"
+}

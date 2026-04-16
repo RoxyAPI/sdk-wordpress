@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "roxyapi/get-crystals-by-element",
+  "title": "Crystals by Element (Crystals and Healing Stones)",
+  "category": "roxyapi",
+  "icon": "star-filled",
+  "description": "Crystals by Element. Auto-generated from the RoxyAPI OpenAPI spec.",
+  "keywords": [
+    "crystals and healing stones",
+    "roxyapi",
+    "get",
+    "crystals"
+  ],
+  "version": "1.0.0",
+  "textdomain": "roxyapi",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "attributes": {
+    "element": {
+      "type": "string",
+      "default": ""
+    },
+    "lang": {
+      "type": "string",
+      "default": ""
+    },
+    "limit": {
+      "type": "string",
+      "default": ""
+    },
+    "offset": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "render": "file:./render.php"
+}

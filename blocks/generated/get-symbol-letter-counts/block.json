@@ -1,0 +1,34 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/get-symbol-letter-counts",
+	"title": "Get symbol counts by letter (Dreams)",
+	"category": "roxyapi",
+	"icon": "book",
+	"description": "Get symbol counts by letter. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"keywords": [
+		"dreams",
+		"roxyapi",
+		"get",
+		"symbol"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {},
+	"render": "file:./render.php"
+}

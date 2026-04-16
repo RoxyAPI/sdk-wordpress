@@ -1,0 +1,10 @@
+/*
+ * Horoscope block frontend styles.
+ *
+ * Additional block-scoped styles. Core theme variables come from
+ * assets/css/frontend.css.
+ */
+
+.wp-block-roxyapi-horoscope {
+	margin-block: var(--wp--preset--spacing--40, 1rem);
+}

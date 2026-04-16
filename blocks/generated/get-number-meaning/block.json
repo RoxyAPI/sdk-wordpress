@@ -1,0 +1,43 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/get-number-meaning",
+	"title": "Get Number Meaning - Interpretation for any number 1-9, 11, 22, 33 (Numerology)",
+	"category": "roxyapi",
+	"icon": "chart-line",
+	"description": "Get Number Meaning - Interpretation for any number 1-9, 11, 22, 33. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"keywords": [
+		"numerology",
+		"roxyapi",
+		"get",
+		"number"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"number": {
+			"type": "string",
+			"default": ""
+		},
+		"lang": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php"
+}

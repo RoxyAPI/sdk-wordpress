@@ -1,0 +1,41 @@
+/*
+ * RoxyAPI admin styles.
+ *
+ * Only loaded on the plugin Settings page. Do not enqueue globally.
+ */
+
+.roxyapi-settings h1 {
+	margin-bottom: 0.5rem;
+}
+
+.roxyapi-settings p {
+	max-width: 720px;
+	color: #50575e;
+}
+
+.roxyapi-settings input[type="password"] {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	letter-spacing: 0.05em;
+}
+
+.roxyapi-notice {
+	border-left-color: #2271b1 !important;
+}
+
+.roxyapi-test-connection-result {
+	display: inline-block;
+	margin-left: 0.75rem;
+	padding: 0.25rem 0.5rem;
+	border-radius: 0.25rem;
+	font-size: 0.875rem;
+}
+
+.roxyapi-test-connection-result.is-success {
+	background: #e7f6ea;
+	color: #1e6f2b;
+}
+
+.roxyapi-test-connection-result.is-error {
+	background: #fbeaea;
+	color: #8a1f11;
+}

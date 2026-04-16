@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/tarot",
+	"title": "Tarot",
+	"category": "roxyapi",
+	"icon": "tag",
+	"description": "Tarot card readings: single, three card, Celtic Cross, and more. Powered by RoxyAPI.",
+	"keywords": ["tarot", "card reading", "spread", "roxyapi"],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		]
+	},
+	"attributes": {},
+	"render": "file:./render.php",
+	"editorScript": "file:./index.js",
+	"usesContext": [
+		"roxyapi/sign",
+		"roxyapi/birthDate",
+		"roxyapi/lat",
+		"roxyapi/lon"
+	]
+}

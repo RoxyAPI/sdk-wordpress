@@ -1,0 +1,43 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "roxyapi/get-zodiac-sign",
+  "title": "Get zodiac sign details - Complete astrology sign profile with personality traits (Western Astrology)",
+  "category": "roxyapi",
+  "icon": "admin-customizer",
+  "description": "Get zodiac sign details - Complete astrology sign profile with personality traits. Auto-generated from the RoxyAPI OpenAPI spec.",
+  "keywords": [
+    "western astrology",
+    "roxyapi",
+    "get",
+    "zodiac"
+  ],
+  "version": "1.0.0",
+  "textdomain": "roxyapi",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "attributes": {
+    "id": {
+      "type": "string",
+      "default": ""
+    },
+    "lang": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "render": "file:./render.php"
+}

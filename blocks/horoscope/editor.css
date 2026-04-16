@@ -1,0 +1,7 @@
+/*
+ * Horoscope block editor-only styles.
+ */
+
+.wp-block-roxyapi-horoscope .components-placeholder {
+	min-height: 120px;
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "roxyapi/get-phases",
+  "title": "Get phase info - Lightweight cycle status for dashboards and widgets (Biorhythm)",
+  "category": "roxyapi",
+  "icon": "tide",
+  "description": "Get phase info - Lightweight cycle status for dashboards and widgets. Auto-generated from the RoxyAPI OpenAPI spec.",
+  "keywords": [
+    "biorhythm",
+    "roxyapi",
+    "get",
+    "phases"
+  ],
+  "version": "1.0.0",
+  "textdomain": "roxyapi",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "attributes": {
+    "birthDate": {
+      "type": "string",
+      "default": ""
+    },
+    "targetDate": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "render": "file:./render.php"
+}

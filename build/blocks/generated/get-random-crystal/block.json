@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "roxyapi/get-random-crystal",
+  "title": "Random Crystal (Crystals and Healing Stones)",
+  "category": "roxyapi",
+  "icon": "star-filled",
+  "description": "Random Crystal. Auto-generated from the RoxyAPI OpenAPI spec.",
+  "keywords": [
+    "crystals and healing stones",
+    "roxyapi",
+    "get",
+    "random"
+  ],
+  "version": "1.0.0",
+  "textdomain": "roxyapi",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "attributes": {
+    "lang": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "render": "file:./render.php"
+}

@@ -1,0 +1,47 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/calculate-life-path",
+	"title": "Calculate Life Path number - Most important numerology calculation (Numerology)",
+	"category": "roxyapi",
+	"icon": "chart-line",
+	"description": "Calculate Life Path number - Most important numerology calculation. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"keywords": [
+		"numerology",
+		"roxyapi",
+		"calculate",
+		"life"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"year": {
+			"type": "string",
+			"default": ""
+		},
+		"month": {
+			"type": "string",
+			"default": ""
+		},
+		"day": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php"
+}

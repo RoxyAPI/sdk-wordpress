@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "roxyapi/get-monthly-aspects",
+  "title": "Monthly Planetary Aspects - Major and minor aspect events for a month (Vedic Astrology)",
+  "category": "roxyapi",
+  "icon": "database",
+  "description": "Monthly Planetary Aspects - Major and minor aspect events for a month. Auto-generated from the RoxyAPI OpenAPI spec.",
+  "keywords": [
+    "vedic astrology",
+    "roxyapi",
+    "get",
+    "monthly"
+  ],
+  "version": "1.0.0",
+  "textdomain": "roxyapi",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "attributes": {
+    "year": {
+      "type": "string",
+      "default": ""
+    },
+    "month": {
+      "type": "string",
+      "default": ""
+    },
+    "timezone": {
+      "type": "string",
+      "default": ""
+    },
+    "coordinateSystem": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "render": "file:./render.php"
+}

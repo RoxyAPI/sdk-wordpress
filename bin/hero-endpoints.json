@@ -1,0 +1,13 @@
+[
+  "getDailyHoroscope",
+  "getNatalChart",
+  "getDailyTarot",
+  "castThreeCardTarot",
+  "getNumerologyChart",
+  "getLifePathNumber",
+  "castIching",
+  "lookupDreamSymbol",
+  "computeBiorhythm",
+  "lookupAngelNumber",
+  "lookupCrystal"
+]

@@ -1,0 +1,51 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/search-dream-symbols",
+	"title": "List and search dream symbols (Dreams)",
+	"category": "roxyapi",
+	"icon": "book",
+	"description": "List and search dream symbols. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"keywords": [
+		"dreams",
+		"roxyapi",
+		"search",
+		"dream"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"q": {
+			"type": "string",
+			"default": ""
+		},
+		"letter": {
+			"type": "string",
+			"default": ""
+		},
+		"limit": {
+			"type": "string",
+			"default": ""
+		},
+		"offset": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php"
+}

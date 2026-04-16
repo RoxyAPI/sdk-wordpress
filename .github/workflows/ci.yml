@@ -1,0 +1,111 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  generate-drift:
+    name: OpenAPI generation drift
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - name: Regenerate from live OpenAPI
+        run: npm run generate
+      - name: Fail if generated code is stale
+        run: git diff --exit-code src/Generated blocks/generated
+
+  lint:
+    name: Lint and Plugin Check
+    needs: [generate-drift]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          tools: composer
+          coverage: none
+      - run: composer install --prefer-dist --no-progress
+      - run: vendor/bin/phpcs --standard=phpcs.xml.dist
+      - run: vendor/bin/phpstan analyze --no-progress --memory-limit=1G
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build:all
+      - run: npx wp-env start
+      - name: Plugin Check
+        run: |
+          npx wp-env run cli wp plugin check roxyapi \
+            --require=/var/www/html/wp-content/plugins/plugin-check/cli.php \
+            --severity=5
+
+  test:
+    name: PHPUnit (PHP ${{ matrix.php }} / WP ${{ matrix.wp }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['7.4', '8.1', '8.3']
+        wp: ['6.5', 'latest']
+        include:
+          - php: '8.3'
+            wp: 'trunk'
+    services:
+      mysql:
+        image: mariadb:10.6
+        env:
+          MARIADB_ROOT_PASSWORD: root
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="mariadb-admin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mysqli, zip, gd
+          tools: composer, wp-cli
+          coverage: none
+      - run: composer install --prefer-dist --no-progress
+      - run: bash bin/install-wp-tests.sh wordpress_test root root 127.0.0.1 ${{ matrix.wp }}
+      - run: vendor/bin/phpunit
+
+  build:
+    name: Build distribution zip
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          tools: composer
+      - run: composer install --no-dev --optimize-autoloader --prefer-dist
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build:all
+      - run: npm run plugin-zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: roxyapi-plugin
+          path: roxyapi.zip
+          if-no-files-found: error
