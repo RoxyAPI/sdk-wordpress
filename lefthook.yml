@@ -1,17 +1,33 @@
+# Lefthook configuration for automated quality checks
+# pre-commit: runs on staged files before commit
+# pre-push: runs full validation before pushing to remote
+
 pre-commit:
   parallel: true
   commands:
-    phpcs:
+    # Format and lint staged PHP files with phpcbf + phpcs
+    php-format:
       glob: "*.php"
-      exclude: "src/Generated/**"
-      run: vendor/bin/phpcs {staged_files}
+      exclude: "src/Generated/**|vendor/**"
+      run: vendor/bin/phpcbf --standard=phpcs.xml.dist {staged_files} || true
+      stage_fixed: true
+
+    php-lint:
+      glob: "*.php"
+      exclude: "src/Generated/**|vendor/**"
+      run: vendor/bin/phpcs --standard=phpcs.xml.dist {staged_files}
+
     phpstan:
       glob: "src/**/*.php"
       exclude: "src/Generated/**"
-      run: vendor/bin/phpstan analyze --no-progress {staged_files}
+      run: vendor/bin/phpstan analyze --no-progress --memory-limit=1G
+
+    # Rebuild blocks if source changed
     block-build-check:
       glob: "blocks/**/*.{js,jsx,json,php}"
       run: npm run build:all && git diff --exit-code build/
+
+    # Regenerate if generator config changed
     openapi-drift-check:
       glob: "bin/{generate.mjs,ttl-map.json,hero-endpoints.json}"
       run: npm run generate:check
@@ -19,18 +35,32 @@ pre-commit:
 pre-push:
   parallel: false
   commands:
+    # Full OpenAPI drift check
     openapi-drift-check:
       run: npm run generate:check
       priority: 1
-    phpcs-full:
-      run: vendor/bin/phpcs
+
+    # Full format pass (auto-fix)
+    php-format:
+      run: vendor/bin/phpcbf --standard=phpcs.xml.dist || true
       priority: 2
-    phpstan-full:
-      run: vendor/bin/phpstan analyze --no-progress
+
+    # Full lint (must pass clean after format)
+    php-lint:
+      run: vendor/bin/phpcs --standard=phpcs.xml.dist
       priority: 3
-    phpunit:
-      run: npx wp-env run tests-cli --env-cwd=wp-content/plugins/roxyapi vendor/bin/phpunit
+
+    # Static analysis
+    phpstan:
+      run: vendor/bin/phpstan analyze --no-progress --memory-limit=1G
       priority: 4
-    plugin-check:
-      run: npx wp-env run cli wp plugin check roxyapi --require=/var/www/html/wp-content/plugins/plugin-check/cli.php --severity=5
-      priority: 5
+
+    # PHPUnit (requires wp-env running)
+    # phpunit:
+    #   run: npx wp-env run tests-cli --env-cwd=wp-content/plugins/roxyapi vendor/bin/phpunit
+    #   priority: 5
+
+    # Plugin Check (requires wp-env running)
+    # plugin-check:
+    #   run: npx wp-env run cli wp plugin check roxyapi --require=/var/www/html/wp-content/plugins/plugin-check/cli.php --severity=5
+    #   priority: 6
