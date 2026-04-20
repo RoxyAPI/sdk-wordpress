@@ -1,5 +1,6 @@
 /vendor/
 /node_modules/
+/build/
 *.log
 .phpunit.result.cache
 .phpcs.cache
