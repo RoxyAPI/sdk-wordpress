@@ -13,7 +13,7 @@ This directory holds the plugin assets that get pushed to the WordPress.org SVN 
 | `screenshot-3.png`    | any         | Frontend rendering of a daily horoscope on a WordPress page    |
 | `screenshot-4.png`    | any         | Tarot card pull with three card spread                         |
 | `screenshot-5.png`    | any         | I Ching hexagram cast with interpretation                      |
-| `screenshot-6.png`    | any         | RoxyAPI inserter category showing the ten hero blocks          |
+| `screenshot-6.png`    | any         | Roxy inserter category showing the ten hero blocks             |
 
 Screenshot captions come from the `== Screenshots ==` block in `readme.txt`. Number them sequentially. Captions and files must match.
 

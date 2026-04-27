@@ -38,7 +38,7 @@ The plugin itself is GPLv2 or later and the source is available at https://githu
 1. In your WordPress admin, go to Plugins, Add New, search for "RoxyAPI", and click Install Now.
 2. Activate the plugin.
 3. Sign up for a RoxyAPI account at https://roxyapi.com and get your API key.
-4. Open the RoxyAPI menu in the WordPress admin sidebar and paste your key.
+4. Open the Roxy menu in the WordPress admin sidebar and paste your key.
 5. Click Save Changes. Use the Test Connection button to verify.
 6. Add a block from the inserter or use the matching shortcode.
 
@@ -81,7 +81,7 @@ When the plugin contacts roxyapi.com, the request includes:
 * A plugin identifier (`X-SDK-Client: roxy-sdk-wordpress/<version>`) so RoxyAPI can detect compatibility issues by version.
 * Your server's outbound IP address (incidentally captured by the receiving server, like any HTTP request).
 
-No site visitor data is collected by the plugin itself. Visitors who view a page that contains a reading do not have their IP, user agent, or any browser-side data sent to RoxyAPI by this plugin. See https://roxyapi.com/policy/privacy for what RoxyAPI does with the data once received.
+No site visitor data is collected by the plugin when a visitor only views a page; their IP, user agent, and any browser-side data are not sent to RoxyAPI in the passive case. When a visitor submits a form-mode shortcode (their birth date, name, or question), the plugin sends only the fields they typed, after they tick the consent checkbox. See https://roxyapi.com/policy/privacy for what RoxyAPI does with the data once received.
 
 = Is the API key safe? =
 
@@ -126,9 +126,9 @@ Version 1.0.0 ships all 130 RoxyAPI endpoints. 10 hero shortcodes (Horoscope, Na
 
 For zodiac compatibility between two people, use the generated [roxy_calculate_synastry] shortcode for full birth-chart synastry, or [roxy_calculate_compatibility] for the lighter sign-pair endpoint. The dedicated Compatibility hero from earlier drafts was removed because the SaaS endpoint takes full birth charts, not bare zodiac signs.
 
-9 of the 10 listed shortcodes are static-only; only Horoscope ships visitor form mode in v1.0. The other 9 work statically (the site owner passes attributes). Form mode for the other 9 lands in v1.1.
+Eight long-tail compatibility and synastry endpoints take a nested birth-chart object on the wire. In v1.0 these ship as form-mode shortcodes only; the matching Gutenberg blocks land in v1.1 once the editor gains a nested-attribute UI.
 
-The 8 non-Horoscope, non-wrapper hero blocks render server side correctly but their editor sidebars are bare in v1.0. Inspector controls and live editor previews land in v1.1.
+Hero block editor sidebars are intentionally minimal in v1.0. Live previews and richer inspector controls land in v1.1.
 
 == Changelog ==
 
@@ -139,13 +139,18 @@ The 8 non-Horoscope, non-wrapper hero blocks render server side correctly but th
 * 120 auto generated shortcodes for the long tail. Generated from the live OpenAPI spec via npm run generate. Includes [roxy_calculate_synastry] and [roxy_calculate_compatibility] for compatibility readings.
 * 10 hero Gutenberg blocks plus an Astrology Section wrapper that shares zodiac sign and birth date with every child block via block context.
 * Horoscope block ships with 6 variations in the inserter: daily, weekly, monthly, love, career, Chinese.
-* Auto detecting form mode on Horoscope. Drop the shortcode with no attributes and visitors pick their own sign.
-* Top level RoxyAPI menu in the admin sidebar with a 3 step onboarding flow for first time users.
+* Auto detecting form mode on every hero shortcode. Drop the shortcode with no attributes and visitors submit their own sign, name, birth date, or question.
+* GDPR Article 9 consent gate on every visitor form. Submission requires an explicit opt in checkbox; the plugin registers privacy policy content via wp_add_privacy_policy_content for the WordPress Privacy Policy Guide.
+* City autocomplete for natal chart and synastry forms. ARIA 1.2 combobox proxied through /wp-json/roxyapi/v1/geocode so the API key never reaches the browser.
+* Top level Roxy menu in the admin sidebar with a tabbed settings page (Connect, Branding, Display, Privacy, Advanced) and a 3 step onboarding flow for first time users.
+* Branding controls: accent color, opt in source line under each reading.
+* Display controls: default response language, optional disclaimer line.
+* Advanced controls: cache preset (fresh, balanced, quota saver) on top of per endpoint TTLs.
 * Dashboard widget showing connection status and the most used shortcodes with copy to clipboard.
 * Settings API key field with wp config constant override and an inline Test Connection button.
 * Encryption at rest via AES 256 CTR. Returns false on missing keys instead of falling back to a hardcoded secret.
 * Server side caching with per endpoint TTL via WordPress transients (Redis and Memcached compatible automatically).
-* Rate limiting per IP to protect the site owner API quota, applied to form submissions and the Test Connection button.
+* Rate limiting per IP to protect the site owner API quota, applied to form submissions, the Test Connection button, and the geocoder proxy.
 * Block Bindings API source roxyapi/daily-text. Bind a paragraph to it with a sign argument to render the daily overview inline.
 * X-SDK-Client and User-Agent headers matching the TypeScript and Python SDK pattern so RoxyAPI can identify plugin traffic.
 

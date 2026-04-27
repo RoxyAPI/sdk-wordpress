@@ -8,8 +8,8 @@ WordPress plugin for [RoxyAPI](https://roxyapi.com). Drop horoscopes, tarot, num
 
 ```bash
 # WordPress admin
-Plugins > Add New > search "RoxyAPI" > Install > Activate
-RoxyAPI menu (admin sidebar) > paste API key > Save
+Plugins > Add New > search "Astrology Horoscope Tarot Numerology by Roxy" > Install > Activate
+Roxy menu (admin sidebar) > paste API key > Save
 
 # wp-cli
 wp plugin install roxyapi --activate
@@ -21,7 +21,7 @@ define( 'ROXYAPI_KEY', getenv( 'ROXYAPI_KEY' ) );
 
 ## Use a shortcode
 
-Browse the full library of 130 shortcodes at RoxyAPI > Shortcodes in the WordPress admin sidebar, or run `wp shortcode list | grep roxy_` from wp-cli.
+Browse the full library of 130 shortcodes at Roxy > Shortcodes in the WordPress admin sidebar.
 
 Every hero shortcode has two modes, auto detected.
 
@@ -42,7 +42,7 @@ Pass all required attributes and the shortcode renders a fixed reading that neve
 [roxy_life_path birth_date="1990-05-15"]
 ```
 
-For full birth-chart compatibility between two people, use the generated `[roxy_calculate_synastry]` shortcode (it accepts `person1` and `person2` body data per the OpenAPI spec).
+For full birth-chart compatibility between two people, use `[roxy_calculate_synastry]`. Endpoints whose request body takes a nested object (synastry, gun milan, composite chart, transit aspects, custom tarot spreads) ship as form-mode shortcodes only in v1.0; drop the shortcode on a page and visitors fill in both birth charts. The matching Gutenberg blocks land in v1.1 once the editor gains a nested-attribute UI.
 
 ### Form mode: visitors pick their own values
 
@@ -61,7 +61,9 @@ Leave the required attributes off and the shortcode renders an HTML form. Visito
 [roxy_life_path]        -> birth date picker
 ```
 
-Form submissions post back to the same page. The plugin uses `wp_verify_nonce` for CSRF, `RoxyAPI\Support\RateLimit` for per IP throttling (20 requests per hour by default, configurable in Settings), and `wp_remote_request` for the API call. All output is escaped via `esc_html` or `wp_kses_post`. The API key never reaches the browser in either mode.
+Form submissions post back to the same page. The plugin uses `wp_verify_nonce` for CSRF, gates submission on an explicit GDPR Article 9 consent checkbox, runs `RoxyAPI\Support\RateLimit` for per IP throttling (20 requests per hour by default, configurable under Roxy > Privacy), and calls `wp_remote_request` for the API hit. All output is escaped via `esc_html` or `wp_kses_post`. The API key never reaches the browser in either mode.
+
+Forms that need a city (natal chart, synastry, composite) render an ARIA 1.2 combobox autocomplete that proxies queries through `/wp-json/roxyapi/v1/geocode`. The geocoder route is rate-limited per IP and caches results for 24 hours.
 
 Override the form or result template from your theme by copying the matching file from `templates/` into `your-theme/roxyapi/`.
 
@@ -75,7 +77,7 @@ Drop one Astrology Section wrapper block on the page, set the zodiac sign in its
 
 | Block / shortcode prefix | What it covers                                                                |
 | ------------------------ | ----------------------------------------------------------------------------- |
-| Horoscope                | Western horoscopes: daily, weekly, monthly, love, career, Chinese, Burmese    |
+| Horoscope                | Western horoscopes: daily, weekly, monthly, love, career, Chinese             |
 | Natal Chart              | Western birth chart: planets, houses, aspects, transits                       |
 | Tarot                    | Rider Waite Smith deck: single card, three card, Celtic Cross, custom layouts |
 | Numerology               | Life path, expression, soul urge, personal year, full chart                   |
@@ -85,7 +87,7 @@ Drop one Astrology Section wrapper block on the page, set the zodiac sign in its
 | Angel Number             | Number meanings and pattern analysis                                          |
 | Crystal                  | Properties, zodiac and chakra pairings                                        |
 
-For Vedic astrology, KP system, panchang, dasha calculations, and other long tail endpoints, use the auto-generated shortcodes. Run `wp shortcode list | grep roxy_` to see every available tag on your install.
+For Vedic astrology, KP system, panchang, dasha calculations, and other long tail endpoints, use the auto-generated shortcodes. The full list lives at Roxy > Shortcodes in the WordPress admin sidebar.
 
 ## How the plugin reads your API key
 
@@ -102,6 +104,20 @@ define( 'ROXYAPI_KEY',             getenv( 'ROXYAPI_KEY' ) );
 define( 'ROXYAPI_ENCRYPTION_KEY',  getenv( 'ROXYAPI_ENCRYPTION_KEY' ) );
 define( 'ROXYAPI_ENCRYPTION_SALT', getenv( 'ROXYAPI_ENCRYPTION_SALT' ) );
 ```
+
+## Settings tabs
+
+The Roxy admin page is split into five tabs:
+
+| Tab      | What it covers                                                                                                                                               |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Connect  | API key field (constant override), Test Connection button.                                                                                                   |
+| Branding | Accent color (sets `--roxy-accent` for every reading), opt in source line under each rendered reading (off by default per WordPress.org guideline 10).       |
+| Display  | Default response language sent on every API call (defaults to site locale), optional disclaimer line shown under each reading.                               |
+| Privacy  | Consent label shown next to the form opt in checkbox, rate limit (default 20 per IP per hour). Privacy policy content is registered for the WP Privacy tool. |
+| Advanced | Cache preset (fresh divides TTLs by 4, balanced uses spec defaults, quota saver multiplies TTLs by 24), connection status panel.                             |
+
+The settings registry is filterable. Sites that need an extra option can hook `roxyapi_settings_schema` and add a field; the Settings API page picks it up automatically.
 
 ## Caching
 
@@ -120,7 +136,7 @@ Cached responses do not consume RoxyAPI quota. Object cache backends (Redis, Mem
 
 | Task                                             | How                                                                                                   |
 | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
-| Test the API key                                 | RoxyAPI menu (admin sidebar) > Test Connection                                                        |
+| Test the API key                                 | Roxy menu (admin sidebar) > Connect > Test Connection                                                 |
 | Override the key without touching the database   | `define( 'ROXYAPI_KEY', '...' );` in `wp-config.php`                                                  |
 | Change cache TTL per endpoint                    | Edit `bin/ttl-map.json` and run `npm run generate`                                                    |
 | Clear all cached responses                       | `wp transient delete --all` (or call `\RoxyAPI\Api\Cache::flush_all()` from a one-off)                |
@@ -137,7 +153,7 @@ Cached responses do not consume RoxyAPI quota. Object cache backends (Redis, Mem
 - **Block apiVersion is locked to 3.** Schema rejects any other value.
 - **Variations are not separate blocks.** Each hero block ships a `variations.php` file. This keeps the inserter clean.
 - **Hero shortcodes always win over generated ones with the same name.** The Registrar checks `shortcode_exists()` before registering generated entries.
-- **Plain text editing your generated PHP is pointless.** `npm run generate` overwrites `src/Generated/` and `blocks/generated/`: Edit the templates in `bin/templates/` instead.
+- **Plain text editing your generated PHP is pointless.** `npm run generate` overwrites `src/Generated/` and `blocks/generated/`. To change a hero, edit `bin/hero-config.json`; to patch a stale spec example, edit `bin/example-overrides.json`; for everything else, edit `bin/generate.mjs` and regenerate.
 
 ## Links
 
