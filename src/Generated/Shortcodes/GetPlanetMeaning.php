@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class GetPlanetMeaning {
 
@@ -39,9 +39,9 @@ class GetPlanetMeaning {
 		$data = \RoxyAPI\Generated\Client::getPlanetMeaning( $atts['id'], $atts['lang'] );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'getPlanetMeaning', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'getPlanetMeaning', is_array( $data ) ? $data : array() );
 	}
 }

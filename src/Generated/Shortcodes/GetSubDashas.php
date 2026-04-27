@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class GetSubDashas {
 
@@ -27,6 +27,7 @@ class GetSubDashas {
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
 			array(
+			'mahadasha' => '',
 			'date' => '',
 			'time' => '',
 			'latitude' => '',
@@ -43,8 +44,8 @@ class GetSubDashas {
 			array(
 				'date' => $atts['date'],
 				'time' => $atts['time'],
-				'latitude' => $atts['latitude'],
-				'longitude' => $atts['longitude'],
+				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
+				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
 				'timezone' => $atts['timezone'],
 			),
 			static function ( $v ) {
@@ -54,9 +55,9 @@ class GetSubDashas {
 		$data = \RoxyAPI\Generated\Client::getSubDashas( $atts['mahadasha'], $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'getSubDashas', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'getSubDashas', is_array( $data ) ? $data : array() );
 	}
 }

@@ -14,6 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_kp_ayanamsa ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'date' => $attributes['date'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetKpAyanamsa::render( $attributes ) );

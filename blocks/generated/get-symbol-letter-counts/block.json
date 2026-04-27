@@ -5,7 +5,7 @@
 	"title": "Get symbol counts by letter (Dreams)",
 	"category": "roxyapi",
 	"icon": "book",
-	"description": "Get symbol counts by letter. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Get symbol counts by letter",
 	"keywords": [
 		"dreams",
 		"roxyapi",

@@ -14,9 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_calculate_bridge_numbers ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'fullName' => $attributes['fullName'] ?? '',
-	'year' => $attributes['year'] ?? '',
-	'month' => $attributes['month'] ?? '',
-	'day' => $attributes['day'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\CalculateBridgeNumbers::render( $attributes ) );

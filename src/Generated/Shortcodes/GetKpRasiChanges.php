@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class GetKpRasiChanges {
 
@@ -28,11 +28,11 @@ class GetKpRasiChanges {
 		$atts = shortcode_atts(
 			array(
 			'planet' => '',
-			'startDate' => '',
-			'endDate' => '',
+			'start_date' => '',
+			'end_date' => '',
 			'timezone' => '',
 			'ayanamsa' => '',
-			'nodeType' => '',
+			'node_type' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -43,11 +43,11 @@ class GetKpRasiChanges {
 				$body = array_filter(
 			array(
 				'planet' => $atts['planet'],
-				'startDate' => $atts['startDate'],
-				'endDate' => $atts['endDate'],
+				'startDate' => $atts['start_date'],
+				'endDate' => $atts['end_date'],
 				'timezone' => $atts['timezone'],
 				'ayanamsa' => $atts['ayanamsa'],
-				'nodeType' => $atts['nodeType'],
+				'nodeType' => $atts['node_type'],
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -56,9 +56,9 @@ class GetKpRasiChanges {
 		$data = \RoxyAPI\Generated\Client::getKpRasiChanges( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'getKpRasiChanges', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'getKpRasiChanges', is_array( $data ) ? $data : array() );
 	}
 }

@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class CastCareerSpread {
 
@@ -48,9 +48,9 @@ class CastCareerSpread {
 		$data = \RoxyAPI\Generated\Client::castCareerSpread( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'castCareerSpread', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'castCareerSpread', is_array( $data ) ? $data : array() );
 	}
 }

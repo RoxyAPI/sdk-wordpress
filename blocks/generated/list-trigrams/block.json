@@ -5,7 +5,7 @@
 	"title": "List all 8 trigrams (I-Ching)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "List all 8 trigrams. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "List all 8 trigrams",
 	"keywords": [
 		"i-ching",
 		"roxyapi",

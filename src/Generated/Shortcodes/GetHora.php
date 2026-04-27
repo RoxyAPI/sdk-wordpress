@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class GetHora {
 
@@ -41,8 +41,8 @@ class GetHora {
 				$body = array_filter(
 			array(
 				'date' => $atts['date'],
-				'latitude' => $atts['latitude'],
-				'longitude' => $atts['longitude'],
+				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
+				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
 				'timezone' => $atts['timezone'],
 			),
 			static function ( $v ) {
@@ -52,9 +52,9 @@ class GetHora {
 		$data = \RoxyAPI\Generated\Client::getHora( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'getHora', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'getHora', is_array( $data ) ? $data : array() );
 	}
 }

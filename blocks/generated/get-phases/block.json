@@ -5,7 +5,7 @@
 	"title": "Get phase info - Lightweight cycle status for dashboards and widgets (Biorhythm)",
 	"category": "roxyapi",
 	"icon": "tide",
-	"description": "Get phase info - Lightweight cycle status for dashboards and widgets. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Get phase info - Lightweight cycle status for dashboards and widgets",
 	"keywords": [
 		"biorhythm",
 		"roxyapi",

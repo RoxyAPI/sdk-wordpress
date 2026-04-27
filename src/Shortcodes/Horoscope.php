@@ -15,8 +15,9 @@
 
 namespace RoxyAPI\Shortcodes;
 
-use RoxyAPI\Api\Cache;
-use RoxyAPI\Api\Client;
+use RoxyAPI\Generated\Client as GeneratedClient;
+use RoxyAPI\Support\Attribution;
+use RoxyAPI\Support\Disclaimer;
 use RoxyAPI\Support\RateLimit;
 use RoxyAPI\Support\Sanitize;
 use RoxyAPI\Support\Templates;
@@ -24,6 +25,18 @@ use RoxyAPI\Support\Templates;
 class Horoscope {
 
 	public const ACTION = 'roxy_horoscope';
+
+	/**
+	 * Default attributes accepted by this shortcode. Every key listed here is
+	 * the canonical attribute name surfaced in the documented examples.
+	 *
+	 * @var array<string, string>
+	 */
+	public const DEFAULTS = array(
+		'sign' => '',
+		'date' => 'today',
+		'type' => 'general',
+	);
 
 	/**
 	 * Render the horoscope shortcode.
@@ -35,11 +48,7 @@ class Horoscope {
 	 */
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
-			array(
-				'sign' => '',
-				'date' => 'today',
-				'type' => 'general',
-			),
+			self::DEFAULTS,
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
 		);
@@ -79,40 +88,28 @@ class Horoscope {
 		$raw_sign = isset( $_POST['sign'] ) ? sanitize_text_field( wp_unslash( $_POST['sign'] ) ) : '';
 		$sign     = Sanitize::zodiac_sign( $raw_sign );
 
-		return self::render_result( $sign, 'today' ) . self::render_form( $sign );
+		return self::render_result( $sign, Sanitize::date_string( 'today' ) ) . self::render_form( $sign );
 	}
 
 	private static function render_result( string $sign, string $date ): string {
-		$data = Cache::remember(
-			'horoscope-api/daily',
-			array(
-				'sign' => $sign,
-				'date' => $date,
-			),
-			HOUR_IN_SECONDS,
-			static function () use ( $sign, $date ) {
-				return Client::get(
-					'horoscope-api/daily',
-					array(
-						'sign' => $sign,
-						'date' => $date,
-					)
-				);
-			}
-		);
+		$data = GeneratedClient::getDailyHoroscope( $sign, null, $date );
 
 		if ( is_wp_error( $data ) ) {
-			return Templates::error( $data->get_error_message() );
+			return Templates::api_error( $data );
 		}
 
+		$body_data = is_array( $data ) ? $data : array();
 		return Templates::render(
 			'horoscope',
 			array(
 				'sign' => $sign,
 				'date' => $date,
-				'data' => is_array( $data ) ? $data : array(),
+				'data' => $body_data,
 			)
-		);
+		)
+			. Disclaimer::render()
+			. Attribution::credit_link( 'getDailyHoroscope' )
+			. Attribution::jsonld( 'getDailyHoroscope', $body_data );
 	}
 
 	private static function render_form( string $selected = '' ): string {

@@ -11,4 +11,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo \RoxyAPI\Shortcodes\Dream::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/dreams' );
+echo wp_kses_post( \RoxyAPI\Shortcodes\Dream::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/dreams' ) );

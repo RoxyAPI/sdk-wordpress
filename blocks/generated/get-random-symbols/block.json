@@ -5,7 +5,7 @@
 	"title": "Get random dream symbols (Dreams)",
 	"category": "roxyapi",
 	"icon": "book",
-	"description": "Get random dream symbols. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Get random dream symbols",
 	"keywords": [
 		"dreams",
 		"roxyapi",

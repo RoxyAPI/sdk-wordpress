@@ -1,13 +1,12 @@
 [
-  "getDailyHoroscope",
-  "getNatalChart",
-  "getDailyTarot",
-  "castThreeCardTarot",
-  "getNumerologyChart",
-  "getLifePathNumber",
-  "castIching",
-  "lookupDreamSymbol",
-  "computeBiorhythm",
-  "lookupAngelNumber",
-  "lookupCrystal"
+	"getDailyHoroscope",
+	"generateNatalChart",
+	"getDailyCard",
+	"generateNumerologyChart",
+	"calculateLifePath",
+	"getHexagram",
+	"getDreamSymbol",
+	"getReading",
+	"getAngelNumber",
+	"getCrystal"
 ]

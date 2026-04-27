@@ -14,11 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_calculate_parallels ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'date' => $attributes['date'] ?? '',
-	'time' => $attributes['time'] ?? '',
-	'latitude' => $attributes['latitude'] ?? '',
-	'longitude' => $attributes['longitude'] ?? '',
-	'timezone' => $attributes['timezone'] ?? '',
-	'orb' => $attributes['orb'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\CalculateParallels::render( $attributes ) );

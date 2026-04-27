@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class GeneratePlanetaryReturn {
 
@@ -27,14 +27,14 @@ class GeneratePlanetaryReturn {
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
 			array(
-			'birthDate' => '',
-			'birthTime' => '',
+			'birth_date' => '',
+			'birth_time' => '',
 			'planet' => '',
-			'approximateDate' => '',
+			'approximate_date' => '',
 			'latitude' => '',
 			'longitude' => '',
 			'timezone' => '',
-			'houseSystem' => '',
+			'house_system' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -44,14 +44,14 @@ class GeneratePlanetaryReturn {
 
 				$body = array_filter(
 			array(
-				'birthDate' => $atts['birthDate'],
-				'birthTime' => $atts['birthTime'],
+				'birthDate' => $atts['birth_date'],
+				'birthTime' => $atts['birth_time'],
 				'planet' => $atts['planet'],
-				'approximateDate' => $atts['approximateDate'],
-				'latitude' => $atts['latitude'],
-				'longitude' => $atts['longitude'],
+				'approximateDate' => $atts['approximate_date'],
+				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
+				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
 				'timezone' => $atts['timezone'],
-				'houseSystem' => $atts['houseSystem'],
+				'houseSystem' => $atts['house_system'],
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -60,9 +60,9 @@ class GeneratePlanetaryReturn {
 		$data = \RoxyAPI\Generated\Client::generatePlanetaryReturn( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'generatePlanetaryReturn', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'generatePlanetaryReturn', is_array( $data ) ? $data : array() );
 	}
 }

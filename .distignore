@@ -1,6 +1,8 @@
 /.git
 /.github
 /.gitignore
+/.claude
+/.cursor
 /.gitattributes
 /.distignore
 /.editorconfig
@@ -31,4 +33,10 @@
 /CODE_OF_CONDUCT.md
 /SECURITY.md
 /README.md
+/CLAUDE.md
+/MAINTAINER.md
+/todo.md
+/specs
+/vendor
+/.prettierignore
 *.log

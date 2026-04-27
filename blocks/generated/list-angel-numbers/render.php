@@ -14,9 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_list_angel_numbers ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'lang' => $attributes['lang'] ?? '',
-	'limit' => $attributes['limit'] ?? '',
-	'offset' => $attributes['offset'] ?? '',
-	'type' => $attributes['type'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\ListAngelNumbers::render( $attributes ) );

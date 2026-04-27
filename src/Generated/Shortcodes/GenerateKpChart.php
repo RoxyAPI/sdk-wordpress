@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class GenerateKpChart {
 
@@ -33,8 +33,8 @@ class GenerateKpChart {
 			'longitude' => '',
 			'timezone' => '',
 			'ayanamsa' => '',
-			'ayanamsaValue' => '',
-			'nodeType' => '',
+			'ayanamsa_value' => '',
+			'node_type' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -46,12 +46,12 @@ class GenerateKpChart {
 			array(
 				'date' => $atts['date'],
 				'time' => $atts['time'],
-				'latitude' => $atts['latitude'],
-				'longitude' => $atts['longitude'],
+				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
+				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
 				'timezone' => $atts['timezone'],
 				'ayanamsa' => $atts['ayanamsa'],
-				'ayanamsaValue' => $atts['ayanamsaValue'],
-				'nodeType' => $atts['nodeType'],
+				'ayanamsaValue' => $atts['ayanamsa_value'] !== '' ? (float) $atts['ayanamsa_value'] : '',
+				'nodeType' => $atts['node_type'],
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -60,9 +60,9 @@ class GenerateKpChart {
 		$data = \RoxyAPI\Generated\Client::generateKpChart( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'generateKpChart', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'generateKpChart', is_array( $data ) ? $data : array() );
 	}
 }

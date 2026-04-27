@@ -11,4 +11,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo \RoxyAPI\Shortcodes\NatalChart::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/natal-chart' );
+echo wp_kses_post( \RoxyAPI\Shortcodes\NatalChart::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/natal-chart' ) );

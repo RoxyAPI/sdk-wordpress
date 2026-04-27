@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class GetPhases {
 
@@ -27,8 +27,8 @@ class GetPhases {
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
 			array(
-			'birthDate' => '',
-			'targetDate' => '',
+			'birth_date' => '',
+			'target_date' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -38,8 +38,8 @@ class GetPhases {
 
 				$body = array_filter(
 			array(
-				'birthDate' => $atts['birthDate'],
-				'targetDate' => $atts['targetDate'],
+				'birthDate' => $atts['birth_date'],
+				'targetDate' => $atts['target_date'],
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -48,9 +48,9 @@ class GetPhases {
 		$data = \RoxyAPI\Generated\Client::getPhases( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'getPhases', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'getPhases', is_array( $data ) ? $data : array() );
 	}
 }

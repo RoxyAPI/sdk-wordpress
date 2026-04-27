@@ -14,9 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_current_moon_phase ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'lang' => $attributes['lang'] ?? '',
-	'date' => $attributes['date'] ?? '',
-	'time' => $attributes['time'] ?? '',
-	'timezone' => $attributes['timezone'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetCurrentMoonPhase::render( $attributes ) );

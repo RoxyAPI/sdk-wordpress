@@ -14,8 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_cities_by_country ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'iso2' => $attributes['iso2'] ?? '',
-	'limit' => $attributes['limit'] ?? '',
-	'offset' => $attributes['offset'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetCitiesByCountry::render( $attributes ) );

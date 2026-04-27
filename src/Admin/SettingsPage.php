@@ -7,6 +7,13 @@
 
 namespace RoxyAPI\Admin;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+use RoxyAPI\Support\ApiKey;
+use RoxyAPI\Support\Templates;
+
 class SettingsPage {
 
 	public const PAGE_SLUG    = 'roxyapi';
@@ -15,21 +22,73 @@ class SettingsPage {
 
 	public static function register(): void {
 		add_action( 'admin_menu', array( self::class, 'add_menu' ) );
+		// register_setting must fire on both admin_init and rest_api_init so the
+		// option is recognised in both contexts. add_settings_section / field()
+		// are admin-only and must NOT run during REST requests; calling them
+		// there fatals because wp-admin/includes/template.php is not loaded.
 		add_action( 'admin_init', array( self::class, 'register_setting' ) );
 		add_action( 'rest_api_init', array( self::class, 'register_setting' ) );
+		add_action( 'admin_init', array( self::class, 'register_settings_ui' ) );
 		add_action( 'admin_enqueue_scripts', array( self::class, 'enqueue' ) );
 	}
 
 	public static function add_menu(): void {
-		add_options_page(
-			esc_html__( 'RoxyAPI Settings', 'roxyapi' ),
-			esc_html__( 'RoxyAPI', 'roxyapi' ),
+		add_menu_page(
+			esc_html__( 'Roxy', 'roxyapi' ),
+			esc_html__( 'Roxy', 'roxyapi' ),
+			'manage_options',
+			self::PAGE_SLUG,
+			array( self::class, 'render' ),
+			'dashicons-star-filled',
+			30
+		);
+
+		// Explicitly register the first submenu so we can rename it from the
+		// auto-generated duplicate to "Connect" without losing the default
+		// landing slug used by the post-activation redirect.
+		add_submenu_page(
+			self::PAGE_SLUG,
+			esc_html__( 'Connect', 'roxyapi' ),
+			esc_html__( 'Connect', 'roxyapi' ),
 			'manage_options',
 			self::PAGE_SLUG,
 			array( self::class, 'render' )
 		);
+
+		add_submenu_page(
+			self::PAGE_SLUG,
+			esc_html__( 'Shortcodes', 'roxyapi' ),
+			esc_html__( 'Shortcodes', 'roxyapi' ),
+			'manage_options',
+			ShortcodesPage::PAGE_SLUG,
+			array( ShortcodesPage::class, 'render' )
+		);
+
+		// The Demo page renders live shortcode output for QA. It only ships in
+		// non-production environments because (a) it burns API quota when run
+		// across all 130 endpoints, (b) it exposes the full surface to anyone
+		// with manage_options, and (c) the WordPress.org review guidelines
+		// discourage admin pages that have no production purpose.
+		if ( DemoPage::is_available() ) {
+			add_submenu_page(
+				self::PAGE_SLUG,
+				esc_html__( 'Demo', 'roxyapi' ),
+				esc_html__( 'Demo', 'roxyapi' ),
+				'manage_options',
+				DemoPage::PAGE_SLUG,
+				array( DemoPage::class, 'render' )
+			);
+		}
 	}
 
+	/**
+	 * Register the option with WordPress.
+	 *
+	 * Safe to run on both admin_init and rest_api_init: register_setting() is
+	 * defined in core, not wp-admin.
+	 *
+	 * @return void
+	 */
 	public static function register_setting(): void {
 		register_setting(
 			self::OPTION_GROUP,
@@ -37,14 +96,24 @@ class SettingsPage {
 			array(
 				'type'              => 'object',
 				'sanitize_callback' => array( SettingsFields::class, 'sanitize' ),
-				'default'           => array(
-					'api_key_encrypted' => '',
-					'cache_ttl'         => HOUR_IN_SECONDS,
-				),
+				'default'           => SettingsSchema::defaults(),
 				'show_in_rest'      => false,
+				// Hot, small option read on every API call via ApiKey::get();
+				// autoload to avoid the per-request DB hit.
+				'autoload'          => true,
 			)
 		);
+	}
 
+	/**
+	 * Register the Settings API section and field for the classic admin UI.
+	 *
+	 * Admin-only because add_settings_section / add_settings_field live in
+	 * wp-admin/includes/template.php and are not loaded during REST.
+	 *
+	 * @return void
+	 */
+	public static function register_settings_ui(): void {
 		add_settings_section(
 			'roxyapi_main',
 			esc_html__( 'API Connection', 'roxyapi' ),
@@ -65,25 +134,71 @@ class SettingsPage {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
-		?>
-		<div class="wrap roxyapi-settings">
-			<h1><?php echo esc_html__( 'RoxyAPI Settings', 'roxyapi' ); ?></h1>
-			<p>
-				<?php echo esc_html__( 'Drop horoscopes, tarot, numerology, I Ching, natal charts, and more onto any page with shortcodes or Gutenberg blocks. Sign up at roxyapi.com to get an API key.', 'roxyapi' ); ?>
-			</p>
-			<form method="post" action="options.php">
-				<?php
-				settings_fields( self::OPTION_GROUP );
-				do_settings_sections( self::PAGE_SLUG );
-				submit_button();
-				?>
-			</form>
-		</div>
-		<?php
+
+		$is_configured = ApiKey::is_configured();
+		$key_disabled  = ApiKey::is_defined_via_constant();
+
+		echo '<div class="wrap roxyapi-settings">';
+
+		settings_errors( self::OPTION_NAME );
+
+		if ( ! $is_configured ) {
+			$html = Templates::render(
+				'admin-onboarding',
+				array(
+					'signup_url'     => Onboarding::signup_url(),
+					'playground_url' => Onboarding::playground_url(),
+					'samples'        => Onboarding::quickstart_samples(),
+					'key_input'      => SettingsFields::api_key_input_html(),
+					'key_help'       => SettingsFields::api_key_help_html(),
+					'key_disabled'   => $key_disabled,
+					'is_configured'  => false,
+					'option_group'   => self::OPTION_GROUP,
+					'page_slug'      => self::PAGE_SLUG,
+				)
+			);
+		} else {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only tab selector on a manage_options page.
+			$active_tab = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : 'connect';
+			if ( ! in_array( $active_tab, array( 'connect', 'branding', 'display', 'privacy', 'advanced' ), true ) ) {
+				$active_tab = 'connect';
+			}
+
+			$html = Templates::render(
+				'admin-connected',
+				array(
+					'active_tab'             => $active_tab,
+					'attribution_input'      => SettingsFields::attribution_checkbox_html(),
+					'consent_label_input'    => SettingsFields::consent_label_textarea_html(),
+					'accent_color_input'     => SettingsFields::accent_color_input_html(),
+					'display_language_input' => SettingsFields::display_language_input_html(),
+					'disclaimer_show_input'  => SettingsFields::disclaimer_show_html(),
+					'disclaimer_text_input'  => SettingsFields::disclaimer_text_html(),
+					'form_title_input'       => SettingsFields::form_title_input_html(),
+					'form_submit_input'      => SettingsFields::form_submit_input_html(),
+					'cache_preset_input'     => SettingsFields::cache_preset_input_html(),
+					'privacy_policy_url'     => admin_url( 'options-privacy.php' ),
+					'samples'                => Onboarding::quickstart_samples(),
+					'hero_endpoints'         => Onboarding::hero_shortcodes(),
+					'key_input'              => SettingsFields::api_key_input_html(),
+					'key_help'               => SettingsFields::api_key_help_html(),
+					'key_disabled'           => $key_disabled,
+					'option_group'           => self::OPTION_GROUP,
+					'page_slug'              => self::PAGE_SLUG,
+					'docs_url'               => Onboarding::docs_url(),
+					'support_url'            => Onboarding::support_url(),
+					'dashboard_url'          => Onboarding::dashboard_url(),
+				)
+			);
+		}
+
+		echo wp_kses_post( $html );
+
+		echo '</div>';
 	}
 
 	public static function enqueue( string $hook ): void {
-		if ( $hook !== 'settings_page_' . self::PAGE_SLUG ) {
+		if ( $hook !== 'toplevel_page_' . self::PAGE_SLUG ) {
 			return;
 		}
 		wp_enqueue_style(
@@ -99,11 +214,24 @@ class SettingsPage {
 			ROXYAPI_VERSION,
 			true
 		);
+		// `wp.apiFetch` (loaded via the wp-api-fetch dependency) auto-attaches
+		// the REST nonce on every request from this enqueued bundle, so we do
+		// not need to localise it ourselves.
 		wp_localize_script(
 			'roxyapi-admin',
 			'RoxyAPIAdmin',
 			array(
-				'restNonce' => wp_create_nonce( 'wp_rest' ),
+				'strings' => array(
+					'testing'         => __( 'Testing...', 'roxyapi' ),
+					'connected'       => __( 'Connected.', 'roxyapi' ),
+					'connectedBanner' => __( 'Connected to Roxy. Paste a shortcode below to render a reading on any page.', 'roxyapi' ),
+					'noKey'           => __( 'Paste your API key in the field above and save before testing.', 'roxyapi' ),
+					'invalidKey'      => __( 'That key was rejected. Double check it on your roxyapi.com dashboard, paste it again, and save.', 'roxyapi' ),
+					'requestFailed'   => __( 'Connection test failed. Try again in a moment.', 'roxyapi' ),
+					'copied'          => __( 'Copied', 'roxyapi' ),
+					'copyFailed'      => __( 'Copy failed', 'roxyapi' ),
+					'copy'            => __( 'Copy', 'roxyapi' ),
+				),
 			)
 		);
 	}

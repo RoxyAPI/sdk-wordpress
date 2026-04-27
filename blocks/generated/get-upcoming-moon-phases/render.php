@@ -14,8 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_upcoming_moon_phases ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'lang' => $attributes['lang'] ?? '',
-	'startDate' => $attributes['startDate'] ?? '',
-	'count' => $attributes['count'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetUpcomingMoonPhases::render( $attributes ) );

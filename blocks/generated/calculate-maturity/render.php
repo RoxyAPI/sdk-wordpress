@@ -14,11 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_calculate_maturity ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'lifePath' => $attributes['lifePath'] ?? '',
-	'expression' => $attributes['expression'] ?? '',
-	'fullName' => $attributes['fullName'] ?? '',
-	'year' => $attributes['year'] ?? '',
-	'month' => $attributes['month'] ?? '',
-	'day' => $attributes['day'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\CalculateMaturity::render( $attributes ) );

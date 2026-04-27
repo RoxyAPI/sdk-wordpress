@@ -5,7 +5,7 @@
 	"title": "Generate complete KP birth chart (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Generate complete KP birth chart. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Generate complete KP birth chart",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

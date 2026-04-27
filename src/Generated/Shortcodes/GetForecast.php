@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class GetForecast {
 
@@ -27,9 +27,9 @@ class GetForecast {
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
 			array(
-			'birthDate' => '',
-			'startDate' => '',
-			'endDate' => '',
+			'birth_date' => '',
+			'start_date' => '',
+			'end_date' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -39,9 +39,9 @@ class GetForecast {
 
 				$body = array_filter(
 			array(
-				'birthDate' => $atts['birthDate'],
-				'startDate' => $atts['startDate'],
-				'endDate' => $atts['endDate'],
+				'birthDate' => $atts['birth_date'],
+				'startDate' => $atts['start_date'],
+				'endDate' => $atts['end_date'],
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -50,9 +50,9 @@ class GetForecast {
 		$data = \RoxyAPI\Generated\Client::getForecast( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'getForecast', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'getForecast', is_array( $data ) ? $data : array() );
 	}
 }

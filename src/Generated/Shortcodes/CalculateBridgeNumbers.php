@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class CalculateBridgeNumbers {
 
@@ -27,7 +27,7 @@ class CalculateBridgeNumbers {
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
 			array(
-			'fullName' => '',
+			'full_name' => '',
 			'year' => '',
 			'month' => '',
 			'day' => '',
@@ -40,10 +40,10 @@ class CalculateBridgeNumbers {
 
 				$body = array_filter(
 			array(
-				'fullName' => $atts['fullName'],
-				'year' => $atts['year'],
-				'month' => $atts['month'],
-				'day' => $atts['day'],
+				'fullName' => $atts['full_name'],
+				'year' => $atts['year'] !== '' ? (int) $atts['year'] : '',
+				'month' => $atts['month'] !== '' ? (int) $atts['month'] : '',
+				'day' => $atts['day'] !== '' ? (int) $atts['day'] : '',
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -52,9 +52,9 @@ class CalculateBridgeNumbers {
 		$data = \RoxyAPI\Generated\Client::calculateBridgeNumbers( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'calculateBridgeNumbers', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'calculateBridgeNumbers', is_array( $data ) ? $data : array() );
 	}
 }

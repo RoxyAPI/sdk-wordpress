@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class CalculatePersonalYear {
 
@@ -39,9 +39,9 @@ class CalculatePersonalYear {
 
 				$body = array_filter(
 			array(
-				'month' => $atts['month'],
-				'day' => $atts['day'],
-				'year' => $atts['year'],
+				'month' => $atts['month'] !== '' ? (int) $atts['month'] : '',
+				'day' => $atts['day'] !== '' ? (int) $atts['day'] : '',
+				'year' => $atts['year'] !== '' ? (int) $atts['year'] : '',
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -50,9 +50,9 @@ class CalculatePersonalYear {
 		$data = \RoxyAPI\Generated\Client::calculatePersonalYear( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'calculatePersonalYear', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'calculatePersonalYear', is_array( $data ) ? $data : array() );
 	}
 }

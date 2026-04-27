@@ -14,6 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_list_zodiac_signs ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'lang' => $attributes['lang'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\ListZodiacSigns::render( $attributes ) );

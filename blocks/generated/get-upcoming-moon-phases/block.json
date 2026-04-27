@@ -5,7 +5,7 @@
 	"title": "Get upcoming moon phases - Next new moon, full moon, quarters (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Get upcoming moon phases - Next new moon, full moon, quarters. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Get upcoming moon phases - Next new moon, full moon, quarters",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

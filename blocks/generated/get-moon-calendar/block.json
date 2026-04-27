@@ -5,7 +5,7 @@
 	"title": "Get lunar calendar - Moon phases for entire month (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Get lunar calendar - Moon phases for entire month. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Get lunar calendar - Moon phases for entire month",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

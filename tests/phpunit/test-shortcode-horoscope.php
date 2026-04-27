@@ -20,7 +20,7 @@ class Test_Shortcode_Horoscope extends Mock_Http_TestCase {
 				'api_key_encrypted' => Encryption::encrypt( $test_key ),
 			)
 		);
-		$this->mock_responses['horoscope-api/daily'] = array(
+		$this->mock_responses['astrology/horoscope/aries/daily'] = array(
 			'sign'            => 'aries',
 			'overview'        => 'A bold day ahead.',
 			'love'            => 'Good vibes with Leo.',
@@ -57,7 +57,11 @@ class Test_Shortcode_Horoscope extends Mock_Http_TestCase {
 
 	public function test_caches_response(): void {
 		do_shortcode( '[roxy_horoscope sign="aries"]' );
-		$key = 'roxyapi_' . md5( 'horoscope-api/daily|' . wp_json_encode( array( 'sign' => 'aries', 'date' => 'today' ) ) );
+		// Sanitize::date_string("today") resolves to YYYY-MM-DD before reaching
+		// the cache key (the SaaS spec rejects literal "today"). The cache key
+		// therefore includes the resolved date, not the literal token.
+		$resolved_date = wp_date( 'Y-m-d' );
+		$key           = 'roxyapi_' . md5( 'astrology/horoscope/aries/daily|' . wp_json_encode( array( 'date' => $resolved_date ) ) );
 		$this->assertNotFalse( get_transient( $key ) );
 	}
 }

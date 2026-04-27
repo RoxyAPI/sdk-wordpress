@@ -5,7 +5,7 @@
 	"title": "Get daily biorhythm - Seeded reading for daily check-in features (Biorhythm)",
 	"category": "roxyapi",
 	"icon": "tide",
-	"description": "Get daily biorhythm - Seeded reading for daily check-in features. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Get daily biorhythm - Seeded reading for daily check-in features",
 	"keywords": [
 		"biorhythm",
 		"roxyapi",

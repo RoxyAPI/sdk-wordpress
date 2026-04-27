@@ -14,9 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_calculate_transits ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'date' => $attributes['date'] ?? '',
-	'time' => $attributes['time'] ?? '',
-	'timezone' => $attributes['timezone'] ?? '',
-	'natalChart' => $attributes['natalChart'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\CalculateTransits::render( $attributes ) );

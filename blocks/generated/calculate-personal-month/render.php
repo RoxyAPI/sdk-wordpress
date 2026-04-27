@@ -14,9 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_calculate_personal_month ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'month' => $attributes['month'] ?? '',
-	'day' => $attributes['day'] ?? '',
-	'year' => $attributes['year'] ?? '',
-	'targetMonth' => $attributes['targetMonth'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\CalculatePersonalMonth::render( $attributes ) );

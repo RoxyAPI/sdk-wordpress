@@ -5,7 +5,7 @@
 	"title": "Transit Analysis - Compare current planets to natal chart (Gochar) (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Transit Analysis - Compare current planets to natal chart (Gochar). Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Transit Analysis - Compare current planets to natal chart (Gochar)",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

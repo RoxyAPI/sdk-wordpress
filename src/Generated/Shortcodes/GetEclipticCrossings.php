@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class GetEclipticCrossings {
 
@@ -29,7 +29,7 @@ class GetEclipticCrossings {
 			array(
 			'year' => '',
 			'timezone' => '',
-			'coordinateSystem' => '',
+			'coordinate_system' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -39,9 +39,9 @@ class GetEclipticCrossings {
 
 				$body = array_filter(
 			array(
-				'year' => $atts['year'],
+				'year' => $atts['year'] !== '' ? (int) $atts['year'] : '',
 				'timezone' => $atts['timezone'],
-				'coordinateSystem' => $atts['coordinateSystem'],
+				'coordinateSystem' => $atts['coordinate_system'],
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -50,9 +50,9 @@ class GetEclipticCrossings {
 		$data = \RoxyAPI\Generated\Client::getEclipticCrossings( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'getEclipticCrossings', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'getEclipticCrossings', is_array( $data ) ? $data : array() );
 	}
 }

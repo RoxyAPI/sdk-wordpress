@@ -14,9 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_search_dream_symbols ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'q' => $attributes['q'] ?? '',
-	'letter' => $attributes['letter'] ?? '',
-	'limit' => $attributes['limit'] ?? '',
-	'offset' => $attributes['offset'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\SearchDreamSymbols::render( $attributes ) );

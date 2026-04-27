@@ -5,7 +5,7 @@
 	"title": "List All Crystals (Crystals and Healing Stones)",
 	"category": "roxyapi",
 	"icon": "star-filled",
-	"description": "List All Crystals. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "List All Crystals",
 	"keywords": [
 		"crystals and healing stones",
 		"roxyapi",

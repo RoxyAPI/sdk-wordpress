@@ -5,7 +5,7 @@
 	"title": "Three-Card Spread: Past, Present, Future (Tarot)",
 	"category": "roxyapi",
 	"icon": "heart",
-	"description": "Three-Card Spread: Past, Present, Future. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Three-Card Spread: Past, Present, Future",
 	"keywords": [
 		"tarot",
 		"roxyapi",

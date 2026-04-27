@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name:       RoxyAPI: Astrology, Tarot, Numerology, Horoscope and More
+ * Plugin Name:       Astrology, Horoscope, Tarot, Numerology by Roxy
  * Plugin URI:        https://roxyapi.com
- * Description:       Drop daily horoscopes, tarot pulls, numerology readings, I Ching casts, and natal charts onto any WordPress page. Shortcodes and blocks. Verified against NASA JPL Horizons.
+ * Description:       Add astrology, daily horoscopes, tarot card pulls, numerology readings, and Vedic and Western birth charts to any WordPress page. Blocks and shortcodes. Calculations cross-checked against the NASA JPL Horizons ephemeris (no affiliation).
  * Version:           1.0.0
  * Requires at least: 6.5
- * Tested up to:      6.8
+ * Tested up to:      6.9
  * Requires PHP:      7.4
  * Author:            RoxyAPI
  * Author URI:        https://roxyapi.com
@@ -35,8 +35,24 @@ if ( version_compare( PHP_VERSION, ROXYAPI_PHP_MIN, '<' ) ) {
 	return;
 }
 
+// Composer's autoloader is preferred when the dev environment installed it
+// (composer install). The released zip ships without `vendor/` so we register
+// a minimal PSR-4 autoloader covering the plugin's own namespace.
 if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 	require_once __DIR__ . '/vendor/autoload.php';
+} else {
+	spl_autoload_register(
+		static function ( $fqcn ) {
+			if ( strpos( $fqcn, 'RoxyAPI\\' ) !== 0 ) {
+				return;
+			}
+			$relative = substr( $fqcn, strlen( 'RoxyAPI\\' ) );
+			$path     = __DIR__ . '/src/' . str_replace( '\\', '/', $relative ) . '.php';
+			if ( is_readable( $path ) ) {
+				require_once $path;
+			}
+		}
+	);
 }
 
 RoxyAPI\Plugin::load( __FILE__ );

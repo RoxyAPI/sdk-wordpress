@@ -5,7 +5,7 @@
 	"title": "Get planetary positions - Graha Positions API (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get planetary positions - Graha Positions API. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Get planetary positions - Graha Positions API",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

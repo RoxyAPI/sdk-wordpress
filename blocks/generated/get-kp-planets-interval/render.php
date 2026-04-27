@@ -14,13 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_kp_planets_interval ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'startDatetime' => $attributes['startDatetime'] ?? '',
-	'endDatetime' => $attributes['endDatetime'] ?? '',
-	'intervalMinutes' => $attributes['intervalMinutes'] ?? '',
-	'latitude' => $attributes['latitude'] ?? '',
-	'longitude' => $attributes['longitude'] ?? '',
-	'timezone' => $attributes['timezone'] ?? '',
-	'ayanamsa' => $attributes['ayanamsa'] ?? '',
-	'nodeType' => $attributes['nodeType'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetKpPlanetsInterval::render( $attributes ) );

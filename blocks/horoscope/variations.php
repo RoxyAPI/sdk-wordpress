@@ -15,38 +15,56 @@ return array(
 		'title'       => __( 'Daily Horoscope', 'roxyapi' ),
 		'description' => __( "Today's horoscope for a zodiac sign.", 'roxyapi' ),
 		'icon'        => 'star-filled',
-		'attributes'  => array( 'period' => 'daily', 'type' => 'general' ),
+		'attributes'  => array(
+			'period' => 'daily',
+			'type'   => 'general',
+		),
 		'isDefault'   => true,
 		'scope'       => array( 'inserter', 'transform' ),
 	),
 	array(
 		'name'       => 'weekly',
 		'title'      => __( 'Weekly Horoscope', 'roxyapi' ),
-		'attributes' => array( 'period' => 'weekly', 'type' => 'general' ),
+		'attributes' => array(
+			'period' => 'weekly',
+			'type'   => 'general',
+		),
 		'scope'      => array( 'inserter', 'transform' ),
 	),
 	array(
 		'name'       => 'monthly',
 		'title'      => __( 'Monthly Horoscope', 'roxyapi' ),
-		'attributes' => array( 'period' => 'monthly', 'type' => 'general' ),
+		'attributes' => array(
+			'period' => 'monthly',
+			'type'   => 'general',
+		),
 		'scope'      => array( 'inserter', 'transform' ),
 	),
 	array(
 		'name'       => 'love',
 		'title'      => __( 'Love Horoscope', 'roxyapi' ),
-		'attributes' => array( 'period' => 'daily', 'type' => 'love' ),
+		'attributes' => array(
+			'period' => 'daily',
+			'type'   => 'love',
+		),
 		'scope'      => array( 'inserter', 'transform' ),
 	),
 	array(
 		'name'       => 'career',
 		'title'      => __( 'Career Horoscope', 'roxyapi' ),
-		'attributes' => array( 'period' => 'daily', 'type' => 'career' ),
+		'attributes' => array(
+			'period' => 'daily',
+			'type'   => 'career',
+		),
 		'scope'      => array( 'inserter', 'transform' ),
 	),
 	array(
 		'name'       => 'chinese',
 		'title'      => __( 'Chinese Horoscope', 'roxyapi' ),
-		'attributes' => array( 'period' => 'chinese', 'type' => 'general' ),
+		'attributes' => array(
+			'period' => 'chinese',
+			'type'   => 'general',
+		),
 		'scope'      => array( 'inserter', 'transform' ),
 	),
 );

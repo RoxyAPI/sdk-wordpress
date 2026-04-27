@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class CalculateTransit {
 
@@ -27,14 +27,14 @@ class CalculateTransit {
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
 			array(
-			'birthDate' => '',
-			'birthTime' => '',
-			'transitDate' => '',
-			'transitTime' => '',
+			'birth_date' => '',
+			'birth_time' => '',
+			'transit_date' => '',
+			'transit_time' => '',
 			'latitude' => '',
 			'longitude' => '',
 			'timezone' => '',
-			'coordinateSystem' => '',
+			'coordinate_system' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -44,14 +44,14 @@ class CalculateTransit {
 
 				$body = array_filter(
 			array(
-				'birthDate' => $atts['birthDate'],
-				'birthTime' => $atts['birthTime'],
-				'transitDate' => $atts['transitDate'],
-				'transitTime' => $atts['transitTime'],
-				'latitude' => $atts['latitude'],
-				'longitude' => $atts['longitude'],
+				'birthDate' => $atts['birth_date'],
+				'birthTime' => $atts['birth_time'],
+				'transitDate' => $atts['transit_date'],
+				'transitTime' => $atts['transit_time'],
+				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
+				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
 				'timezone' => $atts['timezone'],
-				'coordinateSystem' => $atts['coordinateSystem'],
+				'coordinateSystem' => $atts['coordinate_system'],
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -60,9 +60,9 @@ class CalculateTransit {
 		$data = \RoxyAPI\Generated\Client::calculateTransit( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'calculateTransit', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'calculateTransit', is_array( $data ) ? $data : array() );
 	}
 }

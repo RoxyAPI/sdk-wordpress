@@ -14,9 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_search_crystals ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'lang' => $attributes['lang'] ?? '',
-	'q' => $attributes['q'] ?? '',
-	'limit' => $attributes['limit'] ?? '',
-	'offset' => $attributes['offset'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\SearchCrystals::render( $attributes ) );

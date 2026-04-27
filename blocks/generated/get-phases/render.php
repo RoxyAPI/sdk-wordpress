@@ -14,7 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_phases ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'birthDate' => $attributes['birthDate'] ?? '',
-	'targetDate' => $attributes['targetDate'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetPhases::render( $attributes ) );

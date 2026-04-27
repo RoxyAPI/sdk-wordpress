@@ -1,28 +1,25 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 3,
-	"name": "roxyapi/iching",
-	"title": "I Ching",
-	"category": "roxyapi",
-	"icon": "book",
-	"description": "I Ching hexagram cast and interpretation. Powered by RoxyAPI.",
-	"keywords": ["i ching", "hexagram", "divination", "roxyapi"],
-	"version": "1.0.0",
-	"textdomain": "roxyapi",
-	"supports": {
-		"html": false,
-		"align": [
-			"wide",
-			"full"
-		]
-	},
-	"attributes": {},
-	"render": "file:./render.php",
-	"editorScript": "file:./index.js",
-	"usesContext": [
-		"roxyapi/sign",
-		"roxyapi/birthDate",
-		"roxyapi/lat",
-		"roxyapi/lon"
-	]
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "roxyapi/iching",
+  "title": "I Ching",
+  "category": "roxyapi",
+  "icon": "book",
+  "description": "I Ching hexagram cast and interpretation.",
+  "keywords": ["i ching", "hexagram", "divination", "roxyapi"],
+  "version": "1.0.0",
+  "textdomain": "roxyapi",
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"]
+  },
+  "attributes": {},
+  "render": "file:./render.php",
+  "editorScript": "file:./index.js",
+  "usesContext": [
+    "roxyapi/sign",
+    "roxyapi/birthDate",
+    "roxyapi/lat",
+    "roxyapi/lon"
+  ]
 }

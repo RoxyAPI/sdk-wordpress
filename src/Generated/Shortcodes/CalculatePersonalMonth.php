@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class CalculatePersonalMonth {
 
@@ -30,7 +30,7 @@ class CalculatePersonalMonth {
 			'month' => '',
 			'day' => '',
 			'year' => '',
-			'targetMonth' => '',
+			'target_month' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -40,10 +40,10 @@ class CalculatePersonalMonth {
 
 				$body = array_filter(
 			array(
-				'month' => $atts['month'],
-				'day' => $atts['day'],
-				'year' => $atts['year'],
-				'targetMonth' => $atts['targetMonth'],
+				'month' => $atts['month'] !== '' ? (int) $atts['month'] : '',
+				'day' => $atts['day'] !== '' ? (int) $atts['day'] : '',
+				'year' => $atts['year'] !== '' ? (int) $atts['year'] : '',
+				'targetMonth' => $atts['target_month'] !== '' ? (int) $atts['target_month'] : '',
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -52,9 +52,9 @@ class CalculatePersonalMonth {
 		$data = \RoxyAPI\Generated\Client::calculatePersonalMonth( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'calculatePersonalMonth', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'calculatePersonalMonth', is_array( $data ) ? $data : array() );
 	}
 }

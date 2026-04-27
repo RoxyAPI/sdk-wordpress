@@ -9,7 +9,7 @@ WordPress plugin for [RoxyAPI](https://roxyapi.com). Drop horoscopes, tarot, num
 ```bash
 # WordPress admin
 Plugins > Add New > search "RoxyAPI" > Install > Activate
-Settings > RoxyAPI > paste API key > Save
+RoxyAPI menu (admin sidebar) > paste API key > Save
 
 # wp-cli
 wp plugin install roxyapi --activate
@@ -21,6 +21,8 @@ define( 'ROXYAPI_KEY', getenv( 'ROXYAPI_KEY' ) );
 
 ## Use a shortcode
 
+Browse the full library of 130 shortcodes at RoxyAPI > Shortcodes in the WordPress admin sidebar, or run `wp shortcode list | grep roxy_` from wp-cli.
+
 Every hero shortcode has two modes, auto detected.
 
 ### Static mode: site owner picks the values
@@ -29,16 +31,18 @@ Pass all required attributes and the shortcode renders a fixed reading that neve
 
 ```
 [roxy_horoscope sign="aries"]
-[roxy_natal_chart birth_date="1990-05-15" birth_time="14:30" lat="40.7128" lon="-74.0060"]
-[roxy_tarot_card spread="three" question="What should I focus on"]
+[roxy_natal_chart birth_date="1990-05-15" birth_time="14:30" lat="40.7128" lon="-74.0060" tz="America/New_York"]
+[roxy_tarot_card spread="three" question="What should I focus on this week"]
 [roxy_numerology name="Ada Lovelace" birth_date="1815-12-10"]
 [roxy_iching question="Should I take the new job"]
 [roxy_dream symbol="water"]
 [roxy_biorhythm birth_date="1990-05-15" target_date="today"]
 [roxy_angel_number number="1111"]
 [roxy_crystal name="amethyst"]
-[roxy_compatibility sign_a="leo" sign_b="aquarius"]
+[roxy_life_path birth_date="1990-05-15"]
 ```
+
+For full birth-chart compatibility between two people, use the generated `[roxy_calculate_synastry]` shortcode (it accepts `person1` and `person2` body data per the OpenAPI spec).
 
 ### Form mode: visitors pick their own values
 
@@ -54,7 +58,6 @@ Leave the required attributes off and the shortcode renders an HTML form. Visito
 [roxy_biorhythm]        -> birth date input
 [roxy_angel_number]     -> number input
 [roxy_crystal]          -> crystal name search
-[roxy_compatibility]    -> two sign picker
 [roxy_life_path]        -> birth date picker
 ```
 
@@ -70,17 +73,17 @@ Drop one Astrology Section wrapper block on the page, set the zodiac sign in its
 
 ## Domains
 
-| Block / shortcode prefix | What it covers |
-|---|---|
-| Horoscope | Western horoscopes: daily, weekly, monthly, love, career, Chinese, Burmese |
-| Natal Chart | Western birth chart: planets, houses, aspects, transits |
-| Tarot | Rider Waite Smith deck: single card, three card, Celtic Cross, custom layouts |
-| Numerology | Life path, expression, soul urge, personal year, full chart |
-| I Ching | Hexagram casting and interpretation |
-| Dreams | Symbol dictionary with 3,000 entries |
-| Biorhythm | Physical, emotional, intellectual, intuitive cycles |
-| Angel Number | Number meanings and pattern analysis |
-| Crystal | Properties, zodiac and chakra pairings |
+| Block / shortcode prefix | What it covers                                                                |
+| ------------------------ | ----------------------------------------------------------------------------- |
+| Horoscope                | Western horoscopes: daily, weekly, monthly, love, career, Chinese, Burmese    |
+| Natal Chart              | Western birth chart: planets, houses, aspects, transits                       |
+| Tarot                    | Rider Waite Smith deck: single card, three card, Celtic Cross, custom layouts |
+| Numerology               | Life path, expression, soul urge, personal year, full chart                   |
+| I Ching                  | Hexagram casting and interpretation                                           |
+| Dreams                   | Symbol dictionary with 3,000 entries                                          |
+| Biorhythm                | Physical, emotional, intellectual, intuitive cycles                           |
+| Angel Number             | Number meanings and pattern analysis                                          |
+| Crystal                  | Properties, zodiac and chakra pairings                                        |
 
 For Vedic astrology, KP system, panchang, dasha calculations, and other long tail endpoints, use the auto-generated shortcodes. Run `wp shortcode list | grep roxy_` to see every available tag on your install.
 
@@ -90,9 +93,9 @@ Resolution order:
 
 1. `ROXYAPI_KEY` constant in `wp-config.php` (recommended for production)
 2. The encrypted value in the `roxyapi_settings` option, decrypted via AES-256-CTR
-3. Empty string (every shortcode renders a friendly placeholder pointing at the settings page)
+3. Empty string (every shortcode renders a friendly placeholder pointing at the settings page; the dashboard widget also surfaces the unconnected state)
 
-The encryption key derives from `ROXYAPI_ENCRYPTION_KEY` constant or `LOGGED_IN_KEY` fallback. Same for the salt. Document for production:
+The encryption key derives from `ROXYAPI_ENCRYPTION_KEY` constant or `LOGGED_IN_KEY` fallback. Same for the salt. If neither is available, the encryption helper returns `false` and the user gets a clear "could not encrypt" error instead of having their key persisted under a hardcoded secret. Document for production:
 
 ```php
 define( 'ROXYAPI_KEY',             getenv( 'ROXYAPI_KEY' ) );
@@ -104,26 +107,26 @@ define( 'ROXYAPI_ENCRYPTION_SALT', getenv( 'ROXYAPI_ENCRYPTION_SALT' ) );
 
 Every successful response is cached in a WordPress transient with a per endpoint TTL:
 
-| Endpoint family | TTL |
-|---|---|
-| Daily horoscope | 1 hour |
-| Numerology, natal chart, dreams, crystals, angel numbers | 1 month (deterministic from input) |
-| Biorhythm | 1 day |
-| Tarot, I Ching | not cached (randomness is the value) |
+| Endpoint family                                          | TTL                                  |
+| -------------------------------------------------------- | ------------------------------------ |
+| Daily horoscope                                          | 1 hour                               |
+| Numerology, natal chart, dreams, crystals, angel numbers | 1 month (deterministic from input)   |
+| Biorhythm                                                | 1 day                                |
+| Tarot, I Ching                                           | not cached (randomness is the value) |
 
 Cached responses do not consume RoxyAPI quota. Object cache backends (Redis, Memcached) are picked up automatically.
 
 ## Common tasks
 
-| Task | How |
-|---|---|
-| Test the API key | Settings > RoxyAPI > Test Connection |
-| Override the key without touching the database | `define( 'ROXYAPI_KEY', '...' );` in `wp-config.php` |
-| Change cache TTL | Settings > RoxyAPI > Cache tab |
-| Clear all cached responses | Settings > RoxyAPI > Cache tab > Flush, or `wp roxyapi cache flush` |
-| Add a horoscope to any paragraph | Use Block Bindings: bind a `core/paragraph` to source `roxyapi/daily-text` with args `{"sign":"leo"}` |
-| Share zodiac sign across many blocks on one page | Add an Astrology Section wrapper block and put the children inside |
-| Use the long tail endpoints | Pick a generated block from the inserter or use `[roxy_horoscope_weekly sign="leo"]` style shortcodes |
+| Task                                             | How                                                                                                   |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| Test the API key                                 | RoxyAPI menu (admin sidebar) > Test Connection                                                        |
+| Override the key without touching the database   | `define( 'ROXYAPI_KEY', '...' );` in `wp-config.php`                                                  |
+| Change cache TTL per endpoint                    | Edit `bin/ttl-map.json` and run `npm run generate`                                                    |
+| Clear all cached responses                       | `wp transient delete --all` (or call `\RoxyAPI\Api\Cache::flush_all()` from a one-off)                |
+| Add a horoscope to any paragraph                 | Use Block Bindings: bind a `core/paragraph` to source `roxyapi/daily-text` with args `{"sign":"leo"}` |
+| Share zodiac sign across many blocks on one page | Add an Astrology Section wrapper block and put the children inside                                    |
+| Use the long tail endpoints                      | Pick a generated block from the inserter or use `[roxy_horoscope_weekly sign="leo"]` style shortcodes |
 
 ## Gotchas
 

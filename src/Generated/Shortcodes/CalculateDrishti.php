@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class CalculateDrishti {
 
@@ -32,7 +32,7 @@ class CalculateDrishti {
 			'latitude' => '',
 			'longitude' => '',
 			'timezone' => '',
-			'coordinateSystem' => '',
+			'coordinate_system' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -44,10 +44,10 @@ class CalculateDrishti {
 			array(
 				'date' => $atts['date'],
 				'time' => $atts['time'],
-				'latitude' => $atts['latitude'],
-				'longitude' => $atts['longitude'],
+				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
+				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
 				'timezone' => $atts['timezone'],
-				'coordinateSystem' => $atts['coordinateSystem'],
+				'coordinateSystem' => $atts['coordinate_system'],
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -56,9 +56,9 @@ class CalculateDrishti {
 		$data = \RoxyAPI\Generated\Client::calculateDrishti( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'calculateDrishti', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'calculateDrishti', is_array( $data ) ? $data : array() );
 	}
 }

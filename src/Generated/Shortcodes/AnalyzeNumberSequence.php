@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class AnalyzeNumberSequence {
 
@@ -39,9 +39,9 @@ class AnalyzeNumberSequence {
 		$data = \RoxyAPI\Generated\Client::analyzeNumberSequence( $atts['lang'], $atts['number'] );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'analyzeNumberSequence', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'analyzeNumberSequence', is_array( $data ) ? $data : array() );
 	}
 }

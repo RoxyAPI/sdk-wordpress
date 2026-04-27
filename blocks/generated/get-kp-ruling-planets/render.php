@@ -14,12 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_kp_ruling_planets ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'latitude' => $attributes['latitude'] ?? '',
-	'longitude' => $attributes['longitude'] ?? '',
-	'timezone' => $attributes['timezone'] ?? '',
-	'datetime' => $attributes['datetime'] ?? '',
-	'birthDate' => $attributes['birthDate'] ?? '',
-	'birthTime' => $attributes['birthTime'] ?? '',
-	'nodeType' => $attributes['nodeType'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetKpRulingPlanets::render( $attributes ) );

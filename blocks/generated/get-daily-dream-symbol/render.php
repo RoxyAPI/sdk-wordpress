@@ -14,7 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_daily_dream_symbol ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'seed' => $attributes['seed'] ?? '',
-	'date' => $attributes['date'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetDailyDreamSymbol::render( $attributes ) );

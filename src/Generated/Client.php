@@ -23,13 +23,13 @@ class Client {
 			'lang' => $lang,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/signs',
 			$query,
-			0,
+			2592000,
 			static function () use ( $query ) {
 				return \RoxyAPI\Api\Client::get( 'astrology/signs', $query );
 			}
@@ -42,18 +42,21 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getZodiacSign( $id, $lang = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
 		$query = array_filter(
 			array(
 			'lang' => $lang,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/signs/' . rawurlencode( $id ) . '',
 			$query,
-			0,
+			2592000,
 			static function () use ( $query, $id ) {
 				return \RoxyAPI\Api\Client::get( 'astrology/signs/' . rawurlencode( $id ) . '', $query );
 			}
@@ -71,13 +74,13 @@ class Client {
 			'lang' => $lang,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/planet-meanings',
 			$query,
-			0,
+			2592000,
 			static function () use ( $query ) {
 				return \RoxyAPI\Api\Client::get( 'astrology/planet-meanings', $query );
 			}
@@ -90,18 +93,21 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getPlanetMeaning( $id, $lang = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
 		$query = array_filter(
 			array(
 			'lang' => $lang,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/planet-meanings/' . rawurlencode( $id ) . '',
 			$query,
-			0,
+			2592000,
 			static function () use ( $query, $id ) {
 				return \RoxyAPI\Api\Client::get( 'astrology/planet-meanings/' . rawurlencode( $id ) . '', $query );
 			}
@@ -118,7 +124,7 @@ class Client {
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/natal-chart',
 			$body,
-			0,
+			2592000,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'astrology/natal-chart', $body );
 			}
@@ -156,13 +162,13 @@ class Client {
 			'timezone' => $timezone,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/moon-phase/current',
 			$query,
-			0,
+			3600,
 			static function () use ( $query ) {
 				return \RoxyAPI\Api\Client::get( 'astrology/moon-phase/current', $query );
 			}
@@ -182,13 +188,13 @@ class Client {
 			'count' => $count,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/moon-phase/upcoming',
 			$query,
-			0,
+			86400,
 			static function () use ( $query ) {
 				return \RoxyAPI\Api\Client::get( 'astrology/moon-phase/upcoming', $query );
 			}
@@ -201,18 +207,24 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getMoonCalendar( $year, $month, $lang = null ) {
+		if ( $year === '' || $year === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'year' ) );
+		}
+		if ( $month === '' || $month === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'month' ) );
+		}
 		$query = array_filter(
 			array(
 			'lang' => $lang,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/moon-phase/calendar/' . rawurlencode( $year ) . '/' . rawurlencode( $month ) . '',
 			$query,
-			0,
+			86400,
 			static function () use ( $query, $year, $month ) {
 				return \RoxyAPI\Api\Client::get( 'astrology/moon-phase/calendar/' . rawurlencode( $year ) . '/' . rawurlencode( $month ) . '', $query );
 			}
@@ -229,7 +241,7 @@ class Client {
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/synastry',
 			$body,
-			0,
+			604800,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'astrology/synastry', $body );
 			}
@@ -378,13 +390,16 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getDailyHoroscope( $sign, $lang = null, $date = null ) {
+		if ( $sign === '' || $sign === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'sign' ) );
+		}
 		$query = array_filter(
 			array(
 			'lang' => $lang,
 			'date' => $date,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
@@ -403,12 +418,15 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getWeeklyHoroscope( $sign, $lang = null ) {
+		if ( $sign === '' || $sign === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'sign' ) );
+		}
 		$query = array_filter(
 			array(
 			'lang' => $lang,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
@@ -427,12 +445,15 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getMonthlyHoroscope( $sign, $lang = null ) {
+		if ( $sign === '' || $sign === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'sign' ) );
+		}
 		$query = array_filter(
 			array(
 			'lang' => $lang,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
@@ -472,7 +493,7 @@ class Client {
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/birth-chart',
 			$body,
-			2592000,
+			0,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'vedic-astrology/birth-chart', $body );
 			}
@@ -605,6 +626,9 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getSubDashas( $mahadasha, $body = array() ) {
+		if ( $mahadasha === '' || $mahadasha === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'mahadasha' ) );
+		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '',
 			$body,
@@ -745,7 +769,7 @@ class Client {
 			'lang' => $lang,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
@@ -764,12 +788,15 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getYoga( $id, $lang = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
 		$query = array_filter(
 			array(
 			'lang' => $lang,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
@@ -793,7 +820,7 @@ class Client {
 			'date' => $date,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
@@ -1089,7 +1116,7 @@ class Client {
 			'lang' => $lang,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
@@ -1108,12 +1135,15 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getRashi( $id, $lang = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
 		$query = array_filter(
 			array(
 			'lang' => $lang,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
@@ -1137,7 +1167,7 @@ class Client {
 			'lang' => $lang,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
@@ -1156,18 +1186,21 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getNakshatra( $id, $lang = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
 		$query = array_filter(
 			array(
 			'lang' => $lang,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/nakshatras/' . rawurlencode( $id ) . '',
 			$query,
-			2592000,
+			0,
 			static function () use ( $query, $id ) {
 				return \RoxyAPI\Api\Client::get( 'vedic-astrology/nakshatras/' . rawurlencode( $id ) . '', $query );
 			}
@@ -1226,195 +1259,6 @@ class Client {
 	}
 
 	/**
-	 * List all 78 tarot cards
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function listCards( $lang = null, $limit = null, $offset = null, $arcana = null, $suit = null, $number = null ) {
-		$query = array_filter(
-			array(
-			'lang' => $lang,
-			'limit' => $limit,
-			'offset' => $offset,
-			'arcana' => $arcana,
-			'suit' => $suit,
-			'number' => $number,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'tarot/cards',
-			$query,
-			0,
-			static function () use ( $query ) {
-				return \RoxyAPI\Api\Client::get( 'tarot/cards', $query );
-			}
-		);
-	}
-
-	/**
-	 * Get detailed tarot card information
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function getCard( $id, $lang = null ) {
-		$query = array_filter(
-			array(
-			'lang' => $lang,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'tarot/cards/' . rawurlencode( $id ) . '',
-			$query,
-			0,
-			static function () use ( $query, $id ) {
-				return \RoxyAPI\Api\Client::get( 'tarot/cards/' . rawurlencode( $id ) . '', $query );
-			}
-		);
-	}
-
-	/**
-	 * Draw random tarot cards with reproducible results
-	 *
-	 * @param array $body Request body.
-	 * @return array|\WP_Error
-	 */
-	public static function drawCards( $body = array() ) {
-		return \RoxyAPI\Api\Cache::remember(
-			'tarot/draw',
-			$body,
-			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'tarot/draw', $body );
-			}
-		);
-	}
-
-	/**
-	 * Get daily tarot card reading
-	 *
-	 * @param array $body Request body.
-	 * @return array|\WP_Error
-	 */
-	public static function getDailyCard( $body = array() ) {
-		return \RoxyAPI\Api\Cache::remember(
-			'tarot/daily',
-			$body,
-			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'tarot/daily', $body );
-			}
-		);
-	}
-
-	/**
-	 * Get yes/no answer to your question
-	 *
-	 * @param array $body Request body.
-	 * @return array|\WP_Error
-	 */
-	public static function castYesNo( $body = array() ) {
-		return \RoxyAPI\Api\Cache::remember(
-			'tarot/yes-no',
-			$body,
-			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'tarot/yes-no', $body );
-			}
-		);
-	}
-
-	/**
-	 * Three-Card Spread: Past, Present, Future
-	 *
-	 * @param array $body Request body.
-	 * @return array|\WP_Error
-	 */
-	public static function castThreeCard( $body = array() ) {
-		return \RoxyAPI\Api\Cache::remember(
-			'tarot/spreads/three-card',
-			$body,
-			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'tarot/spreads/three-card', $body );
-			}
-		);
-	}
-
-	/**
-	 * Celtic Cross Spread (10 cards)
-	 *
-	 * @param array $body Request body.
-	 * @return array|\WP_Error
-	 */
-	public static function castCelticCross( $body = array() ) {
-		return \RoxyAPI\Api\Cache::remember(
-			'tarot/spreads/celtic-cross',
-			$body,
-			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'tarot/spreads/celtic-cross', $body );
-			}
-		);
-	}
-
-	/**
-	 * Love Spread (5 cards)
-	 *
-	 * @param array $body Request body.
-	 * @return array|\WP_Error
-	 */
-	public static function castLoveSpread( $body = array() ) {
-		return \RoxyAPI\Api\Cache::remember(
-			'tarot/spreads/love',
-			$body,
-			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'tarot/spreads/love', $body );
-			}
-		);
-	}
-
-	/**
-	 * Career Spread (7 cards)
-	 *
-	 * @param array $body Request body.
-	 * @return array|\WP_Error
-	 */
-	public static function castCareerSpread( $body = array() ) {
-		return \RoxyAPI\Api\Cache::remember(
-			'tarot/spreads/career',
-			$body,
-			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'tarot/spreads/career', $body );
-			}
-		);
-	}
-
-	/**
-	 * Custom Spread Builder
-	 *
-	 * @param array $body Request body.
-	 * @return array|\WP_Error
-	 */
-	public static function castCustomSpread( $body = array() ) {
-		return \RoxyAPI\Api\Cache::remember(
-			'tarot/spreads/custom',
-			$body,
-			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'tarot/spreads/custom', $body );
-			}
-		);
-	}
-
-	/**
 	 * Calculate Life Path number - Most important numerology calculation
 	 *
 	 * @param array $body Request body.
@@ -1424,7 +1268,7 @@ class Client {
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/life-path',
 			$body,
-			0,
+			2592000,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'numerology/life-path', $body );
 			}
@@ -1645,7 +1489,7 @@ class Client {
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/chart',
 			$body,
-			0,
+			2592000,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'numerology/chart', $body );
 			}
@@ -1658,12 +1502,15 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getNumberMeaning( $number, $lang = null ) {
+		if ( $number === '' || $number === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'number' ) );
+		}
 		$query = array_filter(
 			array(
 			'lang' => $lang,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
@@ -1694,713 +1541,193 @@ class Client {
 	}
 
 	/**
-	 * List and search dream symbols
+	 * List all 78 tarot cards
 	 *
 	 * @return array|\WP_Error
 	 */
-	public static function searchDreamSymbols( $q = null, $letter = null, $limit = null, $offset = null ) {
-		$query = array_filter(
-			array(
-			'q' => $q,
-			'letter' => $letter,
-			'limit' => $limit,
-			'offset' => $offset,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'dreams/symbols',
-			$query,
-			0,
-			static function () use ( $query ) {
-				return \RoxyAPI\Api\Client::get( 'dreams/symbols', $query );
-			}
-		);
-	}
-
-	/**
-	 * Get random dream symbols
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function getRandomSymbols( $count = null ) {
-		$query = array_filter(
-			array(
-			'count' => $count,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'dreams/symbols/random',
-			$query,
-			0,
-			static function () use ( $query ) {
-				return \RoxyAPI\Api\Client::get( 'dreams/symbols/random', $query );
-			}
-		);
-	}
-
-	/**
-	 * Get symbol counts by letter
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function getSymbolLetterCounts(  ) {
-		$query = array_filter(
-			array(
-
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'dreams/symbols/letters',
-			$query,
-			0,
-			static function () use ( $query ) {
-				return \RoxyAPI\Api\Client::get( 'dreams/symbols/letters', $query );
-			}
-		);
-	}
-
-	/**
-	 * Get dream symbol details
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function getDreamSymbol( $id ) {
-		$query = array_filter(
-			array(
-
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'dreams/symbols/' . rawurlencode( $id ) . '',
-			$query,
-			0,
-			static function () use ( $query, $id ) {
-				return \RoxyAPI\Api\Client::get( 'dreams/symbols/' . rawurlencode( $id ) . '', $query );
-			}
-		);
-	}
-
-	/**
-	 * Get daily dream symbol
-	 *
-	 * @param array $body Request body.
-	 * @return array|\WP_Error
-	 */
-	public static function getDailyDreamSymbol( $body = array() ) {
-		return \RoxyAPI\Api\Cache::remember(
-			'dreams/daily',
-			$body,
-			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'dreams/daily', $body );
-			}
-		);
-	}
-
-	/**
-	 * List All Angel Numbers
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function listAngelNumbers( $lang = null, $limit = null, $offset = null, $type = null ) {
+	public static function listCards( $lang = null, $limit = null, $offset = null, $arcana = null, $suit = null, $number = null ) {
 		$query = array_filter(
 			array(
 			'lang' => $lang,
 			'limit' => $limit,
 			'offset' => $offset,
-			'type' => $type,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'angel-numbers/numbers',
-			$query,
-			0,
-			static function () use ( $query ) {
-				return \RoxyAPI\Api\Client::get( 'angel-numbers/numbers', $query );
-			}
-		);
-	}
-
-	/**
-	 * Get Angel Number Meaning
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function getAngelNumber( $number, $lang = null ) {
-		$query = array_filter(
-			array(
-			'lang' => $lang,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'angel-numbers/numbers/' . rawurlencode( $number ) . '',
-			$query,
-			0,
-			static function () use ( $query, $number ) {
-				return \RoxyAPI\Api\Client::get( 'angel-numbers/numbers/' . rawurlencode( $number ) . '', $query );
-			}
-		);
-	}
-
-	/**
-	 * Analyze Any Number Sequence
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function analyzeNumberSequence( $lang = null, $number = null ) {
-		$query = array_filter(
-			array(
-			'lang' => $lang,
+			'arcana' => $arcana,
+			'suit' => $suit,
 			'number' => $number,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
-			'angel-numbers/lookup',
+			'tarot/cards',
 			$query,
 			0,
 			static function () use ( $query ) {
-				return \RoxyAPI\Api\Client::get( 'angel-numbers/lookup', $query );
+				return \RoxyAPI\Api\Client::get( 'tarot/cards', $query );
 			}
 		);
 	}
 
 	/**
-	 * Daily Angel Number
-	 *
-	 * @param array $body Request body.
-	 * @return array|\WP_Error
-	 */
-	public static function getDailyAngelNumber( $body = array() ) {
-		return \RoxyAPI\Api\Cache::remember(
-			'angel-numbers/daily',
-			$body,
-			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'angel-numbers/daily', $body );
-			}
-		);
-	}
-
-	/**
-	 * Get daily I-Ching hexagram
-	 *
-	 * @param array $body Request body.
-	 * @return array|\WP_Error
-	 */
-	public static function getDailyHexagram( $body = array() ) {
-		return \RoxyAPI\Api\Cache::remember(
-			'iching/daily',
-			$body,
-			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'iching/daily', $body );
-			}
-		);
-	}
-
-	/**
-	 * Cast daily I-Ching reading with changing lines
-	 *
-	 * @param array $body Request body.
-	 * @return array|\WP_Error
-	 */
-	public static function castDailyReading( $body = array() ) {
-		return \RoxyAPI\Api\Cache::remember(
-			'iching/daily/cast',
-			$body,
-			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'iching/daily/cast', $body );
-			}
-		);
-	}
-
-	/**
-	 * List all 64 hexagrams
+	 * Get detailed tarot card information
 	 *
 	 * @return array|\WP_Error
 	 */
-	public static function listHexagrams( $lang = null, $limit = null, $offset = null ) {
-		$query = array_filter(
-			array(
-			'lang' => $lang,
-			'limit' => $limit,
-			'offset' => $offset,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'iching/hexagrams',
-			$query,
-			0,
-			static function () use ( $query ) {
-				return \RoxyAPI\Api\Client::get( 'iching/hexagrams', $query );
-			}
-		);
-	}
-
-	/**
-	 * Get a random hexagram
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function getRandomHexagram( $lang = null ) {
+	public static function getCard( $id, $lang = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
 		$query = array_filter(
 			array(
 			'lang' => $lang,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
-			'iching/hexagrams/random',
-			$query,
-			0,
-			static function () use ( $query ) {
-				return \RoxyAPI\Api\Client::get( 'iching/hexagrams/random', $query );
-			}
-		);
-	}
-
-	/**
-	 * Lookup hexagram by line pattern
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function lookupHexagram( $lang = null, $lines = null ) {
-		$query = array_filter(
-			array(
-			'lang' => $lang,
-			'lines' => $lines,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'iching/hexagrams/lookup',
-			$query,
-			0,
-			static function () use ( $query ) {
-				return \RoxyAPI\Api\Client::get( 'iching/hexagrams/lookup', $query );
-			}
-		);
-	}
-
-	/**
-	 * Get hexagram by number
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function getHexagram( $number, $lang = null ) {
-		$query = array_filter(
-			array(
-			'lang' => $lang,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'iching/hexagrams/' . rawurlencode( $number ) . '',
-			$query,
-			0,
-			static function () use ( $query, $number ) {
-				return \RoxyAPI\Api\Client::get( 'iching/hexagrams/' . rawurlencode( $number ) . '', $query );
-			}
-		);
-	}
-
-	/**
-	 * Cast an I-Ching reading
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function castReading( $lang = null, $seed = null ) {
-		$query = array_filter(
-			array(
-			'lang' => $lang,
-			'seed' => $seed,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'iching/cast',
-			$query,
-			0,
-			static function () use ( $query ) {
-				return \RoxyAPI\Api\Client::get( 'iching/cast', $query );
-			}
-		);
-	}
-
-	/**
-	 * List all 8 trigrams
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function listTrigrams( $lang = null ) {
-		$query = array_filter(
-			array(
-			'lang' => $lang,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'iching/trigrams',
-			$query,
-			0,
-			static function () use ( $query ) {
-				return \RoxyAPI\Api\Client::get( 'iching/trigrams', $query );
-			}
-		);
-	}
-
-	/**
-	 * Get trigram by number or name
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function getTrigram( $id, $lang = null ) {
-		$query = array_filter(
-			array(
-			'lang' => $lang,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'iching/trigrams/' . rawurlencode( $id ) . '',
+			'tarot/cards/' . rawurlencode( $id ) . '',
 			$query,
 			0,
 			static function () use ( $query, $id ) {
-				return \RoxyAPI\Api\Client::get( 'iching/trigrams/' . rawurlencode( $id ) . '', $query );
+				return \RoxyAPI\Api\Client::get( 'tarot/cards/' . rawurlencode( $id ) . '', $query );
 			}
 		);
 	}
 
 	/**
-	 * Crystals by Zodiac Sign
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function getCrystalsByZodiac( $sign, $lang = null, $limit = null, $offset = null ) {
-		$query = array_filter(
-			array(
-			'lang' => $lang,
-			'limit' => $limit,
-			'offset' => $offset,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'crystals/zodiac/' . rawurlencode( $sign ) . '',
-			$query,
-			2592000,
-			static function () use ( $query, $sign ) {
-				return \RoxyAPI\Api\Client::get( 'crystals/zodiac/' . rawurlencode( $sign ) . '', $query );
-			}
-		);
-	}
-
-	/**
-	 * Crystals by Chakra
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function getCrystalsByChakra( $chakra, $lang = null, $limit = null, $offset = null ) {
-		$query = array_filter(
-			array(
-			'lang' => $lang,
-			'limit' => $limit,
-			'offset' => $offset,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'crystals/chakra/' . rawurlencode( $chakra ) . '',
-			$query,
-			2592000,
-			static function () use ( $query, $chakra ) {
-				return \RoxyAPI\Api\Client::get( 'crystals/chakra/' . rawurlencode( $chakra ) . '', $query );
-			}
-		);
-	}
-
-	/**
-	 * Crystals by Element
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function getCrystalsByElement( $element, $lang = null, $limit = null, $offset = null ) {
-		$query = array_filter(
-			array(
-			'lang' => $lang,
-			'limit' => $limit,
-			'offset' => $offset,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'crystals/element/' . rawurlencode( $element ) . '',
-			$query,
-			0,
-			static function () use ( $query, $element ) {
-				return \RoxyAPI\Api\Client::get( 'crystals/element/' . rawurlencode( $element ) . '', $query );
-			}
-		);
-	}
-
-	/**
-	 * Birthstone Crystals by Month
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function getBirthstones( $month, $lang = null ) {
-		$query = array_filter(
-			array(
-			'lang' => $lang,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'crystals/birthstone/' . rawurlencode( $month ) . '',
-			$query,
-			0,
-			static function () use ( $query, $month ) {
-				return \RoxyAPI\Api\Client::get( 'crystals/birthstone/' . rawurlencode( $month ) . '', $query );
-			}
-		);
-	}
-
-	/**
-	 * Search Crystals
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function searchCrystals( $lang = null, $q = null, $limit = null, $offset = null ) {
-		$query = array_filter(
-			array(
-			'lang' => $lang,
-			'q' => $q,
-			'limit' => $limit,
-			'offset' => $offset,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'crystals/search',
-			$query,
-			0,
-			static function () use ( $query ) {
-				return \RoxyAPI\Api\Client::get( 'crystals/search', $query );
-			}
-		);
-	}
-
-	/**
-	 * Crystal Pairings
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function getCrystalPairings( $id, $lang = null ) {
-		$query = array_filter(
-			array(
-			'lang' => $lang,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
-		return \RoxyAPI\Api\Cache::remember(
-			'crystals/pairings/' . rawurlencode( $id ) . '',
-			$query,
-			0,
-			static function () use ( $query, $id ) {
-				return \RoxyAPI\Api\Client::get( 'crystals/pairings/' . rawurlencode( $id ) . '', $query );
-			}
-		);
-	}
-
-	/**
-	 * Daily Crystal
+	 * Draw random tarot cards with reproducible results
 	 *
 	 * @param array $body Request body.
 	 * @return array|\WP_Error
 	 */
-	public static function getDailyCrystal( $body = array() ) {
+	public static function drawCards( $body = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
-			'crystals/daily',
+			'tarot/draw',
 			$body,
 			0,
 			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'crystals/daily', $body );
+				return \RoxyAPI\Api\Client::post( 'tarot/draw', $body );
 			}
 		);
 	}
 
 	/**
-	 * Random Crystal
+	 * Get daily tarot card reading
 	 *
+	 * @param array $body Request body.
 	 * @return array|\WP_Error
 	 */
-	public static function getRandomCrystal( $lang = null ) {
-		$query = array_filter(
-			array(
-			'lang' => $lang,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
+	public static function getDailyCard( $body = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
-			'crystals/random',
-			$query,
-			0,
-			static function () use ( $query ) {
-				return \RoxyAPI\Api\Client::get( 'crystals/random', $query );
+			'tarot/daily',
+			$body,
+			3600,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'tarot/daily', $body );
 			}
 		);
 	}
 
 	/**
-	 * List Crystal Colors
+	 * Get yes/no answer to your question
 	 *
+	 * @param array $body Request body.
 	 * @return array|\WP_Error
 	 */
-	public static function listCrystalColors(  ) {
-		$query = array_filter(
-			array(
-
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
+	public static function castYesNo( $body = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
-			'crystals/colors',
-			$query,
+			'tarot/yes-no',
+			$body,
 			0,
-			static function () use ( $query ) {
-				return \RoxyAPI\Api\Client::get( 'crystals/colors', $query );
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'tarot/yes-no', $body );
 			}
 		);
 	}
 
 	/**
-	 * List Crystal Planets
+	 * Three-Card Spread: Past, Present, Future
 	 *
+	 * @param array $body Request body.
 	 * @return array|\WP_Error
 	 */
-	public static function listCrystalPlanets(  ) {
-		$query = array_filter(
-			array(
-
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
+	public static function castThreeCard( $body = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
-			'crystals/planets',
-			$query,
+			'tarot/spreads/three-card',
+			$body,
 			0,
-			static function () use ( $query ) {
-				return \RoxyAPI\Api\Client::get( 'crystals/planets', $query );
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'tarot/spreads/three-card', $body );
 			}
 		);
 	}
 
 	/**
-	 * List All Crystals
+	 * Celtic Cross Spread (10 cards)
 	 *
+	 * @param array $body Request body.
 	 * @return array|\WP_Error
 	 */
-	public static function listCrystals( $lang = null, $chakra = null, $zodiac = null, $element = null, $color = null, $planet = null, $limit = null, $offset = null ) {
-		$query = array_filter(
-			array(
-			'lang' => $lang,
-			'chakra' => $chakra,
-			'zodiac' => $zodiac,
-			'element' => $element,
-			'color' => $color,
-			'planet' => $planet,
-			'limit' => $limit,
-			'offset' => $offset,
-			),
-			static function ( $v ) {
-				return $v !== null;
-			}
-		);
+	public static function castCelticCross( $body = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
-			'crystals',
-			$query,
+			'tarot/spreads/celtic-cross',
+			$body,
 			0,
-			static function () use ( $query ) {
-				return \RoxyAPI\Api\Client::get( 'crystals', $query );
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'tarot/spreads/celtic-cross', $body );
 			}
 		);
 	}
 
 	/**
-	 * Get Crystal Healing Properties
+	 * Love Spread (5 cards)
 	 *
+	 * @param array $body Request body.
 	 * @return array|\WP_Error
 	 */
-	public static function getCrystal( $id, $lang = null ) {
-		$query = array_filter(
-			array(
-			'lang' => $lang,
-			),
-			static function ( $v ) {
-				return $v !== null;
+	public static function castLoveSpread( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'tarot/spreads/love',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'tarot/spreads/love', $body );
 			}
 		);
+	}
+
+	/**
+	 * Career Spread (7 cards)
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function castCareerSpread( $body = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
-			'crystals/' . rawurlencode( $id ) . '',
-			$query,
+			'tarot/spreads/career',
+			$body,
 			0,
-			static function () use ( $query, $id ) {
-				return \RoxyAPI\Api\Client::get( 'crystals/' . rawurlencode( $id ) . '', $query );
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'tarot/spreads/career', $body );
+			}
+		);
+	}
+
+	/**
+	 * Custom Spread Builder
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function castCustomSpread( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'tarot/spreads/custom',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'tarot/spreads/custom', $body );
 			}
 		);
 	}
@@ -2415,7 +1742,7 @@ class Client {
 		return \RoxyAPI\Api\Cache::remember(
 			'biorhythm/reading',
 			$body,
-			0,
+			86400,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'biorhythm/reading', $body );
 			}
@@ -2508,6 +1835,748 @@ class Client {
 	}
 
 	/**
+	 * Get daily I-Ching hexagram
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function getDailyHexagram( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'iching/daily',
+			$body,
+			3600,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'iching/daily', $body );
+			}
+		);
+	}
+
+	/**
+	 * Cast daily I-Ching reading with changing lines
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function castDailyReading( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'iching/daily/cast',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'iching/daily/cast', $body );
+			}
+		);
+	}
+
+	/**
+	 * List all 64 hexagrams
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listHexagrams( $lang = null, $limit = null, $offset = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'iching/hexagrams',
+			$query,
+			0,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'iching/hexagrams', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get a random hexagram
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getRandomHexagram( $lang = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'iching/hexagrams/random',
+			$query,
+			0,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'iching/hexagrams/random', $query );
+			}
+		);
+	}
+
+	/**
+	 * Lookup hexagram by line pattern
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function lookupHexagram( $lang = null, $lines = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'lines' => $lines,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'iching/hexagrams/lookup',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'iching/hexagrams/lookup', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get hexagram by number
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getHexagram( $number, $lang = null ) {
+		if ( $number === '' || $number === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'number' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'iching/hexagrams/' . rawurlencode( $number ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $number ) {
+				return \RoxyAPI\Api\Client::get( 'iching/hexagrams/' . rawurlencode( $number ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Cast an I-Ching reading
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function castReading( $lang = null, $seed = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'seed' => $seed,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'iching/cast',
+			$query,
+			0,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'iching/cast', $query );
+			}
+		);
+	}
+
+	/**
+	 * List all 8 trigrams
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listTrigrams( $lang = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'iching/trigrams',
+			$query,
+			0,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'iching/trigrams', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get trigram by number or name
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getTrigram( $id, $lang = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'iching/trigrams/' . rawurlencode( $id ) . '',
+			$query,
+			0,
+			static function () use ( $query, $id ) {
+				return \RoxyAPI\Api\Client::get( 'iching/trigrams/' . rawurlencode( $id ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Crystals by Zodiac Sign
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getCrystalsByZodiac( $sign, $lang = null, $limit = null, $offset = null ) {
+		if ( $sign === '' || $sign === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'sign' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'crystals/zodiac/' . rawurlencode( $sign ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $sign ) {
+				return \RoxyAPI\Api\Client::get( 'crystals/zodiac/' . rawurlencode( $sign ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Crystals by Chakra
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getCrystalsByChakra( $chakra, $lang = null, $limit = null, $offset = null ) {
+		if ( $chakra === '' || $chakra === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'chakra' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'crystals/chakra/' . rawurlencode( $chakra ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $chakra ) {
+				return \RoxyAPI\Api\Client::get( 'crystals/chakra/' . rawurlencode( $chakra ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Crystals by Element
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getCrystalsByElement( $element, $lang = null, $limit = null, $offset = null ) {
+		if ( $element === '' || $element === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'element' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'crystals/element/' . rawurlencode( $element ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $element ) {
+				return \RoxyAPI\Api\Client::get( 'crystals/element/' . rawurlencode( $element ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Birthstone Crystals by Month
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getBirthstones( $month, $lang = null ) {
+		if ( $month === '' || $month === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'month' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'crystals/birthstone/' . rawurlencode( $month ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $month ) {
+				return \RoxyAPI\Api\Client::get( 'crystals/birthstone/' . rawurlencode( $month ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Search Crystals
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function searchCrystals( $lang = null, $q = null, $limit = null, $offset = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'q' => $q,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'crystals/search',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'crystals/search', $query );
+			}
+		);
+	}
+
+	/**
+	 * Crystal Pairings
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getCrystalPairings( $id, $lang = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'crystals/pairings/' . rawurlencode( $id ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $id ) {
+				return \RoxyAPI\Api\Client::get( 'crystals/pairings/' . rawurlencode( $id ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Daily Crystal
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function getDailyCrystal( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'crystals/daily',
+			$body,
+			86400,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'crystals/daily', $body );
+			}
+		);
+	}
+
+	/**
+	 * Random Crystal
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getRandomCrystal( $lang = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'crystals/random',
+			$query,
+			0,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'crystals/random', $query );
+			}
+		);
+	}
+
+	/**
+	 * List Crystal Colors
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listCrystalColors(  ) {
+		$query = array_filter(
+			array(
+
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'crystals/colors',
+			$query,
+			0,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'crystals/colors', $query );
+			}
+		);
+	}
+
+	/**
+	 * List Crystal Planets
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listCrystalPlanets(  ) {
+		$query = array_filter(
+			array(
+
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'crystals/planets',
+			$query,
+			0,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'crystals/planets', $query );
+			}
+		);
+	}
+
+	/**
+	 * List All Crystals
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listCrystals( $lang = null, $chakra = null, $zodiac = null, $element = null, $color = null, $planet = null, $limit = null, $offset = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'chakra' => $chakra,
+			'zodiac' => $zodiac,
+			'element' => $element,
+			'color' => $color,
+			'planet' => $planet,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'crystals',
+			$query,
+			0,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'crystals', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get Crystal Healing Properties
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getCrystal( $id, $lang = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'crystals/' . rawurlencode( $id ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $id ) {
+				return \RoxyAPI\Api\Client::get( 'crystals/' . rawurlencode( $id ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * List and search dream symbols
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function searchDreamSymbols( $q = null, $letter = null, $limit = null, $offset = null ) {
+		$query = array_filter(
+			array(
+			'q' => $q,
+			'letter' => $letter,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'dreams/symbols',
+			$query,
+			604800,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'dreams/symbols', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get random dream symbols
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getRandomSymbols( $count = null ) {
+		$query = array_filter(
+			array(
+			'count' => $count,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'dreams/symbols/random',
+			$query,
+			0,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'dreams/symbols/random', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get symbol counts by letter
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getSymbolLetterCounts(  ) {
+		$query = array_filter(
+			array(
+
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'dreams/symbols/letters',
+			$query,
+			0,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'dreams/symbols/letters', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get dream symbol details
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getDreamSymbol( $id ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
+		$query = array_filter(
+			array(
+
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'dreams/symbols/' . rawurlencode( $id ) . '',
+			$query,
+			604800,
+			static function () use ( $query, $id ) {
+				return \RoxyAPI\Api\Client::get( 'dreams/symbols/' . rawurlencode( $id ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get daily dream symbol
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function getDailyDreamSymbol( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'dreams/daily',
+			$body,
+			3600,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'dreams/daily', $body );
+			}
+		);
+	}
+
+	/**
+	 * List All Angel Numbers
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listAngelNumbers( $lang = null, $limit = null, $offset = null, $type = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'limit' => $limit,
+			'offset' => $offset,
+			'type' => $type,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'angel-numbers/numbers',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'angel-numbers/numbers', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get Angel Number Meaning
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getAngelNumber( $number, $lang = null ) {
+		if ( $number === '' || $number === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'number' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'angel-numbers/numbers/' . rawurlencode( $number ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $number ) {
+				return \RoxyAPI\Api\Client::get( 'angel-numbers/numbers/' . rawurlencode( $number ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Analyze Any Number Sequence
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function analyzeNumberSequence( $lang = null, $number = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'number' => $number,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'angel-numbers/lookup',
+			$query,
+			0,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'angel-numbers/lookup', $query );
+			}
+		);
+	}
+
+	/**
+	 * Daily Angel Number
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function getDailyAngelNumber( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'angel-numbers/daily',
+			$body,
+			3600,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'angel-numbers/daily', $body );
+			}
+		);
+	}
+
+	/**
 	 * Search cities worldwide - Geocoding autocomplete with coordinates and timezone
 	 *
 	 * @return array|\WP_Error
@@ -2520,7 +2589,7 @@ class Client {
 			'offset' => $offset,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
@@ -2545,13 +2614,13 @@ class Client {
 			'offset' => $offset,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
 			'location/countries',
 			$query,
-			0,
+			2592000,
 			static function () use ( $query ) {
 				return \RoxyAPI\Api\Client::get( 'location/countries', $query );
 			}
@@ -2564,19 +2633,22 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getCitiesByCountry( $iso2, $limit = null, $offset = null ) {
+		if ( $iso2 === '' || $iso2 === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'iso2' ) );
+		}
 		$query = array_filter(
 			array(
 			'limit' => $limit,
 			'offset' => $offset,
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(
 			'location/countries/' . rawurlencode( $iso2 ) . '',
 			$query,
-			0,
+			86400,
 			static function () use ( $query, $iso2 ) {
 				return \RoxyAPI\Api\Client::get( 'location/countries/' . rawurlencode( $iso2 ) . '', $query );
 			}
@@ -2594,7 +2666,7 @@ class Client {
 
 			),
 			static function ( $v ) {
-				return $v !== null;
+				return $v !== null && $v !== '';
 			}
 		);
 		return \RoxyAPI\Api\Cache::remember(

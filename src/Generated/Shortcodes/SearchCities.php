@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class SearchCities {
 
@@ -40,9 +40,9 @@ class SearchCities {
 		$data = \RoxyAPI\Generated\Client::searchCities( $atts['q'], $atts['limit'], $atts['offset'] );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'searchCities', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'searchCities', is_array( $data ) ? $data : array() );
 	}
 }

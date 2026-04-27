@@ -5,7 +5,7 @@
 	"title": "Get a random hexagram (I-Ching)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "Get a random hexagram. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Get a random hexagram",
 	"keywords": [
 		"i-ching",
 		"roxyapi",

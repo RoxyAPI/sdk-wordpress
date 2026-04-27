@@ -38,15 +38,20 @@ class Encryption {
 		if ( ! extension_loaded( 'openssl' ) ) {
 			return false;
 		}
+		$key  = self::key();
+		$salt = self::salt();
+		if ( $key === false || $salt === false ) {
+			return false;
+		}
 		$ivlen = openssl_cipher_iv_length( self::METHOD );
 		if ( $ivlen === false ) {
 			return false;
 		}
 		$iv  = openssl_random_pseudo_bytes( $ivlen );
 		$raw = openssl_encrypt(
-			$value . self::salt(),
+			$value . $salt,
 			self::METHOD,
-			self::key(),
+			$key,
 			OPENSSL_RAW_DATA,
 			$iv
 		);
@@ -69,6 +74,11 @@ class Encryption {
 		if ( ! extension_loaded( 'openssl' ) ) {
 			return false;
 		}
+		$key  = self::key();
+		$salt = self::salt();
+		if ( $key === false || $salt === false ) {
+			return false;
+		}
 		$decoded = base64_decode( $value, true );
 		if ( $decoded === false ) {
 			return false;
@@ -82,37 +92,51 @@ class Encryption {
 		$raw    = openssl_decrypt(
 			$cipher,
 			self::METHOD,
-			self::key(),
+			$key,
 			OPENSSL_RAW_DATA,
 			$iv
 		);
 		if ( $raw === false ) {
 			return false;
 		}
-		$salt = self::salt();
 		if ( substr( $raw, -strlen( $salt ) ) !== $salt ) {
 			return false;
 		}
 		return substr( $raw, 0, -strlen( $salt ) );
 	}
 
-	private static function key(): string {
+	/**
+	 * Resolve the encryption key.
+	 *
+	 * Returns false (rather than a hardcoded fallback) when no real key is
+	 * available. Callers must surface the failure so the user can configure
+	 * `ROXYAPI_ENCRYPTION_KEY` or fix their WordPress install. Encryption
+	 * with a hardcoded key would be encryption-at-rest in name only.
+	 *
+	 * @return string|false
+	 */
+	private static function key() {
 		if ( defined( 'ROXYAPI_ENCRYPTION_KEY' ) && ROXYAPI_ENCRYPTION_KEY ) {
 			return (string) ROXYAPI_ENCRYPTION_KEY;
 		}
 		if ( defined( 'LOGGED_IN_KEY' ) && LOGGED_IN_KEY && LOGGED_IN_KEY !== 'put your unique phrase here' ) {
-			return LOGGED_IN_KEY;
+			return (string) LOGGED_IN_KEY;
 		}
-		return 'roxyapi_fallback_key_change_in_production';
+		return false;
 	}
 
-	private static function salt(): string {
+	/**
+	 * Resolve the encryption salt. See key() for the no-fallback rationale.
+	 *
+	 * @return string|false
+	 */
+	private static function salt() {
 		if ( defined( 'ROXYAPI_ENCRYPTION_SALT' ) && ROXYAPI_ENCRYPTION_SALT ) {
 			return (string) ROXYAPI_ENCRYPTION_SALT;
 		}
 		if ( defined( 'LOGGED_IN_SALT' ) && LOGGED_IN_SALT && LOGGED_IN_SALT !== 'put your unique phrase here' ) {
-			return LOGGED_IN_SALT;
+			return (string) LOGGED_IN_SALT;
 		}
-		return 'roxyapi_fallback_salt_change_in_production';
+		return false;
 	}
 }

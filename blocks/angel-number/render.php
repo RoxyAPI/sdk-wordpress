@@ -11,4 +11,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo \RoxyAPI\Shortcodes\AngelNumber::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/angel-number' );
+echo wp_kses_post( \RoxyAPI\Shortcodes\AngelNumber::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/angel-number' ) );

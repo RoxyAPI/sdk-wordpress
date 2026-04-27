@@ -5,7 +5,7 @@
 	"title": "Get detailed tarot card information (Tarot)",
 	"category": "roxyapi",
 	"icon": "heart",
-	"description": "Get detailed tarot card information. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Get detailed tarot card information",
 	"keywords": [
 		"tarot",
 		"roxyapi",

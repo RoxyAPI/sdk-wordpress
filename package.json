@@ -1,11 +1,10 @@
 {
-  "name": "@roxyapi/wordpress-plugin",
+  "name": "roxyapi",
   "version": "1.0.0",
   "description": "WordPress plugin for RoxyAPI. Astrology, tarot, numerology, horoscope, I Ching, biorhythm, and more.",
   "license": "GPL-2.0-or-later",
   "author": {
     "name": "RoxyAPI",
-    "email": "hi@roxyapi.com",
     "url": "https://roxyapi.com"
   },
   "homepage": "https://roxyapi.com/docs/wordpress",
@@ -23,6 +22,7 @@
     "block",
     "shortcode",
     "astrology",
+    "vedic",
     "tarot",
     "numerology",
     "horoscope",
@@ -33,20 +33,26 @@
   "scripts": {
     "build": "wp-scripts build --webpack-src-dir=blocks --output-path=build/blocks",
     "blocks-manifest": "wp-scripts build-blocks-manifest --input=blocks --output=build/blocks-manifest.php",
-    "build:all": "npm run build && npm run blocks-manifest",
+    "post-build": "node bin/post-build.mjs",
+    "build:all": "npm run build && npm run blocks-manifest && npm run post-build",
     "start": "wp-scripts start --webpack-src-dir=blocks --output-path=build/blocks",
     "plugin-zip": "wp-scripts plugin-zip",
-    "format": "wp-scripts format",
-    "lint:js": "wp-scripts lint-js blocks/",
-    "lint:css": "wp-scripts lint-style blocks/",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint:js": "wp-scripts lint-js blocks/ assets/js/ bin/",
+    "lint:css": "wp-scripts lint-style blocks/ assets/css/",
     "wp-env": "wp-env",
     "generate": "node bin/generate.mjs",
-    "generate:check": "node bin/generate.mjs && git diff --exit-code src/Generated blocks/generated"
+    "generate:check": "node bin/generate.mjs && git diff --exit-code src/Generated blocks/generated",
+    "upgrade": "npx npm-check-updates --target minor --upgrade",
+    "check-outdated": "npx npm-check-updates"
   },
   "devDependencies": {
-    "@wordpress/env": "^10.0.0",
-    "@wordpress/scripts": "^30.0.0",
-    "@wordpress/server-side-render": "^5.0.0"
+    "@wordpress/env": "^11.4.0",
+    "@wordpress/scripts": "^32.0.0",
+    "@wordpress/server-side-render": "^6.20.0",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1"
   },
   "files": [
     "roxyapi.php",
@@ -57,7 +63,6 @@
     "templates/",
     "build/",
     "assets/",
-    "languages/",
-    "vendor/"
+    "languages/"
   ]
 }

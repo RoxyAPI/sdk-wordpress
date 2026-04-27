@@ -14,13 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_generate_planetary_return ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'birthDate' => $attributes['birthDate'] ?? '',
-	'birthTime' => $attributes['birthTime'] ?? '',
-	'planet' => $attributes['planet'] ?? '',
-	'approximateDate' => $attributes['approximateDate'] ?? '',
-	'latitude' => $attributes['latitude'] ?? '',
-	'longitude' => $attributes['longitude'] ?? '',
-	'timezone' => $attributes['timezone'] ?? '',
-	'houseSystem' => $attributes['houseSystem'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GeneratePlanetaryReturn::render( $attributes ) );

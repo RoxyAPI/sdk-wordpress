@@ -5,7 +5,7 @@
 	"title": "Monthly Planetary Aspects - Major and minor aspect events for a month (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Monthly Planetary Aspects - Major and minor aspect events for a month. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Monthly Planetary Aspects - Major and minor aspect events for a month",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

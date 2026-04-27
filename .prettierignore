@@ -1,0 +1,45 @@
+# Auto-generated outputs — owned by bin/generate.mjs, never hand-edit.
+src/Generated/
+blocks/generated/
+
+# Spec snapshot — written verbatim from the live OpenAPI fetch.
+specs/openapi.json
+
+# Dependencies and build artifacts.
+vendor/
+node_modules/
+build/
+*.min.js
+*.min.css
+
+# Lockfiles — managed by their tools.
+composer.lock
+package-lock.json
+yarn.lock
+
+# WordPress.org metadata that has its own format conventions.
+readme.txt
+.distignore
+
+# Plugin Check / phpcs / phpstan configs are XML/neon, leave alone.
+phpcs.xml.dist
+phpstan.neon.dist
+
+# Top-level dotfile JSON that humans hand-curate; format breaks the
+# trailing-newline + ordering choices.
+.wp-env.json
+.editorconfig
+
+# CI workflows are YAML with deliberate comment placement.
+.github/
+
+# Lefthook + composer scripts have their own conventions.
+lefthook.yml
+composer.json
+
+# Don't reformat the spec-derived data files. They are hand-curated
+# and re-merged by generate.mjs.
+bin/ttl-map.json
+bin/hero-endpoints.json
+bin/hero-config.json
+bin/example-overrides.json

@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class CalculateBirthDay {
 
@@ -37,7 +37,7 @@ class CalculateBirthDay {
 
 				$body = array_filter(
 			array(
-				'day' => $atts['day'],
+				'day' => $atts['day'] !== '' ? (int) $atts['day'] : '',
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -46,9 +46,9 @@ class CalculateBirthDay {
 		$data = \RoxyAPI\Generated\Client::calculateBirthDay( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'calculateBirthDay', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'calculateBirthDay', is_array( $data ) ? $data : array() );
 	}
 }

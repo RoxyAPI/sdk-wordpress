@@ -8,6 +8,10 @@
 
 namespace RoxyAPI\Blocks;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Registrar {
 
 	public static function register(): void {
@@ -56,7 +60,7 @@ class Registrar {
 			'RoxyAPIEditor',
 			array(
 				'hasKey'      => \RoxyAPI\Support\ApiKey::is_configured(),
-				'settingsUrl' => admin_url( 'options-general.php?page=roxyapi' ),
+				'settingsUrl' => admin_url( 'admin.php?page=roxyapi' ),
 			)
 		);
 	}

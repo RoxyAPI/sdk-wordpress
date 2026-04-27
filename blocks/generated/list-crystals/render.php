@@ -14,13 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_list_crystals ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'lang' => $attributes['lang'] ?? '',
-	'chakra' => $attributes['chakra'] ?? '',
-	'zodiac' => $attributes['zodiac'] ?? '',
-	'element' => $attributes['element'] ?? '',
-	'color' => $attributes['color'] ?? '',
-	'planet' => $attributes['planet'] ?? '',
-	'limit' => $attributes['limit'] ?? '',
-	'offset' => $attributes['offset'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\ListCrystals::render( $attributes ) );

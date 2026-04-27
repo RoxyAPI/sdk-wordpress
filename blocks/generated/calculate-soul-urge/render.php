@@ -14,6 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_calculate_soul_urge ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'fullName' => $attributes['fullName'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\CalculateSoulUrge::render( $attributes ) );

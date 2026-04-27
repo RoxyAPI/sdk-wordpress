@@ -14,9 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_check_karmic_debt ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'year' => $attributes['year'] ?? '',
-	'month' => $attributes['month'] ?? '',
-	'day' => $attributes['day'] ?? '',
-	'fullName' => $attributes['fullName'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\CheckKarmicDebt::render( $attributes ) );

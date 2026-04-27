@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class CalculatePersonalDay {
 
@@ -29,7 +29,7 @@ class CalculatePersonalDay {
 			array(
 			'month' => '',
 			'day' => '',
-			'targetDate' => '',
+			'target_date' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -39,9 +39,9 @@ class CalculatePersonalDay {
 
 				$body = array_filter(
 			array(
-				'month' => $atts['month'],
-				'day' => $atts['day'],
-				'targetDate' => $atts['targetDate'],
+				'month' => $atts['month'] !== '' ? (int) $atts['month'] : '',
+				'day' => $atts['day'] !== '' ? (int) $atts['day'] : '',
+				'targetDate' => $atts['target_date'],
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -50,9 +50,9 @@ class CalculatePersonalDay {
 		$data = \RoxyAPI\Generated\Client::calculatePersonalDay( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'calculatePersonalDay', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'calculatePersonalDay', is_array( $data ) ? $data : array() );
 	}
 }

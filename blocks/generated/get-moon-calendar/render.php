@@ -14,8 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_moon_calendar ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'year' => $attributes['year'] ?? '',
-	'month' => $attributes['month'] ?? '',
-	'lang' => $attributes['lang'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetMoonCalendar::render( $attributes ) );

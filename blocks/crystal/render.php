@@ -11,4 +11,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo \RoxyAPI\Shortcodes\Crystal::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/crystal' );
+echo wp_kses_post( \RoxyAPI\Shortcodes\Crystal::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/crystal' ) );

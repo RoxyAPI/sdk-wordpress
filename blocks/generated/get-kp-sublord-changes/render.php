@@ -14,11 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_kp_sublord_changes ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'planet' => $attributes['planet'] ?? '',
-	'startDate' => $attributes['startDate'] ?? '',
-	'endDate' => $attributes['endDate'] ?? '',
-	'timezone' => $attributes['timezone'] ?? '',
-	'ayanamsa' => $attributes['ayanamsa'] ?? '',
-	'nodeType' => $attributes['nodeType'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetKpSublordChanges::render( $attributes ) );

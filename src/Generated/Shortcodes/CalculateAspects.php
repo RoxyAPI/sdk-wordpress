@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class CalculateAspects {
 
@@ -31,7 +31,7 @@ class CalculateAspects {
 			'time' => '',
 			'timezone' => '',
 			'planets' => '',
-			'aspectTypes' => '',
+			'aspect_types' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -45,7 +45,7 @@ class CalculateAspects {
 				'time' => $atts['time'],
 				'timezone' => $atts['timezone'],
 				'planets' => $atts['planets'],
-				'aspectTypes' => $atts['aspectTypes'],
+				'aspectTypes' => $atts['aspect_types'],
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -54,9 +54,9 @@ class CalculateAspects {
 		$data = \RoxyAPI\Generated\Client::calculateAspects( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'calculateAspects', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'calculateAspects', is_array( $data ) ? $data : array() );
 	}
 }

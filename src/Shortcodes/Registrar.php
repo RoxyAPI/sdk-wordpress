@@ -8,20 +8,34 @@
 
 namespace RoxyAPI\Shortcodes;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Registrar {
 
-	private const HERO_SHORTCODES = array(
-		'roxy_horoscope'     => Horoscope::class,
-		'roxy_natal_chart'   => NatalChart::class,
-		'roxy_tarot_card'    => TarotCard::class,
-		'roxy_numerology'    => Numerology::class,
-		'roxy_life_path'     => LifePath::class,
-		'roxy_iching'        => IChing::class,
-		'roxy_dream'         => Dream::class,
-		'roxy_biorhythm'     => Biorhythm::class,
-		'roxy_angel_number'  => AngelNumber::class,
-		'roxy_crystal'       => Crystal::class,
-		'roxy_compatibility' => Compatibility::class,
+	/**
+	 * Hero shortcode tag => fully-qualified class name. Horoscope is hand-written
+	 * (form mode lives in src/Shortcodes/Horoscope.php). The other nine are
+	 * auto-generated from bin/hero-config.json into src/Generated/Heroes/ on
+	 * every npm run generate.
+	 *
+	 * Each referenced class must expose a public const DEFAULTS array. The
+	 * Test_Hero_Attr_Contract regression test enforces this.
+	 *
+	 * @var array<string, class-string>
+	 */
+	public const HERO_SHORTCODES = array(
+		'roxy_horoscope'    => Horoscope::class,
+		'roxy_natal_chart'  => \RoxyAPI\Generated\Heroes\NatalChart::class,
+		'roxy_tarot_card'   => \RoxyAPI\Generated\Heroes\TarotCard::class,
+		'roxy_numerology'   => \RoxyAPI\Generated\Heroes\Numerology::class,
+		'roxy_life_path'    => \RoxyAPI\Generated\Heroes\LifePath::class,
+		'roxy_iching'       => \RoxyAPI\Generated\Heroes\Iching::class,
+		'roxy_dream'        => \RoxyAPI\Generated\Heroes\Dream::class,
+		'roxy_biorhythm'    => \RoxyAPI\Generated\Heroes\Biorhythm::class,
+		'roxy_angel_number' => \RoxyAPI\Generated\Heroes\AngelNumber::class,
+		'roxy_crystal'      => \RoxyAPI\Generated\Heroes\Crystal::class,
 	);
 
 	public static function register(): void {
@@ -35,7 +49,12 @@ class Registrar {
 			if ( shortcode_exists( $tag ) ) {
 				continue;
 			}
-			add_shortcode( $tag, array( $class, 'render' ) );
+			add_shortcode(
+				$tag,
+				static function ( $atts, $content, $shortcode_tag ) use ( $class ): string {
+					return $class::render( $atts, $content ?? '', (string) $shortcode_tag );
+				}
+			);
 		}
 	}
 

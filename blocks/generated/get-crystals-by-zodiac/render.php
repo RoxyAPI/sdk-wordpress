@@ -14,9 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_crystals_by_zodiac ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'sign' => $attributes['sign'] ?? '',
-	'lang' => $attributes['lang'] ?? '',
-	'limit' => $attributes['limit'] ?? '',
-	'offset' => $attributes['offset'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetCrystalsByZodiac::render( $attributes ) );

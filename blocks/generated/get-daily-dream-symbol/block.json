@@ -5,7 +5,7 @@
 	"title": "Get daily dream symbol (Dreams)",
 	"category": "roxyapi",
 	"icon": "book",
-	"description": "Get daily dream symbol. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Get daily dream symbol",
 	"keywords": [
 		"dreams",
 		"roxyapi",

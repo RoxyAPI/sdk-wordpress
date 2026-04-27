@@ -11,4 +11,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo \RoxyAPI\Shortcodes\Numerology::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/numerology' );
+echo wp_kses_post( \RoxyAPI\Shortcodes\Numerology::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/numerology' ) );

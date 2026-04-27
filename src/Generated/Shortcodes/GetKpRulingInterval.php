@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class GetKpRulingInterval {
 
@@ -27,14 +27,14 @@ class GetKpRulingInterval {
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
 			array(
-			'startDatetime' => '',
-			'endDatetime' => '',
-			'intervalMinutes' => '',
+			'start_datetime' => '',
+			'end_datetime' => '',
+			'interval_minutes' => '',
 			'latitude' => '',
 			'longitude' => '',
 			'timezone' => '',
 			'ayanamsa' => '',
-			'nodeType' => '',
+			'node_type' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -44,14 +44,14 @@ class GetKpRulingInterval {
 
 				$body = array_filter(
 			array(
-				'startDatetime' => $atts['startDatetime'],
-				'endDatetime' => $atts['endDatetime'],
-				'intervalMinutes' => $atts['intervalMinutes'],
-				'latitude' => $atts['latitude'],
-				'longitude' => $atts['longitude'],
+				'startDatetime' => $atts['start_datetime'],
+				'endDatetime' => $atts['end_datetime'],
+				'intervalMinutes' => $atts['interval_minutes'] !== '' ? (int) $atts['interval_minutes'] : '',
+				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
+				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
 				'timezone' => $atts['timezone'],
 				'ayanamsa' => $atts['ayanamsa'],
-				'nodeType' => $atts['nodeType'],
+				'nodeType' => $atts['node_type'],
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -60,9 +60,9 @@ class GetKpRulingInterval {
 		$data = \RoxyAPI\Generated\Client::getKpRulingInterval( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'getKpRulingInterval', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'getKpRulingInterval', is_array( $data ) ? $data : array() );
 	}
 }

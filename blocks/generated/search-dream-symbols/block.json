@@ -5,7 +5,7 @@
 	"title": "List and search dream symbols (Dreams)",
 	"category": "roxyapi",
 	"icon": "book",
-	"description": "List and search dream symbols. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "List and search dream symbols",
 	"keywords": [
 		"dreams",
 		"roxyapi",

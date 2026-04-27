@@ -22,12 +22,7 @@ $wpdb->query(
 	    OR option_name LIKE '_transient_timeout_roxyapi_%'"
 );
 
-$users = get_users(
-	array(
-		'meta_key' => 'roxyapi_dismissed_setup', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- one-time uninstall cleanup.
-		'fields'   => 'ID',
-	)
-);
-foreach ( $users as $user_id ) {
-	delete_user_meta( $user_id, 'roxyapi_dismissed_setup' );
-}
+// Bulk delete the dismiss-notice user meta in one query without enumerating
+// users first. The earlier get_users + foreach approach OOMs on sites with
+// many users; delete_metadata( ..., true ) issues a single DELETE.
+delete_metadata( 'user', 0, 'roxyapi_dismissed_setup', '', true );

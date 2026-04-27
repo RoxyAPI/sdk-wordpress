@@ -14,9 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_draw_cards ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'count' => $attributes['count'] ?? '',
-	'seed' => $attributes['seed'] ?? '',
-	'allowReversals' => $attributes['allowReversals'] ?? '',
-	'allowDuplicates' => $attributes['allowDuplicates'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\DrawCards::render( $attributes ) );

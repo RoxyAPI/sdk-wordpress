@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class CalculateAshtakavarga {
 
@@ -43,8 +43,8 @@ class CalculateAshtakavarga {
 			array(
 				'date' => $atts['date'],
 				'time' => $atts['time'],
-				'latitude' => $atts['latitude'],
-				'longitude' => $atts['longitude'],
+				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
+				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
 				'timezone' => $atts['timezone'],
 			),
 			static function ( $v ) {
@@ -54,9 +54,9 @@ class CalculateAshtakavarga {
 		$data = \RoxyAPI\Generated\Client::calculateAshtakavarga( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'calculateAshtakavarga', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'calculateAshtakavarga', is_array( $data ) ? $data : array() );
 	}
 }

@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class CheckKarmicDebt {
 
@@ -30,7 +30,7 @@ class CheckKarmicDebt {
 			'year' => '',
 			'month' => '',
 			'day' => '',
-			'fullName' => '',
+			'full_name' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -40,10 +40,10 @@ class CheckKarmicDebt {
 
 				$body = array_filter(
 			array(
-				'year' => $atts['year'],
-				'month' => $atts['month'],
-				'day' => $atts['day'],
-				'fullName' => $atts['fullName'],
+				'year' => $atts['year'] !== '' ? (int) $atts['year'] : '',
+				'month' => $atts['month'] !== '' ? (int) $atts['month'] : '',
+				'day' => $atts['day'] !== '' ? (int) $atts['day'] : '',
+				'fullName' => $atts['full_name'],
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -52,9 +52,9 @@ class CheckKarmicDebt {
 		$data = \RoxyAPI\Generated\Client::checkKarmicDebt( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'checkKarmicDebt', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'checkKarmicDebt', is_array( $data ) ? $data : array() );
 	}
 }

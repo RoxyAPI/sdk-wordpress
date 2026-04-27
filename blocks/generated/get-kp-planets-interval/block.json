@@ -5,7 +5,7 @@
 	"title": "Get KP planets at time intervals (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get KP planets at time intervals. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Get KP planets at time intervals",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

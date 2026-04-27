@@ -1,0 +1,43 @@
+{
+  "_comment": "Brand-domain registry. Keys are canonical OpenAPI tag strings; values are admin-UI metadata (human label, slug for tab data attribute / URL hash, accent colour). Brand-positioning rule: astrology first (Western, then Vedic), then Tarot, Numerology, I Ching, Dreams, Biorhythm, Angel Numbers, Crystals. Location and Usage at the end. New OpenAPI tag = new entry here, no PHP edits required.",
+
+  "Western Astrology": {
+    "label": "Western Astrology",
+    "slug": "western-astrology",
+    "accent": "purple"
+  },
+  "Vedic Astrology": {
+    "label": "Vedic Astrology",
+    "slug": "vedic-astrology",
+    "accent": "indigo"
+  },
+  "Tarot": { "label": "Tarot", "slug": "tarot", "accent": "amber" },
+  "Numerology": {
+    "label": "Numerology",
+    "slug": "numerology",
+    "accent": "blue"
+  },
+  "I-Ching": { "label": "I Ching", "slug": "i-ching", "accent": "green" },
+  "Dreams": {
+    "label": "Dream Interpretation",
+    "slug": "dreams",
+    "accent": "indigo"
+  },
+  "Biorhythm": { "label": "Biorhythm", "slug": "biorhythm", "accent": "pink" },
+  "Angel Numbers": {
+    "label": "Angel Numbers",
+    "slug": "angel-numbers",
+    "accent": "orange"
+  },
+  "Crystals and Healing Stones": {
+    "label": "Crystals",
+    "slug": "crystals",
+    "accent": "pink"
+  },
+  "Location and Timezone": {
+    "label": "Location",
+    "slug": "location",
+    "accent": "blue"
+  },
+  "Usage": { "label": "Usage", "slug": "usage", "accent": "neutral" }
+}

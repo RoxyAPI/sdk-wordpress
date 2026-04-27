@@ -14,7 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_weekly_horoscope ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'sign' => $attributes['sign'] ?? '',
-	'lang' => $attributes['lang'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetWeeklyHoroscope::render( $attributes ) );

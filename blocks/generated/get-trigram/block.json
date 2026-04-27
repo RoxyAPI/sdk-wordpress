@@ -5,7 +5,7 @@
 	"title": "Get trigram by number or name (I-Ching)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "Get trigram by number or name. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Get trigram by number or name",
 	"keywords": [
 		"i-ching",
 		"roxyapi",

@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class GetKpRulingPlanets {
 
@@ -31,9 +31,9 @@ class GetKpRulingPlanets {
 			'longitude' => '',
 			'timezone' => '',
 			'datetime' => '',
-			'birthDate' => '',
-			'birthTime' => '',
-			'nodeType' => '',
+			'birth_date' => '',
+			'birth_time' => '',
+			'node_type' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -43,13 +43,13 @@ class GetKpRulingPlanets {
 
 				$body = array_filter(
 			array(
-				'latitude' => $atts['latitude'],
-				'longitude' => $atts['longitude'],
+				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
+				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
 				'timezone' => $atts['timezone'],
 				'datetime' => $atts['datetime'],
-				'birthDate' => $atts['birthDate'],
-				'birthTime' => $atts['birthTime'],
-				'nodeType' => $atts['nodeType'],
+				'birthDate' => $atts['birth_date'],
+				'birthTime' => $atts['birth_time'],
+				'nodeType' => $atts['node_type'],
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -58,9 +58,9 @@ class GetKpRulingPlanets {
 		$data = \RoxyAPI\Generated\Client::getKpRulingPlanets( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'getKpRulingPlanets', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'getKpRulingPlanets', is_array( $data ) ? $data : array() );
 	}
 }

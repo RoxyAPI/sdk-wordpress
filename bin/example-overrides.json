@@ -1,0 +1,11 @@
+{
+	"_comment": "Per-field example overrides applied AFTER reading OpenAPI examples. Use when the spec ships a stale or invalid example value. `_global` applies to every operation that has a field of that name; an op-specific block beats `_global`.",
+
+	"_global": {
+		"timezone": "UTC"
+	},
+
+	"_notes": {
+		"timezone": "Spec descriptions say decimal hours OR IANA, examples show '-5', but the live SaaS validator rejects numeric offsets with `Timezone string must be an IANA identifier`. UTC is universally accepted and equivalent to 0 for any test render."
+	}
+}

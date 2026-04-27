@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class LookupHexagram {
 
@@ -39,9 +39,9 @@ class LookupHexagram {
 		$data = \RoxyAPI\Generated\Client::lookupHexagram( $atts['lang'], $atts['lines'] );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'lookupHexagram', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'lookupHexagram', is_array( $data ) ? $data : array() );
 	}
 }

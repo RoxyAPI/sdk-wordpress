@@ -5,7 +5,7 @@
 	"title": "List all 64 hexagrams (I-Ching)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "List all 64 hexagrams. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "List all 64 hexagrams",
 	"keywords": [
 		"i-ching",
 		"roxyapi",

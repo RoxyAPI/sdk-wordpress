@@ -1,7 +1,7 @@
 /*
  * Horoscope block editor-only styles.
+ *
+ * Empty by design. WordPress's block editor (Gutenberg) provides the visual
+ * chrome for `.components-placeholder` and the rest of the editor surface
+ * out of the box.
  */
-
-.wp-block-roxyapi-horoscope .components-placeholder {
-	min-height: 120px;
-}

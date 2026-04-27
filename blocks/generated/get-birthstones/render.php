@@ -14,7 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_birthstones ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'month' => $attributes['month'] ?? '',
-	'lang' => $attributes['lang'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetBirthstones::render( $attributes ) );

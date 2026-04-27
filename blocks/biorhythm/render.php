@@ -11,4 +11,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo \RoxyAPI\Shortcodes\Biorhythm::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/biorhythm' );
+echo wp_kses_post( \RoxyAPI\Shortcodes\Biorhythm::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/biorhythm' ) );

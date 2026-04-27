@@ -14,11 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_calculate_houses ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'date' => $attributes['date'] ?? '',
-	'time' => $attributes['time'] ?? '',
-	'latitude' => $attributes['latitude'] ?? '',
-	'longitude' => $attributes['longitude'] ?? '',
-	'timezone' => $attributes['timezone'] ?? '',
-	'houseSystem' => $attributes['houseSystem'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\CalculateHouses::render( $attributes ) );

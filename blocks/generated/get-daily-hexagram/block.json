@@ -5,7 +5,7 @@
 	"title": "Get daily I-Ching hexagram (I-Ching)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "Get daily I-Ching hexagram. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Get daily I-Ching hexagram",
 	"keywords": [
 		"i-ching",
 		"roxyapi",

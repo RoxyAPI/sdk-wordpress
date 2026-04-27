@@ -13,4 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $wrapper_attributes = get_block_wrapper_attributes( array( 'class' => 'roxyapi-wrapper' ) );
-echo '<div ' . $wrapper_attributes . '>' . $content . '</div>';
+printf(
+	'<div %s>%s</div>',
+	$wrapper_attributes, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built by core get_block_wrapper_attributes(), already escaped.
+	wp_kses_post( $content )
+);

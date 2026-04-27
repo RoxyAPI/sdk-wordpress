@@ -14,7 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_nakshatra ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'id' => $attributes['id'] ?? '',
-	'lang' => $attributes['lang'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetNakshatra::render( $attributes ) );

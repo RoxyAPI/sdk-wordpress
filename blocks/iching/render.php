@@ -11,4 +11,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo \RoxyAPI\Shortcodes\IChing::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/iching' );
+echo wp_kses_post( \RoxyAPI\Shortcodes\IChing::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/iching' ) );

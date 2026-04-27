@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class CalculateExpression {
 
@@ -27,7 +27,7 @@ class CalculateExpression {
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
 			array(
-			'fullName' => '',
+			'full_name' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -37,7 +37,7 @@ class CalculateExpression {
 
 				$body = array_filter(
 			array(
-				'fullName' => $atts['fullName'],
+				'fullName' => $atts['full_name'],
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -46,9 +46,9 @@ class CalculateExpression {
 		$data = \RoxyAPI\Generated\Client::calculateExpression( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'calculateExpression', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'calculateExpression', is_array( $data ) ? $data : array() );
 	}
 }

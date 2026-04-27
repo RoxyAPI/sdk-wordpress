@@ -14,8 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_monthly_parallels ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'year' => $attributes['year'] ?? '',
-	'month' => $attributes['month'] ?? '',
-	'timezone' => $attributes['timezone'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetMonthlyParallels::render( $attributes ) );

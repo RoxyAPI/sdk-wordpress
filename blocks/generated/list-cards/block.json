@@ -5,7 +5,7 @@
 	"title": "List all 78 tarot cards (Tarot)",
 	"category": "roxyapi",
 	"icon": "heart",
-	"description": "List all 78 tarot cards. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "List all 78 tarot cards",
 	"keywords": [
 		"tarot",
 		"roxyapi",

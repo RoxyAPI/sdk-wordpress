@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class GetKpCusps {
 
@@ -33,7 +33,7 @@ class GetKpCusps {
 			'longitude' => '',
 			'timezone' => '',
 			'ayanamsa' => '',
-			'ayanamsaValue' => '',
+			'ayanamsa_value' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -45,11 +45,11 @@ class GetKpCusps {
 			array(
 				'date' => $atts['date'],
 				'time' => $atts['time'],
-				'latitude' => $atts['latitude'],
-				'longitude' => $atts['longitude'],
+				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
+				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
 				'timezone' => $atts['timezone'],
 				'ayanamsa' => $atts['ayanamsa'],
-				'ayanamsaValue' => $atts['ayanamsaValue'],
+				'ayanamsaValue' => $atts['ayanamsa_value'] !== '' ? (float) $atts['ayanamsa_value'] : '',
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -58,9 +58,9 @@ class GetKpCusps {
 		$data = \RoxyAPI\Generated\Client::getKpCusps( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'getKpCusps', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'getKpCusps', is_array( $data ) ? $data : array() );
 	}
 }

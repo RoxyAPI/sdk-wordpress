@@ -14,8 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_ecliptic_crossings ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'year' => $attributes['year'] ?? '',
-	'timezone' => $attributes['timezone'] ?? '',
-	'coordinateSystem' => $attributes['coordinateSystem'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetEclipticCrossings::render( $attributes ) );

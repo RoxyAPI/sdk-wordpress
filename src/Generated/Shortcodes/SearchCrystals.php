@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class SearchCrystals {
 
@@ -41,9 +41,9 @@ class SearchCrystals {
 		$data = \RoxyAPI\Generated\Client::searchCrystals( $atts['lang'], $atts['q'], $atts['limit'], $atts['offset'] );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'searchCrystals', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'searchCrystals', is_array( $data ) ? $data : array() );
 	}
 }

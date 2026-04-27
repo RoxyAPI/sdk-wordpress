@@ -5,7 +5,7 @@
 	"title": "Cast an I-Ching reading (I-Ching)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "Cast an I-Ching reading. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Cast an I-Ching reading",
 	"keywords": [
 		"i-ching",
 		"roxyapi",

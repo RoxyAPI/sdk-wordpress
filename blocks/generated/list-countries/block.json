@@ -5,7 +5,7 @@
 	"title": "List all 227 countries - ISO codes and city coverage (Location and Timezone)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "List all 227 countries - ISO codes and city coverage. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "List all 227 countries - ISO codes and city coverage",
 	"keywords": [
 		"location and timezone",
 		"roxyapi",

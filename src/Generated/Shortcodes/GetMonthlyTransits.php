@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class GetMonthlyTransits {
 
@@ -30,7 +30,7 @@ class GetMonthlyTransits {
 			'year' => '',
 			'month' => '',
 			'timezone' => '',
-			'coordinateSystem' => '',
+			'coordinate_system' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -40,10 +40,10 @@ class GetMonthlyTransits {
 
 				$body = array_filter(
 			array(
-				'year' => $atts['year'],
-				'month' => $atts['month'],
+				'year' => $atts['year'] !== '' ? (int) $atts['year'] : '',
+				'month' => $atts['month'] !== '' ? (int) $atts['month'] : '',
 				'timezone' => $atts['timezone'],
-				'coordinateSystem' => $atts['coordinateSystem'],
+				'coordinateSystem' => $atts['coordinate_system'],
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -52,9 +52,9 @@ class GetMonthlyTransits {
 		$data = \RoxyAPI\Generated\Client::getMonthlyTransits( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'getMonthlyTransits', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'getMonthlyTransits', is_array( $data ) ? $data : array() );
 	}
 }

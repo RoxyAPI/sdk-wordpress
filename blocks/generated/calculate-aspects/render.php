@@ -14,10 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_calculate_aspects ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'date' => $attributes['date'] ?? '',
-	'time' => $attributes['time'] ?? '',
-	'timezone' => $attributes['timezone'] ?? '',
-	'planets' => $attributes['planets'] ?? '',
-	'aspectTypes' => $attributes['aspectTypes'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\CalculateAspects::render( $attributes ) );

@@ -5,7 +5,7 @@
 	"title": "Get KP ruling planets with optional significators (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get KP ruling planets with optional significators. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Get KP ruling planets with optional significators",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

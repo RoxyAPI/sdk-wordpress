@@ -14,6 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_list_crystal_planets ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\ListCrystalPlanets::render( $attributes ) );

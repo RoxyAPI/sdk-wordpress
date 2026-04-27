@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class DrawCards {
 
@@ -29,8 +29,8 @@ class DrawCards {
 			array(
 			'count' => '',
 			'seed' => '',
-			'allowReversals' => '',
-			'allowDuplicates' => '',
+			'allow_reversals' => '',
+			'allow_duplicates' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -40,10 +40,10 @@ class DrawCards {
 
 				$body = array_filter(
 			array(
-				'count' => $atts['count'],
+				'count' => $atts['count'] !== '' ? (float) $atts['count'] : '',
 				'seed' => $atts['seed'],
-				'allowReversals' => $atts['allowReversals'],
-				'allowDuplicates' => $atts['allowDuplicates'],
+				'allowReversals' => $atts['allow_reversals'] !== '' ? filter_var( $atts['allow_reversals'], FILTER_VALIDATE_BOOLEAN ) : '',
+				'allowDuplicates' => $atts['allow_duplicates'] !== '' ? filter_var( $atts['allow_duplicates'], FILTER_VALIDATE_BOOLEAN ) : '',
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -52,9 +52,9 @@ class DrawCards {
 		$data = \RoxyAPI\Generated\Client::drawCards( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'drawCards', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'drawCards', is_array( $data ) ? $data : array() );
 	}
 }

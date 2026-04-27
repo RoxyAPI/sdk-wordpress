@@ -12,16 +12,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$sign = $attributes['sign'] ?? $block->context['roxyapi/sign'] ?? 'aries';
-$date = $attributes['date'] ?? 'today';
-$type = $attributes['type'] ?? 'general';
+$sign         = $attributes['sign'] ?? $block->context['roxyapi/sign'] ?? 'aries';
+$date         = $attributes['date'] ?? 'today';
+$reading_type = $attributes['type'] ?? 'general';
 
-echo \RoxyAPI\Shortcodes\Horoscope::render(
-	array(
-		'sign' => $sign,
-		'date' => $date,
-		'type' => $type,
-	),
-	'',
-	'roxyapi/horoscope'
+echo wp_kses_post(
+	\RoxyAPI\Shortcodes\Horoscope::render(
+		array(
+			'sign' => $sign,
+			'date' => $date,
+			'type' => $reading_type,
+		),
+		'',
+		'roxyapi/horoscope'
+	)
 );

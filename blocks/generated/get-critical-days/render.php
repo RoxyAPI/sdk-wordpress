@@ -14,8 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_critical_days ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'birthDate' => $attributes['birthDate'] ?? '',
-	'startDate' => $attributes['startDate'] ?? '',
-	'endDate' => $attributes['endDate'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetCriticalDays::render( $attributes ) );

@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://roxyapi.com">
+    <img src="https://raw.githubusercontent.com/RoxyAPI/sdk-wordpress/main/assets/hero.png" alt="RoxyAPI for WordPress. Astrology, tarot, numerology shortcodes and Gutenberg blocks. One API key, server-side rendering." width="100%">
+  </a>
+</p>
+
 # RoxyAPI for WordPress
 
 [![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/roxyapi.svg)](https://wordpress.org/plugins/roxyapi/)
@@ -35,17 +41,18 @@ Every hero shortcode works in two modes. Pass all required attributes for a **st
 
 ```
 [roxy_horoscope sign="aries"]
-[roxy_tarot_card spread="three" question="What should I focus on"]
+[roxy_tarot_card spread="three" question="What should I focus on this week"]
 [roxy_numerology name="Ada Lovelace" birth_date="1815-12-10"]
 [roxy_iching question="Should I take the new job"]
-[roxy_natal_chart birth_date="1990-05-15" birth_time="14:30" lat="40.7128" lon="-74.0060"]
+[roxy_natal_chart birth_date="1990-05-15" birth_time="14:30" lat="40.7128" lon="-74.0060" tz="America/New_York"]
 [roxy_life_path birth_date="1990-05-15"]
 [roxy_dream symbol="water"]
-[roxy_biorhythm birth_date="1990-05-15"]
+[roxy_biorhythm birth_date="1990-05-15" target_date="today"]
 [roxy_angel_number number="1111"]
 [roxy_crystal name="amethyst"]
-[roxy_compatibility sign_a="leo" sign_b="aquarius"]
 ```
+
+For two-person compatibility, use the auto-generated `[roxy_calculate_synastry]` shortcode (full birth-chart synastry) or `[roxy_calculate_compatibility]` (the lighter compatibility-score endpoint).
 
 ### Form mode (visitors pick the values)
 
@@ -61,7 +68,6 @@ Leave the attributes off and the shortcode renders an input form for your visito
 [roxy_biorhythm]        → birth date input
 [roxy_angel_number]     → number input
 [roxy_crystal]          → crystal name search
-[roxy_compatibility]    → two sign picker
 [roxy_life_path]        → birth date picker
 ```
 
@@ -87,8 +93,8 @@ Every block renders server side through the same RoxyAPI client the shortcodes u
 ## Quick start
 
 1. **Install.** Plugins, Add New, search "RoxyAPI", click Install Now, then Activate.
-2. **Get an API key.** Sign up at [roxyapi.com/pricing](https://roxyapi.com/pricing). Starter plan is $39 per month, 5,000 requests across all ten domains.
-3. **Paste the key.** Settings, RoxyAPI, paste the key, Save Changes. The plugin encrypts the key at rest via AES 256 CTR.
+2. **Get an API key.** Pick a plan at [roxyapi.com/pricing](https://roxyapi.com/pricing). One key covers every reading. Pricing is shown in your local currency.
+3. **Paste the key.** RoxyAPI menu in the WordPress admin, paste the key, Save key. The plugin encrypts the key at rest via AES 256 CTR.
 4. **Drop a shortcode.** Add `[roxy_horoscope]` to any page and publish. Visitors can now pick their sign and read their horoscope.
 
 That is the whole setup. Thirty minutes from install to live page.
@@ -107,18 +113,18 @@ When `ROXYAPI_KEY` is defined, the settings field is read only and the constant 
 
 ## Ten domains, 130+ endpoints, one key
 
-| Domain | What you get |
-|---|---|
+| Domain            | What you get                                                                                                    |
+| ----------------- | --------------------------------------------------------------------------------------------------------------- |
 | Western astrology | Natal charts, horoscopes (daily, weekly, monthly, love, career), transits, synastry, moon phases, compatibility |
-| Vedic astrology | Kundli, nakshatras, Dasha, Panchang, KP system, doshas, yogas, muhurta |
-| Tarot | Rider Waite Smith deck, single card, three card, Celtic Cross, custom spreads |
-| Numerology | Life path, expression, soul urge, personal year, personality, karmic analysis |
-| I Ching | Hexagrams, trigrams, coin casting, daily readings |
-| Dreams | Symbol dictionary with 3,000 entries, pattern analysis |
-| Crystals | Healing properties, zodiac and chakra pairings, birthstones |
-| Angel numbers | Meanings, daily guidance, repetition analysis |
-| Biorhythm | Physical, emotional, intellectual, intuitive cycles |
-| Location | City geocoding for birth chart coordinates |
+| Vedic astrology   | Kundli, nakshatras, Dasha, Panchang, KP system, doshas, yogas, muhurta                                          |
+| Tarot             | Rider Waite Smith deck, single card, three card, Celtic Cross, custom spreads                                   |
+| Numerology        | Life path, expression, soul urge, personal year, personality, karmic analysis                                   |
+| I Ching           | Hexagrams, trigrams, coin casting, daily readings                                                               |
+| Dreams            | Symbol dictionary with 3,000 entries, pattern analysis                                                          |
+| Crystals          | Healing properties, zodiac and chakra pairings, birthstones                                                     |
+| Angel numbers     | Meanings, daily guidance, repetition analysis                                                                   |
+| Biorhythm         | Physical, emotional, intellectual, intuitive cycles                                                             |
+| Location          | City geocoding for birth chart coordinates                                                                      |
 
 Every endpoint is cached with a per endpoint TTL so cached responses do not cost API quota. Object cache backends (Redis, Memcached) are picked up automatically.
 
@@ -181,7 +187,7 @@ npm run generate
 
 CI runs `npm run generate:check` on every pull request and fails if the repo drifts from the live spec. Resolve by regenerating and committing the diff.
 
-See `AGENTS.md` for the full agent facing guide and `CLAUDE.md` for maintainer specific notes.
+See `AGENTS.md` for the full agent-facing guide.
 
 ## License
 

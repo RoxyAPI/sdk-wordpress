@@ -8,7 +8,11 @@ phpstan.cache
 .DS_Store
 .idea/
 .vscode/
+.claude/
+.cursor/
+roxyapi.zip
 
 # Maintainer-only docs, never published or committed
 CLAUDE.md
 MAINTAINER.md
+todo.md

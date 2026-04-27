@@ -14,9 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_lunar_aspects ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'year' => $attributes['year'] ?? '',
-	'month' => $attributes['month'] ?? '',
-	'timezone' => $attributes['timezone'] ?? '',
-	'coordinateSystem' => $attributes['coordinateSystem'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetLunarAspects::render( $attributes ) );

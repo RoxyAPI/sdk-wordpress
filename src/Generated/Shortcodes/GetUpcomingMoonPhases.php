@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class GetUpcomingMoonPhases {
 
@@ -28,7 +28,7 @@ class GetUpcomingMoonPhases {
 		$atts = shortcode_atts(
 			array(
 			'lang' => '',
-			'startDate' => '',
+			'start_date' => '',
 			'count' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
@@ -37,12 +37,12 @@ class GetUpcomingMoonPhases {
 
 		wp_enqueue_style( 'roxyapi-frontend' );
 
-		$data = \RoxyAPI\Generated\Client::getUpcomingMoonPhases( $atts['lang'], $atts['startDate'], $atts['count'] );
+		$data = \RoxyAPI\Generated\Client::getUpcomingMoonPhases( $atts['lang'], $atts['start_date'], $atts['count'] );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'getUpcomingMoonPhases', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'getUpcomingMoonPhases', is_array( $data ) ? $data : array() );
 	}
 }

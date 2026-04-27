@@ -14,6 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_symbol_letter_counts ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetSymbolLetterCounts::render( $attributes ) );

@@ -5,7 +5,7 @@
 	"title": "Find KP sublord changes (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Find KP sublord changes. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Find KP sublord changes",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

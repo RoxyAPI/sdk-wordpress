@@ -14,7 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_cast_daily_reading ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'seed' => $attributes['seed'] ?? '',
-	'date' => $attributes['date'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\CastDailyReading::render( $attributes ) );

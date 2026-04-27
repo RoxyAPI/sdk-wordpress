@@ -14,6 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_calculate_birth_day ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'day' => $attributes['day'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\CalculateBirthDay::render( $attributes ) );

@@ -5,7 +5,7 @@
 	"title": "Draw random tarot cards with reproducible results (Tarot)",
 	"category": "roxyapi",
 	"icon": "heart",
-	"description": "Draw random tarot cards with reproducible results. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Draw random tarot cards with reproducible results",
 	"keywords": [
 		"tarot",
 		"roxyapi",

@@ -14,6 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_analyze_karmic_lessons ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'fullName' => $attributes['fullName'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\AnalyzeKarmicLessons::render( $attributes ) );

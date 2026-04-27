@@ -14,7 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_cast_three_card ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'question' => $attributes['question'] ?? '',
-	'seed' => $attributes['seed'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\CastThreeCard::render( $attributes ) );

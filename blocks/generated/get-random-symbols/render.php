@@ -14,6 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_random_symbols ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'count' => $attributes['count'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetRandomSymbols::render( $attributes ) );

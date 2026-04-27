@@ -14,13 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_calculate_transit ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'birthDate' => $attributes['birthDate'] ?? '',
-	'birthTime' => $attributes['birthTime'] ?? '',
-	'transitDate' => $attributes['transitDate'] ?? '',
-	'transitTime' => $attributes['transitTime'] ?? '',
-	'latitude' => $attributes['latitude'] ?? '',
-	'longitude' => $attributes['longitude'] ?? '',
-	'timezone' => $attributes['timezone'] ?? '',
-	'coordinateSystem' => $attributes['coordinateSystem'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\CalculateTransit::render( $attributes ) );

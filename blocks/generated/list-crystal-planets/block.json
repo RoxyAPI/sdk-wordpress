@@ -5,7 +5,7 @@
 	"title": "List Crystal Planets (Crystals and Healing Stones)",
 	"category": "roxyapi",
 	"icon": "star-filled",
-	"description": "List Crystal Planets. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "List Crystal Planets",
 	"keywords": [
 		"crystals and healing stones",
 		"roxyapi",

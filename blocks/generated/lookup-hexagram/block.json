@@ -5,7 +5,7 @@
 	"title": "Lookup hexagram by line pattern (I-Ching)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "Lookup hexagram by line pattern. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Lookup hexagram by line pattern",
 	"keywords": [
 		"i-ching",
 		"roxyapi",

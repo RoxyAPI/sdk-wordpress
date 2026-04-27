@@ -1,41 +1,885 @@
 /*
  * RoxyAPI admin styles.
  *
- * Only loaded on the plugin Settings page. Do not enqueue globally.
+ * Self-contained. No CDN fonts or external stylesheets. Loaded only on the
+ * plugin Settings page and the Dashboard screen (for the widget).
+ *
+ * Signature look: font-weight mixing inside a single heading. Setup span sits
+ * in normal weight + muted color, punchline span lands in bold. One heading,
+ * one punchline. Apple-inspired minimalism: white cards, subtle borders, lots
+ * of whitespace.
  */
 
-.roxyapi-settings h1 {
-	margin-bottom: 0.5rem;
+.roxyapi-settings {
+  max-width: 960px;
 }
 
-.roxyapi-settings p {
-	max-width: 720px;
-	color: #50575e;
+.roxyapi-settings .roxyapi-page-intro {
+  max-width: 640px;
+  margin: 0.75rem 0 2.5rem;
+  color: #50575e;
+  font-size: 0.95rem;
+  line-height: 1.55;
 }
 
-.roxyapi-settings input[type="password"] {
-	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-	letter-spacing: 0.05em;
+/* ---------- Heading mix (setup + punchline) ---------- */
+
+.roxyapi-heading {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: 2.25rem;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
 }
 
-.roxyapi-notice {
-	border-left-color: #2271b1 !important;
+.roxyapi-heading .roxyapi-setup {
+  font-weight: 400;
+  color: #50575e;
+  opacity: 0.7;
 }
+
+.roxyapi-heading .roxyapi-punchline {
+  font-weight: 700;
+  color: #1d2327;
+}
+
+/* ---------- Connected banner ---------- */
+
+.roxyapi-connected-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.5rem 0 2rem;
+  padding: 0.875rem 1.125rem;
+  background: #f0f9f1;
+  border: 1px solid #cfe9d4;
+  border-radius: 0.625rem;
+  color: #1e6f2b;
+  font-size: 0.95rem;
+}
+
+.roxyapi-connected-banner .roxyapi-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: #1e8a3a;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.roxyapi-connected-banner .roxyapi-banner-body {
+  line-height: 1.45;
+}
+
+.roxyapi-connected-banner strong {
+  color: #14431f;
+}
+
+/* ---------- Step cards ---------- */
+
+.roxyapi-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin: 0 0 2.5rem;
+}
+
+.roxyapi-step-card {
+  position: relative;
+  padding: 1.75rem 1.875rem 1.625rem;
+  background: #fff;
+  border: 1px solid #e2e4e7;
+  border-radius: 0.875rem;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+}
+
+.roxyapi-step-card + .roxyapi-step-card {
+  margin-top: 0;
+}
+
+.roxyapi-step-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.375rem;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  font-weight: 400;
+}
+
+.roxyapi-step-title .roxyapi-setup {
+  font-weight: 400;
+  color: #50575e;
+  opacity: 0.75;
+}
+
+.roxyapi-step-title .roxyapi-punchline {
+  font-weight: 700;
+  color: #1d2327;
+}
+
+.roxyapi-step-body {
+  margin: 0 0 1.125rem;
+  color: #50575e;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  max-width: 640px;
+}
+
+.roxyapi-step-body code {
+  background: #f4f4f6;
+  padding: 0.05rem 0.3rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+.roxyapi-step-aside {
+  margin: 0 0 1.125rem;
+  color: #6b7280;
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.roxyapi-step-aside a {
+  color: #1d2327;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.roxyapi-step-aside a:hover,
+.roxyapi-step-aside a:focus {
+  color: #2271b1;
+}
+
+/* ---------- Primary CTA button ---------- */
+
+.roxyapi-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.125rem;
+  background: #1d2327;
+  color: #fff;
+  border: 1px solid #1d2327;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background 0.15s ease,
+    transform 0.1s ease,
+    gap 0.15s ease;
+}
+
+.roxyapi-cta:hover,
+.roxyapi-cta:focus {
+  background: #2c3338;
+  color: #fff;
+  gap: 0.625rem;
+  box-shadow: none;
+}
+
+.roxyapi-cta:focus {
+  outline: 2px solid #2271b1;
+  outline-offset: 2px;
+}
+
+.roxyapi-cta-arrow {
+  font-size: 1.05em;
+  line-height: 1;
+}
+
+/* ---------- API key input ---------- */
+
+.roxyapi-key-input {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.625rem;
+  margin: 0 0 0.75rem;
+}
+
+.roxyapi-settings input[type="password"].roxyapi-key-field,
+.roxyapi-settings input[type="text"].roxyapi-key-field {
+  flex: 1 1 320px;
+  min-width: 280px;
+  padding: 0.5rem 0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.05em;
+  font-size: 0.9375rem;
+  border-radius: 0.375rem;
+}
+
+.roxyapi-key-input .button,
+.roxyapi-key-input .button-primary {
+  border-radius: 0.375rem;
+}
+
+.roxyapi-key-help {
+  margin: 0.25rem 0 0;
+  font-size: 0.8125rem;
+  color: #50575e;
+}
+
+.roxyapi-key-help a {
+  color: #2271b1;
+}
+
+/* ---------- Test connection feedback ---------- */
 
 .roxyapi-test-connection-result {
-	display: inline-block;
-	margin-left: 0.75rem;
-	padding: 0.25rem 0.5rem;
-	border-radius: 0.25rem;
-	font-size: 0.875rem;
+  display: inline-block;
+  margin-left: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.3125rem;
+  font-size: 0.875rem;
 }
 
 .roxyapi-test-connection-result.is-success {
-	background: #e7f6ea;
-	color: #1e6f2b;
+  background: #e7f6ea;
+  color: #1e6f2b;
 }
 
 .roxyapi-test-connection-result.is-error {
-	background: #fbeaea;
-	color: #8a1f11;
+  background: #fbeaea;
+  color: #8a1f11;
+}
+
+/* Inline banner shown above shortcode section after a successful test */
+.roxyapi-test-banner {
+  display: none;
+  align-items: center;
+  gap: 0.625rem;
+  margin: 1.25rem 0;
+  padding: 0.75rem 1rem;
+  background: #f0f9f1;
+  border: 1px solid #cfe9d4;
+  border-radius: 0.625rem;
+  color: #1e6f2b;
+  font-size: 0.9375rem;
+}
+
+.roxyapi-test-banner.is-visible {
+  display: flex;
+}
+
+.roxyapi-test-banner.is-error {
+  background: #fbeaea;
+  border-color: #f1c7c2;
+  color: #8a1f11;
+}
+
+/* ---------- Shortcode copy boxes ---------- */
+
+.roxyapi-shortcode-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.roxyapi-shortcode {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem 0.625rem 0.875rem;
+  background: #f6f7f7;
+  border: 1px solid #e2e4e7;
+  border-radius: 0.5rem;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.roxyapi-shortcode:hover {
+  border-color: #c3c4c7;
+  background: #f0f0f1;
+}
+
+.roxyapi-shortcode-code {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: #1d2327;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.roxyapi-copy {
+  flex-shrink: 0;
+  min-width: 5rem;
+  padding: 0.3125rem 0.75rem;
+  background: #fff;
+  color: #1d2327;
+  border: 1px solid #c3c4c7;
+  border-radius: 0.3125rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.roxyapi-copy:hover {
+  background: #f0f0f1;
+  border-color: #8c8f94;
+}
+
+.roxyapi-copy.is-copied {
+  background: #e7f6ea;
+  border-color: #cfe9d4;
+  color: #1e6f2b;
+}
+
+/* ---------- Section spacing and titles ---------- */
+
+.roxyapi-section {
+  margin: 0 0 2.25rem;
+}
+
+.roxyapi-section-title {
+  margin: 0 0 0.875rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1d2327;
+  letter-spacing: -0.005em;
+}
+
+.roxyapi-section-lede {
+  max-width: 640px;
+  margin: 0 0 1rem;
+  color: #50575e;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+/* ---------- Hero shortcode list (connected state) ---------- */
+
+.roxyapi-hero-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.625rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 720px) {
+  .roxyapi-hero-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.roxyapi-hero-item {
+  padding: 0.75rem 0.875rem;
+  background: #fff;
+  border: 1px solid #e2e4e7;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.roxyapi-hero-item strong {
+  display: block;
+  color: #1d2327;
+  font-weight: 600;
+}
+
+.roxyapi-hero-item code {
+  display: inline-block;
+  margin-top: 0.125rem;
+  background: #f4f4f6;
+  padding: 0.05rem 0.3rem;
+  border-radius: 0.25rem;
+  font-size: 0.8125rem;
+  color: #50575e;
+}
+
+/* ---------- Manage key disclosure ---------- */
+
+.roxyapi-manage-key {
+  margin: 0;
+}
+
+.roxyapi-manage-key summary {
+  cursor: pointer;
+  color: #2271b1;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  list-style: none;
+}
+
+.roxyapi-manage-key summary::-webkit-details-marker {
+  display: none;
+}
+
+.roxyapi-manage-key[open] summary {
+  margin-bottom: 0.875rem;
+}
+
+.roxyapi-manage-key summary:hover {
+  color: #135e96;
+}
+
+/* ---------- Footer link row ---------- */
+
+.roxyapi-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 2rem 0 0;
+  padding: 1.25rem 0 0;
+  border-top: 1px solid #e2e4e7;
+  font-size: 0.875rem;
+}
+
+.roxyapi-footer-links a {
+  color: #50575e;
+  text-decoration: none;
+}
+
+.roxyapi-footer-links a:hover,
+.roxyapi-footer-links a:focus {
+  color: #1d2327;
+  text-decoration: underline;
+}
+
+/* ---------- Notice tweak ---------- */
+
+.roxyapi-notice {
+  border-left-color: #2271b1 !important;
+}
+
+/* ---------- Shortcodes library ---------- */
+
+.roxyapi-shortcodes {
+  max-width: 1280px;
+}
+
+.roxyapi-shortcodes .roxyapi-page-intro {
+  max-width: 640px;
+  margin: 0.75rem 0 1.75rem;
+  color: #50575e;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.roxyapi-library-controls {
+  position: sticky;
+  top: 32px;
+  z-index: 5;
+  margin: 0 -1rem 1.5rem;
+  padding: 1rem 1rem 0.875rem;
+  background: #fff;
+  border-bottom: 1px solid #e2e4e7;
+}
+
+@media (max-width: 782px) {
+  .roxyapi-library-controls {
+    top: 46px;
+  }
+}
+
+.roxyapi-library-search {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 0 0.875rem;
+  padding: 0.625rem 0.875rem;
+  background: #fff;
+  border: 1px solid #c3c4c7;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  color: #1d2327;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.roxyapi-library-search:focus {
+  border-color: #2271b1;
+  box-shadow: 0 0 0 3px rgba(34, 113, 177, 0.15);
+  outline: none;
+}
+
+.roxyapi-library-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.375rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.25rem;
+}
+
+.roxyapi-library-tab {
+  flex: 0 0 auto;
+  padding: 0.375rem 0.75rem;
+  background: transparent;
+  color: #50575e;
+  border: 1px solid transparent;
+  border-bottom: 2px solid transparent;
+  border-radius: 0.375rem 0.375rem 0 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.roxyapi-library-tab:hover {
+  color: #1d2327;
+  background: #f6f7f7;
+}
+
+.roxyapi-library-tab:focus {
+  outline: 2px solid #2271b1;
+  outline-offset: 1px;
+}
+
+.roxyapi-library-tab.is-active {
+  color: #1d2327;
+  font-weight: 700;
+  border-bottom-color: #1d2327;
+}
+
+.roxyapi-library-tab .count {
+  margin-left: 0.25rem;
+  font-weight: 400;
+  color: #8c8f94;
+  font-variant-numeric: tabular-nums;
+}
+
+.roxyapi-library-tab.is-active .count {
+  color: #50575e;
+}
+
+.roxyapi-library-group {
+  margin: 0 0 2.25rem;
+}
+
+.roxyapi-library-group-title {
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1d2327;
+  letter-spacing: -0.005em;
+}
+
+.roxyapi-library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1.25rem;
+}
+
+.roxyapi-library-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem 1.375rem 1.125rem;
+  background: #fff;
+  border: 1px solid #e2e4e7;
+  border-left: 3px solid #c3c4c7;
+  border-radius: 0.875rem;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
+}
+
+/* The HTML `hidden` attribute must beat the explicit `display: flex` /
+   `display: grid` declarations on cards and groups. Without this override,
+   `card.hidden = true` from the search filter has no visual effect because
+   `[hidden]` in the UA stylesheet uses a less specific selector. */
+.roxyapi-library-card[hidden],
+.roxyapi-library-group[hidden] {
+  display: none !important;
+}
+
+.roxyapi-library-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 24, 40, 0.08);
+}
+
+.roxyapi-library-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.roxyapi-library-card-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1d2327;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+}
+
+.roxyapi-library-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  align-items: center;
+}
+
+.roxyapi-library-pill {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: #f0f0f1;
+  color: #50575e;
+}
+
+.roxyapi-library-badge {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: #fff5d9;
+  color: #8a5a00;
+  border: 1px solid #f5d990;
+}
+
+.roxyapi-library-desc {
+  margin: 0;
+  color: #50575e;
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.roxyapi-library-code {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-top: auto;
+  padding: 0.5rem 0.625rem 0.5rem 0.75rem;
+  background: #f6f7f7;
+  border: 1px solid #e2e4e7;
+  border-radius: 0.5rem;
+}
+
+.roxyapi-library-code code {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: #1d2327;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.roxyapi-library-code .roxyapi-copy {
+  min-width: 4.5rem;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+}
+
+.roxyapi-library-empty {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: #f6f7f7;
+  border: 1px solid #e2e4e7;
+  border-radius: 0.625rem;
+  color: #50575e;
+  font-size: 0.9375rem;
+  text-align: center;
+}
+
+/* Domain accent tokens — left border on cards, tinted background on pills. */
+
+.roxyapi-library-card.roxyapi-accent-purple {
+  border-left-color: #8b5cf6;
+}
+.roxyapi-library-card.roxyapi-accent-purple .roxyapi-library-pill {
+  background: #f3edff;
+  color: #5b21b6;
+}
+
+.roxyapi-library-card.roxyapi-accent-indigo {
+  border-left-color: #6366f1;
+}
+.roxyapi-library-card.roxyapi-accent-indigo .roxyapi-library-pill {
+  background: #eef0ff;
+  color: #3730a3;
+}
+
+.roxyapi-library-card.roxyapi-accent-amber {
+  border-left-color: #f59e0b;
+}
+.roxyapi-library-card.roxyapi-accent-amber .roxyapi-library-pill {
+  background: #fff5d9;
+  color: #92400e;
+}
+
+.roxyapi-library-card.roxyapi-accent-blue {
+  border-left-color: #2563eb;
+}
+.roxyapi-library-card.roxyapi-accent-blue .roxyapi-library-pill {
+  background: #eaf2ff;
+  color: #1e3a8a;
+}
+
+.roxyapi-library-card.roxyapi-accent-green {
+  border-left-color: #16a34a;
+}
+.roxyapi-library-card.roxyapi-accent-green .roxyapi-library-pill {
+  background: #e6f6eb;
+  color: #14532d;
+}
+
+.roxyapi-library-card.roxyapi-accent-orange {
+  border-left-color: #ea580c;
+}
+.roxyapi-library-card.roxyapi-accent-orange .roxyapi-library-pill {
+  background: #ffeede;
+  color: #9a3412;
+}
+
+.roxyapi-library-card.roxyapi-accent-pink {
+  border-left-color: #db2777;
+}
+.roxyapi-library-card.roxyapi-accent-pink .roxyapi-library-pill {
+  background: #fdeaf3;
+  color: #9d174d;
+}
+
+.roxyapi-library-card.roxyapi-accent-neutral {
+  border-left-color: #c3c4c7;
+}
+
+/* ---------- Dashboard widget ---------- */
+
+#roxyapi_connection_widget .inside {
+  margin: 0;
+  padding: 0;
+}
+
+.roxyapi-widget {
+  padding: 12px 12px 12px;
+}
+
+.roxyapi-widget-empty p {
+  margin: 0 0 0.75rem;
+  color: #50575e;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.roxyapi-widget-connected .roxyapi-widget-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  color: #1e6f2b;
+  font-weight: 600;
+}
+
+.roxyapi-widget-connected .roxyapi-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.125rem;
+  height: 1.125rem;
+  background: #1e8a3a;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.roxyapi-widget-connected .roxyapi-shortcode-list {
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.roxyapi-widget-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0.75rem 0 0;
+  padding-top: 0.625rem;
+  border-top: 1px solid #e2e4e7;
+  font-size: 0.8125rem;
+}
+
+.roxyapi-widget-links a {
+  color: #50575e;
+  text-decoration: none;
+}
+
+.roxyapi-widget-links a:hover,
+.roxyapi-widget-links a:focus {
+  color: #1d2327;
+  text-decoration: underline;
+}
+
+/* Tabbed Settings page (admin-connected.php). */
+.roxyapi-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 1rem 0 1.5rem;
+  border-bottom: 1px solid #c3c4c7;
+}
+.roxyapi-tab {
+  padding: 0.6rem 1rem;
+  margin-bottom: -1px;
+  color: #50575e;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-bottom-color: transparent;
+  font-weight: 500;
+}
+.roxyapi-tab:hover {
+  color: #2271b1;
+}
+.roxyapi-tab.is-active {
+  background: #fff;
+  color: #1d2327;
+  border-color: #c3c4c7;
+  border-bottom-color: #fff;
+  border-radius: 4px 4px 0 0;
+}
+.roxyapi-tab-panel {
+  background: #fff;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid #c3c4c7;
+  border-top: 0;
+  margin-bottom: 1.5rem;
+}
+.roxyapi-tab-panel .roxyapi-section {
+  margin-block: 0 1.5rem;
 }

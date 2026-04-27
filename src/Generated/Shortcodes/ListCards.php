@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class ListCards {
 
@@ -43,9 +43,9 @@ class ListCards {
 		$data = \RoxyAPI\Generated\Client::listCards( $atts['lang'], $atts['limit'], $atts['offset'], $atts['arcana'], $atts['suit'], $atts['number'] );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'listCards', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'listCards', is_array( $data ) ? $data : array() );
 	}
 }

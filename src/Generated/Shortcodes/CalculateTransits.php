@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class CalculateTransits {
 
@@ -30,7 +30,7 @@ class CalculateTransits {
 			'date' => '',
 			'time' => '',
 			'timezone' => '',
-			'natalChart' => '',
+			'natal_chart' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -43,7 +43,7 @@ class CalculateTransits {
 				'date' => $atts['date'],
 				'time' => $atts['time'],
 				'timezone' => $atts['timezone'],
-				'natalChart' => $atts['natalChart'],
+				'natalChart' => $atts['natal_chart'],
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -52,9 +52,9 @@ class CalculateTransits {
 		$data = \RoxyAPI\Generated\Client::calculateTransits( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'calculateTransits', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'calculateTransits', is_array( $data ) ? $data : array() );
 	}
 }

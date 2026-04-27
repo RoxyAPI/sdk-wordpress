@@ -5,7 +5,7 @@
 	"title": "Find KP rasi ingress times (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Find KP rasi ingress times. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Find KP rasi ingress times",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

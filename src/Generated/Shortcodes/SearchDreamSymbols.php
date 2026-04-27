@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class SearchDreamSymbols {
 
@@ -41,9 +41,9 @@ class SearchDreamSymbols {
 		$data = \RoxyAPI\Generated\Client::searchDreamSymbols( $atts['q'], $atts['letter'], $atts['limit'], $atts['offset'] );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'searchDreamSymbols', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'searchDreamSymbols', is_array( $data ) ? $data : array() );
 	}
 }

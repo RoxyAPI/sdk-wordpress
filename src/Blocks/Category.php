@@ -1,11 +1,15 @@
 <?php
 /**
- * Registers the "RoxyAPI" block category in the inserter.
+ * Registers the "Roxy" block category in the inserter.
  *
  * @package RoxyAPI
  */
 
 namespace RoxyAPI\Blocks;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 class Category {
 
@@ -14,6 +18,8 @@ class Category {
 	}
 
 	/**
+	 * Prepend the Roxy category to the block inserter list.
+	 *
 	 * @param array<int, array<string, string>> $categories Existing block categories.
 	 * @return array<int, array<string, string>>
 	 */
@@ -22,7 +28,7 @@ class Category {
 			array(
 				array(
 					'slug'  => 'roxyapi',
-					'title' => __( 'RoxyAPI', 'roxyapi' ),
+					'title' => __( 'Roxy', 'roxyapi' ),
 					'icon'  => 'star-filled',
 				),
 			),

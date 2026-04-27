@@ -14,7 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo do_shortcode( '[roxy_get_number_meaning ' . \RoxyAPI\Support\Sanitize::attributes_to_string( array(
-	'number' => $attributes['number'] ?? '',
-	'lang' => $attributes['lang'] ?? '',
-) ) . ']' );
+echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetNumberMeaning::render( $attributes ) );

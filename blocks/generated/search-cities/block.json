@@ -5,7 +5,7 @@
 	"title": "Search cities worldwide - Geocoding autocomplete with coordinates and timezone (Location and Timezone)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "Search cities worldwide - Geocoding autocomplete with coordinates and timezone. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Search cities worldwide - Geocoding autocomplete with coordinates and timezone",
 	"keywords": [
 		"location and timezone",
 		"roxyapi",

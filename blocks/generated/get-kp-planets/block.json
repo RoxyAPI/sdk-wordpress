@@ -5,7 +5,7 @@
 	"title": "Get KP planetary positions with sub-lords (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get KP planetary positions with sub-lords. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Get KP planetary positions with sub-lords",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

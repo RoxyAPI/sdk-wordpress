@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class GenerateLunarReturn {
 
@@ -27,13 +27,13 @@ class GenerateLunarReturn {
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
 			array(
-			'birthDate' => '',
-			'birthTime' => '',
-			'returnDate' => '',
+			'birth_date' => '',
+			'birth_time' => '',
+			'return_date' => '',
 			'latitude' => '',
 			'longitude' => '',
 			'timezone' => '',
-			'houseSystem' => '',
+			'house_system' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -43,13 +43,13 @@ class GenerateLunarReturn {
 
 				$body = array_filter(
 			array(
-				'birthDate' => $atts['birthDate'],
-				'birthTime' => $atts['birthTime'],
-				'returnDate' => $atts['returnDate'],
-				'latitude' => $atts['latitude'],
-				'longitude' => $atts['longitude'],
+				'birthDate' => $atts['birth_date'],
+				'birthTime' => $atts['birth_time'],
+				'returnDate' => $atts['return_date'],
+				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
+				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
 				'timezone' => $atts['timezone'],
-				'houseSystem' => $atts['houseSystem'],
+				'houseSystem' => $atts['house_system'],
 			),
 			static function ( $v ) {
 				return $v !== '';
@@ -58,9 +58,9 @@ class GenerateLunarReturn {
 		$data = \RoxyAPI\Generated\Client::generateLunarReturn( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'generateLunarReturn', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'generateLunarReturn', is_array( $data ) ? $data : array() );
 	}
 }

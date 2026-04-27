@@ -5,7 +5,7 @@
 	"title": "Find critical days - Zero crossing detection for any date range (Biorhythm)",
 	"category": "roxyapi",
 	"icon": "tide",
-	"description": "Find critical days - Zero crossing detection for any date range. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Find critical days - Zero crossing detection for any date range",
 	"keywords": [
 		"biorhythm",
 		"roxyapi",

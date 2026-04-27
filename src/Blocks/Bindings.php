@@ -12,6 +12,10 @@
 
 namespace RoxyAPI\Blocks;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use RoxyAPI\Support\Sanitize;
 
 class Bindings {
@@ -59,6 +63,14 @@ class Bindings {
 		if ( is_wp_error( $data ) || ! is_array( $data ) ) {
 			return '';
 		}
-		return isset( $data['overall'] ) ? (string) $data['overall'] : '';
+		if ( ! isset( $data['overview'] ) ) {
+			return '';
+		}
+		// Defense-in-depth: the binding return is inserted into a core/paragraph
+		// as text. Strip any HTML the upstream service might surface (none today,
+		// but shielding against future API changes) and bound the length so an
+		// unexpectedly long payload cannot blow up a paragraph layout.
+		$overview = wp_strip_all_tags( (string) $data['overview'] );
+		return mb_substr( $overview, 0, 800 );
 	}
 }

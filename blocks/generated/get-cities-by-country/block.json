@@ -5,7 +5,7 @@
 	"title": "Get cities in a country - Geocoding directory sorted by population (Location and Timezone)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "Get cities in a country - Geocoding directory sorted by population. Auto-generated from the RoxyAPI OpenAPI spec.",
+	"description": "Get cities in a country - Geocoding directory sorted by population",
 	"keywords": [
 		"location and timezone",
 		"roxyapi",

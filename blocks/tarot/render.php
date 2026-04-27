@@ -11,4 +11,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo \RoxyAPI\Shortcodes\TarotCard::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/tarot' );
+echo wp_kses_post( \RoxyAPI\Shortcodes\TarotCard::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/tarot' ) );

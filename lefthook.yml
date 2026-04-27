@@ -3,64 +3,106 @@
 # pre-push: runs full validation before pushing to remote
 
 pre-commit:
-  parallel: true
-  commands:
-    # Format and lint staged PHP files with phpcbf + phpcs
-    php-format:
-      glob: "*.php"
-      exclude: "src/Generated/**|vendor/**"
-      run: vendor/bin/phpcbf --standard=phpcs.xml.dist {staged_files} || true
-      stage_fixed: true
+    parallel: true
+    commands:
+        # Format and lint staged PHP files with phpcbf + phpcs.
+        php-format:
+            glob: '*.php'
+            exclude: 'src/Generated/**|vendor/**'
+            run: vendor/bin/phpcbf --standard=phpcs.xml.dist {staged_files} || true
+            stage_fixed: true
 
-    php-lint:
-      glob: "*.php"
-      exclude: "src/Generated/**|vendor/**"
-      run: vendor/bin/phpcs --standard=phpcs.xml.dist {staged_files}
+        php-lint:
+            glob: '*.php'
+            exclude: 'src/Generated/**|vendor/**'
+            run: vendor/bin/phpcs --standard=phpcs.xml.dist {staged_files}
 
-    phpstan:
-      glob: "src/**/*.php"
-      exclude: "src/Generated/**"
-      run: vendor/bin/phpstan analyze --no-progress --memory-limit=1G
+        # Format JS/CSS/JSON/MD via prettier on staged files only. `npx prettier`
+        # is preferred over `wp-scripts format` because the latter ignores file
+        # args and re-formats the whole repo. .prettierignore is read by
+        # default, so generated outputs and the spec snapshot stay untouched.
+        js-format:
+            glob: '*.{js,jsx,ts,tsx,css,scss,json,md,yml,yaml}'
+            exclude: 'src/Generated/**|blocks/generated/**|build/**|specs/**|vendor/**|node_modules/**|*.min.*'
+            run: npx prettier --write --ignore-unknown {staged_files}
+            stage_fixed: true
 
-    # Rebuild blocks if source changed
-    block-build-check:
-      glob: "blocks/**/*.{js,jsx,json,php}"
-      run: npm run build:all && git diff --exit-code build/
+        # Lint JS/CSS via wp-scripts (eslint + stylelint).
+        js-lint:
+            glob: '{blocks,assets/js,bin}/**/*.{js,jsx}'
+            exclude: 'blocks/generated/**|build/**'
+            run: npx wp-scripts lint-js {staged_files}
 
-    # Regenerate if generator config changed
-    openapi-drift-check:
-      glob: "bin/{generate.mjs,ttl-map.json,hero-endpoints.json}"
-      run: npm run generate:check
+        css-lint:
+            glob: '{blocks,assets/css}/**/*.{css,scss}'
+            exclude: 'build/**'
+            run: npx wp-scripts lint-style {staged_files}
+
+        phpstan:
+            glob: 'src/**/*.php'
+            exclude: 'src/Generated/**'
+            run: vendor/bin/phpstan analyze --no-progress --memory-limit=1G
+
+        # Rebuild blocks if source changed.
+        block-build-check:
+            glob: 'blocks/**/*.{js,jsx,json,php}'
+            exclude: 'blocks/generated/**'
+            run: npm run build:all && git diff --exit-code build/
+
+        # Regenerate if generator config changed.
+        openapi-drift-check:
+            glob: 'bin/{generate.mjs,ttl-map.json,hero-endpoints.json,hero-config.json,example-overrides.json}'
+            run: npm run generate:check
 
 pre-push:
-  parallel: false
-  commands:
-    # Full OpenAPI drift check
-    openapi-drift-check:
-      run: npm run generate:check
-      priority: 1
+    parallel: false
+    commands:
+        # Full OpenAPI drift check
+        openapi-drift-check:
+            run: npm run generate:check
+            priority: 1
 
-    # Full format pass (auto-fix)
-    php-format:
-      run: vendor/bin/phpcbf --standard=phpcs.xml.dist || true
-      priority: 2
+        # Full format pass (auto-fix). PHP first, then JS/CSS so each tool
+        # only touches files it owns.
+        php-format:
+            run: vendor/bin/phpcbf --standard=phpcs.xml.dist || true
+            priority: 2
 
-    # Full lint (must pass clean after format)
-    php-lint:
-      run: vendor/bin/phpcs --standard=phpcs.xml.dist
-      priority: 3
+        # Full lint (must pass clean after format).
+        php-lint:
+            run: vendor/bin/phpcs --standard=phpcs.xml.dist
+            priority: 3
 
-    # Static analysis
-    phpstan:
-      run: vendor/bin/phpstan analyze --no-progress --memory-limit=1G
-      priority: 4
+        # JS/CSS format check — fails the push if any non-ignored file is
+        # not in canonical form. Run `npm run format` to fix locally.
+        js-format-check:
+            run: npx prettier --check .
+            priority: 3
 
-    # PHPUnit (requires wp-env running)
-    # phpunit:
-    #   run: npx wp-env run tests-cli --env-cwd=wp-content/plugins/roxyapi vendor/bin/phpunit
-    #   priority: 5
+        # JS lint across the whole hand-written surface.
+        js-lint:
+            run: npm run lint:js
+            priority: 3
 
-    # Plugin Check (requires wp-env running)
-    # plugin-check:
-    #   run: npx wp-env run cli wp plugin check roxyapi --require=/var/www/html/wp-content/plugins/plugin-check/cli.php --severity=5
-    #   priority: 6
+        css-lint:
+            run: npm run lint:css
+            priority: 3
+
+        # Static analysis
+        phpstan:
+            run: vendor/bin/phpstan analyze --no-progress --memory-limit=1G
+            priority: 4
+
+        # PHPUnit. Requires wp-env running locally. Run `npx wp-env start` once per session.
+        phpunit:
+            run: |
+                docker ps --format '{{.Names}}' | grep -q tests-wordpress || { echo "✗ wp-env tests env not running. Run: npx wp-env start"; exit 1; }
+                npx wp-env run tests-cli --env-cwd=wp-content/plugins/roxyapi-sdk-wordpress vendor/bin/phpunit
+            priority: 5
+
+        # Plugin Check at WP.org submission severity. Requires wp-env running.
+        plugin-check:
+            run: |
+                docker ps --format '{{.Names}}' | grep -q '\-cli$\|wordpress-1$' || { echo "✗ wp-env not running. Run: npx wp-env start"; exit 1; }
+                npx wp-env run cli wp plugin check roxyapi-sdk-wordpress --severity=5
+            priority: 6

@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class ListCrystals {
 
@@ -45,9 +45,9 @@ class ListCrystals {
 		$data = \RoxyAPI\Generated\Client::listCrystals( $atts['lang'], $atts['chakra'], $atts['zodiac'], $atts['element'], $atts['color'], $atts['planet'], $atts['limit'], $atts['offset'] );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'listCrystals', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'listCrystals', is_array( $data ) ? $data : array() );
 	}
 }

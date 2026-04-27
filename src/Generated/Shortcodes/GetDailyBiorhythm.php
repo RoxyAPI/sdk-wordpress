@@ -11,7 +11,7 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
-use RoxyAPI\Blocks\Renderer;
+use RoxyAPI\Support\GenericRenderer;
 
 class GetDailyBiorhythm {
 
@@ -48,9 +48,9 @@ class GetDailyBiorhythm {
 		$data = \RoxyAPI\Generated\Client::getDailyBiorhythm( $body );
 
 		if ( is_wp_error( $data ) ) {
-			return \RoxyAPI\Support\Templates::error( $data->get_error_message() );
+			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return Renderer::render_generic( 'getDailyBiorhythm', is_array( $data ) ? $data : array() );
+		return GenericRenderer::render( 'getDailyBiorhythm', is_array( $data ) ? $data : array() );
 	}
 }

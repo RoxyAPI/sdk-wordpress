@@ -1,0 +1,221 @@
+{
+	"horoscope": {
+		"operationId": "getDailyHoroscope",
+		"title": "Daily horoscope",
+		"description": "Western daily reading for any zodiac sign.",
+		"domain": "Western Astrology",
+		"tag": "roxy_horoscope",
+		"example": "[roxy_horoscope sign=\"aries\"]",
+		"hand_written": true
+	},
+	"natal_chart": {
+		"operationId": "generateNatalChart",
+		"title": "Natal chart",
+		"description": "Western birth chart with planets, houses, and aspects.",
+		"domain": "Western Astrology",
+		"example": "[roxy_natal_chart birth_date=\"1990-05-15\" birth_time=\"14:30\" lat=\"40.7128\" lon=\"-74.0060\" tz=\"America/New_York\"]",
+		"attributes": {
+			"birth_date": {
+				"default": "",
+				"required": true,
+				"sanitize": "date_string",
+				"spec_field": "date"
+			},
+			"birth_time": {
+				"default": "",
+				"required": true,
+				"sanitize": "time_string",
+				"spec_field": "time"
+			},
+			"lat": {
+				"default": "",
+				"required": true,
+				"sanitize": "latitude",
+				"spec_field": "latitude"
+			},
+			"lon": {
+				"default": "",
+				"required": true,
+				"sanitize": "longitude",
+				"spec_field": "longitude"
+			},
+			"tz": {
+				"default": "UTC",
+				"required": false,
+				"sanitize": "timezone",
+				"spec_field": "timezone"
+			}
+		},
+		"missing_message": "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to UTC; pass an IANA name or decimal hours for accuracy). Example: %s"
+	},
+	"tarot_card": {
+		"title": "Tarot card",
+		"description": "Single card, three card, or Celtic Cross spreads.",
+		"domain": "Tarot",
+		"example": "[roxy_tarot_card spread=\"three\" question=\"What should I focus on this week\"]",
+		"attributes": {
+			"spread": { "default": "daily", "sanitize": "key" },
+			"question": {
+				"default": "",
+				"sanitize": { "name": "bounded_text", "args": [ 500 ] }
+			}
+		},
+		"dispatch": [
+			{
+				"when": { "spread": "three" },
+				"operationId": "castThreeCard",
+				"passthrough": { "question": "question" }
+			},
+			{
+				"when": { "spread": "celtic" },
+				"operationId": "castCelticCross",
+				"passthrough": { "question": "question" }
+			},
+			{
+				"default": true,
+				"operationId": "getDailyCard",
+				"passthrough": {}
+			}
+		]
+	},
+	"numerology": {
+		"operationId": "generateNumerologyChart",
+		"title": "Numerology",
+		"description": "Life path, expression, and soul urge from a name and date.",
+		"domain": "Numerology",
+		"example": "[roxy_numerology name=\"Ada Lovelace\" birth_date=\"1815-12-10\"]",
+		"attributes": {
+			"name": {
+				"default": "",
+				"required": true,
+				"sanitize": { "name": "bounded_text", "args": [ 100 ] },
+				"spec_field": "fullName"
+			},
+			"birth_date": {
+				"default": "",
+				"required": true,
+				"transform": "split_iso_date_into_year_month_day"
+			}
+		},
+		"missing_message": "The name and birth_date attributes are required. Example: %s",
+		"transform_error_message": "The birth_date attribute must be in YYYY-MM-DD format. Example: %s"
+	},
+	"life_path": {
+		"operationId": "calculateLifePath",
+		"title": "Life path",
+		"description": "Life path number and core meaning from a birth date.",
+		"domain": "Numerology",
+		"example": "[roxy_life_path birth_date=\"1990-05-15\"]",
+		"attributes": {
+			"birth_date": {
+				"default": "",
+				"required": true,
+				"transform": "split_iso_date_into_year_month_day"
+			}
+		},
+		"missing_message": "The birth_date attribute is required. Example: %s",
+		"transform_error_message": "The birth_date attribute must be in YYYY-MM-DD format. Example: %s"
+	},
+	"iching": {
+		"title": "I Ching",
+		"description": "Hexagram cast and interpretation for any question.",
+		"domain": "I-Ching",
+		"example": "[roxy_iching question=\"Should I take the new job\"]",
+		"attributes": {
+			"question": {
+				"default": "",
+				"sanitize": { "name": "bounded_text", "args": [ 500 ] }
+			},
+			"number": { "default": "", "sanitize": "non_negative_int" }
+		},
+		"dispatch": [
+			{
+				"when_present": "number",
+				"operationId": "getHexagram",
+				"path_args": { "number": "number" }
+			},
+			{ "default": true, "operationId": "castReading", "passthrough": {} }
+		]
+	},
+	"dream": {
+		"title": "Dream symbol",
+		"description": "Dictionary of three thousand dream symbols.",
+		"domain": "Dreams",
+		"example": "[roxy_dream symbol=\"water\"]",
+		"attributes": {
+			"symbol": {
+				"default": "",
+				"sanitize": { "name": "bounded_text", "args": [ 200 ] }
+			},
+			"id": { "default": "", "sanitize": "slug" }
+		},
+		"dispatch": [
+			{
+				"when_present": "id",
+				"operationId": "getDreamSymbol",
+				"path_args": { "id": "id" }
+			},
+			{
+				"when_present": "symbol",
+				"operationId": "searchDreamSymbols",
+				"query_args": { "symbol": "q" }
+			}
+		],
+		"missing_message": "Either the symbol or id attribute is required. Example: %s"
+	},
+	"biorhythm": {
+		"operationId": "getReading",
+		"title": "Biorhythm",
+		"description": "Physical, emotional, and intellectual cycle values.",
+		"domain": "Biorhythm",
+		"example": "[roxy_biorhythm birth_date=\"1990-05-15\" target_date=\"today\"]",
+		"attributes": {
+			"birth_date": {
+				"default": "",
+				"required": true,
+				"sanitize": "date_string",
+				"spec_field": "birthDate"
+			},
+			"target_date": {
+				"default": "",
+				"required": false,
+				"sanitize": "date_string",
+				"spec_field": "targetDate",
+				"skip_if_empty": true
+			}
+		},
+		"missing_message": "The birth_date attribute is required. Example: %s"
+	},
+	"angel_number": {
+		"operationId": "getAngelNumber",
+		"title": "Angel number",
+		"description": "Meaning and pattern analysis for any number sequence.",
+		"domain": "Angel Numbers",
+		"example": "[roxy_angel_number number=\"1111\"]",
+		"attributes": {
+			"number": {
+				"default": "",
+				"required": true,
+				"sanitize": "non_negative_int",
+				"spec_field": "number"
+			}
+		},
+		"missing_message": "The number attribute is required. Example: %s"
+	},
+	"crystal": {
+		"operationId": "getCrystal",
+		"title": "Crystal",
+		"description": "Properties, zodiac pairings, and chakra alignments.",
+		"domain": "Crystals and Healing Stones",
+		"example": "[roxy_crystal name=\"amethyst\"]",
+		"attributes": {
+			"name": {
+				"default": "",
+				"required": true,
+				"sanitize": "slug",
+				"spec_field": "id"
+			}
+		},
+		"missing_message": "The name attribute is required. Example: %s"
+	}
+}
