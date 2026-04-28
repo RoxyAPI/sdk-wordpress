@@ -12,7 +12,7 @@ jobs:
         name: OpenAPI generation drift
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - uses: actions/setup-node@v6
               with:
                   node-version: '24'
@@ -28,7 +28,7 @@ jobs:
         needs: [generate-drift]
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - uses: shivammathur/setup-php@v2
               with:
                   php-version: '8.3'
@@ -73,7 +73,7 @@ jobs:
                     --health-timeout=5s
                     --health-retries=5
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - uses: shivammathur/setup-php@v2
               with:
                   php-version: ${{ matrix.php }}
@@ -89,7 +89,7 @@ jobs:
         needs: [lint, test]
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - uses: shivammathur/setup-php@v2
               with:
                   php-version: '8.3'
