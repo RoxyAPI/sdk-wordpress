@@ -1,6 +1,6 @@
 # roxyapi WordPress plugin: Agent Guide
 
-WordPress plugin for [RoxyAPI](https://roxyapi.com). Drop horoscopes, tarot, numerology, I Ching, natal charts, and more onto any WordPress page with shortcodes or Gutenberg blocks. One API key, ten spiritual data domains, 130+ endpoints.
+WordPress plugin for [RoxyAPI](https://roxyapi.com). Drop horoscopes, numerology, tarot, I Ching, natal charts, and more onto any WordPress page with shortcodes or Gutenberg blocks. One API key, ten spiritual data domains, 130+ endpoints.
 
 > Before writing any code in this repo, read the build runbook at `https://github.com/RoxyAPI/sdk-wordpress/blob/main/AGENTS.md` and the upstream spec at `https://roxyapi.com/api/v2/openapi.json`.
 

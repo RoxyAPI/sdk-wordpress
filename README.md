@@ -12,13 +12,13 @@
 [![WordPress Tested](https://img.shields.io/wordpress/plugin/tested/roxyapi.svg)](https://wordpress.org/plugins/roxyapi/)
 [![License](https://img.shields.io/badge/license-GPL--2.0--or--later-blue)](LICENSE)
 
-## Ship a complete astrology, tarot, or numerology site this weekend. Not this quarter.
+## Ship a complete astrology, numerology, or tarot site this weekend. Not this quarter.
 
-The only multi domain spiritual intelligence plugin for WordPress. Drop daily horoscopes, tarot pulls, numerology charts, I Ching casts, dream symbol lookups, and natal chart calculators onto any page. One API key, ten spiritual data domains, 130+ endpoints. Verified against NASA JPL Horizons.
+The only multi domain spiritual intelligence plugin for WordPress. Drop daily horoscopes, numerology charts, tarot pulls, I Ching casts, dream symbol lookups, and natal chart calculators onto any page. One API key, ten spiritual data domains, 130+ endpoints. Verified against NASA JPL Horizons.
 
 Interactive forms for your visitors. Gutenberg blocks for your editor. Shortcodes for anywhere else. Server side rendering keeps your API key out of the browser. Transient caching keeps your quota intact.
 
-- **Ten hero blocks and shortcodes** covering western astrology, vedic astrology, tarot, numerology, I Ching, dreams, biorhythm, angel numbers, crystals, and location.
+- **Ten hero blocks and shortcodes** covering western astrology, vedic astrology, numerology, tarot, biorhythm, I Ching, crystals, dreams, angel numbers, and location.
 - **120+ auto generated shortcodes** for the long tail. Every endpoint in the RoxyAPI OpenAPI spec is reachable from a shortcode.
 - **Form mode on every hero shortcode.** Let visitors submit their own sign, name, birth date, or question and render a personalized reading. No JavaScript required.
 - **Zero client side secrets.** All calls run in PHP. The API key never reaches the browser.
@@ -117,13 +117,13 @@ When `ROXYAPI_KEY` is defined, the settings field is read only and the constant 
 | ----------------- | --------------------------------------------------------------------------------------------------------------- |
 | Western astrology | Natal charts, horoscopes (daily, weekly, monthly, love, career), transits, synastry, moon phases, compatibility |
 | Vedic astrology   | Kundli, nakshatras, Dasha, Panchang, KP system, doshas, yogas, muhurta                                          |
-| Tarot             | Rider Waite Smith deck, single card, three card, Celtic Cross, custom spreads                                   |
 | Numerology        | Life path, expression, soul urge, personal year, personality, karmic analysis                                   |
+| Tarot             | Rider Waite Smith deck, single card, three card, Celtic Cross, custom spreads                                   |
+| Biorhythm         | Physical, emotional, intellectual, intuitive cycles plus six extended cycles                                    |
 | I Ching           | Hexagrams, trigrams, coin casting, daily readings                                                               |
-| Dreams            | Symbol dictionary with 3,000 entries, pattern analysis                                                          |
 | Crystals          | Healing properties, zodiac and chakra pairings, birthstones                                                     |
+| Dreams            | Symbol dictionary with 3,000 entries, pattern analysis                                                          |
 | Angel numbers     | Meanings, daily guidance, repetition analysis                                                                   |
-| Biorhythm         | Physical, emotional, intellectual, intuitive cycles                                                             |
 | Location          | City geocoding for birth chart coordinates                                                                      |
 
 Every endpoint is cached with a per endpoint TTL so cached responses do not cost API quota. Object cache backends (Redis, Memcached) are picked up automatically.
