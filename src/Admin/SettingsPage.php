@@ -181,38 +181,7 @@ class SettingsPage {
 		if ( $hook !== 'toplevel_page_' . self::PAGE_SLUG ) {
 			return;
 		}
-		wp_enqueue_style(
-			'roxyapi-admin',
-			plugins_url( 'assets/css/admin.css', ROXYAPI_PLUGIN_FILE ),
-			array(),
-			ROXYAPI_VERSION
-		);
-		wp_enqueue_script(
-			'roxyapi-admin',
-			plugins_url( 'assets/js/admin.js', ROXYAPI_PLUGIN_FILE ),
-			array( 'wp-api-fetch' ),
-			ROXYAPI_VERSION,
-			true
-		);
-		// `wp.apiFetch` (loaded via the wp-api-fetch dependency) auto-attaches
-		// the REST nonce on every request from this enqueued bundle, so we do
-		// not need to localise it ourselves.
-		wp_localize_script(
-			'roxyapi-admin',
-			'RoxyAPIAdmin',
-			array(
-				'strings' => array(
-					'testing'         => __( 'Testing...', 'roxyapi' ),
-					'connected'       => __( 'Connected.', 'roxyapi' ),
-					'connectedBanner' => __( 'Connected to Roxy. Paste a shortcode below to render a reading on any page.', 'roxyapi' ),
-					'noKey'           => __( 'Paste your API key in the field above and save before testing.', 'roxyapi' ),
-					'invalidKey'      => __( 'That key was rejected. Double check it on your roxyapi.com dashboard, paste it again, and save.', 'roxyapi' ),
-					'requestFailed'   => __( 'Connection test failed. Try again in a moment.', 'roxyapi' ),
-					'copied'          => __( 'Copied', 'roxyapi' ),
-					'copyFailed'      => __( 'Copy failed', 'roxyapi' ),
-					'copy'            => __( 'Copy', 'roxyapi' ),
-				),
-			)
-		);
+		Assets::enqueue_admin_css();
+		Assets::enqueue_admin_script();
 	}
 }

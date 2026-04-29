@@ -16,6 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use RoxyAPI\Admin\SettingsSchema;
+
 class ApiKey {
 
 	/**
@@ -27,8 +29,8 @@ class ApiKey {
 		if ( defined( 'ROXYAPI_KEY' ) && ROXYAPI_KEY ) {
 			return (string) ROXYAPI_KEY;
 		}
-		$opts = get_option( 'roxyapi_settings', array() );
-		$enc  = is_array( $opts ) ? (string) ( $opts['api_key_encrypted'] ?? '' ) : '';
+		$opts = SettingsSchema::get_option();
+		$enc  = (string) ( $opts['api_key_encrypted'] ?? '' );
 		if ( $enc === '' ) {
 			return '';
 		}

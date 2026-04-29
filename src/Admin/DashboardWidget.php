@@ -59,32 +59,8 @@ class DashboardWidget {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
-		wp_enqueue_style(
-			'roxyapi-admin',
-			plugins_url( 'assets/css/admin.css', ROXYAPI_PLUGIN_FILE ),
-			array(),
-			ROXYAPI_VERSION
-		);
-		wp_enqueue_script(
-			'roxyapi-admin',
-			plugins_url( 'assets/js/admin.js', ROXYAPI_PLUGIN_FILE ),
-			array( 'wp-api-fetch' ),
-			ROXYAPI_VERSION,
-			true
-		);
-		// `wp.apiFetch` attaches its own REST nonce; localising one here was a
-		// dead field never read by the front-end JS.
-		wp_localize_script(
-			'roxyapi-admin',
-			'RoxyAPIAdmin',
-			array(
-				'strings' => array(
-					'copied'     => __( 'Copied', 'roxyapi' ),
-					'copyFailed' => __( 'Copy failed', 'roxyapi' ),
-					'copy'       => __( 'Copy', 'roxyapi' ),
-				),
-			)
-		);
+		Assets::enqueue_admin_css();
+		Assets::enqueue_admin_script();
 	}
 
 	/**

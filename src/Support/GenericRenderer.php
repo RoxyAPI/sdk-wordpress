@@ -590,10 +590,7 @@ class GenericRenderer {
 				break;
 			}
 		}
-		$with_spaces = preg_replace( '/(?<!^)([A-Z])/', ' $1', $field );
-		$with_spaces = preg_replace( '/([A-Za-z])([0-9])/', '$1 $2', (string) $with_spaces );
-		$with_spaces = str_replace( array( '_', '-' ), ' ', (string) $with_spaces );
-		$lower       = strtolower( trim( (string) $with_spaces ) );
+		$lower = Strings::camel_to_words( $field );
 		return $lower === '' ? '' : ( strtoupper( $lower[0] ) . substr( $lower, 1 ) );
 	}
 

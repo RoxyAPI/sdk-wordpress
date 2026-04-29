@@ -158,7 +158,10 @@ class Catalog {
 				// Hero ops are surfaced via Onboarding::hero_shortcodes() above.
 				continue;
 			}
-			$shortcode_tag = 'roxy_' . self::to_snake_case( $op_id );
+			$shortcode_tag = (string) ( $ep['shortcode_tag'] ?? '' );
+			if ( $shortcode_tag === '' ) {
+				continue;
+			}
 			if ( isset( $seen_tags[ $shortcode_tag ] ) ) {
 				continue;
 			}
@@ -320,21 +323,6 @@ class Catalog {
 	}
 
 	/**
-	 * Convert a camelCase / PascalCase operationId into a snake_case shortcode
-	 * tag suffix. Mirrors the regex used by `bin/generate.mjs::toSnakeCase`.
-	 *
-	 * @param string $op_id Operation id (e.g. "getMonthlyHoroscope").
-	 * @return string Snake case (e.g. "get_monthly_horoscope").
-	 */
-	private static function to_snake_case( string $op_id ): string {
-		$with_underscores = preg_replace( '/([a-z0-9])([A-Z])/', '$1_$2', $op_id );
-		$with_underscores = is_string( $with_underscores ) ? $with_underscores : $op_id;
-		$cleaned          = preg_replace( '/[^a-zA-Z0-9]/', '_', $with_underscores );
-		$cleaned          = is_string( $cleaned ) ? $cleaned : $with_underscores;
-		return strtolower( $cleaned );
-	}
-
-	/**
 	 * Humanise an operationId for display: split on caps, title-case words.
 	 *
 	 * Example: "getMonthlyHoroscope" -> "Get Monthly Horoscope".
@@ -343,26 +331,10 @@ class Catalog {
 	 * @return string Humanised label.
 	 */
 	private static function humanise_op_id( string $op_id ): string {
-		$spaced = preg_replace( '/([a-z0-9])([A-Z])/', '$1 $2', $op_id );
-		$spaced = is_string( $spaced ) ? $spaced : $op_id;
-		$spaced = preg_replace( '/[_\\-]+/', ' ', $spaced );
-		$spaced = is_string( $spaced ) ? $spaced : $op_id;
-		$spaced = trim( $spaced );
-		if ( $spaced === '' ) {
+		$lower = \RoxyAPI\Support\Strings::camel_to_words( $op_id );
+		if ( $lower === '' ) {
 			return $op_id;
 		}
-		// ucwords lowercases nothing; we want the first letter of each word
-		// capitalised regardless of original case.
-		$parts = preg_split( '/\\s+/', $spaced );
-		if ( ! is_array( $parts ) ) {
-			return ucfirst( strtolower( $spaced ) );
-		}
-		$parts = array_map(
-			static function ( $word ) {
-				return ucfirst( strtolower( (string) $word ) );
-			},
-			$parts
-		);
-		return implode( ' ', $parts );
+		return ucwords( $lower );
 	}
 }

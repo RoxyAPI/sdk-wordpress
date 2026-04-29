@@ -146,16 +146,6 @@ class Sanitize {
 	}
 
 	/**
-	 * Sanitize a value to a URL-safe slug.
-	 *
-	 * @param mixed $value Raw input value.
-	 * @return string
-	 */
-	public static function slug( $value ): string {
-		return sanitize_key( (string) $value );
-	}
-
-	/**
 	 * Sanitize a timezone value into the SaaS-accepted form.
 	 *
 	 * Returns either:

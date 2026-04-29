@@ -17,6 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use RoxyAPI\Admin\SettingsSchema;
+
 class RateLimit {
 
 	public const DEFAULT_LIMIT  = 20;
@@ -38,18 +40,6 @@ class RateLimit {
 		}
 		set_transient( $key, $current + 1, self::DEFAULT_WINDOW );
 		return true;
-	}
-
-	/**
-	 * Get the number of remaining requests within the current window.
-	 *
-	 * @param string $shortcode Shortcode name used as the rate limit scope.
-	 * @return int
-	 */
-	public static function remaining( string $shortcode ): int {
-		$key     = self::key( $shortcode );
-		$current = (int) get_transient( $key );
-		return max( 0, self::limit() - $current );
 	}
 
 	private static function key( string $shortcode ): string {
@@ -90,8 +80,8 @@ class RateLimit {
 	}
 
 	private static function limit(): int {
-		$opts = get_option( 'roxyapi_settings', array() );
-		if ( is_array( $opts ) && isset( $opts['rate_limit_per_hour'] ) ) {
+		$opts = SettingsSchema::get_option();
+		if ( isset( $opts['rate_limit_per_hour'] ) ) {
 			return max( 1, (int) $opts['rate_limit_per_hour'] );
 		}
 		return self::DEFAULT_LIMIT;

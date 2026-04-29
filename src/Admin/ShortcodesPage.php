@@ -89,12 +89,7 @@ class ShortcodesPage {
 			return;
 		}
 
-		wp_enqueue_style(
-			'roxyapi-admin',
-			plugins_url( 'assets/css/admin.css', ROXYAPI_PLUGIN_FILE ),
-			array(),
-			ROXYAPI_VERSION
-		);
+		Assets::enqueue_admin_css();
 		wp_enqueue_script(
 			'roxyapi-admin-shortcodes',
 			plugins_url( 'assets/js/admin-shortcodes.js', ROXYAPI_PLUGIN_FILE ),

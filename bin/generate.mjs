@@ -751,15 +751,17 @@ function emitEndpointsPhp() {
 				: `\n\t\t\t'attributes' => array(),`;
 
 		const blockOnly = hasRequiredObjectBody(op);
+		const shortcodeTag = `roxy_${toSnakeCase(op.operationId)}`;
 
 		return `		'${op.operationId}' => array(
-			'path'       => '${op.path}',
-			'method'     => '${op.method}',
-			'tag'        => '${op.tag.replace(/'/g, "\\'")}',
-			'summary'    => '${(op.summary || "").replace(/'/g, "\\'")}',
-			'ttl'        => ${ttl},
-			'hero'       => ${isHero ? "true" : "false"},
-			'block_only' => ${blockOnly ? "true" : "false"},${attributesPhp}
+			'path'          => '${op.path}',
+			'method'        => '${op.method}',
+			'tag'           => '${op.tag.replace(/'/g, "\\'")}',
+			'summary'       => '${(op.summary || "").replace(/'/g, "\\'")}',
+			'ttl'           => ${ttl},
+			'hero'          => ${isHero ? "true" : "false"},
+			'block_only'    => ${blockOnly ? "true" : "false"},
+			'shortcode_tag' => '${shortcodeTag}',${attributesPhp}
 		),`;
 	});
 
@@ -784,7 +786,7 @@ class Endpoints {
 	/**
 	 * All registered endpoints keyed by operationId.
 	 *
-	 * @return array<string, array{path: string, method: string, tag: string, summary: string, ttl: int, hero: bool, block_only: bool, attributes: array<string, string>}>
+	 * @return array<string, array{path: string, method: string, tag: string, summary: string, ttl: int, hero: bool, block_only: bool, shortcode_tag: string, attributes: array<string, string>}>
 	 */
 	public static function all(): array {
 		return array(
@@ -795,7 +797,7 @@ ${entries.join("\n")}
 	/**
 	 * Get a single endpoint by operationId.
 	 *
-	 * @return array{path: string, method: string, tag: string, summary: string, ttl: int, hero: bool, block_only: bool, attributes: array<string, string>}|null
+	 * @return array{path: string, method: string, tag: string, summary: string, ttl: int, hero: bool, block_only: bool, shortcode_tag: string, attributes: array<string, string>}|null
 	 */
 	public static function get( string $operation_id ): ?array {
 		$all = self::all();
@@ -805,7 +807,7 @@ ${entries.join("\n")}
 	/**
 	 * Only the non-hero (generated) endpoints.
 	 *
-	 * @return array<string, array{path: string, method: string, tag: string, summary: string, ttl: int, hero: bool, block_only: bool, attributes: array<string, string>}>
+	 * @return array<string, array{path: string, method: string, tag: string, summary: string, ttl: int, hero: bool, block_only: bool, shortcode_tag: string, attributes: array<string, string>}>
 	 */
 	public static function generated(): array {
 		return array_filter(

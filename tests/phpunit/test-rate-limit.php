@@ -41,7 +41,6 @@ class Test_Rate_Limit extends \WP_UnitTestCase {
 	public function test_check_returns_true_within_limit(): void {
 		$this->assertTrue( RateLimit::check( 'horoscope' ) );
 		$this->assertTrue( RateLimit::check( 'horoscope' ) );
-		$this->assertSame( RateLimit::DEFAULT_LIMIT - 2, RateLimit::remaining( 'horoscope' ) );
 	}
 
 	public function test_check_returns_false_when_limit_reached(): void {
@@ -51,11 +50,8 @@ class Test_Rate_Limit extends \WP_UnitTestCase {
 		$this->assertTrue( RateLimit::check( 'horoscope' ) );
 		$this->assertTrue( RateLimit::check( 'horoscope' ) );
 		$this->assertFalse( RateLimit::check( 'horoscope' ) );
-		// Counter must not creep above the limit.
-		$this->assertSame( 0, RateLimit::remaining( 'horoscope' ) );
-		// One more denial should not push remaining negative.
+		// One more denial should not flip the counter behaviour.
 		$this->assertFalse( RateLimit::check( 'horoscope' ) );
-		$this->assertSame( 0, RateLimit::remaining( 'horoscope' ) );
 	}
 
 	public function test_window_resets_when_transient_expires(): void {
@@ -80,7 +76,7 @@ class Test_Rate_Limit extends \WP_UnitTestCase {
 
 		// A different scope starts with full quota.
 		$this->assertTrue( RateLimit::check( 'test_key' ) );
-		$this->assertSame( 1, RateLimit::remaining( 'test_key' ) );
+		$this->assertTrue( RateLimit::check( 'test_key' ) );
 	}
 
 	public function test_different_ips_have_isolated_counters(): void {
@@ -118,9 +114,11 @@ class Test_Rate_Limit extends \WP_UnitTestCase {
 
 	public function test_default_limit_when_setting_unset(): void {
 		delete_option( 'roxyapi_settings' );
-		// Use a fresh scope so we are at zero.
-		$remaining_at_start = RateLimit::remaining( 'unset_scope' );
-		$this->assertSame( RateLimit::DEFAULT_LIMIT, $remaining_at_start );
+		// DEFAULT_LIMIT calls succeed before throttling kicks in.
+		for ( $i = 0; $i < RateLimit::DEFAULT_LIMIT; $i++ ) {
+			$this->assertTrue( RateLimit::check( 'unset_scope' ), "Call {$i} should succeed." );
+		}
+		$this->assertFalse( RateLimit::check( 'unset_scope' ), 'Call after default limit must fail.' );
 	}
 
 	public function test_custom_limit_override_via_option(): void {

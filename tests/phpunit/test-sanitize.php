@@ -142,19 +142,6 @@ class Test_Sanitize extends \WP_UnitTestCase {
 		$this->assertMatchesRegularExpression( '/^\d{2}:\d{2}:\d{2}$/', Sanitize::time_string( 'garbage', 'also garbage' ) );
 	}
 
-	public function test_slug_strips_spaces_and_uppercase(): void {
-		$this->assertSame( 'amethystquartz', Sanitize::slug( 'Amethyst Quartz' ) );
-	}
-
-	public function test_slug_strips_sql_injection_payload(): void {
-		// sanitize_key keeps only [a-z0-9_-] characters.
-		$out = Sanitize::slug( "'; DROP TABLE--" );
-		$this->assertMatchesRegularExpression( '/^[a-z0-9_-]*$/', $out );
-		$this->assertStringNotContainsString( ' ', $out );
-		$this->assertStringNotContainsString( ';', $out );
-		$this->assertStringNotContainsString( "'", $out );
-	}
-
 	public function test_non_negative_int_clamps_negative_to_zero(): void {
 		// Negative input clamps to zero (not absolute value). A user passing
 		// year=-1990 gets year=0, which the SaaS rejects as invalid, surfacing

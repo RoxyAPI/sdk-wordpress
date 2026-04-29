@@ -249,12 +249,7 @@ class DemoPage {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
-		wp_enqueue_style(
-			'roxyapi-admin',
-			plugins_url( 'assets/css/admin.css', ROXYAPI_PLUGIN_FILE ),
-			array(),
-			ROXYAPI_VERSION
-		);
+		Assets::enqueue_admin_css();
 		// Reuse the frontend stylesheet so rendered cards look identical to the
 		// front end. Plugin::register_frontend_style hooks admin_enqueue_scripts
 		// to register the handle so this enqueue resolves.
