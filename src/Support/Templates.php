@@ -95,8 +95,4 @@ class Templates {
 
 		return $out . '</div>';
 	}
-
-	public static function placeholder( string $message ): string {
-		return '<div class="roxyapi-placeholder"><p>' . esc_html( $message ) . '</p></div>';
-	}
 }

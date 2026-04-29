@@ -21,8 +21,7 @@
  *   string $key_help
  *   bool   $key_disabled
  *   array  $samples
- *   array  $hero_endpoints
- *   string $option_group / $page_slug / $docs_url / $support_url / $dashboard_url
+ *   string $option_group / $docs_url / $support_url / $dashboard_url
  *   string $privacy_policy_url
  *   string $active_tab
  *
@@ -53,7 +52,6 @@ $form_submit_input      = isset( $form_submit_input ) ? (string) $form_submit_in
 $cache_preset_input     = isset( $cache_preset_input ) ? (string) $cache_preset_input : '';
 $privacy_policy_url     = isset( $privacy_policy_url ) ? (string) $privacy_policy_url : '';
 $samples                = isset( $samples ) && is_array( $samples ) ? $samples : array();
-$hero_endpoints         = isset( $hero_endpoints ) && is_array( $hero_endpoints ) ? $hero_endpoints : array();
 $key_input              = isset( $key_input ) ? (string) $key_input : '';
 $key_help               = isset( $key_help ) ? (string) $key_help : '';
 $key_disabled           = ! empty( $key_disabled );

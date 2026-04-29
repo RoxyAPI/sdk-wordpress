@@ -18,30 +18,6 @@ use RoxyAPI\Support\Encryption;
 
 class SettingsFields {
 
-	public static function section_intro(): void {
-		echo '<p>' . esc_html__( 'Paste the API key from your Roxy dashboard. The key is encrypted at rest before being stored.', 'roxyapi' ) . '</p>';
-	}
-
-	/**
-	 * Render the API key field for the classic Settings API screen.
-	 *
-	 * @return void
-	 */
-	public static function field_api_key(): void {
-		echo wp_kses( self::api_key_input_html(), self::input_kses_allowed() );
-		?>
-		<p class="description">
-			<?php echo wp_kses_post( self::api_key_help_html() ); ?>
-		</p>
-		<p>
-			<button type="button" class="button" data-roxyapi-test-connection<?php echo ApiKey::is_configured() ? '' : ' disabled'; ?>>
-				<?php esc_html_e( 'Test Connection', 'roxyapi' ); ?>
-			</button>
-			<span class="roxyapi-test-connection-result" aria-live="polite"></span>
-		</p>
-		<?php
-	}
-
 	/**
 	 * Allowed-tags map for `wp_kses()` covering the form-input HTML this
 	 * class emits (`<input>`, `<label>`, `<span>`). Lets the templates pass

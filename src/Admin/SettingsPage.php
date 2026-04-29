@@ -28,7 +28,6 @@ class SettingsPage {
 		// there fatals because wp-admin/includes/template.php is not loaded.
 		add_action( 'admin_init', array( self::class, 'register_setting' ) );
 		add_action( 'rest_api_init', array( self::class, 'register_setting' ) );
-		add_action( 'admin_init', array( self::class, 'register_settings_ui' ) );
 		add_action( 'admin_enqueue_scripts', array( self::class, 'enqueue' ) );
 	}
 
@@ -105,31 +104,6 @@ class SettingsPage {
 		);
 	}
 
-	/**
-	 * Register the Settings API section and field for the classic admin UI.
-	 *
-	 * Admin-only because add_settings_section / add_settings_field live in
-	 * wp-admin/includes/template.php and are not loaded during REST.
-	 *
-	 * @return void
-	 */
-	public static function register_settings_ui(): void {
-		add_settings_section(
-			'roxyapi_main',
-			esc_html__( 'API Connection', 'roxyapi' ),
-			array( SettingsFields::class, 'section_intro' ),
-			self::PAGE_SLUG
-		);
-
-		add_settings_field(
-			'api_key',
-			esc_html__( 'API Key', 'roxyapi' ),
-			array( SettingsFields::class, 'field_api_key' ),
-			self::PAGE_SLUG,
-			'roxyapi_main'
-		);
-	}
-
 	public static function render(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
@@ -154,7 +128,6 @@ class SettingsPage {
 					'key_disabled'   => $key_disabled,
 					'is_configured'  => false,
 					'option_group'   => self::OPTION_GROUP,
-					'page_slug'      => self::PAGE_SLUG,
 				)
 			);
 		} else {
@@ -179,12 +152,10 @@ class SettingsPage {
 					'cache_preset_input'     => SettingsFields::cache_preset_input_html(),
 					'privacy_policy_url'     => admin_url( 'options-privacy.php' ),
 					'samples'                => Onboarding::quickstart_samples(),
-					'hero_endpoints'         => Onboarding::hero_shortcodes(),
 					'key_input'              => SettingsFields::api_key_input_html(),
 					'key_help'               => SettingsFields::api_key_help_html(),
 					'key_disabled'           => $key_disabled,
 					'option_group'           => self::OPTION_GROUP,
-					'page_slug'              => self::PAGE_SLUG,
 					'docs_url'               => Onboarding::docs_url(),
 					'support_url'            => Onboarding::support_url(),
 					'dashboard_url'          => Onboarding::dashboard_url(),

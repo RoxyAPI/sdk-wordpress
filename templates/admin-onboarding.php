@@ -11,7 +11,6 @@
  *   bool   $key_disabled   Whether the key field is locked (constant defined).
  *   bool   $is_configured  Whether the API key is configured.
  *   string $option_group   Settings option group slug, for settings_fields().
- *   string $page_slug      Settings page slug, for do_settings_sections().
  *
  * @package RoxyAPI
  */

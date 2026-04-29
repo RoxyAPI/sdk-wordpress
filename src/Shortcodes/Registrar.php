@@ -48,7 +48,6 @@ class Registrar {
 	public static function register(): void {
 		add_action( 'init', array( self::class, 'register_hero' ), 10 );
 		add_action( 'init', array( self::class, 'register_generated' ), 20 );
-		add_action( 'init', array( self::class, 'register_assets' ), 5 );
 	}
 
 	public static function register_hero(): void {
@@ -69,14 +68,5 @@ class Registrar {
 		if ( class_exists( '\\RoxyAPI\\Generated\\ShortcodeBootstrap' ) ) {
 			\RoxyAPI\Generated\ShortcodeBootstrap::register();
 		}
-	}
-
-	public static function register_assets(): void {
-		wp_register_style(
-			'roxyapi-frontend',
-			plugins_url( 'assets/css/frontend.css', ROXYAPI_PLUGIN_FILE ),
-			array(),
-			ROXYAPI_VERSION
-		);
 	}
 }

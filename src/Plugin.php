@@ -181,8 +181,4 @@ class Plugin {
 		wp_safe_redirect( admin_url( 'admin.php?page=' . SettingsPage::PAGE_SLUG ) );
 		exit;
 	}
-
-	public static function file(): string {
-		return self::$plugin_file;
-	}
 }

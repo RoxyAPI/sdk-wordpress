@@ -1,8 +1,6 @@
 <?php
 /**
- * Server-side render stub for the Tarot block.
- *
- * Delegates to the matching hero shortcode. Full implementation in v1.1.
+ * Server-side render for the Tarot block. Delegates to the hero shortcode.
  *
  * @package RoxyAPI
  */
@@ -11,4 +9,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo wp_kses_post( \RoxyAPI\Shortcodes\TarotCard::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/tarot' ) );
+echo wp_kses_post( \RoxyAPI\Generated\Heroes\TarotCard::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/tarot' ) );
