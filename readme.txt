@@ -27,7 +27,7 @@ The plugin itself is GPLv2 or later and the source is available at https://githu
 * Pythagorean numerology with Life Path, Expression, Soul Urge, and Personality numbers
 * I Ching hexagram casting with full interpretation
 * Natal chart calculation with houses, aspects, and planet positions
-* Dream symbol dictionary with 3,000+ entries
+* Dream symbol dictionary with 2,000+ entries
 * Biorhythm, angel number, and crystal reference data
 * Parent Astrology Section wrapper block that shares the zodiac sign across all child blocks via block context
 * Server side caching with per endpoint TTL to keep your API quota low
