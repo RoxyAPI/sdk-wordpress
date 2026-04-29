@@ -480,7 +480,7 @@
 			"sign": {
 				"default": "",
 				"required": true,
-				"sanitize": "zodiac_sign_title",
+				"sanitize": "zodiac_sign",
 				"spec_field": "sign"
 			}
 		},

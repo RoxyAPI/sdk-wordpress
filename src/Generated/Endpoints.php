@@ -1602,7 +1602,7 @@ class Endpoints {
 			'hero'       => true,
 			'block_only' => false,
 			'attributes' => array(
-				'sign' => 'Pisces',
+				'sign' => 'pisces',
 				'lang' => 'en',
 				'limit' => '20',
 				'offset' => '0',
@@ -1736,7 +1736,7 @@ class Endpoints {
 			'attributes' => array(
 				'lang' => 'en',
 				'chakra' => 'Heart',
-				'zodiac' => 'Pisces',
+				'zodiac' => 'pisces',
 				'element' => 'Water',
 				'color' => 'pink',
 				'planet' => 'Venus',

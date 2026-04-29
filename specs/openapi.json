@@ -48019,24 +48019,24 @@
             "schema": {
               "type": "string",
               "enum": [
-                "Aries",
-                "Taurus",
-                "Gemini",
-                "Cancer",
-                "Leo",
-                "Virgo",
-                "Libra",
-                "Scorpio",
-                "Sagittarius",
-                "Capricorn",
-                "Aquarius",
-                "Pisces"
+                "aries",
+                "taurus",
+                "gemini",
+                "cancer",
+                "leo",
+                "virgo",
+                "libra",
+                "scorpio",
+                "sagittarius",
+                "capricorn",
+                "aquarius",
+                "pisces"
               ],
-              "example": "Pisces",
-              "description": "Zodiac sign name, case-insensitive (e.g., pisces, Pisces, PISCES all work). Valid: Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces."
+              "example": "pisces",
+              "description": "Zodiac sign name, case-insensitive (e.g., pisces, Pisces, PISCES all work). Valid: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces."
             },
             "required": true,
-            "description": "Zodiac sign name, case-insensitive (e.g., pisces, Pisces, PISCES all work). Valid: Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces.",
+            "description": "Zodiac sign name, case-insensitive (e.g., pisces, Pisces, PISCES all work). Valid: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces.",
             "name": "sign",
             "in": "path"
           },
@@ -51346,10 +51346,10 @@
                 "Crown"
               ],
               "example": "Heart",
-              "description": "Filter by chakra association. Valid values: Root, Sacral, Solar Plexus, Heart, Throat, Third Eye, Crown."
+              "description": "Filter by chakra association, case-insensitive. Valid values: Root, Sacral, Solar Plexus, Heart, Throat, Third Eye, Crown."
             },
             "required": false,
-            "description": "Filter by chakra association. Valid values: Root, Sacral, Solar Plexus, Heart, Throat, Third Eye, Crown.",
+            "description": "Filter by chakra association, case-insensitive. Valid values: Root, Sacral, Solar Plexus, Heart, Throat, Third Eye, Crown.",
             "name": "chakra",
             "in": "query"
           },
@@ -51357,24 +51357,24 @@
             "schema": {
               "type": "string",
               "enum": [
-                "Aries",
-                "Taurus",
-                "Gemini",
-                "Cancer",
-                "Leo",
-                "Virgo",
-                "Libra",
-                "Scorpio",
-                "Sagittarius",
-                "Capricorn",
-                "Aquarius",
-                "Pisces"
+                "aries",
+                "taurus",
+                "gemini",
+                "cancer",
+                "leo",
+                "virgo",
+                "libra",
+                "scorpio",
+                "sagittarius",
+                "capricorn",
+                "aquarius",
+                "pisces"
               ],
-              "example": "Pisces",
-              "description": "Filter by zodiac sign. Valid values: Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces."
+              "example": "pisces",
+              "description": "Filter by zodiac sign, case-insensitive. Valid values: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces."
             },
             "required": false,
-            "description": "Filter by zodiac sign. Valid values: Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces.",
+            "description": "Filter by zodiac sign, case-insensitive. Valid values: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces.",
             "name": "zodiac",
             "in": "query"
           },
@@ -51389,10 +51389,10 @@
                 "Storm"
               ],
               "example": "Water",
-              "description": "Filter by elemental association. Valid values: Earth, Water, Fire, Air, Storm."
+              "description": "Filter by elemental association, case-insensitive. Valid values: Earth, Water, Fire, Air, Storm."
             },
             "required": false,
-            "description": "Filter by elemental association. Valid values: Earth, Water, Fire, Air, Storm.",
+            "description": "Filter by elemental association, case-insensitive. Valid values: Earth, Water, Fire, Air, Storm.",
             "name": "element",
             "in": "query"
           },

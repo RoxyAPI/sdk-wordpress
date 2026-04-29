@@ -41,23 +41,6 @@ class Sanitize {
 	}
 
 	/**
-	 * Title-case zodiac sign sanitiser. Always returns "Aries", "Taurus",
-	 * etc. — uppercase first letter, the rest lowercase. Used by endpoints
-	 * whose OpenAPI enum is strict Title Case (e.g. `/crystals/zodiac/{sign}`).
-	 *
-	 * The horoscope domain uses lowercase enums and stays on `zodiac_sign`.
-	 * Per-domain spec authoring inconsistency, not a renderer problem.
-	 *
-	 * @param mixed  $value    Raw input value.
-	 * @param string $fallback Fallback sign if invalid (Title Case expected).
-	 * @return string
-	 */
-	public static function zodiac_sign_title( $value, string $fallback = 'Aries' ): string {
-		$slug = self::zodiac_sign( $value, strtolower( $fallback ) );
-		return ucfirst( $slug );
-	}
-
-	/**
 	 * Sanitize a value to a YYYY-MM-DD date string.
 	 *
 	 * Always returns YYYY-MM-DD on the way OUT, regardless of what came IN.

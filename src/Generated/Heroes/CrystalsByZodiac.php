@@ -59,7 +59,7 @@ class CrystalsByZodiac {
 			return \RoxyAPI\Support\Templates::error( sprintf( /* translators: %s is the canonical example shortcode. */ __( "The sign attribute is required. Example: %s", 'roxyapi' ), "[roxy_crystals_by_zodiac sign=\"aries\"]" ) );
 		}
 
-		$sign_clean = \RoxyAPI\Support\Sanitize::zodiac_sign_title( $atts['sign'] );
+		$sign_clean = \RoxyAPI\Support\Sanitize::zodiac_sign( $atts['sign'] );
 
 		$data = \RoxyAPI\Generated\Client::getCrystalsByZodiac( $sign_clean );
 
@@ -86,7 +86,7 @@ class CrystalsByZodiac {
 			return new \WP_Error( 'roxyapi_missing_attrs', sprintf( /* translators: %s is the canonical example shortcode. */ __( "The sign attribute is required. Example: %s", 'roxyapi' ), "[roxy_crystals_by_zodiac sign=\"aries\"]" ) );
 		}
 
-		$sign_clean = \RoxyAPI\Support\Sanitize::zodiac_sign_title( $atts['sign'] );
+		$sign_clean = \RoxyAPI\Support\Sanitize::zodiac_sign( $atts['sign'] );
 
 		$data = \RoxyAPI\Generated\Client::getCrystalsByZodiac( $sign_clean );
 
