@@ -18,8 +18,8 @@ The only multi domain spiritual intelligence plugin for WordPress. Drop daily ho
 
 Interactive forms for your visitors. Gutenberg blocks for your editor. Shortcodes for anywhere else. Server side rendering keeps your API key out of the browser. Transient caching keeps your quota intact.
 
-- **Ten hero blocks and shortcodes** covering western astrology, vedic astrology, numerology, tarot, biorhythm, I Ching, crystals, dreams, angel numbers, and location.
-- **120+ auto generated shortcodes** for the long tail. Every endpoint in the RoxyAPI OpenAPI spec is reachable from a shortcode.
+- **17 hero blocks and shortcodes** covering western astrology, vedic astrology (kundli, panchang, mangal dosha, KP chart, gun milan), tarot (daily, three card, yes or no), numerology, biorhythm, angel numbers, crystals by zodiac, current moon phase, and two-chart compatibility (synastry, gun milan, Western compatibility).
+- **116 auto generated shortcodes** for the long tail. Every endpoint in the RoxyAPI OpenAPI spec is reachable from a shortcode.
 - **Form mode on every hero shortcode.** Let visitors submit their own sign, name, birth date, or question and render a personalized reading. No JavaScript required.
 - **Zero client side secrets.** All calls run in PHP. The API key never reaches the browser.
 

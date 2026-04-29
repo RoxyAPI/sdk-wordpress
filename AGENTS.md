@@ -1,8 +1,8 @@
 # roxyapi WordPress plugin: Agent Guide
 
-WordPress plugin for [RoxyAPI](https://roxyapi.com). Drop horoscopes, numerology, tarot, I Ching, natal charts, and more onto any WordPress page with shortcodes or Gutenberg blocks. One API key, ten spiritual data domains, 130+ endpoints.
+WordPress plugin for [RoxyAPI](https://roxyapi.com). Drop Western and Vedic astrology, numerology, tarot, biorhythm, angel numbers, crystals, dream symbols, and I Ching readings onto any WordPress page with shortcodes or Gutenberg blocks. One API key, ten spiritual data domains, 130+ endpoints.
 
-> Before writing any code in this repo, read the build runbook at `https://github.com/RoxyAPI/sdk-wordpress/blob/main/AGENTS.md` and the upstream spec at `https://roxyapi.com/api/v2/openapi.json`.
+The upstream OpenAPI spec is the source of truth: `https://roxyapi.com/api/v2/openapi.json`.
 
 ## Install
 
@@ -21,7 +21,7 @@ define( 'ROXYAPI_KEY', getenv( 'ROXYAPI_KEY' ) );
 
 ## Use a shortcode
 
-Browse the full library of 130 shortcodes at Roxy > Shortcodes in the WordPress admin sidebar.
+Browse the full library at Roxy > Shortcodes in the WordPress admin sidebar. 17 hand-curated hero shortcodes cover the highest-demand readings; every other endpoint is reachable via auto-generated long-tail shortcodes.
 
 Every hero shortcode has two modes, auto detected.
 
@@ -85,19 +85,22 @@ Drop one Astrology Section wrapper block on the page, set the zodiac sign in its
 
 ## Domains
 
-| Block / shortcode prefix | What it covers                                                                |
-| ------------------------ | ----------------------------------------------------------------------------- |
-| Horoscope                | Western horoscopes: daily, weekly, monthly, love, career, Chinese             |
-| Natal Chart              | Western birth chart: planets, houses, aspects, transits                       |
-| Tarot                    | Rider Waite Smith deck: single card, three card, Celtic Cross, custom layouts |
-| Numerology               | Life path, expression, soul urge, personal year, full chart                   |
-| I Ching                  | Hexagram casting and interpretation                                           |
-| Dreams                   | Symbol dictionary with 3,000 entries                                          |
-| Biorhythm                | Physical, emotional, intellectual, intuitive cycles                           |
-| Angel Number             | Number meanings and pattern analysis                                          |
-| Crystal                  | Properties, zodiac and chakra pairings                                        |
+| Block / shortcode prefix | What it covers                                                                       |
+| ------------------------ | ------------------------------------------------------------------------------------ |
+| Horoscope                | Western horoscopes: daily, weekly, monthly, love, career, Chinese                    |
+| Natal Chart              | Western birth chart: planets, houses, aspects, transits                              |
+| Synastry, Compatibility  | Two-chart Western compatibility: synastry aspects and lighter compatibility score    |
+| Moon Phase               | Current moon phase, illumination, sign, meaning                                      |
+| Kundli, Panchang         | Vedic birth chart, daily Vedic almanac (tithi, nakshatra, rahu kaal, abhijit)        |
+| Mangal Dosha, KP Chart   | Vedic dosha detection, KP system with 249 sub-lord analysis                          |
+| Gun Milan                | Vedic Ashtakoota matrimonial compatibility (36-point)                                |
+| Tarot                    | Rider Waite Smith deck: single card, three card, Celtic Cross, custom, yes / no      |
+| Numerology, Life Path    | Life path, expression, soul urge, personal year, full chart                          |
+| Biorhythm                | Physical, emotional, intellectual, intuitive cycles                                  |
+| Angel Number             | Number meanings and pattern analysis                                                 |
+| Crystals by Zodiac       | Healing crystals filtered by zodiac sign                                             |
 
-For Vedic astrology, KP system, panchang, dasha calculations, and other long tail endpoints, use the auto-generated shortcodes. The full list lives at Roxy > Shortcodes in the WordPress admin sidebar.
+For everything else (KP horary, dasha, navamsa, dream symbols, single-crystal lookup, I Ching casts, full angel number catalog, etc.) use the auto-generated long-tail shortcodes browsable at Roxy > Shortcodes.
 
 ## How the plugin reads your API key
 
@@ -153,6 +156,22 @@ Cached responses do not consume RoxyAPI quota. Object cache backends (Redis, Mem
 | Add a horoscope to any paragraph                 | Use Block Bindings: bind a `core/paragraph` to source `roxyapi/daily-text` with args `{"sign":"leo"}` |
 | Share zodiac sign across many blocks on one page | Add an Astrology Section wrapper block and put the children inside                                    |
 | Use the long tail endpoints                      | Pick a generated block from the inserter or use `[roxy_horoscope_weekly sign="leo"]` style shortcodes |
+
+## Commands
+
+| Command                          | What it does                                                                                  |
+| -------------------------------- | --------------------------------------------------------------------------------------------- |
+| `npm run generate`               | Regenerate `src/Generated/`, `blocks/generated/`, hero classes, and form classes from the live OpenAPI spec |
+| `npm run generate:check`         | Run `generate` then fail if it produced a diff (use as a CI gate)                             |
+| `npm run build:all`              | Build blocks (`wp-scripts build`), block manifest, and post-build (ABSPATH injection)         |
+| `npm run start`                  | `wp-scripts start` dev mode                                                                   |
+| `npm run plugin-zip`             | Build the wp.org distribution zip (excludes everything in `.distignore`)                      |
+| `npm run wp-env start`           | Boot local WordPress (Docker bind-mount: see Gotchas)                                         |
+| `composer run lint`              | PHPCS WordPress standard                                                                      |
+| `composer run lint:fix`          | phpcbf auto-fix the fixable PHPCS findings                                                    |
+| `composer run stan`              | PHPStan level 8                                                                               |
+| `composer run test`              | PHPUnit (run `bin/install-wp-tests.sh` once to set up `/tmp/wordpress-tests-lib`)             |
+| `bash bin/seed-qa-pages.sh`      | Seed local wp-env with a QA page exercising every hero shortcode (needs `ROXYAPI_TEST_KEY`)   |
 
 ## Gotchas
 
