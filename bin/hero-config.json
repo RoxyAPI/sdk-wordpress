@@ -46,7 +46,284 @@
 				"spec_field": "timezone"
 			}
 		},
-		"missing_message": "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to UTC; pass an IANA name or decimal hours for accuracy). Example: %s"
+		"missing_message": "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to UTC; pass an IANA name or decimal hours for accuracy). Example: %s",
+		"form_mode": {
+			"title": "Western birth chart",
+			"submit_label": "Calculate chart",
+			"section": {
+				"name": "birth",
+				"label": "Birth details"
+			},
+			"fields": [
+				{ "attr": "birth_date", "label": "Birth date", "type": "date", "required": true, "help": "Year, month, and day of birth" },
+				{ "attr": "birth_time", "label": "Birth time", "type": "time", "required": true, "help": "Local time of birth in 24-hour format" },
+				{ "attr": "lat", "label": "Latitude", "type": "number", "required": true, "min": -90, "max": 90, "step": "any", "help": "Decimal degrees, negative for south" },
+				{ "attr": "lon", "label": "Longitude", "type": "number", "required": true, "min": -180, "max": 180, "step": "any", "help": "Decimal degrees, negative for west" },
+				{ "attr": "tz", "label": "Timezone", "type": "timezone", "required": true, "help": "IANA name like America/New_York" }
+			]
+		}
+	},
+	"kundli": {
+		"operationId": "generateBirthChart",
+		"title": "Vedic kundli",
+		"description": "Vedic birth chart with twelve rashis, planetary positions, nakshatra, and per-house interpretations.",
+		"domain": "Vedic Astrology",
+		"example": "[roxy_kundli birth_date=\"1990-05-15\" birth_time=\"14:30\" lat=\"28.6139\" lon=\"77.2090\" tz=\"Asia/Kolkata\"]",
+		"attributes": {
+			"birth_date": {
+				"default": "",
+				"required": true,
+				"sanitize": "date_string",
+				"spec_field": "date"
+			},
+			"birth_time": {
+				"default": "",
+				"required": true,
+				"sanitize": "time_string",
+				"spec_field": "time"
+			},
+			"lat": {
+				"default": "",
+				"required": true,
+				"sanitize": "latitude",
+				"spec_field": "latitude"
+			},
+			"lon": {
+				"default": "",
+				"required": true,
+				"sanitize": "longitude",
+				"spec_field": "longitude"
+			},
+			"tz": {
+				"default": "5.5",
+				"required": false,
+				"sanitize": "timezone",
+				"spec_field": "timezone"
+			}
+		},
+		"missing_message": "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to 5.5 IST; pass an IANA name like Asia/Kolkata for DST-correct results). Example: %s",
+		"form_mode": {
+			"title": "Vedic birth chart",
+			"submit_label": "Generate kundli",
+			"section": {
+				"name": "birth",
+				"label": "Birth details"
+			},
+			"fields": [
+				{ "attr": "birth_date", "label": "Birth date", "type": "date", "required": true, "help": "Year, month, and day of birth" },
+				{ "attr": "birth_time", "label": "Birth time", "type": "time", "required": true, "help": "Local time of birth in 24-hour format" },
+				{ "attr": "lat", "label": "Latitude", "type": "number", "required": true, "min": -90, "max": 90, "step": "any", "help": "Decimal degrees, negative for south" },
+				{ "attr": "lon", "label": "Longitude", "type": "number", "required": true, "min": -180, "max": 180, "step": "any", "help": "Decimal degrees, negative for west" },
+				{ "attr": "tz", "label": "Timezone", "type": "timezone", "required": true, "help": "IANA name like Asia/Kolkata" }
+			]
+		}
+	},
+	"panchang": {
+		"operationId": "getDetailedPanchang",
+		"title": "Panchang",
+		"description": "Detailed Hindu calendar for any date and location: tithi, nakshatra, yoga, karana, rahu kaal, abhijit muhurta, brahma muhurta, and more.",
+		"domain": "Vedic Astrology",
+		"example": "[roxy_panchang date=\"2026-04-28\" lat=\"28.6139\" lon=\"77.2090\" tz=\"Asia/Kolkata\"]",
+		"attributes": {
+			"date": {
+				"default": "",
+				"required": true,
+				"sanitize": "date_string",
+				"spec_field": "date"
+			},
+			"lat": {
+				"default": "",
+				"required": true,
+				"sanitize": "latitude",
+				"spec_field": "latitude"
+			},
+			"lon": {
+				"default": "",
+				"required": true,
+				"sanitize": "longitude",
+				"spec_field": "longitude"
+			},
+			"tz": {
+				"default": "5.5",
+				"required": false,
+				"sanitize": "timezone",
+				"spec_field": "timezone"
+			}
+		},
+		"missing_message": "The date, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s",
+		"form_mode": {
+			"title": "Detailed panchang",
+			"submit_label": "Look up panchang",
+			"section": {
+				"name": "details",
+				"label": "Date and location"
+			},
+			"fields": [
+				{ "attr": "date", "label": "Date", "type": "date", "required": true, "help": "Date for the panchang reading" },
+				{ "attr": "lat", "label": "Latitude", "type": "number", "required": true, "min": -90, "max": 90, "step": "any", "help": "Decimal degrees, negative for south" },
+				{ "attr": "lon", "label": "Longitude", "type": "number", "required": true, "min": -180, "max": 180, "step": "any", "help": "Decimal degrees, negative for west" },
+				{ "attr": "tz", "label": "Timezone", "type": "timezone", "required": true, "help": "IANA name like Asia/Kolkata" }
+			]
+		}
+	},
+	"mangal_dosha": {
+		"operationId": "checkManglikDosha",
+		"title": "Mangal Dosha",
+		"description": "Check Mangal Dosha (manglik) status for matrimonial compatibility, with severity, remedies, and exception conditions.",
+		"domain": "Vedic Astrology",
+		"example": "[roxy_mangal_dosha birth_date=\"1990-05-15\" birth_time=\"14:30\" lat=\"28.6139\" lon=\"77.2090\" tz=\"Asia/Kolkata\"]",
+		"attributes": {
+			"birth_date": {
+				"default": "",
+				"required": true,
+				"sanitize": "date_string",
+				"spec_field": "date"
+			},
+			"birth_time": {
+				"default": "",
+				"required": true,
+				"sanitize": "time_string",
+				"spec_field": "time"
+			},
+			"lat": {
+				"default": "",
+				"required": true,
+				"sanitize": "latitude",
+				"spec_field": "latitude"
+			},
+			"lon": {
+				"default": "",
+				"required": true,
+				"sanitize": "longitude",
+				"spec_field": "longitude"
+			},
+			"tz": {
+				"default": "5.5",
+				"required": false,
+				"sanitize": "timezone",
+				"spec_field": "timezone"
+			}
+		},
+		"missing_message": "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s",
+		"form_mode": {
+			"title": "Mangal Dosha check",
+			"submit_label": "Check Mangal Dosha",
+			"section": {
+				"name": "birth",
+				"label": "Birth details"
+			},
+			"fields": [
+				{ "attr": "birth_date", "label": "Birth date", "type": "date", "required": true, "help": "Year, month, and day of birth" },
+				{ "attr": "birth_time", "label": "Birth time", "type": "time", "required": true, "help": "Local time of birth in 24-hour format" },
+				{ "attr": "lat", "label": "Latitude", "type": "number", "required": true, "min": -90, "max": 90, "step": "any", "help": "Decimal degrees, negative for south" },
+				{ "attr": "lon", "label": "Longitude", "type": "number", "required": true, "min": -180, "max": 180, "step": "any", "help": "Decimal degrees, negative for west" },
+				{ "attr": "tz", "label": "Timezone", "type": "timezone", "required": true, "help": "IANA name like Asia/Kolkata" }
+			]
+		}
+	},
+	"kp_chart": {
+		"operationId": "generateKpChart",
+		"title": "KP chart",
+		"description": "Krishnamurti Paddhati chart with cusps, planets, sub-lords, and significators.",
+		"domain": "Vedic Astrology",
+		"example": "[roxy_kp_chart birth_date=\"1990-05-15\" birth_time=\"14:30\" lat=\"28.6139\" lon=\"77.2090\" tz=\"Asia/Kolkata\"]",
+		"attributes": {
+			"birth_date": {
+				"default": "",
+				"required": true,
+				"sanitize": "date_string",
+				"spec_field": "date"
+			},
+			"birth_time": {
+				"default": "",
+				"required": true,
+				"sanitize": "time_string",
+				"spec_field": "time"
+			},
+			"lat": {
+				"default": "",
+				"required": true,
+				"sanitize": "latitude",
+				"spec_field": "latitude"
+			},
+			"lon": {
+				"default": "",
+				"required": true,
+				"sanitize": "longitude",
+				"spec_field": "longitude"
+			},
+			"tz": {
+				"default": "5.5",
+				"required": false,
+				"sanitize": "timezone",
+				"spec_field": "timezone"
+			}
+		},
+		"missing_message": "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s",
+		"form_mode": {
+			"title": "KP chart",
+			"submit_label": "Generate KP chart",
+			"section": {
+				"name": "birth",
+				"label": "Birth details"
+			},
+			"fields": [
+				{ "attr": "birth_date", "label": "Birth date", "type": "date", "required": true, "help": "Year, month, and day of birth" },
+				{ "attr": "birth_time", "label": "Birth time", "type": "time", "required": true, "help": "Local time of birth in 24-hour format" },
+				{ "attr": "lat", "label": "Latitude", "type": "number", "required": true, "min": -90, "max": 90, "step": "any", "help": "Decimal degrees, negative for south" },
+				{ "attr": "lon", "label": "Longitude", "type": "number", "required": true, "min": -180, "max": 180, "step": "any", "help": "Decimal degrees, negative for west" },
+				{ "attr": "tz", "label": "Timezone", "type": "timezone", "required": true, "help": "IANA name like Asia/Kolkata" }
+			]
+		}
+	},
+	"synastry": {
+		"title": "Synastry",
+		"description": "Western synastry chart between two birth charts with compatibility score and inter-aspects.",
+		"domain": "Western Astrology",
+		"example": "[roxy_synastry]",
+		"delegate_to_form": "CalculateSynastryForm"
+	},
+	"gun_milan": {
+		"title": "Gun Milan",
+		"description": "Vedic 36-point Ashtakoota matrimonial compatibility with dosha cancellations and per-koot breakdown.",
+		"domain": "Vedic Astrology",
+		"example": "[roxy_gun_milan]",
+		"delegate_to_form": "CalculateGunMilanForm"
+	},
+	"compatibility": {
+		"title": "Compatibility score",
+		"description": "Western compatibility percentage between two charts with sign, element, and aspect breakdown.",
+		"domain": "Western Astrology",
+		"example": "[roxy_compatibility]",
+		"delegate_to_form": "CalculateCompatibilityForm"
+	},
+	"moon_phase": {
+		"operationId": "getCurrentMoonPhase",
+		"title": "Moon phase",
+		"description": "Current moon phase, illumination, sign, degree, and meaning.",
+		"domain": "Western Astrology",
+		"example": "[roxy_moon_phase]",
+		"attributes": {}
+	},
+	"tarot_yes_no": {
+		"operationId": "castYesNo",
+		"title": "Tarot yes or no",
+		"description": "Single-card Yes / No / Maybe answer with strength rating and interpretation.",
+		"domain": "Tarot",
+		"example": "[roxy_tarot_yes_no question=\"Should I take the new job\"]",
+		"attributes": {
+			"question": {
+				"default": "",
+				"sanitize": { "name": "bounded_text", "args": [ 500 ] }
+			}
+		},
+		"form_mode": {
+			"title": "Tarot yes or no",
+			"submit_label": "Get answer",
+			"fields": [
+				{ "attr": "question", "label": "Your question", "type": "text", "required": false, "placeholder": "Should I take the new job", "help": "Optional. The card answers whatever you bring to it." }
+			]
+		}
 	},
 	"tarot_card": {
 		"title": "Tarot card",
@@ -76,7 +353,15 @@
 				"operationId": "getDailyCard",
 				"passthrough": {}
 			}
-		]
+		],
+		"form_mode": {
+			"title": "Tarot reading",
+			"submit_label": "Draw cards",
+			"fields": [
+				{ "attr": "question", "label": "Your question", "type": "text", "required": false, "placeholder": "What should I focus on this week", "help": "Optional. The cards reflect on whatever you bring to them." },
+				{ "attr": "spread", "label": "Spread", "type": "enum", "required": true, "enum": [ "daily", "three", "celtic" ], "help": "Daily is one card. Three is past, present, future. Celtic is a ten-card layout." }
+			]
+		}
 	},
 	"numerology": {
 		"operationId": "generateNumerologyChart",
@@ -98,7 +383,15 @@
 			}
 		},
 		"missing_message": "The name and birth_date attributes are required. Example: %s",
-		"transform_error_message": "The birth_date attribute must be in YYYY-MM-DD format. Example: %s"
+		"transform_error_message": "The birth_date attribute must be in YYYY-MM-DD format. Example: %s",
+		"form_mode": {
+			"title": "Numerology chart",
+			"submit_label": "Calculate chart",
+			"fields": [
+				{ "attr": "name", "label": "Full name at birth", "type": "text", "required": true, "help": "First and last name as recorded at birth" },
+				{ "attr": "birth_date", "label": "Birth date", "type": "date", "required": true, "help": "Year, month, and day of birth" }
+			]
+		}
 	},
 	"life_path": {
 		"operationId": "calculateLifePath",
@@ -114,54 +407,14 @@
 			}
 		},
 		"missing_message": "The birth_date attribute is required. Example: %s",
-		"transform_error_message": "The birth_date attribute must be in YYYY-MM-DD format. Example: %s"
-	},
-	"iching": {
-		"title": "I Ching",
-		"description": "Hexagram cast and interpretation for any question.",
-		"domain": "I-Ching",
-		"example": "[roxy_iching question=\"Should I take the new job\"]",
-		"attributes": {
-			"question": {
-				"default": "",
-				"sanitize": { "name": "bounded_text", "args": [ 500 ] }
-			},
-			"number": { "default": "", "sanitize": "non_negative_int" }
-		},
-		"dispatch": [
-			{
-				"when_present": "number",
-				"operationId": "getHexagram",
-				"path_args": { "number": "number" }
-			},
-			{ "default": true, "operationId": "castReading", "passthrough": {} }
-		]
-	},
-	"dream": {
-		"title": "Dream symbol",
-		"description": "Dictionary of three thousand dream symbols.",
-		"domain": "Dreams",
-		"example": "[roxy_dream symbol=\"water\"]",
-		"attributes": {
-			"symbol": {
-				"default": "",
-				"sanitize": { "name": "bounded_text", "args": [ 200 ] }
-			},
-			"id": { "default": "", "sanitize": "slug" }
-		},
-		"dispatch": [
-			{
-				"when_present": "id",
-				"operationId": "getDreamSymbol",
-				"path_args": { "id": "id" }
-			},
-			{
-				"when_present": "symbol",
-				"operationId": "searchDreamSymbols",
-				"query_args": { "symbol": "q" }
-			}
-		],
-		"missing_message": "Either the symbol or id attribute is required. Example: %s"
+		"transform_error_message": "The birth_date attribute must be in YYYY-MM-DD format. Example: %s",
+		"form_mode": {
+			"title": "Life path number",
+			"submit_label": "Calculate",
+			"fields": [
+				{ "attr": "birth_date", "label": "Birth date", "type": "date", "required": true, "help": "Year, month, and day of birth" }
+			]
+		}
 	},
 	"biorhythm": {
 		"operationId": "getReading",
@@ -184,7 +437,15 @@
 				"skip_if_empty": true
 			}
 		},
-		"missing_message": "The birth_date attribute is required. Example: %s"
+		"missing_message": "The birth_date attribute is required. Example: %s",
+		"form_mode": {
+			"title": "Biorhythm reading",
+			"submit_label": "Calculate cycles",
+			"fields": [
+				{ "attr": "birth_date", "label": "Birth date", "type": "date", "required": true, "help": "Year, month, and day of birth" },
+				{ "attr": "target_date", "label": "Target date", "type": "date", "required": false, "help": "Defaults to today if left blank" }
+			]
+		}
 	},
 	"angel_number": {
 		"operationId": "getAngelNumber",
@@ -200,22 +461,36 @@
 				"spec_field": "number"
 			}
 		},
-		"missing_message": "The number attribute is required. Example: %s"
+		"missing_message": "The number attribute is required. Example: %s",
+		"form_mode": {
+			"title": "Angel number lookup",
+			"submit_label": "Look up meaning",
+			"fields": [
+				{ "attr": "number", "label": "Number sequence", "type": "integer", "required": true, "min": 1, "placeholder": "1111", "help": "Any whole number you keep noticing" }
+			]
+		}
 	},
-	"crystal": {
-		"operationId": "getCrystal",
-		"title": "Crystal",
-		"description": "Properties, zodiac pairings, and chakra alignments.",
+	"crystals_by_zodiac": {
+		"operationId": "getCrystalsByZodiac",
+		"title": "Crystals by zodiac",
+		"description": "Crystals and stones associated with any zodiac sign, with properties, color, and chakra.",
 		"domain": "Crystals and Healing Stones",
-		"example": "[roxy_crystal name=\"amethyst\"]",
+		"example": "[roxy_crystals_by_zodiac sign=\"aries\"]",
 		"attributes": {
-			"name": {
+			"sign": {
 				"default": "",
 				"required": true,
-				"sanitize": "slug",
-				"spec_field": "id"
+				"sanitize": "zodiac_sign_title",
+				"spec_field": "sign"
 			}
 		},
-		"missing_message": "The name attribute is required. Example: %s"
+		"missing_message": "The sign attribute is required. Example: %s",
+		"form_mode": {
+			"title": "Crystals for your sign",
+			"submit_label": "Show crystals",
+			"fields": [
+				{ "attr": "sign", "label": "Zodiac sign", "type": "enum", "required": true, "enum": [ "aries", "taurus", "gemini", "cancer", "leo", "virgo", "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces" ], "help": "Pick your Sun sign" }
+			]
+		}
 	}
 }

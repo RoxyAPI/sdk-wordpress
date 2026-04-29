@@ -96,6 +96,15 @@ class Test_Hero_Config_Completeness extends \WP_UnitTestCase {
 				continue;
 			}
 
+			// `delegate_to_form` heroes (synastry / gun_milan / compatibility)
+			// reuse an existing long-tail Form class instead of declaring an
+			// operationId of their own. The form's own operation is validated
+			// via the long-tail spec contract — heroes that only delegate
+			// have no separate request shape to verify here.
+			if ( ! empty( $entry['delegate_to_form'] ) ) {
+				continue;
+			}
+
 			$op_ids = array();
 			if ( ! empty( $entry['operationId'] ) ) {
 				$op_ids[] = (string) $entry['operationId'];

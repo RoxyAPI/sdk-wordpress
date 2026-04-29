@@ -55,6 +55,59 @@ class GenericRenderer {
 	private const SUPPRESS_NAMED  = array( 'id', '_id', 'slug', 'key' );
 	private const SUPPRESS_ALWAYS = array( 'seed' );
 
+	/**
+	 * Field names that leak internal/diagnostic data and should not surface
+	 * in consumer output. Matched after lowercase + underscore collapse.
+	 *
+	 * `calculation` — raw numerology / astrology math like "1+2=3, Day: 10 → 1+0 = 1"
+	 *                 that demos how a number was derived. Useful for engineers,
+	 *                 useless for the visitor reading their own chart.
+	 * `type`        — discriminator field with values like "single" / "general" /
+	 *                 "primary" that index a polymorphic schema. Visible in the
+	 *                 raw response, meaningless on a card.
+	 * `position`    — pinnacle / challenge index 1..4. Captured implicitly by
+	 *                 the row order; printing it as a separate column is noise.
+	 * `*_count` / `count` — denormalised counts that match the parent list
+	 *                       length. Always equals what the renderer already shows.
+	 */
+	private const SUPPRESS_NOISE = array(
+		'calculation',
+		'calculations',
+		'type',
+		'position',
+		'count',
+		'total_count',
+		'totalcount',
+		'has_karmic_debt',
+		'haskarmicdebt',
+		'has_master_number',
+		'hasmasternumber',
+		'is_master',
+		'ismaster',
+		// Pagination metadata: visitor cards never paginate. The API may
+		// return total/limit/offset/page even for single-page responses;
+		// surfacing them as "Total: 86, Limit: 20, Offset: 0" reads as a
+		// database admin tool, not a reading.
+		'total',
+		'limit',
+		'offset',
+		'page',
+		'page_size',
+		'pagesize',
+		'per_page',
+		'perpage',
+	);
+
+	/**
+	 * Field-name prefixes whose boolean-true values render as a small badge
+	 * rather than a "Has karmic debt: 1" key/value pair. Boolean-false values
+	 * for these fields are dropped entirely (absence is not noteworthy).
+	 *
+	 * Caller can still surface the underlying value via a custom template if
+	 * the badge convention does not fit a specific reading.
+	 */
+	private const BADGE_TRUE_PREFIXES = array( 'has_', 'is_' );
+
 	/** Field names whose string value is treated as an image URL. */
 	private const IMAGE_KEYS = array( 'image', 'image_url', 'imageurl', 'photo', 'picture', 'thumbnail', 'thumbnail_url', 'cover', 'avatar' );
 
@@ -293,8 +346,17 @@ class GenericRenderer {
 		$cols = array();
 		foreach ( $rows as $row ) {
 			foreach ( array_keys( $row ) as $col ) {
-				$col_str = (string) $col;
-				if ( in_array( strtolower( $col_str ), self::SUPPRESS_ALWAYS, true ) ) {
+				$col_str   = (string) $col;
+				$col_lc    = strtolower( $col_str );
+				$collapsed = str_replace( array( '_', '-' ), '', $col_lc );
+				if ( in_array( $col_lc, self::SUPPRESS_ALWAYS, true ) || in_array( $collapsed, self::SUPPRESS_ALWAYS, true ) ) {
+					continue;
+				}
+				// Tables share the noise filter with the field grid: a
+				// `position` column matches the row order, `type` discriminates
+				// a polymorphic schema, `calculation` leaks internal math.
+				// None belong in a consumer-facing card.
+				if ( in_array( $col_lc, self::SUPPRESS_NOISE, true ) || in_array( $collapsed, self::SUPPRESS_NOISE, true ) ) {
 					continue;
 				}
 				if ( ! in_array( $col_str, $cols, true ) ) {
@@ -357,7 +419,10 @@ class GenericRenderer {
 	}
 
 	/**
-	 * Drop diagnostic-only keys when a nicer sibling exists.
+	 * Drop diagnostic-only keys when a nicer sibling exists, and strip the
+	 * generic noise patterns (calculation / type / position / has_*-when-false)
+	 * that flow in from any well-typed OpenAPI schema and have no consumer
+	 * value on a rendered card.
 	 *
 	 * @param array<string, mixed> $data Object data.
 	 * @return array<string, mixed>
@@ -372,11 +437,21 @@ class GenericRenderer {
 		}
 		$out = array();
 		foreach ( $data as $key => $value ) {
-			$lc = strtolower( (string) $key );
-			if ( in_array( $lc, self::SUPPRESS_ALWAYS, true ) ) {
+			$lc        = strtolower( (string) $key );
+			$collapsed = str_replace( array( '_', '-' ), '', $lc );
+			if ( in_array( $lc, self::SUPPRESS_ALWAYS, true ) || in_array( $collapsed, self::SUPPRESS_ALWAYS, true ) ) {
 				continue;
 			}
-			if ( $has_named && in_array( $lc, self::SUPPRESS_NAMED, true ) ) {
+			if ( $has_named && ( in_array( $lc, self::SUPPRESS_NAMED, true ) || in_array( $collapsed, self::SUPPRESS_NAMED, true ) ) ) {
+				continue;
+			}
+			if ( in_array( $lc, self::SUPPRESS_NOISE, true ) || in_array( $collapsed, self::SUPPRESS_NOISE, true ) ) {
+				continue;
+			}
+			// Boolean-false on `is_*` / `has_*` fields is silence, not data.
+			// Boolean-true on those same fields surfaces as a badge inside
+			// render_scalar so it reads as "Karmic debt" not "Has karmic debt: 1".
+			if ( is_bool( $value ) && self::is_badge_field( $lc ) && ! $value ) {
 				continue;
 			}
 			$out[ $key ] = $value;
@@ -385,19 +460,45 @@ class GenericRenderer {
 	}
 
 	/**
-	 * Take the first key from $candidates that exists in $data and pluck it.
+	 * True when the field name matches a known boolean-as-badge convention.
+	 *
+	 * @param string $key_lc Already-lowercased field name.
+	 * @return bool
+	 */
+	private static function is_badge_field( string $key_lc ): bool {
+		foreach ( self::BADGE_TRUE_PREFIXES as $prefix ) {
+			if ( strpos( $key_lc, $prefix ) === 0 ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Take the first key from $candidates that exists in $data AND has a
+	 * scalar value, then pluck it. Title/lede/quote slots only render
+	 * scalars (header H3, lede paragraph, blockquote); when a key like
+	 * `meaning` is an object, leaving it in $data lets render_section
+	 * surface its real contents (description, strengths, etc.) instead
+	 * of silently dropping it after a failed pluck.
 	 *
 	 * @param array<string, mixed> $data       Source data.
 	 * @param array<int, string>   $candidates Lowercased key names to try.
-	 * @return array{0: mixed, 1: array<string, mixed>} [value-or-null, remaining-data]
+	 * @return array{0: mixed, 1: array<string, mixed>} [scalar-value-or-null, remaining-data]
 	 */
 	private static function pluck_first( array $data, array $candidates ): array {
 		foreach ( $candidates as $cand ) {
 			foreach ( $data as $key => $value ) {
-				if ( strtolower( (string) $key ) === $cand ) {
-					unset( $data[ $key ] );
-					return array( $value, $data );
+				if ( strtolower( (string) $key ) !== $cand ) {
+					continue;
 				}
+				if ( ! is_scalar( $value ) ) {
+					// Object/array value at a "title-ish" key — leave it
+					// in place so render_section picks it up below.
+					continue;
+				}
+				unset( $data[ $key ] );
+				return array( $value, $data );
 			}
 		}
 		return array( null, $data );
@@ -457,14 +558,25 @@ class GenericRenderer {
 
 	/**
 	 * Convert a programmatic field name into a human-readable label.
+	 * Drops boilerplate prefixes (`has_`, `is_`) so badge fields read as
+	 * the property they describe rather than a question.
 	 *
 	 * @param string $field Raw field name (camelCase, snake_case, kebab-case).
 	 * @return string
 	 */
 	private static function humanize( string $field ): string {
+		$lc = strtolower( $field );
+		foreach ( self::BADGE_TRUE_PREFIXES as $prefix ) {
+			if ( strpos( $lc, $prefix ) === 0 ) {
+				$field = substr( $field, strlen( $prefix ) );
+				break;
+			}
+		}
 		$with_spaces = preg_replace( '/(?<!^)([A-Z])/', ' $1', $field );
+		$with_spaces = preg_replace( '/([A-Za-z])([0-9])/', '$1 $2', (string) $with_spaces );
 		$with_spaces = str_replace( array( '_', '-' ), ' ', (string) $with_spaces );
-		return ucfirst( strtolower( (string) $with_spaces ) );
+		$lower       = strtolower( trim( (string) $with_spaces ) );
+		return $lower === '' ? '' : ( strtoupper( $lower[0] ) . substr( $lower, 1 ) );
 	}
 
 	/**
@@ -496,6 +608,24 @@ class GenericRenderer {
 		if ( ! is_scalar( $value ) ) {
 			return '';
 		}
+		// Booleans surface as a badge on `is_*` / `has_*` fields and as
+		// localised yes/no everywhere else. The raw "1" / "" PHP cast is
+		// confusing on a consumer card.
+		if ( is_bool( $value ) ) {
+			if ( self::is_badge_field( strtolower( $key ) ) ) {
+				return $value
+					? '<span class="roxyapi-badge">' . esc_html__( 'Yes', 'roxyapi' ) . '</span>'
+					: '';
+			}
+			return esc_html( $value ? __( 'Yes', 'roxyapi' ) : __( 'No', 'roxyapi' ) );
+		}
+		// Floats with debug precision (e.g. ephemeris longitude
+		// `54.662608325431`) are unreadable on a card. Round to 2 decimals
+		// and trim trailing zeros so `12.50` shows as `12.5` and `4.00`
+		// shows as `4`. Integer-valued floats stay integers.
+		if ( is_float( $value ) ) {
+			$value = self::format_float( $value );
+		}
 		$value_str = (string) $value;
 		if ( $value_str === '' ) {
 			return '';
@@ -508,6 +638,29 @@ class GenericRenderer {
 			return self::render_link( $value_str );
 		}
 		return esc_html( $value_str );
+	}
+
+	/**
+	 * Round a float to 2 decimal places, drop trailing zeros, and return
+	 * the string. `54.662608325431` → `"54.66"`, `12.50` → `"12.5"`,
+	 * `4.0` → `"4"`. Used everywhere a float lands on a card so the
+	 * consumer never sees ephemeris-grade precision.
+	 *
+	 * @param float $value Raw float.
+	 * @return string
+	 */
+	private static function format_float( float $value ): string {
+		$rounded = round( $value, 2 );
+		// Sub-precision negatives like `-1.2e-5` round to `-0.0`, which
+		// stringifies as the surprising "-0". Coerce to plain zero.
+		if ( $rounded === 0.0 || $rounded === -0.0 ) {
+			return '0';
+		}
+		$str = (string) $rounded;
+		if ( strpos( $str, '.' ) !== false ) {
+			$str = rtrim( rtrim( $str, '0' ), '.' );
+		}
+		return $str;
 	}
 
 	/**

@@ -28,6 +28,7 @@ class LifePath {
 	 */
 	public const DEFAULTS = array(
 		'birth_date' => "",
+		'mode' => 'auto',
 	);
 
 	/**
@@ -47,7 +48,14 @@ class LifePath {
 
 		wp_enqueue_style( 'roxyapi-frontend' );
 
+		if ( $atts['mode'] === 'form' ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\LifePathForm::class );
+		}
+
 		if ( $atts['birth_date'] === '' ) {
+			if ( $atts['mode'] !== 'static' ) {
+				return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\LifePathForm::class );
+			}
 			return \RoxyAPI\Support\Templates::error( sprintf( /* translators: %s is the canonical example shortcode. */ __( "The birth_date attribute is required. Example: %s", 'roxyapi' ), "[roxy_life_path birth_date=\"1990-05-15\"]" ) );
 		}
 
@@ -68,5 +76,40 @@ class LifePath {
 		}
 
 		return \RoxyAPI\Support\GenericRenderer::render( 'calculateLifePath', is_array( $data ) ? $data : array() );
+	}
+
+	/**
+	 * Visitor-form data path. Same dispatch as render() but returns the raw
+	 * API response (or a WP_Error) so the matching <Hero>Form::call() can
+	 * surface it via the FormRouter PRG cycle. Caller must pass the form
+	 * body keyed by the same attribute names as the shortcode accepts.
+	 *
+	 * @param array<string, mixed> $atts Form-body attributes.
+	 * @return array<string, mixed>|\WP_Error
+	 */
+	public static function fetch_for_form( array $atts ) {
+		$atts = array_merge( self::DEFAULTS, $atts );
+
+		if ( $atts['birth_date'] === '' ) {
+			return new \WP_Error( 'roxyapi_missing_attrs', sprintf( /* translators: %s is the canonical example shortcode. */ __( "The birth_date attribute is required. Example: %s", 'roxyapi' ), "[roxy_life_path birth_date=\"1990-05-15\"]" ) );
+		}
+
+		$birth_date_parts = \RoxyAPI\Support\HeroTransforms::split_iso_date_into_year_month_day( $atts['birth_date'] );
+
+		if ( $birth_date_parts === null ) {
+			return new \WP_Error( 'roxyapi_invalid_format', sprintf( /* translators: %s is the canonical example shortcode. */ __( "The birth_date attribute must be in YYYY-MM-DD format. Example: %s", 'roxyapi' ), "[roxy_life_path birth_date=\"1990-05-15\"]" ) );
+		}
+
+		$data = \RoxyAPI\Generated\Client::calculateLifePath( array(
+			'year' => $birth_date_parts['year'],
+			'month' => $birth_date_parts['month'],
+			'day' => $birth_date_parts['day'],
+		) );
+
+		if ( is_wp_error( $data ) ) {
+			return $data;
+		}
+
+		return is_array( $data ) ? $data : array();
 	}
 }

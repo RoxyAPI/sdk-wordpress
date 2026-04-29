@@ -36,7 +36,7 @@
     "post-build": "node bin/post-build.mjs",
     "build:all": "npm run build && npm run blocks-manifest && npm run post-build",
     "start": "wp-scripts start --webpack-src-dir=blocks --output-path=build/blocks",
-    "plugin-zip": "wp-scripts plugin-zip",
+    "plugin-zip": "wp-scripts plugin-zip && node bin/post-plugin-zip.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint:js": "wp-scripts lint-js blocks/ assets/js/ bin/",

@@ -12,6 +12,10 @@
 
 namespace RoxyAPI\Generated;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class ShortcodeBootstrap {
 
 	public static function register(): void {
@@ -20,7 +24,6 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\ListPlanetMeanings::register();
 		\RoxyAPI\Generated\Shortcodes\GetPlanetMeaning::register();
 		\RoxyAPI\Generated\Shortcodes\GetPlanetaryPositions::register();
-		\RoxyAPI\Generated\Shortcodes\GetCurrentMoonPhase::register();
 		\RoxyAPI\Generated\Shortcodes\GetUpcomingMoonPhases::register();
 		\RoxyAPI\Generated\Shortcodes\GetMoonCalendar::register();
 		\RoxyAPI\Generated\Shortcodes\CalculateSynastry::register();
@@ -35,7 +38,6 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\GetWeeklyHoroscope::register();
 		\RoxyAPI\Generated\Shortcodes\GetMonthlyHoroscope::register();
 		\RoxyAPI\Generated\Shortcodes\GeneratePlanetaryReturn::register();
-		\RoxyAPI\Generated\Shortcodes\GenerateBirthChart::register();
 		\RoxyAPI\Generated\Shortcodes\GenerateNavamsa::register();
 		\RoxyAPI\Generated\Shortcodes\GenerateDivisionalChart::register();
 		\RoxyAPI\Generated\Shortcodes\CalculateGunMilan::register();
@@ -45,10 +47,8 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\GetMajorDashas::register();
 		\RoxyAPI\Generated\Shortcodes\GetSubDashas::register();
 		\RoxyAPI\Generated\Shortcodes\GetBasicPanchang::register();
-		\RoxyAPI\Generated\Shortcodes\GetDetailedPanchang::register();
 		\RoxyAPI\Generated\Shortcodes\GetChoghadiya::register();
 		\RoxyAPI\Generated\Shortcodes\GetHora::register();
-		\RoxyAPI\Generated\Shortcodes\CheckManglikDosha::register();
 		\RoxyAPI\Generated\Shortcodes\CheckKalsarpaDosha::register();
 		\RoxyAPI\Generated\Shortcodes\CheckSadhesati::register();
 		\RoxyAPI\Generated\Shortcodes\ListYogas::register();
@@ -56,7 +56,6 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\GetKpAyanamsa::register();
 		\RoxyAPI\Generated\Shortcodes\GetKpPlanets::register();
 		\RoxyAPI\Generated\Shortcodes\GetKpCusps::register();
-		\RoxyAPI\Generated\Shortcodes\GenerateKpChart::register();
 		\RoxyAPI\Generated\Shortcodes\GetKpRulingPlanets::register();
 		\RoxyAPI\Generated\Shortcodes\GetKpRulingInterval::register();
 		\RoxyAPI\Generated\Shortcodes\GetKpSublordChanges::register();
@@ -94,7 +93,6 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\ListCards::register();
 		\RoxyAPI\Generated\Shortcodes\GetCard::register();
 		\RoxyAPI\Generated\Shortcodes\DrawCards::register();
-		\RoxyAPI\Generated\Shortcodes\CastYesNo::register();
 		\RoxyAPI\Generated\Shortcodes\CastThreeCard::register();
 		\RoxyAPI\Generated\Shortcodes\CastCelticCross::register();
 		\RoxyAPI\Generated\Shortcodes\CastLoveSpread::register();
@@ -110,10 +108,10 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\ListHexagrams::register();
 		\RoxyAPI\Generated\Shortcodes\GetRandomHexagram::register();
 		\RoxyAPI\Generated\Shortcodes\LookupHexagram::register();
+		\RoxyAPI\Generated\Shortcodes\GetHexagram::register();
 		\RoxyAPI\Generated\Shortcodes\CastReading::register();
 		\RoxyAPI\Generated\Shortcodes\ListTrigrams::register();
 		\RoxyAPI\Generated\Shortcodes\GetTrigram::register();
-		\RoxyAPI\Generated\Shortcodes\GetCrystalsByZodiac::register();
 		\RoxyAPI\Generated\Shortcodes\GetCrystalsByChakra::register();
 		\RoxyAPI\Generated\Shortcodes\GetCrystalsByElement::register();
 		\RoxyAPI\Generated\Shortcodes\GetBirthstones::register();
@@ -124,9 +122,11 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\ListCrystalColors::register();
 		\RoxyAPI\Generated\Shortcodes\ListCrystalPlanets::register();
 		\RoxyAPI\Generated\Shortcodes\ListCrystals::register();
+		\RoxyAPI\Generated\Shortcodes\GetCrystal::register();
 		\RoxyAPI\Generated\Shortcodes\SearchDreamSymbols::register();
 		\RoxyAPI\Generated\Shortcodes\GetRandomSymbols::register();
 		\RoxyAPI\Generated\Shortcodes\GetSymbolLetterCounts::register();
+		\RoxyAPI\Generated\Shortcodes\GetDreamSymbol::register();
 		\RoxyAPI\Generated\Shortcodes\GetDailyDreamSymbol::register();
 		\RoxyAPI\Generated\Shortcodes\ListAngelNumbers::register();
 		\RoxyAPI\Generated\Shortcodes\AnalyzeNumberSequence::register();

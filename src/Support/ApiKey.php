@@ -12,6 +12,10 @@
 
 namespace RoxyAPI\Support;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class ApiKey {
 
 	/**

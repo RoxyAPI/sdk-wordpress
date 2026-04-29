@@ -5,7 +5,7 @@
   "title": "Horoscope",
   "category": "roxyapi",
   "icon": "star-filled",
-  "description": "Daily, weekly, monthly, love, career, and Chinese horoscopes for any zodiac sign.",
+  "description": "Daily, weekly, or monthly horoscope for any zodiac sign.",
   "keywords": ["horoscope", "astrology", "zodiac", "roxyapi"],
   "version": "1.0.0",
   "textdomain": "roxyapi",
@@ -17,9 +17,8 @@
     "typography": { "fontSize": true }
   },
   "attributes": {
-    "sign": { "type": "string", "default": "aries" },
+    "sign": { "type": "string", "default": "" },
     "period": { "type": "string", "default": "daily" },
-    "type": { "type": "string", "default": "general" },
     "date": { "type": "string", "default": "today" }
   },
   "usesContext": ["roxyapi/sign", "roxyapi/birthDate"],

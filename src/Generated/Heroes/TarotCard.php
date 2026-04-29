@@ -29,6 +29,7 @@ class TarotCard {
 	public const DEFAULTS = array(
 		'spread' => "daily",
 		'question' => "",
+		'mode' => 'auto',
 	);
 
 	/**
@@ -47,6 +48,10 @@ class TarotCard {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\TarotCardForm::class );
+		}
 
 		$spread_clean = sanitize_key( (string) $atts['spread'] );
 		$question_clean = \RoxyAPI\Support\Sanitize::bounded_text( $atts['question'], 500 );
@@ -73,6 +78,46 @@ class TarotCard {
 				return \RoxyAPI\Support\Templates::api_error( $data );
 			}
 			return \RoxyAPI\Support\GenericRenderer::render( 'getDailyCard', is_array( $data ) ? $data : array() );
+		}
+	}
+
+	/**
+	 * Visitor-form data path. Same dispatch as render() but returns the raw
+	 * API response (or a WP_Error) so the matching <Hero>Form::call() can
+	 * surface it via the FormRouter PRG cycle. Caller must pass the form
+	 * body keyed by the same attribute names as the shortcode accepts.
+	 *
+	 * @param array<string, mixed> $atts Form-body attributes.
+	 * @return array<string, mixed>|\WP_Error
+	 */
+	public static function fetch_for_form( array $atts ) {
+		$atts = array_merge( self::DEFAULTS, $atts );
+
+		$spread_clean = sanitize_key( (string) $atts['spread'] );
+		$question_clean = \RoxyAPI\Support\Sanitize::bounded_text( $atts['question'], 500 );
+
+		if ( $spread_clean === "three" ) {
+			$data = \RoxyAPI\Generated\Client::castThreeCard( array(
+			'question' => $question_clean,
+		) );
+			if ( is_wp_error( $data ) ) {
+				return $data;
+			}
+			return is_array( $data ) ? $data : array();
+		} else if ( $spread_clean === "celtic" ) {
+			$data = \RoxyAPI\Generated\Client::castCelticCross( array(
+			'question' => $question_clean,
+		) );
+			if ( is_wp_error( $data ) ) {
+				return $data;
+			}
+			return is_array( $data ) ? $data : array();
+		} else 		{
+			$data = \RoxyAPI\Generated\Client::getDailyCard( array() );
+			if ( is_wp_error( $data ) ) {
+				return $data;
+			}
+			return is_array( $data ) ? $data : array();
 		}
 	}
 }

@@ -11,6 +11,10 @@
 
 namespace RoxyAPI\Generated\Forms;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class CalculateCompatibilityForm {
 
 	public static function spec(): array {

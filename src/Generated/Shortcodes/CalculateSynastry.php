@@ -16,6 +16,10 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use RoxyAPI\Support\FormRenderer;
 
 class CalculateSynastry {

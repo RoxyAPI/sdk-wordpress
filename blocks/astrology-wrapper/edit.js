@@ -7,6 +7,7 @@ import { PanelBody, SelectControl, TextControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 
 const SIGNS = [
+  { label: __("No default (each child block decides)", "roxyapi"), value: "" },
   { label: "Aries", value: "aries" },
   { label: "Taurus", value: "taurus" },
   { label: "Gemini", value: "gemini" },

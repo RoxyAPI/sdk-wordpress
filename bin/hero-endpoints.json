@@ -1,12 +1,16 @@
 [
 	"getDailyHoroscope",
 	"generateNatalChart",
+	"generateBirthChart",
+	"getDetailedPanchang",
+	"checkManglikDosha",
+	"generateKpChart",
+	"getCurrentMoonPhase",
 	"getDailyCard",
+	"castYesNo",
 	"generateNumerologyChart",
 	"calculateLifePath",
-	"getHexagram",
-	"getDreamSymbol",
 	"getReading",
 	"getAngelNumber",
-	"getCrystal"
+	"getCrystalsByZodiac"
 ]

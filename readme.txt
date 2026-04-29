@@ -111,34 +111,30 @@ Yes. The Playground at https://roxyapi.com/api-reference has a test key pre-fill
 
 Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress shortcodes. Use the shortcode in a text or HTML module. The Gutenberg blocks work in the default WordPress editor.
 
-== Screenshots ==
-
-1. Plugin settings page where you paste your RoxyAPI key.
-2. The Daily Horoscope block in the Gutenberg editor with sign picker.
-3. Frontend rendering of a daily horoscope on a WordPress page.
-4. Tarot card pull with three card spread.
-5. I Ching hexagram cast with interpretation.
-6. Astrology Section wrapper block sharing context across children.
-
 == Known Limitations ==
 
-Version 1.0.0 ships all 130 RoxyAPI endpoints. 10 hero shortcodes (Horoscope, Natal Chart, Tarot, Numerology, Life Path, I Ching, Dream, Biorhythm, Angel Number, Crystal) plus 120 auto generated shortcodes for the long tail.
+Version 1.0.0 ships all 130 RoxyAPI endpoints. 17 hero shortcodes covering the highest demand readings across Western astrology, Vedic astrology (kundli, panchang, mangal dosha, KP chart), tarot (daily, three card, Celtic Cross, yes or no), numerology (life path, full chart), biorhythm, angel numbers, crystals by zodiac, current moon phase, plus two-chart compatibility (synastry, gun milan, Western compatibility). 116 auto generated shortcodes for the long tail.
 
-For zodiac compatibility between two people, use the generated [roxy_calculate_synastry] shortcode for full birth-chart synastry, or [roxy_calculate_compatibility] for the lighter sign-pair endpoint. The dedicated Compatibility hero from earlier drafts was removed because the SaaS endpoint takes full birth charts, not bare zodiac signs.
+Three v1.0 hero tags (roxy_iching, roxy_dream, roxy_crystal) were demoted to long-tail in v1.1 to free up hero slots for the Vedic depth-moat readings. The legacy tags still work on existing pages via the LegacyAliases shim, so no page renders break after the upgrade.
 
-Eight long-tail compatibility and synastry endpoints take a nested birth-chart object on the wire. In v1.0 these ship as form-mode shortcodes only; the matching Gutenberg blocks land in v1.1 once the editor gains a nested-attribute UI.
-
-Hero block editor sidebars are intentionally minimal in v1.0. Live previews and richer inspector controls land in v1.1.
+Hero block editor sidebars are intentionally minimal in v1.1. Live previews and richer inspector controls land in v1.2.
 
 == Changelog ==
 
 = 1.0.0 =
 * Initial release. 130 endpoints across 10 spiritual domains under one API key.
-* 10 hero shortcodes: Horoscope, Natal Chart, Tarot, Numerology, Life Path, I Ching, Dream, Biorhythm, Angel Number, Crystal.
-* Hero shortcode attribute names aligned with the documented examples so a copy-paste from the admin onboarding page works first try (renames: roxy_natal_chart now uses birth_date / birth_time / lat / lon; roxy_numerology and roxy_life_path accept birth_date and parse the parts internally; roxy_dream renamed q to symbol; roxy_crystal renamed slug to name; roxy_biorhythm renamed date to target_date; roxy_tarot_card now dispatches on spread with daily, three, and celtic options and accepts a question; roxy_iching now accepts question for the prompt copy alongside the existing number lookup).
-* 120 auto generated shortcodes for the long tail. Generated from the live OpenAPI spec via npm run generate. Includes [roxy_calculate_synastry] and [roxy_calculate_compatibility] for compatibility readings.
-* 10 hero Gutenberg blocks plus an Astrology Section wrapper that shares zodiac sign and birth date with every child block via block context.
-* Horoscope block ships with 6 variations in the inserter: daily, weekly, monthly, love, career, Chinese.
+* 17 hero shortcodes:
+  - Western astrology: Horoscope (daily, weekly, monthly), Natal chart, Synastry, Compatibility, Moon phase.
+  - Vedic astrology: Kundli, Panchang, Mangal Dosha, KP chart, Gun Milan (Ashtakoota matrimonial).
+  - Tarot: Tarot card (daily, three card, Celtic Cross), Tarot yes or no.
+  - Numerology: Numerology chart, Life path.
+  - Plus Biorhythm, Angel number, Crystals by zodiac.
+* Form mode on every hero. Drop the shortcode with no attributes and visitors fill in the form themselves; submission is server side, the API key never reaches the browser.
+* Two-chart heroes (Synastry, Gun Milan, Compatibility) are form-only because static mode would require ten plus inline attributes; the form has Person 1 / Person 2 fieldsets with city autocomplete.
+* 116 auto generated shortcodes for the long tail. Generated from the live OpenAPI spec via npm run generate.
+* Backwards compatibility for the three demoted v1.0 tags ([roxy_iching], [roxy_dream], [roxy_crystal]) via the LegacyAliases shim. Existing pages keep rendering after the upgrade.
+* Hero shortcode attribute names aligned with the documented examples so a copy-paste from the admin onboarding page works first try.
+* Horoscope block ships three real variations (daily, weekly, monthly) wired to the matching SaaS endpoints; the period attribute now actually dispatches.
 * Auto detecting form mode on every hero shortcode. Drop the shortcode with no attributes and visitors submit their own sign, name, birth date, or question.
 * GDPR Article 9 consent gate on every visitor form. Submission requires an explicit opt in checkbox; the plugin registers privacy policy content via wp_add_privacy_policy_content for the WordPress Privacy Policy Guide.
 * City autocomplete for natal chart and synastry forms. ARIA 1.2 combobox proxied through /wp-json/roxyapi/v1/geocode so the API key never reaches the browser.

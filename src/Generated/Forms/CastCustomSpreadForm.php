@@ -11,6 +11,10 @@
 
 namespace RoxyAPI\Generated\Forms;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class CastCustomSpreadForm {
 
 	public static function spec(): array {

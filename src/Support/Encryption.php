@@ -21,6 +21,10 @@
 
 namespace RoxyAPI\Support;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Encryption {
 
 	private const METHOD = 'aes-256-ctr';

@@ -10,6 +10,10 @@
 
 namespace RoxyAPI\Generated;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Endpoints {
 
 	/**
@@ -110,7 +114,7 @@ class Endpoints {
 			'tag'        => 'Western Astrology',
 			'summary'    => 'Get current moon phase - Lunar phase calculator with zodiac sign',
 			'ttl'        => 3600,
-			'hero'       => false,
+			'hero'       => true,
 			'block_only' => false,
 			'attributes' => array(
 				'lang' => 'en',
@@ -352,7 +356,7 @@ class Endpoints {
 			'tag'        => 'Vedic Astrology',
 			'summary'    => 'Get birth chart (D1 Rashi chart) - Kundli Calculator API',
 			'ttl'        => 0,
-			'hero'       => false,
+			'hero'       => true,
 			'block_only' => false,
 			'attributes' => array(
 				'lang' => 'en',
@@ -514,7 +518,7 @@ class Endpoints {
 			'tag'        => 'Vedic Astrology',
 			'summary'    => 'Get detailed Panchang with Rahu Kaal, Yamaganda, Gulika',
 			'ttl'        => 0,
-			'hero'       => false,
+			'hero'       => true,
 			'block_only' => false,
 			'attributes' => array(
 				'lang' => 'en',
@@ -560,7 +564,7 @@ class Endpoints {
 			'tag'        => 'Vedic Astrology',
 			'summary'    => 'Check Manglik Dosha - Mangal Dosha Calculator API',
 			'ttl'        => 0,
-			'hero'       => false,
+			'hero'       => true,
 			'block_only' => false,
 			'attributes' => array(
 				'date' => '1990-07-04',
@@ -682,7 +686,7 @@ class Endpoints {
 			'tag'        => 'Vedic Astrology',
 			'summary'    => 'Generate complete KP birth chart',
 			'ttl'        => 0,
-			'hero'       => false,
+			'hero'       => true,
 			'block_only' => false,
 			'attributes' => array(
 				'date' => '1990-07-04',
@@ -1307,7 +1311,7 @@ class Endpoints {
 			'tag'        => 'Tarot',
 			'summary'    => 'Get yes/no answer to your question',
 			'ttl'        => 0,
-			'hero'       => false,
+			'hero'       => true,
 			'block_only' => false,
 			'attributes' => array(
 				'lang' => 'en',
@@ -1544,7 +1548,7 @@ class Endpoints {
 			'tag'        => 'I-Ching',
 			'summary'    => 'Get hexagram by number',
 			'ttl'        => 2592000,
-			'hero'       => true,
+			'hero'       => false,
 			'block_only' => false,
 			'attributes' => array(
 				'number' => '1',
@@ -1595,7 +1599,7 @@ class Endpoints {
 			'tag'        => 'Crystals and Healing Stones',
 			'summary'    => 'Crystals by Zodiac Sign',
 			'ttl'        => 2592000,
-			'hero'       => false,
+			'hero'       => true,
 			'block_only' => false,
 			'attributes' => array(
 				'sign' => 'Pisces',
@@ -1746,7 +1750,7 @@ class Endpoints {
 			'tag'        => 'Crystals and Healing Stones',
 			'summary'    => 'Get Crystal Healing Properties',
 			'ttl'        => 2592000,
-			'hero'       => true,
+			'hero'       => false,
 			'block_only' => false,
 			'attributes' => array(
 				'id' => 'amethyst',
@@ -1796,7 +1800,7 @@ class Endpoints {
 			'tag'        => 'Dreams',
 			'summary'    => 'Get dream symbol details',
 			'ttl'        => 604800,
-			'hero'       => true,
+			'hero'       => false,
 			'block_only' => false,
 			'attributes' => array(
 				'id' => 'snake',

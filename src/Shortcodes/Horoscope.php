@@ -15,9 +15,14 @@
 
 namespace RoxyAPI\Shortcodes;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use RoxyAPI\Generated\Client as GeneratedClient;
 use RoxyAPI\Support\Attribution;
 use RoxyAPI\Support\Disclaimer;
+use RoxyAPI\Support\GenericRenderer;
 use RoxyAPI\Support\RateLimit;
 use RoxyAPI\Support\Sanitize;
 use RoxyAPI\Support\Templates;
@@ -33,9 +38,23 @@ class Horoscope {
 	 * @var array<string, string>
 	 */
 	public const DEFAULTS = array(
-		'sign' => '',
-		'date' => 'today',
-		'type' => 'general',
+		'sign'   => '',
+		'date'   => 'today',
+		'period' => 'daily',
+	);
+
+	/**
+	 * Map a `period` attribute to the matching API operationId. Anything
+	 * the API does not actually expose (legacy `chinese`, `love`, `career`,
+	 * etc.) silently falls back to `daily` so a stale shortcode keeps
+	 * rendering instead of erroring out.
+	 *
+	 * @var array<string, string>
+	 */
+	private const PERIOD_OPS = array(
+		'daily'   => 'getDailyHoroscope',
+		'weekly'  => 'getWeeklyHoroscope',
+		'monthly' => 'getMonthlyHoroscope',
 	);
 
 	/**
@@ -65,7 +84,8 @@ class Horoscope {
 		if ( $atts['sign'] !== '' ) {
 			return self::render_result(
 				Sanitize::zodiac_sign( $atts['sign'] ),
-				Sanitize::date_string( $atts['date'] )
+				Sanitize::date_string( $atts['date'] ),
+				(string) ( $atts['period'] ?? 'daily' )
 			);
 		}
 
@@ -88,28 +108,46 @@ class Horoscope {
 		$raw_sign = isset( $_POST['sign'] ) ? sanitize_text_field( wp_unslash( $_POST['sign'] ) ) : '';
 		$sign     = Sanitize::zodiac_sign( $raw_sign );
 
-		return self::render_result( $sign, Sanitize::date_string( 'today' ) ) . self::render_form( $sign );
+		return self::render_result( $sign, Sanitize::date_string( 'today' ), 'daily' ) . self::render_form( $sign );
 	}
 
-	private static function render_result( string $sign, string $date ): string {
-		$data = GeneratedClient::getDailyHoroscope( $sign, null, $date );
+	private static function render_result( string $sign, string $date, string $period = 'daily' ): string {
+		$op_id = self::PERIOD_OPS[ $period ] ?? 'getDailyHoroscope';
+
+		// Daily horoscope keeps the hand-tuned card template (header with
+		// moon strip, narrative sections, lucky-strip footer). Weekly and
+		// monthly fall through to GenericRenderer since they have distinct
+		// response shapes (week/month label, weekByWeek list, keyDates) the
+		// daily template does not know about, and the polished generic
+		// primitives render them cleanly.
+		if ( $op_id === 'getDailyHoroscope' ) {
+			$data = GeneratedClient::getDailyHoroscope( $sign, null, $date );
+			if ( is_wp_error( $data ) ) {
+				return Templates::api_error( $data );
+			}
+			$body_data = is_array( $data ) ? $data : array();
+			return Templates::render(
+				'horoscope',
+				array(
+					'sign' => $sign,
+					'date' => $date,
+					'data' => $body_data,
+				)
+			)
+				. Disclaimer::render()
+				. Attribution::credit_link( $op_id )
+				. Attribution::jsonld( $op_id, $body_data );
+		}
+
+		$data = $op_id === 'getWeeklyHoroscope'
+			? GeneratedClient::getWeeklyHoroscope( $sign )
+			: GeneratedClient::getMonthlyHoroscope( $sign );
 
 		if ( is_wp_error( $data ) ) {
 			return Templates::api_error( $data );
 		}
-
 		$body_data = is_array( $data ) ? $data : array();
-		return Templates::render(
-			'horoscope',
-			array(
-				'sign' => $sign,
-				'date' => $date,
-				'data' => $body_data,
-			)
-		)
-			. Disclaimer::render()
-			. Attribution::credit_link( 'getDailyHoroscope' )
-			. Attribution::jsonld( 'getDailyHoroscope', $body_data );
+		return GenericRenderer::render( $op_id, $body_data );
 	}
 
 	private static function render_form( string $selected = '' ): string {

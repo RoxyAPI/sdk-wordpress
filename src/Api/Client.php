@@ -11,6 +11,10 @@
 
 namespace RoxyAPI\Api;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use RoxyAPI\Support\ApiKey;
 use WP_Error;
 

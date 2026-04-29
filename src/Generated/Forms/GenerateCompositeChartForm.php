@@ -11,6 +11,10 @@
 
 namespace RoxyAPI\Generated\Forms;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class GenerateCompositeChartForm {
 
 	public static function spec(): array {

@@ -60,7 +60,13 @@ class ShortcodesPage {
 			)
 		);
 
-		echo wp_kses_post( $html );
+		// admin-shortcodes.php escapes every dynamic value at the source
+		// (esc_html/esc_attr/esc_url on titles, descriptions, sample codes,
+		// domain accents, tag haystacks). Wrapping the compiled output in
+		// wp_kses_post() would strip the search <input> from the library
+		// controls because the post-content allowlist excludes form fields.
+		// Trust the template-level escape contract instead.
+		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- See contract above; admin-shortcodes.php escapes every value at the source.
 
 		echo '</div>';
 	}

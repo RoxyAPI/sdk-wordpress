@@ -31,12 +31,28 @@ class Test_Catalog extends \WP_UnitTestCase {
 		}
 	}
 
-	public function test_all_returns_one_hundred_thirty_entries(): void {
+	public function test_all_returns_hero_rows_plus_long_tail_endpoints(): void {
+		// Catalog composition = one row per hero shortcode (Manifest) +
+		// one row per non-hero endpoint (Endpoints). Heroes that have an
+		// operationId already in the hero-flag set still contribute one
+		// hero row, NOT a long-tail row, because Endpoints filters those
+		// out via the `hero` flag and Catalog adds them via Manifest. Shape
+		// the assertion against the live counts so the test stays valid as
+		// the spec evolves.
+		$hero_rows           = count( \RoxyAPI\Generated\Heroes\Manifest::all() );
+		$non_hero_endpoints  = count(
+			array_filter(
+				\RoxyAPI\Generated\Endpoints::all(),
+				static function ( $ep ) {
+					return empty( $ep['hero'] );
+				}
+			)
+		);
 		$entries = Catalog::all();
 		$this->assertSame(
-			130,
+			$hero_rows + $non_hero_endpoints,
 			count( $entries ),
-			'Expected the full library to total 130 shortcodes (11 hero + 119 generated).'
+			'Catalog rows must equal Manifest hero count plus non-hero endpoint count.'
 		);
 	}
 

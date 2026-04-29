@@ -19,7 +19,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<form class="roxyapi-form roxyapi-form--horoscope" method="post" action="">
+<?php
+// Post back to the same URL. Empty `action=""` works in browsers but
+// trips Plugin Check and confuses some caching plugins (they sometimes
+// serve cached HTML on POST when action is empty). Computing it from
+// REQUEST_URI keeps the form portable and explicit.
+$roxyapi_form_action = isset( $_SERVER['REQUEST_URI'] )
+	? esc_url( sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) )
+	: '';
+?>
+<form class="roxyapi-form roxyapi-form--horoscope" method="post" action="<?php echo esc_url( $roxyapi_form_action ); ?>">
 	<input type="hidden" name="roxyapi_action" value="<?php echo esc_attr( $action ); ?>" />
 	<input type="hidden" name="roxyapi_nonce" value="<?php echo esc_attr( $nonce ); ?>" />
 

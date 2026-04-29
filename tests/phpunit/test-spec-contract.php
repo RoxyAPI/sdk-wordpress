@@ -159,27 +159,6 @@ class Test_Spec_Contract extends \WP_UnitTestCase {
 		$this->assert_compliant( 'calculateLifePath' );
 	}
 
-	public function test_iching_random_cast_matches_spec(): void {
-		// The canonical hero example casts a random reading.
-		do_shortcode( $this->hero_example( 'roxy_iching' ) );
-		$this->assert_compliant( 'castReading' );
-	}
-
-	public function test_iching_specific_hexagram_matches_spec(): void {
-		do_shortcode( '[roxy_iching number="1"]' );
-		$this->assert_compliant( 'getHexagram' );
-	}
-
-	public function test_dream_search_matches_spec(): void {
-		do_shortcode( $this->hero_example( 'roxy_dream' ) );
-		$this->assert_compliant( 'searchDreamSymbols' );
-	}
-
-	public function test_dream_lookup_matches_spec(): void {
-		do_shortcode( '[roxy_dream id="water"]' );
-		$this->assert_compliant( 'getDreamSymbol' );
-	}
-
 	public function test_biorhythm_matches_spec(): void {
 		do_shortcode( $this->hero_example( 'roxy_biorhythm' ) );
 		$this->assert_compliant( 'getReading' );
@@ -190,8 +169,74 @@ class Test_Spec_Contract extends \WP_UnitTestCase {
 		$this->assert_compliant( 'getAngelNumber' );
 	}
 
-	public function test_crystal_matches_spec(): void {
-		do_shortcode( $this->hero_example( 'roxy_crystal' ) );
+	// ---------------------------------------------------------------------
+	// v1.1 money-hero additions. Each new hero must round-trip its canonical
+	// example through the same spec validator: catches any made-up field
+	// name (the v1.1 spec mostly uses { date, time, latitude, longitude,
+	// timezone } body shape but the test does not trust that — every
+	// outgoing request is diffed against the live OpenAPI snapshot).
+	// ---------------------------------------------------------------------
+
+	public function test_kundli_matches_spec(): void {
+		do_shortcode( $this->hero_example( 'roxy_kundli' ) );
+		$this->assert_compliant( 'generateBirthChart' );
+	}
+
+	public function test_panchang_matches_spec(): void {
+		do_shortcode( $this->hero_example( 'roxy_panchang' ) );
+		$this->assert_compliant( 'getDetailedPanchang' );
+	}
+
+	public function test_mangal_dosha_matches_spec(): void {
+		do_shortcode( $this->hero_example( 'roxy_mangal_dosha' ) );
+		$this->assert_compliant( 'checkManglikDosha' );
+	}
+
+	public function test_kp_chart_matches_spec(): void {
+		do_shortcode( $this->hero_example( 'roxy_kp_chart' ) );
+		$this->assert_compliant( 'generateKpChart' );
+	}
+
+	public function test_moon_phase_matches_spec(): void {
+		do_shortcode( $this->hero_example( 'roxy_moon_phase' ) );
+		$this->assert_compliant( 'getCurrentMoonPhase' );
+	}
+
+	public function test_tarot_yes_no_matches_spec(): void {
+		do_shortcode( $this->hero_example( 'roxy_tarot_yes_no' ) );
+		$this->assert_compliant( 'castYesNo' );
+	}
+
+	public function test_crystals_by_zodiac_matches_spec(): void {
+		do_shortcode( $this->hero_example( 'roxy_crystals_by_zodiac' ) );
+		$this->assert_compliant( 'getCrystalsByZodiac' );
+	}
+
+	// Legacy aliases preserve v1.0 shortcode behaviour. Each must still
+	// hit the same SaaS endpoint it did before the demotion so existing
+	// user pages keep rendering.
+	public function test_legacy_iching_random_cast_matches_spec(): void {
+		do_shortcode( '[roxy_iching]' );
+		$this->assert_compliant( 'castReading' );
+	}
+
+	public function test_legacy_iching_specific_hexagram_matches_spec(): void {
+		do_shortcode( '[roxy_iching number="1"]' );
+		$this->assert_compliant( 'getHexagram' );
+	}
+
+	public function test_legacy_dream_search_matches_spec(): void {
+		do_shortcode( '[roxy_dream symbol="water"]' );
+		$this->assert_compliant( 'searchDreamSymbols' );
+	}
+
+	public function test_legacy_dream_lookup_matches_spec(): void {
+		do_shortcode( '[roxy_dream id="water"]' );
+		$this->assert_compliant( 'getDreamSymbol' );
+	}
+
+	public function test_legacy_crystal_matches_spec(): void {
+		do_shortcode( '[roxy_crystal name="amethyst"]' );
 		$this->assert_compliant( 'getCrystal' );
 	}
 

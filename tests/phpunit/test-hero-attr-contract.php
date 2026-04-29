@@ -133,12 +133,17 @@ class Test_Hero_Attr_Contract extends \WP_UnitTestCase {
 	}
 
 	/**
-	 * The hero list must contain exactly ten entries in v1.0 (Compatibility
-	 * was dropped because the SaaS has no sign-only compatibility endpoint).
+	 * The hero list grew from 10 (v1.0) to 17 (v1.1 money-hero rewrite).
+	 * Onboarding (sourced from Manifest) and Registrar (hand-maintained
+	 * tag → class map) must agree exactly: any drift means a new hero was
+	 * added in only one place and will not register at runtime.
 	 */
-	public function test_hero_list_has_ten_entries(): void {
-		$this->assertCount( 10, Onboarding::hero_shortcodes() );
-		$this->assertCount( 10, Registrar::HERO_SHORTCODES );
+	public function test_hero_list_onboarding_and_registrar_agree(): void {
+		$this->assertCount(
+			count( Registrar::HERO_SHORTCODES ),
+			Onboarding::hero_shortcodes(),
+			'Onboarding hero count must equal Registrar HERO_SHORTCODES count.'
+		);
 	}
 
 	/**

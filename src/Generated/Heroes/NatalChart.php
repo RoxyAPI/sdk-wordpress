@@ -32,6 +32,7 @@ class NatalChart {
 		'lat' => "",
 		'lon' => "",
 		'tz' => "UTC",
+		'mode' => 'auto',
 	);
 
 	/**
@@ -51,7 +52,14 @@ class NatalChart {
 
 		wp_enqueue_style( 'roxyapi-frontend' );
 
+		if ( $atts['mode'] === 'form' ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\NatalChartForm::class );
+		}
+
 		if ( $atts['birth_date'] === '' || $atts['birth_time'] === '' || $atts['lat'] === '' || $atts['lon'] === '' ) {
+			if ( $atts['mode'] !== 'static' ) {
+				return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\NatalChartForm::class );
+			}
 			return \RoxyAPI\Support\Templates::error( sprintf( /* translators: %s is the canonical example shortcode. */ __( "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to UTC; pass an IANA name or decimal hours for accuracy). Example: %s", 'roxyapi' ), "[roxy_natal_chart birth_date=\"1990-05-15\" birth_time=\"14:30\" lat=\"40.7128\" lon=\"-74.0060\" tz=\"America/New_York\"]" ) );
 		}
 
@@ -74,5 +82,42 @@ class NatalChart {
 		}
 
 		return \RoxyAPI\Support\GenericRenderer::render( 'generateNatalChart', is_array( $data ) ? $data : array() );
+	}
+
+	/**
+	 * Visitor-form data path. Same dispatch as render() but returns the raw
+	 * API response (or a WP_Error) so the matching <Hero>Form::call() can
+	 * surface it via the FormRouter PRG cycle. Caller must pass the form
+	 * body keyed by the same attribute names as the shortcode accepts.
+	 *
+	 * @param array<string, mixed> $atts Form-body attributes.
+	 * @return array<string, mixed>|\WP_Error
+	 */
+	public static function fetch_for_form( array $atts ) {
+		$atts = array_merge( self::DEFAULTS, $atts );
+
+		if ( $atts['birth_date'] === '' || $atts['birth_time'] === '' || $atts['lat'] === '' || $atts['lon'] === '' ) {
+			return new \WP_Error( 'roxyapi_missing_attrs', sprintf( /* translators: %s is the canonical example shortcode. */ __( "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to UTC; pass an IANA name or decimal hours for accuracy). Example: %s", 'roxyapi' ), "[roxy_natal_chart birth_date=\"1990-05-15\" birth_time=\"14:30\" lat=\"40.7128\" lon=\"-74.0060\" tz=\"America/New_York\"]" ) );
+		}
+
+		$birth_date_clean = \RoxyAPI\Support\Sanitize::date_string( $atts['birth_date'] );
+		$birth_time_clean = \RoxyAPI\Support\Sanitize::time_string( $atts['birth_time'] );
+		$lat_clean = \RoxyAPI\Support\Sanitize::latitude( $atts['lat'] );
+		$lon_clean = \RoxyAPI\Support\Sanitize::longitude( $atts['lon'] );
+		$tz_clean = \RoxyAPI\Support\Sanitize::timezone( $atts['tz'] );
+
+		$data = \RoxyAPI\Generated\Client::generateNatalChart( array(
+			'date' => $birth_date_clean,
+			'time' => $birth_time_clean,
+			'latitude' => $lat_clean,
+			'longitude' => $lon_clean,
+			'timezone' => $tz_clean,
+		) );
+
+		if ( is_wp_error( $data ) ) {
+			return $data;
+		}
+
+		return is_array( $data ) ? $data : array();
 	}
 }

@@ -13,6 +13,10 @@
 
 namespace RoxyAPI\Support;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class RateLimit {
 
 	public const DEFAULT_LIMIT  = 20;

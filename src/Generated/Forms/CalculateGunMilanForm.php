@@ -11,6 +11,10 @@
 
 namespace RoxyAPI\Generated\Forms;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class CalculateGunMilanForm {
 
 	public static function spec(): array {

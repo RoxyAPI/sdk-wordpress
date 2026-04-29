@@ -14,7 +14,7 @@
     "align": ["wide", "full"]
   },
   "attributes": {
-    "defaultSign": { "type": "string", "default": "aries" },
+    "defaultSign": { "type": "string", "default": "" },
     "defaultBirthDate": { "type": "string", "default": "" },
     "defaultLat": { "type": "number" },
     "defaultLon": { "type": "number" }

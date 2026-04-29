@@ -11,6 +11,10 @@
 
 namespace RoxyAPI\Generated\Shortcodes;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use RoxyAPI\Support\GenericRenderer;
 
 class GetPhases {

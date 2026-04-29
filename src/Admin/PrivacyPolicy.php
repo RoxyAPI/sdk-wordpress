@@ -43,7 +43,7 @@ class PrivacyPolicy {
 			. '</p><p>'
 			. esc_html__( 'What is sent: name (optional), birth date, birth time, latitude, longitude, and timezone. Birth time and location together qualify as special-category data under EU GDPR Art. 9, so a consent checkbox is required before each submission.', 'roxyapi' )
 			. '</p><p>'
-			. esc_html__( 'How long it is stored on this site: the rendered reading is cached server-side for up to one hour by default (configurable). The visitor inputs themselves are not persisted — only the final reading text is cached, keyed by a hash of the inputs.', 'roxyapi' )
+			. esc_html__( 'How long it is stored on this site: the rendered reading is cached server-side for up to one hour by default (configurable). The visitor inputs themselves are not persisted. Only the final reading text is cached, keyed by a hash of the inputs.', 'roxyapi' )
 			. '</p><p>'
 			. esc_html__( 'How long Roxy stores the data: see the Roxy privacy policy at https://roxyapi.com/policy/privacy.', 'roxyapi' )
 			. '</p><p>'

@@ -9,6 +9,10 @@
 
 namespace RoxyAPI\Admin;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use RoxyAPI\Support\ApiKey;
 use RoxyAPI\Support\Encryption;
 
@@ -223,9 +227,9 @@ class SettingsFields {
 		$opts    = SettingsSchema::get_option();
 		$current = (string) ( $opts['cache_preset'] ?? 'balanced' );
 		$choices = array(
-			'fresh'       => __( 'Fresh — 15 minutes (most up-to-date, more API calls)', 'roxyapi' ),
-			'balanced'    => __( 'Balanced — 1 hour (recommended)', 'roxyapi' ),
-			'quota_saver' => __( 'Quota saver — 24 hours (fewer API calls, less fresh)', 'roxyapi' ),
+			'fresh'       => __( 'Fresh: 15 minutes (most up-to-date, more API calls)', 'roxyapi' ),
+			'balanced'    => __( 'Balanced: 1 hour (recommended)', 'roxyapi' ),
+			'quota_saver' => __( 'Quota saver: 24 hours (fewer API calls, less fresh)', 'roxyapi' ),
 		);
 		$out     = '<select id="roxyapi_cache_preset" name="roxyapi_settings[cache_preset]" class="roxyapi-select">';
 		foreach ( $choices as $value => $label ) {

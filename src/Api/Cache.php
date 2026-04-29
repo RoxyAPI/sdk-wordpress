@@ -11,6 +11,10 @@
 
 namespace RoxyAPI\Api;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use WP_Error;
 
 class Cache {

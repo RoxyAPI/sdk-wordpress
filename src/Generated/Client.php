@@ -10,6 +10,10 @@
 
 namespace RoxyAPI\Generated;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Client {
 
 	/**

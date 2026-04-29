@@ -7,6 +7,10 @@
 
 namespace RoxyAPI\Support;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Sanitize {
 
 	public const ZODIAC_SIGNS = array(
@@ -34,6 +38,23 @@ class Sanitize {
 	public static function zodiac_sign( $value, string $fallback = 'aries' ): string {
 		$slug = sanitize_key( (string) $value );
 		return in_array( $slug, self::ZODIAC_SIGNS, true ) ? $slug : $fallback;
+	}
+
+	/**
+	 * Title-case zodiac sign sanitiser. Always returns "Aries", "Taurus",
+	 * etc. — uppercase first letter, the rest lowercase. Used by endpoints
+	 * whose OpenAPI enum is strict Title Case (e.g. `/crystals/zodiac/{sign}`).
+	 *
+	 * The horoscope domain uses lowercase enums and stays on `zodiac_sign`.
+	 * Per-domain spec authoring inconsistency, not a renderer problem.
+	 *
+	 * @param mixed  $value    Raw input value.
+	 * @param string $fallback Fallback sign if invalid (Title Case expected).
+	 * @return string
+	 */
+	public static function zodiac_sign_title( $value, string $fallback = 'Aries' ): string {
+		$slug = self::zodiac_sign( $value, strtolower( $fallback ) );
+		return ucfirst( $slug );
 	}
 
 	/**

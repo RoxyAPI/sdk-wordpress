@@ -192,7 +192,16 @@ class SettingsPage {
 			);
 		}
 
-		echo wp_kses_post( $html );
+		// Templates assemble $html from pre-escaped fragments: every dynamic
+		// scalar passes through esc_html / esc_attr / esc_url at the call
+		// site, every form-control HTML blob passes through wp_kses() with a
+		// per-control allowlist (input / select / option / textarea / label).
+		// Wrapping the whole document in wp_kses_post() here strips form
+		// controls (the post-content allowlist excludes input/select/textarea)
+		// and would render the cache-preset select + attribution toggles as
+		// plain text. The template-level escape contract is the source of
+		// truth; trust it instead of double-filtering.
+		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- See contract above; admin-onboarding.php and admin-connected.php escape every value at the source.
 
 		echo '</div>';
 	}

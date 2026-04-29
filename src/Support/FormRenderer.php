@@ -295,7 +295,7 @@ class FormRenderer {
 		$opts  = \RoxyAPI\Admin\SettingsSchema::get_option();
 		$label = isset( $opts['consent_label'] ) && (string) $opts['consent_label'] !== ''
 			? (string) $opts['consent_label']
-			: __( 'I agree to my form input being processed to generate this reading. Birth date, time, and location are sent to the third-party Roxy service. See the site Privacy Policy for details.', 'roxyapi' );
+			: __( 'I consent to sending my inputs to generate this reading. See the Privacy Policy for details.', 'roxyapi' );
 
 		$error    = isset( $errors_by_key['_consent'] ) && is_string( $errors_by_key['_consent'] )
 			? (string) $errors_by_key['_consent']

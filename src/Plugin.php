@@ -23,6 +23,7 @@ use RoxyAPI\Api\TestKeyRoute;
 use RoxyAPI\Blocks\Bindings;
 use RoxyAPI\Blocks\Category;
 use RoxyAPI\Blocks\Registrar as BlocksRegistrar;
+use RoxyAPI\Shortcodes\LegacyAliases;
 use RoxyAPI\Shortcodes\Registrar as ShortcodesRegistrar;
 use RoxyAPI\Support\FormRouter;
 
@@ -52,6 +53,7 @@ class Plugin {
 		Category::register();
 		BlocksRegistrar::register();
 		ShortcodesRegistrar::register();
+		LegacyAliases::register();
 		Bindings::register();
 		FormRouter::register();
 

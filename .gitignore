@@ -15,4 +15,6 @@ roxyapi.zip
 # Maintainer-only docs, never published or committed
 CLAUDE.md
 MAINTAINER.md
+MAINTAINER-*.md
+AUDIT-*.md
 todo.md

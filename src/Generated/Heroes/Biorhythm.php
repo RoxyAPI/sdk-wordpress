@@ -29,6 +29,7 @@ class Biorhythm {
 	public const DEFAULTS = array(
 		'birth_date' => "",
 		'target_date' => "",
+		'mode' => 'auto',
 	);
 
 	/**
@@ -48,7 +49,14 @@ class Biorhythm {
 
 		wp_enqueue_style( 'roxyapi-frontend' );
 
+		if ( $atts['mode'] === 'form' ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\BiorhythmForm::class );
+		}
+
 		if ( $atts['birth_date'] === '' ) {
+			if ( $atts['mode'] !== 'static' ) {
+				return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\BiorhythmForm::class );
+			}
 			return \RoxyAPI\Support\Templates::error( sprintf( /* translators: %s is the canonical example shortcode. */ __( "The birth_date attribute is required. Example: %s", 'roxyapi' ), "[roxy_biorhythm birth_date=\"1990-05-15\" target_date=\"today\"]" ) );
 		}
 
@@ -69,5 +77,40 @@ class Biorhythm {
 		}
 
 		return \RoxyAPI\Support\GenericRenderer::render( 'getReading', is_array( $data ) ? $data : array() );
+	}
+
+	/**
+	 * Visitor-form data path. Same dispatch as render() but returns the raw
+	 * API response (or a WP_Error) so the matching <Hero>Form::call() can
+	 * surface it via the FormRouter PRG cycle. Caller must pass the form
+	 * body keyed by the same attribute names as the shortcode accepts.
+	 *
+	 * @param array<string, mixed> $atts Form-body attributes.
+	 * @return array<string, mixed>|\WP_Error
+	 */
+	public static function fetch_for_form( array $atts ) {
+		$atts = array_merge( self::DEFAULTS, $atts );
+
+		if ( $atts['birth_date'] === '' ) {
+			return new \WP_Error( 'roxyapi_missing_attrs', sprintf( /* translators: %s is the canonical example shortcode. */ __( "The birth_date attribute is required. Example: %s", 'roxyapi' ), "[roxy_biorhythm birth_date=\"1990-05-15\" target_date=\"today\"]" ) );
+		}
+
+		$birth_date_clean = \RoxyAPI\Support\Sanitize::date_string( $atts['birth_date'] );
+		$target_date_clean = \RoxyAPI\Support\Sanitize::date_string( $atts['target_date'] );
+
+		$body = array(
+			'birthDate' => $birth_date_clean,
+		);
+		if ( $atts['target_date'] !== '' ) {
+			$body['targetDate'] = $target_date_clean;
+		}
+
+		$data = \RoxyAPI\Generated\Client::getReading( $body );
+
+		if ( is_wp_error( $data ) ) {
+			return $data;
+		}
+
+		return is_array( $data ) ? $data : array();
 	}
 }

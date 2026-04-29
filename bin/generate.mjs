@@ -529,6 +529,10 @@ ${fieldsPhp}
 
 namespace RoxyAPI\\Generated\\Forms;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class ${className} {
 
 	public static function spec(): array {
@@ -676,6 +680,10 @@ ${pathGuard ? pathGuard + "\n" : ""}		return \\RoxyAPI\\Api\\Cache::remember(
 
 namespace RoxyAPI\\Generated;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Client {
 ${methods.join("\n")}
 }
@@ -767,6 +775,10 @@ function emitEndpointsPhp() {
 
 namespace RoxyAPI\\Generated;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Endpoints {
 
 	/**
@@ -841,6 +853,10 @@ function emitShortcodePhp(op) {
  */
 
 namespace RoxyAPI\\Generated\\Shortcodes;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 use RoxyAPI\\Support\\FormRenderer;
 
@@ -947,6 +963,10 @@ class ${className} {
  */
 
 namespace RoxyAPI\\Generated\\Shortcodes;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 use RoxyAPI\\Support\\GenericRenderer;
 
@@ -1100,6 +1120,10 @@ function emitBootstrapPhp(generatedOps) {
 
 namespace RoxyAPI\\Generated;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class ShortcodeBootstrap {
 
 	public static function register(): void {
@@ -1158,11 +1182,17 @@ function renderSanitizeCall(sanitize, valueExpr) {
 }
 
 /** Build the PHP array literal contents for a DEFAULTS constant from a hero config. */
-function renderDefaultsArray(attributes) {
+function renderDefaultsArray(attributes, hasFormMode = false) {
 	const lines = Object.entries(attributes).map(([key, info]) => {
 		const def = info.default ?? "";
 		return `\t\t'${key}' => ${JSON.stringify(def)},`;
 	});
+	if (hasFormMode) {
+		// Mode attribute opts in/out of form rendering. `auto` (default) shows
+		// the visitor form when required attrs are missing; `form` always shows
+		// the form; `static` preserves the legacy missing-attrs error message.
+		lines.push(`\t\t'mode' => 'auto',`);
+	}
 	return lines.join("\n");
 }
 
@@ -1205,7 +1235,7 @@ function renderAttrSanitisation(attributes) {
 }
 
 /** Build the "required" check block using the example interpolation for the example. */
-function renderRequiredCheck(attributes, missingMessage, example) {
+function renderRequiredCheck(attributes, missingMessage, example, formClassName = null) {
 	const requiredKeys = Object.entries(attributes)
 		.filter(([_, info]) => info.required)
 		.map(([k]) => k);
@@ -1217,7 +1247,68 @@ function renderRequiredCheck(attributes, missingMessage, example) {
 	const messagePhp = `sprintf( ${translatorComment} __( ${JSON.stringify(
 		missingMessage,
 	)}, 'roxyapi' ), ${JSON.stringify(example)} )`;
+	if (formClassName) {
+		// When form_mode is configured, missing required attrs render the
+		// visitor form (unless mode='static' explicitly opts out, which
+		// preserves the legacy error message for site owners who do not want
+		// a form on the page).
+		return `\t\tif ( ${conditions} ) {
+			if ( $atts['mode'] !== 'static' ) {
+				return \\RoxyAPI\\Support\\FormRenderer::render( \\RoxyAPI\\Generated\\Forms\\${formClassName}::class );
+			}
+			return \\RoxyAPI\\Support\\Templates::error( ${messagePhp} );
+		}`;
+	}
 	return `\t\tif ( ${conditions} ) {\n\t\t\treturn \\RoxyAPI\\Support\\Templates::error( ${messagePhp} );\n\t\t}`;
+}
+
+/**
+ * Render the form-mode short-circuit block placed at the top of render().
+ * When `mode='form'` is passed, render the visitor form regardless of
+ * whether other attrs are present.
+ */
+function renderFormModeShortCircuit(formClassName) {
+	if (!formClassName) return "";
+	return `\t\tif ( $atts['mode'] === 'form' ) {
+			return \\RoxyAPI\\Support\\FormRenderer::render( \\RoxyAPI\\Generated\\Forms\\${formClassName}::class );
+		}`;
+}
+
+/** Required-attrs check for fetch_for_form: returns WP_Error on missing. */
+function renderRequiredCheckFetch(attributes, missingMessage, example) {
+	const requiredKeys = Object.entries(attributes)
+		.filter(([_, info]) => info.required)
+		.map(([k]) => k);
+	if (requiredKeys.length === 0 || !missingMessage) return "";
+	const conditions = requiredKeys
+		.map((k) => `$atts['${k}'] === ''`)
+		.join(" || ");
+	const translatorComment = `/* translators: %s is the canonical example shortcode. */`;
+	const messagePhp = `sprintf( ${translatorComment} __( ${JSON.stringify(
+		missingMessage,
+	)}, 'roxyapi' ), ${JSON.stringify(example)} )`;
+	return `\t\tif ( ${conditions} ) {\n\t\t\treturn new \\WP_Error( 'roxyapi_missing_attrs', ${messagePhp} );\n\t\t}`;
+}
+
+/** Transform error blocks for fetch_for_form: returns WP_Error on null parts. */
+function renderTransformErrorBlocksFetch(transformedFields, cfg) {
+	const blocks = [];
+	for (const [name] of Object.entries(transformedFields)) {
+		const translatorComment = `/* translators: %s is the canonical example shortcode. */`;
+		const errMessage = cfg.transform_error_message
+			? `sprintf( ${translatorComment} __( ${JSON.stringify(
+					cfg.transform_error_message,
+			  )}, 'roxyapi' ), ${JSON.stringify(cfg.example)} )`
+			: `__( ${JSON.stringify(
+					`The ${name} attribute must be in YYYY-MM-DD format.`,
+			  )}, 'roxyapi' )`;
+		blocks.push(
+			`\t\tif ( $${name}_parts === null ) {
+			return new \\WP_Error( 'roxyapi_invalid_format', ${errMessage} );
+		}`,
+		);
+	}
+	return blocks.join("\n");
 }
 
 /** Build the PHP code that calls a single operation (with the right arg shape). */
@@ -1323,12 +1414,277 @@ function buildArgsForBranch(
 	return args;
 }
 
+/**
+ * Build the body of the hero method that calls the upstream API.
+ *
+ * Two output modes:
+ *   - "render": emits a PHP fragment that returns rendered HTML via
+ *     `GenericRenderer::render()` on success and `Templates::api_error()` on
+ *     failure. Used inside the hero's `render()` method.
+ *   - "fetch": emits a PHP fragment that returns the raw API response array
+ *     on success and the original `WP_Error` on failure. Used inside the
+ *     hero's `fetch_for_form()` method which the matching `<Hero>Form` class
+ *     calls back into.
+ *
+ * The dispatch / single-target / skip_if_empty branching logic is identical
+ * in both modes; only the leaf return statements differ.
+ */
+function buildHeroBodyContent(
+	tagSuffix,
+	cfg,
+	sanitisedExpr,
+	transformedFields,
+	transformedSubExpr,
+	mode,
+) {
+	const returnsHtml = mode === "render";
+
+	const successReturn = (opId) =>
+		returnsHtml
+			? `return \\RoxyAPI\\Support\\GenericRenderer::render( '${opId}', is_array( $data ) ? $data : array() );`
+			: `return is_array( $data ) ? $data : array();`;
+	const errorReturn = returnsHtml
+		? `return \\RoxyAPI\\Support\\Templates::api_error( $data );`
+		: `return $data;`;
+
+	if (cfg.dispatch) {
+		// Multi-target dispatch hero (TarotCard / IChing / Dream).
+		const branches = [];
+		for (let i = 0; i < cfg.dispatch.length; i++) {
+			const d = cfg.dispatch[i];
+			const op = opsByIdMap[d.operationId];
+			if (!op) {
+				throw new Error(
+					`[generate] dispatch references unknown operationId: ${d.operationId}`,
+				);
+			}
+			let condition = null;
+			if (d.when) {
+				const parts = [];
+				for (const [attrName, expectedValue] of Object.entries(
+					d.when,
+				)) {
+					const expr =
+						sanitisedExpr[attrName] !== undefined
+							? sanitisedExpr[attrName]
+							: `$atts['${attrName}']`;
+					parts.push(`${expr} === ${JSON.stringify(expectedValue)}`);
+				}
+				condition = parts.join(" && ");
+			} else if (d.when_present) {
+				condition = `$atts['${d.when_present}'] !== ''`;
+			} else if (d.default) {
+				condition = null;
+			}
+
+			const argsByName = buildArgsForBranch(
+				cfg.attributes,
+				sanitisedExpr,
+				transformedFields,
+				op,
+				d,
+			);
+			const callExpr = renderClientCall(d.operationId, argsByName);
+
+			const branchBody = `\t\t\t$data = ${callExpr};
+			if ( is_wp_error( $data ) ) {
+				${errorReturn}
+			}
+			${successReturn(d.operationId)}`;
+
+			if (condition === null) {
+				branches.push(`\t\t{\n${branchBody}\n\t\t}`);
+			} else if (i === 0) {
+				branches.push(
+					`\t\tif ( ${condition} ) {\n${branchBody}\n\t\t}`,
+				);
+			} else {
+				branches.push(`if ( ${condition} ) {\n${branchBody}\n\t\t}`);
+			}
+		}
+
+		const stitched = branches.reduce(
+			(acc, b, i) => (i === 0 ? b : acc + " else " + b),
+			"",
+		);
+
+		// Dispatch fallback for cases where no branch matches and no default
+		// branch exists. In render mode this surfaces a friendly Templates::error;
+		// in fetch mode a WP_Error so FormRouter can render it via Templates::api_error.
+		// Form-mode heroes also offer a re-render of the visitor form when the
+		// current site mode is not 'static'.
+		let fallback = "";
+		const hasDefault = cfg.dispatch.some((d) => d.default);
+		if (!hasDefault && cfg.missing_message) {
+			const translatorComment = `/* translators: %s is the canonical example shortcode. */`;
+			const messagePhp = `sprintf( ${translatorComment} __( ${JSON.stringify(
+				cfg.missing_message,
+			)}, 'roxyapi' ), ${JSON.stringify(cfg.example)} )`;
+			if (returnsHtml && cfg.form_mode) {
+				const formClassName = `${toPascalCase(tagSuffix)}Form`;
+				fallback = `\n\n\t\tif ( $atts['mode'] !== 'static' ) {
+			return \\RoxyAPI\\Support\\FormRenderer::render( \\RoxyAPI\\Generated\\Forms\\${formClassName}::class );
+		}
+		return \\RoxyAPI\\Support\\Templates::error( ${messagePhp} );`;
+			} else if (returnsHtml) {
+				fallback = `\n\n\t\treturn \\RoxyAPI\\Support\\Templates::error( ${messagePhp} );`;
+			} else {
+				fallback = `\n\n\t\treturn new \\WP_Error( 'roxyapi_missing_attrs', ${messagePhp} );`;
+			}
+		}
+
+		return `${stitched}${fallback}`;
+	}
+
+	// Single-target hero.
+	const op = opsByIdMap[cfg.operationId];
+	if (!op) {
+		throw new Error(
+			`[generate] hero ${tagSuffix} references unknown operationId: ${cfg.operationId}`,
+		);
+	}
+
+	const args = {};
+	const skipIfEmptyEntries = [];
+	for (const [attrName, info] of Object.entries(cfg.attributes)) {
+		if (info.transform) {
+			args.year = transformedSubExpr(attrName, "year");
+			args.month = transformedSubExpr(attrName, "month");
+			args.day = transformedSubExpr(attrName, "day");
+			continue;
+		}
+		const fieldName = info.spec_field || attrName;
+		const valueExpr =
+			sanitisedExpr[attrName] !== undefined
+				? sanitisedExpr[attrName]
+				: `$atts['${attrName}']`;
+		args[fieldName] = valueExpr;
+		if (info.skip_if_empty) {
+			skipIfEmptyEntries.push({ attrName, fieldName });
+		}
+	}
+
+	if (skipIfEmptyEntries.length > 0 && op.method === "POST") {
+		const pathParams = extractPathParams(op.path);
+		const bodyLines = [];
+		const conditional = [];
+		for (const [field, expr] of Object.entries(args)) {
+			if (pathParams.includes(field)) continue;
+			const skipEntry = skipIfEmptyEntries.find(
+				(s) => s.fieldName === field,
+			);
+			if (skipEntry) {
+				conditional.push({
+					field,
+					expr,
+					attrName: skipEntry.attrName,
+				});
+			} else {
+				bodyLines.push(`\t\t\t'${field}' => ${expr},`);
+			}
+		}
+		const bodyArrayPhp =
+			bodyLines.length === 0
+				? "array()"
+				: `array(\n${bodyLines.join("\n")}\n\t\t)`;
+		const conditionalAdds = conditional
+			.map(
+				(c) =>
+					`\t\tif ( $atts['${c.attrName}'] !== '' ) {\n\t\t\t$body['${c.field}'] = ${c.expr};\n\t\t}`,
+			)
+			.join("\n");
+		const pathArgsList = pathParams
+			.map((p) => (args[p] !== undefined ? args[p] : "''"))
+			.join(", ");
+		const callArgs = pathArgsList ? `${pathArgsList}, $body` : "$body";
+
+		return `\t\t$body = ${bodyArrayPhp};
+${conditionalAdds}
+
+		$data = \\RoxyAPI\\Generated\\Client::${cfg.operationId}( ${callArgs} );
+
+		if ( is_wp_error( $data ) ) {
+			${errorReturn}
+		}
+
+		${successReturn(cfg.operationId)}`;
+	}
+
+	const callExpr = renderClientCall(cfg.operationId, args);
+	return `\t\t$data = ${callExpr};
+
+		if ( is_wp_error( $data ) ) {
+			${errorReturn}
+		}
+
+		${successReturn(cfg.operationId)}`;
+}
+
 /** Emit the PHP class for a single hero. */
 function emitHeroPhp(tagSuffix, cfg) {
 	const className = toPascalCase(tagSuffix);
 	const shortcodeTag = "roxy_" + tagSuffix;
 
-	const defaultsArray = renderDefaultsArray(cfg.attributes);
+	// Heroes that delegate to an existing long-tail Form (synastry, gun_milan,
+	// compatibility) are essentially a clean alias for the form-mode shortcode.
+	// Static mode is impractical (10+ attributes) so the hero just renders the
+	// Form class on every invocation. No DEFAULTS beyond the tag, no
+	// fetch_for_form, no companion <Hero>Form class — we reuse the long-tail one.
+	if (cfg.delegate_to_form) {
+		return `<?php
+/**
+ * Auto-generated hero shortcode: [${shortcodeTag}]
+ *
+ * ${cfg.description}
+ *
+ * Form-only hero. Delegates rendering to the existing long-tail Form
+ * class \\RoxyAPI\\Generated\\Forms\\${cfg.delegate_to_form}, which already
+ * carries the right multi-section visitor form (two birth charts) and
+ * call() implementation. FormRouter handles the POST cycle.
+ *
+ * DO NOT EDIT. Generated by bin/generate.mjs from bin/hero-config.json.
+ *
+ * @package RoxyAPI
+ */
+
+namespace RoxyAPI\\Generated\\Heroes;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+class ${className} {
+
+	/**
+	 * Empty DEFAULTS const satisfies the Test_Hero_Attr_Contract regression
+	 * test (every hero class must declare DEFAULTS). Form-only heroes do
+	 * not consume attributes — every input flows through the form.
+	 *
+	 * @var array<string, string>
+	 */
+	public const DEFAULTS = array();
+
+	/**
+	 * Render the shortcode. Always shows the visitor form because static
+	 * mode would require 10+ attributes to be passed inline.
+	 *
+	 * @param array<string, string>|string $atts    Shortcode attributes (ignored).
+	 * @param string                       $content Inner content (ignored).
+	 * @param string                       $tag     Shortcode tag (ignored).
+	 * @return string
+	 */
+	public static function render( $atts, $content = '', $tag = '' ): string {
+		wp_enqueue_style( 'roxyapi-frontend' );
+		return \\RoxyAPI\\Support\\FormRenderer::render( \\RoxyAPI\\Generated\\Forms\\${cfg.delegate_to_form}::class );
+	}
+}
+`;
+	}
+
+	const hasFormMode = !!cfg.form_mode;
+	const formClassName = hasFormMode ? `${className}Form` : null;
+
+	const defaultsArray = renderDefaultsArray(cfg.attributes, hasFormMode);
 	const {
 		lines: sanitiseLines,
 		sanitisedExpr,
@@ -1338,7 +1694,9 @@ function emitHeroPhp(tagSuffix, cfg) {
 		cfg.attributes,
 		cfg.missing_message,
 		cfg.example,
+		formClassName,
 	);
+	const formModeShortCircuit = renderFormModeShortCircuit(formClassName);
 
 	// Transform error-handling block: for every transformed field, emit a null-check.
 	const transformErrorBlocks = [];
@@ -1364,189 +1722,72 @@ function emitHeroPhp(tagSuffix, cfg) {
 		return `$${attrName}_parts['${fieldName}']`;
 	}
 
-	let bodyContent;
-
-	if (cfg.dispatch) {
-		// Multi-target dispatch hero (TarotCard / IChing / Dream).
-		const branches = [];
-		for (let i = 0; i < cfg.dispatch.length; i++) {
-			const d = cfg.dispatch[i];
-			const op = opsByIdMap[d.operationId];
-			if (!op) {
-				throw new Error(
-					`[generate] dispatch references unknown operationId: ${d.operationId}`,
-				);
-			}
-
-			// Build the condition expression.
-			let condition = null;
-			if (d.when) {
-				const parts = [];
-				for (const [attrName, expectedValue] of Object.entries(
-					d.when,
-				)) {
-					const expr =
-						sanitisedExpr[attrName] !== undefined
-							? sanitisedExpr[attrName]
-							: `$atts['${attrName}']`;
-					parts.push(`${expr} === ${JSON.stringify(expectedValue)}`);
-				}
-				condition = parts.join(" && ");
-			} else if (d.when_present) {
-				// non-empty test: use the original raw atts value (before sanitisation)
-				condition = `$atts['${d.when_present}'] !== ''`;
-			} else if (d.default) {
-				condition = null; // else branch
-			}
-
-			// Build args for the call.
-			const argsByName = buildArgsForBranch(
-				cfg.attributes,
-				sanitisedExpr,
-				transformedFields,
-				op,
-				d,
-			);
-			const callExpr = renderClientCall(d.operationId, argsByName);
-
-			const branchBody = `\t\t\t$data = ${callExpr};
-			if ( is_wp_error( $data ) ) {
-				return \\RoxyAPI\\Support\\Templates::api_error( $data );
-			}
-			return \\RoxyAPI\\Support\\GenericRenderer::render( '${d.operationId}', is_array( $data ) ? $data : array() );`;
-
-			if (condition === null) {
-				branches.push(`\t\t{\n${branchBody}\n\t\t}`);
-			} else if (i === 0) {
-				branches.push(
-					`\t\tif ( ${condition} ) {\n${branchBody}\n\t\t}`,
-				);
-			} else {
-				branches.push(`if ( ${condition} ) {\n${branchBody}\n\t\t}`);
-			}
-		}
-
-		// Stitch with else.
-		const stitched = branches.reduce(
-			(acc, b, i) => (i === 0 ? b : acc + " else " + b),
-			"",
-		);
-
-		// If there's no explicit default branch, add a fallback that returns the missing-message error.
-		let fallback = "";
-		const hasDefault = cfg.dispatch.some((d) => d.default);
-		if (!hasDefault && cfg.missing_message) {
-			const translatorComment = `/* translators: %s is the canonical example shortcode. */`;
-			const messagePhp = `sprintf( ${translatorComment} __( ${JSON.stringify(
-				cfg.missing_message,
-			)}, 'roxyapi' ), ${JSON.stringify(cfg.example)} )`;
-			fallback = `\n\n\t\treturn \\RoxyAPI\\Support\\Templates::error( ${messagePhp} );`;
-		}
-
-		bodyContent = `${stitched}${fallback}`;
-	} else {
-		// Single-target hero.
-		const op = opsByIdMap[cfg.operationId];
-		if (!op) {
-			throw new Error(
-				`[generate] hero ${tagSuffix} references unknown operationId: ${cfg.operationId}`,
-			);
-		}
-
-		// Build argsByName from attributes, applying transforms and skip_if_empty.
-		const args = {};
-		const skipIfEmptyEntries = [];
-		for (const [attrName, info] of Object.entries(cfg.attributes)) {
-			if (info.transform) {
-				// Inject year/month/day from the transformed parts.
-				args.year = transformedSubExpr(attrName, "year");
-				args.month = transformedSubExpr(attrName, "month");
-				args.day = transformedSubExpr(attrName, "day");
-				continue;
-			}
-			const fieldName = info.spec_field || attrName;
-			const valueExpr =
-				sanitisedExpr[attrName] !== undefined
-					? sanitisedExpr[attrName]
-					: `$atts['${attrName}']`;
-			args[fieldName] = valueExpr;
-			if (info.skip_if_empty) {
-				skipIfEmptyEntries.push({ attrName, fieldName });
-			}
-		}
-
-		// For skip_if_empty, we conditionally drop the field from args at runtime.
-		// Emit a body construction that omits empty optional fields.
-		if (skipIfEmptyEntries.length > 0 && op.method === "POST") {
-			// Build body inline with conditional inclusions.
-			const pathParams = extractPathParams(op.path);
-			const bodyLines = [];
-			const conditional = [];
-
-			for (const [field, expr] of Object.entries(args)) {
-				if (pathParams.includes(field)) continue;
-				const skipEntry = skipIfEmptyEntries.find(
-					(s) => s.fieldName === field,
-				);
-				if (skipEntry) {
-					conditional.push({
-						field,
-						expr,
-						attrName: skipEntry.attrName,
-					});
-				} else {
-					bodyLines.push(`\t\t\t'${field}' => ${expr},`);
-				}
-			}
-
-			const bodyArrayPhp =
-				bodyLines.length === 0
-					? "array()"
-					: `array(\n${bodyLines.join("\n")}\n\t\t)`;
-
-			const conditionalAdds = conditional
-				.map(
-					(c) =>
-						`\t\tif ( $atts['${c.attrName}'] !== '' ) {\n\t\t\t$body['${c.field}'] = ${c.expr};\n\t\t}`,
-				)
-				.join("\n");
-
-			const pathArgsList = pathParams
-				.map((p) => (args[p] !== undefined ? args[p] : "''"))
-				.join(", ");
-			const callArgs = pathArgsList ? `${pathArgsList}, $body` : "$body";
-
-			bodyContent = `\t\t$body = ${bodyArrayPhp};
-${conditionalAdds}
-
-		$data = \\RoxyAPI\\Generated\\Client::${cfg.operationId}( ${callArgs} );
-
-		if ( is_wp_error( $data ) ) {
-			return \\RoxyAPI\\Support\\Templates::api_error( $data );
-		}
-
-		return \\RoxyAPI\\Support\\GenericRenderer::render( '${cfg.operationId}', is_array( $data ) ? $data : array() );`;
-		} else {
-			const callExpr = renderClientCall(cfg.operationId, args);
-			bodyContent = `\t\t$data = ${callExpr};
-
-		if ( is_wp_error( $data ) ) {
-			return \\RoxyAPI\\Support\\Templates::api_error( $data );
-		}
-
-		return \\RoxyAPI\\Support\\GenericRenderer::render( '${cfg.operationId}', is_array( $data ) ? $data : array() );`;
-		}
-	}
+	const bodyContent = buildHeroBodyContent(
+		tagSuffix,
+		cfg,
+		sanitisedExpr,
+		transformedFields,
+		transformedSubExpr,
+		"render",
+	);
 
 	const sections = [
 		`\t\t$atts = shortcode_atts(\n\t\t\tself::DEFAULTS,\n\t\t\tis_array( $atts ) ? $atts : array(),\n\t\t\t(string) $tag\n\t\t);`,
 		`\t\twp_enqueue_style( 'roxyapi-frontend' );`,
 	];
+	if (formModeShortCircuit) sections.push(formModeShortCircuit);
 	if (requiredCheck) sections.push(requiredCheck);
 	if (sanitiseLines) sections.push(sanitiseLines);
 	if (transformErrorBlocks.length > 0)
 		sections.push(transformErrorBlocks.join("\n"));
 	sections.push(bodyContent);
+
+	// fetch_for_form parallel method (only when form_mode is configured).
+	// Same dispatch + sanitisation as render(), but returns array | WP_Error
+	// so the matching <Hero>Form::call() can hand the raw response back to
+	// FormRouter for a Post-Redirect-Get cycle.
+	let fetchMethod = "";
+	if (hasFormMode) {
+		const fetchSections = [
+			`\t\t$atts = array_merge( self::DEFAULTS, $atts );`,
+		];
+		const reqFetch = renderRequiredCheckFetch(
+			cfg.attributes,
+			cfg.missing_message,
+			cfg.example,
+		);
+		if (reqFetch) fetchSections.push(reqFetch);
+		if (sanitiseLines) fetchSections.push(sanitiseLines);
+		const transformFetch = renderTransformErrorBlocksFetch(
+			transformedFields,
+			cfg,
+		);
+		if (transformFetch) fetchSections.push(transformFetch);
+		const bodyFetch = buildHeroBodyContent(
+			tagSuffix,
+			cfg,
+			sanitisedExpr,
+			transformedFields,
+			transformedSubExpr,
+			"fetch",
+		);
+		fetchSections.push(bodyFetch);
+
+		fetchMethod = `
+
+	/**
+	 * Visitor-form data path. Same dispatch as render() but returns the raw
+	 * API response (or a WP_Error) so the matching <Hero>Form::call() can
+	 * surface it via the FormRouter PRG cycle. Caller must pass the form
+	 * body keyed by the same attribute names as the shortcode accepts.
+	 *
+	 * @param array<string, mixed> $atts Form-body attributes.
+	 * @return array<string, mixed>|\\WP_Error
+	 */
+	public static function fetch_for_form( array $atts ) {
+${fetchSections.join("\n\n")}
+	}`;
+	}
 
 	return `<?php
 /**
@@ -1590,9 +1831,145 @@ ${defaultsArray}
 	 */
 	public static function render( $atts, $content = '', $tag = '' ): string {
 ${sections.join("\n\n")}
+	}${fetchMethod}
+}
+`;
+}
+
+/**
+ * Convert a hero-config form_mode field declaration to a PHP form-field
+ * literal string (one entry in the spec sections/flat_fields array).
+ * Only emits keys the FormRenderer recognises so a typo in the config
+ * surfaces at PHP rendering rather than silently passing through.
+ */
+function heroFormFieldToPhp(field, indent) {
+	const allowed = [
+		"name",
+		"label",
+		"required",
+		"type",
+		"help",
+		"placeholder",
+		"min",
+		"max",
+		"step",
+		"enum",
+	];
+	const lines = [];
+	for (const key of allowed) {
+		if (field[key] === undefined) continue;
+		lines.push(`${indent}\t'${key}' => ${phpLiteral(field[key])},`);
+	}
+	return `${indent}array(\n${lines.join("\n")}\n${indent}),`;
+}
+
+/**
+ * Emit src/Generated/Forms/<Hero>Form.php for a form-mode hero. The form
+ * spec mirrors the hero-config form_mode block; the call() implementation
+ * delegates back to <Hero>::fetch_for_form() so dispatch / sanitisation /
+ * client-call logic stays in one place.
+ */
+function emitHeroFormPhp(tagSuffix, cfg) {
+	if (!cfg.form_mode) return null;
+	const heroClass = toPascalCase(tagSuffix);
+	const formClassName = `${heroClass}Form`;
+	const formId = lowerCamelCase(tagSuffix);
+	const fm = cfg.form_mode;
+	const submitLabel = fm.submit_label || "Submit";
+	const title = fm.title || cfg.title || tagSuffix;
+
+	// Build PHP fragments for fields. A single-section spec keeps the
+	// FormRenderer geo autocomplete heuristic working (lat / lon / tz in
+	// the same fieldset). Without a section, all fields go into flat_fields.
+	const fields = (fm.fields || []).map((f) => ({
+		...f,
+		name: f.attr || f.name,
+	}));
+
+	let sectionsPhp = "";
+	let flatPhp = "";
+	let callBodyMap = "$body";
+	if (fm.section) {
+		const sectionName = fm.section.name;
+		const sectionLabel = fm.section.label || humanLabel(sectionName);
+		const fieldEntries = fields
+			.map((f) => heroFormFieldToPhp(f, "\t\t\t\t\t"))
+			.join("\n");
+		sectionsPhp = `\t\t\tarray(
+				'name'   => ${phpLiteral(sectionName)},
+				'label'  => ${phpLiteral(sectionLabel)},
+				'fields' => array(
+${fieldEntries}
+				),
+			),`;
+		// FormRouter sanitises section data into $body[<section>] sub-array;
+		// flatten it for the hero method which expects top-level attr keys.
+		callBodyMap = `isset( $body['${sectionName}'] ) && is_array( $body['${sectionName}'] ) ? $body['${sectionName}'] : array()`;
+	} else {
+		flatPhp = fields.map((f) => heroFormFieldToPhp(f, "\t\t\t")).join("\n");
+	}
+
+	return `<?php
+/**
+ * Auto-generated visitor form for the [${
+		cfg.tag || "roxy_" + tagSuffix
+ }] hero shortcode.
+ *
+ * Surfaced when the shortcode is invoked without required attributes (or
+ * with mode="form"). FormRouter sanitises and validates the POST body
+ * against this spec, then calls call() which delegates to the hero's
+ * fetch_for_form() so the dispatch / sanitisation / client-call logic
+ * stays in one place.
+ *
+ * DO NOT EDIT. Generated by bin/generate.mjs from bin/hero-config.json.
+ *
+ * @package RoxyAPI
+ */
+
+namespace RoxyAPI\\Generated\\Forms;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+class ${formClassName} {
+
+	/**
+	 * @return array<string, mixed>
+	 */
+	public static function spec(): array {
+		return array(
+			'operation_id' => ${phpLiteral(formId)},
+			'title'        => ${phpLiteral(title)},
+			'submit_label' => __( ${phpLiteral(submitLabel)}, 'roxyapi' ),
+			'sections'     => array(
+${sectionsPhp}
+			),
+			'flat_fields'  => array(
+${flatPhp}
+			),
+		);
+	}
+
+	/**
+	 * @param array<string, mixed> $body
+	 * @return array<string, mixed>|\\WP_Error
+	 */
+	public static function call( array $body ) {
+		$atts = ${callBodyMap};
+		return \\RoxyAPI\\Generated\\Heroes\\${heroClass}::fetch_for_form( $atts );
 	}
 }
 `;
+}
+
+/**
+ * Convert snake_case_or_kebab-case to lowerCamelCase. Matches the form-id
+ * grammar FormRouter validates with `/^[A-Za-z][A-Za-z0-9]+$/`.
+ */
+function lowerCamelCase(str) {
+	const pascal = toPascalCase(str);
+	return pascal.charAt(0).toLowerCase() + pascal.slice(1);
 }
 
 /** Emit the Heroes Manifest exposing display metadata for every hero. */
@@ -1604,7 +1981,25 @@ function emitHeroManifest(heroConfig) {
 		const className = cfg.hand_written
 			? `\\RoxyAPI\\Shortcodes\\${toPascalCase(tagSuffix)}`
 			: `\\RoxyAPI\\Generated\\Heroes\\${toPascalCase(tagSuffix)}`;
-		const opId = cfg.operationId || "";
+		// Pick the most-representative operationId for this hero so callers
+		// like Catalog::all() (which looks up TTL via Endpoints::get) get a
+		// hit instead of a silent null:
+		//   - Single-target heroes: use cfg.operationId directly.
+		//   - delegate_to_form heroes (synastry / gun_milan / compatibility):
+		//     use the underlying form-class operation (e.g. CalculateSynastryForm
+		//     → calculateSynastry).
+		//   - dispatch heroes (tarot_card / iching / dream): use the default
+		//     branch's op, falling back to the first branch if no default.
+		let opId = cfg.operationId || "";
+		if (!opId && cfg.delegate_to_form) {
+			// `CalculateSynastryForm` → `calculateSynastry`
+			const formBase = cfg.delegate_to_form.replace(/Form$/, "");
+			opId = formBase.charAt(0).toLowerCase() + formBase.slice(1);
+		}
+		if (!opId && Array.isArray(cfg.dispatch)) {
+			const def = cfg.dispatch.find((d) => d.default) || cfg.dispatch[0];
+			opId = def && def.operationId ? def.operationId : "";
+		}
 		lines.push(
 			`\t\t\t'${tag}' => array(
 				'tag'           => '${tag}',
@@ -1791,6 +2186,7 @@ console.log(
 
 // 6. Hero shortcode classes (one per absorbed hero)
 let heroClassCount = 0;
+let heroFormCount = 0;
 for (const [tagSuffix, cfg] of Object.entries(heroConfig)) {
 	if (cfg.hand_written) continue;
 	const className = toPascalCase(tagSuffix);
@@ -1801,9 +2197,20 @@ for (const [tagSuffix, cfg] of Object.entries(heroConfig)) {
 		"utf8",
 	);
 	heroClassCount++;
+
+	// Companion <Hero>Form class for form-mode heroes.
+	const formPhp = emitHeroFormPhp(tagSuffix, cfg);
+	if (formPhp) {
+		await fs.writeFile(
+			path.join(OUT_PHP, "Forms", `${className}Form.php`),
+			formPhp,
+			"utf8",
+		);
+		heroFormCount++;
+	}
 }
 console.log(
-	`[generate] wrote ${heroClassCount} hero shortcode classes to src/Generated/Heroes/`,
+	`[generate] wrote ${heroClassCount} hero shortcode classes to src/Generated/Heroes/ (+${heroFormCount} hero form classes)`,
 );
 
 // 7. Heroes Manifest.php (display metadata for all heroes including hand-written Horoscope)
@@ -1814,13 +2221,13 @@ await fs.writeFile(
 );
 console.log(`[generate] wrote src/Generated/Heroes/Manifest.php`);
 
-// 8. Heroes Bootstrap.php
-await fs.writeFile(
-	path.join(OUT_PHP, "Heroes", "Bootstrap.php"),
-	emitHeroBootstrap(heroConfig),
-	"utf8",
-);
-console.log(`[generate] wrote src/Generated/Heroes/Bootstrap.php`);
+// 8. Heroes Bootstrap.php — INTENTIONALLY NOT EMITTED.
+// Hero registration runs through `src/Shortcodes/Registrar::HERO_SHORTCODES`
+// (hand-maintained class → tag map). The previously-emitted
+// `Generated\Heroes\Bootstrap` was never invoked anywhere in the plugin and
+// shipped 5 KB of dead code per install. Removed 2026-04-28 per audit.
+// `emitHeroBootstrap` is still defined below for reference but has no
+// caller; safe to delete in v1.0.1 along with the function itself.
 
 // 8b. Domains.php — admin-UI registry of OpenAPI tags ordered for the brand book.
 const domainEntries = Object.entries(domainRegistry)
