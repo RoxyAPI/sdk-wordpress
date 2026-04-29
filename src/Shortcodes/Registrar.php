@@ -23,13 +23,6 @@ class Registrar {
 	 * Each referenced class must expose a public const DEFAULTS array. The
 	 * Test_Hero_Attr_Contract regression test enforces this.
 	 *
-	 * v1.1 hero set: 7 v1.0 carries (horoscope, natal_chart, tarot_card,
-	 * numerology, life_path, biorhythm, angel_number) plus 10 money
-	 * heroes (kundli, panchang, mangal_dosha, kp_chart, synastry, gun_milan,
-	 * compatibility, moon_phase, tarot_yes_no, crystals_by_zodiac). Three
-	 * commodity heroes from v1.0 (iching, dream, crystal) demoted to
-	 * long-tail; LegacyAliases::register surfaces the old shortcode tags.
-	 *
 	 * @var array<string, class-string>
 	 */
 	public const HERO_SHORTCODES = array(

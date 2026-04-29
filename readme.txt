@@ -124,9 +124,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 Version 1.0.0 ships all 130 RoxyAPI endpoints. 17 hero shortcodes covering the highest demand readings across Western astrology, Vedic astrology (kundli, panchang, mangal dosha, KP chart), tarot (daily, three card, Celtic Cross, yes or no), numerology (life path, full chart), biorhythm, angel numbers, crystals by zodiac, current moon phase, plus two-chart compatibility (synastry, gun milan, Western compatibility). 116 auto generated shortcodes for the long tail.
 
-Three v1.0 hero tags (roxy_iching, roxy_dream, roxy_crystal) were demoted to long-tail in v1.1 to free up hero slots for the Vedic depth-moat readings. The legacy tags still work on existing pages via the LegacyAliases shim, so no page renders break after the upgrade.
+I Ching, dream symbol, and single crystal lookups are reachable via the auto-generated long-tail shortcodes (browse the full catalog at Roxy then Shortcodes in the WordPress admin sidebar).
 
-Hero block editor sidebars are intentionally minimal in v1.1. Live previews and richer inspector controls land in v1.2.
+Hero block editor sidebars are intentionally minimal in this release. Live previews and richer inspector controls land in a future release.
 
 == Changelog ==
 
@@ -141,7 +141,6 @@ Hero block editor sidebars are intentionally minimal in v1.1. Live previews and 
 * Form mode on every hero. Drop the shortcode with no attributes and visitors fill in the form themselves; submission is server side, the API key never reaches the browser.
 * Two-chart heroes (Synastry, Gun Milan, Compatibility) are form-only because static mode would require ten plus inline attributes; the form has Person 1 / Person 2 fieldsets with city autocomplete.
 * 116 auto generated shortcodes for the long tail. Generated from the live OpenAPI spec via npm run generate.
-* Backwards compatibility for the three demoted v1.0 tags ([roxy_iching], [roxy_dream], [roxy_crystal]) via the LegacyAliases shim. Existing pages keep rendering after the upgrade.
 * Hero shortcode attribute names aligned with the documented examples so a copy-paste from the admin onboarding page works first try.
 * Horoscope block ships three real variations (daily, weekly, monthly) wired to the matching SaaS endpoints; the period attribute now actually dispatches.
 * Auto detecting form mode on every hero shortcode. Drop the shortcode with no attributes and visitors submit their own sign, name, birth date, or question.

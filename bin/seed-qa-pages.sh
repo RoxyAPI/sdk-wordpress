@@ -254,24 +254,6 @@ read -r -d '' QA_PAGE_CONTENT <<'EOF' || true
 <!-- wp:separator --><hr class="wp-block-separator has-alpha-channel-opacity"/><!-- /wp:separator -->
 
 <!-- wp:heading -->
-<h2>Legacy aliases (backwards-compat for v1.0 demoted heroes)</h2>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph --><p><strong>I Ching number lookup</strong> — expect hexagram 42 (legacy delegate).</p><!-- /wp:paragraph -->
-[roxy_iching number="42"]
-
-<!-- wp:paragraph --><p><strong>I Ching default cast</strong> — expect a fresh reading.</p><!-- /wp:paragraph -->
-[roxy_iching]
-
-<!-- wp:paragraph --><p><strong>Dream symbol search</strong> — expect water symbols.</p><!-- /wp:paragraph -->
-[roxy_dream symbol="water"]
-
-<!-- wp:paragraph --><p><strong>Crystal lookup by slug</strong> — expect amethyst details.</p><!-- /wp:paragraph -->
-[roxy_crystal name="amethyst"]
-
-<!-- wp:separator --><hr class="wp-block-separator has-alpha-channel-opacity"/><!-- /wp:separator -->
-
-<!-- wp:heading -->
 <h2>§6 — Block Binding (paragraph bound to roxyapi/daily-text)</h2>
 <!-- /wp:heading -->
 

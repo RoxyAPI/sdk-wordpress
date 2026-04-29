@@ -42,33 +42,43 @@ Every hero shortcode works in two modes. Pass all required attributes for a **st
 ```
 [roxy_horoscope sign="aries"]
 [roxy_tarot_card spread="three" question="What should I focus on this week"]
+[roxy_tarot_yes_no question="Should I take the new job"]
 [roxy_numerology name="Ada Lovelace" birth_date="1815-12-10"]
-[roxy_iching question="Should I take the new job"]
-[roxy_natal_chart birth_date="1990-05-15" birth_time="14:30" lat="40.7128" lon="-74.0060" tz="America/New_York"]
 [roxy_life_path birth_date="1990-05-15"]
-[roxy_dream symbol="water"]
+[roxy_natal_chart birth_date="1990-05-15" birth_time="14:30" lat="40.7128" lon="-74.0060" tz="America/New_York"]
+[roxy_kundli birth_date="1988-01-12" birth_time="09:45" lat="19.0760" lon="72.8777" tz="Asia/Kolkata"]
+[roxy_panchang date="2026-10-15" lat="12.9716" lon="77.5946" tz="Asia/Kolkata"]
+[roxy_mangal_dosha birth_date="1992-09-08" birth_time="22:30" lat="13.0827" lon="80.2707" tz="Asia/Kolkata"]
+[roxy_kp_chart birth_date="1990-05-15" birth_time="14:30" lat="28.6139" lon="77.2090" tz="Asia/Kolkata"]
+[roxy_moon_phase]
 [roxy_biorhythm birth_date="1990-05-15" target_date="today"]
 [roxy_angel_number number="1111"]
-[roxy_crystal name="amethyst"]
+[roxy_crystals_by_zodiac sign="aries"]
 ```
 
-For two-person compatibility, use the auto-generated `[roxy_calculate_synastry]` shortcode (full birth-chart synastry) or `[roxy_calculate_compatibility]` (the lighter compatibility-score endpoint).
+Two-chart compatibility heroes (`[roxy_synastry]`, `[roxy_gun_milan]`, `[roxy_compatibility]`) are form-mode only because static mode would need ten or more inline attributes per chart. Drop the shortcode on a page and visitors fill in both birth charts themselves.
 
 ### Form mode (visitors pick the values)
 
 Leave the attributes off and the shortcode renders an input form for your visitors:
 
 ```
-[roxy_horoscope]        → zodiac sign picker
-[roxy_numerology]       → name and birth date form
-[roxy_iching]           → question text area
-[roxy_natal_chart]      → birth date, time, and city picker
-[roxy_tarot_card]       → question input with spread selector
-[roxy_dream]            → dream symbol search
-[roxy_biorhythm]        → birth date input
-[roxy_angel_number]     → number input
-[roxy_crystal]          → crystal name search
-[roxy_life_path]        → birth date picker
+[roxy_horoscope]            → zodiac sign picker
+[roxy_natal_chart]          → birth date, time, and city picker
+[roxy_kundli]               → Vedic birth date, time, and city picker
+[roxy_panchang]             → date and city picker
+[roxy_mangal_dosha]         → Vedic birth chart input
+[roxy_kp_chart]             → Vedic birth chart input
+[roxy_synastry]             → two birth charts (Western synastry)
+[roxy_gun_milan]            → two birth charts (Vedic Ashtakoota)
+[roxy_compatibility]        → two birth charts (Western compatibility score)
+[roxy_tarot_card]           → question input with spread selector
+[roxy_tarot_yes_no]         → question text input
+[roxy_numerology]           → name and birth date form
+[roxy_life_path]            → birth date picker
+[roxy_biorhythm]            → birth date input
+[roxy_angel_number]         → number input
+[roxy_crystals_by_zodiac]   → zodiac sign picker
 ```
 
 Form submissions post back to the same page over HTTPS. The plugin validates the nonce, rate limits per IP, calls RoxyAPI server side, and renders the result above the form. Nothing to wire up, nothing to style. Override the template from your theme if you want a custom layout.

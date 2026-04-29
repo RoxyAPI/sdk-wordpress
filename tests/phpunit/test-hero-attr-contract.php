@@ -106,23 +106,6 @@ class Test_Hero_Attr_Contract extends \WP_UnitTestCase {
 					// Attribute has a non-empty default, so it is optional.
 					continue;
 				}
-				// IChing is the documented exception: it accepts `question` OR
-				// `number` OR neither. The class casts a random reading when
-				// neither is supplied. So both are optional even though the
-				// default is the empty string.
-				if ( $tag === 'roxy_iching' ) {
-					continue;
-				}
-				// Dream accepts `symbol` OR `id`. The example always supplies
-				// one; require at least one of them.
-				if ( $tag === 'roxy_dream' ) {
-					$has_either = isset( $parsed['symbol'] ) || isset( $parsed['id'] );
-					$this->assertTrue(
-						$has_either,
-						"Dream example must supply either 'symbol' or 'id': {$code}"
-					);
-					break;
-				}
 				$this->assertArrayHasKey(
 					$key,
 					$parsed,

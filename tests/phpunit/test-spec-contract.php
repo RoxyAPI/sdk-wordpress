@@ -212,34 +212,6 @@ class Test_Spec_Contract extends \WP_UnitTestCase {
 		$this->assert_compliant( 'getCrystalsByZodiac' );
 	}
 
-	// Legacy aliases preserve v1.0 shortcode behaviour. Each must still
-	// hit the same SaaS endpoint it did before the demotion so existing
-	// user pages keep rendering.
-	public function test_legacy_iching_random_cast_matches_spec(): void {
-		do_shortcode( '[roxy_iching]' );
-		$this->assert_compliant( 'castReading' );
-	}
-
-	public function test_legacy_iching_specific_hexagram_matches_spec(): void {
-		do_shortcode( '[roxy_iching number="1"]' );
-		$this->assert_compliant( 'getHexagram' );
-	}
-
-	public function test_legacy_dream_search_matches_spec(): void {
-		do_shortcode( '[roxy_dream symbol="water"]' );
-		$this->assert_compliant( 'searchDreamSymbols' );
-	}
-
-	public function test_legacy_dream_lookup_matches_spec(): void {
-		do_shortcode( '[roxy_dream id="water"]' );
-		$this->assert_compliant( 'getDreamSymbol' );
-	}
-
-	public function test_legacy_crystal_matches_spec(): void {
-		do_shortcode( '[roxy_crystal name="amethyst"]' );
-		$this->assert_compliant( 'getCrystal' );
-	}
-
 	// ---------------------------------------------------------------------
 	// Negative tests: prove the validator actually fails when given a
 	// non-compliant request. Without these, a broken validator could rubber
