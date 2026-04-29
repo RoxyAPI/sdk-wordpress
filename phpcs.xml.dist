@@ -60,6 +60,29 @@
 		<exclude-pattern>/src/Api/Cache.php</exclude-pattern>
 	</rule>
 
+	<!--
+		Suppress NonPrefixedVariableFound for templates and block render.php.
+		These files receive their variables either via Templates::render's
+		extract($vars, EXTR_SKIP) (so $signup_url, $key_input, etc. are
+		LOCAL function-scope vars, not globals) or via the WordPress block
+		API which passes $attributes, $content, $block, $sign, $date,
+		$period, $reading_type, $wrapper_attributes by exact unprefixed
+		name (the contract is core's, we cannot prefix and still satisfy
+		the API).
+
+		PHPCS's static analyzer cannot distinguish "top-of-file scalar
+		assignment after extract()" from "actual global". Without this
+		suppression Plugin Check's plugin_repo category surfaces ~70
+		false-positive warnings that wp.org reviewers see and have to
+		mentally filter every time. Suppressing here keeps the report
+		clean without per-line phpcs:ignore comments scattered across
+		every template and render file.
+	-->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound">
+		<exclude-pattern>/templates/*</exclude-pattern>
+		<exclude-pattern>/blocks/*/render.php</exclude-pattern>
+	</rule>
+
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">

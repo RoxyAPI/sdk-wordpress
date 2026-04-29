@@ -121,6 +121,14 @@ class Cache {
 		global $wpdb;
 		$value_like   = '_transient_' . $wpdb->esc_like( 'roxyapi_' ) . '%';
 		$timeout_like = '_transient_timeout_' . $wpdb->esc_like( 'roxyapi_' ) . '%';
+		// Direct DELETE is the only way to drop matching `_transient_*`
+		// rows in a single query — there is no core API for "flush every
+		// transient whose name matches this prefix". WordPress's own
+		// `delete_expired_transients` and `wp_cache_flush_group` work
+		// the same way. Caching the DELETE itself makes no sense (it is
+		// a write; there is nothing to cache). $wpdb->prepare + esc_like
+		// guard the LIKE pattern.
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		$wpdb->query(
 			$wpdb->prepare(
 				"DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s",

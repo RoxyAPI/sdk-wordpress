@@ -37,7 +37,7 @@ return array(
 		'attributes'  => array(
 			'period' => 'weekly',
 		),
-		'scope'        => array( 'inserter', 'transform' ),
+		'scope'       => array( 'inserter', 'transform' ),
 	),
 	array(
 		'name'        => 'monthly',
@@ -46,6 +46,6 @@ return array(
 		'attributes'  => array(
 			'period' => 'monthly',
 		),
-		'scope'        => array( 'inserter', 'transform' ),
+		'scope'       => array( 'inserter', 'transform' ),
 	),
 );

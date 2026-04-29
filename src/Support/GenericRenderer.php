@@ -143,12 +143,30 @@ class GenericRenderer {
 	/**
 	 * Render a single object level. Recursion entry-point for nested children.
 	 *
-	 * @param array<string, mixed> $data  Associative array (object).
-	 * @param int                  $depth Recursion depth (0 = top-level card).
+	 * @param array<string, mixed> $data       Associative array (object).
+	 * @param int                  $depth      Recursion depth (0 = top-level card).
+	 * @param string               $parent_key Key under which $data was nested in its
+	 *                                         parent object. Used to drop redundant
+	 *                                         scalar children whose value just echoes
+	 *                                         this key (kundli rashi-of-rashi pattern).
 	 * @return string
 	 */
-	private static function render_object( array $data, int $depth ): string {
+	private static function render_object( array $data, int $depth, string $parent_key = '' ): string {
 		$data = self::suppress( $data );
+		// Drop scalar fields whose lowercase string value just echoes the
+		// parent section's key. Catches the kundli rashi pattern where the
+		// API response wraps each rashi as `{aries: {rashi: 'aries', ...}}`
+		// — the inner `rashi: aries` field is redundant noise under a
+		// section already titled "Aries". Spec-agnostic: works for any
+		// endpoint that name-stamps a child object with its parent key.
+		if ( $parent_key !== '' ) {
+			$parent_lc = strtolower( $parent_key );
+			foreach ( $data as $k => $v ) {
+				if ( is_scalar( $v ) && strtolower( (string) $v ) === $parent_lc ) {
+					unset( $data[ $k ] );
+				}
+			}
+		}
 		if ( empty( $data ) ) {
 			return '';
 		}
@@ -274,7 +292,7 @@ class GenericRenderer {
 			$body  = self::render_list( $value, $depth );
 			$count = count( $value );
 		} else {
-			$body  = self::render_object( $value, $depth );
+			$body  = self::render_object( $value, $depth, $key );
 			$count = count( $value );
 		}
 

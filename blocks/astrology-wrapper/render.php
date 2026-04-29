@@ -12,6 +12,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+// Variables in this file are local-scope, not globals: templates receive
+// them via Templates::render's `extract( $vars, EXTR_SKIP )` and block
+// render.php files receive them by exact unprefixed name from the WP
+// block API (core passes $attributes, $content, $block, $sign, $date,
+// $period, $wrapper_attributes by contract). PHPCS's static analyzer
+// cannot see the extract or the block-API contract; suppress here to
+// keep Plugin Check's plugin_repo report clean without per-line ignores.
+
 $wrapper_attributes = get_block_wrapper_attributes( array( 'class' => 'roxyapi-wrapper' ) );
 printf(
 	'<div %s>%s</div>',

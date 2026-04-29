@@ -12,7 +12,7 @@ Astrology, daily horoscopes, tarot, numerology, and Vedic birth charts. Blocks a
 
 == Description ==
 
-Add astrology, daily horoscopes, tarot card pulls, numerology readings, and Vedic birth charts to any WordPress site. One plugin covers ten spiritual data domains: Western and Vedic astrology, daily / weekly / monthly horoscopes, tarot, numerology, I Ching, dream interpretation, biorhythm, angel numbers, and crystals. Astronomy is cross-checked against the NASA JPL Horizons ephemeris (no affiliation). One API key unlocks 130+ endpoints.
+Add astrology, daily horoscopes, tarot card pulls, numerology readings, and Vedic birth charts to any WordPress site. One plugin covers ten spiritual data domains: Western and Vedic astrology, daily / weekly / monthly horoscopes, tarot, numerology, I Ching, dream interpretation, biorhythm, angel numbers, and crystals. Astronomy is cross-checked against the NASA JPL Horizons ephemeris. One API key unlocks 130+ endpoints.
 
 **About the service this plugin connects to**
 
@@ -110,6 +110,15 @@ Yes. The Playground at https://roxyapi.com/api-reference has a test key pre-fill
 = Does this work with Elementor, Divi, or other page builders? =
 
 Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress shortcodes. Use the shortcode in a text or HTML module. The Gutenberg blocks work in the default WordPress editor.
+
+== Screenshots ==
+
+1. Three step onboarding. Get your API key, paste it in, drop a shortcode on a page.
+2. Connected admin. Tabbed settings (Connect, Branding, Display, Privacy, Advanced) plus a quick start grid of copy paste shortcodes.
+3. Shortcodes Library. Browse all 133 shortcodes by domain. Search, filter, copy.
+4. Frontend reading card. Numerology chart with title, narrative description, career and relationships fields, strengths and challenges sections.
+5. Visitor form mode. Vedic birth chart input with city autocomplete (no JS required for fallback). Server side submission, GDPR consent gate.
+6. Gutenberg editor. RoxyAPI block category with every hero block and the Astrology Section context wrapper.
 
 == Known Limitations ==
 
