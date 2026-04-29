@@ -9,8 +9,11 @@
 #
 # Usage: bash bin/seed-qa-pages.sh
 #
-# Prereqs: wp-env running, plugin active. Pass NODE_OPTIONS to wp-env when
-# api.wordpress.org IPv6 is unreachable on the host (see CLAUDE.md DEBUGGING).
+# Prereqs: wp-env running, plugin active. Pass NODE_OPTIONS below if your host
+# resolver fails on api.wordpress.org over IPv6 (Node 24 Happy Eyeballs hangs).
+#
+# Set ROXYAPI_TEST_KEY in your shell to the API key the seeded pages should
+# call. Get one from https://roxyapi.com/pricing or use a development key.
 
 set -euo pipefail
 
@@ -18,12 +21,11 @@ set -euo pipefail
 REPO_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." &>/dev/null && pwd)"
 cd "$REPO_ROOT"
 
-# Match the IPv4 + Happy-Eyeballs workaround documented in CLAUDE.md.
+# Force IPv4 + disable network-family autoselection so wp-env's npm calls do
+# not stall on hosts with broken IPv6 routing to api.wordpress.org.
 export NODE_OPTIONS="${NODE_OPTIONS:---dns-result-order=ipv4first --no-network-family-autoselection}"
 
-# The canonical test key from CLAUDE.md. Belongs to a real RoxyAPI account
-# scoped to development; safe to commit per CLAUDE.md.
-TEST_KEY='1978c678-9c7b-490a-8229-bc27613d3b77.a965fb53df2b49d8.0JYe5fTdjrZKfSrT26yB0EYn7Mt6qJ4jS-TENkEm3kc'
+TEST_KEY="${ROXYAPI_TEST_KEY:?Set ROXYAPI_TEST_KEY to a RoxyAPI API key before running this script.}"
 
 WP() { npx wp-env run cli "$@" 2> >(grep -vE "^ℹ|^✔|^Shell cwd was reset" >&2); }
 
