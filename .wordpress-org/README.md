@@ -19,13 +19,13 @@ Screenshot captions come from the `== Screenshots ==` block in `readme.txt`. Num
 
 Banner design notes:
 
-- Left third: logo and plugin name. Right two thirds: tagline. Dark mode safe background.
-- No screenshots inside the banner. They look bad at 772 by 250.
-- Must read at both 772 by 250 and 1544 by 500.
+-   Left third: logo and plugin name. Right two thirds: tagline. Dark mode safe background.
+-   No screenshots inside the banner. They look bad at 772 by 250.
+-   Must read at both 772 by 250 and 1544 by 500.
 
 Icon design notes:
 
-- SVG preferred. Single glyph, high contrast, works on light and dark WP admin backgrounds.
-- If using PNG, ship both 128 and 256 sizes.
+-   SVG preferred. Single glyph, high contrast, works on light and dark WP admin backgrounds.
+-   If using PNG, ship both 128 and 256 sizes.
 
 Reference: https://developer.wordpress.org/plugins/wordpress-org/plugin-assets/

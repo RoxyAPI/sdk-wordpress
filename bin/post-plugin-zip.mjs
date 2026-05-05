@@ -14,36 +14,36 @@
  * does not exist (e.g. during a partial build) or the entries are already
  * gone (e.g. on a re-run).
  */
-import { execFileSync } from "node:child_process";
-import { existsSync } from "node:fs";
-import { fileURLToPath } from "node:url";
-import path from "node:path";
+import { execFileSync } from 'node:child_process';
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const root = path.resolve(__dirname, "..");
-const zipPath = path.join(root, "roxyapi.zip");
+const __dirname = path.dirname( fileURLToPath( import.meta.url ) );
+const root = path.resolve( __dirname, '..' );
+const zipPath = path.join( root, 'roxyapi.zip' );
 
-if (!existsSync(zipPath)) {
-	console.warn(`[post-plugin-zip] ${zipPath} not found, skipping.`);
-	process.exit(0);
+if ( ! existsSync( zipPath ) ) {
+	console.warn( `[post-plugin-zip] ${ zipPath } not found, skipping.` );
+	process.exit( 0 );
 }
 
-const offenders = ["roxyapi/README.md", "roxyapi/package.json"];
+const offenders = [ 'roxyapi/README.md', 'roxyapi/package.json' ];
 
 try {
-	execFileSync("zip", ["-d", zipPath, ...offenders], {
-		stdio: ["ignore", "pipe", "pipe"],
-	});
+	execFileSync( 'zip', [ '-d', zipPath, ...offenders ], {
+		stdio: [ 'ignore', 'pipe', 'pipe' ],
+	} );
 	console.log(
-		`[post-plugin-zip] stripped ${offenders.length} developer-only files from roxyapi.zip`,
+		`[post-plugin-zip] stripped ${ offenders.length } developer-only files from roxyapi.zip`
 	);
-} catch (err) {
+} catch ( err ) {
 	// `zip -d` exits non-zero when an entry is not present. That is the
 	// idempotent re-run case — nothing to do.
-	const stderr = err.stderr ? err.stderr.toString().toLowerCase() : "";
-	if (stderr.includes("nothing to do")) {
+	const stderr = err.stderr ? err.stderr.toString().toLowerCase() : '';
+	if ( stderr.includes( 'nothing to do' ) ) {
 		console.log(
-			`[post-plugin-zip] no developer-only files to strip (already clean)`,
+			`[post-plugin-zip] no developer-only files to strip (already clean)`
 		);
 	} else {
 		throw err;

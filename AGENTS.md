@@ -85,20 +85,20 @@ Drop one Astrology Section wrapper block on the page, set the zodiac sign in its
 
 ## Domains
 
-| Block / shortcode prefix | What it covers                                                                       |
-| ------------------------ | ------------------------------------------------------------------------------------ |
-| Horoscope                | Western horoscopes: daily, weekly, monthly, love, career, Chinese                    |
-| Natal Chart              | Western birth chart: planets, houses, aspects, transits                              |
-| Synastry, Compatibility  | Two-chart Western compatibility: synastry aspects and lighter compatibility score    |
-| Moon Phase               | Current moon phase, illumination, sign, meaning                                      |
-| Kundli, Panchang         | Vedic birth chart, daily Vedic almanac (tithi, nakshatra, rahu kaal, abhijit)        |
-| Mangal Dosha, KP Chart   | Vedic dosha detection, KP system with 249 sub-lord analysis                          |
-| Gun Milan                | Vedic Ashtakoota matrimonial compatibility (36-point)                                |
-| Tarot                    | Rider Waite Smith deck: single card, three card, Celtic Cross, custom, yes / no      |
-| Numerology, Life Path    | Life path, expression, soul urge, personal year, full chart                          |
-| Biorhythm                | Physical, emotional, intellectual, intuitive cycles                                  |
-| Angel Number             | Number meanings and pattern analysis                                                 |
-| Crystals by Zodiac       | Healing crystals filtered by zodiac sign                                             |
+| Block / shortcode prefix | What it covers                                                                    |
+| ------------------------ | --------------------------------------------------------------------------------- |
+| Horoscope                | Western horoscopes: daily, weekly, monthly, love, career, Chinese                 |
+| Natal Chart              | Western birth chart: planets, houses, aspects, transits                           |
+| Synastry, Compatibility  | Two-chart Western compatibility: synastry aspects and lighter compatibility score |
+| Moon Phase               | Current moon phase, illumination, sign, meaning                                   |
+| Kundli, Panchang         | Vedic birth chart, daily Vedic almanac (tithi, nakshatra, rahu kaal, abhijit)     |
+| Mangal Dosha, KP Chart   | Vedic dosha detection, KP system with 249 sub-lord analysis                       |
+| Gun Milan                | Vedic Ashtakoota matrimonial compatibility (36-point)                             |
+| Tarot                    | Rider Waite Smith deck: single card, three card, Celtic Cross, custom, yes / no   |
+| Numerology, Life Path    | Life path, expression, soul urge, personal year, full chart                       |
+| Biorhythm                | Physical, emotional, intellectual, intuitive cycles                               |
+| Angel Number             | Number meanings and pattern analysis                                              |
+| Crystals by Zodiac       | Healing crystals filtered by zodiac sign                                          |
 
 For everything else (KP horary, dasha, navamsa, dream symbols, single-crystal lookup, I Ching casts, full angel number catalog, etc.) use the auto-generated long-tail shortcodes browsable at Roxy > Shortcodes.
 
@@ -159,37 +159,37 @@ Cached responses do not consume RoxyAPI quota. Object cache backends (Redis, Mem
 
 ## Commands
 
-| Command                          | What it does                                                                                  |
-| -------------------------------- | --------------------------------------------------------------------------------------------- |
-| `npm run generate`               | Regenerate `src/Generated/`, `blocks/generated/`, hero classes, and form classes from the live OpenAPI spec |
-| `npm run generate:check`         | Run `generate` then fail if it produced a diff (use as a CI gate)                             |
-| `npm run build:all`              | Build blocks (`wp-scripts build`), block manifest, and post-build (ABSPATH injection)         |
-| `npm run start`                  | `wp-scripts start` dev mode                                                                   |
-| `npm run plugin-zip`             | Build the wp.org distribution zip (excludes everything in `.distignore`)                      |
-| `npm run wp-env start`           | Boot local WordPress (Docker bind-mount: see Gotchas)                                         |
-| `composer run lint`              | PHPCS WordPress standard                                                                      |
-| `composer run lint:fix`          | phpcbf auto-fix the fixable PHPCS findings                                                    |
-| `composer run stan`              | PHPStan level 8                                                                               |
-| `composer run test`              | PHPUnit (run `bin/install-wp-tests.sh` once to set up `/tmp/wordpress-tests-lib`)             |
-| `bash bin/seed-qa-pages.sh`      | Seed local wp-env with a QA page exercising every hero shortcode (needs `ROXYAPI_TEST_KEY`)   |
+| Command                     | What it does                                                                                                |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `npm run generate`          | Regenerate `src/Generated/`, `blocks/generated/`, hero classes, and form classes from the live OpenAPI spec |
+| `npm run generate:check`    | Run `generate` then fail if it produced a diff (use as a CI gate)                                           |
+| `npm run build:all`         | Build blocks (`wp-scripts build`), block manifest, and post-build (ABSPATH injection)                       |
+| `npm run start`             | `wp-scripts start` dev mode                                                                                 |
+| `npm run plugin-zip`        | Build the wp.org distribution zip (excludes everything in `.distignore`)                                    |
+| `npm run wp-env start`      | Boot local WordPress (Docker bind-mount: see Gotchas)                                                       |
+| `composer run lint`         | PHPCS WordPress standard                                                                                    |
+| `composer run lint:fix`     | phpcbf auto-fix the fixable PHPCS findings                                                                  |
+| `composer run stan`         | PHPStan level 8                                                                                             |
+| `composer run test`         | PHPUnit (run `bin/install-wp-tests.sh` once to set up `/tmp/wordpress-tests-lib`)                           |
+| `bash bin/seed-qa-pages.sh` | Seed local wp-env with a QA page exercising every hero shortcode (needs `ROXYAPI_TEST_KEY`)                 |
 
 ## Gotchas
 
-- **The API key never goes into the browser.** Do not refactor any block to fetch from `roxyapi.com` client side. Editor previews use server side render. Frontend renders use PHP `render.php` files.
-- **Shortcodes return, never echo.** WordPress filters break otherwise.
-- **Date format is `YYYY-MM-DD`, time is `HH:MM`.** Both are strings.
-- **Coordinates are decimal degrees.** Negative for west and south.
-- **Block apiVersion is locked to 3.** Schema rejects any other value.
-- **Variations are not separate blocks.** Each hero block ships a `variations.php` file. This keeps the inserter clean.
-- **Hero shortcodes always win over generated ones with the same name.** The Registrar checks `shortcode_exists()` before registering generated entries.
-- **Plain text editing your generated PHP is pointless.** `npm run generate` overwrites `src/Generated/` and `blocks/generated/`. To change a hero, edit `bin/hero-config.json`; to patch a stale spec example, edit `bin/example-overrides.json`; for everything else, edit `bin/generate.mjs` and regenerate.
+-   **The API key never goes into the browser.** Do not refactor any block to fetch from `roxyapi.com` client side. Editor previews use server side render. Frontend renders use PHP `render.php` files.
+-   **Shortcodes return, never echo.** WordPress filters break otherwise.
+-   **Date format is `YYYY-MM-DD`, time is `HH:MM`.** Both are strings.
+-   **Coordinates are decimal degrees.** Negative for west and south.
+-   **Block apiVersion is locked to 3.** Schema rejects any other value.
+-   **Variations are not separate blocks.** Each hero block ships a `variations.php` file. This keeps the inserter clean.
+-   **Hero shortcodes always win over generated ones with the same name.** The Registrar checks `shortcode_exists()` before registering generated entries.
+-   **Plain text editing your generated PHP is pointless.** `npm run generate` overwrites `src/Generated/` and `blocks/generated/`. To change a hero, edit `bin/hero-config.json`; to patch a stale spec example, edit `bin/example-overrides.json`; for everything else, edit `bin/generate.mjs` and regenerate.
 
 ## Links
 
-- Documentation: https://roxyapi.com/docs
-- Interactive API reference: https://roxyapi.com/api-reference
-- Pricing and API keys: https://roxyapi.com/pricing
-- TypeScript SDK: https://github.com/RoxyAPI/sdk-typescript
-- Python SDK: https://github.com/RoxyAPI/sdk-python
-- MCP for AI agents: https://roxyapi.com/docs/mcp
-- Issues: https://github.com/RoxyAPI/sdk-wordpress/issues
+-   Documentation: https://roxyapi.com/docs
+-   Interactive API reference: https://roxyapi.com/api-reference
+-   Pricing and API keys: https://roxyapi.com/pricing
+-   TypeScript SDK: https://github.com/RoxyAPI/sdk-typescript
+-   Python SDK: https://github.com/RoxyAPI/sdk-python
+-   MCP for AI agents: https://roxyapi.com/docs/mcp
+-   Issues: https://github.com/RoxyAPI/sdk-wordpress/issues

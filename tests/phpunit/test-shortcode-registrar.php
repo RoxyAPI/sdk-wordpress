@@ -10,6 +10,7 @@
 
 namespace RoxyAPI\Tests;
 
+use RoxyAPI\Plugin;
 use RoxyAPI\Shortcodes\Registrar;
 
 class Test_Shortcode_Registrar extends \WP_UnitTestCase {
@@ -18,11 +19,13 @@ class Test_Shortcode_Registrar extends \WP_UnitTestCase {
 		parent::setUp();
 		// Re-running do_action('init') would double-register blocks and
 		// bindings sources, which the test framework flags as
-		// _doing_it_wrong. Instead, invoke just the registrar's static
-		// methods directly. They are idempotent for shortcodes already
-		// registered, and the assets registration is similarly safe to
-		// repeat.
-		Registrar::register_assets();
+		// _doing_it_wrong. Instead, invoke the registrar's static methods
+		// directly. They are idempotent for shortcodes already registered.
+		// Frontend stylesheet registration moved off the Registrar onto
+		// Plugin::register_frontend_style in df50d3e (it was duplicating
+		// the existing Plugin hook). Call that here so the asset-handle
+		// assertion below has something to observe.
+		Plugin::register_frontend_style();
 		Registrar::register_hero();
 		Registrar::register_generated();
 	}
@@ -30,11 +33,9 @@ class Test_Shortcode_Registrar extends \WP_UnitTestCase {
 	public function test_hero_priority_runs_before_generated_priority(): void {
 		$hero_priority      = has_action( 'init', array( Registrar::class, 'register_hero' ) );
 		$generated_priority = has_action( 'init', array( Registrar::class, 'register_generated' ) );
-		$assets_priority    = has_action( 'init', array( Registrar::class, 'register_assets' ) );
 
 		$this->assertSame( 10, $hero_priority );
 		$this->assertSame( 20, $generated_priority );
-		$this->assertSame( 5, $assets_priority );
 		$this->assertLessThan( $generated_priority, $hero_priority );
 	}
 

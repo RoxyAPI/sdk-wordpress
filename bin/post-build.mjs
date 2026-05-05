@@ -16,12 +16,15 @@
  * Idempotent: skips files that already contain the guard string. Safe to
  * run after every `npm run build:all`.
  */
-import fs from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const BUILD = path.join(ROOT, "build");
+const ROOT = path.resolve(
+	path.dirname( fileURLToPath( import.meta.url ) ),
+	'..'
+);
+const BUILD = path.join( ROOT, 'build' );
 
 const GUARD_NEEDLE = "defined( 'ABSPATH' )";
 const GUARD_BLOCK = "<?php\nif ( ! defined( 'ABSPATH' ) ) {\n\texit;\n}\n";
@@ -29,39 +32,46 @@ const GUARD_BLOCK = "<?php\nif ( ! defined( 'ABSPATH' ) ) {\n\texit;\n}\n";
 let added = 0;
 let skipped = 0;
 
-function patch(file) {
-	const c = fs.readFileSync(file, "utf8");
-	if (c.includes(GUARD_NEEDLE)) {
+function patch( file ) {
+	const c = fs.readFileSync( file, 'utf8' );
+	if ( c.includes( GUARD_NEEDLE ) ) {
 		skipped++;
 		return;
 	}
 	// Only touch files that actually start with `<?php` — anything else is
 	// not a PHP source we should rewrite. Use a narrow regex anchored at the
 	// start so we never inject into the middle of a file.
-	const patched = c.replace(/^<\?php(\s*\n)?/, GUARD_BLOCK);
-	if (patched === c) {
+	const patched = c.replace( /^<\?php(\s*\n)?/, GUARD_BLOCK );
+	if ( patched === c ) {
 		// File didn't start with `<?php` — refuse to touch silently.
-		console.warn(`[post-build] WARN: not a <?php-headed file, skipped: ${path.relative(ROOT, file)}`);
+		console.warn(
+			`[post-build] WARN: not a <?php-headed file, skipped: ${ path.relative(
+				ROOT,
+				file
+			) }`
+		);
 		return;
 	}
-	fs.writeFileSync(file, patched);
+	fs.writeFileSync( file, patched );
 	added++;
 }
 
-function walk(dir) {
-	if (!fs.existsSync(dir)) return;
-	for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-		const full = path.join(dir, entry.name);
-		if (entry.isDirectory()) {
-			walk(full);
-		} else if (entry.isFile() && entry.name.endsWith(".php")) {
-			patch(full);
+function walk( dir ) {
+	if ( ! fs.existsSync( dir ) ) {
+		return;
+	}
+	for ( const entry of fs.readdirSync( dir, { withFileTypes: true } ) ) {
+		const full = path.join( dir, entry.name );
+		if ( entry.isDirectory() ) {
+			walk( full );
+		} else if ( entry.isFile() && entry.name.endsWith( '.php' ) ) {
+			patch( full );
 		}
 	}
 }
 
-walk(BUILD);
+walk( BUILD );
 
 console.log(
-	`[post-build] ABSPATH guard: added to ${added} file(s), already present in ${skipped} file(s)`,
+	`[post-build] ABSPATH guard: added to ${ added } file(s), already present in ${ skipped } file(s)`
 );

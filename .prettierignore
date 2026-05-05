@@ -2,6 +2,12 @@
 src/Generated/
 blocks/generated/
 
+# CSS is owned by stylelint (wp-scripts lint-style). Prettier disagrees with
+# stylelint on multi-line declaration formatting; let stylelint be the single
+# source of truth for CSS so the two tools stop fighting in pre-push.
+*.css
+*.scss
+
 # Spec snapshot — written verbatim from the live OpenAPI fetch.
 specs/openapi.json
 
