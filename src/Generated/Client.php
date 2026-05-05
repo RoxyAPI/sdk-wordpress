@@ -2682,4 +2682,28 @@ class Client {
 			}
 		);
 	}
+
+	/**
+	 * List supported response languages
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listLanguages(  ) {
+		$query = array_filter(
+			array(
+
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'languages',
+			$query,
+			0,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'languages', $query );
+			}
+		);
+	}
 }
