@@ -2055,6 +2055,17 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_usage_stats',
 			'attributes' => array(),
 		),
+		'listLanguages' => array(
+			'path'          => '/languages',
+			'method'        => 'GET',
+			'tag'           => 'Languages',
+			'summary'       => 'List supported response languages',
+			'ttl'           => 0,
+			'hero'          => false,
+			'block_only'    => false,
+			'shortcode_tag' => 'roxy_list_languages',
+			'attributes' => array(),
+		),
 		);
 	}
 

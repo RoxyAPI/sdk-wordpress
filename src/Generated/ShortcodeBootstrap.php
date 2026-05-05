@@ -135,5 +135,6 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\ListCountries::register();
 		\RoxyAPI\Generated\Shortcodes\GetCitiesByCountry::register();
 		\RoxyAPI\Generated\Shortcodes\GetUsageStats::register();
+		\RoxyAPI\Generated\Shortcodes\ListLanguages::register();
 	}
 }

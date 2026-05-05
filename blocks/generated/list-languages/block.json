@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/list-languages",
+	"title": "List supported response languages (Languages)",
+	"category": "roxyapi",
+	"icon": "portfolio",
+	"description": "List supported response languages",
+	"keywords": [
+		"languages",
+		"roxyapi",
+		"list"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {},
+	"render": "file:./render.php"
+}
