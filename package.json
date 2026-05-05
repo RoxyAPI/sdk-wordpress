@@ -52,7 +52,8 @@
     "@wordpress/scripts": "^32.0.0",
     "@wordpress/server-side-render": "^6.20.0",
     "ajv": "^8.20.0",
-    "ajv-formats": "^3.0.1"
+    "ajv-formats": "^3.0.1",
+    "lefthook": "^2.1.6"
   },
   "files": [
     "roxyapi.php",
