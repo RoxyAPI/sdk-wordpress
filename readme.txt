@@ -115,14 +115,14 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 1. Three step onboarding. Get your API key, paste it in, drop a shortcode on a page.
 2. Connected admin. Tabbed settings (Connect, Branding, Display, Privacy, Advanced) plus a quick start grid of copy paste shortcodes.
-3. Shortcodes Library. Browse all 133 shortcodes by domain. Search, filter, copy.
+3. Shortcodes Library. Browse all 134 shortcodes by domain. Search, filter, copy.
 4. Frontend reading card. Numerology chart with title, narrative description, career and relationships fields, strengths and challenges sections.
 5. Visitor form mode. Vedic birth chart input with city autocomplete (no JS required for fallback). Server side submission, GDPR consent gate.
 6. Gutenberg editor. RoxyAPI block category with every hero block and the Astrology Section context wrapper.
 
 == Known Limitations ==
 
-Version 1.0.0 ships all 130 RoxyAPI endpoints. 17 hero shortcodes covering the highest demand readings across Western astrology, Vedic astrology (kundli, panchang, mangal dosha, KP chart), tarot (daily, three card, Celtic Cross, yes or no), numerology (life path, full chart), biorhythm, angel numbers, crystals by zodiac, current moon phase, plus two-chart compatibility (synastry, gun milan, Western compatibility). 116 auto generated shortcodes for the long tail.
+Version 1.0.0 ships all 131 RoxyAPI endpoints. 17 hero shortcodes covering the highest demand readings across Western astrology, Vedic astrology (kundli, panchang, mangal dosha, KP chart), tarot (daily, three card, Celtic Cross, yes or no), numerology (life path, full chart), biorhythm, angel numbers, crystals by zodiac, current moon phase, plus two-chart compatibility (synastry, gun milan, Western compatibility). 117 auto generated shortcodes for the long tail.
 
 I Ching, dream symbol, and single crystal lookups are reachable via the auto-generated long-tail shortcodes (browse the full catalog at Roxy then Shortcodes in the WordPress admin sidebar).
 
@@ -131,7 +131,7 @@ Hero block editor sidebars are intentionally minimal in this release. Live previ
 == Changelog ==
 
 = 1.0.0 =
-* Initial release. 130 endpoints across 10 spiritual domains under one API key.
+* Initial release. 131 endpoints across 10 spiritual domains under one API key.
 * 17 hero shortcodes:
   - Western astrology: Horoscope (daily, weekly, monthly), Natal chart, Synastry, Compatibility, Moon phase.
   - Vedic astrology: Kundli, Panchang, Mangal Dosha, KP chart, Gun Milan (Ashtakoota matrimonial).
@@ -140,7 +140,7 @@ Hero block editor sidebars are intentionally minimal in this release. Live previ
   - Plus Biorhythm, Angel number, Crystals by zodiac.
 * Form mode on every hero. Drop the shortcode with no attributes and visitors fill in the form themselves; submission is server side, the API key never reaches the browser.
 * Two-chart heroes (Synastry, Gun Milan, Compatibility) are form-only because static mode would require ten plus inline attributes; the form has Person 1 / Person 2 fieldsets with city autocomplete.
-* 116 auto generated shortcodes for the long tail. Generated from the live OpenAPI spec via npm run generate.
+* 117 auto generated shortcodes for the long tail. Generated from the live OpenAPI spec via npm run generate.
 * Hero shortcode attribute names aligned with the documented examples so a copy-paste from the admin onboarding page works first try.
 * Horoscope block ships three real variations (daily, weekly, monthly) wired to the matching SaaS endpoints; the period attribute now actually dispatches.
 * Auto detecting form mode on every hero shortcode. Drop the shortcode with no attributes and visitors submit their own sign, name, birth date, or question.
