@@ -1,10 +1,10 @@
 <p align="center">
   <a href="https://roxyapi.com">
-    <img src="https://raw.githubusercontent.com/RoxyAPI/sdk-wordpress/main/assets/hero.png" alt="Astrology, Horoscope, Tarot, Numerology by Roxy. Shortcodes and Gutenberg blocks for WordPress. One API key, server side rendering." width="100%">
+    <img src="https://raw.githubusercontent.com/RoxyAPI/sdk-wordpress/main/assets/hero.png" alt="Astrology, Horoscope, Tarot, Numerology by RoxyAPI. Shortcodes and Gutenberg blocks for WordPress. One API key, server side rendering." width="100%">
   </a>
 </p>
 
-# Astrology, Horoscope, Tarot, Numerology by Roxy
+# Astrology, Horoscope, Tarot, Numerology by RoxyAPI
 
 [![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/roxyapi.svg)](https://wordpress.org/plugins/roxyapi/)
 [![WordPress Plugin Active Installs](https://img.shields.io/wordpress/plugin/installs/roxyapi.svg)](https://wordpress.org/plugins/roxyapi/)
@@ -19,7 +19,7 @@ The only multi domain spiritual intelligence plugin for WordPress. Drop daily ho
 Interactive forms for your visitors. Gutenberg blocks for your editor. Shortcodes for anywhere else. Server side rendering keeps your API key out of the browser. Transient caching keeps your quota intact.
 
 -   **17 hero blocks and shortcodes** covering western astrology, vedic astrology (kundli, panchang, mangal dosha, KP chart, gun milan), tarot (daily, three card, yes or no), numerology, biorhythm, angel numbers, crystals by zodiac, current moon phase, and two-chart compatibility (synastry, gun milan, Western compatibility).
--   **116 auto generated shortcodes** for the long tail. Every endpoint in the RoxyAPI OpenAPI spec is reachable from a shortcode.
+-   **117 auto generated shortcodes** for the long tail. Every endpoint in the RoxyAPI OpenAPI spec is reachable from a shortcode.
 -   **Form mode on every hero shortcode.** Let visitors submit their own sign, name, birth date, or question and render a personalized reading. No JavaScript required.
 -   **Zero client side secrets.** All calls run in PHP. The API key never reaches the browser.
 
@@ -85,7 +85,7 @@ Form submissions post back to the same page over HTTPS. The plugin validates the
 
 ## Gutenberg blocks
 
-In the block editor, open the inserter and pick a block from the **Roxy** category. Ten hero blocks, each with a variation picker:
+In the block editor, open the inserter and pick a block from the **RoxyAPI** category. Ten hero blocks, each with a variation picker:
 
 -   **Horoscope** (daily, weekly, monthly, love, career, Chinese)
 -   **Natal Chart**
@@ -102,9 +102,9 @@ Every block renders server side through the same RoxyAPI client the shortcodes u
 
 ## Quick start
 
-1. **Install.** Plugins, Add New, search "Astrology Horoscope Tarot Numerology by Roxy", click Install Now, then Activate.
+1. **Install.** Plugins, Add New, search "Astrology Horoscope Tarot Numerology by RoxyAPI", click Install Now, then Activate.
 2. **Get an API key.** Pick a plan at [roxyapi.com/pricing](https://roxyapi.com/pricing). One key covers every reading. Pricing is shown in your local currency.
-3. **Paste the key.** Roxy menu in the WordPress admin, paste the key, Save key. The plugin encrypts the key at rest via AES 256 CTR.
+3. **Paste the key.** RoxyAPI menu in the WordPress admin, paste the key, Save key. The plugin encrypts the key at rest via AES 256 CTR.
 4. **Drop a shortcode.** Add `[roxy_horoscope]` to any page and publish. Visitors can now pick their sign and read their horoscope.
 
 That is the whole setup. Thirty minutes from install to live page.
@@ -149,7 +149,7 @@ Every endpoint is cached with a per endpoint TTL so cached responses do not cost
 
 ## Settings and privacy
 
-The Roxy admin page is split into five tabs:
+The RoxyAPI admin page is split into five tabs:
 
 -   **Connect.** Paste the API key, test the connection.
 -   **Branding.** Accent color, opt in to a discreet credit line under each reading.
