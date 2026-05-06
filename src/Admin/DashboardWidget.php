@@ -1,6 +1,6 @@
 <?php
 /**
- * Dashboard widget that nudges admins toward connecting Roxy or, once
+ * Dashboard widget that nudges admins toward connecting RoxyAPI or, once
  * connected, surfaces the five most-used hero shortcodes.
  *
  * @package RoxyAPI
@@ -40,7 +40,7 @@ class DashboardWidget {
 		}
 		wp_add_dashboard_widget(
 			self::WIDGET_ID,
-			esc_html__( 'Roxy connection', 'roxyapi' ),
+			esc_html__( 'RoxyAPI connection', 'roxyapi' ),
 			array( self::class, 'render' )
 		);
 	}
@@ -94,11 +94,11 @@ class DashboardWidget {
 		?>
 		<div class="roxyapi-widget-empty">
 			<p>
-				<?php echo esc_html__( 'Roxy is not connected yet. Add your key to start rendering horoscopes, tarot pulls, and natal charts.', 'roxyapi' ); ?>
+				<?php echo esc_html__( 'RoxyAPI is not connected yet. Add your key to start rendering horoscopes, tarot pulls, and natal charts.', 'roxyapi' ); ?>
 			</p>
 			<p>
 				<a class="button button-primary" href="<?php echo esc_url( $settings_url ); ?>">
-					<?php echo esc_html__( 'Connect Roxy', 'roxyapi' ); ?>
+					<?php echo esc_html__( 'Connect RoxyAPI', 'roxyapi' ); ?>
 				</a>
 			</p>
 		</div>
@@ -117,7 +117,7 @@ class DashboardWidget {
 		<div class="roxyapi-widget-connected">
 			<p class="roxyapi-widget-status">
 				<span class="roxyapi-check" aria-hidden="true">&#10003;</span>
-				<span><?php echo esc_html__( 'Connected to Roxy', 'roxyapi' ); ?></span>
+				<span><?php echo esc_html__( 'Connected to RoxyAPI', 'roxyapi' ); ?></span>
 			</p>
 			<ul class="roxyapi-shortcode-list">
 				<?php foreach ( $shortcodes as $sample ) : ?>
@@ -134,9 +134,9 @@ class DashboardWidget {
 					</li>
 				<?php endforeach; ?>
 			</ul>
-			<nav class="roxyapi-widget-links" aria-label="<?php echo esc_attr__( 'Roxy widget links', 'roxyapi' ); ?>">
+			<nav class="roxyapi-widget-links" aria-label="<?php echo esc_attr__( 'RoxyAPI widget links', 'roxyapi' ); ?>">
 				<a href="<?php echo esc_url( $settings_url ); ?>"><?php echo esc_html__( 'Open settings', 'roxyapi' ); ?></a>
-				<a href="<?php echo esc_url( Onboarding::dashboard_url() ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html__( 'Open Roxy dashboard', 'roxyapi' ); ?></a>
+				<a href="<?php echo esc_url( Onboarding::dashboard_url() ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html__( 'Open RoxyAPI dashboard', 'roxyapi' ); ?></a>
 			</nav>
 		</div>
 		<?php

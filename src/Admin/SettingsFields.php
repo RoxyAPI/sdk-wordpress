@@ -61,7 +61,7 @@ class SettingsFields {
 	public static function api_key_input_html(): string {
 		$is_constant = ApiKey::is_defined_via_constant();
 		$masked      = ApiKey::masked();
-		$placeholder = $masked === '' ? __( 'Paste your Roxy API key', 'roxyapi' ) : $masked;
+		$placeholder = $masked === '' ? __( 'Paste your RoxyAPI key', 'roxyapi' ) : $masked;
 
 		return sprintf(
 			'<input type="password" id="roxyapi_api_key" name="roxyapi_settings[api_key]" value="" autocomplete="off" class="regular-text roxyapi-key-field" placeholder="%s"%s />',
@@ -219,7 +219,7 @@ class SettingsFields {
 	/**
 	 * Pre-escaped HTML for the "Show attribution credit" checkbox + label.
 	 * Used by the Settings page to give the site owner an explicit opt-in
-	 * for the visible "Powered by Roxy" credit, per WP.org guideline #10.
+	 * for the visible "Powered by RoxyAPI" credit, per WP.org guideline #10.
 	 *
 	 * @return string
 	 */

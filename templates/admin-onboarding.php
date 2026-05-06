@@ -38,7 +38,7 @@ $is_configured  = ! empty( $is_configured );
 $option_group   = isset( $option_group ) ? (string) $option_group : 'roxyapi';
 ?>
 <h1 class="roxyapi-heading">
-	<span class="roxyapi-setup"><?php echo esc_html__( 'Connect Roxy in', 'roxyapi' ); ?></span>
+	<span class="roxyapi-setup"><?php echo esc_html__( 'Connect RoxyAPI in', 'roxyapi' ); ?></span>
 	<span class="roxyapi-punchline"><?php echo esc_html__( '30 seconds.', 'roxyapi' ); ?></span>
 </h1>
 <p class="roxyapi-page-intro">
@@ -50,14 +50,14 @@ $option_group   = isset( $option_group ) ? (string) $option_group : 'roxyapi';
 <form method="post" action="options.php" class="roxyapi-form">
 	<?php settings_fields( $option_group ); ?>
 
-	<div class="roxyapi-steps" role="list" aria-label="<?php echo esc_attr__( 'Roxy setup steps', 'roxyapi' ); ?>">
+	<div class="roxyapi-steps" role="list" aria-label="<?php echo esc_attr__( 'RoxyAPI setup steps', 'roxyapi' ); ?>">
 		<section class="roxyapi-step-card" role="listitem">
 			<h2 class="roxyapi-step-title">
 				<span class="roxyapi-setup"><?php echo esc_html__( 'Step 1.', 'roxyapi' ); ?></span>
 				<span class="roxyapi-punchline"><?php echo esc_html__( 'Get your API key.', 'roxyapi' ); ?></span>
 			</h2>
 			<p class="roxyapi-step-body">
-				<?php echo esc_html__( 'An API key connects this plugin to your Roxy account. One key covers every reading. Pick a plan at roxyapi.com to get yours.', 'roxyapi' ); ?>
+				<?php echo esc_html__( 'An API key connects this plugin to your RoxyAPI account. One key covers every reading. Pick a plan at roxyapi.com to get yours.', 'roxyapi' ); ?>
 			</p>
 			<p class="roxyapi-step-aside">
 				<?php
@@ -107,7 +107,7 @@ $option_group   = isset( $option_group ) ? (string) $option_group : 'roxyapi';
 				<span class="roxyapi-punchline"><?php echo esc_html__( 'Drop a shortcode on a page.', 'roxyapi' ); ?></span>
 			</h2>
 			<p class="roxyapi-step-body">
-				<?php echo esc_html__( 'Copy a shortcode below. Paste it into any post, page, or widget. Roxy renders the reading server side. No JavaScript required on the front end.', 'roxyapi' ); ?>
+				<?php echo esc_html__( 'Copy a shortcode below. Paste it into any post, page, or widget. RoxyAPI renders the reading server side. No JavaScript required on the front end.', 'roxyapi' ); ?>
 			</p>
 			<ul class="roxyapi-shortcode-list">
 				<?php foreach ( $samples as $sample ) : ?>

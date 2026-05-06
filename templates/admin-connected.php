@@ -96,13 +96,13 @@ $kses_select   = array(
 );
 ?>
 <h1 class="roxyapi-heading">
-	<span class="roxyapi-setup"><?php echo esc_html__( 'Roxy is', 'roxyapi' ); ?></span>
+	<span class="roxyapi-setup"><?php echo esc_html__( 'RoxyAPI is', 'roxyapi' ); ?></span>
 	<span class="roxyapi-punchline"><?php echo esc_html__( 'connected.', 'roxyapi' ); ?></span>
 </h1>
 
 <div class="roxyapi-test-banner" id="roxyapi-test-banner" role="status" aria-live="polite"></div>
 
-<nav class="roxyapi-tabs" role="tablist" aria-label="<?php echo esc_attr__( 'Roxy settings', 'roxyapi' ); ?>">
+<nav class="roxyapi-tabs" role="tablist" aria-label="<?php echo esc_attr__( 'RoxyAPI settings', 'roxyapi' ); ?>">
 	<?php foreach ( $roxy_tabs as $slug => $label ) : ?>
 		<a class="roxyapi-tab<?php echo $slug === $active_tab ? ' is-active' : ''; ?>"
 			role="tab"
@@ -130,7 +130,7 @@ $kses_select   = array(
 		<div class="roxyapi-connected-banner" role="status">
 			<span class="roxyapi-check" aria-hidden="true">&#10003;</span>
 			<span class="roxyapi-banner-body">
-				<strong><?php echo esc_html__( 'Connected to Roxy.', 'roxyapi' ); ?></strong>
+				<strong><?php echo esc_html__( 'Connected to RoxyAPI.', 'roxyapi' ); ?></strong>
 				<?php echo esc_html__( 'Drop a shortcode on any page to render a reading.', 'roxyapi' ); ?>
 			</span>
 		</div>
@@ -308,7 +308,7 @@ $kses_select   = array(
 		<section class="roxyapi-section">
 			<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Cache', 'roxyapi' ); ?></h2>
 			<p class="description">
-				<?php echo esc_html__( 'How long Roxy caches each reading on this site. Lower = fresher. Higher = saves API quota.', 'roxyapi' ); ?>
+				<?php echo esc_html__( 'How long RoxyAPI caches each reading on this site. Lower = fresher. Higher = saves API quota.', 'roxyapi' ); ?>
 			</p>
 			<form method="post" action="options.php" class="roxyapi-form">
 				<?php settings_fields( $option_group ); ?>
@@ -325,7 +325,7 @@ $kses_select   = array(
 	</section>
 <?php endif; ?>
 
-<nav class="roxyapi-footer-links" aria-label="<?php echo esc_attr__( 'Roxy resources', 'roxyapi' ); ?>">
+<nav class="roxyapi-footer-links" aria-label="<?php echo esc_attr__( 'RoxyAPI resources', 'roxyapi' ); ?>">
 	<a href="<?php echo esc_url( $docs_url ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html__( 'Docs', 'roxyapi' ); ?></a>
 	<a href="<?php echo esc_url( $support_url ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html__( 'Support', 'roxyapi' ); ?></a>
 	<a href="<?php echo esc_url( $dashboard_url ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html__( 'Open dashboard at roxyapi.com', 'roxyapi' ); ?></a>

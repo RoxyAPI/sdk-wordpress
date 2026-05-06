@@ -1,6 +1,6 @@
 <?php
 /**
- * Registers the "Roxy" block category in the inserter.
+ * Registers the "RoxyAPI" block category in the inserter.
  *
  * @package RoxyAPI
  */
@@ -18,7 +18,7 @@ class Category {
 	}
 
 	/**
-	 * Prepend the Roxy category to the block inserter list.
+	 * Prepend the RoxyAPI category to the block inserter list.
 	 *
 	 * @param array<int, array<string, string>> $categories Existing block categories.
 	 * @return array<int, array<string, string>>
@@ -28,7 +28,7 @@ class Category {
 			array(
 				array(
 					'slug'  => 'roxyapi',
-					'title' => __( 'Roxy', 'roxyapi' ),
+					'title' => __( 'RoxyAPI', 'roxyapi' ),
 					'icon'  => 'star-filled',
 				),
 			),

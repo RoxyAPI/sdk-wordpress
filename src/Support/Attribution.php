@@ -4,12 +4,12 @@
  *
  * Two surfaces:
  *
- * 1. **Visible credit line** ("Astrology data by Roxy" / "Tarot data by Roxy"
+ * 1. **Visible credit line** ("Astrology data by RoxyAPI" / "Tarot data by RoxyAPI"
  *    etc.) appended to each rendered card. **Default OFF** per
  *    https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/
  *    guideline #10 — "All 'Powered By' or credit displays and links must be
  *    optional and default to NOT show". Site owners opt in via the
- *    Settings → Roxy "Show attribution credit" checkbox (`attribution_show`
+ *    Settings → RoxyAPI "Show attribution credit" checkbox (`attribution_show`
  *    option). Anchor text follows the brand-book rule "lead with what we
  *    offer, not who we are" — keyword-leading, brand-trailing — and can be
  *    overridden per-call via the `roxyapi_credit_anchor` filter.
@@ -72,7 +72,7 @@ class Attribution {
 		}
 		/**
 		 * Filter the anchor text. Default leads with what we offer
-		 * (e.g. "Astrology data by Roxy") per brand-positioning.md.
+		 * (e.g. "Astrology data by RoxyAPI") per brand-positioning.md.
 		 *
 		 * @param string $anchor       Default anchor text for this operation.
 		 * @param string $operation_id Operation id, e.g. "getDailyHoroscope".
@@ -133,7 +133,7 @@ class Attribution {
 			'inLanguage'         => self::current_language(),
 			'sourceOrganization' => array(
 				'@type'  => 'Organization',
-				'name'   => 'Roxy',
+				'name'   => 'RoxyAPI',
 				'url'    => self::BRAND_URL,
 				'sameAs' => self::SAME_AS,
 			),
@@ -206,11 +206,11 @@ class Attribution {
 	private static function default_anchor( string $operation_id ): string {
 		$section = self::section_for( $operation_id );
 		if ( $section === '' ) {
-			return __( 'Spiritual data by Roxy', 'roxyapi' );
+			return __( 'Spiritual data by RoxyAPI', 'roxyapi' );
 		}
 		return sprintf(
 			/* translators: %s: lowercased domain section, e.g. "astrology" */
-			__( '%s data by Roxy', 'roxyapi' ),
+			__( '%s data by RoxyAPI', 'roxyapi' ),
 			ucfirst( $section )
 		);
 	}

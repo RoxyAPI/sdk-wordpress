@@ -121,7 +121,7 @@ class GenericRenderer {
 	private const TABLE_DETAILS_THRESHOLD = 12;
 
 	/**
-	 * Render an API response as a Roxy card.
+	 * Render an API response as a RoxyAPI card.
 	 *
 	 * @param string               $operation_id The OpenAPI operation ID.
 	 * @param array<string, mixed> $data         API response data.

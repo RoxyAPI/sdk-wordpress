@@ -33,8 +33,8 @@ class SettingsPage {
 
 	public static function add_menu(): void {
 		add_menu_page(
-			esc_html__( 'Roxy', 'roxyapi' ),
-			esc_html__( 'Roxy', 'roxyapi' ),
+			esc_html__( 'RoxyAPI', 'roxyapi' ),
+			esc_html__( 'RoxyAPI', 'roxyapi' ),
 			'manage_options',
 			self::PAGE_SLUG,
 			array( self::class, 'render' ),

@@ -5,7 +5,7 @@
 	"title": "Astrology Section",
 	"category": "roxyapi",
 	"icon": "screenoptions",
-	"description": "Wrapper block that shares a default zodiac sign and birth date with every Roxy block inside it via block context.",
+	"description": "Wrapper block that shares a default zodiac sign and birth date with every RoxyAPI block inside it via block context.",
 	"keywords": [ "astrology", "zodiac", "section", "roxyapi" ],
 	"version": "1.0.0",
 	"textdomain": "roxyapi",

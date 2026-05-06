@@ -2,7 +2,7 @@
 /**
  * Tests for the GenericRenderer used by auto-generated shortcodes.
  *
- * The renderer emits a Roxy card layout: header (title + meta), lede paragraph,
+ * The renderer emits a RoxyAPI card layout: header (title + meta), lede paragraph,
  * scalar field grid, table for uniform object lists, sections / details for
  * deeper nested content.
  *

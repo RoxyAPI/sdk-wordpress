@@ -73,7 +73,7 @@ class DemoPage {
 		$domains = Catalog::domains();
 
 		echo '<div class="wrap roxyapi-demo">';
-		echo '<h1>' . esc_html__( 'Roxy Demo', 'roxyapi' ) . '</h1>';
+		echo '<h1>' . esc_html__( 'RoxyAPI Demo', 'roxyapi' ) . '</h1>';
 		echo '<p class="description">' . esc_html__( 'Live preview of every shortcode the plugin ships. Click "Run" on any row to render it. Results are cached server-side for an hour by default.', 'roxyapi' ) . '</p>';
 
 		self::render_toolbar( $run );

@@ -92,7 +92,7 @@ class Notice {
 
 		$message = sprintf(
 			'<strong>%s</strong> %s <a href="%s">%s</a>.',
-			esc_html__( 'Roxy', 'roxyapi' ),
+			esc_html__( 'RoxyAPI', 'roxyapi' ),
 			esc_html__( 'is installed but not yet connected.', 'roxyapi' ),
 			esc_url( admin_url( 'admin.php?page=' . SettingsPage::PAGE_SLUG ) ),
 			esc_html__( 'Add your API key', 'roxyapi' )

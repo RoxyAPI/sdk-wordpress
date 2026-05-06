@@ -1,6 +1,6 @@
 <?php
 /**
- * Tests for the Roxy connection dashboard widget.
+ * Tests for the RoxyAPI connection dashboard widget.
  *
  * @package RoxyAPI
  */

@@ -43,7 +43,7 @@ class Assets {
 				'strings' => array(
 					'testing'         => __( 'Testing...', 'roxyapi' ),
 					'connected'       => __( 'Connected.', 'roxyapi' ),
-					'connectedBanner' => __( 'Connected to Roxy. Paste a shortcode below to render a reading on any page.', 'roxyapi' ),
+					'connectedBanner' => __( 'Connected to RoxyAPI. Paste a shortcode below to render a reading on any page.', 'roxyapi' ),
 					'noKey'           => __( 'Paste your API key in the field above and save before testing.', 'roxyapi' ),
 					'invalidKey'      => __( 'That key was rejected. Double check it on your roxyapi.com dashboard, paste it again, and save.', 'roxyapi' ),
 					'requestFailed'   => __( 'Connection test failed. Try again in a moment.', 'roxyapi' ),

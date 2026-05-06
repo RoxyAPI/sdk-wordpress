@@ -1,4 +1,4 @@
-=== Astrology, Horoscope, Tarot, Numerology by Roxy ===
+=== Astrology, Horoscope, Tarot, Numerology by RoxyAPI ===
 Contributors: roxyapi
 Tags: astrology, horoscope, tarot, numerology, vedic
 Requires at least: 6.5
@@ -8,7 +8,7 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Astrology, daily horoscopes, tarot, numerology, and Vedic birth charts. Blocks and shortcodes for WordPress. Powered by Roxy.
+Astrology, daily horoscopes, tarot, numerology, and Vedic birth charts. Blocks and shortcodes for WordPress. Powered by RoxyAPI.
 
 == Description ==
 
@@ -38,7 +38,7 @@ The plugin itself is GPLv2 or later and the source is available at https://githu
 1. In your WordPress admin, go to Plugins, Add New, search for "RoxyAPI", and click Install Now.
 2. Activate the plugin.
 3. Sign up for a RoxyAPI account at https://roxyapi.com and get your API key.
-4. Open the Roxy menu in the WordPress admin sidebar and paste your key.
+4. Open the RoxyAPI menu in the WordPress admin sidebar and paste your key.
 5. Click Save Changes. Use the Test Connection button to verify.
 6. Add a block from the inserter or use the matching shortcode.
 
@@ -124,7 +124,7 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 Version 1.0.0 ships all 131 RoxyAPI endpoints. 17 hero shortcodes covering the highest demand readings across Western astrology, Vedic astrology (kundli, panchang, mangal dosha, KP chart), tarot (daily, three card, Celtic Cross, yes or no), numerology (life path, full chart), biorhythm, angel numbers, crystals by zodiac, current moon phase, plus two-chart compatibility (synastry, gun milan, Western compatibility). 117 auto generated shortcodes for the long tail.
 
-I Ching, dream symbol, and single crystal lookups are reachable via the auto-generated long-tail shortcodes (browse the full catalog at Roxy then Shortcodes in the WordPress admin sidebar).
+I Ching, dream symbol, and single crystal lookups are reachable via the auto-generated long-tail shortcodes (browse the full catalog at RoxyAPI then Shortcodes in the WordPress admin sidebar).
 
 Hero block editor sidebars are intentionally minimal in this release. Live previews and richer inspector controls land in a future release.
 
@@ -146,7 +146,7 @@ Hero block editor sidebars are intentionally minimal in this release. Live previ
 * Auto detecting form mode on every hero shortcode. Drop the shortcode with no attributes and visitors submit their own sign, name, birth date, or question.
 * GDPR Article 9 consent gate on every visitor form. Submission requires an explicit opt in checkbox; the plugin registers privacy policy content via wp_add_privacy_policy_content for the WordPress Privacy Policy Guide.
 * City autocomplete for natal chart and synastry forms. ARIA 1.2 combobox proxied through /wp-json/roxyapi/v1/geocode so the API key never reaches the browser.
-* Top level Roxy menu in the admin sidebar with a tabbed settings page (Connect, Branding, Display, Privacy, Advanced) and a 3 step onboarding flow for first time users.
+* Top level RoxyAPI menu in the admin sidebar with a tabbed settings page (Connect, Branding, Display, Privacy, Advanced) and a 3 step onboarding flow for first time users.
 * Branding controls: accent color, opt in source line under each reading.
 * Display controls: default response language, optional disclaimer line.
 * Advanced controls: cache preset (fresh, balanced, quota saver) on top of per endpoint TTLs.

@@ -51,13 +51,13 @@ class Test_Attribution extends \WP_UnitTestCase {
 		update_option( 'roxyapi_settings', array( 'attribution_show' => true ) );
 		$astro = Attribution::credit_link( 'getDailyHoroscope' );
 		// Registry-driven section uses the brand-book label "Western Astrology".
-		$this->assertStringContainsString( 'Western astrology data by Roxy', $astro );
+		$this->assertStringContainsString( 'Western astrology data by RoxyAPI', $astro );
 
 		$tarot = Attribution::credit_link( 'getDailyCard' );
-		$this->assertStringContainsString( 'Tarot data by Roxy', $tarot );
+		$this->assertStringContainsString( 'Tarot data by RoxyAPI', $tarot );
 
 		$dream = Attribution::credit_link( 'getDailyDreamSymbol' );
-		$this->assertStringContainsString( 'Dream interpretation data by Roxy', $dream );
+		$this->assertStringContainsString( 'Dream interpretation data by RoxyAPI', $dream );
 	}
 
 	public function test_credit_anchor_filter_can_override(): void {
