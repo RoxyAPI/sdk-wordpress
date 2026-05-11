@@ -8,8 +8,13 @@
  * per-form rate limit, sanitises the body against the form spec, calls the
  * typed PHP client, stores the result in a short-lived transient, and
  * redirects back to the originating page (Post-Redirect-Get) with a
- * `?roxyapi_r=<key>` query var. The shortcode side reads that key on the
+ * `?roxyapi_r=<token>` query var. The shortcode side reads that token on the
  * follow-up GET and renders the result above the form.
+ *
+ * The `roxyapi_r` query var is an opaque 32-char random token; the actual
+ * transient key is derived server-side via SHA-256 over `form_id|token`, so
+ * visitor-controlled input never reaches `get_transient()` / `delete_transient()`
+ * as the key parameter.
  *
  * Form classes carry only metadata (`spec()`) and the API call (`call()`).
  * Sanitisation, validation, body building, transient storage, and PRG
@@ -28,8 +33,11 @@ use WP_Error;
 
 class FormRouter {
 
-	/** Transient prefix; per-form-id namespace prevents cross-form leakage. */
+	/** Nonce action prefix; per-form-id namespace prevents cross-form leakage. */
 	private const PREFIX = 'roxyapi_form_';
+
+	/** Server-derived transient key prefix (constant). */
+	private const TRANSIENT_PREFIX = 'roxyapi_r_';
 
 	/** Transient TTL for stored results / errors. */
 	private const TTL = 5 * MINUTE_IN_SECONDS;
@@ -144,29 +152,39 @@ class FormRouter {
 	 * @return array<string,mixed>|null
 	 */
 	public static function consume_result( string $form_id ): ?array {
-		// `$_GET['roxyapi_r']` is a server-issued transient key set by
-		// `redirect_with()` after a full nonce-verified POST cycle, not visitor
-		// form data — the regex guard below only accepts the exact alphabet
-		// `redirect_with()` emits. Nonce verification on the GET would be a
-		// false safety; the link is a self-pointing PRG redirect target.
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Server-issued transient key, not form data.
+		// `$_GET['roxyapi_r']` is an opaque token (no DB semantics on its own);
+		// the transient key is derived server-side via SHA-256 over
+		// `form_id|token`, so visitor input never reaches the transient API as
+		// the key parameter. Nonce verification on the GET would be a false
+		// safety; the link is a self-pointing PRG redirect target.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Opaque token; transient key is server-derived.
 		if ( empty( $_GET['roxyapi_r'] ) ) {
 			return null;
 		}
-		// Avoid `sanitize_key` here — it lowercases, which mangles the
-		// camelCase operationId baked into the key (e.g. `calculateSynastry`).
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Server-issued transient key, not form data.
-		$key = sanitize_text_field( wp_unslash( $_GET['roxyapi_r'] ) );
-		if ( $key === '' || strpos( $key, self::PREFIX . $form_id . '_' ) !== 0 ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Opaque token; transient key is server-derived.
+		$token = sanitize_text_field( wp_unslash( $_GET['roxyapi_r'] ) );
+		if ( preg_match( '/^[A-Za-z0-9]{32}$/', $token ) !== 1 ) {
 			return null;
 		}
-		// Tight grammar guard so the key only contains characters we emit.
-		if ( preg_match( '/^[A-Za-z0-9_]+$/', $key ) !== 1 ) {
-			return null;
-		}
-		$data = get_transient( $key );
-		delete_transient( $key );
+		$transient_key = self::transient_key( $form_id, $token );
+		$data          = get_transient( $transient_key );
+		delete_transient( $transient_key );
 		return is_array( $data ) ? $data : null;
+	}
+
+	/**
+	 * Derive the transient key from a form id and an opaque token.
+	 *
+	 * SHA-256 keeps the resulting key 100% server-controlled even when the
+	 * token came from `$_GET`, so the value passed to `get_transient()` /
+	 * `set_transient()` / `delete_transient()` is never user input.
+	 *
+	 * @param string $form_id Form id (operationId).
+	 * @param string $token   Opaque 32-char token.
+	 * @return string Transient key.
+	 */
+	private static function transient_key( string $form_id, string $token ): string {
+		return self::TRANSIENT_PREFIX . hash( 'sha256', $form_id . '|' . $token );
 	}
 
 	/**
@@ -355,13 +373,14 @@ class FormRouter {
 	 * @return void
 	 */
 	private static function redirect_with( string $form_id, array $payload ): void {
-		$key = self::PREFIX . $form_id . '_' . wp_generate_password( 12, false, false );
-		set_transient( $key, $payload, self::TTL );
+		$token         = wp_generate_password( 32, false, false );
+		$transient_key = self::transient_key( $form_id, $token );
+		set_transient( $transient_key, $payload, self::TTL );
 		$referer = wp_get_referer();
 		$target  = is_string( $referer ) && $referer !== '' ? $referer : home_url( '/' );
-		// Strip any prior result key so refreshes do not stack.
+		// Strip any prior result token so refreshes do not stack.
 		$target = remove_query_arg( 'roxyapi_r', $target );
-		$target = add_query_arg( 'roxyapi_r', $key, $target );
+		$target = add_query_arg( 'roxyapi_r', $token, $target );
 
 		/**
 		 * Filter the PRG redirect target. Returning a non-null value short-
@@ -369,11 +388,11 @@ class FormRouter {
 		 * without terminating the PHPUnit process via `exit`. Production
 		 * always sees the default null and the redirect proceeds normally.
 		 *
-		 * @param string|null $skip Return any string to skip the redirect.
-		 * @param string      $key  Transient key used as `?roxyapi_r=`.
-		 * @param string      $url  Computed redirect URL.
+		 * @param string|null $skip  Return any string to skip the redirect.
+		 * @param string      $token Opaque token emitted as `?roxyapi_r=`.
+		 * @param string      $url   Computed redirect URL.
 		 */
-		$skip = apply_filters( 'roxyapi_form_router_skip_redirect', null, $key, $target );
+		$skip = apply_filters( 'roxyapi_form_router_skip_redirect', null, $token, $target );
 		if ( $skip !== null ) {
 			return;
 		}

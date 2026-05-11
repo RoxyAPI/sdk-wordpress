@@ -58,7 +58,7 @@ class Test_Form_Router extends \WP_UnitTestCase {
 		// capture the computed target URL.
 		add_filter(
 			'roxyapi_form_router_skip_redirect',
-			function ( $skip, $key, $url ) {
+			function ( $skip, $token, $url ) {
 				$this->redirect_url = (string) $url;
 				return $url;
 			},
@@ -74,7 +74,7 @@ class Test_Form_Router extends \WP_UnitTestCase {
 		\RoxyAPI\Api\Cache::flush_all();
 		// Wipe transients FormRouter set during the test.
 		global $wpdb;
-		$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_roxyapi_form_%' OR option_name LIKE '_transient_timeout_roxyapi_form_%'" );
+		$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_roxyapi_r_%' OR option_name LIKE '_transient_timeout_roxyapi_r_%'" );
 		parent::tearDown();
 	}
 
@@ -97,9 +97,11 @@ class Test_Form_Router extends \WP_UnitTestCase {
 	}
 
 	/**
-	 * Pull the transient that the most-recent redirect points at.
+	 * Pull the transient that the most-recent redirect points at. The URL
+	 * carries an opaque token; the actual transient key is derived server-side
+	 * via SHA-256 over `form_id|token` (see FormRouter::transient_key()).
 	 */
-	private function consume_transient_for_url( ?string $url ): ?array {
+	private function consume_transient_for_url( ?string $url, string $form_id = 'calculateSynastry' ): ?array {
 		if ( $url === null ) {
 			return null;
 		}
@@ -108,11 +110,12 @@ class Test_Form_Router extends \WP_UnitTestCase {
 			return null;
 		}
 		parse_str( $query, $args );
-		$key = $args['roxyapi_r'] ?? null;
-		if ( ! is_string( $key ) || $key === '' ) {
+		$token = $args['roxyapi_r'] ?? null;
+		if ( ! is_string( $token ) || $token === '' ) {
 			return null;
 		}
-		$data = get_transient( $key );
+		$transient_key = 'roxyapi_r_' . hash( 'sha256', $form_id . '|' . $token );
+		$data          = get_transient( $transient_key );
 		return is_array( $data ) ? $data : null;
 	}
 

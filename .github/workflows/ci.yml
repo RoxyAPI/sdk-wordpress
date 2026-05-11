@@ -42,6 +42,12 @@ jobs:
                   node-version: '24'
                   cache: 'npm'
             - run: npm ci
+            - name: Prettier check
+              run: npx prettier --check .
+            - name: JS lint
+              run: npm run lint:js
+            - name: CSS lint
+              run: npm run lint:css
             - run: npm run build:all
             - run: npx wp-env start
             - name: Plugin Check

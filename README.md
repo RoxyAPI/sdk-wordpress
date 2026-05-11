@@ -1,10 +1,10 @@
 <p align="center">
   <a href="https://roxyapi.com">
-    <img src="https://raw.githubusercontent.com/RoxyAPI/sdk-wordpress/main/assets/hero.png" alt="Astrology, Horoscope, Tarot, Numerology by RoxyAPI. Shortcodes and Gutenberg blocks for WordPress. One API key, server side rendering." width="100%">
+    <img src="https://raw.githubusercontent.com/RoxyAPI/sdk-wordpress/main/assets/hero.png" alt="RoxyAPI — Astrology, Vedic, Tarot, Numerology. Shortcodes and Gutenberg blocks for WordPress. One API key, server side rendering." width="100%">
   </a>
 </p>
 
-# Astrology, Horoscope, Tarot, Numerology by RoxyAPI
+# RoxyAPI — Astrology, Vedic, Tarot, Numerology
 
 [![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/roxyapi.svg)](https://wordpress.org/plugins/roxyapi/)
 [![WordPress Plugin Active Installs](https://img.shields.io/wordpress/plugin/installs/roxyapi.svg)](https://wordpress.org/plugins/roxyapi/)
@@ -102,7 +102,7 @@ Every block renders server side through the same RoxyAPI client the shortcodes u
 
 ## Quick start
 
-1. **Install.** Plugins, Add New, search "Astrology Horoscope Tarot Numerology by RoxyAPI", click Install Now, then Activate.
+1. **Install.** Plugins, Add New, search "RoxyAPI Astrology Vedic Tarot Numerology", click Install Now, then Activate.
 2. **Get an API key.** Pick a plan at [roxyapi.com/pricing](https://roxyapi.com/pricing). One key covers every reading. Pricing is shown in your local currency.
 3. **Paste the key.** RoxyAPI menu in the WordPress admin, paste the key, Save key. The plugin encrypts the key at rest via AES 256 CTR.
 4. **Drop a shortcode.** Add `[roxy_horoscope]` to any page and publish. Visitors can now pick their sign and read their horoscope.
