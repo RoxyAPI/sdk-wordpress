@@ -2019,7 +2019,7 @@ class Endpoints {
 			'path'          => '/location/countries',
 			'method'        => 'GET',
 			'tag'           => 'Location and Timezone',
-			'summary'       => 'List all 227 countries - ISO codes and city coverage',
+			'summary'       => 'List all countries - ISO codes and city coverage',
 			'ttl'           => 2592000,
 			'hero'          => false,
 			'block_only'    => false,
@@ -2040,7 +2040,7 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_cities_by_country',
 			'attributes' => array(
 				'iso2' => 'DE',
-				'limit' => '50',
+				'limit' => '20',
 				'offset' => '0',
 			),
 		),

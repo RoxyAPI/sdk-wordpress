@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/list-countries",
-	"title": "List all 227 countries - ISO codes and city coverage (Location and Timezone)",
+	"title": "List all countries - ISO codes and city coverage (Location and Timezone)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "List all 227 countries - ISO codes and city coverage",
+	"description": "List all countries - ISO codes and city coverage",
 	"keywords": [
 		"location and timezone",
 		"roxyapi",

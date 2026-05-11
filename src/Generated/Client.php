@@ -2607,7 +2607,7 @@ class Client {
 	}
 
 	/**
-	 * List all 227 countries - ISO codes and city coverage
+	 * List all countries - ISO codes and city coverage
 	 *
 	 * @return array|\WP_Error
 	 */
