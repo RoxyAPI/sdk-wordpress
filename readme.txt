@@ -4,7 +4,7 @@ Tags: astrology, horoscope, tarot, numerology, vedic
 Requires at least: 6.5
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -129,6 +129,13 @@ I Ching, dream symbol, and single crystal lookups are reachable via the auto-gen
 Hero block editor sidebars are intentionally minimal in this release. Live previews and richer inspector controls land in a future release.
 
 == Changelog ==
+
+= 1.0.2 =
+* Block registration no longer calls a WordPress 6.7 only function, keeping the plugin compatible with the stated 6.5 minimum.
+
+= 1.0.1 =
+* Display name now leads with the RoxyAPI brand.
+* Form result lookups use an opaque token so visitor input never reaches the transient key.
 
 = 1.0.0 =
 * Initial release. 131 endpoints across 10 spiritual domains under one API key.

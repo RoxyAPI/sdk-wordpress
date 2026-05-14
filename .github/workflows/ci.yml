@@ -49,10 +49,12 @@ jobs:
             - name: CSS lint
               run: npm run lint:css
             - run: npm run build:all
-            - run: npx wp-env start
+            # --update forces a fresh pull of plugin-check.latest-stable.zip;
+            # without it wp-env reuses a stale cached copy and misses newer checks.
+            - run: npx wp-env start --update
             - name: Plugin Check
               run: |
-                  npx wp-env run cli wp plugin check roxyapi \
+                  npx wp-env run cli wp plugin check roxyapi-sdk-wordpress \
                     --require=/var/www/html/wp-content/plugins/plugin-check/cli.php \
                     --severity=5
 

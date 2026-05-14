@@ -1,7 +1,7 @@
 <?php
 /**
- * Block registration. Reads the wp-scripts blocks-manifest if available,
- * otherwise loops over build/blocks/ and calls register_block_type per dir.
+ * Block registration. Loops over build/blocks/ and calls register_block_type
+ * for each directory holding a block.json.
  *
  * @package RoxyAPI
  */
@@ -15,20 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Registrar {
 
 	public static function register(): void {
-		add_action( 'init', array( self::class, 'register_metadata_collection' ), 5 );
 		add_action( 'init', array( self::class, 'register_blocks' ) );
 		add_action( 'enqueue_block_editor_assets', array( self::class, 'enqueue_editor_globals' ) );
-	}
-
-	public static function register_metadata_collection(): void {
-		if ( ! function_exists( 'wp_register_block_metadata_collection' ) ) {
-			return;
-		}
-		$build_dir = plugin_dir_path( ROXYAPI_PLUGIN_FILE ) . 'build/blocks';
-		$manifest  = plugin_dir_path( ROXYAPI_PLUGIN_FILE ) . 'build/blocks-manifest.php';
-		if ( file_exists( $manifest ) ) {
-			wp_register_block_metadata_collection( $build_dir, $manifest );
-		}
 	}
 
 	public static function register_blocks(): void {
