@@ -2,10 +2,6 @@ name: Release
 on:
     repository_dispatch:
         types: [openapi-updated]
-    # TODO: re-enable daily schedule once plugin is out of pre-release / stable on WP.org.
-    # Disabled 2026-04-25 to stop daily auto-releases while the plugin is still incomplete.
-    # schedule:
-    #   - cron: '0 6 * * *'
     workflow_dispatch:
         inputs:
             version_bump:
@@ -16,7 +12,6 @@ on:
 jobs:
     release:
         runs-on: ubuntu-latest
-        environment: wp-release
         permissions:
             contents: write
         steps:
