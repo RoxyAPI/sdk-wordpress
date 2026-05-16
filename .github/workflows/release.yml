@@ -108,6 +108,7 @@ jobs:
                   SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
                   SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
                   SLUG: roxyapi
+                  VERSION: ${{ steps.bump.outputs.version }}
 
             - name: Attach zip to GitHub release
               if: steps.diff.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
