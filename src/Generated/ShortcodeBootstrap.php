@@ -29,6 +29,7 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\CalculateSynastry::register();
 		\RoxyAPI\Generated\Shortcodes\CalculateHouses::register();
 		\RoxyAPI\Generated\Shortcodes\CalculateAspects::register();
+		\RoxyAPI\Generated\Shortcodes\DetectAspectPatterns::register();
 		\RoxyAPI\Generated\Shortcodes\CalculateTransits::register();
 		\RoxyAPI\Generated\Shortcodes\CalculateTransitAspects::register();
 		\RoxyAPI\Generated\Shortcodes\GenerateSolarReturn::register();
@@ -53,6 +54,7 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\CheckSadhesati::register();
 		\RoxyAPI\Generated\Shortcodes\ListYogas::register();
 		\RoxyAPI\Generated\Shortcodes\GetYoga::register();
+		\RoxyAPI\Generated\Shortcodes\DetectYogas::register();
 		\RoxyAPI\Generated\Shortcodes\GetKpAyanamsa::register();
 		\RoxyAPI\Generated\Shortcodes\GetKpPlanets::register();
 		\RoxyAPI\Generated\Shortcodes\GetKpCusps::register();

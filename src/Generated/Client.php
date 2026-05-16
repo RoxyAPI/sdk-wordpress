@@ -287,6 +287,23 @@ class Client {
 	}
 
 	/**
+	 * Detect aspect patterns - Grand Trine, Kite, T-Square, Grand Cross, Yod, Mystic Rectangle, Stellium
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function detectAspectPatterns( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'astrology/aspect-patterns',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/aspect-patterns', $body );
+			}
+		);
+	}
+
+	/**
 	 * Calculate planetary transits - Current transits with natal chart comparison
 	 *
 	 * @param array $body Request body.
@@ -763,7 +780,7 @@ class Client {
 	}
 
 	/**
-	 * List all planetary yogas - 300+ Vedic Yoga Combinations
+	 * List all planetary yogas - 300+ Vedic Yoga Glossary
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -787,7 +804,7 @@ class Client {
 	}
 
 	/**
-	 * Get yoga details by ID - Detailed Yoga Information API
+	 * Get yoga details by ID - Vedic Yoga Glossary Entry
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -809,6 +826,23 @@ class Client {
 			0,
 			static function () use ( $query, $id ) {
 				return \RoxyAPI\Api\Client::get( 'vedic-astrology/yoga/' . rawurlencode( $id ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Detect classical Vedic yogas in a birth chart
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function detectYogas( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'vedic-astrology/yoga/detect',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/yoga/detect', $body );
 			}
 		);
 	}

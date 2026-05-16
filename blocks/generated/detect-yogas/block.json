@@ -1,16 +1,16 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "roxyapi/get-yoga",
-	"title": "Get yoga details by ID - Vedic Yoga Glossary Entry (Vedic Astrology)",
+	"name": "roxyapi/detect-yogas",
+	"title": "Detect classical Vedic yogas in a birth chart (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get yoga details by ID - Vedic Yoga Glossary Entry",
+	"description": "Detect classical Vedic yogas in a birth chart",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",
-		"get",
-		"yoga"
+		"detect",
+		"yogas"
 	],
 	"version": "1.0.0",
 	"textdomain": "roxyapi",
@@ -30,11 +30,23 @@
 		}
 	},
 	"attributes": {
-		"id": {
+		"date": {
 			"type": "string",
 			"default": ""
 		},
-		"lang": {
+		"time": {
+			"type": "string",
+			"default": ""
+		},
+		"latitude": {
+			"type": "string",
+			"default": ""
+		},
+		"longitude": {
+			"type": "string",
+			"default": ""
+		},
+		"timezone": {
 			"type": "string",
 			"default": ""
 		}
