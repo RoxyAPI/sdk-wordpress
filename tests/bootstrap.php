@@ -12,6 +12,17 @@ if ( ! $_tests_dir ) {
 	$_tests_dir = rtrim( sys_get_temp_dir(), '/\\' ) . '/wordpress-tests-lib';
 }
 
+// install-wp-tests.sh ships a wp-tests-config.php with placeholder LOGGED_IN_KEY
+// / LOGGED_IN_SALT, which Encryption::key()/salt() reject by design. Define test
+// constants so the encryption layer has real values during phpunit. Not shipped:
+// /tests is excluded from the published zip via .distignore.
+if ( ! defined( 'ROXYAPI_ENCRYPTION_KEY' ) ) {
+	define( 'ROXYAPI_ENCRYPTION_KEY', 'phpunit-test-encryption-key-not-for-production-use' );
+}
+if ( ! defined( 'ROXYAPI_ENCRYPTION_SALT' ) ) {
+	define( 'ROXYAPI_ENCRYPTION_SALT', 'phpunit-test-encryption-salt-not-for-production-use' );
+}
+
 if ( ! file_exists( "{$_tests_dir}/includes/functions.php" ) ) {
 	echo "Could not find {$_tests_dir}/includes/functions.php, have you run bin/install-wp-tests.sh ?" . PHP_EOL;
 	exit( 1 );
