@@ -44,6 +44,7 @@
 		"wp-env": "wp-env",
 		"generate": "node bin/generate.mjs",
 		"generate:check": "node bin/generate.mjs && git diff --exit-code src/Generated blocks/generated",
+		"check:distignore": "node bin/check-distignore.mjs",
 		"upgrade": "npx npm-check-updates --target minor --upgrade",
 		"check-outdated": "npx npm-check-updates"
 	},

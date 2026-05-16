@@ -22,6 +22,8 @@ jobs:
               run: npm run generate
             - name: Fail if generated code is stale
               run: git diff --exit-code src/Generated blocks/generated
+            - name: Fail if distribution drifts between local zip and SVN deploy
+              run: node bin/check-distignore.mjs
 
     lint:
         name: Lint and Plugin Check

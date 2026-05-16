@@ -62,6 +62,13 @@ pre-push:
             run: npm run generate:check
             priority: 1
 
+        # Distribution drift: every tracked top-level entry must be in
+        # package.json `files` (shipped by local zip) or .distignore
+        # (excluded by 10up SVN deploy). Catches the v1.0.3 leak class.
+        distignore-drift-check:
+            run: node bin/check-distignore.mjs
+            priority: 1
+
         # Full format pass (auto-fix). PHP first, then JS/CSS so each tool
         # only touches files it owns.
         php-format:

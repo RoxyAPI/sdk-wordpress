@@ -130,40 +130,24 @@ Hero block editor sidebars are intentionally minimal in this release. Live previ
 
 == Changelog ==
 
+= 1.0.4 =
+* Tidy distribution: drop maintainer-only files (CITATION.cff, eslint.config.cjs, empty patterns scaffold) that were leaking into the published zip.
+
+= 1.0.3 =
+* Sync to the latest RoxyAPI spec, now 133 endpoints across 10 spiritual domains.
+* Western astrology: detect aspect patterns (Grand Trine, Kite, T-Square, Grand Cross, Yod, Mystic Rectangle, Stellium) via new [roxy_detect_aspect_patterns] shortcode + matching block.
+* Vedic astrology: detect classical Vedic yogas in a birth chart via new [roxy_detect_yogas] shortcode + matching block.
+* Natal chart, transits, and aspect calculations now include Black Moon Lilith alongside the lunar nodes and Chiron for full 14-body planetary coverage.
+* Yoga catalog entries reworded for clearer glossary phrasing in both the list and the per-yoga detail responses.
+
 = 1.0.2 =
-* Block registration no longer calls a WordPress 6.7 only function, keeping the plugin compatible with the stated 6.5 minimum.
-
-= 1.0.1 =
-* Display name now leads with the RoxyAPI brand.
-* Form result lookups use an opaque token so visitor input never reaches the transient key.
-
-= 1.0.0 =
-* Initial release. 131 endpoints across 10 spiritual domains under one API key.
-* 17 hero shortcodes:
-  - Western astrology: Horoscope (daily, weekly, monthly), Natal chart, Synastry, Compatibility, Moon phase.
-  - Vedic astrology: Kundli, Panchang, Mangal Dosha, KP chart, Gun Milan (Ashtakoota matrimonial).
-  - Tarot: Tarot card (daily, three card, Celtic Cross), Tarot yes or no.
-  - Numerology: Numerology chart, Life path.
-  - Plus Biorhythm, Angel number, Crystals by zodiac.
-* Form mode on every hero. Drop the shortcode with no attributes and visitors fill in the form themselves; submission is server side, the API key never reaches the browser.
-* Two-chart heroes (Synastry, Gun Milan, Compatibility) are form-only because static mode would require ten plus inline attributes; the form has Person 1 / Person 2 fieldsets with city autocomplete.
-* 117 auto generated shortcodes for the long tail. Generated from the live OpenAPI spec via npm run generate.
-* Hero shortcode attribute names aligned with the documented examples so a copy-paste from the admin onboarding page works first try.
-* Horoscope block ships three real variations (daily, weekly, monthly) wired to the matching SaaS endpoints; the period attribute now actually dispatches.
-* Auto detecting form mode on every hero shortcode. Drop the shortcode with no attributes and visitors submit their own sign, name, birth date, or question.
-* GDPR Article 9 consent gate on every visitor form. Submission requires an explicit opt in checkbox; the plugin registers privacy policy content via wp_add_privacy_policy_content for the WordPress Privacy Policy Guide.
-* City autocomplete for natal chart and synastry forms. ARIA 1.2 combobox proxied through /wp-json/roxyapi/v1/geocode so the API key never reaches the browser.
-* Top level RoxyAPI menu in the admin sidebar with a tabbed settings page (Connect, Branding, Display, Privacy, Advanced) and a 3 step onboarding flow for first time users.
-* Branding controls: accent color, opt in source line under each reading.
-* Display controls: default response language, optional disclaimer line.
-* Advanced controls: cache preset (fresh, balanced, quota saver) on top of per endpoint TTLs.
-* Dashboard widget showing connection status and the most used shortcodes with copy to clipboard.
-* Settings API key field with wp config constant override and an inline Test Connection button.
-* Encryption at rest via AES 256 CTR. Returns false on missing keys instead of falling back to a hardcoded secret.
-* Server side caching with per endpoint TTL via WordPress transients (Redis and Memcached compatible automatically).
-* Rate limiting per IP to protect the site owner API quota, applied to form submissions, the Test Connection button, and the geocoder proxy.
-* Block Bindings API source roxyapi/daily-text. Bind a paragraph to it with a sign argument to render the daily overview inline.
-* X-SDK-Client and User-Agent headers matching the TypeScript and Python SDK pattern so RoxyAPI can identify plugin traffic.
+* Initial public release on the WordPress Plugin Directory.
+* 131 endpoints across 10 spiritual domains under one RoxyAPI key. 17 hero shortcodes with matching Gutenberg blocks (Western astrology, Vedic astrology, tarot, numerology, biorhythm, angel numbers, crystals) plus 117 auto-generated long-tail shortcodes for the full spec.
+* Compatible with the declared WordPress 6.5 minimum: block registration no longer calls a WordPress 6.7 only function.
+* Form mode on every hero shortcode: drop with no attributes and visitors fill the form themselves. Server-side submission, API key never reaches the browser, GDPR Article 9 consent gate, per-IP rate limit.
+* Two-chart heroes (Synastry, Gun Milan, Compatibility) ship form-only with Person 1 / Person 2 fieldsets and ARIA 1.2 combobox city autocomplete via a key-protected /wp-json/roxyapi/v1/geocode proxy.
+* Tabbed admin settings (Connect, Branding, Display, Privacy, Advanced) with accent color, response-language picker, disclaimer line, cache preset (fresh / balanced / quota saver), and inline Test Connection button. API key supports a ROXYAPI_KEY wp-config constant override.
+* Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
 

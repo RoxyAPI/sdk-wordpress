@@ -35,6 +35,9 @@
 /README.md
 /CLAUDE.md
 /MAINTAINER.md
+/CITATION.cff
+/eslint.config.cjs
+/patterns
 /todo.md
 /specs
 /vendor
