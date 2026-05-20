@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class CalculateDrishti {
 
@@ -63,6 +63,6 @@ class CalculateDrishti {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'calculateDrishti', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'calculateDrishti', is_array( $data ) ? $data : array() );
 	}
 }

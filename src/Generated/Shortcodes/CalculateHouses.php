@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class CalculateHouses {
 
@@ -63,6 +63,6 @@ class CalculateHouses {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'calculateHouses', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'calculateHouses', is_array( $data ) ? $data : array() );
 	}
 }

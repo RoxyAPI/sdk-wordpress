@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetKpCusps {
 
@@ -65,6 +65,6 @@ class GetKpCusps {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getKpCusps', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getKpCusps', is_array( $data ) ? $data : array() );
 	}
 }

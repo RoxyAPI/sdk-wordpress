@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetCard {
 
@@ -46,6 +46,6 @@ class GetCard {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getCard', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getCard', is_array( $data ) ? $data : array() );
 	}
 }

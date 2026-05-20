@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class CalculateMaturity {
 
@@ -63,6 +63,6 @@ class CalculateMaturity {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'calculateMaturity', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'calculateMaturity', is_array( $data ) ? $data : array() );
 	}
 }

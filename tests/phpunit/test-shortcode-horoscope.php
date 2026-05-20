@@ -39,20 +39,24 @@ class Test_Shortcode_Horoscope extends Mock_Http_TestCase {
 
 	public function test_renders_horoscope_card(): void {
 		$out = do_shortcode( '[roxy_horoscope sign="aries"]' );
-		$this->assertStringContainsString( 'roxyapi-horoscope', $out );
+		$this->assertStringContainsString( 'roxy-horoscope-card', $out );
 		$this->assertStringContainsString( 'A bold day ahead.', $out );
 		$this->assertStringContainsString( 'Lucky number', $out );
 	}
 
 	public function test_invalid_sign_falls_back_to_default(): void {
 		$out = do_shortcode( '[roxy_horoscope sign="dragon"]' );
-		$this->assertStringContainsString( 'roxyapi-horoscope', $out );
-		$this->assertStringContainsString( 'Aries', $out );
+		$this->assertStringContainsString( 'roxy-horoscope-card', $out );
+		$this->assertStringContainsString( 'aries', $out );
 	}
 
-	public function test_no_script_tags_in_output(): void {
+	public function test_payload_script_is_inert_json(): void {
 		$out = do_shortcode( '[roxy_horoscope sign="aries"]' );
-		$this->assertStringNotContainsString( '<script', $out );
+		// The component data ships as an inert JSON block read by the element on
+		// connect, never as executable JavaScript. The API key still never
+		// reaches the browser: this is the server-rendered response, not the key.
+		$this->assertStringContainsString( '<script type="application/json" class="roxy-data">', $out );
+		$this->assertStringNotContainsString( '<script>', $out );
 	}
 
 	public function test_caches_response(): void {

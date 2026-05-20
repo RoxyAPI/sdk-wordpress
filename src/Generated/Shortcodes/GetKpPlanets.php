@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetKpPlanets {
 
@@ -67,6 +67,6 @@ class GetKpPlanets {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getKpPlanets', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getKpPlanets', is_array( $data ) ? $data : array() );
 	}
 }

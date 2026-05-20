@@ -81,7 +81,7 @@ class KpChart {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\GenericRenderer::render( 'generateKpChart', is_array( $data ) ? $data : array() );
+		return \RoxyAPI\Support\ComponentRenderer::render( 'generateKpChart', is_array( $data ) ? $data : array() );
 	}
 
 	/**

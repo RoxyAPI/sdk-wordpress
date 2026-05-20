@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class ListCrystalColors {
 
@@ -45,6 +45,6 @@ class ListCrystalColors {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'listCrystalColors', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'listCrystalColors', is_array( $data ) ? $data : array() );
 	}
 }

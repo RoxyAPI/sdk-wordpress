@@ -33,6 +33,7 @@ class Test_Client_Errors extends \WP_UnitTestCase {
 	public function tearDown(): void {
 		remove_all_filters( 'pre_http_request' );
 		delete_option( 'roxyapi_settings' );
+		delete_transient( 'roxyapi_free_tier_exhausted_seen' );
 		Cache::flush_all();
 		wp_cache_flush();
 		parent::tearDown();
@@ -140,11 +141,115 @@ class Test_Client_Errors extends \WP_UnitTestCase {
 		$this->assertSame( 'roxyapi_json', $out->get_error_code() );
 	}
 
-	public function test_no_api_key_configured_returns_roxyapi_no_key(): void {
+	public function test_no_api_key_configured_omits_header_and_passes_through(): void {
+		// With no key configured, the plugin no longer short-circuits with a
+		// `roxyapi_no_key` WP_Error. Instead, the request goes out with the
+		// X-API-Key header absent, so the SaaS free-tier sandbox sees the
+		// unauthenticated path and either serves a demo response or returns
+		// 429 with `code: free_tier_exhausted`. Here we mock a 200 to assert
+		// the request travels through and the header is omitted.
 		delete_option( 'roxyapi_settings' );
+
+		$captured_headers = null;
+		add_filter(
+			'pre_http_request',
+			static function ( $pre, $args ) use ( &$captured_headers ) {
+				$captured_headers = $args['headers'] ?? array();
+				return array(
+					'headers'  => array(),
+					'body'     => wp_json_encode( array( 'ok' => true ) ),
+					'response' => array( 'code' => 200, 'message' => 'OK' ),
+					'cookies'  => array(),
+					'filename' => null,
+				);
+			},
+			10,
+			2
+		);
+
+		$out = Client::get( 'astrology/horoscope/aries/daily' );
+		$this->assertIsArray( $out );
+		$this->assertSame( true, $out['ok'] );
+		$this->assertIsArray( $captured_headers );
+		$this->assertArrayNotHasKey( 'X-API-Key', $captured_headers );
+		// Sanity-check the other identifying headers stay attached.
+		$this->assertArrayHasKey( 'X-SDK-Client', $captured_headers );
+		$this->assertArrayHasKey( 'X-Site-URL', $captured_headers );
+		$this->assertArrayHasKey( 'Accept', $captured_headers );
+		$this->assertArrayHasKey( 'User-Agent', $captured_headers );
+	}
+
+	public function test_api_key_configured_sends_header(): void {
+		// Counterpart to the no-key path: with a real key, X-API-Key MUST be
+		// present and equal to the resolved plaintext key.
+		$captured_headers = null;
+		add_filter(
+			'pre_http_request',
+			static function ( $pre, $args ) use ( &$captured_headers ) {
+				$captured_headers = $args['headers'] ?? array();
+				return array(
+					'headers'  => array(),
+					'body'     => wp_json_encode( array( 'ok' => true ) ),
+					'response' => array( 'code' => 200, 'message' => 'OK' ),
+					'cookies'  => array(),
+					'filename' => null,
+				);
+			},
+			10,
+			2
+		);
+
+		Client::get( 'astrology/horoscope/aries/daily' );
+		$this->assertIsArray( $captured_headers );
+		$this->assertArrayHasKey( 'X-API-Key', $captured_headers );
+		$this->assertSame( $this->test_key, $captured_headers['X-API-Key'] );
+	}
+
+	public function test_free_tier_exhausted_429_returns_distinct_error_code(): void {
+		// T-02: 429 with `code: free_tier_exhausted` returns
+		// `roxyapi_free_tier_exhausted` (NOT `roxyapi_quota`) so the admin
+		// notice path can distinguish demo exhaustion from paid-key exhaustion.
+		delete_option( 'roxyapi_settings' );
+		delete_transient( 'roxyapi_free_tier_exhausted_seen' );
+
+		$this->mock_response(
+			429,
+			wp_json_encode(
+				array(
+					'error' => 'Free playground daily limit reached. Get an API key at https://roxyapi.com/pricing for production use.',
+					'code'  => 'free_tier_exhausted',
+				)
+			)
+		);
+		$out = Client::get( 'astrology/horoscope/aries/daily' );
+		$this->assertInstanceOf( WP_Error::class, $out );
+		$this->assertSame( 'roxyapi_free_tier_exhausted', $out->get_error_code() );
+		$data = $out->get_error_data();
+		$this->assertSame( 429, $data['status'] );
+		$this->assertSame( 'free_tier_exhausted', $data['saas_code'] );
+		// Transient must be set so the admin notice can trip on next page load.
+		$this->assertNotEmpty( get_transient( 'roxyapi_free_tier_exhausted_seen' ) );
+		// Visitor copy must NOT leak the SaaS-side machine code or status.
+		$message = $out->get_error_message();
+		$this->assertStringNotContainsString( '429', $message );
+		$this->assertStringNotContainsString( 'free_tier_exhausted', $message );
+	}
+
+	public function test_regular_429_still_returns_roxyapi_quota(): void {
+		// Regression: ANY 429 that does NOT carry `code: free_tier_exhausted`
+		// must continue to surface as `roxyapi_quota` (paid-key quota path).
+		$this->mock_response(
+			429,
+			wp_json_encode(
+				array(
+					'error' => 'Rate limit exceeded: 50 requests per month',
+					'code'  => 'rate_limit_exceeded',
+				)
+			)
+		);
 		$out = Client::get( 'any' );
 		$this->assertInstanceOf( WP_Error::class, $out );
-		$this->assertSame( 'roxyapi_no_key', $out->get_error_code() );
+		$this->assertSame( 'roxyapi_quota', $out->get_error_code() );
 	}
 
 	public function test_friendly_messages_do_not_leak_internals(): void {

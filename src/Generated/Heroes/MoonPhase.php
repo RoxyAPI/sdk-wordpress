@@ -53,6 +53,6 @@ class MoonPhase {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\GenericRenderer::render( 'getCurrentMoonPhase', is_array( $data ) ? $data : array() );
+		return \RoxyAPI\Support\ComponentRenderer::render( 'getCurrentMoonPhase', is_array( $data ) ? $data : array() );
 	}
 }

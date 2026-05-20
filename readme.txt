@@ -16,7 +16,7 @@ Add astrology, daily horoscopes, tarot card pulls, numerology readings, and Vedi
 
 **About the service this plugin connects to**
 
-This plugin is a thin WordPress interface to RoxyAPI, a third-party paid service operated at https://roxyapi.com. The astrology, tarot, numerology, and other calculations all run on RoxyAPI servers. **A RoxyAPI account and API key are required for the plugin to display any data.** Pricing and plan tiers are listed at https://roxyapi.com/pricing in your local currency. Terms of Service: https://roxyapi.com/policy/terms. Privacy Policy: https://roxyapi.com/policy/privacy.
+This plugin is a thin WordPress interface to RoxyAPI, a third-party paid service operated at https://roxyapi.com. The astrology, tarot, numerology, and other calculations all run on RoxyAPI servers. **A small free daily allowance lets the plugin display readings without an account; a RoxyAPI API key is required for production use and removes the daily limit.** Pricing and plan tiers are listed at https://roxyapi.com/pricing in your local currency. Terms of Service: https://roxyapi.com/policy/terms. Privacy Policy: https://roxyapi.com/policy/privacy.
 
 The plugin itself is GPLv2 or later and the source is available at https://github.com/RoxyAPI/sdk-wordpress.
 
@@ -61,16 +61,16 @@ Without these, the plugin falls back to your WordPress LOGGED_IN_KEY and LOGGED_
 
 = Do I need a RoxyAPI account? =
 
-Yes. RoxyAPI is a paid third-party service. The plugin cannot display any astrology, tarot, numerology, or other readings without a valid API key from a RoxyAPI plan. Pick a plan at https://roxyapi.com/pricing. Pricing is shown in your local currency on the pricing page. One key covers every reading.
+Not to get started. A limited number of free readings per day are allowed right after install, with no account, so you can try the plugin. The allowance is counted per site and resets each day. For production use, add an API key from a RoxyAPI plan: one key covers every reading and removes the daily limit. Pick a plan at https://roxyapi.com/pricing. Pricing is shown in your local currency on the pricing page.
 
 = When does the plugin contact the RoxyAPI service? =
 
 The plugin contacts roxyapi.com only when you take a clear action that requires it:
 
 1. You click the Test Connection button on the settings page.
-2. A page on your site that contains a RoxyAPI block or shortcode is rendered (cached for one hour by default to keep your API quota low).
+2. A page on your site that contains a RoxyAPI block or shortcode is rendered (cached for one hour by default to keep your API quota low). This render-time call happens whether or not an API key is set: with a key it uses your plan, without one it uses the free daily allowance.
 
-The plugin never contacts RoxyAPI on plugin activation, on plugin update, on any admin page that does not display a reading, or in the background. Saving your API key for the first time is the explicit consent for the render-time calls described above.
+The plugin never contacts RoxyAPI on plugin activation, on plugin update, on any admin page that does not display a reading, or in the background. Placing a RoxyAPI block or shortcode on a page is the explicit action that authorizes the render-time calls described above.
 
 = What data is sent to RoxyAPI? =
 
@@ -93,7 +93,7 @@ Yes. The plugin uses WordPress transients, which automatically use Redis or Memc
 
 = Can I customize the styling? =
 
-Yes. Every output element has a .roxyapi-* class. Override in your theme stylesheet. The plugin uses your theme color and spacing tokens by default.
+Yes. Charts follow your light or dark mode automatically and read the --roxy-* CSS custom properties. Set an accent color and a light, dark, or auto theme in the RoxyAPI menu under Branding, or override any --roxy-* token in your theme stylesheet. Every output element also has a .roxyapi-* class you can target.
 
 = Which calculation engine powers RoxyAPI? =
 
@@ -113,22 +113,19 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Screenshots ==
 
-1. Three step onboarding. Get your API key, paste it in, drop a shortcode on a page.
-2. Connected admin. Tabbed settings (Connect, Branding, Display, Privacy, Advanced) plus a quick start grid of copy paste shortcodes.
-3. Shortcodes Library. Browse all 134 shortcodes by domain. Search, filter, copy.
-4. Frontend reading card. Numerology chart with title, narrative description, career and relationships fields, strengths and challenges sections.
-5. Visitor form mode. Vedic birth chart input with city autocomplete (no JS required for fallback). Server side submission, GDPR consent gate.
-6. Gutenberg editor. RoxyAPI block category with every hero block and the Astrology Section context wrapper.
-
-== Known Limitations ==
-
-Version 1.0.0 ships all 131 RoxyAPI endpoints. 17 hero shortcodes covering the highest demand readings across Western astrology, Vedic astrology (kundli, panchang, mangal dosha, KP chart), tarot (daily, three card, Celtic Cross, yes or no), numerology (life path, full chart), biorhythm, angel numbers, crystals by zodiac, current moon phase, plus two-chart compatibility (synastry, gun milan, Western compatibility). 117 auto generated shortcodes for the long tail.
-
-I Ching, dream symbol, and single crystal lookups are reachable via the auto-generated long-tail shortcodes (browse the full catalog at RoxyAPI then Shortcodes in the WordPress admin sidebar).
-
-Hero block editor sidebars are intentionally minimal in this release. Live previews and richer inspector controls land in a future release.
+1. Western natal chart wheel with planet glyphs, aspect lines, and houses.
+2. Vedic kundli rendered as an interactive SVG chart. North, South, and East Indian styles.
+3. KP chart with planets, nakshatra, star lord, and sub lord.
+4. Panchang muhurta table: tithi, nakshatra, yoga, and auspicious times.
+5. Shortcodes Library. Browse every shortcode by domain. Search, filter, copy.
+6. Start free in seconds, no key required. Browse shortcodes, or add a key for production.
 
 == Changelog ==
+
+= 1.1.0 =
+* Charts now render as interactive SVG: natal, kundli, KP, panchang, dasha, and more, instead of plain tables.
+* Light and dark mode. Charts follow the visitor device automatically. Pick an accent color and a theme in the RoxyAPI menu under Branding.
+* Try it free. A limited number of free readings per day are allowed right after install, with no account.
 
 = 1.0.4 =
 * Tidy distribution: drop maintainer-only files (CITATION.cff, eslint.config.cjs, empty patterns scaffold) that were leaking into the published zip.

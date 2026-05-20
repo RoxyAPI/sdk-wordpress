@@ -81,7 +81,7 @@ class MangalDosha {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\GenericRenderer::render( 'checkManglikDosha', is_array( $data ) ? $data : array() );
+		return \RoxyAPI\Support\ComponentRenderer::render( 'checkManglikDosha', is_array( $data ) ? $data : array() );
 	}
 
 	/**

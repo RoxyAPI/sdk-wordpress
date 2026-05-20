@@ -24,6 +24,12 @@
 const wpScriptsConfig = require( '@wordpress/scripts/config/eslint.config.cjs' );
 
 module.exports = [
+	// Global ignores: the vendored @roxyapi/ui bundle is minified third-party
+	// code (fetched by bin/fetch-ui-bundle.mjs), not ours to lint.
+	{
+		ignores: [ 'assets/js/roxy-ui.js' ],
+	},
+
 	...wpScriptsConfig,
 
 	// Block editor source: @wordpress/* packages are externalised by

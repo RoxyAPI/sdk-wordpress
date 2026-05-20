@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class CalculateSoulUrge {
 
@@ -53,6 +53,6 @@ class CalculateSoulUrge {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'calculateSoulUrge', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'calculateSoulUrge', is_array( $data ) ? $data : array() );
 	}
 }

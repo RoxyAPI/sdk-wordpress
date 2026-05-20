@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetPlanetPositions {
 
@@ -61,6 +61,6 @@ class GetPlanetPositions {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getPlanetPositions', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getPlanetPositions', is_array( $data ) ? $data : array() );
 	}
 }

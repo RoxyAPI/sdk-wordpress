@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class CalculateParallels {
 
@@ -63,6 +63,6 @@ class CalculateParallels {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'calculateParallels', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'calculateParallels', is_array( $data ) ? $data : array() );
 	}
 }

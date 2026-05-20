@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetNakshatra {
 
@@ -46,6 +46,6 @@ class GetNakshatra {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getNakshatra', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getNakshatra', is_array( $data ) ? $data : array() );
 	}
 }

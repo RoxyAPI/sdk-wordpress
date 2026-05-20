@@ -25,6 +25,8 @@ use RoxyAPI\Blocks\Category;
 use RoxyAPI\Blocks\Registrar as BlocksRegistrar;
 use RoxyAPI\Shortcodes\Registrar as ShortcodesRegistrar;
 use RoxyAPI\Support\FormRouter;
+use RoxyAPI\Support\Theming;
+use RoxyAPI\Support\UiBundle;
 
 class Plugin {
 
@@ -54,6 +56,8 @@ class Plugin {
 		ShortcodesRegistrar::register();
 		Bindings::register();
 		FormRouter::register();
+		UiBundle::register();
+		Theming::register();
 
 		// Priority 5 so the handle is registered BEFORE shortcodes / blocks /
 		// the Demo page call wp_enqueue_style('roxyapi-frontend') at the
@@ -82,23 +86,44 @@ class Plugin {
 		if ( wp_style_is( 'roxyapi-frontend', 'registered' ) ) {
 			return;
 		}
+
+		// The @roxyapi/ui token defaults must load first. They define every
+		// `--roxy-*` custom property on `:root` plus the automatic dark-mode
+		// block the chart components read. Registering it as a dependency of
+		// `roxyapi-frontend` means any `wp_enqueue_style( 'roxyapi-frontend' )`
+		// pulls the token layer ahead of the plugin stylesheet, so the defaults
+		// reach the document `:root` and inherit down into every component
+		// shadow tree and every generic card.
+		if ( ! wp_style_is( 'roxyapi-ui-tokens', 'registered' ) ) {
+			wp_register_style(
+				'roxyapi-ui-tokens',
+				plugins_url( 'assets/css/roxy-ui-tokens.css', self::$plugin_file ),
+				array(),
+				ROXYAPI_UI_VERSION
+			);
+		}
+
 		wp_register_style(
 			'roxyapi-frontend',
 			plugins_url( 'assets/css/frontend.css', self::$plugin_file ),
-			array(),
+			array( 'roxyapi-ui-tokens' ),
 			ROXYAPI_VERSION
 		);
 
-		// Inject the brand-accent CSS variable when the site owner set one.
-		// Layered as a custom property so theme.json tokens still drive
-		// everything else; only accent surfaces in `frontend.css` consult
-		// `--roxy-accent`.
+		// Override the default accent when the site owner set one. Custom
+		// properties inherit downward, so the accent has to sit on `:root` (not
+		// on a `.roxyapi-card` descendant) to reach the chart shadow trees. The
+		// token layer pins a mode-specific accent at `:root[data-theme="dark"]`
+		// (higher specificity than bare `:root`), so the override must match the
+		// same theme states to win in light, dark, and auto alike. Attached to
+		// `roxyapi-frontend`, which depends on the token layer, so the inline
+		// rule also loads after the defaults.
 		$opts  = \RoxyAPI\Admin\SettingsSchema::get_option();
-		$color = (string) ( $opts['accent_color'] ?? '' );
-		if ( $color !== '' ) {
+		$color = sanitize_hex_color( (string) ( $opts['accent_color'] ?? '' ) );
+		if ( is_string( $color ) && $color !== '' ) {
 			wp_add_inline_style(
 				'roxyapi-frontend',
-				':where(.roxyapi-card, .roxyapi-form) { --roxy-accent: ' . sanitize_hex_color( $color ) . '; }'
+				':root,:root[data-theme="light"],:root[data-theme="dark"]{--roxy-accent:' . $color . ';}'
 			);
 		}
 	}

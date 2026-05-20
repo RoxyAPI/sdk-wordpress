@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class DetectAspectPatterns {
 
@@ -61,6 +61,6 @@ class DetectAspectPatterns {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'detectAspectPatterns', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'detectAspectPatterns', is_array( $data ) ? $data : array() );
 	}
 }

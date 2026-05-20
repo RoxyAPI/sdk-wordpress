@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class LookupHexagram {
 
@@ -46,6 +46,6 @@ class LookupHexagram {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'lookupHexagram', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'lookupHexagram', is_array( $data ) ? $data : array() );
 	}
 }

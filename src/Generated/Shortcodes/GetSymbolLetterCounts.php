@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetSymbolLetterCounts {
 
@@ -45,6 +45,6 @@ class GetSymbolLetterCounts {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getSymbolLetterCounts', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getSymbolLetterCounts', is_array( $data ) ? $data : array() );
 	}
 }

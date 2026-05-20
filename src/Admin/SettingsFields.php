@@ -104,6 +104,30 @@ class SettingsFields {
 	}
 
 	/**
+	 * Pre-escaped `<select>` for the chart theme mode (Auto / Light / Dark).
+	 * Auto follows the visitor operating system preference; light and dark
+	 * force the choice on every rendered reading.
+	 *
+	 * @return string
+	 */
+	public static function theme_mode_input_html(): string {
+		$opts    = SettingsSchema::get_option();
+		$current = (string) ( $opts['theme_mode'] ?? 'auto' );
+		$choices = array(
+			'auto'  => __( 'Auto: follow the visitor device setting', 'roxyapi' ),
+			'light' => __( 'Light', 'roxyapi' ),
+			'dark'  => __( 'Dark', 'roxyapi' ),
+		);
+		$out     = '<select id="roxyapi_theme_mode" name="roxyapi_settings[theme_mode]" class="roxyapi-select">';
+		foreach ( $choices as $value => $label ) {
+			$selected = $value === $current ? ' selected' : '';
+			$out     .= '<option value="' . esc_attr( $value ) . '"' . $selected . '>' . esc_html( $label ) . '</option>';
+		}
+		$out .= '</select>';
+		return $out;
+	}
+
+	/**
 	 * Pre-escaped `<select>` for visitor-display language. Empty value
 	 * means "match site language" (resolves via WP locale at request time).
 	 *

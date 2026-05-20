@@ -18,6 +18,9 @@ build/
 *.min.js
 *.min.css
 
+# Vendored @roxyapi/ui bundle: minified third-party code, not ours to format.
+assets/js/roxy-ui.js
+
 # Lockfiles — managed by their tools.
 composer.lock
 package-lock.json
@@ -49,3 +52,4 @@ bin/ttl-map.json
 bin/hero-endpoints.json
 bin/hero-config.json
 bin/example-overrides.json
+bin/component-map.json

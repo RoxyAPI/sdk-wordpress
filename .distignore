@@ -42,4 +42,5 @@
 /specs
 /vendor
 /.prettierignore
+/.stylelintignore
 *.log

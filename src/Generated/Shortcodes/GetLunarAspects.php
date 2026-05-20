@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetLunarAspects {
 
@@ -59,6 +59,6 @@ class GetLunarAspects {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getLunarAspects', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getLunarAspects', is_array( $data ) ? $data : array() );
 	}
 }

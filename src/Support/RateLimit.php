@@ -6,7 +6,7 @@
  * is counted in a transient keyed by IP and shortcode name. Returns false
  * once the per hour limit is reached.
  *
- * Configurable via Settings, RoxyAPI, Cache tab.
+ * Configurable in the RoxyAPI admin settings.
  *
  * @package RoxyAPI
  */

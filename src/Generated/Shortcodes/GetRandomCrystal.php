@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetRandomCrystal {
 
@@ -45,6 +45,6 @@ class GetRandomCrystal {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getRandomCrystal', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getRandomCrystal', is_array( $data ) ? $data : array() );
 	}
 }

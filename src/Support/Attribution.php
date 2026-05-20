@@ -9,7 +9,7 @@
  *    https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/
  *    guideline #10 — "All 'Powered By' or credit displays and links must be
  *    optional and default to NOT show". Site owners opt in via the
- *    Settings → RoxyAPI "Show attribution credit" checkbox (`attribution_show`
+ *    RoxyAPI > Branding "Show attribution credit" checkbox (`attribution_show`
  *    option). Anchor text follows the brand-book rule "lead with what we
  *    offer, not who we are" — keyword-leading, brand-trailing — and can be
  *    overridden per-call via the `roxyapi_credit_anchor` filter.

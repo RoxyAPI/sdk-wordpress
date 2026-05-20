@@ -76,7 +76,7 @@ class Biorhythm {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\GenericRenderer::render( 'getReading', is_array( $data ) ? $data : array() );
+		return \RoxyAPI\Support\ComponentRenderer::render( 'getReading', is_array( $data ) ? $data : array() );
 	}
 
 	/**

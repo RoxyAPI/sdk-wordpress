@@ -55,30 +55,33 @@ class Client {
 	 */
 	private static function request( string $method, string $endpoint, array $payload ) {
 		$key = ApiKey::get();
-		if ( $key === '' ) {
-			return new WP_Error(
-				'roxyapi_no_key',
-				__( 'RoxyAPI key not configured. Visit Settings then RoxyAPI.', 'roxyapi' )
-			);
-		}
 
 		// Inject the site-owner's preferred display language into the
 		// request when the caller hasn't already set one. Empty setting
 		// means "match the WP locale", which we resolve here once.
 		$payload = self::maybe_inject_language( $payload );
 
+		// When no key is configured, omit X-API-Key entirely (do not send an
+		// empty string). The RoxyAPI free-tier sandbox grants 5 calls/day per
+		// visitor IP to requests that carry our X-SDK-Client header AND no
+		// X-API-Key. Sending the header with an empty value would defeat that
+		// detection and surface a 401 instead of a friendly demo response.
+		$headers = array(
+			'X-SDK-Client' => 'roxy-sdk-wordpress/' . ROXYAPI_VERSION,
+			'X-Site-URL'   => home_url( '/' ),
+			'Accept'       => 'application/json',
+			'User-Agent'   => 'roxy-sdk-wordpress/' . ROXYAPI_VERSION . ' (+' . home_url( '/' ) . ')',
+		);
+		if ( $key !== '' ) {
+			$headers['X-API-Key'] = $key;
+		}
+
 		$url  = self::BASE_URL . '/' . ltrim( $endpoint, '/' );
 		$args = array(
 			'method'      => $method,
 			'timeout'     => self::TIMEOUT,
 			'redirection' => 2,
-			'headers'     => array(
-				'X-API-Key'    => $key,
-				'X-SDK-Client' => 'roxy-sdk-wordpress/' . ROXYAPI_VERSION,
-				'X-Site-URL'   => home_url( '/' ),
-				'Accept'       => 'application/json',
-				'User-Agent'   => 'roxy-sdk-wordpress/' . ROXYAPI_VERSION . ' (+' . home_url( '/' ) . ')',
-			),
+			'headers'     => $headers,
 		);
 
 		if ( $method === 'GET' && $payload ) {
@@ -176,6 +179,14 @@ class Client {
 		if ( $status === 401 || $status === 403 ) {
 			$code    = 'roxyapi_auth';
 			$message = __( 'This reading is temporarily unavailable. The site administrator needs to verify the connection.', 'roxyapi' );
+		} elseif ( $status === 429 && $saas_code === 'free_tier_exhausted' ) {
+			// Visitor copy stays vague (matches the regular quota path) so the
+			// reader does not learn which 429 hit them. Admin diagnostics keep
+			// the SaaS-side `saas_code` in $data. The transient is the signal
+			// the admin notice reads to surface "add a paid key" guidance.
+			$code    = 'roxyapi_free_tier_exhausted';
+			$message = __( 'This reading is temporarily unavailable. Please check back later.', 'roxyapi' );
+			set_transient( 'roxyapi_free_tier_exhausted_seen', current_time( 'mysql' ), DAY_IN_SECONDS );
 		} elseif ( $status === 429 ) {
 			$code    = 'roxyapi_quota';
 			$message = __( 'Daily readings are temporarily unavailable. Please check back later.', 'roxyapi' );

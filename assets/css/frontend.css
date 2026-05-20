@@ -578,3 +578,17 @@
 	font-size: 0.8125rem;
 	color: color-mix(in srgb, currentcolor 60%, transparent);
 }
+
+/* Web-component progressive enhancement. The server-rendered fallback shows
+   until the custom element upgrades, then the upgraded element takes over. */
+.roxyapi-component:not(:defined) .roxyapi-component-fallback {
+	display: block;
+}
+
+.roxyapi-component:defined .roxyapi-component-fallback {
+	display: none;
+}
+
+.roxyapi-component:not(:defined) {
+	display: block;
+}

@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GenerateSolarReturn {
 
@@ -65,6 +65,6 @@ class GenerateSolarReturn {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'generateSolarReturn', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'generateSolarReturn', is_array( $data ) ? $data : array() );
 	}
 }

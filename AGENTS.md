@@ -48,6 +48,8 @@ Pass all required attributes and the shortcode renders a fixed reading that neve
 
 Two-chart heroes (`[roxy_synastry]`, `[roxy_gun_milan]`, `[roxy_compatibility]`) ship as form-mode only because static mode would need ten or more inline attributes per chart. Drop the shortcode on a page and visitors fill in both birth charts. I Ching, dream symbol, and single-crystal lookups remain available via auto-generated long-tail shortcodes (browse the catalog at Roxy then Shortcodes in the WordPress admin sidebar).
 
+How readings render: chart-shaped endpoints (natal, kundli, KP, panchang, dasha, and more) render as interactive SVG components from `@roxyapi/ui`, loaded from a bundle shipped inside the plugin and themed by the `--roxy-*` CSS custom properties. The remaining content reads render as a server-side card. The plugin fetches server side and embeds the response, so the API key never reaches the browser either way.
+
 ### Form mode: visitors pick their own values
 
 Leave the required attributes off and the shortcode renders an HTML form. Visitors submit it, the plugin validates the nonce, rate limits per IP, calls the API server side, and renders the result above the form on the next page load:
@@ -108,7 +110,7 @@ Resolution order:
 
 1. `ROXYAPI_KEY` constant in `wp-config.php` (recommended for production)
 2. The encrypted value in the `roxyapi_settings` option, decrypted via AES-256-CTR
-3. Empty string (every shortcode renders a friendly placeholder pointing at the settings page; the dashboard widget also surfaces the unconnected state)
+3. Empty string. With no key the plugin still renders, calling the API through the free daily allowance (a limited number of readings per day per site). Once that is used up the reading shows a friendly "temporarily unavailable" message and an admin notice prompts for a paid key. The dashboard widget also surfaces the unconnected state.
 
 The encryption key derives from `ROXYAPI_ENCRYPTION_KEY` constant or `LOGGED_IN_KEY` fallback. Same for the salt. If neither is available, the encryption helper returns `false` and the user gets a clear "could not encrypt" error instead of having their key persisted under a hardcoded secret. Document for production:
 
@@ -122,13 +124,13 @@ define( 'ROXYAPI_ENCRYPTION_SALT', getenv( 'ROXYAPI_ENCRYPTION_SALT' ) );
 
 The Roxy admin page is split into five tabs:
 
-| Tab      | What it covers                                                                                                                                               |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Connect  | API key field (constant override), Test Connection button.                                                                                                   |
-| Branding | Accent color (sets `--roxy-accent` for every reading), opt in source line under each rendered reading (off by default per WordPress.org guideline 10).       |
-| Display  | Default response language sent on every API call (defaults to site locale), optional disclaimer line shown under each reading.                               |
-| Privacy  | Consent label shown next to the form opt in checkbox, rate limit (default 20 per IP per hour). Privacy policy content is registered for the WP Privacy tool. |
-| Advanced | Cache preset (fresh divides TTLs by 4, balanced uses spec defaults, quota saver multiplies TTLs by 24), connection status panel.                             |
+| Tab      | What it covers                                                                                                                                                                                   |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Connect  | API key field (constant override), Test Connection button.                                                                                                                                       |
+| Branding | Accent color and a light, dark, or auto theme that drive the `--roxy-*` tokens the chart components read. Opt in source line under each reading (off by default per WordPress.org guideline 10). |
+| Display  | Default response language sent on every API call (defaults to site locale), optional disclaimer line shown under each reading.                                                                   |
+| Privacy  | Consent label shown next to the form opt in checkbox, rate limit (default 20 per IP per hour). Privacy policy content is registered for the WP Privacy tool.                                     |
+| Advanced | Cache preset (fresh divides TTLs by 4, balanced uses spec defaults, quota saver multiplies TTLs by 24), connection status panel.                                                                 |
 
 The settings registry is filterable. Sites that need an extra option can hook `roxyapi_settings_schema` and add a field; the Settings API page picks it up automatically.
 

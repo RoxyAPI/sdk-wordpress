@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class ListLanguages {
 
@@ -45,6 +45,6 @@ class ListLanguages {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'listLanguages', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'listLanguages', is_array( $data ) ? $data : array() );
 	}
 }

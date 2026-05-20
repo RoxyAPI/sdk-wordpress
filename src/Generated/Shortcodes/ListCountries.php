@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class ListCountries {
 
@@ -46,6 +46,6 @@ class ListCountries {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'listCountries', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'listCountries', is_array( $data ) ? $data : array() );
 	}
 }

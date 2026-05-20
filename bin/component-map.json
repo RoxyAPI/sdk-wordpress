@@ -1,0 +1,47 @@
+{
+	"_meta": {
+		"ui_package": "@roxyapi/ui",
+		"ui_version_pinned": "0.5.0",
+		"ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.5.0/dist/manifest.json"
+	},
+	"operations": {
+		"generateNatalChart": [ { "component": "roxy-natal-chart", "kind": "chart" } ],
+		"generateBirthChart": [ { "component": "roxy-vedic-kundli", "kind": "chart" } ],
+		"generateKpChart": [ { "component": "roxy-kp-chart", "kind": "chart" } ],
+		"getDetailedPanchang": [ { "component": "roxy-panchang-table", "kind": "table" } ],
+		"getCurrentMoonPhase": [ { "component": "roxy-moon-phase", "kind": "card" } ],
+		"getReading": [ { "component": "roxy-biorhythm-chart", "kind": "chart" } ],
+		"checkManglikDosha": [ { "component": "roxy-dosha-card", "kind": "card" } ],
+		"getDailyHoroscope": [ { "component": "roxy-horoscope-card", "kind": "card" } ],
+		"getWeeklyHoroscope": [ { "component": "roxy-horoscope-card", "kind": "card" } ],
+		"getMonthlyHoroscope": [ { "component": "roxy-horoscope-card", "kind": "card" } ],
+		"generateNumerologyChart": [ { "component": "roxy-numerology-card", "kind": "card" } ],
+		"calculateLifePath": [ { "component": "roxy-numerology-card", "kind": "card" } ],
+		"getDailyCard": [ { "component": "roxy-tarot-card", "kind": "card" } ],
+		"castThreeCard": [ { "component": "roxy-tarot-spread", "kind": "card" } ],
+		"castCelticCross": [ { "component": "roxy-tarot-spread", "kind": "card" } ],
+		"castYesNo": [ { "component": "roxy-tarot-spread", "kind": "card" } ],
+
+		"generateDivisionalChart": [ { "component": "roxy-divisional-chart", "kind": "chart" } ],
+		"calculateAshtakavarga": [ { "component": "roxy-ashtakavarga-grid", "kind": "table" } ],
+		"calculateShadbala": [ { "component": "roxy-shadbala-table", "kind": "table" } ],
+		"getCurrentDasha": [ { "component": "roxy-dasha-timeline", "kind": "chart" } ],
+		"getMajorDashas": [ { "component": "roxy-dasha-timeline", "kind": "chart" } ],
+		"getSubDashas": [ { "component": "roxy-dasha-timeline", "kind": "chart" } ],
+		"getChoghadiya": [ { "component": "roxy-choghadiya-grid", "kind": "table" } ],
+		"getNakshatra": [ { "component": "roxy-nakshatra-card", "kind": "card" } ],
+		"getKpPlanets": [ { "component": "roxy-kp-planets-table", "kind": "table" } ],
+		"getKpRulingPlanets": [ { "component": "roxy-kp-ruling-planets", "kind": "table" } ],
+		"calculateTransits": [ { "component": "roxy-transits-table", "kind": "table" } ],
+		"checkKalsarpaDosha": [ { "component": "roxy-dosha-card", "kind": "card" } ],
+		"checkSadhesati": [ { "component": "roxy-dosha-card", "kind": "card" } ],
+		"getHexagram": [ { "component": "roxy-hexagram", "kind": "card" } ],
+		"getDailyHexagram": [ { "component": "roxy-hexagram", "kind": "card" } ],
+		"getRandomHexagram": [ { "component": "roxy-hexagram", "kind": "card" } ],
+		"lookupHexagram": [ { "component": "roxy-hexagram", "kind": "card" } ],
+		"castReading": [ { "component": "roxy-hexagram", "kind": "card" } ],
+		"listYogas": [ { "component": "roxy-yoga-list", "kind": "card" } ],
+		"getYoga": [ { "component": "roxy-yoga-list", "kind": "card" } ],
+		"detectYogas": [ { "component": "roxy-yoga-list", "kind": "card" } ]
+	}
+}

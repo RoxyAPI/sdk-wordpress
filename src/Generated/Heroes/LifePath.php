@@ -75,7 +75,7 @@ class LifePath {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\GenericRenderer::render( 'calculateLifePath', is_array( $data ) ? $data : array() );
+		return \RoxyAPI\Support\ComponentRenderer::render( 'calculateLifePath', is_array( $data ) ? $data : array() );
 	}
 
 	/**

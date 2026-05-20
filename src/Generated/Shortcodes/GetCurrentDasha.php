@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetCurrentDasha {
 
@@ -61,6 +61,6 @@ class GetCurrentDasha {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getCurrentDasha', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getCurrentDasha', is_array( $data ) ? $data : array() );
 	}
 }

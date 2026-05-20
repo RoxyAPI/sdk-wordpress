@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class CalculateAshtakavarga {
 
@@ -61,6 +61,6 @@ class CalculateAshtakavarga {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'calculateAshtakavarga', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'calculateAshtakavarga', is_array( $data ) ? $data : array() );
 	}
 }

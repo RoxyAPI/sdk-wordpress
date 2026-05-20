@@ -78,7 +78,7 @@ class Panchang {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\GenericRenderer::render( 'getDetailedPanchang', is_array( $data ) ? $data : array() );
+		return \RoxyAPI\Support\ComponentRenderer::render( 'getDetailedPanchang', is_array( $data ) ? $data : array() );
 	}
 
 	/**

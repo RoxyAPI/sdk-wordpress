@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetHexagram {
 
@@ -46,6 +46,6 @@ class GetHexagram {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getHexagram', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getHexagram', is_array( $data ) ? $data : array() );
 	}
 }

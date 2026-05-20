@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetBirthstones {
 
@@ -46,6 +46,6 @@ class GetBirthstones {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getBirthstones', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getBirthstones', is_array( $data ) ? $data : array() );
 	}
 }

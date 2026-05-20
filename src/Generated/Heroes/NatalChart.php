@@ -81,7 +81,7 @@ class NatalChart {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\GenericRenderer::render( 'generateNatalChart', is_array( $data ) ? $data : array() );
+		return \RoxyAPI\Support\ComponentRenderer::render( 'generateNatalChart', is_array( $data ) ? $data : array() );
 	}
 
 	/**

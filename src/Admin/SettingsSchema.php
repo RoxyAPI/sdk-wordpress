@@ -69,6 +69,11 @@ class SettingsSchema {
 				'type'    => 'color',
 				'default' => '',
 			),
+			'theme_mode'        => array(
+				'type'    => 'enum',
+				'default' => 'auto',
+				'enum'    => array( 'auto', 'light', 'dark' ),
+			),
 			'display_language'  => array(
 				'type'    => 'enum',
 				'default' => '',

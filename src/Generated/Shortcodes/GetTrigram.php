@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetTrigram {
 
@@ -46,6 +46,6 @@ class GetTrigram {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getTrigram', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getTrigram', is_array( $data ) ? $data : array() );
 	}
 }

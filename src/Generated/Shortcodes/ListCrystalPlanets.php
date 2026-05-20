@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class ListCrystalPlanets {
 
@@ -45,6 +45,6 @@ class ListCrystalPlanets {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'listCrystalPlanets', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'listCrystalPlanets', is_array( $data ) ? $data : array() );
 	}
 }

@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class CastDailyReading {
 
@@ -55,6 +55,6 @@ class CastDailyReading {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'castDailyReading', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'castDailyReading', is_array( $data ) ? $data : array() );
 	}
 }

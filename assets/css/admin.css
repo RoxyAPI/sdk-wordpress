@@ -188,6 +188,28 @@
 	outline-offset: 2px;
 }
 
+.roxyapi-cta--secondary {
+	background: transparent;
+	color: #1d2327;
+	border-color: #c3c4c7;
+}
+
+.roxyapi-cta--secondary:hover,
+.roxyapi-cta--secondary:focus {
+	background: #f0f0f1;
+	color: #1d2327;
+}
+
+.roxyapi-start-free {
+	margin: 0 0 1.5rem;
+}
+
+.roxyapi-start-free-note {
+	margin: 0.6rem 0 0;
+	color: #646970;
+	font-size: 0.875rem;
+}
+
 .roxyapi-cta-arrow {
 	font-size: 1.05em;
 	line-height: 1;

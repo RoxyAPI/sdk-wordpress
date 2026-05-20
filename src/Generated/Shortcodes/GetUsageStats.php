@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetUsageStats {
 
@@ -45,6 +45,6 @@ class GetUsageStats {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getUsageStats', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getUsageStats', is_array( $data ) ? $data : array() );
 	}
 }

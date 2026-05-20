@@ -30,6 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $signup_url     = isset( $signup_url ) ? (string) $signup_url : '';
 $playground_url = isset( $playground_url ) ? (string) $playground_url : '';
+$shortcodes_url = isset( $shortcodes_url ) ? (string) $shortcodes_url : '';
 $samples        = isset( $samples ) && is_array( $samples ) ? $samples : array();
 $key_input      = isset( $key_input ) ? (string) $key_input : '';
 $key_help       = isset( $key_help ) ? (string) $key_help : '';
@@ -42,8 +43,18 @@ $option_group   = isset( $option_group ) ? (string) $option_group : 'roxyapi';
 	<span class="roxyapi-punchline"><?php echo esc_html__( '30 seconds.', 'roxyapi' ); ?></span>
 </h1>
 <p class="roxyapi-page-intro">
-	<?php echo esc_html__( 'Drop daily horoscopes, tarot pulls, numerology readings, I Ching casts, and natal charts onto any WordPress page. One key. Three steps.', 'roxyapi' ); ?>
+	<?php echo esc_html__( 'Drop daily horoscopes, tarot pulls, numerology readings, I Ching casts, and natal charts onto any WordPress page. Start free in seconds. Add a key when you go live.', 'roxyapi' ); ?>
 </p>
+
+<div class="roxyapi-start-free">
+	<a class="roxyapi-cta roxyapi-cta--secondary" href="<?php echo esc_url( $shortcodes_url ); ?>">
+		<?php echo esc_html__( 'Browse shortcodes', 'roxyapi' ); ?>
+		<span class="roxyapi-cta-arrow" aria-hidden="true">&rarr;</span>
+	</a>
+	<p class="roxyapi-start-free-note">
+		<?php echo esc_html__( 'No key needed to start. A limited number of free readings per day are allowed, so you can try any shortcode right now.', 'roxyapi' ); ?>
+	</p>
+</div>
 
 <div class="roxyapi-test-banner" id="roxyapi-test-banner" role="status" aria-live="polite"></div>
 
@@ -57,7 +68,7 @@ $option_group   = isset( $option_group ) ? (string) $option_group : 'roxyapi';
 				<span class="roxyapi-punchline"><?php echo esc_html__( 'Get your API key.', 'roxyapi' ); ?></span>
 			</h2>
 			<p class="roxyapi-step-body">
-				<?php echo esc_html__( 'An API key connects this plugin to your RoxyAPI account. One key covers every reading. Pick a plan at roxyapi.com to get yours.', 'roxyapi' ); ?>
+				<?php echo esc_html__( 'Optional to start. An API key connects this plugin to your RoxyAPI account, removes the free daily limit, and covers every reading with one key. Pick a plan at roxyapi.com when you are ready for production.', 'roxyapi' ); ?>
 			</p>
 			<p class="roxyapi-step-aside">
 				<?php

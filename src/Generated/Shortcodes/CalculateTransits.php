@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class CalculateTransits {
 
@@ -59,6 +59,6 @@ class CalculateTransits {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'calculateTransits', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'calculateTransits', is_array( $data ) ? $data : array() );
 	}
 }

@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetChoghadiya {
 
@@ -59,6 +59,6 @@ class GetChoghadiya {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getChoghadiya', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getChoghadiya', is_array( $data ) ? $data : array() );
 	}
 }

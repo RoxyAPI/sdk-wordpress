@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class CastThreeCard {
 
@@ -55,6 +55,6 @@ class CastThreeCard {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'castThreeCard', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'castThreeCard', is_array( $data ) ? $data : array() );
 	}
 }

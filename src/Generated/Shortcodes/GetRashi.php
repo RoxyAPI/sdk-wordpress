@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetRashi {
 
@@ -46,6 +46,6 @@ class GetRashi {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getRashi', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getRashi', is_array( $data ) ? $data : array() );
 	}
 }

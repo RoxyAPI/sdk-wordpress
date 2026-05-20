@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class ListNakshatras {
 
@@ -45,6 +45,6 @@ class ListNakshatras {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'listNakshatras', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'listNakshatras', is_array( $data ) ? $data : array() );
 	}
 }

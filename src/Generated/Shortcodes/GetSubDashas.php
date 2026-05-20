@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetSubDashas {
 
@@ -62,6 +62,6 @@ class GetSubDashas {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getSubDashas', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getSubDashas', is_array( $data ) ? $data : array() );
 	}
 }

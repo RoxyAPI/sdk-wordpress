@@ -24,6 +24,8 @@ jobs:
               run: git diff --exit-code src/Generated blocks/generated
             - name: Fail if distribution drifts between local zip and SVN deploy
               run: node bin/check-distignore.mjs
+            - name: Fail if a mapped component is missing from the pinned UI build
+              run: node bin/check-component-map.mjs
 
     lint:
         name: Lint and Plugin Check

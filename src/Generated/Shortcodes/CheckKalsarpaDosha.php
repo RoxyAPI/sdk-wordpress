@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class CheckKalsarpaDosha {
 
@@ -61,6 +61,6 @@ class CheckKalsarpaDosha {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'checkKalsarpaDosha', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'checkKalsarpaDosha', is_array( $data ) ? $data : array() );
 	}
 }

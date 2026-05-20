@@ -125,18 +125,25 @@ class GenericRenderer {
 	 *
 	 * @param string               $operation_id The OpenAPI operation ID.
 	 * @param array<string, mixed> $data         API response data.
+	 * @param bool                 $include_meta Whether to append the optional
+	 *                                           disclaimer line and attribution
+	 *                                           (credit link + JSON-LD). Pass
+	 *                                           false when the caller renders
+	 *                                           those itself, so a web-component
+	 *                                           fallback does not hide them once
+	 *                                           the element upgrades. See
+	 *                                           {@link ComponentRenderer}.
 	 * @return string
 	 */
-	public static function render( string $operation_id, array $data ): string {
+	public static function render( string $operation_id, array $data, bool $include_meta = true ): string {
 		if ( empty( $data ) ) {
 			return '';
 		}
 		$class = trim( 'roxyapi-card roxyapi-' . sanitize_html_class( $operation_id ) );
+		$meta  = $include_meta ? Meta::block( $operation_id, $data ) : '';
 		return '<div class="' . esc_attr( $class ) . '">'
 			. self::render_object( $data, 0 )
-			. Disclaimer::render()
-			. Attribution::credit_link( $operation_id )
-			. Attribution::jsonld( $operation_id, $data )
+			. $meta
 			. '</div>';
 	}
 

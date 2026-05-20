@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class ListCards {
 
@@ -50,6 +50,6 @@ class ListCards {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'listCards', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'listCards', is_array( $data ) ? $data : array() );
 	}
 }

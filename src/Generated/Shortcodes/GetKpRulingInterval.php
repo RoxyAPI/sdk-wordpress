@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetKpRulingInterval {
 
@@ -67,6 +67,6 @@ class GetKpRulingInterval {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getKpRulingInterval', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getKpRulingInterval', is_array( $data ) ? $data : array() );
 	}
 }

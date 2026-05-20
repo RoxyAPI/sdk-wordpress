@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class ListAngelNumbers {
 
@@ -48,6 +48,6 @@ class ListAngelNumbers {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'listAngelNumbers', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'listAngelNumbers', is_array( $data ) ? $data : array() );
 	}
 }

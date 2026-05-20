@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetDailyNumber {
 
@@ -55,6 +55,6 @@ class GetDailyNumber {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getDailyNumber', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getDailyNumber', is_array( $data ) ? $data : array() );
 	}
 }

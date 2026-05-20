@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetYoga {
 
@@ -46,6 +46,6 @@ class GetYoga {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getYoga', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getYoga', is_array( $data ) ? $data : array() );
 	}
 }

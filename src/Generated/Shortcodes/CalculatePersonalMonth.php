@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class CalculatePersonalMonth {
 
@@ -59,6 +59,6 @@ class CalculatePersonalMonth {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'calculatePersonalMonth', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'calculatePersonalMonth', is_array( $data ) ? $data : array() );
 	}
 }

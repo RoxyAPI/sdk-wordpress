@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class CheckKarmicDebt {
 
@@ -59,6 +59,6 @@ class CheckKarmicDebt {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'checkKarmicDebt', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'checkKarmicDebt', is_array( $data ) ? $data : array() );
 	}
 }

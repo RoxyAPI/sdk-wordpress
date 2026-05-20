@@ -144,4 +144,108 @@ class Test_Notice_Dismiss extends \WP_Ajax_UnitTestCase {
 		$ref->setAccessible( true );
 		return (bool) $ref->invoke( null );
 	}
+
+	private function invoke_should_show_exhausted(): bool {
+		$ref = new ReflectionMethod( Notice::class, 'should_show_exhausted' );
+		$ref->setAccessible( true );
+		return (bool) $ref->invoke( null );
+	}
+
+	private function set_exhausted_transient(): void {
+		set_transient( 'roxyapi_free_tier_exhausted_seen', current_time( 'mysql' ), DAY_IN_SECONDS );
+	}
+
+	private function clear_exhausted_state(): void {
+		delete_transient( 'roxyapi_free_tier_exhausted_seen' );
+	}
+
+	public function test_exhausted_notice_renders_for_admin_with_no_key_when_transient_set(): void {
+		$admin_id = self::factory()->user->create( array( 'role' => 'administrator' ) );
+		wp_set_current_user( $admin_id );
+		delete_option( 'roxyapi_settings' );
+		$this->set_exhausted_transient();
+
+		ob_start();
+		Notice::maybe_show_exhausted();
+		$out = (string) ob_get_clean();
+
+		$this->assertNotEmpty( $out, 'Notice must render when all gates pass.' );
+		$this->assertStringContainsString( 'roxyapi-free-tier-exhausted', $out );
+		$this->assertStringContainsString( 'free daily allowance', $out );
+		$this->assertStringContainsString( 'page=' . \RoxyAPI\Admin\SettingsPage::PAGE_SLUG, $out );
+		$this->assertStringContainsString( 'Add key', $out );
+
+		$this->clear_exhausted_state();
+	}
+
+	public function test_exhausted_notice_skipped_when_transient_missing(): void {
+		$admin_id = self::factory()->user->create( array( 'role' => 'administrator' ) );
+		wp_set_current_user( $admin_id );
+		delete_option( 'roxyapi_settings' );
+		$this->clear_exhausted_state();
+
+		$this->assertFalse( $this->invoke_should_show_exhausted() );
+
+		ob_start();
+		Notice::maybe_show_exhausted();
+		$this->assertSame( '', (string) ob_get_clean() );
+	}
+
+	public function test_exhausted_notice_skipped_when_api_key_configured(): void {
+		$admin_id = self::factory()->user->create( array( 'role' => 'administrator' ) );
+		wp_set_current_user( $admin_id );
+		// Detach the sanitize callback so update_option preserves the key.
+		remove_filter(
+			'sanitize_option_' . SettingsPage::OPTION_NAME,
+			array( \RoxyAPI\Admin\SettingsFields::class, 'sanitize' )
+		);
+		update_option(
+			'roxyapi_settings',
+			array(
+				'api_key_encrypted' => Encryption::encrypt(
+					'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee.0123456789abcdef.exhausted_test'
+				),
+			)
+		);
+		$this->set_exhausted_transient();
+
+		$this->assertFalse( $this->invoke_should_show_exhausted() );
+
+		ob_start();
+		Notice::maybe_show_exhausted();
+		$this->assertSame( '', (string) ob_get_clean() );
+
+		$this->clear_exhausted_state();
+	}
+
+	public function test_exhausted_notice_skipped_for_non_admin(): void {
+		$sub_id = self::factory()->user->create( array( 'role' => 'subscriber' ) );
+		wp_set_current_user( $sub_id );
+		delete_option( 'roxyapi_settings' );
+		$this->set_exhausted_transient();
+
+		$this->assertFalse( $this->invoke_should_show_exhausted() );
+
+		ob_start();
+		Notice::maybe_show_exhausted();
+		$this->assertSame( '', (string) ob_get_clean() );
+
+		$this->clear_exhausted_state();
+	}
+
+	public function test_exhausted_notice_skipped_when_dismissed_today(): void {
+		$admin_id = self::factory()->user->create( array( 'role' => 'administrator' ) );
+		wp_set_current_user( $admin_id );
+		delete_option( 'roxyapi_settings' );
+		$this->set_exhausted_transient();
+		update_user_meta( $admin_id, 'roxyapi_free_tier_dismissed_' . gmdate( 'Y-m-d' ), '1' );
+
+		$this->assertFalse( $this->invoke_should_show_exhausted() );
+
+		ob_start();
+		Notice::maybe_show_exhausted();
+		$this->assertSame( '', (string) ob_get_clean() );
+
+		$this->clear_exhausted_state();
+	}
 }

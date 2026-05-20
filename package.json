@@ -44,7 +44,9 @@
 		"wp-env": "wp-env",
 		"generate": "node bin/generate.mjs",
 		"generate:check": "node bin/generate.mjs && git diff --exit-code src/Generated blocks/generated",
+		"fetch:ui": "node bin/fetch-ui-bundle.mjs",
 		"check:distignore": "node bin/check-distignore.mjs",
+		"check:component-map": "node bin/check-component-map.mjs",
 		"upgrade": "npx npm-check-updates --target minor --upgrade",
 		"check-outdated": "npx npm-check-updates"
 	},

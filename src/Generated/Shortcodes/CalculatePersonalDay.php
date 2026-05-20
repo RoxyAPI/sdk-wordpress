@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class CalculatePersonalDay {
 
@@ -57,6 +57,6 @@ class CalculatePersonalDay {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'calculatePersonalDay', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'calculatePersonalDay', is_array( $data ) ? $data : array() );
 	}
 }

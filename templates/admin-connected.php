@@ -11,6 +11,7 @@
  *   string $attribution_input
  *   string $consent_label_input
  *   string $accent_color_input
+ *   string $theme_mode_input
  *   string $display_language_input
  *   string $disclaimer_show_input
  *   string $disclaimer_text_input
@@ -44,6 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $attribution_input      = isset( $attribution_input ) ? (string) $attribution_input : '';
 $consent_label_input    = isset( $consent_label_input ) ? (string) $consent_label_input : '';
 $accent_color_input     = isset( $accent_color_input ) ? (string) $accent_color_input : '';
+$theme_mode_input       = isset( $theme_mode_input ) ? (string) $theme_mode_input : '';
 $display_language_input = isset( $display_language_input ) ? (string) $display_language_input : '';
 $disclaimer_show_input  = isset( $disclaimer_show_input ) ? (string) $disclaimer_show_input : '';
 $disclaimer_text_input  = isset( $disclaimer_text_input ) ? (string) $disclaimer_text_input : '';
@@ -192,6 +194,16 @@ $kses_select   = array(
 				</p>
 				<p>
 					<?php echo wp_kses( $accent_color_input, $kses_input ); ?>
+				</p>
+			</section>
+
+			<section class="roxyapi-section">
+				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Theme', 'roxyapi' ); ?></h2>
+				<p class="description">
+					<?php echo esc_html__( 'Light, dark, or auto for chart readings. Auto follows the visitor device setting.', 'roxyapi' ); ?>
+				</p>
+				<p>
+					<?php echo wp_kses( $theme_mode_input, $kses_select ); ?>
 				</p>
 			</section>
 

@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetMoonCalendar {
 
@@ -47,6 +47,6 @@ class GetMoonCalendar {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getMoonCalendar', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getMoonCalendar', is_array( $data ) ? $data : array() );
 	}
 }

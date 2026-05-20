@@ -1,6 +1,6 @@
 <?php
 /**
- * Settings submenu page under Settings, RoxyAPI.
+ * Top-level RoxyAPI admin menu and its Connect settings page.
  *
  * @package RoxyAPI
  */
@@ -122,6 +122,7 @@ class SettingsPage {
 				array(
 					'signup_url'     => Onboarding::signup_url(),
 					'playground_url' => Onboarding::playground_url(),
+					'shortcodes_url' => admin_url( 'admin.php?page=' . ShortcodesPage::PAGE_SLUG ),
 					'samples'        => Onboarding::quickstart_samples(),
 					'key_input'      => SettingsFields::api_key_input_html(),
 					'key_help'       => SettingsFields::api_key_help_html(),
@@ -144,6 +145,7 @@ class SettingsPage {
 					'attribution_input'      => SettingsFields::attribution_checkbox_html(),
 					'consent_label_input'    => SettingsFields::consent_label_textarea_html(),
 					'accent_color_input'     => SettingsFields::accent_color_input_html(),
+					'theme_mode_input'       => SettingsFields::theme_mode_input_html(),
 					'display_language_input' => SettingsFields::display_language_input_html(),
 					'disclaimer_show_input'  => SettingsFields::disclaimer_show_html(),
 					'disclaimer_text_input'  => SettingsFields::disclaimer_text_html(),

@@ -19,7 +19,9 @@ use RoxyAPI\Support\ApiKey;
 
 class Notice {
 
-	private const META_KEY = 'roxyapi_dismissed_setup';
+	private const META_KEY              = 'roxyapi_dismissed_setup';
+	private const EXHAUSTED_TRANSIENT   = 'roxyapi_free_tier_exhausted_seen';
+	private const EXHAUSTED_META_PREFIX = 'roxyapi_free_tier_dismissed_';
 
 	/**
 	 * Register the notice and its dismiss handler.
@@ -28,6 +30,7 @@ class Notice {
 	 */
 	public static function register(): void {
 		add_action( 'admin_notices', array( self::class, 'maybe_show' ) );
+		add_action( 'admin_notices', array( self::class, 'maybe_show_exhausted' ) );
 		add_action( 'admin_enqueue_scripts', array( self::class, 'maybe_enqueue_dismiss' ) );
 		add_action( 'wp_ajax_roxyapi_dismiss_notice', array( self::class, 'handle_dismiss' ) );
 	}
@@ -129,5 +132,76 @@ class Notice {
 		}
 		update_user_meta( get_current_user_id(), self::META_KEY, '1' );
 		wp_send_json_success();
+	}
+
+	/**
+	 * Whether the free-tier exhaustion notice should render on the current
+	 * admin page. Surfaced only to admins who have not yet pasted a key, when
+	 * the transient set by Client::error_from_response is present, and only
+	 * once per UTC date per user. The notice uses the standard
+	 * `notice-dismissible` JS to hide for the rest of the page session;
+	 * persistence across page loads relies on the per-day user_meta flag,
+	 * which the WordPress notice-dismiss handler does not write on its own.
+	 * Acceptable: the daily transient will re-trigger the banner next time
+	 * the SaaS returns `free_tier_exhausted`.
+	 *
+	 * @return bool
+	 */
+	private static function should_show_exhausted(): bool {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return false;
+		}
+		if ( ApiKey::is_configured() ) {
+			return false;
+		}
+		if ( ! get_transient( self::EXHAUSTED_TRANSIENT ) ) {
+			return false;
+		}
+		$today = gmdate( 'Y-m-d' );
+		$flag  = get_user_meta( get_current_user_id(), self::EXHAUSTED_META_PREFIX . $today, true );
+		if ( $flag === '1' ) {
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Render the free-tier exhaustion banner when conditions match.
+	 *
+	 * @return void
+	 */
+	public static function maybe_show_exhausted(): void {
+		if ( ! self::should_show_exhausted() ) {
+			return;
+		}
+
+		$settings_url = admin_url( 'admin.php?page=' . SettingsPage::PAGE_SLUG );
+		$message      = sprintf(
+			'%s <a href="%s">%s</a>',
+			esc_html__(
+				'Your RoxyAPI plugin reached its free daily allowance. Add a paid API key in the RoxyAPI menu to keep readings live.',
+				'roxyapi'
+			),
+			esc_url( $settings_url ),
+			esc_html__( 'Add key', 'roxyapi' )
+		);
+
+		if ( function_exists( 'wp_admin_notice' ) ) {
+			wp_admin_notice(
+				$message,
+				array(
+					'id'                 => 'roxyapi-free-tier-exhausted',
+					'type'               => 'error',
+					'dismissible'        => true,
+					'paragraph_wrap'     => true,
+					'additional_classes' => array( 'roxyapi-notice' ),
+				)
+			);
+		} else {
+			printf(
+				'<div class="notice notice-error is-dismissible roxyapi-notice"><p>%s</p></div>',
+				wp_kses_post( $message )
+			);
+		}
 	}
 }

@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class CalculatePersonalYear {
 
@@ -57,6 +57,6 @@ class CalculatePersonalYear {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'calculatePersonalYear', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'calculatePersonalYear', is_array( $data ) ? $data : array() );
 	}
 }

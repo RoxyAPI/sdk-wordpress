@@ -20,9 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use RoxyAPI\Generated\Client as GeneratedClient;
-use RoxyAPI\Support\Attribution;
-use RoxyAPI\Support\Disclaimer;
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 use RoxyAPI\Support\RateLimit;
 use RoxyAPI\Support\Sanitize;
 use RoxyAPI\Support\Templates;
@@ -114,40 +112,24 @@ class Horoscope {
 	private static function render_result( string $sign, string $date, string $period = 'daily' ): string {
 		$op_id = self::PERIOD_OPS[ $period ] ?? 'getDailyHoroscope';
 
-		// Daily horoscope keeps the hand-tuned card template (header with
-		// moon strip, narrative sections, lucky-strip footer). Weekly and
-		// monthly fall through to GenericRenderer since they have distinct
-		// response shapes (week/month label, weekByWeek list, keyDates) the
-		// daily template does not know about, and the polished generic
-		// primitives render them cleanly.
-		if ( $op_id === 'getDailyHoroscope' ) {
+		// Each period dispatches to its own operation. All three map to
+		// roxy-horoscope-card via the component map, so ComponentRenderer emits
+		// the web component (with a server-rendered fallback) and handles the
+		// disclaimer and attribution. Unmapped or empty responses degrade to the
+		// generic card renderer inside ComponentRenderer.
+		if ( $op_id === 'getWeeklyHoroscope' ) {
+			$data = GeneratedClient::getWeeklyHoroscope( $sign );
+		} elseif ( $op_id === 'getMonthlyHoroscope' ) {
+			$data = GeneratedClient::getMonthlyHoroscope( $sign );
+		} else {
 			$data = GeneratedClient::getDailyHoroscope( $sign, null, $date );
-			if ( is_wp_error( $data ) ) {
-				return Templates::api_error( $data );
-			}
-			$body_data = is_array( $data ) ? $data : array();
-			return Templates::render(
-				'horoscope',
-				array(
-					'sign' => $sign,
-					'date' => $date,
-					'data' => $body_data,
-				)
-			)
-				. Disclaimer::render()
-				. Attribution::credit_link( $op_id )
-				. Attribution::jsonld( $op_id, $body_data );
 		}
-
-		$data = $op_id === 'getWeeklyHoroscope'
-			? GeneratedClient::getWeeklyHoroscope( $sign )
-			: GeneratedClient::getMonthlyHoroscope( $sign );
 
 		if ( is_wp_error( $data ) ) {
 			return Templates::api_error( $data );
 		}
-		$body_data = is_array( $data ) ? $data : array();
-		return GenericRenderer::render( $op_id, $body_data );
+
+		return ComponentRenderer::render( $op_id, is_array( $data ) ? $data : array() );
 	}
 
 	private static function render_form( string $selected = '' ): string {

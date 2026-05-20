@@ -67,7 +67,7 @@ class AngelNumber {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\GenericRenderer::render( 'getAngelNumber', is_array( $data ) ? $data : array() );
+		return \RoxyAPI\Support\ComponentRenderer::render( 'getAngelNumber', is_array( $data ) ? $data : array() );
 	}
 
 	/**

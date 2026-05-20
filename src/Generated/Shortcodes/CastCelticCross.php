@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class CastCelticCross {
 
@@ -55,6 +55,6 @@ class CastCelticCross {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'castCelticCross', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'castCelticCross', is_array( $data ) ? $data : array() );
 	}
 }

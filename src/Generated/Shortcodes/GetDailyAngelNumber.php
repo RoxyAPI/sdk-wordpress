@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetDailyAngelNumber {
 
@@ -55,6 +55,6 @@ class GetDailyAngelNumber {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getDailyAngelNumber', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getDailyAngelNumber', is_array( $data ) ? $data : array() );
 	}
 }

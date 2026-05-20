@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetMonthlyTransits {
 
@@ -59,6 +59,6 @@ class GetMonthlyTransits {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getMonthlyTransits', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getMonthlyTransits', is_array( $data ) ? $data : array() );
 	}
 }

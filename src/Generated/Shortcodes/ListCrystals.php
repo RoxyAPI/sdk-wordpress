@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class ListCrystals {
 
@@ -52,6 +52,6 @@ class ListCrystals {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'listCrystals', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'listCrystals', is_array( $data ) ? $data : array() );
 	}
 }

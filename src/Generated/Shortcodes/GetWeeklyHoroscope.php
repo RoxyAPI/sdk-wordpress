@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetWeeklyHoroscope {
 
@@ -46,6 +46,6 @@ class GetWeeklyHoroscope {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getWeeklyHoroscope', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getWeeklyHoroscope', is_array( $data ) ? $data : array() );
 	}
 }

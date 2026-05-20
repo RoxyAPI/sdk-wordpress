@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GenerateLunarReturn {
 
@@ -65,6 +65,6 @@ class GenerateLunarReturn {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'generateLunarReturn', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'generateLunarReturn', is_array( $data ) ? $data : array() );
 	}
 }

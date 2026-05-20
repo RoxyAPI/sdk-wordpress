@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class AnalyzeNumberSequence {
 
@@ -46,6 +46,6 @@ class AnalyzeNumberSequence {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'analyzeNumberSequence', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'analyzeNumberSequence', is_array( $data ) ? $data : array() );
 	}
 }

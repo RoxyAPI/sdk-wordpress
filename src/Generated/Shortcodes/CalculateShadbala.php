@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class CalculateShadbala {
 
@@ -61,6 +61,6 @@ class CalculateShadbala {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'calculateShadbala', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'calculateShadbala', is_array( $data ) ? $data : array() );
 	}
 }

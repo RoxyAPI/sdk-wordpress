@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetDailyBiorhythm {
 
@@ -55,6 +55,6 @@ class GetDailyBiorhythm {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getDailyBiorhythm', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getDailyBiorhythm', is_array( $data ) ? $data : array() );
 	}
 }

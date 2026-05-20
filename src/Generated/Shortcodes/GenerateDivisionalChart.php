@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GenerateDivisionalChart {
 
@@ -63,6 +63,6 @@ class GenerateDivisionalChart {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'generateDivisionalChart', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'generateDivisionalChart', is_array( $data ) ? $data : array() );
 	}
 }

@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RoxyAPI\Support\GenericRenderer;
+use RoxyAPI\Support\ComponentRenderer;
 
 class GetUpagrahaPositions {
 
@@ -61,6 +61,6 @@ class GetUpagrahaPositions {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return GenericRenderer::render( 'getUpagrahaPositions', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getUpagrahaPositions', is_array( $data ) ? $data : array() );
 	}
 }
