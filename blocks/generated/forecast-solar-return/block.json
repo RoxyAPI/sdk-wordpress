@@ -1,0 +1,62 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/forecast-solar-return",
+	"title": "Solar return chart - Annual birthday forecast chart for a single subject (Forecast)",
+	"category": "roxyapi",
+	"icon": "lightbulb",
+	"description": "Solar return chart - Annual birthday forecast chart for a single subject",
+	"keywords": [
+		"forecast",
+		"roxyapi",
+		"solar"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"date": {
+			"type": "string",
+			"default": ""
+		},
+		"time": {
+			"type": "string",
+			"default": ""
+		},
+		"year": {
+			"type": "string",
+			"default": ""
+		},
+		"latitude": {
+			"type": "string",
+			"default": ""
+		},
+		"longitude": {
+			"type": "string",
+			"default": ""
+		},
+		"timezone": {
+			"type": "string",
+			"default": ""
+		},
+		"houseSystem": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php"
+}

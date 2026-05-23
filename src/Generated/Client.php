@@ -1771,6 +1771,315 @@ class Client {
 	}
 
 	/**
+	 * Generate full Human Design bodygraph - Type, authority, profile, centers, channels, gates
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function generateBodygraph( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'human-design/bodygraph',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/bodygraph', $body );
+			}
+		);
+	}
+
+	/**
+	 * Calculate Human Design connection chart - Two-person composite bodygraph compatibility
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateConnection( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'human-design/connection',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/connection', $body );
+			}
+		);
+	}
+
+	/**
+	 * Calculate Human Design Penta - Small-group BG5 operating system for three to five people
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function calculatePenta( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'human-design/penta',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/penta', $body );
+			}
+		);
+	}
+
+	/**
+	 * Generate Human Design transit overlay - Current planetary activations on a natal bodygraph
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function generateTransit( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'human-design/transit',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/transit', $body );
+			}
+		);
+	}
+
+	/**
+	 * Calculate Human Design type, authority and profile
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateType( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'human-design/type',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/type', $body );
+			}
+		);
+	}
+
+	/**
+	 * Calculate the 26 Human Design gate activations
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateGates( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'human-design/gates',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/gates', $body );
+			}
+		);
+	}
+
+	/**
+	 * Look up a Human Design gate by number
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getGate( $number, $lang = null ) {
+		if ( $number === '' || $number === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'number' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'human-design/gates/' . rawurlencode( $number ) . '',
+			$query,
+			0,
+			static function () use ( $query, $number ) {
+				return \RoxyAPI\Api\Client::get( 'human-design/gates/' . rawurlencode( $number ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Calculate the defined Human Design channels
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateChannels( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'human-design/channels',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/channels', $body );
+			}
+		);
+	}
+
+	/**
+	 * Calculate the nine Human Design centers
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateCenters( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'human-design/centers',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/centers', $body );
+			}
+		);
+	}
+
+	/**
+	 * Look up a Human Design center by id
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getCenter( $id, $lang = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'human-design/centers/' . rawurlencode( $id ) . '',
+			$query,
+			0,
+			static function () use ( $query, $id ) {
+				return \RoxyAPI\Api\Client::get( 'human-design/centers/' . rawurlencode( $id ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Calculate the Human Design profile and line keynotes
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateProfile( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'human-design/profile',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/profile', $body );
+			}
+		);
+	}
+
+	/**
+	 * Calculate Human Design Variables - The four arrows and Color, Tone, Base substructure
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateVariables( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'human-design/variables',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/variables', $body );
+			}
+		);
+	}
+
+	/**
+	 * Cross-domain forecast timeline - Transits, ingresses, stations, dasha changes, critical days
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function generateTimeline( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'forecast/timeline',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'forecast/timeline', $body );
+			}
+		);
+	}
+
+	/**
+	 * Western transit forecast - Transit aspects, sign ingresses, retrograde stations
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function forecastTransits( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'forecast/transits',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'forecast/transits', $body );
+			}
+		);
+	}
+
+	/**
+	 * Significant dates - High-significance cross-domain forecast highlights
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function findSignificantDates( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'forecast/significant-dates',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'forecast/significant-dates', $body );
+			}
+		);
+	}
+
+	/**
+	 * Forecast digest - Pre-summarized next 24h, 7d, 30d, and 90d rollups
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function generateDigest( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'forecast/digest',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'forecast/digest', $body );
+			}
+		);
+	}
+
+	/**
+	 * Solar return chart - Annual birthday forecast chart for a single subject
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function forecastSolarReturn( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'forecast/solar-return',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'forecast/solar-return', $body );
+			}
+		);
+	}
+
+	/**
 	 * Get biorhythm reading - Complete cycle analysis for any date
 	 *
 	 * @param array $body Request body.

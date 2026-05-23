@@ -8,8 +8,9 @@
  * The validator answers a single question: would the SaaS accept this request
  * exactly as the plugin sent it? It is intentionally narrower than a full JSON
  * Schema implementation: it covers only the keywords the RoxyAPI spec actually
- * uses (type, required, pattern, enum, minimum, maximum, minLength, anyOf,
- * oneOf, properties, items, $ref, allOf, additionalProperties via warnings).
+ * uses (type, required, pattern, format (date / date-time), enum, minimum,
+ * maximum, minLength, anyOf, oneOf, properties, items, $ref, allOf,
+ * additionalProperties via warnings).
  *
  * Returning a list of violation strings (rather than throwing) lets the caller
  * assemble a precise diagnostic when a hero contract regresses.
@@ -474,6 +475,12 @@ class Spec_Contract_Validator {
 					$violations[] = "{$label} does not match pattern {$schema['pattern']} (got: {$str})";
 				}
 			}
+			if ( isset( $schema['format'] ) && is_string( $schema['format'] ) ) {
+				$format_error = self::check_string_format( $schema['format'], $str, $label );
+				if ( $format_error !== null ) {
+					$violations[] = $format_error;
+				}
+			}
 			if ( isset( $schema['enum'] ) && is_array( $schema['enum'] ) ) {
 				$enum = array_map( 'strval', $schema['enum'] );
 				if ( ! in_array( $str, $enum, true ) ) {
@@ -522,6 +529,59 @@ class Spec_Contract_Validator {
 
 		// Untyped or unknown: accept.
 		return $violations;
+	}
+
+	/**
+	 * Enforce a string `format`. The RoxyAPI spec migrated its date and time
+	 * query params off explicit `pattern` regexes onto JSON-Schema `format`
+	 * (`format: date` / `format: date-time`), so the validator has to treat
+	 * those formats with the same rigour the SaaS does, otherwise it would wave
+	 * through `date=today` after the spec stopped carrying a `pattern`.
+	 *
+	 * @remarks Scoped deliberately to `date` and `date-time`: those are the only
+	 * formats the spec uses on request params/bodies. Any other format (e.g.
+	 * `email` on a response field) is accepted untouched so this stays a request
+	 * contract check, not a full format registry. The message keeps the word
+	 * "pattern" so callers that grep diagnostics for a malformed date keep
+	 * matching whether the spec expressed the rule as a regex or a format.
+	 *
+	 * @param string $format Declared format.
+	 * @param string $str    Value under test.
+	 * @param string $label  Context label for the message.
+	 * @return string|null Violation message, or null when the value conforms.
+	 */
+	private static function check_string_format( string $format, string $str, string $label ): ?string {
+		if ( $format === 'date' ) {
+			// `!Y-m-d` zeroes the time fields so a parse mismatch is the only
+			// failure signal; impossible dates (2026-13-40, 2026-02-30) make
+			// createFromFormat return false or surface a warning that round-trip
+			// formatting then reveals.
+			$dt = \DateTimeImmutable::createFromFormat( '!Y-m-d', $str );
+			if ( $dt === false || $dt->format( 'Y-m-d' ) !== $str ) {
+				return "{$label} does not match format date pattern YYYY-MM-DD (got: {$str})";
+			}
+			return null;
+		}
+		if ( $format === 'date-time' ) {
+			// Accept the ISO-8601 forms the SaaS emits: a numeric offset or a
+			// `Z` UTC suffix, each with optional fractional seconds. A warning
+			// from createFromFormat means an overflowed component (month 13,
+			// day 40), which RFC3339 must reject.
+			$formats = array( 'Y-m-d\TH:i:sP', 'Y-m-d\TH:i:s\Z', 'Y-m-d\TH:i:s.uP', 'Y-m-d\TH:i:s.u\Z' );
+			foreach ( $formats as $fmt ) {
+				$dt = \DateTimeImmutable::createFromFormat( $fmt, $str );
+				if ( $dt === false ) {
+					continue;
+				}
+				$errors = \DateTimeImmutable::getLastErrors();
+				if ( $errors !== false && ( $errors['warning_count'] > 0 || $errors['error_count'] > 0 ) ) {
+					continue;
+				}
+				return null;
+			}
+			return "{$label} does not match format date-time pattern ISO-8601 (got: {$str})";
+		}
+		return null;
 	}
 
 	/**
