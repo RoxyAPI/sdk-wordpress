@@ -104,12 +104,12 @@ pre-push:
         phpunit:
             run: |
                 docker ps --format '{{.Names}}' | grep -q tests-wordpress || { echo "✗ wp-env tests env not running. Run: npx wp-env start"; exit 1; }
-                npx wp-env run tests-cli --env-cwd=wp-content/plugins/roxyapi-sdk-wordpress vendor/bin/phpunit
+                npx wp-env run tests-cli --env-cwd="wp-content/plugins/$(basename "$PWD")" vendor/bin/phpunit
             priority: 5
 
         # Plugin Check at WP.org submission severity. Requires wp-env running.
         plugin-check:
             run: |
                 docker ps --format '{{.Names}}' | grep -q '\-cli$\|wordpress-1$' || { echo "✗ wp-env not running. Run: npx wp-env start"; exit 1; }
-                npx wp-env run cli wp plugin check roxyapi-sdk-wordpress --severity=5
+                npx wp-env run cli wp plugin check "$(basename "$PWD")" --severity=5
             priority: 6
