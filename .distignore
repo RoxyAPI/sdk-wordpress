@@ -6,6 +6,7 @@
 /.gitattributes
 /.distignore
 /.editorconfig
+/.npmrc
 /.wordpress-org
 /.wp-env.json
 /.vscode
