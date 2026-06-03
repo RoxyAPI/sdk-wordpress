@@ -1733,7 +1733,7 @@ class Endpoints {
 			'path'          => '/forecast/transits',
 			'method'        => 'POST',
 			'tag'           => 'Forecast',
-			'summary'       => 'Western transit forecast - Transit aspects, sign ingresses, retrograde stations',
+			'summary'       => 'Western astrology forecast - aspects, ingresses, stations, eclipses, moon phases',
 			'ttl'           => 0,
 			'hero'          => false,
 			'block_only'    => true,

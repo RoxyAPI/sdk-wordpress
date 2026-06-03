@@ -2,7 +2,7 @@
 /**
  * Auto-generated shortcode: [roxy_forecast_transits]
  *
- * Western transit forecast - Transit aspects, sign ingresses, retrograde stations
+ * Western astrology forecast - aspects, ingresses, stations, eclipses, moon phases
  *
  * Renders a visitor-facing form (FormRenderer) when invoked. Submission is
  * handled by FormRouter at init priority 5 — nonce + rate-limit + sanitize

@@ -2012,7 +2012,7 @@ class Client {
 	}
 
 	/**
-	 * Western transit forecast - Transit aspects, sign ingresses, retrograde stations
+	 * Western astrology forecast - aspects, ingresses, stations, eclipses, moon phases
 	 *
 	 * @param array $body Request body.
 	 * @return array|\WP_Error
