@@ -2886,11 +2886,12 @@ class Client {
 	 *
 	 * @return array|\WP_Error
 	 */
-	public static function analyzeNumberSequence( $lang = null, $number = null ) {
+	public static function analyzeNumberSequence( $lang = null, $number = null, $context = null ) {
 		$query = array_filter(
 			array(
 			'lang' => $lang,
 			'number' => $number,
+			'context' => $context,
 			),
 			static function ( $v ) {
 				return $v !== null && $v !== '';

@@ -33,6 +33,7 @@ class AnalyzeNumberSequence {
 			array(
 			'lang' => '',
 			'number' => '',
+			'context' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -40,7 +41,7 @@ class AnalyzeNumberSequence {
 
 		wp_enqueue_style( 'roxyapi-frontend' );
 
-		$data = \RoxyAPI\Generated\Client::analyzeNumberSequence( $atts['lang'], $atts['number'] );
+		$data = \RoxyAPI\Generated\Client::analyzeNumberSequence( $atts['lang'], $atts['number'], $atts['context'] );
 
 		if ( is_wp_error( $data ) ) {
 			return \RoxyAPI\Support\Templates::api_error( $data );

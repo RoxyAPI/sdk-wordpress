@@ -37,6 +37,10 @@
 		"number": {
 			"type": "string",
 			"default": ""
+		},
+		"context": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"render": "file:./render.php"

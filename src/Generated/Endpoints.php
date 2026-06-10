@@ -2300,6 +2300,7 @@ class Endpoints {
 			'attributes' => array(
 				'lang' => 'en',
 				'number' => '1234',
+				'context' => 'clock',
 			),
 		),
 		'getDailyAngelNumber' => array(
