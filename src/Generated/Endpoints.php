@@ -420,6 +420,7 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_navamsa',
 			'attributes' => array(
+				'lang' => 'en',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
 				'latitude' => '28.6139',
@@ -437,6 +438,7 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_divisional_chart',
 			'attributes' => array(
+				'lang' => 'en',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
 				'latitude' => '28.6139',
@@ -771,6 +773,7 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_kp_chart',
 			'attributes' => array(
+				'lang' => 'en',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
 				'latitude' => '28.6139',
