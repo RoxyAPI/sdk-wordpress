@@ -400,7 +400,8 @@ class SettingsFields {
 			return (string) ( $existing[ $option_key ] ?? '' );
 		}
 
-		if ( ! preg_match( '/^[a-f0-9-]{36}\.[a-f0-9]{16}\.[A-Za-z0-9_-]+$/', $raw ) ) {
+		// Optional prefix accepts current publishable/secret keys alongside older keys. Unknown prefixes stay rejected.
+		if ( ! preg_match( '/^(?:(?:pk|sk)_(?:live|test)_)?[a-f0-9-]{36}\.[a-f0-9]{16}\.[A-Za-z0-9_-]+$/', $raw ) ) {
 			self::add_settings_error_once(
 				'invalid_api_key',
 				esc_html__( 'API key format is invalid. Get a key at roxyapi.com.', 'roxyapi' )

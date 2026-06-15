@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use RoxyAPI\Api\Cache;
 use RoxyAPI\Support\ApiKey;
 use RoxyAPI\Support\Templates;
 
@@ -29,6 +30,47 @@ class SettingsPage {
 		add_action( 'admin_init', array( self::class, 'register_setting' ) );
 		add_action( 'rest_api_init', array( self::class, 'register_setting' ) );
 		add_action( 'admin_enqueue_scripts', array( self::class, 'enqueue' ) );
+		// Clear the response cache whenever the stored key changes. Cached reads
+		// are keyed only by endpoint plus args, not by auth state, so a free-tier
+		// or wrong-key response would otherwise keep serving after the owner
+		// connects or rotates a key until each transient expires.
+		add_action( 'add_option_' . self::OPTION_NAME, array( self::class, 'flush_cache_on_key_added' ), 10, 2 );
+		add_action( 'update_option_' . self::OPTION_NAME, array( self::class, 'flush_cache_on_key_changed' ), 10, 2 );
+	}
+
+	/**
+	 * Flush the response cache the first time settings are saved with a key present. `add_option` fires instead of `update_option` when the option row did not exist yet, which is exactly the fresh-site case where the owner rendered free-tier shortcodes before connecting a key.
+	 *
+	 * @param string $option Option name; unused, the hook is already name-scoped.
+	 * @param mixed  $value  The option value being added.
+	 */
+	public static function flush_cache_on_key_added( $option, $value ): void {
+		if ( self::encrypted_key( $value ) !== '' ) {
+			Cache::flush_all();
+		}
+	}
+
+	/**
+	 * Flush the response cache when the stored key actually changes (connect, rotate, or clear). Saving an unrelated setting leaves `api_key_encrypted` untouched, so branding or display saves never nuke the cache.
+	 *
+	 * @param mixed $old_value Previous option value.
+	 * @param mixed $new_value New option value.
+	 */
+	public static function flush_cache_on_key_changed( $old_value, $new_value ): void {
+		if ( self::encrypted_key( $old_value ) !== self::encrypted_key( $new_value ) ) {
+			Cache::flush_all();
+		}
+	}
+
+	/**
+	 * Extract the encrypted-key field from a settings option value, tolerating
+	 * the non-array shapes WordPress can hand an option hook.
+	 *
+	 * @param mixed $value Option value passed by the add_option_/update_option_ hooks.
+	 * @return string The stored ciphertext, or empty string when absent.
+	 */
+	private static function encrypted_key( $value ): string {
+		return is_array( $value ) ? (string) ( $value['api_key_encrypted'] ?? '' ) : '';
 	}
 
 	public static function add_menu(): void {

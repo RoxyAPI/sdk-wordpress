@@ -8,6 +8,14 @@ updates:
     groups:
       dev-dependencies:
         dependency-type: development
+    # @wordpress/env is CI-critical and has broken across minors (11.8.0
+    # regressed `wp-env run` in CI). Only auto-track patches; minor and major
+    # bumps must be vetted by a human against a green gate.
+    ignore:
+      - dependency-name: '@wordpress/env'
+        update-types:
+          - version-update:semver-minor
+          - version-update:semver-major
 
   - package-ecosystem: composer
     directory: /
