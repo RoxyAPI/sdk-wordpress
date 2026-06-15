@@ -43,7 +43,7 @@
 		"lint:css": "wp-scripts lint-style \"blocks/**/*.{css,scss}\" \"assets/css/**/*.{css,scss}\"",
 		"wp-env": "wp-env",
 		"generate": "node bin/generate.mjs",
-		"generate:check": "node bin/generate.mjs && git diff --exit-code src/Generated blocks/generated",
+		"generate:check": "node bin/generate.mjs && git checkout -- specs/openapi.json && git diff --exit-code src/Generated blocks/generated",
 		"fetch:ui": "node bin/fetch-ui-bundle.mjs",
 		"check:distignore": "node bin/check-distignore.mjs",
 		"check:component-map": "node bin/check-component-map.mjs",
