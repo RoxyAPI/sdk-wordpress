@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/calculate-dual",
+	"title": "Dual numerology - Pythagorean and Chaldean name numbers in one call (Numerology)",
+	"category": "roxyapi",
+	"icon": "chart-line",
+	"description": "Dual numerology - Pythagorean and Chaldean name numbers in one call",
+	"keywords": [
+		"numerology",
+		"roxyapi",
+		"calculate",
+		"dual"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"name": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php"
+}

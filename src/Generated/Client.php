@@ -1579,6 +1579,84 @@ class Client {
 	}
 
 	/**
+	 * Chaldean numerology name reading - Destiny, compound number, planetary ruler
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateChaldean( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'numerology/chaldean',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/chaldean', $body );
+			}
+		);
+	}
+
+	/**
+	 * Compound number meaning - Cheiro Chaldean interpretation 10 to 52
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getCompoundNumber( $number, $lang = null ) {
+		if ( $number === '' || $number === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'number' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'numerology/compound-number/' . rawurlencode( $number ) . '',
+			$query,
+			0,
+			static function () use ( $query, $number ) {
+				return \RoxyAPI\Api\Client::get( 'numerology/compound-number/' . rawurlencode( $number ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Dual numerology - Pythagorean and Chaldean name numbers in one call
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateDual( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'numerology/dual',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/dual', $body );
+			}
+		);
+	}
+
+	/**
+	 * Business name numerology - Chaldean brand name analysis and lucky numbers
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateBusinessName( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'numerology/business-name',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/business-name', $body );
+			}
+		);
+	}
+
+	/**
 	 * List all 78 tarot cards
 	 *
 	 * @return array|\WP_Error

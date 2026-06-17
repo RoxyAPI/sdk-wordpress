@@ -92,6 +92,10 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\CalculateNumCompatibility::register();
 		\RoxyAPI\Generated\Shortcodes\GetNumberMeaning::register();
 		\RoxyAPI\Generated\Shortcodes\GetDailyNumber::register();
+		\RoxyAPI\Generated\Shortcodes\CalculateChaldean::register();
+		\RoxyAPI\Generated\Shortcodes\GetCompoundNumber::register();
+		\RoxyAPI\Generated\Shortcodes\CalculateDual::register();
+		\RoxyAPI\Generated\Shortcodes\CalculateBusinessName::register();
 		\RoxyAPI\Generated\Shortcodes\ListCards::register();
 		\RoxyAPI\Generated\Shortcodes\GetCard::register();
 		\RoxyAPI\Generated\Shortcodes\DrawCards::register();
