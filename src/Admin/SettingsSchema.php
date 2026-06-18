@@ -71,7 +71,7 @@ class SettingsSchema {
 			),
 			'theme_mode'        => array(
 				'type'    => 'enum',
-				'default' => 'auto',
+				'default' => 'light',
 				'enum'    => array( 'auto', 'light', 'dark' ),
 			),
 			'display_language'  => array(

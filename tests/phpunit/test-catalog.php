@@ -31,6 +31,28 @@ class Test_Catalog extends \WP_UnitTestCase {
 		}
 	}
 
+	/**
+	 * Every OpenAPI tag must have a bin/domains.json entry. A tag with no entry
+	 * buckets its shortcodes under the catch-all "Other" tab. This silently
+	 * happened to Human Design, Forecast, and Languages, so guard it: add the
+	 * new domain to bin/domains.json (then regenerate) whenever this fails.
+	 */
+	public function test_every_endpoint_tag_is_mapped_to_a_domain(): void {
+		$mapped   = \RoxyAPI\Generated\Domains::all();
+		$unmapped = array();
+		foreach ( \RoxyAPI\Generated\Endpoints::all() as $endpoint ) {
+			$tag = (string) ( $endpoint['tag'] ?? '' );
+			if ( $tag !== '' && ! isset( $mapped[ $tag ] ) ) {
+				$unmapped[ $tag ] = true;
+			}
+		}
+		$this->assertSame(
+			array(),
+			array_keys( $unmapped ),
+			'OpenAPI tags with no bin/domains.json entry fall to the "Other" tab. Add them and regenerate.'
+		);
+	}
+
 	public function test_all_returns_hero_rows_plus_long_tail_endpoints(): void {
 		// Catalog composition = one row per hero shortcode (Manifest) +
 		// one row per non-hero endpoint (Endpoints). Heroes that have an

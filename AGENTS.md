@@ -1,6 +1,6 @@
 # roxyapi WordPress plugin: Agent Guide
 
-WordPress plugin for [RoxyAPI](https://roxyapi.com). Drop Western and Vedic astrology, numerology, tarot, biorhythm, angel numbers, crystals, dream symbols, and I Ching readings onto any WordPress page with shortcodes or Gutenberg blocks. One API key, ten spiritual data domains, 130+ endpoints.
+WordPress plugin for [RoxyAPI](https://roxyapi.com). Drop Western and Vedic astrology, numerology, tarot, human design, forecasts, biorhythm, I Ching, crystals, dream symbols, and angel number readings onto any WordPress page with shortcodes or Gutenberg blocks. One API key, twelve spiritual data domains, 150+ endpoints.
 
 The upstream OpenAPI spec is the source of truth: `https://roxyapi.com/api/v2/openapi.json`.
 
@@ -21,7 +21,7 @@ define( 'ROXYAPI_KEY', getenv( 'ROXYAPI_KEY' ) );
 
 ## Use a shortcode
 
-Browse the full library at Roxy > Shortcodes in the WordPress admin sidebar. 17 hand-curated hero shortcodes cover the highest-demand readings; every other endpoint is reachable via auto-generated long-tail shortcodes.
+Browse the full library at Roxy > Shortcodes in the WordPress admin sidebar. 14 hand-curated hero shortcodes cover the highest-demand readings; every other endpoint is reachable via auto-generated long-tail shortcodes.
 
 Every hero shortcode has two modes, auto detected.
 
@@ -102,7 +102,7 @@ Drop one Astrology Section wrapper block on the page, set the zodiac sign in its
 | Angel Number             | Number meanings and pattern analysis                                              |
 | Crystals by Zodiac       | Healing crystals filtered by zodiac sign                                          |
 
-For everything else (KP horary, dasha, navamsa, dream symbols, single-crystal lookup, I Ching casts, full angel number catalog, etc.) use the auto-generated long-tail shortcodes browsable at Roxy > Shortcodes.
+For everything else (human design bodygraph, forecast timelines, KP horary, dasha, navamsa, dream symbols, single-crystal lookup, I Ching casts, full angel number catalog, etc.) use the auto-generated long-tail shortcodes browsable at Roxy > Shortcodes.
 
 ## How the plugin reads your API key
 

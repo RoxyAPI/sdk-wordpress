@@ -112,7 +112,7 @@ class SettingsFields {
 	 */
 	public static function theme_mode_input_html(): string {
 		$opts    = SettingsSchema::get_option();
-		$current = (string) ( $opts['theme_mode'] ?? 'auto' );
+		$current = (string) ( $opts['theme_mode'] ?? 'light' );
 		$choices = array(
 			'auto'  => __( 'Auto: follow the visitor device setting', 'roxyapi' ),
 			'light' => __( 'Light', 'roxyapi' ),

@@ -1,5 +1,5 @@
 {
-	"_comment": "Brand-domain registry. Keys are canonical OpenAPI tag strings; values are admin-UI metadata (human label, slug for tab data attribute / URL hash, accent colour). Brand-positioning rule: astrology first (Western, then Vedic), then Tarot, Numerology, I Ching, Dreams, Biorhythm, Angel Numbers, Crystals. Location and Usage at the end. New OpenAPI tag = new entry here, no PHP edits required.",
+	"_comment": "Brand-domain registry. Keys are canonical OpenAPI tag strings (must match Endpoints.php tag exactly); values are admin-UI metadata (human label, slug for tab data attribute / URL hash, accent colour). Brand-positioning rule: astrology first (Western, then Vedic), then Numerology, Tarot, Human Design, Forecast, Biorhythm, I Ching, Crystals, Dreams, Angel Numbers. Languages, Location, and Usage at the end. Any OpenAPI tag with no entry here falls through to the catch-all Other tab, so every tag in Endpoints.php needs a row. New OpenAPI tag = new entry here, then npm run generate; no PHP edits required.",
 
 	"Western Astrology": {
 		"label": "Western Astrology",
@@ -15,6 +15,16 @@
 	"Numerology": {
 		"label": "Numerology",
 		"slug": "numerology",
+		"accent": "blue"
+	},
+	"Human Design": {
+		"label": "Human Design",
+		"slug": "human-design",
+		"accent": "indigo"
+	},
+	"Forecast": {
+		"label": "Forecast",
+		"slug": "forecast",
 		"accent": "blue"
 	},
 	"I-Ching": { "label": "I Ching", "slug": "i-ching", "accent": "green" },
@@ -42,6 +52,11 @@
 		"label": "Location",
 		"slug": "location",
 		"accent": "blue"
+	},
+	"Languages": {
+		"label": "Languages",
+		"slug": "languages",
+		"accent": "neutral"
 	},
 	"Usage": { "label": "Usage", "slug": "usage", "accent": "neutral" }
 }

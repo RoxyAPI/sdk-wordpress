@@ -43,6 +43,16 @@ class Domains {
 				'slug'   => "numerology",
 				'accent' => "blue",
 			),
+			"Human Design" => array(
+				'label'  => "Human Design",
+				'slug'   => "human-design",
+				'accent' => "indigo",
+			),
+			"Forecast" => array(
+				'label'  => "Forecast",
+				'slug'   => "forecast",
+				'accent' => "blue",
+			),
 			"I-Ching" => array(
 				'label'  => "I Ching",
 				'slug'   => "i-ching",
@@ -72,6 +82,11 @@ class Domains {
 				'label'  => "Location",
 				'slug'   => "location",
 				'accent' => "blue",
+			),
+			"Languages" => array(
+				'label'  => "Languages",
+				'slug'   => "languages",
+				'accent' => "neutral",
 			),
 			"Usage" => array(
 				'label'  => "Usage",
