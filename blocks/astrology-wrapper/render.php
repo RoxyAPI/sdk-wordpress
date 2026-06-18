@@ -25,5 +25,5 @@ $wrapper_attributes = get_block_wrapper_attributes( array( 'class' => 'roxyapi-w
 printf(
 	'<div %s>%s</div>',
 	$wrapper_attributes, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built by core get_block_wrapper_attributes(), already escaped.
-	wp_kses_post( $content )
+	$content // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Rendered inner blocks, already escaped by each child render; wp_kses_post would strip their <roxy-*> components + JSON islands.
 );

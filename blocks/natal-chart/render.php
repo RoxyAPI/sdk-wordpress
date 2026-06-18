@@ -9,4 +9,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo wp_kses_post( \RoxyAPI\Generated\Heroes\NatalChart::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/natal-chart' ) );
+\RoxyAPI\Support\BlockOutput::render( \RoxyAPI\Generated\Heroes\NatalChart::render( isset( $attributes ) ? $attributes : array(), '', 'roxyapi/natal-chart' ) );

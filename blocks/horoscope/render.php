@@ -25,7 +25,7 @@ $sign   = $attributes['sign'] ?? $block->context['roxyapi/sign'] ?? 'aries';
 $date   = $attributes['date'] ?? 'today';
 $period = $attributes['period'] ?? 'daily';
 
-echo wp_kses_post(
+\RoxyAPI\Support\BlockOutput::render(
 	\RoxyAPI\Shortcodes\Horoscope::render(
 		array(
 			'sign'   => $sign,

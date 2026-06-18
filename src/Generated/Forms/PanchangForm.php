@@ -27,6 +27,7 @@ class PanchangForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'panchang',
+			'render_operation_id' => 'getDetailedPanchang',
 			'title'        => 'Detailed panchang',
 			'submit_label' => __( 'Look up panchang', 'roxyapi' ),
 			'sections'     => array(

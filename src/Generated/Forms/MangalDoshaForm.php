@@ -27,6 +27,7 @@ class MangalDoshaForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'mangalDosha',
+			'render_operation_id' => 'checkManglikDosha',
 			'title'        => 'Mangal Dosha check',
 			'submit_label' => __( 'Check Mangal Dosha', 'roxyapi' ),
 			'sections'     => array(

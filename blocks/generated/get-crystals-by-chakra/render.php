@@ -14,4 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetCrystalsByChakra::render( $attributes ) );
+\RoxyAPI\Support\BlockOutput::render( \RoxyAPI\Generated\Shortcodes\GetCrystalsByChakra::render( $attributes ) );

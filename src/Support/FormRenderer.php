@@ -61,7 +61,12 @@ class FormRenderer {
 				);
 				$result_html = Templates::api_error( $err );
 			} elseif ( isset( $stored['result'] ) && is_array( $stored['result'] ) ) {
-				$result_html = GenericRenderer::render( $form_id, $stored['result'] );
+				// Render the result through the same component path as the
+				// static reading so a submitted form matches a block or
+				// shortcode. render_operation_id is the spec operationId for
+				// heroes whose form id differs from it.
+				$render_op   = (string) ( $spec['render_operation_id'] ?? $form_id );
+				$result_html = ComponentRenderer::render( $render_op, $stored['result'] );
 			}
 			if ( isset( $stored['validation_errors'] ) && is_array( $stored['validation_errors'] ) ) {
 				$errors_by_key = $stored['validation_errors'];

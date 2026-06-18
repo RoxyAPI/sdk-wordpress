@@ -376,8 +376,15 @@ class FormRouter {
 		$token         = wp_generate_password( 32, false, false );
 		$transient_key = self::transient_key( $form_id, $token );
 		set_transient( $transient_key, $payload, self::TTL );
-		$referer = wp_get_referer();
-		$target  = is_string( $referer ) && $referer !== '' ? $referer : home_url( '/' );
+		// wp_get_referer() returns false when the referer equals the current
+		// request URI, which is exactly the same-page POST every visitor form
+		// makes, so it would send every submission to the site home. Use the
+		// raw referer (the form's own _wp_http_referer field, the page the
+		// visitor submitted from) and validate it to a local URL.
+		$referer = wp_get_raw_referer();
+		$target  = is_string( $referer ) && $referer !== ''
+			? wp_validate_redirect( $referer, home_url( '/' ) )
+			: home_url( '/' );
 		// Strip any prior result token so refreshes do not stack.
 		$target = remove_query_arg( 'roxyapi_r', $target );
 		$target = add_query_arg( 'roxyapi_r', $token, $target );

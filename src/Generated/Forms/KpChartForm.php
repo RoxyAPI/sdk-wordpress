@@ -27,6 +27,7 @@ class KpChartForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'kpChart',
+			'render_operation_id' => 'generateKpChart',
 			'title'        => 'KP chart',
 			'submit_label' => __( 'Generate KP chart', 'roxyapi' ),
 			'sections'     => array(

@@ -84,13 +84,13 @@ class SettingsPage {
 			30
 		);
 
-		// Explicitly register the first submenu so we can rename it from the
-		// auto-generated duplicate to "Connect" without losing the default
+		// Register the first submenu explicitly to rename the auto-generated
+		// duplicate to "Settings" (a tabbed screen) while keeping the default
 		// landing slug used by the post-activation redirect.
 		add_submenu_page(
 			self::PAGE_SLUG,
-			esc_html__( 'Connect', 'roxyapi' ),
-			esc_html__( 'Connect', 'roxyapi' ),
+			esc_html__( 'Settings', 'roxyapi' ),
+			esc_html__( 'Settings', 'roxyapi' ),
 			'manage_options',
 			self::PAGE_SLUG,
 			array( self::class, 'render' )

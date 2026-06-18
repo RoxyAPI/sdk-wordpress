@@ -27,6 +27,7 @@ class BiorhythmForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'biorhythm',
+			'render_operation_id' => 'getReading',
 			'title'        => 'Biorhythm reading',
 			'submit_label' => __( 'Calculate cycles', 'roxyapi' ),
 			'sections'     => array(

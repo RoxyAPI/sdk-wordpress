@@ -46,8 +46,21 @@ class ComponentRenderer {
 		 */
 		$ui_enabled = (bool) apply_filters( 'roxyapi_enqueue_ui_bundle', true );
 
-		if ( empty( $rows ) || false === $ui_enabled || empty( $data ) ) {
+		if ( false === $ui_enabled || empty( $data ) ) {
 			return GenericRenderer::render( $operation_id, $data );
+		}
+
+		// Mapped operations use their component; any other shape uses the
+		// library's generic `roxy-data` renderer. The server-rendered fallback
+		// inside the element covers no-JS, and a shape `roxy-data` cannot
+		// handle just leaves that fallback visible.
+		if ( empty( $rows ) ) {
+			$rows = array(
+				array(
+					'component' => 'roxy-data',
+					'kind'      => 'generic',
+				),
+			);
 		}
 
 		UiBundle::enqueue();

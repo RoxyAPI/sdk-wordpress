@@ -118,10 +118,9 @@ class Client {
 	}
 
 	/**
-	 * Inject the configured display language into a payload when the caller
-	 * hasn't supplied one. Empty setting falls back to the WordPress locale,
-	 * mapped to the spec's accepted `lang` codes (en/de/hi/es/tr/pt/fr/ru).
-	 * Locales outside that set fall through to no `lang` (SaaS default).
+	 * Inject the effective display language into a payload when the caller hasn't supplied one.
+	 *
+	 * @remarks An explicit `lang` (e.g. a shortcode attribute) always wins. Otherwise the site-wide setting resolves via {@link \RoxyAPI\Support\Language::resolve}, the same resolver the cache key uses so a cached reading can never be in a different language than the request that would have produced it.
 	 *
 	 * @param array<string, mixed> $payload Outgoing query (GET) or body (POST) payload.
 	 * @return array<string, mixed>
@@ -130,14 +129,7 @@ class Client {
 		if ( isset( $payload['lang'] ) && (string) $payload['lang'] !== '' ) {
 			return $payload;
 		}
-		$opts = \RoxyAPI\Admin\SettingsSchema::get_option();
-		$lang = isset( $opts['display_language'] ) ? (string) $opts['display_language'] : '';
-		if ( $lang === '' ) {
-			$wp_locale = (string) get_locale();
-			$prefix    = strtolower( substr( $wp_locale, 0, 2 ) );
-			$supported = array( 'en', 'de', 'hi', 'es', 'tr', 'pt', 'fr', 'ru' );
-			$lang      = in_array( $prefix, $supported, true ) ? $prefix : '';
-		}
+		$lang = \RoxyAPI\Support\Language::resolve();
 		if ( $lang !== '' ) {
 			$payload['lang'] = $lang;
 		}

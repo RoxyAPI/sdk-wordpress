@@ -27,6 +27,7 @@ class NumerologyForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'numerology',
+			'render_operation_id' => 'generateNumerologyChart',
 			'title'        => 'Numerology chart',
 			'submit_label' => __( 'Calculate chart', 'roxyapi' ),
 			'sections'     => array(

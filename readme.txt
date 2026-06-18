@@ -2,17 +2,17 @@
 Contributors: roxyapi
 Tags: astrology, horoscope, tarot, numerology, vedic
 Requires at least: 6.5
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.4
 Stable tag: 1.2.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Astrology, daily horoscopes, tarot, numerology, and Vedic birth charts. Blocks and shortcodes for WordPress. Powered by RoxyAPI.
+Astrology, horoscopes, tarot, numerology, human design, and Vedic birth charts. Blocks and shortcodes for WordPress. Powered by RoxyAPI.
 
 == Description ==
 
-Add astrology, daily horoscopes, tarot card pulls, numerology readings, and Vedic birth charts to any WordPress site. One plugin covers ten spiritual data domains: Western and Vedic astrology, daily / weekly / monthly horoscopes, tarot, numerology, I Ching, dream interpretation, biorhythm, angel numbers, and crystals. Astronomy is cross-checked against the NASA JPL Horizons ephemeris. One API key unlocks 130+ endpoints.
+Add astrology, daily horoscopes, tarot card pulls, numerology readings, human design charts, and Vedic birth charts to any WordPress site. One plugin covers 12 spiritual data domains: Western and Vedic astrology, daily / weekly / monthly horoscopes, numerology, tarot, human design, forecasts, biorhythm, I Ching, crystals, dream interpretation, and angel numbers. Astronomy is cross-checked against the NASA JPL Horizons ephemeris. One API key unlocks 150+ endpoints, with readings available in 8 languages.
 
 **About the service this plugin connects to**
 
@@ -22,13 +22,18 @@ The plugin itself is GPLv2 or later and the source is available at https://githu
 
 **Features:**
 
+* Western birth charts, synastry, and compatibility scoring, plus transits and moon phases
 * Daily, weekly, and monthly horoscope blocks and shortcodes for all 12 zodiac signs
+* Vedic astrology: kundli, KP charts, panchang, Vimshottari dasha, divisional charts, nakshatras, and yoga detection
+* Human design: full bodygraph with type, authority, profile, centers, channels, and gates
+* Forecasts: cross-domain timelines, transit forecasts, solar returns, and significant dates
 * Single card and three card tarot pulls, plus Celtic Cross and custom spreads
 * Pythagorean numerology with Life Path, Expression, Soul Urge, and Personality numbers
 * I Ching hexagram casting with full interpretation
-* Natal chart calculation with houses, aspects, and planet positions
-* Dream symbol dictionary with 2,000+ entries
-* Biorhythm, angel number, and crystal reference data
+* Dream symbol dictionary with 2,000+ entries, plus angel number meanings and crystal reference data
+* Biorhythm cycles: physical, emotional, intellectual, and intuitive
+* Interactive SVG charts and cards that follow your light or dark theme automatically
+* Readings in 8 languages (English, German, Hindi, Spanish, Turkish, Portuguese, French, Russian) via one setting
 * Parent Astrology Section wrapper block that shares the zodiac sign across all child blocks via block context
 * Server side caching with per endpoint TTL to keep your API quota low
 * API key stays server side. Never exposed to the browser.
@@ -63,6 +68,14 @@ Without these, the plugin falls back to your WordPress LOGGED_IN_KEY and LOGGED_
 
 Not to get started. A limited number of free readings per day are allowed right after install, with no account, so you can try the plugin. The allowance is counted per site and resets each day. For production use, add an API key from a RoxyAPI plan: one key covers every reading and removes the daily limit. Pick a plan at https://roxyapi.com/pricing. Pricing is shown in your local currency on the pricing page.
 
+= What readings can I add to my site? =
+
+One key covers 12 domains. Western astrology: natal chart, daily / weekly / monthly horoscopes, synastry, compatibility, transits, aspect patterns, and moon phases. Vedic astrology: kundli, KP chart, panchang, Vimshottari dasha, divisional charts, nakshatras, doshas (Manglik, Kaal Sarpa, Sade Sati), and classical yogas. Numerology: Life Path, Expression, Soul Urge, Personality, personal year, and compatibility. Tarot: single card, three card, Celtic Cross, and the full 78 card catalog. Human design: bodygraph, type, authority, profile, centers, channels, and gates. Forecasts: timelines, transit forecasts, solar returns, and significant dates. Plus biorhythm, I Ching hexagrams, crystal reference data, dream symbols, and angel numbers. Each one has a Gutenberg block and a matching shortcode. Browse the full list inside WordPress under RoxyAPI, Shortcodes.
+
+= Can I show readings in another language? =
+
+Yes. Open the RoxyAPI menu, Branding tab, and pick a response language: English, German, Hindi, Spanish, Turkish, Portuguese, French, or Russian. Every reading is then returned in that language. You can also override the language per shortcode with a lang attribute, for example [roxy_horoscope sign="aries" lang="es"].
+
 = When does the plugin contact the RoxyAPI service? =
 
 The plugin contacts roxyapi.com only when you take a clear action that requires it:
@@ -79,9 +92,13 @@ When the plugin contacts roxyapi.com, the request includes:
 * The reading parameters you supply via the block or shortcode (zodiac sign, birth date, name, location coordinates, question text).
 * Your site URL (`home_url`) in an `X-Site-URL` header so RoxyAPI can attribute requests to your site for support and rate limiting.
 * A plugin identifier (`X-SDK-Client: roxy-sdk-wordpress/<version>`) so RoxyAPI can detect compatibility issues by version.
-* Your server's outbound IP address (incidentally captured by the receiving server, like any HTTP request).
+* Your server outbound IP address (incidentally captured by the receiving server, like any HTTP request).
 
 No site visitor data is collected by the plugin when a visitor only views a page; their IP, user agent, and any browser-side data are not sent to RoxyAPI in the passive case. When a visitor submits a form-mode shortcode (their birth date, name, or question), the plugin sends only the fields they typed, after they tick the consent checkbox. See https://roxyapi.com/policy/privacy for what RoxyAPI does with the data once received.
+
+= Can visitors fill in their own birth details? =
+
+Yes. Drop a hero shortcode with no attributes (for example [roxy_natal_chart]) and the plugin renders an accessible form with a city search that fills in coordinates automatically. On submit the plugin validates the input, applies a per-IP rate limit and a consent checkbox, calls the API server side, and renders the result on the same page. The API key never reaches the browser.
 
 = Is the API key safe? =
 
@@ -122,6 +139,31 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.3.0 =
+* Gutenberg blocks now render the full interactive charts and cards, matching the shortcodes.
+* New interactive components for human design (bodygraph) and forecast timelines, plus synastry, compatibility, crystals, dream symbols, and angel numbers.
+* Visitor forms now return to the same page after submission and render the interactive result in place.
+* The response language setting applies to every reading, and changing it refreshes cached readings.
+* Renamed the admin Connect menu item to Settings. Refreshed the bundled component library.
+
+= 1.2.5 =
+* Build and dependency maintenance.
+
+= 1.2.4 =
+* The API key field now accepts the current publishable and secret key formats (pk and sk) alongside older keys. Saving or rotating a key also clears the cached readings.
+
+= 1.2.3 =
+* Dependency maintenance.
+
+= 1.2.2 =
+* Dependency maintenance.
+
+= 1.2.1 =
+* Dependency maintenance.
+
+= 1.2.0 =
+* Build and release-tooling maintenance.
+
 = 1.1.0 =
 * Charts now render as interactive SVG: natal, kundli, KP, panchang, dasha, and more, instead of plain tables.
 * Light and dark mode. Charts follow the visitor device automatically. Pick an accent color and a theme in the RoxyAPI menu under Branding.
@@ -148,8 +190,8 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Upgrade Notice ==
 
-= 1.0.0 =
-Initial release.
+= 1.3.0 =
+Blocks now render the full interactive charts and cards, human design and forecast components are added, and visitor form submissions return to the page with the result.
 
 == Privacy ==
 
@@ -163,7 +205,7 @@ Initial release.
 
 **When does the plugin contact RoxyAPI?** Only after you save an API key on the settings page and either click Test Connection or render a RoxyAPI block or shortcode on a page. Saving your API key is the explicit consent for these calls. The plugin does NOT contact RoxyAPI on activation, on update, in the background, or on admin pages that do not display a reading.
 
-**What data is sent?** The reading parameters you supply via the block or shortcode (zodiac sign, birth date, name, location coordinates, question text), your site URL (in an `X-Site-URL` header), and a plugin identifier (in an `X-SDK-Client` header). Your server's outbound IP is incidentally captured by RoxyAPI, like any HTTP request. **No site visitor data is collected by the plugin itself.**
+**What data is sent?** The reading parameters you supply via the block or shortcode (zodiac sign, birth date, name, location coordinates, question text), your site URL (in an `X-Site-URL` header), and a plugin identifier (in an `X-SDK-Client` header). Your server outbound IP is incidentally captured by RoxyAPI, like any HTTP request. **No site visitor data is collected by the plugin itself.**
 
 **Where is the API key stored?** Either as the `ROXYAPI_KEY` constant in your `wp-config.php` (recommended) or AES-256-CTR encrypted in the `wp_options` table under `roxyapi_settings`. The plain key is never sent to the browser at any time.
 

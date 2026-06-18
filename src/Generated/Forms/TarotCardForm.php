@@ -27,6 +27,7 @@ class TarotCardForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'tarotCard',
+			'render_operation_id' => '',
 			'title'        => 'Tarot reading',
 			'submit_label' => __( 'Draw cards', 'roxyapi' ),
 			'sections'     => array(

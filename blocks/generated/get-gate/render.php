@@ -14,4 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo wp_kses_post( \RoxyAPI\Generated\Shortcodes\GetGate::render( $attributes ) );
+\RoxyAPI\Support\BlockOutput::render( \RoxyAPI\Generated\Shortcodes\GetGate::render( $attributes ) );

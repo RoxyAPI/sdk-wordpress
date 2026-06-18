@@ -24,10 +24,34 @@ class ComponentMap {
 	 */
 	public static function for( string $operation_id ): array {
 		$map = array(
+			'analyzeNumberSequence' => array(
+				array(
+					'component' => 'roxy-angel-number-lookup',
+					'kind'      => 'card',
+				),
+			),
 			'calculateAshtakavarga' => array(
 				array(
 					'component' => 'roxy-ashtakavarga-grid',
 					'kind'      => 'table',
+				),
+			),
+			'calculateBioCompatibility' => array(
+				array(
+					'component' => 'roxy-compatibility-card',
+					'kind'      => 'card',
+				),
+			),
+			'calculateCompatibility' => array(
+				array(
+					'component' => 'roxy-compatibility-card',
+					'kind'      => 'card',
+				),
+			),
+			'calculateGunMilan' => array(
+				array(
+					'component' => 'roxy-guna-milan',
+					'kind'      => 'card',
 				),
 			),
 			'calculateLifePath' => array(
@@ -36,10 +60,22 @@ class ComponentMap {
 					'kind'      => 'card',
 				),
 			),
+			'calculateNumCompatibility' => array(
+				array(
+					'component' => 'roxy-compatibility-card',
+					'kind'      => 'card',
+				),
+			),
 			'calculateShadbala' => array(
 				array(
 					'component' => 'roxy-shadbala-table',
 					'kind'      => 'table',
+				),
+			),
+			'calculateSynastry' => array(
+				array(
+					'component' => 'roxy-synastry-chart',
+					'kind'      => 'chart',
 				),
 			),
 			'calculateTransits' => array(
@@ -102,6 +138,12 @@ class ComponentMap {
 					'kind'      => 'chart',
 				),
 			),
+			'generateBodygraph' => array(
+				array(
+					'component' => 'roxy-bodygraph',
+					'kind'      => 'chart',
+				),
+			),
 			'generateDivisionalChart' => array(
 				array(
 					'component' => 'roxy-divisional-chart',
@@ -126,10 +168,52 @@ class ComponentMap {
 					'kind'      => 'card',
 				),
 			),
+			'generateTimeline' => array(
+				array(
+					'component' => 'roxy-forecast-timeline',
+					'kind'      => 'chart',
+				),
+			),
+			'getAngelNumber' => array(
+				array(
+					'component' => 'roxy-angel-number-card',
+					'kind'      => 'card',
+				),
+			),
+			'getBirthstones' => array(
+				array(
+					'component' => 'roxy-crystal-grid',
+					'kind'      => 'card',
+				),
+			),
+			'getCard' => array(
+				array(
+					'component' => 'roxy-tarot-card',
+					'kind'      => 'card',
+				),
+			),
 			'getChoghadiya' => array(
 				array(
 					'component' => 'roxy-choghadiya-grid',
 					'kind'      => 'table',
+				),
+			),
+			'getCrystalsByChakra' => array(
+				array(
+					'component' => 'roxy-crystal-grid',
+					'kind'      => 'card',
+				),
+			),
+			'getCrystalsByElement' => array(
+				array(
+					'component' => 'roxy-crystal-grid',
+					'kind'      => 'card',
+				),
+			),
+			'getCrystalsByZodiac' => array(
+				array(
+					'component' => 'roxy-crystal-grid',
+					'kind'      => 'card',
 				),
 			),
 			'getCurrentDasha' => array(
@@ -166,6 +250,12 @@ class ComponentMap {
 				array(
 					'component' => 'roxy-panchang-table',
 					'kind'      => 'table',
+				),
+			),
+			'getDreamSymbol' => array(
+				array(
+					'component' => 'roxy-dream-card',
+					'kind'      => 'card',
 				),
 			),
 			'getHexagram' => array(
@@ -234,6 +324,12 @@ class ComponentMap {
 					'kind'      => 'card',
 				),
 			),
+			'listCrystals' => array(
+				array(
+					'component' => 'roxy-crystal-grid',
+					'kind'      => 'card',
+				),
+			),
 			'listYogas' => array(
 				array(
 					'component' => 'roxy-yoga-list',
@@ -243,6 +339,12 @@ class ComponentMap {
 			'lookupHexagram' => array(
 				array(
 					'component' => 'roxy-hexagram',
+					'kind'      => 'card',
+				),
+			),
+			'searchCrystals' => array(
+				array(
+					'component' => 'roxy-crystal-grid',
 					'kind'      => 'card',
 				),
 			),

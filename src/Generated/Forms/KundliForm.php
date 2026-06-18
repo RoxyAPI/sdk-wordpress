@@ -27,6 +27,7 @@ class KundliForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'kundli',
+			'render_operation_id' => 'generateBirthChart',
 			'title'        => 'Vedic birth chart',
 			'submit_label' => __( 'Generate kundli', 'roxyapi' ),
 			'sections'     => array(

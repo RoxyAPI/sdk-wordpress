@@ -1296,7 +1296,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo wp_kses_post( \\RoxyAPI\\Generated\\Shortcodes\\${ className }::render( $attributes ) );
+\\RoxyAPI\\Support\\BlockOutput::render( \\RoxyAPI\\Generated\\Shortcodes\\${ className }::render( $attributes ) );
 `;
 }
 
@@ -2253,6 +2253,7 @@ class ${ formClassName } {
 	public static function spec(): array {
 		return array(
 			'operation_id' => ${ phpLiteral( formId ) },
+			'render_operation_id' => ${ phpLiteral( cfg.operationId ) },
 			'title'        => ${ phpLiteral( title ) },
 			'submit_label' => __( ${ phpLiteral( submitLabel ) }, 'roxyapi' ),
 			'sections'     => array(

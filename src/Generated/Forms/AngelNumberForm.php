@@ -27,6 +27,7 @@ class AngelNumberForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'angelNumber',
+			'render_operation_id' => 'getAngelNumber',
 			'title'        => 'Angel number lookup',
 			'submit_label' => __( 'Look up meaning', 'roxyapi' ),
 			'sections'     => array(

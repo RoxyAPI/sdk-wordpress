@@ -109,11 +109,19 @@ class Cache {
 	/**
 	 * Build a transient cache key from endpoint and arguments.
 	 *
+	 * @remarks The display language is added to the request below this layer (in {@link \RoxyAPI\Api\Client}), so it is absent from $args. Fold the resolved language into the key here too, otherwise a cached response can be served in the wrong language. An explicit `lang` already in $args is left untouched. Mutates a local copy only.
+	 *
 	 * @param string               $endpoint API endpoint path.
 	 * @param array<string, mixed> $args     Arguments to hash into the cache key.
 	 * @return string
 	 */
 	private static function key( string $endpoint, array $args ): string {
+		if ( ! isset( $args['lang'] ) || (string) $args['lang'] === '' ) {
+			$lang = \RoxyAPI\Support\Language::resolve();
+			if ( $lang !== '' ) {
+				$args['lang'] = $lang;
+			}
+		}
 		return 'roxyapi_' . md5( $endpoint . '|' . wp_json_encode( $args ) );
 	}
 

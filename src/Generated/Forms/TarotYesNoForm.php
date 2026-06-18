@@ -27,6 +27,7 @@ class TarotYesNoForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'tarotYesNo',
+			'render_operation_id' => 'castYesNo',
 			'title'        => 'Tarot yes or no',
 			'submit_label' => __( 'Get answer', 'roxyapi' ),
 			'sections'     => array(

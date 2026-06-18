@@ -1,12 +1,14 @@
 /**
- * Roxy UI design tokens. ~30 CSS custom properties that every component reads
- * via :host selector. Light + dark defaults. Host page overrides at :root or
- * per element. No Tailwind, no class-name overrides, no JS theme switcher.
+ * Roxy UI design tokens. ~30 CSS custom properties that every component reads. Light + dark defaults. Host page overrides at :root or per element. No Tailwind, no class-name overrides, no JS theme switcher.
+ *
+ * Delivery model: this file ships as a global light-DOM stylesheet (linked, or auto-injected by the CDN bundle). Custom properties inherit through the shadow boundary, so tokens set on a light-DOM ancestor reach every component shadow. The explicit theme blocks therefore target light-DOM selectors (:root, .dark, [data-theme="dark"], a wrapper element), NOT :host (a :host rule in a global sheet matches nothing). The :host([data-theme]) selectors are kept only for the case where this CSS is ever adopted directly into a shadow root; they are inert in global delivery.
  *
  * Light is the default. Dark applies under any of:
  *   - prefers-color-scheme: dark
- *   - [data-theme="dark"] on :root or any ancestor
- *   - .dark class on :root or any ancestor
+ *   - [data-theme="dark"] on the element itself or any ancestor (typically :root)
+ *   - .dark class on the element itself or any ancestor (typically :root)
+ *
+ * Explicit choice wins over the OS: the [data-theme] / .dark blocks come after the @media (prefers-color-scheme: dark) block in source order, and a closer ancestor overrides a farther one through normal custom-property inheritance.
  *
  * Motion gating:
  *   - --roxy-motion-duration defaults to 200ms. Set to 0ms to disable.
@@ -23,7 +25,7 @@
 	 * WCAG AA for body text. amber-700 hits 4.5:1, used wherever the accent
 	 * tone is applied to text. Fills (planet glyphs, chart accents, badges
 	 * with non-text use) keep --roxy-accent. */
-	--roxy-accent-fg: #b45309;
+	--roxy-accent-ink: #b45309;
 
 	/* Color: status. The base value (success, warning, danger, info) is for
 	 * fills and tints. The -fg variant is darker so text on a light tint passes
@@ -105,7 +107,7 @@
 		--roxy-primary: #f8fafc;
 		--roxy-secondary: #94a3b8;
 		--roxy-accent: #fbbf24;
-		--roxy-accent-fg: #fbbf24;
+		--roxy-accent-ink: #fbbf24;
 
 		/* Status -fg overrides must mirror the explicit [data-theme="dark"] block
 		 * below. Without these, a user on system dark with no data-theme attribute
@@ -137,14 +139,20 @@
 
 /* Light theme override. Beats the @media (prefers-color-scheme: dark) block
  * when the host explicitly opts back into light. Without this, a dark-mode OS
- * pins the tokens to dark even after data-theme="light" is set. */
+ * pins the tokens to dark even after data-theme="light" is set. The light-DOM
+ * selectors (:root.light, .light, [data-theme="light"]) set the vars on the
+ * ancestor or the element itself so they inherit into every component shadow;
+ * :host([data-theme="light"]) is inert in global delivery and kept only for
+ * shadow-adopted use. */
 :root[data-theme="light"],
-:host([data-theme="light"]),
-.light :host {
+[data-theme="light"],
+:root.light,
+.light,
+:host([data-theme="light"]) {
 	--roxy-primary: #0f172a;
 	--roxy-secondary: #475569;
 	--roxy-accent: #f59e0b;
-	--roxy-accent-fg: #b45309;
+	--roxy-accent-ink: #b45309;
 
 	--roxy-success: #16a34a;
 	--roxy-success-fg: #166534;
@@ -167,14 +175,21 @@
 	--roxy-shadow-lg: 0 12px 24px -8px rgba(0, 0, 0, 0.14);
 }
 
-/* Dark theme via host opt-in */
+/* Dark theme via explicit opt-in. The light-DOM selectors (:root.dark, .dark,
+ * [data-theme="dark"]) set the vars on the ancestor or the element itself so
+ * they inherit into every component shadow; this is what makes a .dark class on
+ * any ancestor (Tailwind, shadcn) actually theme the components in global
+ * delivery. :host([data-theme="dark"]) is inert in global delivery and kept
+ * only for shadow-adopted use. */
 :root[data-theme="dark"],
-:host([data-theme="dark"]),
-.dark :host {
+[data-theme="dark"],
+:root.dark,
+.dark,
+:host([data-theme="dark"]) {
 	--roxy-primary: #f8fafc;
 	--roxy-secondary: #94a3b8;
 	--roxy-accent: #fbbf24;
-	--roxy-accent-fg: #fbbf24;
+	--roxy-accent-ink: #fbbf24;
 
 	--roxy-success: #22c55e;
 	--roxy-success-fg: #86efac;

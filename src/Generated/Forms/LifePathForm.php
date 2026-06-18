@@ -27,6 +27,7 @@ class LifePathForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'lifePath',
+			'render_operation_id' => 'calculateLifePath',
 			'title'        => 'Life path number',
 			'submit_label' => __( 'Calculate', 'roxyapi' ),
 			'sections'     => array(

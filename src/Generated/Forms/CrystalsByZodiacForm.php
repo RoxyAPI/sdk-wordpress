@@ -27,6 +27,7 @@ class CrystalsByZodiacForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'crystalsByZodiac',
+			'render_operation_id' => 'getCrystalsByZodiac',
 			'title'        => 'Crystals for your sign',
 			'submit_label' => __( 'Show crystals', 'roxyapi' ),
 			'sections'     => array(
