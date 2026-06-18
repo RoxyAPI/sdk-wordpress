@@ -24,6 +24,20 @@ class Test_Cache extends \WP_UnitTestCase {
 		parent::tearDown();
 	}
 
+	/**
+	 * Mirror Cache::key(): the cache folds the effective display language into
+	 * the key, so an expected key in these assertions must include it too.
+	 */
+	private function cache_key( string $endpoint, array $args = array() ): string {
+		if ( ! isset( $args['lang'] ) || (string) $args['lang'] === '' ) {
+			$lang = \RoxyAPI\Support\Language::resolve();
+			if ( $lang !== '' ) {
+				$args['lang'] = $lang;
+			}
+		}
+		return 'roxyapi_' . md5( $endpoint . '|' . wp_json_encode( $args ) );
+	}
+
 	public function test_remember_caches_successful_array_result(): void {
 		$counter = 0;
 		$fetch   = static function () use ( &$counter ) {
@@ -45,7 +59,7 @@ class Test_Cache extends \WP_UnitTestCase {
 		};
 		Cache::remember( 'astrology/horoscope/leo/daily', array(), 1800, $fetch );
 
-		$key = 'roxyapi_' . md5( 'astrology/horoscope/leo/daily|' . wp_json_encode( array() ) );
+		$key = $this->cache_key( 'astrology/horoscope/leo/daily' );
 		$this->assertSame( array( 'overview' => 'test' ), get_transient( $key ) );
 	}
 
@@ -58,7 +72,7 @@ class Test_Cache extends \WP_UnitTestCase {
 			};
 			Cache::remember( $endpoint, array(), 3600, $fetch );
 
-			$key    = 'roxyapi_' . md5( $endpoint . '|' . wp_json_encode( array() ) );
+			$key    = $this->cache_key( $endpoint );
 			$cached = get_transient( $key );
 			$this->assertInstanceOf( WP_Error::class, $cached, "Expected {$code} to be negative cached." );
 			$this->assertSame( $code, $cached->get_error_code() );
@@ -80,7 +94,7 @@ class Test_Cache extends \WP_UnitTestCase {
 
 			$this->assertSame( 2, $counter, "Non categorised error {$code} must not be cached." );
 
-			$key = 'roxyapi_' . md5( $endpoint . '|' . wp_json_encode( array() ) );
+			$key = $this->cache_key( $endpoint );
 			$this->assertFalse( get_transient( $key ) );
 		}
 	}

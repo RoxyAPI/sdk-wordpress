@@ -65,7 +65,14 @@ class Test_Shortcode_Horoscope extends Mock_Http_TestCase {
 		// the cache key (the SaaS spec rejects literal "today"). The cache key
 		// therefore includes the resolved date, not the literal token.
 		$resolved_date = wp_date( 'Y-m-d' );
-		$key           = 'roxyapi_' . md5( 'astrology/horoscope/aries/daily|' . wp_json_encode( array( 'date' => $resolved_date ) ) );
+		// The cache folds the effective display language into the key after the
+		// request args, so the expected key includes it too.
+		$args = array( 'date' => $resolved_date );
+		$lang = \RoxyAPI\Support\Language::resolve();
+		if ( $lang !== '' ) {
+			$args['lang'] = $lang;
+		}
+		$key = 'roxyapi_' . md5( 'astrology/horoscope/aries/daily|' . wp_json_encode( $args ) );
 		$this->assertNotFalse( get_transient( $key ) );
 	}
 }
