@@ -189,6 +189,20 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.4.1 =
+* Free to start: new installs open the Shortcodes library so you can drop a reading on a page right away, no key needed.
+* The Settings screen now explains the free daily allowance and what an API key unlocks.
+* Clearer wording on trying the plugin for free before subscribing.
+
+= 1.4.0 =
+* Ten new interactive readings: natal and transit aspects with chart-pattern detection, Vedic graha drishti aspects, planetary hours (hora), a cross-domain forecast digest, single-crystal detail, dream-symbol search, Human Design connection, penta, and variables, plus a reference card for zodiac, planet, rashi, gate, center, and number lookups.
+* Refreshed the bundled component library.
+* Fixed numeric inputs such as timezone in attribute-mode shortcodes so they reach the service correctly.
+
+= 1.3.1 =
+* The admin Shortcodes library now groups Human Design, Forecast, and Languages under the right headings instead of Other.
+* Readings default to the light theme.
+
 = 1.3.0 =
 * Gutenberg blocks now render the full interactive charts and cards, matching the shortcodes.
 * New interactive components for human design (bodygraph) and forecast timelines, plus synastry, compatibility, crystals, dream symbols, and angel numbers.
@@ -239,6 +253,12 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.4.1 =
+New installs open the Shortcodes library so you can start free in seconds, and Settings now explains the free daily allowance.
+
+= 1.4.0 =
+Ten new interactive readings including aspects, planetary hours, forecast digest, crystal detail, dream search, and Human Design connection, penta, and variables.
 
 = 1.3.0 =
 Blocks now render the full interactive charts and cards, human design and forecast components are added, and visitor form submissions return to the page with the result.
