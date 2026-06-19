@@ -49,7 +49,7 @@ class GetKpRasiChanges {
 				'planet' => $atts['planet'],
 				'startDate' => $atts['start_date'],
 				'endDate' => $atts['end_date'],
-				'timezone' => $atts['timezone'],
+				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
 				'ayanamsa' => $atts['ayanamsa'],
 				'nodeType' => $atts['node_type'],
 			),

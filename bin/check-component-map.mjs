@@ -39,6 +39,34 @@ if ( ! manifestUrl ) {
 	process.exit( 1 );
 }
 
+// Pin-consistency guard (offline, deterministic). The @roxyapi/ui version is
+// hand-copied to THREE places that drift independently: ROXYAPI_UI_VERSION in
+// roxyapi.php (cache-bust + the version fetch-ui-bundle.mjs vendors), and both
+// _meta.ui_version_pinned and the version embedded in _meta.ui_manifest_url
+// here. A mismatch makes this very check validate against the wrong build (or
+// silently against a stale manifest while the vendored bundle is newer). Fail
+// loudly so all three move together on every UI bump.
+const phpSource = readFileSync( path.join( root, 'roxyapi.php' ), 'utf8' );
+const phpPin = phpSource.match(
+	/const\s+ROXYAPI_UI_VERSION\s*=\s*'([^']+)'/
+)?.[ 1 ];
+const metaPin = map?._meta?.ui_version_pinned;
+const urlPin = String( manifestUrl ).match( /@roxyapi\/ui@([^/]+)\// )?.[ 1 ];
+if (
+	phpPin &&
+	metaPin &&
+	urlPin &&
+	! ( phpPin === metaPin && metaPin === urlPin )
+) {
+	console.error(
+		'@roxyapi/ui version pins disagree (align all three, then `npm run fetch:ui`):'
+	);
+	console.error( `  roxyapi.php ROXYAPI_UI_VERSION       = ${ phpPin }` );
+	console.error( `  component-map.json ui_version_pinned = ${ metaPin }` );
+	console.error( `  component-map.json ui_manifest_url   = ${ urlPin }` );
+	process.exit( 1 );
+}
+
 // Collect every tag referenced by the map, mapped to its slug form.
 const referenced = new Map(); // slug -> tag
 for ( const rows of Object.values( map.operations || {} ) ) {
@@ -139,10 +167,21 @@ if ( deadOps.length > 0 ) {
 	process.exit( 1 );
 }
 
+// Adoption signal (informational, never fatal). The map is intentionally a
+// subset of the build (helpers + reads that are fine as generic cards stay
+// unbound), but a jump in this count after a version bump means new upstream
+// components are available to wire up via a component-map row.
+const unbound = available.size - referenced.size;
+if ( unbound > 0 ) {
+	console.log(
+		`note: ${ unbound } of ${ available.size } component(s) in the pinned UI build are not bound to any operation. Bind in component-map.json to render them (unbound reads fall back to roxy-data).`
+	);
+}
+
 console.log(
-	`component-map.json OK: ${
-		referenced.size
-	} component tag(s) in the pinned UI build, ${
+	`component-map.json OK: ${ referenced.size } of ${
+		available.size
+	} component tag(s) bound in the pinned UI build, ${
 		Object.keys( map.operations || {} ).length
 	} operationId(s) present in the live spec`
 );

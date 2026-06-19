@@ -54,7 +54,7 @@ class CalculateTransit {
 				'transitTime' => $atts['transit_time'],
 				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
 				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
-				'timezone' => $atts['timezone'],
+				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
 				'coordinateSystem' => $atts['coordinate_system'],
 			),
 			static function ( $v ) {

@@ -46,7 +46,7 @@ class CalculateTransits {
 			array(
 				'date' => $atts['date'],
 				'time' => $atts['time'],
-				'timezone' => $atts['timezone'],
+				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
 				'natalChart' => $atts['natal_chart'],
 			),
 			static function ( $v ) {

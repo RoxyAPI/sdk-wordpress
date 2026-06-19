@@ -47,7 +47,7 @@ class CalculateAspects {
 			array(
 				'date' => $atts['date'],
 				'time' => $atts['time'],
-				'timezone' => $atts['timezone'],
+				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
 				'planets' => $atts['planets'],
 				'aspectTypes' => $atts['aspect_types'],
 			),

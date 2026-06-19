@@ -1,8 +1,8 @@
 {
 	"_meta": {
 		"ui_package": "@roxyapi/ui",
-		"ui_version_pinned": "0.10.0",
-		"ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.10.0/dist/manifest.json"
+		"ui_version_pinned": "0.11.0",
+		"ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.11.0/dist/manifest.json"
 	},
 	"operations": {
 		"generateNatalChart": [ { "component": "roxy-natal-chart", "kind": "chart" } ],
@@ -68,6 +68,27 @@
 		"getDreamSymbol": [ { "component": "roxy-dream-card", "kind": "card" } ],
 
 		"getAngelNumber": [ { "component": "roxy-angel-number-card", "kind": "card" } ],
-		"analyzeNumberSequence": [ { "component": "roxy-angel-number-lookup", "kind": "card" } ]
+		"analyzeNumberSequence": [ { "component": "roxy-angel-number-lookup", "kind": "card" } ],
+
+		"calculateAspects": [ { "component": "roxy-aspects-table", "kind": "table" } ],
+		"calculateTransitAspects": [ { "component": "roxy-aspects-table", "kind": "table" } ],
+		"detectAspectPatterns": [ { "component": "roxy-aspects-table", "kind": "table" } ],
+		"calculateDrishti": [ { "component": "roxy-vedic-aspects", "kind": "table" } ],
+		"getHora": [ { "component": "roxy-hora-table", "kind": "table" } ],
+		"generateDigest": [ { "component": "roxy-forecast-digest", "kind": "card" } ],
+		"getCrystal": [ { "component": "roxy-crystal-card", "kind": "card" } ],
+		"searchDreamSymbols": [ { "component": "roxy-dream-search", "kind": "card" } ],
+		"calculateConnection": [ { "component": "roxy-hd-connection", "kind": "chart" } ],
+		"calculatePenta": [ { "component": "roxy-hd-penta", "kind": "chart" } ],
+		"calculateVariables": [ { "component": "roxy-hd-variables", "kind": "card" } ],
+
+		"getZodiacSign": [ { "component": "roxy-reference-card", "kind": "card" } ],
+		"getPlanetMeaning": [ { "component": "roxy-reference-card", "kind": "card" } ],
+		"getRashi": [ { "component": "roxy-reference-card", "kind": "card" } ],
+		"getTrigram": [ { "component": "roxy-reference-card", "kind": "card" } ],
+		"getGate": [ { "component": "roxy-reference-card", "kind": "card" } ],
+		"getCenter": [ { "component": "roxy-reference-card", "kind": "card" } ],
+		"getNumberMeaning": [ { "component": "roxy-reference-card", "kind": "card" } ],
+		"getCompoundNumber": [ { "component": "roxy-reference-card", "kind": "card" } ]
 	}
 }

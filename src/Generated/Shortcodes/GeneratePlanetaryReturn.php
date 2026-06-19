@@ -54,7 +54,7 @@ class GeneratePlanetaryReturn {
 				'approximateDate' => $atts['approximate_date'],
 				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
 				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
-				'timezone' => $atts['timezone'],
+				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
 				'houseSystem' => $atts['house_system'],
 			),
 			static function ( $v ) {

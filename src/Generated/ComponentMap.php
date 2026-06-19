@@ -36,6 +36,12 @@ class ComponentMap {
 					'kind'      => 'table',
 				),
 			),
+			'calculateAspects' => array(
+				array(
+					'component' => 'roxy-aspects-table',
+					'kind'      => 'table',
+				),
+			),
 			'calculateBioCompatibility' => array(
 				array(
 					'component' => 'roxy-compatibility-card',
@@ -46,6 +52,18 @@ class ComponentMap {
 				array(
 					'component' => 'roxy-compatibility-card',
 					'kind'      => 'card',
+				),
+			),
+			'calculateConnection' => array(
+				array(
+					'component' => 'roxy-hd-connection',
+					'kind'      => 'chart',
+				),
+			),
+			'calculateDrishti' => array(
+				array(
+					'component' => 'roxy-vedic-aspects',
+					'kind'      => 'table',
 				),
 			),
 			'calculateGunMilan' => array(
@@ -66,6 +84,12 @@ class ComponentMap {
 					'kind'      => 'card',
 				),
 			),
+			'calculatePenta' => array(
+				array(
+					'component' => 'roxy-hd-penta',
+					'kind'      => 'chart',
+				),
+			),
 			'calculateShadbala' => array(
 				array(
 					'component' => 'roxy-shadbala-table',
@@ -78,10 +102,22 @@ class ComponentMap {
 					'kind'      => 'chart',
 				),
 			),
+			'calculateTransitAspects' => array(
+				array(
+					'component' => 'roxy-aspects-table',
+					'kind'      => 'table',
+				),
+			),
 			'calculateTransits' => array(
 				array(
 					'component' => 'roxy-transits-table',
 					'kind'      => 'table',
+				),
+			),
+			'calculateVariables' => array(
+				array(
+					'component' => 'roxy-hd-variables',
+					'kind'      => 'card',
 				),
 			),
 			'castCelticCross' => array(
@@ -126,6 +162,12 @@ class ComponentMap {
 					'kind'      => 'card',
 				),
 			),
+			'detectAspectPatterns' => array(
+				array(
+					'component' => 'roxy-aspects-table',
+					'kind'      => 'table',
+				),
+			),
 			'detectYogas' => array(
 				array(
 					'component' => 'roxy-yoga-list',
@@ -142,6 +184,12 @@ class ComponentMap {
 				array(
 					'component' => 'roxy-bodygraph',
 					'kind'      => 'chart',
+				),
+			),
+			'generateDigest' => array(
+				array(
+					'component' => 'roxy-forecast-digest',
+					'kind'      => 'card',
 				),
 			),
 			'generateDivisionalChart' => array(
@@ -192,10 +240,28 @@ class ComponentMap {
 					'kind'      => 'card',
 				),
 			),
+			'getCenter' => array(
+				array(
+					'component' => 'roxy-reference-card',
+					'kind'      => 'card',
+				),
+			),
 			'getChoghadiya' => array(
 				array(
 					'component' => 'roxy-choghadiya-grid',
 					'kind'      => 'table',
+				),
+			),
+			'getCompoundNumber' => array(
+				array(
+					'component' => 'roxy-reference-card',
+					'kind'      => 'card',
+				),
+			),
+			'getCrystal' => array(
+				array(
+					'component' => 'roxy-crystal-card',
+					'kind'      => 'card',
 				),
 			),
 			'getCrystalsByChakra' => array(
@@ -258,10 +324,22 @@ class ComponentMap {
 					'kind'      => 'card',
 				),
 			),
+			'getGate' => array(
+				array(
+					'component' => 'roxy-reference-card',
+					'kind'      => 'card',
+				),
+			),
 			'getHexagram' => array(
 				array(
 					'component' => 'roxy-hexagram',
 					'kind'      => 'card',
+				),
+			),
+			'getHora' => array(
+				array(
+					'component' => 'roxy-hora-table',
+					'kind'      => 'table',
 				),
 			),
 			'getKpPlanets' => array(
@@ -294,9 +372,27 @@ class ComponentMap {
 					'kind'      => 'card',
 				),
 			),
+			'getNumberMeaning' => array(
+				array(
+					'component' => 'roxy-reference-card',
+					'kind'      => 'card',
+				),
+			),
+			'getPlanetMeaning' => array(
+				array(
+					'component' => 'roxy-reference-card',
+					'kind'      => 'card',
+				),
+			),
 			'getRandomHexagram' => array(
 				array(
 					'component' => 'roxy-hexagram',
+					'kind'      => 'card',
+				),
+			),
+			'getRashi' => array(
+				array(
+					'component' => 'roxy-reference-card',
 					'kind'      => 'card',
 				),
 			),
@@ -312,6 +408,12 @@ class ComponentMap {
 					'kind'      => 'chart',
 				),
 			),
+			'getTrigram' => array(
+				array(
+					'component' => 'roxy-reference-card',
+					'kind'      => 'card',
+				),
+			),
 			'getWeeklyHoroscope' => array(
 				array(
 					'component' => 'roxy-horoscope-card',
@@ -321,6 +423,12 @@ class ComponentMap {
 			'getYoga' => array(
 				array(
 					'component' => 'roxy-yoga-list',
+					'kind'      => 'card',
+				),
+			),
+			'getZodiacSign' => array(
+				array(
+					'component' => 'roxy-reference-card',
 					'kind'      => 'card',
 				),
 			),
@@ -345,6 +453,12 @@ class ComponentMap {
 			'searchCrystals' => array(
 				array(
 					'component' => 'roxy-crystal-grid',
+					'kind'      => 'card',
+				),
+			),
+			'searchDreamSymbols' => array(
+				array(
+					'component' => 'roxy-dream-search',
 					'kind'      => 'card',
 				),
 			),

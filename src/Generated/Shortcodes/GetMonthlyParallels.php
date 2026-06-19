@@ -45,7 +45,7 @@ class GetMonthlyParallels {
 			array(
 				'year' => $atts['year'] !== '' ? (int) $atts['year'] : '',
 				'month' => $atts['month'] !== '' ? (int) $atts['month'] : '',
-				'timezone' => $atts['timezone'],
+				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
 			),
 			static function ( $v ) {
 				return $v !== '';

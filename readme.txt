@@ -38,6 +38,52 @@ The plugin itself is GPLv2 or later and the source is available at https://githu
 * Server side caching with per endpoint TTL to keep your API quota low
 * API key stays server side. Never exposed to the browser.
 
+== Shortcode examples ==
+
+Every reading is a shortcode. Pass attributes for a fixed reading the site owner controls, or drop the shortcode with no attributes to render an accessible visitor form. Heroes that take two charts or nested birth details are form mode only.
+
+**Hero shortcodes**
+
+`[roxy_horoscope sign="aries"]`
+`[roxy_natal_chart birth_date="1990-05-15" birth_time="14:30" lat="40.7128" lon="-74.0060" tz="America/New_York"]`
+`[roxy_kundli birth_date="1990-05-15" birth_time="14:30" lat="28.6139" lon="77.2090" tz="Asia/Kolkata"]`
+`[roxy_panchang date="2026-04-28" lat="28.6139" lon="77.2090" tz="Asia/Kolkata"]`
+`[roxy_mangal_dosha birth_date="1990-05-15" birth_time="14:30" lat="28.6139" lon="77.2090" tz="Asia/Kolkata"]`
+`[roxy_kp_chart birth_date="1990-05-15" birth_time="14:30" lat="28.6139" lon="77.2090" tz="Asia/Kolkata"]`
+`[roxy_moon_phase]`
+`[roxy_tarot_card spread="three" question="What should I focus on this week"]`
+`[roxy_tarot_yes_no question="Should I take the new job"]`
+`[roxy_numerology name="Ada Lovelace" birth_date="1815-12-10"]`
+`[roxy_life_path birth_date="1990-05-15"]`
+`[roxy_biorhythm birth_date="1990-05-15" target_date="today"]`
+`[roxy_angel_number number="1111"]`
+`[roxy_crystals_by_zodiac sign="aries"]`
+
+The three two chart compatibility heroes render a visitor form for both people and take no attributes:
+
+`[roxy_synastry]`
+`[roxy_gun_milan]`
+`[roxy_compatibility]`
+
+Leave the attributes off any hero shortcode to render a form instead. For example `[roxy_horoscope]` shows a zodiac sign picker and `[roxy_natal_chart]` shows a birth date, time, and city picker.
+
+**Long-tail shortcodes**
+
+A matching shortcode exists for every endpoint in the spec. A sample across the domains:
+
+* Western astrology: `[roxy_calculate_aspects date="1990-07-15" time="14:30:00" timezone="UTC"]` and `[roxy_get_weekly_horoscope sign="aries"]`
+* Vedic astrology: `[roxy_get_hora date="2026-02-03" latitude="17.385044" longitude="78.486671" timezone="UTC"]` and `[roxy_calculate_drishti date="2026-02-03" time="12:00:00" latitude="17.385044" longitude="78.486671" timezone="UTC"]`
+* Tarot: `[roxy_cast_celtic_cross question="What should I know about this path"]`
+* Numerology: `[roxy_calculate_expression full_name="Ada Lovelace"]`
+* Human design: `[roxy_generate_bodygraph date="1990-07-15" time="13:00:00" timezone="UTC" latitude="40.7128" longitude="-74.0060"]`, `[roxy_calculate_variables date="1990-07-15" time="13:00:00" timezone="UTC" latitude="40.7128" longitude="-74.0060"]`, plus the two chart `[roxy_calculate_connection]` and `[roxy_calculate_penta]` which render visitor forms and take no attributes
+* Forecast: `[roxy_generate_digest]` (renders a visitor form, no attributes)
+* I Ching: `[roxy_get_daily_hexagram]`
+* Crystals: `[roxy_get_crystal id="amethyst"]`
+* Dreams: `[roxy_search_dream_symbols q="water"]`
+* Location: `[roxy_search_cities q="berlin"]`
+
+Add lang to any shortcode to override the response language, for example `[roxy_get_crystal id="amethyst" lang="es"]`.
+
 == Installation ==
 
 1. In your WordPress admin, go to Plugins, Add New, search for "RoxyAPI", and click Install Now.
@@ -70,7 +116,7 @@ Not to get started. A limited number of free readings per day are allowed right 
 
 = What readings can I add to my site? =
 
-One key covers 12 domains. Western astrology: natal chart, daily / weekly / monthly horoscopes, synastry, compatibility, transits, aspect patterns, and moon phases. Vedic astrology: kundli, KP chart, panchang, Vimshottari dasha, divisional charts, nakshatras, doshas (Manglik, Kaal Sarpa, Sade Sati), and classical yogas. Numerology: Life Path, Expression, Soul Urge, Personality, personal year, and compatibility. Tarot: single card, three card, Celtic Cross, and the full 78 card catalog. Human design: bodygraph, type, authority, profile, centers, channels, and gates. Forecasts: timelines, transit forecasts, solar returns, and significant dates. Plus biorhythm, I Ching hexagrams, crystal reference data, dream symbols, and angel numbers. Each one has a Gutenberg block and a matching shortcode. Browse the full list inside WordPress under RoxyAPI, Shortcodes.
+One key covers 12 domains. Western astrology: natal chart, daily / weekly / monthly horoscopes, synastry, compatibility, transits, aspect patterns, and moon phases. Vedic astrology: kundli, KP chart, panchang, Vimshottari dasha, divisional charts, nakshatras, doshas (Manglik, Kaal Sarpa, Sade Sati), and classical yogas. Numerology: Life Path, Expression, Soul Urge, Personality, personal year, and compatibility. Tarot: single card, three card, Celtic Cross, and the full 78 card catalog. Human design: bodygraph, type, authority, profile, centers, channels, and gates. Forecasts: timelines, transit forecasts, solar returns, and significant dates. Plus biorhythm, I Ching hexagrams, crystal reference data, dream symbols, and angel numbers. Every reading is available as a shortcode. The chart and reading heroes plus the 125 long-tail endpoints also ship a matching Gutenberg block. Interactive multi input readings such as two chart compatibility and nested birth forms are shortcode and visitor form mode, because the block editor cannot collect their nested input. Browse the full list inside WordPress under RoxyAPI, Shortcodes.
 
 = Can I show readings in another language? =
 

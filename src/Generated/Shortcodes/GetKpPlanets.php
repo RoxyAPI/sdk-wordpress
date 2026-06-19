@@ -52,7 +52,7 @@ class GetKpPlanets {
 				'time' => $atts['time'],
 				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
 				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
-				'timezone' => $atts['timezone'],
+				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
 				'ayanamsa' => $atts['ayanamsa'],
 				'ayanamsaValue' => $atts['ayanamsa_value'] !== '' ? (float) $atts['ayanamsa_value'] : '',
 				'nodeType' => $atts['node_type'],

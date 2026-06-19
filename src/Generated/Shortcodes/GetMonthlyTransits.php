@@ -46,7 +46,7 @@ class GetMonthlyTransits {
 			array(
 				'year' => $atts['year'] !== '' ? (int) $atts['year'] : '',
 				'month' => $atts['month'] !== '' ? (int) $atts['month'] : '',
-				'timezone' => $atts['timezone'],
+				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
 				'coordinateSystem' => $atts['coordinate_system'],
 			),
 			static function ( $v ) {

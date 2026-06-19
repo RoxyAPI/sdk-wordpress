@@ -44,7 +44,7 @@ class GetEclipticCrossings {
 				$body = array_filter(
 			array(
 				'year' => $atts['year'] !== '' ? (int) $atts['year'] : '',
-				'timezone' => $atts['timezone'],
+				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
 				'coordinateSystem' => $atts['coordinate_system'],
 			),
 			static function ( $v ) {

@@ -50,7 +50,7 @@ class GenerateDivisionalChart {
 				'time' => $atts['time'],
 				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
 				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
-				'timezone' => $atts['timezone'],
+				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
 				'division' => $atts['division'] !== '' ? (int) $atts['division'] : '',
 			),
 			static function ( $v ) {

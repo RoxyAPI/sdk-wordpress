@@ -53,7 +53,7 @@ class GetKpPlanetsInterval {
 				'intervalMinutes' => $atts['interval_minutes'] !== '' ? (float) $atts['interval_minutes'] : '',
 				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
 				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
-				'timezone' => $atts['timezone'],
+				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
 				'ayanamsa' => $atts['ayanamsa'],
 				'nodeType' => $atts['node_type'],
 			),

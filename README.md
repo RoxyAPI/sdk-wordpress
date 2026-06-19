@@ -14,11 +14,11 @@
 
 ## Ship a complete astrology, numerology, or tarot site this weekend. Not this quarter.
 
-The only multi domain spiritual intelligence plugin for WordPress. Drop daily horoscopes, numerology charts, tarot pulls, I Ching casts, dream symbol lookups, and natal chart calculators onto any page. One API key, ten spiritual data domains, 130+ endpoints. Verified against NASA JPL Horizons.
+The only multi domain spiritual intelligence plugin for WordPress. Drop daily horoscopes, numerology charts, tarot pulls, I Ching casts, dream symbol lookups, and natal chart calculators onto any page. One API key, 12 spiritual data domains, 150+ endpoints. Verified against NASA JPL Horizons.
 
 Interactive forms for your visitors. Gutenberg blocks for your editor. Shortcodes for anywhere else. Server side rendering keeps your API key out of the browser. Transient caching keeps your quota intact.
 
--   **17 hero blocks and shortcodes** covering western astrology, vedic astrology (kundli, panchang, mangal dosha, KP chart, gun milan), tarot (daily, three card, yes or no), numerology, biorhythm, angel numbers, crystals by zodiac, current moon phase, and two-chart compatibility (synastry, gun milan, Western compatibility).
+-   **17 hero shortcodes** covering western astrology, vedic astrology (kundli, panchang, mangal dosha, KP chart, gun milan), tarot (daily, three card, yes or no), numerology, biorhythm, angel numbers, crystals by zodiac, current moon phase, and two-chart compatibility (synastry, gun milan, Western compatibility). Six of them (horoscope, natal chart, tarot, numerology, biorhythm, angel number) also ship a hand-written Gutenberg block; the rest render through their shortcode.
 -   **Auto generated shortcodes** for the long tail. Every endpoint in the RoxyAPI OpenAPI spec is reachable from a shortcode.
 -   **Form mode on every hero shortcode.** Let visitors submit their own sign, name, birth date, or question and render a personalized reading. No JavaScript required.
 -   **Zero client side secrets.** All calls run in PHP. The API key never reaches the browser.
@@ -85,18 +85,18 @@ Form submissions post back to the same page over HTTPS. The plugin validates the
 
 ## Gutenberg blocks
 
-In the block editor, open the inserter and pick a block from the **RoxyAPI** category. Ten hero blocks, each with a variation picker:
+In the block editor, open the inserter and pick a block from the **RoxyAPI** category. Six hand-written hero blocks (Horoscope, Tarot, and Numerology include a variation picker):
 
 -   **Horoscope** (daily, weekly, monthly, love, career, Chinese)
 -   **Natal Chart**
 -   **Tarot** (daily, three card, Celtic Cross)
 -   **Numerology** (life path, expression, soul urge, full chart)
--   **I Ching**
--   **Dream Symbol**
 -   **Biorhythm**
 -   **Angel Number**
--   **Crystal**
--   **Astrology Section** wrapper that shares a default zodiac sign and birth date with every child block inside it via block context
+
+Beyond these, 125 long-tail endpoints (I Ching, dream symbols, crystals, human design, forecasts, and more) each auto-generate a matching block, for 131 blocks in total. The remaining endpoints render through their shortcode or a visitor form.
+
+The **Astrology Section** wrapper block shares a default zodiac sign and birth date with every child block inside it via block context.
 
 Every block renders server side through the same RoxyAPI client the shortcodes use. Same caching, same rate limiting, same secret handling.
 
@@ -121,7 +121,7 @@ define( 'ROXYAPI_ENCRYPTION_SALT', getenv( 'ROXYAPI_ENCRYPTION_SALT' ) );
 
 When `ROXYAPI_KEY` is defined, the settings field is read only and the constant takes priority. Your key never enters the database.
 
-## Ten domains, 130+ endpoints, one key
+## 12 domains, 150+ endpoints, one key
 
 | Domain            | What you get                                                                                                    |
 | ----------------- | --------------------------------------------------------------------------------------------------------------- |
@@ -129,6 +129,8 @@ When `ROXYAPI_KEY` is defined, the settings field is read only and the constant 
 | Vedic astrology   | Kundli, nakshatras, Dasha, Panchang, KP system, doshas, yogas, muhurta                                          |
 | Numerology        | Life path, expression, soul urge, personal year, personality, karmic analysis                                   |
 | Tarot             | Rider Waite Smith deck, single card, three card, Celtic Cross, custom spreads                                   |
+| Human Design      | Bodygraph with type, authority, profile, centers, channels, gates, plus two chart connection charts             |
+| Forecast          | Cross domain timelines, transit forecasts, solar returns, and significant dates                                 |
 | Biorhythm         | Physical, emotional, intellectual, intuitive cycles plus six extended cycles                                    |
 | I Ching           | Hexagrams, trigrams, coin casting, daily readings                                                               |
 | Crystals          | Healing properties, zodiac and chakra pairings, birthstones                                                     |

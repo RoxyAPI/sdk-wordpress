@@ -388,10 +388,22 @@ function extractBodyFields( op ) {
 	const required = new Set( schema.required || [] );
 	return Object.entries( props ).map( ( [ name, prop ] ) => {
 		const resolvedProp = resolveRef( prop );
+		// anyOf/oneOf of number + string (e.g. `timezone`: decimal hours OR IANA
+		// name). resolvedProp.type is undefined for these, so the body builder
+		// would send the shortcode attr as a raw string and the API rejects
+		// "5.5" (matches neither the number nor the IANA-string pattern).
+		const variants = resolvedProp.anyOf || resolvedProp.oneOf;
+		const numericString =
+			Array.isArray( variants ) &&
+			variants.some( ( v ) => {
+				const t = resolveRef( v ).type;
+				return t === 'number' || t === 'integer';
+			} );
 		return {
 			name,
 			required: required.has( name ),
 			type: resolvedProp.type || 'string',
+			numericString,
 			description: resolvedProp.description || '',
 			example: resolvedProp.example,
 		};
@@ -1109,6 +1121,9 @@ class ${ className } {
 							}
 							if ( f.type === 'boolean' ) {
 								return `\t\t\t\t'${ f.name }' => $atts['${ attr }'] !== '' ? filter_var( $atts['${ attr }'], FILTER_VALIDATE_BOOLEAN ) : '',`;
+							}
+							if ( f.numericString ) {
+								return `\t\t\t\t'${ f.name }' => $atts['${ attr }'] !== '' ? ( is_numeric( $atts['${ attr }'] ) ? (float) $atts['${ attr }'] : $atts['${ attr }'] ) : '',`;
 							}
 							return `\t\t\t\t'${ f.name }' => $atts['${ attr }'],`;
 						} )

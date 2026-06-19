@@ -378,7 +378,7 @@
 	padding: 0.75rem 1rem;
 	border: 1px solid color-mix(in srgb, currentcolor 12%, transparent);
 	border-inline-start-width: 4px;
-	border-inline-start-color: color-mix(in srgb, #b91c1c 70%, currentColor);
+	border-inline-start-color: color-mix(in srgb, var(--roxy-danger-fg, #b91c1c) 70%, currentColor);
 	border-radius: var(--wp--custom--border--radius, 6px);
 	background: color-mix(in srgb, #fee2e2 30%, transparent);
 	color: var(--wp--preset--color--foreground, currentColor);
@@ -454,7 +454,7 @@
 }
 
 :where(.roxyapi-form-required) {
-	color: #b91c1c;
+	color: var(--roxy-danger-fg, #b91c1c);
 }
 
 :where(.roxyapi-form-field input),
@@ -476,12 +476,12 @@
 
 :where(.roxyapi-form-field.has-error input),
 :where(.roxyapi-form-field.has-error select) {
-	border-color: color-mix(in srgb, #b91c1c 70%, currentColor);
+	border-color: color-mix(in srgb, var(--roxy-danger-fg, #b91c1c) 70%, currentColor);
 }
 
 :where(.roxyapi-form-error) {
 	font-size: 0.8125rem;
-	color: #b91c1c;
+	color: var(--roxy-danger-fg, #b91c1c);
 }
 
 :where(.roxyapi-form-help) {
@@ -512,7 +512,7 @@
 }
 
 :where(.roxyapi-form-consent.has-error) {
-	border-color: color-mix(in srgb, #b91c1c 70%, currentColor);
+	border-color: color-mix(in srgb, var(--roxy-danger-fg, #b91c1c) 70%, currentColor);
 }
 
 :where(.roxyapi-form-actions) {
