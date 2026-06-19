@@ -144,7 +144,7 @@ Every endpoint is cached with a per endpoint TTL so cached responses do not cost
 
 -   **Server side rendering.** The plugin makes every API call in PHP. The key never reaches the browser.
 -   **Encrypted at rest storage.** AES 256 CTR with a key derived from `ROXYAPI_ENCRYPTION_KEY` constant or `LOGGED_IN_KEY` fallback. Ported from the Google Site Kit `Data_Encryption` pattern.
--   **Rate limiting.** Visitor submitted forms are rate limited per IP per shortcode via WordPress transients. Default is 20 requests per hour, configurable in settings.
+-   **Rate limiting.** Visitor submitted forms are rate limited per IP per shortcode via WordPress transients to prevent abuse.
 -   **Theme aware.** Every class is prefixed `.roxyapi-*` and uses `var(--wp--preset--color--*)` tokens from the active theme `theme.json`. Override from your child theme or just override the class.
 -   **Full i18n.** Text domain `roxyapi`. Auto loaded from translate.wordpress.org.
 -   **WCAG 2.1 AA.** Proper heading order, labeled inputs, keyboard navigation, color contrast.

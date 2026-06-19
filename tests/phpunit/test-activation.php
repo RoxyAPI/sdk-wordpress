@@ -9,6 +9,7 @@ namespace RoxyAPI\Tests;
 
 use RoxyAPI\Activation;
 use RoxyAPI\Admin\SettingsPage;
+use RoxyAPI\Admin\ShortcodesPage;
 use RoxyAPI\Api\Cache;
 use RoxyAPI\Plugin;
 use RoxyAPI\Support\Encryption;
@@ -106,7 +107,7 @@ class Test_Activation extends \WP_UnitTestCase {
 		}
 
 		$this->assertNotNull( $this->captured_redirect );
-		$this->assertStringContainsString( 'admin.php?page=' . SettingsPage::PAGE_SLUG, (string) $this->captured_redirect );
+		$this->assertStringContainsString( 'admin.php?page=' . ShortcodesPage::PAGE_SLUG, (string) $this->captured_redirect );
 
 		// The transient must have been consumed even though redirect was
 		// intercepted; the source deletes it before the redirect call.

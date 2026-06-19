@@ -37,7 +37,7 @@ class Onboarding {
 	}
 
 	/**
-	 * URL to the RoxyAPI Playground (test key pre-filled, no signup required).
+	 * URL to the RoxyAPI Playground (call every endpoint live in the browser, no signup required).
 	 *
 	 * @return string
 	 */

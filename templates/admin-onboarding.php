@@ -4,7 +4,7 @@
  *
  * Variables in scope (extracted from the render call):
  *   string $signup_url     Pricing page link with onboarding UTM params.
- *   string $playground_url Free Playground link (test key pre-filled, no signup).
+ *   string $playground_url Free Playground link (call every endpoint live, no signup).
  *   array  $samples        Quick-start shortcode samples (label + code).
  *   string $key_input      Pre-escaped HTML for the API key input control.
  *   string $key_help       Pre-escaped HTML for the helper text under the input.

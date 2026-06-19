@@ -203,7 +203,11 @@ class Plugin {
 		}
 
 		delete_transient( 'roxyapi_activated' );
-		wp_safe_redirect( admin_url( 'admin.php?page=' . SettingsPage::PAGE_SLUG ) );
+		// Land new installs on the Shortcodes library, not Settings. The plugin
+		// renders on a free daily allowance with no key, so the fastest path to
+		// a working reading is the copy-paste catalog, not a key-entry form. The
+		// key field stays one click away under the RoxyAPI menu for more headroom.
+		wp_safe_redirect( admin_url( 'admin.php?page=' . ShortcodesPage::PAGE_SLUG ) );
 		exit;
 	}
 }

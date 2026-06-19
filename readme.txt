@@ -170,9 +170,9 @@ RoxyAPI cross-checks its astronomy calculations against the NASA JPL Horizons ep
 
 Add the Astrology Section wrapper block, set the sign in its Inspector, then drop child RoxyAPI blocks inside. Every child inherits the sign via block context.
 
-= Can I try the API before subscribing? =
+= Can I try it for free before subscribing? =
 
-Yes. The Playground at https://roxyapi.com/api-reference has a test key pre-filled and lets you call every endpoint live. No signup needed. When you are ready to ship, see https://roxyapi.com/pricing for current plans.
+Yes. The plugin works the moment you activate it. Add a shortcode or block and it renders on a free daily allowance, no API key required. When you need more headroom, add a key from your RoxyAPI account; see https://roxyapi.com/pricing for current plans. You can also call every endpoint live in your browser at https://roxyapi.com/api-reference, no signup needed.
 
 = Does this work with Elementor, Divi, or other page builders? =
 
