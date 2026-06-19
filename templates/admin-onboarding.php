@@ -30,7 +30,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $signup_url     = isset( $signup_url ) ? (string) $signup_url : '';
 $playground_url = isset( $playground_url ) ? (string) $playground_url : '';
-$shortcodes_url = isset( $shortcodes_url ) ? (string) $shortcodes_url : '';
 $samples        = isset( $samples ) && is_array( $samples ) ? $samples : array();
 $key_input      = isset( $key_input ) ? (string) $key_input : '';
 $key_help       = isset( $key_help ) ? (string) $key_help : '';
@@ -46,13 +45,9 @@ $option_group   = isset( $option_group ) ? (string) $option_group : 'roxyapi';
 	<?php echo esc_html__( 'Drop daily horoscopes, tarot pulls, numerology readings, I Ching casts, and natal charts onto any WordPress page. Start free in seconds. Add a key when you go live.', 'roxyapi' ); ?>
 </p>
 
-<div class="roxyapi-start-free">
-	<a class="roxyapi-cta roxyapi-cta--secondary" href="<?php echo esc_url( $shortcodes_url ); ?>">
-		<?php echo esc_html__( 'Browse shortcodes', 'roxyapi' ); ?>
-		<span class="roxyapi-cta-arrow" aria-hidden="true">&rarr;</span>
-	</a>
-	<p class="roxyapi-start-free-note">
-		<?php echo esc_html__( 'No key needed to start. A limited number of free readings per day are allowed, so you can try any shortcode right now.', 'roxyapi' ); ?>
+<div class="notice notice-info inline roxyapi-notice roxyapi-start-free">
+	<p>
+		<?php echo esc_html__( 'A few readings render free every day with no key, so your pages work the moment you activate. Add your API key below to unlock full power: every domain and every reading under one key.', 'roxyapi' ); ?>
 	</p>
 </div>
 
