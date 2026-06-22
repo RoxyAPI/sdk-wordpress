@@ -39,6 +39,11 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\GetWeeklyHoroscope::register();
 		\RoxyAPI\Generated\Shortcodes\GetMonthlyHoroscope::register();
 		\RoxyAPI\Generated\Shortcodes\GeneratePlanetaryReturn::register();
+		\RoxyAPI\Generated\Shortcodes\GenerateAstrocartography::register();
+		\RoxyAPI\Generated\Shortcodes\GenerateRelocationChart::register();
+		\RoxyAPI\Generated\Shortcodes\GenerateLocalSpace::register();
+		\RoxyAPI\Generated\Shortcodes\GenerateFixedStars::register();
+		\RoxyAPI\Generated\Shortcodes\CalculateArabicLots::register();
 		\RoxyAPI\Generated\Shortcodes\GenerateNavamsa::register();
 		\RoxyAPI\Generated\Shortcodes\GenerateDivisionalChart::register();
 		\RoxyAPI\Generated\Shortcodes\CalculateGunMilan::register();

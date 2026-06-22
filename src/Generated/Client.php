@@ -505,6 +505,91 @@ class Client {
 	}
 
 	/**
+	 * Astrocartography map - planetary lines and relocation calculator
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function generateAstrocartography( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'astrology/astrocartography',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/astrocartography', $body );
+			}
+		);
+	}
+
+	/**
+	 * Generate relocation chart - Relocated birth chart calculator with shifted houses and angles
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function generateRelocationChart( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'astrology/relocation-chart',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/relocation-chart', $body );
+			}
+		);
+	}
+
+	/**
+	 * Local space astrology map - Directional planetary compass lines
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function generateLocalSpace( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'astrology/local-space',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/local-space', $body );
+			}
+		);
+	}
+
+	/**
+	 * Fixed stars and star conjunctions calculator - Regulus, Spica, Algol natal report
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function generateFixedStars( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'astrology/fixed-stars',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/fixed-stars', $body );
+			}
+		);
+	}
+
+	/**
+	 * Arabic lots calculator - seven Hermetic parts including Part of Fortune and Spirit
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateArabicLots( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'astrology/arabic-lots',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/arabic-lots', $body );
+			}
+		);
+	}
+
+	/**
 	 * Get birth chart (D1 Rashi chart) - Kundli Calculator API
 	 *
 	 * @param array $body Request body.
