@@ -30,6 +30,12 @@ class ComponentMap {
 					'kind'      => 'card',
 				),
 			),
+			'calculateArabicLots' => array(
+				array(
+					'component' => 'roxy-positions-table',
+					'kind'      => 'table',
+				),
+			),
 			'calculateAshtakavarga' => array(
 				array(
 					'component' => 'roxy-ashtakavarga-grid',
@@ -174,6 +180,18 @@ class ComponentMap {
 					'kind'      => 'card',
 				),
 			),
+			'generateAsteroids' => array(
+				array(
+					'component' => 'roxy-positions-table',
+					'kind'      => 'table',
+				),
+			),
+			'generateAstrocartography' => array(
+				array(
+					'component' => 'roxy-astrocartography-map',
+					'kind'      => 'chart',
+				),
+			),
 			'generateBirthChart' => array(
 				array(
 					'component' => 'roxy-vedic-kundli',
@@ -198,9 +216,27 @@ class ComponentMap {
 					'kind'      => 'chart',
 				),
 			),
+			'generateFixedStars' => array(
+				array(
+					'component' => 'roxy-fixed-stars',
+					'kind'      => 'table',
+				),
+			),
 			'generateKpChart' => array(
 				array(
 					'component' => 'roxy-kp-chart',
+					'kind'      => 'chart',
+				),
+			),
+			'generateLilith' => array(
+				array(
+					'component' => 'roxy-positions-table',
+					'kind'      => 'table',
+				),
+			),
+			'generateLocalSpace' => array(
+				array(
+					'component' => 'roxy-local-space-compass',
 					'kind'      => 'chart',
 				),
 			),
@@ -214,6 +250,30 @@ class ComponentMap {
 				array(
 					'component' => 'roxy-numerology-card',
 					'kind'      => 'card',
+				),
+			),
+			'generateProfections' => array(
+				array(
+					'component' => 'roxy-profection-card',
+					'kind'      => 'card',
+				),
+			),
+			'generateProgressions' => array(
+				array(
+					'component' => 'roxy-positions-table',
+					'kind'      => 'table',
+				),
+			),
+			'generateRelocationChart' => array(
+				array(
+					'component' => 'roxy-relocation-wheel',
+					'kind'      => 'chart',
+				),
+			),
+			'generateSolarArc' => array(
+				array(
+					'component' => 'roxy-positions-table',
+					'kind'      => 'table',
 				),
 			),
 			'generateTimeline' => array(

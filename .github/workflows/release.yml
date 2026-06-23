@@ -1,9 +1,9 @@
 name: Release
+# Manual only. The daily schedule and the openapi-updated repository_dispatch
+# triggers were removed so a spec change never auto-publishes to wp.org without
+# review. Run a release deliberately with:
+#   gh workflow run release.yml -f version_bump=patch|minor|major
 on:
-    schedule:
-        - cron: '0 6 * * *'
-    repository_dispatch:
-        types: [openapi-updated]
     workflow_dispatch:
         inputs:
             version_bump:

@@ -1,8 +1,8 @@
 {
 	"_meta": {
 		"ui_package": "@roxyapi/ui",
-		"ui_version_pinned": "0.11.0",
-		"ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.11.0/dist/manifest.json"
+		"ui_version_pinned": "0.12.1",
+		"ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.12.1/dist/manifest.json"
 	},
 	"operations": {
 		"generateNatalChart": [ { "component": "roxy-natal-chart", "kind": "chart" } ],
@@ -73,6 +73,16 @@
 		"calculateAspects": [ { "component": "roxy-aspects-table", "kind": "table" } ],
 		"calculateTransitAspects": [ { "component": "roxy-aspects-table", "kind": "table" } ],
 		"detectAspectPatterns": [ { "component": "roxy-aspects-table", "kind": "table" } ],
+		"generateAstrocartography": [ { "component": "roxy-astrocartography-map", "kind": "chart" } ],
+		"generateLocalSpace": [ { "component": "roxy-local-space-compass", "kind": "chart" } ],
+		"generateRelocationChart": [ { "component": "roxy-relocation-wheel", "kind": "chart" } ],
+		"generateAsteroids": [ { "component": "roxy-positions-table", "kind": "table" } ],
+		"generateLilith": [ { "component": "roxy-positions-table", "kind": "table" } ],
+		"generateProgressions": [ { "component": "roxy-positions-table", "kind": "table" } ],
+		"generateSolarArc": [ { "component": "roxy-positions-table", "kind": "table" } ],
+		"calculateArabicLots": [ { "component": "roxy-positions-table", "kind": "table" } ],
+		"generateFixedStars": [ { "component": "roxy-fixed-stars", "kind": "table" } ],
+		"generateProfections": [ { "component": "roxy-profection-card", "kind": "card" } ],
 		"calculateDrishti": [ { "component": "roxy-vedic-aspects", "kind": "table" } ],
 		"getHora": [ { "component": "roxy-hora-table", "kind": "table" } ],
 		"generateDigest": [ { "component": "roxy-forecast-digest", "kind": "card" } ],

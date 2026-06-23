@@ -1,4 +1,4 @@
-=== RoxyAPI — Astrology, Vedic, Tarot, Numerology ===
+=== RoxyAPI: Astrology, Vedic, Tarot, Numerology ===
 Contributors: roxyapi
 Tags: astrology, horoscope, tarot, numerology, vedic
 Requires at least: 6.5
@@ -116,7 +116,7 @@ Not to get started. A limited number of free readings per day are allowed right 
 
 = What readings can I add to my site? =
 
-One key covers 12 domains. Western astrology: natal chart, daily / weekly / monthly horoscopes, synastry, compatibility, transits, aspect patterns, and moon phases. Vedic astrology: kundli, KP chart, panchang, Vimshottari dasha, divisional charts, nakshatras, doshas (Manglik, Kaal Sarpa, Sade Sati), and classical yogas. Numerology: Life Path, Expression, Soul Urge, Personality, personal year, and compatibility. Tarot: single card, three card, Celtic Cross, and the full 78 card catalog. Human design: bodygraph, type, authority, profile, centers, channels, and gates. Forecasts: timelines, transit forecasts, solar returns, and significant dates. Plus biorhythm, I Ching hexagrams, crystal reference data, dream symbols, and angel numbers. Every reading is available as a shortcode. The chart and reading heroes plus the 125 long-tail endpoints also ship a matching Gutenberg block. Interactive multi input readings such as two chart compatibility and nested birth forms are shortcode and visitor form mode, because the block editor cannot collect their nested input. Browse the full list inside WordPress under RoxyAPI, Shortcodes.
+One key covers 12 domains. Western astrology: natal chart, daily / weekly / monthly horoscopes, synastry, compatibility, transits, aspect patterns, and moon phases. Vedic astrology: kundli, KP chart, panchang, Vimshottari dasha, divisional charts, nakshatras, doshas (Manglik, Kaal Sarpa, Sade Sati), and classical yogas. Numerology: Life Path, Expression, Soul Urge, Personality, personal year, and compatibility. Tarot: single card, three card, Celtic Cross, and the full 78 card catalog. Human design: bodygraph, type, authority, profile, centers, channels, and gates. Forecasts: timelines, transit forecasts, solar returns, and significant dates. Plus biorhythm, I Ching hexagrams, crystal reference data, dream symbols, and angel numbers. Every reading is available as a shortcode. The chart and reading heroes plus more than 130 long-tail endpoints also ship a matching Gutenberg block. Interactive multi input readings such as two chart compatibility and nested birth forms are shortcode and visitor form mode, because the block editor cannot collect their nested input. Browse the full list inside WordPress under RoxyAPI, Shortcodes.
 
 = Can I show readings in another language? =
 
@@ -180,14 +180,34 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Screenshots ==
 
-1. Western natal chart wheel with planet glyphs, aspect lines, and houses.
-2. Vedic kundli rendered as an interactive SVG chart. North, South, and East Indian styles.
-3. KP chart with planets, nakshatra, star lord, and sub lord.
-4. Panchang muhurta table: tithi, nakshatra, yoga, and auspicious times.
-5. Shortcodes Library. Browse every shortcode by domain. Search, filter, copy.
-6. Start free in seconds, no key required. Browse shortcodes, or add a key for production.
+1. Western natal chart wheel with planets, houses, aspect lines, and the chart angles. Rendered server-side, so your API key never reaches the browser.
+2. The Shortcodes Library. Every reading across every domain in one searchable, copy-paste browser.
+3. Vedic kundli rendered as an interactive chart in North, South, and East Indian styles.
+4. Detailed panchang: tithi, nakshatra, yoga, karana, planetary hours, and the auspicious muhurtas for any date and place.
+5. Human Design bodygraph with type, strategy, authority, profile, the nine centers, channels, and gates.
+6. Astrocartography map. Every planetary line plotted across the world for relocation and travel planning.
+7. Daily horoscope card for any zodiac sign, with love, career, health, finance, and lucky details.
+8. Connect in seconds. Free to start, with copy-paste shortcodes and a guided quick start.
 
 == Changelog ==
+
+= 1.5.0 =
+* Five more Western readings: asteroids, Black Moon Lilith, secondary progressions, solar arc directions, and annual profections.
+* The new location and predictive readings now render as rich interactive charts and tables instead of plain cards: astrocartography map, local space compass, relocation wheel, position tables for asteroids, Lilith, progressions, solar arc, and the Arabic lots, fixed star conjunctions, and the annual profection card.
+* Refreshed the bundled component library. The astrocartography map now plots its planetary lines over a world map of the continents for clearer relocation and travel planning.
+
+= 1.4.5 =
+* Maintenance and upstream data refresh.
+
+= 1.4.4 =
+* New readings: astrocartography, local space, relocation chart, fixed stars, and the Arabic lots.
+* Upstream data refresh.
+
+= 1.4.3 =
+* Maintenance and upstream data refresh.
+
+= 1.4.2 =
+* Maintenance and upstream data refresh.
 
 = 1.4.1 =
 * Free to start: new installs open the Shortcodes library so you can drop a reading on a page right away, no key needed.
@@ -253,6 +273,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.5.0 =
+Five more Western readings and rich interactive charts for the location and predictive readings.
 
 = 1.4.1 =
 New installs open the Shortcodes library so you can start free in seconds, and Settings now explains the free daily allowance.
