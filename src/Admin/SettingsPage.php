@@ -195,6 +195,7 @@ class SettingsPage {
 					'form_submit_input'      => SettingsFields::form_submit_input_html(),
 					'cache_preset_input'     => SettingsFields::cache_preset_input_html(),
 					'privacy_policy_url'     => admin_url( 'options-privacy.php' ),
+					'shortcodes_url'         => admin_url( 'admin.php?page=' . ShortcodesPage::PAGE_SLUG ),
 					'samples'                => Onboarding::quickstart_samples(),
 					'key_input'              => SettingsFields::api_key_input_html(),
 					'key_help'               => SettingsFields::api_key_help_html(),

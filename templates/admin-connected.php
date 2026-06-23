@@ -53,6 +53,7 @@ $form_title_input       = isset( $form_title_input ) ? (string) $form_title_inpu
 $form_submit_input      = isset( $form_submit_input ) ? (string) $form_submit_input : '';
 $cache_preset_input     = isset( $cache_preset_input ) ? (string) $cache_preset_input : '';
 $privacy_policy_url     = isset( $privacy_policy_url ) ? (string) $privacy_policy_url : '';
+$shortcodes_url         = isset( $shortcodes_url ) ? (string) $shortcodes_url : '';
 $samples                = isset( $samples ) && is_array( $samples ) ? $samples : array();
 $key_input              = isset( $key_input ) ? (string) $key_input : '';
 $key_help               = isset( $key_help ) ? (string) $key_help : '';
@@ -157,6 +158,12 @@ $kses_select   = array(
 					</li>
 				<?php endforeach; ?>
 			</ul>
+			<?php if ( '' !== $shortcodes_url ) : ?>
+				<a class="roxyapi-cta roxyapi-cta--secondary" href="<?php echo esc_url( $shortcodes_url ); ?>">
+					<?php echo esc_html__( 'Browse all shortcodes', 'roxyapi' ); ?>
+					<span class="roxyapi-cta-arrow" aria-hidden="true">&rarr;</span>
+				</a>
+			<?php endif; ?>
 		</section>
 
 		<section class="roxyapi-section">

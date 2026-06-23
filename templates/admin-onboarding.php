@@ -5,6 +5,7 @@
  * Variables in scope (extracted from the render call):
  *   string $signup_url     Pricing page link with onboarding UTM params.
  *   string $playground_url Free Playground link (call every endpoint live, no signup).
+ *   string $shortcodes_url Admin link to the full Shortcodes library page.
  *   array  $samples        Quick-start shortcode samples (label + code).
  *   string $key_input      Pre-escaped HTML for the API key input control.
  *   string $key_help       Pre-escaped HTML for the helper text under the input.
@@ -31,6 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $signup_url     = isset( $signup_url ) ? (string) $signup_url : '';
 $playground_url = isset( $playground_url ) ? (string) $playground_url : '';
 $samples        = isset( $samples ) && is_array( $samples ) ? $samples : array();
+$shortcodes_url = isset( $shortcodes_url ) ? (string) $shortcodes_url : '';
 $key_input      = isset( $key_input ) ? (string) $key_input : '';
 $key_help       = isset( $key_help ) ? (string) $key_help : '';
 $key_disabled   = ! empty( $key_disabled );
@@ -130,6 +132,12 @@ $option_group   = isset( $option_group ) ? (string) $option_group : 'roxyapi';
 					</li>
 				<?php endforeach; ?>
 			</ul>
+			<?php if ( '' !== $shortcodes_url ) : ?>
+				<a class="roxyapi-cta roxyapi-cta--secondary" href="<?php echo esc_url( $shortcodes_url ); ?>">
+					<?php echo esc_html__( 'Browse all shortcodes', 'roxyapi' ); ?>
+					<span class="roxyapi-cta-arrow" aria-hidden="true">&rarr;</span>
+				</a>
+			<?php endif; ?>
 		</section>
 	</div>
 </form>

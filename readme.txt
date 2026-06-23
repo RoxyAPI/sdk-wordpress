@@ -14,12 +14,6 @@ Astrology, horoscopes, tarot, numerology, human design, and Vedic birth charts. 
 
 Add astrology, daily horoscopes, tarot card pulls, numerology readings, human design charts, and Vedic birth charts to any WordPress site. One plugin covers 12 spiritual data domains: Western and Vedic astrology, daily / weekly / monthly horoscopes, numerology, tarot, human design, forecasts, biorhythm, I Ching, crystals, dream interpretation, and angel numbers. Astronomy is cross-checked against the NASA JPL Horizons ephemeris. One API key unlocks 150+ endpoints, with readings available in 8 languages.
 
-**About the service this plugin connects to**
-
-This plugin is a thin WordPress interface to RoxyAPI, a third-party paid service operated at https://roxyapi.com. The astrology, tarot, numerology, and other calculations all run on RoxyAPI servers. **A small free daily allowance lets the plugin display readings without an account; a RoxyAPI API key is required for production use and removes the daily limit.** Pricing and plan tiers are listed at https://roxyapi.com/pricing in your local currency. Terms of Service: https://roxyapi.com/policy/terms. Privacy Policy: https://roxyapi.com/policy/privacy.
-
-The plugin itself is GPLv2 or later and the source is available at https://github.com/RoxyAPI/sdk-wordpress.
-
 **Features:**
 
 * Western birth charts, synastry, and compatibility scoring, plus transits and moon phases
@@ -37,6 +31,12 @@ The plugin itself is GPLv2 or later and the source is available at https://githu
 * Parent Astrology Section wrapper block that shares the zodiac sign across all child blocks via block context
 * Server side caching with per endpoint TTL to keep your API quota low
 * API key stays server side. Never exposed to the browser.
+
+**About the service this plugin connects to**
+
+This plugin is a thin WordPress interface to RoxyAPI, a third-party paid service operated at https://roxyapi.com. The astrology, tarot, numerology, and other calculations all run on RoxyAPI servers. **A small free daily allowance lets the plugin display readings without an account; a RoxyAPI API key is required for production use and removes the daily limit.** Pricing and plan tiers are listed at https://roxyapi.com/pricing in your local currency. Terms of Service: https://roxyapi.com/policy/terms. Privacy Policy: https://roxyapi.com/policy/privacy.
+
+The plugin itself is GPLv2 or later and the source is available at https://github.com/RoxyAPI/sdk-wordpress.
 
 == Shortcode examples ==
 
@@ -191,6 +191,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.5.1 =
+* Added a Browse all shortcodes button on the settings screen, so you can jump straight to the full shortcode library in one click.
+
 = 1.5.0 =
 * Five more Western readings: asteroids, Black Moon Lilith, secondary progressions, solar arc directions, and annual profections.
 * The new location and predictive readings now render as rich interactive charts and tables instead of plain cards: astrocartography map, local space compass, relocation wheel, position tables for asteroids, Lilith, progressions, solar arc, and the Arabic lots, fixed star conjunctions, and the annual profection card.
@@ -273,6 +276,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.5.1 =
+A Browse all shortcodes button on the settings screen for one-click access to the full library.
 
 = 1.5.0 =
 Five more Western readings and rich interactive charts for the location and predictive readings.
