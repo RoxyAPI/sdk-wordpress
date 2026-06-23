@@ -590,6 +590,91 @@ class Client {
 	}
 
 	/**
+	 * Asteroid goddesses calculator - Ceres, Pallas, Juno, and Vesta natal positions
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function generateAsteroids( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'astrology/asteroids',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/asteroids', $body );
+			}
+		);
+	}
+
+	/**
+	 * Black Moon Lilith calculator - mean and true lunar apogee in the natal chart
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function generateLilith( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'astrology/lilith',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/lilith', $body );
+			}
+		);
+	}
+
+	/**
+	 * Secondary progressions calculator - progressed chart, progressed Sun and Moon
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function generateProgressions( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'astrology/progressions',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/progressions', $body );
+			}
+		);
+	}
+
+	/**
+	 * Solar arc directions calculator - directed chart at one degree per year
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function generateSolarArc( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'astrology/solar-arc',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/solar-arc', $body );
+			}
+		);
+	}
+
+	/**
+	 * Annual profections calculator - lord of the year and yearly time lord by age
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function generateProfections( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'astrology/profections',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/profections', $body );
+			}
+		);
+	}
+
+	/**
 	 * Get birth chart (D1 Rashi chart) - Kundli Calculator API
 	 *
 	 * @param array $body Request body.

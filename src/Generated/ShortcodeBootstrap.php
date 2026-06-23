@@ -44,6 +44,11 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\GenerateLocalSpace::register();
 		\RoxyAPI\Generated\Shortcodes\GenerateFixedStars::register();
 		\RoxyAPI\Generated\Shortcodes\CalculateArabicLots::register();
+		\RoxyAPI\Generated\Shortcodes\GenerateAsteroids::register();
+		\RoxyAPI\Generated\Shortcodes\GenerateLilith::register();
+		\RoxyAPI\Generated\Shortcodes\GenerateProgressions::register();
+		\RoxyAPI\Generated\Shortcodes\GenerateSolarArc::register();
+		\RoxyAPI\Generated\Shortcodes\GenerateProfections::register();
 		\RoxyAPI\Generated\Shortcodes\GenerateNavamsa::register();
 		\RoxyAPI\Generated\Shortcodes\GenerateDivisionalChart::register();
 		\RoxyAPI\Generated\Shortcodes\CalculateGunMilan::register();
