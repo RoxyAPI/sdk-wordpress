@@ -12,7 +12,7 @@ Astrology, horoscopes, tarot, numerology, human design, and Vedic birth charts. 
 
 == Description ==
 
-Add astrology, daily horoscopes, tarot card pulls, numerology readings, human design charts, and Vedic birth charts to any WordPress site. One plugin covers 12 spiritual data domains: Western and Vedic astrology, daily / weekly / monthly horoscopes, numerology, tarot, human design, forecasts, biorhythm, I Ching, crystals, dream interpretation, and angel numbers. Astronomy is cross-checked against the NASA JPL Horizons ephemeris. One API key unlocks 150+ endpoints, with readings available in 8 languages.
+Add astrology, daily horoscopes, tarot card pulls, numerology readings, human design charts, and Vedic birth charts to any WordPress site. One plugin covers 12+ spiritual data domains: Western and Vedic astrology, daily / weekly / monthly horoscopes, numerology, tarot, human design, forecasts, biorhythm, I Ching, crystals, dream interpretation, and angel numbers. Astronomy is cross-checked against the NASA JPL Horizons ephemeris. One API key unlocks 160+ endpoints, with readings available in 8 languages.
 
 **Features:**
 
