@@ -2663,6 +2663,12 @@ const ajv = new Ajv( {
 	// when the root schema is the spec itself.
 } );
 addFormats( ajv );
+// The API uses `format: time` for local wall-clock birth times (HH:MM:SS, no
+// zone; the offset is a separate `timezone` field). ajv-formats follows RFC3339
+// strict full-time and rejects any time without a zone, so every birth-time
+// example would fail validation. Override with a local-time matcher (seconds
+// optional) that still rejects out-of-range values like 25:00:00.
+ajv.addFormat( 'time', /^([01]\d|2[0-3]):[0-5]\d(:[0-5]\d)?$/ );
 
 let validateFailures = 0;
 for ( const op of operations ) {
