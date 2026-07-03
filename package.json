@@ -52,8 +52,8 @@
 	},
 	"devDependencies": {
 		"@wordpress/env": "11.4.0",
-		"@wordpress/scripts": "^32.4.0",
-		"@wordpress/server-side-render": "^6.24.0",
+		"@wordpress/scripts": "^32.5.0",
+		"@wordpress/server-side-render": "^6.25.0",
 		"ajv": "^8.20.0",
 		"ajv-formats": "^3.0.1",
 		"lefthook": "^2.1.9"
