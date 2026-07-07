@@ -7,8 +7,6 @@
 # RoxyAPI — Astrology, Vedic, Tarot, Numerology
 
 [![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/roxyapi.svg)](https://wordpress.org/plugins/roxyapi/)
-[![WordPress Plugin Active Installs](https://img.shields.io/wordpress/plugin/installs/roxyapi.svg)](https://wordpress.org/plugins/roxyapi/)
-[![WordPress Plugin Rating](https://img.shields.io/wordpress/plugin/rating/roxyapi.svg)](https://wordpress.org/plugins/roxyapi/)
 [![WordPress Tested](https://img.shields.io/wordpress/plugin/tested/roxyapi.svg)](https://wordpress.org/plugins/roxyapi/)
 [![License](https://img.shields.io/badge/license-GPL--2.0--or--later-blue)](LICENSE)
 
