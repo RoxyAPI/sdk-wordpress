@@ -101,7 +101,12 @@ pre-push:
             priority: 4
 
         # PHPUnit. Requires wp-env running locally. Run `npx wp-env start` once per session.
+        # NODE_OPTIONS: Node 24 Happy Eyeballs can time out reaching api.wordpress.org
+        # over IPv6 on some hosts, failing wp-env with ETIMEDOUT before the check runs.
+        # Force IPv4, same as bin/seed-qa-pages.sh.
         phpunit:
+            env:
+                NODE_OPTIONS: --dns-result-order=ipv4first --no-network-family-autoselection
             run: |
                 docker ps --format '{{.Names}}' | grep -q tests-wordpress || { echo "✗ wp-env tests env not running. Run: npx wp-env start"; exit 1; }
                 npx wp-env run tests-cli --env-cwd="wp-content/plugins/$(basename "$PWD")" vendor/bin/phpunit
@@ -109,6 +114,8 @@ pre-push:
 
         # Plugin Check at WP.org submission severity. Requires wp-env running.
         plugin-check:
+            env:
+                NODE_OPTIONS: --dns-result-order=ipv4first --no-network-family-autoselection
             run: |
                 docker ps --format '{{.Names}}' | grep -q '\-cli$\|wordpress-1$' || { echo "✗ wp-env not running. Run: npx wp-env start"; exit 1; }
                 npx wp-env run cli wp plugin check "$(basename "$PWD")" --severity=5
