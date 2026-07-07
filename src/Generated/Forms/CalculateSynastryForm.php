@@ -65,7 +65,7 @@ class CalculateSynastryForm {
 						'name' => 'timezone',
 						'label' => 'Timezone',
 						'required' => true,
-						'help' => 'Timezone: decimal hours from UTC (e.g',
+						'help' => 'Select the timezone of the location.',
 						'type' => 'timezone',
 					),
 					array(
@@ -119,7 +119,7 @@ class CalculateSynastryForm {
 						'name' => 'timezone',
 						'label' => 'Timezone',
 						'required' => true,
-						'help' => 'Timezone: decimal hours from UTC (e.g',
+						'help' => 'Select the timezone of the location.',
 						'type' => 'timezone',
 					),
 					array(

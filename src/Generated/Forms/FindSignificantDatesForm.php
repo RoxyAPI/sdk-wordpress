@@ -45,7 +45,7 @@ class FindSignificantDatesForm {
 						'name' => 'timezone',
 						'label' => 'Timezone',
 						'required' => true,
-						'help' => 'Decimal hours (e.g',
+						'help' => 'Select the timezone of the location.',
 						'type' => 'timezone',
 					),
 					array(

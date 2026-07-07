@@ -138,12 +138,12 @@ The settings registry is filterable. Sites that need an extra option can hook `r
 
 Every successful response is cached in a WordPress transient with a per endpoint TTL:
 
-| Endpoint family                                          | TTL                                  |
-| -------------------------------------------------------- | ------------------------------------ |
-| Daily horoscope                                          | 1 hour                               |
-| Numerology, natal chart, dreams, crystals, angel numbers | 1 month (deterministic from input)   |
-| Biorhythm                                                | 1 day                                |
-| Tarot, I Ching                                           | not cached (randomness is the value) |
+| Endpoint family                                                                      | TTL                                  |
+| ------------------------------------------------------------------------------------ | ------------------------------------ |
+| Daily horoscope, forecast digest                                                     | 1 hour                               |
+| Numerology, natal chart, houses, composite, navamsa, dreams, crystals, angel numbers | 1 month (deterministic from input)   |
+| Biorhythm, solar and lunar returns, significant dates, timelines, forecast transits  | 1 day                                |
+| Tarot, I Ching                                                                       | not cached (randomness is the value) |
 
 Cached responses do not consume RoxyAPI quota. Object cache backends (Redis, Memcached) are picked up automatically.
 

@@ -65,7 +65,7 @@ class CalculateTransitAspectsForm {
 						'name' => 'timezone',
 						'label' => 'Timezone',
 						'required' => true,
-						'help' => 'Timezone: decimal hours from UTC (e.g',
+						'help' => 'Select the timezone of the location.',
 						'type' => 'timezone',
 					),
 					),

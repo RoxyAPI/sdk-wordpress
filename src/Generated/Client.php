@@ -262,7 +262,7 @@ class Client {
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/houses',
 			$body,
-			0,
+			2592000,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'astrology/houses', $body );
 			}
@@ -347,7 +347,7 @@ class Client {
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/solar-return',
 			$body,
-			0,
+			86400,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'astrology/solar-return', $body );
 			}
@@ -364,7 +364,7 @@ class Client {
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/lunar-return',
 			$body,
-			0,
+			86400,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'astrology/lunar-return', $body );
 			}
@@ -381,7 +381,7 @@ class Client {
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/composite-chart',
 			$body,
-			0,
+			2592000,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'astrology/composite-chart', $body );
 			}
@@ -497,7 +497,7 @@ class Client {
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/planetary-returns',
 			$body,
-			0,
+			86400,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'astrology/planetary-returns', $body );
 			}
@@ -701,7 +701,7 @@ class Client {
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/navamsa',
 			$body,
-			0,
+			2592000,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'vedic-astrology/navamsa', $body );
 			}
@@ -2252,7 +2252,7 @@ class Client {
 		return \RoxyAPI\Api\Cache::remember(
 			'forecast/timeline',
 			$body,
-			0,
+			86400,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'forecast/timeline', $body );
 			}
@@ -2269,7 +2269,7 @@ class Client {
 		return \RoxyAPI\Api\Cache::remember(
 			'forecast/transits',
 			$body,
-			0,
+			86400,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'forecast/transits', $body );
 			}
@@ -2286,7 +2286,7 @@ class Client {
 		return \RoxyAPI\Api\Cache::remember(
 			'forecast/significant-dates',
 			$body,
-			0,
+			86400,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'forecast/significant-dates', $body );
 			}
@@ -2303,7 +2303,7 @@ class Client {
 		return \RoxyAPI\Api\Cache::remember(
 			'forecast/digest',
 			$body,
-			0,
+			3600,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'forecast/digest', $body );
 			}
@@ -2320,7 +2320,7 @@ class Client {
 		return \RoxyAPI\Api\Cache::remember(
 			'forecast/solar-return',
 			$body,
-			0,
+			86400,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'forecast/solar-return', $body );
 			}
@@ -2354,7 +2354,7 @@ class Client {
 		return \RoxyAPI\Api\Cache::remember(
 			'biorhythm/forecast',
 			$body,
-			0,
+			86400,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'biorhythm/forecast', $body );
 			}

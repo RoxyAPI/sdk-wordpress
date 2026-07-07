@@ -460,6 +460,19 @@ function humanLabel( name ) {
 }
 
 /**
+ * First sentence of a spec description, without splitting on abbreviations
+ * like "e.g. 5.5" (which previously truncated timezone help to "Decimal
+ * hours (e.g").
+ * @param text
+ */
+function firstSentence( text ) {
+	const masked = text.replace( /\b(e\.g|i\.e|vs|etc|approx)\./gi, ( m ) =>
+		m.replaceAll( '.', '\u0000' )
+	);
+	return masked.split( /\.\s/ )[ 0 ].replaceAll( '\u0000', '.' );
+}
+
+/**
  * Map an OpenAPI property schema + name to a FormRenderer field spec.
  * Heuristics catch lat/lon/timezone by name when the spec lacks min/max.
  * @param name
@@ -470,7 +483,13 @@ function buildFormFieldSpec( name, schema, required ) {
 	const lower = name.toLowerCase();
 	const field = { name, label: humanLabel( name ), required };
 	if ( schema.description ) {
-		field.help = String( schema.description ).split( /\.\s/ )[ 0 ];
+		field.help = firstSentence( String( schema.description ) );
+	}
+	// The timezone field renders as a wp_timezone_choice() dropdown, so the
+	// spec's "decimal hours OR IANA name" help would mislead; use copy that
+	// matches the actual control.
+	if ( lower === 'tz' || lower === 'timezone' ) {
+		field.help = 'Select the timezone of the location.';
 	}
 
 	if ( schema.type === 'string' && schema.format === 'date' ) {

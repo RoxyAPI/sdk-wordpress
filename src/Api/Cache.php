@@ -38,7 +38,9 @@ class Cache {
 			case 'fresh':
 				return (int) max( 60, $ttl / 4 );
 			case 'quota_saver':
-				return (int) min( DAY_IN_SECONDS, $ttl * 24 );
+				// Cap the 24x boost at one day, but never below the base TTL:
+				// long-lived entries (natal chart 30d) must not shrink.
+				return (int) max( $ttl, min( DAY_IN_SECONDS, $ttl * 24 ) );
 			case 'balanced':
 			default:
 				return $ttl;

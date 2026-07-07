@@ -191,6 +191,13 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.5.2 =
+* Detailed readings such as solar returns, lunar returns, and the monthly ephemeris now render as clean readable tables: rounded numbers, formatted dates, Yes and No flags, clickable links, and full width sections. Wide tables scroll sideways instead of squeezing.
+* Return charts, significant dates, forecast timelines, and other date window readings are now cached, so repeat page views load faster and spend less quota.
+* Fixed the Quota saver cache preset shortening the cache for long lived readings such as natal charts.
+* Fixed a truncated help note under the timezone field in visitor forms.
+* Refreshed the bundled component library.
+
 = 1.5.1 =
 * Added a Browse all shortcodes button on the settings screen, so you can jump straight to the full shortcode library in one click.
 
@@ -276,6 +283,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.5.2 =
+Cleaner tables for detailed readings, caching for return charts and forecasts, and a Quota saver preset fix.
 
 = 1.5.1 =
 A Browse all shortcodes button on the settings screen for one-click access to the full library.
