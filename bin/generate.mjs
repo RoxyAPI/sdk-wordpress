@@ -85,15 +85,40 @@ function applyExampleOverride( operationId, fieldName, specExample ) {
 }
 const heroSet = new Set( heroList );
 
-console.log( `[generate] fetching ${ OPENAPI_URL }` );
-const response = await fetch( OPENAPI_URL );
-if ( ! response.ok ) {
-	console.error(
-		`[generate] fetch failed: ${ response.status } ${ response.statusText }`
-	);
-	process.exit( 1 );
+/**
+ * Retry with exponential backoff: a transient upstream error (e.g. a CDN 520)
+ * must not fail the release or drift-check run.
+ * @param {string} url
+ * @param {number} attempts
+ */
+async function fetchSpec( url, attempts = 5 ) {
+	for ( let attempt = 1; ; attempt++ ) {
+		try {
+			const res = await fetch( url );
+			if ( ! res.ok ) {
+				throw new Error( `HTTP ${ res.status } ${ res.statusText }` );
+			}
+			return await res.json();
+		} catch ( err ) {
+			if ( attempt === attempts ) {
+				console.error(
+					`[generate] fetch failed after ${ attempts } attempts: ${ err.message }`
+				);
+				process.exit( 1 );
+			}
+			const delay = 2 ** attempt;
+			console.warn(
+				`[generate] fetch attempt ${ attempt }/${ attempts } failed (${ err.message }), retrying in ${ delay }s`
+			);
+			await new Promise( ( resolve ) =>
+				setTimeout( resolve, delay * 1000 )
+			);
+		}
+	}
 }
-const spec = await response.json();
+
+console.log( `[generate] fetching ${ OPENAPI_URL }` );
+const spec = await fetchSpec( OPENAPI_URL );
 console.log(
 	`[generate] loaded spec with ${
 		Object.keys( spec.paths || {} ).length
