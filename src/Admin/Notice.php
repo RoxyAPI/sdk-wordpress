@@ -29,9 +29,17 @@ class Notice {
 	 * @return void
 	 */
 	public static function register(): void {
-		add_action( 'admin_notices', array( self::class, 'maybe_show' ) );
+		// Onboarding "installed but not yet connected" notice is off by default:
+		// keyless installs work out of the box on the free daily allowance, so
+		// the only admin notice we show is the free-tier-exhausted one below.
+		// Restore it (with its dismiss script) via the
+		// roxyapi_show_onboarding_notice filter. handle_dismiss stays registered
+		// regardless, so dismissal keeps working whenever the notice is on.
+		if ( apply_filters( 'roxyapi_show_onboarding_notice', false ) ) {
+			add_action( 'admin_notices', array( self::class, 'maybe_show' ) );
+			add_action( 'admin_enqueue_scripts', array( self::class, 'maybe_enqueue_dismiss' ) );
+		}
 		add_action( 'admin_notices', array( self::class, 'maybe_show_exhausted' ) );
-		add_action( 'admin_enqueue_scripts', array( self::class, 'maybe_enqueue_dismiss' ) );
 		add_action( 'wp_ajax_roxyapi_dismiss_notice', array( self::class, 'handle_dismiss' ) );
 	}
 
@@ -177,13 +185,13 @@ class Notice {
 
 		$settings_url = admin_url( 'admin.php?page=' . SettingsPage::PAGE_SLUG );
 		$message      = sprintf(
-			'%s <a href="%s">%s</a>',
+			'%s <a href="%s">%s</a>.',
 			esc_html__(
-				'Your RoxyAPI plugin reached its free daily allowance. Add a paid API key in the RoxyAPI menu to keep readings live.',
+				'RoxyAPI has used up its free daily allowance. It resets each day, so readings return on their own. To remove the daily limit and keep every reading live now,',
 				'roxyapi'
 			),
 			esc_url( $settings_url ),
-			esc_html__( 'Add key', 'roxyapi' )
+			esc_html__( 'add your API key', 'roxyapi' )
 		);
 
 		if ( function_exists( 'wp_admin_notice' ) ) {

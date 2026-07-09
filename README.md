@@ -1,10 +1,10 @@
 <p align="center">
   <a href="https://roxyapi.com">
-    <img src="https://raw.githubusercontent.com/RoxyAPI/sdk-wordpress/main/assets/hero.png" alt="RoxyAPI — Astrology, Vedic, Tarot, Numerology. Shortcodes and Gutenberg blocks for WordPress. One API key, server side rendering." width="100%">
+    <img src="https://raw.githubusercontent.com/RoxyAPI/sdk-wordpress/main/assets/hero.png" alt="RoxyAPI: Astrology, Vedic, Tarot, Numerology. Shortcodes and Gutenberg blocks for WordPress. One API key, server side rendering." width="100%">
   </a>
 </p>
 
-# RoxyAPI — Astrology, Vedic, Tarot, Numerology
+# RoxyAPI: Astrology, Vedic, Tarot, Numerology
 
 [![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/roxyapi.svg)](https://wordpress.org/plugins/roxyapi/)
 [![WordPress Tested](https://img.shields.io/wordpress/plugin/tested/roxyapi.svg)](https://wordpress.org/plugins/roxyapi/)

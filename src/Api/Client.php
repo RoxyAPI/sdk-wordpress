@@ -62,10 +62,14 @@ class Client {
 		$payload = self::maybe_inject_language( $payload );
 
 		// When no key is configured, omit X-API-Key entirely (do not send an
-		// empty string). The RoxyAPI free-tier sandbox grants 5 calls/day per
-		// visitor IP to requests that carry our X-SDK-Client header AND no
-		// X-API-Key. Sending the header with an empty value would defeat that
-		// detection and surface a 401 instead of a friendly demo response.
+		// empty string). The API grants a keyless free-tier allowance to
+		// requests that carry our X-SDK-Client header AND no X-API-Key, counted
+		// per client IP per day on the server (the API is the source of truth
+		// for the limit). Because the plugin fetches server-side, that daily
+		// pool is shared across the whole site behind one server IP. When it is
+		// used up the API returns 429 with code "free_tier_exhausted", which
+		// error_from_response() maps to a friendly notice. Sending the header
+		// with an empty value would defeat the detection and surface a 401.
 		$headers = array(
 			'X-SDK-Client' => 'roxy-sdk-wordpress/' . ROXYAPI_VERSION,
 			'X-Site-URL'   => home_url( '/' ),

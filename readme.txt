@@ -8,11 +8,17 @@ Stable tag: 1.5.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Astrology, horoscopes, tarot, numerology, human design, and Vedic birth charts. Blocks and shortcodes for WordPress. Powered by RoxyAPI.
+Astrology, horoscopes, natal charts, tarot, and numerology for WordPress. Blocks and shortcodes that work free the moment you activate.
 
 == Description ==
 
-Add astrology, daily horoscopes, tarot card pulls, numerology readings, human design charts, and Vedic birth charts to any WordPress site. One plugin covers 12+ spiritual data domains: Western and Vedic astrology, daily / weekly / monthly horoscopes, numerology, tarot, human design, forecasts, biorhythm, I Ching, crystals, dream interpretation, and angel numbers. Astronomy is cross-checked against the NASA JPL Horizons ephemeris. One API key unlocks 160+ endpoints, with readings available in 8 languages.
+Launch a complete astrology, horoscope, or tarot experience on WordPress this weekend, not this quarter. Drop a block or shortcode on any page and it renders a real reading, server-side, the moment you activate the plugin. No account, no setup, no calculation code to write. Start free, then add an API key when you go live.
+
+One plugin covers 12+ spiritual data domains under a single key: Western astrology (natal charts, daily, weekly, and monthly horoscopes, synastry, compatibility, transits, and moon phases), Vedic astrology (kundli, KP charts, panchang, Vimshottari dasha, divisional charts, nakshatras, and yogas), numerology, tarot, human design, forecasts, biorhythm, I Ching, crystals, dream interpretation, and angel numbers. Every chart is calculated by Roxy Ephemeris and verified against NASA JPL Horizons, and readings are available in 8 languages. One API key unlocks 160+ endpoints.
+
+**Free to start. Add a key when you go live.**
+
+Every reading works the moment you activate the plugin, with no account. A free daily allowance, shared across your site, covers casual traffic so you can build and preview complete pages at no cost. When you are ready for production, add a RoxyAPI API key and the daily limit is removed. There is no separate paid plugin and no locked reading types: the same blocks and shortcodes cover every domain whether or not a key is set. A key simply lifts the daily cap, covers production traffic, and keeps all 12+ domains live under one key. Pick a plan at https://roxyapi.com/pricing.
 
 **Features:**
 
@@ -34,7 +40,7 @@ Add astrology, daily horoscopes, tarot card pulls, numerology readings, human de
 
 **About the service this plugin connects to**
 
-This plugin is a thin WordPress interface to RoxyAPI, a third-party paid service operated at https://roxyapi.com. The astrology, tarot, numerology, and other calculations all run on RoxyAPI servers. **A small free daily allowance lets the plugin display readings without an account; a RoxyAPI API key is required for production use and removes the daily limit.** Pricing and plan tiers are listed at https://roxyapi.com/pricing in your local currency. Terms of Service: https://roxyapi.com/policy/terms. Privacy Policy: https://roxyapi.com/policy/privacy.
+This plugin is a thin WordPress interface to RoxyAPI, a third-party paid service operated at https://roxyapi.com. The astrology, tarot, numerology, and other calculations all run on RoxyAPI servers. **A small free daily allowance lets the plugin display readings without an account; a RoxyAPI API key is required for production use and removes the daily limit.** Pricing and plan tiers are listed at https://roxyapi.com/pricing. Terms of Service: https://roxyapi.com/policy/terms. Privacy Policy: https://roxyapi.com/policy/privacy.
 
 The plugin itself is GPLv2 or later and the source is available at https://github.com/RoxyAPI/sdk-wordpress.
 
@@ -112,7 +118,7 @@ Without these, the plugin falls back to your WordPress LOGGED_IN_KEY and LOGGED_
 
 = Do I need a RoxyAPI account? =
 
-Not to get started. A limited number of free readings per day are allowed right after install, with no account, so you can try the plugin. The allowance is counted per site and resets each day. For production use, add an API key from a RoxyAPI plan: one key covers every reading and removes the daily limit. Pick a plan at https://roxyapi.com/pricing. Pricing is shown in your local currency on the pricing page.
+Not to get started. A limited number of free readings per day are allowed right after install, with no account, so you can try the plugin. The allowance is counted per site and resets each day. For production use, add an API key from a RoxyAPI plan: one key covers every reading and removes the daily limit. Pick a plan at https://roxyapi.com/pricing.
 
 = What readings can I add to my site? =
 
@@ -190,6 +196,10 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 8. Connect in seconds. Free to start, with copy-paste shortcodes and a guided quick start.
 
 == Changelog ==
+
+= 1.5.3 =
+* Quieter first run: the one-time "installed but not yet connected" setup notice no longer shows. The plugin already renders readings out of the box on the free daily allowance, so there is nothing to connect before you see it working.
+* Friendlier message when the free daily allowance is used up for the day. It now reassures you that the allowance resets each day and readings return on their own, and points you to add an API key to remove the daily limit.
 
 = 1.5.2 =
 * Detailed readings such as solar returns, lunar returns, and the monthly ephemeris now render as clean readable tables: rounded numbers, formatted dates, Yes and No flags, clickable links, and full width sections. Wide tables scroll sideways instead of squeezing.
@@ -283,6 +293,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.5.3 =
+Quieter first run and a clearer, more reassuring message when the free daily allowance is used up for the day.
 
 = 1.5.2 =
 Cleaner tables for detailed readings, caching for return charts and forecasts, and a Quota saver preset fix.
