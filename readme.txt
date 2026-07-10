@@ -8,30 +8,32 @@ Stable tag: 1.5.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Astrology, horoscopes, natal charts, tarot, and numerology for WordPress. Blocks and shortcodes that work free the moment you activate.
+20+ astrology, horoscope, tarot, and numerology readings in one plugin. Free WordPress blocks and shortcodes, no account to start.
 
 == Description ==
 
 Launch a complete astrology, horoscope, or tarot experience on WordPress this weekend, not this quarter. Drop a block or shortcode on any page and it renders a real reading, server-side, the moment you activate the plugin. No account, no setup, no calculation code to write. Start free, then add an API key when you go live.
 
-One plugin covers 12+ spiritual data domains under a single key: Western astrology (natal charts, daily, weekly, and monthly horoscopes, synastry, compatibility, transits, and moon phases), Vedic astrology (kundli, KP charts, panchang, Vimshottari dasha, divisional charts, nakshatras, and yogas), numerology, tarot, human design, forecasts, biorhythm, I Ching, crystals, dream interpretation, and angel numbers. Every chart is calculated by Roxy Ephemeris and verified against NASA JPL Horizons, and readings are available in 8 languages. One API key unlocks 160+ endpoints.
+**One API key. 12+ domains. 160+ endpoints.** Most astrology plugins do one thing. RoxyAPI covers the whole stack, so you build the entire experience without stitching services together:
+
+* **Western astrology:** natal and birth charts, daily, weekly, and monthly horoscopes, synastry, compatibility, transits, and moon phases
+* **Vedic astrology:** kundli, KP charts, panchang, Vimshottari dasha, divisional charts, nakshatras, and yogas
+* **Numerology:** Life Path, Expression, Soul Urge, and Personality numbers
+* **Tarot:** single card, three card, Celtic Cross, and custom spreads
+* **Human design:** full bodygraph with type, authority, profile, centers, channels, and gates
+* **Forecasts:** cross-domain timelines, transit forecasts, solar returns, and significant dates
+* **Plus:** biorhythm, I Ching, crystals, dream interpretation, and angel numbers
+
+Every chart is calculated by Roxy Ephemeris and verified against NASA JPL Horizons, with readings in 8 languages. One key, one plan, no per-domain fees.
 
 **Free to start. Add a key when you go live.**
 
 Every reading works the moment you activate the plugin, with no account. A free daily allowance, shared across your site, covers casual traffic so you can build and preview complete pages at no cost. When you are ready for production, add a RoxyAPI API key and the daily limit is removed. There is no separate paid plugin and no locked reading types: the same blocks and shortcodes cover every domain whether or not a key is set. A key simply lifts the daily cap, covers production traffic, and keeps all 12+ domains live under one key. Pick a plan at https://roxyapi.com/pricing.
 
-**Features:**
+**Also built in:**
 
-* Western birth charts, synastry, and compatibility scoring, plus transits and moon phases
-* Daily, weekly, and monthly horoscope blocks and shortcodes for all 12 zodiac signs
-* Vedic astrology: kundli, KP charts, panchang, Vimshottari dasha, divisional charts, nakshatras, and yoga detection
-* Human design: full bodygraph with type, authority, profile, centers, channels, and gates
-* Forecasts: cross-domain timelines, transit forecasts, solar returns, and significant dates
-* Single card and three card tarot pulls, plus Celtic Cross and custom spreads
-* Pythagorean numerology with Life Path, Expression, Soul Urge, and Personality numbers
-* I Ching hexagram casting with full interpretation
-* Dream symbol dictionary with 2,000+ entries, plus angel number meanings and crystal reference data
-* Biorhythm cycles: physical, emotional, intellectual, and intuitive
+* Gutenberg blocks and shortcodes for every reading, plus a visitor form mode for interactive inputs like birth details
+* Pythagorean numerology, full 78 card tarot, and a 2,000+ entry dream symbol dictionary
 * Interactive SVG charts and cards that follow your light or dark theme automatically
 * Readings in 8 languages (English, German, Hindi, Spanish, Turkish, Portuguese, French, Russian) via one setting
 * Parent Astrology Section wrapper block that shares the zodiac sign across all child blocks via block context
@@ -197,6 +199,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.5.4 =
+* Clearer plugin listing: the description now leads with the full breadth (12+ domains and 160+ endpoints under one API key) as a scannable list, so you can see every reading type you can add at a glance.
+
 = 1.5.3 =
 * Quieter first run: the one-time "installed but not yet connected" setup notice no longer shows. The plugin already renders readings out of the box on the free daily allowance, so there is nothing to connect before you see it working.
 * Friendlier message when the free daily allowance is used up for the day. It now reassures you that the allowance resets each day and readings return on their own, and points you to add an API key to remove the daily limit.
@@ -293,6 +298,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.5.4 =
+Listing and description improvements only. No functional or code changes.
 
 = 1.5.3 =
 Quieter first run and a clearer, more reassuring message when the free daily allowance is used up for the day.
