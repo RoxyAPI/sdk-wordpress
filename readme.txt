@@ -199,6 +199,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.5.7 =
+* The KP chart now shows the KP number for Rahu and Ketu. Every other body in that table carried it and those two rows sat blank, even though the reading always included the value. The KP number is the 1 to 249 position a KP reader looks at first, so a blank cell dropped the part of the row that matters most.
+
 = 1.5.6 =
 * Your brand color now themes the whole reading. Set an accent in Branding and it carries through every chart, table and card, including the highlighted labels, the chart angle markers and the focus outlines. Previously those kept the default amber no matter what you picked.
 * Roomier readings. Where a reading nests a table inside a table, the inner column now gets the width it needs instead of being squeezed into a sliver, and very deep sections start folded so a long reading is scannable rather than endless.
