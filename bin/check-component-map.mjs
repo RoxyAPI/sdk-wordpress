@@ -39,13 +39,13 @@ if ( ! manifestUrl ) {
 	process.exit( 1 );
 }
 
-// Pin-consistency guard (offline, deterministic). The @roxyapi/ui version is
-// hand-copied to THREE places that drift independently: ROXYAPI_UI_VERSION in
-// roxyapi.php (cache-bust + the version fetch-ui-bundle.mjs vendors), and both
-// _meta.ui_version_pinned and the version embedded in _meta.ui_manifest_url
-// here. A mismatch makes this very check validate against the wrong build (or
-// silently against a stale manifest while the vendored bundle is newer). Fail
-// loudly so all three move together on every UI bump.
+// Pin-consistency guard (offline, deterministic). The @roxyapi/ui version lives
+// in THREE places: ROXYAPI_UI_VERSION in roxyapi.php (cache-bust + the version
+// vendored), and both _meta.ui_version_pinned and the version embedded in
+// _meta.ui_manifest_url here. fetch-ui-bundle.mjs writes all three together, so
+// they should never disagree; this catches a hand-edit that bypassed it. A
+// mismatch makes this very check validate against the wrong build, or silently
+// against a stale manifest while the vendored bundle is newer.
 const phpSource = readFileSync( path.join( root, 'roxyapi.php' ), 'utf8' );
 const phpPin = phpSource.match(
 	/const\s+ROXYAPI_UI_VERSION\s*=\s*'([^']+)'/

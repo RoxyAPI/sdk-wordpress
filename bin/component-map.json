@@ -1,8 +1,8 @@
 {
   "_meta": {
     "ui_package": "@roxyapi/ui",
-    "ui_version_pinned": "0.15.0",
-    "ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.15.0/dist/manifest.json"
+    "ui_version_pinned": "0.15.1",
+    "ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.15.1/dist/manifest.json"
   },
   "operations": {
     "generateNatalChart": [
