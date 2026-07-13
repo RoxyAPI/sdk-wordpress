@@ -35,8 +35,12 @@ class Theming {
 
 	/**
 	 * Append `data-theme="dark"` or `data-theme="light"` to the front-end
-	 * `<html>` tag when the site owner forces a mode. `auto` (default) returns
-	 * the attributes unchanged so the components follow `prefers-color-scheme`.
+	 * `<html>` tag when the site owner forces a mode. `auto` returns the
+	 * attributes unchanged so the components follow `prefers-color-scheme`.
+	 *
+	 * The schema default is `light`, not `auto`: most WordPress themes are light,
+	 * and a dark reading card dropped into a light page reads as broken. A site
+	 * owner who wants the components to follow the visitor picks `auto`.
 	 *
 	 * @param string $output The language attributes string for the `<html>` tag.
 	 * @return string

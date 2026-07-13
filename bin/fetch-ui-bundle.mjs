@@ -41,16 +41,41 @@ if ( ! match ) {
 const version = match[ 1 ];
 
 /**
+ * Strip a trailing sourcemap reference.
+ *
+ * We vendor the runtime bundle but not its .map, so leaving the annotation in
+ * makes every browser with devtools open request a file the plugin does not
+ * ship and log a 404.
+ *
+ * @param {string} body File contents.
+ * @return {string} Contents with any trailing sourcemap annotation removed.
+ */
+function stripSourcemapRef( body ) {
+	const stripped = body.replace(
+		/\n?\/\/#\s*sourceMappingURL=[^\n]*\s*$/,
+		'\n'
+	);
+	if ( stripped.includes( 'sourceMappingURL' ) ) {
+		console.error(
+			'[fetch-ui-bundle] sourcemap annotation survived the strip; refusing to write'
+		);
+		process.exit( 1 );
+	}
+	return stripped;
+}
+
+/**
  * Download a single file for the pinned version, validate it, and write it.
  *
- * @param {string}                        url      jsDelivr URL to fetch.
- * @param {string}                        outFile  Absolute destination path.
- * @param {(body: string) => string|null} validate Returns an error message if
- *                                                 the payload is not what we expect,
- *                                                 otherwise null.
+ * @param {string}                        url         jsDelivr URL to fetch.
+ * @param {string}                        outFile     Absolute destination path.
+ * @param {(body: string) => string|null} validate    Returns an error message if
+ *                                                    the payload is not what we expect,
+ *                                                    otherwise null.
+ * @param {(body: string) => string}      [transform] Applied after validation.
  * @return {Promise<void>}
  */
-async function vendor( url, outFile, validate ) {
+async function vendor( url, outFile, validate, transform = ( body ) => body ) {
 	console.log( `[fetch-ui-bundle] fetching ${ url }` );
 	const response = await fetch( url );
 	if ( ! response.ok ) {
@@ -65,9 +90,10 @@ async function vendor( url, outFile, validate ) {
 		console.error( `[fetch-ui-bundle] ${ error }; refusing to write` );
 		process.exit( 1 );
 	}
-	fs.writeFileSync( outFile, body );
+	const output = transform( body );
+	fs.writeFileSync( outFile, output );
 	console.log(
-		`[fetch-ui-bundle] wrote ${ body.length } bytes to ${ path.relative(
+		`[fetch-ui-bundle] wrote ${ output.length } bytes to ${ path.relative(
 			ROOT,
 			outFile
 		) }`
@@ -80,7 +106,8 @@ await vendor(
 	( body ) =>
 		body.includes( 'customElements' )
 			? null
-			: 'downloaded payload does not look like the UI bundle (no customElements)'
+			: 'downloaded payload does not look like the UI bundle (no customElements)',
+	stripSourcemapRef
 );
 
 await vendor(

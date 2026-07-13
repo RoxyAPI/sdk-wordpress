@@ -199,6 +199,11 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.5.6 =
+* Your brand color now themes the whole reading. Set an accent in Branding and it carries through every chart, table and card, including the highlighted labels, the chart angle markers and the focus outlines. Previously those kept the default amber no matter what you picked.
+* Roomier readings. Where a reading nests a table inside a table, the inner column now gets the width it needs instead of being squeezed into a sliver, and very deep sections start folded so a long reading is scannable rather than endless.
+* Cleaner cards. Long summary text is no longer promoted into a heading, and nested cards no longer stack borders inside borders.
+
 = 1.5.5 =
 * Cleaner reading cards. Readings no longer show internal working: the step by step arithmetic behind a number, the schema label for the reading type, and the page counters on list readings are all hidden now. They were only ever visible when JavaScript was on, so a reading could look different depending on the visitor. Affirmations and mantras render as a quoted line, long tables fold away behind their row count, and every data table now announces what it holds to a screen reader.
 * Consistent times in the muhurta readings. Hora, choghadiya and panchang each formatted their times differently, and one of them changed format depending on the visitor's region. All three now read the same way, and a chart time can no longer shift by an hour for a visitor in a daylight saving changeover.
