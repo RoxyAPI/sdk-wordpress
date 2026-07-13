@@ -199,6 +199,10 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.5.5 =
+* Cleaner reading cards. Readings no longer show internal working: the step by step arithmetic behind a number, the schema label for the reading type, and the page counters on list readings are all hidden now. They were only ever visible when JavaScript was on, so a reading could look different depending on the visitor. Affirmations and mantras render as a quoted line, long tables fold away behind their row count, and every data table now announces what it holds to a screen reader.
+* Consistent times in the muhurta readings. Hora, choghadiya and panchang each formatted their times differently, and one of them changed format depending on the visitor's region. All three now read the same way, and a chart time can no longer shift by an hour for a visitor in a daylight saving changeover.
+
 = 1.5.4 =
 * Clearer plugin listing: the description now leads with the full breadth (12+ domains and 160+ endpoints under one API key) as a scannable list, so you can see every reading type you can add at a glance.
 
