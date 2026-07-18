@@ -386,6 +386,8 @@ function extractParams( op ) {
 			in: p.in,
 			required: p.required || false,
 			type: resolvedSchema?.type || 'string',
+			enum: resolvedSchema?.enum,
+			format: resolvedSchema?.format,
 			description: p.description || '',
 			// Example for the demo defaults emitter. Falls back through both
 			// the parameter object and its resolved schema, since either may
@@ -428,11 +430,34 @@ function extractBodyFields( op ) {
 			name,
 			required: required.has( name ),
 			type: resolvedProp.type || 'string',
+			enum: resolvedProp.enum,
+			format: resolvedProp.format,
 			numericString,
 			description: resolvedProp.description || '',
 			example: resolvedProp.example,
 		};
 	} );
+}
+
+/**
+ * The flat inputs a generated block exposes: POST body fields, or GET path
+ * params (always required) plus query params. The single source both the block
+ * attributes (emitBlockJson) and the editor fields (deriveBlockFields) derive
+ * from, so a block can never have an attribute without a control or vice versa.
+ * @param op
+ */
+function blockInputs( op ) {
+	if ( op.method === 'POST' ) {
+		return extractBodyFields( op );
+	}
+	return [
+		...extractPathParams( op.path ).map( ( name ) => ( {
+			name,
+			required: true,
+			type: 'string',
+		} ) ),
+		...extractParams( op ).filter( ( p ) => p.in === 'query' ),
+	];
 }
 
 /**
@@ -1272,25 +1297,10 @@ function emitBlockJson( op ) {
 	const slug = toKebabCase( op.operationId );
 	const family = tagToFamily( op.tag );
 	const icon = tagToIcon( op.tag );
-	const pathParams = extractPathParams( op.path );
-	const isPost = op.method === 'POST';
 
 	const attributes = {};
-	if ( isPost ) {
-		const bodyFields = extractBodyFields( op );
-		for ( const f of bodyFields ) {
-			attributes[ f.name ] = { type: 'string', default: '' };
-		}
-	} else {
-		for ( const p of pathParams ) {
-			attributes[ p ] = { type: 'string', default: '' };
-		}
-		const queryParams = extractParams( op ).filter(
-			( p ) => p.in === 'query'
-		);
-		for ( const p of queryParams ) {
-			attributes[ p.name ] = { type: 'string', default: '' };
-		}
+	for ( const input of blockInputs( op ) ) {
+		attributes[ input.name ] = { type: 'string', default: '' };
 	}
 
 	const keywords = [
@@ -1325,6 +1335,7 @@ function emitBlockJson( op ) {
 				},
 				attributes,
 				render: 'file:./render.php',
+				editorScript: 'file:./index.js',
 			},
 			null,
 			'\t'
@@ -1355,7 +1366,80 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-\\RoxyAPI\\Support\\BlockOutput::render( \\RoxyAPI\\Generated\\Shortcodes\\${ className }::render( $attributes ) );
+\\RoxyAPI\\Support\\BlockOutput::render( \\RoxyAPI\\Generated\\Shortcodes\\${ className }::render( \\RoxyAPI\\Support\\BlockOutput::to_shortcode_atts( $attributes ) ) );
+`;
+}
+
+/**
+ * Derive the editor field list for a generated block from the spec inputs.
+ * Mirrors the inputs emitBlockJson turns into block attributes, so every
+ * attribute has a matching sidebar control. Control per field: select for an
+ * enum, toggle for a boolean, number for a numeric param, date/time by format
+ * or name suffix (a *datetime param stays plain text, since one date or time
+ * input cannot express it), text otherwise. name stays the camelCase block
+ * attribute key; render.php snake-cases it for the shortcode. Consumed by
+ * makeEdit in blocks/_shared/generated-edit.js.
+ * @param op
+ */
+function deriveBlockFields( op ) {
+	return blockInputs( op ).map( ( input ) => {
+		const options = Array.isArray( input.enum ) ? input.enum : null;
+		const lower = input.name.toLowerCase();
+		let control = 'text';
+		if ( options && options.length ) {
+			control = 'select';
+		} else if ( input.type === 'boolean' ) {
+			control = 'toggle';
+		} else if ( input.type === 'integer' || input.type === 'number' ) {
+			// A number-or-string param (numericString, e.g. timezone accepting
+			// both -5 and "America/New_York") stays text so the IANA name is
+			// typable; the shortcode casts a numeric string on the way out.
+			control = 'number';
+		} else if ( lower.endsWith( 'datetime' ) ) {
+			control = 'text';
+		} else if ( input.format === 'date' || lower.endsWith( 'date' ) ) {
+			control = 'date';
+		} else if ( input.format === 'time' || lower.endsWith( 'time' ) ) {
+			control = 'time';
+		}
+
+		const field = {
+			name: input.name,
+			control,
+			label: humanLabel( input.name ),
+			required: !! input.required,
+		};
+		if ( input.description ) {
+			field.help = firstSentence( input.description );
+		}
+		if ( control === 'select' ) {
+			field.options = options;
+		}
+		return field;
+	} );
+}
+
+/**
+ * Emit the editorScript (index.js) for a generated block. Thin and spec-driven:
+ * it registers the block on the client with the shared makeEdit editor
+ * (blocks/_shared/generated-edit.js) and the block's spec-derived field list, so
+ * one editor component drives every long-tail block. save returns null because
+ * the block is server-rendered by render.php.
+ * @param op
+ */
+function emitBlockIndexJs( op ) {
+	const fields = JSON.stringify( deriveBlockFields( op ), null, '\t' );
+	return `import { registerBlockType } from '@wordpress/blocks';
+import metadata from './block.json';
+import { makeEdit } from '../../_shared/generated-edit';
+
+// Generated from the OpenAPI spec by bin/generate.mjs. DO NOT EDIT.
+const fields = ${ fields };
+
+registerBlockType( metadata.name, {
+	edit: makeEdit( fields, metadata.name ),
+	save: () => null,
+} );
 `;
 }
 
@@ -2578,6 +2662,11 @@ for ( const op of generated ) {
 	await fs.writeFile(
 		path.join( blockDir, 'render.php' ),
 		emitBlockRenderPhp( op ),
+		'utf8'
+	);
+	await fs.writeFile(
+		path.join( blockDir, 'index.js' ),
+		emitBlockIndexJs( op ),
 		'utf8'
 	);
 	blocksWritten++;

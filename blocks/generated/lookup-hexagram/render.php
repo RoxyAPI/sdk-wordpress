@@ -14,4 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-\RoxyAPI\Support\BlockOutput::render( \RoxyAPI\Generated\Shortcodes\LookupHexagram::render( $attributes ) );
+\RoxyAPI\Support\BlockOutput::render( \RoxyAPI\Generated\Shortcodes\LookupHexagram::render( \RoxyAPI\Support\BlockOutput::to_shortcode_atts( $attributes ) ) );

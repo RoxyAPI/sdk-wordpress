@@ -14,4 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-\RoxyAPI\Support\BlockOutput::render( \RoxyAPI\Generated\Shortcodes\GenerateProfections::render( $attributes ) );
+\RoxyAPI\Support\BlockOutput::render( \RoxyAPI\Generated\Shortcodes\GenerateProfections::render( \RoxyAPI\Support\BlockOutput::to_shortcode_atts( $attributes ) ) );

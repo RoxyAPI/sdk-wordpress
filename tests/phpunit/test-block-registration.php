@@ -55,4 +55,13 @@ class Test_Block_Registration extends \WP_UnitTestCase {
 			'The hand-written hero horoscope block must remain registered.'
 		);
 	}
+
+	public function test_generated_long_tail_blocks_carry_an_editor_script(): void {
+		$block = \WP_Block_Type_Registry::get_instance()->get_registered( 'roxyapi/calculate-expression' );
+		$this->assertNotNull( $block, 'The generated block must be registered.' );
+		$this->assertNotEmpty(
+			$block->editor_script_handles,
+			'A generated long-tail block must ship an editorScript so its inputs are editable in the block editor, not just render read-only.'
+		);
+	}
 }

@@ -4,7 +4,7 @@ Tags: astrology, horoscope, tarot, numerology, vedic
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.6.0
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -124,7 +124,7 @@ Not to get started. A limited number of free readings per day are allowed right 
 
 = What readings can I add to my site? =
 
-One key covers 12 domains. Western astrology: natal chart, daily / weekly / monthly horoscopes, synastry, compatibility, transits, aspect patterns, and moon phases. Vedic astrology: kundli, KP chart, panchang, Vimshottari dasha, divisional charts, nakshatras, doshas (Manglik, Kaal Sarpa, Sade Sati), and classical yogas. Numerology: Life Path, Expression, Soul Urge, Personality, personal year, and compatibility. Tarot: single card, three card, Celtic Cross, and the full 78 card catalog. Human design: bodygraph, type, authority, profile, centers, channels, and gates. Forecasts: timelines, transit forecasts, solar returns, and significant dates. Plus biorhythm, I Ching hexagrams, crystal reference data, dream symbols, and angel numbers. Every reading is available as a shortcode. The chart and reading heroes plus more than 130 long-tail endpoints also ship a matching Gutenberg block. Interactive multi input readings such as two chart compatibility and nested birth forms are shortcode and visitor form mode, because the block editor cannot collect their nested input. Browse the full list inside WordPress under RoxyAPI, Shortcodes.
+One key covers 12 domains. Western astrology: natal chart, daily / weekly / monthly horoscopes, synastry, compatibility, transits, aspect patterns, and moon phases. Vedic astrology: kundli, KP chart, panchang, Vimshottari dasha, divisional charts, nakshatras, doshas (Manglik, Kaal Sarpa, Sade Sati), and classical yogas. Numerology: Life Path, Expression, Soul Urge, Personality, personal year, and compatibility. Tarot: single card, three card, Celtic Cross, and the full 78 card catalog. Human design: bodygraph, type, authority, profile, centers, channels, and gates. Forecasts: timelines, transit forecasts, solar returns, and significant dates. Plus biorhythm, I Ching hexagrams, crystal reference data, dream symbols, and angel numbers. Every reading is available as a shortcode. The chart and reading heroes plus more than 130 long-tail endpoints also ship a matching Gutenberg block, each with sidebar controls for its inputs (a date picker for dates, a dropdown for fixed choices, text and number fields for the rest) and a live preview in the editor. Interactive multi input readings such as two chart compatibility and nested birth forms are shortcode and visitor form mode, because the block editor cannot collect their nested input. Browse the full list inside WordPress under RoxyAPI, Shortcodes.
 
 = Can I show readings in another language? =
 
@@ -198,6 +198,10 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 8. Connect in seconds. Free to start, with copy-paste shortcodes and a guided quick start.
 
 == Changelog ==
+
+= 1.6.1 =
+* Every reading block now has its own editor controls. Insert any reading from the block inserter and fill in the birth date, name, zodiac sign, or other details right in the block sidebar, with a date picker for dates, a dropdown for fixed choices, and a live preview that updates as you type. Until now the long-tail reading blocks rendered but gave you no way to enter their inputs in the editor.
+* Fixed multi-word inputs on the reading blocks. Fields such as a full name, birth date, or node type now reach the reading correctly. Before, some blocks could return an empty or unavailable reading when those fields were set.
 
 = 1.6.0 =
 * Every reading is now a Gutenberg block, not only the headline ones. The full catalog across all twelve domains is available directly from the block inserter, matching the shortcodes one to one. This adds blocks for the Human Design bodygraph, type, profile, centers, channels, gates, and variables, and for Forecast transits, solar returns, and cross domain forecasts, alongside the western, vedic, tarot, numerology, and reference blocks. Until now only a small set of headline readings had blocks and everything else was shortcode only.
@@ -315,6 +319,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.6.1 =
+Every reading block now has editor controls to enter its inputs (birth date, name, and more) with a live preview, and a fix so multi-word fields reach the reading correctly.
 
 = 1.6.0 =
 Every reading is now a Gutenberg block, including Human Design and Forecast. Adds a lunar node option for Human Design and a refreshed component library.

@@ -1,0 +1,32 @@
+import { registerBlockType } from '@wordpress/blocks';
+import metadata from './block.json';
+import { makeEdit } from '../../_shared/generated-edit';
+
+// Generated from the OpenAPI spec by bin/generate.mjs. DO NOT EDIT.
+const fields = [
+	{
+		"name": "iso2",
+		"control": "text",
+		"label": "Iso 2",
+		"required": true
+	},
+	{
+		"name": "limit",
+		"control": "number",
+		"label": "Limit",
+		"required": false,
+		"help": "Maximum items to return per page"
+	},
+	{
+		"name": "offset",
+		"control": "number",
+		"label": "Offset",
+		"required": false,
+		"help": "Number of items to skip for pagination"
+	}
+];
+
+registerBlockType( metadata.name, {
+	edit: makeEdit( fields, metadata.name ),
+	save: () => null,
+} );

@@ -14,4 +14,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-\RoxyAPI\Support\BlockOutput::render( \RoxyAPI\Generated\Shortcodes\GetDailyDreamSymbol::render( $attributes ) );
+\RoxyAPI\Support\BlockOutput::render( \RoxyAPI\Generated\Shortcodes\GetDailyDreamSymbol::render( \RoxyAPI\Support\BlockOutput::to_shortcode_atts( $attributes ) ) );

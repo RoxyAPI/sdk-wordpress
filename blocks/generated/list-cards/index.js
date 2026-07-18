@@ -1,0 +1,74 @@
+import { registerBlockType } from '@wordpress/blocks';
+import metadata from './block.json';
+import { makeEdit } from '../../_shared/generated-edit';
+
+// Generated from the OpenAPI spec by bin/generate.mjs. DO NOT EDIT.
+const fields = [
+	{
+		"name": "lang",
+		"control": "select",
+		"label": "Lang",
+		"required": false,
+		"help": "Response language (ISO 639-1)",
+		"options": [
+			"en",
+			"tr",
+			"de",
+			"es",
+			"hi",
+			"pt",
+			"fr",
+			"ru"
+		]
+	},
+	{
+		"name": "limit",
+		"control": "number",
+		"label": "Limit",
+		"required": false,
+		"help": "Maximum items to return per page"
+	},
+	{
+		"name": "offset",
+		"control": "number",
+		"label": "Offset",
+		"required": false,
+		"help": "Number of items to skip for pagination"
+	},
+	{
+		"name": "arcana",
+		"control": "select",
+		"label": "Arcana",
+		"required": false,
+		"help": "Filter by arcana type",
+		"options": [
+			"major",
+			"minor"
+		]
+	},
+	{
+		"name": "suit",
+		"control": "select",
+		"label": "Suit",
+		"required": false,
+		"help": "Filter minor arcana by suit",
+		"options": [
+			"cups",
+			"wands",
+			"swords",
+			"pentacles"
+		]
+	},
+	{
+		"name": "number",
+		"control": "number",
+		"label": "Number",
+		"required": false,
+		"help": "Filter by card number"
+	}
+];
+
+registerBlockType( metadata.name, {
+	edit: makeEdit( fields, metadata.name ),
+	save: () => null,
+} );
