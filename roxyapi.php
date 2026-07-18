@@ -15,6 +15,7 @@
  * Domain Path:       /languages
  *
  * @package RoxyAPI
+ * @copyright 2026 Roxy Labs
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
