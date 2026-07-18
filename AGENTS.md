@@ -83,6 +83,8 @@ Override the form or result template from your theme by copying the matching fil
 
 In the editor, open the inserter and search for "Horoscope", "Tarot", "Numerology", "I Ching", or "Natal Chart". Each block opens a variation picker (Daily, Weekly, Monthly, Love, Career, Chinese, Celtic Cross, Three Card, Life Path, Expression, Soul Urge, and so on).
 
+Every other reading is a block too. Insert any long-tail reading and its inputs (birth date, name, zodiac sign, and so on) show as sidebar controls generated from the API spec: a date picker for dates, a dropdown for fixed choices, text and number fields for the rest, with a live preview that updates as you type.
+
 Drop one Astrology Section wrapper block on the page, set the zodiac sign in its Inspector, and every child RoxyAPI block inside inherits the sign via block context. No per-block configuration.
 
 ## Domains
@@ -186,7 +188,8 @@ Cached responses do not consume RoxyAPI quota. Object cache backends (Redis, Mem
 -   **Every reading is a block, registered from a flat scan.** `build:all` lays all blocks flat at `build/blocks/<name>/`, and the Registrar registers the whole catalog with one `glob('build/blocks/*/block.json')` plus `register_block_type` (no core function newer than the declared minimum WordPress version). Keep blocks flat (never nested under `generated/`) or the one-level glob misses the long-tail; `check:blocks` enforces this.
 -   **Variations are not separate blocks.** Each hero block ships a `variations.php` file. This keeps the inserter clean.
 -   **Hero shortcodes always win over generated ones with the same name.** The Registrar checks `shortcode_exists()` before registering generated entries.
--   **Plain text editing your generated PHP is pointless.** `npm run generate` overwrites `src/Generated/` and `blocks/generated/`. To change a hero, edit `bin/hero-config.json`; to patch a stale spec example, edit `bin/example-overrides.json`; for everything else, edit `bin/generate.mjs` and regenerate.
+-   **Long-tail block editors are generated too.** Each `blocks/generated/<name>/index.js` (editorScript) is emitted by `bin/generate.mjs` and registers the block with the ONE shared editor in `blocks/_shared/generated-edit.js`, passing spec-derived fields. Change the shared editor, not the per-block files.
+-   **Plain text editing your generated PHP or JS is pointless.** `npm run generate` overwrites `src/Generated/` and `blocks/generated/` (block.json, render.php, and index.js). To change a hero, edit `bin/hero-config.json`; to patch a stale spec example, edit `bin/example-overrides.json`; for everything else, edit `bin/generate.mjs` and regenerate.
 
 ## Links
 

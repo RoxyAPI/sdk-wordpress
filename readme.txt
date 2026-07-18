@@ -4,7 +4,7 @@ Tags: astrology, horoscope, tarot, numerology, vedic
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.6.1
+Stable tag: 1.6.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -199,6 +199,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.6.2 =
+* Reading block editors now accept decimal values in number fields such as latitude and longitude, so you can enter exact coordinates directly in the block sidebar.
+
 = 1.6.1 =
 * Every reading block now has its own editor controls. Insert any reading from the block inserter and fill in the birth date, name, zodiac sign, or other details right in the block sidebar, with a date picker for dates, a dropdown for fixed choices, and a live preview that updates as you type. Until now the long-tail reading blocks rendered but gave you no way to enter their inputs in the editor.
 * Fixed multi-word inputs on the reading blocks. Fields such as a full name, birth date, or node type now reach the reading correctly. Before, some blocks could return an empty or unavailable reading when those fields were set.
@@ -319,6 +322,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.6.2 =
+Reading block editors now accept decimal latitude and longitude values, plus refreshed listing screenshots.
 
 = 1.6.1 =
 Every reading block now has editor controls to enter its inputs (birth date, name, and more) with a live preview, and a fix so multi-word fields reach the reading correctly.

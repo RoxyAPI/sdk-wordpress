@@ -92,6 +92,8 @@ function FieldControl( { field, value, setAttributes } ) {
 		<TextControl
 			label={ field.label }
 			type={ inputType }
+			// step="any" lets number fields accept decimals (latitude, longitude, ayanamsa) instead of the default integer-only step.
+			step={ inputType === 'number' ? 'any' : undefined }
 			value={ value }
 			onChange={ onChange }
 			help={ field.help }
