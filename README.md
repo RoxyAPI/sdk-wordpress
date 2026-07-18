@@ -92,7 +92,7 @@ In the block editor, open the inserter and pick a block from the **RoxyAPI** cat
 -   **Biorhythm**
 -   **Angel Number**
 
-Beyond these, every long-tail endpoint (I Ching, dream symbols, crystals, human design, forecasts, and more) auto-generates a matching block from the OpenAPI spec, so the full catalog is in the inserter alongside the shortcodes. Only readings that need two charts or nested birth details (such as synastry or gun milan) stay shortcode and visitor-form only, because the block editor cannot collect their nested input.
+Beyond these, every long-tail endpoint (I Ching, dream symbols, crystals, human design, forecasts, and more) auto-generates a matching block from the OpenAPI spec, so the full catalog is in the inserter alongside the shortcodes. Each generated block also gets sidebar controls for its inputs, derived from the spec params (a date picker for dates, a dropdown for enums, text and number fields for the rest), with a live server-rendered preview. Only readings that need two charts or nested birth details (such as synastry or gun milan) stay shortcode and visitor-form only, because the block editor cannot collect their nested input.
 
 All blocks are built flat under `build/blocks/<name>/` and registered with a single directory scan using only `register_block_type`, so the plugin stays compatible with its declared minimum WordPress version (6.5) with no version-gated core functions.
 
