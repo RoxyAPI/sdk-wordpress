@@ -200,7 +200,8 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 == Changelog ==
 
 = 1.6.2 =
-* Reading block editors now accept decimal values in number fields such as latitude and longitude, so you can enter exact coordinates directly in the block sidebar.
+* Reading blocks now show the full interactive reading in the editor preview, the same chart or card your visitors see, instead of a plain text fallback.
+* Number fields in the reading blocks, such as latitude and longitude, now accept decimal values directly in the block sidebar.
 
 = 1.6.1 =
 * Every reading block now has its own editor controls. Insert any reading from the block inserter and fill in the birth date, name, zodiac sign, or other details right in the block sidebar, with a date picker for dates, a dropdown for fixed choices, and a live preview that updates as you type. Until now the long-tail reading blocks rendered but gave you no way to enter their inputs in the editor.
@@ -324,7 +325,7 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 == Upgrade Notice ==
 
 = 1.6.2 =
-Reading block editors now accept decimal latitude and longitude values, plus refreshed listing screenshots.
+Reading blocks now preview the full interactive reading in the editor, number fields accept decimals, plus refreshed listing screenshots.
 
 = 1.6.1 =
 Every reading block now has editor controls to enter its inputs (birth date, name, and more) with a live preview, and a fix so multi-word fields reach the reading correctly.

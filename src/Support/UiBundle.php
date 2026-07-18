@@ -40,6 +40,21 @@ class UiBundle {
 		add_action( 'wp_enqueue_scripts', array( self::class, 'register_scripts' ), 5 );
 		add_action( 'enqueue_block_assets', array( self::class, 'register_scripts' ), 5 );
 		add_action( 'admin_enqueue_scripts', array( self::class, 'register_scripts' ), 5 );
+		add_action( 'enqueue_block_assets', array( self::class, 'enqueue_in_editor' ), 10 );
+	}
+
+	/**
+	 * Eager-enqueue the bundle inside the block editor so ServerSideRender
+	 * previews hydrate.
+	 *
+	 * @remarks A block's editor preview is server-rendered through ServerSideRender, but the `<roxy-*>` custom elements only upgrade (chart, not the plain server fallback) if the bundle is present in the editor canvas iframe. `enqueue_block_assets` is the hook whose assets WordPress loads into that iframe (6.3+). It also fires on the front end, where the per-render {@link UiBundle::enqueue} keeps the bundle lazy, so this is guarded on `is_admin()` to avoid shipping it on every front-end page.
+	 *
+	 * @return void
+	 */
+	public static function enqueue_in_editor(): void {
+		if ( is_admin() ) {
+			self::enqueue();
+		}
 	}
 
 	/**
