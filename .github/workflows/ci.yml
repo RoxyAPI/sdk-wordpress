@@ -53,6 +53,8 @@ jobs:
             - name: CSS lint
               run: npm run lint:css
             - run: npm run build:all
+            - name: Block layout is flat so the whole catalog registers
+              run: npm run check:blocks
             # --update forces a fresh pull of plugin-check.latest-stable.zip;
             # without it wp-env reuses a stale cached copy and misses newer checks.
             - run: npx wp-env start --update
@@ -100,6 +102,14 @@ jobs:
                   tools: composer, wp-cli
                   coverage: none
             - run: composer install --prefer-dist --no-progress
+            - uses: actions/setup-node@v6
+              with:
+                  node-version: '24'
+                  cache: 'npm'
+            - run: npm ci
+            # Build the blocks so test-block-registration.php can assert the
+            # whole catalog registers. The matrix runs it from WP 6.5 to trunk.
+            - run: npm run build:all
             - run: sudo apt-get install -y -qq subversion
             - run: bash bin/install-wp-tests.sh wordpress_test root root 127.0.0.1 ${{ matrix.wp }}
             - run: vendor/bin/phpunit

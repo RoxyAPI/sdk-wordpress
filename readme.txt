@@ -4,7 +4,7 @@ Tags: astrology, horoscope, tarot, numerology, vedic
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.5.7
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -199,6 +199,11 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.6.0 =
+* Every reading is now a Gutenberg block, not only the headline ones. The full catalog across all twelve domains is available directly from the block inserter, matching the shortcodes one to one. This adds blocks for the Human Design bodygraph, type, profile, centers, channels, gates, and variables, and for Forecast transits, solar returns, and cross domain forecasts, alongside the western, vedic, tarot, numerology, and reference blocks. Until now only a small set of headline readings had blocks and everything else was shortcode only.
+* Human Design readings can now match either lunar node convention. Add node_type="mean" to a Human Design reading to line it up with a chart calculator that uses the mean node, or leave it unset for the true node used by professional Human Design software. On a chart where a node sits on a gate boundary this can change the type or authority, so the option lets you match the chart your visitors already know.
+* Refreshed the bundled component library.
+
 = 1.5.7 =
 * The KP chart now shows the KP number for Rahu and Ketu. Every other body in that table carried it and those two rows sat blank, even though the reading always included the value. The KP number is the 1 to 249 position a KP reader looks at first, so a blank cell dropped the part of the row that matters most.
 
@@ -310,6 +315,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.6.0 =
+Every reading is now a Gutenberg block, including Human Design and Forecast. Adds a lunar node option for Human Design and a refreshed component library.
 
 = 1.5.4 =
 Listing and description improvements only. No functional or code changes.

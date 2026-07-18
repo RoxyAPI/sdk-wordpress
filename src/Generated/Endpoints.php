@@ -1786,6 +1786,7 @@ class Endpoints {
 				'timezone' => 'UTC',
 				'latitude' => '0',
 				'longitude' => '0',
+				'node_type' => 'true',
 			),
 		),
 		'calculateConnection' => array(
@@ -1845,6 +1846,7 @@ class Endpoints {
 				'timezone' => 'UTC',
 				'latitude' => '0',
 				'longitude' => '0',
+				'node_type' => 'true',
 			),
 		),
 		'calculateGates' => array(
@@ -1863,6 +1865,7 @@ class Endpoints {
 				'timezone' => 'UTC',
 				'latitude' => '0',
 				'longitude' => '0',
+				'node_type' => 'true',
 			),
 		),
 		'getGate' => array(
@@ -1895,6 +1898,7 @@ class Endpoints {
 				'timezone' => 'UTC',
 				'latitude' => '0',
 				'longitude' => '0',
+				'node_type' => 'true',
 			),
 		),
 		'calculateCenters' => array(
@@ -1913,6 +1917,7 @@ class Endpoints {
 				'timezone' => 'UTC',
 				'latitude' => '0',
 				'longitude' => '0',
+				'node_type' => 'true',
 			),
 		),
 		'getCenter' => array(
@@ -1945,6 +1950,7 @@ class Endpoints {
 				'timezone' => 'UTC',
 				'latitude' => '0',
 				'longitude' => '0',
+				'node_type' => 'true',
 			),
 		),
 		'calculateVariables' => array(
@@ -1963,6 +1969,7 @@ class Endpoints {
 				'timezone' => 'UTC',
 				'latitude' => '0',
 				'longitude' => '0',
+				'node_type' => 'true',
 			),
 		),
 		'generateTimeline' => array(

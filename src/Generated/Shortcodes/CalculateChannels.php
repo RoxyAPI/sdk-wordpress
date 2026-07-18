@@ -36,6 +36,7 @@ class CalculateChannels {
 			'timezone' => '',
 			'latitude' => '',
 			'longitude' => '',
+			'node_type' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -50,6 +51,7 @@ class CalculateChannels {
 				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
 				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
 				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
+				'nodeType' => $atts['node_type'],
 			),
 			static function ( $v ) {
 				return $v !== '';

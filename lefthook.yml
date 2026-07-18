@@ -69,6 +69,13 @@ pre-push:
             run: node bin/check-distignore.mjs
             priority: 1
 
+        # Rebuild the blocks and verify the layout is flat, so every long-tail
+        # block registers. Runs before phpunit so its block-registration test
+        # sees the fresh build.
+        block-layout-check:
+            run: npm run build:all && npm run check:blocks
+            priority: 1
+
         # Full format pass (auto-fix). PHP first, then JS/CSS so each tool
         # only touches files it owns.
         php-format:

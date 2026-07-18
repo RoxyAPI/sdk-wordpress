@@ -6,7 +6,6 @@
  * lacking the guard, and reviewers do hand-flag this.
  *
  * Targets:
- *   - build/blocks-manifest.php (registered blocks index, one per build)
  *   - build/blocks/<slug>/index.asset.php (one per block, holds dependency
  *     fingerprints; emitted by wp-scripts/dependency-extraction-webpack-plugin
  *     as bare `<?php return array(...);` files)

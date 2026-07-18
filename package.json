@@ -32,9 +32,9 @@
 	],
 	"scripts": {
 		"build": "wp-scripts build --webpack-src-dir=blocks --output-path=build/blocks",
-		"blocks-manifest": "wp-scripts build-blocks-manifest --input=blocks --output=build/blocks-manifest.php",
+		"flatten-blocks": "node bin/flatten-generated-blocks.mjs",
 		"post-build": "node bin/post-build.mjs",
-		"build:all": "npm run build && npm run blocks-manifest && npm run post-build",
+		"build:all": "npm run build && npm run flatten-blocks && npm run post-build",
 		"start": "wp-scripts start --webpack-src-dir=blocks --output-path=build/blocks",
 		"plugin-zip": "wp-scripts plugin-zip && node bin/post-plugin-zip.mjs",
 		"format": "prettier --write .",
@@ -47,6 +47,7 @@
 		"fetch:ui": "node bin/fetch-ui-bundle.mjs",
 		"check:distignore": "node bin/check-distignore.mjs",
 		"check:component-map": "node bin/check-component-map.mjs",
+		"check:blocks": "node bin/check-block-layout.mjs",
 		"upgrade": "npx npm-check-updates --target minor --upgrade",
 		"check-outdated": "npx npm-check-updates"
 	},

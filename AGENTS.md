@@ -161,19 +161,20 @@ Cached responses do not consume RoxyAPI quota. Object cache backends (Redis, Mem
 
 ## Commands
 
-| Command                     | What it does                                                                                                |
-| --------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `npm run generate`          | Regenerate `src/Generated/`, `blocks/generated/`, hero classes, and form classes from the live OpenAPI spec |
-| `npm run generate:check`    | Run `generate` then fail if it produced a diff (use as a CI gate)                                           |
-| `npm run build:all`         | Build blocks (`wp-scripts build`), block manifest, and post-build (ABSPATH injection)                       |
-| `npm run start`             | `wp-scripts start` dev mode                                                                                 |
-| `npm run plugin-zip`        | Build the wp.org distribution zip (excludes everything in `.distignore`)                                    |
-| `npm run wp-env start`      | Boot local WordPress (Docker bind-mount: see Gotchas)                                                       |
-| `composer run lint`         | PHPCS WordPress standard                                                                                    |
-| `composer run lint:fix`     | phpcbf auto-fix the fixable PHPCS findings                                                                  |
-| `composer run stan`         | PHPStan level 8                                                                                             |
-| `composer run test`         | PHPUnit (run `bin/install-wp-tests.sh` once to set up `/tmp/wordpress-tests-lib`)                           |
-| `bash bin/seed-qa-pages.sh` | Seed local wp-env with a QA page exercising every hero shortcode (needs `ROXYAPI_TEST_KEY`)                 |
+| Command                     | What it does                                                                                                         |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `npm run generate`          | Regenerate `src/Generated/`, `blocks/generated/`, hero classes, and form classes from the live OpenAPI spec          |
+| `npm run generate:check`    | Run `generate` then fail if it produced a diff (use as a CI gate)                                                    |
+| `npm run build:all`         | Build blocks (`wp-scripts build`), flatten them to `build/blocks/<name>/`, and post-build (ABSPATH injection)        |
+| `npm run check:blocks`      | Verify the built blocks are flat under `build/blocks/<name>/` so the whole catalog registers (run after `build:all`) |
+| `npm run start`             | `wp-scripts start` dev mode                                                                                          |
+| `npm run plugin-zip`        | Build the wp.org distribution zip (excludes everything in `.distignore`)                                             |
+| `npm run wp-env start`      | Boot local WordPress (Docker bind-mount: see Gotchas)                                                                |
+| `composer run lint`         | PHPCS WordPress standard                                                                                             |
+| `composer run lint:fix`     | phpcbf auto-fix the fixable PHPCS findings                                                                           |
+| `composer run stan`         | PHPStan level 8                                                                                                      |
+| `composer run test`         | PHPUnit (run `bin/install-wp-tests.sh` once to set up `/tmp/wordpress-tests-lib`)                                    |
+| `bash bin/seed-qa-pages.sh` | Seed local wp-env with a QA page exercising every hero shortcode (needs `ROXYAPI_TEST_KEY`)                          |
 
 ## Gotchas
 
@@ -182,6 +183,7 @@ Cached responses do not consume RoxyAPI quota. Object cache backends (Redis, Mem
 -   **Date format is `YYYY-MM-DD`, time is `HH:MM`.** Both are strings.
 -   **Coordinates are decimal degrees.** Negative for west and south.
 -   **Block apiVersion is locked to 3.** Schema rejects any other value.
+-   **Every reading is a block, registered from a flat scan.** `build:all` lays all blocks flat at `build/blocks/<name>/`, and the Registrar registers the whole catalog with one `glob('build/blocks/*/block.json')` plus `register_block_type` (no core function newer than the declared minimum WordPress version). Keep blocks flat (never nested under `generated/`) or the one-level glob misses the long-tail; `check:blocks` enforces this.
 -   **Variations are not separate blocks.** Each hero block ships a `variations.php` file. This keeps the inserter clean.
 -   **Hero shortcodes always win over generated ones with the same name.** The Registrar checks `shortcode_exists()` before registering generated entries.
 -   **Plain text editing your generated PHP is pointless.** `npm run generate` overwrites `src/Generated/` and `blocks/generated/`. To change a hero, edit `bin/hero-config.json`; to patch a stale spec example, edit `bin/example-overrides.json`; for everything else, edit `bin/generate.mjs` and regenerate.

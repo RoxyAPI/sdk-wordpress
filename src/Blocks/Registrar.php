@@ -1,7 +1,9 @@
 <?php
 /**
- * Block registration. Loops over build/blocks/ and calls register_block_type
- * for each directory holding a block.json.
+ * Block registration.
+ *
+ * @remarks
+ * The build ships every block flat at build/blocks/<name>/block.json: the hero blocks plus every spec-generated long-tail block, moved up from the nested generated/ output by bin/flatten-generated-blocks.mjs. A single one-level glob registers the whole catalog on every supported WordPress version (6.5 and up) using only register_block_type, which keeps the plugin compatible with the declared minimum with no version-gated Core functions. Before 1.6.0 the long-tail blocks sat nested at build/blocks/generated/<name>/ and the one-level scan missed them, so only the hero blocks registered. Keep the layout flat (bin/check-block-layout.mjs enforces it) or the glob misses the long-tail again.
  *
  * @package RoxyAPI
  */
@@ -24,13 +26,10 @@ class Registrar {
 		if ( ! is_dir( $blocks_dir ) ) {
 			return;
 		}
-		$entries = glob( $blocks_dir . '/*', GLOB_ONLYDIR );
-		if ( ! $entries ) {
-			return;
-		}
-		foreach ( $entries as $block_dir ) {
-			if ( file_exists( $block_dir . '/block.json' ) ) {
-				register_block_type( $block_dir );
+		$block_files = glob( $blocks_dir . '/*/block.json' );
+		if ( $block_files ) {
+			foreach ( $block_files as $block_json ) {
+				register_block_type( dirname( $block_json ) );
 			}
 		}
 	}

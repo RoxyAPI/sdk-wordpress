@@ -49,6 +49,10 @@
 		"longitude": {
 			"type": "string",
 			"default": ""
+		},
+		"nodeType": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"render": "file:./render.php"
