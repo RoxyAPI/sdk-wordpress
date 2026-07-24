@@ -182,6 +182,7 @@ Cached responses do not consume RoxyAPI quota. Object cache backends (Redis, Mem
 
 -   **The API key never goes into the browser.** Do not refactor any block to fetch from `roxyapi.com` client side. Editor previews use server side render. Frontend renders use PHP `render.php` files.
 -   **Shortcodes return, never echo.** WordPress filters break otherwise.
+-   **Tests never touch the network.** `tests/bootstrap.php` defines `WP_HTTP_BLOCK_EXTERNAL`, so any request a test does not mock is refused by core and fails with the offending URL named. Mock by adding the endpoint to `$mock_responses` in a `Mock_Http_TestCase` subclass. Leaving out the API key does NOT make a request fail: the client still identifies itself and the API serves the keyless free allowance, so an unmocked test renders live data and passes for the wrong reason.
 -   **Date format is `YYYY-MM-DD`, time is `HH:MM`.** Both are strings.
 -   **Coordinates are decimal degrees.** Negative for west and south.
 -   **Block apiVersion is locked to 3.** Schema rejects any other value.
