@@ -41,29 +41,16 @@ jobs:
             - name: Regenerate from live OpenAPI
               run: npm run generate
 
-            - name: Check if spec changed
-              id: diff
-              run: |
-                  if git diff --quiet specs/openapi.json src/Generated blocks/generated; then
-                    echo "changed=false" >> $GITHUB_OUTPUT
-                  else
-                    echo "changed=true" >> $GITHUB_OUTPUT
-                  fi
-
             - name: Lint
-              if: steps.diff.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
               run: vendor/bin/phpcs --standard=phpcs.xml.dist
 
             - name: Static analysis
-              if: steps.diff.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
               run: vendor/bin/phpstan analyze --no-progress --memory-limit=1G
 
             - name: Build blocks
-              if: steps.diff.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
               run: npm run build:all
 
             - name: PHPUnit
-              if: steps.diff.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
               env:
                   DB_HOST: 127.0.0.1
               run: |
@@ -74,11 +61,9 @@ jobs:
                   vendor/bin/phpunit
 
             - name: Reinstall composer without dev deps for shipped vendor/
-              if: steps.diff.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
               run: composer install --no-dev --optimize-autoloader --prefer-dist
 
             - name: Bump version
-              if: steps.diff.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
               id: bump
               run: |
                   BUMP="${{ github.event.inputs.version_bump || 'patch' }}"
@@ -90,7 +75,6 @@ jobs:
                   sed -i "s/^Stable tag:.*$/Stable tag: $VERSION/" readme.txt
 
             - name: Commit, tag, push
-              if: steps.diff.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
               run: |
                   git config user.name "github-actions[bot]"
                   git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -101,7 +85,6 @@ jobs:
                   git push --follow-tags
 
             - name: Deploy to WordPress.org
-              if: steps.diff.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
               id: deploy
               uses: 10up/action-wordpress-plugin-deploy@stable
               with:
@@ -113,13 +96,8 @@ jobs:
                   VERSION: ${{ steps.bump.outputs.version }}
 
             - name: Attach zip to GitHub release
-              if: steps.diff.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
               uses: softprops/action-gh-release@v3
               with:
                   tag_name: v${{ steps.bump.outputs.version }}
                   files: ${{ steps.deploy.outputs.zip-path }}
                   generate_release_notes: true
-
-            - name: No changes
-              if: steps.diff.outputs.changed == 'false' && github.event_name != 'workflow_dispatch'
-              run: echo "OpenAPI spec unchanged. Nothing to release."
