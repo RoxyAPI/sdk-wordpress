@@ -23,6 +23,13 @@ if ( ! defined( 'ROXYAPI_ENCRYPTION_SALT' ) ) {
 	define( 'ROXYAPI_ENCRYPTION_SALT', 'phpunit-test-encryption-salt-not-for-production-use' );
 }
 
+// Unit tests must never reach the network. Core evaluates this AFTER the
+// pre_http_request filter, so a mocked request still short-circuits normally
+// while an unmocked one fails with the offending URL named in the WP_Error.
+if ( ! defined( 'WP_HTTP_BLOCK_EXTERNAL' ) ) {
+	define( 'WP_HTTP_BLOCK_EXTERNAL', true );
+}
+
 if ( ! file_exists( "{$_tests_dir}/includes/functions.php" ) ) {
 	echo "Could not find {$_tests_dir}/includes/functions.php, have you run bin/install-wp-tests.sh ?" . PHP_EOL;
 	exit( 1 );

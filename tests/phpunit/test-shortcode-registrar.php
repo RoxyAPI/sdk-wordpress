@@ -13,10 +13,18 @@ namespace RoxyAPI\Tests;
 use RoxyAPI\Plugin;
 use RoxyAPI\Shortcodes\Registrar;
 
-class Test_Shortcode_Registrar extends \WP_UnitTestCase {
+class Test_Shortcode_Registrar extends Mock_Http_TestCase {
 
 	public function setUp(): void {
 		parent::setUp();
+		// test_hero_wins_on_tag_collision renders the hero for real, so the
+		// response has to be canned. Without a key the client still reaches the
+		// SaaS over the keyless free-tier path, which made this suite render a
+		// live reading on every run.
+		$this->mock_responses['astrology/horoscope/aries/daily'] = array(
+			'sign'     => 'aries',
+			'overview' => 'A bold day ahead.',
+		);
 		// Re-running do_action('init') would double-register blocks and
 		// bindings sources, which the test framework flags as
 		// _doing_it_wrong. Instead, invoke the registrar's static methods
@@ -64,13 +72,16 @@ class Test_Shortcode_Registrar extends \WP_UnitTestCase {
 		$this->assertIsCallable( $callable );
 
 		// The hero closure has the Horoscope class baked in via `use ($class)`.
-		// Render with a known sign and check the output contains the hero CSS
-		// hook (`roxyapi-horoscope`), which the generic renderer never emits.
-		// Even when the API call fails (no key configured here), the hero
-		// returns the friendly placeholder string. The generic renderer would
-		// emit a `<dl class="roxyapi-generic ...">` shell instead.
+		// Render with a known sign against the canned response: the hero
+		// template emits `roxy-horoscope-card`, which the generic renderer
+		// never does. It emits a `<dl class="roxyapi-generic ...">` shell.
 		$out = call_user_func( $callable, array( 'sign' => 'aries' ), '', $tag );
 		$this->assertIsString( $out );
+		$this->assertStringContainsString(
+			'roxy-horoscope-card',
+			$out,
+			'The collided tag must resolve to the hero renderer.'
+		);
 		// Hero output must NOT contain the generic-renderer signature class.
 		$this->assertStringNotContainsString( 'roxyapi-generic', $out );
 	}

@@ -4,8 +4,9 @@
  *
  * Subclasses populate $mock_responses keyed by substring match on the request URL.
  * Any request whose URL contains a mocked substring short-circuits to the canned
- * response. Every other request falls through to the real HTTP API (should never
- * happen in CI).
+ * response. Every other request is left for core to refuse: tests/bootstrap.php
+ * defines WP_HTTP_BLOCK_EXTERNAL, which core evaluates after this filter, so an
+ * unmocked URL fails with that URL named instead of reaching the network.
  *
  * @package RoxyAPI
  */
