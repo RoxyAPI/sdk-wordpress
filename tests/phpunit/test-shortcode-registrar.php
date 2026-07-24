@@ -18,9 +18,8 @@ class Test_Shortcode_Registrar extends Mock_Http_TestCase {
 	public function setUp(): void {
 		parent::setUp();
 		// test_hero_wins_on_tag_collision renders the hero for real, so the
-		// response has to be canned. Without a key the client still reaches the
-		// SaaS over the keyless free-tier path, which made this suite render a
-		// live reading on every run.
+		// response has to be canned. An unmocked render can return real data,
+		// which made this suite pass for the wrong reason on every run.
 		$this->mock_responses['astrology/horoscope/aries/daily'] = array(
 			'sign'     => 'aries',
 			'overview' => 'A bold day ahead.',
