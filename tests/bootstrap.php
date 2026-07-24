@@ -43,3 +43,12 @@ function _manually_load_plugin() {
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 
 require "{$_tests_dir}/includes/bootstrap.php";
+
+// WP_Ajax_UnitTestCase fires admin_init, where core pings api.wordpress.org for
+// core, plugin and theme updates. Those pings are refused by the block above and
+// raise a warning that phpunit converts into an exception, so the ajax tests error
+// on a fresh database. Nothing here covers core update behaviour, so drop the
+// checks rather than let the suite depend on wordpress.org being reachable.
+remove_action( 'admin_init', '_maybe_update_core' );
+remove_action( 'admin_init', '_maybe_update_plugins' );
+remove_action( 'admin_init', '_maybe_update_themes' );
