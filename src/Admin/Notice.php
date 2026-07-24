@@ -29,9 +29,9 @@ class Notice {
 	 * @return void
 	 */
 	public static function register(): void {
-		// Onboarding "installed but not yet connected" notice is off by default:
-		// keyless installs work out of the box on the free daily allowance, so
-		// the only admin notice we show is the free-tier-exhausted one below.
+		// Onboarding "installed but not yet connected" notice is off by default
+		// so a fresh install stays quiet; the only notice we show is the
+		// plan-limit one below.
 		// Restore it (with its dismiss script) via the
 		// roxyapi_show_onboarding_notice filter. handle_dismiss stays registered
 		// regardless, so dismissal keeps working whenever the notice is on.
