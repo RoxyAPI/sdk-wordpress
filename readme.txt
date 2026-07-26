@@ -199,6 +199,10 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.6.6 =
+* Aspect names now read the same way everywhere. A summary chip said "Semi sextile" while the row below it said "Semi-sextile"; both now use the proper hyphenated name.
+* Compatibility readings format their aspect and cycle wording consistently with the rest of the plugin.
+
 = 1.6.5 =
 * Chart aspect symbols are now the standard astrological glyphs. Two of them were swapped with one another, and two more had no symbol at all and showed up as letters.
 * Aspect names read as names again, so a chart shows "Semi-sextile" rather than a raw code.
@@ -341,6 +345,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.6.6 =
+Aspect names now read consistently between the summary chips and the rows beneath them.
 
 = 1.6.5 =
 Corrects the aspect symbols drawn on charts, formats every date for reading, and fixes readings that ran off the edge on a phone.
