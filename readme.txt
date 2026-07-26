@@ -199,6 +199,14 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.6.5 =
+* Chart aspect symbols are now the standard astrological glyphs. Two of them were swapped with one another, and two more had no symbol at all and showed up as letters.
+* Aspect names read as names again, so a chart shows "Semi-sextile" rather than a raw code.
+* Dates read as dates everywhere, so a reading shows "Jan 15, 1990" instead of the raw format.
+* Readings fit properly on a phone. A few of them ran off the edge of the card, and the compatibility score table lost its Score column entirely on a narrow screen.
+* Dasha timelines always show the year, and no longer print the same month at both ends of a short period.
+* Transit speeds carry their unit, and forecast windows list the strongest events first.
+
 = 1.6.4 =
 * Yes or no tarot readings are now titled "Yes or no" instead of "Three card", so the heading matches the reading your visitor is looking at.
 * The details panel on a dasha reading is now labelled "Chart details", since it lists the birth chart values behind the dates rather than drawing a chart.
@@ -333,6 +341,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.6.5 =
+Corrects the aspect symbols drawn on charts, formats every date for reading, and fixes readings that ran off the edge on a phone.
 
 = 1.6.4 =
 Yes or no tarot readings now carry the right heading, and the dasha details panel is labelled more clearly.
