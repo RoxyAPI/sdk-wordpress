@@ -444,6 +444,12 @@ class ComponentMap {
 					'kind'      => 'card',
 				),
 			),
+			'getPratyantardashas' => array(
+				array(
+					'component' => 'roxy-dasha-timeline',
+					'kind'      => 'chart',
+				),
+			),
 			'getRandomHexagram' => array(
 				array(
 					'component' => 'roxy-hexagram',
@@ -459,6 +465,12 @@ class ComponentMap {
 			'getReading' => array(
 				array(
 					'component' => 'roxy-biorhythm-chart',
+					'kind'      => 'chart',
+				),
+			),
+			'getSookshmaDashas' => array(
+				array(
+					'component' => 'roxy-dasha-timeline',
 					'kind'      => 'chart',
 				),
 			),

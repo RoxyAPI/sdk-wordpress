@@ -1,16 +1,16 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "roxyapi/get-major-dashas",
-	"title": "Get all 9 Mahadasha periods (120-year cycle) (Vedic Astrology)",
+	"name": "roxyapi/get-pratyantardashas",
+	"title": "Get all Pratyantardashas (antara periods) for a Mahadasha and Antardasha (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get all 9 Mahadasha periods (120-year cycle)",
+	"description": "Get all Pratyantardashas (antara periods) for a Mahadasha and Antardasha",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",
 		"get",
-		"major"
+		"pratyantardashas"
 	],
 	"version": "1.0.0",
 	"textdomain": "roxyapi",

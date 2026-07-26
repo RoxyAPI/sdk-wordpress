@@ -777,7 +777,7 @@ class Client {
 	}
 
 	/**
-	 * Get current Mahadasha, Antardasha, Pratyantardasha - Dasha Calculator API
+	 * Get current Mahadasha, Antardasha, Pratyantardasha, Sookshma - Dasha Calculator API
 	 *
 	 * @param array $body Request body.
 	 * @return array|\WP_Error
@@ -826,6 +826,55 @@ class Client {
 			0,
 			static function () use ( $body, $mahadasha ) {
 				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '', $body );
+			}
+		);
+	}
+
+	/**
+	 * Get all Pratyantardashas (antara periods) for a Mahadasha and Antardasha
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function getPratyantardashas( $mahadasha, $antardasha, $body = array() ) {
+		if ( $mahadasha === '' || $mahadasha === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'mahadasha' ) );
+		}
+		if ( $antardasha === '' || $antardasha === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'antardasha' ) );
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '/' . rawurlencode( $antardasha ) . '',
+			$body,
+			0,
+			static function () use ( $body, $mahadasha, $antardasha ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '/' . rawurlencode( $antardasha ) . '', $body );
+			}
+		);
+	}
+
+	/**
+	 * Get all Sookshma dashas for a Mahadasha, Antardasha and Pratyantardasha
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function getSookshmaDashas( $mahadasha, $antardasha, $pratyantardasha, $body = array() ) {
+		if ( $mahadasha === '' || $mahadasha === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'mahadasha' ) );
+		}
+		if ( $antardasha === '' || $antardasha === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'antardasha' ) );
+		}
+		if ( $pratyantardasha === '' || $pratyantardasha === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'pratyantardasha' ) );
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '/' . rawurlencode( $antardasha ) . '/' . rawurlencode( $pratyantardasha ) . '',
+			$body,
+			0,
+			static function () use ( $body, $mahadasha, $antardasha, $pratyantardasha ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '/' . rawurlencode( $antardasha ) . '/' . rawurlencode( $pratyantardasha ) . '', $body );
 			}
 		);
 	}

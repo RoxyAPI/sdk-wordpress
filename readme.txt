@@ -199,6 +199,12 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.6.3 =
+* The Vimshottari dasha reading now goes four levels deep. You can open a major period, then the sub period inside it, and keep going down to the short sookshma periods that land on specific days.
+* Dasha readings are now organised into tabs, so the timeline, the written interpretation, and the chart details each have their own place instead of running together in one long column.
+* Two new readings for the deeper dasha levels, available as blocks and shortcodes like every other reading.
+* Dasha dates now show the right amount of detail for the period you are looking at: years for the long major periods, and days for the short ones.
+
 = 1.6.2 =
 * Reading blocks now show the full interactive reading in the editor preview, the same chart or card your visitors see, instead of a plain text fallback.
 * Number fields in the reading blocks, such as latitude and longitude, now accept decimal values directly in the block sidebar.
@@ -323,6 +329,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.6.3 =
+Dasha readings now go four levels deep, down to the short sookshma periods, with the timeline, interpretation and chart details split into tabs.
 
 = 1.6.2 =
 Reading blocks now preview the full interactive reading in the editor, number fields accept decimals, plus refreshed listing screenshots.

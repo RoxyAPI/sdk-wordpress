@@ -36,6 +36,7 @@ class GetMajorDashas {
 			'latitude' => '',
 			'longitude' => '',
 			'timezone' => '',
+			'ayanamsa' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -50,6 +51,7 @@ class GetMajorDashas {
 				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
 				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
 				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
+				'ayanamsa' => $atts['ayanamsa'],
 			),
 			static function ( $v ) {
 				return $v !== '';

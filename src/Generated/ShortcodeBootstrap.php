@@ -57,6 +57,8 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\GetCurrentDasha::register();
 		\RoxyAPI\Generated\Shortcodes\GetMajorDashas::register();
 		\RoxyAPI\Generated\Shortcodes\GetSubDashas::register();
+		\RoxyAPI\Generated\Shortcodes\GetPratyantardashas::register();
+		\RoxyAPI\Generated\Shortcodes\GetSookshmaDashas::register();
 		\RoxyAPI\Generated\Shortcodes\GetBasicPanchang::register();
 		\RoxyAPI\Generated\Shortcodes\GetChoghadiya::register();
 		\RoxyAPI\Generated\Shortcodes\GetHora::register();

@@ -38,6 +38,18 @@ const fields = [
 		"label": "Timezone",
 		"required": false,
 		"help": "Timezone: IANA name (e.g. \"America/New_York\", \"Europe/London\") OR decimal hours from UTC (e.g. -5 for EST, 1 for CET)"
+	},
+	{
+		"name": "ayanamsa",
+		"control": "select",
+		"label": "Ayanamsa",
+		"required": false,
+		"help": "Ayanamsa system used to place the birth Moon in its nakshatra, which sets every dasha start and end date",
+		"options": [
+			"kp-newcomb",
+			"kp-old",
+			"lahiri"
+		]
 	}
 ];
 
