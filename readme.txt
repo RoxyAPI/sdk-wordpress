@@ -199,6 +199,10 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.6.4 =
+* Yes or no tarot readings are now titled "Yes or no" instead of "Three card", so the heading matches the reading your visitor is looking at.
+* The details panel on a dasha reading is now labelled "Chart details", since it lists the birth chart values behind the dates rather than drawing a chart.
+
 = 1.6.3 =
 * The Vimshottari dasha reading now goes four levels deep. You can open a major period, then the sub period inside it, and keep going down to the short sookshma periods that land on specific days.
 * Dasha readings are now organised into tabs, so the timeline, the written interpretation, and the chart details each have their own place instead of running together in one long column.
@@ -329,6 +333,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.6.4 =
+Yes or no tarot readings now carry the right heading, and the dasha details panel is labelled more clearly.
 
 = 1.6.3 =
 Dasha readings now go four levels deep, down to the short sookshma periods, with the timeline, interpretation and chart details split into tabs.
