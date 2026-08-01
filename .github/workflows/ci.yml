@@ -18,10 +18,11 @@ jobs:
                   node-version: '24'
                   cache: 'npm'
             - run: npm ci
-            - name: Regenerate from live OpenAPI
-              run: npm run generate
+            # Same hermetic check the local pre-commit and pre-push hooks run: regenerate from
+            # the committed spec and verify the committed output still reproduces from it, with
+            # no network dependency. Refreshing the spec itself is the release workflow's job.
             - name: Fail if generated code is stale
-              run: git diff --exit-code src/Generated blocks/generated
+              run: npm run generate:check
             - name: Fail if distribution drifts between local zip and SVN deploy
               run: node bin/check-distignore.mjs
             - name: Fail if a mapped component is missing from the pinned UI build
