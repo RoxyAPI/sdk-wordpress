@@ -41,7 +41,8 @@ const fields = [
 		"options": [
 			"kp-newcomb",
 			"kp-old",
-			"lahiri"
+			"lahiri",
+			"raman"
 		]
 	},
 	{

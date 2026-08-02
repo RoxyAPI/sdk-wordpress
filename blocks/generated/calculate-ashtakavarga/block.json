@@ -49,6 +49,14 @@
 		"timezone": {
 			"type": "string",
 			"default": ""
+		},
+		"ayanamsa": {
+			"type": "string",
+			"default": ""
+		},
+		"ayanamsaValue": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"render": "file:./render.php",

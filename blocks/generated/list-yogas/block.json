@@ -33,6 +33,10 @@
 		"lang": {
 			"type": "string",
 			"default": ""
+		},
+		"family": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"render": "file:./render.php",

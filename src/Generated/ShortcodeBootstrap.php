@@ -59,6 +59,7 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\GetSubDashas::register();
 		\RoxyAPI\Generated\Shortcodes\GetPratyantardashas::register();
 		\RoxyAPI\Generated\Shortcodes\GetSookshmaDashas::register();
+		\RoxyAPI\Generated\Shortcodes\GetPranaDashas::register();
 		\RoxyAPI\Generated\Shortcodes\GetBasicPanchang::register();
 		\RoxyAPI\Generated\Shortcodes\GetChoghadiya::register();
 		\RoxyAPI\Generated\Shortcodes\GetHora::register();
@@ -75,6 +76,7 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\GetKpSublordChanges::register();
 		\RoxyAPI\Generated\Shortcodes\GetKpRasiChanges::register();
 		\RoxyAPI\Generated\Shortcodes\GetKpPlanetsInterval::register();
+		\RoxyAPI\Generated\Shortcodes\CastKpHoraryChart::register();
 		\RoxyAPI\Generated\Shortcodes\CalculateDrishti::register();
 		\RoxyAPI\Generated\Shortcodes\GetMonthlyAspects::register();
 		\RoxyAPI\Generated\Shortcodes\GetLunarAspects::register();
@@ -90,6 +92,13 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\GetUpagrahaPositions::register();
 		\RoxyAPI\Generated\Shortcodes\CalculateAshtakavarga::register();
 		\RoxyAPI\Generated\Shortcodes\CalculateShadbala::register();
+		\RoxyAPI\Generated\Shortcodes\ListAvasthas::register();
+		\RoxyAPI\Generated\Shortcodes\GetAvastha::register();
+		\RoxyAPI\Generated\Shortcodes\CalculateArudhaPadas::register();
+		\RoxyAPI\Generated\Shortcodes\CalculateCharaKarakas::register();
+		\RoxyAPI\Generated\Shortcodes\CalculateBhavaBala::register();
+		\RoxyAPI\Generated\Shortcodes\CalculateBhavChalit::register();
+		\RoxyAPI\Generated\Shortcodes\GetHeliacalVisibility::register();
 		\RoxyAPI\Generated\Shortcodes\GenerateTimeline::register();
 		\RoxyAPI\Generated\Shortcodes\ForecastTransits::register();
 		\RoxyAPI\Generated\Shortcodes\FindSignificantDates::register();

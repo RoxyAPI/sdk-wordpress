@@ -26,6 +26,20 @@ const fields = [
 			"fr",
 			"ru"
 		]
+	},
+	{
+		"name": "date",
+		"control": "date",
+		"label": "Date",
+		"required": false,
+		"help": "Any date inside the target month, in YYYY-MM-DD format"
+	},
+	{
+		"name": "timezone",
+		"control": "text",
+		"label": "Timezone",
+		"required": false,
+		"help": "Selects which period counts as current when date is omitted"
 	}
 ];
 

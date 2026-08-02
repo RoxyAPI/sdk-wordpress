@@ -1,0 +1,72 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/cast-kp-horary-chart",
+	"title": "Cast a KP horary (Prashna) chart from a number 1-249 - KP Horary API (Vedic Astrology)",
+	"category": "roxyapi",
+	"icon": "database",
+	"description": "Cast a KP horary (Prashna) chart from a number 1-249 - KP Horary API",
+	"keywords": [
+		"vedic astrology",
+		"roxyapi",
+		"cast",
+		"kp"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"horaryNumber": {
+			"type": "string",
+			"default": ""
+		},
+		"date": {
+			"type": "string",
+			"default": ""
+		},
+		"time": {
+			"type": "string",
+			"default": ""
+		},
+		"latitude": {
+			"type": "string",
+			"default": ""
+		},
+		"longitude": {
+			"type": "string",
+			"default": ""
+		},
+		"timezone": {
+			"type": "string",
+			"default": ""
+		},
+		"ayanamsa": {
+			"type": "string",
+			"default": ""
+		},
+		"ayanamsaValue": {
+			"type": "string",
+			"default": ""
+		},
+		"nodeType": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php",
+	"editorScript": "file:./index.js"
+}

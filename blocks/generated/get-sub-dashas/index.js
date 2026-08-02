@@ -48,7 +48,34 @@ const fields = [
 		"options": [
 			"kp-newcomb",
 			"kp-old",
-			"lahiri"
+			"lahiri",
+			"raman",
+			"custom"
+		]
+	},
+	{
+		"name": "ayanamsaValue",
+		"control": "number",
+		"label": "Ayanamsa value",
+		"required": false,
+		"help": "Custom ayanamsa value in degrees"
+	},
+	{
+		"name": "significators",
+		"control": "toggle",
+		"label": "Significators",
+		"required": false,
+		"help": "Set true to attach the KP significators of each period lord: its star lord, sub lord, occupied house, the houses it signifies at levels L1 to L4, and a strength grade"
+	},
+	{
+		"name": "nodeType",
+		"control": "select",
+		"label": "Node type",
+		"required": false,
+		"help": "Lunar node type for Rahu and Ketu, used ONLY when \"significators\" is true",
+		"options": [
+			"mean",
+			"true"
 		]
 	}
 ];

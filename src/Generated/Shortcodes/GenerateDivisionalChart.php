@@ -36,6 +36,8 @@ class GenerateDivisionalChart {
 			'latitude' => '',
 			'longitude' => '',
 			'timezone' => '',
+			'ayanamsa' => '',
+			'ayanamsa_value' => '',
 			'division' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
@@ -51,6 +53,8 @@ class GenerateDivisionalChart {
 				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
 				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
 				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
+				'ayanamsa' => $atts['ayanamsa'],
+				'ayanamsaValue' => $atts['ayanamsa_value'] !== '' ? (float) $atts['ayanamsa_value'] : '',
 				'division' => $atts['division'] !== '' ? (int) $atts['division'] : '',
 			),
 			static function ( $v ) {

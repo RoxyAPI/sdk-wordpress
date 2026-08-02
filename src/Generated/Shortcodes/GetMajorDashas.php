@@ -37,6 +37,9 @@ class GetMajorDashas {
 			'longitude' => '',
 			'timezone' => '',
 			'ayanamsa' => '',
+			'ayanamsa_value' => '',
+			'significators' => '',
+			'node_type' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -52,6 +55,9 @@ class GetMajorDashas {
 				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
 				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
 				'ayanamsa' => $atts['ayanamsa'],
+				'ayanamsaValue' => $atts['ayanamsa_value'] !== '' ? (float) $atts['ayanamsa_value'] : '',
+				'significators' => $atts['significators'] !== '' ? filter_var( $atts['significators'], FILTER_VALIDATE_BOOLEAN ) : '',
+				'nodeType' => $atts['node_type'],
 			),
 			static function ( $v ) {
 				return $v !== '';

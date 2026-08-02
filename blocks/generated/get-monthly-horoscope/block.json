@@ -37,6 +37,14 @@
 		"lang": {
 			"type": "string",
 			"default": ""
+		},
+		"date": {
+			"type": "string",
+			"default": ""
+		},
+		"timezone": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"render": "file:./render.php",

@@ -50,6 +50,14 @@
 			"type": "string",
 			"default": ""
 		},
+		"ayanamsa": {
+			"type": "string",
+			"default": ""
+		},
+		"ayanamsaValue": {
+			"type": "string",
+			"default": ""
+		},
 		"division": {
 			"type": "string",
 			"default": ""

@@ -49,6 +49,7 @@ const fields = [
 			"kp-newcomb",
 			"kp-old",
 			"lahiri",
+			"raman",
 			"custom"
 		]
 	},

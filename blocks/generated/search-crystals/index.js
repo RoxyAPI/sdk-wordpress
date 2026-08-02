@@ -37,7 +37,7 @@ const fields = [
 	},
 	{
 		"name": "offset",
-		"control": "number",
+		"control": "text",
 		"label": "Offset",
 		"required": false,
 		"help": "Number of items to skip for pagination"

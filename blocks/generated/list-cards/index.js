@@ -30,7 +30,7 @@ const fields = [
 	},
 	{
 		"name": "offset",
-		"control": "number",
+		"control": "text",
 		"label": "Offset",
 		"required": false,
 		"help": "Number of items to skip for pagination"
@@ -61,7 +61,7 @@ const fields = [
 	},
 	{
 		"name": "number",
-		"control": "number",
+		"control": "text",
 		"label": "Number",
 		"required": false,
 		"help": "Filter by card number"

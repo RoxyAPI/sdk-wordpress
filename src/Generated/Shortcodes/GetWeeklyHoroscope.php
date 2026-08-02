@@ -33,6 +33,8 @@ class GetWeeklyHoroscope {
 			array(
 			'sign' => '',
 			'lang' => '',
+			'date' => '',
+			'timezone' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -40,7 +42,7 @@ class GetWeeklyHoroscope {
 
 		wp_enqueue_style( 'roxyapi-frontend' );
 
-		$data = \RoxyAPI\Generated\Client::getWeeklyHoroscope( $atts['sign'], $atts['lang'] );
+		$data = \RoxyAPI\Generated\Client::getWeeklyHoroscope( $atts['sign'], $atts['lang'], $atts['date'], $atts['timezone'] );
 
 		if ( is_wp_error( $data ) ) {
 			return \RoxyAPI\Support\Templates::api_error( $data );

@@ -38,6 +38,27 @@ const fields = [
 		"label": "Timezone",
 		"required": false,
 		"help": "Timezone: IANA name (e.g. \"America/New_York\", \"Europe/London\") OR decimal hours from UTC (e.g. -5 for EST, 1 for CET)"
+	},
+	{
+		"name": "ayanamsa",
+		"control": "select",
+		"label": "Ayanamsa",
+		"required": false,
+		"help": "Sidereal frame (ayanamsa) the chart is cast in",
+		"options": [
+			"kp-newcomb",
+			"kp-old",
+			"lahiri",
+			"raman",
+			"custom"
+		]
+	},
+	{
+		"name": "ayanamsaValue",
+		"control": "number",
+		"label": "Ayanamsa value",
+		"required": false,
+		"help": "Custom ayanamsa value in degrees"
 	}
 ];
 

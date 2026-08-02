@@ -20,6 +20,20 @@ const fields = [
 			"fr",
 			"ru"
 		]
+	},
+	{
+		"name": "family",
+		"control": "select",
+		"label": "Family",
+		"required": false,
+		"help": "Filter the catalog to one Nabhasa family: asraya (3), dala (2), akriti (20) or sankhya (7)",
+		"options": [
+			"classical",
+			"asraya",
+			"dala",
+			"akriti",
+			"sankhya"
+		]
 	}
 ];
 

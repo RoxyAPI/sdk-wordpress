@@ -32,6 +32,8 @@ class GetKpAyanamsa {
 		$atts = shortcode_atts(
 			array(
 			'date' => '',
+			'time' => '',
+			'timezone' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -39,7 +41,7 @@ class GetKpAyanamsa {
 
 		wp_enqueue_style( 'roxyapi-frontend' );
 
-		$data = \RoxyAPI\Generated\Client::getKpAyanamsa( $atts['date'] );
+		$data = \RoxyAPI\Generated\Client::getKpAyanamsa( $atts['date'], $atts['time'], $atts['timezone'] );
 
 		if ( is_wp_error( $data ) ) {
 			return \RoxyAPI\Support\Templates::api_error( $data );

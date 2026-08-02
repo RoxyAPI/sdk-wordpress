@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-current-dasha",
-	"title": "Get current Mahadasha, Antardasha, Pratyantardasha, Sookshma - Dasha Calculator API (Vedic Astrology)",
+	"title": "Get current Mahadasha, Antardasha, Pratyantardasha, Sookshma, Prana - Dasha Calculator API (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get current Mahadasha, Antardasha, Pratyantardasha, Sookshma - Dasha Calculator API",
+	"description": "Get current Mahadasha, Antardasha, Pratyantardasha, Sookshma, Prana - Dasha Calculator API",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",
@@ -51,6 +51,18 @@
 			"default": ""
 		},
 		"ayanamsa": {
+			"type": "string",
+			"default": ""
+		},
+		"ayanamsaValue": {
+			"type": "string",
+			"default": ""
+		},
+		"significators": {
+			"type": "string",
+			"default": ""
+		},
+		"nodeType": {
 			"type": "string",
 			"default": ""
 		}

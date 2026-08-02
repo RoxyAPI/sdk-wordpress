@@ -32,6 +32,7 @@ class ListYogas {
 		$atts = shortcode_atts(
 			array(
 			'lang' => '',
+			'family' => '',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -39,7 +40,7 @@ class ListYogas {
 
 		wp_enqueue_style( 'roxyapi-frontend' );
 
-		$data = \RoxyAPI\Generated\Client::listYogas( $atts['lang'] );
+		$data = \RoxyAPI\Generated\Client::listYogas( $atts['lang'], $atts['family'] );
 
 		if ( is_wp_error( $data ) ) {
 			return \RoxyAPI\Support\Templates::api_error( $data );

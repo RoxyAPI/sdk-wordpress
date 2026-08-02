@@ -119,7 +119,22 @@ class CalculateGunMilanForm {
 				),
 			),
 			'flat_fields'  => array(
-
+				array(
+					'name' => 'ayanamsa',
+					'label' => 'Ayanamsa',
+					'required' => false,
+					'help' => 'Sidereal frame (ayanamsa) the chart is cast in',
+					'type' => 'enum',
+					'enum' => array( 'kp-newcomb', 'kp-old', 'lahiri', 'raman', 'custom' ),
+				),
+				array(
+					'name' => 'ayanamsaValue',
+					'label' => 'Ayanamsa value',
+					'required' => false,
+					'help' => 'Custom ayanamsa value in degrees',
+					'type' => 'number',
+					'step' => 'any',
+				),
 			),
 		);
 	}

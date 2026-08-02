@@ -8,13 +8,15 @@ const fields = [
 		"name": "question",
 		"control": "text",
 		"label": "Question",
-		"required": false
+		"required": false,
+		"help": "Optional querent question to focus the Celtic Cross"
 	},
 	{
 		"name": "seed",
 		"control": "text",
 		"label": "Seed",
-		"required": false
+		"required": false,
+		"help": "Optional seed for reproducible results"
 	}
 ];
 

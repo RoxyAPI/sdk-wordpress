@@ -33,6 +33,14 @@
 		"date": {
 			"type": "string",
 			"default": ""
+		},
+		"time": {
+			"type": "string",
+			"default": ""
+		},
+		"timezone": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"render": "file:./render.php",

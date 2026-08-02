@@ -53,6 +53,18 @@
 		"ayanamsa": {
 			"type": "string",
 			"default": ""
+		},
+		"ayanamsaValue": {
+			"type": "string",
+			"default": ""
+		},
+		"significators": {
+			"type": "string",
+			"default": ""
+		},
+		"nodeType": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"render": "file:./render.php",

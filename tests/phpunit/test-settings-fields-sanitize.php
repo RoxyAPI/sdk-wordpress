@@ -19,7 +19,10 @@ use RoxyAPI\Support\Encryption;
 
 class Test_Settings_Fields_Sanitize extends \WP_UnitTestCase {
 
-	private const VALID_KEY = '1978c678-9c7b-490a-8229-bc27613d3b77.a965fb53df2b49d8.0JYe5fTdjrZKfSrT26yB0EYn7Mt6qJ4jS-TENkEm3kc';
+	// Synthetic, and it must stay synthetic. Nothing in this file reaches the network,
+	// so the value only has to carry the shape a real key has: uuid, 16 hex, then 43
+	// url-safe base64 characters.
+	private const VALID_KEY = 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee.0123456789abcdef.sanitize_test-KEY-0123456789abcdefghijklmno';
 
 	public function setUp(): void {
 		parent::setUp();

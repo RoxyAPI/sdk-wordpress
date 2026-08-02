@@ -410,7 +410,7 @@ class Client {
 	 *
 	 * @return array|\WP_Error
 	 */
-	public static function getDailyHoroscope( $sign, $lang = null, $date = null ) {
+	public static function getDailyHoroscope( $sign, $lang = null, $date = null, $timezone = null ) {
 		if ( $sign === '' || $sign === null ) {
 			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'sign' ) );
 		}
@@ -418,6 +418,7 @@ class Client {
 			array(
 			'lang' => $lang,
 			'date' => $date,
+			'timezone' => $timezone,
 			),
 			static function ( $v ) {
 				return $v !== null && $v !== '';
@@ -438,13 +439,15 @@ class Client {
 	 *
 	 * @return array|\WP_Error
 	 */
-	public static function getWeeklyHoroscope( $sign, $lang = null ) {
+	public static function getWeeklyHoroscope( $sign, $lang = null, $date = null, $timezone = null ) {
 		if ( $sign === '' || $sign === null ) {
 			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'sign' ) );
 		}
 		$query = array_filter(
 			array(
 			'lang' => $lang,
+			'date' => $date,
+			'timezone' => $timezone,
 			),
 			static function ( $v ) {
 				return $v !== null && $v !== '';
@@ -465,13 +468,15 @@ class Client {
 	 *
 	 * @return array|\WP_Error
 	 */
-	public static function getMonthlyHoroscope( $sign, $lang = null ) {
+	public static function getMonthlyHoroscope( $sign, $lang = null, $date = null, $timezone = null ) {
 		if ( $sign === '' || $sign === null ) {
 			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'sign' ) );
 		}
 		$query = array_filter(
 			array(
 			'lang' => $lang,
+			'date' => $date,
+			'timezone' => $timezone,
 			),
 			static function ( $v ) {
 				return $v !== null && $v !== '';
@@ -777,7 +782,7 @@ class Client {
 	}
 
 	/**
-	 * Get current Mahadasha, Antardasha, Pratyantardasha, Sookshma - Dasha Calculator API
+	 * Get current Mahadasha, Antardasha, Pratyantardasha, Sookshma, Prana - Dasha Calculator API
 	 *
 	 * @param array $body Request body.
 	 * @return array|\WP_Error
@@ -875,6 +880,35 @@ class Client {
 			0,
 			static function () use ( $body, $mahadasha, $antardasha, $pratyantardasha ) {
 				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '/' . rawurlencode( $antardasha ) . '/' . rawurlencode( $pratyantardasha ) . '', $body );
+			}
+		);
+	}
+
+	/**
+	 * Get all Prana dashas for a Mahadasha, Antardasha, Pratyantardasha and Sookshma
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function getPranaDashas( $mahadasha, $antardasha, $pratyantardasha, $sookshma, $body = array() ) {
+		if ( $mahadasha === '' || $mahadasha === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'mahadasha' ) );
+		}
+		if ( $antardasha === '' || $antardasha === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'antardasha' ) );
+		}
+		if ( $pratyantardasha === '' || $pratyantardasha === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'pratyantardasha' ) );
+		}
+		if ( $sookshma === '' || $sookshma === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'sookshma' ) );
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '/' . rawurlencode( $antardasha ) . '/' . rawurlencode( $pratyantardasha ) . '/' . rawurlencode( $sookshma ) . '',
+			$body,
+			0,
+			static function () use ( $body, $mahadasha, $antardasha, $pratyantardasha, $sookshma ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '/' . rawurlencode( $antardasha ) . '/' . rawurlencode( $pratyantardasha ) . '/' . rawurlencode( $sookshma ) . '', $body );
 			}
 		);
 	}
@@ -1003,10 +1037,11 @@ class Client {
 	 *
 	 * @return array|\WP_Error
 	 */
-	public static function listYogas( $lang = null ) {
+	public static function listYogas( $lang = null, $family = null ) {
 		$query = array_filter(
 			array(
 			'lang' => $lang,
+			'family' => $family,
 			),
 			static function ( $v ) {
 				return $v !== null && $v !== '';
@@ -1071,10 +1106,12 @@ class Client {
 	 *
 	 * @return array|\WP_Error
 	 */
-	public static function getKpAyanamsa( $date = null ) {
+	public static function getKpAyanamsa( $date = null, $time = null, $timezone = null ) {
 		$query = array_filter(
 			array(
 			'date' => $date,
+			'time' => $time,
+			'timezone' => $timezone,
 			),
 			static function ( $v ) {
 				return $v !== null && $v !== '';
@@ -1222,6 +1259,23 @@ class Client {
 			0,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'vedic-astrology/kp/planets-interval', $body );
+			}
+		);
+	}
+
+	/**
+	 * Cast a KP horary (Prashna) chart from a number 1-249 - KP Horary API
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function castKpHoraryChart( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'vedic-astrology/kp/horary',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/kp/horary', $body );
 			}
 		);
 	}
@@ -1511,6 +1565,143 @@ class Client {
 			0,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'vedic-astrology/shadbala', $body );
+			}
+		);
+	}
+
+	/**
+	 * List all 17 avastha states - Planetary State Reference
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listAvasthas( $lang = null, $system = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'system' => $system,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'vedic-astrology/avasthas',
+			$query,
+			0,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'vedic-astrology/avasthas', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get avastha by ID - Planetary State Detail
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getAvastha( $id, $lang = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'vedic-astrology/avasthas/' . rawurlencode( $id ) . '',
+			$query,
+			0,
+			static function () use ( $query, $id ) {
+				return \RoxyAPI\Api\Client::get( 'vedic-astrology/avasthas/' . rawurlencode( $id ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get the twelve Arudha padas - Arudha Lagna Calculator API
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateArudhaPadas( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'vedic-astrology/arudha',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/arudha', $body );
+			}
+		);
+	}
+
+	/**
+	 * Get Chara Karakas including Atmakaraka - Jaimini Karaka Calculator API
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateCharaKarakas( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'vedic-astrology/chara-karakas',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/chara-karakas', $body );
+			}
+		);
+	}
+
+	/**
+	 * Get Bhava Bala (house strength) for all twelve houses - Bhava Bala Calculator API
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateBhavaBala( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'vedic-astrology/bhava-bala',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/bhava-bala', $body );
+			}
+		);
+	}
+
+	/**
+	 * Get the Bhav Chalit (Chalit Kundli) cusp-based house chart - Bhav Chalit API
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateBhavChalit( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'vedic-astrology/bhav-chalit',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/bhav-chalit', $body );
+			}
+		);
+	}
+
+	/**
+	 * Heliacal rising and setting (udaya and asta) - Graha Asta Calculator API
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function getHeliacalVisibility( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'vedic-astrology/heliacal',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/heliacal', $body );
 			}
 		);
 	}
