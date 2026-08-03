@@ -1,8 +1,8 @@
 {
   "_meta": {
     "ui_package": "@roxyapi/ui",
-    "ui_version_pinned": "0.19.3",
-    "ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.19.3/dist/manifest.json"
+    "ui_version_pinned": "0.21.1",
+    "ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.21.1/dist/manifest.json"
   },
   "operations": {
     "generateNatalChart": [
@@ -512,6 +512,60 @@
     "getCompoundNumber": [
       {
         "component": "roxy-reference-card",
+        "kind": "card"
+      }
+    ],
+    "getHeliacalVisibility": [
+      {
+        "component": "roxy-heliacal-table",
+        "kind": "table"
+      }
+    ],
+    "calculateTransit": [
+      {
+        "component": "roxy-gochara-table",
+        "kind": "table"
+      }
+    ],
+    "calculateBhavaBala": [
+      {
+        "component": "roxy-bhava-bala-table",
+        "kind": "table"
+      }
+    ],
+    "calculateBhavChalit": [
+      {
+        "component": "roxy-bhav-chalit-table",
+        "kind": "table"
+      }
+    ],
+    "getUpagrahaPositions": [
+      {
+        "component": "roxy-upagraha-table",
+        "kind": "table"
+      }
+    ],
+    "calculateCharaKarakas": [
+      {
+        "component": "roxy-chara-karakas",
+        "kind": "table"
+      }
+    ],
+    "calculateArudhaPadas": [
+      {
+        "component": "roxy-arudha-padas",
+        "kind": "table"
+      }
+    ],
+    "listCards": [
+      {
+        "component": "roxy-tarot-catalog",
+        "kind": "card"
+      }
+    ],
+    "calculateType": [
+      {
+        "component": "roxy-hd-type-card",
         "kind": "card"
       }
     ]

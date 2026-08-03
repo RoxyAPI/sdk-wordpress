@@ -36,6 +36,12 @@ class ComponentMap {
 					'kind'      => 'table',
 				),
 			),
+			'calculateArudhaPadas' => array(
+				array(
+					'component' => 'roxy-arudha-padas',
+					'kind'      => 'table',
+				),
+			),
 			'calculateAshtakavarga' => array(
 				array(
 					'component' => 'roxy-ashtakavarga-grid',
@@ -48,10 +54,28 @@ class ComponentMap {
 					'kind'      => 'table',
 				),
 			),
+			'calculateBhavChalit' => array(
+				array(
+					'component' => 'roxy-bhav-chalit-table',
+					'kind'      => 'table',
+				),
+			),
+			'calculateBhavaBala' => array(
+				array(
+					'component' => 'roxy-bhava-bala-table',
+					'kind'      => 'table',
+				),
+			),
 			'calculateBioCompatibility' => array(
 				array(
 					'component' => 'roxy-compatibility-card',
 					'kind'      => 'card',
+				),
+			),
+			'calculateCharaKarakas' => array(
+				array(
+					'component' => 'roxy-chara-karakas',
+					'kind'      => 'table',
 				),
 			),
 			'calculateCompatibility' => array(
@@ -108,6 +132,12 @@ class ComponentMap {
 					'kind'      => 'chart',
 				),
 			),
+			'calculateTransit' => array(
+				array(
+					'component' => 'roxy-gochara-table',
+					'kind'      => 'table',
+				),
+			),
 			'calculateTransitAspects' => array(
 				array(
 					'component' => 'roxy-aspects-table',
@@ -118,6 +148,12 @@ class ComponentMap {
 				array(
 					'component' => 'roxy-transits-table',
 					'kind'      => 'table',
+				),
+			),
+			'calculateType' => array(
+				array(
+					'component' => 'roxy-hd-type-card',
+					'kind'      => 'card',
 				),
 			),
 			'calculateVariables' => array(
@@ -390,6 +426,12 @@ class ComponentMap {
 					'kind'      => 'card',
 				),
 			),
+			'getHeliacalVisibility' => array(
+				array(
+					'component' => 'roxy-heliacal-table',
+					'kind'      => 'table',
+				),
+			),
 			'getHexagram' => array(
 				array(
 					'component' => 'roxy-hexagram',
@@ -486,6 +528,12 @@ class ComponentMap {
 					'kind'      => 'card',
 				),
 			),
+			'getUpagrahaPositions' => array(
+				array(
+					'component' => 'roxy-upagraha-table',
+					'kind'      => 'table',
+				),
+			),
 			'getWeeklyHoroscope' => array(
 				array(
 					'component' => 'roxy-horoscope-card',
@@ -501,6 +549,12 @@ class ComponentMap {
 			'getZodiacSign' => array(
 				array(
 					'component' => 'roxy-reference-card',
+					'kind'      => 'card',
+				),
+			),
+			'listCards' => array(
+				array(
+					'component' => 'roxy-tarot-catalog',
 					'kind'      => 'card',
 				),
 			),
