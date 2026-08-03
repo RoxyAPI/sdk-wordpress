@@ -14,10 +14,10 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Launch a complete astrology, horoscope, or tarot experience on WordPress this weekend, not this quarter. Drop a block or shortcode on any page and it renders a real reading, server-side, the moment you activate the plugin. No account, no setup, no calculation code to write. Start free, then add an API key when you go live.
 
-**One API key. 12+ domains. 160+ endpoints.** Most astrology plugins do one thing. RoxyAPI covers the whole stack, so you build the entire experience without stitching services together:
+**One API key. 12+ domains. 171+ endpoints.** Most astrology plugins do one thing. RoxyAPI covers the whole stack, so you build the entire experience without stitching services together:
 
 * **Western astrology:** natal and birth charts, daily, weekly, and monthly horoscopes, synastry, compatibility, transits, and moon phases
-* **Vedic astrology:** kundli, KP charts, panchang, Vimshottari dasha, divisional charts, nakshatras, and yogas
+* **Vedic astrology:** kundli, KP charts, panchang, Vimshottari dasha, divisional charts, nakshatras, yogas, gochara transits, and the Bhava Bala and Bhav Chalit house readings
 * **Numerology:** Life Path, Expression, Soul Urge, and Personality numbers
 * **Tarot:** single card, three card, Celtic Cross, and custom spreads
 * **Human design:** full bodygraph with type, authority, profile, centers, channels, and gates
@@ -199,6 +199,13 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.7.0 =
+* Three new readings: Gochara transits, Bhava Bala and Bhav Chalit. Each is available as a block and a shortcode like every other reading.
+* Nine readings that used to show a plain list of values now draw as proper readings. Gochara transits, Bhava Bala, Bhav Chalit, heliacal visibility, Upagraha, Chara Karakas, Arudha padas, the tarot card catalogue and the Human Design type card were all affected.
+* Vedic charts and strength tables now state which sidereal frame they were cast in. Two charts cast in different frames can place a graha in different signs, so without this a reader had no way to reconcile one against another.
+* Yoga detection reads correctly in every language. The group of yogas that match their rule but are outranked by a stronger one was only recognised in English, and appeared as simply absent in the other seven.
+* Gochara transits show where a graha sits within its current kaksha rather than a single verdict, so a reader can see how long the reading holds before it turns.
+
 = 1.6.6 =
 * Aspect names now read the same way everywhere. A summary chip said "Semi sextile" while the row below it said "Semi-sextile"; both now use the proper hyphenated name.
 * Compatibility readings format their aspect and cycle wording consistently with the rest of the plugin.
@@ -345,6 +352,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.7.0 =
+Adds Gochara transits, Bhava Bala and Bhav Chalit, draws nine readings properly that previously showed a plain list of values, and fixes yoga detection in the seven non English languages.
 
 = 1.6.6 =
 Aspect names now read consistently between the summary chips and the rows beneath them.
