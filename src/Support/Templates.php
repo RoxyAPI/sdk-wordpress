@@ -51,7 +51,19 @@ class Templates {
 	 */
 	public static function api_error( \WP_Error $error ): string {
 		$message = $error->get_error_message();
-		$out     = '<div class="roxyapi-error">' . esc_html( $message );
+
+		// A reading nobody has configured yet is an authoring state, not a
+		// fault. Say so to whoever can act on it and render nothing at all for
+		// everyone else, so a half-built page never shows visitors a message
+		// written for its owner.
+		if ( $error->get_error_code() === 'roxyapi_not_configured' ) {
+			if ( ! current_user_can( 'edit_posts' ) ) {
+				return '';
+			}
+			return '<div class="roxyapi-error roxyapi-error-setup">' . esc_html( $message ) . '</div>';
+		}
+
+		$out = '<div class="roxyapi-error">' . esc_html( $message );
 
 		if ( current_user_can( 'manage_options' ) ) {
 			$data            = $error->get_error_data();

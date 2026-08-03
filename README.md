@@ -1,22 +1,22 @@
 <p align="center">
   <a href="https://roxyapi.com">
-    <img src="https://raw.githubusercontent.com/RoxyAPI/sdk-wordpress/main/assets/hero.png" alt="RoxyAPI: Astrology, Vedic, Tarot, Numerology. Shortcodes and Gutenberg blocks for WordPress. One API key, server side rendering." width="100%">
+    <img src="https://raw.githubusercontent.com/RoxyAPI/sdk-wordpress/main/assets/hero.png" alt="RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology. Shortcodes and Gutenberg blocks for WordPress. One API key, server side rendering." width="100%">
   </a>
 </p>
 
-# RoxyAPI: Astrology, Vedic, Tarot, Numerology
+# RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology
 
 [![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/roxyapi.svg)](https://wordpress.org/plugins/roxyapi/)
 [![WordPress Tested](https://img.shields.io/wordpress/plugin/tested/roxyapi.svg)](https://wordpress.org/plugins/roxyapi/)
 [![License](https://img.shields.io/badge/license-GPL--2.0--or--later-blue)](LICENSE)
 
-## Ship a complete astrology, numerology, or tarot site this weekend. Not this quarter.
+## Ship a complete Astrology, Vedic, or Human Design site this weekend. Not this quarter.
 
-The only multi domain spiritual intelligence plugin for WordPress. Drop daily horoscopes, numerology charts, tarot pulls, I Ching casts, dream symbol lookups, and natal chart calculators onto any page. One API key, 12+ spiritual data domains, 171+ endpoints. Verified against NASA JPL Horizons.
+The only multi domain spiritual intelligence plugin for WordPress. Drop natal charts, daily horoscopes, kundli, Human Design bodygraphs, Numerology charts, and Tarot pulls onto any page. One API key, 12+ spiritual data domains, 171+ endpoints. Verified against NASA JPL Horizons.
 
 Interactive forms for your visitors. Gutenberg blocks for your editor. Shortcodes for anywhere else. Server side rendering keeps your API key out of the browser. Transient caching keeps your quota intact.
 
--   **17 hero shortcodes** covering western astrology, vedic astrology (kundli, panchang, mangal dosha, KP chart, gun milan), tarot (daily, three card, yes or no), numerology, biorhythm, angel numbers, crystals by zodiac, current moon phase, and two-chart compatibility (synastry, gun milan, Western compatibility). Six of them (horoscope, natal chart, tarot, numerology, biorhythm, angel number) ship a hand-written Gutenberg block with a variation picker; every other reading ships an auto-generated block matching its shortcode.
+-   **17 hero shortcodes** covering Western astrology, Vedic astrology (kundli, panchang, mangal dosha, KP chart, gun milan), Forecast, Human Design, Numerology, Tarot (daily, three card, yes or no), biorhythm, angel numbers, crystals by zodiac, current moon phase, and two-chart compatibility (synastry, gun milan, Western compatibility). Six of them (horoscope, natal chart, tarot, numerology, biorhythm, angel number) ship a hand-written Gutenberg block with a variation picker; every other reading ships an auto-generated block matching its shortcode.
 -   **Auto generated shortcodes** for the long tail. Every endpoint in the RoxyAPI OpenAPI spec is reachable from a shortcode.
 -   **Form mode on every hero shortcode.** Let visitors submit their own sign, name, birth date, or question and render a personalized reading. No JavaScript required.
 -   **Zero client side secrets.** All calls run in PHP. The API key never reaches the browser.
@@ -92,7 +92,7 @@ In the block editor, open the inserter and pick a block from the **RoxyAPI** cat
 -   **Biorhythm**
 -   **Angel Number**
 
-Beyond these, every long-tail endpoint (I Ching, dream symbols, crystals, human design, forecasts, and more) auto-generates a matching block from the OpenAPI spec, so the full catalog is in the inserter alongside the shortcodes. Each generated block also gets sidebar controls for its inputs, derived from the spec params (a date picker for dates, a dropdown for enums, text and number fields for the rest), with a live server-rendered preview. Only readings that need two charts or nested birth details (such as synastry or gun milan) stay shortcode and visitor-form only, because the block editor cannot collect their nested input.
+Beyond these, every long-tail endpoint (I Ching, dream symbols, crystals, Human Design, forecasts, and more) auto-generates a matching block from the OpenAPI spec, so the full catalog is in the inserter alongside the shortcodes. Each generated block also gets sidebar controls for its inputs, derived from the spec params (a date picker for dates, a dropdown for enums, text and number fields for the rest), with a live server-rendered preview. Only readings that need two charts or nested birth details (such as synastry or gun milan) stay shortcode and visitor-form only, because the block editor cannot collect their nested input.
 
 All blocks are built flat under `build/blocks/<name>/` and registered with a single directory scan using only `register_block_type`, so the plugin stays compatible with its declared minimum WordPress version (6.5) with no version-gated core functions.
 

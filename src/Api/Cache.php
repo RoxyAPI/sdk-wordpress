@@ -48,64 +48,103 @@ class Cache {
 	}
 
 	/**
-	 * Short TTL for negative-caching upstream failures.
+	 * Short TTL for negative-caching a failure that may clear on its own.
 	 *
-	 * When RoxyAPI returns 429 (quota), 401/403 (auth), or 5xx (upstream), we
-	 * cache the WP_Error for this many seconds so the next page load does not
-	 * round-trip again. The error counter on the SaaS side keeps ticking
-	 * regardless of useful work, so blasting through it would only push the
-	 * recovery window further out.
+	 * Auth, rate-limit and 5xx responses are cached for this many seconds so the
+	 * next page load does not round-trip again, while still recovering quickly
+	 * once the condition passes.
 	 */
 	private const NEGATIVE_TTL = 60;
 
 	/**
+	 * Longer TTL for a failure that repeating the same request cannot fix.
+	 *
+	 * A rejected request (a shortcode missing a required attribute, a bad sign
+	 * name, an unparseable date) is rejected identically every time, so sending
+	 * it again on the next page view costs a request and changes nothing. A
+	 * misconfigured block on a busy page is the case this exists for.
+	 *
+	 * Holding it this long is safe because the cache key hashes the arguments.
+	 * The moment an admin corrects the attribute the key changes and the next
+	 * render calls through immediately, so a fix is never masked by a stale
+	 * error.
+	 */
+	private const CLIENT_ERROR_TTL = HOUR_IN_SECONDS;
+
+	/**
 	 * Fetch from cache or call the API and store the result.
 	 *
-	 * Successful responses cache for the full $ttl. Categorised upstream
-	 * failures (auth, quota, 5xx) cache for self::NEGATIVE_TTL seconds to avoid
-	 * hammering RoxyAPI while the user-visible message is the same.
+	 * Successful responses cache for the full $ttl, and a $ttl of 0 means "never
+	 * cache a success" for the endpoints where a repeat answer would be a bug
+	 * (a tarot draw, a yes/no cast, anything with `random` in the name).
+	 *
+	 * FAILURES are cached independently of $ttl. A TTL of 0 describes how fresh
+	 * a SUCCESSFUL reading has to be; it says nothing about how often a request
+	 * that the API already rejected deserves to be sent again. Before this split
+	 * a $ttl of 0 returned early and skipped the cache entirely, so a random-draw
+	 * endpoint called with a bad argument re-POSTed a guaranteed rejection on
+	 * every single page view.
 	 *
 	 * @param string               $endpoint API endpoint path.
 	 * @param array<string, mixed> $args     Arguments used to build the cache key.
-	 * @param int                  $ttl      Cache TTL in seconds for successful responses.
+	 * @param int                  $ttl      Cache TTL in seconds for successful responses. 0 disables success caching only.
 	 * @param callable             $fetch    Callback that fetches fresh data.
 	 * @return mixed Cached or freshly fetched result. May be a WP_Error from a recently failed call.
 	 */
 	public static function remember( string $endpoint, array $args, int $ttl, callable $fetch ) {
-		$ttl = self::apply_preset_multiplier( $ttl );
-		if ( $ttl <= 0 ) {
-			return $fetch();
-		}
+		$ttl    = self::apply_preset_multiplier( $ttl );
 		$key    = self::key( $endpoint, $args );
 		$cached = get_transient( $key );
 		if ( $cached !== false ) {
 			return $cached;
 		}
 		$result = $fetch();
-		if ( is_wp_error( $result ) && self::is_transient_failure( $result ) ) {
-			set_transient( $key, $result, self::NEGATIVE_TTL );
-		} elseif ( ! is_wp_error( $result ) ) {
+		if ( is_wp_error( $result ) ) {
+			$negative = self::negative_ttl( $result );
+			if ( $negative > 0 ) {
+				set_transient( $key, $result, $negative );
+			}
+		} elseif ( $ttl > 0 ) {
 			set_transient( $key, $result, $ttl );
 		}
 		return $result;
 	}
 
 	/**
-	 * Whether an error should be negative-cached briefly to avoid hammering.
+	 * How long to suppress repeat calls after a failure, in seconds. 0 means
+	 * do not cache the failure at all.
 	 *
-	 * Only categorised upstream failures (auth, quota, 5xx) qualify. Other
-	 * errors (malformed JSON, encoding failures, missing key) either resolve
-	 * on user action or are best surfaced fresh on every render so admins
-	 * notice them quickly.
+	 * Three tiers, split by whether retrying could plausibly succeed:
+	 *
+	 * - A failure that repeating cannot fix (4xx other than 408 and 429, and a
+	 *   spent allowance) is held for {@link Cache::CLIENT_ERROR_TTL}.
+	 * - A failure that may clear on its own (auth, rate limit, 5xx, request
+	 *   timeout) is held only for {@link Cache::NEGATIVE_TTL}.
+	 * - Anything else (malformed JSON, a local encoding failure) is not cached,
+	 *   so an admin sees it fresh on every render.
+	 *
+	 * Saving an API key flushes every cached entry, so an owner who connects or
+	 * rotates a key never waits out one of these windows.
 	 *
 	 * @param \WP_Error $error Error returned by the API client.
-	 * @return bool
+	 * @return int
 	 */
-	private static function is_transient_failure( \WP_Error $error ): bool {
+	private static function negative_ttl( \WP_Error $error ): int {
 		$code = (string) $error->get_error_code();
-		return $code === 'roxyapi_auth'
+
+		if ( $code === 'roxyapi_auth'
 			|| $code === 'roxyapi_quota'
-			|| $code === 'roxyapi_upstream';
+			|| $code === 'roxyapi_upstream'
+			|| $code === 'roxyapi_http_408' ) {
+			return self::NEGATIVE_TTL;
+		}
+
+		if ( $code === 'roxyapi_free_tier_exhausted'
+			|| strpos( $code, 'roxyapi_http_4' ) === 0 ) {
+			return self::CLIENT_ERROR_TTL;
+		}
+
+		return 0;
 	}
 
 	/**

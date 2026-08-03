@@ -847,7 +847,27 @@ ${ queryArray.join( '\n' ) }
 		);
 	}` );
 		} else {
-			const _bodyFields = extractBodyFields( op );
+			const bodyFields = extractBodyFields( op );
+			// Same idea as pathGuard, for the request body. A block starts life
+			// with every attribute empty, and the shortcodes drop empty
+			// attributes while building the body, so an unconfigured reading
+			// used to POST `{}` and be rejected. A block editor re-renders on
+			// load and after every keystroke, so that became a stream of
+			// requests that could never succeed.
+			//
+			// Driven by the spec's own `required` list, which is what keeps it
+			// honest: readings that genuinely take no input (today's card,
+			// today's hexagram) declare none and are left alone, and a reading
+			// that later gains a required field starts being guarded on the
+			// next generate with no edit here.
+			const requiredBody = bodyFields
+				.filter( ( f ) => f.required )
+				.map( ( f ) => `'${ f.name }'` );
+			const bodyGuard = requiredBody.length
+				? `\t\tif ( ! \\RoxyAPI\\Api\\Client::body_has_all( $body, array( ${ requiredBody.join(
+						', '
+				  ) } ) ) ) {\n\t\t\treturn \\RoxyAPI\\Api\\Client::not_configured();\n\t\t}`
+				: '';
 			const allParams = [
 				...pathParams.map( ( p ) => `$${ toPhpVar( p ) }` ),
 				'$body = array()',
@@ -868,7 +888,9 @@ ${ queryArray.join( '\n' ) }
 	 * @return array|\\WP_Error
 	 */
 	public static function ${ phpMethod }( ${ allParams.join( ', ' ) } ) {
-${ pathGuard ? pathGuard + '\n' : '' }		return \\RoxyAPI\\Api\\Cache::remember(
+${ pathGuard ? pathGuard + '\n' : '' }${
+				bodyGuard ? bodyGuard + '\n' : ''
+			}		return \\RoxyAPI\\Api\\Cache::remember(
 			${ phpPath },
 			$body,
 			${ ttl },

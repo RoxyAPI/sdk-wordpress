@@ -109,6 +109,24 @@ class Test_Codegen_Drift extends \WP_UnitTestCase {
 		);
 	}
 
+	/**
+	 * The map must cover EVERY operation, the reverse of the check above.
+	 *
+	 * An unlisted operation falls through to a TTL of 0, which skips the
+	 * transient layer entirely and calls the API on every page view. That is a
+	 * silent, invisible cost: the reading still renders, so nothing looks
+	 * broken. Failing here forces an explicit decision per endpoint.
+	 */
+	public function test_ttl_map_covers_every_operation(): void {
+		$ttl      = $this->load_json( 'bin/ttl-map.json' );
+		$unlisted = array_diff( self::$live_ops, array_keys( $ttl ) );
+		$this->assertEmpty(
+			$unlisted,
+			'Every operation needs an explicit bin/ttl-map.json entry (see CLAUDE.md for how to choose a value). Missing: '
+				. implode( ', ', (array) $unlisted )
+		);
+	}
+
 	public function test_example_overrides_per_op_keys_all_exist(): void {
 		$overrides = $this->load_json( 'bin/example-overrides.json' );
 		$missing   = array();

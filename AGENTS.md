@@ -112,7 +112,7 @@ Resolution order:
 
 1. `ROXYAPI_KEY` constant in `wp-config.php` (recommended for production)
 2. The encrypted value in the `roxyapi_settings` option, decrypted via AES-256-CTR
-3. Empty string. With no key the plugin still renders, calling the API through the free daily allowance (a limited number of readings per day per site). Once that is used up the reading shows a friendly "temporarily unavailable" message and an admin notice prompts for a paid key. The dashboard widget also surfaces the unconnected state.
+3. Empty string. With no key the plugin still renders, on a free daily allowance. Once that is used up the reading shows a friendly "temporarily unavailable" message and an admin notice prompts for a paid key. The dashboard widget also surfaces the unconnected state.
 
 The encryption key derives from `ROXYAPI_ENCRYPTION_KEY` constant or `LOGGED_IN_KEY` fallback. Same for the salt. If neither is available, the encryption helper returns `false` and the user gets a clear "could not encrypt" error instead of having their key persisted under a hardcoded secret. Document for production:
 

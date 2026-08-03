@@ -94,7 +94,7 @@ class DashboardWidget {
 		?>
 		<div class="roxyapi-widget-empty">
 			<p>
-				<?php echo esc_html__( 'RoxyAPI is not connected yet. Add your key to start rendering horoscopes, tarot pulls, and natal charts.', 'roxyapi' ); ?>
+				<?php echo esc_html__( 'RoxyAPI is not connected yet. Add your key to start rendering natal charts, horoscopes, kundli and Human Design readings.', 'roxyapi' ); ?>
 			</p>
 			<p>
 				<a class="button button-primary" href="<?php echo esc_url( $settings_url ); ?>">

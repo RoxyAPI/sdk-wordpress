@@ -18,7 +18,6 @@ import {
 	SelectControl,
 	ToggleControl,
 	Placeholder,
-	Button,
 } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
 import { __ } from '@wordpress/i18n';
@@ -111,7 +110,6 @@ function FieldControl( { field, value, setAttributes } ) {
 export function makeEdit( fields, blockName ) {
 	return function Edit( { attributes, setAttributes } ) {
 		const blockProps = useBlockProps();
-		const editor = window.RoxyAPIEditor || {};
 
 		const inspector = (
 			<InspectorControls>
@@ -128,32 +126,21 @@ export function makeEdit( fields, blockName ) {
 			</InspectorControls>
 		);
 
-		if ( ! editor.hasKey ) {
-			return (
-				<div { ...blockProps }>
-					{ inspector }
-					<Placeholder
-						icon="star-filled"
-						label={ __( 'RoxyAPI not connected', 'roxyapi' ) }
-						instructions={ __(
-							'Add your RoxyAPI key in Settings to preview this reading.',
-							'roxyapi'
-						) }
-					>
-						<Button
-							variant="primary"
-							href={ editor.settingsUrl || '#' }
-						>
-							{ __( 'Open settings', 'roxyapi' ) }
-						</Button>
-					</Placeholder>
-				</div>
-			);
-		}
-
-		const needsInput = fields.some(
-			( field ) => field.required && ! attributes[ field.name ]
-		);
+		// Readings render without a key, so previewing without one is NOT an
+		// error state and must not be blocked. Any genuine failure is reported
+		// by the reading itself.
+		//
+		// Preview only once the block describes a reading. `required` alone is
+		// not enough to rely on: a spec that omits a required field would let an
+		// empty block through, and ServerSideRender fires immediately on insert
+		// and again on every keystroke, so each empty block became a stream of
+		// requests that could never succeed. An untouched block is never ready.
+		const needsInput =
+			fields.some(
+				( field ) => field.required && ! attributes[ field.name ]
+			) ||
+			( fields.length > 0 &&
+				fields.every( ( field ) => ! attributes[ field.name ] ) );
 		if ( needsInput ) {
 			return (
 				<div { ...blockProps }>
@@ -176,6 +163,8 @@ export function makeEdit( fields, blockName ) {
 				<ServerSideRender
 					block={ blockName }
 					attributes={ attributes }
+					httpMethod="POST"
+					skipBlockSupportAttributes
 				/>
 			</div>
 		);

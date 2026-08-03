@@ -61,10 +61,8 @@ class Client {
 		// means "match the WP locale", which we resolve here once.
 		$payload = self::maybe_inject_language( $payload );
 
-		// When no key is configured, omit X-API-Key entirely rather than sending
-		// an empty string, which the API rejects as a 401. Responses on a plan
-		// limit come back as 429 with code "free_tier_exhausted", which
-		// error_from_response() maps to a friendly notice.
+		// Only send the key header when one is actually set: an empty header
+		// value is not the same as no header at all.
 		$headers = array(
 			'X-SDK-Client' => 'roxy-sdk-wordpress/' . ROXYAPI_VERSION,
 			'X-Site-URL'   => home_url( '/' ),
@@ -86,9 +84,9 @@ class Client {
 		if ( $method === 'GET' && $payload ) {
 			$url = add_query_arg( array_map( 'rawurlencode', $payload ), $url );
 		} elseif ( $method === 'POST' ) {
-			// Empty PHP arrays encode as JSON `[]`, but every RoxyAPI POST
-			// schema expects an object body. Cast to stdClass so an
-			// attribute-less call sends `{}` instead of `[]`.
+			// Empty PHP arrays encode as JSON `[]`, but a POST body is an
+			// object. Cast so the readings that legitimately take no input
+			// (today's card, today's hexagram) send `{}` rather than `[]`.
 			$encoded = wp_json_encode( empty( $payload ) ? (object) array() : $payload );
 			if ( $encoded === false ) {
 				return new WP_Error( 'roxyapi_json_encode', __( 'Could not encode request body as JSON.', 'roxyapi' ) );
@@ -114,6 +112,38 @@ class Client {
 			return new WP_Error( 'roxyapi_json', __( 'Invalid JSON from RoxyAPI', 'roxyapi' ) );
 		}
 		return $decoded;
+	}
+
+	/**
+	 * Whether a request body supplies every input the reading needs.
+	 *
+	 * @remarks Called by the generated client before a POST. The key list comes from the spec, so a reading that takes no input at all is never guarded and a reading that gains a required field is guarded automatically on the next generate.
+	 *
+	 * @param array<string, mixed> $body Request body assembled from block or shortcode attributes.
+	 * @param string[]             $keys Input names the reading cannot run without.
+	 * @return bool
+	 */
+	public static function body_has_all( array $body, array $keys ): bool {
+		foreach ( $keys as $key ) {
+			if ( ! isset( $body[ $key ] ) || $body[ $key ] === '' || $body[ $key ] === array() ) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * The "this reading has not been set up yet" result.
+	 *
+	 * @remarks An authoring state rather than a fault, so no request is sent and nothing is cached: the moment an attribute is filled in, the next render calls through. {@link \RoxyAPI\Support\Templates::api_error} shows the message only to users who can edit posts.
+	 *
+	 * @return WP_Error
+	 */
+	public static function not_configured(): WP_Error {
+		return new WP_Error(
+			'roxyapi_not_configured',
+			__( 'This reading has not been set up yet. Fill in its settings to choose what it should show.', 'roxyapi' )
+		);
 	}
 
 	/**

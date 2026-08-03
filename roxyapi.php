@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:       RoxyAPI: Astrology, Vedic, Tarot, Numerology
+ * Plugin Name:       RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology
  * Plugin URI:        https://roxyapi.com/docs/integrations/wordpress
- * Description:       Add astrology, daily horoscopes, tarot card pulls, numerology readings, and Vedic and Western birth charts to any WordPress page. Blocks and shortcodes. Calculations cross-checked against the NASA JPL Horizons ephemeris.
+ * Description:       Add Astrology, Vedic, Forecast, Human Design and Numerology readings to any WordPress post, page or widget, as Gutenberg blocks and shortcodes. 12 or more domains on one key, readings in 8 languages, and charts verified against the NASA JPL Horizons ephemeris.
  * Version:           1.7.0
  * Requires at least: 6.5
  * Tested up to:      7.0

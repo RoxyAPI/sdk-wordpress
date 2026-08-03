@@ -44,7 +44,7 @@ $option_group   = isset( $option_group ) ? (string) $option_group : 'roxyapi';
 	<span class="roxyapi-punchline"><?php echo esc_html__( '30 seconds.', 'roxyapi' ); ?></span>
 </h1>
 <p class="roxyapi-page-intro">
-	<?php echo esc_html__( 'Drop daily horoscopes, tarot pulls, numerology readings, I Ching casts, and natal charts onto any WordPress page. Start free in seconds. Add a key when you go live.', 'roxyapi' ); ?>
+	<?php echo esc_html__( 'Drop natal charts, daily horoscopes, kundli, Forecast timelines, Human Design bodygraphs and Numerology onto any WordPress page. Start free in seconds. Add a key when you go live.', 'roxyapi' ); ?>
 </p>
 
 <div class="notice notice-info inline roxyapi-notice roxyapi-start-free">

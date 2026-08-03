@@ -79,8 +79,50 @@ class Test_Cache extends \WP_UnitTestCase {
 		}
 	}
 
+	/**
+	 * A rejected request is rejected identically every time, so repeating it
+	 * spends quota to learn nothing. Safe because the cache key hashes the
+	 * arguments: correcting the input yields a different key and calls through
+	 * at once.
+	 */
+	public function test_remember_negative_caches_client_errors(): void {
+		$codes = array( 'roxyapi_http_400', 'roxyapi_http_404', 'roxyapi_http_422', 'roxyapi_free_tier_exhausted' );
+		foreach ( $codes as $code ) {
+			$endpoint = 'test/client-error/' . $code;
+			$counter  = 0;
+			$fetch    = static function () use ( &$counter, $code ) {
+				++$counter;
+				return new WP_Error( $code, 'rejected' );
+			};
+
+			Cache::remember( $endpoint, array(), 3600, $fetch );
+			Cache::remember( $endpoint, array(), 3600, $fetch );
+
+			$this->assertSame( 1, $counter, "Client error {$code} must be sent once, not on every render." );
+			$this->assertInstanceOf( WP_Error::class, get_transient( $this->cache_key( $endpoint ) ) );
+		}
+	}
+
+	/**
+	 * A TTL of 0 means "repeating the ANSWER would be wrong" (a tarot draw),
+	 * never "resend a request the API already refused".
+	 */
+	public function test_remember_negative_caches_even_when_success_caching_is_off(): void {
+		$endpoint = 'test/zero-ttl/rejected';
+		$counter  = 0;
+		$fetch    = static function () use ( &$counter ) {
+			++$counter;
+			return new WP_Error( 'roxyapi_http_400', 'rejected' );
+		};
+
+		Cache::remember( $endpoint, array(), 0, $fetch );
+		Cache::remember( $endpoint, array(), 0, $fetch );
+
+		$this->assertSame( 1, $counter, 'A zero TTL must not defeat negative caching.' );
+	}
+
 	public function test_remember_does_not_cache_non_categorised_errors(): void {
-		$uncategorized = array( 'roxyapi_json', 'roxyapi_no_key', 'roxyapi_json_encode', 'roxyapi_http_404' );
+		$uncategorized = array( 'roxyapi_json', 'roxyapi_no_key', 'roxyapi_json_encode' );
 		foreach ( $uncategorized as $code ) {
 			$endpoint = 'test/no-cache/' . $code;
 			$counter  = 0;

@@ -7,12 +7,7 @@
  */
 
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import {
-	PanelBody,
-	SelectControl,
-	Placeholder,
-	Button,
-} from '@wordpress/components';
+import { PanelBody, SelectControl, Placeholder } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
 import { __ } from '@wordpress/i18n';
 
@@ -40,28 +35,10 @@ const PERIODS = [
 
 export default function Edit( { attributes, setAttributes, context } ) {
 	const blockProps = useBlockProps();
-	const hasKey = window.RoxyAPIEditor && window.RoxyAPIEditor.hasKey;
-	const settingsUrl =
-		( window.RoxyAPIEditor && window.RoxyAPIEditor.settingsUrl ) || '#';
 
-	if ( ! hasKey ) {
-		return (
-			<div { ...blockProps }>
-				<Placeholder
-					icon="star-filled"
-					label={ __( 'RoxyAPI not connected', 'roxyapi' ) }
-					instructions={ __(
-						'Add your RoxyAPI key in Settings to use this block.',
-						'roxyapi'
-					) }
-				>
-					<Button variant="primary" href={ settingsUrl }>
-						{ __( 'Open settings', 'roxyapi' ) }
-					</Button>
-				</Placeholder>
-			</div>
-		);
-	}
+	// No key gate here on purpose: horoscopes render without one, so refusing to
+	// preview would hide a block that already works. A genuine failure surfaces
+	// in the reading itself.
 
 	// Empty sign + no inherited Astrology Section context = block is
 	// unconfigured. Show a placeholder instead of falling back to "aries"
