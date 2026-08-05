@@ -208,6 +208,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.7.5 =
+* The visitor form is now translated into German, Spanish, French, Hindi, Portuguese, Russian, and Turkish. Set your site language and the birth details form, its help text, and its buttons appear in that language alongside the reading itself.
+
 = 1.7.4 =
 * The block editor now follows your site language too. Reading settings panels in the editor were left in English even when the rest of your dashboard was translated.
 
@@ -379,6 +382,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.7.5 =
+Recommended for sites in German, Spanish, French, Hindi, Portuguese, Russian, or Turkish. The visitor form now appears in your site language.
 
 = 1.7.4 =
 Completes the translation work in 1.7.3 by covering the block editor panels.

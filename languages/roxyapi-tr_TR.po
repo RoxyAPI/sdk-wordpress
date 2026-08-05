@@ -1,0 +1,607 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: RoxyAPI\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/roxyapi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: roxyapi build\n"
+
+msgid "1111"
+msgstr "1111"
+
+msgid "Admin only:"
+msgstr "Yalnızca yöneticiler:"
+
+msgid "Angel number"
+msgstr "Melek sayısı"
+
+msgid "Angel number lookup"
+msgstr "Melek sayısı sorgulama"
+
+msgid "Any whole number you keep noticing"
+msgstr "Sürekli dikkatinizi çeken herhangi bir tam sayı"
+
+msgid "Ayanamsa"
+msgstr "Ayanamsa"
+
+msgid "Ayanamsa value"
+msgstr "Ayanamsa değeri"
+
+msgid "Biorhythm"
+msgstr "Biyoritim"
+
+msgid "Biorhythm reading"
+msgstr "Biyoritim okuması"
+
+msgid "Birth data"
+msgstr "Doğum bilgileri"
+
+msgid "Birth date"
+msgstr "Doğum tarihi"
+
+msgid "Birth date in YYYY-MM-DD format"
+msgstr "YYYY-AA-GG biçiminde doğum tarihi"
+
+msgid "Birth date of person 1 in YYYY-MM-DD format."
+msgstr "1. kişinin doğum tarihi, YYYY-AA-GG biçiminde."
+
+msgid "Birth date of person 2 in YYYY-MM-DD format."
+msgstr "2. kişinin doğum tarihi, YYYY-AA-GG biçiminde."
+
+msgid "Birth day (1-31)"
+msgstr "Doğum günü (1-31)"
+
+msgid "Birth details"
+msgstr "Doğum bilgileri"
+
+msgid "Birth latitude in decimal degrees"
+msgstr "Ondalık derece cinsinden doğum enlemi"
+
+msgid "Birth location latitude in decimal degrees"
+msgstr "Ondalık derece cinsinden doğum yeri enlemi"
+
+msgid "Birth location latitude in decimal degrees (-90 to 90)"
+msgstr "Ondalık derece cinsinden doğum yeri enlemi (-90 ile 90 arası)"
+
+msgid "Birth location longitude in decimal degrees"
+msgstr "Ondalık derece cinsinden doğum yeri boylamı"
+
+msgid "Birth location longitude in decimal degrees (-180 to 180)"
+msgstr "Ondalık derece cinsinden doğum yeri boylamı (-180 ile 180 arası)"
+
+msgid "Birth longitude in decimal degrees"
+msgstr "Ondalık derece cinsinden doğum boylamı"
+
+msgid "Birth month (1-12)"
+msgstr "Doğum ayı (1-12)"
+
+msgid "Birth time"
+msgstr "Doğum saati"
+
+msgid "Birth time in 24-hour HH:MM:SS format"
+msgstr "24 saat biçiminde doğum saati (SS:DD:SS)"
+
+msgid "Birth year to calculate Life Path automatically"
+msgstr "Yaşam Yolu sayısını otomatik hesaplamak için doğum yılı"
+
+msgid "Calculate"
+msgstr "Hesapla"
+
+msgid "Calculate Compatibility - Relationship dynamics between two people"
+msgstr "Uyumu hesapla. İki kişi arasındaki ilişki dinamikleri"
+
+msgid "Calculate Human Design Penta - Small-group BG5 operating system for three to five people"
+msgstr "Human Design Penta hesapla. Üç ila beş kişilik gruplar için BG5 sistemi"
+
+msgid "Calculate Human Design connection chart - Two-person composite bodygraph compatibility"
+msgstr "Human Design bağlantı haritası hesapla. İki kişilik birleşik bodygraph uyumu"
+
+msgid "Calculate chart"
+msgstr "Haritayı hesapla"
+
+msgid "Calculate compatibility - Biorhythm alignment between two people"
+msgstr "Uyumu hesapla. İki kişi arasındaki biyoritim uyumu"
+
+msgid "Calculate compatibility score - Gun Milan API (Ashtakoot Matching)"
+msgstr "Uyum puanını hesapla. Gun Milan (Ashtakoot eşleştirmesi)"
+
+msgid "Calculate cycles"
+msgstr "Döngüleri hesapla"
+
+msgid "Calculate synastry - Relationship compatibility analysis API"
+msgstr "Sinastri hesapla. İlişki uyumu analizi"
+
+msgid "Check Mangal Dosha"
+msgstr "Mangal Dosha kontrolü"
+
+msgid "Check Mangal Dosha (manglik) status for matrimonial compatibility, with severity, remedies, and exception conditions."
+msgstr "Evlilik uyumu için Mangal Dosha (manglik) durumunu, şiddet düzeyi, çareler ve istisna koşullarıyla birlikte kontrol eder."
+
+msgid "Compatibility Score. Relationship compatibility analysis with category breakdown"
+msgstr "Uyum puanı. Kategori bazlı dökümle ilişki uyumu analizi"
+
+msgid "Compatibility score"
+msgstr "Uyum puanı"
+
+msgid "Composite Chart - Midpoint relationship chart with interpretations"
+msgstr "Birleşik harita. Yorumlarla birlikte orta nokta ilişki haritası"
+
+msgid "Cross-domain forecast timeline - Transits, ingresses, stations, dasha changes, critical days"
+msgstr "Çok alanlı öngörü zaman çizelgesi. Transitler, burç girişleri, duraklamalar, dasha değişimleri ve kritik günler"
+
+msgid "Crystals and stones associated with any zodiac sign, with properties, color, and chakra."
+msgstr "Her burçla ilişkilendirilen kristaller ve taşlar; özellikleri, rengi ve çakrasıyla birlikte."
+
+msgid "Crystals by zodiac"
+msgstr "Burca göre kristaller"
+
+msgid "Crystals for your sign"
+msgstr "Burcunuz için kristaller"
+
+msgid "Current moon phase, illumination, sign, degree, and meaning."
+msgstr "Güncel ay evresi, aydınlanma oranı, burç, derece ve anlamı."
+
+msgid "Custom Spread Builder"
+msgstr "Özel açılım oluşturucu"
+
+msgid "Custom ayanamsa value in degrees"
+msgstr "Derece cinsinden özel ayanamsa değeri"
+
+msgid "Daily horoscope"
+msgstr "Günlük burç yorumu"
+
+msgid "Daily is one card. Three is past, present, future. Celtic is a ten-card layout."
+msgstr "Günlük tek karttır. Üçlü geçmiş, şimdi ve geleceği gösterir. Kelt Haçı on kartlık bir açılımdır."
+
+msgid "Date"
+msgstr "Tarih"
+
+msgid "Date and location"
+msgstr "Tarih ve konum"
+
+msgid "Date for the panchang reading"
+msgstr "Panchang okuması için tarih"
+
+msgid "Date to evaluate compatibility on in YYYY-MM-DD format"
+msgstr "Uyumun değerlendirileceği tarih, YYYY-AA-GG biçiminde"
+
+msgid "Day"
+msgstr "Gün"
+
+msgid "Decimal degrees, negative for south"
+msgstr "Ondalık derece, güney için negatif"
+
+msgid "Decimal degrees, negative for west"
+msgstr "Ondalık derece, batı için negatif"
+
+msgid "Defaults to today if left blank"
+msgstr "Boş bırakılırsa bugünün tarihi kullanılır"
+
+msgid "Detailed Hindu calendar for any date and location: tithi, nakshatra, yoga, karana, rahu kaal, abhijit muhurta, brahma muhurta, and more."
+msgstr "Herhangi bir tarih ve konum için ayrıntılı Hindu takvimi: tithi, nakshatra, yoga, karana, rahu kaal, abhijit muhurta, brahma muhurta ve daha fazlası."
+
+msgid "Detailed panchang"
+msgstr "Ayrıntılı panchang"
+
+msgid "Did you mean: %1$s%2$s"
+msgstr "Şunu mu demek istediniz: %1$s%2$s"
+
+msgid "Domain weights"
+msgstr "Alan ağırlıkları"
+
+msgid "Draw cards"
+msgstr "Kart çek"
+
+msgid "Drop events scoring below this significance threshold from 0 to 100"
+msgstr "Bu önem eşiğinin (0-100) altında kalan olayları yok say"
+
+msgid "Drop events scoring below this significance threshold from 0 to 100 before the rollup"
+msgstr "Özet oluşturulmadan önce, bu önem eşiğinin (0-100) altında kalan olayları yok say"
+
+msgid "Drop transit events scoring below this significance threshold from 0 to 100"
+msgstr "Bu önem eşiğinin (0-100) altında kalan transitleri yok say"
+
+msgid "End date"
+msgstr "Bitiş tarihi"
+
+msgid "Expression"
+msgstr "İfade sayısı"
+
+msgid "Find by city"
+msgstr "Şehre göre ara"
+
+msgid "First and last name as recorded at birth"
+msgstr "Doğumda kaydedildiği şekliyle ad ve soyad"
+
+msgid "First day of the forecast window in YYYY-MM-DD format"
+msgstr "Öngörü aralığının ilk günü, YYYY-AA-GG biçiminde"
+
+msgid "First day of the transit window in YYYY-MM-DD format"
+msgstr "Transit aralığının ilk günü, YYYY-AA-GG biçiminde"
+
+msgid "First day of the window in YYYY-MM-DD format"
+msgstr "Aralığın ilk günü, YYYY-AA-GG biçiminde"
+
+msgid "Forecast digest - Pre-summarized next 24h, 7d, 30d, and 90d rollups"
+msgstr "Öngörü özeti. Önümüzdeki 24 saat, 7, 30 ve 90 günün hazır özetleri"
+
+msgid "Full birth name to calculate Expression and Soul Urge numbers automatically"
+msgstr "İfade ve Ruh Arzusu sayılarını otomatik hesaplamak için tam doğum adı"
+
+msgid "Full name"
+msgstr "Tam ad"
+
+msgid "Full name at birth"
+msgstr "Doğumdaki tam ad"
+
+msgid "Generate Human Design transit overlay - Current planetary activations on a natal bodygraph"
+msgstr "Human Design transit katmanı oluştur. Doğum bodygraph üzerindeki güncel gezegen aktivasyonları"
+
+msgid "Generate KP chart"
+msgstr "KP haritası oluştur"
+
+msgid "Generate kundli"
+msgstr "Kundli oluştur"
+
+msgid "Get answer"
+msgstr "Cevabı al"
+
+msgid "Get reading"
+msgstr "Okumayı al"
+
+msgid "Gun Milan"
+msgstr "Gun Milan"
+
+msgid "House system"
+msgstr "Ev sistemi"
+
+msgid "House system for both natal charts"
+msgstr "Her iki doğum haritası için ev sistemi"
+
+msgid "House system for the composite chart"
+msgstr "Birleşik harita için ev sistemi"
+
+msgid "I consent to sending my inputs to generate this reading. See the Privacy Policy for details."
+msgstr "Bu okumanın oluşturulması için bilgilerimin gönderilmesini onaylıyorum. Ayrıntılar için Gizlilik Politikasına bakın."
+
+msgid "IANA name like America/New_York"
+msgstr "America/New_York gibi bir IANA adı"
+
+msgid "IANA name like Asia/Kolkata"
+msgstr "Asia/Kolkata gibi bir IANA adı"
+
+msgid "KP chart"
+msgstr "KP haritası"
+
+msgid "Krishnamurti Paddhati chart with cusps, planets, sub-lords, and significators."
+msgstr "Ev başlangıçları, gezegenler, alt yöneticiler ve göstergelerle birlikte Krishnamurti Paddhati haritası."
+
+msgid "Last day of the forecast window in YYYY-MM-DD format"
+msgstr "Öngörü aralığının son günü, YYYY-AA-GG biçiminde"
+
+msgid "Last day of the transit window in YYYY-MM-DD format"
+msgstr "Transit aralığının son günü, YYYY-AA-GG biçiminde"
+
+msgid "Last day of the window in YYYY-MM-DD format"
+msgstr "Aralığın son günü, YYYY-AA-GG biçiminde"
+
+msgid "Latitude"
+msgstr "Enlem"
+
+msgid "Life path"
+msgstr "Yaşam yolu"
+
+msgid "Life path number"
+msgstr "Yaşam yolu sayısı"
+
+msgid "Life path number and core meaning from a birth date."
+msgstr "Doğum tarihinden yaşam yolu sayısı ve temel anlamı."
+
+msgid "Life path, expression, and soul urge from a name and date."
+msgstr "Bir ad ve tarihten yaşam yolu, ifade ve ruh arzusu sayıları."
+
+msgid "Local time of birth in 24-hour format"
+msgstr "24 saat biçiminde yerel doğum saati"
+
+msgid "Longitude"
+msgstr "Boylam"
+
+msgid "Look up meaning"
+msgstr "Anlamı sorgula"
+
+msgid "Look up panchang"
+msgstr "Panchang sorgula"
+
+msgid "Lunar node convention for the North and South Node activations"
+msgstr "Kuzey ve Güney Ay Düğümü aktivasyonları için ay düğümü yöntemi"
+
+msgid "Mangal Dosha"
+msgstr "Mangal Dosha"
+
+msgid "Mangal Dosha check"
+msgstr "Mangal Dosha kontrolü"
+
+msgid "Meaning and pattern analysis for any number sequence."
+msgstr "Herhangi bir sayı dizisi için anlam ve örüntü analizi."
+
+msgid "Min significance"
+msgstr "En düşük önem"
+
+msgid "Min strength"
+msgstr "En düşük güç"
+
+msgid "Minimum aspect strength threshold (0-100)"
+msgstr "En düşük açı gücü eşiği (0-100)"
+
+msgid "Month"
+msgstr "Ay"
+
+msgid "Moon phase"
+msgstr "Ay evresi"
+
+msgid "Multiplier for this domain significance"
+msgstr "Bu alanın önemi için çarpan"
+
+msgid "Name"
+msgstr "Ad"
+
+msgid "Natal chart"
+msgstr "Doğum haritası"
+
+msgid "Node type"
+msgstr "Düğüm türü"
+
+msgid "Number of highest-significance events to surface per window"
+msgstr "Her aralıkta gösterilecek en önemli olay sayısı"
+
+msgid "Number sequence"
+msgstr "Sayı dizisi"
+
+msgid "Numerology"
+msgstr "Numeroloji"
+
+msgid "Numerology chart"
+msgstr "Numeroloji haritası"
+
+msgid "Optional display name for this person"
+msgstr "Bu kişi için isteğe bağlı görünen ad"
+
+msgid "Optional name for your custom tarot spread layout"
+msgstr "Özel tarot açılımınız için isteğe bağlı ad"
+
+msgid "Optional querent question to focus the custom tarot reading"
+msgstr "Tarot okumasına odak vermek için isteğe bağlı soru"
+
+msgid "Optional seed for reproducible results"
+msgstr "Yinelenebilir sonuçlar için isteğe bağlı başlangıç değeri"
+
+msgid "Optional. The card answers whatever you bring to it."
+msgstr "İsteğe bağlı. Kart, ona getirdiğiniz her şeye yanıt verir."
+
+msgid "Optional. The cards reflect on whatever you bring to them."
+msgstr "İsteğe bağlı. Kartlar, onlara getirdiğiniz her şeyi yansıtır."
+
+msgid "Panchang"
+msgstr "Panchang"
+
+msgid "Person 1"
+msgstr "1. kişi"
+
+msgid "Person 1 Expression number (1-9, 11, 22, 33)"
+msgstr "1. kişinin İfade sayısı (1-9, 11, 22, 33)"
+
+msgid "Person 1 Life Path number (1-9, 11, 22, 33)"
+msgstr "1. kişinin Yaşam Yolu sayısı (1-9, 11, 22, 33)"
+
+msgid "Person 1 Soul Urge number (1-9, 11, 22, 33)"
+msgstr "1. kişinin Ruh Arzusu sayısı (1-9, 11, 22, 33)"
+
+msgid "Person 2"
+msgstr "2. kişi"
+
+msgid "Person 2 Expression number (1-9, 11, 22, 33)"
+msgstr "2. kişinin İfade sayısı (1-9, 11, 22, 33)"
+
+msgid "Person 2 Life Path number (1-9, 11, 22, 33)"
+msgstr "2. kişinin Yaşam Yolu sayısı (1-9, 11, 22, 33)"
+
+msgid "Person 2 Soul Urge number (1-9, 11, 22, 33)"
+msgstr "2. kişinin Ruh Arzusu sayısı (1-9, 11, 22, 33)"
+
+msgid "Person a"
+msgstr "A kişisi"
+
+msgid "Person b"
+msgstr "B kişisi"
+
+msgid "Physical, emotional, and intellectual cycle values."
+msgstr "Fiziksel, duygusal ve zihinsel döngü değerleri."
+
+msgid "Pick your Sun sign"
+msgstr "Güneş burcunuzu seçin"
+
+msgid "Question"
+msgstr "Soru"
+
+msgid "Security check failed. Please reload the page and try again."
+msgstr "Güvenlik doğrulaması başarısız oldu. Lütfen sayfayı yenileyip tekrar deneyin."
+
+msgid "Seed"
+msgstr "Başlangıç değeri"
+
+msgid "Select the timezone of the location."
+msgstr "Konumun saat dilimini seçin."
+
+msgid "Selecting a city auto-fills latitude, longitude, and timezone."
+msgstr "Bir şehir seçtiğinizde enlem, boylam ve saat dilimi otomatik doldurulur."
+
+msgid "Should I take the new job"
+msgstr "Yeni işi kabul etmeli miyim"
+
+msgid "Show crystals"
+msgstr "Kristalleri göster"
+
+msgid "Sidereal frame (ayanamsa) the chart is cast in"
+msgstr "Haritanın hesaplandığı yıldızsal referans (ayanamsa)"
+
+msgid "Significance floor from 0 to 100 for what counts as a significant date"
+msgstr "Bir tarihin önemli sayılması için 0 ile 100 arasında önem alt sınırı"
+
+msgid "Significant dates - High-significance cross-domain forecast highlights"
+msgstr "Önemli tarihler. Çok alanlı öngörünün öne çıkan noktaları"
+
+msgid "Single card, three card, or Celtic Cross spreads."
+msgstr "Tek kart, üç kart veya Kelt Haçı açılımları."
+
+msgid "Single-card Yes / No / Maybe answer with strength rating and interpretation."
+msgstr "Güç derecesi ve yorumla birlikte tek kartlık Evet / Hayır / Belki yanıtı."
+
+msgid "Soul urge"
+msgstr "Ruh arzusu"
+
+msgid "Spread"
+msgstr "Açılım"
+
+msgid "Spread name"
+msgstr "Açılım adı"
+
+msgid "Start anchor for every window in YYYY-MM-DD format"
+msgstr "Her aralığın başlangıç tarihi, YYYY-AA-GG biçiminde"
+
+msgid "Start date"
+msgstr "Başlangıç tarihi"
+
+msgid "Start typing a city name"
+msgstr "Bir şehir adı yazmaya başlayın"
+
+msgid "Submit"
+msgstr "Gönder"
+
+msgid "Synastry"
+msgstr "Sinastri"
+
+msgid "Target date"
+msgstr "Hedef tarih"
+
+msgid "Tarot card"
+msgstr "Tarot kartı"
+
+msgid "Tarot reading"
+msgstr "Tarot okuması"
+
+msgid "Tarot yes or no"
+msgstr "Tarot evet veya hayır"
+
+msgid "The birth_date attribute is required. Example: %s"
+msgstr "birth_date özniteliği zorunludur. Örnek: %s"
+
+msgid "The birth_date attribute must be in YYYY-MM-DD format. Example: %s"
+msgstr "birth_date özniteliği YYYY-AA-GG biçiminde olmalıdır. Örnek: %s"
+
+msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s"
+msgstr "birth_date, birth_time, lat ve lon öznitelikleri zorunludur (tz varsayılanı 5.5 IST). Örnek: %s"
+
+msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to 5.5 IST; pass an IANA name like Asia/Kolkata for DST-correct results). Example: %s"
+msgstr "birth_date, birth_time, lat ve lon öznitelikleri zorunludur (tz varsayılanı 5.5 IST; yaz saati açısından doğru sonuçlar için Asia/Kolkata gibi bir IANA adı kullanın). Örnek: %s"
+
+msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to UTC; pass an IANA name or decimal hours for accuracy). Example: %s"
+msgstr "birth_date, birth_time, lat ve lon öznitelikleri zorunludur (tz varsayılanı UTC; daha doğru sonuçlar için bir IANA adı veya ondalık saat kullanın). Örnek: %s"
+
+msgid "The date, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s"
+msgstr "date, lat ve lon öznitelikleri zorunludur (tz varsayılanı 5.5 IST). Örnek: %s"
+
+msgid "The name and birth_date attributes are required. Example: %s"
+msgstr "name ve birth_date öznitelikleri zorunludur. Örnek: %s"
+
+msgid "The number attribute is required. Example: %s"
+msgstr "number özniteliği zorunludur. Örnek: %s"
+
+msgid "The sign attribute is required. Example: %s"
+msgstr "sign özniteliği zorunludur. Örnek: %s"
+
+msgid "Time"
+msgstr "Saat"
+
+msgid "Timezone"
+msgstr "Saat dilimi"
+
+msgid "Too many requests. Please try again in an hour."
+msgstr "Çok fazla istek gönderildi. Lütfen bir saat sonra tekrar deneyin."
+
+msgid "Top"
+msgstr "En fazla"
+
+msgid "Transit Aspects - Detailed transit-to-natal aspect analysis with interpretations"
+msgstr "Transit açıları. Yorumlarla birlikte transit ve doğum haritası arasındaki açıların ayrıntılı analizi"
+
+msgid "Transit date"
+msgstr "Transit tarihi"
+
+msgid "Transit date in YYYY-MM-DD UTC"
+msgstr "YYYY-AA-GG UTC biçiminde transit tarihi"
+
+msgid "Transit date in YYYY-MM-DD format"
+msgstr "YYYY-AA-GG biçiminde transit tarihi"
+
+msgid "Transit time"
+msgstr "Transit saati"
+
+msgid "Transit time in HH:MM:SS UTC"
+msgstr "SS:DD:SS UTC biçiminde transit saati"
+
+msgid "Transit time in HH:MM:SS format"
+msgstr "SS:DD:SS biçiminde transit saati"
+
+msgid "Vedic"
+msgstr "Vedik"
+
+msgid "Vedic 36-point Ashtakoota matrimonial compatibility with dosha cancellations and per-koot breakdown."
+msgstr "Dosha iptalleri ve koot bazlı dökümle birlikte 36 puanlık Vedik Ashtakoota evlilik uyumu."
+
+msgid "Vedic birth chart"
+msgstr "Vedik doğum haritası"
+
+msgid "Vedic birth chart with twelve rashis, planetary positions, nakshatra, and per-house interpretations."
+msgstr "On iki rashi, gezegen konumları, nakshatra ve ev bazlı yorumlarla Vedik doğum haritası."
+
+msgid "Vedic kundli"
+msgstr "Vedik kundli"
+
+msgid "Western"
+msgstr "Batı"
+
+msgid "Western astrology forecast - aspects, ingresses, stations, eclipses, moon phases"
+msgstr "Batı astrolojisi öngörüsü. Açılar, burç girişleri, duraklamalar, tutulmalar ve ay evreleri"
+
+msgid "Western birth chart"
+msgstr "Batı doğum haritası"
+
+msgid "Western birth chart with planets, houses, and aspects."
+msgstr "Gezegenler, evler ve açılarla Batı doğum haritası."
+
+msgid "Western compatibility percentage between two charts with sign, element, and aspect breakdown."
+msgstr "Burç, element ve açı dökümüyle iki harita arasındaki Batı uyum yüzdesi."
+
+msgid "Western daily reading for any zodiac sign."
+msgstr "Her burç için Batı günlük yorumu."
+
+msgid "Western synastry chart between two birth charts with compatibility score and inter-aspects."
+msgstr "Uyum puanı ve karşılıklı açılarla iki doğum haritası arasındaki Batı sinastri haritası."
+
+msgid "What should I focus on this week"
+msgstr "Bu hafta neye odaklanmalıyım"
+
+msgid "Year"
+msgstr "Yıl"
+
+msgid "Year, month, and day of birth"
+msgstr "Doğum yılı, ayı ve günü"
+
+msgid "Your question"
+msgstr "Sorunuz"
+
+msgid "Zodiac sign"
+msgstr "Burç"
