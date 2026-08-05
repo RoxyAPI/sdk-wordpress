@@ -99,7 +99,7 @@ A matching shortcode exists for every endpoint in the spec. A sample across the 
 * Dreams: `[roxy_search_dream_symbols q="water"]`
 * Location: `[roxy_search_cities q="berlin"]`
 
-Add lang to any shortcode to override the response language, for example `[roxy_get_crystal id="amethyst" lang="es"]`.
+Readings follow your WordPress site language automatically. To pick a language yourself, open the RoxyAPI menu, Branding tab, and set the reading language. Some of the long tail shortcodes above also take a lang attribute, for example `[roxy_get_crystal id="amethyst" lang="es"]`, but the headline readings take the site or Branding setting instead.
 
 == Installation ==
 
@@ -137,7 +137,7 @@ One key covers 12 domains. Western astrology: natal chart, daily / weekly / mont
 
 = Can I show readings in another language? =
 
-Yes. Open the RoxyAPI menu, Branding tab, and pick a response language: English, German, Hindi, Spanish, Turkish, Portuguese, French, or Russian. Every reading is then returned in that language. You can also override the language per shortcode with a lang attribute, for example [roxy_horoscope sign="aries" lang="es"].
+Yes. Readings follow your WordPress site language on their own, so a Spanish site returns Spanish readings with nothing to configure. To run your site in one language and your readings in another, open the RoxyAPI menu, Branding tab, and pick a reading language: English, German, Hindi, Spanish, Turkish, Portuguese, French, or Russian. Every reading is then returned in that language.
 
 = When does the plugin contact the RoxyAPI service? =
 
@@ -207,6 +207,11 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 8. Connect in seconds. Free to start, with copy-paste shortcodes and a guided quick start.
 
 == Changelog ==
+
+= 1.7.2 =
+* Fixed: readings came back in English on a site set to another language. The chosen language reached the service correctly for a handful of readings and was dropped for the rest, which covered the headline ones: natal chart, kundli, panchang, synastry, Guna Milan, numerology, tarot, and biorhythm. Every reading now follows your site language, or the reading language you pick under the Branding tab.
+* Updated the chart and card rendering to the latest release.
+* Corrected the language instructions on this page. The site language and the Branding setting cover every reading; the lang attribute applies only to some of the long tail shortcodes.
 
 = 1.7.1 =
 * Fixed: a reading that had not been filled in yet contacted the service on every single page view and got nothing back. Because a browser asks for a site icon on each admin screen, and WordPress answers that by rendering your front page, an unconfigured reading on the front page could repeat that call on every screen you opened. An unconfigured reading now sends nothing at all.
@@ -368,6 +373,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.7.2 =
+Recommended for any site that is not in English. Readings now follow your site language across every reading, including natal chart, kundli, panchang, and compatibility, which previously stayed in English.
 
 = 1.7.1 =
 Recommended for every site. Unconfigured and rejected readings no longer contact the service on every page view, and most readings are now cached, which frees up a large share of your daily allowance for real visitors.
