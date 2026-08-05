@@ -64,4 +64,38 @@ class Test_Block_Registration extends \WP_UnitTestCase {
 			'A generated long-tail block must ship an editorScript so its inputs are editable in the block editor, not just render read-only.'
 		);
 	}
+
+	/**
+	 * Editor panels are built in JavaScript and translated by `@wordpress/i18n`, which only
+	 * resolves once the script HANDLE is bound to the text domain. Declaring `wp-i18n` as a
+	 * script dependency is not enough on its own, and the failure is silent: the editor panel
+	 * stays English while every PHP string on the same screen translates correctly.
+	 */
+	public function test_every_block_editor_script_is_bound_to_the_text_domain(): void {
+		$blocks = \WP_Block_Type_Registry::get_instance()->get_all_registered();
+		$ours   = array_filter(
+			$blocks,
+			static fn( $name ) => strpos( (string) $name, 'roxyapi/' ) === 0,
+			ARRAY_FILTER_USE_KEY
+		);
+		// Non-vacuity: an empty set would make the loop below assert nothing.
+		$this->assertGreaterThan( 100, count( $ours ), 'Expected the block catalog to be registered.' );
+
+		$scripts = wp_scripts();
+		$unbound = array();
+		foreach ( $ours as $name => $block ) {
+			foreach ( $block->editor_script_handles as $handle ) {
+				$registered = isset( $scripts->registered[ $handle ] ) ? $scripts->registered[ $handle ] : null;
+				if ( ! $registered || empty( $registered->textdomain ) ) {
+					$unbound[] = $name;
+				}
+			}
+		}
+
+		$this->assertSame(
+			array(),
+			array_slice( $unbound, 0, 10 ),
+			'Every block editor script must be bound with wp_set_script_translations( $handle, "roxyapi" ) in Blocks\\Registrar.'
+		);
+	}
 }
