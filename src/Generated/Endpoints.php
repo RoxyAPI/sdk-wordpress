@@ -983,7 +983,7 @@ class Endpoints {
 			'path'          => '/vedic-astrology/yoga',
 			'method'        => 'GET',
 			'tag'           => 'Vedic Astrology',
-			'summary'       => 'List all planetary yogas - 300+ Vedic Yoga Glossary',
+			'summary'       => 'List all planetary yogas - 301 entry Vedic Yoga Glossary',
 			'ttl'           => 2592000,
 			'hero'          => false,
 			'block_only'    => false,

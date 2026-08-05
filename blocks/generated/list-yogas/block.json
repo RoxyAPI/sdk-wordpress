@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/list-yogas",
-	"title": "List all planetary yogas - 300+ Vedic Yoga Glossary (Vedic Astrology)",
+	"title": "List all planetary yogas - 301 entry Vedic Yoga Glossary (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "List all planetary yogas - 300+ Vedic Yoga Glossary",
+	"description": "List all planetary yogas - 301 entry Vedic Yoga Glossary",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

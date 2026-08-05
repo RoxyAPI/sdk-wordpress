@@ -1156,7 +1156,7 @@ class Client {
 	}
 
 	/**
-	 * List all planetary yogas - 300+ Vedic Yoga Glossary
+	 * List all planetary yogas - 301 entry Vedic Yoga Glossary
 	 *
 	 * @return array|\WP_Error
 	 */
