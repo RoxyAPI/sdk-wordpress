@@ -28,7 +28,7 @@ class AngelNumberForm {
 		return array(
 			'operation_id' => 'angelNumber',
 			'render_operation_id' => 'getAngelNumber',
-			'title'        => 'Angel number lookup',
+			'title'        => __( 'Angel number lookup', 'roxyapi' ),
 			'submit_label' => __( 'Look up meaning', 'roxyapi' ),
 			'sections'     => array(
 
@@ -36,11 +36,11 @@ class AngelNumberForm {
 			'flat_fields'  => array(
 			array(
 				'name' => 'number',
-				'label' => 'Number sequence',
+				'label' => __( 'Number sequence', 'roxyapi' ),
 				'required' => true,
 				'type' => 'integer',
-				'help' => 'Any whole number you keep noticing',
-				'placeholder' => '1111',
+				'help' => __( 'Any whole number you keep noticing', 'roxyapi' ),
+				'placeholder' => __( '1111', 'roxyapi' ),
 				'min' => 1,
 			),
 			),

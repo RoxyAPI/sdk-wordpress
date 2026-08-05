@@ -28,7 +28,7 @@ class CrystalsByZodiacForm {
 		return array(
 			'operation_id' => 'crystalsByZodiac',
 			'render_operation_id' => 'getCrystalsByZodiac',
-			'title'        => 'Crystals for your sign',
+			'title'        => __( 'Crystals for your sign', 'roxyapi' ),
 			'submit_label' => __( 'Show crystals', 'roxyapi' ),
 			'sections'     => array(
 
@@ -36,10 +36,10 @@ class CrystalsByZodiacForm {
 			'flat_fields'  => array(
 			array(
 				'name' => 'sign',
-				'label' => 'Zodiac sign',
+				'label' => __( 'Zodiac sign', 'roxyapi' ),
 				'required' => true,
 				'type' => 'enum',
-				'help' => 'Pick your Sun sign',
+				'help' => __( 'Pick your Sun sign', 'roxyapi' ),
 				'enum' => array( 'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces' ),
 			),
 			),

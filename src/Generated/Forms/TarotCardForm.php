@@ -28,7 +28,7 @@ class TarotCardForm {
 		return array(
 			'operation_id' => 'tarotCard',
 			'render_operation_id' => '',
-			'title'        => 'Tarot reading',
+			'title'        => __( 'Tarot reading', 'roxyapi' ),
 			'submit_label' => __( 'Draw cards', 'roxyapi' ),
 			'sections'     => array(
 
@@ -36,18 +36,18 @@ class TarotCardForm {
 			'flat_fields'  => array(
 			array(
 				'name' => 'question',
-				'label' => 'Your question',
+				'label' => __( 'Your question', 'roxyapi' ),
 				'required' => false,
 				'type' => 'text',
-				'help' => 'Optional. The cards reflect on whatever you bring to them.',
-				'placeholder' => 'What should I focus on this week',
+				'help' => __( 'Optional. The cards reflect on whatever you bring to them.', 'roxyapi' ),
+				'placeholder' => __( 'What should I focus on this week', 'roxyapi' ),
 			),
 			array(
 				'name' => 'spread',
-				'label' => 'Spread',
+				'label' => __( 'Spread', 'roxyapi' ),
 				'required' => true,
 				'type' => 'enum',
-				'help' => 'Daily is one card. Three is past, present, future. Celtic is a ten-card layout.',
+				'help' => __( 'Daily is one card. Three is past, present, future. Celtic is a ten-card layout.', 'roxyapi' ),
 				'enum' => array( 'daily', 'three', 'celtic' ),
 			),
 			),

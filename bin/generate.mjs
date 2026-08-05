@@ -663,6 +663,47 @@ function extractFormSpec( op ) {
 }
 
 /**
+ * Form-spec keys whose value is prose a VISITOR reads, so it has to reach the
+ * translators. Everything else in a field spec is machinery: `name` is the
+ * request key, `type` picks the control, and `enum` values are the API's own
+ * strings submitted verbatim (FormRenderer derives their display text with
+ * ucwords(), so translating them here would post a translated value).
+ *
+ * ONE list, consumed by BOTH form emitters. The long-tail forms and the hero
+ * forms build their spec arrays in separate functions, so this must stay a
+ * single shared list or a change applies to only half the forms.
+ */
+const TRANSLATABLE_SPEC_KEYS = new Set( [ 'label', 'help', 'placeholder' ] );
+
+/**
+ * A PHP string literal wrapped in `__()` so `wp i18n make-pot` and
+ * translate.wordpress.org can both extract it.
+ *
+ * Extraction is purely STATIC: the tooling reads the literal at the call site
+ * and never evaluates anything, so the string must be inlined here rather than
+ * passed through a variable. An empty or non-string value falls back to a plain
+ * literal, because an empty msgid collides with the PO header.
+ * @param v
+ */
+function translatablePhp( v ) {
+	return typeof v === 'string' && v !== ''
+		? `__( ${ phpLiteral( v ) }, 'roxyapi' )`
+		: phpLiteral( v );
+}
+
+/**
+ * PHP for one `'key' => value` entry of a form-spec array, translated when the
+ * key is visitor-facing.
+ * @param key
+ * @param value
+ */
+function specEntryPhp( key, value ) {
+	return TRANSLATABLE_SPEC_KEYS.has( key )
+		? translatablePhp( value )
+		: phpLiteral( value );
+}
+
+/**
  * PHP literal for a JS value — strings/numbers/bools/lists. Strict ASCII safe.
  * @param v
  */
@@ -700,7 +741,10 @@ function emitFormPhp( op ) {
 					const parts = Object.entries( f )
 						.map(
 							( [ k, v ] ) =>
-								`\t\t\t\t\t\t'${ k }' => ${ phpLiteral( v ) },`
+								`\t\t\t\t\t\t'${ k }' => ${ specEntryPhp(
+									k,
+									v
+								) },`
 						)
 						.join( '\n' );
 					return `\t\t\t\t\tarray(\n${ parts }\n\t\t\t\t\t),`;
@@ -708,7 +752,7 @@ function emitFormPhp( op ) {
 				.join( '\n' );
 			return `\t\t\t\tarray(
 					'name'   => ${ phpLiteral( s.name ) },
-					'label'  => ${ phpLiteral( s.label ) },
+					'label'  => ${ translatablePhp( s.label ) },
 					'fields' => array(
 ${ fieldsPhp }
 					),
@@ -721,7 +765,7 @@ ${ fieldsPhp }
 			const parts = Object.entries( f )
 				.map(
 					( [ k, v ] ) =>
-						`\t\t\t\t\t'${ k }' => ${ phpLiteral( v ) },`
+						`\t\t\t\t\t'${ k }' => ${ specEntryPhp( k, v ) },`
 				)
 				.join( '\n' );
 			return `\t\t\t\tarray(\n${ parts }\n\t\t\t\t),`;
@@ -750,7 +794,7 @@ class ${ className } {
 	public static function spec(): array {
 		return array(
 			'operation_id' => ${ phpLiteral( op.operationId ) },
-			'title'        => ${ phpLiteral( title ) },
+			'title'        => ${ translatablePhp( title ) },
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
 			'sections'     => array(
 ${ sectionsPhp }
@@ -2347,7 +2391,7 @@ function heroFormFieldToPhp( field, indent ) {
 			continue;
 		}
 		lines.push(
-			`${ indent }\t'${ key }' => ${ phpLiteral( field[ key ] ) },`
+			`${ indent }\t'${ key }' => ${ specEntryPhp( key, field[ key ] ) },`
 		);
 	}
 	return `${ indent }array(\n${ lines.join( '\n' ) }\n${ indent }),`;
@@ -2391,7 +2435,7 @@ function emitHeroFormPhp( tagSuffix, cfg ) {
 			.join( '\n' );
 		sectionsPhp = `\t\t\tarray(
 				'name'   => ${ phpLiteral( sectionName ) },
-				'label'  => ${ phpLiteral( sectionLabel ) },
+				'label'  => ${ translatablePhp( sectionLabel ) },
 				'fields' => array(
 ${ fieldEntries }
 				),
@@ -2437,7 +2481,7 @@ class ${ formClassName } {
 		return array(
 			'operation_id' => ${ phpLiteral( formId ) },
 			'render_operation_id' => ${ phpLiteral( cfg.operationId ) },
-			'title'        => ${ phpLiteral( title ) },
+			'title'        => ${ translatablePhp( title ) },
 			'submit_label' => __( ${ phpLiteral( submitLabel ) }, 'roxyapi' ),
 			'sections'     => array(
 ${ sectionsPhp }

@@ -28,7 +28,7 @@ class TarotYesNoForm {
 		return array(
 			'operation_id' => 'tarotYesNo',
 			'render_operation_id' => 'castYesNo',
-			'title'        => 'Tarot yes or no',
+			'title'        => __( 'Tarot yes or no', 'roxyapi' ),
 			'submit_label' => __( 'Get answer', 'roxyapi' ),
 			'sections'     => array(
 
@@ -36,11 +36,11 @@ class TarotYesNoForm {
 			'flat_fields'  => array(
 			array(
 				'name' => 'question',
-				'label' => 'Your question',
+				'label' => __( 'Your question', 'roxyapi' ),
 				'required' => false,
 				'type' => 'text',
-				'help' => 'Optional. The card answers whatever you bring to it.',
-				'placeholder' => 'Should I take the new job',
+				'help' => __( 'Optional. The card answers whatever you bring to it.', 'roxyapi' ),
+				'placeholder' => __( 'Should I take the new job', 'roxyapi' ),
 			),
 			),
 		);

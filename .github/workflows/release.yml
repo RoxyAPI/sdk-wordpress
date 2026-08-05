@@ -41,6 +41,14 @@ jobs:
             - name: Regenerate from live OpenAPI
               run: npm run generate
 
+            # The translation template is a build artifact, regenerated every release so it
+            # always describes the code being shipped. wp.org extracts its own copy from the
+            # source; this one serves translators working from the GitHub zip.
+            - name: Refresh the translation template
+              run: |
+                  curl -sSL -o /tmp/wp-cli.phar https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+                  php /tmp/wp-cli.phar i18n make-pot . languages/roxyapi.pot --slug=roxyapi --skip-audit --allow-root
+
             - name: Lint
               run: vendor/bin/phpcs --standard=phpcs.xml.dist
 

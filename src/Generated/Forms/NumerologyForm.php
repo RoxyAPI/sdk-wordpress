@@ -28,7 +28,7 @@ class NumerologyForm {
 		return array(
 			'operation_id' => 'numerology',
 			'render_operation_id' => 'generateNumerologyChart',
-			'title'        => 'Numerology chart',
+			'title'        => __( 'Numerology chart', 'roxyapi' ),
 			'submit_label' => __( 'Calculate chart', 'roxyapi' ),
 			'sections'     => array(
 
@@ -36,17 +36,17 @@ class NumerologyForm {
 			'flat_fields'  => array(
 			array(
 				'name' => 'name',
-				'label' => 'Full name at birth',
+				'label' => __( 'Full name at birth', 'roxyapi' ),
 				'required' => true,
 				'type' => 'text',
-				'help' => 'First and last name as recorded at birth',
+				'help' => __( 'First and last name as recorded at birth', 'roxyapi' ),
 			),
 			array(
 				'name' => 'birth_date',
-				'label' => 'Birth date',
+				'label' => __( 'Birth date', 'roxyapi' ),
 				'required' => true,
 				'type' => 'date',
-				'help' => 'Year, month, and day of birth',
+				'help' => __( 'Year, month, and day of birth', 'roxyapi' ),
 			),
 			),
 		);
