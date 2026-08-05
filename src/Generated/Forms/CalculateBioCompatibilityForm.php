@@ -20,31 +20,31 @@ class CalculateBioCompatibilityForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'calculateBioCompatibility',
-			'title'        => 'Calculate compatibility - Biorhythm alignment between two people',
+			'title'        => __( 'Calculate compatibility - Biorhythm alignment between two people', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
 			'sections'     => array(
 				array(
 					'name'   => 'person1',
-					'label'  => 'Person 1',
+					'label'  => __( 'Person 1', 'roxyapi' ),
 					'fields' => array(
 					array(
 						'name' => 'birthDate',
-						'label' => 'Birth date',
+						'label' => __( 'Birth date', 'roxyapi' ),
 						'required' => true,
-						'help' => 'Birth date of person 1 in YYYY-MM-DD format.',
+						'help' => __( 'Birth date of person 1 in YYYY-MM-DD format.', 'roxyapi' ),
 						'type' => 'date',
 					),
 					),
 				),
 				array(
 					'name'   => 'person2',
-					'label'  => 'Person 2',
+					'label'  => __( 'Person 2', 'roxyapi' ),
 					'fields' => array(
 					array(
 						'name' => 'birthDate',
-						'label' => 'Birth date',
+						'label' => __( 'Birth date', 'roxyapi' ),
 						'required' => true,
-						'help' => 'Birth date of person 2 in YYYY-MM-DD format.',
+						'help' => __( 'Birth date of person 2 in YYYY-MM-DD format.', 'roxyapi' ),
 						'type' => 'date',
 					),
 					),
@@ -53,9 +53,9 @@ class CalculateBioCompatibilityForm {
 			'flat_fields'  => array(
 				array(
 					'name' => 'targetDate',
-					'label' => 'Target date',
+					'label' => __( 'Target date', 'roxyapi' ),
 					'required' => false,
-					'help' => 'Date to evaluate compatibility on in YYYY-MM-DD format',
+					'help' => __( 'Date to evaluate compatibility on in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
 				),
 			),

@@ -82,15 +82,10 @@ class Client {
 		);
 
 		/**
-		 * `lang` is declared `in: query` on EVERY operation that accepts it, POST included, so it
-		 * has to ride the URL even when the rest of the payload is a JSON body.
-		 *
-		 * It used to be left in the body on POST, where the API ignores it SILENTLY: the reading
-		 * came back in English with a 200, so nothing surfaced the failure. That made both the
-		 * Reading language setting and the site-locale fallback no-ops on 120 of 175 operations,
-		 * including 13 of the 17 featured readings (natal chart, kundli, panchang, synastry,
-		 * numerology, tarot, biorhythm). The four GET heroes translated correctly and masked it.
-		 * Reported by a Spanish-site customer on 2026-08-05.
+		 * `lang` is a query parameter on every operation that accepts one, POST included, so it
+		 * rides the URL even when the rest of the payload is a JSON body. Placed in a POST body
+		 * instead it has no effect and the response returns in the default language with a 200,
+		 * so do not fold this back into the payload.
 		 */
 		if ( $method === 'POST' && isset( $payload['lang'] ) ) {
 			$lang = (string) $payload['lang'];

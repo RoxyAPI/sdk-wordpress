@@ -28,7 +28,7 @@ class LifePathForm {
 		return array(
 			'operation_id' => 'lifePath',
 			'render_operation_id' => 'calculateLifePath',
-			'title'        => 'Life path number',
+			'title'        => __( 'Life path number', 'roxyapi' ),
 			'submit_label' => __( 'Calculate', 'roxyapi' ),
 			'sections'     => array(
 
@@ -36,10 +36,10 @@ class LifePathForm {
 			'flat_fields'  => array(
 			array(
 				'name' => 'birth_date',
-				'label' => 'Birth date',
+				'label' => __( 'Birth date', 'roxyapi' ),
 				'required' => true,
 				'type' => 'date',
-				'help' => 'Year, month, and day of birth',
+				'help' => __( 'Year, month, and day of birth', 'roxyapi' ),
 			),
 			),
 		);

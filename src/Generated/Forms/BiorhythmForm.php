@@ -28,7 +28,7 @@ class BiorhythmForm {
 		return array(
 			'operation_id' => 'biorhythm',
 			'render_operation_id' => 'getReading',
-			'title'        => 'Biorhythm reading',
+			'title'        => __( 'Biorhythm reading', 'roxyapi' ),
 			'submit_label' => __( 'Calculate cycles', 'roxyapi' ),
 			'sections'     => array(
 
@@ -36,17 +36,17 @@ class BiorhythmForm {
 			'flat_fields'  => array(
 			array(
 				'name' => 'birth_date',
-				'label' => 'Birth date',
+				'label' => __( 'Birth date', 'roxyapi' ),
 				'required' => true,
 				'type' => 'date',
-				'help' => 'Year, month, and day of birth',
+				'help' => __( 'Year, month, and day of birth', 'roxyapi' ),
 			),
 			array(
 				'name' => 'target_date',
-				'label' => 'Target date',
+				'label' => __( 'Target date', 'roxyapi' ),
 				'required' => false,
 				'type' => 'date',
-				'help' => 'Defaults to today if left blank',
+				'help' => __( 'Defaults to today if left blank', 'roxyapi' ),
 			),
 			),
 		);

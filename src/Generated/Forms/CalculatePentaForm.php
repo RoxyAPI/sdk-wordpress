@@ -20,7 +20,7 @@ class CalculatePentaForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'calculatePenta',
-			'title'        => 'Calculate Human Design Penta - Small-group BG5 operating system for three to five people',
+			'title'        => __( 'Calculate Human Design Penta - Small-group BG5 operating system for three to five people', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
 			'sections'     => array(
 

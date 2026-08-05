@@ -1,19 +1,12 @@
-<?php
 /**
  * `lang` must reach the API on the QUERY STRING, on POST as well as GET.
  *
- * Every operation that accepts a language declares it `in: query` in the spec, POST included.
- * The client used to leave it in the JSON body for POST, where the API ignores it SILENTLY: the
- * reading came back in English with a 200, so no error, no log line, and nothing in the admin
- * hinted at a failure. The blast radius was 120 of 175 operations and 13 of the 17 featured
- * readings (natal chart, kundli, panchang, synastry, numerology, tarot, biorhythm), which is to
- * say both the Reading language setting and the site-locale fallback did nothing on the readings
- * customers actually place. The four GET heroes translated correctly and masked it. Found from a
- * Spanish-site customer report on 2026-08-05.
- *
- * These assert on the URL and body the client actually builds, because that is the exact seam
- * where the bug lived: a test that only checked "was lang injected into the payload" passed
- * throughout.
+ * Every operation that accepts a language declares it as a query parameter, POST included.
+ * Placed in a POST body instead it has no effect: the response returns in the default
+ * language with a 200, so there is no error and no log line to notice. These assertions
+ * therefore inspect the URL and body the client BUILDS, which is the seam that matters. A
+ * test that only checked whether a language had been injected into the payload would pass
+ * either way.
  *
  * @package RoxyAPI
  */

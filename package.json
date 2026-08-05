@@ -49,7 +49,8 @@
 		"check:component-map": "node bin/check-component-map.mjs",
 		"check:blocks": "node bin/check-block-layout.mjs",
 		"upgrade": "npx npm-check-updates --target minor --upgrade",
-		"check-outdated": "npx npm-check-updates"
+		"check-outdated": "npx npm-check-updates",
+		"i18n:pot": "docker run --rm -v \"$PWD\":/plugin -w /plugin -u \"$(id -u):$(id -g)\" wordpress:cli wp i18n make-pot . languages/roxyapi.pot --slug=roxyapi --skip-audit"
 	},
 	"devDependencies": {
 		"@wordpress/env": "11.12.0",

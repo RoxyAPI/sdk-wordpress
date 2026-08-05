@@ -20,7 +20,7 @@ class CastCustomSpreadForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'castCustomSpread',
-			'title'        => 'Custom Spread Builder',
+			'title'        => __( 'Custom Spread Builder', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
 			'sections'     => array(
 
@@ -28,23 +28,23 @@ class CastCustomSpreadForm {
 			'flat_fields'  => array(
 				array(
 					'name' => 'spreadName',
-					'label' => 'Spread name',
+					'label' => __( 'Spread name', 'roxyapi' ),
 					'required' => false,
-					'help' => 'Optional name for your custom tarot spread layout',
+					'help' => __( 'Optional name for your custom tarot spread layout', 'roxyapi' ),
 					'type' => 'text',
 				),
 				array(
 					'name' => 'question',
-					'label' => 'Question',
+					'label' => __( 'Question', 'roxyapi' ),
 					'required' => false,
-					'help' => 'Optional querent question to focus the custom tarot reading',
+					'help' => __( 'Optional querent question to focus the custom tarot reading', 'roxyapi' ),
 					'type' => 'text',
 				),
 				array(
 					'name' => 'seed',
-					'label' => 'Seed',
+					'label' => __( 'Seed', 'roxyapi' ),
 					'required' => false,
-					'help' => 'Optional seed for reproducible results',
+					'help' => __( 'Optional seed for reproducible results', 'roxyapi' ),
 					'type' => 'text',
 				),
 			),
