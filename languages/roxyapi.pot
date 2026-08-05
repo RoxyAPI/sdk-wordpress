@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-05T17:06:14+00:00\n"
+"POT-Creation-Date: 2026-08-05T17:24:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: roxyapi\n"
@@ -44,32 +44,26 @@ msgid "https://roxyapi.com"
 msgstr ""
 
 #: blocks/horoscope/variations.php:24
-#: build/blocks/horoscope/variations.php:24
 msgid "Daily Horoscope"
 msgstr ""
 
 #: blocks/horoscope/variations.php:25
-#: build/blocks/horoscope/variations.php:25
 msgid "Today's horoscope for a zodiac sign."
 msgstr ""
 
 #: blocks/horoscope/variations.php:35
-#: build/blocks/horoscope/variations.php:35
 msgid "Weekly Horoscope"
 msgstr ""
 
 #: blocks/horoscope/variations.php:36
-#: build/blocks/horoscope/variations.php:36
 msgid "This week's horoscope for a zodiac sign."
 msgstr ""
 
 #: blocks/horoscope/variations.php:44
-#: build/blocks/horoscope/variations.php:44
 msgid "Monthly Horoscope"
 msgstr ""
 
 #: blocks/horoscope/variations.php:45
-#: build/blocks/horoscope/variations.php:45
 msgid "This month's horoscope for a zodiac sign."
 msgstr ""
 
@@ -409,35 +403,35 @@ msgstr ""
 msgid "Search shortcodes"
 msgstr ""
 
-#: src/Api/Client.php:111
+#: src/Api/Client.php:106
 msgid "Could not encode request body as JSON."
 msgstr ""
 
-#: src/Api/Client.php:131
+#: src/Api/Client.php:126
 msgid "Invalid JSON from RoxyAPI"
 msgstr ""
 
-#: src/Api/Client.php:164
+#: src/Api/Client.php:159
 msgid "This reading has not been set up yet. Fill in its settings to choose what it should show."
 msgstr ""
 
-#: src/Api/Client.php:221
+#: src/Api/Client.php:216
 msgid "This reading is temporarily unavailable. The site administrator needs to verify the connection."
 msgstr ""
 
-#: src/Api/Client.php:228
+#: src/Api/Client.php:223
 msgid "This reading is temporarily unavailable. Please check back later."
 msgstr ""
 
-#: src/Api/Client.php:232
+#: src/Api/Client.php:227
 msgid "Daily readings are temporarily unavailable. Please check back later."
 msgstr ""
 
-#: src/Api/Client.php:235
+#: src/Api/Client.php:230
 msgid "The reading service is temporarily unavailable. Please try again in a few minutes."
 msgstr ""
 
-#: src/Api/Client.php:238
+#: src/Api/Client.php:233
 msgid "This reading could not be loaded right now. Please try again."
 msgstr ""
 
@@ -1107,7 +1101,6 @@ msgstr ""
 #: src/Generated/Forms/GenerateTimelineForm.php:99
 #: src/Generated/Heroes/Manifest.php:172
 #: blocks/biorhythm/edit.js:10
-#: build/blocks/biorhythm/index.js:1
 msgid "Biorhythm"
 msgstr ""
 
@@ -1433,7 +1426,6 @@ msgstr ""
 
 #: src/Generated/Heroes/Manifest.php:43
 #: blocks/natal-chart/edit.js:11
-#: build/blocks/natal-chart/index.js:1
 msgid "Western birth chart with planets, houses, and aspects."
 msgstr ""
 
@@ -1511,7 +1503,6 @@ msgstr ""
 
 #: src/Generated/Heroes/Manifest.php:152
 #: blocks/numerology/edit.js:10
-#: build/blocks/numerology/index.js:1
 msgid "Numerology"
 msgstr ""
 
@@ -1974,876 +1965,122 @@ msgid "Read my horoscope"
 msgstr ""
 
 #: blocks/angel-number/edit.js:10
-#: build/blocks/angel-number/index.js:1
 msgid "Angel Number"
 msgstr ""
 
 #: blocks/angel-number/edit.js:11
-#: build/blocks/angel-number/index.js:1
 msgid "Angel number meanings and pattern analysis."
 msgstr ""
 
 #: blocks/astrology-wrapper/edit.js:11
-#: build/blocks/astrology-wrapper/index.js:1
 msgid "No default (each child block decides)"
 msgstr ""
 
 #: blocks/astrology-wrapper/edit.js:50
-#: build/blocks/astrology-wrapper/index.js:1
 msgid "Default values"
 msgstr ""
 
 #: blocks/astrology-wrapper/edit.js:52
-#: build/blocks/astrology-wrapper/index.js:1
 msgid "Default Sign"
 msgstr ""
 
 #: blocks/astrology-wrapper/edit.js:60
-#: build/blocks/astrology-wrapper/index.js:1
 msgid "Default Birth Date"
 msgstr ""
 
 #: blocks/astrology-wrapper/edit.js:61
-#: build/blocks/astrology-wrapper/index.js:1
 msgid "YYYY-MM-DD format"
 msgstr ""
 
 #: blocks/biorhythm/edit.js:11
-#: build/blocks/biorhythm/index.js:1
 msgid "Physical, emotional, intellectual, and intuitive cycles."
 msgstr ""
 
 #: blocks/horoscope/edit.js:15
-#: build/blocks/horoscope/index.js:1
 msgid "Pick your zodiac sign"
 msgstr ""
 
 #: blocks/horoscope/edit.js:54
-#: build/blocks/horoscope/index.js:1
 msgid "Horoscope Settings"
 msgstr ""
 
 #: blocks/horoscope/edit.js:56
-#: build/blocks/horoscope/index.js:1
 msgid "Zodiac Sign"
 msgstr ""
 
 #: blocks/horoscope/edit.js:60
-#: build/blocks/horoscope/index.js:1
 msgid "Leave blank to render a visitor sign picker on the front end."
 msgstr ""
 
 #: blocks/horoscope/edit.js:66
-#: build/blocks/horoscope/index.js:1
 msgid "Period"
 msgstr ""
 
 #: blocks/horoscope/edit.js:81
-#: build/blocks/horoscope/index.js:1
 msgid "Horoscope"
 msgstr ""
 
 #: blocks/horoscope/edit.js:82
-#: build/blocks/horoscope/index.js:1
 msgid "Pick a zodiac sign in the sidebar to preview the daily reading, or publish as is to render a visitor sign picker on the front end."
 msgstr ""
 
 #: blocks/natal-chart/edit.js:10
-#: build/blocks/natal-chart/index.js:1
 msgid "Natal Chart"
 msgstr ""
 
 #: blocks/numerology/edit.js:11
-#: build/blocks/numerology/index.js:1
 msgid "Life path, expression, soul urge, and personal year numbers."
 msgstr ""
 
 #: blocks/tarot/edit.js:10
-#: build/blocks/tarot/index.js:1
 msgid "Tarot"
 msgstr ""
 
 #: blocks/tarot/edit.js:11
-#: build/blocks/tarot/index.js:1
 msgid "Tarot card readings: single, three card, Celtic Cross, and more."
 msgstr ""
 
 #: blocks/_shared/generated-edit.js:53
-#: build/blocks/analyze-karmic-lessons/index.js:1
-#: build/blocks/analyze-number-sequence/index.js:1
-#: build/blocks/calculate-arabic-lots/index.js:1
-#: build/blocks/calculate-arudha-padas/index.js:1
-#: build/blocks/calculate-ashtakavarga/index.js:1
-#: build/blocks/calculate-aspects/index.js:1
-#: build/blocks/calculate-bhav-chalit/index.js:1
-#: build/blocks/calculate-bhava-bala/index.js:1
-#: build/blocks/calculate-birth-day/index.js:1
-#: build/blocks/calculate-bridge-numbers/index.js:1
-#: build/blocks/calculate-business-name/index.js:1
-#: build/blocks/calculate-centers/index.js:1
-#: build/blocks/calculate-chaldean/index.js:1
-#: build/blocks/calculate-channels/index.js:1
-#: build/blocks/calculate-chara-karakas/index.js:1
-#: build/blocks/calculate-drishti/index.js:1
-#: build/blocks/calculate-dual/index.js:1
-#: build/blocks/calculate-expression/index.js:1
-#: build/blocks/calculate-gates/index.js:1
-#: build/blocks/calculate-houses/index.js:1
-#: build/blocks/calculate-maturity/index.js:1
-#: build/blocks/calculate-parallels/index.js:1
-#: build/blocks/calculate-personal-day/index.js:1
-#: build/blocks/calculate-personal-month/index.js:1
-#: build/blocks/calculate-personal-year/index.js:1
-#: build/blocks/calculate-personality/index.js:1
-#: build/blocks/calculate-profile/index.js:1
-#: build/blocks/calculate-shadbala/index.js:1
-#: build/blocks/calculate-soul-urge/index.js:1
-#: build/blocks/calculate-transit/index.js:1
-#: build/blocks/calculate-transits/index.js:1
-#: build/blocks/calculate-type/index.js:1
-#: build/blocks/calculate-variables/index.js:1
-#: build/blocks/cast-career-spread/index.js:1
-#: build/blocks/cast-celtic-cross/index.js:1
-#: build/blocks/cast-daily-reading/index.js:1
-#: build/blocks/cast-kp-horary-chart/index.js:1
-#: build/blocks/cast-love-spread/index.js:1
-#: build/blocks/cast-reading/index.js:1
-#: build/blocks/cast-three-card/index.js:1
-#: build/blocks/check-kalsarpa-dosha/index.js:1
-#: build/blocks/check-karmic-debt/index.js:1
-#: build/blocks/check-sadhesati/index.js:1
-#: build/blocks/detect-aspect-patterns/index.js:1
-#: build/blocks/detect-yogas/index.js:1
-#: build/blocks/draw-cards/index.js:1
-#: build/blocks/forecast-solar-return/index.js:1
-#: build/blocks/generate-asteroids/index.js:1
-#: build/blocks/generate-astrocartography/index.js:1
-#: build/blocks/generate-bodygraph/index.js:1
-#: build/blocks/generate-divisional-chart/index.js:1
-#: build/blocks/generate-fixed-stars/index.js:1
-#: build/blocks/generate-lilith/index.js:1
-#: build/blocks/generate-local-space/index.js:1
-#: build/blocks/generate-lunar-return/index.js:1
-#: build/blocks/generate-navamsa/index.js:1
-#: build/blocks/generate-planetary-return/index.js:1
-#: build/blocks/generate-profections/index.js:1
-#: build/blocks/generate-progressions/index.js:1
-#: build/blocks/generate-relocation-chart/index.js:1
-#: build/blocks/generate-solar-arc/index.js:1
-#: build/blocks/generate-solar-return/index.js:1
-#: build/blocks/get-avastha/index.js:1
-#: build/blocks/get-basic-panchang/index.js:1
-#: build/blocks/get-birthstones/index.js:1
-#: build/blocks/get-card/index.js:1
-#: build/blocks/get-center/index.js:1
-#: build/blocks/get-choghadiya/index.js:1
-#: build/blocks/get-cities-by-country/index.js:1
-#: build/blocks/get-compound-number/index.js:1
-#: build/blocks/get-critical-days/index.js:1
-#: build/blocks/get-crystal-pairings/index.js:1
-#: build/blocks/get-crystal/index.js:1
-#: build/blocks/get-crystals-by-chakra/index.js:1
-#: build/blocks/get-crystals-by-element/index.js:1
-#: build/blocks/get-current-dasha/index.js:1
-#: build/blocks/get-daily-angel-number/index.js:1
-#: build/blocks/get-daily-biorhythm/index.js:1
-#: build/blocks/get-daily-crystal/index.js:1
-#: build/blocks/get-daily-dream-symbol/index.js:1
-#: build/blocks/get-daily-hexagram/index.js:1
-#: build/blocks/get-daily-number/index.js:1
-#: build/blocks/get-dream-symbol/index.js:1
-#: build/blocks/get-ecliptic-crossings/index.js:1
-#: build/blocks/get-forecast/index.js:1
-#: build/blocks/get-gate/index.js:1
-#: build/blocks/get-heliacal-visibility/index.js:1
-#: build/blocks/get-hexagram/index.js:1
-#: build/blocks/get-hora/index.js:1
-#: build/blocks/get-kp-ayanamsa/index.js:1
-#: build/blocks/get-kp-cusps/index.js:1
-#: build/blocks/get-kp-planets-interval/index.js:1
-#: build/blocks/get-kp-planets/index.js:1
-#: build/blocks/get-kp-rasi-changes/index.js:1
-#: build/blocks/get-kp-ruling-interval/index.js:1
-#: build/blocks/get-kp-ruling-planets/index.js:1
-#: build/blocks/get-kp-sublord-changes/index.js:1
-#: build/blocks/get-lunar-aspects/index.js:1
-#: build/blocks/get-major-dashas/index.js:1
-#: build/blocks/get-monthly-aspects/index.js:1
-#: build/blocks/get-monthly-ephemeris/index.js:1
-#: build/blocks/get-monthly-horoscope/index.js:1
-#: build/blocks/get-monthly-parallels/index.js:1
-#: build/blocks/get-monthly-transits/index.js:1
-#: build/blocks/get-moon-calendar/index.js:1
-#: build/blocks/get-nakshatra/index.js:1
-#: build/blocks/get-number-meaning/index.js:1
-#: build/blocks/get-phases/index.js:1
-#: build/blocks/get-planet-meaning/index.js:1
-#: build/blocks/get-planet-positions/index.js:1
-#: build/blocks/get-planetary-positions/index.js:1
-#: build/blocks/get-prana-dashas/index.js:1
-#: build/blocks/get-pratyantardashas/index.js:1
-#: build/blocks/get-random-crystal/index.js:1
-#: build/blocks/get-random-hexagram/index.js:1
-#: build/blocks/get-random-symbols/index.js:1
-#: build/blocks/get-rashi/index.js:1
-#: build/blocks/get-sookshma-dashas/index.js:1
-#: build/blocks/get-sub-dashas/index.js:1
-#: build/blocks/get-symbol-letter-counts/index.js:1
-#: build/blocks/get-trigram/index.js:1
-#: build/blocks/get-upagraha-positions/index.js:1
-#: build/blocks/get-upcoming-moon-phases/index.js:1
-#: build/blocks/get-usage-stats/index.js:1
-#: build/blocks/get-weekly-horoscope/index.js:1
-#: build/blocks/get-yoga/index.js:1
-#: build/blocks/get-zodiac-sign/index.js:1
-#: build/blocks/list-angel-numbers/index.js:1
-#: build/blocks/list-avasthas/index.js:1
-#: build/blocks/list-cards/index.js:1
-#: build/blocks/list-countries/index.js:1
-#: build/blocks/list-crystal-colors/index.js:1
-#: build/blocks/list-crystal-planets/index.js:1
-#: build/blocks/list-crystals/index.js:1
-#: build/blocks/list-hexagrams/index.js:1
-#: build/blocks/list-languages/index.js:1
-#: build/blocks/list-nakshatras/index.js:1
-#: build/blocks/list-planet-meanings/index.js:1
-#: build/blocks/list-rashis/index.js:1
-#: build/blocks/list-trigrams/index.js:1
-#: build/blocks/list-yogas/index.js:1
-#: build/blocks/list-zodiac-signs/index.js:1
-#: build/blocks/lookup-hexagram/index.js:1
-#: build/blocks/search-cities/index.js:1
-#: build/blocks/search-crystals/index.js:1
-#: build/blocks/search-dream-symbols/index.js:1
 msgid "Select an option"
 msgstr ""
 
 #: blocks/_shared/generated-edit.js:54
-#: build/blocks/analyze-karmic-lessons/index.js:1
-#: build/blocks/analyze-number-sequence/index.js:1
-#: build/blocks/calculate-arabic-lots/index.js:1
-#: build/blocks/calculate-arudha-padas/index.js:1
-#: build/blocks/calculate-ashtakavarga/index.js:1
-#: build/blocks/calculate-aspects/index.js:1
-#: build/blocks/calculate-bhav-chalit/index.js:1
-#: build/blocks/calculate-bhava-bala/index.js:1
-#: build/blocks/calculate-birth-day/index.js:1
-#: build/blocks/calculate-bridge-numbers/index.js:1
-#: build/blocks/calculate-business-name/index.js:1
-#: build/blocks/calculate-centers/index.js:1
-#: build/blocks/calculate-chaldean/index.js:1
-#: build/blocks/calculate-channels/index.js:1
-#: build/blocks/calculate-chara-karakas/index.js:1
-#: build/blocks/calculate-drishti/index.js:1
-#: build/blocks/calculate-dual/index.js:1
-#: build/blocks/calculate-expression/index.js:1
-#: build/blocks/calculate-gates/index.js:1
-#: build/blocks/calculate-houses/index.js:1
-#: build/blocks/calculate-maturity/index.js:1
-#: build/blocks/calculate-parallels/index.js:1
-#: build/blocks/calculate-personal-day/index.js:1
-#: build/blocks/calculate-personal-month/index.js:1
-#: build/blocks/calculate-personal-year/index.js:1
-#: build/blocks/calculate-personality/index.js:1
-#: build/blocks/calculate-profile/index.js:1
-#: build/blocks/calculate-shadbala/index.js:1
-#: build/blocks/calculate-soul-urge/index.js:1
-#: build/blocks/calculate-transit/index.js:1
-#: build/blocks/calculate-transits/index.js:1
-#: build/blocks/calculate-type/index.js:1
-#: build/blocks/calculate-variables/index.js:1
-#: build/blocks/cast-career-spread/index.js:1
-#: build/blocks/cast-celtic-cross/index.js:1
-#: build/blocks/cast-daily-reading/index.js:1
-#: build/blocks/cast-kp-horary-chart/index.js:1
-#: build/blocks/cast-love-spread/index.js:1
-#: build/blocks/cast-reading/index.js:1
-#: build/blocks/cast-three-card/index.js:1
-#: build/blocks/check-kalsarpa-dosha/index.js:1
-#: build/blocks/check-karmic-debt/index.js:1
-#: build/blocks/check-sadhesati/index.js:1
-#: build/blocks/detect-aspect-patterns/index.js:1
-#: build/blocks/detect-yogas/index.js:1
-#: build/blocks/draw-cards/index.js:1
-#: build/blocks/forecast-solar-return/index.js:1
-#: build/blocks/generate-asteroids/index.js:1
-#: build/blocks/generate-astrocartography/index.js:1
-#: build/blocks/generate-bodygraph/index.js:1
-#: build/blocks/generate-divisional-chart/index.js:1
-#: build/blocks/generate-fixed-stars/index.js:1
-#: build/blocks/generate-lilith/index.js:1
-#: build/blocks/generate-local-space/index.js:1
-#: build/blocks/generate-lunar-return/index.js:1
-#: build/blocks/generate-navamsa/index.js:1
-#: build/blocks/generate-planetary-return/index.js:1
-#: build/blocks/generate-profections/index.js:1
-#: build/blocks/generate-progressions/index.js:1
-#: build/blocks/generate-relocation-chart/index.js:1
-#: build/blocks/generate-solar-arc/index.js:1
-#: build/blocks/generate-solar-return/index.js:1
-#: build/blocks/get-avastha/index.js:1
-#: build/blocks/get-basic-panchang/index.js:1
-#: build/blocks/get-birthstones/index.js:1
-#: build/blocks/get-card/index.js:1
-#: build/blocks/get-center/index.js:1
-#: build/blocks/get-choghadiya/index.js:1
-#: build/blocks/get-cities-by-country/index.js:1
-#: build/blocks/get-compound-number/index.js:1
-#: build/blocks/get-critical-days/index.js:1
-#: build/blocks/get-crystal-pairings/index.js:1
-#: build/blocks/get-crystal/index.js:1
-#: build/blocks/get-crystals-by-chakra/index.js:1
-#: build/blocks/get-crystals-by-element/index.js:1
-#: build/blocks/get-current-dasha/index.js:1
-#: build/blocks/get-daily-angel-number/index.js:1
-#: build/blocks/get-daily-biorhythm/index.js:1
-#: build/blocks/get-daily-crystal/index.js:1
-#: build/blocks/get-daily-dream-symbol/index.js:1
-#: build/blocks/get-daily-hexagram/index.js:1
-#: build/blocks/get-daily-number/index.js:1
-#: build/blocks/get-dream-symbol/index.js:1
-#: build/blocks/get-ecliptic-crossings/index.js:1
-#: build/blocks/get-forecast/index.js:1
-#: build/blocks/get-gate/index.js:1
-#: build/blocks/get-heliacal-visibility/index.js:1
-#: build/blocks/get-hexagram/index.js:1
-#: build/blocks/get-hora/index.js:1
-#: build/blocks/get-kp-ayanamsa/index.js:1
-#: build/blocks/get-kp-cusps/index.js:1
-#: build/blocks/get-kp-planets-interval/index.js:1
-#: build/blocks/get-kp-planets/index.js:1
-#: build/blocks/get-kp-rasi-changes/index.js:1
-#: build/blocks/get-kp-ruling-interval/index.js:1
-#: build/blocks/get-kp-ruling-planets/index.js:1
-#: build/blocks/get-kp-sublord-changes/index.js:1
-#: build/blocks/get-lunar-aspects/index.js:1
-#: build/blocks/get-major-dashas/index.js:1
-#: build/blocks/get-monthly-aspects/index.js:1
-#: build/blocks/get-monthly-ephemeris/index.js:1
-#: build/blocks/get-monthly-horoscope/index.js:1
-#: build/blocks/get-monthly-parallels/index.js:1
-#: build/blocks/get-monthly-transits/index.js:1
-#: build/blocks/get-moon-calendar/index.js:1
-#: build/blocks/get-nakshatra/index.js:1
-#: build/blocks/get-number-meaning/index.js:1
-#: build/blocks/get-phases/index.js:1
-#: build/blocks/get-planet-meaning/index.js:1
-#: build/blocks/get-planet-positions/index.js:1
-#: build/blocks/get-planetary-positions/index.js:1
-#: build/blocks/get-prana-dashas/index.js:1
-#: build/blocks/get-pratyantardashas/index.js:1
-#: build/blocks/get-random-crystal/index.js:1
-#: build/blocks/get-random-hexagram/index.js:1
-#: build/blocks/get-random-symbols/index.js:1
-#: build/blocks/get-rashi/index.js:1
-#: build/blocks/get-sookshma-dashas/index.js:1
-#: build/blocks/get-sub-dashas/index.js:1
-#: build/blocks/get-symbol-letter-counts/index.js:1
-#: build/blocks/get-trigram/index.js:1
-#: build/blocks/get-upagraha-positions/index.js:1
-#: build/blocks/get-upcoming-moon-phases/index.js:1
-#: build/blocks/get-usage-stats/index.js:1
-#: build/blocks/get-weekly-horoscope/index.js:1
-#: build/blocks/get-yoga/index.js:1
-#: build/blocks/get-zodiac-sign/index.js:1
-#: build/blocks/list-angel-numbers/index.js:1
-#: build/blocks/list-avasthas/index.js:1
-#: build/blocks/list-cards/index.js:1
-#: build/blocks/list-countries/index.js:1
-#: build/blocks/list-crystal-colors/index.js:1
-#: build/blocks/list-crystal-planets/index.js:1
-#: build/blocks/list-crystals/index.js:1
-#: build/blocks/list-hexagrams/index.js:1
-#: build/blocks/list-languages/index.js:1
-#: build/blocks/list-nakshatras/index.js:1
-#: build/blocks/list-planet-meanings/index.js:1
-#: build/blocks/list-rashis/index.js:1
-#: build/blocks/list-trigrams/index.js:1
-#: build/blocks/list-yogas/index.js:1
-#: build/blocks/list-zodiac-signs/index.js:1
-#: build/blocks/lookup-hexagram/index.js:1
-#: build/blocks/search-cities/index.js:1
-#: build/blocks/search-crystals/index.js:1
-#: build/blocks/search-dream-symbols/index.js:1
 msgid "Default"
 msgstr ""
 
 #: blocks/_shared/generated-edit.js:116
-#: build/blocks/analyze-karmic-lessons/index.js:1
-#: build/blocks/analyze-number-sequence/index.js:1
-#: build/blocks/calculate-arabic-lots/index.js:1
-#: build/blocks/calculate-arudha-padas/index.js:1
-#: build/blocks/calculate-ashtakavarga/index.js:1
-#: build/blocks/calculate-aspects/index.js:1
-#: build/blocks/calculate-bhav-chalit/index.js:1
-#: build/blocks/calculate-bhava-bala/index.js:1
-#: build/blocks/calculate-birth-day/index.js:1
-#: build/blocks/calculate-bridge-numbers/index.js:1
-#: build/blocks/calculate-business-name/index.js:1
-#: build/blocks/calculate-centers/index.js:1
-#: build/blocks/calculate-chaldean/index.js:1
-#: build/blocks/calculate-channels/index.js:1
-#: build/blocks/calculate-chara-karakas/index.js:1
-#: build/blocks/calculate-drishti/index.js:1
-#: build/blocks/calculate-dual/index.js:1
-#: build/blocks/calculate-expression/index.js:1
-#: build/blocks/calculate-gates/index.js:1
-#: build/blocks/calculate-houses/index.js:1
-#: build/blocks/calculate-maturity/index.js:1
-#: build/blocks/calculate-parallels/index.js:1
-#: build/blocks/calculate-personal-day/index.js:1
-#: build/blocks/calculate-personal-month/index.js:1
-#: build/blocks/calculate-personal-year/index.js:1
-#: build/blocks/calculate-personality/index.js:1
-#: build/blocks/calculate-profile/index.js:1
-#: build/blocks/calculate-shadbala/index.js:1
-#: build/blocks/calculate-soul-urge/index.js:1
-#: build/blocks/calculate-transit/index.js:1
-#: build/blocks/calculate-transits/index.js:1
-#: build/blocks/calculate-type/index.js:1
-#: build/blocks/calculate-variables/index.js:1
-#: build/blocks/cast-career-spread/index.js:1
-#: build/blocks/cast-celtic-cross/index.js:1
-#: build/blocks/cast-daily-reading/index.js:1
-#: build/blocks/cast-kp-horary-chart/index.js:1
-#: build/blocks/cast-love-spread/index.js:1
-#: build/blocks/cast-reading/index.js:1
-#: build/blocks/cast-three-card/index.js:1
-#: build/blocks/check-kalsarpa-dosha/index.js:1
-#: build/blocks/check-karmic-debt/index.js:1
-#: build/blocks/check-sadhesati/index.js:1
-#: build/blocks/detect-aspect-patterns/index.js:1
-#: build/blocks/detect-yogas/index.js:1
-#: build/blocks/draw-cards/index.js:1
-#: build/blocks/forecast-solar-return/index.js:1
-#: build/blocks/generate-asteroids/index.js:1
-#: build/blocks/generate-astrocartography/index.js:1
-#: build/blocks/generate-bodygraph/index.js:1
-#: build/blocks/generate-divisional-chart/index.js:1
-#: build/blocks/generate-fixed-stars/index.js:1
-#: build/blocks/generate-lilith/index.js:1
-#: build/blocks/generate-local-space/index.js:1
-#: build/blocks/generate-lunar-return/index.js:1
-#: build/blocks/generate-navamsa/index.js:1
-#: build/blocks/generate-planetary-return/index.js:1
-#: build/blocks/generate-profections/index.js:1
-#: build/blocks/generate-progressions/index.js:1
-#: build/blocks/generate-relocation-chart/index.js:1
-#: build/blocks/generate-solar-arc/index.js:1
-#: build/blocks/generate-solar-return/index.js:1
-#: build/blocks/get-avastha/index.js:1
-#: build/blocks/get-basic-panchang/index.js:1
-#: build/blocks/get-birthstones/index.js:1
-#: build/blocks/get-card/index.js:1
-#: build/blocks/get-center/index.js:1
-#: build/blocks/get-choghadiya/index.js:1
-#: build/blocks/get-cities-by-country/index.js:1
-#: build/blocks/get-compound-number/index.js:1
-#: build/blocks/get-critical-days/index.js:1
-#: build/blocks/get-crystal-pairings/index.js:1
-#: build/blocks/get-crystal/index.js:1
-#: build/blocks/get-crystals-by-chakra/index.js:1
-#: build/blocks/get-crystals-by-element/index.js:1
-#: build/blocks/get-current-dasha/index.js:1
-#: build/blocks/get-daily-angel-number/index.js:1
-#: build/blocks/get-daily-biorhythm/index.js:1
-#: build/blocks/get-daily-crystal/index.js:1
-#: build/blocks/get-daily-dream-symbol/index.js:1
-#: build/blocks/get-daily-hexagram/index.js:1
-#: build/blocks/get-daily-number/index.js:1
-#: build/blocks/get-dream-symbol/index.js:1
-#: build/blocks/get-ecliptic-crossings/index.js:1
-#: build/blocks/get-forecast/index.js:1
-#: build/blocks/get-gate/index.js:1
-#: build/blocks/get-heliacal-visibility/index.js:1
-#: build/blocks/get-hexagram/index.js:1
-#: build/blocks/get-hora/index.js:1
-#: build/blocks/get-kp-ayanamsa/index.js:1
-#: build/blocks/get-kp-cusps/index.js:1
-#: build/blocks/get-kp-planets-interval/index.js:1
-#: build/blocks/get-kp-planets/index.js:1
-#: build/blocks/get-kp-rasi-changes/index.js:1
-#: build/blocks/get-kp-ruling-interval/index.js:1
-#: build/blocks/get-kp-ruling-planets/index.js:1
-#: build/blocks/get-kp-sublord-changes/index.js:1
-#: build/blocks/get-lunar-aspects/index.js:1
-#: build/blocks/get-major-dashas/index.js:1
-#: build/blocks/get-monthly-aspects/index.js:1
-#: build/blocks/get-monthly-ephemeris/index.js:1
-#: build/blocks/get-monthly-horoscope/index.js:1
-#: build/blocks/get-monthly-parallels/index.js:1
-#: build/blocks/get-monthly-transits/index.js:1
-#: build/blocks/get-moon-calendar/index.js:1
-#: build/blocks/get-nakshatra/index.js:1
-#: build/blocks/get-number-meaning/index.js:1
-#: build/blocks/get-phases/index.js:1
-#: build/blocks/get-planet-meaning/index.js:1
-#: build/blocks/get-planet-positions/index.js:1
-#: build/blocks/get-planetary-positions/index.js:1
-#: build/blocks/get-prana-dashas/index.js:1
-#: build/blocks/get-pratyantardashas/index.js:1
-#: build/blocks/get-random-crystal/index.js:1
-#: build/blocks/get-random-hexagram/index.js:1
-#: build/blocks/get-random-symbols/index.js:1
-#: build/blocks/get-rashi/index.js:1
-#: build/blocks/get-sookshma-dashas/index.js:1
-#: build/blocks/get-sub-dashas/index.js:1
-#: build/blocks/get-symbol-letter-counts/index.js:1
-#: build/blocks/get-trigram/index.js:1
-#: build/blocks/get-upagraha-positions/index.js:1
-#: build/blocks/get-upcoming-moon-phases/index.js:1
-#: build/blocks/get-usage-stats/index.js:1
-#: build/blocks/get-weekly-horoscope/index.js:1
-#: build/blocks/get-yoga/index.js:1
-#: build/blocks/get-zodiac-sign/index.js:1
-#: build/blocks/list-angel-numbers/index.js:1
-#: build/blocks/list-avasthas/index.js:1
-#: build/blocks/list-cards/index.js:1
-#: build/blocks/list-countries/index.js:1
-#: build/blocks/list-crystal-colors/index.js:1
-#: build/blocks/list-crystal-planets/index.js:1
-#: build/blocks/list-crystals/index.js:1
-#: build/blocks/list-hexagrams/index.js:1
-#: build/blocks/list-languages/index.js:1
-#: build/blocks/list-nakshatras/index.js:1
-#: build/blocks/list-planet-meanings/index.js:1
-#: build/blocks/list-rashis/index.js:1
-#: build/blocks/list-trigrams/index.js:1
-#: build/blocks/list-yogas/index.js:1
-#: build/blocks/list-zodiac-signs/index.js:1
-#: build/blocks/lookup-hexagram/index.js:1
-#: build/blocks/search-cities/index.js:1
-#: build/blocks/search-crystals/index.js:1
-#: build/blocks/search-dream-symbols/index.js:1
 msgid "Reading Settings"
 msgstr ""
 
 #: blocks/_shared/generated-edit.js:150
-#: build/blocks/analyze-karmic-lessons/index.js:1
-#: build/blocks/analyze-number-sequence/index.js:1
-#: build/blocks/calculate-arabic-lots/index.js:1
-#: build/blocks/calculate-arudha-padas/index.js:1
-#: build/blocks/calculate-ashtakavarga/index.js:1
-#: build/blocks/calculate-aspects/index.js:1
-#: build/blocks/calculate-bhav-chalit/index.js:1
-#: build/blocks/calculate-bhava-bala/index.js:1
-#: build/blocks/calculate-birth-day/index.js:1
-#: build/blocks/calculate-bridge-numbers/index.js:1
-#: build/blocks/calculate-business-name/index.js:1
-#: build/blocks/calculate-centers/index.js:1
-#: build/blocks/calculate-chaldean/index.js:1
-#: build/blocks/calculate-channels/index.js:1
-#: build/blocks/calculate-chara-karakas/index.js:1
-#: build/blocks/calculate-drishti/index.js:1
-#: build/blocks/calculate-dual/index.js:1
-#: build/blocks/calculate-expression/index.js:1
-#: build/blocks/calculate-gates/index.js:1
-#: build/blocks/calculate-houses/index.js:1
-#: build/blocks/calculate-maturity/index.js:1
-#: build/blocks/calculate-parallels/index.js:1
-#: build/blocks/calculate-personal-day/index.js:1
-#: build/blocks/calculate-personal-month/index.js:1
-#: build/blocks/calculate-personal-year/index.js:1
-#: build/blocks/calculate-personality/index.js:1
-#: build/blocks/calculate-profile/index.js:1
-#: build/blocks/calculate-shadbala/index.js:1
-#: build/blocks/calculate-soul-urge/index.js:1
-#: build/blocks/calculate-transit/index.js:1
-#: build/blocks/calculate-transits/index.js:1
-#: build/blocks/calculate-type/index.js:1
-#: build/blocks/calculate-variables/index.js:1
-#: build/blocks/cast-career-spread/index.js:1
-#: build/blocks/cast-celtic-cross/index.js:1
-#: build/blocks/cast-daily-reading/index.js:1
-#: build/blocks/cast-kp-horary-chart/index.js:1
-#: build/blocks/cast-love-spread/index.js:1
-#: build/blocks/cast-reading/index.js:1
-#: build/blocks/cast-three-card/index.js:1
-#: build/blocks/check-kalsarpa-dosha/index.js:1
-#: build/blocks/check-karmic-debt/index.js:1
-#: build/blocks/check-sadhesati/index.js:1
-#: build/blocks/detect-aspect-patterns/index.js:1
-#: build/blocks/detect-yogas/index.js:1
-#: build/blocks/draw-cards/index.js:1
-#: build/blocks/forecast-solar-return/index.js:1
-#: build/blocks/generate-asteroids/index.js:1
-#: build/blocks/generate-astrocartography/index.js:1
-#: build/blocks/generate-bodygraph/index.js:1
-#: build/blocks/generate-divisional-chart/index.js:1
-#: build/blocks/generate-fixed-stars/index.js:1
-#: build/blocks/generate-lilith/index.js:1
-#: build/blocks/generate-local-space/index.js:1
-#: build/blocks/generate-lunar-return/index.js:1
-#: build/blocks/generate-navamsa/index.js:1
-#: build/blocks/generate-planetary-return/index.js:1
-#: build/blocks/generate-profections/index.js:1
-#: build/blocks/generate-progressions/index.js:1
-#: build/blocks/generate-relocation-chart/index.js:1
-#: build/blocks/generate-solar-arc/index.js:1
-#: build/blocks/generate-solar-return/index.js:1
-#: build/blocks/get-avastha/index.js:1
-#: build/blocks/get-basic-panchang/index.js:1
-#: build/blocks/get-birthstones/index.js:1
-#: build/blocks/get-card/index.js:1
-#: build/blocks/get-center/index.js:1
-#: build/blocks/get-choghadiya/index.js:1
-#: build/blocks/get-cities-by-country/index.js:1
-#: build/blocks/get-compound-number/index.js:1
-#: build/blocks/get-critical-days/index.js:1
-#: build/blocks/get-crystal-pairings/index.js:1
-#: build/blocks/get-crystal/index.js:1
-#: build/blocks/get-crystals-by-chakra/index.js:1
-#: build/blocks/get-crystals-by-element/index.js:1
-#: build/blocks/get-current-dasha/index.js:1
-#: build/blocks/get-daily-angel-number/index.js:1
-#: build/blocks/get-daily-biorhythm/index.js:1
-#: build/blocks/get-daily-crystal/index.js:1
-#: build/blocks/get-daily-dream-symbol/index.js:1
-#: build/blocks/get-daily-hexagram/index.js:1
-#: build/blocks/get-daily-number/index.js:1
-#: build/blocks/get-dream-symbol/index.js:1
-#: build/blocks/get-ecliptic-crossings/index.js:1
-#: build/blocks/get-forecast/index.js:1
-#: build/blocks/get-gate/index.js:1
-#: build/blocks/get-heliacal-visibility/index.js:1
-#: build/blocks/get-hexagram/index.js:1
-#: build/blocks/get-hora/index.js:1
-#: build/blocks/get-kp-ayanamsa/index.js:1
-#: build/blocks/get-kp-cusps/index.js:1
-#: build/blocks/get-kp-planets-interval/index.js:1
-#: build/blocks/get-kp-planets/index.js:1
-#: build/blocks/get-kp-rasi-changes/index.js:1
-#: build/blocks/get-kp-ruling-interval/index.js:1
-#: build/blocks/get-kp-ruling-planets/index.js:1
-#: build/blocks/get-kp-sublord-changes/index.js:1
-#: build/blocks/get-lunar-aspects/index.js:1
-#: build/blocks/get-major-dashas/index.js:1
-#: build/blocks/get-monthly-aspects/index.js:1
-#: build/blocks/get-monthly-ephemeris/index.js:1
-#: build/blocks/get-monthly-horoscope/index.js:1
-#: build/blocks/get-monthly-parallels/index.js:1
-#: build/blocks/get-monthly-transits/index.js:1
-#: build/blocks/get-moon-calendar/index.js:1
-#: build/blocks/get-nakshatra/index.js:1
-#: build/blocks/get-number-meaning/index.js:1
-#: build/blocks/get-phases/index.js:1
-#: build/blocks/get-planet-meaning/index.js:1
-#: build/blocks/get-planet-positions/index.js:1
-#: build/blocks/get-planetary-positions/index.js:1
-#: build/blocks/get-prana-dashas/index.js:1
-#: build/blocks/get-pratyantardashas/index.js:1
-#: build/blocks/get-random-crystal/index.js:1
-#: build/blocks/get-random-hexagram/index.js:1
-#: build/blocks/get-random-symbols/index.js:1
-#: build/blocks/get-rashi/index.js:1
-#: build/blocks/get-sookshma-dashas/index.js:1
-#: build/blocks/get-sub-dashas/index.js:1
-#: build/blocks/get-symbol-letter-counts/index.js:1
-#: build/blocks/get-trigram/index.js:1
-#: build/blocks/get-upagraha-positions/index.js:1
-#: build/blocks/get-upcoming-moon-phases/index.js:1
-#: build/blocks/get-usage-stats/index.js:1
-#: build/blocks/get-weekly-horoscope/index.js:1
-#: build/blocks/get-yoga/index.js:1
-#: build/blocks/get-zodiac-sign/index.js:1
-#: build/blocks/list-angel-numbers/index.js:1
-#: build/blocks/list-avasthas/index.js:1
-#: build/blocks/list-cards/index.js:1
-#: build/blocks/list-countries/index.js:1
-#: build/blocks/list-crystal-colors/index.js:1
-#: build/blocks/list-crystal-planets/index.js:1
-#: build/blocks/list-crystals/index.js:1
-#: build/blocks/list-hexagrams/index.js:1
-#: build/blocks/list-languages/index.js:1
-#: build/blocks/list-nakshatras/index.js:1
-#: build/blocks/list-planet-meanings/index.js:1
-#: build/blocks/list-rashis/index.js:1
-#: build/blocks/list-trigrams/index.js:1
-#: build/blocks/list-yogas/index.js:1
-#: build/blocks/list-zodiac-signs/index.js:1
-#: build/blocks/lookup-hexagram/index.js:1
-#: build/blocks/search-cities/index.js:1
-#: build/blocks/search-crystals/index.js:1
-#: build/blocks/search-dream-symbols/index.js:1
 msgid "Reading inputs needed"
 msgstr ""
 
 #: blocks/_shared/generated-edit.js:151
-#: build/blocks/analyze-karmic-lessons/index.js:1
-#: build/blocks/analyze-number-sequence/index.js:1
-#: build/blocks/calculate-arabic-lots/index.js:1
-#: build/blocks/calculate-arudha-padas/index.js:1
-#: build/blocks/calculate-ashtakavarga/index.js:1
-#: build/blocks/calculate-aspects/index.js:1
-#: build/blocks/calculate-bhav-chalit/index.js:1
-#: build/blocks/calculate-bhava-bala/index.js:1
-#: build/blocks/calculate-birth-day/index.js:1
-#: build/blocks/calculate-bridge-numbers/index.js:1
-#: build/blocks/calculate-business-name/index.js:1
-#: build/blocks/calculate-centers/index.js:1
-#: build/blocks/calculate-chaldean/index.js:1
-#: build/blocks/calculate-channels/index.js:1
-#: build/blocks/calculate-chara-karakas/index.js:1
-#: build/blocks/calculate-drishti/index.js:1
-#: build/blocks/calculate-dual/index.js:1
-#: build/blocks/calculate-expression/index.js:1
-#: build/blocks/calculate-gates/index.js:1
-#: build/blocks/calculate-houses/index.js:1
-#: build/blocks/calculate-maturity/index.js:1
-#: build/blocks/calculate-parallels/index.js:1
-#: build/blocks/calculate-personal-day/index.js:1
-#: build/blocks/calculate-personal-month/index.js:1
-#: build/blocks/calculate-personal-year/index.js:1
-#: build/blocks/calculate-personality/index.js:1
-#: build/blocks/calculate-profile/index.js:1
-#: build/blocks/calculate-shadbala/index.js:1
-#: build/blocks/calculate-soul-urge/index.js:1
-#: build/blocks/calculate-transit/index.js:1
-#: build/blocks/calculate-transits/index.js:1
-#: build/blocks/calculate-type/index.js:1
-#: build/blocks/calculate-variables/index.js:1
-#: build/blocks/cast-career-spread/index.js:1
-#: build/blocks/cast-celtic-cross/index.js:1
-#: build/blocks/cast-daily-reading/index.js:1
-#: build/blocks/cast-kp-horary-chart/index.js:1
-#: build/blocks/cast-love-spread/index.js:1
-#: build/blocks/cast-reading/index.js:1
-#: build/blocks/cast-three-card/index.js:1
-#: build/blocks/check-kalsarpa-dosha/index.js:1
-#: build/blocks/check-karmic-debt/index.js:1
-#: build/blocks/check-sadhesati/index.js:1
-#: build/blocks/detect-aspect-patterns/index.js:1
-#: build/blocks/detect-yogas/index.js:1
-#: build/blocks/draw-cards/index.js:1
-#: build/blocks/forecast-solar-return/index.js:1
-#: build/blocks/generate-asteroids/index.js:1
-#: build/blocks/generate-astrocartography/index.js:1
-#: build/blocks/generate-bodygraph/index.js:1
-#: build/blocks/generate-divisional-chart/index.js:1
-#: build/blocks/generate-fixed-stars/index.js:1
-#: build/blocks/generate-lilith/index.js:1
-#: build/blocks/generate-local-space/index.js:1
-#: build/blocks/generate-lunar-return/index.js:1
-#: build/blocks/generate-navamsa/index.js:1
-#: build/blocks/generate-planetary-return/index.js:1
-#: build/blocks/generate-profections/index.js:1
-#: build/blocks/generate-progressions/index.js:1
-#: build/blocks/generate-relocation-chart/index.js:1
-#: build/blocks/generate-solar-arc/index.js:1
-#: build/blocks/generate-solar-return/index.js:1
-#: build/blocks/get-avastha/index.js:1
-#: build/blocks/get-basic-panchang/index.js:1
-#: build/blocks/get-birthstones/index.js:1
-#: build/blocks/get-card/index.js:1
-#: build/blocks/get-center/index.js:1
-#: build/blocks/get-choghadiya/index.js:1
-#: build/blocks/get-cities-by-country/index.js:1
-#: build/blocks/get-compound-number/index.js:1
-#: build/blocks/get-critical-days/index.js:1
-#: build/blocks/get-crystal-pairings/index.js:1
-#: build/blocks/get-crystal/index.js:1
-#: build/blocks/get-crystals-by-chakra/index.js:1
-#: build/blocks/get-crystals-by-element/index.js:1
-#: build/blocks/get-current-dasha/index.js:1
-#: build/blocks/get-daily-angel-number/index.js:1
-#: build/blocks/get-daily-biorhythm/index.js:1
-#: build/blocks/get-daily-crystal/index.js:1
-#: build/blocks/get-daily-dream-symbol/index.js:1
-#: build/blocks/get-daily-hexagram/index.js:1
-#: build/blocks/get-daily-number/index.js:1
-#: build/blocks/get-dream-symbol/index.js:1
-#: build/blocks/get-ecliptic-crossings/index.js:1
-#: build/blocks/get-forecast/index.js:1
-#: build/blocks/get-gate/index.js:1
-#: build/blocks/get-heliacal-visibility/index.js:1
-#: build/blocks/get-hexagram/index.js:1
-#: build/blocks/get-hora/index.js:1
-#: build/blocks/get-kp-ayanamsa/index.js:1
-#: build/blocks/get-kp-cusps/index.js:1
-#: build/blocks/get-kp-planets-interval/index.js:1
-#: build/blocks/get-kp-planets/index.js:1
-#: build/blocks/get-kp-rasi-changes/index.js:1
-#: build/blocks/get-kp-ruling-interval/index.js:1
-#: build/blocks/get-kp-ruling-planets/index.js:1
-#: build/blocks/get-kp-sublord-changes/index.js:1
-#: build/blocks/get-lunar-aspects/index.js:1
-#: build/blocks/get-major-dashas/index.js:1
-#: build/blocks/get-monthly-aspects/index.js:1
-#: build/blocks/get-monthly-ephemeris/index.js:1
-#: build/blocks/get-monthly-horoscope/index.js:1
-#: build/blocks/get-monthly-parallels/index.js:1
-#: build/blocks/get-monthly-transits/index.js:1
-#: build/blocks/get-moon-calendar/index.js:1
-#: build/blocks/get-nakshatra/index.js:1
-#: build/blocks/get-number-meaning/index.js:1
-#: build/blocks/get-phases/index.js:1
-#: build/blocks/get-planet-meaning/index.js:1
-#: build/blocks/get-planet-positions/index.js:1
-#: build/blocks/get-planetary-positions/index.js:1
-#: build/blocks/get-prana-dashas/index.js:1
-#: build/blocks/get-pratyantardashas/index.js:1
-#: build/blocks/get-random-crystal/index.js:1
-#: build/blocks/get-random-hexagram/index.js:1
-#: build/blocks/get-random-symbols/index.js:1
-#: build/blocks/get-rashi/index.js:1
-#: build/blocks/get-sookshma-dashas/index.js:1
-#: build/blocks/get-sub-dashas/index.js:1
-#: build/blocks/get-symbol-letter-counts/index.js:1
-#: build/blocks/get-trigram/index.js:1
-#: build/blocks/get-upagraha-positions/index.js:1
-#: build/blocks/get-upcoming-moon-phases/index.js:1
-#: build/blocks/get-usage-stats/index.js:1
-#: build/blocks/get-weekly-horoscope/index.js:1
-#: build/blocks/get-yoga/index.js:1
-#: build/blocks/get-zodiac-sign/index.js:1
-#: build/blocks/list-angel-numbers/index.js:1
-#: build/blocks/list-avasthas/index.js:1
-#: build/blocks/list-cards/index.js:1
-#: build/blocks/list-countries/index.js:1
-#: build/blocks/list-crystal-colors/index.js:1
-#: build/blocks/list-crystal-planets/index.js:1
-#: build/blocks/list-crystals/index.js:1
-#: build/blocks/list-hexagrams/index.js:1
-#: build/blocks/list-languages/index.js:1
-#: build/blocks/list-nakshatras/index.js:1
-#: build/blocks/list-planet-meanings/index.js:1
-#: build/blocks/list-rashis/index.js:1
-#: build/blocks/list-trigrams/index.js:1
-#: build/blocks/list-yogas/index.js:1
-#: build/blocks/list-zodiac-signs/index.js:1
-#: build/blocks/lookup-hexagram/index.js:1
-#: build/blocks/search-cities/index.js:1
-#: build/blocks/search-crystals/index.js:1
-#: build/blocks/search-dream-symbols/index.js:1
 msgid "Fill in the required fields in the sidebar to preview and publish this reading."
 msgstr ""
 
 #: blocks/angel-number/block.json
-#: build/blocks/angel-number/block.json
 msgctxt "block title"
 msgid "Angel Number"
 msgstr ""
 
 #: blocks/angel-number/block.json
-#: build/blocks/angel-number/block.json
 msgctxt "block description"
 msgid "Angel number meanings and pattern analysis."
 msgstr ""
 
 #: blocks/angel-number/block.json
-#: build/blocks/angel-number/block.json
 msgctxt "block keyword"
 msgid "angel number"
 msgstr ""
 
 #: blocks/angel-number/block.json
-#: build/blocks/angel-number/block.json
 msgctxt "block keyword"
 msgid "spiritual"
 msgstr ""
 
 #: blocks/angel-number/block.json
-#: build/blocks/angel-number/block.json
 msgctxt "block keyword"
 msgid "guidance"
 msgstr ""
@@ -3001,171 +2238,16 @@ msgstr ""
 #: blocks/natal-chart/block.json
 #: blocks/numerology/block.json
 #: blocks/tarot/block.json
-#: build/blocks/analyze-karmic-lessons/block.json
-#: build/blocks/analyze-number-sequence/block.json
-#: build/blocks/angel-number/block.json
-#: build/blocks/astrology-wrapper/block.json
-#: build/blocks/biorhythm/block.json
-#: build/blocks/calculate-arabic-lots/block.json
-#: build/blocks/calculate-arudha-padas/block.json
-#: build/blocks/calculate-ashtakavarga/block.json
-#: build/blocks/calculate-aspects/block.json
-#: build/blocks/calculate-bhav-chalit/block.json
-#: build/blocks/calculate-bhava-bala/block.json
-#: build/blocks/calculate-birth-day/block.json
-#: build/blocks/calculate-bridge-numbers/block.json
-#: build/blocks/calculate-business-name/block.json
-#: build/blocks/calculate-centers/block.json
-#: build/blocks/calculate-chaldean/block.json
-#: build/blocks/calculate-channels/block.json
-#: build/blocks/calculate-chara-karakas/block.json
-#: build/blocks/calculate-drishti/block.json
-#: build/blocks/calculate-dual/block.json
-#: build/blocks/calculate-expression/block.json
-#: build/blocks/calculate-gates/block.json
-#: build/blocks/calculate-houses/block.json
-#: build/blocks/calculate-maturity/block.json
-#: build/blocks/calculate-parallels/block.json
-#: build/blocks/calculate-personal-day/block.json
-#: build/blocks/calculate-personal-month/block.json
-#: build/blocks/calculate-personal-year/block.json
-#: build/blocks/calculate-personality/block.json
-#: build/blocks/calculate-profile/block.json
-#: build/blocks/calculate-shadbala/block.json
-#: build/blocks/calculate-soul-urge/block.json
-#: build/blocks/calculate-transit/block.json
-#: build/blocks/calculate-transits/block.json
-#: build/blocks/calculate-type/block.json
-#: build/blocks/calculate-variables/block.json
-#: build/blocks/cast-career-spread/block.json
-#: build/blocks/cast-celtic-cross/block.json
-#: build/blocks/cast-daily-reading/block.json
-#: build/blocks/cast-kp-horary-chart/block.json
-#: build/blocks/cast-love-spread/block.json
-#: build/blocks/cast-reading/block.json
-#: build/blocks/cast-three-card/block.json
-#: build/blocks/check-kalsarpa-dosha/block.json
-#: build/blocks/check-karmic-debt/block.json
-#: build/blocks/check-sadhesati/block.json
-#: build/blocks/detect-aspect-patterns/block.json
-#: build/blocks/detect-yogas/block.json
-#: build/blocks/draw-cards/block.json
-#: build/blocks/forecast-solar-return/block.json
-#: build/blocks/generate-asteroids/block.json
-#: build/blocks/generate-astrocartography/block.json
-#: build/blocks/generate-bodygraph/block.json
-#: build/blocks/generate-divisional-chart/block.json
-#: build/blocks/generate-fixed-stars/block.json
-#: build/blocks/generate-lilith/block.json
-#: build/blocks/generate-local-space/block.json
-#: build/blocks/generate-lunar-return/block.json
-#: build/blocks/generate-navamsa/block.json
-#: build/blocks/generate-planetary-return/block.json
-#: build/blocks/generate-profections/block.json
-#: build/blocks/generate-progressions/block.json
-#: build/blocks/generate-relocation-chart/block.json
-#: build/blocks/generate-solar-arc/block.json
-#: build/blocks/generate-solar-return/block.json
-#: build/blocks/get-avastha/block.json
-#: build/blocks/get-basic-panchang/block.json
-#: build/blocks/get-birthstones/block.json
-#: build/blocks/get-card/block.json
-#: build/blocks/get-center/block.json
-#: build/blocks/get-choghadiya/block.json
-#: build/blocks/get-cities-by-country/block.json
-#: build/blocks/get-compound-number/block.json
-#: build/blocks/get-critical-days/block.json
-#: build/blocks/get-crystal-pairings/block.json
-#: build/blocks/get-crystal/block.json
-#: build/blocks/get-crystals-by-chakra/block.json
-#: build/blocks/get-crystals-by-element/block.json
-#: build/blocks/get-current-dasha/block.json
-#: build/blocks/get-daily-angel-number/block.json
-#: build/blocks/get-daily-biorhythm/block.json
-#: build/blocks/get-daily-crystal/block.json
-#: build/blocks/get-daily-dream-symbol/block.json
-#: build/blocks/get-daily-hexagram/block.json
-#: build/blocks/get-daily-number/block.json
-#: build/blocks/get-dream-symbol/block.json
-#: build/blocks/get-ecliptic-crossings/block.json
-#: build/blocks/get-forecast/block.json
-#: build/blocks/get-gate/block.json
-#: build/blocks/get-heliacal-visibility/block.json
-#: build/blocks/get-hexagram/block.json
-#: build/blocks/get-hora/block.json
-#: build/blocks/get-kp-ayanamsa/block.json
-#: build/blocks/get-kp-cusps/block.json
-#: build/blocks/get-kp-planets-interval/block.json
-#: build/blocks/get-kp-planets/block.json
-#: build/blocks/get-kp-rasi-changes/block.json
-#: build/blocks/get-kp-ruling-interval/block.json
-#: build/blocks/get-kp-ruling-planets/block.json
-#: build/blocks/get-kp-sublord-changes/block.json
-#: build/blocks/get-lunar-aspects/block.json
-#: build/blocks/get-major-dashas/block.json
-#: build/blocks/get-monthly-aspects/block.json
-#: build/blocks/get-monthly-ephemeris/block.json
-#: build/blocks/get-monthly-horoscope/block.json
-#: build/blocks/get-monthly-parallels/block.json
-#: build/blocks/get-monthly-transits/block.json
-#: build/blocks/get-moon-calendar/block.json
-#: build/blocks/get-nakshatra/block.json
-#: build/blocks/get-number-meaning/block.json
-#: build/blocks/get-phases/block.json
-#: build/blocks/get-planet-meaning/block.json
-#: build/blocks/get-planet-positions/block.json
-#: build/blocks/get-planetary-positions/block.json
-#: build/blocks/get-prana-dashas/block.json
-#: build/blocks/get-pratyantardashas/block.json
-#: build/blocks/get-random-crystal/block.json
-#: build/blocks/get-random-hexagram/block.json
-#: build/blocks/get-random-symbols/block.json
-#: build/blocks/get-rashi/block.json
-#: build/blocks/get-sookshma-dashas/block.json
-#: build/blocks/get-sub-dashas/block.json
-#: build/blocks/get-symbol-letter-counts/block.json
-#: build/blocks/get-trigram/block.json
-#: build/blocks/get-upagraha-positions/block.json
-#: build/blocks/get-upcoming-moon-phases/block.json
-#: build/blocks/get-usage-stats/block.json
-#: build/blocks/get-weekly-horoscope/block.json
-#: build/blocks/get-yoga/block.json
-#: build/blocks/get-zodiac-sign/block.json
-#: build/blocks/horoscope/block.json
-#: build/blocks/list-angel-numbers/block.json
-#: build/blocks/list-avasthas/block.json
-#: build/blocks/list-cards/block.json
-#: build/blocks/list-countries/block.json
-#: build/blocks/list-crystal-colors/block.json
-#: build/blocks/list-crystal-planets/block.json
-#: build/blocks/list-crystals/block.json
-#: build/blocks/list-hexagrams/block.json
-#: build/blocks/list-languages/block.json
-#: build/blocks/list-nakshatras/block.json
-#: build/blocks/list-planet-meanings/block.json
-#: build/blocks/list-rashis/block.json
-#: build/blocks/list-trigrams/block.json
-#: build/blocks/list-yogas/block.json
-#: build/blocks/list-zodiac-signs/block.json
-#: build/blocks/lookup-hexagram/block.json
-#: build/blocks/natal-chart/block.json
-#: build/blocks/numerology/block.json
-#: build/blocks/search-cities/block.json
-#: build/blocks/search-crystals/block.json
-#: build/blocks/search-dream-symbols/block.json
-#: build/blocks/tarot/block.json
 msgctxt "block keyword"
 msgid "roxyapi"
 msgstr ""
 
 #: blocks/astrology-wrapper/block.json
-#: build/blocks/astrology-wrapper/block.json
 msgctxt "block title"
 msgid "Astrology Section"
 msgstr ""
 
 #: blocks/astrology-wrapper/block.json
-#: build/blocks/astrology-wrapper/block.json
 msgctxt "block description"
 msgid "Wrapper block that shares a default zodiac sign and birth date with every RoxyAPI block inside it via block context."
 msgstr ""
@@ -3173,9 +2255,6 @@ msgstr ""
 #: blocks/astrology-wrapper/block.json
 #: blocks/horoscope/block.json
 #: blocks/natal-chart/block.json
-#: build/blocks/astrology-wrapper/block.json
-#: build/blocks/horoscope/block.json
-#: build/blocks/natal-chart/block.json
 msgctxt "block keyword"
 msgid "astrology"
 msgstr ""
@@ -3184,28 +2263,21 @@ msgstr ""
 #: blocks/generated/get-zodiac-sign/block.json
 #: blocks/generated/list-zodiac-signs/block.json
 #: blocks/horoscope/block.json
-#: build/blocks/astrology-wrapper/block.json
-#: build/blocks/get-zodiac-sign/block.json
-#: build/blocks/horoscope/block.json
-#: build/blocks/list-zodiac-signs/block.json
 msgctxt "block keyword"
 msgid "zodiac"
 msgstr ""
 
 #: blocks/astrology-wrapper/block.json
-#: build/blocks/astrology-wrapper/block.json
 msgctxt "block keyword"
 msgid "section"
 msgstr ""
 
 #: blocks/biorhythm/block.json
-#: build/blocks/biorhythm/block.json
 msgctxt "block title"
 msgid "Biorhythm"
 msgstr ""
 
 #: blocks/biorhythm/block.json
-#: build/blocks/biorhythm/block.json
 msgctxt "block description"
 msgid "Physical, emotional, intellectual, and intuitive cycles."
 msgstr ""
@@ -3215,35 +2287,26 @@ msgstr ""
 #: blocks/generated/get-daily-biorhythm/block.json
 #: blocks/generated/get-forecast/block.json
 #: blocks/generated/get-phases/block.json
-#: build/blocks/biorhythm/block.json
-#: build/blocks/get-critical-days/block.json
-#: build/blocks/get-daily-biorhythm/block.json
-#: build/blocks/get-forecast/block.json
-#: build/blocks/get-phases/block.json
 msgctxt "block keyword"
 msgid "biorhythm"
 msgstr ""
 
 #: blocks/biorhythm/block.json
-#: build/blocks/biorhythm/block.json
 msgctxt "block keyword"
 msgid "cycles"
 msgstr ""
 
 #: blocks/biorhythm/block.json
-#: build/blocks/biorhythm/block.json
 msgctxt "block keyword"
 msgid "wellness"
 msgstr ""
 
 #: blocks/generated/analyze-karmic-lessons/block.json
-#: build/blocks/analyze-karmic-lessons/block.json
 msgctxt "block title"
 msgid "Analyze Karmic Lessons - Life lessons from missing numbers (Numerology)"
 msgstr ""
 
 #: blocks/generated/analyze-karmic-lessons/block.json
-#: build/blocks/analyze-karmic-lessons/block.json
 msgctxt "block description"
 msgid "Analyze Karmic Lessons - Life lessons from missing numbers"
 msgstr ""
@@ -3266,52 +2329,28 @@ msgstr ""
 #: blocks/generated/get-daily-number/block.json
 #: blocks/generated/get-number-meaning/block.json
 #: blocks/numerology/block.json
-#: build/blocks/analyze-karmic-lessons/block.json
-#: build/blocks/calculate-birth-day/block.json
-#: build/blocks/calculate-bridge-numbers/block.json
-#: build/blocks/calculate-business-name/block.json
-#: build/blocks/calculate-chaldean/block.json
-#: build/blocks/calculate-dual/block.json
-#: build/blocks/calculate-expression/block.json
-#: build/blocks/calculate-maturity/block.json
-#: build/blocks/calculate-personal-day/block.json
-#: build/blocks/calculate-personal-month/block.json
-#: build/blocks/calculate-personal-year/block.json
-#: build/blocks/calculate-personality/block.json
-#: build/blocks/calculate-soul-urge/block.json
-#: build/blocks/check-karmic-debt/block.json
-#: build/blocks/get-compound-number/block.json
-#: build/blocks/get-daily-number/block.json
-#: build/blocks/get-number-meaning/block.json
-#: build/blocks/numerology/block.json
 msgctxt "block keyword"
 msgid "numerology"
 msgstr ""
 
 #: blocks/generated/analyze-karmic-lessons/block.json
 #: blocks/generated/analyze-number-sequence/block.json
-#: build/blocks/analyze-karmic-lessons/block.json
-#: build/blocks/analyze-number-sequence/block.json
 msgctxt "block keyword"
 msgid "analyze"
 msgstr ""
 
 #: blocks/generated/analyze-karmic-lessons/block.json
 #: blocks/generated/check-karmic-debt/block.json
-#: build/blocks/analyze-karmic-lessons/block.json
-#: build/blocks/check-karmic-debt/block.json
 msgctxt "block keyword"
 msgid "karmic"
 msgstr ""
 
 #: blocks/generated/analyze-number-sequence/block.json
-#: build/blocks/analyze-number-sequence/block.json
 msgctxt "block title"
 msgid "Analyze Any Number Sequence (Angel Numbers)"
 msgstr ""
 
 #: blocks/generated/analyze-number-sequence/block.json
-#: build/blocks/analyze-number-sequence/block.json
 msgctxt "block description"
 msgid "Analyze Any Number Sequence"
 msgstr ""
@@ -3319,29 +2358,22 @@ msgstr ""
 #: blocks/generated/analyze-number-sequence/block.json
 #: blocks/generated/get-daily-angel-number/block.json
 #: blocks/generated/list-angel-numbers/block.json
-#: build/blocks/analyze-number-sequence/block.json
-#: build/blocks/get-daily-angel-number/block.json
-#: build/blocks/list-angel-numbers/block.json
 msgctxt "block keyword"
 msgid "angel numbers"
 msgstr ""
 
 #: blocks/generated/analyze-number-sequence/block.json
 #: blocks/generated/get-number-meaning/block.json
-#: build/blocks/analyze-number-sequence/block.json
-#: build/blocks/get-number-meaning/block.json
 msgctxt "block keyword"
 msgid "number"
 msgstr ""
 
 #: blocks/generated/calculate-arabic-lots/block.json
-#: build/blocks/calculate-arabic-lots/block.json
 msgctxt "block title"
 msgid "Arabic lots calculator - seven Hermetic parts including Part of Fortune and Spirit (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/calculate-arabic-lots/block.json
-#: build/blocks/calculate-arabic-lots/block.json
 msgctxt "block description"
 msgid "Arabic lots calculator - seven Hermetic parts including Part of Fortune and Spirit"
 msgstr ""
@@ -3372,32 +2404,6 @@ msgstr ""
 #: blocks/generated/get-zodiac-sign/block.json
 #: blocks/generated/list-planet-meanings/block.json
 #: blocks/generated/list-zodiac-signs/block.json
-#: build/blocks/calculate-arabic-lots/block.json
-#: build/blocks/calculate-aspects/block.json
-#: build/blocks/calculate-houses/block.json
-#: build/blocks/calculate-transits/block.json
-#: build/blocks/detect-aspect-patterns/block.json
-#: build/blocks/generate-asteroids/block.json
-#: build/blocks/generate-astrocartography/block.json
-#: build/blocks/generate-fixed-stars/block.json
-#: build/blocks/generate-lilith/block.json
-#: build/blocks/generate-local-space/block.json
-#: build/blocks/generate-lunar-return/block.json
-#: build/blocks/generate-planetary-return/block.json
-#: build/blocks/generate-profections/block.json
-#: build/blocks/generate-progressions/block.json
-#: build/blocks/generate-relocation-chart/block.json
-#: build/blocks/generate-solar-arc/block.json
-#: build/blocks/generate-solar-return/block.json
-#: build/blocks/get-monthly-horoscope/block.json
-#: build/blocks/get-moon-calendar/block.json
-#: build/blocks/get-planet-meaning/block.json
-#: build/blocks/get-planetary-positions/block.json
-#: build/blocks/get-upcoming-moon-phases/block.json
-#: build/blocks/get-weekly-horoscope/block.json
-#: build/blocks/get-zodiac-sign/block.json
-#: build/blocks/list-planet-meanings/block.json
-#: build/blocks/list-zodiac-signs/block.json
 msgctxt "block keyword"
 msgid "western astrology"
 msgstr ""
@@ -3433,55 +2439,21 @@ msgstr ""
 #: blocks/generated/calculate-transits/block.json
 #: blocks/generated/calculate-type/block.json
 #: blocks/generated/calculate-variables/block.json
-#: build/blocks/calculate-arabic-lots/block.json
-#: build/blocks/calculate-arudha-padas/block.json
-#: build/blocks/calculate-ashtakavarga/block.json
-#: build/blocks/calculate-aspects/block.json
-#: build/blocks/calculate-bhav-chalit/block.json
-#: build/blocks/calculate-bhava-bala/block.json
-#: build/blocks/calculate-birth-day/block.json
-#: build/blocks/calculate-bridge-numbers/block.json
-#: build/blocks/calculate-business-name/block.json
-#: build/blocks/calculate-centers/block.json
-#: build/blocks/calculate-chaldean/block.json
-#: build/blocks/calculate-channels/block.json
-#: build/blocks/calculate-chara-karakas/block.json
-#: build/blocks/calculate-drishti/block.json
-#: build/blocks/calculate-dual/block.json
-#: build/blocks/calculate-expression/block.json
-#: build/blocks/calculate-gates/block.json
-#: build/blocks/calculate-houses/block.json
-#: build/blocks/calculate-maturity/block.json
-#: build/blocks/calculate-parallels/block.json
-#: build/blocks/calculate-personal-day/block.json
-#: build/blocks/calculate-personal-month/block.json
-#: build/blocks/calculate-personal-year/block.json
-#: build/blocks/calculate-personality/block.json
-#: build/blocks/calculate-profile/block.json
-#: build/blocks/calculate-shadbala/block.json
-#: build/blocks/calculate-soul-urge/block.json
-#: build/blocks/calculate-transit/block.json
-#: build/blocks/calculate-transits/block.json
-#: build/blocks/calculate-type/block.json
-#: build/blocks/calculate-variables/block.json
 msgctxt "block keyword"
 msgid "calculate"
 msgstr ""
 
 #: blocks/generated/calculate-arabic-lots/block.json
-#: build/blocks/calculate-arabic-lots/block.json
 msgctxt "block keyword"
 msgid "arabic"
 msgstr ""
 
 #: blocks/generated/calculate-arudha-padas/block.json
-#: build/blocks/calculate-arudha-padas/block.json
 msgctxt "block title"
 msgid "Get the twelve Arudha padas - Arudha Lagna Calculator API (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/calculate-arudha-padas/block.json
-#: build/blocks/calculate-arudha-padas/block.json
 msgctxt "block description"
 msgid "Get the twelve Arudha padas - Arudha Lagna Calculator API"
 msgstr ""
@@ -3535,199 +2507,126 @@ msgstr ""
 #: blocks/generated/list-nakshatras/block.json
 #: blocks/generated/list-rashis/block.json
 #: blocks/generated/list-yogas/block.json
-#: build/blocks/calculate-arudha-padas/block.json
-#: build/blocks/calculate-ashtakavarga/block.json
-#: build/blocks/calculate-bhav-chalit/block.json
-#: build/blocks/calculate-bhava-bala/block.json
-#: build/blocks/calculate-chara-karakas/block.json
-#: build/blocks/calculate-drishti/block.json
-#: build/blocks/calculate-parallels/block.json
-#: build/blocks/calculate-shadbala/block.json
-#: build/blocks/calculate-transit/block.json
-#: build/blocks/cast-kp-horary-chart/block.json
-#: build/blocks/check-kalsarpa-dosha/block.json
-#: build/blocks/check-sadhesati/block.json
-#: build/blocks/detect-yogas/block.json
-#: build/blocks/generate-divisional-chart/block.json
-#: build/blocks/generate-navamsa/block.json
-#: build/blocks/get-avastha/block.json
-#: build/blocks/get-basic-panchang/block.json
-#: build/blocks/get-choghadiya/block.json
-#: build/blocks/get-current-dasha/block.json
-#: build/blocks/get-ecliptic-crossings/block.json
-#: build/blocks/get-heliacal-visibility/block.json
-#: build/blocks/get-hora/block.json
-#: build/blocks/get-kp-ayanamsa/block.json
-#: build/blocks/get-kp-cusps/block.json
-#: build/blocks/get-kp-planets-interval/block.json
-#: build/blocks/get-kp-planets/block.json
-#: build/blocks/get-kp-rasi-changes/block.json
-#: build/blocks/get-kp-ruling-interval/block.json
-#: build/blocks/get-kp-ruling-planets/block.json
-#: build/blocks/get-kp-sublord-changes/block.json
-#: build/blocks/get-lunar-aspects/block.json
-#: build/blocks/get-major-dashas/block.json
-#: build/blocks/get-monthly-aspects/block.json
-#: build/blocks/get-monthly-ephemeris/block.json
-#: build/blocks/get-monthly-parallels/block.json
-#: build/blocks/get-monthly-transits/block.json
-#: build/blocks/get-nakshatra/block.json
-#: build/blocks/get-planet-positions/block.json
-#: build/blocks/get-prana-dashas/block.json
-#: build/blocks/get-pratyantardashas/block.json
-#: build/blocks/get-rashi/block.json
-#: build/blocks/get-sookshma-dashas/block.json
-#: build/blocks/get-sub-dashas/block.json
-#: build/blocks/get-upagraha-positions/block.json
-#: build/blocks/get-yoga/block.json
-#: build/blocks/list-avasthas/block.json
-#: build/blocks/list-nakshatras/block.json
-#: build/blocks/list-rashis/block.json
-#: build/blocks/list-yogas/block.json
 msgctxt "block keyword"
 msgid "vedic astrology"
 msgstr ""
 
 #: blocks/generated/calculate-arudha-padas/block.json
-#: build/blocks/calculate-arudha-padas/block.json
 msgctxt "block keyword"
 msgid "arudha"
 msgstr ""
 
 #: blocks/generated/calculate-ashtakavarga/block.json
-#: build/blocks/calculate-ashtakavarga/block.json
 msgctxt "block title"
 msgid "Get Ashtakavarga (planetary strength) analysis - Ashtakavarga Calculator API (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/calculate-ashtakavarga/block.json
-#: build/blocks/calculate-ashtakavarga/block.json
 msgctxt "block description"
 msgid "Get Ashtakavarga (planetary strength) analysis - Ashtakavarga Calculator API"
 msgstr ""
 
 #: blocks/generated/calculate-ashtakavarga/block.json
-#: build/blocks/calculate-ashtakavarga/block.json
 msgctxt "block keyword"
 msgid "ashtakavarga"
 msgstr ""
 
 #: blocks/generated/calculate-aspects/block.json
-#: build/blocks/calculate-aspects/block.json
 msgctxt "block title"
 msgid "Calculate planetary aspects - Aspect finder for any date and time (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/calculate-aspects/block.json
-#: build/blocks/calculate-aspects/block.json
 msgctxt "block description"
 msgid "Calculate planetary aspects - Aspect finder for any date and time"
 msgstr ""
 
 #: blocks/generated/calculate-aspects/block.json
-#: build/blocks/calculate-aspects/block.json
 msgctxt "block keyword"
 msgid "aspects"
 msgstr ""
 
 #: blocks/generated/calculate-bhav-chalit/block.json
-#: build/blocks/calculate-bhav-chalit/block.json
 msgctxt "block title"
 msgid "Get the Bhav Chalit (Chalit Kundli) cusp-based house chart - Bhav Chalit API (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/calculate-bhav-chalit/block.json
-#: build/blocks/calculate-bhav-chalit/block.json
 msgctxt "block description"
 msgid "Get the Bhav Chalit (Chalit Kundli) cusp-based house chart - Bhav Chalit API"
 msgstr ""
 
 #: blocks/generated/calculate-bhav-chalit/block.json
-#: build/blocks/calculate-bhav-chalit/block.json
 msgctxt "block keyword"
 msgid "bhav"
 msgstr ""
 
 #: blocks/generated/calculate-bhava-bala/block.json
-#: build/blocks/calculate-bhava-bala/block.json
 msgctxt "block title"
 msgid "Get Bhava Bala (house strength) for all twelve houses - Bhava Bala Calculator API (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/calculate-bhava-bala/block.json
-#: build/blocks/calculate-bhava-bala/block.json
 msgctxt "block description"
 msgid "Get Bhava Bala (house strength) for all twelve houses - Bhava Bala Calculator API"
 msgstr ""
 
 #: blocks/generated/calculate-bhava-bala/block.json
-#: build/blocks/calculate-bhava-bala/block.json
 msgctxt "block keyword"
 msgid "bhava"
 msgstr ""
 
 #: blocks/generated/calculate-birth-day/block.json
-#: build/blocks/calculate-birth-day/block.json
 msgctxt "block title"
 msgid "Calculate Birth Day number - Special talents from day of birth (Numerology)"
 msgstr ""
 
 #: blocks/generated/calculate-birth-day/block.json
-#: build/blocks/calculate-birth-day/block.json
 msgctxt "block description"
 msgid "Calculate Birth Day number - Special talents from day of birth"
 msgstr ""
 
 #: blocks/generated/calculate-birth-day/block.json
-#: build/blocks/calculate-birth-day/block.json
 msgctxt "block keyword"
 msgid "birth"
 msgstr ""
 
 #: blocks/generated/calculate-bridge-numbers/block.json
-#: build/blocks/calculate-bridge-numbers/block.json
 msgctxt "block title"
 msgid "Calculate Bridge Numbers - Harmonize different aspects of personality (Numerology)"
 msgstr ""
 
 #: blocks/generated/calculate-bridge-numbers/block.json
-#: build/blocks/calculate-bridge-numbers/block.json
 msgctxt "block description"
 msgid "Calculate Bridge Numbers - Harmonize different aspects of personality"
 msgstr ""
 
 #: blocks/generated/calculate-bridge-numbers/block.json
-#: build/blocks/calculate-bridge-numbers/block.json
 msgctxt "block keyword"
 msgid "bridge"
 msgstr ""
 
 #: blocks/generated/calculate-business-name/block.json
-#: build/blocks/calculate-business-name/block.json
 msgctxt "block title"
 msgid "Business name numerology - Chaldean brand name analysis and lucky numbers (Numerology)"
 msgstr ""
 
 #: blocks/generated/calculate-business-name/block.json
-#: build/blocks/calculate-business-name/block.json
 msgctxt "block description"
 msgid "Business name numerology - Chaldean brand name analysis and lucky numbers"
 msgstr ""
 
 #: blocks/generated/calculate-business-name/block.json
-#: build/blocks/calculate-business-name/block.json
 msgctxt "block keyword"
 msgid "business"
 msgstr ""
 
 #: blocks/generated/calculate-centers/block.json
-#: build/blocks/calculate-centers/block.json
 msgctxt "block title"
 msgid "Calculate the nine Human Design centers (Human Design)"
 msgstr ""
 
 #: blocks/generated/calculate-centers/block.json
-#: build/blocks/calculate-centers/block.json
 msgctxt "block description"
 msgid "Calculate the nine Human Design centers"
 msgstr ""
@@ -3741,213 +2640,171 @@ msgstr ""
 #: blocks/generated/generate-bodygraph/block.json
 #: blocks/generated/get-center/block.json
 #: blocks/generated/get-gate/block.json
-#: build/blocks/calculate-centers/block.json
-#: build/blocks/calculate-channels/block.json
-#: build/blocks/calculate-gates/block.json
-#: build/blocks/calculate-profile/block.json
-#: build/blocks/calculate-type/block.json
-#: build/blocks/calculate-variables/block.json
-#: build/blocks/generate-bodygraph/block.json
-#: build/blocks/get-center/block.json
-#: build/blocks/get-gate/block.json
 msgctxt "block keyword"
 msgid "human design"
 msgstr ""
 
 #: blocks/generated/calculate-centers/block.json
-#: build/blocks/calculate-centers/block.json
 msgctxt "block keyword"
 msgid "centers"
 msgstr ""
 
 #: blocks/generated/calculate-chaldean/block.json
-#: build/blocks/calculate-chaldean/block.json
 msgctxt "block title"
 msgid "Chaldean numerology name reading - Destiny, compound number, planetary ruler (Numerology)"
 msgstr ""
 
 #: blocks/generated/calculate-chaldean/block.json
-#: build/blocks/calculate-chaldean/block.json
 msgctxt "block description"
 msgid "Chaldean numerology name reading - Destiny, compound number, planetary ruler"
 msgstr ""
 
 #: blocks/generated/calculate-chaldean/block.json
-#: build/blocks/calculate-chaldean/block.json
 msgctxt "block keyword"
 msgid "chaldean"
 msgstr ""
 
 #: blocks/generated/calculate-channels/block.json
-#: build/blocks/calculate-channels/block.json
 msgctxt "block title"
 msgid "Calculate the defined Human Design channels (Human Design)"
 msgstr ""
 
 #: blocks/generated/calculate-channels/block.json
-#: build/blocks/calculate-channels/block.json
 msgctxt "block description"
 msgid "Calculate the defined Human Design channels"
 msgstr ""
 
 #: blocks/generated/calculate-channels/block.json
-#: build/blocks/calculate-channels/block.json
 msgctxt "block keyword"
 msgid "channels"
 msgstr ""
 
 #: blocks/generated/calculate-chara-karakas/block.json
-#: build/blocks/calculate-chara-karakas/block.json
 msgctxt "block title"
 msgid "Get Chara Karakas including Atmakaraka - Jaimini Karaka Calculator API (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/calculate-chara-karakas/block.json
-#: build/blocks/calculate-chara-karakas/block.json
 msgctxt "block description"
 msgid "Get Chara Karakas including Atmakaraka - Jaimini Karaka Calculator API"
 msgstr ""
 
 #: blocks/generated/calculate-chara-karakas/block.json
-#: build/blocks/calculate-chara-karakas/block.json
 msgctxt "block keyword"
 msgid "chara"
 msgstr ""
 
 #: blocks/generated/calculate-drishti/block.json
-#: build/blocks/calculate-drishti/block.json
 msgctxt "block title"
 msgid "Get planetary aspects (Drishti) - Mutual aspects between all planets (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/calculate-drishti/block.json
-#: build/blocks/calculate-drishti/block.json
 msgctxt "block description"
 msgid "Get planetary aspects (Drishti) - Mutual aspects between all planets"
 msgstr ""
 
 #: blocks/generated/calculate-drishti/block.json
-#: build/blocks/calculate-drishti/block.json
 msgctxt "block keyword"
 msgid "drishti"
 msgstr ""
 
 #: blocks/generated/calculate-dual/block.json
-#: build/blocks/calculate-dual/block.json
 msgctxt "block title"
 msgid "Dual numerology - Pythagorean and Chaldean name numbers in one call (Numerology)"
 msgstr ""
 
 #: blocks/generated/calculate-dual/block.json
-#: build/blocks/calculate-dual/block.json
 msgctxt "block description"
 msgid "Dual numerology - Pythagorean and Chaldean name numbers in one call"
 msgstr ""
 
 #: blocks/generated/calculate-dual/block.json
-#: build/blocks/calculate-dual/block.json
 msgctxt "block keyword"
 msgid "dual"
 msgstr ""
 
 #: blocks/generated/calculate-expression/block.json
-#: build/blocks/calculate-expression/block.json
 msgctxt "block title"
 msgid "Calculate Expression number - Natural talents and life goals (Numerology)"
 msgstr ""
 
 #: blocks/generated/calculate-expression/block.json
-#: build/blocks/calculate-expression/block.json
 msgctxt "block description"
 msgid "Calculate Expression number - Natural talents and life goals"
 msgstr ""
 
 #: blocks/generated/calculate-expression/block.json
-#: build/blocks/calculate-expression/block.json
 msgctxt "block keyword"
 msgid "expression"
 msgstr ""
 
 #: blocks/generated/calculate-gates/block.json
-#: build/blocks/calculate-gates/block.json
 msgctxt "block title"
 msgid "Calculate the 26 Human Design gate activations (Human Design)"
 msgstr ""
 
 #: blocks/generated/calculate-gates/block.json
-#: build/blocks/calculate-gates/block.json
 msgctxt "block description"
 msgid "Calculate the 26 Human Design gate activations"
 msgstr ""
 
 #: blocks/generated/calculate-gates/block.json
-#: build/blocks/calculate-gates/block.json
 msgctxt "block keyword"
 msgid "gates"
 msgstr ""
 
 #: blocks/generated/calculate-houses/block.json
-#: build/blocks/calculate-houses/block.json
 msgctxt "block title"
 msgid "Calculate house cusps - House system calculator with comparison (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/calculate-houses/block.json
-#: build/blocks/calculate-houses/block.json
 msgctxt "block description"
 msgid "Calculate house cusps - House system calculator with comparison"
 msgstr ""
 
 #: blocks/generated/calculate-houses/block.json
-#: build/blocks/calculate-houses/block.json
 msgctxt "block keyword"
 msgid "houses"
 msgstr ""
 
 #: blocks/generated/calculate-maturity/block.json
-#: build/blocks/calculate-maturity/block.json
 msgctxt "block title"
 msgid "Calculate Maturity number - Who you become in later life (Numerology)"
 msgstr ""
 
 #: blocks/generated/calculate-maturity/block.json
-#: build/blocks/calculate-maturity/block.json
 msgctxt "block description"
 msgid "Calculate Maturity number - Who you become in later life"
 msgstr ""
 
 #: blocks/generated/calculate-maturity/block.json
-#: build/blocks/calculate-maturity/block.json
 msgctxt "block keyword"
 msgid "maturity"
 msgstr ""
 
 #: blocks/generated/calculate-parallels/block.json
-#: build/blocks/calculate-parallels/block.json
 msgctxt "block title"
 msgid "Declination Parallels - Planets at same or opposite declination (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/calculate-parallels/block.json
-#: build/blocks/calculate-parallels/block.json
 msgctxt "block description"
 msgid "Declination Parallels - Planets at same or opposite declination"
 msgstr ""
 
 #: blocks/generated/calculate-parallels/block.json
-#: build/blocks/calculate-parallels/block.json
 msgctxt "block keyword"
 msgid "parallels"
 msgstr ""
 
 #: blocks/generated/calculate-personal-day/block.json
-#: build/blocks/calculate-personal-day/block.json
 msgctxt "block title"
 msgid "Calculate Personal Day - Daily personalized numerology forecast (Numerology)"
 msgstr ""
 
 #: blocks/generated/calculate-personal-day/block.json
-#: build/blocks/calculate-personal-day/block.json
 msgctxt "block description"
 msgid "Calculate Personal Day - Daily personalized numerology forecast"
 msgstr ""
@@ -3955,189 +2812,156 @@ msgstr ""
 #: blocks/generated/calculate-personal-day/block.json
 #: blocks/generated/calculate-personal-month/block.json
 #: blocks/generated/calculate-personal-year/block.json
-#: build/blocks/calculate-personal-day/block.json
-#: build/blocks/calculate-personal-month/block.json
-#: build/blocks/calculate-personal-year/block.json
 msgctxt "block keyword"
 msgid "personal"
 msgstr ""
 
 #: blocks/generated/calculate-personal-month/block.json
-#: build/blocks/calculate-personal-month/block.json
 msgctxt "block title"
 msgid "Calculate Personal Month - Monthly numerology forecast (Numerology)"
 msgstr ""
 
 #: blocks/generated/calculate-personal-month/block.json
-#: build/blocks/calculate-personal-month/block.json
 msgctxt "block description"
 msgid "Calculate Personal Month - Monthly numerology forecast"
 msgstr ""
 
 #: blocks/generated/calculate-personal-year/block.json
-#: build/blocks/calculate-personal-year/block.json
 msgctxt "block title"
 msgid "Calculate Personal Year - Annual cycle and forecast for current year (Numerology)"
 msgstr ""
 
 #: blocks/generated/calculate-personal-year/block.json
-#: build/blocks/calculate-personal-year/block.json
 msgctxt "block description"
 msgid "Calculate Personal Year - Annual cycle and forecast for current year"
 msgstr ""
 
 #: blocks/generated/calculate-personality/block.json
-#: build/blocks/calculate-personality/block.json
 msgctxt "block title"
 msgid "Calculate Personality number - How others perceive you (Numerology)"
 msgstr ""
 
 #: blocks/generated/calculate-personality/block.json
-#: build/blocks/calculate-personality/block.json
 msgctxt "block description"
 msgid "Calculate Personality number - How others perceive you"
 msgstr ""
 
 #: blocks/generated/calculate-personality/block.json
-#: build/blocks/calculate-personality/block.json
 msgctxt "block keyword"
 msgid "personality"
 msgstr ""
 
 #: blocks/generated/calculate-profile/block.json
-#: build/blocks/calculate-profile/block.json
 msgctxt "block title"
 msgid "Calculate the Human Design profile and line keynotes (Human Design)"
 msgstr ""
 
 #: blocks/generated/calculate-profile/block.json
-#: build/blocks/calculate-profile/block.json
 msgctxt "block description"
 msgid "Calculate the Human Design profile and line keynotes"
 msgstr ""
 
 #: blocks/generated/calculate-profile/block.json
-#: build/blocks/calculate-profile/block.json
 msgctxt "block keyword"
 msgid "profile"
 msgstr ""
 
 #: blocks/generated/calculate-shadbala/block.json
-#: build/blocks/calculate-shadbala/block.json
 msgctxt "block title"
 msgid "Get Shadbala (six-fold planetary strength) analysis - Shadbala Calculator API (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/calculate-shadbala/block.json
-#: build/blocks/calculate-shadbala/block.json
 msgctxt "block description"
 msgid "Get Shadbala (six-fold planetary strength) analysis - Shadbala Calculator API"
 msgstr ""
 
 #: blocks/generated/calculate-shadbala/block.json
-#: build/blocks/calculate-shadbala/block.json
 msgctxt "block keyword"
 msgid "shadbala"
 msgstr ""
 
 #: blocks/generated/calculate-soul-urge/block.json
-#: build/blocks/calculate-soul-urge/block.json
 msgctxt "block title"
 msgid "Calculate Soul Urge number - Inner motivations and desires (Numerology)"
 msgstr ""
 
 #: blocks/generated/calculate-soul-urge/block.json
-#: build/blocks/calculate-soul-urge/block.json
 msgctxt "block description"
 msgid "Calculate Soul Urge number - Inner motivations and desires"
 msgstr ""
 
 #: blocks/generated/calculate-soul-urge/block.json
-#: build/blocks/calculate-soul-urge/block.json
 msgctxt "block keyword"
 msgid "soul"
 msgstr ""
 
 #: blocks/generated/calculate-transit/block.json
-#: build/blocks/calculate-transit/block.json
 msgctxt "block title"
 msgid "Transit Analysis - Compare current planets to natal chart (Gochar) (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/calculate-transit/block.json
-#: build/blocks/calculate-transit/block.json
 msgctxt "block description"
 msgid "Transit Analysis - Compare current planets to natal chart (Gochar)"
 msgstr ""
 
 #: blocks/generated/calculate-transit/block.json
-#: build/blocks/calculate-transit/block.json
 msgctxt "block keyword"
 msgid "transit"
 msgstr ""
 
 #: blocks/generated/calculate-transits/block.json
-#: build/blocks/calculate-transits/block.json
 msgctxt "block title"
 msgid "Calculate planetary transits - Current transits with natal chart comparison (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/calculate-transits/block.json
-#: build/blocks/calculate-transits/block.json
 msgctxt "block description"
 msgid "Calculate planetary transits - Current transits with natal chart comparison"
 msgstr ""
 
 #: blocks/generated/calculate-transits/block.json
-#: build/blocks/calculate-transits/block.json
 msgctxt "block keyword"
 msgid "transits"
 msgstr ""
 
 #: blocks/generated/calculate-type/block.json
-#: build/blocks/calculate-type/block.json
 msgctxt "block title"
 msgid "Calculate Human Design type, authority and profile (Human Design)"
 msgstr ""
 
 #: blocks/generated/calculate-type/block.json
-#: build/blocks/calculate-type/block.json
 msgctxt "block description"
 msgid "Calculate Human Design type, authority and profile"
 msgstr ""
 
 #: blocks/generated/calculate-type/block.json
-#: build/blocks/calculate-type/block.json
 msgctxt "block keyword"
 msgid "type"
 msgstr ""
 
 #: blocks/generated/calculate-variables/block.json
-#: build/blocks/calculate-variables/block.json
 msgctxt "block title"
 msgid "Calculate Human Design Variables - The four arrows and Color, Tone, Base substructure (Human Design)"
 msgstr ""
 
 #: blocks/generated/calculate-variables/block.json
-#: build/blocks/calculate-variables/block.json
 msgctxt "block description"
 msgid "Calculate Human Design Variables - The four arrows and Color, Tone, Base substructure"
 msgstr ""
 
 #: blocks/generated/calculate-variables/block.json
-#: build/blocks/calculate-variables/block.json
 msgctxt "block keyword"
 msgid "variables"
 msgstr ""
 
 #: blocks/generated/cast-career-spread/block.json
-#: build/blocks/cast-career-spread/block.json
 msgctxt "block title"
 msgid "Career Spread (7 cards) (Tarot)"
 msgstr ""
 
 #: blocks/generated/cast-career-spread/block.json
-#: build/blocks/cast-career-spread/block.json
 msgctxt "block description"
 msgid "Career Spread (7 cards)"
 msgstr ""
@@ -4150,14 +2974,6 @@ msgstr ""
 #: blocks/generated/get-card/block.json
 #: blocks/generated/list-cards/block.json
 #: blocks/tarot/block.json
-#: build/blocks/cast-career-spread/block.json
-#: build/blocks/cast-celtic-cross/block.json
-#: build/blocks/cast-love-spread/block.json
-#: build/blocks/cast-three-card/block.json
-#: build/blocks/draw-cards/block.json
-#: build/blocks/get-card/block.json
-#: build/blocks/list-cards/block.json
-#: build/blocks/tarot/block.json
 msgctxt "block keyword"
 msgid "tarot"
 msgstr ""
@@ -4169,49 +2985,36 @@ msgstr ""
 #: blocks/generated/cast-love-spread/block.json
 #: blocks/generated/cast-reading/block.json
 #: blocks/generated/cast-three-card/block.json
-#: build/blocks/cast-career-spread/block.json
-#: build/blocks/cast-celtic-cross/block.json
-#: build/blocks/cast-daily-reading/block.json
-#: build/blocks/cast-kp-horary-chart/block.json
-#: build/blocks/cast-love-spread/block.json
-#: build/blocks/cast-reading/block.json
-#: build/blocks/cast-three-card/block.json
 msgctxt "block keyword"
 msgid "cast"
 msgstr ""
 
 #: blocks/generated/cast-career-spread/block.json
-#: build/blocks/cast-career-spread/block.json
 msgctxt "block keyword"
 msgid "career"
 msgstr ""
 
 #: blocks/generated/cast-celtic-cross/block.json
-#: build/blocks/cast-celtic-cross/block.json
 msgctxt "block title"
 msgid "Celtic Cross Spread (10 cards) (Tarot)"
 msgstr ""
 
 #: blocks/generated/cast-celtic-cross/block.json
-#: build/blocks/cast-celtic-cross/block.json
 msgctxt "block description"
 msgid "Celtic Cross Spread (10 cards)"
 msgstr ""
 
 #: blocks/generated/cast-celtic-cross/block.json
-#: build/blocks/cast-celtic-cross/block.json
 msgctxt "block keyword"
 msgid "celtic"
 msgstr ""
 
 #: blocks/generated/cast-daily-reading/block.json
-#: build/blocks/cast-daily-reading/block.json
 msgctxt "block title"
 msgid "Cast daily I-Ching reading with changing lines (I-Ching)"
 msgstr ""
 
 #: blocks/generated/cast-daily-reading/block.json
-#: build/blocks/cast-daily-reading/block.json
 msgctxt "block description"
 msgid "Cast daily I-Ching reading with changing lines"
 msgstr ""
@@ -4225,15 +3028,6 @@ msgstr ""
 #: blocks/generated/list-hexagrams/block.json
 #: blocks/generated/list-trigrams/block.json
 #: blocks/generated/lookup-hexagram/block.json
-#: build/blocks/cast-daily-reading/block.json
-#: build/blocks/cast-reading/block.json
-#: build/blocks/get-daily-hexagram/block.json
-#: build/blocks/get-hexagram/block.json
-#: build/blocks/get-random-hexagram/block.json
-#: build/blocks/get-trigram/block.json
-#: build/blocks/list-hexagrams/block.json
-#: build/blocks/list-trigrams/block.json
-#: build/blocks/lookup-hexagram/block.json
 msgctxt "block keyword"
 msgid "i-ching"
 msgstr ""
@@ -4245,25 +3039,16 @@ msgstr ""
 #: blocks/generated/get-daily-dream-symbol/block.json
 #: blocks/generated/get-daily-hexagram/block.json
 #: blocks/generated/get-daily-number/block.json
-#: build/blocks/cast-daily-reading/block.json
-#: build/blocks/get-daily-angel-number/block.json
-#: build/blocks/get-daily-biorhythm/block.json
-#: build/blocks/get-daily-crystal/block.json
-#: build/blocks/get-daily-dream-symbol/block.json
-#: build/blocks/get-daily-hexagram/block.json
-#: build/blocks/get-daily-number/block.json
 msgctxt "block keyword"
 msgid "daily"
 msgstr ""
 
 #: blocks/generated/cast-kp-horary-chart/block.json
-#: build/blocks/cast-kp-horary-chart/block.json
 msgctxt "block title"
 msgid "Cast a KP horary (Prashna) chart from a number 1-249 - KP Horary API (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/cast-kp-horary-chart/block.json
-#: build/blocks/cast-kp-horary-chart/block.json
 msgctxt "block description"
 msgid "Cast a KP horary (Prashna) chart from a number 1-249 - KP Horary API"
 msgstr ""
@@ -4277,81 +3062,61 @@ msgstr ""
 #: blocks/generated/get-kp-ruling-interval/block.json
 #: blocks/generated/get-kp-ruling-planets/block.json
 #: blocks/generated/get-kp-sublord-changes/block.json
-#: build/blocks/cast-kp-horary-chart/block.json
-#: build/blocks/get-kp-ayanamsa/block.json
-#: build/blocks/get-kp-cusps/block.json
-#: build/blocks/get-kp-planets-interval/block.json
-#: build/blocks/get-kp-planets/block.json
-#: build/blocks/get-kp-rasi-changes/block.json
-#: build/blocks/get-kp-ruling-interval/block.json
-#: build/blocks/get-kp-ruling-planets/block.json
-#: build/blocks/get-kp-sublord-changes/block.json
 msgctxt "block keyword"
 msgid "kp"
 msgstr ""
 
 #: blocks/generated/cast-love-spread/block.json
-#: build/blocks/cast-love-spread/block.json
 msgctxt "block title"
 msgid "Love Spread (5 cards) (Tarot)"
 msgstr ""
 
 #: blocks/generated/cast-love-spread/block.json
-#: build/blocks/cast-love-spread/block.json
 msgctxt "block description"
 msgid "Love Spread (5 cards)"
 msgstr ""
 
 #: blocks/generated/cast-love-spread/block.json
-#: build/blocks/cast-love-spread/block.json
 msgctxt "block keyword"
 msgid "love"
 msgstr ""
 
 #: blocks/generated/cast-reading/block.json
-#: build/blocks/cast-reading/block.json
 msgctxt "block title"
 msgid "Cast an I-Ching reading (I-Ching)"
 msgstr ""
 
 #: blocks/generated/cast-reading/block.json
-#: build/blocks/cast-reading/block.json
 msgctxt "block description"
 msgid "Cast an I-Ching reading"
 msgstr ""
 
 #: blocks/generated/cast-reading/block.json
-#: build/blocks/cast-reading/block.json
 msgctxt "block keyword"
 msgid "reading"
 msgstr ""
 
 #: blocks/generated/cast-three-card/block.json
-#: build/blocks/cast-three-card/block.json
 msgctxt "block title"
 msgid "Three-Card Spread: Past, Present, Future (Tarot)"
 msgstr ""
 
 #: blocks/generated/cast-three-card/block.json
-#: build/blocks/cast-three-card/block.json
 msgctxt "block description"
 msgid "Three-Card Spread: Past, Present, Future"
 msgstr ""
 
 #: blocks/generated/cast-three-card/block.json
-#: build/blocks/cast-three-card/block.json
 msgctxt "block keyword"
 msgid "three"
 msgstr ""
 
 #: blocks/generated/check-kalsarpa-dosha/block.json
-#: build/blocks/check-kalsarpa-dosha/block.json
 msgctxt "block title"
 msgid "Check Kalsarpa Dosha - Kalsarpa Yoga Calculator API (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/check-kalsarpa-dosha/block.json
-#: build/blocks/check-kalsarpa-dosha/block.json
 msgctxt "block description"
 msgid "Check Kalsarpa Dosha - Kalsarpa Yoga Calculator API"
 msgstr ""
@@ -4359,137 +3124,110 @@ msgstr ""
 #: blocks/generated/check-kalsarpa-dosha/block.json
 #: blocks/generated/check-karmic-debt/block.json
 #: blocks/generated/check-sadhesati/block.json
-#: build/blocks/check-kalsarpa-dosha/block.json
-#: build/blocks/check-karmic-debt/block.json
-#: build/blocks/check-sadhesati/block.json
 msgctxt "block keyword"
 msgid "check"
 msgstr ""
 
 #: blocks/generated/check-kalsarpa-dosha/block.json
-#: build/blocks/check-kalsarpa-dosha/block.json
 msgctxt "block keyword"
 msgid "kalsarpa"
 msgstr ""
 
 #: blocks/generated/check-karmic-debt/block.json
-#: build/blocks/check-karmic-debt/block.json
 msgctxt "block title"
 msgid "Detect Karmic Debt numbers - Past life challenges (13, 14, 16, 19) (Numerology)"
 msgstr ""
 
 #: blocks/generated/check-karmic-debt/block.json
-#: build/blocks/check-karmic-debt/block.json
 msgctxt "block description"
 msgid "Detect Karmic Debt numbers - Past life challenges (13, 14, 16, 19)"
 msgstr ""
 
 #: blocks/generated/check-sadhesati/block.json
-#: build/blocks/check-sadhesati/block.json
 msgctxt "block title"
 msgid "Check Sadhesati - Sade Sati Calculator API (Saturn Transit) (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/check-sadhesati/block.json
-#: build/blocks/check-sadhesati/block.json
 msgctxt "block description"
 msgid "Check Sadhesati - Sade Sati Calculator API (Saturn Transit)"
 msgstr ""
 
 #: blocks/generated/check-sadhesati/block.json
-#: build/blocks/check-sadhesati/block.json
 msgctxt "block keyword"
 msgid "sadhesati"
 msgstr ""
 
 #: blocks/generated/detect-aspect-patterns/block.json
-#: build/blocks/detect-aspect-patterns/block.json
 msgctxt "block title"
 msgid "Detect aspect patterns - Grand Trine, Kite, T-Square, Grand Cross, Yod, Mystic Rectangle, Stellium (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/detect-aspect-patterns/block.json
-#: build/blocks/detect-aspect-patterns/block.json
 msgctxt "block description"
 msgid "Detect aspect patterns - Grand Trine, Kite, T-Square, Grand Cross, Yod, Mystic Rectangle, Stellium"
 msgstr ""
 
 #: blocks/generated/detect-aspect-patterns/block.json
 #: blocks/generated/detect-yogas/block.json
-#: build/blocks/detect-aspect-patterns/block.json
-#: build/blocks/detect-yogas/block.json
 msgctxt "block keyword"
 msgid "detect"
 msgstr ""
 
 #: blocks/generated/detect-aspect-patterns/block.json
-#: build/blocks/detect-aspect-patterns/block.json
 msgctxt "block keyword"
 msgid "aspect"
 msgstr ""
 
 #: blocks/generated/detect-yogas/block.json
-#: build/blocks/detect-yogas/block.json
 msgctxt "block title"
 msgid "Detect classical Vedic yogas in a birth chart (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/detect-yogas/block.json
-#: build/blocks/detect-yogas/block.json
 msgctxt "block description"
 msgid "Detect classical Vedic yogas in a birth chart"
 msgstr ""
 
 #: blocks/generated/detect-yogas/block.json
 #: blocks/generated/list-yogas/block.json
-#: build/blocks/detect-yogas/block.json
-#: build/blocks/list-yogas/block.json
 msgctxt "block keyword"
 msgid "yogas"
 msgstr ""
 
 #: blocks/generated/draw-cards/block.json
-#: build/blocks/draw-cards/block.json
 msgctxt "block title"
 msgid "Draw random tarot cards with reproducible results (Tarot)"
 msgstr ""
 
 #: blocks/generated/draw-cards/block.json
-#: build/blocks/draw-cards/block.json
 msgctxt "block description"
 msgid "Draw random tarot cards with reproducible results"
 msgstr ""
 
 #: blocks/generated/draw-cards/block.json
-#: build/blocks/draw-cards/block.json
 msgctxt "block keyword"
 msgid "draw"
 msgstr ""
 
 #: blocks/generated/draw-cards/block.json
 #: blocks/generated/list-cards/block.json
-#: build/blocks/draw-cards/block.json
-#: build/blocks/list-cards/block.json
 msgctxt "block keyword"
 msgid "cards"
 msgstr ""
 
 #: blocks/generated/forecast-solar-return/block.json
-#: build/blocks/forecast-solar-return/block.json
 msgctxt "block title"
 msgid "Solar return chart - Annual birthday forecast chart for a single subject (Forecast)"
 msgstr ""
 
 #: blocks/generated/forecast-solar-return/block.json
-#: build/blocks/forecast-solar-return/block.json
 msgctxt "block description"
 msgid "Solar return chart - Annual birthday forecast chart for a single subject"
 msgstr ""
 
 #: blocks/generated/forecast-solar-return/block.json
 #: blocks/generated/get-forecast/block.json
-#: build/blocks/forecast-solar-return/block.json
-#: build/blocks/get-forecast/block.json
 msgctxt "block keyword"
 msgid "forecast"
 msgstr ""
@@ -4497,21 +3235,16 @@ msgstr ""
 #: blocks/generated/forecast-solar-return/block.json
 #: blocks/generated/generate-solar-arc/block.json
 #: blocks/generated/generate-solar-return/block.json
-#: build/blocks/forecast-solar-return/block.json
-#: build/blocks/generate-solar-arc/block.json
-#: build/blocks/generate-solar-return/block.json
 msgctxt "block keyword"
 msgid "solar"
 msgstr ""
 
 #: blocks/generated/generate-asteroids/block.json
-#: build/blocks/generate-asteroids/block.json
 msgctxt "block title"
 msgid "Asteroid goddesses calculator - Ceres, Pallas, Juno, and Vesta natal positions (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/generate-asteroids/block.json
-#: build/blocks/generate-asteroids/block.json
 msgctxt "block description"
 msgid "Asteroid goddesses calculator - Ceres, Pallas, Juno, and Vesta natal positions"
 msgstr ""
@@ -4531,283 +3264,223 @@ msgstr ""
 #: blocks/generated/generate-relocation-chart/block.json
 #: blocks/generated/generate-solar-arc/block.json
 #: blocks/generated/generate-solar-return/block.json
-#: build/blocks/generate-asteroids/block.json
-#: build/blocks/generate-astrocartography/block.json
-#: build/blocks/generate-bodygraph/block.json
-#: build/blocks/generate-divisional-chart/block.json
-#: build/blocks/generate-fixed-stars/block.json
-#: build/blocks/generate-lilith/block.json
-#: build/blocks/generate-local-space/block.json
-#: build/blocks/generate-lunar-return/block.json
-#: build/blocks/generate-navamsa/block.json
-#: build/blocks/generate-planetary-return/block.json
-#: build/blocks/generate-profections/block.json
-#: build/blocks/generate-progressions/block.json
-#: build/blocks/generate-relocation-chart/block.json
-#: build/blocks/generate-solar-arc/block.json
-#: build/blocks/generate-solar-return/block.json
 msgctxt "block keyword"
 msgid "generate"
 msgstr ""
 
 #: blocks/generated/generate-asteroids/block.json
-#: build/blocks/generate-asteroids/block.json
 msgctxt "block keyword"
 msgid "asteroids"
 msgstr ""
 
 #: blocks/generated/generate-astrocartography/block.json
-#: build/blocks/generate-astrocartography/block.json
 msgctxt "block title"
 msgid "Astrocartography map - planetary lines and relocation calculator (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/generate-astrocartography/block.json
-#: build/blocks/generate-astrocartography/block.json
 msgctxt "block description"
 msgid "Astrocartography map - planetary lines and relocation calculator"
 msgstr ""
 
 #: blocks/generated/generate-astrocartography/block.json
-#: build/blocks/generate-astrocartography/block.json
 msgctxt "block keyword"
 msgid "astrocartography"
 msgstr ""
 
 #: blocks/generated/generate-bodygraph/block.json
-#: build/blocks/generate-bodygraph/block.json
 msgctxt "block title"
 msgid "Generate full Human Design bodygraph - Type, authority, profile, centers, channels, gates (Human Design)"
 msgstr ""
 
 #: blocks/generated/generate-bodygraph/block.json
-#: build/blocks/generate-bodygraph/block.json
 msgctxt "block description"
 msgid "Generate full Human Design bodygraph - Type, authority, profile, centers, channels, gates"
 msgstr ""
 
 #: blocks/generated/generate-bodygraph/block.json
-#: build/blocks/generate-bodygraph/block.json
 msgctxt "block keyword"
 msgid "bodygraph"
 msgstr ""
 
 #: blocks/generated/generate-divisional-chart/block.json
-#: build/blocks/generate-divisional-chart/block.json
 msgctxt "block title"
 msgid "Get divisional chart (Varga) - D2 to D60 Calculator (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/generate-divisional-chart/block.json
-#: build/blocks/generate-divisional-chart/block.json
 msgctxt "block description"
 msgid "Get divisional chart (Varga) - D2 to D60 Calculator"
 msgstr ""
 
 #: blocks/generated/generate-divisional-chart/block.json
-#: build/blocks/generate-divisional-chart/block.json
 msgctxt "block keyword"
 msgid "divisional"
 msgstr ""
 
 #: blocks/generated/generate-fixed-stars/block.json
-#: build/blocks/generate-fixed-stars/block.json
 msgctxt "block title"
 msgid "Fixed stars and star conjunctions calculator - Regulus, Spica, Algol natal report (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/generate-fixed-stars/block.json
-#: build/blocks/generate-fixed-stars/block.json
 msgctxt "block description"
 msgid "Fixed stars and star conjunctions calculator - Regulus, Spica, Algol natal report"
 msgstr ""
 
 #: blocks/generated/generate-fixed-stars/block.json
-#: build/blocks/generate-fixed-stars/block.json
 msgctxt "block keyword"
 msgid "fixed"
 msgstr ""
 
 #: blocks/generated/generate-lilith/block.json
-#: build/blocks/generate-lilith/block.json
 msgctxt "block title"
 msgid "Black Moon Lilith calculator - mean and true lunar apogee in the natal chart (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/generate-lilith/block.json
-#: build/blocks/generate-lilith/block.json
 msgctxt "block description"
 msgid "Black Moon Lilith calculator - mean and true lunar apogee in the natal chart"
 msgstr ""
 
 #: blocks/generated/generate-lilith/block.json
-#: build/blocks/generate-lilith/block.json
 msgctxt "block keyword"
 msgid "lilith"
 msgstr ""
 
 #: blocks/generated/generate-local-space/block.json
-#: build/blocks/generate-local-space/block.json
 msgctxt "block title"
 msgid "Local space astrology map - Directional planetary compass lines (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/generate-local-space/block.json
-#: build/blocks/generate-local-space/block.json
 msgctxt "block description"
 msgid "Local space astrology map - Directional planetary compass lines"
 msgstr ""
 
 #: blocks/generated/generate-local-space/block.json
-#: build/blocks/generate-local-space/block.json
 msgctxt "block keyword"
 msgid "local"
 msgstr ""
 
 #: blocks/generated/generate-lunar-return/block.json
-#: build/blocks/generate-lunar-return/block.json
 msgctxt "block title"
 msgid "Lunar Return Chart - Monthly emotional forecast with Moon cycle chart (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/generate-lunar-return/block.json
-#: build/blocks/generate-lunar-return/block.json
 msgctxt "block description"
 msgid "Lunar Return Chart - Monthly emotional forecast with Moon cycle chart"
 msgstr ""
 
 #: blocks/generated/generate-lunar-return/block.json
 #: blocks/generated/get-lunar-aspects/block.json
-#: build/blocks/generate-lunar-return/block.json
-#: build/blocks/get-lunar-aspects/block.json
 msgctxt "block keyword"
 msgid "lunar"
 msgstr ""
 
 #: blocks/generated/generate-navamsa/block.json
-#: build/blocks/generate-navamsa/block.json
 msgctxt "block title"
 msgid "Get Navamsa chart (D9) - Marriage Compatibility Calculator (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/generate-navamsa/block.json
-#: build/blocks/generate-navamsa/block.json
 msgctxt "block description"
 msgid "Get Navamsa chart (D9) - Marriage Compatibility Calculator"
 msgstr ""
 
 #: blocks/generated/generate-navamsa/block.json
-#: build/blocks/generate-navamsa/block.json
 msgctxt "block keyword"
 msgid "navamsa"
 msgstr ""
 
 #: blocks/generated/generate-planetary-return/block.json
-#: build/blocks/generate-planetary-return/block.json
 msgctxt "block title"
 msgid "Planetary Return Chart - Saturn return, Jupiter return, and inner planet cycles (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/generate-planetary-return/block.json
-#: build/blocks/generate-planetary-return/block.json
 msgctxt "block description"
 msgid "Planetary Return Chart - Saturn return, Jupiter return, and inner planet cycles"
 msgstr ""
 
 #: blocks/generated/generate-planetary-return/block.json
 #: blocks/generated/get-planetary-positions/block.json
-#: build/blocks/generate-planetary-return/block.json
-#: build/blocks/get-planetary-positions/block.json
 msgctxt "block keyword"
 msgid "planetary"
 msgstr ""
 
 #: blocks/generated/generate-profections/block.json
-#: build/blocks/generate-profections/block.json
 msgctxt "block title"
 msgid "Annual profections calculator - lord of the year and yearly time lord by age (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/generate-profections/block.json
-#: build/blocks/generate-profections/block.json
 msgctxt "block description"
 msgid "Annual profections calculator - lord of the year and yearly time lord by age"
 msgstr ""
 
 #: blocks/generated/generate-profections/block.json
-#: build/blocks/generate-profections/block.json
 msgctxt "block keyword"
 msgid "profections"
 msgstr ""
 
 #: blocks/generated/generate-progressions/block.json
-#: build/blocks/generate-progressions/block.json
 msgctxt "block title"
 msgid "Secondary progressions calculator - progressed chart, progressed Sun and Moon (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/generate-progressions/block.json
-#: build/blocks/generate-progressions/block.json
 msgctxt "block description"
 msgid "Secondary progressions calculator - progressed chart, progressed Sun and Moon"
 msgstr ""
 
 #: blocks/generated/generate-progressions/block.json
-#: build/blocks/generate-progressions/block.json
 msgctxt "block keyword"
 msgid "progressions"
 msgstr ""
 
 #: blocks/generated/generate-relocation-chart/block.json
-#: build/blocks/generate-relocation-chart/block.json
 msgctxt "block title"
 msgid "Generate relocation chart - Relocated birth chart calculator with shifted houses and angles (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/generate-relocation-chart/block.json
-#: build/blocks/generate-relocation-chart/block.json
 msgctxt "block description"
 msgid "Generate relocation chart - Relocated birth chart calculator with shifted houses and angles"
 msgstr ""
 
 #: blocks/generated/generate-relocation-chart/block.json
-#: build/blocks/generate-relocation-chart/block.json
 msgctxt "block keyword"
 msgid "relocation"
 msgstr ""
 
 #: blocks/generated/generate-solar-arc/block.json
-#: build/blocks/generate-solar-arc/block.json
 msgctxt "block title"
 msgid "Solar arc directions calculator - directed chart at one degree per year (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/generate-solar-arc/block.json
-#: build/blocks/generate-solar-arc/block.json
 msgctxt "block description"
 msgid "Solar arc directions calculator - directed chart at one degree per year"
 msgstr ""
 
 #: blocks/generated/generate-solar-return/block.json
-#: build/blocks/generate-solar-return/block.json
 msgctxt "block title"
 msgid "Solar Return Chart - Annual birthday forecast with relocated chart (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/generate-solar-return/block.json
-#: build/blocks/generate-solar-return/block.json
 msgctxt "block description"
 msgid "Solar Return Chart - Annual birthday forecast with relocated chart"
 msgstr ""
 
 #: blocks/generated/get-avastha/block.json
-#: build/blocks/get-avastha/block.json
 msgctxt "block title"
 msgid "Get avastha by ID - Planetary State Detail (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-avastha/block.json
-#: build/blocks/get-avastha/block.json
 msgctxt "block description"
 msgid "Get avastha by ID - Planetary State Detail"
 msgstr ""
@@ -4877,107 +3550,36 @@ msgstr ""
 #: blocks/generated/get-weekly-horoscope/block.json
 #: blocks/generated/get-yoga/block.json
 #: blocks/generated/get-zodiac-sign/block.json
-#: build/blocks/get-avastha/block.json
-#: build/blocks/get-basic-panchang/block.json
-#: build/blocks/get-birthstones/block.json
-#: build/blocks/get-card/block.json
-#: build/blocks/get-center/block.json
-#: build/blocks/get-choghadiya/block.json
-#: build/blocks/get-cities-by-country/block.json
-#: build/blocks/get-compound-number/block.json
-#: build/blocks/get-critical-days/block.json
-#: build/blocks/get-crystal-pairings/block.json
-#: build/blocks/get-crystal/block.json
-#: build/blocks/get-crystals-by-chakra/block.json
-#: build/blocks/get-crystals-by-element/block.json
-#: build/blocks/get-current-dasha/block.json
-#: build/blocks/get-daily-angel-number/block.json
-#: build/blocks/get-daily-biorhythm/block.json
-#: build/blocks/get-daily-crystal/block.json
-#: build/blocks/get-daily-dream-symbol/block.json
-#: build/blocks/get-daily-hexagram/block.json
-#: build/blocks/get-daily-number/block.json
-#: build/blocks/get-dream-symbol/block.json
-#: build/blocks/get-ecliptic-crossings/block.json
-#: build/blocks/get-forecast/block.json
-#: build/blocks/get-gate/block.json
-#: build/blocks/get-heliacal-visibility/block.json
-#: build/blocks/get-hexagram/block.json
-#: build/blocks/get-hora/block.json
-#: build/blocks/get-kp-ayanamsa/block.json
-#: build/blocks/get-kp-cusps/block.json
-#: build/blocks/get-kp-planets-interval/block.json
-#: build/blocks/get-kp-planets/block.json
-#: build/blocks/get-kp-rasi-changes/block.json
-#: build/blocks/get-kp-ruling-interval/block.json
-#: build/blocks/get-kp-ruling-planets/block.json
-#: build/blocks/get-kp-sublord-changes/block.json
-#: build/blocks/get-lunar-aspects/block.json
-#: build/blocks/get-major-dashas/block.json
-#: build/blocks/get-monthly-aspects/block.json
-#: build/blocks/get-monthly-ephemeris/block.json
-#: build/blocks/get-monthly-horoscope/block.json
-#: build/blocks/get-monthly-parallels/block.json
-#: build/blocks/get-monthly-transits/block.json
-#: build/blocks/get-moon-calendar/block.json
-#: build/blocks/get-nakshatra/block.json
-#: build/blocks/get-number-meaning/block.json
-#: build/blocks/get-phases/block.json
-#: build/blocks/get-planet-meaning/block.json
-#: build/blocks/get-planet-positions/block.json
-#: build/blocks/get-planetary-positions/block.json
-#: build/blocks/get-prana-dashas/block.json
-#: build/blocks/get-pratyantardashas/block.json
-#: build/blocks/get-random-crystal/block.json
-#: build/blocks/get-random-hexagram/block.json
-#: build/blocks/get-random-symbols/block.json
-#: build/blocks/get-rashi/block.json
-#: build/blocks/get-sookshma-dashas/block.json
-#: build/blocks/get-sub-dashas/block.json
-#: build/blocks/get-symbol-letter-counts/block.json
-#: build/blocks/get-trigram/block.json
-#: build/blocks/get-upagraha-positions/block.json
-#: build/blocks/get-upcoming-moon-phases/block.json
-#: build/blocks/get-usage-stats/block.json
-#: build/blocks/get-weekly-horoscope/block.json
-#: build/blocks/get-yoga/block.json
-#: build/blocks/get-zodiac-sign/block.json
 msgctxt "block keyword"
 msgid "get"
 msgstr ""
 
 #: blocks/generated/get-avastha/block.json
-#: build/blocks/get-avastha/block.json
 msgctxt "block keyword"
 msgid "avastha"
 msgstr ""
 
 #: blocks/generated/get-basic-panchang/block.json
-#: build/blocks/get-basic-panchang/block.json
 msgctxt "block title"
 msgid "Get basic Panchang - Tithi Nakshatra Yoga Karana Calculator (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-basic-panchang/block.json
-#: build/blocks/get-basic-panchang/block.json
 msgctxt "block description"
 msgid "Get basic Panchang - Tithi Nakshatra Yoga Karana Calculator"
 msgstr ""
 
 #: blocks/generated/get-basic-panchang/block.json
-#: build/blocks/get-basic-panchang/block.json
 msgctxt "block keyword"
 msgid "basic"
 msgstr ""
 
 #: blocks/generated/get-birthstones/block.json
-#: build/blocks/get-birthstones/block.json
 msgctxt "block title"
 msgid "Birthstone Crystals by Month (Crystals and Healing Stones)"
 msgstr ""
 
 #: blocks/generated/get-birthstones/block.json
-#: build/blocks/get-birthstones/block.json
 msgctxt "block description"
 msgid "Birthstone Crystals by Month"
 msgstr ""
@@ -4993,89 +3595,66 @@ msgstr ""
 #: blocks/generated/list-crystal-planets/block.json
 #: blocks/generated/list-crystals/block.json
 #: blocks/generated/search-crystals/block.json
-#: build/blocks/get-birthstones/block.json
-#: build/blocks/get-crystal-pairings/block.json
-#: build/blocks/get-crystal/block.json
-#: build/blocks/get-crystals-by-chakra/block.json
-#: build/blocks/get-crystals-by-element/block.json
-#: build/blocks/get-daily-crystal/block.json
-#: build/blocks/get-random-crystal/block.json
-#: build/blocks/list-crystal-colors/block.json
-#: build/blocks/list-crystal-planets/block.json
-#: build/blocks/list-crystals/block.json
-#: build/blocks/search-crystals/block.json
 msgctxt "block keyword"
 msgid "crystals and healing stones"
 msgstr ""
 
 #: blocks/generated/get-birthstones/block.json
-#: build/blocks/get-birthstones/block.json
 msgctxt "block keyword"
 msgid "birthstones"
 msgstr ""
 
 #: blocks/generated/get-card/block.json
-#: build/blocks/get-card/block.json
 msgctxt "block title"
 msgid "Get detailed tarot card information (Tarot)"
 msgstr ""
 
 #: blocks/generated/get-card/block.json
-#: build/blocks/get-card/block.json
 msgctxt "block description"
 msgid "Get detailed tarot card information"
 msgstr ""
 
 #: blocks/generated/get-card/block.json
-#: build/blocks/get-card/block.json
 msgctxt "block keyword"
 msgid "card"
 msgstr ""
 
 #: blocks/generated/get-center/block.json
-#: build/blocks/get-center/block.json
 msgctxt "block title"
 msgid "Look up a Human Design center by id (Human Design)"
 msgstr ""
 
 #: blocks/generated/get-center/block.json
-#: build/blocks/get-center/block.json
 msgctxt "block description"
 msgid "Look up a Human Design center by id"
 msgstr ""
 
 #: blocks/generated/get-center/block.json
-#: build/blocks/get-center/block.json
 msgctxt "block keyword"
 msgid "center"
 msgstr ""
 
 #: blocks/generated/get-choghadiya/block.json
-#: build/blocks/get-choghadiya/block.json
 msgctxt "block title"
 msgid "Get Choghadiya - 8 Muhurta divisions of day and night (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-choghadiya/block.json
-#: build/blocks/get-choghadiya/block.json
 msgctxt "block description"
 msgid "Get Choghadiya - 8 Muhurta divisions of day and night"
 msgstr ""
 
 #: blocks/generated/get-choghadiya/block.json
-#: build/blocks/get-choghadiya/block.json
 msgctxt "block keyword"
 msgid "choghadiya"
 msgstr ""
 
 #: blocks/generated/get-cities-by-country/block.json
-#: build/blocks/get-cities-by-country/block.json
 msgctxt "block title"
 msgid "Get cities in a country - Geocoding directory sorted by population (Location and Timezone)"
 msgstr ""
 
 #: blocks/generated/get-cities-by-country/block.json
-#: build/blocks/get-cities-by-country/block.json
 msgctxt "block description"
 msgid "Get cities in a country - Geocoding directory sorted by population"
 msgstr ""
@@ -5083,65 +3662,52 @@ msgstr ""
 #: blocks/generated/get-cities-by-country/block.json
 #: blocks/generated/list-countries/block.json
 #: blocks/generated/search-cities/block.json
-#: build/blocks/get-cities-by-country/block.json
-#: build/blocks/list-countries/block.json
-#: build/blocks/search-cities/block.json
 msgctxt "block keyword"
 msgid "location and timezone"
 msgstr ""
 
 #: blocks/generated/get-cities-by-country/block.json
 #: blocks/generated/search-cities/block.json
-#: build/blocks/get-cities-by-country/block.json
-#: build/blocks/search-cities/block.json
 msgctxt "block keyword"
 msgid "cities"
 msgstr ""
 
 #: blocks/generated/get-compound-number/block.json
-#: build/blocks/get-compound-number/block.json
 msgctxt "block title"
 msgid "Compound number meaning - Cheiro Chaldean interpretation 10 to 52 (Numerology)"
 msgstr ""
 
 #: blocks/generated/get-compound-number/block.json
-#: build/blocks/get-compound-number/block.json
 msgctxt "block description"
 msgid "Compound number meaning - Cheiro Chaldean interpretation 10 to 52"
 msgstr ""
 
 #: blocks/generated/get-compound-number/block.json
-#: build/blocks/get-compound-number/block.json
 msgctxt "block keyword"
 msgid "compound"
 msgstr ""
 
 #: blocks/generated/get-critical-days/block.json
-#: build/blocks/get-critical-days/block.json
 msgctxt "block title"
 msgid "Find critical days - Zero crossing detection for any date range (Biorhythm)"
 msgstr ""
 
 #: blocks/generated/get-critical-days/block.json
-#: build/blocks/get-critical-days/block.json
 msgctxt "block description"
 msgid "Find critical days - Zero crossing detection for any date range"
 msgstr ""
 
 #: blocks/generated/get-critical-days/block.json
-#: build/blocks/get-critical-days/block.json
 msgctxt "block keyword"
 msgid "critical"
 msgstr ""
 
 #: blocks/generated/get-crystal-pairings/block.json
-#: build/blocks/get-crystal-pairings/block.json
 msgctxt "block title"
 msgid "Crystal Pairings (Crystals and Healing Stones)"
 msgstr ""
 
 #: blocks/generated/get-crystal-pairings/block.json
-#: build/blocks/get-crystal-pairings/block.json
 msgctxt "block description"
 msgid "Crystal Pairings"
 msgstr ""
@@ -5150,34 +3716,26 @@ msgstr ""
 #: blocks/generated/get-crystal/block.json
 #: blocks/generated/list-crystal-colors/block.json
 #: blocks/generated/list-crystal-planets/block.json
-#: build/blocks/get-crystal-pairings/block.json
-#: build/blocks/get-crystal/block.json
-#: build/blocks/list-crystal-colors/block.json
-#: build/blocks/list-crystal-planets/block.json
 msgctxt "block keyword"
 msgid "crystal"
 msgstr ""
 
 #: blocks/generated/get-crystal/block.json
-#: build/blocks/get-crystal/block.json
 msgctxt "block title"
 msgid "Get Crystal Healing Properties (Crystals and Healing Stones)"
 msgstr ""
 
 #: blocks/generated/get-crystal/block.json
-#: build/blocks/get-crystal/block.json
 msgctxt "block description"
 msgid "Get Crystal Healing Properties"
 msgstr ""
 
 #: blocks/generated/get-crystals-by-chakra/block.json
-#: build/blocks/get-crystals-by-chakra/block.json
 msgctxt "block title"
 msgid "Crystals by Chakra (Crystals and Healing Stones)"
 msgstr ""
 
 #: blocks/generated/get-crystals-by-chakra/block.json
-#: build/blocks/get-crystals-by-chakra/block.json
 msgctxt "block description"
 msgid "Crystals by Chakra"
 msgstr ""
@@ -5186,88 +3744,71 @@ msgstr ""
 #: blocks/generated/get-crystals-by-element/block.json
 #: blocks/generated/list-crystals/block.json
 #: blocks/generated/search-crystals/block.json
-#: build/blocks/get-crystals-by-chakra/block.json
-#: build/blocks/get-crystals-by-element/block.json
-#: build/blocks/list-crystals/block.json
-#: build/blocks/search-crystals/block.json
 msgctxt "block keyword"
 msgid "crystals"
 msgstr ""
 
 #: blocks/generated/get-crystals-by-element/block.json
-#: build/blocks/get-crystals-by-element/block.json
 msgctxt "block title"
 msgid "Crystals by Element (Crystals and Healing Stones)"
 msgstr ""
 
 #: blocks/generated/get-crystals-by-element/block.json
-#: build/blocks/get-crystals-by-element/block.json
 msgctxt "block description"
 msgid "Crystals by Element"
 msgstr ""
 
 #: blocks/generated/get-current-dasha/block.json
-#: build/blocks/get-current-dasha/block.json
 msgctxt "block title"
 msgid "Get current Mahadasha, Antardasha, Pratyantardasha, Sookshma, Prana - Dasha Calculator API (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-current-dasha/block.json
-#: build/blocks/get-current-dasha/block.json
 msgctxt "block description"
 msgid "Get current Mahadasha, Antardasha, Pratyantardasha, Sookshma, Prana - Dasha Calculator API"
 msgstr ""
 
 #: blocks/generated/get-current-dasha/block.json
-#: build/blocks/get-current-dasha/block.json
 msgctxt "block keyword"
 msgid "current"
 msgstr ""
 
 #: blocks/generated/get-daily-angel-number/block.json
-#: build/blocks/get-daily-angel-number/block.json
 msgctxt "block title"
 msgid "Daily Angel Number (Angel Numbers)"
 msgstr ""
 
 #: blocks/generated/get-daily-angel-number/block.json
-#: build/blocks/get-daily-angel-number/block.json
 msgctxt "block description"
 msgid "Daily Angel Number"
 msgstr ""
 
 #: blocks/generated/get-daily-biorhythm/block.json
-#: build/blocks/get-daily-biorhythm/block.json
 msgctxt "block title"
 msgid "Get daily biorhythm - Seeded reading for daily check-in features (Biorhythm)"
 msgstr ""
 
 #: blocks/generated/get-daily-biorhythm/block.json
-#: build/blocks/get-daily-biorhythm/block.json
 msgctxt "block description"
 msgid "Get daily biorhythm - Seeded reading for daily check-in features"
 msgstr ""
 
 #: blocks/generated/get-daily-crystal/block.json
-#: build/blocks/get-daily-crystal/block.json
 msgctxt "block title"
 msgid "Daily Crystal (Crystals and Healing Stones)"
 msgstr ""
 
 #: blocks/generated/get-daily-crystal/block.json
-#: build/blocks/get-daily-crystal/block.json
 msgctxt "block description"
 msgid "Daily Crystal"
 msgstr ""
 
 #: blocks/generated/get-daily-dream-symbol/block.json
-#: build/blocks/get-daily-dream-symbol/block.json
 msgctxt "block title"
 msgid "Get daily dream symbol (Dreams)"
 msgstr ""
 
 #: blocks/generated/get-daily-dream-symbol/block.json
-#: build/blocks/get-daily-dream-symbol/block.json
 msgctxt "block description"
 msgid "Get daily dream symbol"
 msgstr ""
@@ -5277,297 +3818,243 @@ msgstr ""
 #: blocks/generated/get-random-symbols/block.json
 #: blocks/generated/get-symbol-letter-counts/block.json
 #: blocks/generated/search-dream-symbols/block.json
-#: build/blocks/get-daily-dream-symbol/block.json
-#: build/blocks/get-dream-symbol/block.json
-#: build/blocks/get-random-symbols/block.json
-#: build/blocks/get-symbol-letter-counts/block.json
-#: build/blocks/search-dream-symbols/block.json
 msgctxt "block keyword"
 msgid "dreams"
 msgstr ""
 
 #: blocks/generated/get-daily-hexagram/block.json
-#: build/blocks/get-daily-hexagram/block.json
 msgctxt "block title"
 msgid "Get daily I-Ching hexagram (I-Ching)"
 msgstr ""
 
 #: blocks/generated/get-daily-hexagram/block.json
-#: build/blocks/get-daily-hexagram/block.json
 msgctxt "block description"
 msgid "Get daily I-Ching hexagram"
 msgstr ""
 
 #: blocks/generated/get-daily-number/block.json
-#: build/blocks/get-daily-number/block.json
 msgctxt "block title"
 msgid "Get daily numerology number - Number of the Day with interpretation (Numerology)"
 msgstr ""
 
 #: blocks/generated/get-daily-number/block.json
-#: build/blocks/get-daily-number/block.json
 msgctxt "block description"
 msgid "Get daily numerology number - Number of the Day with interpretation"
 msgstr ""
 
 #: blocks/generated/get-dream-symbol/block.json
-#: build/blocks/get-dream-symbol/block.json
 msgctxt "block title"
 msgid "Get dream symbol details (Dreams)"
 msgstr ""
 
 #: blocks/generated/get-dream-symbol/block.json
-#: build/blocks/get-dream-symbol/block.json
 msgctxt "block description"
 msgid "Get dream symbol details"
 msgstr ""
 
 #: blocks/generated/get-dream-symbol/block.json
 #: blocks/generated/search-dream-symbols/block.json
-#: build/blocks/get-dream-symbol/block.json
-#: build/blocks/search-dream-symbols/block.json
 msgctxt "block keyword"
 msgid "dream"
 msgstr ""
 
 #: blocks/generated/get-ecliptic-crossings/block.json
-#: build/blocks/get-ecliptic-crossings/block.json
 msgctxt "block title"
 msgid "Ecliptic Crossings - When planets cross the ecliptic plane (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-ecliptic-crossings/block.json
-#: build/blocks/get-ecliptic-crossings/block.json
 msgctxt "block description"
 msgid "Ecliptic Crossings - When planets cross the ecliptic plane"
 msgstr ""
 
 #: blocks/generated/get-ecliptic-crossings/block.json
-#: build/blocks/get-ecliptic-crossings/block.json
 msgctxt "block keyword"
 msgid "ecliptic"
 msgstr ""
 
 #: blocks/generated/get-forecast/block.json
-#: build/blocks/get-forecast/block.json
 msgctxt "block title"
 msgid "Get biorhythm forecast - Multi-day cycle predictions with best and worst days (Biorhythm)"
 msgstr ""
 
 #: blocks/generated/get-forecast/block.json
-#: build/blocks/get-forecast/block.json
 msgctxt "block description"
 msgid "Get biorhythm forecast - Multi-day cycle predictions with best and worst days"
 msgstr ""
 
 #: blocks/generated/get-gate/block.json
-#: build/blocks/get-gate/block.json
 msgctxt "block title"
 msgid "Look up a Human Design gate by number (Human Design)"
 msgstr ""
 
 #: blocks/generated/get-gate/block.json
-#: build/blocks/get-gate/block.json
 msgctxt "block description"
 msgid "Look up a Human Design gate by number"
 msgstr ""
 
 #: blocks/generated/get-gate/block.json
-#: build/blocks/get-gate/block.json
 msgctxt "block keyword"
 msgid "gate"
 msgstr ""
 
 #: blocks/generated/get-heliacal-visibility/block.json
-#: build/blocks/get-heliacal-visibility/block.json
 msgctxt "block title"
 msgid "Heliacal rising and setting (udaya and asta) - Graha Asta Calculator API (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-heliacal-visibility/block.json
-#: build/blocks/get-heliacal-visibility/block.json
 msgctxt "block description"
 msgid "Heliacal rising and setting (udaya and asta) - Graha Asta Calculator API"
 msgstr ""
 
 #: blocks/generated/get-heliacal-visibility/block.json
-#: build/blocks/get-heliacal-visibility/block.json
 msgctxt "block keyword"
 msgid "heliacal"
 msgstr ""
 
 #: blocks/generated/get-hexagram/block.json
-#: build/blocks/get-hexagram/block.json
 msgctxt "block title"
 msgid "Get hexagram by number (I-Ching)"
 msgstr ""
 
 #: blocks/generated/get-hexagram/block.json
-#: build/blocks/get-hexagram/block.json
 msgctxt "block description"
 msgid "Get hexagram by number"
 msgstr ""
 
 #: blocks/generated/get-hexagram/block.json
 #: blocks/generated/lookup-hexagram/block.json
-#: build/blocks/get-hexagram/block.json
-#: build/blocks/lookup-hexagram/block.json
 msgctxt "block keyword"
 msgid "hexagram"
 msgstr ""
 
 #: blocks/generated/get-hora/block.json
-#: build/blocks/get-hora/block.json
 msgctxt "block title"
 msgid "Get Hora - 24 Planetary Hours (12 day + 12 night) (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-hora/block.json
-#: build/blocks/get-hora/block.json
 msgctxt "block description"
 msgid "Get Hora - 24 Planetary Hours (12 day + 12 night)"
 msgstr ""
 
 #: blocks/generated/get-hora/block.json
-#: build/blocks/get-hora/block.json
 msgctxt "block keyword"
 msgid "hora"
 msgstr ""
 
 #: blocks/generated/get-kp-ayanamsa/block.json
-#: build/blocks/get-kp-ayanamsa/block.json
 msgctxt "block title"
 msgid "Get KP-Newcomb ayanamsa - Dynamic daily calculation (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-kp-ayanamsa/block.json
-#: build/blocks/get-kp-ayanamsa/block.json
 msgctxt "block description"
 msgid "Get KP-Newcomb ayanamsa - Dynamic daily calculation"
 msgstr ""
 
 #: blocks/generated/get-kp-cusps/block.json
-#: build/blocks/get-kp-cusps/block.json
 msgctxt "block title"
 msgid "Get KP Placidus house cusps with sub-lords (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-kp-cusps/block.json
-#: build/blocks/get-kp-cusps/block.json
 msgctxt "block description"
 msgid "Get KP Placidus house cusps with sub-lords"
 msgstr ""
 
 #: blocks/generated/get-kp-planets-interval/block.json
-#: build/blocks/get-kp-planets-interval/block.json
 msgctxt "block title"
 msgid "Get KP planets at time intervals (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-kp-planets-interval/block.json
-#: build/blocks/get-kp-planets-interval/block.json
 msgctxt "block description"
 msgid "Get KP planets at time intervals"
 msgstr ""
 
 #: blocks/generated/get-kp-planets/block.json
-#: build/blocks/get-kp-planets/block.json
 msgctxt "block title"
 msgid "Get KP planetary positions with sub-lords (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-kp-planets/block.json
-#: build/blocks/get-kp-planets/block.json
 msgctxt "block description"
 msgid "Get KP planetary positions with sub-lords"
 msgstr ""
 
 #: blocks/generated/get-kp-rasi-changes/block.json
-#: build/blocks/get-kp-rasi-changes/block.json
 msgctxt "block title"
 msgid "Find KP rasi ingress times (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-kp-rasi-changes/block.json
-#: build/blocks/get-kp-rasi-changes/block.json
 msgctxt "block description"
 msgid "Find KP rasi ingress times"
 msgstr ""
 
 #: blocks/generated/get-kp-ruling-interval/block.json
-#: build/blocks/get-kp-ruling-interval/block.json
 msgctxt "block title"
 msgid "Get KP ruling planets with significators at intervals (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-kp-ruling-interval/block.json
-#: build/blocks/get-kp-ruling-interval/block.json
 msgctxt "block description"
 msgid "Get KP ruling planets with significators at intervals"
 msgstr ""
 
 #: blocks/generated/get-kp-ruling-planets/block.json
-#: build/blocks/get-kp-ruling-planets/block.json
 msgctxt "block title"
 msgid "Get KP ruling planets with optional significators (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-kp-ruling-planets/block.json
-#: build/blocks/get-kp-ruling-planets/block.json
 msgctxt "block description"
 msgid "Get KP ruling planets with optional significators"
 msgstr ""
 
 #: blocks/generated/get-kp-sublord-changes/block.json
-#: build/blocks/get-kp-sublord-changes/block.json
 msgctxt "block title"
 msgid "Find KP sublord changes (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-kp-sublord-changes/block.json
-#: build/blocks/get-kp-sublord-changes/block.json
 msgctxt "block description"
 msgid "Find KP sublord changes"
 msgstr ""
 
 #: blocks/generated/get-lunar-aspects/block.json
-#: build/blocks/get-lunar-aspects/block.json
 msgctxt "block title"
 msgid "Monthly Lunar Aspects - Moon aspect events with all planets for a month (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-lunar-aspects/block.json
-#: build/blocks/get-lunar-aspects/block.json
 msgctxt "block description"
 msgid "Monthly Lunar Aspects - Moon aspect events with all planets for a month"
 msgstr ""
 
 #: blocks/generated/get-major-dashas/block.json
-#: build/blocks/get-major-dashas/block.json
 msgctxt "block title"
 msgid "Get all 9 Mahadasha periods (120-year cycle) (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-major-dashas/block.json
-#: build/blocks/get-major-dashas/block.json
 msgctxt "block description"
 msgid "Get all 9 Mahadasha periods (120-year cycle)"
 msgstr ""
 
 #: blocks/generated/get-major-dashas/block.json
-#: build/blocks/get-major-dashas/block.json
 msgctxt "block keyword"
 msgid "major"
 msgstr ""
 
 #: blocks/generated/get-monthly-aspects/block.json
-#: build/blocks/get-monthly-aspects/block.json
 msgctxt "block title"
 msgid "Monthly Planetary Aspects - Major and minor aspect events for a month (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-monthly-aspects/block.json
-#: build/blocks/get-monthly-aspects/block.json
 msgctxt "block description"
 msgid "Monthly Planetary Aspects - Major and minor aspect events for a month"
 msgstr ""
@@ -5577,137 +4064,111 @@ msgstr ""
 #: blocks/generated/get-monthly-horoscope/block.json
 #: blocks/generated/get-monthly-parallels/block.json
 #: blocks/generated/get-monthly-transits/block.json
-#: build/blocks/get-monthly-aspects/block.json
-#: build/blocks/get-monthly-ephemeris/block.json
-#: build/blocks/get-monthly-horoscope/block.json
-#: build/blocks/get-monthly-parallels/block.json
-#: build/blocks/get-monthly-transits/block.json
 msgctxt "block keyword"
 msgid "monthly"
 msgstr ""
 
 #: blocks/generated/get-monthly-ephemeris/block.json
-#: build/blocks/get-monthly-ephemeris/block.json
 msgctxt "block title"
 msgid "Monthly Ephemeris - Daily sidereal planetary positions for a month (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-monthly-ephemeris/block.json
-#: build/blocks/get-monthly-ephemeris/block.json
 msgctxt "block description"
 msgid "Monthly Ephemeris - Daily sidereal planetary positions for a month"
 msgstr ""
 
 #: blocks/generated/get-monthly-horoscope/block.json
-#: build/blocks/get-monthly-horoscope/block.json
 msgctxt "block title"
 msgid "Monthly horoscope by zodiac sign - 30-day transit forecast with key dates (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/get-monthly-horoscope/block.json
-#: build/blocks/get-monthly-horoscope/block.json
 msgctxt "block description"
 msgid "Monthly horoscope by zodiac sign - 30-day transit forecast with key dates"
 msgstr ""
 
 #: blocks/generated/get-monthly-parallels/block.json
-#: build/blocks/get-monthly-parallels/block.json
 msgctxt "block title"
 msgid "Monthly Declination Parallels - Parallel and contraparallel events for a month (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-monthly-parallels/block.json
-#: build/blocks/get-monthly-parallels/block.json
 msgctxt "block description"
 msgid "Monthly Declination Parallels - Parallel and contraparallel events for a month"
 msgstr ""
 
 #: blocks/generated/get-monthly-transits/block.json
-#: build/blocks/get-monthly-transits/block.json
 msgctxt "block title"
 msgid "Monthly Transit - Planetary sign changes for an entire month (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-monthly-transits/block.json
-#: build/blocks/get-monthly-transits/block.json
 msgctxt "block description"
 msgid "Monthly Transit - Planetary sign changes for an entire month"
 msgstr ""
 
 #: blocks/generated/get-moon-calendar/block.json
-#: build/blocks/get-moon-calendar/block.json
 msgctxt "block title"
 msgid "Get lunar calendar - Moon phases for entire month (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/get-moon-calendar/block.json
-#: build/blocks/get-moon-calendar/block.json
 msgctxt "block description"
 msgid "Get lunar calendar - Moon phases for entire month"
 msgstr ""
 
 #: blocks/generated/get-moon-calendar/block.json
-#: build/blocks/get-moon-calendar/block.json
 msgctxt "block keyword"
 msgid "moon"
 msgstr ""
 
 #: blocks/generated/get-nakshatra/block.json
-#: build/blocks/get-nakshatra/block.json
 msgctxt "block title"
 msgid "Get Nakshatra by ID - Lunar Mansion Detail (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-nakshatra/block.json
-#: build/blocks/get-nakshatra/block.json
 msgctxt "block description"
 msgid "Get Nakshatra by ID - Lunar Mansion Detail"
 msgstr ""
 
 #: blocks/generated/get-nakshatra/block.json
-#: build/blocks/get-nakshatra/block.json
 msgctxt "block keyword"
 msgid "nakshatra"
 msgstr ""
 
 #: blocks/generated/get-number-meaning/block.json
-#: build/blocks/get-number-meaning/block.json
 msgctxt "block title"
 msgid "Get Number Meaning - Interpretation for any number 1-9, 11, 22, 33 (Numerology)"
 msgstr ""
 
 #: blocks/generated/get-number-meaning/block.json
-#: build/blocks/get-number-meaning/block.json
 msgctxt "block description"
 msgid "Get Number Meaning - Interpretation for any number 1-9, 11, 22, 33"
 msgstr ""
 
 #: blocks/generated/get-phases/block.json
-#: build/blocks/get-phases/block.json
 msgctxt "block title"
 msgid "Get phase info - Lightweight cycle status for dashboards and widgets (Biorhythm)"
 msgstr ""
 
 #: blocks/generated/get-phases/block.json
-#: build/blocks/get-phases/block.json
 msgctxt "block description"
 msgid "Get phase info - Lightweight cycle status for dashboards and widgets"
 msgstr ""
 
 #: blocks/generated/get-phases/block.json
-#: build/blocks/get-phases/block.json
 msgctxt "block keyword"
 msgid "phases"
 msgstr ""
 
 #: blocks/generated/get-planet-meaning/block.json
-#: build/blocks/get-planet-meaning/block.json
 msgctxt "block title"
 msgid "Get planet meaning details - Complete astrology planet interpretation (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/get-planet-meaning/block.json
-#: build/blocks/get-planet-meaning/block.json
 msgctxt "block description"
 msgid "Get planet meaning details - Complete astrology planet interpretation"
 msgstr ""
@@ -5715,81 +4176,66 @@ msgstr ""
 #: blocks/generated/get-planet-meaning/block.json
 #: blocks/generated/get-planet-positions/block.json
 #: blocks/generated/list-planet-meanings/block.json
-#: build/blocks/get-planet-meaning/block.json
-#: build/blocks/get-planet-positions/block.json
-#: build/blocks/list-planet-meanings/block.json
 msgctxt "block keyword"
 msgid "planet"
 msgstr ""
 
 #: blocks/generated/get-planet-positions/block.json
-#: build/blocks/get-planet-positions/block.json
 msgctxt "block title"
 msgid "Get planetary positions - Graha Positions API (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-planet-positions/block.json
-#: build/blocks/get-planet-positions/block.json
 msgctxt "block description"
 msgid "Get planetary positions - Graha Positions API"
 msgstr ""
 
 #: blocks/generated/get-planetary-positions/block.json
-#: build/blocks/get-planetary-positions/block.json
 msgctxt "block title"
 msgid "Get planetary positions - Ephemeris calculator for all planets (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/get-planetary-positions/block.json
-#: build/blocks/get-planetary-positions/block.json
 msgctxt "block description"
 msgid "Get planetary positions - Ephemeris calculator for all planets"
 msgstr ""
 
 #: blocks/generated/get-prana-dashas/block.json
-#: build/blocks/get-prana-dashas/block.json
 msgctxt "block title"
 msgid "Get all Prana dashas for a Mahadasha, Antardasha, Pratyantardasha and Sookshma (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-prana-dashas/block.json
-#: build/blocks/get-prana-dashas/block.json
 msgctxt "block description"
 msgid "Get all Prana dashas for a Mahadasha, Antardasha, Pratyantardasha and Sookshma"
 msgstr ""
 
 #: blocks/generated/get-prana-dashas/block.json
-#: build/blocks/get-prana-dashas/block.json
 msgctxt "block keyword"
 msgid "prana"
 msgstr ""
 
 #: blocks/generated/get-pratyantardashas/block.json
-#: build/blocks/get-pratyantardashas/block.json
 msgctxt "block title"
 msgid "Get all Pratyantardashas (antara periods) for a Mahadasha and Antardasha (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-pratyantardashas/block.json
-#: build/blocks/get-pratyantardashas/block.json
 msgctxt "block description"
 msgid "Get all Pratyantardashas (antara periods) for a Mahadasha and Antardasha"
 msgstr ""
 
 #: blocks/generated/get-pratyantardashas/block.json
-#: build/blocks/get-pratyantardashas/block.json
 msgctxt "block keyword"
 msgid "pratyantardashas"
 msgstr ""
 
 #: blocks/generated/get-random-crystal/block.json
-#: build/blocks/get-random-crystal/block.json
 msgctxt "block title"
 msgid "Random Crystal (Crystals and Healing Stones)"
 msgstr ""
 
 #: blocks/generated/get-random-crystal/block.json
-#: build/blocks/get-random-crystal/block.json
 msgctxt "block description"
 msgid "Random Crystal"
 msgstr ""
@@ -5797,237 +4243,196 @@ msgstr ""
 #: blocks/generated/get-random-crystal/block.json
 #: blocks/generated/get-random-hexagram/block.json
 #: blocks/generated/get-random-symbols/block.json
-#: build/blocks/get-random-crystal/block.json
-#: build/blocks/get-random-hexagram/block.json
-#: build/blocks/get-random-symbols/block.json
 msgctxt "block keyword"
 msgid "random"
 msgstr ""
 
 #: blocks/generated/get-random-hexagram/block.json
-#: build/blocks/get-random-hexagram/block.json
 msgctxt "block title"
 msgid "Get a random hexagram (I-Ching)"
 msgstr ""
 
 #: blocks/generated/get-random-hexagram/block.json
-#: build/blocks/get-random-hexagram/block.json
 msgctxt "block description"
 msgid "Get a random hexagram"
 msgstr ""
 
 #: blocks/generated/get-random-symbols/block.json
-#: build/blocks/get-random-symbols/block.json
 msgctxt "block title"
 msgid "Get random dream symbols (Dreams)"
 msgstr ""
 
 #: blocks/generated/get-random-symbols/block.json
-#: build/blocks/get-random-symbols/block.json
 msgctxt "block description"
 msgid "Get random dream symbols"
 msgstr ""
 
 #: blocks/generated/get-rashi/block.json
-#: build/blocks/get-rashi/block.json
 msgctxt "block title"
 msgid "Get Rashi by ID - Vedic Zodiac Sign Detail (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-rashi/block.json
-#: build/blocks/get-rashi/block.json
 msgctxt "block description"
 msgid "Get Rashi by ID - Vedic Zodiac Sign Detail"
 msgstr ""
 
 #: blocks/generated/get-rashi/block.json
-#: build/blocks/get-rashi/block.json
 msgctxt "block keyword"
 msgid "rashi"
 msgstr ""
 
 #: blocks/generated/get-sookshma-dashas/block.json
-#: build/blocks/get-sookshma-dashas/block.json
 msgctxt "block title"
 msgid "Get all Sookshma dashas for a Mahadasha, Antardasha and Pratyantardasha (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-sookshma-dashas/block.json
-#: build/blocks/get-sookshma-dashas/block.json
 msgctxt "block description"
 msgid "Get all Sookshma dashas for a Mahadasha, Antardasha and Pratyantardasha"
 msgstr ""
 
 #: blocks/generated/get-sookshma-dashas/block.json
-#: build/blocks/get-sookshma-dashas/block.json
 msgctxt "block keyword"
 msgid "sookshma"
 msgstr ""
 
 #: blocks/generated/get-sub-dashas/block.json
-#: build/blocks/get-sub-dashas/block.json
 msgctxt "block title"
 msgid "Get all Antardashas (sub-periods) for a specific Mahadasha (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-sub-dashas/block.json
-#: build/blocks/get-sub-dashas/block.json
 msgctxt "block description"
 msgid "Get all Antardashas (sub-periods) for a specific Mahadasha"
 msgstr ""
 
 #: blocks/generated/get-sub-dashas/block.json
-#: build/blocks/get-sub-dashas/block.json
 msgctxt "block keyword"
 msgid "sub"
 msgstr ""
 
 #: blocks/generated/get-symbol-letter-counts/block.json
-#: build/blocks/get-symbol-letter-counts/block.json
 msgctxt "block title"
 msgid "Get symbol counts by letter (Dreams)"
 msgstr ""
 
 #: blocks/generated/get-symbol-letter-counts/block.json
-#: build/blocks/get-symbol-letter-counts/block.json
 msgctxt "block description"
 msgid "Get symbol counts by letter"
 msgstr ""
 
 #: blocks/generated/get-symbol-letter-counts/block.json
-#: build/blocks/get-symbol-letter-counts/block.json
 msgctxt "block keyword"
 msgid "symbol"
 msgstr ""
 
 #: blocks/generated/get-trigram/block.json
-#: build/blocks/get-trigram/block.json
 msgctxt "block title"
 msgid "Get trigram by number or name (I-Ching)"
 msgstr ""
 
 #: blocks/generated/get-trigram/block.json
-#: build/blocks/get-trigram/block.json
 msgctxt "block description"
 msgid "Get trigram by number or name"
 msgstr ""
 
 #: blocks/generated/get-trigram/block.json
-#: build/blocks/get-trigram/block.json
 msgctxt "block keyword"
 msgid "trigram"
 msgstr ""
 
 #: blocks/generated/get-upagraha-positions/block.json
-#: build/blocks/get-upagraha-positions/block.json
 msgctxt "block title"
 msgid "Get upagraha (sub-planet) positions - Upagraha Calculator API (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-upagraha-positions/block.json
-#: build/blocks/get-upagraha-positions/block.json
 msgctxt "block description"
 msgid "Get upagraha (sub-planet) positions - Upagraha Calculator API"
 msgstr ""
 
 #: blocks/generated/get-upagraha-positions/block.json
-#: build/blocks/get-upagraha-positions/block.json
 msgctxt "block keyword"
 msgid "upagraha"
 msgstr ""
 
 #: blocks/generated/get-upcoming-moon-phases/block.json
-#: build/blocks/get-upcoming-moon-phases/block.json
 msgctxt "block title"
 msgid "Get upcoming moon phases - Next new moon, full moon, quarters (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/get-upcoming-moon-phases/block.json
-#: build/blocks/get-upcoming-moon-phases/block.json
 msgctxt "block description"
 msgid "Get upcoming moon phases - Next new moon, full moon, quarters"
 msgstr ""
 
 #: blocks/generated/get-upcoming-moon-phases/block.json
-#: build/blocks/get-upcoming-moon-phases/block.json
 msgctxt "block keyword"
 msgid "upcoming"
 msgstr ""
 
 #: blocks/generated/get-usage-stats/block.json
-#: build/blocks/get-usage-stats/block.json
 msgctxt "block title"
 msgid "Get API usage statistics (Usage)"
 msgstr ""
 
 #: blocks/generated/get-usage-stats/block.json
-#: build/blocks/get-usage-stats/block.json
 msgctxt "block description"
 msgid "Get API usage statistics"
 msgstr ""
 
 #: blocks/generated/get-usage-stats/block.json
-#: build/blocks/get-usage-stats/block.json
 msgctxt "block keyword"
 msgid "usage"
 msgstr ""
 
 #: blocks/generated/get-weekly-horoscope/block.json
-#: build/blocks/get-weekly-horoscope/block.json
 msgctxt "block title"
 msgid "Weekly horoscope by zodiac sign - 7-day transit forecast (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/get-weekly-horoscope/block.json
-#: build/blocks/get-weekly-horoscope/block.json
 msgctxt "block description"
 msgid "Weekly horoscope by zodiac sign - 7-day transit forecast"
 msgstr ""
 
 #: blocks/generated/get-weekly-horoscope/block.json
-#: build/blocks/get-weekly-horoscope/block.json
 msgctxt "block keyword"
 msgid "weekly"
 msgstr ""
 
 #: blocks/generated/get-yoga/block.json
-#: build/blocks/get-yoga/block.json
 msgctxt "block title"
 msgid "Get yoga details by ID - Vedic Yoga Glossary Entry (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/get-yoga/block.json
-#: build/blocks/get-yoga/block.json
 msgctxt "block description"
 msgid "Get yoga details by ID - Vedic Yoga Glossary Entry"
 msgstr ""
 
 #: blocks/generated/get-yoga/block.json
-#: build/blocks/get-yoga/block.json
 msgctxt "block keyword"
 msgid "yoga"
 msgstr ""
 
 #: blocks/generated/get-zodiac-sign/block.json
-#: build/blocks/get-zodiac-sign/block.json
 msgctxt "block title"
 msgid "Get zodiac sign details - Complete astrology sign profile with personality traits (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/get-zodiac-sign/block.json
-#: build/blocks/get-zodiac-sign/block.json
 msgctxt "block description"
 msgid "Get zodiac sign details - Complete astrology sign profile with personality traits"
 msgstr ""
 
 #: blocks/generated/list-angel-numbers/block.json
-#: build/blocks/list-angel-numbers/block.json
 msgctxt "block title"
 msgid "List All Angel Numbers (Angel Numbers)"
 msgstr ""
 
 #: blocks/generated/list-angel-numbers/block.json
-#: build/blocks/list-angel-numbers/block.json
 msgctxt "block description"
 msgid "List All Angel Numbers"
 msgstr ""
@@ -6047,213 +4452,166 @@ msgstr ""
 #: blocks/generated/list-trigrams/block.json
 #: blocks/generated/list-yogas/block.json
 #: blocks/generated/list-zodiac-signs/block.json
-#: build/blocks/list-angel-numbers/block.json
-#: build/blocks/list-avasthas/block.json
-#: build/blocks/list-cards/block.json
-#: build/blocks/list-countries/block.json
-#: build/blocks/list-crystal-colors/block.json
-#: build/blocks/list-crystal-planets/block.json
-#: build/blocks/list-crystals/block.json
-#: build/blocks/list-hexagrams/block.json
-#: build/blocks/list-languages/block.json
-#: build/blocks/list-nakshatras/block.json
-#: build/blocks/list-planet-meanings/block.json
-#: build/blocks/list-rashis/block.json
-#: build/blocks/list-trigrams/block.json
-#: build/blocks/list-yogas/block.json
-#: build/blocks/list-zodiac-signs/block.json
 msgctxt "block keyword"
 msgid "list"
 msgstr ""
 
 #: blocks/generated/list-angel-numbers/block.json
-#: build/blocks/list-angel-numbers/block.json
 msgctxt "block keyword"
 msgid "angel"
 msgstr ""
 
 #: blocks/generated/list-avasthas/block.json
-#: build/blocks/list-avasthas/block.json
 msgctxt "block title"
 msgid "List all 17 avastha states - Planetary State Reference (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/list-avasthas/block.json
-#: build/blocks/list-avasthas/block.json
 msgctxt "block description"
 msgid "List all 17 avastha states - Planetary State Reference"
 msgstr ""
 
 #: blocks/generated/list-avasthas/block.json
-#: build/blocks/list-avasthas/block.json
 msgctxt "block keyword"
 msgid "avasthas"
 msgstr ""
 
 #: blocks/generated/list-cards/block.json
-#: build/blocks/list-cards/block.json
 msgctxt "block title"
 msgid "List all 78 tarot cards (Tarot)"
 msgstr ""
 
 #: blocks/generated/list-cards/block.json
-#: build/blocks/list-cards/block.json
 msgctxt "block description"
 msgid "List all 78 tarot cards"
 msgstr ""
 
 #: blocks/generated/list-countries/block.json
-#: build/blocks/list-countries/block.json
 msgctxt "block title"
 msgid "List all countries - ISO codes and city coverage (Location and Timezone)"
 msgstr ""
 
 #: blocks/generated/list-countries/block.json
-#: build/blocks/list-countries/block.json
 msgctxt "block description"
 msgid "List all countries - ISO codes and city coverage"
 msgstr ""
 
 #: blocks/generated/list-countries/block.json
-#: build/blocks/list-countries/block.json
 msgctxt "block keyword"
 msgid "countries"
 msgstr ""
 
 #: blocks/generated/list-crystal-colors/block.json
-#: build/blocks/list-crystal-colors/block.json
 msgctxt "block title"
 msgid "List Crystal Colors (Crystals and Healing Stones)"
 msgstr ""
 
 #: blocks/generated/list-crystal-colors/block.json
-#: build/blocks/list-crystal-colors/block.json
 msgctxt "block description"
 msgid "List Crystal Colors"
 msgstr ""
 
 #: blocks/generated/list-crystal-planets/block.json
-#: build/blocks/list-crystal-planets/block.json
 msgctxt "block title"
 msgid "List Crystal Planets (Crystals and Healing Stones)"
 msgstr ""
 
 #: blocks/generated/list-crystal-planets/block.json
-#: build/blocks/list-crystal-planets/block.json
 msgctxt "block description"
 msgid "List Crystal Planets"
 msgstr ""
 
 #: blocks/generated/list-crystals/block.json
-#: build/blocks/list-crystals/block.json
 msgctxt "block title"
 msgid "List All Crystals (Crystals and Healing Stones)"
 msgstr ""
 
 #: blocks/generated/list-crystals/block.json
-#: build/blocks/list-crystals/block.json
 msgctxt "block description"
 msgid "List All Crystals"
 msgstr ""
 
 #: blocks/generated/list-hexagrams/block.json
-#: build/blocks/list-hexagrams/block.json
 msgctxt "block title"
 msgid "List all 64 hexagrams (I-Ching)"
 msgstr ""
 
 #: blocks/generated/list-hexagrams/block.json
-#: build/blocks/list-hexagrams/block.json
 msgctxt "block description"
 msgid "List all 64 hexagrams"
 msgstr ""
 
 #: blocks/generated/list-hexagrams/block.json
-#: build/blocks/list-hexagrams/block.json
 msgctxt "block keyword"
 msgid "hexagrams"
 msgstr ""
 
 #: blocks/generated/list-languages/block.json
-#: build/blocks/list-languages/block.json
 msgctxt "block title"
 msgid "List supported response languages (Languages)"
 msgstr ""
 
 #: blocks/generated/list-languages/block.json
-#: build/blocks/list-languages/block.json
 msgctxt "block description"
 msgid "List supported response languages"
 msgstr ""
 
 #: blocks/generated/list-languages/block.json
-#: build/blocks/list-languages/block.json
 msgctxt "block keyword"
 msgid "languages"
 msgstr ""
 
 #: blocks/generated/list-nakshatras/block.json
-#: build/blocks/list-nakshatras/block.json
 msgctxt "block title"
 msgid "List all 27 Nakshatras - Lunar Mansions Reference (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/list-nakshatras/block.json
-#: build/blocks/list-nakshatras/block.json
 msgctxt "block description"
 msgid "List all 27 Nakshatras - Lunar Mansions Reference"
 msgstr ""
 
 #: blocks/generated/list-nakshatras/block.json
-#: build/blocks/list-nakshatras/block.json
 msgctxt "block keyword"
 msgid "nakshatras"
 msgstr ""
 
 #: blocks/generated/list-planet-meanings/block.json
-#: build/blocks/list-planet-meanings/block.json
 msgctxt "block title"
 msgid "Get all planet meanings - Complete astrology planet interpretations list (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/list-planet-meanings/block.json
-#: build/blocks/list-planet-meanings/block.json
 msgctxt "block description"
 msgid "Get all planet meanings - Complete astrology planet interpretations list"
 msgstr ""
 
 #: blocks/generated/list-rashis/block.json
-#: build/blocks/list-rashis/block.json
 msgctxt "block title"
 msgid "List all 12 Rashis - Vedic Zodiac Signs Reference (Vedic Astrology)"
 msgstr ""
 
 #: blocks/generated/list-rashis/block.json
-#: build/blocks/list-rashis/block.json
 msgctxt "block description"
 msgid "List all 12 Rashis - Vedic Zodiac Signs Reference"
 msgstr ""
 
 #: blocks/generated/list-rashis/block.json
-#: build/blocks/list-rashis/block.json
 msgctxt "block keyword"
 msgid "rashis"
 msgstr ""
 
 #: blocks/generated/list-trigrams/block.json
-#: build/blocks/list-trigrams/block.json
 msgctxt "block title"
 msgid "List all 8 trigrams (I-Ching)"
 msgstr ""
 
 #: blocks/generated/list-trigrams/block.json
-#: build/blocks/list-trigrams/block.json
 msgctxt "block description"
 msgid "List all 8 trigrams"
 msgstr ""
 
 #: blocks/generated/list-trigrams/block.json
-#: build/blocks/list-trigrams/block.json
 msgctxt "block keyword"
 msgid "trigrams"
 msgstr ""
@@ -6269,43 +4627,36 @@ msgid "List all planetary yogas - 301 entry Vedic Yoga Glossary"
 msgstr ""
 
 #: blocks/generated/list-zodiac-signs/block.json
-#: build/blocks/list-zodiac-signs/block.json
 msgctxt "block title"
 msgid "Get all zodiac signs - Complete zodiac signs list with dates and elements (Western Astrology)"
 msgstr ""
 
 #: blocks/generated/list-zodiac-signs/block.json
-#: build/blocks/list-zodiac-signs/block.json
 msgctxt "block description"
 msgid "Get all zodiac signs - Complete zodiac signs list with dates and elements"
 msgstr ""
 
 #: blocks/generated/lookup-hexagram/block.json
-#: build/blocks/lookup-hexagram/block.json
 msgctxt "block title"
 msgid "Lookup hexagram by line pattern (I-Ching)"
 msgstr ""
 
 #: blocks/generated/lookup-hexagram/block.json
-#: build/blocks/lookup-hexagram/block.json
 msgctxt "block description"
 msgid "Lookup hexagram by line pattern"
 msgstr ""
 
 #: blocks/generated/lookup-hexagram/block.json
-#: build/blocks/lookup-hexagram/block.json
 msgctxt "block keyword"
 msgid "lookup"
 msgstr ""
 
 #: blocks/generated/search-cities/block.json
-#: build/blocks/search-cities/block.json
 msgctxt "block title"
 msgid "Search cities worldwide - Geocoding autocomplete with coordinates and timezone (Location and Timezone)"
 msgstr ""
 
 #: blocks/generated/search-cities/block.json
-#: build/blocks/search-cities/block.json
 msgctxt "block description"
 msgid "Search cities worldwide - Geocoding autocomplete with coordinates and timezone"
 msgstr ""
@@ -6313,133 +4664,101 @@ msgstr ""
 #: blocks/generated/search-cities/block.json
 #: blocks/generated/search-crystals/block.json
 #: blocks/generated/search-dream-symbols/block.json
-#: build/blocks/search-cities/block.json
-#: build/blocks/search-crystals/block.json
-#: build/blocks/search-dream-symbols/block.json
 msgctxt "block keyword"
 msgid "search"
 msgstr ""
 
 #: blocks/generated/search-crystals/block.json
-#: build/blocks/search-crystals/block.json
 msgctxt "block title"
 msgid "Search Crystals (Crystals and Healing Stones)"
 msgstr ""
 
 #: blocks/generated/search-crystals/block.json
-#: build/blocks/search-crystals/block.json
 msgctxt "block description"
 msgid "Search Crystals"
 msgstr ""
 
 #: blocks/generated/search-dream-symbols/block.json
-#: build/blocks/search-dream-symbols/block.json
 msgctxt "block title"
 msgid "List and search dream symbols (Dreams)"
 msgstr ""
 
 #: blocks/generated/search-dream-symbols/block.json
-#: build/blocks/search-dream-symbols/block.json
 msgctxt "block description"
 msgid "List and search dream symbols"
 msgstr ""
 
 #: blocks/horoscope/block.json
-#: build/blocks/horoscope/block.json
 msgctxt "block title"
 msgid "Horoscope"
 msgstr ""
 
 #: blocks/horoscope/block.json
-#: build/blocks/horoscope/block.json
 msgctxt "block description"
 msgid "Daily, weekly, or monthly horoscope for any zodiac sign."
 msgstr ""
 
 #: blocks/horoscope/block.json
-#: build/blocks/horoscope/block.json
 msgctxt "block keyword"
 msgid "horoscope"
 msgstr ""
 
 #: blocks/natal-chart/block.json
-#: build/blocks/natal-chart/block.json
 msgctxt "block title"
 msgid "Natal Chart"
 msgstr ""
 
 #: blocks/natal-chart/block.json
-#: build/blocks/natal-chart/block.json
 msgctxt "block description"
 msgid "Western birth chart with planets, houses, and aspects."
 msgstr ""
 
 #: blocks/natal-chart/block.json
-#: build/blocks/natal-chart/block.json
 msgctxt "block keyword"
 msgid "birth chart"
 msgstr ""
 
 #: blocks/natal-chart/block.json
-#: build/blocks/natal-chart/block.json
 msgctxt "block keyword"
 msgid "natal chart"
 msgstr ""
 
 #: blocks/numerology/block.json
-#: build/blocks/numerology/block.json
 msgctxt "block title"
 msgid "Numerology"
 msgstr ""
 
 #: blocks/numerology/block.json
-#: build/blocks/numerology/block.json
 msgctxt "block description"
 msgid "Life path, expression, soul urge, and personal year numbers."
 msgstr ""
 
 #: blocks/numerology/block.json
-#: build/blocks/numerology/block.json
 msgctxt "block keyword"
 msgid "life path"
 msgstr ""
 
 #: blocks/numerology/block.json
-#: build/blocks/numerology/block.json
 msgctxt "block keyword"
 msgid "numbers"
 msgstr ""
 
 #: blocks/tarot/block.json
-#: build/blocks/tarot/block.json
 msgctxt "block title"
 msgid "Tarot"
 msgstr ""
 
 #: blocks/tarot/block.json
-#: build/blocks/tarot/block.json
 msgctxt "block description"
 msgid "Tarot card readings: single, three card, Celtic Cross, and more."
 msgstr ""
 
 #: blocks/tarot/block.json
-#: build/blocks/tarot/block.json
 msgctxt "block keyword"
 msgid "card reading"
 msgstr ""
 
 #: blocks/tarot/block.json
-#: build/blocks/tarot/block.json
 msgctxt "block keyword"
 msgid "spread"
-msgstr ""
-
-#: build/blocks/list-yogas/block.json
-msgctxt "block title"
-msgid "List all planetary yogas - 300+ Vedic Yoga Glossary (Vedic Astrology)"
-msgstr ""
-
-#: build/blocks/list-yogas/block.json
-msgctxt "block description"
-msgid "List all planetary yogas - 300+ Vedic Yoga Glossary"
 msgstr ""
