@@ -101,10 +101,38 @@ class Test_Post_Language_Query extends \WP_UnitTestCase {
 		$this->assertStringContainsString( 'lang=de', $this->seen[0] );
 	}
 
-	public function test_no_language_configured_adds_no_query_parameter(): void {
-		// An English site must not gain a stray `lang=` on every request.
+	/**
+	 * An English site resolves to an EXPLICIT `en`, not to "no language".
+	 *
+	 * `Language::resolve()` falls back to the `get_locale()` prefix and `en` is a supported code,
+	 * so it returns `'en'` rather than `''`. That is pre-existing behaviour the GET path has always
+	 * had; this asserts the POST path now matches it rather than inventing a different rule. The
+	 * point of the test is the PLACEMENT: even the default language rides the query string and
+	 * never the body.
+	 */
+	public function test_an_english_site_sends_lang_en_on_the_query_string(): void {
 		$this->set_language( '' );
 		add_filter( 'locale', static fn() => 'en_US' );
+
+		\RoxyAPI\Generated\Client::generateNatalChart(
+			array(
+				'date'      => '1990-05-15',
+				'time'      => '14:30',
+				'latitude'  => -34.6037,
+				'longitude' => -58.3816,
+				'timezone'  => -3,
+			)
+		);
+
+		$this->assertStringContainsString( 'lang=en', $this->seen[0] );
+		$this->assertArrayNotHasKey( 'lang', $this->body() );
+	}
+
+	public function test_an_unsupported_site_locale_sends_no_language_at_all(): void {
+		// Japanese is not one of the eight supported codes, so resolve() returns '' and the URL
+		// must stay clean rather than carrying an empty `lang=`.
+		$this->set_language( '' );
+		add_filter( 'locale', static fn() => 'ja' );
 
 		\RoxyAPI\Generated\Client::generateNatalChart(
 			array(
