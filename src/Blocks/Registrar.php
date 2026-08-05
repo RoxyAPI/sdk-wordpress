@@ -33,7 +33,20 @@ class Registrar {
 		$block_files = glob( $blocks_dir . '/*/block.json' );
 		if ( $block_files ) {
 			foreach ( $block_files as $block_json ) {
-				register_block_type( dirname( $block_json ) );
+				$block_type = register_block_type( dirname( $block_json ) );
+				/**
+				 * Editor-side strings are translated by `@wordpress/i18n` in JavaScript, and those
+				 * only resolve once the script HANDLE is bound to the text domain. `wp-i18n` being
+				 * a declared dependency is not enough on its own: without this call the editor
+				 * panel stays English even when a language pack is installed and every PHP string
+				 * on the same screen is translated. No path argument, because wordpress.org builds
+				 * and serves the JSON translation files for hosted plugins.
+				 */
+				if ( $block_type instanceof \WP_Block_Type ) {
+					foreach ( $block_type->editor_script_handles as $handle ) {
+						wp_set_script_translations( $handle, 'roxyapi' );
+					}
+				}
 			}
 		}
 	}
