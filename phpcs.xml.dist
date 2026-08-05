@@ -9,6 +9,8 @@
 	<exclude-pattern>/build/*</exclude-pattern>
 	<exclude-pattern>/blocks/generated/*</exclude-pattern>
 	<exclude-pattern>/src/Generated/*</exclude-pattern>
+	<!-- Compiled translation caches emitted by `wp i18n make-php`, same category as src/Generated. -->
+	<exclude-pattern>/languages/*</exclude-pattern>
 
 	<arg value="sp"/>
 	<arg name="extensions" value="php"/>

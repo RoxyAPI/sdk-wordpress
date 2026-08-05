@@ -1,0 +1,607 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: RoxyAPI\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/roxyapi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: roxyapi build\n"
+
+msgid "1111"
+msgstr "1111"
+
+msgid "Admin only:"
+msgstr "Administrateurs uniquement :"
+
+msgid "Angel number"
+msgstr "Nombre angélique"
+
+msgid "Angel number lookup"
+msgstr "Recherche de nombre angélique"
+
+msgid "Any whole number you keep noticing"
+msgstr "Tout nombre entier que vous remarquez souvent"
+
+msgid "Ayanamsa"
+msgstr "Ayanamsa"
+
+msgid "Ayanamsa value"
+msgstr "Valeur de l'ayanamsa"
+
+msgid "Biorhythm"
+msgstr "Biorythme"
+
+msgid "Biorhythm reading"
+msgstr "Lecture de biorythme"
+
+msgid "Birth data"
+msgstr "Données de naissance"
+
+msgid "Birth date"
+msgstr "Date de naissance"
+
+msgid "Birth date in YYYY-MM-DD format"
+msgstr "Date de naissance au format AAAA-MM-JJ"
+
+msgid "Birth date of person 1 in YYYY-MM-DD format."
+msgstr "Date de naissance de la personne 1 au format AAAA-MM-JJ."
+
+msgid "Birth date of person 2 in YYYY-MM-DD format."
+msgstr "Date de naissance de la personne 2 au format AAAA-MM-JJ."
+
+msgid "Birth day (1-31)"
+msgstr "Jour de naissance (1-31)"
+
+msgid "Birth details"
+msgstr "Données de naissance"
+
+msgid "Birth latitude in decimal degrees"
+msgstr "Latitude de naissance en degrés décimaux"
+
+msgid "Birth location latitude in decimal degrees"
+msgstr "Latitude du lieu de naissance en degrés décimaux"
+
+msgid "Birth location latitude in decimal degrees (-90 to 90)"
+msgstr "Latitude du lieu de naissance en degrés décimaux (-90 à 90)"
+
+msgid "Birth location longitude in decimal degrees"
+msgstr "Longitude du lieu de naissance en degrés décimaux"
+
+msgid "Birth location longitude in decimal degrees (-180 to 180)"
+msgstr "Longitude du lieu de naissance en degrés décimaux (-180 à 180)"
+
+msgid "Birth longitude in decimal degrees"
+msgstr "Longitude de naissance en degrés décimaux"
+
+msgid "Birth month (1-12)"
+msgstr "Mois de naissance (1-12)"
+
+msgid "Birth time"
+msgstr "Heure de naissance"
+
+msgid "Birth time in 24-hour HH:MM:SS format"
+msgstr "Heure de naissance au format 24 heures HH:MM:SS"
+
+msgid "Birth year to calculate Life Path automatically"
+msgstr "Année de naissance pour calculer le chemin de vie automatiquement"
+
+msgid "Calculate"
+msgstr "Calculer"
+
+msgid "Calculate Compatibility - Relationship dynamics between two people"
+msgstr "Calculer la compatibilité. Dynamique relationnelle entre deux personnes"
+
+msgid "Calculate Human Design Penta - Small-group BG5 operating system for three to five people"
+msgstr "Calculer le Penta Human Design. Système BG5 pour les groupes de trois à cinq personnes"
+
+msgid "Calculate Human Design connection chart - Two-person composite bodygraph compatibility"
+msgstr "Calculer le graphique de connexion Human Design. Compatibilité de bodygraph pour deux personnes"
+
+msgid "Calculate chart"
+msgstr "Calculer le thème"
+
+msgid "Calculate compatibility - Biorhythm alignment between two people"
+msgstr "Calculer la compatibilité. Alignement des biorythmes entre deux personnes"
+
+msgid "Calculate compatibility score - Gun Milan API (Ashtakoot Matching)"
+msgstr "Calculer le score de compatibilité. Gun Milan (correspondance Ashtakoot)"
+
+msgid "Calculate cycles"
+msgstr "Calculer les cycles"
+
+msgid "Calculate synastry - Relationship compatibility analysis API"
+msgstr "Calculer la synastrie. Analyse de la compatibilité relationnelle"
+
+msgid "Check Mangal Dosha"
+msgstr "Vérifier le Mangal Dosha"
+
+msgid "Check Mangal Dosha (manglik) status for matrimonial compatibility, with severity, remedies, and exception conditions."
+msgstr "Vérifie le statut Mangal Dosha (manglik) pour la compatibilité matrimoniale, avec gravité, remèdes et conditions d'exception."
+
+msgid "Compatibility Score. Relationship compatibility analysis with category breakdown"
+msgstr "Score de compatibilité. Analyse de la compatibilité relationnelle avec répartition par catégorie"
+
+msgid "Compatibility score"
+msgstr "Score de compatibilité"
+
+msgid "Composite Chart - Midpoint relationship chart with interpretations"
+msgstr "Thème composite. Thème relationnel des points médians avec interprétations"
+
+msgid "Cross-domain forecast timeline - Transits, ingresses, stations, dasha changes, critical days"
+msgstr "Chronologie de prévision multidomaine. Transits, ingrès, stations, changements de dasha et jours critiques"
+
+msgid "Crystals and stones associated with any zodiac sign, with properties, color, and chakra."
+msgstr "Cristaux et pierres associés à chaque signe du zodiaque, avec propriétés, couleur et chakra."
+
+msgid "Crystals by zodiac"
+msgstr "Cristaux par signe"
+
+msgid "Crystals for your sign"
+msgstr "Cristaux pour votre signe"
+
+msgid "Current moon phase, illumination, sign, degree, and meaning."
+msgstr "Phase lunaire actuelle, illumination, signe, degré et signification."
+
+msgid "Custom Spread Builder"
+msgstr "Créateur de tirage personnalisé"
+
+msgid "Custom ayanamsa value in degrees"
+msgstr "Valeur d'ayanamsa personnalisée en degrés"
+
+msgid "Daily horoscope"
+msgstr "Horoscope du jour"
+
+msgid "Daily is one card. Three is past, present, future. Celtic is a ten-card layout."
+msgstr "Quotidien correspond à une carte. Trois représente le passé, le présent et le futur. Celtique est un tirage de dix cartes."
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Date and location"
+msgstr "Date et lieu"
+
+msgid "Date for the panchang reading"
+msgstr "Date pour la lecture du panchang"
+
+msgid "Date to evaluate compatibility on in YYYY-MM-DD format"
+msgstr "Date d'évaluation de la compatibilité au format AAAA-MM-JJ"
+
+msgid "Day"
+msgstr "Jour"
+
+msgid "Decimal degrees, negative for south"
+msgstr "Degrés décimaux, négatif pour le sud"
+
+msgid "Decimal degrees, negative for west"
+msgstr "Degrés décimaux, négatif pour l'ouest"
+
+msgid "Defaults to today if left blank"
+msgstr "Si le champ reste vide, la date du jour est utilisée"
+
+msgid "Detailed Hindu calendar for any date and location: tithi, nakshatra, yoga, karana, rahu kaal, abhijit muhurta, brahma muhurta, and more."
+msgstr "Calendrier hindou détaillé pour toute date et tout lieu : tithi, nakshatra, yoga, karana, rahu kaal, abhijit muhurta, brahma muhurta et plus encore."
+
+msgid "Detailed panchang"
+msgstr "Panchang détaillé"
+
+msgid "Did you mean: %1$s%2$s"
+msgstr "Vouliez-vous dire : %1$s%2$s"
+
+msgid "Domain weights"
+msgstr "Pondération des domaines"
+
+msgid "Draw cards"
+msgstr "Tirer les cartes"
+
+msgid "Drop events scoring below this significance threshold from 0 to 100"
+msgstr "Écarter les événements sous ce seuil de significativité, de 0 à 100"
+
+msgid "Drop events scoring below this significance threshold from 0 to 100 before the rollup"
+msgstr "Écarter les événements sous ce seuil de significativité, de 0 à 100, avant la synthèse"
+
+msgid "Drop transit events scoring below this significance threshold from 0 to 100"
+msgstr "Écarter les transits sous ce seuil de significativité, de 0 à 100"
+
+msgid "End date"
+msgstr "Date de fin"
+
+msgid "Expression"
+msgstr "Expression"
+
+msgid "Find by city"
+msgstr "Rechercher par ville"
+
+msgid "First and last name as recorded at birth"
+msgstr "Prénom et nom tels qu'enregistrés à la naissance"
+
+msgid "First day of the forecast window in YYYY-MM-DD format"
+msgstr "Premier jour de la période de prévision au format AAAA-MM-JJ"
+
+msgid "First day of the transit window in YYYY-MM-DD format"
+msgstr "Premier jour de la période de transit au format AAAA-MM-JJ"
+
+msgid "First day of the window in YYYY-MM-DD format"
+msgstr "Premier jour de la période au format AAAA-MM-JJ"
+
+msgid "Forecast digest - Pre-summarized next 24h, 7d, 30d, and 90d rollups"
+msgstr "Synthèse de prévision. Résumés des prochaines 24 h, 7, 30 et 90 jours"
+
+msgid "Full birth name to calculate Expression and Soul Urge numbers automatically"
+msgstr "Nom de naissance complet pour calculer automatiquement les nombres d'Expression et d'Âme"
+
+msgid "Full name"
+msgstr "Nom complet"
+
+msgid "Full name at birth"
+msgstr "Nom complet à la naissance"
+
+msgid "Generate Human Design transit overlay - Current planetary activations on a natal bodygraph"
+msgstr "Générer la superposition de transits Human Design. Activations planétaires actuelles sur le bodygraph natal"
+
+msgid "Generate KP chart"
+msgstr "Générer le thème KP"
+
+msgid "Generate kundli"
+msgstr "Générer le kundli"
+
+msgid "Get answer"
+msgstr "Obtenir la réponse"
+
+msgid "Get reading"
+msgstr "Obtenir la lecture"
+
+msgid "Gun Milan"
+msgstr "Gun Milan"
+
+msgid "House system"
+msgstr "Système de maisons"
+
+msgid "House system for both natal charts"
+msgstr "Système de maisons pour les deux thèmes natals"
+
+msgid "House system for the composite chart"
+msgstr "Système de maisons pour le thème composite"
+
+msgid "I consent to sending my inputs to generate this reading. See the Privacy Policy for details."
+msgstr "J'accepte l'envoi de mes informations pour générer cette lecture. Consultez la politique de confidentialité pour plus de détails."
+
+msgid "IANA name like America/New_York"
+msgstr "Nom IANA tel que America/New_York"
+
+msgid "IANA name like Asia/Kolkata"
+msgstr "Nom IANA tel que Asia/Kolkata"
+
+msgid "KP chart"
+msgstr "Thème KP"
+
+msgid "Krishnamurti Paddhati chart with cusps, planets, sub-lords, and significators."
+msgstr "Thème Krishnamurti Paddhati avec cuspides, planètes, sous-maîtres et significateurs."
+
+msgid "Last day of the forecast window in YYYY-MM-DD format"
+msgstr "Dernier jour de la période de prévision au format AAAA-MM-JJ"
+
+msgid "Last day of the transit window in YYYY-MM-DD format"
+msgstr "Dernier jour de la période de transit au format AAAA-MM-JJ"
+
+msgid "Last day of the window in YYYY-MM-DD format"
+msgstr "Dernier jour de la période au format AAAA-MM-JJ"
+
+msgid "Latitude"
+msgstr "Latitude"
+
+msgid "Life path"
+msgstr "Chemin de vie"
+
+msgid "Life path number"
+msgstr "Nombre du chemin de vie"
+
+msgid "Life path number and core meaning from a birth date."
+msgstr "Nombre du chemin de vie et sa signification essentielle à partir d'une date de naissance."
+
+msgid "Life path, expression, and soul urge from a name and date."
+msgstr "Chemin de vie, expression et élan de l'âme à partir d'un nom et d'une date."
+
+msgid "Local time of birth in 24-hour format"
+msgstr "Heure locale de naissance au format 24 heures"
+
+msgid "Longitude"
+msgstr "Longitude"
+
+msgid "Look up meaning"
+msgstr "Consulter la signification"
+
+msgid "Look up panchang"
+msgstr "Consulter le panchang"
+
+msgid "Lunar node convention for the North and South Node activations"
+msgstr "Convention des nœuds lunaires pour les activations des nœuds Nord et Sud"
+
+msgid "Mangal Dosha"
+msgstr "Mangal Dosha"
+
+msgid "Mangal Dosha check"
+msgstr "Vérification du Mangal Dosha"
+
+msgid "Meaning and pattern analysis for any number sequence."
+msgstr "Signification et analyse des motifs pour toute séquence de nombres."
+
+msgid "Min significance"
+msgstr "Significativité minimale"
+
+msgid "Min strength"
+msgstr "Force minimale"
+
+msgid "Minimum aspect strength threshold (0-100)"
+msgstr "Seuil minimal de force de l'aspect (0-100)"
+
+msgid "Month"
+msgstr "Mois"
+
+msgid "Moon phase"
+msgstr "Phase lunaire"
+
+msgid "Multiplier for this domain significance"
+msgstr "Multiplicateur de significativité pour ce domaine"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Natal chart"
+msgstr "Thème natal"
+
+msgid "Node type"
+msgstr "Type de nœud"
+
+msgid "Number of highest-significance events to surface per window"
+msgstr "Nombre d'événements les plus significatifs à afficher par période"
+
+msgid "Number sequence"
+msgstr "Séquence de nombres"
+
+msgid "Numerology"
+msgstr "Numérologie"
+
+msgid "Numerology chart"
+msgstr "Thème numérologique"
+
+msgid "Optional display name for this person"
+msgstr "Nom d'affichage facultatif pour cette personne"
+
+msgid "Optional name for your custom tarot spread layout"
+msgstr "Nom facultatif pour votre tirage de tarot personnalisé"
+
+msgid "Optional querent question to focus the custom tarot reading"
+msgstr "Question facultative du consultant pour orienter la lecture de tarot"
+
+msgid "Optional seed for reproducible results"
+msgstr "Graine facultative pour des résultats reproductibles"
+
+msgid "Optional. The card answers whatever you bring to it."
+msgstr "Facultatif. La carte répond à ce que vous lui apportez."
+
+msgid "Optional. The cards reflect on whatever you bring to them."
+msgstr "Facultatif. Les cartes reflètent ce que vous leur apportez."
+
+msgid "Panchang"
+msgstr "Panchang"
+
+msgid "Person 1"
+msgstr "Personne 1"
+
+msgid "Person 1 Expression number (1-9, 11, 22, 33)"
+msgstr "Nombre d'Expression de la personne 1 (1-9, 11, 22, 33)"
+
+msgid "Person 1 Life Path number (1-9, 11, 22, 33)"
+msgstr "Nombre du chemin de vie de la personne 1 (1-9, 11, 22, 33)"
+
+msgid "Person 1 Soul Urge number (1-9, 11, 22, 33)"
+msgstr "Nombre de l'Âme de la personne 1 (1-9, 11, 22, 33)"
+
+msgid "Person 2"
+msgstr "Personne 2"
+
+msgid "Person 2 Expression number (1-9, 11, 22, 33)"
+msgstr "Nombre d'Expression de la personne 2 (1-9, 11, 22, 33)"
+
+msgid "Person 2 Life Path number (1-9, 11, 22, 33)"
+msgstr "Nombre du chemin de vie de la personne 2 (1-9, 11, 22, 33)"
+
+msgid "Person 2 Soul Urge number (1-9, 11, 22, 33)"
+msgstr "Nombre de l'Âme de la personne 2 (1-9, 11, 22, 33)"
+
+msgid "Person a"
+msgstr "Personne A"
+
+msgid "Person b"
+msgstr "Personne B"
+
+msgid "Physical, emotional, and intellectual cycle values."
+msgstr "Valeurs des cycles physique, émotionnel et intellectuel."
+
+msgid "Pick your Sun sign"
+msgstr "Choisissez votre signe solaire"
+
+msgid "Question"
+msgstr "Question"
+
+msgid "Security check failed. Please reload the page and try again."
+msgstr "La vérification de sécurité a échoué. Rechargez la page et réessayez."
+
+msgid "Seed"
+msgstr "Graine"
+
+msgid "Select the timezone of the location."
+msgstr "Sélectionnez le fuseau horaire du lieu."
+
+msgid "Selecting a city auto-fills latitude, longitude, and timezone."
+msgstr "Choisir une ville remplit automatiquement la latitude, la longitude et le fuseau horaire."
+
+msgid "Should I take the new job"
+msgstr "Devrais-je accepter ce nouvel emploi"
+
+msgid "Show crystals"
+msgstr "Afficher les cristaux"
+
+msgid "Sidereal frame (ayanamsa) the chart is cast in"
+msgstr "Référentiel sidéral (ayanamsa) utilisé pour le calcul du thème"
+
+msgid "Significance floor from 0 to 100 for what counts as a significant date"
+msgstr "Seuil de significativité de 0 à 100 pour qu'une date soit considérée comme marquante"
+
+msgid "Significant dates - High-significance cross-domain forecast highlights"
+msgstr "Dates marquantes. Temps forts de la prévision multidomaine"
+
+msgid "Single card, three card, or Celtic Cross spreads."
+msgstr "Tirages d'une carte, de trois cartes ou en Croix celtique."
+
+msgid "Single-card Yes / No / Maybe answer with strength rating and interpretation."
+msgstr "Réponse en une carte Oui / Non / Peut-être, avec évaluation de la force et interprétation."
+
+msgid "Soul urge"
+msgstr "Élan de l'âme"
+
+msgid "Spread"
+msgstr "Tirage"
+
+msgid "Spread name"
+msgstr "Nom du tirage"
+
+msgid "Start anchor for every window in YYYY-MM-DD format"
+msgstr "Date de départ de chaque période au format AAAA-MM-JJ"
+
+msgid "Start date"
+msgstr "Date de début"
+
+msgid "Start typing a city name"
+msgstr "Commencez à saisir le nom d'une ville"
+
+msgid "Submit"
+msgstr "Envoyer"
+
+msgid "Synastry"
+msgstr "Synastrie"
+
+msgid "Target date"
+msgstr "Date cible"
+
+msgid "Tarot card"
+msgstr "Carte de tarot"
+
+msgid "Tarot reading"
+msgstr "Lecture de tarot"
+
+msgid "Tarot yes or no"
+msgstr "Tarot oui ou non"
+
+msgid "The birth_date attribute is required. Example: %s"
+msgstr "L'attribut birth_date est obligatoire. Exemple : %s"
+
+msgid "The birth_date attribute must be in YYYY-MM-DD format. Example: %s"
+msgstr "L'attribut birth_date doit être au format AAAA-MM-JJ. Exemple : %s"
+
+msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s"
+msgstr "Les attributs birth_date, birth_time, lat et lon sont obligatoires (tz par défaut 5.5 IST). Exemple : %s"
+
+msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to 5.5 IST; pass an IANA name like Asia/Kolkata for DST-correct results). Example: %s"
+msgstr "Les attributs birth_date, birth_time, lat et lon sont obligatoires (tz par défaut 5.5 IST ; utilisez un nom IANA tel que Asia/Kolkata pour des résultats corrects avec l'heure d'été). Exemple : %s"
+
+msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to UTC; pass an IANA name or decimal hours for accuracy). Example: %s"
+msgstr "Les attributs birth_date, birth_time, lat et lon sont obligatoires (tz par défaut UTC ; utilisez un nom IANA ou des heures décimales pour plus de précision). Exemple : %s"
+
+msgid "The date, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s"
+msgstr "Les attributs date, lat et lon sont obligatoires (tz par défaut 5.5 IST). Exemple : %s"
+
+msgid "The name and birth_date attributes are required. Example: %s"
+msgstr "Les attributs name et birth_date sont obligatoires. Exemple : %s"
+
+msgid "The number attribute is required. Example: %s"
+msgstr "L'attribut number est obligatoire. Exemple : %s"
+
+msgid "The sign attribute is required. Example: %s"
+msgstr "L'attribut sign est obligatoire. Exemple : %s"
+
+msgid "Time"
+msgstr "Heure"
+
+msgid "Timezone"
+msgstr "Fuseau horaire"
+
+msgid "Too many requests. Please try again in an hour."
+msgstr "Trop de requêtes. Réessayez dans une heure."
+
+msgid "Top"
+msgstr "Maximum"
+
+msgid "Transit Aspects - Detailed transit-to-natal aspect analysis with interpretations"
+msgstr "Aspects de transit. Analyse détaillée des aspects entre transits et thème natal avec interprétations"
+
+msgid "Transit date"
+msgstr "Date du transit"
+
+msgid "Transit date in YYYY-MM-DD UTC"
+msgstr "Date du transit en AAAA-MM-JJ UTC"
+
+msgid "Transit date in YYYY-MM-DD format"
+msgstr "Date du transit au format AAAA-MM-JJ"
+
+msgid "Transit time"
+msgstr "Heure du transit"
+
+msgid "Transit time in HH:MM:SS UTC"
+msgstr "Heure du transit en HH:MM:SS UTC"
+
+msgid "Transit time in HH:MM:SS format"
+msgstr "Heure du transit au format HH:MM:SS"
+
+msgid "Vedic"
+msgstr "Védique"
+
+msgid "Vedic 36-point Ashtakoota matrimonial compatibility with dosha cancellations and per-koot breakdown."
+msgstr "Compatibilité matrimoniale védique Ashtakoota sur 36 points, avec annulations de dosha et détail par koot."
+
+msgid "Vedic birth chart"
+msgstr "Thème natal védique"
+
+msgid "Vedic birth chart with twelve rashis, planetary positions, nakshatra, and per-house interpretations."
+msgstr "Thème natal védique avec douze rashis, positions planétaires, nakshatra et interprétations par maison."
+
+msgid "Vedic kundli"
+msgstr "Kundli védique"
+
+msgid "Western"
+msgstr "Occidental"
+
+msgid "Western astrology forecast - aspects, ingresses, stations, eclipses, moon phases"
+msgstr "Prévision d'astrologie occidentale. Aspects, ingrès, stations, éclipses et phases lunaires"
+
+msgid "Western birth chart"
+msgstr "Thème natal occidental"
+
+msgid "Western birth chart with planets, houses, and aspects."
+msgstr "Thème natal occidental avec planètes, maisons et aspects."
+
+msgid "Western compatibility percentage between two charts with sign, element, and aspect breakdown."
+msgstr "Pourcentage de compatibilité occidentale entre deux thèmes, avec détail par signe, élément et aspect."
+
+msgid "Western daily reading for any zodiac sign."
+msgstr "Lecture quotidienne occidentale pour tout signe du zodiaque."
+
+msgid "Western synastry chart between two birth charts with compatibility score and inter-aspects."
+msgstr "Thème de synastrie occidentale entre deux thèmes natals avec score de compatibilité et inter-aspects."
+
+msgid "What should I focus on this week"
+msgstr "Sur quoi devrais-je me concentrer cette semaine"
+
+msgid "Year"
+msgstr "Année"
+
+msgid "Year, month, and day of birth"
+msgstr "Année, mois et jour de naissance"
+
+msgid "Your question"
+msgstr "Votre question"
+
+msgid "Zodiac sign"
+msgstr "Signe du zodiaque"

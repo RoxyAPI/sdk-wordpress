@@ -1,0 +1,607 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: RoxyAPI\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/roxyapi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hi_IN\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: roxyapi build\n"
+
+msgid "1111"
+msgstr "1111"
+
+msgid "Admin only:"
+msgstr "केवल व्यवस्थापक के लिए:"
+
+msgid "Angel number"
+msgstr "एंजल नंबर"
+
+msgid "Angel number lookup"
+msgstr "एंजल नंबर खोजें"
+
+msgid "Any whole number you keep noticing"
+msgstr "कोई भी पूर्ण संख्या जो आपको बार-बार दिखती हो"
+
+msgid "Ayanamsa"
+msgstr "अयनांश"
+
+msgid "Ayanamsa value"
+msgstr "अयनांश मान"
+
+msgid "Biorhythm"
+msgstr "बायोरिदम"
+
+msgid "Biorhythm reading"
+msgstr "बायोरिदम विश्लेषण"
+
+msgid "Birth data"
+msgstr "जन्म विवरण"
+
+msgid "Birth date"
+msgstr "जन्म तिथि"
+
+msgid "Birth date in YYYY-MM-DD format"
+msgstr "YYYY-MM-DD प्रारूप में जन्म तिथि"
+
+msgid "Birth date of person 1 in YYYY-MM-DD format."
+msgstr "पहले व्यक्ति की जन्म तिथि, YYYY-MM-DD प्रारूप में।"
+
+msgid "Birth date of person 2 in YYYY-MM-DD format."
+msgstr "दूसरे व्यक्ति की जन्म तिथि, YYYY-MM-DD प्रारूप में।"
+
+msgid "Birth day (1-31)"
+msgstr "जन्म का दिन (1-31)"
+
+msgid "Birth details"
+msgstr "जन्म विवरण"
+
+msgid "Birth latitude in decimal degrees"
+msgstr "दशमलव अंश में जन्म का अक्षांश"
+
+msgid "Birth location latitude in decimal degrees"
+msgstr "दशमलव अंश में जन्म स्थान का अक्षांश"
+
+msgid "Birth location latitude in decimal degrees (-90 to 90)"
+msgstr "दशमलव अंश में जन्म स्थान का अक्षांश (-90 से 90)"
+
+msgid "Birth location longitude in decimal degrees"
+msgstr "दशमलव अंश में जन्म स्थान का देशांतर"
+
+msgid "Birth location longitude in decimal degrees (-180 to 180)"
+msgstr "दशमलव अंश में जन्म स्थान का देशांतर (-180 से 180)"
+
+msgid "Birth longitude in decimal degrees"
+msgstr "दशमलव अंश में जन्म का देशांतर"
+
+msgid "Birth month (1-12)"
+msgstr "जन्म का महीना (1-12)"
+
+msgid "Birth time"
+msgstr "जन्म समय"
+
+msgid "Birth time in 24-hour HH:MM:SS format"
+msgstr "24 घंटे के HH:MM:SS प्रारूप में जन्म समय"
+
+msgid "Birth year to calculate Life Path automatically"
+msgstr "मूलांक स्वतः निकालने के लिए जन्म वर्ष"
+
+msgid "Calculate"
+msgstr "गणना करें"
+
+msgid "Calculate Compatibility - Relationship dynamics between two people"
+msgstr "अनुकूलता की गणना करें। दो लोगों के बीच संबंधों की प्रकृति"
+
+msgid "Calculate Human Design Penta - Small-group BG5 operating system for three to five people"
+msgstr "ह्यूमन डिज़ाइन पेंटा की गणना करें। तीन से पाँच लोगों के समूह के लिए BG5 प्रणाली"
+
+msgid "Calculate Human Design connection chart - Two-person composite bodygraph compatibility"
+msgstr "ह्यूमन डिज़ाइन कनेक्शन चार्ट की गणना करें। दो लोगों की संयुक्त बॉडीग्राफ अनुकूलता"
+
+msgid "Calculate chart"
+msgstr "कुंडली बनाएँ"
+
+msgid "Calculate compatibility - Biorhythm alignment between two people"
+msgstr "अनुकूलता की गणना करें। दो लोगों के बायोरिदम का तालमेल"
+
+msgid "Calculate compatibility score - Gun Milan API (Ashtakoot Matching)"
+msgstr "अनुकूलता अंक की गणना करें। गुण मिलान (अष्टकूट मिलान)"
+
+msgid "Calculate cycles"
+msgstr "चक्रों की गणना करें"
+
+msgid "Calculate synastry - Relationship compatibility analysis API"
+msgstr "सिनैस्ट्री की गणना करें। संबंधों की अनुकूलता का विश्लेषण"
+
+msgid "Check Mangal Dosha"
+msgstr "मंगल दोष देखें"
+
+msgid "Check Mangal Dosha (manglik) status for matrimonial compatibility, with severity, remedies, and exception conditions."
+msgstr "विवाह अनुकूलता के लिए मंगल दोष (मांगलिक) की स्थिति, उसकी तीव्रता, उपाय और अपवाद स्थितियों सहित।"
+
+msgid "Compatibility Score. Relationship compatibility analysis with category breakdown"
+msgstr "अनुकूलता अंक। श्रेणीवार विवरण के साथ संबंधों की अनुकूलता का विश्लेषण"
+
+msgid "Compatibility score"
+msgstr "अनुकूलता अंक"
+
+msgid "Composite Chart - Midpoint relationship chart with interpretations"
+msgstr "कंपोजिट चार्ट। व्याख्या सहित मध्यबिंदु संबंध चार्ट"
+
+msgid "Cross-domain forecast timeline - Transits, ingresses, stations, dasha changes, critical days"
+msgstr "बहु-क्षेत्रीय भविष्यवाणी समयरेखा। गोचर, राशि प्रवेश, वक्री-मार्गी, दशा परिवर्तन और महत्वपूर्ण दिन"
+
+msgid "Crystals and stones associated with any zodiac sign, with properties, color, and chakra."
+msgstr "हर राशि से जुड़े रत्न और पत्थर, उनके गुण, रंग और चक्र सहित।"
+
+msgid "Crystals by zodiac"
+msgstr "राशि अनुसार रत्न"
+
+msgid "Crystals for your sign"
+msgstr "आपकी राशि के रत्न"
+
+msgid "Current moon phase, illumination, sign, degree, and meaning."
+msgstr "वर्तमान चंद्र कला, प्रकाश मात्रा, राशि, अंश और अर्थ।"
+
+msgid "Custom Spread Builder"
+msgstr "अपना स्प्रेड बनाएँ"
+
+msgid "Custom ayanamsa value in degrees"
+msgstr "अंशों में अपना अयनांश मान"
+
+msgid "Daily horoscope"
+msgstr "दैनिक राशिफल"
+
+msgid "Daily is one card. Three is past, present, future. Celtic is a ten-card layout."
+msgstr "दैनिक में एक कार्ड होता है। तीन कार्ड भूत, वर्तमान और भविष्य दर्शाते हैं। सेल्टिक क्रॉस दस कार्डों का विन्यास है।"
+
+msgid "Date"
+msgstr "तिथि"
+
+msgid "Date and location"
+msgstr "तिथि और स्थान"
+
+msgid "Date for the panchang reading"
+msgstr "पंचांग के लिए तिथि"
+
+msgid "Date to evaluate compatibility on in YYYY-MM-DD format"
+msgstr "अनुकूलता जाँचने की तिथि, YYYY-MM-DD प्रारूप में"
+
+msgid "Day"
+msgstr "दिन"
+
+msgid "Decimal degrees, negative for south"
+msgstr "दशमलव अंश, दक्षिण के लिए ऋणात्मक"
+
+msgid "Decimal degrees, negative for west"
+msgstr "दशमलव अंश, पश्चिम के लिए ऋणात्मक"
+
+msgid "Defaults to today if left blank"
+msgstr "खाली छोड़ने पर आज की तिथि ली जाएगी"
+
+msgid "Detailed Hindu calendar for any date and location: tithi, nakshatra, yoga, karana, rahu kaal, abhijit muhurta, brahma muhurta, and more."
+msgstr "किसी भी तिथि और स्थान के लिए विस्तृत पंचांग: तिथि, नक्षत्र, योग, करण, राहु काल, अभिजित मुहूर्त, ब्रह्म मुहूर्त और अधिक।"
+
+msgid "Detailed panchang"
+msgstr "विस्तृत पंचांग"
+
+msgid "Did you mean: %1$s%2$s"
+msgstr "क्या आपका मतलब था: %1$s%2$s"
+
+msgid "Domain weights"
+msgstr "क्षेत्रवार भार"
+
+msgid "Draw cards"
+msgstr "कार्ड निकालें"
+
+msgid "Drop events scoring below this significance threshold from 0 to 100"
+msgstr "0 से 100 के इस महत्व स्तर से नीचे की घटनाएँ हटाएँ"
+
+msgid "Drop events scoring below this significance threshold from 0 to 100 before the rollup"
+msgstr "सारांश बनाने से पहले 0 से 100 के इस महत्व स्तर से नीचे की घटनाएँ हटाएँ"
+
+msgid "Drop transit events scoring below this significance threshold from 0 to 100"
+msgstr "0 से 100 के इस महत्व स्तर से नीचे के गोचर हटाएँ"
+
+msgid "End date"
+msgstr "अंतिम तिथि"
+
+msgid "Expression"
+msgstr "नामांक"
+
+msgid "Find by city"
+msgstr "शहर से खोजें"
+
+msgid "First and last name as recorded at birth"
+msgstr "जन्म के समय दर्ज नाम और उपनाम"
+
+msgid "First day of the forecast window in YYYY-MM-DD format"
+msgstr "भविष्यवाणी अवधि का पहला दिन, YYYY-MM-DD प्रारूप में"
+
+msgid "First day of the transit window in YYYY-MM-DD format"
+msgstr "गोचर अवधि का पहला दिन, YYYY-MM-DD प्रारूप में"
+
+msgid "First day of the window in YYYY-MM-DD format"
+msgstr "अवधि का पहला दिन, YYYY-MM-DD प्रारूप में"
+
+msgid "Forecast digest - Pre-summarized next 24h, 7d, 30d, and 90d rollups"
+msgstr "भविष्यवाणी सारांश। अगले 24 घंटे, 7, 30 और 90 दिनों का तैयार सारांश"
+
+msgid "Full birth name to calculate Expression and Soul Urge numbers automatically"
+msgstr "नामांक और अंतरांक स्वतः निकालने के लिए जन्म के समय का पूरा नाम"
+
+msgid "Full name"
+msgstr "पूरा नाम"
+
+msgid "Full name at birth"
+msgstr "जन्म के समय का पूरा नाम"
+
+msgid "Generate Human Design transit overlay - Current planetary activations on a natal bodygraph"
+msgstr "ह्यूमन डिज़ाइन गोचर आवरण बनाएँ। जन्म बॉडीग्राफ पर वर्तमान ग्रह सक्रियताएँ"
+
+msgid "Generate KP chart"
+msgstr "केपी कुंडली बनाएँ"
+
+msgid "Generate kundli"
+msgstr "कुंडली बनाएँ"
+
+msgid "Get answer"
+msgstr "उत्तर पाएँ"
+
+msgid "Get reading"
+msgstr "विश्लेषण पाएँ"
+
+msgid "Gun Milan"
+msgstr "गुण मिलान"
+
+msgid "House system"
+msgstr "भाव पद्धति"
+
+msgid "House system for both natal charts"
+msgstr "दोनों जन्म कुंडलियों के लिए भाव पद्धति"
+
+msgid "House system for the composite chart"
+msgstr "कंपोजिट चार्ट के लिए भाव पद्धति"
+
+msgid "I consent to sending my inputs to generate this reading. See the Privacy Policy for details."
+msgstr "मैं यह विश्लेषण तैयार करने के लिए अपनी जानकारी भेजने की सहमति देता हूँ। विवरण के लिए गोपनीयता नीति देखें।"
+
+msgid "IANA name like America/New_York"
+msgstr "IANA नाम, जैसे America/New_York"
+
+msgid "IANA name like Asia/Kolkata"
+msgstr "IANA नाम, जैसे Asia/Kolkata"
+
+msgid "KP chart"
+msgstr "केपी कुंडली"
+
+msgid "Krishnamurti Paddhati chart with cusps, planets, sub-lords, and significators."
+msgstr "कृष्णमूर्ति पद्धति कुंडली, भाव संधि, ग्रह, उप-स्वामी और कारक सहित।"
+
+msgid "Last day of the forecast window in YYYY-MM-DD format"
+msgstr "भविष्यवाणी अवधि का अंतिम दिन, YYYY-MM-DD प्रारूप में"
+
+msgid "Last day of the transit window in YYYY-MM-DD format"
+msgstr "गोचर अवधि का अंतिम दिन, YYYY-MM-DD प्रारूप में"
+
+msgid "Last day of the window in YYYY-MM-DD format"
+msgstr "अवधि का अंतिम दिन, YYYY-MM-DD प्रारूप में"
+
+msgid "Latitude"
+msgstr "अक्षांश"
+
+msgid "Life path"
+msgstr "मूलांक"
+
+msgid "Life path number"
+msgstr "मूलांक"
+
+msgid "Life path number and core meaning from a birth date."
+msgstr "जन्म तिथि से मूलांक और उसका मूल अर्थ।"
+
+msgid "Life path, expression, and soul urge from a name and date."
+msgstr "नाम और तिथि से मूलांक, नामांक और अंतरांक।"
+
+msgid "Local time of birth in 24-hour format"
+msgstr "24 घंटे के प्रारूप में जन्म का स्थानीय समय"
+
+msgid "Longitude"
+msgstr "देशांतर"
+
+msgid "Look up meaning"
+msgstr "अर्थ देखें"
+
+msgid "Look up panchang"
+msgstr "पंचांग देखें"
+
+msgid "Lunar node convention for the North and South Node activations"
+msgstr "राहु और केतु की सक्रियता के लिए चंद्र नोड पद्धति"
+
+msgid "Mangal Dosha"
+msgstr "मंगल दोष"
+
+msgid "Mangal Dosha check"
+msgstr "मंगल दोष जाँच"
+
+msgid "Meaning and pattern analysis for any number sequence."
+msgstr "किसी भी अंक क्रम का अर्थ और पैटर्न विश्लेषण।"
+
+msgid "Min significance"
+msgstr "न्यूनतम महत्व"
+
+msgid "Min strength"
+msgstr "न्यूनतम बल"
+
+msgid "Minimum aspect strength threshold (0-100)"
+msgstr "दृष्टि बल का न्यूनतम स्तर (0-100)"
+
+msgid "Month"
+msgstr "महीना"
+
+msgid "Moon phase"
+msgstr "चंद्र कला"
+
+msgid "Multiplier for this domain significance"
+msgstr "इस क्षेत्र के महत्व का गुणक"
+
+msgid "Name"
+msgstr "नाम"
+
+msgid "Natal chart"
+msgstr "जन्म कुंडली"
+
+msgid "Node type"
+msgstr "नोड प्रकार"
+
+msgid "Number of highest-significance events to surface per window"
+msgstr "हर अवधि में दिखाई जाने वाली सर्वाधिक महत्वपूर्ण घटनाओं की संख्या"
+
+msgid "Number sequence"
+msgstr "अंक क्रम"
+
+msgid "Numerology"
+msgstr "अंक ज्योतिष"
+
+msgid "Numerology chart"
+msgstr "अंक ज्योतिष चार्ट"
+
+msgid "Optional display name for this person"
+msgstr "इस व्यक्ति के लिए वैकल्पिक प्रदर्शित नाम"
+
+msgid "Optional name for your custom tarot spread layout"
+msgstr "आपके टैरो स्प्रेड के लिए वैकल्पिक नाम"
+
+msgid "Optional querent question to focus the custom tarot reading"
+msgstr "टैरो विश्लेषण को केंद्रित करने के लिए वैकल्पिक प्रश्न"
+
+msgid "Optional seed for reproducible results"
+msgstr "दोहराए जा सकने वाले परिणामों के लिए वैकल्पिक सीड"
+
+msgid "Optional. The card answers whatever you bring to it."
+msgstr "वैकल्पिक। कार्ड उसी का उत्तर देता है जो आप उसके सामने रखते हैं।"
+
+msgid "Optional. The cards reflect on whatever you bring to them."
+msgstr "वैकल्पिक। कार्ड उसी को प्रतिबिंबित करते हैं जो आप उनके सामने रखते हैं।"
+
+msgid "Panchang"
+msgstr "पंचांग"
+
+msgid "Person 1"
+msgstr "पहला व्यक्ति"
+
+msgid "Person 1 Expression number (1-9, 11, 22, 33)"
+msgstr "पहले व्यक्ति का नामांक (1-9, 11, 22, 33)"
+
+msgid "Person 1 Life Path number (1-9, 11, 22, 33)"
+msgstr "पहले व्यक्ति का मूलांक (1-9, 11, 22, 33)"
+
+msgid "Person 1 Soul Urge number (1-9, 11, 22, 33)"
+msgstr "पहले व्यक्ति का अंतरांक (1-9, 11, 22, 33)"
+
+msgid "Person 2"
+msgstr "दूसरा व्यक्ति"
+
+msgid "Person 2 Expression number (1-9, 11, 22, 33)"
+msgstr "दूसरे व्यक्ति का नामांक (1-9, 11, 22, 33)"
+
+msgid "Person 2 Life Path number (1-9, 11, 22, 33)"
+msgstr "दूसरे व्यक्ति का मूलांक (1-9, 11, 22, 33)"
+
+msgid "Person 2 Soul Urge number (1-9, 11, 22, 33)"
+msgstr "दूसरे व्यक्ति का अंतरांक (1-9, 11, 22, 33)"
+
+msgid "Person a"
+msgstr "व्यक्ति अ"
+
+msgid "Person b"
+msgstr "व्यक्ति ब"
+
+msgid "Physical, emotional, and intellectual cycle values."
+msgstr "शारीरिक, भावनात्मक और बौद्धिक चक्रों के मान।"
+
+msgid "Pick your Sun sign"
+msgstr "अपनी सूर्य राशि चुनें"
+
+msgid "Question"
+msgstr "प्रश्न"
+
+msgid "Security check failed. Please reload the page and try again."
+msgstr "सुरक्षा जाँच विफल रही। कृपया पृष्ठ फिर से लोड करके प्रयास करें।"
+
+msgid "Seed"
+msgstr "सीड"
+
+msgid "Select the timezone of the location."
+msgstr "स्थान का समय क्षेत्र चुनें।"
+
+msgid "Selecting a city auto-fills latitude, longitude, and timezone."
+msgstr "शहर चुनने पर अक्षांश, देशांतर और समय क्षेत्र स्वतः भर जाते हैं।"
+
+msgid "Should I take the new job"
+msgstr "क्या मुझे नई नौकरी लेनी चाहिए"
+
+msgid "Show crystals"
+msgstr "रत्न दिखाएँ"
+
+msgid "Sidereal frame (ayanamsa) the chart is cast in"
+msgstr "वह निरयन पद्धति (अयनांश) जिसमें कुंडली बनाई गई है"
+
+msgid "Significance floor from 0 to 100 for what counts as a significant date"
+msgstr "किसी तिथि को महत्वपूर्ण मानने के लिए 0 से 100 के बीच न्यूनतम स्तर"
+
+msgid "Significant dates - High-significance cross-domain forecast highlights"
+msgstr "महत्वपूर्ण तिथियाँ। बहु-क्षेत्रीय भविष्यवाणी के प्रमुख बिंदु"
+
+msgid "Single card, three card, or Celtic Cross spreads."
+msgstr "एक कार्ड, तीन कार्ड या सेल्टिक क्रॉस स्प्रेड।"
+
+msgid "Single-card Yes / No / Maybe answer with strength rating and interpretation."
+msgstr "एक कार्ड से हाँ / नहीं / शायद उत्तर, बल स्तर और व्याख्या सहित।"
+
+msgid "Soul urge"
+msgstr "अंतरांक"
+
+msgid "Spread"
+msgstr "स्प्रेड"
+
+msgid "Spread name"
+msgstr "स्प्रेड का नाम"
+
+msgid "Start anchor for every window in YYYY-MM-DD format"
+msgstr "हर अवधि की आरंभ तिथि, YYYY-MM-DD प्रारूप में"
+
+msgid "Start date"
+msgstr "आरंभ तिथि"
+
+msgid "Start typing a city name"
+msgstr "शहर का नाम लिखना शुरू करें"
+
+msgid "Submit"
+msgstr "भेजें"
+
+msgid "Synastry"
+msgstr "सिनैस्ट्री"
+
+msgid "Target date"
+msgstr "लक्ष्य तिथि"
+
+msgid "Tarot card"
+msgstr "टैरो कार्ड"
+
+msgid "Tarot reading"
+msgstr "टैरो विश्लेषण"
+
+msgid "Tarot yes or no"
+msgstr "टैरो हाँ या नहीं"
+
+msgid "The birth_date attribute is required. Example: %s"
+msgstr "birth_date विशेषता आवश्यक है। उदाहरण: %s"
+
+msgid "The birth_date attribute must be in YYYY-MM-DD format. Example: %s"
+msgstr "birth_date विशेषता YYYY-MM-DD प्रारूप में होनी चाहिए। उदाहरण: %s"
+
+msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s"
+msgstr "birth_date, birth_time, lat और lon विशेषताएँ आवश्यक हैं (tz का डिफ़ॉल्ट 5.5 IST है)। उदाहरण: %s"
+
+msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to 5.5 IST; pass an IANA name like Asia/Kolkata for DST-correct results). Example: %s"
+msgstr "birth_date, birth_time, lat और lon विशेषताएँ आवश्यक हैं (tz का डिफ़ॉल्ट 5.5 IST है; डेलाइट सेविंग के अनुसार सही परिणामों के लिए Asia/Kolkata जैसा IANA नाम दें)। उदाहरण: %s"
+
+msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to UTC; pass an IANA name or decimal hours for accuracy). Example: %s"
+msgstr "birth_date, birth_time, lat और lon विशेषताएँ आवश्यक हैं (tz का डिफ़ॉल्ट UTC है; सटीकता के लिए IANA नाम या दशमलव घंटे दें)। उदाहरण: %s"
+
+msgid "The date, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s"
+msgstr "date, lat और lon विशेषताएँ आवश्यक हैं (tz का डिफ़ॉल्ट 5.5 IST है)। उदाहरण: %s"
+
+msgid "The name and birth_date attributes are required. Example: %s"
+msgstr "name और birth_date विशेषताएँ आवश्यक हैं। उदाहरण: %s"
+
+msgid "The number attribute is required. Example: %s"
+msgstr "number विशेषता आवश्यक है। उदाहरण: %s"
+
+msgid "The sign attribute is required. Example: %s"
+msgstr "sign विशेषता आवश्यक है। उदाहरण: %s"
+
+msgid "Time"
+msgstr "समय"
+
+msgid "Timezone"
+msgstr "समय क्षेत्र"
+
+msgid "Too many requests. Please try again in an hour."
+msgstr "बहुत अधिक अनुरोध हुए। कृपया एक घंटे बाद पुनः प्रयास करें।"
+
+msgid "Top"
+msgstr "अधिकतम"
+
+msgid "Transit Aspects - Detailed transit-to-natal aspect analysis with interpretations"
+msgstr "गोचर दृष्टियाँ। व्याख्या सहित गोचर और जन्म कुंडली के बीच दृष्टियों का विस्तृत विश्लेषण"
+
+msgid "Transit date"
+msgstr "गोचर तिथि"
+
+msgid "Transit date in YYYY-MM-DD UTC"
+msgstr "YYYY-MM-DD UTC में गोचर तिथि"
+
+msgid "Transit date in YYYY-MM-DD format"
+msgstr "YYYY-MM-DD प्रारूप में गोचर तिथि"
+
+msgid "Transit time"
+msgstr "गोचर समय"
+
+msgid "Transit time in HH:MM:SS UTC"
+msgstr "HH:MM:SS UTC में गोचर समय"
+
+msgid "Transit time in HH:MM:SS format"
+msgstr "HH:MM:SS प्रारूप में गोचर समय"
+
+msgid "Vedic"
+msgstr "वैदिक"
+
+msgid "Vedic 36-point Ashtakoota matrimonial compatibility with dosha cancellations and per-koot breakdown."
+msgstr "36 अंकों का वैदिक अष्टकूट विवाह मिलान, दोष निवारण और कूटवार विवरण सहित।"
+
+msgid "Vedic birth chart"
+msgstr "वैदिक जन्म कुंडली"
+
+msgid "Vedic birth chart with twelve rashis, planetary positions, nakshatra, and per-house interpretations."
+msgstr "बारह राशियों, ग्रह स्थितियों, नक्षत्र और भावानुसार व्याख्या सहित वैदिक जन्म कुंडली।"
+
+msgid "Vedic kundli"
+msgstr "वैदिक कुंडली"
+
+msgid "Western"
+msgstr "पाश्चात्य"
+
+msgid "Western astrology forecast - aspects, ingresses, stations, eclipses, moon phases"
+msgstr "पाश्चात्य ज्योतिष भविष्यवाणी। दृष्टियाँ, राशि प्रवेश, वक्री-मार्गी, ग्रहण और चंद्र कलाएँ"
+
+msgid "Western birth chart"
+msgstr "पाश्चात्य जन्म कुंडली"
+
+msgid "Western birth chart with planets, houses, and aspects."
+msgstr "ग्रहों, भावों और दृष्टियों सहित पाश्चात्य जन्म कुंडली।"
+
+msgid "Western compatibility percentage between two charts with sign, element, and aspect breakdown."
+msgstr "राशि, तत्व और दृष्टि के विवरण सहित दो कुंडलियों के बीच पाश्चात्य अनुकूलता प्रतिशत।"
+
+msgid "Western daily reading for any zodiac sign."
+msgstr "किसी भी राशि के लिए पाश्चात्य दैनिक राशिफल।"
+
+msgid "Western synastry chart between two birth charts with compatibility score and inter-aspects."
+msgstr "अनुकूलता अंक और परस्पर दृष्टियों सहित दो जन्म कुंडलियों के बीच पाश्चात्य सिनैस्ट्री चार्ट।"
+
+msgid "What should I focus on this week"
+msgstr "इस सप्ताह मुझे किस पर ध्यान देना चाहिए"
+
+msgid "Year"
+msgstr "वर्ष"
+
+msgid "Year, month, and day of birth"
+msgstr "जन्म का वर्ष, महीना और दिन"
+
+msgid "Your question"
+msgstr "आपका प्रश्न"
+
+msgid "Zodiac sign"
+msgstr "राशि"
