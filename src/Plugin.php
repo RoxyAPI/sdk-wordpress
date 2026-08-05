@@ -25,6 +25,7 @@ use RoxyAPI\Blocks\Category;
 use RoxyAPI\Blocks\Registrar as BlocksRegistrar;
 use RoxyAPI\Shortcodes\Registrar as ShortcodesRegistrar;
 use RoxyAPI\Support\FormRouter;
+use RoxyAPI\Support\LocaleFallback;
 use RoxyAPI\Support\Theming;
 use RoxyAPI\Support\UiBundle;
 
@@ -37,6 +38,10 @@ class Plugin {
 
 		register_activation_hook( $file, array( Activation::class, 'activate' ) );
 		register_deactivation_hook( $file, array( Activation::class, 'deactivate' ) );
+
+		// Registered here rather than in boot(): a just-in-time textdomain load can fire
+		// before plugins_loaded, and the filter has to already be in place when it does.
+		LocaleFallback::register();
 
 		add_action( 'plugins_loaded', array( self::class, 'boot' ) );
 	}
