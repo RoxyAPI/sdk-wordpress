@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology 1.7.5\n"
+"Project-Id-Version: RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology 1.7.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/roxyapi\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-05T19:14:19+00:00\n"
+"POT-Creation-Date: 2026-08-07T01:28:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: roxyapi\n"
@@ -82,7 +82,7 @@ msgid "Documentation"
 msgstr ""
 
 #: src/Admin/ActionLinks.php:69
-#: templates/admin-connected.php:349
+#: templates/admin-connected.php:361
 msgid "Support"
 msgstr ""
 
@@ -124,7 +124,7 @@ msgstr ""
 #: src/Admin/Assets.php:52
 #: src/Admin/DashboardWidget.php:132
 #: src/Admin/ShortcodesPage.php:116
-#: templates/admin-connected.php:156
+#: templates/admin-connected.php:158
 #: templates/admin-onboarding.php:130
 #: templates/admin-shortcodes.php:136
 msgid "Copy"
@@ -149,7 +149,7 @@ msgstr ""
 #. translators: %s: shortcode label
 #. translators: %s: shortcode title
 #: src/Admin/DashboardWidget.php:130
-#: templates/admin-connected.php:154
+#: templates/admin-connected.php:156
 #: templates/admin-onboarding.php:128
 #: templates/admin-shortcodes.php:134
 #, php-format
@@ -314,18 +314,22 @@ msgid "Russian"
 msgstr ""
 
 #: src/Admin/SettingsFields.php:170
+msgid "Hide the written text on every reading. Charts, tables, and values still show."
+msgstr ""
+
+#: src/Admin/SettingsFields.php:185
 msgid "Show a disclaimer line at the bottom of every reading."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:182
+#: src/Admin/SettingsFields.php:197
 msgid "Leave blank to use the localised default (\"For entertainment purposes only…\")."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:201
+#: src/Admin/SettingsFields.php:216
 msgid "Your reading"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:216
+#: src/Admin/SettingsFields.php:231
 #: src/Generated/Forms/CalculateBioCompatibilityForm.php:24
 #: src/Generated/Forms/CalculateCompatibilityForm.php:24
 #: src/Generated/Forms/CalculateConnectionForm.php:24
@@ -344,41 +348,41 @@ msgstr ""
 msgid "Get reading"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:230
+#: src/Admin/SettingsFields.php:245
 msgid "Fresh: 15 minutes (most up-to-date, more API calls)"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:231
+#: src/Admin/SettingsFields.php:246
 msgid "Balanced: 1 hour (recommended)"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:232
+#: src/Admin/SettingsFields.php:247
 msgid "Quota saver: 24 hours (fewer API calls, less fresh)"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:259
+#: src/Admin/SettingsFields.php:274
 msgid "Show source line on each reading."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:270
+#: src/Admin/SettingsFields.php:285
 msgid "Defined via ROXYAPI_KEY constant in wp-config.php. The settings field is locked."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:273
+#: src/Admin/SettingsFields.php:288
 msgid "A key is saved. Paste a new one to replace it. Leave blank to keep the current key."
 msgstr ""
 
 #. translators: %s URL to RoxyAPI pricing page
-#: src/Admin/SettingsFields.php:277
+#: src/Admin/SettingsFields.php:292
 #, php-format
 msgid "No key yet? Get one at %s."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:407
+#: src/Admin/SettingsFields.php:422
 msgid "API key format is invalid. Get a key at roxyapi.com."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:416
+#: src/Admin/SettingsFields.php:431
 msgid "Could not encrypt API key. Check that PHP openssl is installed."
 msgstr ""
 
@@ -401,6 +405,81 @@ msgstr ""
 #: templates/admin-shortcodes.php:53
 #: templates/admin-shortcodes.php:60
 msgid "Search shortcodes"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:59
+msgid "Site language"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:63
+msgid "Language used for the interface"
+msgstr ""
+
+#. translators: %s: WordPress locale code.
+#: src/Admin/SiteHealth.php:67
+#, php-format
+msgid "%s (does not match the site language, so something on this site is overriding it)"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:70
+msgid "Translation file"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:72
+msgid "None. This plugin ships no translation for that language."
+msgstr ""
+
+#: src/Admin/SiteHealth.php:76
+msgid "Translation file loaded"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:77
+#: src/Admin/SiteHealth.php:119
+#: src/Support/GenericRenderer.php:716
+#: src/Support/GenericRenderer.php:719
+msgid "Yes"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:77
+#: src/Support/GenericRenderer.php:719
+msgid "No"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:80
+msgid "Sample string translates"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:84
+msgid "Languages included with the plugin"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:90
+msgid "RoxyAPI translations"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:91
+msgid "How this plugin is resolving the site language. Copy this section into any report about wording appearing in the wrong language."
+msgstr ""
+
+#: src/Admin/SiteHealth.php:118
+#: src/Generated/Forms/BiorhythmForm.php:39
+#: src/Generated/Forms/CalculateBioCompatibilityForm.php:32
+#: src/Generated/Forms/CalculateBioCompatibilityForm.php:45
+#: src/Generated/Forms/KpChartForm.php:40
+#: src/Generated/Forms/KundliForm.php:40
+#: src/Generated/Forms/LifePathForm.php:39
+#: src/Generated/Forms/MangalDoshaForm.php:40
+#: src/Generated/Forms/NatalChartForm.php:40
+#: src/Generated/Forms/NumerologyForm.php:46
+msgid "Birth date"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:122
+msgid "No. The interface will render in English."
+msgstr ""
+
+#: src/Admin/SiteHealth.php:133
+msgid "None found."
 msgstr ""
 
 #: src/Api/Client.php:106
@@ -435,19 +514,19 @@ msgstr ""
 msgid "This reading could not be loaded right now. Please try again."
 msgstr ""
 
-#: src/Api/GeocodeRoute.php:86
+#: src/Api/GeocodeRoute.php:87
 msgid "Query is too short."
 msgstr ""
 
-#: src/Api/GeocodeRoute.php:89
+#: src/Api/GeocodeRoute.php:90
 msgid "Query is too long."
 msgstr ""
 
-#: src/Api/GeocodeRoute.php:93
-msgid "Too many requests. Slow down."
+#: src/Api/GeocodeRoute.php:94
+msgid "Too many city lookups. Try again shortly."
 msgstr ""
 
-#: src/Api/GeocodeRoute.php:109
+#: src/Api/GeocodeRoute.php:110
 msgid "Search is temporarily unavailable."
 msgstr ""
 
@@ -531,18 +610,6 @@ msgstr ""
 
 #: src/Generated/Forms/BiorhythmForm.php:32
 msgid "Calculate cycles"
-msgstr ""
-
-#: src/Generated/Forms/BiorhythmForm.php:39
-#: src/Generated/Forms/CalculateBioCompatibilityForm.php:32
-#: src/Generated/Forms/CalculateBioCompatibilityForm.php:45
-#: src/Generated/Forms/KpChartForm.php:40
-#: src/Generated/Forms/KundliForm.php:40
-#: src/Generated/Forms/LifePathForm.php:39
-#: src/Generated/Forms/MangalDoshaForm.php:40
-#: src/Generated/Forms/NatalChartForm.php:40
-#: src/Generated/Forms/NumerologyForm.php:46
-msgid "Birth date"
 msgstr ""
 
 #: src/Generated/Forms/BiorhythmForm.php:42
@@ -969,6 +1036,7 @@ msgid "Optional display name for this person"
 msgstr ""
 
 #: src/Generated/Forms/CalculateSynastryForm.php:138
+#: src/Generated/Forms/CalculateTransitAspectsForm.php:101
 #: src/Generated/Forms/GenerateCompositeChartForm.php:124
 msgid "House system"
 msgstr ""
@@ -1008,6 +1076,10 @@ msgstr ""
 
 #: src/Generated/Forms/CalculateTransitAspectsForm.php:93
 msgid "Minimum aspect strength threshold (0-100)"
+msgstr ""
+
+#: src/Generated/Forms/CalculateTransitAspectsForm.php:103
+msgid "House system used to divide the natal chart into 12 houses"
 msgstr ""
 
 #: src/Generated/Forms/CastCustomSpreadForm.php:23
@@ -1373,49 +1445,49 @@ msgid "Should I take the new job"
 msgstr ""
 
 #. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/AngelNumber.php:59
-#: src/Generated/Heroes/AngelNumber.php:86
+#: src/Generated/Heroes/AngelNumber.php:60
+#: src/Generated/Heroes/AngelNumber.php:87
 #, php-format
 msgid "The number attribute is required. Example: %s"
 msgstr ""
 
 #. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/Biorhythm.php:60
-#: src/Generated/Heroes/Biorhythm.php:95
-#: src/Generated/Heroes/LifePath.php:59
-#: src/Generated/Heroes/LifePath.php:94
+#: src/Generated/Heroes/Biorhythm.php:61
+#: src/Generated/Heroes/Biorhythm.php:96
+#: src/Generated/Heroes/LifePath.php:60
+#: src/Generated/Heroes/LifePath.php:95
 #, php-format
 msgid "The birth_date attribute is required. Example: %s"
 msgstr ""
 
 #. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/CrystalsByZodiac.php:59
-#: src/Generated/Heroes/CrystalsByZodiac.php:86
+#: src/Generated/Heroes/CrystalsByZodiac.php:60
+#: src/Generated/Heroes/CrystalsByZodiac.php:87
 #, php-format
 msgid "The sign attribute is required. Example: %s"
 msgstr ""
 
 #. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/KpChart.php:63
-#: src/Generated/Heroes/KpChart.php:100
-#: src/Generated/Heroes/MangalDosha.php:63
-#: src/Generated/Heroes/MangalDosha.php:100
+#: src/Generated/Heroes/KpChart.php:64
+#: src/Generated/Heroes/KpChart.php:101
+#: src/Generated/Heroes/MangalDosha.php:64
+#: src/Generated/Heroes/MangalDosha.php:101
 #, php-format
 msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s"
 msgstr ""
 
 #. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/Kundli.php:63
-#: src/Generated/Heroes/Kundli.php:100
+#: src/Generated/Heroes/Kundli.php:64
+#: src/Generated/Heroes/Kundli.php:101
 #, php-format
 msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to 5.5 IST; pass an IANA name like Asia/Kolkata for DST-correct results). Example: %s"
 msgstr ""
 
 #. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/LifePath.php:65
-#: src/Generated/Heroes/LifePath.php:100
-#: src/Generated/Heroes/Numerology.php:67
-#: src/Generated/Heroes/Numerology.php:104
+#: src/Generated/Heroes/LifePath.php:66
+#: src/Generated/Heroes/LifePath.php:101
+#: src/Generated/Heroes/Numerology.php:68
+#: src/Generated/Heroes/Numerology.php:105
 #, php-format
 msgid "The birth_date attribute must be in YYYY-MM-DD format. Example: %s"
 msgstr ""
@@ -1535,47 +1607,47 @@ msgid "Crystals and stones associated with any zodiac sign, with properties, col
 msgstr ""
 
 #. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/NatalChart.php:63
-#: src/Generated/Heroes/NatalChart.php:100
+#: src/Generated/Heroes/NatalChart.php:64
+#: src/Generated/Heroes/NatalChart.php:101
 #, php-format
 msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to UTC; pass an IANA name or decimal hours for accuracy). Example: %s"
 msgstr ""
 
 #. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/Numerology.php:60
-#: src/Generated/Heroes/Numerology.php:97
+#: src/Generated/Heroes/Numerology.php:61
+#: src/Generated/Heroes/Numerology.php:98
 #, php-format
 msgid "The name and birth_date attributes are required. Example: %s"
 msgstr ""
 
 #. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/Panchang.php:62
-#: src/Generated/Heroes/Panchang.php:97
+#: src/Generated/Heroes/Panchang.php:63
+#: src/Generated/Heroes/Panchang.php:98
 #, php-format
 msgid "The date, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s"
 msgstr ""
 
-#: src/Plugin.php:167
+#: src/Plugin.php:213
 msgid "Searching cities…"
 msgstr ""
 
-#: src/Plugin.php:168
+#: src/Plugin.php:214
 msgid "No matching cities. Try a different spelling."
 msgstr ""
 
-#: src/Plugin.php:169
+#: src/Plugin.php:215
 msgid "City selected."
 msgstr ""
 
-#: src/Plugin.php:170
+#: src/Plugin.php:216
 msgid "Search is unavailable. Enter coordinates manually."
 msgstr ""
 
-#: src/Shortcodes/Horoscope.php:100
+#: src/Shortcodes/Horoscope.php:110
 msgid "Security check failed. Please reload the page and try again."
 msgstr ""
 
-#: src/Shortcodes/Horoscope.php:103
+#: src/Shortcodes/Horoscope.php:113
 msgid "Too many requests. Please try again in an hour."
 msgstr ""
 
@@ -1632,15 +1704,6 @@ msgstr ""
 msgid "%s is required."
 msgstr ""
 
-#: src/Support/GenericRenderer.php:639
-#: src/Support/GenericRenderer.php:642
-msgid "Yes"
-msgstr ""
-
-#: src/Support/GenericRenderer.php:642
-msgid "No"
-msgstr ""
-
 #: src/Support/Templates.php:88
 msgid "Admin only:"
 msgstr ""
@@ -1651,188 +1714,196 @@ msgstr ""
 msgid "Did you mean: %1$s%2$s"
 msgstr ""
 
-#: templates/admin-connected.php:68
+#: templates/admin-connected.php:70
 msgid "Connect"
 msgstr ""
 
-#: templates/admin-connected.php:69
+#: templates/admin-connected.php:71
 msgid "Branding"
 msgstr ""
 
-#: templates/admin-connected.php:70
+#: templates/admin-connected.php:72
 msgid "Display"
 msgstr ""
 
-#: templates/admin-connected.php:71
+#: templates/admin-connected.php:73
 msgid "Privacy"
 msgstr ""
 
-#: templates/admin-connected.php:72
+#: templates/admin-connected.php:74
 msgid "Advanced"
 msgstr ""
 
-#: templates/admin-connected.php:102
+#: templates/admin-connected.php:104
 msgid "RoxyAPI is"
 msgstr ""
 
-#: templates/admin-connected.php:103
+#: templates/admin-connected.php:105
 msgid "connected."
 msgstr ""
 
-#: templates/admin-connected.php:108
+#: templates/admin-connected.php:110
 msgid "RoxyAPI settings"
 msgstr ""
 
-#: templates/admin-connected.php:136
+#: templates/admin-connected.php:138
 msgid "Connected to RoxyAPI."
 msgstr ""
 
-#: templates/admin-connected.php:137
+#: templates/admin-connected.php:139
 msgid "Drop a shortcode on any page to render a reading."
 msgstr ""
 
-#: templates/admin-connected.php:142
+#: templates/admin-connected.php:144
 msgid "Quick start"
 msgstr ""
 
-#: templates/admin-connected.php:144
+#: templates/admin-connected.php:146
 msgid "Three working shortcodes. Copy. Paste. Publish."
 msgstr ""
 
-#: templates/admin-connected.php:163
+#: templates/admin-connected.php:165
 #: templates/admin-onboarding.php:137
 msgid "Browse all shortcodes"
 msgstr ""
 
-#: templates/admin-connected.php:170
+#: templates/admin-connected.php:172
 msgid "Manage your key"
 msgstr ""
 
-#: templates/admin-connected.php:172
+#: templates/admin-connected.php:174
 msgid "Replace key"
 msgstr ""
 
-#: templates/admin-connected.php:178
+#: templates/admin-connected.php:180
 #: templates/admin-onboarding.php:100
 msgid "Save key"
 msgstr ""
 
-#: templates/admin-connected.php:181
+#: templates/admin-connected.php:183
 #: templates/admin-onboarding.php:103
 msgid "Test Connection"
 msgstr ""
 
-#: templates/admin-connected.php:198
+#: templates/admin-connected.php:200
 msgid "Brand accent"
 msgstr ""
 
-#: templates/admin-connected.php:200
+#: templates/admin-connected.php:202
 msgid "A single accent colour for card titles, form buttons, and source links. Leave blank to inherit your theme."
 msgstr ""
 
-#: templates/admin-connected.php:208
+#: templates/admin-connected.php:210
 msgid "Theme"
 msgstr ""
 
-#: templates/admin-connected.php:210
+#: templates/admin-connected.php:212
 msgid "Light, dark, or auto for chart readings. Auto follows the visitor device setting."
 msgstr ""
 
-#: templates/admin-connected.php:218
+#: templates/admin-connected.php:220
 msgid "Reading language"
 msgstr ""
 
-#: templates/admin-connected.php:220
+#: templates/admin-connected.php:222
 msgid "Language for visitor-facing reading text. Default follows the site language."
 msgstr ""
 
-#: templates/admin-connected.php:229
+#: templates/admin-connected.php:231
 msgid "Save branding"
 msgstr ""
 
-#: templates/admin-connected.php:241
+#: templates/admin-connected.php:243
+msgid "Written readings"
+msgstr ""
+
+#: templates/admin-connected.php:248
+msgid "Turn this on to show the chart on its own, without the written report. It applies to every reading on the site. To set it for one placement instead, add hide_readings=\"1\" or hide_readings=\"0\" to that shortcode."
+msgstr ""
+
+#: templates/admin-connected.php:253
 msgid "Show source"
 msgstr ""
 
-#: templates/admin-connected.php:246
+#: templates/admin-connected.php:258
 msgid "A small line at the bottom of each card showing where the data comes from. Off by default."
 msgstr ""
 
-#: templates/admin-connected.php:251
+#: templates/admin-connected.php:263
 msgid "Disclaimer"
 msgstr ""
 
-#: templates/admin-connected.php:256
+#: templates/admin-connected.php:268
 msgid "Append a disclaimer to every reading. Useful for jurisdictions that require an \"entertainment only\" line. Empty text falls back to the localised default."
 msgstr ""
 
-#: templates/admin-connected.php:264
+#: templates/admin-connected.php:276
 msgid "Visitor form copy"
 msgstr ""
 
-#: templates/admin-connected.php:266
+#: templates/admin-connected.php:278
 msgid "Override the title and submit button shown above visitor forms. Leave blank to use the localised default."
 msgstr ""
 
-#: templates/admin-connected.php:270
+#: templates/admin-connected.php:282
 msgid "Form title"
 msgstr ""
 
-#: templates/admin-connected.php:276
+#: templates/admin-connected.php:288
 msgid "Submit button text"
 msgstr ""
 
-#: templates/admin-connected.php:284
+#: templates/admin-connected.php:296
 msgid "Save display"
 msgstr ""
 
-#: templates/admin-connected.php:293
+#: templates/admin-connected.php:305
 msgid "Visitor privacy"
 msgstr ""
 
-#: templates/admin-connected.php:295
+#: templates/admin-connected.php:307
 msgid "Visitor forms collect birth date, time, and location to compute readings. Visitors must confirm consent before each submission. Edit the consent text below; leave blank for the localised default."
 msgstr ""
 
-#: templates/admin-connected.php:301
+#: templates/admin-connected.php:313
 msgid "Consent label shown next to the form checkbox"
 msgstr ""
 
 #. translators: %s: link to WordPress Privacy Policy editor
-#: templates/admin-connected.php:311
+#: templates/admin-connected.php:323
 #, php-format
 msgid "The plugin auto-injects suggested privacy text into the WordPress Privacy Policy editor. Review or accept it at %s."
 msgstr ""
 
-#: templates/admin-connected.php:312
+#: templates/admin-connected.php:324
 msgid "Settings &rarr; Privacy"
 msgstr ""
 
-#: templates/admin-connected.php:318
+#: templates/admin-connected.php:330
 msgid "Save privacy"
 msgstr ""
 
-#: templates/admin-connected.php:328
+#: templates/admin-connected.php:340
 msgid "Cache"
 msgstr ""
 
-#: templates/admin-connected.php:330
+#: templates/admin-connected.php:342
 msgid "How long RoxyAPI caches each reading on this site. Lower = fresher. Higher = saves API quota."
 msgstr ""
 
-#: templates/admin-connected.php:339
+#: templates/admin-connected.php:351
 msgid "Save advanced"
 msgstr ""
 
-#: templates/admin-connected.php:347
+#: templates/admin-connected.php:359
 msgid "RoxyAPI resources"
 msgstr ""
 
-#: templates/admin-connected.php:348
+#: templates/admin-connected.php:360
 msgid "Docs"
 msgstr ""
 
-#: templates/admin-connected.php:350
+#: templates/admin-connected.php:362
 msgid "Open dashboard at roxyapi.com"
 msgstr ""
 
