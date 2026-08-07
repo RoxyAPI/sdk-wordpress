@@ -96,6 +96,14 @@ class CalculateTransitAspectsForm {
 					'max' => 100,
 					'step' => 'any',
 				),
+				array(
+					'name' => 'houseSystem',
+					'label' => __( 'House system', 'roxyapi' ),
+					'required' => false,
+					'help' => __( 'House system used to divide the natal chart into 12 houses', 'roxyapi' ),
+					'type' => 'enum',
+					'enum' => array( 'placidus', 'whole-sign', 'equal', 'koch' ),
+				),
 			),
 		);
 	}

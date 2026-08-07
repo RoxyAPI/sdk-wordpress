@@ -210,6 +210,14 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.8.0 =
+* New: show the chart without the written reading. Tick "Hide written readings" under Display to keep the wheels, tables and numbers while leaving the interpretation out, or set hide_readings on a single shortcode to control one placement. Off by default, so nothing changes until you turn it on.
+* New: a transit wheel. [roxy_calculate_transit_aspects] now draws the birth chart on an inner ring and the transiting planets on an outer ring, with the aspects between them, instead of a table of aspects.
+* Fixed: the birth details form and the reading stayed in English on some sites even when the site language was set correctly. The plugin now loads its own translations rather than waiting for WordPress to find them.
+* New: Tools then Site Health then Info now carries a RoxyAPI section showing your site language, the language the plugin is actually using, and whether its translations loaded. Paste that into a support message and we can answer in one reply.
+* Fixed: on some themes the city search results appeared as a see-through bulleted list sitting on top of the fields below. They now render as a proper dropdown on any theme.
+* Fixed: city search stopped returning results after a handful of tries. The hourly limit per visitor is five times higher, and when it is reached the form now says so instead of showing an empty list.
+
 = 1.7.6 =
 * Regional language settings now show the translated form. A site set to Spanish (Argentina), Spanish (Mexico), Portuguese (Portugal), German (Austria) or French (Canada) previously fell back to English even though that language was included. It now uses the translation for that language.
 
@@ -387,6 +395,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.8.0 =
+Recommended for every site. Non-English sites get translations that load reliably, city search is fixed on themes that were breaking the results list, and you can now show a chart without its written reading.
 
 = 1.7.6 =
 Recommended if your site language is a regional variant such as Spanish (Argentina) or Portuguese (Portugal). Those sites now get the translated form.

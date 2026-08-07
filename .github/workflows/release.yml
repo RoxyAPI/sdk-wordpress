@@ -77,6 +77,14 @@ jobs:
                   BUMP="${{ github.event.inputs.version_bump || 'patch' }}"
                   npm version "$BUMP" --no-git-tag-version
                   VERSION=$(node -p "require('./package.json').version")
+                  # readme.txt notes are HAND-authored: this job only rewrites Stable tag.
+                  # Without this gate a release ships with the previous version as its
+                  # newest note, and a site owner has no way to see what changed.
+                  ENTRIES=$(grep -c "^= $VERSION =\$" readme.txt || true)
+                  if [ "$ENTRIES" -lt 2 ]; then
+                    echo "::error::readme.txt needs a '= $VERSION =' entry under BOTH == Changelog == and == Upgrade Notice == (found $ENTRIES of 2). They are hand-written; add them, then re-run."
+                    exit 1
+                  fi
                   echo "version=$VERSION" >> $GITHUB_OUTPUT
                   sed -i "s/^\(\s*\*\s*Version:\s*\).*/\1$VERSION/" roxyapi.php
                   sed -i "s/const ROXYAPI_VERSION\s*=\s*'[^']*';/const ROXYAPI_VERSION     = '$VERSION';/" roxyapi.php

@@ -259,6 +259,7 @@ class Endpoints {
 				'transit_date' => '2026-02-03',
 				'transit_time' => '12:00:00',
 				'min_strength' => '50',
+				'house_system' => 'placidus',
 			),
 		),
 		'generateSolarReturn' => array(

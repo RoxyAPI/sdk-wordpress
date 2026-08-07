@@ -140,8 +140,8 @@ class ComponentMap {
 			),
 			'calculateTransitAspects' => array(
 				array(
-					'component' => 'roxy-aspects-table',
-					'kind'      => 'table',
+					'component' => 'roxy-transit-wheel',
+					'kind'      => 'chart',
 				),
 			),
 			'calculateTransits' => array(
