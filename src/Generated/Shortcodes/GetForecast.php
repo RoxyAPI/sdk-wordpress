@@ -34,6 +34,7 @@ class GetForecast {
 			'birth_date' => '',
 			'start_date' => '',
 			'end_date' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -57,6 +58,6 @@ class GetForecast {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getForecast', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getForecast', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

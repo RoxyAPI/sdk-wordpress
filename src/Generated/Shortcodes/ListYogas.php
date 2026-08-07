@@ -33,6 +33,7 @@ class ListYogas {
 			array(
 			'lang' => '',
 			'family' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -46,6 +47,6 @@ class ListYogas {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'listYogas', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'listYogas', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

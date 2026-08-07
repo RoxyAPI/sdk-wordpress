@@ -34,6 +34,7 @@ class GetCitiesByCountry {
 			'iso2' => '',
 			'limit' => '',
 			'offset' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -47,6 +48,6 @@ class GetCitiesByCountry {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getCitiesByCountry', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getCitiesByCountry', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

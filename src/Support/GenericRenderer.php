@@ -108,6 +108,14 @@ class GenericRenderer {
 	 */
 	private const BADGE_TRUE_PREFIXES = array( 'has_', 'is_' );
 
+	/**
+	 * Substring that marks a field as written interpretation. Matched
+	 * case-insensitively against the raw field name, so `interpretation`,
+	 * `aspectsInterpretation`, `interpretationKey` and anything a later
+	 * endpoint names the same way are all covered without a per-endpoint list.
+	 */
+	private const READING_KEY_MARKER = 'interpretation';
+
 	/** Field names whose string value is treated as an image URL. */
 	private const IMAGE_KEYS = array( 'image', 'image_url', 'imageurl', 'photo', 'picture', 'thumbnail', 'thumbnail_url', 'cover', 'avatar' );
 
@@ -133,9 +141,18 @@ class GenericRenderer {
 	 *                                           fallback does not hide them once
 	 *                                           the element upgrades. See
 	 *                                           {@link ComponentRenderer}.
+	 * @param bool                 $hide_readings Whether to drop written
+	 *                                           interpretations, leaving the
+	 *                                           positions, values and tables.
+	 *                                           Resolved by {@link ComponentRenderer}
+	 *                                           so this card and the component it
+	 *                                           backs never disagree.
 	 * @return string
 	 */
-	public static function render( string $operation_id, array $data, bool $include_meta = true ): string {
+	public static function render( string $operation_id, array $data, bool $include_meta = true, bool $hide_readings = false ): string {
+		if ( $hide_readings ) {
+			$data = self::strip_readings( $data );
+		}
 		if ( empty( $data ) ) {
 			return '';
 		}
@@ -482,6 +499,66 @@ class GenericRenderer {
 			$out[ $key ] = $value;
 		}
 		return $out;
+	}
+
+	/**
+	 * Drop written interpretations from a response, at every nesting level.
+	 *
+	 * Two field-name rules, so the renderer stays shape-agnostic and a whole
+	 * column or section disappears together instead of some rows of it:
+	 *
+	 *   1. A field whose name carries {@see READING_KEY_MARKER} goes whole,
+	 *      whatever it holds. Those fields exist only to carry written text,
+	 *      including the scaffolding beside it (`interpretationKey`).
+	 *   2. A prose field (the lede and quote vocabularies, which are the
+	 *      slots this renderer already reserves for written text) goes only
+	 *      when it holds a string. The same names carry structure elsewhere:
+	 *      a natal `summary` OBJECT is dominant element and modality, which
+	 *      is chart data, while a `summary` STRING is the written report.
+	 *
+	 * Containers left empty by the pass are dropped too, so an interpretation
+	 * object never renders as a bare heading. Lists are re-indexed so a list
+	 * that lost an entry still renders as a list.
+	 *
+	 * @param array<string, mixed> $data Object or list data.
+	 * @return array<string, mixed>
+	 */
+	private static function strip_readings( array $data ): array {
+		$out = array();
+		foreach ( $data as $key => $value ) {
+			$lc = strtolower( (string) $key );
+			if ( strpos( $lc, self::READING_KEY_MARKER ) !== false ) {
+				continue;
+			}
+			if ( is_string( $value ) && self::is_prose_key( $lc ) ) {
+				continue;
+			}
+			if ( is_array( $value ) ) {
+				$stripped = self::strip_readings( $value );
+				if ( empty( $stripped ) ) {
+					continue;
+				}
+				$value = self::is_list( $value ) ? array_values( $stripped ) : $stripped;
+			}
+			$out[ $key ] = $value;
+		}
+		return $out;
+	}
+
+	/**
+	 * True when the field name is one of the written-prose slots.
+	 *
+	 * @param string $key_lc Already-lowercased field name.
+	 * @return bool
+	 */
+	private static function is_prose_key( string $key_lc ): bool {
+		$collapsed = str_replace( array( '_', '-' ), '', $key_lc );
+		foreach ( array( self::LEDE_KEYS, self::QUOTE_KEYS ) as $vocabulary ) {
+			if ( in_array( $key_lc, $vocabulary, true ) || in_array( $collapsed, $vocabulary, true ) ) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**

@@ -32,6 +32,7 @@ class GetDreamSymbol {
 		$atts = shortcode_atts(
 			array(
 			'id' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -45,6 +46,6 @@ class GetDreamSymbol {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getDreamSymbol', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getDreamSymbol', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

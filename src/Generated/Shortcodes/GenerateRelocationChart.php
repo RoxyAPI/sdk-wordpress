@@ -39,6 +39,7 @@ class GenerateRelocationChart {
 			'relocation_latitude' => '',
 			'relocation_longitude' => '',
 			'house_system' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -67,6 +68,6 @@ class GenerateRelocationChart {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'generateRelocationChart', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'generateRelocationChart', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

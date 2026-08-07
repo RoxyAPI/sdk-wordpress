@@ -33,6 +33,7 @@ class GetDailyHexagram {
 			array(
 			'seed' => '',
 			'date' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -55,6 +56,6 @@ class GetDailyHexagram {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getDailyHexagram', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getDailyHexagram', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

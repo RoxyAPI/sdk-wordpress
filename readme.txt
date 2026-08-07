@@ -101,6 +101,8 @@ A matching shortcode exists for every endpoint in the spec. A sample across the 
 
 Readings follow your WordPress site language automatically. To pick a language yourself, open the RoxyAPI menu, Branding tab, and set the reading language. Some of the long tail shortcodes above also take a lang attribute, for example `[roxy_get_crystal id="amethyst" lang="es"]`, but the headline readings take the site or Branding setting instead.
 
+Want the chart on its own, without the written report? Open the RoxyAPI menu, Display tab, and turn on Written readings. Every reading on the site then shows its chart, tables, and values with the written text left out. To set it for one placement instead of the whole site, add `hide_readings="1"` to that shortcode, for example `[roxy_natal_chart birth_date="1990-05-15" birth_time="14:30" lat="40.7128" lon="-74.0060" tz="America/New_York" hide_readings="1"]`. Passing `hide_readings="0"` keeps the written text on that placement even when the site setting is on.
+
 == Installation ==
 
 1. In your WordPress admin, go to Plugins, Add New, search for "RoxyAPI", and click Install Now.

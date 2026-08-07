@@ -189,6 +189,7 @@ class SettingsPage {
 					'accent_color_input'     => SettingsFields::accent_color_input_html(),
 					'theme_mode_input'       => SettingsFields::theme_mode_input_html(),
 					'display_language_input' => SettingsFields::display_language_input_html(),
+					'hide_readings_input'    => SettingsFields::hide_readings_html(),
 					'disclaimer_show_input'  => SettingsFields::disclaimer_show_html(),
 					'disclaimer_text_input'  => SettingsFields::disclaimer_text_html(),
 					'form_title_input'       => SettingsFields::form_title_input_html(),

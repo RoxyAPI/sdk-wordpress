@@ -1,6 +1,7 @@
 <?php
 /**
- * Serves a shipped translation to regional locales we do not ship a file for.
+ * Resolves which shipped catalogue serves a locale, and serves it to regional locales
+ * we do not ship a file for.
  *
  * WordPress matches translation files by EXACT locale. A site set to `es_AR` looks for
  * `roxyapi-es_AR.mo` and, finding none, renders English even though `roxyapi-es_ES.mo` sits
@@ -11,6 +12,10 @@
  *
  * This maps by language prefix instead: any `xx_YY` falls back to whichever `xx_*` catalogue
  * is present. One file per language keeps working for every current and future variant.
+ *
+ * Two entry points, same resolution. `fallback()` is the `load_textdomain_mofile` filter, which
+ * covers loads WordPress starts itself. `catalogue_for()` answers the same question without a
+ * filter, so the plugin can load its catalogue directly instead of waiting to be asked.
  *
  * @package RoxyAPI
  */
@@ -27,7 +32,7 @@ class LocaleFallback {
 	private const DOMAIN = 'roxyapi';
 
 	/**
-	 * Resolved paths keyed by requested file, so the directory is scanned at most once per
+	 * Resolved catalogue keyed by locale, so the directory is scanned at most once per
 	 * locale per request.
 	 *
 	 * @var array<string, string>
@@ -50,43 +55,70 @@ class LocaleFallback {
 		if ( $domain !== self::DOMAIN || is_readable( $mofile ) ) {
 			return $mofile;
 		}
-		if ( isset( self::$cache[ $mofile ] ) ) {
-			return self::$cache[ $mofile ];
-		}
+
+		$locale = (string) substr( basename( $mofile, '.mo' ), strlen( self::DOMAIN ) + 1 );
 
 		/**
-		 * A wp.org LANGUAGE PACK, once one exists for the exact locale, lands in
-		 * WP_LANG_DIR/plugins and is passed here first. Only an unreadable path reaches this
-		 * point, so an official pack always wins and this never shadows one.
+		 * A wp.org LANGUAGE PACK, once one exists, lands in WP_LANG_DIR/plugins and is passed
+		 * here first. Only an unreadable path reaches this point, so an official pack for the
+		 * exact locale always wins; look beside it for a same-language pack before reaching
+		 * for the catalogue we bundle.
 		 */
-		$resolved               = self::same_language_file( $mofile );
-		self::$cache[ $mofile ] = $resolved;
-		return $resolved;
+		$resolved = self::same_language_file( dirname( $mofile ), $locale );
+		if ( '' === $resolved ) {
+			$resolved = self::catalogue_for( $locale );
+		}
+
+		return '' === $resolved ? $mofile : $resolved;
 	}
 
 	/**
-	 * Nearest shipped catalogue for the same language, or the original path when there is none.
+	 * Absolute path of the catalogue this plugin ships for a locale.
 	 *
-	 * @param string $mofile Absolute path WordPress intended to load.
-	 * @return string
+	 * Exact locale first, then any catalogue for the same language. Empty string when we ship
+	 * nothing that language can use, which is the normal answer on an English site.
+	 *
+	 * @param string $locale WordPress locale, for example `es_AR`.
+	 * @return string Absolute path, or '' when there is nothing to load.
 	 */
-	private static function same_language_file( string $mofile ): string {
-		$dir  = dirname( $mofile );
-		$base = basename( $mofile, '.mo' );
-		// Strip the domain prefix, then keep the two-letter language part of the locale.
-		$locale = (string) substr( $base, strlen( self::DOMAIN ) + 1 );
-		$prefix = strtolower( substr( $locale, 0, 2 ) );
-		if ( strlen( $prefix ) !== 2 ) {
-			return $mofile;
+	public static function catalogue_for( string $locale ): string {
+		if ( ! isset( self::$cache[ $locale ] ) ) {
+			self::$cache[ $locale ] = self::same_language_file( self::languages_dir(), $locale );
 		}
 
-		$candidates = glob( $dir . '/' . self::DOMAIN . '-' . $prefix . '*.mo' );
-		if ( ! $candidates ) {
-			// The plugin's own languages/ folder is the shipped set; WP_LANG_DIR may hold none.
-			$candidates = glob( dirname( ROXYAPI_PLUGIN_FILE ) . '/languages/' . self::DOMAIN . '-' . $prefix . '*.mo' );
+		return self::$cache[ $locale ];
+	}
+
+	/** Directory holding the catalogues shipped inside the plugin. */
+	public static function languages_dir(): string {
+		return dirname( ROXYAPI_PLUGIN_FILE ) . '/languages';
+	}
+
+	/**
+	 * Nearest catalogue for the same language inside one directory.
+	 *
+	 * @param string $dir    Directory to search.
+	 * @param string $locale WordPress locale, for example `es_AR`.
+	 * @return string Absolute path, or '' when the directory holds nothing for that language.
+	 */
+	private static function same_language_file( string $dir, string $locale ): string {
+		$exact = $dir . '/' . self::DOMAIN . '-' . $locale . '.mo';
+		if ( is_readable( $exact ) ) {
+			return $exact;
 		}
-		if ( ! $candidates ) {
-			return $mofile;
+
+		$prefix = strtolower( substr( $locale, 0, 2 ) );
+		if ( strlen( $prefix ) !== 2 ) {
+			return '';
+		}
+
+		// glob() returns false on an unreadable directory, so the result is checked rather than
+		// trusted. Guarding the CALL would be dead code: a host that disables glob() outright
+		// takes WordPress down in wp-settings.php long before any plugin runs, measured on 6.7.2
+		// and 7.0.3 alike.
+		$candidates = glob( $dir . '/' . self::DOMAIN . '-' . $prefix . '*.mo' );
+		if ( ! is_array( $candidates ) || array() === $candidates ) {
+			return '';
 		}
 
 		// Deterministic: es_ES before es_MX, so two installs never disagree.

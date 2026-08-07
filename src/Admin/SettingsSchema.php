@@ -79,6 +79,10 @@ class SettingsSchema {
 				'default' => '',
 				'enum'    => array( '', 'en', 'de', 'hi', 'es', 'tr', 'pt', 'fr', 'ru' ),
 			),
+			'hide_readings'     => array(
+				'type'    => 'bool',
+				'default' => false,
+			),
 			'disclaimer_show'   => array(
 				'type'    => 'bool',
 				'default' => false,

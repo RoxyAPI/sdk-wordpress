@@ -37,6 +37,7 @@ class GenerateSolarArc {
 			'longitude' => '',
 			'timezone' => '',
 			'target_date' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -63,6 +64,6 @@ class GenerateSolarArc {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'generateSolarArc', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'generateSolarArc', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

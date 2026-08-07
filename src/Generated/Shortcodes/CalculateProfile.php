@@ -37,6 +37,7 @@ class CalculateProfile {
 			'latitude' => '',
 			'longitude' => '',
 			'node_type' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -63,6 +64,6 @@ class CalculateProfile {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'calculateProfile', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'calculateProfile', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

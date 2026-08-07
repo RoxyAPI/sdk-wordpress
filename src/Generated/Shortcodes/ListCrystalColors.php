@@ -31,7 +31,7 @@ class ListCrystalColors {
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
 			array(
-			// No configurable attributes for this endpoint.
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -45,6 +45,6 @@ class ListCrystalColors {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'listCrystalColors', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'listCrystalColors', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

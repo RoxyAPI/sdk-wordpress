@@ -33,6 +33,7 @@ class LookupHexagram {
 			array(
 			'lang' => '',
 			'lines' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -46,6 +47,6 @@ class LookupHexagram {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'lookupHexagram', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'lookupHexagram', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

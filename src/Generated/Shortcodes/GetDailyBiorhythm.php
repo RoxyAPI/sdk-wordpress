@@ -33,6 +33,7 @@ class GetDailyBiorhythm {
 			array(
 			'seed' => '',
 			'date' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -55,6 +56,6 @@ class GetDailyBiorhythm {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getDailyBiorhythm', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getDailyBiorhythm', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

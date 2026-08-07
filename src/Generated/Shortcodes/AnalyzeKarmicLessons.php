@@ -32,6 +32,7 @@ class AnalyzeKarmicLessons {
 		$atts = shortcode_atts(
 			array(
 			'full_name' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -53,6 +54,6 @@ class AnalyzeKarmicLessons {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'analyzeKarmicLessons', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'analyzeKarmicLessons', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

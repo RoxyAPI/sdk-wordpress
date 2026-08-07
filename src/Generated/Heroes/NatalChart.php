@@ -33,6 +33,7 @@ class NatalChart {
 		'lon' => "",
 		'tz' => "UTC",
 		'mode' => 'auto',
+		'hide_readings' => 'inherit',
 	);
 
 	/**
@@ -81,7 +82,7 @@ class NatalChart {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\ComponentRenderer::render( 'generateNatalChart', is_array( $data ) ? $data : array() );
+		return \RoxyAPI\Support\ComponentRenderer::render( 'generateNatalChart', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 
 	/**

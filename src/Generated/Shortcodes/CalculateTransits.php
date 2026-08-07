@@ -35,6 +35,7 @@ class CalculateTransits {
 			'time' => '',
 			'timezone' => '',
 			'natal_chart' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -59,6 +60,6 @@ class CalculateTransits {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'calculateTransits', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'calculateTransits', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

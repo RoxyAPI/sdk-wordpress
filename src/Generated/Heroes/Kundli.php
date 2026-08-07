@@ -33,6 +33,7 @@ class Kundli {
 		'lon' => "",
 		'tz' => "5.5",
 		'mode' => 'auto',
+		'hide_readings' => 'inherit',
 	);
 
 	/**
@@ -81,7 +82,7 @@ class Kundli {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\ComponentRenderer::render( 'generateBirthChart', is_array( $data ) ? $data : array() );
+		return \RoxyAPI\Support\ComponentRenderer::render( 'generateBirthChart', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 
 	/**

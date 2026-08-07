@@ -156,7 +156,7 @@ The RoxyAPI admin page is split into five tabs:
 -   **Connect.** Paste the API key, test the connection.
 -   **Branding.** Accent color, opt in to a discreet credit line under each reading.
 -   **Display.** Default response language, optional disclaimer line.
--   **Privacy.** Visitor consent label, rate limit per IP per hour. Birth date and time are special category data under GDPR Article 9; submission is gated on an explicit opt in checkbox and the plugin registers privacy policy content via `wp_add_privacy_policy_content`.
+-   **Privacy.** Visitor consent label. Birth date and time are special category data under GDPR Article 9; submission is gated on an explicit opt in checkbox and the plugin registers privacy policy content via `wp_add_privacy_policy_content`.
 -   **Advanced.** Cache preset (fresh / balanced / quota saver) and a connection status panel.
 
 Form mode shortcodes also surface a city autocomplete (RoxyAPI geocoder, ARIA 1.2 combobox) so visitors can pick a city instead of typing latitude, longitude, and timezone by hand. The plugin proxies queries through `/wp-json/roxyapi/v1/geocode` so the API key never reaches the browser.

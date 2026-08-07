@@ -13,6 +13,7 @@ namespace RoxyAPI\Tests;
 
 use RoxyAPI\Api\GeocodeRoute;
 use RoxyAPI\Support\Encryption;
+use RoxyAPI\Support\RateLimit;
 use WP_REST_Request;
 
 class Test_Geocode_Route extends \WP_UnitTestCase {
@@ -127,14 +128,16 @@ class Test_Geocode_Route extends \WP_UnitTestCase {
 
 	public function test_rate_limit_returns_429(): void {
 		$this->mock_upstream( array() );
-		// Exhaust the bucket. Default is 20/hour.
-		for ( $i = 0; $i < 25; $i++ ) {
-			$this->dispatch( 'city' . $i );
+		// Drain the bucket exactly, so the assertion tracks the default limit
+		// instead of pinning a number that goes stale when it is retuned.
+		for ( $i = 0; $i < RateLimit::DEFAULT_LIMIT; $i++ ) {
+			$this->assertSame( 200, $this->dispatch( 'city' . $i )->get_status(), "Lookup {$i} should be allowed." );
 		}
 		$response = $this->dispatch( 'over-limit' );
 		$this->assertSame( 429, $response->get_status() );
 		$data = $response->get_data();
 		$this->assertSame( 'roxyapi_geocode_rate_limit', $data['error']['code'] );
+		$this->assertNotSame( '', $data['error']['message'], 'The 429 must carry a message the combobox can display.' );
 	}
 
 	public function test_upstream_failure_returns_502(): void {

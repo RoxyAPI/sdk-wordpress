@@ -72,6 +72,20 @@ class Test_Locale_Fallback extends \WP_UnitTestCase {
 		$this->assertSame( $exact, LocaleFallback::fallback( $exact, 'roxyapi' ) );
 	}
 
+	public function test_catalogue_for_resolves_without_a_filter(): void {
+		// The plugin loads its own catalogue rather than waiting for WordPress to ask, so the
+		// same resolution has to be reachable directly.
+		$this->assertSame( $this->path_for( 'es_ES' ), LocaleFallback::catalogue_for( 'es_ES' ) );
+		$this->assertSame( $this->path_for( 'es_ES' ), LocaleFallback::catalogue_for( 'es_AR' ) );
+	}
+
+	public function test_catalogue_for_is_empty_when_we_ship_nothing_usable(): void {
+		// Empty means "do not call load_textdomain", not "load the wrong file". English is the
+		// normal case here: the source strings are already English.
+		$this->assertSame( '', LocaleFallback::catalogue_for( 'en_US' ) );
+		$this->assertSame( '', LocaleFallback::catalogue_for( 'ja' ) );
+	}
+
 	public function test_other_text_domains_are_never_touched(): void {
 		$foreign = WP_LANG_DIR . '/plugins/some-other-plugin-es_AR.mo';
 		$this->assertSame( $foreign, LocaleFallback::fallback( $foreign, 'some-other-plugin' ) );

@@ -50,6 +50,8 @@ Two-chart heroes (`[roxy_synastry]`, `[roxy_gun_milan]`, `[roxy_compatibility]`)
 
 How readings render: chart-shaped endpoints (natal, kundli, KP, panchang, dasha, and more) render as interactive SVG components from `@roxyapi/ui`, loaded from a bundle shipped inside the plugin and themed by the `--roxy-*` CSS custom properties. The remaining content reads render as a server-side card. The plugin fetches server side and embeds the response, so the API key never reaches the browser either way.
 
+Chart without the written report: every shortcode that renders a reading takes `hide_readings`. It defaults to `inherit`, which follows the Display tab setting of the same name; `hide_readings="1"` hides the written text on that placement and `hide_readings="0"` keeps it even when the site setting is on. Charts, tables, and values are unaffected, and the suppression applies to the no-JavaScript render too.
+
 ### Form mode: visitors pick their own values
 
 Leave the required attributes off and the shortcode renders an HTML form. Visitors submit it, the plugin validates the nonce, rate limits per IP, calls the API server side, and renders the result above the form on the next page load:
@@ -73,7 +75,7 @@ Leave the required attributes off and the shortcode renders an HTML form. Visito
 [roxy_crystals_by_zodiac]   -> zodiac sign picker
 ```
 
-Form submissions post back to the same page. The plugin uses `wp_verify_nonce` for CSRF, gates submission on an explicit GDPR Article 9 consent checkbox, runs `RoxyAPI\Support\RateLimit` for per IP throttling (20 requests per hour by default, configurable under Roxy > Privacy), and calls `wp_remote_request` for the API hit. All output is escaped via `esc_html` or `wp_kses_post`. The API key never reaches the browser in either mode.
+Form submissions post back to the same page. The plugin uses `wp_verify_nonce` for CSRF, gates submission on an explicit GDPR Article 9 consent checkbox, runs `RoxyAPI\Support\RateLimit` for per IP throttling (the ceiling is `RateLimit::DEFAULT_LIMIT`, and each scope gets its own bucket), and calls `wp_remote_request` for the API hit. All output is escaped via `esc_html` or `wp_kses_post`. The API key never reaches the browser in either mode.
 
 Forms that need a city (natal chart, synastry, composite) render an ARIA 1.2 combobox autocomplete that proxies queries through `/wp-json/roxyapi/v1/geocode`. The geocoder route is rate-limited per IP and caches results for 24 hours.
 
@@ -126,13 +128,13 @@ define( 'ROXYAPI_ENCRYPTION_SALT', getenv( 'ROXYAPI_ENCRYPTION_SALT' ) );
 
 The Roxy admin page is split into five tabs:
 
-| Tab      | What it covers                                                                                                                                                                                   |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Connect  | API key field (constant override), Test Connection button.                                                                                                                                       |
-| Branding | Accent color and a light, dark, or auto theme that drive the `--roxy-*` tokens the chart components read. Opt in source line under each reading (off by default per WordPress.org guideline 10). |
-| Display  | Default response language sent on every API call (defaults to site locale), optional disclaimer line shown under each reading.                                                                   |
-| Privacy  | Consent label shown next to the form opt in checkbox, rate limit (default 20 per IP per hour). Privacy policy content is registered for the WP Privacy tool.                                     |
-| Advanced | Cache preset (fresh divides TTLs by 4, balanced uses spec defaults, quota saver multiplies TTLs by 24), connection status panel.                                                                 |
+| Tab      | What it covers                                                                                                                                                                                |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Connect  | API key field (constant override), Test Connection button.                                                                                                                                    |
+| Branding | Accent color and a light, dark, or auto theme that drive the `--roxy-*` tokens the chart components read, plus the reading language sent on every API call (defaults to the site locale).     |
+| Display  | Written readings toggle (off by default, hides the written text on every reading and leaves the charts, tables, and values), opt in source line, optional disclaimer line, visitor form copy. |
+| Privacy  | Consent label shown next to the form opt in checkbox. Privacy policy content is registered for the WP Privacy tool.                                                                           |
+| Advanced | Cache preset (fresh divides TTLs by 4, balanced uses spec defaults, quota saver multiplies TTLs by 24), connection status panel.                                                              |
 
 The settings registry is filterable. Sites that need an extra option can hook `roxyapi_settings_schema` and add a field; the Settings API page picks it up automatically.
 

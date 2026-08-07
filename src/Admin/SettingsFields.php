@@ -157,6 +157,21 @@ class SettingsFields {
 	}
 
 	/**
+	 * Pre-escaped HTML for the "Hide written readings" checkbox.
+	 *
+	 * @return string
+	 */
+	public static function hide_readings_html(): string {
+		$opts    = SettingsSchema::get_option();
+		$current = ! empty( $opts['hide_readings'] );
+		return sprintf(
+			'<label class="roxyapi-attribution-toggle"><input type="checkbox" name="roxyapi_settings[hide_readings]" value="1"%s /> <span>%s</span></label>',
+			$current ? ' checked' : '',
+			esc_html__( 'Hide the written text on every reading. Charts, tables, and values still show.', 'roxyapi' )
+		);
+	}
+
+	/**
 	 * Pre-escaped HTML for the "Show disclaimer" checkbox.
 	 *
 	 * @return string

@@ -13,6 +13,7 @@
  *   string $accent_color_input
  *   string $theme_mode_input
  *   string $display_language_input
+ *   string $hide_readings_input
  *   string $disclaimer_show_input
  *   string $disclaimer_text_input
  *   string $form_title_input
@@ -47,6 +48,7 @@ $consent_label_input    = isset( $consent_label_input ) ? (string) $consent_labe
 $accent_color_input     = isset( $accent_color_input ) ? (string) $accent_color_input : '';
 $theme_mode_input       = isset( $theme_mode_input ) ? (string) $theme_mode_input : '';
 $display_language_input = isset( $display_language_input ) ? (string) $display_language_input : '';
+$hide_readings_input    = isset( $hide_readings_input ) ? (string) $hide_readings_input : '';
 $disclaimer_show_input  = isset( $disclaimer_show_input ) ? (string) $disclaimer_show_input : '';
 $disclaimer_text_input  = isset( $disclaimer_text_input ) ? (string) $disclaimer_text_input : '';
 $form_title_input       = isset( $form_title_input ) ? (string) $form_title_input : '';
@@ -236,6 +238,16 @@ $kses_select   = array(
 	<section class="roxyapi-tab-panel">
 		<form method="post" action="options.php" class="roxyapi-form">
 			<?php settings_fields( $option_group ); ?>
+
+			<section class="roxyapi-section">
+				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Written readings', 'roxyapi' ); ?></h2>
+				<p class="roxyapi-attribution-row">
+					<?php echo wp_kses( $hide_readings_input, $kses_input ); ?>
+				</p>
+				<p class="description">
+					<?php echo esc_html__( 'Turn this on to show the chart on its own, without the written report. It applies to every reading on the site. To set it for one placement instead, add hide_readings="1" or hide_readings="0" to that shortcode.', 'roxyapi' ); ?>
+				</p>
+			</section>
 
 			<section class="roxyapi-section">
 				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Show source', 'roxyapi' ); ?></h2>

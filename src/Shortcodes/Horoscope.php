@@ -36,9 +36,10 @@ class Horoscope {
 	 * @var array<string, string>
 	 */
 	public const DEFAULTS = array(
-		'sign'   => '',
-		'date'   => 'today',
-		'period' => 'daily',
+		'sign'          => '',
+		'date'          => 'today',
+		'period'        => 'daily',
+		'hide_readings' => ComponentRenderer::INHERIT,
 	);
 
 	/**
@@ -72,8 +73,10 @@ class Horoscope {
 
 		wp_enqueue_style( 'roxyapi-frontend' );
 
+		$hide_readings = (string) ( $atts['hide_readings'] ?? ComponentRenderer::INHERIT );
+
 		// Form submission: check $_POST first. Nonce + rate limit guarded.
-		$submitted = self::handle_submission();
+		$submitted = self::handle_submission( $hide_readings );
 		if ( $submitted !== null ) {
 			return $submitted;
 		}
@@ -83,7 +86,8 @@ class Horoscope {
 			return self::render_result(
 				Sanitize::zodiac_sign( $atts['sign'] ),
 				Sanitize::date_string( $atts['date'] ),
-				(string) ( $atts['period'] ?? 'daily' )
+				(string) ( $atts['period'] ?? 'daily' ),
+				$hide_readings
 			);
 		}
 
@@ -91,7 +95,13 @@ class Horoscope {
 		return self::render_form();
 	}
 
-	private static function handle_submission(): ?string {
+	/**
+	 * Handle the visitor sign-picker POST.
+	 *
+	 * @param string $hide_readings Raw `hide_readings` attribute from the placement.
+	 * @return string|null Rendered result, or null when this request is not a submission.
+	 */
+	private static function handle_submission( string $hide_readings ): ?string {
 		if ( empty( $_POST['roxyapi_action'] ) || $_POST['roxyapi_action'] !== self::ACTION ) {
 			return null;
 		}
@@ -106,10 +116,19 @@ class Horoscope {
 		$raw_sign = isset( $_POST['sign'] ) ? sanitize_text_field( wp_unslash( $_POST['sign'] ) ) : '';
 		$sign     = Sanitize::zodiac_sign( $raw_sign );
 
-		return self::render_result( $sign, Sanitize::date_string( 'today' ), 'daily' ) . self::render_form( $sign );
+		return self::render_result( $sign, Sanitize::date_string( 'today' ), 'daily', $hide_readings ) . self::render_form( $sign );
 	}
 
-	private static function render_result( string $sign, string $date, string $period = 'daily' ): string {
+	/**
+	 * Fetch and render one horoscope period.
+	 *
+	 * @param string $sign          Sanitised zodiac sign slug.
+	 * @param string $date          YYYY-MM-DD date.
+	 * @param string $period        daily | weekly | monthly.
+	 * @param string $hide_readings Raw `hide_readings` attribute from the placement.
+	 * @return string
+	 */
+	private static function render_result( string $sign, string $date, string $period = 'daily', string $hide_readings = ComponentRenderer::INHERIT ): string {
 		$op_id = self::PERIOD_OPS[ $period ] ?? 'getDailyHoroscope';
 
 		// Each period dispatches to its own operation. All three map to
@@ -129,7 +148,7 @@ class Horoscope {
 			return Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( $op_id, is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( $op_id, is_array( $data ) ? $data : array(), $hide_readings );
 	}
 
 	private static function render_form( string $selected = '' ): string {

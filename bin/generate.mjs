@@ -1252,12 +1252,10 @@ class ${ className } {
 			...pathParams.map( toSnakeAttr ),
 			...bodyFields.map( ( f ) => toSnakeAttr( f.name ) ),
 		];
-		const defaultAtts = allPostAtts
-			.map( ( p ) => `\t\t\t'${ p }' => '',` )
-			.join( '\n' );
-		attsArray =
-			defaultAtts ||
-			'\t\t\t// No configurable attributes for this endpoint.';
+		attsArray = withHideReadingsAtt(
+			allPostAtts.map( ( p ) => `\t\t\t'${ p }' => '',` ),
+			'\t\t\t'
+		).join( '\n' );
 
 		// Body assembly maps API field name (camelCase) to snake_case attr key
 		// and casts numeric fields so the JSON body sends 40.71 not "40.71".
@@ -1298,12 +1296,10 @@ class ${ className } {
 			...pathParams.map( toSnakeAttr ),
 			...queryParams.map( ( p ) => toSnakeAttr( p.name ) ),
 		];
-		const defaultAtts = allAttParams
-			.map( ( p ) => `\t\t\t'${ p }' => '',` )
-			.join( '\n' );
-		attsArray =
-			defaultAtts ||
-			'\t\t\t// No configurable attributes for this endpoint.';
+		attsArray = withHideReadingsAtt(
+			allAttParams.map( ( p ) => `\t\t\t'${ p }' => '',` ),
+			'\t\t\t'
+		).join( '\n' );
 
 		const queryArgsList = queryParams.map(
 			( p ) => `$atts['${ toSnakeAttr( p.name ) }']`
@@ -1367,7 +1363,7 @@ ${ attsArray }
 
 		return ComponentRenderer::render( '${
 			op.operationId
-		}', is_array( $data ) ? $data : array() );
+		}', is_array( $data ) ? $data : array(), ${ HIDE_READINGS_ARG } );
 	}
 }
 `;
@@ -1601,6 +1597,39 @@ function _attrSlotForOperation( attr, op ) {
 }
 
 /**
+ * Attribute every rendering shortcode carries so one placement can override
+ * the site-wide "hide written readings" setting. Declared here rather than per
+ * hero in bin/hero-config.json because it is not an API input: it never reaches
+ * a request body or query string, and a hero or endpoint added later has to
+ * pick it up without anyone remembering to declare it. `inherit` follows the
+ * setting; any other value is read as a boolean and wins over it.
+ */
+const HIDE_READINGS_ATT = 'hide_readings';
+const HIDE_READINGS_DEFAULT = 'inherit';
+const HIDE_READINGS_ARG = `$atts['${ HIDE_READINGS_ATT }']`;
+
+/**
+ * Append the reserved hide_readings attribute to a DEFAULTS line list. Throws
+ * when an endpoint already declares an input of that name, since the shortcode
+ * would then have two meanings for one key.
+ * @param lines  Existing `'key' => value,` lines.
+ * @param indent Leading whitespace for one line.
+ */
+function withHideReadingsAtt( lines, indent ) {
+	if (
+		lines.some( ( line ) => line.includes( `'${ HIDE_READINGS_ATT }'` ) )
+	) {
+		throw new Error(
+			`[generate] an operation declares a "${ HIDE_READINGS_ATT }" input, which collides with the reserved shortcode attribute`
+		);
+	}
+	return [
+		...lines,
+		`${ indent }'${ HIDE_READINGS_ATT }' => '${ HIDE_READINGS_DEFAULT }',`,
+	];
+}
+
+/**
  * Render a Sanitize::name(...) call for the given sanitize directive.
  * @param sanitize
  * @param valueExpr
@@ -1642,7 +1671,7 @@ function renderDefaultsArray( attributes, hasFormMode = false ) {
 		// the form; `static` preserves the legacy missing-attrs error message.
 		lines.push( `\t\t'mode' => 'auto',` );
 	}
-	return lines.join( '\n' );
+	return withHideReadingsAtt( lines, '\t\t' ).join( '\n' );
 }
 
 /**
@@ -1946,7 +1975,7 @@ function buildHeroBodyContent(
 
 	const successReturn = ( opId ) =>
 		returnsHtml
-			? `return \\RoxyAPI\\Support\\ComponentRenderer::render( '${ opId }', is_array( $data ) ? $data : array() );`
+			? `return \\RoxyAPI\\Support\\ComponentRenderer::render( '${ opId }', is_array( $data ) ? $data : array(), ${ HIDE_READINGS_ARG } );`
 			: `return is_array( $data ) ? $data : array();`;
 	const errorReturn = returnsHtml
 		? `return \\RoxyAPI\\Support\\Templates::api_error( $data );`

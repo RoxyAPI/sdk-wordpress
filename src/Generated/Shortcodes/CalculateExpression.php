@@ -32,6 +32,7 @@ class CalculateExpression {
 		$atts = shortcode_atts(
 			array(
 			'full_name' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -53,6 +54,6 @@ class CalculateExpression {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'calculateExpression', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'calculateExpression', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

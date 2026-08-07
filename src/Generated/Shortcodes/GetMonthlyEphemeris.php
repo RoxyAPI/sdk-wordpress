@@ -34,6 +34,7 @@ class GetMonthlyEphemeris {
 			'year' => '',
 			'month' => '',
 			'coordinate_system' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -57,6 +58,6 @@ class GetMonthlyEphemeris {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getMonthlyEphemeris', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getMonthlyEphemeris', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

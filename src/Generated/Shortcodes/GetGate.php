@@ -33,6 +33,7 @@ class GetGate {
 			array(
 			'number' => '',
 			'lang' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -46,6 +47,6 @@ class GetGate {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getGate', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getGate', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

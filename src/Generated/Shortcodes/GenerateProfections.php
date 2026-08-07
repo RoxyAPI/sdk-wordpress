@@ -38,6 +38,7 @@ class GenerateProfections {
 			'timezone' => '',
 			'target_date' => '',
 			'house_system' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -65,6 +66,6 @@ class GenerateProfections {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'generateProfections', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'generateProfections', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

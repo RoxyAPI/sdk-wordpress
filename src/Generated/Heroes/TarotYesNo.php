@@ -29,6 +29,7 @@ class TarotYesNo {
 	public const DEFAULTS = array(
 		'question' => "",
 		'mode' => 'auto',
+		'hide_readings' => 'inherit',
 	);
 
 	/**
@@ -62,7 +63,7 @@ class TarotYesNo {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\ComponentRenderer::render( 'castYesNo', is_array( $data ) ? $data : array() );
+		return \RoxyAPI\Support\ComponentRenderer::render( 'castYesNo', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 
 	/**

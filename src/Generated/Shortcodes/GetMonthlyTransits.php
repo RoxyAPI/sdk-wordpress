@@ -35,6 +35,7 @@ class GetMonthlyTransits {
 			'month' => '',
 			'timezone' => '',
 			'coordinate_system' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -59,6 +60,6 @@ class GetMonthlyTransits {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getMonthlyTransits', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getMonthlyTransits', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

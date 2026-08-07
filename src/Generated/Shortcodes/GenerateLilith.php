@@ -37,6 +37,7 @@ class GenerateLilith {
 			'longitude' => '',
 			'timezone' => '',
 			'house_system' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -63,6 +64,6 @@ class GenerateLilith {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'generateLilith', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'generateLilith', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

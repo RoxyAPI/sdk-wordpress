@@ -11,6 +11,12 @@
  *   role="combobox", aria-autocomplete="list", aria-expanded, aria-controls,
  *   aria-activedescendant + a sibling listbox of options.
  *
+ * The listbox and its options are divs carrying role="listbox" / role="option",
+ * not ul/li. The roles are what assistive technology reads, and a div is not
+ * matched by the ul and li element rules that many themes ship, which otherwise
+ * win over the plugin stylesheet and leave the dropdown bulleted, mispadded and
+ * transparent over the fields below it.
+ *
  * Vanilla, ~3 KB, no dependencies. Fail-soft: if the script never loads or
  * the network is down, the manual lat/lon/tz inputs remain fully usable.
  */
@@ -53,17 +59,17 @@
 			return;
 		}
 		results.forEach( function ( city, index ) {
-			const li = document.createElement( 'li' );
-			li.id = listbox.id + '-opt-' + index;
-			li.setAttribute( 'role', 'option' );
-			li.className = 'roxyapi-geocode-option';
-			li.textContent = city.label;
-			li.addEventListener( 'mousedown', function ( e ) {
+			const option = document.createElement( 'div' );
+			option.id = listbox.id + '-opt-' + index;
+			option.setAttribute( 'role', 'option' );
+			option.className = 'roxyapi-geocode-option';
+			option.textContent = city.label;
+			option.addEventListener( 'mousedown', function ( e ) {
 				// mousedown so the click resolves before the input blurs.
 				e.preventDefault();
 				onPick( city );
 			} );
-			listbox.appendChild( li );
+			listbox.appendChild( option );
 		} );
 	}
 
@@ -108,7 +114,7 @@
 		const listboxId = input.id + '-listbox';
 		const statusId = input.id + '-status';
 
-		const listbox = document.createElement( 'ul' );
+		const listbox = document.createElement( 'div' );
 		listbox.id = listboxId;
 		listbox.className = 'roxyapi-geocode-listbox';
 		listbox.setAttribute( 'role', 'listbox' );
@@ -150,6 +156,14 @@
 					el.removeAttribute( 'aria-selected' );
 				}
 			);
+		}
+
+		// Drop every result and collapse. Without this an error after a good
+		// query leaves stale options behind that arrow keys can still select.
+		function reset() {
+			current = [];
+			clearListbox( listbox );
+			close();
 		}
 
 		function setActive( index ) {
@@ -196,11 +210,25 @@
 			window
 				.fetch( url, { credentials: 'same-origin' } )
 				.then( function ( res ) {
-					return res.json();
+					return res.json().then( function ( data ) {
+						return { ok: res.ok, data: data || {} };
+					} );
 				} )
-				.then( function ( data ) {
-					current =
-						data && Array.isArray( data.cities ) ? data.cities : [];
+				.then( function ( payload ) {
+					const data = payload.data;
+					// The route answers a refusal with a translated message.
+					// Show it, otherwise a visitor who is being throttled sees
+					// an empty dropdown and no reason for it.
+					const refusal =
+						data.error && typeof data.error.message === 'string'
+							? data.error.message
+							: '';
+					if ( ! payload.ok || refusal ) {
+						reset();
+						setStatus( status, refusal || I18N.error || '' );
+						return;
+					}
+					current = Array.isArray( data.cities ) ? data.cities : [];
 					renderResults( listbox, current, pick );
 					if ( current.length === 0 ) {
 						close();
@@ -211,6 +239,10 @@
 					}
 				} )
 				.catch( function () {
+					// Only the request itself failing or a body that is not
+					// JSON lands here, which is a different problem from a
+					// server answer the visitor can act on.
+					reset();
 					setStatus( status, I18N.error || '' );
 				} );
 		}, DEBOUNCE_MS );
@@ -218,9 +250,7 @@
 		input.addEventListener( 'input', function () {
 			const q = input.value.trim();
 			if ( q.length < MIN_QUERY_LEN ) {
-				current = [];
-				clearListbox( listbox );
-				close();
+				reset();
 				setStatus( status, '' );
 				return;
 			}

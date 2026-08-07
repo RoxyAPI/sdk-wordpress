@@ -6,7 +6,13 @@
  * is counted in a transient keyed by IP and shortcode name. Returns false
  * once the per hour limit is reached.
  *
- * Configurable in the RoxyAPI admin settings.
+ * The scope string is the bucket, so a visitor typing into the city search
+ * cannot exhaust the budget for submitting a form. The ceiling has to clear
+ * the city search, which spends several lookups per debounced field entry.
+ *
+ * `rate_limit_per_hour` in `roxyapi_settings` overrides the default. No admin
+ * field writes that key today, so a site sets it through the settings schema
+ * filter or not at all.
  *
  * @package RoxyAPI
  */
@@ -21,7 +27,7 @@ use RoxyAPI\Admin\SettingsSchema;
 
 class RateLimit {
 
-	public const DEFAULT_LIMIT  = 20;
+	public const DEFAULT_LIMIT  = 100;
 	public const DEFAULT_WINDOW = HOUR_IN_SECONDS;
 
 	/**

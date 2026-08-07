@@ -40,6 +40,7 @@ class GetCurrentDasha {
 			'ayanamsa_value' => '',
 			'significators' => '',
 			'node_type' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -69,6 +70,6 @@ class GetCurrentDasha {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getCurrentDasha', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getCurrentDasha', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

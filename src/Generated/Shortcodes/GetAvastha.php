@@ -33,6 +33,7 @@ class GetAvastha {
 			array(
 			'id' => '',
 			'lang' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -46,6 +47,6 @@ class GetAvastha {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getAvastha', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getAvastha', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

@@ -29,6 +29,7 @@ class AngelNumber {
 	public const DEFAULTS = array(
 		'number' => "",
 		'mode' => 'auto',
+		'hide_readings' => 'inherit',
 	);
 
 	/**
@@ -67,7 +68,7 @@ class AngelNumber {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\ComponentRenderer::render( 'getAngelNumber', is_array( $data ) ? $data : array() );
+		return \RoxyAPI\Support\ComponentRenderer::render( 'getAngelNumber', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 
 	/**

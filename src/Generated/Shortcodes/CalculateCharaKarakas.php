@@ -39,6 +39,7 @@ class CalculateCharaKarakas {
 			'ayanamsa' => '',
 			'ayanamsa_value' => '',
 			'scheme' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -67,6 +68,6 @@ class CalculateCharaKarakas {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'calculateCharaKarakas', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'calculateCharaKarakas', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

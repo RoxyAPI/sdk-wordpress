@@ -32,6 +32,7 @@ class CalculateBirthDay {
 		$atts = shortcode_atts(
 			array(
 			'day' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -53,6 +54,6 @@ class CalculateBirthDay {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'calculateBirthDay', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'calculateBirthDay', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

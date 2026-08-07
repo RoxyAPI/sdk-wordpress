@@ -74,8 +74,9 @@ class GeocodeRoute {
 
 	/**
 	 * Handle a geocode request. Always returns a `WP_REST_Response`; failures
-	 * surface as a sparse error envelope rather than an exception so the
-	 * combobox JS can render an empty state.
+	 * surface as a sparse error envelope rather than an exception, and the
+	 * message is already translated so the combobox can show it verbatim
+	 * instead of collapsing to an empty dropdown.
 	 *
 	 * @param WP_REST_Request $request Incoming REST request carrying the `q` query.
 	 * @return WP_REST_Response
@@ -90,7 +91,7 @@ class GeocodeRoute {
 		}
 
 		if ( ! RateLimit::check( 'geocode' ) ) {
-			return self::error_response( 'roxyapi_geocode_rate_limit', 429, __( 'Too many requests. Slow down.', 'roxyapi' ) );
+			return self::error_response( 'roxyapi_geocode_rate_limit', 429, __( 'Too many city lookups. Try again shortly.', 'roxyapi' ) );
 		}
 
 		$result = Cache::remember(

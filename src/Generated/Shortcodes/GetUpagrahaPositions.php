@@ -38,6 +38,7 @@ class GetUpagrahaPositions {
 			'timezone' => '',
 			'ayanamsa' => '',
 			'ayanamsa_value' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -65,6 +66,6 @@ class GetUpagrahaPositions {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getUpagrahaPositions', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getUpagrahaPositions', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

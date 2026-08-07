@@ -34,8 +34,8 @@ if [[ $WP_VERSION =~ ^[0-9]+\.[0-9]+\-(beta|RC)[0-9]+$ ]]; then
 	WP_TESTS_TAG="branches/$WP_BRANCH"
 elif [[ $WP_VERSION =~ ^[0-9]+\.[0-9]+$ ]]; then
 	WP_TESTS_TAG="branches/$WP_VERSION"
-elif [[ $WP_VERSION =~ [0-9]+\.[0-9]+\.[0-9]+ ]]; then
-	if [[ $WP_VERSION =~ [0-9]+\.[0-9]+\.[0]+ ]]; then
+elif [[ $WP_VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+	if [[ $WP_VERSION =~ ^[0-9]+\.[0-9]+\.[0]+$ ]]; then
 		WP_TESTS_TAG="tags/${WP_VERSION%??}"
 	else
 		WP_TESTS_TAG="tags/$WP_VERSION"
@@ -68,9 +68,18 @@ install_wp() {
 	else
 		if [ "$WP_VERSION" == 'latest' ]; then
 			local ARCHIVE_NAME='latest'
-		elif [[ $WP_VERSION =~ [0-9]+\.[0-9]+ ]]; then
+		elif [[ $WP_VERSION =~ ^[0-9]+\.[0-9]+(\.[0-9]+)?$ ]]; then
 			download https://api.wordpress.org/core/version-check/1.7/ "$TMPDIR/wp-latest.json"
-			LATEST_VERSION=$(grep -o '"version":"[^"]*' "$TMPDIR/wp-latest.json" | sed 's/"version":"//' | head -1)
+			if [[ $WP_VERSION =~ ^[0-9]+\.[0-9]+\.0$ ]]; then
+				# x.y.0 is the first release of a minor series, published under the bare x.y archive name.
+				LATEST_VERSION=${WP_VERSION%??}
+			else
+				# Scope the lookup to the requested version: the version-check feed only ever
+				# lists the current release, so an unscoped grep silently resolves any older or
+				# specific request to whatever is newest instead of what was asked for.
+				local VERSION_ESCAPED=$(echo "$WP_VERSION" | sed 's/\./\\./g')
+				LATEST_VERSION=$(grep -o '"version":"'"$VERSION_ESCAPED"'[^"]*' "$TMPDIR/wp-latest.json" | sed 's/"version":"//' | head -1)
+			fi
 			if [[ -z "$LATEST_VERSION" ]]; then
 				local ARCHIVE_NAME="wordpress-$WP_VERSION"
 			else

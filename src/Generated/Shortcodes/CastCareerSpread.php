@@ -33,6 +33,7 @@ class CastCareerSpread {
 			array(
 			'question' => '',
 			'seed' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -55,6 +56,6 @@ class CastCareerSpread {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'castCareerSpread', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'castCareerSpread', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

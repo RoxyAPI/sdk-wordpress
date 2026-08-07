@@ -37,6 +37,7 @@ class CalculateChannels {
 			'latitude' => '',
 			'longitude' => '',
 			'node_type' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -63,6 +64,6 @@ class CalculateChannels {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'calculateChannels', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'calculateChannels', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

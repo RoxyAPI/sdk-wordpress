@@ -18,6 +18,7 @@ use RoxyAPI\Admin\Notice;
 use RoxyAPI\Admin\PrivacyPolicy;
 use RoxyAPI\Admin\SettingsPage;
 use RoxyAPI\Admin\ShortcodesPage;
+use RoxyAPI\Admin\SiteHealth;
 use RoxyAPI\Api\GeocodeRoute;
 use RoxyAPI\Api\TestKeyRoute;
 use RoxyAPI\Blocks\Bindings;
@@ -43,7 +44,51 @@ class Plugin {
 		// before plugins_loaded, and the filter has to already be in place when it does.
 		LocaleFallback::register();
 
+		// Priority 0 so the catalogue is in memory before anything translates a string.
+		// FormRouter handles the visitor POST at init priority 5 and its validation
+		// messages are the earliest translated output on a page.
+		add_action( 'init', array( self::class, 'load_textdomain' ), 0 );
+
 		add_action( 'plugins_loaded', array( self::class, 'boot' ) );
+	}
+
+	/**
+	 * Put the bundled translation catalogue in memory.
+	 *
+	 * Two steps, each covering a failure the other does not.
+	 *
+	 * `load_plugin_textdomain()` no longer loads anything. Since WordPress 6.7 it records the
+	 * directory, hands the actual load to the just-in-time resolver, and returns true whether or
+	 * not a catalogue exists, so its return value proves nothing. It is still required: before
+	 * WordPress 6.8 nothing else records that directory (6.8 added a pass over the `Text Domain`
+	 * and `Domain Path` headers during boot), so the resolver finds no path, never reaches
+	 * `load_textdomain()`, and every non-English site renders English. Measured on clean 6.7.2
+	 * and 7.0.3 installs, not inferred.
+	 *
+	 * The explicit load is what makes the outcome deterministic. Just-in-time resolution runs
+	 * through `lang_dir_for_domain`, `pre_get_language_files_from_path` and the unloaded-domain
+	 * register, any one of which a theme or plugin can intercept, and the failure is silent.
+	 * Measured: adding a single filter that returns false for our domain renders the whole
+	 * interface in English on 6.7.2 and 7.0.3 alike when this call is absent. Resolving the file
+	 * here and loading it removes that dependency entirely.
+	 *
+	 * Hooked on `init` rather than earlier because loading before then suppresses the very
+	 * filters translations rely on, which WordPress reports as a doing_it_wrong.
+	 *
+	 * @return void
+	 */
+	public static function load_textdomain(): void {
+		load_plugin_textdomain( 'roxyapi', false, dirname( plugin_basename( self::$plugin_file ) ) . '/languages' );
+
+		if ( is_textdomain_loaded( 'roxyapi' ) ) {
+			return;
+		}
+
+		$locale = determine_locale();
+		$file   = LocaleFallback::catalogue_for( $locale );
+		if ( '' !== $file ) {
+			load_textdomain( 'roxyapi', $file, $locale );
+		}
 	}
 
 	public static function boot(): void {
@@ -52,6 +97,7 @@ class Plugin {
 		DemoPage::register();
 		Notice::register();
 		PrivacyPolicy::register();
+		SiteHealth::register();
 		ActionLinks::register();
 		DashboardWidget::register();
 		TestKeyRoute::register();

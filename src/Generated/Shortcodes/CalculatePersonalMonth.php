@@ -35,6 +35,7 @@ class CalculatePersonalMonth {
 			'day' => '',
 			'year' => '',
 			'target_month' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -59,6 +60,6 @@ class CalculatePersonalMonth {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'calculatePersonalMonth', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'calculatePersonalMonth', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

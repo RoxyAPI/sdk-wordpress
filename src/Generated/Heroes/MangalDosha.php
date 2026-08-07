@@ -33,6 +33,7 @@ class MangalDosha {
 		'lon' => "",
 		'tz' => "5.5",
 		'mode' => 'auto',
+		'hide_readings' => 'inherit',
 	);
 
 	/**
@@ -81,7 +82,7 @@ class MangalDosha {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\ComponentRenderer::render( 'checkManglikDosha', is_array( $data ) ? $data : array() );
+		return \RoxyAPI\Support\ComponentRenderer::render( 'checkManglikDosha', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 
 	/**

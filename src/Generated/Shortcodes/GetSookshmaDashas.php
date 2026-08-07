@@ -43,6 +43,7 @@ class GetSookshmaDashas {
 			'ayanamsa_value' => '',
 			'significators' => '',
 			'node_type' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -72,6 +73,6 @@ class GetSookshmaDashas {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getSookshmaDashas', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getSookshmaDashas', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

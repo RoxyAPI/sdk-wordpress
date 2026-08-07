@@ -35,6 +35,7 @@ class GetHora {
 			'latitude' => '',
 			'longitude' => '',
 			'timezone' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -59,6 +60,6 @@ class GetHora {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getHora', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getHora', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

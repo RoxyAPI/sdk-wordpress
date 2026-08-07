@@ -29,6 +29,7 @@ class CrystalsByZodiac {
 	public const DEFAULTS = array(
 		'sign' => "",
 		'mode' => 'auto',
+		'hide_readings' => 'inherit',
 	);
 
 	/**
@@ -67,7 +68,7 @@ class CrystalsByZodiac {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\ComponentRenderer::render( 'getCrystalsByZodiac', is_array( $data ) ? $data : array() );
+		return \RoxyAPI\Support\ComponentRenderer::render( 'getCrystalsByZodiac', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 
 	/**

@@ -28,14 +28,26 @@ class ComponentRenderer {
 	private const TAG_PATTERN = '/^roxy-[a-z-]+$/';
 
 	/**
+	 * Attribute value that defers to the site setting. Every shortcode
+	 * declares it as the default for `hide_readings`, so a placement that
+	 * says nothing follows the setting.
+	 */
+	public const INHERIT = 'inherit';
+
+	/**
 	 * Render an API response for the given operation.
 	 *
-	 * @param string               $operation_id Spec operationId driving the component choice.
-	 * @param array<string, mixed> $data         Unwrapped API response.
+	 * @param string               $operation_id  Spec operationId driving the component choice.
+	 * @param array<string, mixed> $data          Unwrapped API response.
+	 * @param bool|string|null     $hide_readings Per-placement override for written
+	 *                                            interpretations. `null`, `''` and
+	 *                                            `inherit` follow the site setting;
+	 *                                            anything else is read as a boolean.
 	 * @return string Rendered HTML.
 	 */
-	public static function render( string $operation_id, array $data ): string {
+	public static function render( string $operation_id, array $data, $hide_readings = null ): string {
 		$rows = ComponentMap::for( $operation_id );
+		$hide = self::hide_readings( $hide_readings );
 
 		/**
 		 * Filter whether the web-component bundle is used for rendering. Return
@@ -47,7 +59,7 @@ class ComponentRenderer {
 		$ui_enabled = (bool) apply_filters( 'roxyapi_enqueue_ui_bundle', true );
 
 		if ( false === $ui_enabled || empty( $data ) ) {
-			return GenericRenderer::render( $operation_id, $data );
+			return GenericRenderer::render( $operation_id, $data, true, $hide );
 		}
 
 		// Mapped operations use their component; any other shape uses the
@@ -72,11 +84,11 @@ class ComponentRenderer {
 				// Unexpected map entry; skip this row rather than emit an unsafe tag.
 				continue;
 			}
-			$markup .= self::render_element( $tag, $operation_id, $data );
+			$markup .= self::render_element( $tag, $operation_id, $data, $hide );
 		}
 
 		if ( '' === $markup ) {
-			return GenericRenderer::render( $operation_id, $data );
+			return GenericRenderer::render( $operation_id, $data, true, $hide );
 		}
 
 		if ( count( $rows ) > 1 ) {
@@ -102,20 +114,26 @@ class ComponentRenderer {
 	 * values (for example a literal `</script>` substring) is escaped and
 	 * cannot break out of the script element.
 	 *
-	 * @param string               $tag          Validated `roxy-*` tag name.
-	 * @param string               $operation_id Spec operationId.
-	 * @param array<string, mixed> $data         Unwrapped API response.
+	 * `hide-readings` is emitted on every element rather than on a curated
+	 * list of components that understand it. An unknown attribute is inert on
+	 * a custom element, so uniform emission costs nothing and cannot go stale
+	 * when the next component ships.
+	 *
+	 * @param string               $tag           Validated `roxy-*` tag name.
+	 * @param string               $operation_id  Spec operationId.
+	 * @param array<string, mixed> $data          Unwrapped API response.
+	 * @param bool                 $hide_readings Whether written interpretations are suppressed.
 	 * @return string Rendered element HTML.
 	 */
-	private static function render_element( string $tag, string $operation_id, array $data ): string {
+	private static function render_element( string $tag, string $operation_id, array $data, bool $hide_readings ): string {
 		$payload = wp_json_encode( $data, JSON_HEX_TAG );
 		if ( false === $payload ) {
 			// Encoding failed; degrade to the server-rendered card.
-			return GenericRenderer::render( $operation_id, $data );
+			return GenericRenderer::render( $operation_id, $data, true, $hide_readings );
 		}
 
 		return sprintf(
-			'<%1$s class="roxyapi-component" data-operation="%2$s">'
+			'<%1$s class="roxyapi-component" data-operation="%2$s"%5$s>'
 				. '<script type="application/json" class="roxy-data">%3$s</script>'
 				. '<div class="roxyapi-component-fallback">%4$s</div>'
 				. '</%1$s>',
@@ -123,8 +141,38 @@ class ComponentRenderer {
 			esc_attr( $operation_id ),
 			$payload,
 			// Meta-free fallback: disclaimer and attribution are emitted once by
-			// render(), outside the element, so they survive the upgrade.
-			GenericRenderer::render( $operation_id, $data, false )
+			// render(), outside the element, so they survive the upgrade. The
+			// fallback is what a no-JS visitor reads, so it hides the same text
+			// the component hides.
+			GenericRenderer::render( $operation_id, $data, false, $hide_readings ),
+			$hide_readings ? ' hide-readings' : ''
 		);
+	}
+
+	/**
+	 * Resolve whether written interpretations are suppressed for this render.
+	 *
+	 * Precedence: an explicit shortcode attribute wins over the site setting,
+	 * the site setting wins over the default, and the default is readings
+	 * shown. `inherit` (the shortcode default) and an empty value are not
+	 * opinions, so they fall through to the setting.
+	 *
+	 * @param bool|string|null $override Raw per-placement value.
+	 * @return bool
+	 */
+	private static function hide_readings( $override ): bool {
+		if ( is_bool( $override ) ) {
+			return $override;
+		}
+		$raw = is_string( $override ) ? strtolower( trim( $override ) ) : '';
+		if ( '' !== $raw && self::INHERIT !== $raw ) {
+			$explicit = filter_var( $raw, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE );
+			if ( null !== $explicit ) {
+				return $explicit;
+			}
+		}
+
+		$opts = \RoxyAPI\Admin\SettingsSchema::get_option();
+		return ! empty( $opts['hide_readings'] );
 	}
 }

@@ -37,6 +37,7 @@ class CalculateType {
 			'latitude' => '',
 			'longitude' => '',
 			'node_type' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -63,6 +64,6 @@ class CalculateType {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'calculateType', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'calculateType', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

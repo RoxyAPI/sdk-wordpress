@@ -34,6 +34,7 @@ class GetMoonCalendar {
 			'year' => '',
 			'month' => '',
 			'lang' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -47,6 +48,6 @@ class GetMoonCalendar {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getMoonCalendar', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'getMoonCalendar', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

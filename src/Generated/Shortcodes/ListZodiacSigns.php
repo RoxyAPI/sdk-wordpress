@@ -32,6 +32,7 @@ class ListZodiacSigns {
 		$atts = shortcode_atts(
 			array(
 			'lang' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -45,6 +46,6 @@ class ListZodiacSigns {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'listZodiacSigns', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'listZodiacSigns', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }

@@ -539,6 +539,12 @@
 	position: relative;
 }
 
+/* The listbox and its options are divs carrying role="listbox" and
+   role="option", never ul and li. Themes ship opinionated ul and li element
+   rules that outrank this stylesheet and turned the dropdown into a bulleted,
+   transparent overlay. `list-style` stays because `disc` is the inherited
+   initial value on any element, so the reset is what keeps a marker from
+   appearing if the option box is ever given `display: list-item`. */
 :where(.roxyapi-geocode-listbox) {
 	position: absolute;
 	inset-inline-start: 0;

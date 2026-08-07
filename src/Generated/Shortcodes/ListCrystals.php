@@ -39,6 +39,7 @@ class ListCrystals {
 			'planet' => '',
 			'limit' => '',
 			'offset' => '',
+			'hide_readings' => 'inherit',
 			),
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
@@ -52,6 +53,6 @@ class ListCrystals {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'listCrystals', is_array( $data ) ? $data : array() );
+		return ComponentRenderer::render( 'listCrystals', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
 	}
 }
