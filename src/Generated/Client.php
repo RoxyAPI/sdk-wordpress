@@ -168,7 +168,7 @@ class Client {
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/planets/monthly',
 			$body,
-			0,
+			3600,
 			static function () use ( $body ) {
 				return \RoxyAPI\Api\Client::post( 'astrology/planets/monthly', $body );
 			}

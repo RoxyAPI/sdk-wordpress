@@ -119,7 +119,7 @@ class Endpoints {
 			'method'        => 'POST',
 			'tag'           => 'Western Astrology',
 			'summary'       => 'Monthly Ephemeris - Daily tropical planetary positions for a month',
-			'ttl'           => 0,
+			'ttl'           => 3600,
 			'hero'          => false,
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_monthly_tropical_ephemeris',
