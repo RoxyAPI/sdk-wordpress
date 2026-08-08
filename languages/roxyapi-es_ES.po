@@ -120,6 +120,9 @@ msgstr "Comprobar Mangal Dosha"
 msgid "Check Mangal Dosha (manglik) status for matrimonial compatibility, with severity, remedies, and exception conditions."
 msgstr "Comprueba el estado de Mangal Dosha (manglik) para la compatibilidad matrimonial, con gravedad, remedios y condiciones de excepción."
 
+msgid "City selected."
+msgstr "Ciudad seleccionada."
+
 msgid "Compatibility Score. Relationship compatibility analysis with category breakdown"
 msgstr "Puntuación de compatibilidad. Análisis de compatibilidad con desglose por categorías"
 
@@ -351,6 +354,9 @@ msgstr "Nombre"
 msgid "Natal chart"
 msgstr "Carta natal"
 
+msgid "No matching cities. Try a different spelling."
+msgstr "No se encontraron ciudades. Prueba con otra ortografía."
+
 msgid "Node type"
 msgstr "Tipo de nodo"
 
@@ -425,6 +431,12 @@ msgstr "Elige tu signo solar"
 
 msgid "Question"
 msgstr "Pregunta"
+
+msgid "Search is unavailable. Enter coordinates manually."
+msgstr "La búsqueda no está disponible. Introduce las coordenadas manualmente."
+
+msgid "Searching cities…"
+msgstr "Buscando ciudades…"
 
 msgid "Security check failed. Please reload the page and try again."
 msgstr "La comprobación de seguridad ha fallado. Recarga la página e inténtalo de nuevo."

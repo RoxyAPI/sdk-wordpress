@@ -76,6 +76,14 @@ pre-push:
             run: npm run build:all && npm run check:blocks
             priority: 1
 
+        # The city-search dropdown floats over the fields below it, so a theme
+        # that flattens its background makes the form unreadable rather than
+        # merely off-brand. Renders the real stylesheet against a hostile theme
+        # and measures it. Skips itself if no chromium is installed.
+        geocode-armour-check:
+            run: npm run check:geocode
+            priority: 1
+
         # Full format pass (auto-fix). PHP first, then JS/CSS so each tool
         # only touches files it owns.
         php-format:

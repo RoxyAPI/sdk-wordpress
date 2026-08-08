@@ -18,8 +18,10 @@ build/
 *.min.js
 *.min.css
 
-# Vendored @roxyapi/ui bundle: minified third-party code, not ours to format.
+# Vendored @roxyapi/ui bundle and its interface-label catalogues: minified
+# third-party code, not ours to format.
 assets/js/roxy-ui.js
+assets/js/locales/
 
 # Lockfiles — managed by their tools.
 composer.lock

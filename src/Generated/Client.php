@@ -159,6 +159,23 @@ class Client {
 	}
 
 	/**
+	 * Monthly Ephemeris - Daily tropical planetary positions for a month
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function getMonthlyTropicalEphemeris( $body = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'astrology/planets/monthly',
+			$body,
+			0,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/planets/monthly', $body );
+			}
+		);
+	}
+
+	/**
 	 * Get current moon phase - Lunar phase calculator with zodiac sign
 	 *
 	 * @return array|\WP_Error
@@ -852,9 +869,6 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getMonthlyEphemeris( $body = array() ) {
-		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'year', 'month' ) ) ) {
-			return \RoxyAPI\Api\Client::not_configured();
-		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/planetary-positions/monthly',
 			$body,
@@ -1460,9 +1474,6 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getMonthlyAspects( $body = array() ) {
-		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'year', 'month' ) ) ) {
-			return \RoxyAPI\Api\Client::not_configured();
-		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/aspects/monthly',
 			$body,
@@ -1480,9 +1491,6 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getLunarAspects( $body = array() ) {
-		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'year', 'month' ) ) ) {
-			return \RoxyAPI\Api\Client::not_configured();
-		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/aspects/lunar',
 			$body,
@@ -1520,9 +1528,6 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getMonthlyTransits( $body = array() ) {
-		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'year', 'month' ) ) ) {
-			return \RoxyAPI\Api\Client::not_configured();
-		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/transit/monthly',
 			$body,
@@ -1560,9 +1565,6 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getMonthlyParallels( $body = array() ) {
-		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'year', 'month' ) ) ) {
-			return \RoxyAPI\Api\Client::not_configured();
-		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/parallels/monthly',
 			$body,

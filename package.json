@@ -48,6 +48,7 @@
 		"check:distignore": "node bin/check-distignore.mjs",
 		"check:component-map": "node bin/check-component-map.mjs",
 		"check:blocks": "node bin/check-block-layout.mjs",
+		"check:geocode": "node bin/check-geocode-armour.mjs",
 		"upgrade": "npx npm-check-updates --target minor --upgrade",
 		"check-outdated": "npx npm-check-updates",
 		"i18n:pot": "docker run --rm -v \"$PWD\":/plugin -w /plugin -u \"$(id -u):$(id -g)\" wordpress:cli wp i18n make-pot . languages/roxyapi.pot --slug=roxyapi --skip-audit"
@@ -58,7 +59,8 @@
 		"@wordpress/server-side-render": "^6.28.0",
 		"ajv": "^8.20.0",
 		"ajv-formats": "^3.0.1",
-		"lefthook": "^2.1.10"
+		"lefthook": "^2.1.10",
+		"playwright": "1.61.1"
 	},
 	"prettier": "@wordpress/prettier-config",
 	"files": [

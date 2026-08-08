@@ -114,6 +114,21 @@ class Endpoints {
 				'timezone' => 'UTC',
 			),
 		),
+		'getMonthlyTropicalEphemeris' => array(
+			'path'          => '/astrology/planets/monthly',
+			'method'        => 'POST',
+			'tag'           => 'Western Astrology',
+			'summary'       => 'Monthly Ephemeris - Daily tropical planetary positions for a month',
+			'ttl'           => 0,
+			'hero'          => false,
+			'block_only'    => false,
+			'shortcode_tag' => 'roxy_get_monthly_tropical_ephemeris',
+			'attributes' => array(
+				'lang' => 'en',
+				'year' => '2026',
+				'month' => '8',
+			),
+		),
 		'getCurrentMoonPhase' => array(
 			'path'          => '/astrology/moon-phase/current',
 			'method'        => 'GET',
@@ -700,6 +715,7 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_monthly_ephemeris',
 			'attributes' => array(
+				'lang' => 'en',
 				'year' => '2026',
 				'month' => '2',
 				'coordinate_system' => 'sidereal',
@@ -1256,6 +1272,7 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_monthly_aspects',
 			'attributes' => array(
+				'lang' => 'en',
 				'year' => '2026',
 				'month' => '2',
 				'timezone' => 'UTC',
@@ -1272,6 +1289,7 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_lunar_aspects',
 			'attributes' => array(
+				'lang' => 'en',
 				'year' => '2026',
 				'month' => '2',
 				'timezone' => 'UTC',
@@ -1308,6 +1326,7 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_monthly_transits',
 			'attributes' => array(
+				'lang' => 'en',
 				'year' => '2026',
 				'month' => '2',
 				'timezone' => 'UTC',
@@ -1342,6 +1361,7 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_monthly_parallels',
 			'attributes' => array(
+				'lang' => 'en',
 				'year' => '2026',
 				'month' => '2',
 				'timezone' => 'UTC',

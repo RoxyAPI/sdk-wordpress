@@ -56,6 +56,13 @@ jobs:
             - run: npm run build:all
             - name: Block layout is flat so the whole catalog registers
               run: npm run check:blocks
+            # The geocode check renders the real stylesheet in a browser against
+            # a deliberately hostile theme. With no browser binary it silently
+            # drops to source checks only, so install chromium before it runs.
+            - name: Install chromium for the rendered CSS check
+              run: npx playwright install --with-deps chromium
+            - name: City search dropdown survives a hostile theme
+              run: npm run check:geocode
             # --update forces a fresh pull of plugin-check.latest-stable.zip;
             # without it wp-env reuses a stale cached copy and misses newer checks.
             - run: npx wp-env start --update

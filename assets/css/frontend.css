@@ -6,6 +6,13 @@
  * any theme. Selectors use :where() so a theme can override anything without
  * fighting !important.
  *
+ * The one exception is the city-search dropdown at the end of this file, which
+ * floats over other fields and is therefore unusable rather than merely
+ * restyled when a theme wins. Its integrity declarations are !important and
+ * read from --roxyapi-geocode-* custom properties, which stay overridable. The
+ * reasoning is in the comment above that block; do not extend the exception
+ * without the same kind of measurement behind it.
+ *
  * Class contract:
  *   .roxyapi-card           Outer container for one rendered reading.
  *   .roxyapi-card-header    Title + meta strip.
@@ -534,48 +541,80 @@
 	opacity: 0.9;
 }
 
-:where(.roxyapi-form-geocode) {
-	grid-column: 1 / -1;
-	position: relative;
+/* The city-search dropdown: the one block in this file that may not lose.
+ *
+ * It is absolutely positioned over the fields that follow it, so a theme that
+ * flattens its background, border or padding does not merely restyle it. The
+ * panel becomes an invisible box and the city names and the labels underneath
+ * render on top of each other, which is what a customer reported on 2026-08-07.
+ *
+ * Specificity cannot win this and neither can markup. Measured on that site:
+ * the panel lost `background`, `border`, `padding` and `margin` to the theme
+ * reset's bare `div` selector at 0-0-1, having lost the same declarations the
+ * day before to `#left-area ul` at 1-0-1 when the options were list items. So
+ * 0-0-0 loses to an element reset, 0-1-0 and 0-2-0 both lose to an ID-scoped
+ * element rule, and moving `ul` to `div` only changed which reset flattened it.
+ * !important is the only thing that holds against an arbitrary theme.
+ *
+ * Deliberate restyling is still supported and is the documented path: every
+ * forced value reads a --roxyapi-geocode-* custom property, and a custom
+ * property set on any ancestor wins no matter how the declaration using it is
+ * weighted. Decoration a theme SHOULD win stays :where() in the rule below.
+ *
+ * `list-style` stays because `disc` is the inherited initial value on any
+ * element, so the reset is what keeps a marker from appearing if the option box
+ * is ever given `display: list-item`. */
+.roxyapi-form-geocode {
+	grid-column: 1 / -1 !important;
+	position: relative !important;
 }
 
-/* The listbox and its options are divs carrying role="listbox" and
-   role="option", never ul and li. Themes ship opinionated ul and li element
-   rules that outrank this stylesheet and turned the dropdown into a bulleted,
-   transparent overlay. `list-style` stays because `disc` is the inherited
-   initial value on any element, so the reset is what keeps a marker from
-   appearing if the option box is ever given `display: list-item`. */
+.roxyapi-geocode-listbox {
+	position: absolute !important;
+	inset-inline-start: 0 !important;
+	inset-inline-end: 0 !important;
+	top: 100% !important;
+	z-index: var(--roxyapi-geocode-z, 10) !important;
+	display: block !important;
+	margin: 0.25rem 0 0 !important;
+	padding: 0.25rem 0 !important;
+	max-block-size: 16rem !important;
+	overflow-y: auto !important;
+	list-style: none !important;
+	background: var(--roxyapi-geocode-bg, var(--wp--preset--color--background, #fff)) !important;
+	color: var(--roxyapi-geocode-fg, var(--wp--preset--color--foreground, #111)) !important;
+	border: var(--roxyapi-geocode-border, 1px solid color-mix(in srgb, currentcolor 18%, transparent)) !important;
+}
+
+/* Decoration only. A theme is welcome to win here: losing these leaves the
+   dropdown legible and usable. */
 :where(.roxyapi-geocode-listbox) {
-	position: absolute;
-	inset-inline-start: 0;
-	inset-inline-end: 0;
-	top: 100%;
-	z-index: 10;
-	margin: 0.25rem 0 0;
-	padding: 0.25rem 0;
-	max-block-size: 16rem;
-	overflow-y: auto;
-	list-style: none;
-	background: var(--wp--preset--color--background, #fff);
-	color: var(--wp--preset--color--foreground, #111);
-	border: 1px solid color-mix(in srgb, currentcolor 18%, transparent);
 	border-radius: var(--wp--custom--border--radius, 6px);
 	box-shadow: 0 6px 24px color-mix(in srgb, currentcolor 12%, transparent);
 }
 
-:where(.roxyapi-geocode-listbox[hidden]) {
-	display: none;
+/* Must outrank the block above, or a theme that sets `display` on a bare div
+   leaves an empty panel permanently open under the input. */
+.roxyapi-geocode-listbox[hidden] {
+	display: none !important;
+}
+
+/* Padding is integrity, not decoration: with it flattened the rows collapse to
+   a 23.8px line box with no separation, which is under the 24px minimum target
+   size and unusable on a touch screen. */
+.roxyapi-geocode-option {
+	padding: 0.5rem 0.75rem !important;
+}
+
+/* The only cue for which row the arrow keys are on. */
+.roxyapi-geocode-option:hover,
+.roxyapi-geocode-option[aria-selected="true"] {
+	background: var(--roxyapi-geocode-option-active-bg, color-mix(in srgb, currentcolor 8%, transparent)) !important;
 }
 
 :where(.roxyapi-geocode-option) {
-	padding: 0.5rem 0.75rem;
 	font-size: var(--wp--preset--font-size--small, 0.9375rem);
 	cursor: pointer;
-}
-
-:where(.roxyapi-geocode-option:hover),
-:where(.roxyapi-geocode-option[aria-selected="true"]) {
-	background: color-mix(in srgb, currentcolor 8%, transparent);
 }
 
 :where(.roxyapi-geocode-status) {

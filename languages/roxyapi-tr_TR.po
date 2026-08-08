@@ -120,6 +120,9 @@ msgstr "Mangal Dosha kontrolü"
 msgid "Check Mangal Dosha (manglik) status for matrimonial compatibility, with severity, remedies, and exception conditions."
 msgstr "Evlilik uyumu için Mangal Dosha (manglik) durumunu, şiddet düzeyi, çareler ve istisna koşullarıyla birlikte kontrol eder."
 
+msgid "City selected."
+msgstr "Şehir seçildi."
+
 msgid "Compatibility Score. Relationship compatibility analysis with category breakdown"
 msgstr "Uyum puanı. Kategori bazlı dökümle ilişki uyumu analizi"
 
@@ -351,6 +354,9 @@ msgstr "Ad"
 msgid "Natal chart"
 msgstr "Doğum haritası"
 
+msgid "No matching cities. Try a different spelling."
+msgstr "Eşleşen şehir bulunamadı. Farklı bir yazım deneyin."
+
 msgid "Node type"
 msgstr "Düğüm türü"
 
@@ -425,6 +431,12 @@ msgstr "Güneş burcunuzu seçin"
 
 msgid "Question"
 msgstr "Soru"
+
+msgid "Search is unavailable. Enter coordinates manually."
+msgstr "Arama kullanılamıyor. Koordinatları elle girin."
+
+msgid "Searching cities…"
+msgstr "Şehirler aranıyor…"
 
 msgid "Security check failed. Please reload the page and try again."
 msgstr "Güvenlik doğrulaması başarısız oldu. Lütfen sayfayı yenileyip tekrar deneyin."

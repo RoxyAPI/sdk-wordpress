@@ -8,15 +8,15 @@ const fields = [
 		"name": "year",
 		"control": "number",
 		"label": "Year",
-		"required": true,
-		"help": "Year for monthly ephemeris (1900-2100)."
+		"required": false,
+		"help": "Year for monthly ephemeris (1900-2100)"
 	},
 	{
 		"name": "month",
 		"control": "number",
 		"label": "Month",
-		"required": true,
-		"help": "Month number (1-12) for ephemeris."
+		"required": false,
+		"help": "Month number (1-12) for ephemeris"
 	},
 	{
 		"name": "coordinateSystem",

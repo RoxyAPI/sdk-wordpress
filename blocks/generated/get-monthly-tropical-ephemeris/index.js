@@ -9,21 +9,14 @@ const fields = [
 		"control": "number",
 		"label": "Year",
 		"required": false,
-		"help": "Year for monthly parallel analysis (1900-2100)"
+		"help": "Year for the monthly ephemeris (1900-2100)"
 	},
 	{
 		"name": "month",
 		"control": "number",
 		"label": "Month",
 		"required": false,
-		"help": "Month number (1-12) for parallel analysis"
-	},
-	{
-		"name": "timezone",
-		"control": "text",
-		"label": "Timezone",
-		"required": false,
-		"help": "Timezone offset from UTC in hours"
+		"help": "Month number (1-12) for the ephemeris"
 	}
 ];
 

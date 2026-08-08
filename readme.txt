@@ -210,6 +210,14 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.8.1 =
+* Fixed: on some themes the city search results were see-through and overlapped the fields underneath. They now render as a solid panel on any theme.
+* Fixed: the city rows are a comfortable size to tap on a phone.
+* Fixed: the messages under the city box now follow your site language.
+* Fixed: chart headings, tabs and panel titles now follow your site language, along with planet names, sign names and dates. The chart patterns panel and the plain table headings are still English.
+* Added: roxy_get_monthly_tropical_ephemeris, a Western monthly ephemeris on the tropical zodiac, including the outer planets. The existing roxy_get_monthly_ephemeris stays sidereal, for Vedic astrology.
+* Added: leave year and month out of either monthly ephemeris and it shows the current month.
+
 = 1.8.0 =
 * New: show the chart without the written reading. Tick "Hide written readings" under Display to keep the wheels, tables and numbers while leaving the interpretation out, or set hide_readings on a single shortcode to control one placement. Off by default, so nothing changes until you turn it on.
 * New: a transit wheel. [roxy_calculate_transit_aspects] now draws the birth chart on an inner ring and the transiting planets on an outer ring, with the aspects between them, instead of a table of aspects.
@@ -395,6 +403,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.8.1 =
+Recommended for every site, and important for sites that are not in English. Chart labels now follow your site language instead of staying English, city search results are readable on any theme, and the city rows are easier to tap on a phone.
 
 = 1.8.0 =
 Recommended for every site. Non-English sites get translations that load reliably, city search is fixed on themes that were breaking the results list, and you can now show a chart without its written reading.

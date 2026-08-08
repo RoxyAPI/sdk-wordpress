@@ -27,9 +27,22 @@ class Language {
 		$opts = \RoxyAPI\Admin\SettingsSchema::get_option();
 		$lang = isset( $opts['display_language'] ) ? (string) $opts['display_language'] : '';
 		if ( $lang === '' ) {
-			$prefix = strtolower( substr( (string) get_locale(), 0, 2 ) );
-			$lang   = in_array( $prefix, self::SUPPORTED, true ) ? $prefix : '';
+			$lang = self::from_locale( (string) get_locale() );
 		}
 		return $lang;
+	}
+
+	/**
+	 * Narrow a WordPress locale to a supported code, or '' when the language is
+	 * not one we carry.
+	 *
+	 * @remarks A locale is a language plus a region (`es_AR`, `pt_BR`) and the region is never part of a supported code, so every regional variant of a language resolves to the same one. Callers that need the region for formatting must keep the locale; this answers only "which of our languages is this".
+	 *
+	 * @param string $locale WordPress locale, for example `es_AR`.
+	 * @return string
+	 */
+	public static function from_locale( string $locale ): string {
+		$prefix = strtolower( substr( $locale, 0, 2 ) );
+		return in_array( $prefix, self::SUPPORTED, true ) ? $prefix : '';
 	}
 }

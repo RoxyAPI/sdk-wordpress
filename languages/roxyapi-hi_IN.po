@@ -120,6 +120,9 @@ msgstr "मंगल दोष देखें"
 msgid "Check Mangal Dosha (manglik) status for matrimonial compatibility, with severity, remedies, and exception conditions."
 msgstr "विवाह अनुकूलता के लिए मंगल दोष (मांगलिक) की स्थिति, उसकी तीव्रता, उपाय और अपवाद स्थितियों सहित।"
 
+msgid "City selected."
+msgstr "शहर चुना गया।"
+
 msgid "Compatibility Score. Relationship compatibility analysis with category breakdown"
 msgstr "अनुकूलता अंक। श्रेणीवार विवरण के साथ संबंधों की अनुकूलता का विश्लेषण"
 
@@ -351,6 +354,9 @@ msgstr "नाम"
 msgid "Natal chart"
 msgstr "जन्म कुंडली"
 
+msgid "No matching cities. Try a different spelling."
+msgstr "कोई मिलता शहर नहीं मिला। वर्तनी बदलकर पुनः प्रयास करें।"
+
 msgid "Node type"
 msgstr "नोड प्रकार"
 
@@ -425,6 +431,12 @@ msgstr "अपनी सूर्य राशि चुनें"
 
 msgid "Question"
 msgstr "प्रश्न"
+
+msgid "Search is unavailable. Enter coordinates manually."
+msgstr "खोज उपलब्ध नहीं है। निर्देशांक मैन्युअल रूप से दर्ज करें।"
+
+msgid "Searching cities…"
+msgstr "शहर खोजे जा रहे हैं…"
 
 msgid "Security check failed. Please reload the page and try again."
 msgstr "सुरक्षा जाँच विफल रही। कृपया पृष्ठ फिर से लोड करके प्रयास करें।"

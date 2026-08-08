@@ -24,6 +24,7 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\ListPlanetMeanings::register();
 		\RoxyAPI\Generated\Shortcodes\GetPlanetMeaning::register();
 		\RoxyAPI\Generated\Shortcodes\GetPlanetaryPositions::register();
+		\RoxyAPI\Generated\Shortcodes\GetMonthlyTropicalEphemeris::register();
 		\RoxyAPI\Generated\Shortcodes\GetUpcomingMoonPhases::register();
 		\RoxyAPI\Generated\Shortcodes\GetMoonCalendar::register();
 		\RoxyAPI\Generated\Shortcodes\CalculateSynastry::register();

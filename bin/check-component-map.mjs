@@ -15,10 +15,15 @@
  * fails (exit 1) if any mapped component tag is absent from it. The manifest
  * lists slugs without the `roxy-` prefix, e.g. `natal-chart`.
  *
+ * The same manifest lists the interface-label catalogues, so this also fails if
+ * the set vendored into assets/js/locales is not the set the pinned version
+ * ships. That is the other half of the same failure: a pin moved by hand leaves
+ * every translated site reading English labels and nothing errors.
+ *
  * Network failures do not fail the build: a CDN blip should not block a merge.
  * Only a confirmed mismatch (manifest fetched, tag missing) is fatal.
  */
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
@@ -116,6 +121,43 @@ if ( missing.length > 0 ) {
 	console.error(
 		'Either the @roxyapi/ui pin is wrong or a component was renamed/removed. Fix the map or the pinned version.'
 	);
+	process.exit( 1 );
+}
+
+// Catalogue guard: the pinned build's interface-label catalogues must all be
+// vendored, and nothing else may sit alongside them. The plugin enqueues one by
+// filename, so a pin moved without re-running `npm run fetch:ui` leaves every
+// translated site reading English labels, and a catalogue left over from another
+// version is served against a bundle it was not built for. Neither errors.
+const expectedLocales = new Set( manifest.locales || [] );
+let vendoredLocales;
+try {
+	vendoredLocales = new Set(
+		readdirSync( path.join( root, 'assets', 'js', 'locales' ) )
+			.filter( ( file ) => file.endsWith( '.js' ) )
+			.map( ( file ) => file.slice( 0, -'.js'.length ) )
+	);
+} catch {
+	vendoredLocales = new Set();
+}
+
+const missingLocales = [ ...expectedLocales ].filter(
+	( lang ) => ! vendoredLocales.has( lang )
+);
+const extraLocales = [ ...vendoredLocales ].filter(
+	( lang ) => ! expectedLocales.has( lang )
+);
+if ( missingLocales.length > 0 || extraLocales.length > 0 ) {
+	console.error(
+		`assets/js/locales does not match the catalogues shipped by ${ manifestUrl }:`
+	);
+	for ( const lang of missingLocales.sort() ) {
+		console.error( `  missing ${ lang }.js` );
+	}
+	for ( const lang of extraLocales.sort() ) {
+		console.error( `  ${ lang }.js is not shipped by the pinned version` );
+	}
+	console.error( 'Run `npm run fetch:ui` to re-vendor against the pin.' );
 	process.exit( 1 );
 }
 
