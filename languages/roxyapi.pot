@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology 1.7.6\n"
+"Project-Id-Version: RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology 1.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/roxyapi\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-07T01:28:08+00:00\n"
+"POT-Creation-Date: 2026-08-08T04:14:45+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: roxyapi\n"
@@ -545,41 +545,41 @@ msgstr ""
 #. translators: %s: shortcode attribute name.
 #: src/Generated/Client.php:50
 #: src/Generated/Client.php:101
-#: src/Generated/Client.php:221
-#: src/Generated/Client.php:224
-#: src/Generated/Client.php:448
-#: src/Generated/Client.php:477
-#: src/Generated/Client.php:506
-#: src/Generated/Client.php:916
-#: src/Generated/Client.php:939
-#: src/Generated/Client.php:942
-#: src/Generated/Client.php:965
-#: src/Generated/Client.php:968
-#: src/Generated/Client.php:971
-#: src/Generated/Client.php:994
-#: src/Generated/Client.php:997
-#: src/Generated/Client.php:1000
-#: src/Generated/Client.php:1003
-#: src/Generated/Client.php:1190
-#: src/Generated/Client.php:1627
-#: src/Generated/Client.php:1678
-#: src/Generated/Client.php:1790
-#: src/Generated/Client.php:2137
-#: src/Generated/Client.php:2204
-#: src/Generated/Client.php:2545
-#: src/Generated/Client.php:2609
-#: src/Generated/Client.php:2705
-#: src/Generated/Client.php:3100
-#: src/Generated/Client.php:3176
-#: src/Generated/Client.php:3203
-#: src/Generated/Client.php:3232
-#: src/Generated/Client.php:3261
-#: src/Generated/Client.php:3290
-#: src/Generated/Client.php:3344
-#: src/Generated/Client.php:3491
-#: src/Generated/Client.php:3593
-#: src/Generated/Client.php:3664
-#: src/Generated/Client.php:3785
+#: src/Generated/Client.php:238
+#: src/Generated/Client.php:241
+#: src/Generated/Client.php:465
+#: src/Generated/Client.php:494
+#: src/Generated/Client.php:523
+#: src/Generated/Client.php:930
+#: src/Generated/Client.php:953
+#: src/Generated/Client.php:956
+#: src/Generated/Client.php:979
+#: src/Generated/Client.php:982
+#: src/Generated/Client.php:985
+#: src/Generated/Client.php:1008
+#: src/Generated/Client.php:1011
+#: src/Generated/Client.php:1014
+#: src/Generated/Client.php:1017
+#: src/Generated/Client.php:1204
+#: src/Generated/Client.php:1629
+#: src/Generated/Client.php:1680
+#: src/Generated/Client.php:1792
+#: src/Generated/Client.php:2139
+#: src/Generated/Client.php:2206
+#: src/Generated/Client.php:2547
+#: src/Generated/Client.php:2611
+#: src/Generated/Client.php:2707
+#: src/Generated/Client.php:3102
+#: src/Generated/Client.php:3178
+#: src/Generated/Client.php:3205
+#: src/Generated/Client.php:3234
+#: src/Generated/Client.php:3263
+#: src/Generated/Client.php:3292
+#: src/Generated/Client.php:3346
+#: src/Generated/Client.php:3493
+#: src/Generated/Client.php:3595
+#: src/Generated/Client.php:3666
+#: src/Generated/Client.php:3787
 #, php-format
 msgid "Missing required attribute \"%s\" for this shortcode."
 msgstr ""
@@ -2263,6 +2263,7 @@ msgstr ""
 #: blocks/generated/get-monthly-horoscope/block.json
 #: blocks/generated/get-monthly-parallels/block.json
 #: blocks/generated/get-monthly-transits/block.json
+#: blocks/generated/get-monthly-tropical-ephemeris/block.json
 #: blocks/generated/get-moon-calendar/block.json
 #: blocks/generated/get-nakshatra/block.json
 #: blocks/generated/get-number-meaning/block.json
@@ -2467,6 +2468,7 @@ msgstr ""
 #: blocks/generated/generate-solar-arc/block.json
 #: blocks/generated/generate-solar-return/block.json
 #: blocks/generated/get-monthly-horoscope/block.json
+#: blocks/generated/get-monthly-tropical-ephemeris/block.json
 #: blocks/generated/get-moon-calendar/block.json
 #: blocks/generated/get-planet-meaning/block.json
 #: blocks/generated/get-planetary-positions/block.json
@@ -3598,6 +3600,7 @@ msgstr ""
 #: blocks/generated/get-monthly-horoscope/block.json
 #: blocks/generated/get-monthly-parallels/block.json
 #: blocks/generated/get-monthly-transits/block.json
+#: blocks/generated/get-monthly-tropical-ephemeris/block.json
 #: blocks/generated/get-moon-calendar/block.json
 #: blocks/generated/get-nakshatra/block.json
 #: blocks/generated/get-number-meaning/block.json
@@ -4135,6 +4138,7 @@ msgstr ""
 #: blocks/generated/get-monthly-horoscope/block.json
 #: blocks/generated/get-monthly-parallels/block.json
 #: blocks/generated/get-monthly-transits/block.json
+#: blocks/generated/get-monthly-tropical-ephemeris/block.json
 msgctxt "block keyword"
 msgid "monthly"
 msgstr ""
@@ -4177,6 +4181,16 @@ msgstr ""
 #: blocks/generated/get-monthly-transits/block.json
 msgctxt "block description"
 msgid "Monthly Transit - Planetary sign changes for an entire month"
+msgstr ""
+
+#: blocks/generated/get-monthly-tropical-ephemeris/block.json
+msgctxt "block title"
+msgid "Monthly Ephemeris - Daily tropical planetary positions for a month (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/get-monthly-tropical-ephemeris/block.json
+msgctxt "block description"
+msgid "Monthly Ephemeris - Daily tropical planetary positions for a month"
 msgstr ""
 
 #: blocks/generated/get-moon-calendar/block.json
