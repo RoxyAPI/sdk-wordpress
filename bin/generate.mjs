@@ -1149,7 +1149,7 @@ function emitComponentMapPhp() {
 					}
 					const attrPhp = attrKeys.length
 						? `\t\t\t\t\t'attrs'     => array(\n` +
-							attrKeys
+						  attrKeys
 								.map(
 									( key ) =>
 										`\t\t\t\t\t\t${ sq( key ) } => ${ sq(
@@ -1157,7 +1157,7 @@ function emitComponentMapPhp() {
 										) },`
 								)
 								.join( '\n' ) +
-							`\n\t\t\t\t\t),\n`
+						  `\n\t\t\t\t\t),\n`
 						: '';
 					return (
 						`\t\t\t\tarray(\n` +

@@ -228,7 +228,9 @@ const catalogUrl = manifestUrl.replace(
 );
 let catalog;
 try {
-	const res = await fetch( catalogUrl, { signal: AbortSignal.timeout( 15000 ) } );
+	const res = await fetch( catalogUrl, {
+		signal: AbortSignal.timeout( 15000 ),
+	} );
 	if ( ! res.ok ) {
 		throw new Error( `HTTP ${ res.status }` );
 	}
@@ -286,7 +288,9 @@ if ( catalog ) {
 		}
 		for ( const [ key, value ] of Object.entries( want.attrs ) ) {
 			if ( ( row.attrs || {} )[ key ] !== value ) {
-				attrDrift.push( `${ op }: ${ want.tag } needs ${ key }="${ value }"` );
+				attrDrift.push(
+					`${ op }: ${ want.tag } needs ${ key }="${ value }"`
+				);
 			}
 		}
 	}

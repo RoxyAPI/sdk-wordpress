@@ -161,6 +161,21 @@ The RoxyAPI admin page is split into five tabs:
 
 Form mode shortcodes also surface a city autocomplete (RoxyAPI geocoder, ARIA 1.2 combobox) so visitors can pick a city instead of typing latitude, longitude, and timezone by hand. The plugin proxies queries through `/wp-json/roxyapi/v1/geocode` so the API key never reaches the browser.
 
+Form submissions and city lookups are rate limited per visitor address, and only `REMOTE_ADDR` counts: a forwarded header can be set by whoever is making the request unless your own edge rewrites it, so trusting one by default would let a visitor mint a fresh bucket per request. Behind a proxy every visitor therefore shares one bucket until you opt a header in.
+
+```php
+add_filter(
+	'roxyapi_trusted_proxy_headers',
+	function ( $headers, $remote_addr ) {
+		return array( 'HTTP_CF_CONNECTING_IP' );
+	},
+	10,
+	2
+);
+```
+
+`roxyapi_client_ip` is still there for custom setups that would rather return the address themselves.
+
 ## Other SDKs
 
 RoxyAPI ships four official clients. Same data, different stacks:

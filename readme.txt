@@ -131,7 +131,7 @@ Without these, the plugin falls back to your WordPress LOGGED_IN_KEY and LOGGED_
 
 = Do I need a RoxyAPI account? =
 
-Not to get started. A limited number of free readings per day are allowed right after install, with no account, so you can try the plugin. The allowance is counted per site and resets each day. For production use, add an API key from a RoxyAPI plan: one key covers every reading and removes the daily limit. Pick a plan at https://roxyapi.com/pricing.
+Not to get started. A limited number of free readings per day are allowed right after install, with no account, so you can try the plugin. The allowance is shared across your site and resets each day. For production use, add an API key from a RoxyAPI plan: one key covers every reading and removes the daily limit. Pick a plan at https://roxyapi.com/pricing.
 
 = What readings can I add to my site? =
 
@@ -146,7 +146,7 @@ Yes. Readings follow your WordPress site language on their own, so a Spanish sit
 The plugin contacts roxyapi.com only when you take a clear action that requires it:
 
 1. You click the Test Connection button on the settings page.
-2. A page on your site that contains a RoxyAPI block or shortcode is rendered (cached for one hour by default to keep your API quota low). This render-time call happens whether or not an API key is set: with a key it uses your plan, without one it uses the free daily allowance.
+2. A page on your site that contains a RoxyAPI block or shortcode is rendered (cached for one hour by default to keep your API quota low). Readings render with or without an API key, so these requests also happen before you connect one.
 
 The plugin never contacts RoxyAPI on plugin activation, on plugin update, on any admin page that does not display a reading, or in the background. Placing a RoxyAPI block or shortcode on a page is the explicit action that authorizes the render-time calls described above.
 
@@ -155,8 +155,8 @@ The plugin never contacts RoxyAPI on plugin activation, on plugin update, on any
 When the plugin contacts roxyapi.com, the request includes:
 
 * The reading parameters you supply via the block or shortcode (zodiac sign, birth date, name, location coordinates, question text).
-* Your site URL (`home_url`) in an `X-Site-URL` header so RoxyAPI can attribute requests to your site for support and rate limiting.
-* A plugin identifier (`X-SDK-Client: roxy-sdk-wordpress/<version>`) so RoxyAPI can detect compatibility issues by version.
+* Your site URL, so RoxyAPI can attribute requests to your site for support.
+* The plugin name and version, so RoxyAPI can spot compatibility problems with a particular release.
 * Your server outbound IP address (incidentally captured by the receiving server, like any HTTP request).
 
 No site visitor data is collected by the plugin when a visitor only views a page; their IP, user agent, and any browser-side data are not sent to RoxyAPI in the passive case. When a visitor submits a form-mode shortcode (their birth date, name, or question), the plugin sends only the fields they typed, after they tick the consent checkbox. See https://roxyapi.com/policy/privacy for what RoxyAPI does with the data once received.
@@ -164,6 +164,16 @@ No site visitor data is collected by the plugin when a visitor only views a page
 = Can visitors fill in their own birth details? =
 
 Yes. Drop a hero shortcode with no attributes (for example [roxy_natal_chart]) and the plugin renders an accessible form with a city search that fills in coordinates automatically. On submit the plugin validates the input, applies a per-IP rate limit and a consent checkbox, calls the API server side, and renders the result on the same page. The API key never reaches the browser.
+
+= I am behind Cloudflare or a reverse proxy. Does the visitor rate limit still count each visitor? =
+
+Not until you tell the plugin which forwarded header to believe. The only address a WordPress site can verify is the one the connection arrives from, which behind a proxy is the proxy itself, so by default every visitor shares one bucket. Forwarded headers are ignored because anyone can send them, and a limit that resets whenever a header changes is no limit at all.
+
+If your proxy overwrites a header on every request, opt that header in from your theme functions file or a small site plugin:
+
+`add_filter( 'roxyapi_trusted_proxy_headers', function () { return array( 'HTTP_CF_CONNECTING_IP' ); } );`
+
+Register it with `10, 2` instead and the callback also receives the connecting address, so you can trust the header only while the request really is arriving from your own edge. On a custom setup, return the visitor address yourself with the `roxyapi_client_ip` filter instead.
 
 = Can I sell readings or charts to my clients? =
 

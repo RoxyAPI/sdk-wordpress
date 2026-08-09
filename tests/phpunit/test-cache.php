@@ -25,8 +25,9 @@ class Test_Cache extends \WP_UnitTestCase {
 	}
 
 	/**
-	 * Mirror Cache::key(): the cache folds the effective display language into
-	 * the key, so an expected key in these assertions must include it too.
+	 * Mirror Cache::key(): the cache folds the current epoch and the effective
+	 * display language into the key, so an expected key here must include both.
+	 * The epoch is read live because flush_all rewrites it.
 	 */
 	private function cache_key( string $endpoint, array $args = array() ): string {
 		if ( ! isset( $args['lang'] ) || (string) $args['lang'] === '' ) {
@@ -35,7 +36,8 @@ class Test_Cache extends \WP_UnitTestCase {
 				$args['lang'] = $lang;
 			}
 		}
-		return 'roxyapi_' . md5( $endpoint . '|' . wp_json_encode( $args ) );
+		$epoch = (string) get_option( 'roxyapi_cache_epoch', '' );
+		return 'roxyapi_' . md5( $epoch . '|' . $endpoint . '|' . wp_json_encode( $args ) );
 	}
 
 	public function test_remember_caches_successful_array_result(): void {
@@ -188,6 +190,58 @@ class Test_Cache extends \WP_UnitTestCase {
 			get_transient( 'unrelated_transient' ),
 			'flush_all must not match transients that lack the roxyapi_ prefix even when they share underscore characters.'
 		);
+	}
+
+	/**
+	 * The customer-visible failure this guards. On a site with a persistent
+	 * object cache (Redis, Memcached) transients never reach `wp_options`, so
+	 * the LIKE sweep deletes zero rows and flush_all was silently doing
+	 * nothing: an owner who spent the free allowance, bought a plan and pasted
+	 * the key kept seeing the cached failure until it expired on its own.
+	 *
+	 * Asserted through the public surface with NO wp_cache_flush() helping,
+	 * because that helper is what hid the bug in every other test here.
+	 */
+	public function test_flush_all_invalidates_entries_behind_an_external_object_cache(): void {
+		global $wpdb;
+		$previous = wp_using_ext_object_cache( true );
+
+		try {
+			$calls = 0;
+			$fetch = static function () use ( &$calls ) {
+				++$calls;
+				return array( 'value' => 'reading-' . $calls );
+			};
+
+			Cache::remember( 'test/object-cache/flush', array(), 3600, $fetch );
+			Cache::remember( 'test/object-cache/flush', array(), 3600, $fetch );
+			$this->assertSame( 1, $calls, 'Sanity: the entry must be cached before the flush.' );
+
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- asserting on raw storage is the point of this test.
+			$rows = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->options} WHERE option_name LIKE '_transient_roxyapi_%'" );
+			$this->assertSame( 0, $rows, 'Sanity: an object-cached transient must leave nothing for the wp_options sweep to find.' );
+
+			Cache::flush_all();
+
+			$after = Cache::remember( 'test/object-cache/flush', array(), 3600, $fetch );
+			$this->assertSame( 2, $calls, 'flush_all must invalidate object-cached entries, which the wp_options sweep cannot reach.' );
+			$this->assertSame( array( 'value' => 'reading-2' ), $after );
+		} finally {
+			// Cast: with no object-cache drop-in the global is null, and passing
+			// null back is a read, not a reset, so the flag would leak into
+			// every later test and stop their transients reaching wp_options.
+			wp_using_ext_object_cache( (bool) $previous );
+		}
+	}
+
+	public function test_flush_all_rewrites_the_cache_epoch(): void {
+		Cache::remember( 'test/epoch/rotation', array(), 3600, static fn() => array( 'v' => 1 ) );
+		$before = get_option( 'roxyapi_cache_epoch' );
+		$this->assertNotEmpty( $before, 'Using the cache must seed an epoch.' );
+
+		Cache::flush_all();
+
+		$this->assertNotSame( $before, get_option( 'roxyapi_cache_epoch' ), 'Every flush must mint a new epoch, otherwise old keys stay reachable.' );
 	}
 
 	public function test_cache_key_is_deterministic_for_same_endpoint_and_args(): void {

@@ -13,6 +13,11 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 delete_option( 'roxyapi_settings' );
+// The cache epoch is the token folded into every response-cache key. Dropping
+// it with the rest means a reinstall starts on a fresh namespace instead of
+// adopting entries the sweep below cannot reach, such as those held by a
+// persistent object cache.
+delete_option( 'roxyapi_cache_epoch' );
 
 global $wpdb;
 // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- uninstall cleanup, no persistent caching needed.

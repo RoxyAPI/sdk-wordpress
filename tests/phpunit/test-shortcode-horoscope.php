@@ -72,7 +72,10 @@ class Test_Shortcode_Horoscope extends Mock_Http_TestCase {
 		if ( $lang !== '' ) {
 			$args['lang'] = $lang;
 		}
-		$key = 'roxyapi_' . md5( 'astrology/horoscope/aries/daily|' . wp_json_encode( $args ) );
+		// The cache epoch leads the hash so one option write retires every key
+		// at once. Read the live value rather than assume one.
+		$epoch = (string) get_option( 'roxyapi_cache_epoch', '' );
+		$key   = 'roxyapi_' . md5( $epoch . '|astrology/horoscope/aries/daily|' . wp_json_encode( $args ) );
 		$this->assertNotFalse( get_transient( $key ) );
 	}
 }

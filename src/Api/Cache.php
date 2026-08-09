@@ -20,6 +20,14 @@ use WP_Error;
 class Cache {
 
 	/**
+	 * Option holding the cache epoch, a random token folded into every key.
+	 *
+	 * Rewriting it retires the whole namespace in one write, which is the only
+	 * invalidation that works on every storage backend. See {@link Cache::flush_all}.
+	 */
+	private const EPOCH_OPTION = 'roxyapi_cache_epoch';
+
+	/**
 	 * Apply the site-owner's cache-preset multiplier on top of the
 	 * generator-emitted per-endpoint TTL. `fresh` quarters TTLs to keep
 	 * readings current; `quota_saver` 24x's them to slash quota burn.
@@ -163,10 +171,55 @@ class Cache {
 				$args['lang'] = $lang;
 			}
 		}
-		return 'roxyapi_' . md5( $endpoint . '|' . wp_json_encode( $args ) );
+		return 'roxyapi_' . md5( self::epoch() . '|' . $endpoint . '|' . wp_json_encode( $args ) );
 	}
 
+	/**
+	 * Current cache epoch, seeded on first use.
+	 *
+	 * @return string
+	 */
+	private static function epoch(): string {
+		$epoch = (string) get_option( self::EPOCH_OPTION, '' );
+		if ( $epoch === '' ) {
+			$epoch = wp_generate_uuid4();
+
+			/*
+			 * Autoloaded, because every cached render reads it and it must not
+			 * cost a query. `true` rather than 'yes' since WordPress 6.6 moved
+			 * the parameter to a boolean and 6.5 already accepted either.
+			 *
+			 * A parallel request may have seeded the row first. add_option
+			 * reports that instead of overwriting, so adopt the stored value:
+			 * two epochs in flight would split the namespace and halve the hit
+			 * rate for the life of the entries.
+			 */
+			if ( ! add_option( self::EPOCH_OPTION, $epoch, '', true ) ) {
+				$epoch = (string) get_option( self::EPOCH_OPTION, $epoch );
+			}
+		}
+		return $epoch;
+	}
+
+	/**
+	 * Retire every cached response.
+	 *
+	 * Rewriting the epoch is what guarantees the flush. It changes every key at
+	 * once and is storage agnostic, which the `wp_options` sweep below is not:
+	 * on a site with a persistent object cache (Redis, Memcached) transients
+	 * never reach `wp_options`, so the sweep deletes zero rows and the flush was
+	 * silently doing nothing. An owner who spent the free allowance, bought a
+	 * plan and pasted the key stayed broken until each cached failure expired on
+	 * its own, up to an hour.
+	 *
+	 * The sweep is kept because the epoch only makes old entries unreachable, it
+	 * does not reclaim them. A site on database-backed transients would
+	 * otherwise carry the orphaned rows until their own timeout passed. Object
+	 * cache backends evict on their own, so nothing is leaked there.
+	 */
 	public static function flush_all(): void {
+		update_option( self::EPOCH_OPTION, wp_generate_uuid4(), true );
+
 		global $wpdb;
 		$value_like   = '_transient_' . $wpdb->esc_like( 'roxyapi_' ) . '%';
 		$timeout_like = '_transient_timeout_' . $wpdb->esc_like( 'roxyapi_' ) . '%';
