@@ -220,6 +220,17 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.9.0 =
+* New: brand the readings from the RoxyAPI menu, Branding tab. Pick one of four ready-made palettes or set seven colours yourself, with separate values for light and dark, a live colour picker, and a button to put everything back to the defaults.
+* New: the readings now use the font your theme already sets instead of ours, so they read as part of your site rather than something pasted into it.
+* Fixed: a brand colour chosen for a light site is no longer reused as text on a dark one, which could leave the words unreadable.
+* Fixed: the block editor now shows its own settings in your language. On a Spanish site the fields read Fecha and Zona horaria rather than Date and Timezone. Many labels are still English while the translations are written; those follow.
+* Changed: the block inserter now lists the 127 readings and hides 27 developer lookups, such as country and city searches and month-long position tables. Nothing is removed: every one still works as a shortcode, and any page already using one keeps working.
+* Fixed: the usage summary is no longer offered as a block. It reports the account behind your API key, including the email address on it, so it should never have been something a page could publish.
+* Fixed: visitors can no longer get around the hourly limit on the city search and the reading forms by changing a header, which could quietly spend your monthly allowance.
+* Fixed: saving your API key now clears the cached free-allowance readings on sites that use Redis or Memcached. Before this, a site could keep showing the old limit for up to an hour after you paid.
+* Fixed: the birth chart form is titled "Natal chart" rather than "Western birth chart".
+
 = 1.8.1 =
 * Fixed: on some themes the city search results were see-through and overlapped the fields underneath. They now render as a solid panel on any theme.
 * Fixed: the city rows are a comfortable size to tap on a phone.
@@ -413,6 +424,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.9.0 =
+Recommended for every site, and important if you pay for a plan. Saving your API key now really does clear the free-allowance cache, and a header can no longer be used to get around the hourly limit on your forms and city search. The usage summary is no longer something a page can publish, the block inserter is down to the 127 readings, and you can brand the readings from the Branding tab.
 
 = 1.8.1 =
 Recommended for every site, and important for sites that are not in English. Chart labels now follow your site language instead of staying English, city search results are readable on any theme, and the city rows are easier to tap on a phone.
