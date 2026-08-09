@@ -27,565 +27,719 @@ class ComponentMap {
 			'analyzeNumberSequence' => array(
 				array(
 					'component' => 'roxy-angel-number-lookup',
-					'kind'      => 'card',
 				),
 			),
 			'calculateArabicLots' => array(
 				array(
 					'component' => 'roxy-positions-table',
-					'kind'      => 'table',
 				),
 			),
 			'calculateArudhaPadas' => array(
 				array(
 					'component' => 'roxy-arudha-padas',
-					'kind'      => 'table',
 				),
 			),
 			'calculateAshtakavarga' => array(
 				array(
 					'component' => 'roxy-ashtakavarga-grid',
-					'kind'      => 'table',
 				),
 			),
 			'calculateAspects' => array(
 				array(
 					'component' => 'roxy-aspects-table',
-					'kind'      => 'table',
 				),
 			),
 			'calculateBhavChalit' => array(
 				array(
 					'component' => 'roxy-bhav-chalit-table',
-					'kind'      => 'table',
 				),
 			),
 			'calculateBhavaBala' => array(
 				array(
 					'component' => 'roxy-bhava-bala-table',
-					'kind'      => 'table',
 				),
 			),
 			'calculateBioCompatibility' => array(
 				array(
 					'component' => 'roxy-compatibility-card',
-					'kind'      => 'card',
+					'attrs'     => array(
+						'mode' => 'biorhythm',
+					),
+				),
+			),
+			'calculateBirthDay' => array(
+				array(
+					'component' => 'roxy-numerology-card',
+					'attrs'     => array(
+						'type' => 'birth-day',
+					),
 				),
 			),
 			'calculateCharaKarakas' => array(
 				array(
 					'component' => 'roxy-chara-karakas',
-					'kind'      => 'table',
 				),
 			),
 			'calculateCompatibility' => array(
 				array(
 					'component' => 'roxy-compatibility-card',
-					'kind'      => 'card',
+					'attrs'     => array(
+						'mode' => 'astrology',
+					),
 				),
 			),
 			'calculateConnection' => array(
 				array(
 					'component' => 'roxy-hd-connection',
-					'kind'      => 'chart',
 				),
 			),
 			'calculateDrishti' => array(
 				array(
 					'component' => 'roxy-vedic-aspects',
-					'kind'      => 'table',
+				),
+			),
+			'calculateExpression' => array(
+				array(
+					'component' => 'roxy-numerology-card',
+					'attrs'     => array(
+						'type' => 'expression',
+					),
 				),
 			),
 			'calculateGunMilan' => array(
 				array(
 					'component' => 'roxy-guna-milan',
-					'kind'      => 'card',
 				),
 			),
 			'calculateLifePath' => array(
 				array(
 					'component' => 'roxy-numerology-card',
-					'kind'      => 'card',
+					'attrs'     => array(
+						'type' => 'life-path',
+					),
+				),
+			),
+			'calculateMaturity' => array(
+				array(
+					'component' => 'roxy-numerology-card',
+					'attrs'     => array(
+						'type' => 'maturity',
+					),
 				),
 			),
 			'calculateNumCompatibility' => array(
 				array(
 					'component' => 'roxy-compatibility-card',
-					'kind'      => 'card',
+					'attrs'     => array(
+						'mode' => 'numerology',
+					),
 				),
 			),
 			'calculatePenta' => array(
 				array(
 					'component' => 'roxy-hd-penta',
-					'kind'      => 'chart',
+				),
+			),
+			'calculatePersonalDay' => array(
+				array(
+					'component' => 'roxy-numerology-card',
+					'attrs'     => array(
+						'type' => 'personal-day',
+					),
+				),
+			),
+			'calculatePersonalMonth' => array(
+				array(
+					'component' => 'roxy-numerology-card',
+					'attrs'     => array(
+						'type' => 'personal-month',
+					),
+				),
+			),
+			'calculatePersonalYear' => array(
+				array(
+					'component' => 'roxy-numerology-card',
+					'attrs'     => array(
+						'type' => 'personal-year',
+					),
+				),
+			),
+			'calculatePersonality' => array(
+				array(
+					'component' => 'roxy-numerology-card',
+					'attrs'     => array(
+						'type' => 'personality',
+					),
+				),
+			),
+			'calculateProfile' => array(
+				array(
+					'component' => 'roxy-hd-type-card',
 				),
 			),
 			'calculateShadbala' => array(
 				array(
 					'component' => 'roxy-shadbala-table',
-					'kind'      => 'table',
+				),
+			),
+			'calculateSoulUrge' => array(
+				array(
+					'component' => 'roxy-numerology-card',
+					'attrs'     => array(
+						'type' => 'soul-urge',
+					),
 				),
 			),
 			'calculateSynastry' => array(
 				array(
 					'component' => 'roxy-synastry-chart',
-					'kind'      => 'chart',
 				),
 			),
 			'calculateTransit' => array(
 				array(
 					'component' => 'roxy-gochara-table',
-					'kind'      => 'table',
 				),
 			),
 			'calculateTransitAspects' => array(
 				array(
 					'component' => 'roxy-transit-wheel',
-					'kind'      => 'chart',
 				),
 			),
 			'calculateTransits' => array(
 				array(
 					'component' => 'roxy-transits-table',
-					'kind'      => 'table',
 				),
 			),
 			'calculateType' => array(
 				array(
 					'component' => 'roxy-hd-type-card',
-					'kind'      => 'card',
 				),
 			),
 			'calculateVariables' => array(
 				array(
 					'component' => 'roxy-hd-variables',
-					'kind'      => 'card',
+				),
+			),
+			'castCareerSpread' => array(
+				array(
+					'component' => 'roxy-tarot-spread',
+					'attrs'     => array(
+						'spread' => 'career',
+					),
 				),
 			),
 			'castCelticCross' => array(
 				array(
 					'component' => 'roxy-tarot-spread',
-					'kind'      => 'card',
+					'attrs'     => array(
+						'spread' => 'celtic-cross',
+					),
+				),
+			),
+			'castCustomSpread' => array(
+				array(
+					'component' => 'roxy-tarot-spread',
+					'attrs'     => array(
+						'spread' => 'custom',
+					),
+				),
+			),
+			'castLoveSpread' => array(
+				array(
+					'component' => 'roxy-tarot-spread',
+					'attrs'     => array(
+						'spread' => 'love',
+					),
 				),
 			),
 			'castReading' => array(
 				array(
 					'component' => 'roxy-hexagram',
-					'kind'      => 'card',
 				),
 			),
 			'castThreeCard' => array(
 				array(
 					'component' => 'roxy-tarot-spread',
-					'kind'      => 'card',
+					'attrs'     => array(
+						'spread' => 'three-card',
+					),
 				),
 			),
 			'castYesNo' => array(
 				array(
 					'component' => 'roxy-tarot-spread',
-					'kind'      => 'card',
+					'attrs'     => array(
+						'spread' => 'yes-no',
+					),
 				),
 			),
 			'checkKalsarpaDosha' => array(
 				array(
 					'component' => 'roxy-dosha-card',
-					'kind'      => 'card',
+					'attrs'     => array(
+						'type' => 'kalsarpa',
+					),
 				),
 			),
 			'checkManglikDosha' => array(
 				array(
 					'component' => 'roxy-dosha-card',
-					'kind'      => 'card',
+					'attrs'     => array(
+						'type' => 'manglik',
+					),
 				),
 			),
 			'checkSadhesati' => array(
 				array(
 					'component' => 'roxy-dosha-card',
-					'kind'      => 'card',
+					'attrs'     => array(
+						'type' => 'sadhesati',
+					),
 				),
 			),
 			'detectAspectPatterns' => array(
 				array(
 					'component' => 'roxy-aspects-table',
-					'kind'      => 'table',
 				),
 			),
 			'detectYogas' => array(
 				array(
 					'component' => 'roxy-yoga-list',
-					'kind'      => 'card',
+				),
+			),
+			'drawCards' => array(
+				array(
+					'component' => 'roxy-tarot-spread',
+					'attrs'     => array(
+						'spread' => 'draw',
+					),
+				),
+			),
+			'findSignificantDates' => array(
+				array(
+					'component' => 'roxy-forecast-timeline',
+				),
+			),
+			'forecastTransits' => array(
+				array(
+					'component' => 'roxy-forecast-timeline',
 				),
 			),
 			'generateAsteroids' => array(
 				array(
 					'component' => 'roxy-positions-table',
-					'kind'      => 'table',
 				),
 			),
 			'generateAstrocartography' => array(
 				array(
 					'component' => 'roxy-astrocartography-map',
-					'kind'      => 'chart',
 				),
 			),
 			'generateBirthChart' => array(
 				array(
 					'component' => 'roxy-vedic-kundli',
-					'kind'      => 'chart',
 				),
 			),
 			'generateBodygraph' => array(
 				array(
 					'component' => 'roxy-bodygraph',
-					'kind'      => 'chart',
 				),
 			),
 			'generateDigest' => array(
 				array(
 					'component' => 'roxy-forecast-digest',
-					'kind'      => 'card',
 				),
 			),
 			'generateDivisionalChart' => array(
 				array(
 					'component' => 'roxy-divisional-chart',
-					'kind'      => 'chart',
 				),
 			),
 			'generateFixedStars' => array(
 				array(
 					'component' => 'roxy-fixed-stars',
-					'kind'      => 'table',
 				),
 			),
 			'generateKpChart' => array(
 				array(
 					'component' => 'roxy-kp-chart',
-					'kind'      => 'chart',
 				),
 			),
 			'generateLilith' => array(
 				array(
 					'component' => 'roxy-positions-table',
-					'kind'      => 'table',
 				),
 			),
 			'generateLocalSpace' => array(
 				array(
 					'component' => 'roxy-local-space-compass',
-					'kind'      => 'chart',
 				),
 			),
 			'generateNatalChart' => array(
 				array(
 					'component' => 'roxy-natal-chart',
-					'kind'      => 'chart',
+				),
+			),
+			'generateNavamsa' => array(
+				array(
+					'component' => 'roxy-divisional-chart',
 				),
 			),
 			'generateNumerologyChart' => array(
 				array(
 					'component' => 'roxy-numerology-card',
-					'kind'      => 'card',
+					'attrs'     => array(
+						'type' => 'chart',
+					),
 				),
 			),
 			'generateProfections' => array(
 				array(
 					'component' => 'roxy-profection-card',
-					'kind'      => 'card',
 				),
 			),
 			'generateProgressions' => array(
 				array(
 					'component' => 'roxy-positions-table',
-					'kind'      => 'table',
 				),
 			),
 			'generateRelocationChart' => array(
 				array(
 					'component' => 'roxy-relocation-wheel',
-					'kind'      => 'chart',
 				),
 			),
 			'generateSolarArc' => array(
 				array(
 					'component' => 'roxy-positions-table',
-					'kind'      => 'table',
 				),
 			),
 			'generateTimeline' => array(
 				array(
 					'component' => 'roxy-forecast-timeline',
-					'kind'      => 'chart',
 				),
 			),
 			'getAngelNumber' => array(
 				array(
 					'component' => 'roxy-angel-number-card',
-					'kind'      => 'card',
+				),
+			),
+			'getAvastha' => array(
+				array(
+					'component' => 'roxy-reference-card',
+				),
+			),
+			'getBasicPanchang' => array(
+				array(
+					'component' => 'roxy-panchang-table',
+					'attrs'     => array(
+						'detail' => 'basic',
+					),
 				),
 			),
 			'getBirthstones' => array(
 				array(
 					'component' => 'roxy-crystal-grid',
-					'kind'      => 'card',
 				),
 			),
 			'getCard' => array(
 				array(
 					'component' => 'roxy-tarot-card',
-					'kind'      => 'card',
 				),
 			),
 			'getCenter' => array(
 				array(
 					'component' => 'roxy-reference-card',
-					'kind'      => 'card',
 				),
 			),
 			'getChoghadiya' => array(
 				array(
 					'component' => 'roxy-choghadiya-grid',
-					'kind'      => 'table',
 				),
 			),
 			'getCompoundNumber' => array(
 				array(
 					'component' => 'roxy-reference-card',
-					'kind'      => 'card',
+				),
+			),
+			'getCriticalDays' => array(
+				array(
+					'component' => 'roxy-biorhythm-chart',
+					'attrs'     => array(
+						'mode' => 'critical-days',
+					),
 				),
 			),
 			'getCrystal' => array(
 				array(
 					'component' => 'roxy-crystal-card',
-					'kind'      => 'card',
 				),
 			),
 			'getCrystalsByChakra' => array(
 				array(
 					'component' => 'roxy-crystal-grid',
-					'kind'      => 'card',
 				),
 			),
 			'getCrystalsByElement' => array(
 				array(
 					'component' => 'roxy-crystal-grid',
-					'kind'      => 'card',
 				),
 			),
 			'getCrystalsByZodiac' => array(
 				array(
 					'component' => 'roxy-crystal-grid',
-					'kind'      => 'card',
 				),
 			),
 			'getCurrentDasha' => array(
 				array(
 					'component' => 'roxy-dasha-timeline',
-					'kind'      => 'chart',
+					'attrs'     => array(
+						'period' => 'current',
+					),
 				),
 			),
 			'getCurrentMoonPhase' => array(
 				array(
 					'component' => 'roxy-moon-phase',
-					'kind'      => 'card',
+					'attrs'     => array(
+						'mode' => 'current',
+					),
+				),
+			),
+			'getDailyBiorhythm' => array(
+				array(
+					'component' => 'roxy-biorhythm-chart',
+					'attrs'     => array(
+						'mode' => 'daily',
+					),
 				),
 			),
 			'getDailyCard' => array(
 				array(
 					'component' => 'roxy-tarot-card',
-					'kind'      => 'card',
 				),
 			),
 			'getDailyHexagram' => array(
 				array(
 					'component' => 'roxy-hexagram',
-					'kind'      => 'card',
 				),
 			),
 			'getDailyHoroscope' => array(
 				array(
 					'component' => 'roxy-horoscope-card',
-					'kind'      => 'card',
+					'attrs'     => array(
+						'period' => 'daily',
+					),
+				),
+			),
+			'getDailyNumber' => array(
+				array(
+					'component' => 'roxy-numerology-card',
+					'attrs'     => array(
+						'type' => 'daily',
+					),
 				),
 			),
 			'getDetailedPanchang' => array(
 				array(
 					'component' => 'roxy-panchang-table',
-					'kind'      => 'table',
+					'attrs'     => array(
+						'detail' => 'detailed',
+					),
 				),
 			),
 			'getDreamSymbol' => array(
 				array(
 					'component' => 'roxy-dream-card',
-					'kind'      => 'card',
+				),
+			),
+			'getForecast' => array(
+				array(
+					'component' => 'roxy-biorhythm-chart',
+					'attrs'     => array(
+						'mode' => 'forecast',
+					),
 				),
 			),
 			'getGate' => array(
 				array(
 					'component' => 'roxy-reference-card',
-					'kind'      => 'card',
 				),
 			),
 			'getHeliacalVisibility' => array(
 				array(
 					'component' => 'roxy-heliacal-table',
-					'kind'      => 'table',
 				),
 			),
 			'getHexagram' => array(
 				array(
 					'component' => 'roxy-hexagram',
-					'kind'      => 'card',
 				),
 			),
 			'getHora' => array(
 				array(
 					'component' => 'roxy-hora-table',
-					'kind'      => 'table',
 				),
 			),
 			'getKpPlanets' => array(
 				array(
 					'component' => 'roxy-kp-planets-table',
-					'kind'      => 'table',
 				),
 			),
 			'getKpRulingPlanets' => array(
 				array(
 					'component' => 'roxy-kp-ruling-planets',
-					'kind'      => 'table',
 				),
 			),
 			'getMajorDashas' => array(
 				array(
 					'component' => 'roxy-dasha-timeline',
-					'kind'      => 'chart',
+					'attrs'     => array(
+						'period' => 'major',
+					),
 				),
 			),
 			'getMonthlyHoroscope' => array(
 				array(
 					'component' => 'roxy-horoscope-card',
-					'kind'      => 'card',
+					'attrs'     => array(
+						'period' => 'monthly',
+					),
+				),
+			),
+			'getMoonCalendar' => array(
+				array(
+					'component' => 'roxy-moon-phase',
+					'attrs'     => array(
+						'mode' => 'calendar',
+					),
 				),
 			),
 			'getNakshatra' => array(
 				array(
 					'component' => 'roxy-nakshatra-card',
-					'kind'      => 'card',
 				),
 			),
 			'getNumberMeaning' => array(
 				array(
 					'component' => 'roxy-reference-card',
-					'kind'      => 'card',
 				),
 			),
 			'getPlanetMeaning' => array(
 				array(
 					'component' => 'roxy-reference-card',
-					'kind'      => 'card',
+				),
+			),
+			'getPranaDashas' => array(
+				array(
+					'component' => 'roxy-dasha-timeline',
+					'attrs'     => array(
+						'period' => 'prana',
+					),
 				),
 			),
 			'getPratyantardashas' => array(
 				array(
 					'component' => 'roxy-dasha-timeline',
-					'kind'      => 'chart',
+					'attrs'     => array(
+						'period' => 'antara',
+					),
 				),
 			),
 			'getRandomHexagram' => array(
 				array(
 					'component' => 'roxy-hexagram',
-					'kind'      => 'card',
 				),
 			),
 			'getRashi' => array(
 				array(
 					'component' => 'roxy-reference-card',
-					'kind'      => 'card',
 				),
 			),
 			'getReading' => array(
 				array(
 					'component' => 'roxy-biorhythm-chart',
-					'kind'      => 'chart',
 				),
 			),
 			'getSookshmaDashas' => array(
 				array(
 					'component' => 'roxy-dasha-timeline',
-					'kind'      => 'chart',
+					'attrs'     => array(
+						'period' => 'sookshma',
+					),
 				),
 			),
 			'getSubDashas' => array(
 				array(
 					'component' => 'roxy-dasha-timeline',
-					'kind'      => 'chart',
+					'attrs'     => array(
+						'period' => 'sub',
+					),
 				),
 			),
 			'getTrigram' => array(
 				array(
 					'component' => 'roxy-reference-card',
-					'kind'      => 'card',
 				),
 			),
 			'getUpagrahaPositions' => array(
 				array(
 					'component' => 'roxy-upagraha-table',
-					'kind'      => 'table',
+				),
+			),
+			'getUpcomingMoonPhases' => array(
+				array(
+					'component' => 'roxy-moon-phase',
+					'attrs'     => array(
+						'mode' => 'upcoming',
+					),
 				),
 			),
 			'getWeeklyHoroscope' => array(
 				array(
 					'component' => 'roxy-horoscope-card',
-					'kind'      => 'card',
+					'attrs'     => array(
+						'period' => 'weekly',
+					),
 				),
 			),
 			'getYoga' => array(
 				array(
 					'component' => 'roxy-yoga-list',
-					'kind'      => 'card',
 				),
 			),
 			'getZodiacSign' => array(
 				array(
 					'component' => 'roxy-reference-card',
-					'kind'      => 'card',
 				),
 			),
 			'listCards' => array(
 				array(
 					'component' => 'roxy-tarot-catalog',
-					'kind'      => 'card',
 				),
 			),
 			'listCrystals' => array(
 				array(
 					'component' => 'roxy-crystal-grid',
-					'kind'      => 'card',
 				),
 			),
 			'listYogas' => array(
 				array(
 					'component' => 'roxy-yoga-list',
-					'kind'      => 'card',
 				),
 			),
 			'lookupHexagram' => array(
 				array(
 					'component' => 'roxy-hexagram',
-					'kind'      => 'card',
 				),
 			),
 			'searchCrystals' => array(
 				array(
 					'component' => 'roxy-crystal-grid',
-					'kind'      => 'card',
 				),
 			),
 			'searchDreamSymbols' => array(
 				array(
 					'component' => 'roxy-dream-search',
-					'kind'      => 'card',
 				),
 			),
 		);

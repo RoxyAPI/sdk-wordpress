@@ -209,14 +209,102 @@ if ( deadOps.length > 0 ) {
 	process.exit( 1 );
 }
 
-// Adoption signal (informational, never fatal). The map is intentionally a
-// subset of the build (helpers + reads that are fine as generic cards stay
-// unbound), but a jump in this count after a version bump means new upstream
-// components are available to wire up via a component-map row.
-const unbound = available.size - referenced.size;
-if ( unbound > 0 ) {
+// Binding-coverage guard, and the reason it counts OPERATIONS.
+//
+// This check used to report `available.size - referenced.size`: components in
+// the build that no row mentions. That unit cannot see the failure it exists to
+// catch. `roxy-numerology-card` is referenced by ONE row, so it counts as bound
+// while nine of its eleven operations have no row at all and render as raw
+// collapsed JSON. The counter read a clean 0 while 25 shipped shortcodes were
+// broken. Measure the thing that breaks: an OPERATION with no binding.
+//
+// The join is published. `components-catalog.json` is in the @roxyapi/ui npm
+// files whitelist and lists, per component, the operationIds it renders and the
+// variant attrs each needs. It is fetched at the SAME pinned version as the
+// manifest, so this compares against the build actually vendored.
+const catalogUrl = manifestUrl.replace(
+	/dist\/manifest\.json$/,
+	'components-catalog.json'
+);
+let catalog;
+try {
+	const res = await fetch( catalogUrl, { signal: AbortSignal.timeout( 15000 ) } );
+	if ( ! res.ok ) {
+		throw new Error( `HTTP ${ res.status }` );
+	}
+	catalog = await res.json();
+} catch ( err ) {
+	console.warn(
+		`Could not fetch ${ catalogUrl } (${ err.message }). Skipping binding-coverage check; network issue, not a mismatch.`
+	);
+	catalog = null;
+}
+
+if ( catalog ) {
+	const components = Array.isArray( catalog )
+		? catalog
+		: catalog.components || [];
+	const upstream = new Map(); // operationId -> { tag, attrs }
+	for ( const component of components ) {
+		for ( const endpoint of component.endpoints || [] ) {
+			if ( endpoint?.operationId ) {
+				upstream.set( endpoint.operationId, {
+					tag: component.tag,
+					attrs: endpoint.attrs || {},
+				} );
+			}
+		}
+	}
+
+	const mapped = map.operations || {};
+	const unboundOps = [ ...upstream.keys() ]
+		.filter( ( op ) => ! mapped[ op ] )
+		.sort();
+	if ( unboundOps.length > 0 ) {
+		console.error(
+			`${ unboundOps.length } operation(s) are bound to a component upstream but have no row in component-map.json.`
+		);
+		console.error(
+			'Each renders as a generic roxy-data dump today, which looks like a working page.'
+		);
+		for ( const op of unboundOps ) {
+			console.error( `  ${ op } -> ${ upstream.get( op ).tag }` );
+		}
+		console.error( `Add the rows from ${ catalogUrl }.` );
+		process.exit( 1 );
+	}
+
+	// A row can bind the right element to the wrong VIEW by dropping the
+	// variant selector, which renders the component's default and errors
+	// nowhere.
+	const attrDrift = [];
+	for ( const [ op, want ] of upstream ) {
+		const rows = mapped[ op ] || [];
+		const row = rows.find( ( r ) => r.component === want.tag );
+		if ( ! row ) {
+			continue;
+		}
+		for ( const [ key, value ] of Object.entries( want.attrs ) ) {
+			if ( ( row.attrs || {} )[ key ] !== value ) {
+				attrDrift.push( `${ op }: ${ want.tag } needs ${ key }="${ value }"` );
+			}
+		}
+	}
+	if ( attrDrift.length > 0 ) {
+		console.error(
+			`${ attrDrift.length } binding(s) are missing the variant attribute the catalogue declares:`
+		);
+		for ( const line of attrDrift.sort() ) {
+			console.error( `  ${ line }` );
+		}
+		console.error(
+			'Without it the component renders its default view for every one of these operations.'
+		);
+		process.exit( 1 );
+	}
+
 	console.log(
-		`note: ${ unbound } of ${ available.size } component(s) in the pinned UI build are not bound to any operation. Bind in component-map.json to render them (unbound reads fall back to roxy-data).`
+		`binding coverage OK: all ${ upstream.size } upstream-bound operation(s) have a row, variant attributes match`
 	);
 }
 

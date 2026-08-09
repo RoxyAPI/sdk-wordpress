@@ -68,10 +68,7 @@ class ComponentRenderer {
 		// handle just leaves that fallback visible.
 		if ( empty( $rows ) ) {
 			$rows = array(
-				array(
-					'component' => 'roxy-data',
-					'kind'      => 'generic',
-				),
+				array( 'component' => 'roxy-data' ),
 			);
 		}
 
@@ -84,7 +81,8 @@ class ComponentRenderer {
 				// Unexpected map entry; skip this row rather than emit an unsafe tag.
 				continue;
 			}
-			$markup .= self::render_element( $tag, $operation_id, $data, $hide );
+			$attrs   = isset( $row['attrs'] ) && is_array( $row['attrs'] ) ? $row['attrs'] : array();
+			$markup .= self::render_element( $tag, $operation_id, $data, $hide, $attrs );
 		}
 
 		if ( '' === $markup ) {
@@ -119,21 +117,33 @@ class ComponentRenderer {
 	 * a custom element, so uniform emission costs nothing and cannot go stale
 	 * when the next component ships.
 	 *
-	 * @param string               $tag           Validated `roxy-*` tag name.
-	 * @param string               $operation_id  Spec operationId.
-	 * @param array<string, mixed> $data          Unwrapped API response.
-	 * @param bool                 $hide_readings Whether written interpretations are suppressed.
+	 * @param string                $tag           Validated `roxy-*` tag name.
+	 * @param string                $operation_id  Spec operationId.
+	 * @param array<string, mixed>  $data          Unwrapped API response.
+	 * @param bool                  $hide_readings Whether written interpretations are suppressed.
+	 * @param array<string, string> $attrs         Variant selectors from the map, e.g. `type="soul-urge"`.
 	 * @return string Rendered element HTML.
 	 */
-	private static function render_element( string $tag, string $operation_id, array $data, bool $hide_readings ): string {
+	private static function render_element( string $tag, string $operation_id, array $data, bool $hide_readings, array $attrs = array() ): string {
 		$payload = wp_json_encode( $data, JSON_HEX_TAG );
 		if ( false === $payload ) {
 			// Encoding failed; degrade to the server-rendered card.
 			return GenericRenderer::render( $operation_id, $data, true, $hide_readings );
 		}
 
+		// Variant selectors from the map (`type="soul-urge"`). Names are
+		// constrained here as well as at codegen time, because this method also
+		// serves the hand-written fallback row above.
+		$attr_markup = '';
+		foreach ( $attrs as $name => $value ) {
+			if ( ! is_string( $name ) || ! preg_match( '/^[a-z][a-z0-9-]*$/', $name ) ) {
+				continue;
+			}
+			$attr_markup .= sprintf( ' %s="%s"', $name, esc_attr( (string) $value ) );
+		}
+
 		return sprintf(
-			'<%1$s class="roxyapi-component" data-operation="%2$s"%5$s>'
+			'<%1$s class="roxyapi-component" data-operation="%2$s"%5$s%6$s>'
 				. '<script type="application/json" class="roxy-data">%3$s</script>'
 				. '<div class="roxyapi-component-fallback">%4$s</div>'
 				. '</%1$s>',
@@ -145,7 +155,8 @@ class ComponentRenderer {
 			// fallback is what a no-JS visitor reads, so it hides the same text
 			// the component hides.
 			GenericRenderer::render( $operation_id, $data, false, $hide_readings ),
-			$hide_readings ? ' hide-readings' : ''
+			$hide_readings ? ' hide-readings' : '',
+			$attr_markup
 		);
 	}
 

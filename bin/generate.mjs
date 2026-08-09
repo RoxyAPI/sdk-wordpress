@@ -1133,11 +1133,36 @@ function emitComponentMapPhp() {
 							`[generate] component-map: invalid component tag "${ component }" for ${ opId }`
 						);
 					}
-					const kind = String( row.kind || '' );
+					// Variant selectors the upstream catalogue declares for this
+					// binding (`type="soul-urge"`, `spread="career"`). A component
+					// that serves many operations renders its DEFAULT view without
+					// them, so dropping these binds the right element to the wrong
+					// view, which looks like a working page.
+					const attrs = row.attrs || {};
+					const attrKeys = Object.keys( attrs ).sort();
+					for ( const key of attrKeys ) {
+						if ( ! /^[a-z][a-z0-9-]*$/.test( key ) ) {
+							throw new Error(
+								`[generate] component-map: invalid attribute name "${ key }" for ${ opId }`
+							);
+						}
+					}
+					const attrPhp = attrKeys.length
+						? `\t\t\t\t\t'attrs'     => array(\n` +
+							attrKeys
+								.map(
+									( key ) =>
+										`\t\t\t\t\t\t${ sq( key ) } => ${ sq(
+											attrs[ key ]
+										) },`
+								)
+								.join( '\n' ) +
+							`\n\t\t\t\t\t),\n`
+						: '';
 					return (
 						`\t\t\t\tarray(\n` +
 						`\t\t\t\t\t'component' => ${ sq( component ) },\n` +
-						`\t\t\t\t\t'kind'      => ${ sq( kind ) },\n` +
+						attrPhp +
 						`\t\t\t\t),`
 					);
 				} )
