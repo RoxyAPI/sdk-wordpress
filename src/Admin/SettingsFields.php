@@ -15,20 +15,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use RoxyAPI\Support\ApiKey;
 use RoxyAPI\Support\Encryption;
+use RoxyAPI\Support\Theming;
 
 class SettingsFields {
 
 	/**
-	 * Allowed-tags map for `wp_kses()` covering the form-input HTML this
-	 * class emits (`<input>`, `<label>`, `<span>`). Lets the templates pass
-	 * pre-built input markup through `wp_kses()` so phpcs sees the canonical
-	 * escape rather than needing a `phpcs:ignore`.
+	 * Allowed-tags map for `wp_kses()` covering the form-control HTML this
+	 * class emits (`<input>`, `<label>`, `<span>`, `<div>`, `<button>`). Lets
+	 * the templates pass pre-built input markup through `wp_kses()` so phpcs
+	 * sees the canonical escape rather than needing a `phpcs:ignore`.
+	 *
+	 * `style` is allowed on the swatch spans only in the sense that kses runs
+	 * `safecss_filter_attr` over whatever it finds; the values themselves are
+	 * HEX constants from `Theming`, never user input.
 	 *
 	 * @return array<string, array<string, bool>>
 	 */
 	public static function input_kses_allowed(): array {
 		return array(
-			'input' => array(
+			'input'  => array(
 				'type'         => true,
 				'id'           => true,
 				'name'         => true,
@@ -43,11 +48,22 @@ class SettingsFields {
 				'step'         => true,
 				'required'     => true,
 			),
-			'label' => array(
+			'label'  => array(
 				'class' => true,
 				'for'   => true,
 			),
-			'span'  => array( 'class' => true ),
+			'span'   => array(
+				'class'       => true,
+				'style'       => true,
+				'aria-hidden' => true,
+			),
+			'div'    => array( 'class' => true ),
+			'button' => array(
+				'type'  => true,
+				'name'  => true,
+				'value' => true,
+				'class' => true,
+			),
 		);
 	}
 
@@ -88,18 +104,139 @@ class SettingsFields {
 	}
 
 	/**
-	 * Pre-escaped HTML for the brand-accent colour input. Uses
-	 * `wp-color-picker` for a native admin-friendly picker; the input is a
-	 * plain text field at server level so missing JS gracefully degrades.
+	 * Pre-escaped HTML for the palette picker: one card per shipped preset plus
+	 * a Custom card, each showing the four colours it would apply.
+	 *
+	 * Radios rather than a `<select>` because the choice is visual: a
+	 * practitioner picks a palette by looking at it, and a list of four names
+	 * shows nothing. The swatches read their colours from the same constant the
+	 * renderer uses, so a preview can never drift from what saving applies.
 	 *
 	 * @return string
 	 */
-	public static function accent_color_input_html(): string {
+	public static function palette_preset_input_html(): string {
 		$opts    = SettingsSchema::get_option();
-		$current = (string) ( $opts['accent_color'] ?? '' );
+		$current = (string) ( $opts['palette_preset'] ?? '' );
+		$labels  = self::preset_labels();
+
+		$out = '<div class="roxyapi-palettes">';
+		foreach ( array_merge( array( '' ), Theming::preset_names() ) as $name ) {
+			$palette = Theming::preset( $name );
+			$out    .= sprintf(
+				'<label class="roxyapi-palette%s"><input type="radio" name="roxyapi_settings[palette_preset]" value="%s"%s /><span class="roxyapi-palette-swatches" aria-hidden="true">%s</span><span class="roxyapi-palette-name">%s</span></label>',
+				$name === $current ? ' is-active' : '',
+				esc_attr( $name ),
+				$name === $current ? ' checked' : '',
+				self::palette_swatches( $palette ),
+				esc_html( $labels[ $name ] ?? $name )
+			);
+		}
+		return $out . '</div>';
+	}
+
+	/**
+	 * The four-colour strip shown on a palette card. An empty palette is the
+	 * Custom card, which previews the site's own saved colours instead.
+	 *
+	 * @param array<string, array<string, string>> $palette Preset colours, or empty for Custom.
+	 * @return string
+	 */
+	private static function palette_swatches( array $palette ): string {
+		$colors = $palette['light'] ?? Theming::palette()['light'];
+		$out    = '';
+		foreach ( array( 'bg', 'surface', 'accent', 'fg' ) as $token ) {
+			$value = isset( $colors[ $token ] ) ? sanitize_hex_color( (string) $colors[ $token ] ) : null;
+			// No style attribute when the colour is unset, or the inline
+			// declaration would beat the class that paints the "not set yet"
+			// hatching and the swatch would read as a solid white choice.
+			$out .= is_string( $value ) && $value !== ''
+				? '<span class="roxyapi-swatch" style="background:' . esc_attr( $value ) . '"></span>'
+				: '<span class="roxyapi-swatch is-unset"></span>';
+		}
+		return $out;
+	}
+
+	/**
+	 * Pre-escaped HTML for the seven colour pickers, light and dark side by side.
+	 *
+	 * Every field is a plain text input at server level so the page still works
+	 * with no JavaScript; `wp-color-picker` upgrades them in place. Disabled
+	 * while a preset is selected, because the preset answers on its own and an
+	 * editable field that has no effect is a lie. A disabled input posts nothing,
+	 * which is exactly right: the sanitiser keeps the stored value.
+	 *
+	 * @return string
+	 */
+	public static function palette_colors_html(): string {
+		$opts     = SettingsSchema::get_option();
+		$disabled = (string) ( $opts['palette_preset'] ?? '' ) !== '';
+		$labels   = self::token_labels();
+
+		$out  = '<div class="roxyapi-color-grid">';
+		$out .= '<span class="roxyapi-color-head"></span>';
+		$out .= '<span class="roxyapi-color-head">' . esc_html__( 'Light', 'roxyapi' ) . '</span>';
+		$out .= '<span class="roxyapi-color-head">' . esc_html__( 'Dark', 'roxyapi' ) . '</span>';
+
+		foreach ( Theming::tokens() as $token ) {
+			$out .= '<span class="roxyapi-color-label">' . esc_html( $labels[ $token ] ?? $token ) . '</span>';
+			foreach ( array( 'light', 'dark' ) as $mode ) {
+				$key  = Theming::option_key( $token, $mode );
+				$out .= sprintf(
+					'<input type="text" id="roxyapi_%1$s" name="roxyapi_settings[%1$s]" value="%2$s" class="roxyapi-color-picker" placeholder="%3$s"%4$s />',
+					esc_attr( $key ),
+					esc_attr( (string) ( $opts[ $key ] ?? '' ) ),
+					esc_attr__( 'Default', 'roxyapi' ),
+					$disabled ? ' disabled' : ''
+				);
+			}
+		}
+		return $out . '</div>';
+	}
+
+	/**
+	 * Pre-escaped submit button that clears the palette back to the shipped
+	 * defaults. A real control rather than "empty every field yourself":
+	 * fourteen fields and a preset is not something to undo by hand.
+	 *
+	 * @return string
+	 */
+	public static function palette_reset_html(): string {
 		return sprintf(
-			'<input type="text" id="roxyapi_accent_color" name="roxyapi_settings[accent_color]" value="%s" class="roxyapi-color-picker" placeholder="#000000" />',
-			esc_attr( $current )
+			'<button type="submit" name="roxyapi_settings[reset_palette]" value="1" class="button button-link roxyapi-palette-reset">%s</button>',
+			esc_html__( 'Reset colours to defaults', 'roxyapi' )
+		);
+	}
+
+	/**
+	 * Display names for the shipped palettes. Kept beside the picker rather than
+	 * in Theming so the renderer stays free of translated strings.
+	 *
+	 * @return array<string, string>
+	 */
+	private static function preset_labels(): array {
+		return array(
+			''             => __( 'Custom', 'roxyapi' ),
+			'practitioner' => __( 'Practitioner', 'roxyapi' ),
+			'eucalyptus'   => __( 'Eucalyptus', 'roxyapi' ),
+			'kiln'         => __( 'Kiln', 'roxyapi' ),
+			'moonlit'      => __( 'Moonlit', 'roxyapi' ),
+		);
+	}
+
+	/**
+	 * Display names for the seven colours, in the words a site owner uses.
+	 *
+	 * @return array<string, string>
+	 */
+	private static function token_labels(): array {
+		return array(
+			'accent'  => __( 'Accent', 'roxyapi' ),
+			'bg'      => __( 'Page background', 'roxyapi' ),
+			'surface' => __( 'Card background', 'roxyapi' ),
+			'fg'      => __( 'Text', 'roxyapi' ),
+			'muted'   => __( 'Secondary text', 'roxyapi' ),
+			'border'  => __( 'Borders', 'roxyapi' ),
+			'danger'  => __( 'Warnings', 'roxyapi' ),
 		);
 	}
 
@@ -386,6 +523,45 @@ class SettingsFields {
 			}
 		}
 
+		return self::apply_palette( $input, $out );
+	}
+
+	/**
+	 * Resolve the two palette controls the Branding tab posts beside the fields.
+	 *
+	 * Reset wins over everything and clears the preset plus all fourteen
+	 * colours. Otherwise a selected preset copies its own HEX values over them,
+	 * every save and not only the one that selected it, so switching back to
+	 * Custom later starts from the palette that was on screen rather than from
+	 * blank. Nothing here reads a colour out of the request: the values come from
+	 * a constant, keyed by a name the schema has already narrowed to one of four.
+	 *
+	 * Reset is deliberately not a stored field. It is an action, and a stored one
+	 * would blank the palette again on every subsequent save.
+	 *
+	 * @param array<string, mixed> $input Raw settings input from the form.
+	 * @param array<string, mixed> $out   Sanitised output so far.
+	 * @return array<string, mixed>
+	 */
+	private static function apply_palette( array $input, array $out ): array {
+		if ( ! empty( $input['reset_palette'] ) ) {
+			$out['palette_preset'] = '';
+			foreach ( Theming::option_keys() as $key ) {
+				$out[ $key ] = '';
+			}
+			return $out;
+		}
+
+		$palette = Theming::preset( (string) ( $out['palette_preset'] ?? '' ) );
+		if ( $palette === array() ) {
+			return $out;
+		}
+
+		foreach ( Theming::tokens() as $token ) {
+			foreach ( array( 'light', 'dark' ) as $mode ) {
+				$out[ Theming::option_key( $token, $mode ) ] = (string) ( $palette[ $mode ][ $token ] ?? '' );
+			}
+		}
 		return $out;
 	}
 

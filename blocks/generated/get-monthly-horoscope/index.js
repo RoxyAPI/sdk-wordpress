@@ -1,46 +1,38 @@
 import { registerBlockType } from '@wordpress/blocks';
+import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 import { makeEdit } from '../../_shared/generated-edit';
 
 // Generated from the OpenAPI spec by bin/generate.mjs. DO NOT EDIT.
 const fields = [
 	{
-		"name": "sign",
-		"control": "text",
-		"label": "Sign",
-		"required": true
+		name: 'sign',
+		control: 'text',
+		label: __( 'Sign', 'roxyapi' ),
+		required: true,
 	},
 	{
-		"name": "lang",
-		"control": "select",
-		"label": "Lang",
-		"required": false,
-		"help": "Response language (ISO 639-1)",
-		"options": [
-			"en",
-			"tr",
-			"de",
-			"es",
-			"hi",
-			"pt",
-			"fr",
-			"ru"
-		]
+		name: 'lang',
+		control: 'select',
+		label: __( 'Lang', 'roxyapi' ),
+		required: false,
+		help: __( 'Response language (ISO 639-1)', 'roxyapi' ),
+		options: [ 'en', 'tr', 'de', 'es', 'hi', 'pt', 'fr', 'ru' ],
 	},
 	{
-		"name": "date",
-		"control": "date",
-		"label": "Date",
-		"required": false,
-		"help": "Any date inside the target month, in YYYY-MM-DD format"
+		name: 'date',
+		control: 'date',
+		label: __( 'Date', 'roxyapi' ),
+		required: false,
+		help: __( 'Any date inside the target month, in YYYY-MM-DD format', 'roxyapi' ),
 	},
 	{
-		"name": "timezone",
-		"control": "text",
-		"label": "Timezone",
-		"required": false,
-		"help": "Selects which period counts as current when date is omitted"
-	}
+		name: 'timezone',
+		control: 'text',
+		label: __( 'Timezone', 'roxyapi' ),
+		required: false,
+		help: __( 'Selects which period counts as current when date is omitted', 'roxyapi' ),
+	},
 ];
 
 registerBlockType( metadata.name, {

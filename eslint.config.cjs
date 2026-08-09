@@ -64,6 +64,19 @@ module.exports = [
 		},
 	},
 
+	// Generated block editors: every translatable string in them is an endpoint
+	// summary or a field description copied verbatim from the OpenAPI spec, and
+	// the PHP shortcode for the same endpoint registers the identical string as
+	// its own msgid. Rewriting "1-9" as "1–9" on the JavaScript side alone would
+	// fork one catalogue entry into two, so the punctuation rule has to be
+	// settled upstream in the spec, not in the generator's output.
+	{
+		files: [ 'blocks/generated/**/*.js' ],
+		rules: {
+			'@wordpress/i18n-hyphenated-range': 'off',
+		},
+	},
+
 	// Browser-side admin scripts: pure vanilla running in the WP admin.
 	// `history`, `window`, `document`, `fetch`, `URLSearchParams` are
 	// browser globals — declare them so no-undef does not fire.

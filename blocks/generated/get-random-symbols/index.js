@@ -1,16 +1,17 @@
 import { registerBlockType } from '@wordpress/blocks';
+import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 import { makeEdit } from '../../_shared/generated-edit';
 
 // Generated from the OpenAPI spec by bin/generate.mjs. DO NOT EDIT.
 const fields = [
 	{
-		"name": "count",
-		"control": "number",
-		"label": "Count",
-		"required": false,
-		"help": "Number of random symbols to return (1-10)"
-	}
+		name: 'count',
+		control: 'number',
+		label: __( 'Count', 'roxyapi' ),
+		required: false,
+		help: __( 'Number of random symbols to return (1-10)', 'roxyapi' ),
+	},
 ];
 
 registerBlockType( metadata.name, {

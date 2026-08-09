@@ -1,71 +1,55 @@
 import { registerBlockType } from '@wordpress/blocks';
+import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 import { makeEdit } from '../../_shared/generated-edit';
 
 // Generated from the OpenAPI spec by bin/generate.mjs. DO NOT EDIT.
 const fields = [
 	{
-		"name": "lang",
-		"control": "select",
-		"label": "Lang",
-		"required": false,
-		"help": "Response language (ISO 639-1)",
-		"options": [
-			"en",
-			"tr",
-			"de",
-			"es",
-			"hi",
-			"pt",
-			"fr",
-			"ru"
-		]
+		name: 'lang',
+		control: 'select',
+		label: __( 'Lang', 'roxyapi' ),
+		required: false,
+		help: __( 'Response language (ISO 639-1)', 'roxyapi' ),
+		options: [ 'en', 'tr', 'de', 'es', 'hi', 'pt', 'fr', 'ru' ],
 	},
 	{
-		"name": "limit",
-		"control": "number",
-		"label": "Limit",
-		"required": false,
-		"help": "Maximum items to return per page"
+		name: 'limit',
+		control: 'number',
+		label: __( 'Limit', 'roxyapi' ),
+		required: false,
+		help: __( 'Maximum items to return per page', 'roxyapi' ),
 	},
 	{
-		"name": "offset",
-		"control": "text",
-		"label": "Offset",
-		"required": false,
-		"help": "Number of items to skip for pagination"
+		name: 'offset',
+		control: 'text',
+		label: __( 'Offset', 'roxyapi' ),
+		required: false,
+		help: __( 'Number of items to skip for pagination', 'roxyapi' ),
 	},
 	{
-		"name": "arcana",
-		"control": "select",
-		"label": "Arcana",
-		"required": false,
-		"help": "Filter by arcana type",
-		"options": [
-			"major",
-			"minor"
-		]
+		name: 'arcana',
+		control: 'select',
+		label: __( 'Arcana', 'roxyapi' ),
+		required: false,
+		help: __( 'Filter by arcana type', 'roxyapi' ),
+		options: [ 'major', 'minor' ],
 	},
 	{
-		"name": "suit",
-		"control": "select",
-		"label": "Suit",
-		"required": false,
-		"help": "Filter minor arcana by suit",
-		"options": [
-			"cups",
-			"wands",
-			"swords",
-			"pentacles"
-		]
+		name: 'suit',
+		control: 'select',
+		label: __( 'Suit', 'roxyapi' ),
+		required: false,
+		help: __( 'Filter minor arcana by suit', 'roxyapi' ),
+		options: [ 'cups', 'wands', 'swords', 'pentacles' ],
 	},
 	{
-		"name": "number",
-		"control": "text",
-		"label": "Number",
-		"required": false,
-		"help": "Filter by card number"
-	}
+		name: 'number',
+		control: 'text',
+		label: __( 'Number', 'roxyapi' ),
+		required: false,
+		help: __( 'Filter by card number', 'roxyapi' ),
+	},
 ];
 
 registerBlockType( metadata.name, {

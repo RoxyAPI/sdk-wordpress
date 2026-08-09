@@ -1,34 +1,32 @@
 import { registerBlockType } from '@wordpress/blocks';
+import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 import { makeEdit } from '../../_shared/generated-edit';
 
 // Generated from the OpenAPI spec by bin/generate.mjs. DO NOT EDIT.
 const fields = [
 	{
-		"name": "year",
-		"control": "number",
-		"label": "Year",
-		"required": true,
-		"help": "Year to scan for ecliptic crossings (1900-2100)."
+		name: 'year',
+		control: 'number',
+		label: __( 'Year', 'roxyapi' ),
+		required: true,
+		help: __( 'Year to scan for ecliptic crossings (1900-2100).', 'roxyapi' ),
 	},
 	{
-		"name": "timezone",
-		"control": "text",
-		"label": "Timezone",
-		"required": false,
-		"help": "Timezone offset from UTC in hours"
+		name: 'timezone',
+		control: 'text',
+		label: __( 'Timezone', 'roxyapi' ),
+		required: false,
+		help: __( 'Timezone offset from UTC in hours', 'roxyapi' ),
 	},
 	{
-		"name": "coordinateSystem",
-		"control": "select",
-		"label": "Coordinate system",
-		"required": false,
-		"help": "Coordinate system for longitude output",
-		"options": [
-			"sidereal",
-			"tropical"
-		]
-	}
+		name: 'coordinateSystem',
+		control: 'select',
+		label: __( 'Coordinate system', 'roxyapi' ),
+		required: false,
+		help: __( 'Coordinate system for longitude output', 'roxyapi' ),
+		options: [ 'sidereal', 'tropical' ],
+	},
 ];
 
 registerBlockType( metadata.name, {

@@ -1,40 +1,32 @@
 import { registerBlockType } from '@wordpress/blocks';
+import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 import { makeEdit } from '../../_shared/generated-edit';
 
 // Generated from the OpenAPI spec by bin/generate.mjs. DO NOT EDIT.
 const fields = [
 	{
-		"name": "lang",
-		"control": "select",
-		"label": "Lang",
-		"required": false,
-		"help": "Response language (ISO 639-1)",
-		"options": [
-			"en",
-			"tr",
-			"de",
-			"es",
-			"hi",
-			"pt",
-			"fr",
-			"ru"
-		]
+		name: 'lang',
+		control: 'select',
+		label: __( 'Lang', 'roxyapi' ),
+		required: false,
+		help: __( 'Response language (ISO 639-1)', 'roxyapi' ),
+		options: [ 'en', 'tr', 'de', 'es', 'hi', 'pt', 'fr', 'ru' ],
 	},
 	{
-		"name": "startDate",
-		"control": "date",
-		"label": "Start date",
-		"required": false,
-		"help": "Start date in YYYY-MM-DD format"
+		name: 'startDate',
+		control: 'date',
+		label: __( 'Start date', 'roxyapi' ),
+		required: false,
+		help: __( 'Start date in YYYY-MM-DD format', 'roxyapi' ),
 	},
 	{
-		"name": "count",
-		"control": "number",
-		"label": "Count",
-		"required": false,
-		"help": "Number of upcoming moon phase transitions to return (1-20)"
-	}
+		name: 'count',
+		control: 'number',
+		label: __( 'Count', 'roxyapi' ),
+		required: false,
+		help: __( 'Number of upcoming moon phase transitions to return (1-20)', 'roxyapi' ),
+	},
 ];
 
 registerBlockType( metadata.name, {

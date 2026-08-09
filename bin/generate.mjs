@@ -1131,6 +1131,77 @@ ${ entries.join( '\n' ) }
  */
 const ACCOUNT_SCOPED_OPERATIONS = new Set( [ 'getUsageStats' ] );
 
+/**
+ * Operations kept out of the block inserter because the answer is not a reading.
+ *
+ * The inserter offered one entry per endpoint, and at that size someone looking
+ * for a birth chart scrolls past dozens of near-identical rows to find it. The
+ * axis is what the response IS, not whether a component is bound to it: an
+ * operation stays if a visitor would read the output, including the ones that
+ * fall back to the generic card.
+ *
+ * Two kinds fail that test. A reference lookup answers with a catalogue that
+ * exists to fill a dropdown or let a developer discover valid ids (every
+ * country, every supported language, the 27 nakshatras), and the random pickers
+ * answer differently on every request, so the published page never shows what
+ * the editor previewed. An interval dump answers with a month of rows meant for
+ * a chart or a spreadsheet; dropped on a page it is a wall of numbers with no
+ * reading in it.
+ *
+ * Hidden, never deregistered, and the shortcode is untouched. A saved post
+ * references a block by name, so removing the type would break content that
+ * already uses it, and every operation keeps its shortcode for anyone who does
+ * want the raw table on a page. Add here rather than hand-editing generated
+ * output, which is overwritten on every run.
+ */
+const NON_READING_OPERATIONS = new Set( [
+	// Reference lookups and enumerations: a catalogue for a dropdown or an id
+	// list, not something a visitor reads.
+	'getCitiesByCountry',
+	'getSymbolLetterCounts',
+	'listAvasthas',
+	'listCountries',
+	'listCrystalColors',
+	'listCrystalPlanets',
+	'listHexagrams',
+	'listLanguages',
+	'listNakshatras',
+	'listRashis',
+	'listTrigrams',
+	'listZodiacSigns',
+	'searchCities',
+	// Random pickers: non-deterministic, so a published page never matches the
+	// preview the editor showed.
+	'getRandomCrystal',
+	'getRandomSymbols',
+	// Interval and month-range dumps: rows for a chart, not a reading.
+	'getEclipticCrossings',
+	'getKpPlanetsInterval',
+	'getKpRasiChanges',
+	'getKpRulingInterval',
+	'getKpSublordChanges',
+	'getLunarAspects',
+	'getMonthlyAspects',
+	'getMonthlyEphemeris',
+	'getMonthlyParallels',
+	'getMonthlyTransits',
+	'getMonthlyTropicalEphemeris',
+] );
+
+/**
+ * Whether a generated block is offered in the inserter. Two lists, one flag:
+ * account-scoped operations are hidden because publishing them leaks the site
+ * owner's account, non-reading operations because they are noise in a list of
+ * 150. Neither is deregistered.
+ * @param operationId
+ */
+function isHiddenFromInserter( operationId ) {
+	return (
+		ACCOUNT_SCOPED_OPERATIONS.has( operationId ) ||
+		NON_READING_OPERATIONS.has( operationId )
+	);
+}
+
 function emitComponentMapPhp() {
 	const ops = componentMap.operations || {};
 	const tagPattern = /^roxy-[a-z-]+$/;
@@ -1466,7 +1537,7 @@ function emitBlockJson( op ) {
 					// Kept out of the inserter, not deregistered: a saved post
 					// references a block by name, so removing the type would break
 					// content that already uses it.
-					...( ACCOUNT_SCOPED_OPERATIONS.has( op.operationId )
+					...( isHiddenFromInserter( op.operationId )
 						? { inserter: false }
 						: {} ),
 				},
@@ -1557,6 +1628,52 @@ function deriveBlockFields( op ) {
 }
 
 /**
+ * Serialise a derived field list as JavaScript source rather than JSON.
+ *
+ * `label` and `help` are the whole of what the block inspector shows, and as
+ * JSON they were bare string literals: invisible to `wp i18n make-pot`, absent
+ * from the POT, and untranslatable by any means. Emitting them as `__()` calls
+ * puts them in the catalogue with every other editor string. Everything else in
+ * a field descriptor is machine data (attribute name, control type, enum
+ * values) and stays a literal.
+ * @param fields
+ */
+function fieldsToJsSource( fields ) {
+	// JSON.stringify does the escaping (quotes, backslashes, newlines, control
+	// characters), then the outer quotes are swapped for the single quotes the
+	// rest of the emitted editor source uses.
+	const js = ( value ) =>
+		`'${ JSON.stringify( String( value ) )
+			.slice( 1, -1 )
+			.replace( /\\"/g, '"' )
+			.replace( /'/g, "\\'" ) }'`;
+	const t = ( value ) => `__( ${ js( value ) }, 'roxyapi' )`;
+	const body = fields
+		.map( ( field ) => {
+			const lines = [
+				`\t\tname: ${ js( field.name ) },`,
+				`\t\tcontrol: ${ js( field.control ) },`,
+				`\t\tlabel: ${ t( field.label ) },`,
+				`\t\trequired: ${ field.required ? 'true' : 'false' },`,
+			];
+			if ( field.help ) {
+				lines.push( `\t\thelp: ${ t( field.help ) },` );
+			}
+			if ( field.options ) {
+				lines.push(
+					`\t\toptions: [ ${ field.options
+						.map( ( option ) => js( option ) )
+						.join( ', ' ) } ],`
+				);
+			}
+			return `\t{\n${ lines.join( '\n' ) }\n\t},`;
+		} )
+		.join( '\n' );
+
+	return fields.length ? `[\n${ body }\n]` : '[]';
+}
+
+/**
  * Emit the editorScript (index.js) for a generated block. Thin and spec-driven:
  * it registers the block on the client with the shared makeEdit editor
  * (blocks/_shared/generated-edit.js) and the block's spec-derived field list, so
@@ -1565,9 +1682,15 @@ function deriveBlockFields( op ) {
  * @param op
  */
 function emitBlockIndexJs( op ) {
-	const fields = JSON.stringify( deriveBlockFields( op ), null, '\t' );
+	const derived = deriveBlockFields( op );
+	const fields = fieldsToJsSource( derived );
+	// A block whose operation takes no inputs has no labels to translate, and an
+	// unused import is a lint error.
+	const i18nImport = derived.length
+		? "import { __ } from '@wordpress/i18n';\n"
+		: '';
 	return `import { registerBlockType } from '@wordpress/blocks';
-import metadata from './block.json';
+${ i18nImport }import metadata from './block.json';
 import { makeEdit } from '../../_shared/generated-edit';
 
 // Generated from the OpenAPI spec by bin/generate.mjs. DO NOT EDIT.

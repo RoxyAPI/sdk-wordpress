@@ -1,16 +1,17 @@
 import { registerBlockType } from '@wordpress/blocks';
+import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 import { makeEdit } from '../../_shared/generated-edit';
 
 // Generated from the OpenAPI spec by bin/generate.mjs. DO NOT EDIT.
 const fields = [
 	{
-		"name": "fullName",
-		"control": "text",
-		"label": "Full name",
-		"required": true,
-		"help": "Full birth name to analyze for missing numbers"
-	}
+		name: 'fullName',
+		control: 'text',
+		label: __( 'Full name', 'roxyapi' ),
+		required: true,
+		help: __( 'Full birth name to analyze for missing numbers', 'roxyapi' ),
+	},
 ];
 
 registerBlockType( metadata.name, {

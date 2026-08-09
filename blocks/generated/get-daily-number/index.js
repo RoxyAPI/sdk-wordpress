@@ -1,23 +1,24 @@
 import { registerBlockType } from '@wordpress/blocks';
+import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 import { makeEdit } from '../../_shared/generated-edit';
 
 // Generated from the OpenAPI spec by bin/generate.mjs. DO NOT EDIT.
 const fields = [
 	{
-		"name": "seed",
-		"control": "text",
-		"label": "Seed",
-		"required": false,
-		"help": "Optional seed for reproducible readings"
+		name: 'seed',
+		control: 'text',
+		label: __( 'Seed', 'roxyapi' ),
+		required: false,
+		help: __( 'Optional seed for reproducible readings', 'roxyapi' ),
 	},
 	{
-		"name": "date",
-		"control": "date",
-		"label": "Date",
-		"required": false,
-		"help": "Date for the reading in YYYY-MM-DD format"
-	}
+		name: 'date',
+		control: 'date',
+		label: __( 'Date', 'roxyapi' ),
+		required: false,
+		help: __( 'Date for the reading in YYYY-MM-DD format', 'roxyapi' ),
+	},
 ];
 
 registerBlockType( metadata.name, {

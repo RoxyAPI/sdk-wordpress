@@ -28,11 +28,23 @@ class Assets {
 		);
 	}
 
+	/**
+	 * Enqueue the admin script.
+	 *
+	 * `wp-color-picker` is a real dependency, not decoration: the palette fields
+	 * are plain text inputs on the server so the page still saves without
+	 * JavaScript, and this is what turns them into pickers. Its stylesheet has to
+	 * be enqueued separately, since core registers the two under the same handle
+	 * but only the script is pulled in by a dependency.
+	 *
+	 * @return void
+	 */
 	public static function enqueue_admin_script(): void {
+		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script(
 			'roxyapi-admin',
 			plugins_url( 'assets/js/admin.js', ROXYAPI_PLUGIN_FILE ),
-			array( 'wp-api-fetch' ),
+			array( 'wp-api-fetch', 'wp-color-picker' ),
 			ROXYAPI_VERSION,
 			true
 		);

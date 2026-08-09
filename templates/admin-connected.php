@@ -10,7 +10,10 @@
  * Pre-escaped variables surfaced from SettingsPage::render():
  *   string $attribution_input
  *   string $consent_label_input
- *   string $accent_color_input
+ *   string $palette_preset_input
+ *   string $palette_colors_input
+ *   string $palette_reset_input
+ *   bool   $palette_is_custom
  *   string $theme_mode_input
  *   string $display_language_input
  *   string $hide_readings_input
@@ -45,7 +48,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $attribution_input      = isset( $attribution_input ) ? (string) $attribution_input : '';
 $consent_label_input    = isset( $consent_label_input ) ? (string) $consent_label_input : '';
-$accent_color_input     = isset( $accent_color_input ) ? (string) $accent_color_input : '';
+$palette_preset_input   = isset( $palette_preset_input ) ? (string) $palette_preset_input : '';
+$palette_colors_input   = isset( $palette_colors_input ) ? (string) $palette_colors_input : '';
+$palette_reset_input    = isset( $palette_reset_input ) ? (string) $palette_reset_input : '';
+$palette_is_custom      = ! empty( $palette_is_custom );
 $theme_mode_input       = isset( $theme_mode_input ) ? (string) $theme_mode_input : '';
 $display_language_input = isset( $display_language_input ) ? (string) $display_language_input : '';
 $hide_readings_input    = isset( $hide_readings_input ) ? (string) $hide_readings_input : '';
@@ -197,13 +203,19 @@ $kses_select   = array(
 		<form method="post" action="options.php" class="roxyapi-form">
 			<?php settings_fields( $option_group ); ?>
 			<section class="roxyapi-section">
-				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Brand accent', 'roxyapi' ); ?></h2>
+				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Palette', 'roxyapi' ); ?></h2>
 				<p class="description">
-					<?php echo esc_html__( 'A single accent colour for card titles, form buttons, and source links. Leave blank to inherit your theme.', 'roxyapi' ); ?>
+					<?php echo esc_html__( 'Colours for every reading on your site. Pick a palette, or choose Custom and set the seven colours yourself. Readings use your theme font either way.', 'roxyapi' ); ?>
 				</p>
-				<p>
-					<?php echo wp_kses( $accent_color_input, $kses_input ); ?>
-				</p>
+				<?php echo wp_kses( $palette_preset_input, $kses_input ); ?>
+
+				<details class="roxyapi-manage-key roxyapi-palette-custom"<?php echo $palette_is_custom ? ' open' : ''; ?>>
+					<summary><?php echo esc_html__( 'Set colours yourself', 'roxyapi' ); ?></summary>
+					<p class="description">
+						<?php echo esc_html__( 'Two values per colour, one for light readings and one for dark, so a brand colour stays readable in both. Leave a field blank to keep the default.', 'roxyapi' ); ?>
+					</p>
+					<?php echo wp_kses( $palette_colors_input, $kses_input ); ?>
+				</details>
 			</section>
 
 			<section class="roxyapi-section">
@@ -226,10 +238,11 @@ $kses_select   = array(
 				</p>
 			</section>
 
-			<p>
+			<p class="roxyapi-form-actions">
 				<button type="submit" name="submit" class="button button-primary">
 					<?php echo esc_html__( 'Save branding', 'roxyapi' ); ?>
 				</button>
+				<?php echo wp_kses( $palette_reset_input, $kses_input ); ?>
 			</p>
 		</form>
 	</section>

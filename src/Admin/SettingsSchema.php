@@ -11,7 +11,7 @@
  *
  * Field shape:
  *   'option_key' => array(
- *     'type'       => 'string' | 'multiline' | 'int' | 'bool' | 'encrypted_key',
+ *     'type'       => 'string' | 'multiline' | 'int' | 'bool' | 'enum' | 'color' | 'encrypted_key',
  *     'default'    => mixed,
  *     'input_key'  => string  Optional. POST-array key when it differs from
  *                             the stored option key (e.g. the form posts
@@ -28,6 +28,8 @@ namespace RoxyAPI\Admin;
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+use RoxyAPI\Support\Theming;
 
 class SettingsSchema {
 
@@ -60,9 +62,10 @@ class SettingsSchema {
 				'type'    => 'multiline',
 				'default' => '',
 			),
-			'accent_color'      => array(
-				'type'    => 'color',
+			'palette_preset'    => array(
+				'type'    => 'enum',
 				'default' => '',
+				'enum'    => array_merge( array( '' ), Theming::preset_names() ),
 			),
 			'theme_mode'        => array(
 				'type'    => 'enum',
@@ -95,6 +98,17 @@ class SettingsSchema {
 				'default' => '',
 			),
 		);
+
+		// One colour field per token per mode, appended from the palette itself so
+		// adding a token is one entry in Theming rather than fourteen here. The
+		// pre-existing single accent setting keeps its key, `accent_color`, and
+		// becomes the light accent, so a site that already set one loses nothing.
+		foreach ( Theming::option_keys() as $key ) {
+			$schema[ $key ] = array(
+				'type'    => 'color',
+				'default' => '',
+			);
+		}
 
 		/**
 		 * Filter the settings schema. Extensions can add new keys, change

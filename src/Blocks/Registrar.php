@@ -39,15 +39,32 @@ class Registrar {
 				 * only resolve once the script HANDLE is bound to the text domain. `wp-i18n` being
 				 * a declared dependency is not enough on its own: without this call the editor
 				 * panel stays English even when a language pack is installed and every PHP string
-				 * on the same screen is translated. No path argument, because wordpress.org builds
-				 * and serves the JSON translation files for hosted plugins.
+				 * on the same screen is translated.
+				 *
+				 * The path argument is what reaches the catalogues this plugin ships. Core looks in
+				 * `WP_LANG_DIR/plugins` for a JSON named after the md5 of the script path, and that
+				 * directory only ever holds what wordpress.org built; a bundled catalogue lives
+				 * beside the MO files and is never found without being pointed at. Core does fall
+				 * back to the text-domain registry when no path is given, but not on every version
+				 * this plugin supports, and the failure is silent. Passing it costs nothing: the
+				 * wordpress.org copy is still checked afterwards, so a translated site keeps
+				 * whichever catalogue is present.
 				 */
 				if ( $block_type instanceof \WP_Block_Type ) {
 					foreach ( $block_type->editor_script_handles as $handle ) {
-						wp_set_script_translations( $handle, 'roxyapi' );
+						wp_set_script_translations( $handle, 'roxyapi', self::languages_dir() );
 					}
 				}
 			}
 		}
+	}
+
+	/**
+	 * Absolute path to the bundled translation catalogues.
+	 *
+	 * @return string
+	 */
+	private static function languages_dir(): string {
+		return plugin_dir_path( ROXYAPI_PLUGIN_FILE ) . 'languages';
 	}
 }

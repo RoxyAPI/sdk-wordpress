@@ -9,9 +9,14 @@
  *   2. Copy buttons next to each shortcode sample: writes the code to the
  *      clipboard via navigator.clipboard.writeText and flashes "Copied" on
  *      the button for two seconds.
+ *   3. Palette controls on the Branding tab: upgrades the colour fields to the
+ *      core wp-color-picker and enables or disables them as the palette choice
+ *      changes.
  *
- * No inline scripts. No jQuery. Strings come from wp_localize_script via the
- * RoxyAPIAdmin global so they can be translated server side.
+ * No inline scripts. Strings come from wp_localize_script via the RoxyAPIAdmin
+ * global so they can be translated server side. jQuery is touched in exactly one
+ * place, because wp-color-picker is a jQuery plugin and there is no core
+ * alternative; everything else stays vanilla.
  */
 
 ( function () {
@@ -20,6 +25,8 @@
 	document.addEventListener( 'DOMContentLoaded', function () {
 		wireTestConnection();
 		wireCopyButtons();
+		wireColorPickers();
+		wirePaletteChoice();
 	} );
 
 	function getStrings() {
@@ -215,6 +222,71 @@
 				reject( e );
 			}
 		} );
+	}
+
+	function wireColorPickers() {
+		const fields = document.querySelectorAll( '.roxyapi-color-picker' );
+		if ( ! fields.length || ! window.jQuery ) {
+			return;
+		}
+		const $ = window.jQuery;
+		if ( typeof $.fn.wpColorPicker !== 'function' ) {
+			return;
+		}
+		$( fields ).wpColorPicker();
+
+		// The picker builds its own button and swatch around each field, and
+		// neither inherits the input's disabled state. Without this the toggle
+		// still opens over a field that a preset has taken control of, and the
+		// colour a site owner picks there is dropped on save.
+		const chosen = document.querySelector(
+			'.roxyapi-palettes input:checked'
+		);
+		setColorFieldsEnabled( ! chosen || chosen.value === '' );
+	}
+
+	/**
+	 * Enable the colour fields only while Custom is chosen. A preset supplies all
+	 * fourteen values itself, so leaving the fields live would offer an edit that
+	 * the next save silently discards. Mirrors the server, which disables them
+	 * for the same reason on a page load with a preset already selected.
+	 */
+	function wirePaletteChoice() {
+		const radios = document.querySelectorAll(
+			'.roxyapi-palettes input[type="radio"]'
+		);
+		if ( ! radios.length ) {
+			return;
+		}
+		radios.forEach( function ( radio ) {
+			radio.addEventListener( 'change', function () {
+				radios.forEach( function ( other ) {
+					other
+						.closest( '.roxyapi-palette' )
+						.classList.toggle( 'is-active', other.checked );
+				} );
+				setColorFieldsEnabled( radio.value === '' );
+			} );
+		} );
+	}
+
+	function setColorFieldsEnabled( enabled ) {
+		document
+			.querySelectorAll( '.roxyapi-color-grid .roxyapi-color-picker' )
+			.forEach( function ( field ) {
+				field.disabled = ! enabled;
+				// wp-color-picker replaces the input with a wrapper of its own;
+				// its button and swatch have to follow the same state or the
+				// picker still opens over a field that cannot be submitted.
+				const wrapper = field.closest( '.wp-picker-container' );
+				if ( wrapper ) {
+					wrapper
+						.querySelectorAll( 'button, .wp-color-result' )
+						.forEach( function ( control ) {
+							control.disabled = ! enabled;
+						} );
+				}
+			} );
 	}
 
 	function flashButton( button, activeLabel, restoreLabel, activeClass ) {

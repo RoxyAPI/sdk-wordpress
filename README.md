@@ -154,7 +154,7 @@ Every endpoint is cached with a per endpoint TTL so cached responses do not cost
 The RoxyAPI admin page is split into five tabs:
 
 -   **Connect.** Paste the API key, test the connection.
--   **Branding.** Accent color, opt in to a discreet credit line under each reading.
+-   **Branding.** Four ready-made palettes, or seven colors set by hand with a light and a dark value each, plus a light, dark, or auto theme and the reading language.
 -   **Display.** Default response language, optional disclaimer line.
 -   **Privacy.** Visitor consent label. Birth date and time are special category data under GDPR Article 9; submission is gated on an explicit opt in checkbox and the plugin registers privacy policy content via `wp_add_privacy_policy_content`.
 -   **Advanced.** Cache preset (fresh / balanced / quota saver) and a connection status panel.

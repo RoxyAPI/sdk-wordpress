@@ -1,62 +1,60 @@
 import { registerBlockType } from '@wordpress/blocks';
+import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 import { makeEdit } from '../../_shared/generated-edit';
 
 // Generated from the OpenAPI spec by bin/generate.mjs. DO NOT EDIT.
 const fields = [
 	{
-		"name": "latitude",
-		"control": "number",
-		"label": "Latitude",
-		"required": true,
-		"help": "Observer latitude in decimal degrees"
+		name: 'latitude',
+		control: 'number',
+		label: __( 'Latitude', 'roxyapi' ),
+		required: true,
+		help: __( 'Observer latitude in decimal degrees', 'roxyapi' ),
 	},
 	{
-		"name": "longitude",
-		"control": "number",
-		"label": "Longitude",
-		"required": true,
-		"help": "Observer longitude in decimal degrees"
+		name: 'longitude',
+		control: 'number',
+		label: __( 'Longitude', 'roxyapi' ),
+		required: true,
+		help: __( 'Observer longitude in decimal degrees', 'roxyapi' ),
 	},
 	{
-		"name": "timezone",
-		"control": "text",
-		"label": "Timezone",
-		"required": false,
-		"help": "Timezone: IANA name (e.g. \"America/New_York\", \"Europe/London\") OR decimal hours from UTC"
+		name: 'timezone',
+		control: 'text',
+		label: __( 'Timezone', 'roxyapi' ),
+		required: false,
+		help: __( 'Timezone: IANA name (e.g. "America/New_York", "Europe/London") OR decimal hours from UTC', 'roxyapi' ),
 	},
 	{
-		"name": "datetime",
-		"control": "text",
-		"label": "Datetime",
-		"required": false,
-		"help": "ISO 8601 datetime (YYYY-MM-DDTHH:MM:SS) for ruling planets"
+		name: 'datetime',
+		control: 'text',
+		label: __( 'Datetime', 'roxyapi' ),
+		required: false,
+		help: __( 'ISO 8601 datetime (YYYY-MM-DDTHH:MM:SS) for ruling planets', 'roxyapi' ),
 	},
 	{
-		"name": "birthDate",
-		"control": "date",
-		"label": "Birth date",
-		"required": false,
-		"help": "Birth date (YYYY-MM-DD) to calculate significators"
+		name: 'birthDate',
+		control: 'date',
+		label: __( 'Birth date', 'roxyapi' ),
+		required: false,
+		help: __( 'Birth date (YYYY-MM-DD) to calculate significators', 'roxyapi' ),
 	},
 	{
-		"name": "birthTime",
-		"control": "time",
-		"label": "Birth time",
-		"required": false,
-		"help": "Birth time (HH:MM:SS) for significator calculation"
+		name: 'birthTime',
+		control: 'time',
+		label: __( 'Birth time', 'roxyapi' ),
+		required: false,
+		help: __( 'Birth time (HH:MM:SS) for significator calculation', 'roxyapi' ),
 	},
 	{
-		"name": "nodeType",
-		"control": "select",
-		"label": "Node type",
-		"required": false,
-		"help": "Lunar node type for Rahu and Ketu positions",
-		"options": [
-			"mean",
-			"true"
-		]
-	}
+		name: 'nodeType',
+		control: 'select',
+		label: __( 'Node type', 'roxyapi' ),
+		required: false,
+		help: __( 'Lunar node type for Rahu and Ketu positions', 'roxyapi' ),
+		options: [ 'mean', 'true' ],
+	},
 ];
 
 registerBlockType( metadata.name, {

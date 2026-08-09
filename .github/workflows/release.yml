@@ -47,7 +47,7 @@ jobs:
             - name: Refresh the translation template
               run: |
                   curl -sSL -o /tmp/wp-cli.phar https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-                  php /tmp/wp-cli.phar i18n make-pot . languages/roxyapi.pot --slug=roxyapi --skip-audit --allow-root
+                  php /tmp/wp-cli.phar i18n make-pot . languages/roxyapi.pot --slug=roxyapi --skip-audit --exclude=build --allow-root
 
             - name: Lint
               run: vendor/bin/phpcs --standard=phpcs.xml.dist

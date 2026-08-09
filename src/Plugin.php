@@ -117,6 +117,7 @@ class Plugin {
 		add_action( 'wp_enqueue_scripts', array( self::class, 'register_frontend_style' ), 5 );
 		add_action( 'enqueue_block_assets', array( self::class, 'register_frontend_style' ), 5 );
 		add_action( 'admin_enqueue_scripts', array( self::class, 'register_frontend_style' ), 5 );
+		add_action( 'enqueue_block_assets', array( self::class, 'enqueue_style_in_editor' ), 10 );
 
 		add_action( 'wp_enqueue_scripts', array( self::class, 'register_geocode_script' ), 5 );
 		add_action( 'admin_enqueue_scripts', array( self::class, 'register_geocode_script' ), 5 );
@@ -161,21 +162,30 @@ class Plugin {
 			ROXYAPI_VERSION
 		);
 
-		// Override the default accent when the site owner set one. Custom
-		// properties inherit downward, so the accent has to sit on `:root` (not
-		// on a `.roxyapi-card` descendant) to reach the chart shadow trees. The
-		// token layer pins a mode-specific accent at `:root[data-theme="dark"]`
-		// (higher specificity than bare `:root`), so the override must match the
-		// same theme states to win in light, dark, and auto alike. Attached to
-		// `roxyapi-frontend`, which depends on the token layer, so the inline
-		// rule also loads after the defaults.
-		$opts  = \RoxyAPI\Admin\SettingsSchema::get_option();
-		$color = sanitize_hex_color( (string) ( $opts['accent_color'] ?? '' ) );
-		if ( is_string( $color ) && $color !== '' ) {
-			wp_add_inline_style(
-				'roxyapi-frontend',
-				':root,:root[data-theme="light"],:root[data-theme="dark"]{--roxy-accent:' . $color . ';}'
-			);
+		// Carry the site owner's palette onto the page. Custom properties inherit
+		// downward, so the values have to sit on `:root` (not on a
+		// `.roxyapi-card` descendant) to reach the chart shadow trees. Attached
+		// to `roxyapi-frontend`, which depends on the token layer, so the
+		// override also loads after the defaults it replaces. The stylesheet
+		// itself, including which theme states each block has to match, is
+		// {@link Theming::inline_css}.
+		wp_add_inline_style( 'roxyapi-frontend', Theming::inline_css( is_admin() ) );
+	}
+
+	/**
+	 * Put the reading stylesheet in the block editor canvas.
+	 *
+	 * Front-end pages enqueue it per render so it only ships where a reading is,
+	 * but a block preview is server-rendered through a REST request whose
+	 * enqueues never reach the editor. `enqueue_block_assets` is the hook whose
+	 * assets WordPress loads into the canvas iframe, so without this the preview
+	 * shows unstyled markup and none of the owner's palette.
+	 *
+	 * @return void
+	 */
+	public static function enqueue_style_in_editor(): void {
+		if ( is_admin() ) {
+			wp_enqueue_style( 'roxyapi-frontend' );
 		}
 	}
 

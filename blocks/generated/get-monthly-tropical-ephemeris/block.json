@@ -27,7 +27,8 @@
 		"spacing": {
 			"padding": true,
 			"margin": true
-		}
+		},
+		"inserter": false
 	},
 	"attributes": {
 		"year": {

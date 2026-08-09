@@ -1,75 +1,68 @@
 import { registerBlockType } from '@wordpress/blocks';
+import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 import { makeEdit } from '../../_shared/generated-edit';
 
 // Generated from the OpenAPI spec by bin/generate.mjs. DO NOT EDIT.
 const fields = [
 	{
-		"name": "startDatetime",
-		"control": "text",
-		"label": "Start datetime",
-		"required": true,
-		"help": "Start of the interval range in ISO 8601 (YYYY-MM-DDTHH:MM:SS)"
+		name: 'startDatetime',
+		control: 'text',
+		label: __( 'Start datetime', 'roxyapi' ),
+		required: true,
+		help: __( 'Start of the interval range in ISO 8601 (YYYY-MM-DDTHH:MM:SS)', 'roxyapi' ),
 	},
 	{
-		"name": "endDatetime",
-		"control": "text",
-		"label": "End datetime",
-		"required": true,
-		"help": "End of the interval range in ISO 8601 (YYYY-MM-DDTHH:MM:SS)"
+		name: 'endDatetime',
+		control: 'text',
+		label: __( 'End datetime', 'roxyapi' ),
+		required: true,
+		help: __( 'End of the interval range in ISO 8601 (YYYY-MM-DDTHH:MM:SS)', 'roxyapi' ),
 	},
 	{
-		"name": "intervalMinutes",
-		"control": "number",
-		"label": "Interval minutes",
-		"required": true,
-		"help": "Interval between calculations in minutes (1-1440)"
+		name: 'intervalMinutes',
+		control: 'number',
+		label: __( 'Interval minutes', 'roxyapi' ),
+		required: true,
+		help: __( 'Interval between calculations in minutes (1-1440)', 'roxyapi' ),
 	},
 	{
-		"name": "latitude",
-		"control": "number",
-		"label": "Latitude",
-		"required": true,
-		"help": "Observer latitude in decimal degrees"
+		name: 'latitude',
+		control: 'number',
+		label: __( 'Latitude', 'roxyapi' ),
+		required: true,
+		help: __( 'Observer latitude in decimal degrees', 'roxyapi' ),
 	},
 	{
-		"name": "longitude",
-		"control": "number",
-		"label": "Longitude",
-		"required": true,
-		"help": "Observer longitude in decimal degrees"
+		name: 'longitude',
+		control: 'number',
+		label: __( 'Longitude', 'roxyapi' ),
+		required: true,
+		help: __( 'Observer longitude in decimal degrees', 'roxyapi' ),
 	},
 	{
-		"name": "timezone",
-		"control": "text",
-		"label": "Timezone",
-		"required": false,
-		"help": "Timezone offset from UTC in decimal hours"
+		name: 'timezone',
+		control: 'text',
+		label: __( 'Timezone', 'roxyapi' ),
+		required: false,
+		help: __( 'Timezone offset from UTC in decimal hours', 'roxyapi' ),
 	},
 	{
-		"name": "ayanamsa",
-		"control": "select",
-		"label": "Ayanamsa",
-		"required": false,
-		"help": "Ayanamsa system for sidereal conversion",
-		"options": [
-			"kp-newcomb",
-			"kp-old",
-			"lahiri",
-			"raman"
-		]
+		name: 'ayanamsa',
+		control: 'select',
+		label: __( 'Ayanamsa', 'roxyapi' ),
+		required: false,
+		help: __( 'Ayanamsa system for sidereal conversion', 'roxyapi' ),
+		options: [ 'kp-newcomb', 'kp-old', 'lahiri', 'raman' ],
 	},
 	{
-		"name": "nodeType",
-		"control": "select",
-		"label": "Node type",
-		"required": false,
-		"help": "Lunar node type for Rahu and Ketu positions",
-		"options": [
-			"mean",
-			"true"
-		]
-	}
+		name: 'nodeType',
+		control: 'select',
+		label: __( 'Node type', 'roxyapi' ),
+		required: false,
+		help: __( 'Lunar node type for Rahu and Ketu positions', 'roxyapi' ),
+		options: [ 'mean', 'true' ],
+	},
 ];
 
 registerBlockType( metadata.name, {

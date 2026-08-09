@@ -1,55 +1,53 @@
 import { registerBlockType } from '@wordpress/blocks';
+import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 import { makeEdit } from '../../_shared/generated-edit';
 
 // Generated from the OpenAPI spec by bin/generate.mjs. DO NOT EDIT.
 const fields = [
 	{
-		"name": "date",
-		"control": "date",
-		"label": "Date",
-		"required": true,
-		"help": "Birth date in YYYY-MM-DD format"
+		name: 'date',
+		control: 'date',
+		label: __( 'Date', 'roxyapi' ),
+		required: true,
+		help: __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 	},
 	{
-		"name": "time",
-		"control": "time",
-		"label": "Time",
-		"required": true,
-		"help": "Birth time in 24-hour HH:MM:SS format"
+		name: 'time',
+		control: 'time',
+		label: __( 'Time', 'roxyapi' ),
+		required: true,
+		help: __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 	},
 	{
-		"name": "timezone",
-		"control": "text",
-		"label": "Timezone",
-		"required": true,
-		"help": "IANA name (e.g. \"America/New_York\", \"Europe/London\", \"UTC\"), decimal hours (e.g. -5 for EST, 1 for CET), or a fixed UTC offset (e.g. \"-05:00\", \"+01:00\")"
+		name: 'timezone',
+		control: 'text',
+		label: __( 'Timezone', 'roxyapi' ),
+		required: true,
+		help: __( 'IANA name (e.g. "America/New_York", "Europe/London", "UTC"), decimal hours (e.g. -5 for EST, 1 for CET), or a fixed UTC offset (e.g. "-05:00", "+01:00")', 'roxyapi' ),
 	},
 	{
-		"name": "latitude",
-		"control": "number",
-		"label": "Latitude",
-		"required": false,
-		"help": "Birth latitude in decimal degrees"
+		name: 'latitude',
+		control: 'number',
+		label: __( 'Latitude', 'roxyapi' ),
+		required: false,
+		help: __( 'Birth latitude in decimal degrees', 'roxyapi' ),
 	},
 	{
-		"name": "longitude",
-		"control": "number",
-		"label": "Longitude",
-		"required": false,
-		"help": "Birth longitude in decimal degrees"
+		name: 'longitude',
+		control: 'number',
+		label: __( 'Longitude', 'roxyapi' ),
+		required: false,
+		help: __( 'Birth longitude in decimal degrees', 'roxyapi' ),
 	},
 	{
-		"name": "nodeType",
-		"control": "select",
-		"label": "Node type",
-		"required": false,
-		"help": "Lunar node convention for the North and South Node activations",
-		"options": [
-			"mean",
-			"true"
-		]
-	}
+		name: 'nodeType',
+		control: 'select',
+		label: __( 'Node type', 'roxyapi' ),
+		required: false,
+		help: __( 'Lunar node convention for the North and South Node activations', 'roxyapi' ),
+		options: [ 'mean', 'true' ],
+	},
 ];
 
 registerBlockType( metadata.name, {
