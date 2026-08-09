@@ -337,4 +337,118 @@ class Test_Generic_Renderer extends \WP_UnitTestCase {
 		// Pumpkin id is suppressed because name is present.
 		$this->assertStringNotContainsString( '>pumpkin<', $out );
 	}
+
+	public function test_card_scalar_field_prefers_localized_value_over_canonical(): void {
+		// Regression: before the fold this rendered BOTH "Name" (Sun) and
+		// "Name Localized" (Sol) as separate dt/dd rows.
+		$out = GenericRenderer::render(
+			'getX',
+			array(
+				'element'          => 'Fire',
+				'elementLocalized' => 'Fuego',
+			)
+		);
+		$this->assertStringContainsString( '<dt>Element</dt>', $out );
+		$this->assertStringContainsString( '<dd>Fuego</dd>', $out );
+		$this->assertStringNotContainsString( 'Element Localized', $out );
+		$this->assertStringNotContainsString( '<dd>Fire</dd>', $out );
+	}
+
+	public function test_card_title_field_prefers_localized_value(): void {
+		$out = GenericRenderer::render(
+			'getX',
+			array(
+				'name'          => 'Sun',
+				'nameLocalized' => 'Sol',
+			)
+		);
+		$this->assertStringContainsString( '<h3 class="roxyapi-card-title">Sol</h3>', $out );
+		$this->assertStringNotContainsString( 'Name Localized', $out );
+		$this->assertStringNotContainsString( '>Sun<', $out );
+	}
+
+	public function test_localized_field_with_no_canonical_partner_still_renders(): void {
+		// A stray `fooLocalized` with no `foo` beside it must still render,
+		// or the renderer silently eats data the response carries.
+		$out = GenericRenderer::render(
+			'getX',
+			array(
+				'name'          => 'Pumpkin',
+				'omenLocalized' => 'Presagio',
+			)
+		);
+		$this->assertStringContainsString( '<dt>Omen localized</dt>', $out );
+		$this->assertStringContainsString( '<dd>Presagio</dd>', $out );
+	}
+
+	public function test_fold_runs_before_suppression_so_hidden_field_takes_translation_with_it(): void {
+		// `type` is suppressed noise (schema discriminator). Neither the
+		// English nor the localized value may leak through as its own row:
+		// the fold has to run BEFORE noise-suppression, not after.
+		$out = GenericRenderer::render(
+			'getX',
+			array(
+				'name'          => 'Trine',
+				'type'          => 'TRINE',
+				'typeLocalized' => 'Trigono',
+			)
+		);
+		$this->assertStringNotContainsString( 'Trigono', $out );
+		$this->assertStringNotContainsString( 'TRINE', $out );
+		$this->assertStringNotContainsString( '<dt>Type</dt>', $out );
+		$this->assertStringNotContainsString( 'Type Localized', $out );
+	}
+
+	public function test_table_row_localized_fields_fold_into_canonical_columns(): void {
+		// Regression: the reported bug. A table built from array_keys() on
+		// each row had no idea `nameLocalized` and `signLocalized` were
+		// translations, so it grew two extra English-headed columns the day
+		// the API began sending them, duplicating data already on the row.
+		$data = array(
+			'planets' => array(
+				array(
+					'name'          => 'Sun',
+					'nameLocalized' => 'Sol',
+					'sign'          => 'Leo',
+					'signLocalized' => 'Leon',
+				),
+				array(
+					'name'          => 'Moon',
+					'nameLocalized' => 'Luna',
+					'sign'          => 'Cancer',
+					'signLocalized' => 'Cancer',
+				),
+			),
+		);
+		$out = GenericRenderer::render( 'getX', $data );
+
+		// Exactly two columns: the localized twin never gets its own header.
+		$this->assertStringContainsString( '<thead><tr><th>Name</th><th>Sign</th></tr></thead>', $out );
+		$this->assertStringNotContainsString( 'Name Localized', $out );
+		$this->assertStringNotContainsString( 'Sign Localized', $out );
+		// Cells carry the READER'S value, not the canonical English one.
+		$this->assertStringContainsString( '<td>Sol</td>', $out );
+		$this->assertStringContainsString( '<td>Leon</td>', $out );
+		$this->assertStringNotContainsString( '<td>Sun</td>', $out );
+	}
+
+	public function test_table_row_localized_field_without_partner_still_renders(): void {
+		// Same "no canonical partner" rule, at the table funnel: render_table()
+		// never calls suppress(), so it needs its own fold, not just render_object's.
+		$data = array(
+			'items' => array(
+				array(
+					'name'          => 'Alpha',
+					'omenLocalized' => 'Presagio Alpha',
+				),
+				array(
+					'name'          => 'Beta',
+					'omenLocalized' => 'Presagio Beta',
+				),
+			),
+		);
+		$out = GenericRenderer::render( 'getX', $data );
+		$this->assertStringContainsString( '<th>Omen localized</th>', $out );
+		$this->assertStringContainsString( '<td>Presagio Alpha</td>', $out );
+	}
 }

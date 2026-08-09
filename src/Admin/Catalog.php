@@ -2,9 +2,11 @@
 /**
  * Catalog: single source of truth for the Shortcodes Library admin page.
  *
- * Combines the ten hand-crafted hero shortcodes from
- * {@see Onboarding::hero_shortcodes()} with the long-tail generated entries
- * from {@see \RoxyAPI\Generated\Endpoints::all()} into one normalised list.
+ * Combines the hand-crafted hero shortcodes from
+ * {@see Onboarding::hero_shortcodes()} (count and membership driven entirely
+ * by `bin/hero-config.json`, never hardcoded here) with the long-tail
+ * generated entries from {@see \RoxyAPI\Generated\Endpoints::all()} into one
+ * normalised list.
  *
  * Domain ordering follows the brand book: astrology first (Western, then
  * Vedic), then Tarot, Numerology, I Ching, Dreams, Biorhythm, Angel Numbers,

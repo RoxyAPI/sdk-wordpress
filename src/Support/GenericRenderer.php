@@ -56,6 +56,16 @@ class GenericRenderer {
 	private const SUPPRESS_ALWAYS = array( 'seed' );
 
 	/**
+	 * The one naming convention {@see fold_localized} derives from. Several
+	 * operations now echo a display translation beside the canonical value:
+	 * `nameLocalized` next to `name`, `signLocalized` next to `sign`. Matched
+	 * as a convention, never as a list of field names, so a new operation
+	 * inherits the fold with no edit here. Mirrors `LOCALIZED` in
+	 * `@roxyapi/ui`'s `localized.ts`, the web component's twin of this file.
+	 */
+	private const LOCALIZED_SUFFIX = 'Localized';
+
+	/**
 	 * Field names that leak internal/diagnostic data and should not surface
 	 * in consumer output. Matched after lowercase + underscore collapse.
 	 *
@@ -385,6 +395,11 @@ class GenericRenderer {
 	 * @return string
 	 */
 	private static function render_table( string $key, array $rows ): string {
+		// Columns come from `array_keys()` on each row below, so a table is
+		// exactly where an unfolded `nameLocalized` sibling shows up as its
+		// own "Name Localized" column. Fold before that happens; this function
+		// is the row-level entry point and never routes through suppress().
+		$rows = array_map( array( self::class, 'fold_localized' ), $rows );
 		$cols = array();
 		foreach ( $rows as $row ) {
 			foreach ( array_keys( $row ) as $col ) {
@@ -461,6 +476,56 @@ class GenericRenderer {
 	}
 
 	/**
+	 * Fold every `xLocalized` field into its `x` partner: the reader's value
+	 * under the canonical key, and the duplicate key gone. Ported from
+	 * `foldLocalized` in `@roxyapi/ui`'s `localized.ts` so the no-JS card and
+	 * the web component agree on the same response instead of disagreeing on
+	 * hydration.
+	 *
+	 * Without this, a table built from `array_keys( $row )` has no idea what
+	 * its fields MEAN, so a response carrying both `name` and `nameLocalized`
+	 * rendered two columns, `Name` and `Name Localized`, headed in English,
+	 * carrying the same fact twice. Repaired here, at the one layer every
+	 * render path already funnels through, rather than at each of them.
+	 *
+	 * Three rules:
+	 * - A `*Localized` key with no canonical partner in the SAME row stays
+	 *   put: suppressing on the name alone would delete data the response
+	 *   carries and nothing else renders.
+	 * - The canonical key keeps its POSITION, so a translated response and an
+	 *   English one lay out identically, column for column.
+	 * - A row with nothing to fold is returned unchanged.
+	 *
+	 * The English value is dropped rather than shown beside its translation
+	 * because the two are the same fact, and this caller is generic: it
+	 * cannot know that `sign` is a value a lookup would be keyed on.
+	 *
+	 * @param array<string, mixed> $row A single object level: a card's top
+	 *                                  fields, or one row of a table.
+	 * @return array<string, mixed>
+	 */
+	private static function fold_localized( array $row ): array {
+		$suffix_len = strlen( self::LOCALIZED_SUFFIX );
+		foreach ( $row as $key => $value ) {
+			$key_str = (string) $key;
+			if ( strlen( $key_str ) <= $suffix_len
+				|| substr( $key_str, -$suffix_len ) !== self::LOCALIZED_SUFFIX
+			) {
+				continue;
+			}
+			$base = substr( $key_str, 0, -$suffix_len );
+			if ( ! array_key_exists( $base, $row ) ) {
+				continue;
+			}
+			if ( $value !== null && $value !== '' ) {
+				$row[ $base ] = $value;
+			}
+			unset( $row[ $key ] );
+		}
+		return $row;
+	}
+
+	/**
 	 * Drop diagnostic-only keys when a nicer sibling exists, and strip the
 	 * generic noise patterns (calculation / type / position / has_*-when-false)
 	 * that flow in from any well-typed OpenAPI schema and have no consumer
@@ -470,6 +535,10 @@ class GenericRenderer {
 	 * @return array<string, mixed>
 	 */
 	private static function suppress( array $data ): array {
+		// Fold FIRST, so a field this then suppresses takes its translation
+		// with it rather than leaving `Sign Localized` standing where `Sign`
+		// was hidden.
+		$data      = self::fold_localized( $data );
 		$has_named = false;
 		foreach ( self::TITLE_KEYS as $tk ) {
 			if ( isset( $data[ $tk ] ) ) {

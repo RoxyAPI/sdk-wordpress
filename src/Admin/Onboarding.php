@@ -86,15 +86,17 @@ class Onboarding {
 	}
 
 	/**
-	 * The ten hero shortcodes in v1.0, in brand-book domain order.
+	 * Every hero shortcode, in brand-book domain order.
 	 *
 	 * Astrology first, then tarot, numerology, I Ching, dreams, biorhythm,
 	 * angel numbers, crystals. Life path sits under the numerology umbrella
 	 * and is kept at the end.
 	 *
 	 * Reads from the auto-generated `\RoxyAPI\Generated\Heroes\Manifest`
-	 * which derives every entry from `bin/hero-config.json` at code-gen
-	 * time. The order in `bin/hero-config.json` is the order shown here.
+	 * which derives every entry, and the count of them, from
+	 * `bin/hero-config.json` at code-gen time. The order in
+	 * `bin/hero-config.json` is the order shown here. Never hardcode the
+	 * count in this docblock: it grows every time a hero ships.
 	 *
 	 * Every example MUST use only attribute names that the matching hero
 	 * class declares in its `DEFAULTS` constant. The

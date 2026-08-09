@@ -139,7 +139,7 @@ One key covers 12 domains. Western astrology: natal chart, daily / weekly / mont
 
 = Can I show readings in another language? =
 
-Yes. Readings follow your WordPress site language on their own, so a Spanish site returns Spanish readings with nothing to configure. To run your site in one language and your readings in another, open the RoxyAPI menu, Branding tab, and pick a reading language: English, German, Hindi, Spanish, Turkish, Portuguese, French, or Russian. Every reading is then returned in that language.
+Yes. Readings follow your WordPress site language on their own, so a Spanish site returns Spanish readings with nothing to configure. To run your site in one language and your readings in another, open the RoxyAPI menu, Branding tab, and pick a reading language: English, German, Hindi, Spanish, Turkish, Portuguese, French, or Russian. Readings switch to that language, though a handful of specialized terms stay in English.
 
 = When does the plugin contact the RoxyAPI service? =
 

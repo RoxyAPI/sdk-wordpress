@@ -134,7 +134,7 @@ When `ROXYAPI_KEY` is defined, the settings field is read only and the constant 
 | Biorhythm         | Physical, emotional, intellectual, intuitive cycles plus six extended cycles                                    |
 | I Ching           | Hexagrams, trigrams, coin casting, daily readings                                                               |
 | Crystals          | Healing properties, zodiac and chakra pairings, birthstones                                                     |
-| Dreams            | Symbol dictionary with 3,000 entries, pattern analysis                                                          |
+| Dreams            | Symbol dictionary with 2,000+ entries, pattern analysis                                                         |
 | Angel numbers     | Meanings, daily guidance, repetition analysis                                                                   |
 | Location          | City geocoding for birth chart coordinates                                                                      |
 
@@ -146,7 +146,7 @@ Every endpoint is cached with a per endpoint TTL so cached responses do not cost
 -   **Encrypted at rest storage.** AES 256 CTR with a key derived from `ROXYAPI_ENCRYPTION_KEY` constant or `LOGGED_IN_KEY` fallback. Ported from the Google Site Kit `Data_Encryption` pattern.
 -   **Rate limiting.** Visitor submitted forms are rate limited per IP per shortcode via WordPress transients to prevent abuse.
 -   **Theme aware.** Every class is prefixed `.roxyapi-*` and uses `var(--wp--preset--color--*)` tokens from the active theme `theme.json`. Override from your child theme or just override the class.
--   **Full i18n.** Text domain `roxyapi`. Auto loaded from translate.wordpress.org.
+-   **Full i18n.** Text domain `roxyapi`. Ships built in translations for German, Spanish, Hindi, Turkish, Portuguese, French, and Russian.
 -   **WCAG 2.1 AA.** Proper heading order, labeled inputs, keyboard navigation, color contrast.
 
 ## Settings and privacy

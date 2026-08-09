@@ -90,7 +90,7 @@ class Test_Settings_Fields_Sanitize extends \WP_UnitTestCase {
 			SettingsPage::OPTION_NAME,
 			array(
 				'api_key_encrypted' => $encrypted,
-				'cache_ttl'         => HOUR_IN_SECONDS,
+				'cache_preset'      => 'balanced',
 			)
 		);
 

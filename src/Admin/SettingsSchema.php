@@ -47,11 +47,6 @@ class SettingsSchema {
 				'default'   => '',
 				'input_key' => 'api_key',
 			),
-			'cache_ttl'         => array(
-				'type'    => 'int',
-				'default' => HOUR_IN_SECONDS,
-				'min'     => 0,
-			),
 			'cache_preset'      => array(
 				'type'    => 'enum',
 				'default' => 'balanced',
