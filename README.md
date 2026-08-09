@@ -187,8 +187,10 @@ git clone https://github.com/RoxyAPI/sdk-wordpress.git roxyapi
 cd roxyapi
 composer install
 npm install
-npx wp-env start
+npm run wp-env start
 ```
+
+Use `npm run wp-env`, never a bare `npx wp-env`. The script wraps the command in `NODE_OPTIONS=--no-network-family-autoselection`, and without it the command dies at `Reading configuration` with `AggregateError [ETIMEDOUT]` on any machine whose IPv6 route is broken. wp-env pulls the WordPress and Plugin Check zips through Node, and Node abandons the unreachable address rather than falling back to the one that works, which is why `curl` succeeds on the same host at the same moment. The `phpunit` and `plugin-check` git hooks already set the same flag.
 
 The first `composer install` and `npm install` generate `composer.lock` and `package-lock.json`. These lockfiles are committed to the repo so CI can run `npm ci` reproducibly. If you bump a dependency, commit the updated lockfile in the same PR.
 

@@ -1,5 +1,12 @@
 name: CI
 on:
+    # `push` is here because this repo is pushed to directly, not only through PRs.
+    # Without it a direct push to main ran NO checks at all: the pre-push git hook
+    # was the single gate, it needs wp-env running locally, and a developer without
+    # Docker up could land phpunit and plugin-check failures on main unnoticed.
+    # This does NOT publish anything; release.yml stays manual on purpose.
+    push:
+        branches: [main]
     pull_request:
     workflow_dispatch:
 

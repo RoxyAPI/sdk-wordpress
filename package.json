@@ -41,7 +41,7 @@
 		"format:check": "prettier --check .",
 		"lint:js": "wp-scripts lint-js blocks/ assets/js/ bin/",
 		"lint:css": "wp-scripts lint-style \"blocks/**/*.{css,scss}\" \"assets/css/**/*.{css,scss}\"",
-		"wp-env": "wp-env",
+		"wp-env": "NODE_OPTIONS=--no-network-family-autoselection wp-env",
 		"generate": "node bin/generate.mjs",
 		"generate:check": "ROXYAPI_SPEC_FILE=specs/openapi.json node bin/generate.mjs && git diff --exit-code specs/openapi.json src/Generated blocks/generated",
 		"fetch:ui": "node bin/fetch-ui-bundle.mjs",
