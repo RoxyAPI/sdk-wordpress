@@ -48,7 +48,7 @@
 		},
 		"missing_message": "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to UTC; pass an IANA name or decimal hours for accuracy). Example: %s",
 		"form_mode": {
-			"title": "Western birth chart",
+			"title": "Natal chart",
 			"submit_label": "Calculate chart",
 			"section": {
 				"name": "birth",

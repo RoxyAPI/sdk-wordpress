@@ -39,6 +39,10 @@ class GetUsageStats {
 
 		wp_enqueue_style( 'roxyapi-frontend' );
 
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return '';
+		}
+
 		$data = \RoxyAPI\Generated\Client::getUsageStats(  );
 
 		if ( is_wp_error( $data ) ) {

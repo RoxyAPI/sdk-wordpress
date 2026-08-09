@@ -24,7 +24,11 @@ pre-commit:
         js-format:
             glob: '*.{js,jsx,ts,tsx,css,scss,json,md,yml,yaml}'
             exclude: 'src/Generated/**|blocks/generated/**|build/**|specs/**|vendor/**|node_modules/**|*.min.*'
-            run: npx prettier --write --ignore-unknown {staged_files}
+            # `--no-error-on-unmatched-pattern` because .prettierignore covers paths
+            # this `exclude` does not (bin/*.json, readme.txt). When EVERY staged
+            # file is ignored, prettier is left with nothing to do and exits 2,
+            # which failed the commit rather than skipping the step.
+            run: npx prettier --write --ignore-unknown --no-error-on-unmatched-pattern {staged_files}
             stage_fixed: true
 
         # Lint JS/CSS via wp-scripts (eslint + stylelint).

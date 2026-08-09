@@ -1116,6 +1116,21 @@ ${ entries.join( '\n' ) }
  * web component or falls back to the generic card renderer. Output is sorted by
  * operationId so two runs produce identical bytes.
  */
+/**
+ * Operations that return the SITE OWNER's account, not a reading.
+ *
+ * `getUsageStats` answers with the account email, plan name and quota. It takes
+ * no inputs, so its block rendered the moment it was inserted and published all
+ * of that to the front end: any user who could edit a post could put the
+ * owner's email and plan on a public page. It is an account-management endpoint
+ * that became a content block.
+ *
+ * Listed operations get a capability check in the shortcode and are kept out of
+ * the block inserter. Add to this list rather than hand-editing generated
+ * output, which is overwritten on every run.
+ */
+const ACCOUNT_SCOPED_OPERATIONS = new Set( [ 'getUsageStats' ] );
+
 function emitComponentMapPhp() {
 	const ops = componentMap.operations || {};
 	const tagPattern = /^roxy-[a-z-]+$/;
@@ -1266,6 +1281,17 @@ class ${ className } {
 	}
 
 	let attsArray = '';
+	// Account-scoped operations refuse to render for anyone who cannot manage the
+	// site. Returning empty rather than an error keeps a page that a subscriber
+	// visits from advertising that something was hidden there.
+	const accountGuard = ACCOUNT_SCOPED_OPERATIONS.has( op.operationId )
+		? `
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return '';
+		}
+`
+		: '';
+
 	let clientCall = '';
 
 	if ( isPost ) {
@@ -1379,7 +1405,7 @@ ${ attsArray }
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
-
+${ accountGuard }
 		${ clientCall }
 
 		if ( is_wp_error( $data ) ) {
@@ -1437,6 +1463,12 @@ function emitBlockJson( op ) {
 					align: [ 'wide', 'full' ],
 					color: { background: true, text: true },
 					spacing: { padding: true, margin: true },
+					// Kept out of the inserter, not deregistered: a saved post
+					// references a block by name, so removing the type would break
+					// content that already uses it.
+					...( ACCOUNT_SCOPED_OPERATIONS.has( op.operationId )
+						? { inserter: false }
+						: {} ),
 				},
 				attributes,
 				render: 'file:./render.php',

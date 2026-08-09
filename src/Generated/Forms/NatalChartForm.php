@@ -28,7 +28,7 @@ class NatalChartForm {
 		return array(
 			'operation_id' => 'natalChart',
 			'render_operation_id' => 'generateNatalChart',
-			'title'        => __( 'Western birth chart', 'roxyapi' ),
+			'title'        => __( 'Natal chart', 'roxyapi' ),
 			'submit_label' => __( 'Calculate chart', 'roxyapi' ),
 			'sections'     => array(
 			array(
