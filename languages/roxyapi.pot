@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-09T21:00:56+00:00\n"
+"POT-Creation-Date: 2026-08-09T21:46:15+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: roxyapi\n"
@@ -82,49 +82,49 @@ msgid "Documentation"
 msgstr ""
 
 #: src/Admin/ActionLinks.php:69
-#: templates/admin-connected.php:361
+#: templates/admin-connected.php:374
 msgid "Support"
 msgstr ""
 
-#: src/Admin/Assets.php:44
+#: src/Admin/Assets.php:56
 msgid "Testing..."
 msgstr ""
 
-#: src/Admin/Assets.php:45
+#: src/Admin/Assets.php:57
 #: src/Api/TestKeyRoute.php:83
 msgid "Connected."
 msgstr ""
 
-#: src/Admin/Assets.php:46
+#: src/Admin/Assets.php:58
 msgid "Connected to RoxyAPI. Paste a shortcode below to render a reading on any page."
 msgstr ""
 
-#: src/Admin/Assets.php:47
+#: src/Admin/Assets.php:59
 msgid "Paste your API key in the field above and save before testing."
 msgstr ""
 
-#: src/Admin/Assets.php:48
+#: src/Admin/Assets.php:60
 msgid "That key was rejected. Double check it on your roxyapi.com dashboard, paste it again, and save."
 msgstr ""
 
-#: src/Admin/Assets.php:49
+#: src/Admin/Assets.php:61
 msgid "Connection test failed. Try again in a moment."
 msgstr ""
 
-#: src/Admin/Assets.php:50
+#: src/Admin/Assets.php:62
 #: src/Admin/ShortcodesPage.php:114
 msgid "Copied"
 msgstr ""
 
-#: src/Admin/Assets.php:51
+#: src/Admin/Assets.php:63
 #: src/Admin/ShortcodesPage.php:115
 msgid "Copy failed"
 msgstr ""
 
-#: src/Admin/Assets.php:52
+#: src/Admin/Assets.php:64
 #: src/Admin/DashboardWidget.php:132
 #: src/Admin/ShortcodesPage.php:116
-#: templates/admin-connected.php:158
+#: templates/admin-connected.php:164
 #: templates/admin-onboarding.php:130
 #: templates/admin-shortcodes.php:136
 msgid "Copy"
@@ -149,7 +149,7 @@ msgstr ""
 #. translators: %s: shortcode label
 #. translators: %s: shortcode title
 #: src/Admin/DashboardWidget.php:130
-#: templates/admin-connected.php:156
+#: templates/admin-connected.php:162
 #: templates/admin-onboarding.php:128
 #: templates/admin-shortcodes.php:134
 #, php-format
@@ -257,79 +257,138 @@ msgstr ""
 msgid "No visitor data is sent to RoxyAPI when a page renders a static-attribute shortcode (the data is supplied by the site owner). Form-mode shortcodes are the only case where visitor input crosses to the third party."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:64
+#: src/Admin/SettingsFields.php:80
 msgid "Paste your RoxyAPI key"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:82
+#: src/Admin/SettingsFields.php:98
 msgid "Leave blank to use the localised default."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:117
-msgid "Auto: follow the visitor device setting"
-msgstr ""
-
-#: src/Admin/SettingsFields.php:118
+#: src/Admin/SettingsFields.php:177
+#: src/Admin/SettingsFields.php:255
 msgid "Light"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:119
+#: src/Admin/SettingsFields.php:178
+#: src/Admin/SettingsFields.php:256
 msgid "Dark"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:140
+#: src/Admin/SettingsFields.php:188
+#: blocks/_shared/generated-edit.js:54
+msgid "Default"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:206
+msgid "Reset colours to defaults"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:218
+msgid "Custom"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:219
+msgid "Practitioner"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:220
+msgid "Eucalyptus"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:221
+msgid "Kiln"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:222
+msgid "Moonlit"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:233
+msgid "Accent"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:234
+msgid "Page background"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:235
+msgid "Card background"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:236
+msgid "Text"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:237
+msgid "Secondary text"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:238
+msgid "Borders"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:239
+msgid "Warnings"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:254
+msgid "Auto: follow the visitor device setting"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:277
 msgid "Match site language"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:141
+#: src/Admin/SettingsFields.php:278
 msgid "English"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:142
+#: src/Admin/SettingsFields.php:279
 msgid "German"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:143
+#: src/Admin/SettingsFields.php:280
 msgid "Hindi"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:144
+#: src/Admin/SettingsFields.php:281
 msgid "Spanish"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:145
+#: src/Admin/SettingsFields.php:282
 msgid "Turkish"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:146
+#: src/Admin/SettingsFields.php:283
 msgid "Portuguese"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:147
+#: src/Admin/SettingsFields.php:284
 msgid "French"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:148
+#: src/Admin/SettingsFields.php:285
 msgid "Russian"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:170
+#: src/Admin/SettingsFields.php:307
 msgid "Hide the written text on every reading. Charts, tables, and values still show."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:185
+#: src/Admin/SettingsFields.php:322
 msgid "Show a disclaimer line at the bottom of every reading."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:197
+#: src/Admin/SettingsFields.php:334
 msgid "Leave blank to use the localised default (\"For entertainment purposes only…\")."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:216
+#: src/Admin/SettingsFields.php:353
 msgid "Your reading"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:231
+#: src/Admin/SettingsFields.php:368
 #: src/Generated/Forms/CalculateBioCompatibilityForm.php:24
 #: src/Generated/Forms/CalculateCompatibilityForm.php:24
 #: src/Generated/Forms/CalculateConnectionForm.php:24
@@ -348,41 +407,41 @@ msgstr ""
 msgid "Get reading"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:245
+#: src/Admin/SettingsFields.php:382
 msgid "Fresh: 15 minutes (most up-to-date, more API calls)"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:246
+#: src/Admin/SettingsFields.php:383
 msgid "Balanced: 1 hour (recommended)"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:247
+#: src/Admin/SettingsFields.php:384
 msgid "Quota saver: 24 hours (fewer API calls, less fresh)"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:274
+#: src/Admin/SettingsFields.php:411
 msgid "Show source line on each reading."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:285
+#: src/Admin/SettingsFields.php:422
 msgid "Defined via ROXYAPI_KEY constant in wp-config.php. The settings field is locked."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:288
+#: src/Admin/SettingsFields.php:425
 msgid "A key is saved. Paste a new one to replace it. Leave blank to keep the current key."
 msgstr ""
 
 #. translators: %s URL to RoxyAPI pricing page
-#: src/Admin/SettingsFields.php:292
+#: src/Admin/SettingsFields.php:429
 #, php-format
 msgid "No key yet? Get one at %s."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:422
+#: src/Admin/SettingsFields.php:598
 msgid "API key format is invalid. Get a key at roxyapi.com."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:431
+#: src/Admin/SettingsFields.php:607
 msgid "Could not encrypt API key. Check that PHP openssl is installed."
 msgstr ""
 
@@ -2299,19 +2358,19 @@ msgstr ""
 msgid "The date, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s"
 msgstr ""
 
-#: src/Plugin.php:213
+#: src/Plugin.php:223
 msgid "Searching cities…"
 msgstr ""
 
-#: src/Plugin.php:214
+#: src/Plugin.php:224
 msgid "No matching cities. Try a different spelling."
 msgstr ""
 
-#: src/Plugin.php:215
+#: src/Plugin.php:225
 msgid "City selected."
 msgstr ""
 
-#: src/Plugin.php:216
+#: src/Plugin.php:226
 msgid "Search is unavailable. Enter coordinates manually."
 msgstr ""
 
@@ -2386,196 +2445,204 @@ msgstr ""
 msgid "Did you mean: %1$s%2$s"
 msgstr ""
 
-#: templates/admin-connected.php:70
+#: templates/admin-connected.php:76
 msgid "Connect"
 msgstr ""
 
-#: templates/admin-connected.php:71
+#: templates/admin-connected.php:77
 msgid "Branding"
 msgstr ""
 
-#: templates/admin-connected.php:72
+#: templates/admin-connected.php:78
 msgid "Display"
 msgstr ""
 
-#: templates/admin-connected.php:73
+#: templates/admin-connected.php:79
 msgid "Privacy"
 msgstr ""
 
-#: templates/admin-connected.php:74
+#: templates/admin-connected.php:80
 msgid "Advanced"
 msgstr ""
 
-#: templates/admin-connected.php:104
+#: templates/admin-connected.php:110
 msgid "RoxyAPI is"
 msgstr ""
 
-#: templates/admin-connected.php:105
+#: templates/admin-connected.php:111
 msgid "connected."
 msgstr ""
 
-#: templates/admin-connected.php:110
+#: templates/admin-connected.php:116
 msgid "RoxyAPI settings"
 msgstr ""
 
-#: templates/admin-connected.php:138
+#: templates/admin-connected.php:144
 msgid "Connected to RoxyAPI."
 msgstr ""
 
-#: templates/admin-connected.php:139
+#: templates/admin-connected.php:145
 msgid "Drop a shortcode on any page to render a reading."
 msgstr ""
 
-#: templates/admin-connected.php:144
+#: templates/admin-connected.php:150
 msgid "Quick start"
 msgstr ""
 
-#: templates/admin-connected.php:146
+#: templates/admin-connected.php:152
 msgid "Three working shortcodes. Copy. Paste. Publish."
 msgstr ""
 
-#: templates/admin-connected.php:165
+#: templates/admin-connected.php:171
 #: templates/admin-onboarding.php:137
 msgid "Browse all shortcodes"
 msgstr ""
 
-#: templates/admin-connected.php:172
+#: templates/admin-connected.php:178
 msgid "Manage your key"
 msgstr ""
 
-#: templates/admin-connected.php:174
+#: templates/admin-connected.php:180
 msgid "Replace key"
 msgstr ""
 
-#: templates/admin-connected.php:180
+#: templates/admin-connected.php:186
 #: templates/admin-onboarding.php:100
 msgid "Save key"
 msgstr ""
 
-#: templates/admin-connected.php:183
+#: templates/admin-connected.php:189
 #: templates/admin-onboarding.php:103
 msgid "Test Connection"
 msgstr ""
 
-#: templates/admin-connected.php:200
-msgid "Brand accent"
+#: templates/admin-connected.php:206
+msgid "Palette"
 msgstr ""
 
-#: templates/admin-connected.php:202
-msgid "A single accent colour for card titles, form buttons, and source links. Leave blank to inherit your theme."
+#: templates/admin-connected.php:208
+msgid "Colours for every reading on your site. Pick a palette, or choose Custom and set the seven colours yourself. Readings use your theme font either way."
 msgstr ""
 
-#: templates/admin-connected.php:210
-msgid "Theme"
+#: templates/admin-connected.php:213
+msgid "Set colours yourself"
 msgstr ""
 
-#: templates/admin-connected.php:212
-msgid "Light, dark, or auto for chart readings. Auto follows the visitor device setting."
-msgstr ""
-
-#: templates/admin-connected.php:220
-msgid "Reading language"
+#: templates/admin-connected.php:215
+msgid "Two values per colour, one for light readings and one for dark, so a brand colour stays readable in both. Leave a field blank to keep the default."
 msgstr ""
 
 #: templates/admin-connected.php:222
+msgid "Theme"
+msgstr ""
+
+#: templates/admin-connected.php:224
+msgid "Light, dark, or auto for chart readings. Auto follows the visitor device setting."
+msgstr ""
+
+#: templates/admin-connected.php:232
+msgid "Reading language"
+msgstr ""
+
+#: templates/admin-connected.php:234
 msgid "Language for visitor-facing reading text. Default follows the site language."
 msgstr ""
 
-#: templates/admin-connected.php:231
+#: templates/admin-connected.php:243
 msgid "Save branding"
 msgstr ""
 
-#: templates/admin-connected.php:243
+#: templates/admin-connected.php:256
 msgid "Written readings"
 msgstr ""
 
-#: templates/admin-connected.php:248
+#: templates/admin-connected.php:261
 msgid "Turn this on to show the chart on its own, without the written report. It applies to every reading on the site. To set it for one placement instead, add hide_readings=\"1\" or hide_readings=\"0\" to that shortcode."
 msgstr ""
 
-#: templates/admin-connected.php:253
+#: templates/admin-connected.php:266
 msgid "Show source"
 msgstr ""
 
-#: templates/admin-connected.php:258
+#: templates/admin-connected.php:271
 msgid "A small line at the bottom of each card showing where the data comes from. Off by default."
 msgstr ""
 
-#: templates/admin-connected.php:263
+#: templates/admin-connected.php:276
 msgid "Disclaimer"
 msgstr ""
 
-#: templates/admin-connected.php:268
+#: templates/admin-connected.php:281
 msgid "Append a disclaimer to every reading. Useful for jurisdictions that require an \"entertainment only\" line. Empty text falls back to the localised default."
 msgstr ""
 
-#: templates/admin-connected.php:276
+#: templates/admin-connected.php:289
 msgid "Visitor form copy"
 msgstr ""
 
-#: templates/admin-connected.php:278
+#: templates/admin-connected.php:291
 msgid "Override the title and submit button shown above visitor forms. Leave blank to use the localised default."
 msgstr ""
 
-#: templates/admin-connected.php:282
+#: templates/admin-connected.php:295
 msgid "Form title"
 msgstr ""
 
-#: templates/admin-connected.php:288
+#: templates/admin-connected.php:301
 msgid "Submit button text"
 msgstr ""
 
-#: templates/admin-connected.php:296
+#: templates/admin-connected.php:309
 msgid "Save display"
 msgstr ""
 
-#: templates/admin-connected.php:305
+#: templates/admin-connected.php:318
 msgid "Visitor privacy"
 msgstr ""
 
-#: templates/admin-connected.php:307
+#: templates/admin-connected.php:320
 msgid "Visitor forms collect birth date, time, and location to compute readings. Visitors must confirm consent before each submission. Edit the consent text below; leave blank for the localised default."
 msgstr ""
 
-#: templates/admin-connected.php:313
+#: templates/admin-connected.php:326
 msgid "Consent label shown next to the form checkbox"
 msgstr ""
 
 #. translators: %s: link to WordPress Privacy Policy editor
-#: templates/admin-connected.php:323
+#: templates/admin-connected.php:336
 #, php-format
 msgid "The plugin auto-injects suggested privacy text into the WordPress Privacy Policy editor. Review or accept it at %s."
 msgstr ""
 
-#: templates/admin-connected.php:324
+#: templates/admin-connected.php:337
 msgid "Settings &rarr; Privacy"
 msgstr ""
 
-#: templates/admin-connected.php:330
+#: templates/admin-connected.php:343
 msgid "Save privacy"
 msgstr ""
 
-#: templates/admin-connected.php:340
+#: templates/admin-connected.php:353
 msgid "Cache"
 msgstr ""
 
-#: templates/admin-connected.php:342
+#: templates/admin-connected.php:355
 msgid "How long RoxyAPI caches each reading on this site. Lower = fresher. Higher = saves API quota."
 msgstr ""
 
-#: templates/admin-connected.php:351
+#: templates/admin-connected.php:364
 msgid "Save advanced"
 msgstr ""
 
-#: templates/admin-connected.php:359
+#: templates/admin-connected.php:372
 msgid "RoxyAPI resources"
 msgstr ""
 
-#: templates/admin-connected.php:360
+#: templates/admin-connected.php:373
 msgid "Docs"
 msgstr ""
 
-#: templates/admin-connected.php:362
+#: templates/admin-connected.php:375
 msgid "Open dashboard at roxyapi.com"
 msgstr ""
 
@@ -3941,10 +4008,6 @@ msgstr ""
 
 #: blocks/_shared/generated-edit.js:53
 msgid "Select an option"
-msgstr ""
-
-#: blocks/_shared/generated-edit.js:54
-msgid "Default"
 msgstr ""
 
 #: blocks/_shared/generated-edit.js:116
