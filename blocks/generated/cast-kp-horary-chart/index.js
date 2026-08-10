@@ -67,7 +67,7 @@ const fields = [
 		control: 'select',
 		label: __( 'Node type', 'roxyapi' ),
 		required: false,
-		help: __( 'Lunar node type for Rahu and Ketu positions', 'roxyapi' ),
+		help: __( 'Lunar node convention', 'roxyapi' ),
 		options: [ 'mean', 'true' ],
 	},
 ];

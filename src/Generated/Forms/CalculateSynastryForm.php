@@ -69,6 +69,14 @@ class CalculateSynastryForm {
 						'type' => 'timezone',
 					),
 					array(
+						'name' => 'nodeType',
+						'label' => __( 'Node type', 'roxyapi' ),
+						'required' => false,
+						'help' => __( 'Lunar node convention', 'roxyapi' ),
+						'type' => 'enum',
+						'enum' => array( 'mean', 'true' ),
+					),
+					array(
 						'name' => 'name',
 						'label' => __( 'Name', 'roxyapi' ),
 						'required' => false,
@@ -121,6 +129,14 @@ class CalculateSynastryForm {
 						'required' => true,
 						'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 						'type' => 'timezone',
+					),
+					array(
+						'name' => 'nodeType',
+						'label' => __( 'Node type', 'roxyapi' ),
+						'required' => false,
+						'help' => __( 'Lunar node convention', 'roxyapi' ),
+						'type' => 'enum',
+						'enum' => array( 'mean', 'true' ),
 					),
 					array(
 						'name' => 'name',

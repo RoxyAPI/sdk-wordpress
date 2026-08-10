@@ -34,6 +34,7 @@ class DetectAspectPatterns {
 		'latitude' => '',
 		'longitude' => '',
 		'timezone' => '',
+		'node_type' => '',
 		'lang' => '',
 		'strict_orbs' => '',
 		'include' => '',
@@ -63,6 +64,7 @@ class DetectAspectPatterns {
 				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
 				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
 				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
+				'nodeType' => $atts['node_type'],
 			),
 			static function ( $v ) {
 				return $v !== '';

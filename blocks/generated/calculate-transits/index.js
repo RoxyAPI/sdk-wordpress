@@ -27,6 +27,14 @@ const fields = [
 		help: __( 'Transit timezone: decimal hours from UTC OR IANA name (e.g. "America/New_York")', 'roxyapi' ),
 	},
 	{
+		name: 'nodeType',
+		control: 'select',
+		label: __( 'Node type', 'roxyapi' ),
+		required: false,
+		help: __( 'Lunar node convention', 'roxyapi' ),
+		options: [ 'mean', 'true' ],
+	},
+	{
 		name: 'natalChart',
 		control: 'text',
 		label: __( 'Natal chart', 'roxyapi' ),

@@ -20,6 +20,14 @@ const fields = [
 		help: __( 'Time in 24-hour HH:MM:SS format for precise calculations', 'roxyapi' ),
 	},
 	{
+		name: 'nodeType',
+		control: 'select',
+		label: __( 'Node type', 'roxyapi' ),
+		required: false,
+		help: __( 'Lunar node convention', 'roxyapi' ),
+		options: [ 'mean', 'true' ],
+	},
+	{
 		name: 'latitude',
 		control: 'number',
 		label: __( 'Latitude', 'roxyapi' ),

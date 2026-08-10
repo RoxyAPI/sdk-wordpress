@@ -38,6 +38,10 @@
 			"type": "string",
 			"default": ""
 		},
+		"nodeType": {
+			"type": "string",
+			"default": ""
+		},
 		"latitude": {
 			"type": "string",
 			"default": ""

@@ -41,6 +41,14 @@ const fields = [
 		help: __( 'Timezone: IANA name (e.g. "America/New_York", "Europe/London") OR decimal hours from UTC (e.g. -5 for EST, 1 for CET)', 'roxyapi' ),
 	},
 	{
+		name: 'nodeType',
+		control: 'select',
+		label: __( 'Node type', 'roxyapi' ),
+		required: false,
+		help: __( 'Lunar node convention', 'roxyapi' ),
+		options: [ 'mean', 'true' ],
+	},
+	{
 		name: 'targetDate',
 		control: 'date',
 		label: __( 'Target date', 'roxyapi' ),

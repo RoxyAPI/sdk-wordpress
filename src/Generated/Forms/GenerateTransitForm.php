@@ -72,7 +72,7 @@ class GenerateTransitForm {
 						'name' => 'nodeType',
 						'label' => __( 'Node type', 'roxyapi' ),
 						'required' => false,
-						'help' => __( 'Lunar node convention for the North and South Node activations', 'roxyapi' ),
+						'help' => __( 'Lunar node convention', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'mean', 'true' ),
 					),

@@ -34,6 +34,7 @@ class GenerateProgressions {
 		'latitude' => '',
 		'longitude' => '',
 		'timezone' => '',
+		'node_type' => '',
 		'target_date' => '',
 		'lang' => '',
 		'hide_readings' => 'inherit',
@@ -62,6 +63,7 @@ class GenerateProgressions {
 				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
 				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
 				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
+				'nodeType' => $atts['node_type'],
 				'targetDate' => $atts['target_date'],
 			),
 			static function ( $v ) {

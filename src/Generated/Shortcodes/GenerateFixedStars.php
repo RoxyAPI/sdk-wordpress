@@ -34,6 +34,7 @@ class GenerateFixedStars {
 		'latitude' => '',
 		'longitude' => '',
 		'timezone' => '',
+		'node_type' => '',
 		'lang' => '',
 		'orb' => '',
 		'hide_readings' => 'inherit',
@@ -62,6 +63,7 @@ class GenerateFixedStars {
 				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
 				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
 				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
+				'nodeType' => $atts['node_type'],
 			),
 			static function ( $v ) {
 				return $v !== '';

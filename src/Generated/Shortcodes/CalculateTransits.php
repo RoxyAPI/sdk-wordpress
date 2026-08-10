@@ -32,6 +32,7 @@ class CalculateTransits {
 		'date' => '',
 		'time' => '',
 		'timezone' => '',
+		'node_type' => '',
 		'natal_chart' => '',
 		'lang' => '',
 		'hide_readings' => 'inherit',
@@ -58,6 +59,7 @@ class CalculateTransits {
 				'date' => $atts['date'],
 				'time' => $atts['time'],
 				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
+				'nodeType' => $atts['node_type'],
 				'natalChart' => $atts['natal_chart'],
 			),
 			static function ( $v ) {

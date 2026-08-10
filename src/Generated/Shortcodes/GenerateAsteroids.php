@@ -34,6 +34,7 @@ class GenerateAsteroids {
 		'latitude' => '',
 		'longitude' => '',
 		'timezone' => '',
+		'node_type' => '',
 		'house_system' => '',
 		'lang' => '',
 		'hide_readings' => 'inherit',
@@ -62,6 +63,7 @@ class GenerateAsteroids {
 				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
 				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
 				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
+				'nodeType' => $atts['node_type'],
 				'houseSystem' => $atts['house_system'],
 			),
 			static function ( $v ) {

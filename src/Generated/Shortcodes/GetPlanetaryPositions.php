@@ -31,6 +31,7 @@ class GetPlanetaryPositions {
 	public const DEFAULTS = array(
 		'date' => '',
 		'time' => '',
+		'node_type' => '',
 		'latitude' => '',
 		'longitude' => '',
 		'timezone' => '',
@@ -58,6 +59,7 @@ class GetPlanetaryPositions {
 			array(
 				'date' => $atts['date'],
 				'time' => $atts['time'],
+				'nodeType' => $atts['node_type'],
 				'latitude' => $atts['latitude'] !== '' ? (float) $atts['latitude'] : '',
 				'longitude' => $atts['longitude'] !== '' ? (float) $atts['longitude'] : '',
 				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',

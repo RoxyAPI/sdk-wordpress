@@ -42,6 +42,10 @@
 			"type": "string",
 			"default": ""
 		},
+		"nodeType": {
+			"type": "string",
+			"default": ""
+		},
 		"natalChart": {
 			"type": "string",
 			"default": ""

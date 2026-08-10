@@ -50,6 +50,10 @@
 			"type": "string",
 			"default": ""
 		},
+		"nodeType": {
+			"type": "string",
+			"default": ""
+		},
 		"houseSystem": {
 			"type": "string",
 			"default": ""
