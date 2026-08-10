@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/list-nakshatras",
-	"title": "List all 27 Nakshatras - Lunar Mansions Reference (Vedic Astrology)",
+	"title": "Nakshatras (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "List all 27 Nakshatras - Lunar Mansions Reference",
+	"description": "Lunar Mansions Reference",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

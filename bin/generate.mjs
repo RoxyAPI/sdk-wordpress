@@ -285,14 +285,6 @@ function toKebabCase( str ) {
 }
 
 /**
- * Use the OpenAPI tag name directly as the product family label
- * @param tag
- */
-function tagToFamily( tag ) {
-	return tag;
-}
-
-/**
  * Pick a Dashicon deterministically from the tag name via simple hash
  * @param tag
  */
@@ -458,6 +450,26 @@ function extractBodyFields( op ) {
 }
 
 /**
+ * Whether a field's own documentation says it defaults to the moment the
+ * request is made.
+ *
+ * A copy-paste sample must not freeze one. `year="2026" month="8"` and
+ * `year="2026" month="2"` shipped on two ephemeris cards that disagreed with
+ * each other, and both were wrong the moment the month turned. Omitting the
+ * attribute is the correct sample: the reading then answers for the current
+ * month on every page it is pasted onto, which is what the endpoint documents.
+ * @param field Parameter or body field carrying `required` and `description`.
+ */
+function isCurrentDefaulting( field ) {
+	return (
+		! field.required &&
+		/defaults? to (the )?(current|today|now)/i.test(
+			String( field.description || '' )
+		)
+	);
+}
+
+/**
  * The flat inputs a generated block exposes: POST body fields, or GET path
  * params (always required) plus query params. The single source both the block
  * attributes (emitBlockJson) and the editor fields (deriveBlockFields) derive
@@ -528,16 +540,331 @@ function humanLabel( name ) {
 }
 
 /**
- * First sentence of a spec description, without splitting on abbreviations
+ * Split a spec description into sentences, without splitting on abbreviations
  * like "e.g. 5.5" (which previously truncated timezone help to "Decimal
  * hours (e.g").
  * @param text
  */
-function firstSentence( text ) {
-	const masked = text.replace( /\b(e\.g|i\.e|vs|etc|approx)\./gi, ( m ) =>
-		m.replaceAll( '.', '\u0000' )
+function splitSentences( text ) {
+	const masked = String( text ).replace(
+		/\b(e\.g|i\.e|vs|etc|approx)\./gi,
+		( m ) => m.replaceAll( '.', '\u0000' )
 	);
-	return masked.split( /\.\s/ )[ 0 ].replaceAll( '\u0000', '.' );
+	return masked
+		.split( /\.\s/ )
+		.map( ( sentence ) => sentence.replaceAll( '\u0000', '.' ) );
+}
+
+/**
+ * First sentence of a spec description.
+ * @param text
+ */
+function firstSentence( text ) {
+	return splitSentences( text )[ 0 ];
+}
+
+// ---------------------------------------------------------------------------
+// Display names
+//
+// A spec summary is written for a developer reading an endpoint list, so it
+// leads with the HTTP verb and carries search keywords: "Get the twelve Arudha
+// padas - Arudha Lagna Calculator API". A site owner is placing a reading on a
+// page, so a block title, an inserter entry and a visitor-facing form heading
+// need the SUBJECT of the operation and nothing else. Everything below derives
+// that from the spec, so the name has one home and no list is hand-maintained.
+// ---------------------------------------------------------------------------
+
+/** Words a title keeps lowercase unless they lead it. */
+const TITLE_SMALL_WORDS = new Set( [
+	'a',
+	'an',
+	'and',
+	'as',
+	'at',
+	'but',
+	'by',
+	'for',
+	'from',
+	'in',
+	'of',
+	'on',
+	'or',
+	'the',
+	'to',
+	'with',
+	'per',
+	'via',
+] );
+
+/**
+ * Verbs a summary opens with because it describes a call rather than a reading.
+ *
+ * `search`, `draw` and `cast` are deliberately absent: they name what the
+ * reading DOES and are sometimes the only thing separating two operations
+ * (`listCrystals` and `searchCrystals` both reduce to "Crystals" without them).
+ */
+const SUMMARY_LEAD_VERBS =
+	/^(get|list|calculate|generate|detect|check|find|analy[sz]e|look\s?up|fetch|retrieve|create)\b[\s:]*/i;
+const SUMMARY_LEAD_FILLER = /^(all|the|a|an|any|your|complete|full|and)\s+/i;
+const SUMMARY_LEAD_COUNT =
+	/^(\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\s+/i;
+
+/**
+ * Where a descriptive tail begins, so a long name can be cut back to its
+ * subject. Unordered: the shortest surviving cut wins.
+ */
+const NAME_TAIL_CONNECTORS = [
+	':',
+	' (',
+	',',
+	' for ',
+	' with ',
+	' from ',
+	' including ',
+	' at ',
+];
+
+/** Above this many characters a name stops being readable at a glance. */
+const NAME_LENGTH_BUDGET = 32;
+
+/**
+ * Drop "API" and the keyword noun it usually travels with.
+ *
+ * The word must never reach a block title or a form heading: the site owner is
+ * placing a reading, not calling an API. Guarded by `assertNoApiWording`.
+ * @param text
+ */
+function stripApiWords( text ) {
+	return String( text )
+		.replace( /\s*\(\s*API\s*\)/gi, '' )
+		.replace( /\b(calculator|reference|detail|glossary)?\s*API\b/gi, ' ' )
+		.replace( /\s{2,}/g, ' ' )
+		.trim()
+		.replace( /[\s,:;-]+$/, '' );
+}
+
+/**
+ * Title-case a derived name.
+ *
+ * A token already carrying a capital past its first letter is left alone, which
+ * is what keeps `KP`, `D9`, `I-Ching` and `BG5` intact.
+ * @param text
+ */
+function titleCase( text ) {
+	let position = 0;
+	return String( text )
+		.split( /(\s+|\/)/ )
+		.map( ( token ) => {
+			if ( /^(\s+|\/)$/.test( token ) ) {
+				return token;
+			}
+			const index = position++;
+			if ( /[A-Z]/.test( token.slice( 1 ) ) ) {
+				return token;
+			}
+			const lower = token.toLowerCase();
+			if ( lower === 'id' ) {
+				return 'ID';
+			}
+			if (
+				index > 0 &&
+				TITLE_SMALL_WORDS.has( lower.replace( /[^a-z]/g, '' ) )
+			) {
+				return lower;
+			}
+			return lower.replace( /[a-z]/, ( c ) => c.toUpperCase() );
+		} )
+		.join( '' );
+}
+
+/**
+ * The subject of an operation, taken from its own summary.
+ * @param summary
+ * @param operationId
+ */
+function deriveDisplayName( summary, operationId ) {
+	const head = stripApiWords(
+		String( summary || operationId ).split( /\s-\s|\.\s/ )[ 0 ]
+	);
+	let name = head;
+	let previous;
+	do {
+		previous = name;
+		name = name
+			.replace( SUMMARY_LEAD_VERBS, '' )
+			.replace( SUMMARY_LEAD_FILLER, '' )
+			.replace( SUMMARY_LEAD_COUNT, '' );
+	} while ( name !== previous );
+	name = name.replace( /\s+calculator$/i, '' ).trim();
+	return titleCase( name || head || operationId );
+}
+
+/**
+ * Cut a long name back to its subject, but never onto a name another operation
+ * in the same domain already answers to.
+ *
+ * `isTaken` is checked against the FULL names of the peers, so a cut that would
+ * read as a shorter spelling of a sibling reading is refused and the next
+ * candidate is tried.
+ * @param full
+ * @param isTaken
+ */
+function shortenDisplayName( full, isTaken ) {
+	if ( full.length <= NAME_LENGTH_BUDGET ) {
+		return full;
+	}
+	const haystack = full.toLowerCase();
+	const cuts = [];
+	for ( const connector of NAME_TAIL_CONNECTORS ) {
+		const at = haystack.indexOf( connector.toLowerCase() );
+		if ( at > 0 ) {
+			cuts.push(
+				full
+					.slice( 0, at )
+					.trim()
+					.replace( /[\s,:;-]+$/, '' )
+			);
+		}
+	}
+	cuts.sort( ( a, b ) => a.length - b.length );
+	for ( const candidate of cuts ) {
+		if ( candidate.split( /\s+/ ).length < 2 && candidate.length < 6 ) {
+			continue;
+		}
+		if ( isTaken( candidate ) ) {
+			continue;
+		}
+		return candidate;
+	}
+	return full;
+}
+
+/**
+ * The admin-facing label for an OpenAPI tag, from bin/domains.json.
+ * @param tag
+ */
+function domainLabel( tag ) {
+	return domainRegistry[ tag ]?.label || tag;
+}
+
+/**
+ * Every operation's display name, keyed by operationId. Resolved in one pass so
+ * a name can be shortened against the other names in its own domain.
+ * @param ops
+ */
+function buildDisplayNames( ops ) {
+	const fullByTag = new Map();
+	for ( const op of ops ) {
+		const full = deriveDisplayName( op.summary, op.operationId );
+		if ( ! fullByTag.has( op.tag ) ) {
+			fullByTag.set( op.tag, [] );
+		}
+		fullByTag.get( op.tag ).push( { operationId: op.operationId, full } );
+	}
+	const names = {};
+	for ( const op of ops ) {
+		const peers = fullByTag.get( op.tag );
+		const full = peers.find(
+			( entry ) => entry.operationId === op.operationId
+		).full;
+		const others = peers
+			.filter( ( entry ) => entry.operationId !== op.operationId )
+			.map( ( entry ) => entry.full );
+		names[ op.operationId ] = shortenDisplayName( full, ( candidate ) =>
+			others.some(
+				( other ) =>
+					other === candidate ||
+					other.startsWith( candidate + ' ' ) ||
+					other.startsWith( candidate + ',' )
+			)
+		);
+	}
+	return names;
+}
+
+/**
+ * The inserter entry for a block: the display name, plus the domain when the
+ * name does not already say it.
+ *
+ * Without the suffix the inserter shows "Monthly Ephemeris" twice and
+ * "Compatibility Score" twice with nothing to tell them apart. With it on every
+ * entry it repeats the obvious ("Tarot Cards (Tarot)"), so it is added only
+ * when it adds information.
+ * @param name
+ * @param tag
+ */
+function blockTitleFor( name, tag ) {
+	if ( /\)$/.test( name ) ) {
+		return name;
+	}
+	const flatten = ( value ) =>
+		String( value )
+			.toLowerCase()
+			.replace( /[^a-z0-9]/g, '' );
+	const target = flatten( name );
+	for ( const candidate of [ domainLabel( tag ), tag ] ) {
+		const bare = flatten( candidate ).replace( /s$/, '' );
+		if ( bare !== '' && target.includes( bare ) ) {
+			return name;
+		}
+	}
+	return `${ name } (${ domainLabel( tag ) })`;
+}
+
+/**
+ * Refuse to ship "API" in anything a site owner or a visitor reads.
+ * @param label
+ * @param where
+ */
+function assertNoApiWording( label, where ) {
+	if ( /\bAPI\b/i.test( String( label ) ) ) {
+		throw new Error(
+			`[generate] "${ label }" (${ where }) contains "API". A block title, inserter description or form heading names a reading, never an endpoint.`
+		);
+	}
+	return label;
+}
+
+/**
+ * Display name per operationId. The single home for what an operation is
+ * CALLED, read by the block emitters, the generated form specs and the endpoint
+ * registry the admin library renders from.
+ */
+const displayNames = buildDisplayNames( operations );
+
+/**
+ * A one-line description for the inserter, from the summary's own descriptive
+ * tail, falling back to the first sentence of the spec description.
+ * @param op
+ */
+function blockDescriptionFor( op ) {
+	const name = displayNames[ op.operationId ];
+	const parts = String( op.summary || '' ).split( /\s-\s|\.\s/ );
+	const tail =
+		parts.length > 1 ? stripApiWords( parts.slice( 1 ).join( ' - ' ) ) : '';
+	// Many summaries end in a search keyword rather than a description ("Arudha
+	// Lagna Calculator API", "Dasha Calculator API"). With the API wording gone
+	// what is left restates the title, so the operation's own description does
+	// the job better.
+	const flatten = ( value ) =>
+		String( value )
+			.toLowerCase()
+			.replace( /[^a-z0-9]/g, '' );
+	const usable = ( text ) =>
+		text.length >= 24 && ! flatten( name ).includes( flatten( text ) );
+	if ( usable( tail ) ) {
+		return tail;
+	}
+	// Several descriptions open with the same keyword line the summary ends in
+	// ("Prana dasha API. Returns the 9 Prana periods inside..."), so the first
+	// sentence is not always the one that describes anything.
+	for ( const sentence of splitSentences( op.description || '' ) ) {
+		const cleaned = stripApiWords( sentence );
+		if ( usable( cleaned ) ) {
+			return cleaned;
+		}
+	}
+	return tail || name;
 }
 
 /**
@@ -732,7 +1059,13 @@ function phpLiteral( v ) {
 function emitFormPhp( op ) {
 	const className = toPascalCase( op.operationId ) + 'Form';
 	const formSpec = extractFormSpec( op );
-	const title = op.summary || op.operationId;
+	// The heading a VISITOR reads above the form, so it is the reading's name.
+	// The raw summary put "Transit Aspects - Detailed transit-to-natal aspect
+	// analysis with interpretations" across three lines at phone width.
+	const title = assertNoApiWording(
+		displayNames[ op.operationId ] || op.operationId,
+		`${ op.operationId } form heading`
+	);
 
 	const sectionsPhp = ( formSpec.sections || [] )
 		.map( ( s ) => {
@@ -912,14 +1245,26 @@ ${ queryArray.join( '\n' ) }
 						', '
 				  ) } ) ) ) {\n\t\t\treturn \\RoxyAPI\\Api\\Client::not_configured();\n\t\t}`
 				: '';
+			// A POST operation can still declare QUERY parameters, and many do:
+			// the response language on most, plus focus / include / orb /
+			// strictOrbs. They belong on the URL, so they travel as their own
+			// argument instead of in the body, where the API ignores them. They
+			// are folded into the cache args too, because two values of `focus`
+			// are two different readings and must not share a cached response.
+			const queryParams = extractParams( op ).filter(
+				( p ) => p.in === 'query'
+			);
+			const hasQuery = queryParams.length > 0;
 			const allParams = [
 				...pathParams.map( ( p ) => `$${ toPhpVar( p ) }` ),
 				'$body = array()',
+				...( hasQuery ? [ '$query = array()' ] : [] ),
 			];
 
-			// Build use() clause: always $body, plus any path params
+			// Build use() clause: always $body, plus the query and any path params
 			const useVars = [
 				'$body',
+				...( hasQuery ? [ '$query' ] : [] ),
 				...pathParams.map( ( p ) => `$${ toPhpVar( p ) }` ),
 			];
 			const useClause = useVars.join( ', ' );
@@ -928,7 +1273,9 @@ ${ queryArray.join( '\n' ) }
 	/**
 	 * ${ op.summary || op.operationId }
 	 *
-	 * @param array $body Request body.
+	 * @param array $body Request body.${
+			hasQuery ? '\n\t * @param array $query Query parameters.' : ''
+		}
 	 * @return array|\\WP_Error
 	 */
 	public static function ${ phpMethod }( ${ allParams.join( ', ' ) } ) {
@@ -936,10 +1283,12 @@ ${ pathGuard ? pathGuard + '\n' : '' }${
 				bodyGuard ? bodyGuard + '\n' : ''
 			}		return \\RoxyAPI\\Api\\Cache::remember(
 			${ phpPath },
-			$body,
+			${ hasQuery ? 'array_merge( $body, $query )' : '$body' },
 			${ ttl },
 			static function () use ( ${ useClause } ) {
-				return \\RoxyAPI\\Api\\Client::post( ${ phpPath }, $body );
+				return \\RoxyAPI\\Api\\Client::post( ${ phpPath }, $body${
+					hasQuery ? ', $query' : ''
+				} );
 			}
 		);
 	}` );
@@ -977,33 +1326,46 @@ function emitEndpointsPhp() {
 		const ttl = getTtl( op.operationId );
 		const isHero = heroSet.has( op.operationId );
 
-		// Pluck OpenAPI examples for every parameter/body field so the Demo
-		// page can render attribute-less shortcodes with sensible inputs.
+		// Pluck OpenAPI examples for every parameter/body field so the library
+		// and Demo pages can offer a copy-paste sample with sensible inputs.
 		// Keys are snake_case to match the shortcode attribute style emitted
 		// by emitShortcodePhp (WP lowercases attr names at parse time).
 		// `applyExampleOverride` lets us patch fields where the spec example
 		// disagrees with the live validator (e.g. timezone "-5" → "UTC").
+		//
+		// Nothing goes in here that the shortcode would not read back out. An
+		// operation whose body needs a nested object renders the visitor form
+		// and declares no attributes at all, so a sample carrying any would be
+		// advertising inputs WordPress silently drops.
 		const attrExamples = {};
-		const params = extractParams( op );
-		for ( const p of params ) {
-			const ex = applyExampleOverride(
-				op.operationId,
-				p.name,
-				p.example
-			);
-			if ( ex !== undefined && ex !== null ) {
-				attrExamples[ toSnakeAttr( p.name ) ] = ex;
-			}
-		}
-		if ( op.method === 'POST' ) {
-			for ( const f of extractBodyFields( op ) ) {
+		if ( ! hasRequiredObjectBody( op ) ) {
+			const params = extractParams( op );
+			for ( const p of params ) {
+				if ( isCurrentDefaulting( p ) ) {
+					continue;
+				}
 				const ex = applyExampleOverride(
 					op.operationId,
-					f.name,
-					f.example
+					p.name,
+					p.example
 				);
 				if ( ex !== undefined && ex !== null ) {
-					attrExamples[ toSnakeAttr( f.name ) ] = ex;
+					attrExamples[ toSnakeAttr( p.name ) ] = ex;
+				}
+			}
+			if ( op.method === 'POST' ) {
+				for ( const f of extractBodyFields( op ) ) {
+					if ( isCurrentDefaulting( f ) ) {
+						continue;
+					}
+					const ex = applyExampleOverride(
+						op.operationId,
+						f.name,
+						f.example
+					);
+					if ( ex !== undefined && ex !== null ) {
+						attrExamples[ toSnakeAttr( f.name ) ] = ex;
+					}
 				}
 			}
 		}
@@ -1038,11 +1400,17 @@ function emitEndpointsPhp() {
 		const blockOnly = hasRequiredObjectBody( op );
 		const shortcodeTag = `roxy_${ toSnakeCase( op.operationId ) }`;
 
+		const displayName = assertNoApiWording(
+			displayNames[ op.operationId ],
+			`${ op.operationId } display name`
+		);
+
 		return `		'${ op.operationId }' => array(
 			'path'          => '${ op.path }',
 			'method'        => '${ op.method }',
 			'tag'           => '${ op.tag.replace( /'/g, "\\'" ) }',
 			'summary'       => '${ ( op.summary || '' ).replace( /'/g, "\\'" ) }',
+			'display_name'  => '${ displayName.replace( /'/g, "\\'" ) }',
 			'ttl'           => ${ ttl },
 			'hero'          => ${ isHero ? 'true' : 'false' },
 			'block_only'    => ${ blockOnly ? 'true' : 'false' },
@@ -1071,7 +1439,7 @@ class Endpoints {
 	/**
 	 * All registered endpoints keyed by operationId.
 	 *
-	 * @return array<string, array{path: string, method: string, tag: string, summary: string, ttl: int, hero: bool, block_only: bool, shortcode_tag: string, attributes: array<string, string>}>
+	 * @return array<string, array{path: string, method: string, tag: string, summary: string, display_name: string, ttl: int, hero: bool, block_only: bool, shortcode_tag: string, attributes: array<string, string>}>
 	 */
 	public static function all(): array {
 		return array(
@@ -1082,7 +1450,7 @@ ${ entries.join( '\n' ) }
 	/**
 	 * Get a single endpoint by operationId.
 	 *
-	 * @return array{path: string, method: string, tag: string, summary: string, ttl: int, hero: bool, block_only: bool, shortcode_tag: string, attributes: array<string, string>}|null
+	 * @return array{path: string, method: string, tag: string, summary: string, display_name: string, ttl: int, hero: bool, block_only: bool, shortcode_tag: string, attributes: array<string, string>}|null
 	 */
 	public static function get( string $operation_id ): ?array {
 		$all = self::all();
@@ -1092,7 +1460,7 @@ ${ entries.join( '\n' ) }
 	/**
 	 * Only the non-hero (generated) endpoints.
 	 *
-	 * @return array<string, array{path: string, method: string, tag: string, summary: string, ttl: int, hero: bool, block_only: bool, shortcode_tag: string, attributes: array<string, string>}>
+	 * @return array<string, array{path: string, method: string, tag: string, summary: string, display_name: string, ttl: int, hero: bool, block_only: bool, shortcode_tag: string, attributes: array<string, string>}>
 	 */
 	public static function generated(): array {
 		return array_filter(
@@ -1337,6 +1705,15 @@ class ${ className } {
 
 	public const TAG = '${ shortcodeTag }';
 
+	/**
+	 * This shortcode reads no attributes: every input is collected by the
+	 * visitor form. Declared empty rather than omitted so the sample the
+	 * library offers can be checked against what the shortcode accepts.
+	 *
+	 * @var array<string, string>
+	 */
+	public const DEFAULTS = array();
+
 	public static function register(): void {
 		if ( shortcode_exists( self::TAG ) ) {
 			return;
@@ -1367,16 +1744,28 @@ class ${ className } {
 
 	if ( isPost ) {
 		const bodyFields = extractBodyFields( op );
+		// A POST operation still declares its language as a QUERY parameter, and
+		// the GET branch below has always accepted those. Dropping them here is
+		// what made `[roxy_x lang="es"]` a silent no-op on most of the
+		// catalogue while the library handed out samples that pasted it:
+		// shortcode_atts discards any attribute it was not given a default for,
+		// and reports nothing. `lang` is the widest case; `focus`, `include`,
+		// `orb` and `strictOrbs` were unreachable from WordPress for the same
+		// reason.
+		const postQueryParams = extractParams( op ).filter(
+			( p ) => p.in === 'query'
+		);
 		// Snake_case-ify every attribute key. WordPress's shortcode parser
 		// lowercases attribute names, so a default of `birthDate` would never
 		// match the user's `birthDate=...` (which arrives as `birthdate`).
 		const allPostAtts = [
 			...pathParams.map( toSnakeAttr ),
 			...bodyFields.map( ( f ) => toSnakeAttr( f.name ) ),
+			...postQueryParams.map( ( p ) => toSnakeAttr( p.name ) ),
 		];
 		attsArray = withHideReadingsAtt(
-			allPostAtts.map( ( p ) => `\t\t\t'${ p }' => '',` ),
-			'\t\t\t'
+			[ ...new Set( allPostAtts ) ].map( ( p ) => `\t\t'${ p }' => '',` ),
+			'\t\t'
 		).join( '\n' );
 
 		// Body assembly maps API field name (camelCase) to snake_case attr key
@@ -1405,10 +1794,27 @@ class ${ className } {
 						) }\n\t\t\t),\n\t\t\tstatic function ( $v ) {\n\t\t\t\treturn $v !== '';\n\t\t\t}\n\t\t);`
 				: '\t\t$body = array();';
 
-		clientCall = `${ bodyBuild }
+		// Query parameters stay OUT of the body. The API reads them from the
+		// URL only, so the generated client keeps the two apart all the way
+		// down to Api\Client rather than relying on a rescue at the bottom.
+		const queryBuild = postQueryParams.length
+			? `\n\t\t$query = array_filter(\n\t\t\tarray(\n${ postQueryParams
+					.map(
+						( p ) =>
+							`\t\t\t\t'${ p.name }' => $atts['${ toSnakeAttr(
+								p.name
+							) }'],`
+					)
+					.join(
+						'\n'
+					) }\n\t\t\t),\n\t\t\tstatic function ( $v ) {\n\t\t\t\treturn $v !== '';\n\t\t\t}\n\t\t);`
+			: '';
+
+		clientCall = `${ bodyBuild }${ queryBuild }
 		$data = \\RoxyAPI\\Generated\\Client::${ op.operationId }( ${ pathParams
 			.map( ( p ) => `$atts['${ toSnakeAttr( p ) }']` )
 			.concat( [ '$body' ] )
+			.concat( postQueryParams.length ? [ '$query' ] : [] )
 			.join( ', ' ) } );`;
 	} else {
 		const queryParams = extractParams( op ).filter(
@@ -1419,8 +1825,8 @@ class ${ className } {
 			...queryParams.map( ( p ) => toSnakeAttr( p.name ) ),
 		];
 		attsArray = withHideReadingsAtt(
-			allAttParams.map( ( p ) => `\t\t\t'${ p }' => '',` ),
-			'\t\t\t'
+			allAttParams.map( ( p ) => `\t\t'${ p }' => '',` ),
+			'\t\t'
 		).join( '\n' );
 
 		const queryArgsList = queryParams.map(
@@ -1459,6 +1865,17 @@ class ${ className } {
 
 	public const TAG = '${ shortcodeTag }';
 
+	/**
+	 * Every attribute this shortcode accepts. shortcode_atts() silently
+	 * discards anything absent from here, so this is also the contract the
+	 * library copy-paste sample is checked against.
+	 *
+	 * @var array<string, string>
+	 */
+	public const DEFAULTS = array(
+${ attsArray }
+	);
+
 	public static function register(): void {
 		if ( shortcode_exists( self::TAG ) ) {
 			return;
@@ -1468,9 +1885,7 @@ class ${ className } {
 
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
-			array(
-${ attsArray }
-			),
+			self::DEFAULTS,
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
 		);
@@ -1492,41 +1907,219 @@ ${ accountGuard }
 }
 
 // ---------------------------------------------------------------------------
-// Emit blocks/generated/{slug}/block.json for each non-hero endpoint
+// Emit blocks/generated/{slug}/{block.json,render.php,index.js}
+//
+// Every block in the plugin except the two hand-written ones (horoscope, which
+// dispatches by period and reads block context, and the astrology-wrapper that
+// provides that context) is emitted from here. The five headline readings used
+// to be hand-written placeholders with `"attributes": {}` and a static
+// <Placeholder> for an editor, so the flagship blocks were the only ones a site
+// owner could not configure. They are described by `block` in
+// bin/hero-config.json now and run through the SAME three emitters as the long
+// tail, which is what stops the two shapes drifting apart again.
 // ---------------------------------------------------------------------------
 
-function emitBlockJson( op ) {
+/**
+ * A block descriptor: everything the three emitters need, whether the block
+ * came from a spec operation or from a curated hero.
+ *
+ * @typedef {{slug: string, name: string, title: string, description: string,
+ *   icon: string, keywords: string[], attributes: Object, fields: Array,
+ *   phpClass: string, hidden: boolean, instructions: (string|null),
+ *   sourceLabel: string}} BlockDescriptor
+ */
+
+/**
+ * Describe the block for one spec operation.
+ * @param op
+ */
+function blockFromOperation( op ) {
 	const slug = toKebabCase( op.operationId );
-	const family = tagToFamily( op.tag );
-	const icon = tagToIcon( op.tag );
+	const family = domainLabel( op.tag );
 
 	const attributes = {};
 	for ( const input of blockInputs( op ) ) {
 		attributes[ input.name ] = { type: 'string', default: '' };
 	}
 
-	const keywords = [
-		family.toLowerCase(),
-		'roxyapi',
-		...op.operationId
-			.replace( /([A-Z])/g, ' $1' )
-			.toLowerCase()
-			.trim()
-			.split( /\s+/ )
-			.slice( 0, 2 ),
-	];
+	return {
+		slug,
+		name: `roxyapi/${ slug }`,
+		title: assertNoApiWording(
+			blockTitleFor( displayNames[ op.operationId ], op.tag ),
+			`${ op.operationId } block title`
+		),
+		description: assertNoApiWording(
+			blockDescriptionFor( op ),
+			`${ op.operationId } block description`
+		),
+		icon: tagToIcon( op.tag ),
+		keywords: [
+			...new Set( [
+				family.toLowerCase(),
+				'roxyapi',
+				...op.operationId
+					.replace( /([A-Z])/g, ' $1' )
+					.toLowerCase()
+					.trim()
+					.split( /\s+/ )
+					.slice( 0, 2 ),
+			] ),
+		],
+		attributes,
+		fields: deriveBlockFields( op ),
+		phpClass: `\\RoxyAPI\\Generated\\Shortcodes\\${ toPascalCase(
+			op.operationId
+		) }`,
+		hidden: isHiddenFromInserter( op.operationId ),
+		instructions: null,
+		sourceLabel: op.operationId,
+	};
+}
 
+/**
+ * Map a hero form field type to the editor control that collects it. The
+ * timezone picker a VISITOR gets is a `wp_timezone_choice()` dropdown built in
+ * PHP; the editor sidebar has no equivalent, so the site owner types the IANA
+ * name, exactly as a long-tail timezone input already does.
+ */
+const HERO_FIELD_CONTROLS = {
+	date: 'date',
+	time: 'time',
+	timezone: 'text',
+	number: 'number',
+	integer: 'number',
+	enum: 'select',
+	text: 'text',
+};
+
+/**
+ * Editor fields for a hero block, from the hero's own form_mode field list.
+ *
+ * That list is already the curated, translated description of what the reading
+ * asks for, so the block sidebar and the visitor form cannot disagree about a
+ * label, a control or an enum.
+ * @param tagSuffix
+ * @param cfg
+ */
+function heroBlockFields( tagSuffix, cfg ) {
+	const declared = Object.keys( cfg.attributes || {} );
+	const fields = ( cfg.form_mode?.fields || [] ).map( ( f ) => {
+		const name = f.attr || f.name;
+		if ( ! declared.includes( name ) ) {
+			throw new Error(
+				`[generate] hero ${ tagSuffix } form field "${ name }" is not one of its attributes, so the block control would write an attribute the shortcode never reads`
+			);
+		}
+		const field = {
+			name,
+			control: HERO_FIELD_CONTROLS[ f.type ] || 'text',
+			label: f.label || humanLabel( name ),
+			// Required as the SHORTCODE sees it, not as the visitor form does.
+			// The two differ on purpose: a visitor form asks for a timezone,
+			// while the shortcode defaults it, and a block that refused to
+			// preview until it was typed would be stricter than the reading.
+			required: !! cfg.attributes[ name ].required,
+		};
+		if ( f.help ) {
+			field.help = f.help;
+		}
+		if ( f.placeholder ) {
+			field.placeholder = f.placeholder;
+		}
+		if ( field.control === 'select' ) {
+			field.options = f.enum || [];
+		}
+		return field;
+	} );
+	const covered = fields.map( ( f ) => f.name );
+	const uncontrolled = declared.filter(
+		( name ) => ! covered.includes( name )
+	);
+	if ( uncontrolled.length > 0 ) {
+		throw new Error(
+			`[generate] hero ${ tagSuffix } has attribute(s) ${ uncontrolled.join(
+				', '
+			) } with no form_mode field, so the block would expose an attribute with no control`
+		);
+	}
+	return fields;
+}
+
+/**
+ * Describe the block for one hero, from its `block` entry in hero-config.
+ *
+ * `block.name` is the full registered name and is written out rather than
+ * derived: a saved post references a block BY NAME, so the five names that
+ * shipped have to survive every future rename of the hero key or its
+ * operationId. `assertBlockNames` re-checks the emitted files against it.
+ * @param tagSuffix
+ * @param cfg
+ */
+function blockFromHero( tagSuffix, cfg ) {
+	const name = String( cfg.block.name || '' );
+	if ( ! /^roxyapi\/[a-z0-9]+(-[a-z0-9]+)*$/.test( name ) ) {
+		throw new Error(
+			`[generate] hero ${ tagSuffix } declares block name "${ name }"; expected roxyapi/<kebab-case>`
+		);
+	}
+
+	const attributes = {};
+	for ( const key of Object.keys( cfg.attributes || {} ) ) {
+		// Defaults stay empty even where the hero has one (tz "UTC", spread
+		// "daily"). An empty attribute is dropped on the way to the shortcode,
+		// which then applies its OWN default, so there is one place a default
+		// lives. It also keeps "nothing filled in yet" distinguishable in the
+		// editor, which is what stops a freshly inserted block calling the API.
+		attributes[ key ] = { type: 'string', default: '' };
+	}
+
+	const takesInput = Object.values( cfg.attributes || {} ).some(
+		( info ) => info.required
+	);
+
+	return {
+		slug: name.slice( 'roxyapi/'.length ),
+		name,
+		title: assertNoApiWording(
+			titleCase( cfg.title ),
+			`${ tagSuffix } block title`
+		),
+		description: assertNoApiWording(
+			cfg.description,
+			`${ tagSuffix } block description`
+		),
+		icon: cfg.block.icon,
+		keywords: cfg.block.keywords,
+		attributes,
+		fields: heroBlockFields( tagSuffix, cfg ),
+		phpClass: `\\RoxyAPI\\Generated\\Heroes\\${ toPascalCase(
+			tagSuffix
+		) }`,
+		hidden: false,
+		instructions:
+			cfg.form_mode && takesInput
+				? 'Fill these in to publish a fixed reading, or leave them blank to publish a form your visitors fill in.'
+				: 'Choose the options in the sidebar to preview this reading here.',
+		sourceLabel: `hero ${ tagSuffix }`,
+	};
+}
+
+/**
+ * @param {BlockDescriptor} block
+ */
+function emitBlockJson( block ) {
 	return (
 		JSON.stringify(
 			{
 				$schema: 'https://schemas.wp.org/trunk/block.json',
 				apiVersion: 3,
-				name: `roxyapi/${ slug }`,
-				title: `${ op.summary || op.operationId } (${ family })`,
+				name: block.name,
+				title: block.title,
 				category: 'roxyapi',
-				icon,
-				description: op.summary || op.operationId,
-				keywords: [ ...new Set( keywords ) ],
+				icon: block.icon,
+				description: block.description,
+				keywords: block.keywords,
 				version: '1.0.0',
 				textdomain: 'roxyapi',
 				supports: {
@@ -1537,11 +2130,9 @@ function emitBlockJson( op ) {
 					// Kept out of the inserter, not deregistered: a saved post
 					// references a block by name, so removing the type would break
 					// content that already uses it.
-					...( isHiddenFromInserter( op.operationId )
-						? { inserter: false }
-						: {} ),
+					...( block.hidden ? { inserter: false } : {} ),
 				},
-				attributes,
+				attributes: block.attributes,
 				render: 'file:./render.php',
 				editorScript: 'file:./index.js',
 			},
@@ -1552,15 +2143,12 @@ function emitBlockJson( op ) {
 }
 
 /**
- * Emit a minimal render.php for generated blocks
- * @param op
+ * @param {BlockDescriptor} block
  */
-function emitBlockRenderPhp( op ) {
-	const className = toPascalCase( op.operationId );
-
+function emitBlockRenderPhp( block ) {
 	return `<?php
 /**
- * Server-side render for the auto-generated ${ op.operationId } block.
+ * Server-side render for the auto-generated ${ block.sourceLabel } block.
  *
  * DO NOT EDIT. Generated by bin/generate.mjs.
  *
@@ -1574,7 +2162,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-\\RoxyAPI\\Support\\BlockOutput::render( \\RoxyAPI\\Generated\\Shortcodes\\${ className }::render( \\RoxyAPI\\Support\\BlockOutput::to_shortcode_atts( $attributes ) ) );
+\\RoxyAPI\\Support\\BlockOutput::render( ${ block.phpClass }::render( \\RoxyAPI\\Support\\BlockOutput::to_shortcode_atts( $attributes ) ) );
 `;
 }
 
@@ -1628,6 +2216,29 @@ function deriveBlockFields( op ) {
 }
 
 /**
+ * A single-quoted JavaScript string literal.
+ *
+ * JSON.stringify does the escaping (quotes, backslashes, newlines, control
+ * characters), then the outer quotes are swapped for the single quotes the rest
+ * of the emitted editor source uses.
+ * @param value
+ */
+function jsLiteral( value ) {
+	return `'${ JSON.stringify( String( value ) )
+		.slice( 1, -1 )
+		.replace( /\\"/g, '"' )
+		.replace( /'/g, "\\'" ) }'`;
+}
+
+/**
+ * A `__()` call around a JavaScript literal, so `wp i18n make-pot` can see it.
+ * @param value
+ */
+function translatableJs( value ) {
+	return `__( ${ jsLiteral( value ) }, 'roxyapi' )`;
+}
+
+/**
  * Serialise a derived field list as JavaScript source rather than JSON.
  *
  * `label` and `help` are the whole of what the block inspector shows, and as
@@ -1639,15 +2250,8 @@ function deriveBlockFields( op ) {
  * @param fields
  */
 function fieldsToJsSource( fields ) {
-	// JSON.stringify does the escaping (quotes, backslashes, newlines, control
-	// characters), then the outer quotes are swapped for the single quotes the
-	// rest of the emitted editor source uses.
-	const js = ( value ) =>
-		`'${ JSON.stringify( String( value ) )
-			.slice( 1, -1 )
-			.replace( /\\"/g, '"' )
-			.replace( /'/g, "\\'" ) }'`;
-	const t = ( value ) => `__( ${ js( value ) }, 'roxyapi' )`;
+	const js = jsLiteral;
+	const t = translatableJs;
 	const body = fields
 		.map( ( field ) => {
 			const lines = [
@@ -1658,6 +2262,9 @@ function fieldsToJsSource( fields ) {
 			];
 			if ( field.help ) {
 				lines.push( `\t\thelp: ${ t( field.help ) },` );
+			}
+			if ( field.placeholder ) {
+				lines.push( `\t\tplaceholder: ${ t( field.placeholder ) },` );
 			}
 			if ( field.options ) {
 				lines.push(
@@ -1676,18 +2283,26 @@ function fieldsToJsSource( fields ) {
 /**
  * Emit the editorScript (index.js) for a generated block. Thin and spec-driven:
  * it registers the block on the client with the shared makeEdit editor
- * (blocks/_shared/generated-edit.js) and the block's spec-derived field list, so
- * one editor component drives every long-tail block. save returns null because
- * the block is server-rendered by render.php.
- * @param op
+ * (blocks/_shared/generated-edit.js) and the block's field list, so one editor
+ * component drives every block. save returns null because the block is
+ * server-rendered by render.php.
+ * @param {BlockDescriptor} block
  */
-function emitBlockIndexJs( op ) {
-	const derived = deriveBlockFields( op );
-	const fields = fieldsToJsSource( derived );
+function emitBlockIndexJs( block ) {
+	const fields = fieldsToJsSource( block.fields );
 	// A block whose operation takes no inputs has no labels to translate, and an
 	// unused import is a lint error.
-	const i18nImport = derived.length
+	const needsI18n = block.fields.length > 0 || block.instructions;
+	const i18nImport = needsI18n
 		? "import { __ } from '@wordpress/i18n';\n"
+		: '';
+	// The empty-state copy differs per block because what publishing an
+	// unconfigured block DOES differs: a hero with required inputs publishes a
+	// visitor form, everything else publishes nothing until it is filled in.
+	const options = block.instructions
+		? `, {\n\t\tinstructions: ${ translatableJs(
+				block.instructions
+		  ) },\n\t}`
 		: '';
 	return `import { registerBlockType } from '@wordpress/blocks';
 ${ i18nImport }import metadata from './block.json';
@@ -1697,7 +2312,7 @@ import { makeEdit } from '../../_shared/generated-edit';
 const fields = ${ fields };
 
 registerBlockType( metadata.name, {
-	edit: makeEdit( fields, metadata.name ),
+	edit: makeEdit( fields, metadata.name${ options } ),
 	save: () => null,
 } );
 `;
@@ -2623,7 +3238,10 @@ function emitHeroFormPhp( tagSuffix, cfg ) {
 	const formId = lowerCamelCase( tagSuffix );
 	const fm = cfg.form_mode;
 	const submitLabel = fm.submit_label || 'Submit';
-	const title = fm.title || cfg.title || tagSuffix;
+	const title = assertNoApiWording(
+		fm.title || cfg.title || tagSuffix,
+		`${ tagSuffix } form heading`
+	);
 
 	// Build PHP fragments for fields. A single-section spec keeps the
 	// FormRenderer geo autocomplete heuristic working (lat / lon / tz in
@@ -2932,40 +3550,88 @@ await fs.writeFile(
 );
 console.log( `[generate] wrote src/Generated/ShortcodeBootstrap.php` );
 
-// 5. Generated block.json files. Endpoints whose request body needs a nested
-// object (person1, natalChart, etc.) are skipped: block attributes can hold
-// objects but the editor lacks a nested-attribute UI in v1.0, so a block here
-// would only show the same "structured input not supported" notice the
-// shortcode does. Better to keep them out of the inserter entirely.
-let blocksWritten = 0;
+// 5. Blocks. Endpoints whose request body needs a nested object (person1,
+// natalChart, etc.) are skipped: block attributes can hold objects but the
+// editor lacks a nested-attribute UI, so a block here would only show the same
+// "structured input not supported" notice the shortcode does. Better to keep
+// them out of the inserter entirely.
+//
+// The heroes that declare a `block` in bin/hero-config.json are written from
+// the same descriptors, into the same directory. That directory is wiped and
+// rebuilt on every run, which is the point: the five headline blocks used to be
+// hand-written, so nothing regenerated them and they sat at `"attributes": {}`
+// with a static placeholder for an editor while the long tail grew real
+// controls and a live preview.
+const blockDescriptors = [];
 let blocksSkippedStructured = 0;
 for ( const op of generated ) {
 	if ( hasRequiredObjectBody( op ) ) {
 		blocksSkippedStructured++;
 		continue;
 	}
-	const slug = toKebabCase( op.operationId );
-	const blockDir = path.join( OUT_BLOCKS, slug );
+	blockDescriptors.push( blockFromOperation( op ) );
+}
+let heroBlockCount = 0;
+for ( const [ tagSuffix, cfg ] of Object.entries( heroConfig ) ) {
+	if ( ! cfg.block ) {
+		continue;
+	}
+	if ( cfg.hand_written ) {
+		throw new Error(
+			`[generate] hero ${ tagSuffix } is hand_written, so its block is hand-written too; remove the "block" entry or the generator will overwrite nothing`
+		);
+	}
+	blockDescriptors.push( blockFromHero( tagSuffix, cfg ) );
+	heroBlockCount++;
+}
+
+// A duplicate name would silently overwrite one block with another; a duplicate
+// TITLE ships two identical-looking rows in the inserter with no way to tell
+// them apart, which is the failure the display names exist to prevent.
+const seenBlockNames = new Map();
+const seenBlockTitles = new Map();
+for ( const block of blockDescriptors ) {
+	if ( seenBlockNames.has( block.name ) ) {
+		throw new Error(
+			`[generate] two blocks claim the name ${
+				block.name
+			}: ${ seenBlockNames.get( block.name ) } and ${ block.sourceLabel }`
+		);
+	}
+	seenBlockNames.set( block.name, block.sourceLabel );
+	if ( seenBlockTitles.has( block.title ) ) {
+		throw new Error(
+			`[generate] two blocks are titled "${
+				block.title
+			}" (${ seenBlockTitles.get( block.title ) } and ${
+				block.sourceLabel
+			}); the inserter would show the same row twice`
+		);
+	}
+	seenBlockTitles.set( block.title, block.sourceLabel );
+}
+
+for ( const block of blockDescriptors ) {
+	const blockDir = path.join( OUT_BLOCKS, block.slug );
 	await fs.mkdir( blockDir, { recursive: true } );
 	await fs.writeFile(
 		path.join( blockDir, 'block.json' ),
-		emitBlockJson( op ),
+		emitBlockJson( block ),
 		'utf8'
 	);
 	await fs.writeFile(
 		path.join( blockDir, 'render.php' ),
-		emitBlockRenderPhp( op ),
+		emitBlockRenderPhp( block ),
 		'utf8'
 	);
 	await fs.writeFile(
 		path.join( blockDir, 'index.js' ),
-		emitBlockIndexJs( op ),
+		emitBlockIndexJs( block ),
 		'utf8'
 	);
-	blocksWritten++;
 }
 console.log(
-	`[generate] wrote ${ blocksWritten } block.json files to blocks/generated/ (skipped ${ blocksSkippedStructured } that need nested-object input)`
+	`[generate] wrote ${ blockDescriptors.length } blocks to blocks/generated/ (${ heroBlockCount } hero, skipped ${ blocksSkippedStructured } that need nested-object input)`
 );
 
 // 6. Hero shortcode classes (one per absorbed hero)

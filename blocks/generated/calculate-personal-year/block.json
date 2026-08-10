@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-personal-year",
-	"title": "Calculate Personal Year - Annual cycle and forecast for current year (Numerology)",
+	"title": "Personal Year (Numerology)",
 	"category": "roxyapi",
 	"icon": "chart-line",
-	"description": "Calculate Personal Year - Annual cycle and forecast for current year",
+	"description": "Annual cycle and forecast for current year",
 	"keywords": [
 		"numerology",
 		"roxyapi",

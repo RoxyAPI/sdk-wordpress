@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/cast-celtic-cross",
-	"title": "Celtic Cross Spread (10 cards) (Tarot)",
+	"title": "Celtic Cross Spread (10 Cards)",
 	"category": "roxyapi",
 	"icon": "heart",
-	"description": "Celtic Cross Spread (10 cards)",
+	"description": "Perform the legendary Celtic Cross spread - the most comprehensive and detailed tarot reading available, used by professional tarot readers worldwide for over a century",
 	"keywords": [
 		"tarot",
 		"roxyapi",

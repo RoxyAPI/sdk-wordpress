@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-forecast",
-	"title": "Get biorhythm forecast - Multi-day cycle predictions with best and worst days (Biorhythm)",
+	"title": "Biorhythm Forecast",
 	"category": "roxyapi",
 	"icon": "tide",
-	"description": "Get biorhythm forecast - Multi-day cycle predictions with best and worst days",
+	"description": "Multi-day cycle predictions with best and worst days",
 	"keywords": [
 		"biorhythm",
 		"roxyapi",

@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/generate-divisional-chart",
-	"title": "Get divisional chart (Varga) - D2 to D60 Calculator (Vedic Astrology)",
+	"title": "Divisional Chart (Varga)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get divisional chart (Varga) - D2 to D60 Calculator",
+	"description": "Calculate any Vedic divisional chart (Varga) from D2 Hora to D60 Shashtiamsa",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

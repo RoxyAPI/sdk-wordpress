@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/generate-solar-arc",
-	"title": "Solar arc directions calculator - directed chart at one degree per year (Western Astrology)",
+	"title": "Solar Arc Directions (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Solar arc directions calculator - directed chart at one degree per year",
+	"description": "directed chart at one degree per year",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

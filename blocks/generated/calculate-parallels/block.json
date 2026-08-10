@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-parallels",
-	"title": "Declination Parallels - Planets at same or opposite declination (Vedic Astrology)",
+	"title": "Declination Parallels (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Declination Parallels - Planets at same or opposite declination",
+	"description": "Planets at same or opposite declination",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

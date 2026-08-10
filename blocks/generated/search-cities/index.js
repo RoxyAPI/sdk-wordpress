@@ -10,7 +10,7 @@ const fields = [
 		control: 'text',
 		label: __( 'Q', 'roxyapi' ),
 		required: true,
-		help: __( 'City name to search for', 'roxyapi' ),
+		help: __( 'Place to search for, written the way a person would', 'roxyapi' ),
 	},
 	{
 		name: 'limit',

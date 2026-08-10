@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-random-crystal",
-	"title": "Random Crystal (Crystals and Healing Stones)",
+	"title": "Random Crystal",
 	"category": "roxyapi",
 	"icon": "star-filled",
-	"description": "Random Crystal",
+	"description": "Get a randomly selected healing crystal as a discovery teaser",
 	"keywords": [
-		"crystals and healing stones",
+		"crystals",
 		"roxyapi",
 		"get",
 		"random"

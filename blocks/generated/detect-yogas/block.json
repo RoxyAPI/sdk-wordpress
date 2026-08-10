@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/detect-yogas",
-	"title": "Detect classical Vedic yogas in a birth chart (Vedic Astrology)",
+	"title": "Classical Vedic Yogas in a Birth Chart (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Detect classical Vedic yogas in a birth chart",
+	"description": "Chart-driven detection of 44 classical Vedic yogas",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

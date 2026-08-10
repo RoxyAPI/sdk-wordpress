@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-shadbala",
-	"title": "Get Shadbala (six-fold planetary strength) analysis - Shadbala Calculator API (Vedic Astrology)",
+	"title": "Shadbala (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get Shadbala (six-fold planetary strength) analysis - Shadbala Calculator API",
+	"description": "Calculate complete Shadbala (six-fold planetary strength) per Brihat Parashara Hora Shastra (BPHS) and BV Raman Graha and Bhava Balas",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

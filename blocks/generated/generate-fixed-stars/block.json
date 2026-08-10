@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/generate-fixed-stars",
-	"title": "Fixed stars and star conjunctions calculator - Regulus, Spica, Algol natal report (Western Astrology)",
+	"title": "Fixed Stars and Star Conjunctions (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Fixed stars and star conjunctions calculator - Regulus, Spica, Algol natal report",
+	"description": "Regulus, Spica, Algol natal report",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

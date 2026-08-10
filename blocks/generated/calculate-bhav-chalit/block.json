@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-bhav-chalit",
-	"title": "Get the Bhav Chalit (Chalit Kundli) cusp-based house chart - Bhav Chalit API (Vedic Astrology)",
+	"title": "Bhav Chalit (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get the Bhav Chalit (Chalit Kundli) cusp-based house chart - Bhav Chalit API",
+	"description": "Calculate the Bhav Chalit chart, also written Bhava Chalit or Chalit Kundli, placing every graha by unequal Sripati bhava cusps instead of by whole sign",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

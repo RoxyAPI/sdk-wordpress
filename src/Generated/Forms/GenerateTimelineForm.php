@@ -20,7 +20,7 @@ class GenerateTimelineForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'generateTimeline',
-			'title'        => __( 'Cross-domain forecast timeline - Transits, ingresses, stations, dasha changes, critical days', 'roxyapi' ),
+			'title'        => __( 'Cross-domain Forecast Timeline', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
 			'sections'     => array(
 				array(

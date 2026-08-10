@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-usage-stats",
-	"title": "Get API usage statistics (Usage)",
+	"title": "Usage Statistics",
 	"category": "roxyapi",
 	"icon": "star-half",
-	"description": "Get API usage statistics",
+	"description": "Returns current usage and plan limits for your subscription.",
 	"keywords": [
 		"usage",
 		"roxyapi",

@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-compound-number",
-	"title": "Compound number meaning - Cheiro Chaldean interpretation 10 to 52 (Numerology)",
+	"title": "Compound Number Meaning (Numerology)",
 	"category": "roxyapi",
 	"icon": "chart-line",
-	"description": "Compound number meaning - Cheiro Chaldean interpretation 10 to 52",
+	"description": "Cheiro Chaldean interpretation 10 to 52",
 	"keywords": [
 		"numerology",
 		"roxyapi",

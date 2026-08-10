@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/list-avasthas",
-	"title": "List all 17 avastha states - Planetary State Reference (Vedic Astrology)",
+	"title": "Avastha States (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "List all 17 avastha states - Planetary State Reference",
+	"description": "Planetary State Reference",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

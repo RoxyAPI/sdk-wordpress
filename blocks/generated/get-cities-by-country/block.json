@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-cities-by-country",
-	"title": "Get cities in a country - Geocoding directory sorted by population (Location and Timezone)",
+	"title": "Cities in a Country (Location)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "Get cities in a country - Geocoding directory sorted by population",
+	"description": "Geocoding directory sorted by population",
 	"keywords": [
-		"location and timezone",
+		"location",
 		"roxyapi",
 		"get",
 		"cities"

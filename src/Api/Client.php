@@ -37,12 +37,15 @@ class Client {
 	/**
 	 * Send a POST request to the RoxyAPI.
 	 *
+	 * @remarks A POST operation can still declare QUERY parameters, and many do: the response language on most of them, plus `focus`, `include`, `orb` and `strictOrbs`. They are a separate argument because they belong on the URL. Sent in the JSON body they are ignored, and the API answers 200 as though they had never been passed.
+	 *
 	 * @param string               $endpoint API path segment.
 	 * @param array<string, mixed> $body     Request body.
+	 * @param array<string, mixed> $query    Query parameters for the URL.
 	 * @return array<string, mixed>|WP_Error
 	 */
-	public static function post( string $endpoint, array $body = array() ) {
-		return self::request( 'POST', $endpoint, $body );
+	public static function post( string $endpoint, array $body = array(), array $query = array() ) {
+		return self::request( 'POST', $endpoint, $body, $query );
 	}
 
 	/**
@@ -51,15 +54,35 @@ class Client {
 	 * @param string               $method   HTTP method.
 	 * @param string               $endpoint API path segment.
 	 * @param array<string, mixed> $payload  Query params for GET, body for POST.
+	 * @param array<string, mixed> $query    Query params for a non-GET request. Unused on GET, where the payload already is the query.
 	 * @return array<string, mixed>|WP_Error
 	 */
-	private static function request( string $method, string $endpoint, array $payload ) {
+	private static function request( string $method, string $endpoint, array $payload, array $query = array() ) {
 		$key = ApiKey::get();
 
-		// Inject the site-owner's preferred display language into the
-		// request when the caller hasn't already set one. Empty setting
-		// means "match the WP locale", which we resolve here once.
-		$payload = self::maybe_inject_language( $payload );
+		/**
+		 * `lang` is a query parameter on every operation that accepts one, POST included, so it
+		 * rides the URL even when the rest of the payload is a JSON body. Placed in a POST body
+		 * instead it has no effect and the response returns in the default language with a 200,
+		 * so do not fold this back into the payload. A caller that puts it in the body is
+		 * corrected here rather than silently ignored.
+		 */
+		if ( $method !== 'GET' && isset( $payload['lang'] ) ) {
+			if ( ! isset( $query['lang'] ) || (string) $query['lang'] === '' ) {
+				$query['lang'] = $payload['lang'];
+			}
+			unset( $payload['lang'] );
+		}
+
+		// Inject the site-owner's preferred display language when the caller
+		// hasn't already set one. Empty setting means "match the WP locale",
+		// which we resolve here once. It goes wherever the language travels for
+		// this method: the query string on POST, the payload itself on GET.
+		if ( $method === 'GET' ) {
+			$payload = self::maybe_inject_language( $payload );
+		} else {
+			$query = self::maybe_inject_language( $query );
+		}
 
 		// Only send the key header when one is actually set: an empty header
 		// value is not the same as no header at all.
@@ -81,18 +104,14 @@ class Client {
 			'headers'     => $headers,
 		);
 
-		/**
-		 * `lang` is a query parameter on every operation that accepts one, POST included, so it
-		 * rides the URL even when the rest of the payload is a JSON body. Placed in a POST body
-		 * instead it has no effect and the response returns in the default language with a 200,
-		 * so do not fold this back into the payload.
-		 */
-		if ( $method === 'POST' && isset( $payload['lang'] ) ) {
-			$lang = (string) $payload['lang'];
-			unset( $payload['lang'] );
-			if ( $lang !== '' ) {
-				$url = add_query_arg( 'lang', rawurlencode( $lang ), $url );
+		$query = array_filter(
+			$query,
+			static function ( $value ) {
+				return $value !== '' && $value !== null;
 			}
+		);
+		if ( $query ) {
+			$url = add_query_arg( array_map( 'rawurlencode', array_map( 'strval', $query ) ), $url );
 		}
 
 		if ( $method === 'GET' && $payload ) {

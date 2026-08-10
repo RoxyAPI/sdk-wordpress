@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/check-sadhesati",
-	"title": "Check Sadhesati - Sade Sati Calculator API (Saturn Transit) (Vedic Astrology)",
+	"title": "Sadhesati (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Check Sadhesati - Sade Sati Calculator API (Saturn Transit)",
+	"description": "Sade Sati (Saturn Transit)",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/list-trigrams",
-	"title": "List all 8 trigrams (I-Ching)",
+	"title": "Trigrams (I Ching)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "List all 8 trigrams",
+	"description": "Retrieve all 8 I-Ching trigrams (bagua) - the fundamental building blocks of hexagrams",
 	"keywords": [
-		"i-ching",
+		"i ching",
 		"roxyapi",
 		"list",
 		"trigrams"

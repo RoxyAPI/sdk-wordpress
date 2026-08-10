@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/cast-career-spread",
-	"title": "Career Spread (7 cards) (Tarot)",
+	"title": "Career Spread (7 Cards)",
 	"category": "roxyapi",
 	"icon": "heart",
-	"description": "Career Spread (7 cards)",
+	"description": "Perform a comprehensive 7-card career tarot spread using SWOT analysis framework (Strengths, Weaknesses, Opportunities, Threats) for professional guidance, business decisions, and vocational clarity",
 	"keywords": [
 		"tarot",
 		"roxyapi",

@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-expression",
-	"title": "Calculate Expression number - Natural talents and life goals (Numerology)",
+	"title": "Expression Number (Numerology)",
 	"category": "roxyapi",
 	"icon": "chart-line",
-	"description": "Calculate Expression number - Natural talents and life goals",
+	"description": "Natural talents and life goals",
 	"keywords": [
 		"numerology",
 		"roxyapi",

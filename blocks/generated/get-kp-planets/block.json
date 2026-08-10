@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-kp-planets",
-	"title": "Get KP planetary positions with sub-lords (Vedic Astrology)",
+	"title": "KP Planetary Positions (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get KP planetary positions with sub-lords",
+	"description": "Get planetary positions with detailed KP star-lord and sub-lord calculations for precise event timing and significator analysis",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

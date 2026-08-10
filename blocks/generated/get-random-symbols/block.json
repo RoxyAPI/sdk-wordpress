@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-random-symbols",
-	"title": "Get random dream symbols (Dreams)",
+	"title": "Random Dream Symbols",
 	"category": "roxyapi",
 	"icon": "book",
-	"description": "Get random dream symbols",
+	"description": "Discover random dream symbols and their interpretations for daily dream insights and exploration",
 	"keywords": [
-		"dreams",
+		"dream interpretation",
 		"roxyapi",
 		"get",
 		"random"

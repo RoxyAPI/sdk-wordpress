@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-monthly-horoscope",
-	"title": "Monthly horoscope by zodiac sign - 30-day transit forecast with key dates (Western Astrology)",
+	"title": "Monthly Horoscope by Zodiac Sign (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Monthly horoscope by zodiac sign - 30-day transit forecast with key dates",
+	"description": "30-day transit forecast with key dates",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

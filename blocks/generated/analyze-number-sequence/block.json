@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/analyze-number-sequence",
-	"title": "Analyze Any Number Sequence (Angel Numbers)",
+	"title": "Number Sequence (Angel Numbers)",
 	"category": "roxyapi",
 	"icon": "chart-line",
-	"description": "Analyze Any Number Sequence",
+	"description": "Smart angel number analysis that works for ANY number sequence, not just known angel numbers",
 	"keywords": [
 		"angel numbers",
 		"roxyapi",

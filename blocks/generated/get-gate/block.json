@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-gate",
-	"title": "Look up a Human Design gate by number (Human Design)",
+	"title": "Human Design Gate by Number",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Look up a Human Design gate by number",
+	"description": "Look up the static reference data for a Human Design gate by its number from 1 to 64: the gate keynote name, the center it sits in, the matching I-Ching hexagram, and the gates that form a channel with it",
 	"keywords": [
 		"human design",
 		"roxyapi",

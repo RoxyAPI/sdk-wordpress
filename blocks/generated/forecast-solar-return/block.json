@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/forecast-solar-return",
-	"title": "Solar return chart - Annual birthday forecast chart for a single subject (Forecast)",
+	"title": "Solar Return Chart (Forecast)",
 	"category": "roxyapi",
 	"icon": "lightbulb",
-	"description": "Solar return chart - Annual birthday forecast chart for a single subject",
+	"description": "Annual birthday forecast chart for a single subject",
 	"keywords": [
 		"forecast",
 		"roxyapi",

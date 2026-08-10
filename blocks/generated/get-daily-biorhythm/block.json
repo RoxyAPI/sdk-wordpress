@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-daily-biorhythm",
-	"title": "Get daily biorhythm - Seeded reading for daily check-in features (Biorhythm)",
+	"title": "Daily Biorhythm",
 	"category": "roxyapi",
 	"icon": "tide",
-	"description": "Get daily biorhythm - Seeded reading for daily check-in features",
+	"description": "Seeded reading for daily check-in features",
 	"keywords": [
 		"biorhythm",
 		"roxyapi",

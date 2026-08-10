@@ -20,7 +20,7 @@ class CalculateBioCompatibilityForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'calculateBioCompatibility',
-			'title'        => __( 'Calculate compatibility - Biorhythm alignment between two people', 'roxyapi' ),
+			'title'        => __( 'Compatibility', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
 			'sections'     => array(
 				array(

@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/generate-solar-return",
-	"title": "Solar Return Chart - Annual birthday forecast with relocated chart (Western Astrology)",
+	"title": "Solar Return Chart (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Solar Return Chart - Annual birthday forecast with relocated chart",
+	"description": "Annual birthday forecast with relocated chart",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

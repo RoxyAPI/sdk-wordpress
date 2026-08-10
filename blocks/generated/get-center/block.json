@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-center",
-	"title": "Look up a Human Design center by id (Human Design)",
+	"title": "Human Design Center by ID",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Look up a Human Design center by id",
+	"description": "Look up the static reference data for one of the nine Human Design centers by its id: the display name, whether it is a motor or awareness center, and what it means both defined and undefined",
 	"keywords": [
 		"human design",
 		"roxyapi",

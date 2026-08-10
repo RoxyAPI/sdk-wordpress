@@ -45,7 +45,7 @@ Every reading works the moment you activate the plugin, with no account. A free 
 * Pythagorean numerology, full 78 card tarot, and a 2,000+ entry dream symbol dictionary
 * Interactive SVG charts and cards that follow your light or dark theme automatically
 * Readings in 8 languages (English, German, Hindi, Spanish, Turkish, Portuguese, French, Russian) via one setting
-* Parent Astrology Section wrapper block that shares the zodiac sign across all child blocks via block context
+* Parent Astrology Section wrapper block that sets the zodiac sign for the Horoscope blocks placed inside it
 * Server side caching with per endpoint TTL to keep your API quota low
 * API key stays server side. Never exposed to the browser.
 
@@ -135,7 +135,7 @@ Not to get started. A limited number of free readings per day are allowed right 
 
 = What readings can I add to my site? =
 
-One key covers 12 domains. Western astrology: natal chart, daily / weekly / monthly horoscopes, synastry, compatibility, transits, aspect patterns, and moon phases. Vedic astrology: kundli, KP chart, panchang, Vimshottari dasha, divisional charts, nakshatras, doshas (Manglik, Kaal Sarpa, Sade Sati), and classical yogas. Numerology: Life Path, Expression, Soul Urge, Personality, personal year, and compatibility. Tarot: single card, three card, Celtic Cross, and the full 78 card catalog. Human Design: bodygraph, type, authority, profile, centers, channels, and gates. Forecasts: timelines, transit forecasts, solar returns, and significant dates. Plus biorhythm, I Ching hexagrams, crystal reference data, dream symbols, and angel numbers. Every reading is available as a shortcode. More than 130 of them also ship a matching Gutenberg block, each with sidebar controls for its inputs (a date picker for dates, a dropdown for fixed choices, text and number fields for the rest) and a live preview in the editor, and the headline readings (horoscope, natal chart, tarot, numerology, biorhythm, angel number) add hand-crafted blocks with a variation picker. Interactive multi input readings such as two chart compatibility and nested birth forms stay shortcode and visitor form mode, because the block editor cannot collect their nested input. Browse the full list inside WordPress under RoxyAPI, Shortcodes.
+One key covers 12 domains. Western astrology: natal chart, daily / weekly / monthly horoscopes, synastry, compatibility, transits, aspect patterns, and moon phases. Vedic astrology: kundli, KP chart, panchang, Vimshottari dasha, divisional charts, nakshatras, doshas (Manglik, Kaal Sarpa, Sade Sati), and classical yogas. Numerology: Life Path, Expression, Soul Urge, Personality, personal year, and compatibility. Tarot: single card, three card, Celtic Cross, and the full 78 card catalog. Human Design: bodygraph, type, authority, profile, centers, channels, and gates. Forecasts: timelines, transit forecasts, solar returns, and significant dates. Plus biorhythm, I Ching hexagrams, crystal reference data, dream symbols, and angel numbers. Every reading is available as a shortcode. More than 130 of them also ship a matching Gutenberg block, each with sidebar controls for its inputs (a date picker for dates, a dropdown for fixed choices, text and number fields for the rest) and a live preview in the editor. The headline readings (horoscope, natal chart, tarot, numerology, biorhythm, angel number) are built the same way, and the horoscope block adds a variation picker. Interactive multi input readings such as two chart compatibility and nested birth forms stay shortcode and visitor form mode, because the block editor cannot collect their nested input. Browse the full list inside WordPress under RoxyAPI, Shortcodes.
 
 = Can I show readings in another language? =
 
@@ -195,9 +195,9 @@ Yes. Readings pick up your theme font, and the RoxyAPI menu under Branding gives
 
 RoxyAPI cross-checks its astronomy calculations against the NASA JPL Horizons ephemeris (a public NASA dataset; no affiliation with NASA or JPL). See https://roxyapi.com/methodology for the full breakdown.
 
-= How do I share the zodiac sign across multiple blocks on one page? =
+= How do I share the zodiac sign across several horoscopes on one page? =
 
-Add the Astrology Section wrapper block, set the sign in its Inspector, then drop child RoxyAPI blocks inside. Every child inherits the sign via block context.
+Add the Astrology Section wrapper block, set the sign in its Inspector, then drop Horoscope blocks inside. Each one picks the sign up from the wrapper, so you set it once. Other readings take their inputs from their own sidebar controls.
 
 = Can I try it for free before subscribing? =
 
@@ -219,6 +219,18 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 8. Connect in seconds. Free to start, with copy-paste shortcodes and a guided quick start.
 
 == Changelog ==
+
+= 1.10.0 =
+* New: the monthly ephemeris now renders as a real ephemeris. Days down the page, bodies across, each position as degree, sign and minute, retrogrades marked, and the days a body changes sign listed above the table. It reads the way a printed ephemeris reads, in all eight languages.
+* New: Branding, Display, Privacy and Advanced are available straight after you activate the plugin, before you add an API key. Readings render from the moment you activate, so the settings that shape them are there from the moment you activate too.
+* New: the six headline readings (horoscope, natal chart, tarot, numerology, biorhythm, angel number) now have full sidebar controls and a live preview in the block editor, the same as every other reading. Before this they were placeholders with nowhere to enter a birth date.
+* Fixed: a reading placed in the middle of a paragraph rendered twice, the second copy unstyled and ignoring your colours. It now renders once wherever you put it.
+* Fixed: saving one settings tab no longer switches off the toggles on another. Choosing a palette could silently turn hide written readings back on.
+* Fixed: saving any setting now confirms it saved. Before this the page reloaded looking identical whether it had worked or not.
+* Fixed: reopening or sharing a link to a submitted reading now explains that the reading has already been shown, instead of returning a blank form.
+* Fixed: the copy buttons in the Shortcodes library no longer hand out settings the shortcode ignores, and no longer bake in a fixed month. A pasted ephemeris shortcode now shows the current month wherever it is used.
+* Changed: block names and form headings read as readings rather than as endpoints. "Get the twelve Arudha padas - Arudha Lagna Calculator API" is now "Arudha Padas".
+* Changed: the Demo screen runs one reading per click. The buttons that ran a whole domain, or every reading at once, are gone, because each one is a live call against your plan.
 
 = 1.9.0 =
 * New: brand the readings from the RoxyAPI menu, Branding tab. Pick one of four ready-made palettes or set seven colours yourself, with separate values for light and dark, a live colour picker, and a button to put everything back to the defaults.

@@ -2,15 +2,14 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/search-crystals",
-	"title": "Search Crystals (Crystals and Healing Stones)",
+	"title": "Search Crystals",
 	"category": "roxyapi",
 	"icon": "star-filled",
-	"description": "Search Crystals",
+	"description": "Search for healing crystals by keyword or name",
 	"keywords": [
-		"crystals and healing stones",
+		"crystals",
 		"roxyapi",
-		"search",
-		"crystals"
+		"search"
 	],
 	"version": "1.0.0",
 	"textdomain": "roxyapi",

@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-profile",
-	"title": "Calculate the Human Design profile and line keynotes (Human Design)",
+	"title": "Human Design Profile and Line Keynotes",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Calculate the Human Design profile and line keynotes",
+	"description": "Calculate the Human Design profile for a birth moment: the conscious Personality Sun line over the unconscious Design Sun line, with the keynote for each",
 	"keywords": [
 		"human design",
 		"roxyapi",

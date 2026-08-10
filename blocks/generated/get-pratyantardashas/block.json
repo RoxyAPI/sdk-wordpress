@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-pratyantardashas",
-	"title": "Get all Pratyantardashas (antara periods) for a Mahadasha and Antardasha (Vedic Astrology)",
+	"title": "Pratyantardashas (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get all Pratyantardashas (antara periods) for a Mahadasha and Antardasha",
+	"description": "Returns the 9 Pratyantardasha (antara) periods inside a chosen Antardasha, the third level of the Vimshottari dasha hierarchy",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

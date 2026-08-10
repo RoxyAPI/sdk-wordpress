@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-personal-month",
-	"title": "Calculate Personal Month - Monthly numerology forecast (Numerology)",
+	"title": "Personal Month (Numerology)",
 	"category": "roxyapi",
 	"icon": "chart-line",
-	"description": "Calculate Personal Month - Monthly numerology forecast",
+	"description": "Monthly numerology forecast",
 	"keywords": [
 		"numerology",
 		"roxyapi",

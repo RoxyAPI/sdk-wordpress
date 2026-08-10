@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-phases",
-	"title": "Get phase info - Lightweight cycle status for dashboards and widgets (Biorhythm)",
+	"title": "Phase Info (Biorhythm)",
 	"category": "roxyapi",
 	"icon": "tide",
-	"description": "Get phase info - Lightweight cycle status for dashboards and widgets",
+	"description": "Lightweight cycle status for dashboards and widgets",
 	"keywords": [
 		"biorhythm",
 		"roxyapi",

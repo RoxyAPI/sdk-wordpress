@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-choghadiya",
-	"title": "Get Choghadiya - 8 Muhurta divisions of day and night (Vedic Astrology)",
+	"title": "Choghadiya (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get Choghadiya - 8 Muhurta divisions of day and night",
+	"description": "8 Muhurta divisions of day and night",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

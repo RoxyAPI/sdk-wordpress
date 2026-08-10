@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-major-dashas",
-	"title": "Get all 9 Mahadasha periods (120-year cycle) (Vedic Astrology)",
+	"title": "Mahadasha Periods (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get all 9 Mahadasha periods (120-year cycle)",
+	"description": "Returns complete Vimshottari Dasha cycle starting from birth",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

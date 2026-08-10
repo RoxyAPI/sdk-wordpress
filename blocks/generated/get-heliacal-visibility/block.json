@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-heliacal-visibility",
-	"title": "Heliacal rising and setting (udaya and asta) - Graha Asta Calculator API (Vedic Astrology)",
+	"title": "Heliacal Rising and Setting (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Heliacal rising and setting (udaya and asta) - Graha Asta Calculator API",
+	"description": "Calculate heliacal rising (udaya) and setting (asta) of the six visible grahas for any date and place, by the Surya Siddhanta rule",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

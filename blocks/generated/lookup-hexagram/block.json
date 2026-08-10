@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/lookup-hexagram",
-	"title": "Lookup hexagram by line pattern (I-Ching)",
+	"title": "Hexagram by Line Pattern (I Ching)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "Lookup hexagram by line pattern",
+	"description": "Find an I-Ching hexagram by its binary line pattern",
 	"keywords": [
-		"i-ching",
+		"i ching",
 		"roxyapi",
 		"lookup",
 		"hexagram"

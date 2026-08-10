@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/cast-three-card",
-	"title": "Three-Card Spread: Past, Present, Future (Tarot)",
+	"title": "Three-Card Spread (Tarot)",
 	"category": "roxyapi",
 	"icon": "heart",
-	"description": "Three-Card Spread: Past, Present, Future",
+	"description": "Perform the classic three-card tarot spread revealing Past (what led to this situation), Present (current energy and circumstances), and Future (likely outcome if current path continues)",
 	"keywords": [
 		"tarot",
 		"roxyapi",

@@ -3,12 +3,18 @@
  * Demo: live preview of every shortcode the plugin ships.
  *
  * Maintainer-only surface (manage_options) for QA. Lists every entry from
- * Catalog::all() grouped by domain, lets you click "Run" on any single row to
- * render it live, or "Run all in this domain" / "Run all" for batch QA.
+ * Catalog::all() grouped by domain and lets you click "Run" on a single row to
+ * render it live.
  *
- * Quota-conscious: the page does NOT auto-run shortcodes. Each render is
- * explicit, and the underlying transient cache (default 1 hour TTL) covers
- * any repeat visits.
+ * **One row per click, and there is no batch.** Every render here is a metered
+ * call, so a control that ran a whole domain, or all of them, spent real money
+ * for one click on a page that ships to every site. The batch runners were
+ * removed for that reason and `run_filter()` refuses their URL shapes as well,
+ * because the trigger was a plain GET that outlives its button. Do not
+ * reintroduce a run-many control here in any form.
+ *
+ * The page does NOT auto-run shortcodes. Each render is explicit, and the
+ * underlying transient cache (default 1 hour TTL) covers any repeat visits.
  *
  * @package RoxyAPI
  */
@@ -74,7 +80,7 @@ class DemoPage {
 
 		echo '<div class="wrap roxyapi-demo">';
 		echo '<h1>' . esc_html__( 'RoxyAPI Demo', 'roxyapi' ) . '</h1>';
-		echo '<p class="description">' . esc_html__( 'Live preview of every shortcode the plugin ships. Click "Run" on any row to render it. Results are cached server-side for an hour by default.', 'roxyapi' ) . '</p>';
+		echo '<p class="description">' . esc_html__( 'Live preview of every shortcode the plugin ships. Click "Run" on a row to render that one reading. Each run is a live call against your plan, so rows render one at a time and never in bulk. Results are cached server-side for an hour by default.', 'roxyapi' ) . '</p>';
 
 		self::render_toolbar( $run );
 
@@ -82,7 +88,6 @@ class DemoPage {
 			$domain_label = self::domain_label( $domains, $slug );
 			echo '<h2 id="' . esc_attr( $slug ) . '" class="roxyapi-demo-domain">';
 			echo esc_html( $domain_label );
-			echo ' <a class="page-title-action" href="' . esc_url( self::run_url( 'domain:' . $slug ) ) . '">' . esc_html__( 'Run all in this domain', 'roxyapi' ) . '</a>';
 			echo '</h2>';
 
 			echo '<div class="roxyapi-demo-rows">';
@@ -96,18 +101,17 @@ class DemoPage {
 	}
 
 	/**
-	 * Render the top-of-page toolbar with batch run links.
+	 * Render the top-of-page toolbar.
 	 *
-	 * @param string $run Current run filter ('', 'all', 'heroes', 'domain:<slug>', or a single tag).
+	 * @param string $run Current run filter ('' or a single shortcode tag).
 	 * @return void
 	 */
 	private static function render_toolbar( string $run ): void {
-		echo '<p class="roxyapi-demo-toolbar">';
-		echo '<a class="button button-primary" href="' . esc_url( self::run_url( 'all' ) ) . '">' . esc_html__( 'Run all', 'roxyapi' ) . '</a> ';
-		echo '<a class="button" href="' . esc_url( self::run_url( 'heroes' ) ) . '">' . esc_html__( 'Run heroes only', 'roxyapi' ) . '</a> ';
-		if ( $run !== '' ) {
-			echo '<a class="button button-link-delete" href="' . esc_url( admin_url( 'admin.php?page=' . self::PAGE_SLUG ) ) . '">' . esc_html__( 'Clear renders', 'roxyapi' ) . '</a>';
+		if ( $run === '' ) {
+			return;
 		}
+		echo '<p class="roxyapi-demo-toolbar">';
+		echo '<a class="button button-link-delete" href="' . esc_url( admin_url( 'admin.php?page=' . self::PAGE_SLUG ) ) . '">' . esc_html__( 'Clear renders', 'roxyapi' ) . '</a>';
 		echo '</p>';
 	}
 
@@ -126,7 +130,7 @@ class DemoPage {
 		$form_mode = ! empty( $row['block_only'] );
 		$slug      = (string) ( $row['domain_slug'] ?? '' );
 
-		$should_run = self::should_run( $run, $tag, $slug, $hero );
+		$should_run = self::should_run( $run, $tag );
 		$open_attr  = $should_run ? ' open' : '';
 
 		$row_id = 'row-' . sanitize_html_class( $tag );
@@ -158,31 +162,25 @@ class DemoPage {
 	/**
 	 * Decide whether a row should render live based on the current run filter.
 	 *
-	 * @param string $run    Filter value: '', 'all', 'heroes', 'domain:<slug>', or a tag.
-	 * @param string $tag    Row shortcode tag.
-	 * @param string $slug   Row domain slug.
-	 * @param bool   $hero   Row is a hero entry.
+	 * Exactly one row can match, by design. See the class docblock.
+	 *
+	 * @param string $run Filter value: '' or a single shortcode tag.
+	 * @param string $tag Row shortcode tag.
 	 * @return bool
 	 */
-	private static function should_run( string $run, string $tag, string $slug, bool $hero ): bool {
-		if ( $run === '' ) {
-			return false;
-		}
-		if ( $run === 'all' ) {
-			return true;
-		}
-		if ( $run === 'heroes' ) {
-			return $hero;
-		}
-		if ( strpos( $run, 'domain:' ) === 0 ) {
-			return $slug === substr( $run, 7 );
-		}
-		return $run === $tag;
+	private static function should_run( string $run, string $tag ): bool {
+		return $run !== '' && $run === $tag;
 	}
 
 	/**
-	 * Read the `run` query var and validate it. Allowed shapes: 'all',
-	 * 'heroes', 'domain:<slug>', or a single shortcode tag.
+	 * Read the `run` query var and validate it. One shortcode tag, and nothing else.
+	 *
+	 * Every reading on this page is a metered call, so a filter that matches more
+	 * than one row spends real money per click. The batch shapes this used to
+	 * accept (`all`, `heroes`, `domain:<slug>`) are rejected here rather than
+	 * merely unlinked, because the trigger was a plain GET: an old bookmark, a
+	 * browser history entry or a pasted URL would otherwise still run the batch
+	 * with the buttons gone.
 	 *
 	 * @return string
 	 */
@@ -192,16 +190,16 @@ class DemoPage {
 		if ( $raw === '' ) {
 			return '';
 		}
-		if ( in_array( $raw, array( 'all', 'heroes' ), true ) ) {
-			return $raw;
-		}
-		if ( strpos( $raw, 'domain:' ) === 0 ) {
-			$slug = preg_replace( '/[^a-z0-9-]/', '', substr( $raw, 7 ) );
-			return is_string( $slug ) && $slug !== '' ? 'domain:' . $slug : '';
-		}
-		// Treat anything else as a shortcode tag.
 		$tag = preg_replace( '/[^a-z0-9_]/', '', $raw );
-		return is_string( $tag ) ? $tag : '';
+		if ( ! is_string( $tag ) || $tag === '' ) {
+			return '';
+		}
+
+		// Whitelist against the registry rather than trusting the shape. The old
+		// batch values happen to survive sanitising as tag-shaped strings that
+		// match no row, which is safe only by accident; resolving them to '' makes
+		// "one registered reading, or nothing" the property the code states.
+		return shortcode_exists( $tag ) ? $tag : '';
 	}
 
 	/**

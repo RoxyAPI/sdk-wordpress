@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-card",
-	"title": "Get detailed tarot card information (Tarot)",
+	"title": "Detailed Tarot Card Information",
 	"category": "roxyapi",
 	"icon": "heart",
-	"description": "Get detailed tarot card information",
+	"description": "Retrieve comprehensive details for a specific tarot card from the traditional Rider-Waite-Smith deck including complete upright meanings (card drawn normally) and reversed meanings (inverted/upside down interpretations for nuanced guidance)",
 	"keywords": [
 		"tarot",
 		"roxyapi",

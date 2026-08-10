@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/generate-lunar-return",
-	"title": "Lunar Return Chart - Monthly emotional forecast with Moon cycle chart (Western Astrology)",
+	"title": "Lunar Return Chart (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Lunar Return Chart - Monthly emotional forecast with Moon cycle chart",
+	"description": "Monthly emotional forecast with Moon cycle chart",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

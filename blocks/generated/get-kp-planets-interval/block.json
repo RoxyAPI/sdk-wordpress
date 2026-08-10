@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-kp-planets-interval",
-	"title": "Get KP planets at time intervals (Vedic Astrology)",
+	"title": "KP Planets at Time Intervals (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get KP planets at time intervals",
+	"description": "Calculate positions of all 9 planets (Sun through Saturn, Rahu, Ketu) at regular time intervals with full KP hierarchy: sign lord, star lord, sublord, and sub-sublord",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

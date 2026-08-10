@@ -20,7 +20,7 @@ class CalculateGunMilanForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'calculateGunMilan',
-			'title'        => __( 'Calculate compatibility score - Gun Milan API (Ashtakoot Matching)', 'roxyapi' ),
+			'title'        => __( 'Compatibility Score', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
 			'sections'     => array(
 				array(

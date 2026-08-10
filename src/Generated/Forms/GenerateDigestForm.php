@@ -20,7 +20,7 @@ class GenerateDigestForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'generateDigest',
-			'title'        => __( 'Forecast digest - Pre-summarized next 24h, 7d, 30d, and 90d rollups', 'roxyapi' ),
+			'title'        => __( 'Forecast Digest', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
 			'sections'     => array(
 				array(

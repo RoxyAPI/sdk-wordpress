@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/list-languages",
-	"title": "List supported response languages (Languages)",
+	"title": "Supported Response Languages",
 	"category": "roxyapi",
 	"icon": "portfolio",
-	"description": "List supported response languages",
+	"description": "Returns the language codes accepted by the `lang` query parameter on every i18n-aware endpoint",
 	"keywords": [
 		"languages",
 		"roxyapi",

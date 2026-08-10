@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-nakshatra",
-	"title": "Get Nakshatra by ID - Lunar Mansion Detail (Vedic Astrology)",
+	"title": "Nakshatra by ID (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get Nakshatra by ID - Lunar Mansion Detail",
+	"description": "Get detailed information for a single nakshatra (lunar mansion) by its ID slug",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

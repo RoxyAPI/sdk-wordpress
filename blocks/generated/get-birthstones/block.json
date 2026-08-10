@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-birthstones",
-	"title": "Birthstone Crystals by Month (Crystals and Healing Stones)",
+	"title": "Birthstone Crystals by Month",
 	"category": "roxyapi",
 	"icon": "star-filled",
-	"description": "Birthstone Crystals by Month",
+	"description": "Get the traditional birthstone crystals for a given birth month",
 	"keywords": [
-		"crystals and healing stones",
+		"crystals",
 		"roxyapi",
 		"get",
 		"birthstones"

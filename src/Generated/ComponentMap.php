@@ -598,12 +598,22 @@ class ComponentMap {
 					),
 				),
 			),
+			'getMonthlyEphemeris' => array(
+				array(
+					'component' => 'roxy-ephemeris-table',
+				),
+			),
 			'getMonthlyHoroscope' => array(
 				array(
 					'component' => 'roxy-horoscope-card',
 					'attrs'     => array(
 						'period' => 'monthly',
 					),
+				),
+			),
+			'getMonthlyTropicalEphemeris' => array(
+				array(
+					'component' => 'roxy-ephemeris-table',
 				),
 			),
 			'getMoonCalendar' => array(

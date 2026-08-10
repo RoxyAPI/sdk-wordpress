@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-upcoming-moon-phases",
-	"title": "Get upcoming moon phases - Next new moon, full moon, quarters (Western Astrology)",
+	"title": "Upcoming Moon Phases (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Get upcoming moon phases - Next new moon, full moon, quarters",
+	"description": "Next new moon, full moon, quarters",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

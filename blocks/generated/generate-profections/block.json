@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/generate-profections",
-	"title": "Annual profections calculator - lord of the year and yearly time lord by age (Western Astrology)",
+	"title": "Annual Profections (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Annual profections calculator - lord of the year and yearly time lord by age",
+	"description": "lord of the year and yearly time lord by age",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

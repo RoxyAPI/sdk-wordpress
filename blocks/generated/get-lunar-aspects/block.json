@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-lunar-aspects",
-	"title": "Monthly Lunar Aspects - Moon aspect events with all planets for a month (Vedic Astrology)",
+	"title": "Monthly Lunar Aspects (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Monthly Lunar Aspects - Moon aspect events with all planets for a month",
+	"description": "Moon aspect events with all planets for a month",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

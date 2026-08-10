@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/draw-cards",
-	"title": "Draw random tarot cards with reproducible results (Tarot)",
+	"title": "Draw Random Tarot Cards",
 	"category": "roxyapi",
 	"icon": "heart",
-	"description": "Draw random tarot cards with reproducible results",
+	"description": "Draw 1-78 tarot cards from the complete Rider-Waite-Smith deck with seeded reproducibility for consistent personalized readings",
 	"keywords": [
 		"tarot",
 		"roxyapi",

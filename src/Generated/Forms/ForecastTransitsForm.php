@@ -20,7 +20,7 @@ class ForecastTransitsForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'forecastTransits',
-			'title'        => __( 'Western astrology forecast - aspects, ingresses, stations, eclipses, moon phases', 'roxyapi' ),
+			'title'        => __( 'Western Astrology Forecast', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
 			'sections'     => array(
 				array(

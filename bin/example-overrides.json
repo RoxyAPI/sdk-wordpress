@@ -6,6 +6,6 @@
 	},
 
 	"_notes": {
-		"timezone": "Spec descriptions say decimal hours OR IANA, examples show '-5', but the live SaaS validator rejects numeric offsets with `Timezone string must be an IANA identifier`. UTC is universally accepted and equivalent to 0 for any test render."
+		"timezone": "UTC is pinned for copy-paste samples because it is unambiguous and equivalent to 0, NOT because numeric offsets are refused. An earlier note here claimed the validator rejected them; that was tested on 2026-08-10 against local and production and is FALSE (`timezone: -5` returns 200 on natal-chart, birth-chart and synastry). Do not go hunting for a spec bug on the strength of this file. Note the separate, real constraint: visitor FORM mode validates timezone as an IANA identifier by design, because the city autocomplete supplies one; attribute mode accepts numeric offsets."
 	}
 }

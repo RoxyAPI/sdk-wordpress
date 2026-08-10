@@ -26,6 +26,15 @@ class FindSignificantDates {
 
 	public const TAG = 'roxy_find_significant_dates';
 
+	/**
+	 * This shortcode reads no attributes: every input is collected by the
+	 * visitor form. Declared empty rather than omitted so the sample the
+	 * library offers can be checked against what the shortcode accepts.
+	 *
+	 * @var array<string, string>
+	 */
+	public const DEFAULTS = array();
+
 	public static function register(): void {
 		if ( shortcode_exists( self::TAG ) ) {
 			return;

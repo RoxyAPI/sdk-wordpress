@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-ecliptic-crossings",
-	"title": "Ecliptic Crossings - When planets cross the ecliptic plane (Vedic Astrology)",
+	"title": "Ecliptic Crossings (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Ecliptic Crossings - When planets cross the ecliptic plane",
+	"description": "When planets cross the ecliptic plane",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

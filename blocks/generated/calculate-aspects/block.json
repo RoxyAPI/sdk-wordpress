@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-aspects",
-	"title": "Calculate planetary aspects - Aspect finder for any date and time (Western Astrology)",
+	"title": "Planetary Aspects (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Calculate planetary aspects - Aspect finder for any date and time",
+	"description": "Aspect finder for any date and time",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

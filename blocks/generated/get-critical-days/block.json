@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-critical-days",
-	"title": "Find critical days - Zero crossing detection for any date range (Biorhythm)",
+	"title": "Critical Days (Biorhythm)",
 	"category": "roxyapi",
 	"icon": "tide",
-	"description": "Find critical days - Zero crossing detection for any date range",
+	"description": "Zero crossing detection for any date range",
 	"keywords": [
 		"biorhythm",
 		"roxyapi",

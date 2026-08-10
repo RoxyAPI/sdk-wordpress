@@ -21,6 +21,17 @@ class GetSymbolLetterCounts {
 
 	public const TAG = 'roxy_get_symbol_letter_counts';
 
+	/**
+	 * Every attribute this shortcode accepts. shortcode_atts() silently
+	 * discards anything absent from here, so this is also the contract the
+	 * library copy-paste sample is checked against.
+	 *
+	 * @var array<string, string>
+	 */
+	public const DEFAULTS = array(
+		'hide_readings' => 'inherit',
+	);
+
 	public static function register(): void {
 		if ( shortcode_exists( self::TAG ) ) {
 			return;
@@ -30,9 +41,7 @@ class GetSymbolLetterCounts {
 
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
-			array(
-			'hide_readings' => 'inherit',
-			),
+			self::DEFAULTS,
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
 		);

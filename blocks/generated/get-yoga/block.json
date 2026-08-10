@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-yoga",
-	"title": "Get yoga details by ID - Vedic Yoga Glossary Entry (Vedic Astrology)",
+	"title": "Yoga Details by ID (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get yoga details by ID - Vedic Yoga Glossary Entry",
+	"description": "Vedic Yoga Glossary Entry",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

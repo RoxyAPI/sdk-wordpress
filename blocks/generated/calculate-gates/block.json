@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-gates",
-	"title": "Calculate the 26 Human Design gate activations (Human Design)",
+	"title": "Human Design Gate Activations",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Calculate the 26 Human Design gate activations",
+	"description": "Calculate the 26 gate activations for a birth moment, split into the 13 conscious Personality activations at birth and the 13 unconscious Design activations 88 degrees of solar arc earlier",
 	"keywords": [
 		"human design",
 		"roxyapi",

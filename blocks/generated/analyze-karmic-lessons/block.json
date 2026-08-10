@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/analyze-karmic-lessons",
-	"title": "Analyze Karmic Lessons - Life lessons from missing numbers (Numerology)",
+	"title": "Karmic Lessons (Numerology)",
 	"category": "roxyapi",
 	"icon": "chart-line",
-	"description": "Analyze Karmic Lessons - Life lessons from missing numbers",
+	"description": "Life lessons from missing numbers",
 	"keywords": [
 		"numerology",
 		"roxyapi",

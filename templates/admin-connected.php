@@ -1,13 +1,20 @@
 <?php
 /**
- * Template: connected view rendered when the API key is configured.
+ * Template: the RoxyAPI settings screen.
  *
  * Five tabs, deep-linkable via `?tab=connect|branding|display|privacy|advanced`.
  * Each tab is a server-rendered fragment; the active one is selected with
  * the `is-active` class. No JS reload — just a normal page load when the
  * site owner clicks a tab. Mobile collapses to one column via WP admin CSS.
  *
+ * Rendered whether or not a key is stored, so the settings that shape a
+ * reading stay reachable from activation onward. Only the Connect tab body
+ * differs: `$onboarding` (the setup steps) before a key is saved, the
+ * connected banner and key management after.
+ *
  * Pre-escaped variables surfaced from SettingsPage::render():
+ *   bool   $is_configured
+ *   string $onboarding
  *   string $attribution_input
  *   string $consent_label_input
  *   string $palette_preset_input
@@ -71,6 +78,8 @@ $docs_url               = isset( $docs_url ) ? (string) $docs_url : '';
 $support_url            = isset( $support_url ) ? (string) $support_url : '';
 $dashboard_url          = isset( $dashboard_url ) ? (string) $dashboard_url : '';
 $active_tab             = isset( $active_tab ) ? (string) $active_tab : 'connect';
+$is_configured          = ! empty( $is_configured );
+$onboarding             = isset( $onboarding ) ? (string) $onboarding : '';
 
 $roxy_tabs = array(
 	'connect'  => __( 'Connect', 'roxyapi' ),
@@ -105,10 +114,24 @@ $kses_select   = array(
 		'selected' => true,
 	),
 );
+
+// The heading belongs to the tab you are on. Only Connect reports connection
+// state; a settings tab that shouted "Connect in 30 seconds" over a colour
+// picker would nag rather than orient.
+if ( $active_tab !== 'connect' ) {
+	$roxy_head_lede  = __( 'RoxyAPI', 'roxyapi' );
+	$roxy_head_punch = $roxy_tabs[ $active_tab ] . '.';
+} elseif ( $is_configured ) {
+	$roxy_head_lede  = __( 'RoxyAPI is', 'roxyapi' );
+	$roxy_head_punch = __( 'connected.', 'roxyapi' );
+} else {
+	$roxy_head_lede  = __( 'Connect RoxyAPI in', 'roxyapi' );
+	$roxy_head_punch = __( '30 seconds.', 'roxyapi' );
+}
 ?>
 <h1 class="roxyapi-heading">
-	<span class="roxyapi-setup"><?php echo esc_html__( 'RoxyAPI is', 'roxyapi' ); ?></span>
-	<span class="roxyapi-punchline"><?php echo esc_html__( 'connected.', 'roxyapi' ); ?></span>
+	<span class="roxyapi-setup"><?php echo esc_html( $roxy_head_lede ); ?></span>
+	<span class="roxyapi-punchline"><?php echo esc_html( $roxy_head_punch ); ?></span>
 </h1>
 
 <div class="roxyapi-test-banner" id="roxyapi-test-banner" role="status" aria-live="polite"></div>
@@ -136,7 +159,16 @@ $kses_select   = array(
 	<?php endforeach; ?>
 </nav>
 
-<?php if ( $active_tab === 'connect' ) : ?>
+<?php if ( $active_tab === 'connect' && ! $is_configured ) : ?>
+	<section class="roxyapi-tab-panel">
+		<?php
+		// Pre-escaped fragment: admin-onboarding.php escapes every value at the
+		// source under the same contract this template follows.
+		echo $onboarding; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		?>
+	</section>
+
+<?php elseif ( $active_tab === 'connect' ) : ?>
 	<section class="roxyapi-tab-panel">
 		<div class="roxyapi-connected-banner" role="status">
 			<span class="roxyapi-check" aria-hidden="true">&#10003;</span>

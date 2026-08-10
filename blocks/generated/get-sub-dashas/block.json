@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-sub-dashas",
-	"title": "Get all Antardashas (sub-periods) for a specific Mahadasha (Vedic Astrology)",
+	"title": "Antardashas (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get all Antardashas (sub-periods) for a specific Mahadasha",
+	"description": "Returns 9 Antardasha sub-periods within a Mahadasha",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

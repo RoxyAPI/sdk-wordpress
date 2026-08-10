@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-daily-crystal",
-	"title": "Daily Crystal (Crystals and Healing Stones)",
+	"title": "Daily Crystal",
 	"category": "roxyapi",
 	"icon": "star-filled",
-	"description": "Daily Crystal",
+	"description": "Get the crystal of the day as a discovery teaser",
 	"keywords": [
-		"crystals and healing stones",
+		"crystals",
 		"roxyapi",
 		"get",
 		"daily"

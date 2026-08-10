@@ -20,7 +20,7 @@ class CalculateCompatibilityForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'calculateCompatibility',
-			'title'        => __( 'Compatibility Score. Relationship compatibility analysis with category breakdown', 'roxyapi' ),
+			'title'        => __( 'Compatibility Score', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
 			'sections'     => array(
 				array(

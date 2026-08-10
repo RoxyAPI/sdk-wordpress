@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/list-zodiac-signs",
-	"title": "Get all zodiac signs - Complete zodiac signs list with dates and elements (Western Astrology)",
+	"title": "Zodiac Signs (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Get all zodiac signs - Complete zodiac signs list with dates and elements",
+	"description": "Complete zodiac signs list with dates and elements",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

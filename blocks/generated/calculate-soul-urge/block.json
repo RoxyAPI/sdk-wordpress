@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-soul-urge",
-	"title": "Calculate Soul Urge number - Inner motivations and desires (Numerology)",
+	"title": "Soul Urge Number (Numerology)",
 	"category": "roxyapi",
 	"icon": "chart-line",
-	"description": "Calculate Soul Urge number - Inner motivations and desires",
+	"description": "Inner motivations and desires",
 	"keywords": [
 		"numerology",
 		"roxyapi",

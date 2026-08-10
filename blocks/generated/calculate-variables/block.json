@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-variables",
-	"title": "Calculate Human Design Variables - The four arrows and Color, Tone, Base substructure (Human Design)",
+	"title": "Human Design Variables",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Calculate Human Design Variables - The four arrows and Color, Tone, Base substructure",
+	"description": "The four arrows and Color, Tone, Base substructure",
 	"keywords": [
 		"human design",
 		"roxyapi",

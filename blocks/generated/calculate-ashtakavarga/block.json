@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-ashtakavarga",
-	"title": "Get Ashtakavarga (planetary strength) analysis - Ashtakavarga Calculator API (Vedic Astrology)",
+	"title": "Ashtakavarga (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get Ashtakavarga (planetary strength) analysis - Ashtakavarga Calculator API",
+	"description": "Calculate complete Ashtakavarga analysis per Brihat Parashara Hora Shastra (BPHS)",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

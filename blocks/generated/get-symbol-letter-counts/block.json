@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-symbol-letter-counts",
-	"title": "Get symbol counts by letter (Dreams)",
+	"title": "Symbol Counts by Letter (Dream Interpretation)",
 	"category": "roxyapi",
 	"icon": "book",
-	"description": "Get symbol counts by letter",
+	"description": "Get the count of dream symbols available for each letter A-Z",
 	"keywords": [
-		"dreams",
+		"dream interpretation",
 		"roxyapi",
 		"get",
 		"symbol"

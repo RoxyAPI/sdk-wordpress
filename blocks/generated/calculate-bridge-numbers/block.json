@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-bridge-numbers",
-	"title": "Calculate Bridge Numbers - Harmonize different aspects of personality (Numerology)",
+	"title": "Bridge Numbers (Numerology)",
 	"category": "roxyapi",
 	"icon": "chart-line",
-	"description": "Calculate Bridge Numbers - Harmonize different aspects of personality",
+	"description": "Harmonize different aspects of personality",
 	"keywords": [
 		"numerology",
 		"roxyapi",

@@ -302,7 +302,8 @@ class SettingsFields {
 		$opts    = SettingsSchema::get_option();
 		$current = ! empty( $opts['hide_readings'] );
 		return sprintf(
-			'<label class="roxyapi-attribution-toggle"><input type="checkbox" name="roxyapi_settings[hide_readings]" value="1"%s /> <span>%s</span></label>',
+			'%s<label class="roxyapi-attribution-toggle"><input type="checkbox" name="roxyapi_settings[hide_readings]" value="1"%s /> <span>%s</span></label>',
+			self::checkbox_presence_field( 'hide_readings' ),
 			$current ? ' checked' : '',
 			esc_html__( 'Hide the written text on every reading. Charts, tables, and values still show.', 'roxyapi' )
 		);
@@ -317,7 +318,8 @@ class SettingsFields {
 		$opts    = SettingsSchema::get_option();
 		$current = ! empty( $opts['disclaimer_show'] );
 		return sprintf(
-			'<label class="roxyapi-attribution-toggle"><input type="checkbox" name="roxyapi_settings[disclaimer_show]" value="1"%s /> <span>%s</span></label>',
+			'%s<label class="roxyapi-attribution-toggle"><input type="checkbox" name="roxyapi_settings[disclaimer_show]" value="1"%s /> <span>%s</span></label>',
+			self::checkbox_presence_field( 'disclaimer_show' ),
 			$current ? ' checked' : '',
 			esc_html__( 'Show a disclaimer line at the bottom of every reading.', 'roxyapi' )
 		);
@@ -403,12 +405,37 @@ class SettingsFields {
 		$opts    = get_option( SettingsPage::OPTION_NAME, array() );
 		$current = is_array( $opts ) && ! empty( $opts['attribution_show'] );
 		return sprintf(
-			'<label class="roxyapi-attribution-toggle">'
+			'%s<label class="roxyapi-attribution-toggle">'
 				. '<input type="checkbox" name="roxyapi_settings[attribution_show]" value="1"%s />'
 				. ' <span>%s</span>'
 				. '</label>',
+			self::checkbox_presence_field( 'attribution_show' ),
 			$current ? ' checked' : '',
 			esc_html__( 'Show source line on each reading.', 'roxyapi' )
+		);
+	}
+
+	/**
+	 * The hidden half of a checkbox, emitted immediately before it.
+	 *
+	 * A browser posts nothing at all for an unticked box, so on its own the
+	 * sanitiser cannot tell "the owner unticked this" from "this field is not on
+	 * the form being saved". Every tab here is a separate form, so without this
+	 * the second case looked like the first and saving Branding silently switched
+	 * off the Display toggles. The pair makes presence mean "this form owns the
+	 * field" and the value mean what the owner chose; PHP keeps the LAST value
+	 * for a repeated key, so a ticked box overrides this `0`.
+	 *
+	 * Emit this for every new checkbox. A bare checkbox will look like it works
+	 * and will quietly clear on an unrelated save.
+	 *
+	 * @param string $key Option key, which is also the input name.
+	 * @return string Pre-escaped HTML.
+	 */
+	private static function checkbox_presence_field( string $key ): string {
+		return sprintf(
+			'<input type="hidden" name="roxyapi_settings[%s]" value="0" />',
+			esc_attr( $key )
 		);
 	}
 
@@ -463,7 +490,24 @@ class SettingsFields {
 
 			switch ( $type ) {
 				case 'bool':
-					$out[ $option_key ] = ! empty( $input[ $input_key ] );
+					// An unticked checkbox posts nothing, so "absent" has to carry
+					// two meanings and the FORM is what tells them apart: every
+					// checkbox is preceded by a hidden field of the same name, so
+					// the key is always present on the tab that owns it (`0`
+					// unticked, `1` ticked). Genuinely absent therefore means the
+					// submitted form does not carry this field at all, and the
+					// stored value is kept.
+					//
+					// Without that pairing every tab is its own form, so saving
+					// Branding or Advanced rebuilt the option with all three
+					// toggles false and silently switched off hide written
+					// readings, show source and the disclaimer, none of which the
+					// site owner had touched.
+					if ( isset( $input[ $input_key ] ) ) {
+						$out[ $option_key ] = ! empty( $input[ $input_key ] );
+					} else {
+						$out[ $option_key ] = ! empty( $existing[ $option_key ] );
+					}
 					break;
 
 				case 'int':

@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-maturity",
-	"title": "Calculate Maturity number - Who you become in later life (Numerology)",
+	"title": "Maturity Number (Numerology)",
 	"category": "roxyapi",
 	"icon": "chart-line",
-	"description": "Calculate Maturity number - Who you become in later life",
+	"description": "Who you become in later life",
 	"keywords": [
 		"numerology",
 		"roxyapi",

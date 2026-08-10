@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/generate-bodygraph",
-	"title": "Generate full Human Design bodygraph - Type, authority, profile, centers, channels, gates (Human Design)",
+	"title": "Human Design Bodygraph",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Generate full Human Design bodygraph - Type, authority, profile, centers, channels, gates",
+	"description": "Type, authority, profile, centers, channels, gates",
 	"keywords": [
 		"human design",
 		"roxyapi",

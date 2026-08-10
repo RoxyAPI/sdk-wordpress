@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-kp-cusps",
-	"title": "Get KP Placidus house cusps with sub-lords (Vedic Astrology)",
+	"title": "KP Placidus House Cusps (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get KP Placidus house cusps with sub-lords",
+	"description": "Calculate unequal Placidus house cusps with ruling sign-lord, nakshatra-lord, and sub-lord for each cusp",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

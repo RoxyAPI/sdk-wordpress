@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-centers",
-	"title": "Calculate the nine Human Design centers (Human Design)",
+	"title": "Human Design Centers",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Calculate the nine Human Design centers",
+	"description": "Calculate the state of all nine Human Design centers for a birth moment: whether each is defined or open, whether it is a motor or an awareness center, its theme, and the active gates it holds",
 	"keywords": [
 		"human design",
 		"roxyapi",

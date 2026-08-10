@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-monthly-transits",
-	"title": "Monthly Transit - Planetary sign changes for an entire month (Vedic Astrology)",
+	"title": "Monthly Transit (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Monthly Transit - Planetary sign changes for an entire month",
+	"description": "Planetary sign changes for an entire month",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

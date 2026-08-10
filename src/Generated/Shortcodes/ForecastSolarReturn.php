@@ -21,6 +21,25 @@ class ForecastSolarReturn {
 
 	public const TAG = 'roxy_forecast_solar_return';
 
+	/**
+	 * Every attribute this shortcode accepts. shortcode_atts() silently
+	 * discards anything absent from here, so this is also the contract the
+	 * library copy-paste sample is checked against.
+	 *
+	 * @var array<string, string>
+	 */
+	public const DEFAULTS = array(
+		'date' => '',
+		'time' => '',
+		'year' => '',
+		'latitude' => '',
+		'longitude' => '',
+		'timezone' => '',
+		'house_system' => '',
+		'lang' => '',
+		'hide_readings' => 'inherit',
+	);
+
 	public static function register(): void {
 		if ( shortcode_exists( self::TAG ) ) {
 			return;
@@ -30,16 +49,7 @@ class ForecastSolarReturn {
 
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
-			array(
-			'date' => '',
-			'time' => '',
-			'year' => '',
-			'latitude' => '',
-			'longitude' => '',
-			'timezone' => '',
-			'house_system' => '',
-			'hide_readings' => 'inherit',
-			),
+			self::DEFAULTS,
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
 		);
@@ -60,7 +70,15 @@ class ForecastSolarReturn {
 				return $v !== '';
 			}
 		);
-		$data = \RoxyAPI\Generated\Client::forecastSolarReturn( $body );
+		$query = array_filter(
+			array(
+				'lang' => $atts['lang'],
+			),
+			static function ( $v ) {
+				return $v !== '';
+			}
+		);
+		$data = \RoxyAPI\Generated\Client::forecastSolarReturn( $body, $query );
 
 		if ( is_wp_error( $data ) ) {
 			return \RoxyAPI\Support\Templates::api_error( $data );

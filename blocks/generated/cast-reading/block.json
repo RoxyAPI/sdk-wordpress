@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/cast-reading",
-	"title": "Cast an I-Ching reading (I-Ching)",
+	"title": "Cast an I-Ching Reading",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "Cast an I-Ching reading",
+	"description": "Generate an authentic I-Ching reading using the traditional three-coin casting method",
 	"keywords": [
-		"i-ching",
+		"i ching",
 		"roxyapi",
 		"cast",
 		"reading"

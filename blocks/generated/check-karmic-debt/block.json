@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/check-karmic-debt",
-	"title": "Detect Karmic Debt numbers - Past life challenges (13, 14, 16, 19) (Numerology)",
+	"title": "Karmic Debt Numbers (Numerology)",
 	"category": "roxyapi",
 	"icon": "chart-line",
-	"description": "Detect Karmic Debt numbers - Past life challenges (13, 14, 16, 19)",
+	"description": "Past life challenges (13, 14, 16, 19)",
 	"keywords": [
 		"numerology",
 		"roxyapi",

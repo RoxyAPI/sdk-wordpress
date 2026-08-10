@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-birth-day",
-	"title": "Calculate Birth Day number - Special talents from day of birth (Numerology)",
+	"title": "Birth Day Number (Numerology)",
 	"category": "roxyapi",
 	"icon": "chart-line",
-	"description": "Calculate Birth Day number - Special talents from day of birth",
+	"description": "Special talents from day of birth",
 	"keywords": [
 		"numerology",
 		"roxyapi",

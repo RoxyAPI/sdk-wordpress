@@ -145,11 +145,23 @@ class FormRouter {
 
 	/**
 	 * Read the result transient (if any) for a given form on the GET that
-	 * follows a PRG redirect. Single-use: deletes the transient after read so
-	 * a refresh does not show stale data.
+	 * follows a PRG redirect.
+	 *
+	 * **Single-use, and deliberately so.** The stored payload carries the birth
+	 * details the visitor typed, so it is deleted the moment it has been
+	 * delivered rather than kept for the whole TTL. That is why a refresh, a
+	 * bookmark, or a shared link cannot re-render a reading.
+	 *
+	 * What it must NOT do is fail silently. A well-formed token that no longer
+	 * resolves used to return `null`, indistinguishable from "no result was
+	 * requested", so the page rendered an empty form with no explanation and a
+	 * visitor who refreshed read that as the site having lost their chart.
+	 * That case now returns `array( 'expired' => true )` so the renderer can say
+	 * so. Callers must therefore check `expired` before treating the array as a
+	 * result.
 	 *
 	 * @param string $form_id Form id (matches `spec()['operation_id']`).
-	 * @return array<string,mixed>|null
+	 * @return array<string,mixed>|null Result payload, `['expired' => true]`, or null when no result was requested.
 	 */
 	public static function consume_result( string $form_id ): ?array {
 		// `$_GET['roxyapi_r']` is an opaque token (no DB semantics on its own);
@@ -169,7 +181,13 @@ class FormRouter {
 		$transient_key = self::transient_key( $form_id, $token );
 		$data          = get_transient( $transient_key );
 		delete_transient( $transient_key );
-		return is_array( $data ) ? $data : null;
+		if ( is_array( $data ) ) {
+			return $data;
+		}
+
+		// The token was well formed but resolves to nothing: it has already been
+		// consumed, or the transient expired. Distinct from "no result asked for".
+		return array( 'expired' => true );
 	}
 
 	/**

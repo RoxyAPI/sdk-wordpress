@@ -180,7 +180,7 @@ class Catalog {
 			$rows[]                      = array(
 				'operationId' => (string) $op_id,
 				'tag'         => $shortcode_tag,
-				'title'       => self::humanise_op_id( (string) $op_id ),
+				'title'       => (string) ( $ep['display_name'] ?? $op_id ),
 				'description' => (string) $ep['summary'],
 				'domain'      => $domain_info['label'],
 				'domain_slug' => $domain_info['slug'],
@@ -283,7 +283,7 @@ class Catalog {
 	 * Endpoints index. Wraps the generated registry in a defensive callable
 	 * lookup so PHPStan stays happy if generation has not run.
 	 *
-	 * @return array<string, array{path: string, method: string, tag: string, summary: string, ttl: int, hero: bool, block_only: bool, attributes: array<string, string>}>
+	 * @return array<string, array{path: string, method: string, tag: string, summary: string, display_name: string, ttl: int, hero: bool, block_only: bool, attributes: array<string, string>}>
 	 */
 	private static function endpoints_index(): array {
 		if ( ! class_exists( '\\RoxyAPI\\Generated\\Endpoints' ) ) {
@@ -322,21 +322,5 @@ class Catalog {
 			return '';
 		}
 		return (string) ( $entry['operation_id'] ?? '' );
-	}
-
-	/**
-	 * Humanise an operationId for display: split on caps, title-case words.
-	 *
-	 * Example: "getMonthlyHoroscope" -> "Get Monthly Horoscope".
-	 *
-	 * @param string $op_id Operation id from the OpenAPI spec.
-	 * @return string Humanised label.
-	 */
-	private static function humanise_op_id( string $op_id ): string {
-		$lower = \RoxyAPI\Support\Strings::camel_to_words( $op_id );
-		if ( $lower === '' ) {
-			return $op_id;
-		}
-		return ucwords( $lower );
 	}
 }

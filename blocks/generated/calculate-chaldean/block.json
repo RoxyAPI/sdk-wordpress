@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-chaldean",
-	"title": "Chaldean numerology name reading - Destiny, compound number, planetary ruler (Numerology)",
+	"title": "Chaldean Numerology Name Reading",
 	"category": "roxyapi",
 	"icon": "chart-line",
-	"description": "Chaldean numerology name reading - Destiny, compound number, planetary ruler",
+	"description": "Destiny, compound number, planetary ruler",
 	"keywords": [
 		"numerology",
 		"roxyapi",

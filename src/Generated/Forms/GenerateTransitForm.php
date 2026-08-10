@@ -20,7 +20,7 @@ class GenerateTransitForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'generateTransit',
-			'title'        => __( 'Generate Human Design transit overlay - Current planetary activations on a natal bodygraph', 'roxyapi' ),
+			'title'        => __( 'Human Design Transit Overlay', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
 			'sections'     => array(
 				array(

@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-crystal",
-	"title": "Get Crystal Healing Properties (Crystals and Healing Stones)",
+	"title": "Crystal Healing Properties",
 	"category": "roxyapi",
 	"icon": "star-filled",
-	"description": "Get Crystal Healing Properties",
+	"description": "Get complete healing properties and metaphysical data for a specific crystal or gemstone",
 	"keywords": [
-		"crystals and healing stones",
+		"crystals",
 		"roxyapi",
 		"get",
 		"crystal"

@@ -89,13 +89,27 @@ class ComponentRenderer {
 			return GenericRenderer::render( $operation_id, $data, true, $hide );
 		}
 
-		if ( count( $rows ) > 1 ) {
-			$markup = sprintf(
-				'<div class="roxyapi-component-stack" data-operation="%s">%s</div>',
-				esc_attr( $operation_id ),
-				$markup
-			);
-		}
+		// Always wrapped, and the wrapper is load-bearing rather than cosmetic.
+		//
+		// `wpautop` runs on `the_content` at priority 10 and `do_shortcode` at 11,
+		// so a shortcode sitting inline with text is already inside a `<p>` by the
+		// time this markup is substituted in. `<div>` may not appear inside `<p>`,
+		// so the parser closed the paragraph at the fallback `<div>` and hoisted it
+		// OUT of the custom element. Once outside, it matches neither
+		// `.roxyapi-component:defined .roxyapi-component-fallback` nor its
+		// `:not(:defined)` partner, so it defaulted to visible and the reading
+		// rendered twice: once in the upgraded component and once as an unstyled,
+		// unbranded copy underneath.
+		//
+		// A block-level wrapper moves the parser's break point outside the element.
+		// The `<p>` still closes, but it closes HERE, and everything below stays
+		// nested exactly as written. The fallback keeps its light-DOM home, so the
+		// no-JS and failed-bundle views are unchanged. Do not make this conditional.
+		$markup = sprintf(
+			'<div class="roxyapi-embed" data-operation="%s">%s</div>',
+			esc_attr( $operation_id ),
+			$markup
+		);
 
 		// Disclaimer and attribution render OUTSIDE the custom element. An
 		// element hides its light-DOM fallback once it upgrades, so anything

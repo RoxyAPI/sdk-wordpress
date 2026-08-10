@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-transit",
-	"title": "Transit Analysis - Compare current planets to natal chart (Gochar) (Vedic Astrology)",
+	"title": "Transit Analysis (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Transit Analysis - Compare current planets to natal chart (Gochar)",
+	"description": "Compare current planets to natal chart (Gochar)",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

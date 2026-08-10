@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-monthly-aspects",
-	"title": "Monthly Planetary Aspects - Major and minor aspect events for a month (Vedic Astrology)",
+	"title": "Monthly Planetary Aspects (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Monthly Planetary Aspects - Major and minor aspect events for a month",
+	"description": "Major and minor aspect events for a month",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-current-dasha",
-	"title": "Get current Mahadasha, Antardasha, Pratyantardasha, Sookshma, Prana - Dasha Calculator API (Vedic Astrology)",
+	"title": "Current Mahadasha (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get current Mahadasha, Antardasha, Pratyantardasha, Sookshma, Prana - Dasha Calculator API",
+	"description": "Calculate all five running Vimshottari Dasha levels (Mahadasha, Antardasha, Pratyantardasha, Sookshma, Prana) with remaining time in each",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

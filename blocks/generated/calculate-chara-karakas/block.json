@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-chara-karakas",
-	"title": "Get Chara Karakas including Atmakaraka - Jaimini Karaka Calculator API (Vedic Astrology)",
+	"title": "Chara Karakas (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get Chara Karakas including Atmakaraka - Jaimini Karaka Calculator API",
+	"description": "Calculate the Chara Karakas of Jaimini astrology from birth details: the movable significators assigned by ranking each graha on how far it has advanced into its sign",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-kp-ruling-planets",
-	"title": "Get KP ruling planets with optional significators (Vedic Astrology)",
+	"title": "KP Ruling Planets with Optional Significators (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get KP ruling planets with optional significators",
+	"description": "Calculate the 5 ruling planets at any moment using Krishnamurti Paddhati horary astrology",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

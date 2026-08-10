@@ -122,18 +122,19 @@ class Client {
 	 * Generate natal chart - Birth chart calculator API with houses and aspects
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateNatalChart( $body = array() ) {
+	public static function generateNatalChart( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/natal-chart',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/natal-chart', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/natal-chart', $body, $query );
 			}
 		);
 	}
@@ -142,18 +143,19 @@ class Client {
 	 * Get planetary positions - Ephemeris calculator for all planets
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getPlanetaryPositions( $body = array() ) {
+	public static function getPlanetaryPositions( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/planets',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/planets', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/planets', $body, $query );
 			}
 		);
 	}
@@ -162,15 +164,16 @@ class Client {
 	 * Monthly Ephemeris - Daily tropical planetary positions for a month
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getMonthlyTropicalEphemeris( $body = array() ) {
+	public static function getMonthlyTropicalEphemeris( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/planets/monthly',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/planets/monthly', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/planets/monthly', $body, $query );
 			}
 		);
 	}
@@ -262,18 +265,19 @@ class Client {
 	 * Calculate synastry - Relationship compatibility analysis API
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateSynastry( $body = array() ) {
+	public static function calculateSynastry( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'person1', 'person2' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/synastry',
-			$body,
+			array_merge( $body, $query ),
 			604800,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/synastry', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/synastry', $body, $query );
 			}
 		);
 	}
@@ -282,18 +286,19 @@ class Client {
 	 * Calculate house cusps - House system calculator with comparison
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateHouses( $body = array() ) {
+	public static function calculateHouses( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/houses',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/houses', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/houses', $body, $query );
 			}
 		);
 	}
@@ -302,18 +307,19 @@ class Client {
 	 * Calculate planetary aspects - Aspect finder for any date and time
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateAspects( $body = array() ) {
+	public static function calculateAspects( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/aspects',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/aspects', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/aspects', $body, $query );
 			}
 		);
 	}
@@ -322,18 +328,19 @@ class Client {
 	 * Detect aspect patterns - Grand Trine, Kite, T-Square, Grand Cross, Yod, Mystic Rectangle, Stellium
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function detectAspectPatterns( $body = array() ) {
+	public static function detectAspectPatterns( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/aspect-patterns',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/aspect-patterns', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/aspect-patterns', $body, $query );
 			}
 		);
 	}
@@ -342,15 +349,16 @@ class Client {
 	 * Calculate planetary transits - Current transits with natal chart comparison
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateTransits( $body = array() ) {
+	public static function calculateTransits( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/transits',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/transits', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/transits', $body, $query );
 			}
 		);
 	}
@@ -359,18 +367,19 @@ class Client {
 	 * Transit Aspects - Detailed transit-to-natal aspect analysis with interpretations
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateTransitAspects( $body = array() ) {
+	public static function calculateTransitAspects( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'natalChart' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/transit-aspects',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/transit-aspects', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/transit-aspects', $body, $query );
 			}
 		);
 	}
@@ -379,18 +388,19 @@ class Client {
 	 * Solar Return Chart - Annual birthday forecast with relocated chart
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateSolarReturn( $body = array() ) {
+	public static function generateSolarReturn( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'birthDate', 'birthTime', 'returnYear', 'latitude', 'longitude', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/solar-return',
-			$body,
+			array_merge( $body, $query ),
 			86400,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/solar-return', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/solar-return', $body, $query );
 			}
 		);
 	}
@@ -399,18 +409,19 @@ class Client {
 	 * Lunar Return Chart - Monthly emotional forecast with Moon cycle chart
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateLunarReturn( $body = array() ) {
+	public static function generateLunarReturn( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'birthDate', 'birthTime', 'returnDate', 'latitude', 'longitude', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/lunar-return',
-			$body,
+			array_merge( $body, $query ),
 			86400,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/lunar-return', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/lunar-return', $body, $query );
 			}
 		);
 	}
@@ -419,18 +430,19 @@ class Client {
 	 * Composite Chart - Midpoint relationship chart with interpretations
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateCompositeChart( $body = array() ) {
+	public static function generateCompositeChart( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'person1', 'person2' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/composite-chart',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/composite-chart', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/composite-chart', $body, $query );
 			}
 		);
 	}
@@ -439,18 +451,19 @@ class Client {
 	 * Compatibility Score. Relationship compatibility analysis with category breakdown
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateCompatibility( $body = array() ) {
+	public static function calculateCompatibility( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'person1', 'person2' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/compatibility-score',
-			$body,
+			array_merge( $body, $query ),
 			604800,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/compatibility-score', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/compatibility-score', $body, $query );
 			}
 		);
 	}
@@ -546,18 +559,19 @@ class Client {
 	 * Planetary Return Chart - Saturn return, Jupiter return, and inner planet cycles
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generatePlanetaryReturn( $body = array() ) {
+	public static function generatePlanetaryReturn( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'birthDate', 'birthTime', 'planet', 'approximateDate', 'latitude', 'longitude', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/planetary-returns',
-			$body,
+			array_merge( $body, $query ),
 			86400,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/planetary-returns', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/planetary-returns', $body, $query );
 			}
 		);
 	}
@@ -566,18 +580,19 @@ class Client {
 	 * Astrocartography map - planetary lines and relocation calculator
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateAstrocartography( $body = array() ) {
+	public static function generateAstrocartography( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/astrocartography',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/astrocartography', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/astrocartography', $body, $query );
 			}
 		);
 	}
@@ -586,18 +601,19 @@ class Client {
 	 * Generate relocation chart - Relocated birth chart calculator with shifted houses and angles
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateRelocationChart( $body = array() ) {
+	public static function generateRelocationChart( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'timezone', 'birthLatitude', 'birthLongitude', 'relocationLatitude', 'relocationLongitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/relocation-chart',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/relocation-chart', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/relocation-chart', $body, $query );
 			}
 		);
 	}
@@ -606,18 +622,19 @@ class Client {
 	 * Local space astrology map - Directional planetary compass lines
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateLocalSpace( $body = array() ) {
+	public static function generateLocalSpace( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/local-space',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/local-space', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/local-space', $body, $query );
 			}
 		);
 	}
@@ -626,18 +643,19 @@ class Client {
 	 * Fixed stars and star conjunctions calculator - Regulus, Spica, Algol natal report
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateFixedStars( $body = array() ) {
+	public static function generateFixedStars( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/fixed-stars',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/fixed-stars', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/fixed-stars', $body, $query );
 			}
 		);
 	}
@@ -646,18 +664,19 @@ class Client {
 	 * Arabic lots calculator - seven Hermetic parts including Part of Fortune and Spirit
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateArabicLots( $body = array() ) {
+	public static function calculateArabicLots( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/arabic-lots',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/arabic-lots', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/arabic-lots', $body, $query );
 			}
 		);
 	}
@@ -666,18 +685,19 @@ class Client {
 	 * Asteroid goddesses calculator - Ceres, Pallas, Juno, and Vesta natal positions
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateAsteroids( $body = array() ) {
+	public static function generateAsteroids( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/asteroids',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/asteroids', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/asteroids', $body, $query );
 			}
 		);
 	}
@@ -686,18 +706,19 @@ class Client {
 	 * Black Moon Lilith calculator - mean and true lunar apogee in the natal chart
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateLilith( $body = array() ) {
+	public static function generateLilith( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/lilith',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/lilith', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/lilith', $body, $query );
 			}
 		);
 	}
@@ -706,18 +727,19 @@ class Client {
 	 * Secondary progressions calculator - progressed chart, progressed Sun and Moon
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateProgressions( $body = array() ) {
+	public static function generateProgressions( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude', 'timezone', 'targetDate' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/progressions',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/progressions', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/progressions', $body, $query );
 			}
 		);
 	}
@@ -726,18 +748,19 @@ class Client {
 	 * Solar arc directions calculator - directed chart at one degree per year
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateSolarArc( $body = array() ) {
+	public static function generateSolarArc( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude', 'timezone', 'targetDate' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/solar-arc',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/solar-arc', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/solar-arc', $body, $query );
 			}
 		);
 	}
@@ -746,18 +769,19 @@ class Client {
 	 * Annual profections calculator - lord of the year and yearly time lord by age
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateProfections( $body = array() ) {
+	public static function generateProfections( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude', 'timezone', 'targetDate' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'astrology/profections',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'astrology/profections', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/profections', $body, $query );
 			}
 		);
 	}
@@ -766,18 +790,19 @@ class Client {
 	 * Get birth chart (D1 Rashi chart) - Kundli Calculator API
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateBirthChart( $body = array() ) {
+	public static function generateBirthChart( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/birth-chart',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/birth-chart', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/birth-chart', $body, $query );
 			}
 		);
 	}
@@ -786,18 +811,19 @@ class Client {
 	 * Get Navamsa chart (D9) - Marriage Compatibility Calculator
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateNavamsa( $body = array() ) {
+	public static function generateNavamsa( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/navamsa',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/navamsa', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/navamsa', $body, $query );
 			}
 		);
 	}
@@ -806,18 +832,19 @@ class Client {
 	 * Get divisional chart (Varga) - D2 to D60 Calculator
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateDivisionalChart( $body = array() ) {
+	public static function generateDivisionalChart( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude', 'division' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/divisional-chart',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/divisional-chart', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/divisional-chart', $body, $query );
 			}
 		);
 	}
@@ -826,18 +853,19 @@ class Client {
 	 * Calculate compatibility score - Gun Milan API (Ashtakoot Matching)
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateGunMilan( $body = array() ) {
+	public static function calculateGunMilan( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'person1', 'person2' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/compatibility',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/compatibility', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/compatibility', $body, $query );
 			}
 		);
 	}
@@ -846,18 +874,19 @@ class Client {
 	 * Get planetary positions - Graha Positions API
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getPlanetPositions( $body = array() ) {
+	public static function getPlanetPositions( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/planetary-positions',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/planetary-positions', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/planetary-positions', $body, $query );
 			}
 		);
 	}
@@ -866,15 +895,16 @@ class Client {
 	 * Monthly Ephemeris - Daily sidereal planetary positions for a month
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getMonthlyEphemeris( $body = array() ) {
+	public static function getMonthlyEphemeris( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/planetary-positions/monthly',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/planetary-positions/monthly', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/planetary-positions/monthly', $body, $query );
 			}
 		);
 	}
@@ -883,18 +913,19 @@ class Client {
 	 * Get current Mahadasha, Antardasha, Pratyantardasha, Sookshma, Prana - Dasha Calculator API
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getCurrentDasha( $body = array() ) {
+	public static function getCurrentDasha( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/dasha/current',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dasha/current', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dasha/current', $body, $query );
 			}
 		);
 	}
@@ -903,18 +934,19 @@ class Client {
 	 * Get all 9 Mahadasha periods (120-year cycle)
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getMajorDashas( $body = array() ) {
+	public static function getMajorDashas( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/dasha/major',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dasha/major', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dasha/major', $body, $query );
 			}
 		);
 	}
@@ -923,9 +955,10 @@ class Client {
 	 * Get all Antardashas (sub-periods) for a specific Mahadasha
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getSubDashas( $mahadasha, $body = array() ) {
+	public static function getSubDashas( $mahadasha, $body = array(), $query = array() ) {
 		if ( $mahadasha === '' || $mahadasha === null ) {
 			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'mahadasha' ) );
 		}
@@ -934,10 +967,10 @@ class Client {
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body, $mahadasha ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '', $body );
+			static function () use ( $body, $query, $mahadasha ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '', $body, $query );
 			}
 		);
 	}
@@ -946,9 +979,10 @@ class Client {
 	 * Get all Pratyantardashas (antara periods) for a Mahadasha and Antardasha
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getPratyantardashas( $mahadasha, $antardasha, $body = array() ) {
+	public static function getPratyantardashas( $mahadasha, $antardasha, $body = array(), $query = array() ) {
 		if ( $mahadasha === '' || $mahadasha === null ) {
 			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'mahadasha' ) );
 		}
@@ -960,10 +994,10 @@ class Client {
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '/' . rawurlencode( $antardasha ) . '',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body, $mahadasha, $antardasha ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '/' . rawurlencode( $antardasha ) . '', $body );
+			static function () use ( $body, $query, $mahadasha, $antardasha ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '/' . rawurlencode( $antardasha ) . '', $body, $query );
 			}
 		);
 	}
@@ -972,9 +1006,10 @@ class Client {
 	 * Get all Sookshma dashas for a Mahadasha, Antardasha and Pratyantardasha
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getSookshmaDashas( $mahadasha, $antardasha, $pratyantardasha, $body = array() ) {
+	public static function getSookshmaDashas( $mahadasha, $antardasha, $pratyantardasha, $body = array(), $query = array() ) {
 		if ( $mahadasha === '' || $mahadasha === null ) {
 			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'mahadasha' ) );
 		}
@@ -989,10 +1024,10 @@ class Client {
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '/' . rawurlencode( $antardasha ) . '/' . rawurlencode( $pratyantardasha ) . '',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body, $mahadasha, $antardasha, $pratyantardasha ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '/' . rawurlencode( $antardasha ) . '/' . rawurlencode( $pratyantardasha ) . '', $body );
+			static function () use ( $body, $query, $mahadasha, $antardasha, $pratyantardasha ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '/' . rawurlencode( $antardasha ) . '/' . rawurlencode( $pratyantardasha ) . '', $body, $query );
 			}
 		);
 	}
@@ -1001,9 +1036,10 @@ class Client {
 	 * Get all Prana dashas for a Mahadasha, Antardasha, Pratyantardasha and Sookshma
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getPranaDashas( $mahadasha, $antardasha, $pratyantardasha, $sookshma, $body = array() ) {
+	public static function getPranaDashas( $mahadasha, $antardasha, $pratyantardasha, $sookshma, $body = array(), $query = array() ) {
 		if ( $mahadasha === '' || $mahadasha === null ) {
 			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'mahadasha' ) );
 		}
@@ -1021,10 +1057,10 @@ class Client {
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '/' . rawurlencode( $antardasha ) . '/' . rawurlencode( $pratyantardasha ) . '/' . rawurlencode( $sookshma ) . '',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body, $mahadasha, $antardasha, $pratyantardasha, $sookshma ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '/' . rawurlencode( $antardasha ) . '/' . rawurlencode( $pratyantardasha ) . '/' . rawurlencode( $sookshma ) . '', $body );
+			static function () use ( $body, $query, $mahadasha, $antardasha, $pratyantardasha, $sookshma ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dasha/sub/' . rawurlencode( $mahadasha ) . '/' . rawurlencode( $antardasha ) . '/' . rawurlencode( $pratyantardasha ) . '/' . rawurlencode( $sookshma ) . '', $body, $query );
 			}
 		);
 	}
@@ -1033,18 +1069,19 @@ class Client {
 	 * Get basic Panchang - Tithi Nakshatra Yoga Karana Calculator
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getBasicPanchang( $body = array() ) {
+	public static function getBasicPanchang( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/panchang/basic',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/panchang/basic', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/panchang/basic', $body, $query );
 			}
 		);
 	}
@@ -1053,18 +1090,19 @@ class Client {
 	 * Get detailed Panchang with Rahu Kaal, Yamaganda, Gulika
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getDetailedPanchang( $body = array() ) {
+	public static function getDetailedPanchang( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/panchang/detailed',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/panchang/detailed', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/panchang/detailed', $body, $query );
 			}
 		);
 	}
@@ -1113,18 +1151,19 @@ class Client {
 	 * Check Manglik Dosha - Mangal Dosha Calculator API
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function checkManglikDosha( $body = array() ) {
+	public static function checkManglikDosha( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/dosha/manglik',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dosha/manglik', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dosha/manglik', $body, $query );
 			}
 		);
 	}
@@ -1133,18 +1172,19 @@ class Client {
 	 * Check Kalsarpa Dosha - Kalsarpa Yoga Calculator API
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function checkKalsarpaDosha( $body = array() ) {
+	public static function checkKalsarpaDosha( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/dosha/kalsarpa',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dosha/kalsarpa', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dosha/kalsarpa', $body, $query );
 			}
 		);
 	}
@@ -1153,18 +1193,19 @@ class Client {
 	 * Check Sadhesati - Sade Sati Calculator API (Saturn Transit)
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function checkSadhesati( $body = array() ) {
+	public static function checkSadhesati( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/dosha/sadhesati',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dosha/sadhesati', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/dosha/sadhesati', $body, $query );
 			}
 		);
 	}
@@ -1225,18 +1266,19 @@ class Client {
 	 * Detect classical Vedic yogas in a birth chart
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function detectYogas( $body = array() ) {
+	public static function detectYogas( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/yoga/detect',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/yoga/detect', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/yoga/detect', $body, $query );
 			}
 		);
 	}
@@ -1291,18 +1333,19 @@ class Client {
 	 * Get KP Placidus house cusps with sub-lords
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getKpCusps( $body = array() ) {
+	public static function getKpCusps( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/kp/cusps',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/kp/cusps', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/kp/cusps', $body, $query );
 			}
 		);
 	}
@@ -1311,18 +1354,19 @@ class Client {
 	 * Generate complete KP birth chart
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateKpChart( $body = array() ) {
+	public static function generateKpChart( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/kp/chart',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/kp/chart', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/kp/chart', $body, $query );
 			}
 		);
 	}
@@ -1331,18 +1375,19 @@ class Client {
 	 * Get KP ruling planets with optional significators
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getKpRulingPlanets( $body = array() ) {
+	public static function getKpRulingPlanets( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/kp/ruling-planets',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/kp/ruling-planets', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/kp/ruling-planets', $body, $query );
 			}
 		);
 	}
@@ -1351,18 +1396,19 @@ class Client {
 	 * Get KP ruling planets with significators at intervals
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getKpRulingInterval( $body = array() ) {
+	public static function getKpRulingInterval( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'startDatetime', 'endDatetime', 'intervalMinutes', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/kp/ruling-planets-interval',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/kp/ruling-planets-interval', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/kp/ruling-planets-interval', $body, $query );
 			}
 		);
 	}
@@ -1431,18 +1477,19 @@ class Client {
 	 * Cast a KP horary (Prashna) chart from a number 1-249 - KP Horary API
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function castKpHoraryChart( $body = array() ) {
+	public static function castKpHoraryChart( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'horaryNumber', 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/kp/horary',
-			$body,
+			array_merge( $body, $query ),
 			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/kp/horary', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/kp/horary', $body, $query );
 			}
 		);
 	}
@@ -1471,15 +1518,16 @@ class Client {
 	 * Monthly Planetary Aspects - Major and minor aspect events for a month
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getMonthlyAspects( $body = array() ) {
+	public static function getMonthlyAspects( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/aspects/monthly',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/aspects/monthly', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/aspects/monthly', $body, $query );
 			}
 		);
 	}
@@ -1488,15 +1536,16 @@ class Client {
 	 * Monthly Lunar Aspects - Moon aspect events with all planets for a month
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getLunarAspects( $body = array() ) {
+	public static function getLunarAspects( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/aspects/lunar',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/aspects/lunar', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/aspects/lunar', $body, $query );
 			}
 		);
 	}
@@ -1525,15 +1574,16 @@ class Client {
 	 * Monthly Transit - Planetary sign changes for an entire month
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getMonthlyTransits( $body = array() ) {
+	public static function getMonthlyTransits( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/transit/monthly',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/transit/monthly', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/transit/monthly', $body, $query );
 			}
 		);
 	}
@@ -1562,15 +1612,16 @@ class Client {
 	 * Monthly Declination Parallels - Parallel and contraparallel events for a month
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getMonthlyParallels( $body = array() ) {
+	public static function getMonthlyParallels( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/parallels/monthly',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/parallels/monthly', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/parallels/monthly', $body, $query );
 			}
 		);
 	}
@@ -1741,18 +1792,19 @@ class Client {
 	 * Get Shadbala (six-fold planetary strength) analysis - Shadbala Calculator API
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateShadbala( $body = array() ) {
+	public static function calculateShadbala( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/shadbala',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/shadbala', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/shadbala', $body, $query );
 			}
 		);
 	}
@@ -1813,18 +1865,19 @@ class Client {
 	 * Get the twelve Arudha padas - Arudha Lagna Calculator API
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateArudhaPadas( $body = array() ) {
+	public static function calculateArudhaPadas( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/arudha',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/arudha', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/arudha', $body, $query );
 			}
 		);
 	}
@@ -1833,18 +1886,19 @@ class Client {
 	 * Get Chara Karakas including Atmakaraka - Jaimini Karaka Calculator API
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateCharaKarakas( $body = array() ) {
+	public static function calculateCharaKarakas( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/chara-karakas',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/chara-karakas', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/chara-karakas', $body, $query );
 			}
 		);
 	}
@@ -1853,18 +1907,19 @@ class Client {
 	 * Get Bhava Bala (house strength) for all twelve houses - Bhava Bala Calculator API
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateBhavaBala( $body = array() ) {
+	public static function calculateBhavaBala( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/bhava-bala',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/bhava-bala', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/bhava-bala', $body, $query );
 			}
 		);
 	}
@@ -1873,18 +1928,19 @@ class Client {
 	 * Get the Bhav Chalit (Chalit Kundli) cusp-based house chart - Bhav Chalit API
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateBhavChalit( $body = array() ) {
+	public static function calculateBhavChalit( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/bhav-chalit',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/bhav-chalit', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/bhav-chalit', $body, $query );
 			}
 		);
 	}
@@ -1913,18 +1969,19 @@ class Client {
 	 * Cross-domain forecast timeline - Transits, ingresses, stations, dasha changes, critical days
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateTimeline( $body = array() ) {
+	public static function generateTimeline( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'birthData' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'forecast/timeline',
-			$body,
+			array_merge( $body, $query ),
 			86400,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'forecast/timeline', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'forecast/timeline', $body, $query );
 			}
 		);
 	}
@@ -1933,18 +1990,19 @@ class Client {
 	 * Western astrology forecast - aspects, ingresses, stations, eclipses, moon phases
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function forecastTransits( $body = array() ) {
+	public static function forecastTransits( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'birthData' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'forecast/transits',
-			$body,
+			array_merge( $body, $query ),
 			86400,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'forecast/transits', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'forecast/transits', $body, $query );
 			}
 		);
 	}
@@ -1953,18 +2011,19 @@ class Client {
 	 * Significant dates - High-significance cross-domain forecast highlights
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function findSignificantDates( $body = array() ) {
+	public static function findSignificantDates( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'birthData' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'forecast/significant-dates',
-			$body,
+			array_merge( $body, $query ),
 			86400,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'forecast/significant-dates', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'forecast/significant-dates', $body, $query );
 			}
 		);
 	}
@@ -1973,18 +2032,19 @@ class Client {
 	 * Forecast digest - Pre-summarized next 24h, 7d, 30d, and 90d rollups
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateDigest( $body = array() ) {
+	public static function generateDigest( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'birthData' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'forecast/digest',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'forecast/digest', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'forecast/digest', $body, $query );
 			}
 		);
 	}
@@ -1993,18 +2053,19 @@ class Client {
 	 * Solar return chart - Annual birthday forecast chart for a single subject
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function forecastSolarReturn( $body = array() ) {
+	public static function forecastSolarReturn( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'year', 'latitude', 'longitude', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'forecast/solar-return',
-			$body,
+			array_merge( $body, $query ),
 			86400,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'forecast/solar-return', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'forecast/solar-return', $body, $query );
 			}
 		);
 	}
@@ -2013,18 +2074,19 @@ class Client {
 	 * Generate full Human Design bodygraph - Type, authority, profile, centers, channels, gates
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateBodygraph( $body = array() ) {
+	public static function generateBodygraph( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'human-design/bodygraph',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'human-design/bodygraph', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/bodygraph', $body, $query );
 			}
 		);
 	}
@@ -2033,18 +2095,19 @@ class Client {
 	 * Calculate Human Design connection chart - Two-person composite bodygraph compatibility
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateConnection( $body = array() ) {
+	public static function calculateConnection( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'personA', 'personB' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'human-design/connection',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'human-design/connection', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/connection', $body, $query );
 			}
 		);
 	}
@@ -2053,18 +2116,19 @@ class Client {
 	 * Calculate Human Design Penta - Small-group BG5 operating system for three to five people
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculatePenta( $body = array() ) {
+	public static function calculatePenta( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'members' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'human-design/penta',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'human-design/penta', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/penta', $body, $query );
 			}
 		);
 	}
@@ -2073,18 +2137,19 @@ class Client {
 	 * Generate Human Design transit overlay - Current planetary activations on a natal bodygraph
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateTransit( $body = array() ) {
+	public static function generateTransit( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'birthData' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'human-design/transit',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'human-design/transit', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/transit', $body, $query );
 			}
 		);
 	}
@@ -2093,18 +2158,19 @@ class Client {
 	 * Calculate Human Design type, authority and profile
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateType( $body = array() ) {
+	public static function calculateType( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'human-design/type',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'human-design/type', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/type', $body, $query );
 			}
 		);
 	}
@@ -2113,18 +2179,19 @@ class Client {
 	 * Calculate the 26 Human Design gate activations
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateGates( $body = array() ) {
+	public static function calculateGates( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'human-design/gates',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'human-design/gates', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/gates', $body, $query );
 			}
 		);
 	}
@@ -2160,18 +2227,19 @@ class Client {
 	 * Calculate the defined Human Design channels
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateChannels( $body = array() ) {
+	public static function calculateChannels( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'human-design/channels',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'human-design/channels', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/channels', $body, $query );
 			}
 		);
 	}
@@ -2180,18 +2248,19 @@ class Client {
 	 * Calculate the nine Human Design centers
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateCenters( $body = array() ) {
+	public static function calculateCenters( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'human-design/centers',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'human-design/centers', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/centers', $body, $query );
 			}
 		);
 	}
@@ -2227,18 +2296,19 @@ class Client {
 	 * Calculate the Human Design profile and line keynotes
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateProfile( $body = array() ) {
+	public static function calculateProfile( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'human-design/profile',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'human-design/profile', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/profile', $body, $query );
 			}
 		);
 	}
@@ -2247,18 +2317,19 @@ class Client {
 	 * Calculate Human Design Variables - The four arrows and Color, Tone, Base substructure
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateVariables( $body = array() ) {
+	public static function calculateVariables( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'timezone' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'human-design/variables',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'human-design/variables', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'human-design/variables', $body, $query );
 			}
 		);
 	}
@@ -2267,18 +2338,19 @@ class Client {
 	 * Calculate Life Path number - Most important numerology calculation
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateLifePath( $body = array() ) {
+	public static function calculateLifePath( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'year', 'month', 'day' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/life-path',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'numerology/life-path', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/life-path', $body, $query );
 			}
 		);
 	}
@@ -2287,18 +2359,19 @@ class Client {
 	 * Calculate Expression number - Natural talents and life goals
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateExpression( $body = array() ) {
+	public static function calculateExpression( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'fullName' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/expression',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'numerology/expression', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/expression', $body, $query );
 			}
 		);
 	}
@@ -2307,18 +2380,19 @@ class Client {
 	 * Calculate Bridge Numbers - Harmonize different aspects of personality
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateBridgeNumbers( $body = array() ) {
+	public static function calculateBridgeNumbers( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'fullName', 'year', 'month', 'day' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/bridge',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'numerology/bridge', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/bridge', $body, $query );
 			}
 		);
 	}
@@ -2327,18 +2401,19 @@ class Client {
 	 * Calculate Soul Urge number - Inner motivations and desires
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateSoulUrge( $body = array() ) {
+	public static function calculateSoulUrge( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'fullName' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/soul-urge',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'numerology/soul-urge', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/soul-urge', $body, $query );
 			}
 		);
 	}
@@ -2347,18 +2422,19 @@ class Client {
 	 * Calculate Personality number - How others perceive you
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculatePersonality( $body = array() ) {
+	public static function calculatePersonality( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'fullName' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/personality',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'numerology/personality', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/personality', $body, $query );
 			}
 		);
 	}
@@ -2367,18 +2443,19 @@ class Client {
 	 * Calculate Birth Day number - Special talents from day of birth
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateBirthDay( $body = array() ) {
+	public static function calculateBirthDay( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'day' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/birth-day',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'numerology/birth-day', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/birth-day', $body, $query );
 			}
 		);
 	}
@@ -2387,15 +2464,16 @@ class Client {
 	 * Calculate Maturity number - Who you become in later life
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateMaturity( $body = array() ) {
+	public static function calculateMaturity( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/maturity',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'numerology/maturity', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/maturity', $body, $query );
 			}
 		);
 	}
@@ -2404,18 +2482,19 @@ class Client {
 	 * Analyze Karmic Lessons - Life lessons from missing numbers
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function analyzeKarmicLessons( $body = array() ) {
+	public static function analyzeKarmicLessons( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'fullName' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/karmic-lessons',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'numerology/karmic-lessons', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/karmic-lessons', $body, $query );
 			}
 		);
 	}
@@ -2424,15 +2503,16 @@ class Client {
 	 * Detect Karmic Debt numbers - Past life challenges (13, 14, 16, 19)
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function checkKarmicDebt( $body = array() ) {
+	public static function checkKarmicDebt( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/karmic-debt',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'numerology/karmic-debt', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/karmic-debt', $body, $query );
 			}
 		);
 	}
@@ -2441,18 +2521,19 @@ class Client {
 	 * Calculate Personal Day - Daily personalized numerology forecast
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculatePersonalDay( $body = array() ) {
+	public static function calculatePersonalDay( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'month', 'day' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/personal-day',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'numerology/personal-day', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/personal-day', $body, $query );
 			}
 		);
 	}
@@ -2461,18 +2542,19 @@ class Client {
 	 * Calculate Personal Month - Monthly numerology forecast
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculatePersonalMonth( $body = array() ) {
+	public static function calculatePersonalMonth( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'month', 'day' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/personal-month',
-			$body,
+			array_merge( $body, $query ),
 			86400,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'numerology/personal-month', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/personal-month', $body, $query );
 			}
 		);
 	}
@@ -2481,18 +2563,19 @@ class Client {
 	 * Calculate Personal Year - Annual cycle and forecast for current year
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculatePersonalYear( $body = array() ) {
+	public static function calculatePersonalYear( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'month', 'day' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/personal-year',
-			$body,
+			array_merge( $body, $query ),
 			86400,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'numerology/personal-year', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/personal-year', $body, $query );
 			}
 		);
 	}
@@ -2501,18 +2584,19 @@ class Client {
 	 * Calculate Compatibility - Relationship dynamics between two people
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateNumCompatibility( $body = array() ) {
+	public static function calculateNumCompatibility( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'person1', 'person2' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/compatibility',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'numerology/compatibility', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/compatibility', $body, $query );
 			}
 		);
 	}
@@ -2521,18 +2605,19 @@ class Client {
 	 * Generate Complete Numerology Chart - Full profile analysis
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function generateNumerologyChart( $body = array() ) {
+	public static function generateNumerologyChart( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'fullName', 'year', 'month', 'day' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/chart',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'numerology/chart', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/chart', $body, $query );
 			}
 		);
 	}
@@ -2568,15 +2653,16 @@ class Client {
 	 * Get daily numerology number - Number of the Day with interpretation
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getDailyNumber( $body = array() ) {
+	public static function getDailyNumber( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/daily',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'numerology/daily', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/daily', $body, $query );
 			}
 		);
 	}
@@ -2585,18 +2671,19 @@ class Client {
 	 * Chaldean numerology name reading - Destiny, compound number, planetary ruler
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateChaldean( $body = array() ) {
+	public static function calculateChaldean( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'name' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/chaldean',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'numerology/chaldean', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/chaldean', $body, $query );
 			}
 		);
 	}
@@ -2632,18 +2719,19 @@ class Client {
 	 * Dual numerology - Pythagorean and Chaldean name numbers in one call
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateDual( $body = array() ) {
+	public static function calculateDual( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'name' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/dual',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'numerology/dual', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/dual', $body, $query );
 			}
 		);
 	}
@@ -2652,18 +2740,19 @@ class Client {
 	 * Business name numerology - Chaldean brand name analysis and lucky numbers
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateBusinessName( $body = array() ) {
+	public static function calculateBusinessName( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'name' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/business-name',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'numerology/business-name', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'numerology/business-name', $body, $query );
 			}
 		);
 	}
@@ -2728,18 +2817,19 @@ class Client {
 	 * Draw random tarot cards with reproducible results
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function drawCards( $body = array() ) {
+	public static function drawCards( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'count' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'tarot/draw',
-			$body,
+			array_merge( $body, $query ),
 			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'tarot/draw', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'tarot/draw', $body, $query );
 			}
 		);
 	}
@@ -2748,15 +2838,16 @@ class Client {
 	 * Get daily tarot card reading
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getDailyCard( $body = array() ) {
+	public static function getDailyCard( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'tarot/daily',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'tarot/daily', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'tarot/daily', $body, $query );
 			}
 		);
 	}
@@ -2765,15 +2856,16 @@ class Client {
 	 * Get yes/no answer to your question
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function castYesNo( $body = array() ) {
+	public static function castYesNo( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'tarot/yes-no',
-			$body,
+			array_merge( $body, $query ),
 			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'tarot/yes-no', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'tarot/yes-no', $body, $query );
 			}
 		);
 	}
@@ -2782,15 +2874,16 @@ class Client {
 	 * Three-Card Spread: Past, Present, Future
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function castThreeCard( $body = array() ) {
+	public static function castThreeCard( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'tarot/spreads/three-card',
-			$body,
+			array_merge( $body, $query ),
 			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'tarot/spreads/three-card', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'tarot/spreads/three-card', $body, $query );
 			}
 		);
 	}
@@ -2799,15 +2892,16 @@ class Client {
 	 * Celtic Cross Spread (10 cards)
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function castCelticCross( $body = array() ) {
+	public static function castCelticCross( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'tarot/spreads/celtic-cross',
-			$body,
+			array_merge( $body, $query ),
 			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'tarot/spreads/celtic-cross', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'tarot/spreads/celtic-cross', $body, $query );
 			}
 		);
 	}
@@ -2816,15 +2910,16 @@ class Client {
 	 * Love Spread (5 cards)
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function castLoveSpread( $body = array() ) {
+	public static function castLoveSpread( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'tarot/spreads/love',
-			$body,
+			array_merge( $body, $query ),
 			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'tarot/spreads/love', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'tarot/spreads/love', $body, $query );
 			}
 		);
 	}
@@ -2833,15 +2928,16 @@ class Client {
 	 * Career Spread (7 cards)
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function castCareerSpread( $body = array() ) {
+	public static function castCareerSpread( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'tarot/spreads/career',
-			$body,
+			array_merge( $body, $query ),
 			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'tarot/spreads/career', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'tarot/spreads/career', $body, $query );
 			}
 		);
 	}
@@ -2850,18 +2946,19 @@ class Client {
 	 * Custom Spread Builder
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function castCustomSpread( $body = array() ) {
+	public static function castCustomSpread( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'positions' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'tarot/spreads/custom',
-			$body,
+			array_merge( $body, $query ),
 			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'tarot/spreads/custom', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'tarot/spreads/custom', $body, $query );
 			}
 		);
 	}
@@ -2870,18 +2967,19 @@ class Client {
 	 * Get biorhythm reading - Complete cycle analysis for any date
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getReading( $body = array() ) {
+	public static function getReading( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'birthDate' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'biorhythm/reading',
-			$body,
+			array_merge( $body, $query ),
 			86400,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'biorhythm/reading', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'biorhythm/reading', $body, $query );
 			}
 		);
 	}
@@ -2890,18 +2988,19 @@ class Client {
 	 * Get biorhythm forecast - Multi-day cycle predictions with best and worst days
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getForecast( $body = array() ) {
+	public static function getForecast( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'birthDate' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'biorhythm/forecast',
-			$body,
+			array_merge( $body, $query ),
 			86400,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'biorhythm/forecast', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'biorhythm/forecast', $body, $query );
 			}
 		);
 	}
@@ -2910,18 +3009,19 @@ class Client {
 	 * Find critical days - Zero crossing detection for any date range
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getCriticalDays( $body = array() ) {
+	public static function getCriticalDays( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'birthDate' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'biorhythm/critical-days',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'biorhythm/critical-days', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'biorhythm/critical-days', $body, $query );
 			}
 		);
 	}
@@ -2930,18 +3030,19 @@ class Client {
 	 * Calculate compatibility - Biorhythm alignment between two people
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function calculateBioCompatibility( $body = array() ) {
+	public static function calculateBioCompatibility( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'person1', 'person2' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'biorhythm/compatibility',
-			$body,
+			array_merge( $body, $query ),
 			2592000,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'biorhythm/compatibility', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'biorhythm/compatibility', $body, $query );
 			}
 		);
 	}
@@ -2950,18 +3051,19 @@ class Client {
 	 * Get phase info - Lightweight cycle status for dashboards and widgets
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getPhases( $body = array() ) {
+	public static function getPhases( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'birthDate' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'biorhythm/phases',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'biorhythm/phases', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'biorhythm/phases', $body, $query );
 			}
 		);
 	}
@@ -2970,15 +3072,16 @@ class Client {
 	 * Get daily biorhythm - Seeded reading for daily check-in features
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getDailyBiorhythm( $body = array() ) {
+	public static function getDailyBiorhythm( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'biorhythm/daily',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'biorhythm/daily', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'biorhythm/daily', $body, $query );
 			}
 		);
 	}
@@ -2987,15 +3090,16 @@ class Client {
 	 * Get daily I-Ching hexagram
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getDailyHexagram( $body = array() ) {
+	public static function getDailyHexagram( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'iching/daily',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'iching/daily', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'iching/daily', $body, $query );
 			}
 		);
 	}
@@ -3004,15 +3108,16 @@ class Client {
 	 * Cast daily I-Ching reading with changing lines
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function castDailyReading( $body = array() ) {
+	public static function castDailyReading( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'iching/daily/cast',
-			$body,
+			array_merge( $body, $query ),
 			0,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'iching/daily/cast', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'iching/daily/cast', $body, $query );
 			}
 		);
 	}
@@ -3367,15 +3472,16 @@ class Client {
 	 * Daily Crystal
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getDailyCrystal( $body = array() ) {
+	public static function getDailyCrystal( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'crystals/daily',
-			$body,
+			array_merge( $body, $query ),
 			86400,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'crystals/daily', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'crystals/daily', $body, $query );
 			}
 		);
 	}
@@ -3713,15 +3819,16 @@ class Client {
 	 * Daily Angel Number
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getDailyAngelNumber( $body = array() ) {
+	public static function getDailyAngelNumber( $body = array(), $query = array() ) {
 		return \RoxyAPI\Api\Cache::remember(
 			'angel-numbers/daily',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'angel-numbers/daily', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'angel-numbers/daily', $body, $query );
 			}
 		);
 	}

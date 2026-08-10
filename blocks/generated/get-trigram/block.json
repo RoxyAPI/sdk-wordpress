@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-trigram",
-	"title": "Get trigram by number or name (I-Ching)",
+	"title": "Trigram by Number or Name (I Ching)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "Get trigram by number or name",
+	"description": "Retrieve a specific I-Ching trigram by its number (1-8) or English name (Heaven, Earth, Thunder, Wind, Water, Fire, Mountain, Lake)",
 	"keywords": [
-		"i-ching",
+		"i ching",
 		"roxyapi",
 		"get",
 		"trigram"

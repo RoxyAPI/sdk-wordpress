@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-upagraha-positions",
-	"title": "Get upagraha (sub-planet) positions - Upagraha Calculator API (Vedic Astrology)",
+	"title": "Upagraha (Sub-planet) Positions (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get upagraha (sub-planet) positions - Upagraha Calculator API",
+	"description": "Calculate all 11 Vedic upagraha (sub-planet) positions per Brihat Parashara Hora Shastra (BPHS)",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

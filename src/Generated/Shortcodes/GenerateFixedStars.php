@@ -21,6 +21,24 @@ class GenerateFixedStars {
 
 	public const TAG = 'roxy_generate_fixed_stars';
 
+	/**
+	 * Every attribute this shortcode accepts. shortcode_atts() silently
+	 * discards anything absent from here, so this is also the contract the
+	 * library copy-paste sample is checked against.
+	 *
+	 * @var array<string, string>
+	 */
+	public const DEFAULTS = array(
+		'date' => '',
+		'time' => '',
+		'latitude' => '',
+		'longitude' => '',
+		'timezone' => '',
+		'lang' => '',
+		'orb' => '',
+		'hide_readings' => 'inherit',
+	);
+
 	public static function register(): void {
 		if ( shortcode_exists( self::TAG ) ) {
 			return;
@@ -30,14 +48,7 @@ class GenerateFixedStars {
 
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
-			array(
-			'date' => '',
-			'time' => '',
-			'latitude' => '',
-			'longitude' => '',
-			'timezone' => '',
-			'hide_readings' => 'inherit',
-			),
+			self::DEFAULTS,
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
 		);
@@ -56,7 +67,16 @@ class GenerateFixedStars {
 				return $v !== '';
 			}
 		);
-		$data = \RoxyAPI\Generated\Client::generateFixedStars( $body );
+		$query = array_filter(
+			array(
+				'lang' => $atts['lang'],
+				'orb' => $atts['orb'],
+			),
+			static function ( $v ) {
+				return $v !== '';
+			}
+		);
+		$data = \RoxyAPI\Generated\Client::generateFixedStars( $body, $query );
 
 		if ( is_wp_error( $data ) ) {
 			return \RoxyAPI\Support\Templates::api_error( $data );

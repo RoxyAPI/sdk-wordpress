@@ -1,14 +1,16 @@
 /*
- * Shared editor for every spec-generated long-tail block.
+ * Shared editor for every generated block.
  *
  * SECURITY: the preview runs server side via ServerSideRender. Do NOT refactor
  * to a browser fetch that returns the RoxyAPI key or hits roxyapi.com directly.
  *
- * One component drives all ~135 generated blocks: each block's generated
- * index.js passes its spec-derived field list (bin/generate.mjs
- * deriveBlockFields), and this renders the matching sidebar control per field
- * plus a server-rendered preview. Field names are the camelCase block
- * attribute keys; the block's render.php snake-cases them for the shortcode.
+ * One component drives the whole catalogue, the five headline readings
+ * included: each block's generated index.js passes its field list (bin/
+ * generate.mjs, derived from the spec for a long-tail block and from the
+ * hero's own visitor-form fields for a headline one), and this renders the
+ * matching sidebar control per field plus a server-rendered preview. Field
+ * names are the block attribute keys; the block's render.php maps them onto
+ * the shortcode.
  */
 
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
@@ -96,6 +98,7 @@ function FieldControl( { field, value, setAttributes } ) {
 			value={ value }
 			onChange={ onChange }
 			help={ field.help }
+			placeholder={ field.placeholder }
 		/>
 	);
 }
@@ -103,11 +106,20 @@ function FieldControl( { field, value, setAttributes } ) {
 /**
  * Build a block edit component for a generated block from its field list.
  *
- * @param {Array}  fields    Field descriptors from the generator.
- * @param {string} blockName Registered block name (e.g. `roxyapi/get-crystal`).
+ * @param {Array}  fields                 Field descriptors from the generator.
+ * @param {string} blockName              Registered block name (e.g. `roxyapi/get-crystal`).
+ * @param {Object} [options]              Per-block overrides.
+ * @param {string} [options.instructions] Empty-state copy, already translated by
+ *                                        the caller. What publishing an
+ *                                        unconfigured block DOES differs by
+ *                                        block: a headline reading with required
+ *                                        inputs publishes a visitor form, while a
+ *                                        long-tail one publishes nothing until it
+ *                                        is filled in, so the default sentence
+ *                                        would be false for half the catalogue.
  * @return {Function} The block edit component.
  */
-export function makeEdit( fields, blockName ) {
+export function makeEdit( fields, blockName, options = {} ) {
 	return function Edit( { attributes, setAttributes } ) {
 		const blockProps = useBlockProps();
 
@@ -148,10 +160,13 @@ export function makeEdit( fields, blockName ) {
 					<Placeholder
 						icon="star-filled"
 						label={ __( 'Reading inputs needed', 'roxyapi' ) }
-						instructions={ __(
-							'Fill in the required fields in the sidebar to preview and publish this reading.',
-							'roxyapi'
-						) }
+						instructions={
+							options.instructions ||
+							__(
+								'Fill in the required fields in the sidebar to preview and publish this reading.',
+								'roxyapi'
+							)
+						}
 					/>
 				</div>
 			);

@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-sookshma-dashas",
-	"title": "Get all Sookshma dashas for a Mahadasha, Antardasha and Pratyantardasha (Vedic Astrology)",
+	"title": "Sookshma Dashas (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get all Sookshma dashas for a Mahadasha, Antardasha and Pratyantardasha",
+	"description": "Returns the 9 Sookshma periods inside a chosen Pratyantardasha, the fourth and finest level of the Vimshottari dasha hierarchy",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

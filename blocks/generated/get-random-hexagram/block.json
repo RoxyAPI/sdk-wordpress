@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-random-hexagram",
-	"title": "Get a random hexagram (I-Ching)",
+	"title": "Random Hexagram (I Ching)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "Get a random hexagram",
+	"description": "Receive a random I-Ching hexagram with full interpretation",
 	"keywords": [
-		"i-ching",
+		"i ching",
 		"roxyapi",
 		"get",
 		"random"

@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/generate-relocation-chart",
-	"title": "Generate relocation chart - Relocated birth chart calculator with shifted houses and angles (Western Astrology)",
+	"title": "Relocation Chart (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Generate relocation chart - Relocated birth chart calculator with shifted houses and angles",
+	"description": "Relocated birth chart calculator with shifted houses and angles",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

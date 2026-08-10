@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/list-crystal-colors",
-	"title": "List Crystal Colors (Crystals and Healing Stones)",
+	"title": "Crystal Colors",
 	"category": "roxyapi",
 	"icon": "star-filled",
-	"description": "List Crystal Colors",
+	"description": "List all unique crystal colors available in the database",
 	"keywords": [
-		"crystals and healing stones",
+		"crystals",
 		"roxyapi",
 		"list",
 		"crystal"

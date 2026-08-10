@@ -20,7 +20,7 @@ class CalculateNumCompatibilityForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'calculateNumCompatibility',
-			'title'        => __( 'Calculate Compatibility - Relationship dynamics between two people', 'roxyapi' ),
+			'title'        => __( 'Compatibility', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
 			'sections'     => array(
 				array(

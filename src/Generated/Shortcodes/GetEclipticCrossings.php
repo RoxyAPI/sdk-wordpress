@@ -21,6 +21,20 @@ class GetEclipticCrossings {
 
 	public const TAG = 'roxy_get_ecliptic_crossings';
 
+	/**
+	 * Every attribute this shortcode accepts. shortcode_atts() silently
+	 * discards anything absent from here, so this is also the contract the
+	 * library copy-paste sample is checked against.
+	 *
+	 * @var array<string, string>
+	 */
+	public const DEFAULTS = array(
+		'year' => '',
+		'timezone' => '',
+		'coordinate_system' => '',
+		'hide_readings' => 'inherit',
+	);
+
 	public static function register(): void {
 		if ( shortcode_exists( self::TAG ) ) {
 			return;
@@ -30,12 +44,7 @@ class GetEclipticCrossings {
 
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
-			array(
-			'year' => '',
-			'timezone' => '',
-			'coordinate_system' => '',
-			'hide_readings' => 'inherit',
-			),
+			self::DEFAULTS,
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
 		);

@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-zodiac-sign",
-	"title": "Get zodiac sign details - Complete astrology sign profile with personality traits (Western Astrology)",
+	"title": "Zodiac Sign Details (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Get zodiac sign details - Complete astrology sign profile with personality traits",
+	"description": "Complete astrology sign profile with personality traits",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

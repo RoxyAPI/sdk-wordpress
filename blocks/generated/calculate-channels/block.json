@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-channels",
-	"title": "Calculate the defined Human Design channels (Human Design)",
+	"title": "Defined Human Design Channels",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Calculate the defined Human Design channels",
+	"description": "Calculate the defined channels for a birth moment",
 	"keywords": [
 		"human design",
 		"roxyapi",

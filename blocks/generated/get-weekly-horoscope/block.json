@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-weekly-horoscope",
-	"title": "Weekly horoscope by zodiac sign - 7-day transit forecast (Western Astrology)",
+	"title": "Weekly Horoscope by Zodiac Sign (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Weekly horoscope by zodiac sign - 7-day transit forecast",
+	"description": "Get weekly horoscope for any zodiac sign",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

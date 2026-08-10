@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-business-name",
-	"title": "Business name numerology - Chaldean brand name analysis and lucky numbers (Numerology)",
+	"title": "Business Name Numerology",
 	"category": "roxyapi",
 	"icon": "chart-line",
-	"description": "Business name numerology - Chaldean brand name analysis and lucky numbers",
+	"description": "Chaldean brand name analysis and lucky numbers",
 	"keywords": [
 		"numerology",
 		"roxyapi",

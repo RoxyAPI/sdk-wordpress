@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/generate-progressions",
-	"title": "Secondary progressions calculator - progressed chart, progressed Sun and Moon (Western Astrology)",
+	"title": "Secondary Progressions (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Secondary progressions calculator - progressed chart, progressed Sun and Moon",
+	"description": "progressed chart, progressed Sun and Moon",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

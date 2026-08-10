@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/list-hexagrams",
-	"title": "List all 64 hexagrams (I-Ching)",
+	"title": "Hexagrams (I Ching)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "List all 64 hexagrams",
+	"description": "Browse all 64 I-Ching hexagrams from the Book of Changes with their Chinese names, English translations, and trigram compositions",
 	"keywords": [
-		"i-ching",
+		"i ching",
 		"roxyapi",
 		"list",
 		"hexagrams"

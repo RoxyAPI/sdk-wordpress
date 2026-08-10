@@ -21,6 +21,21 @@ class GetMonthlyParallels {
 
 	public const TAG = 'roxy_get_monthly_parallels';
 
+	/**
+	 * Every attribute this shortcode accepts. shortcode_atts() silently
+	 * discards anything absent from here, so this is also the contract the
+	 * library copy-paste sample is checked against.
+	 *
+	 * @var array<string, string>
+	 */
+	public const DEFAULTS = array(
+		'year' => '',
+		'month' => '',
+		'timezone' => '',
+		'lang' => '',
+		'hide_readings' => 'inherit',
+	);
+
 	public static function register(): void {
 		if ( shortcode_exists( self::TAG ) ) {
 			return;
@@ -30,12 +45,7 @@ class GetMonthlyParallels {
 
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
-			array(
-			'year' => '',
-			'month' => '',
-			'timezone' => '',
-			'hide_readings' => 'inherit',
-			),
+			self::DEFAULTS,
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
 		);
@@ -52,7 +62,15 @@ class GetMonthlyParallels {
 				return $v !== '';
 			}
 		);
-		$data = \RoxyAPI\Generated\Client::getMonthlyParallels( $body );
+		$query = array_filter(
+			array(
+				'lang' => $atts['lang'],
+			),
+			static function ( $v ) {
+				return $v !== '';
+			}
+		);
+		$data = \RoxyAPI\Generated\Client::getMonthlyParallels( $body, $query );
 
 		if ( is_wp_error( $data ) ) {
 			return \RoxyAPI\Support\Templates::api_error( $data );

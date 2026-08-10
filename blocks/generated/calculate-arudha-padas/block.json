@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-arudha-padas",
-	"title": "Get the twelve Arudha padas - Arudha Lagna Calculator API (Vedic Astrology)",
+	"title": "Arudha Padas (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get the twelve Arudha padas - Arudha Lagna Calculator API",
+	"description": "Calculate the Arudha Lagna (AL) and all twelve Arudha padas of Jaimini astrology from birth details",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

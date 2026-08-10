@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-drishti",
-	"title": "Get planetary aspects (Drishti) - Mutual aspects between all planets (Vedic Astrology)",
+	"title": "Planetary Aspects (Drishti)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get planetary aspects (Drishti) - Mutual aspects between all planets",
+	"description": "Mutual aspects between all planets",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

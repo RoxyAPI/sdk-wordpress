@@ -21,6 +21,27 @@ class GetKpRulingInterval {
 
 	public const TAG = 'roxy_get_kp_ruling_interval';
 
+	/**
+	 * Every attribute this shortcode accepts. shortcode_atts() silently
+	 * discards anything absent from here, so this is also the contract the
+	 * library copy-paste sample is checked against.
+	 *
+	 * @var array<string, string>
+	 */
+	public const DEFAULTS = array(
+		'start_datetime' => '',
+		'end_datetime' => '',
+		'interval_minutes' => '',
+		'latitude' => '',
+		'longitude' => '',
+		'timezone' => '',
+		'ayanamsa' => '',
+		'node_type' => '',
+		'lang' => '',
+		'focus' => '',
+		'hide_readings' => 'inherit',
+	);
+
 	public static function register(): void {
 		if ( shortcode_exists( self::TAG ) ) {
 			return;
@@ -30,17 +51,7 @@ class GetKpRulingInterval {
 
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
-			array(
-			'start_datetime' => '',
-			'end_datetime' => '',
-			'interval_minutes' => '',
-			'latitude' => '',
-			'longitude' => '',
-			'timezone' => '',
-			'ayanamsa' => '',
-			'node_type' => '',
-			'hide_readings' => 'inherit',
-			),
+			self::DEFAULTS,
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
 		);
@@ -62,7 +73,16 @@ class GetKpRulingInterval {
 				return $v !== '';
 			}
 		);
-		$data = \RoxyAPI\Generated\Client::getKpRulingInterval( $body );
+		$query = array_filter(
+			array(
+				'lang' => $atts['lang'],
+				'focus' => $atts['focus'],
+			),
+			static function ( $v ) {
+				return $v !== '';
+			}
+		);
+		$data = \RoxyAPI\Generated\Client::getKpRulingInterval( $body, $query );
 
 		if ( is_wp_error( $data ) ) {
 			return \RoxyAPI\Support\Templates::api_error( $data );

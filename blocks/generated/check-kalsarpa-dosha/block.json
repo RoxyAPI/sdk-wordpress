@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/check-kalsarpa-dosha",
-	"title": "Check Kalsarpa Dosha - Kalsarpa Yoga Calculator API (Vedic Astrology)",
+	"title": "Kalsarpa Dosha (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Check Kalsarpa Dosha - Kalsarpa Yoga Calculator API",
+	"description": "Detect Kalsarpa dosha (Kalsarpa yoga) when all 7 planets are hemmed between Rahu-Ketu axis",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

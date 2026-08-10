@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/generate-local-space",
-	"title": "Local space astrology map - Directional planetary compass lines (Western Astrology)",
+	"title": "Local Space Astrology Map (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Local space astrology map - Directional planetary compass lines",
+	"description": "Directional planetary compass lines",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-moon-calendar",
-	"title": "Get lunar calendar - Moon phases for entire month (Western Astrology)",
+	"title": "Lunar Calendar (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Get lunar calendar - Moon phases for entire month",
+	"description": "Moon phases for entire month",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

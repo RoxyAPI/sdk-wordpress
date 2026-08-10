@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-type",
-	"title": "Calculate Human Design type, authority and profile (Human Design)",
+	"title": "Human Design Type",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Calculate Human Design type, authority and profile",
+	"description": "Calculate the core Human Design identity from a birth moment: the energy type, the aura strategy, the inner authority, the signature and not-self themes, and the profile",
 	"keywords": [
 		"human design",
 		"roxyapi",

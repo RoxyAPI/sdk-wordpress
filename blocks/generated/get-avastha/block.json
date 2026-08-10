@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-avastha",
-	"title": "Get avastha by ID - Planetary State Detail (Vedic Astrology)",
+	"title": "Avastha by ID (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get avastha by ID - Planetary State Detail",
+	"description": "Look up a single avastha state by its slug, which is the lowercased state name a birth chart returns in `awastha`, `jagradadi` or `deeptadi`",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

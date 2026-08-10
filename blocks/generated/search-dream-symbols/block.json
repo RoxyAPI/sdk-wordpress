@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/search-dream-symbols",
-	"title": "List and search dream symbols (Dreams)",
+	"title": "Search Dream Symbols",
 	"category": "roxyapi",
 	"icon": "book",
-	"description": "List and search dream symbols",
+	"description": "Browse and search our complete dream interpretation dictionary containing 2,000+ dream symbols with psychological meanings",
 	"keywords": [
-		"dreams",
+		"dream interpretation",
 		"roxyapi",
 		"search",
 		"dream"

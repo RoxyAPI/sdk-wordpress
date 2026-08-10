@@ -1,6 +1,10 @@
 <?php
 /**
- * Template: 3-step onboarding view rendered when the API key is not configured.
+ * Template: 3-step setup, the Connect tab body until a key is saved.
+ *
+ * Embedded into `admin-connected.php`, which supplies the page heading and the
+ * tab bar, so this partial starts at the page intro. The Branding, Display,
+ * Privacy and Advanced tabs render alongside it.
  *
  * Variables in scope (extracted from the render call):
  *   string $signup_url     Pricing page link with onboarding UTM params.
@@ -39,10 +43,6 @@ $key_disabled   = ! empty( $key_disabled );
 $is_configured  = ! empty( $is_configured );
 $option_group   = isset( $option_group ) ? (string) $option_group : 'roxyapi';
 ?>
-<h1 class="roxyapi-heading">
-	<span class="roxyapi-setup"><?php echo esc_html__( 'Connect RoxyAPI in', 'roxyapi' ); ?></span>
-	<span class="roxyapi-punchline"><?php echo esc_html__( '30 seconds.', 'roxyapi' ); ?></span>
-</h1>
 <p class="roxyapi-page-intro">
 	<?php echo esc_html__( 'Drop natal charts, daily horoscopes, kundli, Forecast timelines, Human Design bodygraphs and Numerology onto any WordPress page. Start free in seconds. Add a key when you go live.', 'roxyapi' ); ?>
 </p>
@@ -52,8 +52,6 @@ $option_group   = isset( $option_group ) ? (string) $option_group : 'roxyapi';
 		<?php echo esc_html__( 'A few readings render free every day with no key, so your pages work the moment you activate. Add your API key below to unlock full power: every domain and every reading under one key.', 'roxyapi' ); ?>
 	</p>
 </div>
-
-<div class="roxyapi-test-banner" id="roxyapi-test-banner" role="status" aria-live="polite"></div>
 
 <form method="post" action="options.php" class="roxyapi-form">
 	<?php settings_fields( $option_group ); ?>

@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-dream-symbol",
-	"title": "Get dream symbol details (Dreams)",
+	"title": "Dream Symbol Details",
 	"category": "roxyapi",
 	"icon": "book",
-	"description": "Get dream symbol details",
+	"description": "Get the complete dream interpretation for a specific symbol",
 	"keywords": [
-		"dreams",
+		"dream interpretation",
 		"roxyapi",
 		"get",
 		"dream"

@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-monthly-parallels",
-	"title": "Monthly Declination Parallels - Parallel and contraparallel events for a month (Vedic Astrology)",
+	"title": "Monthly Declination Parallels (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Monthly Declination Parallels - Parallel and contraparallel events for a month",
+	"description": "Parallel and contraparallel events for a month",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

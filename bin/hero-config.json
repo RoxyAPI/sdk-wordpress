@@ -9,6 +9,11 @@
 		"hand_written": true
 	},
 	"natal_chart": {
+		"block": {
+			"name": "roxyapi/natal-chart",
+			"icon": "admin-users",
+			"keywords": [ "birth chart", "astrology", "natal chart", "roxyapi" ]
+		},
 		"operationId": "generateNatalChart",
 		"title": "Natal chart",
 		"description": "Western birth chart with planets, houses, and aspects.",
@@ -326,6 +331,11 @@
 		}
 	},
 	"tarot_card": {
+		"block": {
+			"name": "roxyapi/tarot",
+			"icon": "tag",
+			"keywords": [ "tarot", "card reading", "spread", "roxyapi" ]
+		},
 		"title": "Tarot card",
 		"description": "Single card, three card, or Celtic Cross spreads.",
 		"domain": "Tarot",
@@ -364,6 +374,11 @@
 		}
 	},
 	"numerology": {
+		"block": {
+			"name": "roxyapi/numerology",
+			"icon": "calculator",
+			"keywords": [ "numerology", "life path", "numbers", "roxyapi" ]
+		},
 		"operationId": "generateNumerologyChart",
 		"title": "Numerology",
 		"description": "Life path, expression, and soul urge from a name and date.",
@@ -417,6 +432,11 @@
 		}
 	},
 	"biorhythm": {
+		"block": {
+			"name": "roxyapi/biorhythm",
+			"icon": "chart-line",
+			"keywords": [ "biorhythm", "cycles", "wellness", "roxyapi" ]
+		},
 		"operationId": "getReading",
 		"title": "Biorhythm",
 		"description": "Physical, emotional, and intellectual cycle values.",
@@ -448,6 +468,11 @@
 		}
 	},
 	"angel_number": {
+		"block": {
+			"name": "roxyapi/angel-number",
+			"icon": "superhero",
+			"keywords": [ "angel number", "spiritual", "guidance", "roxyapi" ]
+		},
 		"operationId": "getAngelNumber",
 		"title": "Angel number",
 		"description": "Meaning and pattern analysis for any number sequence.",

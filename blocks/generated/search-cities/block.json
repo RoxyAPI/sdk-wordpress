@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/search-cities",
-	"title": "Search cities worldwide - Geocoding autocomplete with coordinates and timezone (Location and Timezone)",
+	"title": "Search Cities Worldwide (Location)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "Search cities worldwide - Geocoding autocomplete with coordinates and timezone",
+	"description": "Geocoding autocomplete with coordinates and timezone",
 	"keywords": [
-		"location and timezone",
+		"location",
 		"roxyapi",
 		"search",
 		"cities"

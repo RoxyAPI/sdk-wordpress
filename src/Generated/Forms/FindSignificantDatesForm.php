@@ -20,7 +20,7 @@ class FindSignificantDatesForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'findSignificantDates',
-			'title'        => __( 'Significant dates - High-significance cross-domain forecast highlights', 'roxyapi' ),
+			'title'        => __( 'Significant Dates', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
 			'sections'     => array(
 				array(

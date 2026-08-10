@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-rashi",
-	"title": "Get Rashi by ID - Vedic Zodiac Sign Detail (Vedic Astrology)",
+	"title": "Rashi by ID (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get Rashi by ID - Vedic Zodiac Sign Detail",
+	"description": "Vedic Zodiac Sign Detail",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

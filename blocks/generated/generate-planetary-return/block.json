@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/generate-planetary-return",
-	"title": "Planetary Return Chart - Saturn return, Jupiter return, and inner planet cycles (Western Astrology)",
+	"title": "Planetary Return Chart (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Planetary Return Chart - Saturn return, Jupiter return, and inner planet cycles",
+	"description": "Saturn return, Jupiter return, and inner planet cycles",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

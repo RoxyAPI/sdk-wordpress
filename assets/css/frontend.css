@@ -392,6 +392,21 @@
 	font-size: var(--wp--preset--font-size--small, 0.9375rem);
 }
 
+/* A reading is delivered once, so a refresh lands on this instead of a result.
+   Informational, not a failure: the neutral accent keeps it from reading as an
+   error for something the visitor did nothing wrong to reach. */
+:where(.roxyapi-notice) {
+	display: block;
+	padding: 0.75rem 1rem;
+	border: 1px solid color-mix(in srgb, currentcolor 12%, transparent);
+	border-inline-start-width: 4px;
+	border-inline-start-color: color-mix(in srgb, var(--roxy-accent, #64748b) 70%, currentColor);
+	border-radius: var(--wp--custom--border--radius, 6px);
+	background: color-mix(in srgb, currentcolor 4%, transparent);
+	color: var(--wp--preset--color--foreground, currentColor);
+	font-size: var(--wp--preset--font-size--small, 0.9375rem);
+}
+
 :where(.roxyapi-error-admin) {
 	display: block;
 	margin-block-start: 0.4rem;
@@ -546,10 +561,10 @@
  * It is absolutely positioned over the fields that follow it, so a theme that
  * flattens its background, border or padding does not merely restyle it. The
  * panel becomes an invisible box and the city names and the labels underneath
- * render on top of each other, which is what a customer reported on 2026-08-07.
+ * render on top of each other.
  *
- * Specificity cannot win this and neither can markup. Measured on that site:
- * the panel lost `background`, `border`, `padding` and `margin` to the theme
+ * Specificity cannot win this and neither can markup. Measured on an affected
+ * theme: it lost `background`, `border`, `padding` and `margin` to the theme
  * reset's bare `div` selector at 0-0-1, having lost the same declarations the
  * day before to `#left-area ul` at 1-0-1 when the options were list items. So
  * 0-0-0 loses to an element reset, 0-1-0 and 0-2-0 both lose to an ID-scoped

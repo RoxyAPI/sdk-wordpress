@@ -20,7 +20,7 @@ class CalculateConnectionForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'calculateConnection',
-			'title'        => __( 'Calculate Human Design connection chart - Two-person composite bodygraph compatibility', 'roxyapi' ),
+			'title'        => __( 'Human Design Connection Chart', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
 			'sections'     => array(
 				array(

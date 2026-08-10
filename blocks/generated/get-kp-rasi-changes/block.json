@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-kp-rasi-changes",
-	"title": "Find KP rasi ingress times (Vedic Astrology)",
+	"title": "KP Rasi Ingress Times (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Find KP rasi ingress times",
+	"description": "Track when planets enter new zodiac signs (rasi) with precise ingress timestamps",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

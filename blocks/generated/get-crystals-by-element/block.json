@@ -2,15 +2,14 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-crystals-by-element",
-	"title": "Crystals by Element (Crystals and Healing Stones)",
+	"title": "Crystals by Element",
 	"category": "roxyapi",
 	"icon": "star-filled",
-	"description": "Crystals by Element",
+	"description": "Get healing crystals and gemstones associated with a specific natural element",
 	"keywords": [
-		"crystals and healing stones",
+		"crystals",
 		"roxyapi",
-		"get",
-		"crystals"
+		"get"
 	],
 	"version": "1.0.0",
 	"textdomain": "roxyapi",

@@ -2,15 +2,14 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/list-crystals",
-	"title": "List All Crystals (Crystals and Healing Stones)",
+	"title": "Crystals",
 	"category": "roxyapi",
 	"icon": "star-filled",
-	"description": "List All Crystals",
+	"description": "Retrieve healing crystals and gemstones with pagination",
 	"keywords": [
-		"crystals and healing stones",
+		"crystals",
 		"roxyapi",
-		"list",
-		"crystals"
+		"list"
 	],
 	"version": "1.0.0",
 	"textdomain": "roxyapi",

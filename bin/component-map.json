@@ -1,8 +1,8 @@
 {
 	"_meta": {
 		"ui_package": "@roxyapi/ui",
-		"ui_version_pinned": "0.26.0",
-		"ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.26.0/dist/manifest.json"
+		"ui_version_pinned": "0.27.1",
+		"ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.27.1/dist/manifest.json"
 	},
 	"operations": {
 		"analyzeNumberSequence": [
@@ -579,12 +579,22 @@
 				}
 			}
 		],
+		"getMonthlyEphemeris": [
+			{
+				"component": "roxy-ephemeris-table"
+			}
+		],
 		"getMonthlyHoroscope": [
 			{
 				"component": "roxy-horoscope-card",
 				"attrs": {
 					"period": "monthly"
 				}
+			}
+		],
+		"getMonthlyTropicalEphemeris": [
+			{
+				"component": "roxy-ephemeris-table"
 			}
 		],
 		"getMoonCalendar": [

@@ -5,8 +5,8 @@
  * The dropdown floats over the fields below it. If a theme flattens its
  * background, border or padding it does not merely look different: the panel
  * becomes an invisible box, and the city names and the field labels underneath
- * render on top of each other. A customer reported exactly that on 2026-08-07,
- * on a site whose theme ships the ordinary CSS reset every classic theme ships.
+ * render on top of each other. This is not theoretical: it happens on any theme
+ * carrying the ordinary CSS reset that classic themes ship.
  *
  * Two things were true at once and only the first was obvious. The panel kept
  * `position` and `z-index`, so paint order was never wrong and the panel really

@@ -156,61 +156,77 @@ class SettingsPage {
 
 		echo '<div class="wrap roxyapi-settings">';
 
+		// "Settings saved." is added by wp-admin/options-head.php, which only the
+		// core options-*.php screens load, so a custom menu page saves silently
+		// unless it registers the notice itself. Core's own rule is mirrored here,
+		// including staying quiet when the same save also produced an error.
+		// The string carries OUR text domain even though core ships the same one:
+		// borrowing `default` would leave it untranslated the day core reworded it.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only flag, set by options.php on its own redirect after it has verified the nonce.
+		if ( isset( $_GET['settings-updated'] ) && count( get_settings_errors( self::OPTION_NAME ) ) === 0 ) {
+			add_settings_error( self::OPTION_NAME, 'roxyapi_settings_updated', __( 'Settings saved.', 'roxyapi' ), 'success' );
+		}
+
 		settings_errors( self::OPTION_NAME );
 
-		if ( ! $is_configured ) {
-			$html = Templates::render(
-				'admin-onboarding',
-				array(
-					'signup_url'     => Onboarding::signup_url(),
-					'playground_url' => Onboarding::playground_url(),
-					'shortcodes_url' => admin_url( 'admin.php?page=' . ShortcodesPage::PAGE_SLUG ),
-					'samples'        => Onboarding::quickstart_samples(),
-					'key_input'      => SettingsFields::api_key_input_html(),
-					'key_help'       => SettingsFields::api_key_help_html(),
-					'key_disabled'   => $key_disabled,
-					'is_configured'  => false,
-					'option_group'   => self::OPTION_GROUP,
-				)
-			);
-		} else {
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only tab selector on a manage_options page.
-			$active_tab = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : 'connect';
-			if ( ! in_array( $active_tab, array( 'connect', 'branding', 'display', 'privacy', 'advanced' ), true ) ) {
-				$active_tab = 'connect';
-			}
-
-			$html = Templates::render(
-				'admin-connected',
-				array(
-					'active_tab'             => $active_tab,
-					'attribution_input'      => SettingsFields::attribution_checkbox_html(),
-					'consent_label_input'    => SettingsFields::consent_label_textarea_html(),
-					'palette_preset_input'   => SettingsFields::palette_preset_input_html(),
-					'palette_colors_input'   => SettingsFields::palette_colors_html(),
-					'palette_reset_input'    => SettingsFields::palette_reset_html(),
-					'palette_is_custom'      => (string) ( SettingsSchema::get_option()['palette_preset'] ?? '' ) === '',
-					'theme_mode_input'       => SettingsFields::theme_mode_input_html(),
-					'display_language_input' => SettingsFields::display_language_input_html(),
-					'hide_readings_input'    => SettingsFields::hide_readings_html(),
-					'disclaimer_show_input'  => SettingsFields::disclaimer_show_html(),
-					'disclaimer_text_input'  => SettingsFields::disclaimer_text_html(),
-					'form_title_input'       => SettingsFields::form_title_input_html(),
-					'form_submit_input'      => SettingsFields::form_submit_input_html(),
-					'cache_preset_input'     => SettingsFields::cache_preset_input_html(),
-					'privacy_policy_url'     => admin_url( 'options-privacy.php' ),
-					'shortcodes_url'         => admin_url( 'admin.php?page=' . ShortcodesPage::PAGE_SLUG ),
-					'samples'                => Onboarding::quickstart_samples(),
-					'key_input'              => SettingsFields::api_key_input_html(),
-					'key_help'               => SettingsFields::api_key_help_html(),
-					'key_disabled'           => $key_disabled,
-					'option_group'           => self::OPTION_GROUP,
-					'docs_url'               => Onboarding::docs_url(),
-					'support_url'            => Onboarding::support_url(),
-					'dashboard_url'          => Onboarding::dashboard_url(),
-				)
-			);
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only tab selector on a manage_options page.
+		$active_tab = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : 'connect';
+		if ( ! in_array( $active_tab, array( 'connect', 'branding', 'display', 'privacy', 'advanced' ), true ) ) {
+			$active_tab = 'connect';
 		}
+
+		// Every tab renders whether or not a key is stored. Readings render from
+		// the moment the plugin is activated, so the settings that shape them
+		// (language, palette, theme, disclaimer, hide-written-readings) have to be
+		// reachable from that same moment. Only the Connect tab body changes:
+		// setup steps before a key, key management after one.
+		$onboarding = $is_configured ? '' : Templates::render(
+			'admin-onboarding',
+			array(
+				'signup_url'     => Onboarding::signup_url(),
+				'playground_url' => Onboarding::playground_url(),
+				'shortcodes_url' => admin_url( 'admin.php?page=' . ShortcodesPage::PAGE_SLUG ),
+				'samples'        => Onboarding::quickstart_samples(),
+				'key_input'      => SettingsFields::api_key_input_html(),
+				'key_help'       => SettingsFields::api_key_help_html(),
+				'key_disabled'   => $key_disabled,
+				'is_configured'  => false,
+				'option_group'   => self::OPTION_GROUP,
+			)
+		);
+
+		$html = Templates::render(
+			'admin-connected',
+			array(
+				'is_configured'          => $is_configured,
+				'onboarding'             => $onboarding,
+				'active_tab'             => $active_tab,
+				'attribution_input'      => SettingsFields::attribution_checkbox_html(),
+				'consent_label_input'    => SettingsFields::consent_label_textarea_html(),
+				'palette_preset_input'   => SettingsFields::palette_preset_input_html(),
+				'palette_colors_input'   => SettingsFields::palette_colors_html(),
+				'palette_reset_input'    => SettingsFields::palette_reset_html(),
+				'palette_is_custom'      => (string) ( SettingsSchema::get_option()['palette_preset'] ?? '' ) === '',
+				'theme_mode_input'       => SettingsFields::theme_mode_input_html(),
+				'display_language_input' => SettingsFields::display_language_input_html(),
+				'hide_readings_input'    => SettingsFields::hide_readings_html(),
+				'disclaimer_show_input'  => SettingsFields::disclaimer_show_html(),
+				'disclaimer_text_input'  => SettingsFields::disclaimer_text_html(),
+				'form_title_input'       => SettingsFields::form_title_input_html(),
+				'form_submit_input'      => SettingsFields::form_submit_input_html(),
+				'cache_preset_input'     => SettingsFields::cache_preset_input_html(),
+				'privacy_policy_url'     => admin_url( 'options-privacy.php' ),
+				'shortcodes_url'         => admin_url( 'admin.php?page=' . ShortcodesPage::PAGE_SLUG ),
+				'samples'                => Onboarding::quickstart_samples(),
+				'key_input'              => SettingsFields::api_key_input_html(),
+				'key_help'               => SettingsFields::api_key_help_html(),
+				'key_disabled'           => $key_disabled,
+				'option_group'           => self::OPTION_GROUP,
+				'docs_url'               => Onboarding::docs_url(),
+				'support_url'            => Onboarding::support_url(),
+				'dashboard_url'          => Onboarding::dashboard_url(),
+			)
+		);
 
 		// Templates assemble $html from pre-escaped fragments: every dynamic
 		// scalar passes through esc_html / esc_attr / esc_url at the call

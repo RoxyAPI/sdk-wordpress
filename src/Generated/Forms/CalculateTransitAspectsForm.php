@@ -20,7 +20,7 @@ class CalculateTransitAspectsForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'calculateTransitAspects',
-			'title'        => __( 'Transit Aspects - Detailed transit-to-natal aspect analysis with interpretations', 'roxyapi' ),
+			'title'        => __( 'Transit Aspects', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
 			'sections'     => array(
 				array(

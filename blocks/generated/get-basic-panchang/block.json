@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-basic-panchang",
-	"title": "Get basic Panchang - Tithi Nakshatra Yoga Karana Calculator (Vedic Astrology)",
+	"title": "Basic Panchang (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get basic Panchang - Tithi Nakshatra Yoga Karana Calculator",
+	"description": "Tithi Nakshatra Yoga Karana Calculator",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

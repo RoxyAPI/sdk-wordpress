@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-crystal-pairings",
-	"title": "Crystal Pairings (Crystals and Healing Stones)",
+	"title": "Crystal Pairings",
 	"category": "roxyapi",
 	"icon": "star-filled",
-	"description": "Crystal Pairings",
+	"description": "Get crystals that pair well with a given crystal for enhanced healing combinations",
 	"keywords": [
-		"crystals and healing stones",
+		"crystals",
 		"roxyapi",
 		"get",
 		"crystal"

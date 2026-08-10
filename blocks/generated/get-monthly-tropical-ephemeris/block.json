@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-monthly-tropical-ephemeris",
-	"title": "Monthly Ephemeris - Daily tropical planetary positions for a month (Western Astrology)",
+	"title": "Monthly Ephemeris (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Monthly Ephemeris - Daily tropical planetary positions for a month",
+	"description": "Daily tropical planetary positions for a month",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

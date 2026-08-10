@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/generate-lilith",
-	"title": "Black Moon Lilith calculator - mean and true lunar apogee in the natal chart (Western Astrology)",
+	"title": "Black Moon Lilith (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Black Moon Lilith calculator - mean and true lunar apogee in the natal chart",
+	"description": "mean and true lunar apogee in the natal chart",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

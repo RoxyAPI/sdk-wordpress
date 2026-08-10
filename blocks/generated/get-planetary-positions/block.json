@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-planetary-positions",
-	"title": "Get planetary positions - Ephemeris calculator for all planets (Western Astrology)",
+	"title": "Planetary Positions (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Get planetary positions - Ephemeris calculator for all planets",
+	"description": "Ephemeris calculator for all planets",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

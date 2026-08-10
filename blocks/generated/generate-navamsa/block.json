@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/generate-navamsa",
-	"title": "Get Navamsa chart (D9) - Marriage Compatibility Calculator (Vedic Astrology)",
+	"title": "Navamsa Chart (D9)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get Navamsa chart (D9) - Marriage Compatibility Calculator",
+	"description": "Marriage Compatibility Calculator",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-transits",
-	"title": "Calculate planetary transits - Current transits with natal chart comparison (Western Astrology)",
+	"title": "Planetary Transits (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Calculate planetary transits - Current transits with natal chart comparison",
+	"description": "Current transits with natal chart comparison",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

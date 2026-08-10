@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/generate-asteroids",
-	"title": "Asteroid goddesses calculator - Ceres, Pallas, Juno, and Vesta natal positions (Western Astrology)",
+	"title": "Asteroid Goddesses (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Asteroid goddesses calculator - Ceres, Pallas, Juno, and Vesta natal positions",
+	"description": "Ceres, Pallas, Juno, and Vesta natal positions",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

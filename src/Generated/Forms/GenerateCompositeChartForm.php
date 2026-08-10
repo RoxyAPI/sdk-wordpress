@@ -20,7 +20,7 @@ class GenerateCompositeChartForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'generateCompositeChart',
-			'title'        => __( 'Composite Chart - Midpoint relationship chart with interpretations', 'roxyapi' ),
+			'title'        => __( 'Composite Chart', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
 			'sections'     => array(
 				array(

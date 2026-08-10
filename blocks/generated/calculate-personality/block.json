@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-personality",
-	"title": "Calculate Personality number - How others perceive you (Numerology)",
+	"title": "Personality Number (Numerology)",
 	"category": "roxyapi",
 	"icon": "chart-line",
-	"description": "Calculate Personality number - How others perceive you",
+	"description": "Calculate your Personality number from the consonants in your birth name using Pythagorean numerology",
 	"keywords": [
 		"numerology",
 		"roxyapi",

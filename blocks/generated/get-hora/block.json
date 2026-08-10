@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-hora",
-	"title": "Get Hora - 24 Planetary Hours (12 day + 12 night) (Vedic Astrology)",
+	"title": "Hora (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get Hora - 24 Planetary Hours (12 day + 12 night)",
+	"description": "24 Planetary Hours (12 day + 12 night)",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

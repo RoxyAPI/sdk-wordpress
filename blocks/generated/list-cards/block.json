@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/list-cards",
-	"title": "List all 78 tarot cards (Tarot)",
+	"title": "Tarot Cards",
 	"category": "roxyapi",
 	"icon": "heart",
-	"description": "List all 78 tarot cards",
+	"description": "Retrieve the complete Rider-Waite-Smith tarot deck of 78 cards: 22 Major Arcana (numbered 0-21, representing life lessons, spiritual themes, and karmic influences like The Fool, Death, The Tower) plus 56 Minor Arcana (4 suits × 14 cards each for daily situations and practical matters)",
 	"keywords": [
 		"tarot",
 		"roxyapi",

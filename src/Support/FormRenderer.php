@@ -51,7 +51,15 @@ class FormRenderer {
 
 		if ( is_array( $stored ) ) {
 			$prev = isset( $stored['previous_input'] ) && is_array( $stored['previous_input'] ) ? $stored['previous_input'] : array();
-			if ( isset( $stored['error'] ) ) {
+			if ( ! empty( $stored['expired'] ) ) {
+				// A reading is delivered once, so a refresh, a bookmark or a
+				// shared link arrives here. Say so: rendering a bare form
+				// instead reads as the site having lost the reading that was
+				// on screen a moment ago.
+				$result_html = '<div class="roxyapi-notice roxyapi-expired">'
+					. esc_html__( 'That reading has already been shown. Enter the details below to run it again.', 'roxyapi' )
+					. '</div>';
+			} elseif ( isset( $stored['error'] ) ) {
 				$result_html = '<div class="roxyapi-error">' . esc_html( (string) $stored['error'] ) . '</div>';
 			} elseif ( isset( $stored['wp_error'] ) && is_array( $stored['wp_error'] ) ) {
 				$err         = new WP_Error(

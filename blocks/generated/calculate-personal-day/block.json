@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-personal-day",
-	"title": "Calculate Personal Day - Daily personalized numerology forecast (Numerology)",
+	"title": "Personal Day (Numerology)",
 	"category": "roxyapi",
 	"icon": "chart-line",
-	"description": "Calculate Personal Day - Daily personalized numerology forecast",
+	"description": "Daily personalized numerology forecast",
 	"keywords": [
 		"numerology",
 		"roxyapi",

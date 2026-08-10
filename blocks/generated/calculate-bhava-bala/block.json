@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-bhava-bala",
-	"title": "Get Bhava Bala (house strength) for all twelve houses - Bhava Bala Calculator API (Vedic Astrology)",
+	"title": "Bhava Bala (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get Bhava Bala (house strength) for all twelve houses - Bhava Bala Calculator API",
+	"description": "Calculate Bhava Bala (house strength) for all twelve bhavas per Brihat Parashara Hora Shastra (BPHS) and BV Raman Graha and Bhava Balas",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

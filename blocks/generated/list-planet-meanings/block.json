@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/list-planet-meanings",
-	"title": "Get all planet meanings - Complete astrology planet interpretations list (Western Astrology)",
+	"title": "Planet Meanings (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Get all planet meanings - Complete astrology planet interpretations list",
+	"description": "Complete astrology planet interpretations list",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

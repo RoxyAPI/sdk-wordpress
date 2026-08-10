@@ -21,6 +21,30 @@ class GetPratyantardashas {
 
 	public const TAG = 'roxy_get_pratyantardashas';
 
+	/**
+	 * Every attribute this shortcode accepts. shortcode_atts() silently
+	 * discards anything absent from here, so this is also the contract the
+	 * library copy-paste sample is checked against.
+	 *
+	 * @var array<string, string>
+	 */
+	public const DEFAULTS = array(
+		'mahadasha' => '',
+		'antardasha' => '',
+		'date' => '',
+		'time' => '',
+		'latitude' => '',
+		'longitude' => '',
+		'timezone' => '',
+		'ayanamsa' => '',
+		'ayanamsa_value' => '',
+		'significators' => '',
+		'node_type' => '',
+		'lang' => '',
+		'focus' => '',
+		'hide_readings' => 'inherit',
+	);
+
 	public static function register(): void {
 		if ( shortcode_exists( self::TAG ) ) {
 			return;
@@ -30,20 +54,7 @@ class GetPratyantardashas {
 
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
-			array(
-			'mahadasha' => '',
-			'antardasha' => '',
-			'date' => '',
-			'time' => '',
-			'latitude' => '',
-			'longitude' => '',
-			'timezone' => '',
-			'ayanamsa' => '',
-			'ayanamsa_value' => '',
-			'significators' => '',
-			'node_type' => '',
-			'hide_readings' => 'inherit',
-			),
+			self::DEFAULTS,
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
 		);
@@ -66,7 +77,16 @@ class GetPratyantardashas {
 				return $v !== '';
 			}
 		);
-		$data = \RoxyAPI\Generated\Client::getPratyantardashas( $atts['mahadasha'], $atts['antardasha'], $body );
+		$query = array_filter(
+			array(
+				'lang' => $atts['lang'],
+				'focus' => $atts['focus'],
+			),
+			static function ( $v ) {
+				return $v !== '';
+			}
+		);
+		$data = \RoxyAPI\Generated\Client::getPratyantardashas( $atts['mahadasha'], $atts['antardasha'], $body, $query );
 
 		if ( is_wp_error( $data ) ) {
 			return \RoxyAPI\Support\Templates::api_error( $data );

@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-kp-ruling-interval",
-	"title": "Get KP ruling planets with significators at intervals (Vedic Astrology)",
+	"title": "KP Ruling Planets with Significators (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get KP ruling planets with significators at intervals",
+	"description": "Calculate ruling planets and their KP significators at regular time intervals using Krishnamurti Paddhati prashna (horary) astrology",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

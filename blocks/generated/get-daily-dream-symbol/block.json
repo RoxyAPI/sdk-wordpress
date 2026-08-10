@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-daily-dream-symbol",
-	"title": "Get daily dream symbol (Dreams)",
+	"title": "Daily Dream Symbol",
 	"category": "roxyapi",
 	"icon": "book",
-	"description": "Get daily dream symbol",
+	"description": "Receive a single dream symbol for daily reflection and subconscious exploration",
 	"keywords": [
-		"dreams",
+		"dream interpretation",
 		"roxyapi",
 		"get",
 		"daily"

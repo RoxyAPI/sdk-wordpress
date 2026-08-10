@@ -20,7 +20,7 @@ class CalculateSynastryForm {
 	public static function spec(): array {
 		return array(
 			'operation_id' => 'calculateSynastry',
-			'title'        => __( 'Calculate synastry - Relationship compatibility analysis API', 'roxyapi' ),
+			'title'        => __( 'Synastry', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
 			'sections'     => array(
 				array(

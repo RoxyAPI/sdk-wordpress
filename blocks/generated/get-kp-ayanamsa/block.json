@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-kp-ayanamsa",
-	"title": "Get KP-Newcomb ayanamsa - Dynamic daily calculation (Vedic Astrology)",
+	"title": "KP-Newcomb Ayanamsa (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get KP-Newcomb ayanamsa - Dynamic daily calculation",
+	"description": "Dynamic daily calculation",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

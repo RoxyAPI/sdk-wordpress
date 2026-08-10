@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/detect-aspect-patterns",
-	"title": "Detect aspect patterns - Grand Trine, Kite, T-Square, Grand Cross, Yod, Mystic Rectangle, Stellium (Western Astrology)",
+	"title": "Aspect Patterns (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Detect aspect patterns - Grand Trine, Kite, T-Square, Grand Cross, Yod, Mystic Rectangle, Stellium",
+	"description": "Grand Trine, Kite, T-Square, Grand Cross, Yod, Mystic Rectangle, Stellium",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

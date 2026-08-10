@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/cast-kp-horary-chart",
-	"title": "Cast a KP horary (Prashna) chart from a number 1-249 - KP Horary API (Vedic Astrology)",
+	"title": "Cast a KP Horary (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Cast a KP horary (Prashna) chart from a number 1-249 - KP Horary API",
+	"description": "Cast a Krishnamurti Paddhati horary chart, also called Prashna, from a number between 1 and 249 given by the querent plus the moment and place the question is judged",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

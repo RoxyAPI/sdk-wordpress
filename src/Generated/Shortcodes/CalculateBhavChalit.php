@@ -21,6 +21,26 @@ class CalculateBhavChalit {
 
 	public const TAG = 'roxy_calculate_bhav_chalit';
 
+	/**
+	 * Every attribute this shortcode accepts. shortcode_atts() silently
+	 * discards anything absent from here, so this is also the contract the
+	 * library copy-paste sample is checked against.
+	 *
+	 * @var array<string, string>
+	 */
+	public const DEFAULTS = array(
+		'date' => '',
+		'time' => '',
+		'latitude' => '',
+		'longitude' => '',
+		'timezone' => '',
+		'ayanamsa' => '',
+		'ayanamsa_value' => '',
+		'lang' => '',
+		'focus' => '',
+		'hide_readings' => 'inherit',
+	);
+
 	public static function register(): void {
 		if ( shortcode_exists( self::TAG ) ) {
 			return;
@@ -30,16 +50,7 @@ class CalculateBhavChalit {
 
 	public static function render( $atts, $content = '', $tag = '' ): string {
 		$atts = shortcode_atts(
-			array(
-			'date' => '',
-			'time' => '',
-			'latitude' => '',
-			'longitude' => '',
-			'timezone' => '',
-			'ayanamsa' => '',
-			'ayanamsa_value' => '',
-			'hide_readings' => 'inherit',
-			),
+			self::DEFAULTS,
 			is_array( $atts ) ? $atts : array(),
 			(string) $tag
 		);
@@ -60,7 +71,16 @@ class CalculateBhavChalit {
 				return $v !== '';
 			}
 		);
-		$data = \RoxyAPI\Generated\Client::calculateBhavChalit( $body );
+		$query = array_filter(
+			array(
+				'lang' => $atts['lang'],
+				'focus' => $atts['focus'],
+			),
+			static function ( $v ) {
+				return $v !== '';
+			}
+		);
+		$data = \RoxyAPI\Generated\Client::calculateBhavChalit( $body, $query );
 
 		if ( is_wp_error( $data ) ) {
 			return \RoxyAPI\Support\Templates::api_error( $data );

@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/generate-astrocartography",
-	"title": "Astrocartography map - planetary lines and relocation calculator (Western Astrology)",
+	"title": "Astrocartography Map (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Astrocartography map - planetary lines and relocation calculator",
+	"description": "planetary lines and relocation calculator",
 	"keywords": [
 		"western astrology",
 		"roxyapi",

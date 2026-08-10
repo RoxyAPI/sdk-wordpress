@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-daily-hexagram",
-	"title": "Get daily I-Ching hexagram (I-Ching)",
+	"title": "Daily I-Ching Hexagram",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "Get daily I-Ching hexagram",
+	"description": "Receive a daily I-Ching hexagram for guidance and reflection",
 	"keywords": [
-		"i-ching",
+		"i ching",
 		"roxyapi",
 		"get",
 		"daily"

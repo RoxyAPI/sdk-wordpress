@@ -2,12 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/get-hexagram",
-	"title": "Get hexagram by number (I-Ching)",
+	"title": "Hexagram by Number (I Ching)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "Get hexagram by number",
+	"description": "Retrieve complete I-Ching hexagram details by King Wen sequence number (1-64)",
 	"keywords": [
-		"i-ching",
+		"i ching",
 		"roxyapi",
 		"get",
 		"hexagram"
