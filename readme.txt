@@ -437,6 +437,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Upgrade Notice ==
 
+= 1.10.0 =
+Recommended for every site. The monthly ephemeris now renders as a real ephemeris instead of a collapsed box, and the six headline readings have full controls in the block editor. Two fixes worth knowing about: a reading placed in the middle of a paragraph used to draw twice, and saving one settings tab could silently switch off the toggles on another, including hide written readings. Check that setting after you update if you rely on it.
+
 = 1.9.0 =
 Recommended for every site, and important if you pay for a plan. Saving your API key now really does clear the free-allowance cache, and a header can no longer be used to get around the hourly limit on your forms and city search. The usage summary is no longer something a page can publish, the block inserter is down to the 127 readings, and you can brand the readings from the Branding tab.
 
