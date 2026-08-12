@@ -1526,6 +1526,10 @@ const NON_READING_OPERATIONS = new Set( [
 	// Reference lookups and enumerations: a catalogue for a dropdown or an id
 	// list, not something a visitor reads.
 	'getCitiesByCountry',
+	// Labels for request field names, in one language. A developer-facing map of ~180
+	// strings that a site owner would never place on a page, and it arrives with the
+	// spec rather than being added deliberately, so it is listed the day it appears.
+	'getFieldLabels',
 	'getSymbolLetterCounts',
 	'listAvasthas',
 	'listCountries',
@@ -1706,13 +1710,16 @@ class ${ className } {
 	public const TAG = '${ shortcodeTag }';
 
 	/**
-	 * This shortcode reads no attributes: every input is collected by the
-	 * visitor form. Declared empty rather than omitted so the sample the
-	 * library offers can be checked against what the shortcode accepts.
+	 * Every INPUT is collected by the visitor form, so the only attributes
+	 * declared here are the reserved display controls. They have to be
+	 * declared: \`shortcode_atts()\` keeps only the keys it is given, so an
+	 * undeclared one is dropped in silence rather than refused.
 	 *
 	 * @var array<string, string>
 	 */
-	public const DEFAULTS = array();
+	public const DEFAULTS = array(
+${ withReservedAtts( [], '\t\t' ).join( '\n' ) }
+	);
 
 	public static function register(): void {
 		if ( shortcode_exists( self::TAG ) ) {
@@ -1722,7 +1729,8 @@ class ${ className } {
 	}
 
 	public static function render( $atts, $content = '', $tag = '' ): string {
-		return FormRenderer::render( \\RoxyAPI\\Generated\\Forms\\${ formClass }::class );
+		$atts = shortcode_atts( self::DEFAULTS, is_array( $atts ) ? $atts : array(), (string) $tag );
+		return FormRenderer::render( \\RoxyAPI\\Generated\\Forms\\${ formClass }::class, $atts );
 	}
 }
 `;
@@ -1898,9 +1906,9 @@ ${ accountGuard }
 			return \\RoxyAPI\\Support\\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( '${
+		return ComponentRenderer::render_atts( '${
 			op.operationId
-		}', is_array( $data ) ? $data : array(), ${ RESERVED_ARGS } );
+		}', is_array( $data ) ? $data : array(), $atts );
 	}
 }
 `;
@@ -2403,18 +2411,25 @@ function _attrSlotForOperation( attr, op ) {
  * setting takes. Both are resolved in `ComponentRenderer`, the one place that
  * knows how to fold a placement value over a site value.
  *
- * **A third one goes in this array and nowhere else.** The DEFAULTS line, the
- * collision guard and the arguments passed to `ComponentRenderer::render` are
- * all derived from it, in the order declared here, which is the order that
- * method takes them.
+ * **A third one goes in this array, plus the matching constant, resolver and
+ * parameter on `ComponentRenderer`, and nowhere else.** Emitted shortcodes never
+ * name a reserved attribute individually: they declare the whole set through
+ * `withReservedAtts()` and hand the resolved `$atts` ARRAY to
+ * `ComponentRenderer::render_atts()` or `FormRenderer::render()`, both of which
+ * read the names out of `ComponentRenderer::RESERVED_ATTS`.
+ *
+ * That indirection is not decoration. The previous shape passed a positional
+ * argument list built here, and the two call sites written BY HAND rather than
+ * generated each fell behind it: `Horoscope.php` never gained `hide_sections`,
+ * and `FormRenderer` passed neither, so every hero ignored both controls in FORM
+ * mode from the day `hide_readings` shipped while honouring them in static mode.
+ * `tests/phpunit/test-reserved-atts.php` now sweeps every hero and every render
+ * path against this array, so a call site cannot fall behind it again.
  */
 const RESERVED_ATTS = [
 	{ att: 'hide_readings', default: 'inherit' },
 	{ att: 'hide_sections', default: 'inherit' },
 ];
-const RESERVED_ARGS = RESERVED_ATTS.map(
-	( { att } ) => `$atts['${ att }']`
-).join( ', ' );
 
 /**
  * Append every reserved attribute to a DEFAULTS line list. Throws when an
@@ -2563,7 +2578,7 @@ function renderRequiredCheck(
 		// a form on the page).
 		return `\t\tif ( ${ conditions } ) {
 			if ( $atts['mode'] !== 'static' ) {
-				return \\RoxyAPI\\Support\\FormRenderer::render( \\RoxyAPI\\Generated\\Forms\\${ formClassName }::class );
+				return \\RoxyAPI\\Support\\FormRenderer::render( \\RoxyAPI\\Generated\\Forms\\${ formClassName }::class, $atts );
 			}
 			return \\RoxyAPI\\Support\\Templates::error( ${ messagePhp } );
 		}`;
@@ -2582,7 +2597,7 @@ function renderFormModeShortCircuit( formClassName ) {
 		return '';
 	}
 	return `\t\tif ( $atts['mode'] === 'form' ) {
-			return \\RoxyAPI\\Support\\FormRenderer::render( \\RoxyAPI\\Generated\\Forms\\${ formClassName }::class );
+			return \\RoxyAPI\\Support\\FormRenderer::render( \\RoxyAPI\\Generated\\Forms\\${ formClassName }::class, $atts );
 		}`;
 }
 
@@ -2786,7 +2801,7 @@ function buildHeroBodyContent(
 
 	const successReturn = ( opId ) =>
 		returnsHtml
-			? `return \\RoxyAPI\\Support\\ComponentRenderer::render( '${ opId }', is_array( $data ) ? $data : array(), ${ RESERVED_ARGS } );`
+			? `return \\RoxyAPI\\Support\\ComponentRenderer::render_atts( '${ opId }', is_array( $data ) ? $data : array(), $atts );`
 			: `return is_array( $data ) ? $data : array();`;
 	const errorReturn = returnsHtml
 		? `return \\RoxyAPI\\Support\\Templates::api_error( $data );`
@@ -2872,7 +2887,7 @@ function buildHeroBodyContent(
 			if ( returnsHtml && cfg.form_mode ) {
 				const formClassName = `${ toPascalCase( tagSuffix ) }Form`;
 				fallback = `\n\n\t\tif ( $atts['mode'] !== 'static' ) {
-			return \\RoxyAPI\\Support\\FormRenderer::render( \\RoxyAPI\\Generated\\Forms\\${ formClassName }::class );
+			return \\RoxyAPI\\Support\\FormRenderer::render( \\RoxyAPI\\Generated\\Forms\\${ formClassName }::class, $atts );
 		}
 		return \\RoxyAPI\\Support\\Templates::error( ${ messagePhp } );`;
 			} else if ( returnsHtml ) {
@@ -3011,26 +3026,34 @@ if ( ! defined( 'ABSPATH' ) ) {
 class ${ className } {
 
 	/**
-	 * Empty DEFAULTS const satisfies the Test_Hero_Attr_Contract regression
-	 * test (every hero class must declare DEFAULTS). Form-only heroes do
-	 * not consume attributes — every input flows through the form.
+	 * Every INPUT flows through the form, so the only attributes declared
+	 * here are the reserved display controls. They have to be declared:
+	 * \`shortcode_atts()\` keeps only the keys it is given, so an undeclared
+	 * one is dropped in silence rather than refused.
 	 *
 	 * @var array<string, string>
 	 */
-	public const DEFAULTS = array();
+	public const DEFAULTS = array(
+${ withReservedAtts( [], '\t\t' ).join( '\n' ) }
+	);
 
 	/**
 	 * Render the shortcode. Always shows the visitor form because static
 	 * mode would require 10+ attributes to be passed inline.
 	 *
-	 * @param array<string, string>|string $atts    Shortcode attributes (ignored).
+	 * @param array<string, string>|string $atts    Shortcode attributes. Inputs are
+	 *                                              ignored; the reserved display
+	 *                                              attributes are honoured.
 	 * @param string                       $content Inner content (ignored).
-	 * @param string                       $tag     Shortcode tag (ignored).
+	 * @param string                       $tag     Shortcode tag.
 	 * @return string
 	 */
 	public static function render( $atts, $content = '', $tag = '' ): string {
+		$atts = shortcode_atts( self::DEFAULTS, is_array( $atts ) ? $atts : array(), (string) $tag );
 		wp_enqueue_style( 'roxyapi-frontend' );
-		return \\RoxyAPI\\Support\\FormRenderer::render( \\RoxyAPI\\Generated\\Forms\\${ cfg.delegate_to_form }::class );
+		return \\RoxyAPI\\Support\\FormRenderer::render( \\RoxyAPI\\Generated\\Forms\\${
+			cfg.delegate_to_form
+		}::class, $atts );
 	}
 }
 `;

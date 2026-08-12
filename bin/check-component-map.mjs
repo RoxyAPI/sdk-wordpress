@@ -310,6 +310,77 @@ if ( catalog ) {
 	console.log(
 		`binding coverage OK: all ${ upstream.size } upstream-bound operation(s) have a row, variant attributes match`
 	);
+
+	// Documented-part guard: every `part` name readme.txt tells a site owner to
+	// use has to be published by the PINNED build.
+	//
+	// This exists because 1.11.0 was staged with the bundle at 0.27.1 while its
+	// own FAQ told the reader that `::part(aspects)` reaches the natal chart
+	// aspect grid. That was true of roxy-aspects-table and false of
+	// roxy-natal-chart, whose grid carried `part="table aspect-grid"` on 0.27.1
+	// and answered to no `aspects` name at all; the name landed in 0.27.2. It
+	// was caught by one hand-read before release. It is the worst shape a doc
+	// error can take, because the site owner pastes a documented selector, sees
+	// nothing happen, and blames their own stylesheet.
+	//
+	// The readme is the surface under test rather than the code: code cannot be
+	// wrong about a part name it emits, only prose can. The same vocabulary
+	// drives the `hide_sections` setting and its shortcode attribute, so this
+	// covers everything that FAQ answer promises.
+	const partsSentence = readFileSync(
+		path.join( root, 'readme.txt' ),
+		'utf8'
+	).match( /Common section names are ([^.]+)\./ );
+
+	if ( ! partsSentence ) {
+		console.error(
+			'readme.txt no longer carries the "Common section names are ..." sentence this guard reads.'
+		);
+		console.error(
+			'If the FAQ was reworded, update the pattern here so documented part names stay checked.'
+		);
+		process.exit( 1 );
+	}
+
+	const publishedParts = new Set();
+	for ( const component of components ) {
+		for ( const part of component.parts || [] ) {
+			publishedParts.add( part );
+		}
+	}
+
+	// No parts at all means the pin predates the `parts` array, added in
+	// 0.27.2. Say so rather than failing every documented name.
+	if ( publishedParts.size === 0 ) {
+		console.warn(
+			`${ catalogUrl } publishes no part names, so the pinned build predates them. Skipping documented-part check.`
+		);
+	} else {
+		const documented = partsSentence[ 1 ]
+			.split( /,|\band\b/ )
+			.map( ( name ) => name.trim() )
+			.filter( ( name ) => /^[a-z][a-z0-9-]*$/.test( name ) );
+
+		const unpublished = documented.filter(
+			( name ) => ! publishedParts.has( name )
+		);
+		if ( unpublished.length > 0 ) {
+			console.error(
+				`readme.txt documents ${ unpublished.length } part name(s) the pinned build does not publish:`
+			);
+			for ( const name of unpublished.sort() ) {
+				console.error( `  ::part(${ name })` );
+			}
+			console.error(
+				`Checked against ${ catalogUrl }. Either bump the @roxyapi/ui pin to a build that carries the name, or stop documenting it.`
+			);
+			process.exit( 1 );
+		}
+
+		console.log(
+			`documented parts OK: all ${ documented.length } name(s) in the readme FAQ are published by the pinned build`
+		);
+	}
 }
 
 console.log(

@@ -57,6 +57,6 @@ class GetCenter {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getCenter', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'getCenter', is_array( $data ) ? $data : array(), $atts );
 	}
 }

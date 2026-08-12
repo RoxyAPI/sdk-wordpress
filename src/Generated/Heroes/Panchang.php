@@ -54,12 +54,12 @@ class Panchang {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\PanchangForm::class );
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\PanchangForm::class, $atts );
 		}
 
 		if ( $atts['date'] === '' || $atts['lat'] === '' || $atts['lon'] === '' ) {
 			if ( $atts['mode'] !== 'static' ) {
-				return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\PanchangForm::class );
+				return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\PanchangForm::class, $atts );
 			}
 			return \RoxyAPI\Support\Templates::error( sprintf( /* translators: %s is the canonical example shortcode. */ __( "The date, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s", 'roxyapi' ), "[roxy_panchang date=\"2026-04-28\" lat=\"28.6139\" lon=\"77.2090\" tz=\"Asia/Kolkata\"]" ) );
 		}
@@ -80,7 +80,7 @@ class Panchang {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\ComponentRenderer::render( 'getDetailedPanchang', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return \RoxyAPI\Support\ComponentRenderer::render_atts( 'getDetailedPanchang', is_array( $data ) ? $data : array(), $atts );
 	}
 
 	/**

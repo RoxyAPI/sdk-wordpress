@@ -77,6 +77,6 @@ class GetCriticalDays {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getCriticalDays', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'getCriticalDays', is_array( $data ) ? $data : array(), $atts );
 	}
 }

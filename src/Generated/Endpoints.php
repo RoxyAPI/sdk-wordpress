@@ -23,6 +23,20 @@ class Endpoints {
 	 */
 	public static function all(): array {
 		return array(
+		'getFieldLabels' => array(
+			'path'          => '/languages/field-labels',
+			'method'        => 'GET',
+			'tag'           => 'Languages',
+			'summary'       => 'Get field labels for a language',
+			'display_name'  => 'Field Labels for a Language',
+			'ttl'           => 2592000,
+			'hero'          => false,
+			'block_only'    => false,
+			'shortcode_tag' => 'roxy_get_field_labels',
+			'attributes' => array(
+				'lang' => 'en',
+			),
+		),
 		'listZodiacSigns' => array(
 			'path'          => '/astrology/signs',
 			'method'        => 'GET',

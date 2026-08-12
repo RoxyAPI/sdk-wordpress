@@ -40,6 +40,7 @@ class Horoscope {
 		'date'          => 'today',
 		'period'        => 'daily',
 		'hide_readings' => ComponentRenderer::INHERIT,
+		'hide_sections' => ComponentRenderer::INHERIT,
 	);
 
 	/**
@@ -73,10 +74,8 @@ class Horoscope {
 
 		wp_enqueue_style( 'roxyapi-frontend' );
 
-		$hide_readings = (string) ( $atts['hide_readings'] ?? ComponentRenderer::INHERIT );
-
 		// Form submission: check $_POST first. Nonce + rate limit guarded.
-		$submitted = self::handle_submission( $hide_readings );
+		$submitted = self::handle_submission( $atts );
 		if ( $submitted !== null ) {
 			return $submitted;
 		}
@@ -87,7 +86,7 @@ class Horoscope {
 				Sanitize::zodiac_sign( $atts['sign'] ),
 				Sanitize::date_string( $atts['date'] ),
 				(string) ( $atts['period'] ?? 'daily' ),
-				$hide_readings
+				$atts
 			);
 		}
 
@@ -98,10 +97,11 @@ class Horoscope {
 	/**
 	 * Handle the visitor sign-picker POST.
 	 *
-	 * @param string $hide_readings Raw `hide_readings` attribute from the placement.
+	 * @param array<string, mixed> $atts Resolved shortcode attributes, carried so the
+	 *                                   reserved display attributes survive the POST.
 	 * @return string|null Rendered result, or null when this request is not a submission.
 	 */
-	private static function handle_submission( string $hide_readings ): ?string {
+	private static function handle_submission( array $atts ): ?string {
 		if ( empty( $_POST['roxyapi_action'] ) || $_POST['roxyapi_action'] !== self::ACTION ) {
 			return null;
 		}
@@ -116,19 +116,22 @@ class Horoscope {
 		$raw_sign = isset( $_POST['sign'] ) ? sanitize_text_field( wp_unslash( $_POST['sign'] ) ) : '';
 		$sign     = Sanitize::zodiac_sign( $raw_sign );
 
-		return self::render_result( $sign, Sanitize::date_string( 'today' ), 'daily', $hide_readings ) . self::render_form( $sign );
+		return self::render_result( $sign, Sanitize::date_string( 'today' ), 'daily', $atts ) . self::render_form( $sign );
 	}
 
 	/**
 	 * Fetch and render one horoscope period.
 	 *
-	 * @param string $sign          Sanitised zodiac sign slug.
-	 * @param string $date          YYYY-MM-DD date.
-	 * @param string $period        daily | weekly | monthly.
-	 * @param string $hide_readings Raw `hide_readings` attribute from the placement.
+	 * @param string               $sign          Sanitised zodiac sign slug.
+	 * @param string               $date          YYYY-MM-DD date.
+	 * @param string               $period        daily | weekly | monthly.
+	 * @param array<string, mixed> $atts   Resolved shortcode attributes. The reserved
+	 *                                     display attributes are read out of this by
+	 *                                     `ComponentRenderer::render_atts()`, so a new
+	 *                                     one needs no change here.
 	 * @return string
 	 */
-	private static function render_result( string $sign, string $date, string $period = 'daily', string $hide_readings = ComponentRenderer::INHERIT ): string {
+	private static function render_result( string $sign, string $date, string $period = 'daily', array $atts = array() ): string {
 		$op_id = self::PERIOD_OPS[ $period ] ?? 'getDailyHoroscope';
 
 		// Each period dispatches to its own operation. All three map to
@@ -148,7 +151,7 @@ class Horoscope {
 			return Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( $op_id, is_array( $data ) ? $data : array(), $hide_readings );
+		return ComponentRenderer::render_atts( $op_id, is_array( $data ) ? $data : array(), $atts );
 	}
 
 	private static function render_form( string $selected = '' ): string {

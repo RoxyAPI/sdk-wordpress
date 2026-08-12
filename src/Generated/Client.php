@@ -17,6 +17,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Client {
 
 	/**
+	 * Get field labels for a language
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getFieldLabels( $lang = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'languages/field-labels',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'languages/field-labels', $query );
+			}
+		);
+	}
+
+	/**
 	 * Get all zodiac signs - Complete zodiac signs list with dates and elements
 	 *
 	 * @return array|\WP_Error

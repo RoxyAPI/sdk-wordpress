@@ -304,35 +304,6 @@ class Test_Hide_Readings extends Mock_Http_TestCase {
 	// -------------------------------------------------------------------------
 
 	/**
-	 * Every hero that renders a reading has to accept the attribute, or the
-	 * setting becomes an all-or-nothing switch with no way out on one page.
-	 * Covers the hand-written hero and the generated ones, including the hero
-	 * that takes no inputs of its own.
-	 */
-	public function test_every_rendering_hero_declares_the_attribute(): void {
-		$skipped = 0;
-		foreach ( \RoxyAPI\Shortcodes\Registrar::HERO_SHORTCODES as $tag => $class ) {
-			$defaults = $class::DEFAULTS;
-			if ( $defaults === array() ) {
-				// Form-only heroes render a visitor form, never a reading.
-				++$skipped;
-				continue;
-			}
-			$this->assertArrayHasKey(
-				'hide_readings',
-				$defaults,
-				"[{$tag}] must declare a hide_readings attribute."
-			);
-			$this->assertSame(
-				ComponentRenderer::INHERIT,
-				$defaults['hide_readings'],
-				"[{$tag}] must default hide_readings to inherit so the setting decides."
-			);
-		}
-		$this->assertGreaterThan( 0, count( \RoxyAPI\Shortcodes\Registrar::HERO_SHORTCODES ) - $skipped );
-	}
-
-	/**
 	 * End to end through a hero shortcode: the attribute a site owner types
 	 * has to survive shortcode_atts and land on the element.
 	 */

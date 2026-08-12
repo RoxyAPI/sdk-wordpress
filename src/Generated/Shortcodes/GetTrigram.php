@@ -57,6 +57,6 @@ class GetTrigram {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getTrigram', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'getTrigram', is_array( $data ) ? $data : array(), $atts );
 	}
 }

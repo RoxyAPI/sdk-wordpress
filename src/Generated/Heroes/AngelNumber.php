@@ -51,12 +51,12 @@ class AngelNumber {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\AngelNumberForm::class );
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\AngelNumberForm::class, $atts );
 		}
 
 		if ( $atts['number'] === '' ) {
 			if ( $atts['mode'] !== 'static' ) {
-				return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\AngelNumberForm::class );
+				return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\AngelNumberForm::class, $atts );
 			}
 			return \RoxyAPI\Support\Templates::error( sprintf( /* translators: %s is the canonical example shortcode. */ __( "The number attribute is required. Example: %s", 'roxyapi' ), "[roxy_angel_number number=\"1111\"]" ) );
 		}
@@ -69,7 +69,7 @@ class AngelNumber {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\ComponentRenderer::render( 'getAngelNumber', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return \RoxyAPI\Support\ComponentRenderer::render_atts( 'getAngelNumber', is_array( $data ) ? $data : array(), $atts );
 	}
 
 	/**

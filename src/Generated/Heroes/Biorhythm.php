@@ -52,12 +52,12 @@ class Biorhythm {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\BiorhythmForm::class );
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\BiorhythmForm::class, $atts );
 		}
 
 		if ( $atts['birth_date'] === '' ) {
 			if ( $atts['mode'] !== 'static' ) {
-				return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\BiorhythmForm::class );
+				return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\BiorhythmForm::class, $atts );
 			}
 			return \RoxyAPI\Support\Templates::error( sprintf( /* translators: %s is the canonical example shortcode. */ __( "The birth_date attribute is required. Example: %s", 'roxyapi' ), "[roxy_biorhythm birth_date=\"1990-05-15\" target_date=\"today\"]" ) );
 		}
@@ -78,7 +78,7 @@ class Biorhythm {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\ComponentRenderer::render( 'getReading', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return \RoxyAPI\Support\ComponentRenderer::render_atts( 'getReading', is_array( $data ) ? $data : array(), $atts );
 	}
 
 	/**

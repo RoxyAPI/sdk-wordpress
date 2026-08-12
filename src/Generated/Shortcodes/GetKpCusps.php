@@ -87,6 +87,6 @@ class GetKpCusps {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getKpCusps', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'getKpCusps', is_array( $data ) ? $data : array(), $atts );
 	}
 }

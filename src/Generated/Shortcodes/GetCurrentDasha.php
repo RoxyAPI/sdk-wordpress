@@ -91,6 +91,6 @@ class GetCurrentDasha {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getCurrentDasha', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'getCurrentDasha', is_array( $data ) ? $data : array(), $atts );
 	}
 }

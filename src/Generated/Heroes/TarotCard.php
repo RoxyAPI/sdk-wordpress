@@ -52,7 +52,7 @@ class TarotCard {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\TarotCardForm::class );
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\TarotCardForm::class, $atts );
 		}
 
 		$spread_clean = sanitize_key( (string) $atts['spread'] );
@@ -65,7 +65,7 @@ class TarotCard {
 			if ( is_wp_error( $data ) ) {
 				return \RoxyAPI\Support\Templates::api_error( $data );
 			}
-			return \RoxyAPI\Support\ComponentRenderer::render( 'castThreeCard', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+			return \RoxyAPI\Support\ComponentRenderer::render_atts( 'castThreeCard', is_array( $data ) ? $data : array(), $atts );
 		} else if ( $spread_clean === "celtic" ) {
 			$data = \RoxyAPI\Generated\Client::castCelticCross( array(
 			'question' => $question_clean,
@@ -73,13 +73,13 @@ class TarotCard {
 			if ( is_wp_error( $data ) ) {
 				return \RoxyAPI\Support\Templates::api_error( $data );
 			}
-			return \RoxyAPI\Support\ComponentRenderer::render( 'castCelticCross', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+			return \RoxyAPI\Support\ComponentRenderer::render_atts( 'castCelticCross', is_array( $data ) ? $data : array(), $atts );
 		} else 		{
 			$data = \RoxyAPI\Generated\Client::getDailyCard( array() );
 			if ( is_wp_error( $data ) ) {
 				return \RoxyAPI\Support\Templates::api_error( $data );
 			}
-			return \RoxyAPI\Support\ComponentRenderer::render( 'getDailyCard', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+			return \RoxyAPI\Support\ComponentRenderer::render_atts( 'getDailyCard', is_array( $data ) ? $data : array(), $atts );
 		}
 	}
 

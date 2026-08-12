@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class ShortcodeBootstrap {
 
 	public static function register(): void {
+		\RoxyAPI\Generated\Shortcodes\GetFieldLabels::register();
 		\RoxyAPI\Generated\Shortcodes\ListZodiacSigns::register();
 		\RoxyAPI\Generated\Shortcodes\GetZodiacSign::register();
 		\RoxyAPI\Generated\Shortcodes\ListPlanetMeanings::register();

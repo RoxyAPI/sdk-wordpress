@@ -57,6 +57,6 @@ class GetCrystal {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getCrystal', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'getCrystal', is_array( $data ) ? $data : array(), $atts );
 	}
 }

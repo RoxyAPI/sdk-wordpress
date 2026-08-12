@@ -57,6 +57,6 @@ class GetYoga {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getYoga', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'getYoga', is_array( $data ) ? $data : array(), $atts );
 	}
 }

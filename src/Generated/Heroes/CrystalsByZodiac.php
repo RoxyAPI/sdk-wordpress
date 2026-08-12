@@ -51,12 +51,12 @@ class CrystalsByZodiac {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CrystalsByZodiacForm::class );
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CrystalsByZodiacForm::class, $atts );
 		}
 
 		if ( $atts['sign'] === '' ) {
 			if ( $atts['mode'] !== 'static' ) {
-				return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CrystalsByZodiacForm::class );
+				return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CrystalsByZodiacForm::class, $atts );
 			}
 			return \RoxyAPI\Support\Templates::error( sprintf( /* translators: %s is the canonical example shortcode. */ __( "The sign attribute is required. Example: %s", 'roxyapi' ), "[roxy_crystals_by_zodiac sign=\"aries\"]" ) );
 		}
@@ -69,7 +69,7 @@ class CrystalsByZodiac {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\ComponentRenderer::render( 'getCrystalsByZodiac', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return \RoxyAPI\Support\ComponentRenderer::render_atts( 'getCrystalsByZodiac', is_array( $data ) ? $data : array(), $atts );
 	}
 
 	/**

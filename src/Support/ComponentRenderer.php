@@ -28,14 +28,57 @@ class ComponentRenderer {
 	private const TAG_PATTERN = '/^roxy-[a-z-]+$/';
 
 	/**
-	 * Attribute value that defers to the site setting. Every shortcode
-	 * declares it as the default for `hide_readings`, so a placement that
-	 * says nothing follows the setting.
+	 * Attribute value that defers to the site setting. Every reserved attribute
+	 * declares it as its default, so a placement that says nothing follows the
+	 * setting.
 	 */
 	public const INHERIT = 'inherit';
 
 	/**
+	 * The reserved shortcode attributes, in the order {@link render()} takes
+	 * them. This is the PHP half of the list `bin/generate.mjs` declares as
+	 * `RESERVED_ATTS`; `tests/phpunit/test-reserved-atts.php` asserts the two
+	 * agree, so neither can move alone.
+	 *
+	 * Adding a third display control means: one entry there, one entry here,
+	 * one resolver below, one parameter on `render()`. Nothing at any call
+	 * site, because every caller goes through {@link render_atts()}.
+	 *
+	 * @var list<string>
+	 */
+	public const RESERVED_ATTS = array( 'hide_readings', 'hide_sections' );
+
+	/**
+	 * Render from a shortcode's resolved attributes. **This is the only way a
+	 * render should be reached from a shortcode**, and the reason is that the
+	 * alternative kept losing attributes.
+	 *
+	 * Two hand-written call sites each dropped a reserved attribute by passing
+	 * a positional argument list that had fallen behind: `Horoscope.php` never
+	 * gained `hide_sections`, and `FormRenderer` passed neither, so every hero
+	 * in FORM mode ignored both controls from the day `hide_readings` shipped
+	 * while its static mode honoured them. Reading the names out of
+	 * {@link RESERVED_ATTS} means a call site cannot fall behind the list: a new
+	 * reserved attribute reaches every caller with no call-site edit at all.
+	 *
+	 * @param string               $operation_id Spec operationId driving the component choice.
+	 * @param array<string, mixed> $data         Unwrapped API response.
+	 * @param array<string, mixed> $atts         Resolved shortcode attributes. Missing keys follow the site setting.
+	 * @return string Rendered HTML.
+	 */
+	public static function render_atts( string $operation_id, array $data, array $atts = array() ): string {
+		$reserved = array();
+		foreach ( self::RESERVED_ATTS as $att ) {
+			$reserved[] = $atts[ $att ] ?? null;
+		}
+		return self::render( $operation_id, $data, ...$reserved );
+	}
+
+	/**
 	 * Render an API response for the given operation.
+	 *
+	 * Prefer {@link render_atts()} when you hold a shortcode's attributes; this
+	 * positional form is for callers that have already resolved the values.
 	 *
 	 * @param string               $operation_id  Spec operationId driving the component choice.
 	 * @param array<string, mixed> $data          Unwrapped API response.

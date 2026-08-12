@@ -83,6 +83,6 @@ class CalculateType {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'calculateType', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'calculateType', is_array( $data ) ? $data : array(), $atts );
 	}
 }

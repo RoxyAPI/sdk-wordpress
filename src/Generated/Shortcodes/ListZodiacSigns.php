@@ -56,6 +56,6 @@ class ListZodiacSigns {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'listZodiacSigns', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'listZodiacSigns', is_array( $data ) ? $data : array(), $atts );
 	}
 }

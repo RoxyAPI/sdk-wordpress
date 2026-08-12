@@ -55,12 +55,12 @@ class NatalChart {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\NatalChartForm::class );
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\NatalChartForm::class, $atts );
 		}
 
 		if ( $atts['birth_date'] === '' || $atts['birth_time'] === '' || $atts['lat'] === '' || $atts['lon'] === '' ) {
 			if ( $atts['mode'] !== 'static' ) {
-				return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\NatalChartForm::class );
+				return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\NatalChartForm::class, $atts );
 			}
 			return \RoxyAPI\Support\Templates::error( sprintf( /* translators: %s is the canonical example shortcode. */ __( "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to UTC; pass an IANA name or decimal hours for accuracy). Example: %s", 'roxyapi' ), "[roxy_natal_chart birth_date=\"1990-05-15\" birth_time=\"14:30\" lat=\"40.7128\" lon=\"-74.0060\" tz=\"America/New_York\"]" ) );
 		}
@@ -83,7 +83,7 @@ class NatalChart {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\ComponentRenderer::render( 'generateNatalChart', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return \RoxyAPI\Support\ComponentRenderer::render_atts( 'generateNatalChart', is_array( $data ) ? $data : array(), $atts );
 	}
 
 	/**

@@ -83,6 +83,6 @@ class CalculateChannels {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'calculateChannels', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'calculateChannels', is_array( $data ) ? $data : array(), $atts );
 	}
 }

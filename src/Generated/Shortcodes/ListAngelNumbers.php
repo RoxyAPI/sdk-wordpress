@@ -59,6 +59,6 @@ class ListAngelNumbers {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'listAngelNumbers', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'listAngelNumbers', is_array( $data ) ? $data : array(), $atts );
 	}
 }

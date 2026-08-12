@@ -57,6 +57,6 @@ class GetBirthstones {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getBirthstones', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'getBirthstones', is_array( $data ) ? $data : array(), $atts );
 	}
 }

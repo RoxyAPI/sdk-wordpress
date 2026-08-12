@@ -30,6 +30,7 @@ class Test_Inserter_Visibility extends \WP_UnitTestCase {
 	/** Reference lookups and enumerations. A catalogue, not a reading. */
 	private const LOOKUPS = array(
 		'get-cities-by-country',
+		'get-field-labels',
 		'get-random-crystal',
 		'get-random-symbols',
 		'get-symbol-letter-counts',

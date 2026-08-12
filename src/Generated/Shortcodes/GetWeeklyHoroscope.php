@@ -59,6 +59,6 @@ class GetWeeklyHoroscope {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getWeeklyHoroscope', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'getWeeklyHoroscope', is_array( $data ) ? $data : array(), $atts );
 	}
 }

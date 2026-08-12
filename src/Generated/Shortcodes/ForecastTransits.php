@@ -27,13 +27,17 @@ class ForecastTransits {
 	public const TAG = 'roxy_forecast_transits';
 
 	/**
-	 * This shortcode reads no attributes: every input is collected by the
-	 * visitor form. Declared empty rather than omitted so the sample the
-	 * library offers can be checked against what the shortcode accepts.
+	 * Every INPUT is collected by the visitor form, so the only attributes
+	 * declared here are the reserved display controls. They have to be
+	 * declared: `shortcode_atts()` keeps only the keys it is given, so an
+	 * undeclared one is dropped in silence rather than refused.
 	 *
 	 * @var array<string, string>
 	 */
-	public const DEFAULTS = array();
+	public const DEFAULTS = array(
+		'hide_readings' => 'inherit',
+		'hide_sections' => 'inherit',
+	);
 
 	public static function register(): void {
 		if ( shortcode_exists( self::TAG ) ) {
@@ -43,6 +47,7 @@ class ForecastTransits {
 	}
 
 	public static function render( $atts, $content = '', $tag = '' ): string {
-		return FormRenderer::render( \RoxyAPI\Generated\Forms\ForecastTransitsForm::class );
+		$atts = shortcode_atts( self::DEFAULTS, is_array( $atts ) ? $atts : array(), (string) $tag );
+		return FormRenderer::render( \RoxyAPI\Generated\Forms\ForecastTransitsForm::class, $atts );
 	}
 }

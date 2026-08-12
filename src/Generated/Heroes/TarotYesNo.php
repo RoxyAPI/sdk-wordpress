@@ -51,7 +51,7 @@ class TarotYesNo {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\TarotYesNoForm::class );
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\TarotYesNoForm::class, $atts );
 		}
 
 		$question_clean = \RoxyAPI\Support\Sanitize::bounded_text( $atts['question'], 500 );
@@ -64,7 +64,7 @@ class TarotYesNo {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\ComponentRenderer::render( 'castYesNo', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return \RoxyAPI\Support\ComponentRenderer::render_atts( 'castYesNo', is_array( $data ) ? $data : array(), $atts );
 	}
 
 	/**

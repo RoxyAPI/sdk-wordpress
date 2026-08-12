@@ -85,6 +85,6 @@ class GenerateProgressions {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'generateProgressions', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'generateProgressions', is_array( $data ) ? $data : array(), $atts );
 	}
 }

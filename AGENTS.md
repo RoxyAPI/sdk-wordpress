@@ -1,6 +1,6 @@
 # roxyapi WordPress plugin: Agent Guide
 
-WordPress plugin for [RoxyAPI](https://roxyapi.com). Drop Western and Vedic astrology, numerology, tarot, human design, forecasts, biorhythm, I Ching, crystals, dream symbols, and angel number readings onto any WordPress page with shortcodes or Gutenberg blocks. One API key, twelve spiritual data domains, 160+ endpoints.
+WordPress plugin for [RoxyAPI](https://roxyapi.com). Drop Western and Vedic astrology, numerology, tarot, human design, forecasts, biorhythm, I Ching, crystals, dream symbols, and angel number readings onto any WordPress page with shortcodes or Gutenberg blocks. One API key, twelve spiritual data domains, 177+ endpoints.
 
 The upstream OpenAPI spec is the source of truth: `https://roxyapi.com/api/v2/openapi.json`.
 
@@ -50,9 +50,11 @@ Two-chart heroes (`[roxy_synastry]`, `[roxy_gun_milan]`, `[roxy_compatibility]`)
 
 How readings render: chart-shaped endpoints (natal, kundli, KP, panchang, dasha, and more) render as interactive SVG components from `@roxyapi/ui`, loaded from a bundle shipped inside the plugin and themed by the `--roxy-*` CSS custom properties. The remaining content reads render as a server-side card. The plugin fetches server side and embeds the response, so the API key never reaches the browser either way.
 
-Chart without the written report: every shortcode that renders a reading takes `hide_readings`. It defaults to `inherit`, which follows the Display tab setting of the same name; `hide_readings="1"` hides the written text on that placement and `hide_readings="0"` keeps it even when the site setting is on. Charts, tables, and values are unaffected, and the suppression applies to the no-JavaScript render too.
+Two display controls, and both work the same way: a setting on the Display tab covers the whole site, and an attribute on one shortcode overrides it for that placement. Both default to `inherit`, which means follow the setting. Both apply to the no-JavaScript render as well as the interactive one, so a visitor and a crawler see the same page. A block placed in the editor follows the site setting.
 
-Removing a block of data is a different control, because `hide_readings` deliberately keeps measurements. A chart pattern reports its figure, element, modality, tightness and member planets, so it survives `hide_readings` by design. To drop such a block, list its section name under Display, Hide sections; the rule applies to every reading on the site and to the no-JavaScript render as well. A single page can do the same with a CSS part selector, for example `roxy-natal-chart::part(patterns) { display: none }`.
+Chart without the written report: `hide_readings="1"` hides the interpretation on that placement, `hide_readings="0"` keeps it even when the site setting is on. Charts, tables, and values are unaffected.
+
+Removing a whole block is the other control, because `hide_readings` deliberately keeps measurements. A chart pattern reports its figure, element, modality, tightness and member planets, so it survives `hide_readings` by design. `hide_sections` takes a comma-separated list of section names and removes those blocks outright: `hide_sections="patterns"` drops the chart patterns block on that placement, `hide_sections="patterns, legend"` drops two, and `hide_sections="none"` keeps every block on one page even when the site setting hides one. Section names are the `part` names the components publish, so `roxy-natal-chart::part(patterns) { display: none }` in a theme stylesheet targets the same block, and the same selector restyles it instead of hiding it.
 
 Browsing months: the two monthly ephemeris readings render Previous and Next links plus a month and year picker. The selected month travels in the page address, so the view can be linked and shared, and it resolves server side with no JavaScript and no key in the browser. Leave the year and month off the shortcode and it opens on the current month.
 
@@ -132,13 +134,13 @@ define( 'ROXYAPI_ENCRYPTION_SALT', getenv( 'ROXYAPI_ENCRYPTION_SALT' ) );
 
 The Roxy admin page is split into five tabs:
 
-| Tab      | What it covers                                                                                                                                                                                                                                                                                                                                                     |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Connect  | API key field (constant override), Test Connection button.                                                                                                                                                                                                                                                                                                         |
-| Branding | Four ready-made palettes or seven colors set by hand (accent, page background, card background, text, secondary text, borders, warnings), each with a light and a dark value, plus a light, dark, or auto theme. All of it drives the `--roxy-*` tokens the chart components read. Also the reading language sent on every API call (defaults to the site locale). |
-| Display  | Written readings toggle (off by default, hides the written text on every reading and leaves the charts, tables, and values), Hide sections list (comma-separated section names, each removed from every reading that has one, in both the chart component and the no-JavaScript render), opt in source line, optional disclaimer line, visitor form copy.          |
-| Privacy  | Consent label shown next to the form opt in checkbox. Privacy policy content is registered for the WP Privacy tool.                                                                                                                                                                                                                                                |
-| Advanced | Cache preset (fresh divides TTLs by 4, balanced uses spec defaults, quota saver multiplies TTLs by 24), connection status panel.                                                                                                                                                                                                                                   |
+| Tab      | What it covers                                                                                                                                                                                                                                                                                                                                                                                                         |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Connect  | API key field (constant override), Test Connection button.                                                                                                                                                                                                                                                                                                                                                             |
+| Branding | Four ready-made palettes or seven colors set by hand (accent, page background, card background, text, secondary text, borders, warnings), each with a light and a dark value, plus a light, dark, or auto theme. All of it drives the `--roxy-*` tokens the chart components read. Also the reading language sent on every API call (defaults to the site locale).                                                     |
+| Display  | The two display controls, both site-wide here and both overridable per placement: Written readings toggle (off by default; hides the written text and leaves the charts, tables, and values) and Hide sections list (comma-separated section names, each block removed wherever it appears). Both reach the no-JavaScript render too. Also the opt in source line, an optional disclaimer line, and visitor form copy. |
+| Privacy  | Consent label shown next to the form opt in checkbox. Privacy policy content is registered for the WP Privacy tool.                                                                                                                                                                                                                                                                                                    |
+| Advanced | Cache preset (fresh divides TTLs by 4, balanced uses spec defaults, quota saver multiplies TTLs by 24), connection status panel.                                                                                                                                                                                                                                                                                       |
 
 The settings registry is filterable. Sites that need an extra option can hook `roxyapi_settings_schema` and add a field; the Settings API page picks it up automatically.
 
@@ -161,42 +163,20 @@ Cached responses do not consume RoxyAPI quota. Object cache backends (Redis, Mem
 | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
 | Test the API key                                 | Roxy menu (admin sidebar) > Connect > Test Connection                                                 |
 | Override the key without touching the database   | `define( 'ROXYAPI_KEY', '...' );` in `wp-config.php`                                                  |
-| Change cache TTL per endpoint                    | Edit `bin/ttl-map.json` and run `npm run generate`                                                    |
 | Clear all cached responses                       | `wp transient delete --all` (or call `\RoxyAPI\Api\Cache::flush_all()` from a one-off)                |
+| Hide the written interpretation                  | Display tab, or `hide_readings="1"` on one shortcode                                                  |
+| Remove a block such as chart patterns            | Display tab, or `hide_sections="patterns"` on one shortcode (`"none"` keeps every block there)        |
 | Add a horoscope to any paragraph                 | Use Block Bindings: bind a `core/paragraph` to source `roxyapi/daily-text` with args `{"sign":"leo"}` |
 | Share zodiac sign across many blocks on one page | Add an Astrology Section wrapper block and put the children inside                                    |
 | Use the long tail endpoints                      | Pick a generated block from the inserter or use `[roxy_horoscope_weekly sign="leo"]` style shortcodes |
 
-## Commands
-
-| Command                     | What it does                                                                                                         |
-| --------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `npm run generate`          | Regenerate `src/Generated/`, `blocks/generated/`, hero classes, and form classes from the live OpenAPI spec          |
-| `npm run generate:check`    | Run `generate` then fail if it produced a diff (use as a CI gate)                                                    |
-| `npm run build:all`         | Build blocks (`wp-scripts build`), flatten them to `build/blocks/<name>/`, and post-build (ABSPATH injection)        |
-| `npm run check:blocks`      | Verify the built blocks are flat under `build/blocks/<name>/` so the whole catalog registers (run after `build:all`) |
-| `npm run start`             | `wp-scripts start` dev mode                                                                                          |
-| `npm run plugin-zip`        | Build the wp.org distribution zip (excludes everything in `.distignore`)                                             |
-| `npm run wp-env start`      | Boot local WordPress (Docker bind-mount: see Gotchas)                                                                |
-| `composer run lint`         | PHPCS WordPress standard                                                                                             |
-| `composer run lint:fix`     | phpcbf auto-fix the fixable PHPCS findings                                                                           |
-| `composer run stan`         | PHPStan level 8                                                                                                      |
-| `composer run test`         | PHPUnit (run `bin/install-wp-tests.sh` once to set up `/tmp/wordpress-tests-lib`)                                    |
-| `bash bin/seed-qa-pages.sh` | Seed local wp-env with a QA page exercising every hero shortcode (needs `ROXYAPI_TEST_KEY`)                          |
-
 ## Gotchas
 
--   **The API key never goes into the browser.** Do not refactor any block to fetch from `roxyapi.com` client side. Editor previews use server side render. Frontend renders use PHP `render.php` files.
--   **Shortcodes return, never echo.** WordPress filters break otherwise.
--   **Tests never touch the network.** `tests/bootstrap.php` defines `WP_HTTP_BLOCK_EXTERNAL`, so any request a test does not mock is refused by core and fails with the offending URL named. Mock by adding the endpoint to `$mock_responses` in a `Mock_Http_TestCase` subclass. Never assume an unmocked request will simply fail: it can return real data and make the test pass for the wrong reason.
+-   **The API key never goes into the browser.** Every call is server side in PHP, in both the editor preview and the frontend render, so a shortcode is safe on a fully public page.
 -   **Date format is `YYYY-MM-DD`, time is `HH:MM`.** Both are strings.
--   **Coordinates are decimal degrees.** Negative for west and south.
--   **Block apiVersion is locked to 3.** Schema rejects any other value.
--   **Every reading is a block, registered from a flat scan.** `build:all` lays all blocks flat at `build/blocks/<name>/`, and the Registrar registers the whole catalog with one `glob('build/blocks/*/block.json')` plus `register_block_type` (no core function newer than the declared minimum WordPress version). Keep blocks flat (never nested under `generated/`) or the one-level glob misses the long-tail; `check:blocks` enforces this.
--   **Variations are not separate blocks.** Each hero block ships a `variations.php` file. This keeps the inserter clean.
--   **Hero shortcodes always win over generated ones with the same name.** The Registrar checks `shortcode_exists()` before registering generated entries.
--   **Long-tail block editors are generated too.** Each `blocks/generated/<name>/index.js` (editorScript) is emitted by `bin/generate.mjs` and registers the block with the ONE shared editor in `blocks/_shared/generated-edit.js`, passing spec-derived fields. Change the shared editor, not the per-block files.
--   **Plain text editing your generated PHP or JS is pointless.** `npm run generate` overwrites `src/Generated/` and `blocks/generated/` (block.json, render.php, and index.js). To change a hero, edit `bin/hero-config.json`; to patch a stale spec example, edit `bin/example-overrides.json`; for everything else, edit `bin/generate.mjs` and regenerate.
+-   **Coordinates are decimal degrees.** Negative for west and south. Never hardcode them: drop the shortcode without `lat`/`lon` and visitors get a city search that fills them in.
+-   **Language is a setting, not a shortcode attribute.** Hero shortcodes ignore `lang`. Readings follow the WordPress site language, or **Reading language** on the Branding tab if you want them to differ.
+-   **A reading is cached per endpoint.** Attribute changes produce a different cache key and call through immediately, so you never have to clear a cache after editing a shortcode.
 
 ## Links
 

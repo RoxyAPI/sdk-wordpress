@@ -29,10 +29,15 @@ class FormRenderer {
 	/**
 	 * Render the form for the given Form class.
 	 *
-	 * @param class-string $form_class Fully qualified Form class name.
+	 * @param class-string         $form_class Fully qualified Form class name.
+	 * @param array<string, mixed> $atts       The placement's resolved shortcode attributes.
+	 *                                         Carried so the reserved display attributes
+	 *                                         survive the PRG round trip and a submitted
+	 *                                         reading matches what the same placement
+	 *                                         renders statically.
 	 * @return string HTML.
 	 */
-	public static function render( string $form_class ): string {
+	public static function render( string $form_class, array $atts = array() ): string {
 		if ( ! class_exists( $form_class ) || ! method_exists( $form_class, 'spec' ) ) {
 			return '';
 		}
@@ -72,9 +77,13 @@ class FormRenderer {
 				// Render the result through the same component path as the
 				// static reading so a submitted form matches a block or
 				// shortcode. render_operation_id is the spec operationId for
-				// heroes whose form id differs from it.
+				// heroes whose form id differs from it. The placement's
+				// attributes go with it: for years this call passed none, so
+				// `[roxy_natal_chart hide_readings="1"]` was honoured when the
+				// site owner supplied birth details and silently ignored when
+				// visitors supplied their own.
 				$render_op   = (string) ( $spec['render_operation_id'] ?? $form_id );
-				$result_html = ComponentRenderer::render( $render_op, $stored['result'] );
+				$result_html = ComponentRenderer::render_atts( $render_op, $stored['result'], $atts );
 			}
 			if ( isset( $stored['validation_errors'] ) && is_array( $stored['validation_errors'] ) ) {
 				$errors_by_key = $stored['validation_errors'];

@@ -85,6 +85,6 @@ class CalculateArudhaPadas {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'calculateArudhaPadas', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'calculateArudhaPadas', is_array( $data ) ? $data : array(), $atts );
 	}
 }

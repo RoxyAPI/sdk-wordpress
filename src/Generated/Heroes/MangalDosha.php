@@ -55,12 +55,12 @@ class MangalDosha {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\MangalDoshaForm::class );
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\MangalDoshaForm::class, $atts );
 		}
 
 		if ( $atts['birth_date'] === '' || $atts['birth_time'] === '' || $atts['lat'] === '' || $atts['lon'] === '' ) {
 			if ( $atts['mode'] !== 'static' ) {
-				return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\MangalDoshaForm::class );
+				return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\MangalDoshaForm::class, $atts );
 			}
 			return \RoxyAPI\Support\Templates::error( sprintf( /* translators: %s is the canonical example shortcode. */ __( "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s", 'roxyapi' ), "[roxy_mangal_dosha birth_date=\"1990-05-15\" birth_time=\"14:30\" lat=\"28.6139\" lon=\"77.2090\" tz=\"Asia/Kolkata\"]" ) );
 		}
@@ -83,7 +83,7 @@ class MangalDosha {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\ComponentRenderer::render( 'checkManglikDosha', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return \RoxyAPI\Support\ComponentRenderer::render_atts( 'checkManglikDosha', is_array( $data ) ? $data : array(), $atts );
 	}
 
 	/**

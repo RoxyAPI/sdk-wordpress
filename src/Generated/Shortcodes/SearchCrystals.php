@@ -59,6 +59,6 @@ class SearchCrystals {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'searchCrystals', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'searchCrystals', is_array( $data ) ? $data : array(), $atts );
 	}
 }

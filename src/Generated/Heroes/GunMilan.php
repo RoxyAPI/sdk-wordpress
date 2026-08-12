@@ -23,25 +23,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GunMilan {
 
 	/**
-	 * Empty DEFAULTS const satisfies the Test_Hero_Attr_Contract regression
-	 * test (every hero class must declare DEFAULTS). Form-only heroes do
-	 * not consume attributes — every input flows through the form.
+	 * Every INPUT flows through the form, so the only attributes declared
+	 * here are the reserved display controls. They have to be declared:
+	 * `shortcode_atts()` keeps only the keys it is given, so an undeclared
+	 * one is dropped in silence rather than refused.
 	 *
 	 * @var array<string, string>
 	 */
-	public const DEFAULTS = array();
+	public const DEFAULTS = array(
+		'hide_readings' => 'inherit',
+		'hide_sections' => 'inherit',
+	);
 
 	/**
 	 * Render the shortcode. Always shows the visitor form because static
 	 * mode would require 10+ attributes to be passed inline.
 	 *
-	 * @param array<string, string>|string $atts    Shortcode attributes (ignored).
+	 * @param array<string, string>|string $atts    Shortcode attributes. Inputs are
+	 *                                              ignored; the reserved display
+	 *                                              attributes are honoured.
 	 * @param string                       $content Inner content (ignored).
-	 * @param string                       $tag     Shortcode tag (ignored).
+	 * @param string                       $tag     Shortcode tag.
 	 * @return string
 	 */
 	public static function render( $atts, $content = '', $tag = '' ): string {
+		$atts = shortcode_atts( self::DEFAULTS, is_array( $atts ) ? $atts : array(), (string) $tag );
 		wp_enqueue_style( 'roxyapi-frontend' );
-		return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CalculateGunMilanForm::class );
+		return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CalculateGunMilanForm::class, $atts );
 	}
 }

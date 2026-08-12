@@ -57,6 +57,6 @@ class GetCompoundNumber {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getCompoundNumber', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'getCompoundNumber', is_array( $data ) ? $data : array(), $atts );
 	}
 }

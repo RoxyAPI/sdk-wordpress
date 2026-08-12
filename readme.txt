@@ -14,7 +14,7 @@ Birth charts, horoscopes, kundli, Human Design, Numerology and Tarot as blocks a
 
 RoxyAPI adds Astrology, Vedic, Forecast, Human Design and Numerology readings to any WordPress post, page or widget, as Gutenberg blocks and shortcodes. Drop one on a page and it renders a real reading, server side, the moment you activate the plugin. No account, no setup, no calculation code to write. Start free, then add an API key when you go live.
 
-**One API key. 12+ domains. 171+ endpoints.** Most astrology plugins cover one system. RoxyAPI covers the whole stack, so you build the entire experience without stitching services together:
+**One API key. 12+ domains. 177+ endpoints.** Most astrology plugins cover one system. RoxyAPI covers the whole stack, so you build the entire experience without stitching services together:
 
 * **Western astrology:** natal and birth charts, daily, weekly, and monthly horoscopes, synastry, compatibility, transits, and moon phases
 * **Vedic astrology:** kundli, KP charts, panchang, Vimshottari dasha, divisional charts, nakshatras, yogas, gochara transits, and the Bhava Bala and Bhav Chalit house readings
@@ -235,6 +235,12 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 8. Connect in seconds. Free to start, with copy-paste shortcodes and a guided quick start.
 
 == Changelog ==
+
+= 1.11.2 =
+* Fixed: hiding the written readings, or a section, now works on every placement. Both settings could be set on one shortcode since 1.11.1, but three cases quietly ignored the attribute and followed the site setting instead: the horoscope shortcode, the synastry, Guna Milan and compatibility shortcodes, and ANY reading where the visitor fills in the details themselves rather than the site owner. A page that asked for a chart without the written report got the report back the moment a visitor used the form. The site-wide settings on the Display tab were never affected.
+* Fixed: dropdowns are readable in dark mode. A select looked correct until it was opened, and then listed its choices as white text on a white background. The same fix restores the date and time pickers, the number steppers and the scrollbars, which were all drawn in light colours inside a dark reading.
+* New: the form a visitor fills in now reads in your site language. Field labels and their options were English on every site, whatever the reading language, so a Spanish page asked for a `Birth date` above a translated chart. They are translated in all eight languages, and anything not yet translated stays in English rather than going blank.
+* Fixed: a date shown without a time no longer slips to the previous day for visitors west of Greenwich.
 
 = 1.11.1 =
 * New: Hide sections can now be set on a single placement instead of the whole site. Add hide_sections="patterns" to one shortcode and only that reading loses the block; the Display tab setting still covers everywhere else. Use hide_sections="none" to keep a block on one page when the site setting hides it, which is the case a site-wide setting on its own could never answer.
@@ -460,6 +466,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.11.2 =
+Worth updating if you hide readings or sections on a single shortcode. The horoscope, synastry, Guna Milan and compatibility shortcodes ignored it, as did any reading a visitor fills in. Also fixes unreadable dropdowns in dark mode.
 
 = 1.11.1 =
 Worth updating if you hide a section and want an exception. Hide sections now takes a per shortcode value, so one page can drop a block the rest of the site keeps, or keep one the rest of the site drops.

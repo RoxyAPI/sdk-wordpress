@@ -85,6 +85,6 @@ class GenerateSolarReturn {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'generateSolarReturn', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'generateSolarReturn', is_array( $data ) ? $data : array(), $atts );
 	}
 }

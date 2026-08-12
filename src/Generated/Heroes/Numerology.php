@@ -52,12 +52,12 @@ class Numerology {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\NumerologyForm::class );
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\NumerologyForm::class, $atts );
 		}
 
 		if ( $atts['name'] === '' || $atts['birth_date'] === '' ) {
 			if ( $atts['mode'] !== 'static' ) {
-				return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\NumerologyForm::class );
+				return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\NumerologyForm::class, $atts );
 			}
 			return \RoxyAPI\Support\Templates::error( sprintf( /* translators: %s is the canonical example shortcode. */ __( "The name and birth_date attributes are required. Example: %s", 'roxyapi' ), "[roxy_numerology name=\"Ada Lovelace\" birth_date=\"1815-12-10\"]" ) );
 		}
@@ -80,7 +80,7 @@ class Numerology {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\ComponentRenderer::render( 'generateNumerologyChart', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return \RoxyAPI\Support\ComponentRenderer::render_atts( 'generateNumerologyChart', is_array( $data ) ? $data : array(), $atts );
 	}
 
 	/**

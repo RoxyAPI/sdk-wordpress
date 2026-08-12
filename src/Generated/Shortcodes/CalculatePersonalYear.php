@@ -77,6 +77,6 @@ class CalculatePersonalYear {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'calculatePersonalYear', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'calculatePersonalYear', is_array( $data ) ? $data : array(), $atts );
 	}
 }

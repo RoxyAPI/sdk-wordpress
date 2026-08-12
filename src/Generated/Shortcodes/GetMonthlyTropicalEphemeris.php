@@ -75,6 +75,6 @@ class GetMonthlyTropicalEphemeris {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getMonthlyTropicalEphemeris', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'getMonthlyTropicalEphemeris', is_array( $data ) ? $data : array(), $atts );
 	}
 }

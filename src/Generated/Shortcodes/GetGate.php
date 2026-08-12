@@ -57,6 +57,6 @@ class GetGate {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getGate', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'getGate', is_array( $data ) ? $data : array(), $atts );
 	}
 }

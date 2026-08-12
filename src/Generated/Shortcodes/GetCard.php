@@ -57,6 +57,6 @@ class GetCard {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'getCard', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'getCard', is_array( $data ) ? $data : array(), $atts );
 	}
 }

@@ -73,6 +73,6 @@ class CalculatePersonality {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'calculatePersonality', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'calculatePersonality', is_array( $data ) ? $data : array(), $atts );
 	}
 }

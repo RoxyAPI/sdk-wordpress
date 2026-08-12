@@ -85,6 +85,6 @@ class GenerateLunarReturn {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'generateLunarReturn', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'generateLunarReturn', is_array( $data ) ? $data : array(), $atts );
 	}
 }

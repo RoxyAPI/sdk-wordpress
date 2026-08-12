@@ -81,6 +81,6 @@ class CalculateTransits {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'calculateTransits', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
+		return ComponentRenderer::render_atts( 'calculateTransits', is_array( $data ) ? $data : array(), $atts );
 	}
 }
