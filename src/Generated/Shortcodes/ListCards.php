@@ -36,6 +36,7 @@ class ListCards {
 		'suit' => '',
 		'number' => '',
 		'hide_readings' => 'inherit',
+		'hide_sections' => 'inherit',
 	);
 
 	public static function register(): void {
@@ -60,6 +61,6 @@ class ListCards {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'listCards', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
+		return ComponentRenderer::render( 'listCards', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
 	}
 }

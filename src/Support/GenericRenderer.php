@@ -157,10 +157,16 @@ class GenericRenderer {
 	 *                                           Resolved by {@link ComponentRenderer}
 	 *                                           so this card and the component it
 	 *                                           backs never disagree.
+	 * @param array<int, string>   $hide_sections Part names to drop, resolved by
+	 *                                           {@link ComponentRenderer} from the
+	 *                                           placement attribute over the site
+	 *                                           setting. Passed in rather than read
+	 *                                           here, because a per-placement answer
+	 *                                           cannot be recovered from a global.
 	 * @return string
 	 */
-	public static function render( string $operation_id, array $data, bool $include_meta = true, bool $hide_readings = false ): string {
-		$data = self::strip_hidden_sections( $data );
+	public static function render( string $operation_id, array $data, bool $include_meta = true, bool $hide_readings = false, array $hide_sections = array() ): string {
+		$data = self::strip_hidden_sections( $data, $hide_sections );
 		if ( $hide_readings ) {
 			$data = self::strip_readings( $data );
 		}
@@ -588,11 +594,11 @@ class GenericRenderer {
 	 * there is no per-component mapping table here. Top level only: a part is a
 	 * whole block of a reading, never a field inside one.
 	 *
-	 * @param array<string, mixed> $data Response data.
+	 * @param array<string, mixed> $data   Response data.
+	 * @param array<int, string>   $hidden Resolved part names to drop.
 	 * @return array<string, mixed>
 	 */
-	private static function strip_hidden_sections( array $data ): array {
-		$hidden = Theming::hidden_sections();
+	private static function strip_hidden_sections( array $data, array $hidden ): array {
 		if ( $hidden === array() ) {
 			return $data;
 		}

@@ -95,10 +95,17 @@ class Test_Hero_Blocks extends \WP_UnitTestCase {
 
 		$hero = '\\RoxyAPI\\Generated\\Heroes\\' . $class;
 		$this->assertTrue( class_exists( $hero ) );
-		// `mode` and `hide_readings` are shortcode-only controls, not reading
-		// inputs, so the block does not expose them.
+		// `mode` and the two reserved display attributes are shortcode-only
+		// controls, not reading inputs, so the block does not expose them: a
+		// block placement follows the site setting and a shortcode can override
+		// it. Both reserved names sit here for the same reason and must move
+		// together, because exposing one in the editor and not the other is the
+		// asymmetry `hide_sections` was made per-placement to remove.
 		$reading_inputs = array_values(
-			array_diff( array_keys( $hero::DEFAULTS ), array( 'mode', 'hide_readings' ) )
+			array_diff(
+				array_keys( $hero::DEFAULTS ),
+				array( 'mode', 'hide_readings', 'hide_sections' )
+			)
 		);
 		sort( $reading_inputs );
 		$declared = array_keys( $attributes );

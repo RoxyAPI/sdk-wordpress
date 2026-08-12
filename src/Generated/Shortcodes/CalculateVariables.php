@@ -37,6 +37,7 @@ class CalculateVariables {
 		'node_type' => '',
 		'lang' => '',
 		'hide_readings' => 'inherit',
+		'hide_sections' => 'inherit',
 	);
 
 	public static function register(): void {
@@ -82,6 +83,6 @@ class CalculateVariables {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'calculateVariables', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
+		return ComponentRenderer::render( 'calculateVariables', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
 	}
 }

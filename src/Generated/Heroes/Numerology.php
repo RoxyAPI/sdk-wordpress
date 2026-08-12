@@ -31,6 +31,7 @@ class Numerology {
 		'birth_date' => "",
 		'mode' => 'auto',
 		'hide_readings' => 'inherit',
+		'hide_sections' => 'inherit',
 	);
 
 	/**
@@ -79,7 +80,7 @@ class Numerology {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\ComponentRenderer::render( 'generateNumerologyChart', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
+		return \RoxyAPI\Support\ComponentRenderer::render( 'generateNumerologyChart', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
 	}
 
 	/**

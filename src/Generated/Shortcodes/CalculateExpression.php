@@ -32,6 +32,7 @@ class CalculateExpression {
 		'full_name' => '',
 		'lang' => '',
 		'hide_readings' => 'inherit',
+		'hide_sections' => 'inherit',
 	);
 
 	public static function register(): void {
@@ -72,6 +73,6 @@ class CalculateExpression {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'calculateExpression', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
+		return ComponentRenderer::render( 'calculateExpression', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
 	}
 }

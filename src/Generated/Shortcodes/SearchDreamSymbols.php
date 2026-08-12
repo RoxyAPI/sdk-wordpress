@@ -34,6 +34,7 @@ class SearchDreamSymbols {
 		'limit' => '',
 		'offset' => '',
 		'hide_readings' => 'inherit',
+		'hide_sections' => 'inherit',
 	);
 
 	public static function register(): void {
@@ -58,6 +59,6 @@ class SearchDreamSymbols {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'searchDreamSymbols', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
+		return ComponentRenderer::render( 'searchDreamSymbols', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
 	}
 }

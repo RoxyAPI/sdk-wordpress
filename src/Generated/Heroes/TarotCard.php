@@ -31,6 +31,7 @@ class TarotCard {
 		'question' => "",
 		'mode' => 'auto',
 		'hide_readings' => 'inherit',
+		'hide_sections' => 'inherit',
 	);
 
 	/**
@@ -64,7 +65,7 @@ class TarotCard {
 			if ( is_wp_error( $data ) ) {
 				return \RoxyAPI\Support\Templates::api_error( $data );
 			}
-			return \RoxyAPI\Support\ComponentRenderer::render( 'castThreeCard', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
+			return \RoxyAPI\Support\ComponentRenderer::render( 'castThreeCard', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
 		} else if ( $spread_clean === "celtic" ) {
 			$data = \RoxyAPI\Generated\Client::castCelticCross( array(
 			'question' => $question_clean,
@@ -72,13 +73,13 @@ class TarotCard {
 			if ( is_wp_error( $data ) ) {
 				return \RoxyAPI\Support\Templates::api_error( $data );
 			}
-			return \RoxyAPI\Support\ComponentRenderer::render( 'castCelticCross', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
+			return \RoxyAPI\Support\ComponentRenderer::render( 'castCelticCross', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
 		} else 		{
 			$data = \RoxyAPI\Generated\Client::getDailyCard( array() );
 			if ( is_wp_error( $data ) ) {
 				return \RoxyAPI\Support\Templates::api_error( $data );
 			}
-			return \RoxyAPI\Support\ComponentRenderer::render( 'getDailyCard', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
+			return \RoxyAPI\Support\ComponentRenderer::render( 'getDailyCard', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
 		}
 	}
 

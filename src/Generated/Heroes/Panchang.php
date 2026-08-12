@@ -33,6 +33,7 @@ class Panchang {
 		'tz' => "5.5",
 		'mode' => 'auto',
 		'hide_readings' => 'inherit',
+		'hide_sections' => 'inherit',
 	);
 
 	/**
@@ -79,7 +80,7 @@ class Panchang {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\ComponentRenderer::render( 'getDetailedPanchang', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
+		return \RoxyAPI\Support\ComponentRenderer::render( 'getDetailedPanchang', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
 	}
 
 	/**

@@ -37,6 +37,7 @@ class CalculateMaturity {
 		'day' => '',
 		'lang' => '',
 		'hide_readings' => 'inherit',
+		'hide_sections' => 'inherit',
 	);
 
 	public static function register(): void {
@@ -82,6 +83,6 @@ class CalculateMaturity {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return ComponentRenderer::render( 'calculateMaturity', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
+		return ComponentRenderer::render( 'calculateMaturity', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
 	}
 }

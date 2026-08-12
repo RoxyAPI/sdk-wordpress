@@ -30,6 +30,7 @@ class TarotYesNo {
 		'question' => "",
 		'mode' => 'auto',
 		'hide_readings' => 'inherit',
+		'hide_sections' => 'inherit',
 	);
 
 	/**
@@ -63,7 +64,7 @@ class TarotYesNo {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\ComponentRenderer::render( 'castYesNo', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
+		return \RoxyAPI\Support\ComponentRenderer::render( 'castYesNo', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
 	}
 
 	/**

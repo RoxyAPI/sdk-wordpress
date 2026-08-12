@@ -43,11 +43,17 @@ class ComponentRenderer {
 	 *                                            interpretations. `null`, `''` and
 	 *                                            `inherit` follow the site setting;
 	 *                                            anything else is read as a boolean.
+	 * @param string|null          $hide_sections Per-placement override for whole
+	 *                                            blocks, as a comma-separated list of
+	 *                                            part names. `null`, `''` and `inherit`
+	 *                                            follow the site setting; `none` hides
+	 *                                            nothing here regardless of it.
 	 * @return string Rendered HTML.
 	 */
-	public static function render( string $operation_id, array $data, $hide_readings = null ): string {
-		$rows = ComponentMap::for( $operation_id );
-		$hide = self::hide_readings( $hide_readings );
+	public static function render( string $operation_id, array $data, $hide_readings = null, $hide_sections = null ): string {
+		$rows     = ComponentMap::for( $operation_id );
+		$hide     = self::hide_readings( $hide_readings );
+		$sections = self::hide_sections( $hide_sections );
 
 		/**
 		 * Filter whether the web-component bundle is used for rendering. Return
@@ -59,7 +65,7 @@ class ComponentRenderer {
 		$ui_enabled = (bool) apply_filters( 'roxyapi_enqueue_ui_bundle', true );
 
 		if ( false === $ui_enabled || empty( $data ) ) {
-			return GenericRenderer::render( $operation_id, $data, true, $hide );
+			return GenericRenderer::render( $operation_id, $data, true, $hide, $sections );
 		}
 
 		// Mapped operations use their component; any other shape uses the
@@ -82,11 +88,11 @@ class ComponentRenderer {
 				continue;
 			}
 			$attrs   = isset( $row['attrs'] ) && is_array( $row['attrs'] ) ? $row['attrs'] : array();
-			$markup .= self::render_element( $tag, $operation_id, $data, $hide, $attrs );
+			$markup .= self::render_element( $tag, $operation_id, $data, $hide, $sections, $attrs );
 		}
 
 		if ( '' === $markup ) {
-			return GenericRenderer::render( $operation_id, $data, true, $hide );
+			return GenericRenderer::render( $operation_id, $data, true, $hide, $sections );
 		}
 
 		// Always wrapped, and the wrapper is load-bearing rather than cosmetic.
@@ -126,23 +132,28 @@ class ComponentRenderer {
 	 * values (for example a literal `</script>` substring) is escaped and
 	 * cannot break out of the script element.
 	 *
-	 * `hide-readings` is emitted on every element rather than on a curated
-	 * list of components that understand it. An unknown attribute is inert on
-	 * a custom element, so uniform emission costs nothing and cannot go stale
-	 * when the next component ships.
+	 * `hide-readings` and `hide-sections` are emitted on every element rather
+	 * than on a curated list of components that understand them. An unknown
+	 * attribute is inert on a custom element, so uniform emission costs nothing
+	 * and cannot go stale when the next component ships.
+	 *
+	 * `hide-sections` carries the RESOLVED list rather than the raw attribute,
+	 * so the element receives the same answer the no-JS fallback below is built
+	 * from and the two views can never disagree about which blocks are gone.
 	 *
 	 * @param string                $tag           Validated `roxy-*` tag name.
 	 * @param string                $operation_id  Spec operationId.
 	 * @param array<string, mixed>  $data          Unwrapped API response.
 	 * @param bool                  $hide_readings Whether written interpretations are suppressed.
+	 * @param array<int, string>    $hide_sections Resolved part names to drop, already sanitized.
 	 * @param array<string, string> $attrs         Variant selectors from the map, e.g. `type="soul-urge"`.
 	 * @return string Rendered element HTML.
 	 */
-	private static function render_element( string $tag, string $operation_id, array $data, bool $hide_readings, array $attrs = array() ): string {
+	private static function render_element( string $tag, string $operation_id, array $data, bool $hide_readings, array $hide_sections = array(), array $attrs = array() ): string {
 		$payload = wp_json_encode( $data, JSON_HEX_TAG );
 		if ( false === $payload ) {
 			// Encoding failed; degrade to the server-rendered card.
-			return GenericRenderer::render( $operation_id, $data, true, $hide_readings );
+			return GenericRenderer::render( $operation_id, $data, true, $hide_readings, $hide_sections );
 		}
 
 		// Variant selectors from the map (`type="soul-urge"`). Names are
@@ -157,7 +168,7 @@ class ComponentRenderer {
 		}
 
 		return sprintf(
-			'<%1$s class="roxyapi-component" data-operation="%2$s"%5$s%6$s>'
+			'<%1$s class="roxyapi-component" data-operation="%2$s"%5$s%7$s%6$s>'
 				. '<script type="application/json" class="roxy-data">%3$s</script>'
 				. '<div class="roxyapi-component-fallback">%4$s</div>'
 				. '</%1$s>',
@@ -168,9 +179,13 @@ class ComponentRenderer {
 			// render(), outside the element, so they survive the upgrade. The
 			// fallback is what a no-JS visitor reads, so it hides the same text
 			// the component hides.
-			GenericRenderer::render( $operation_id, $data, false, $hide_readings ),
+			GenericRenderer::render( $operation_id, $data, false, $hide_readings, $hide_sections ),
 			$hide_readings ? ' hide-readings' : '',
-			$attr_markup
+			$attr_markup,
+			// Names are already narrowed to `[a-z][a-z0-9-]*`, so the joined value
+			// carries no character that needs escaping; `esc_attr` runs anyway
+			// because an unescaped attribute is not a thing to leave to a reader.
+			$hide_sections === array() ? '' : sprintf( ' hide-sections="%s"', esc_attr( implode( ',', $hide_sections ) ) )
 		);
 	}
 
@@ -199,5 +214,33 @@ class ComponentRenderer {
 
 		$opts = \RoxyAPI\Admin\SettingsSchema::get_option();
 		return ! empty( $opts['hide_readings'] );
+	}
+
+	/**
+	 * Resolve which named blocks are hidden for this render.
+	 *
+	 * Same precedence as {@see hide_readings}, and deliberately the same
+	 * sentinel: an explicit shortcode attribute wins over the site setting, and
+	 * `inherit` or an empty value are not opinions so they fall through to it.
+	 *
+	 * The one difference is what "explicit" can say. A boolean has no way to
+	 * express "hide nothing here", but a list does, so `hide_sections="none"` is
+	 * honoured as an empty list and lets one placement opt OUT of a site-wide
+	 * setting. Without it a site hiding `patterns` everywhere could never show
+	 * them on a single page, which is most of the reason this is per placement.
+	 *
+	 * @param string|null $override Raw per-placement value.
+	 * @return array<int, string>
+	 */
+	private static function hide_sections( $override ): array {
+		$raw = is_string( $override ) ? strtolower( trim( $override ) ) : '';
+		if ( 'none' === $raw ) {
+			return array();
+		}
+		if ( '' !== $raw && self::INHERIT !== $raw ) {
+			return Sanitize::section_names( $raw );
+		}
+
+		return Theming::hidden_sections();
 	}
 }

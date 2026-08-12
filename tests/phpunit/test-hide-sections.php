@@ -80,6 +80,19 @@ class Test_Hide_Sections extends \WP_UnitTestCase {
 		return substr( $html, 0, $end );
 	}
 
+	/**
+	 * Just the opening tag of the custom element, so an assertion about what the
+	 * ELEMENT was told cannot pass or fail on the response payload beside it,
+	 * which contains the same words.
+	 */
+	private function element_attrs_of( string $html ): string {
+		$start = strpos( $html, '<roxy-' );
+		$this->assertIsInt( $start, 'The render must emit a custom element.' );
+		$end = strpos( $html, '>', (int) $start );
+		$this->assertIsInt( $end, 'The element tag must close.' );
+		return substr( $html, (int) $start, (int) $end - (int) $start + 1 );
+	}
+
 	// -------------------------------------------------------------------------
 	// The sanitiser
 	// -------------------------------------------------------------------------
@@ -126,8 +139,10 @@ class Test_Hide_Sections extends \WP_UnitTestCase {
 		$this->set_hide_sections( 'patterns, }html{display:none' );
 
 		$this->assertSame( array( 'patterns' ), Theming::hidden_sections() );
-		$this->assertStringContainsString( '.roxyapi-component::part(patterns){display:none}', Theming::inline_css() );
-		$this->assertStringNotContainsString( 'html{display:none}', Theming::inline_css() );
+
+		$out = ComponentRenderer::render( 'generateNatalChart', $this->chart_data() );
+		$this->assertStringContainsString( 'hide-sections="patterns"', $out );
+		$this->assertStringNotContainsString( 'html{display:none}', $out );
 	}
 
 	public function test_names_are_lowercased_trimmed_and_deduped(): void {
@@ -143,40 +158,80 @@ class Test_Hide_Sections extends \WP_UnitTestCase {
 	}
 
 	// -------------------------------------------------------------------------
-	// The stylesheet
+	// The element attribute
+	//
+	// The resolved list travels on the element rather than in a site-wide
+	// stylesheet. A `::part()` rule written at document level sits in the OUTER
+	// tree and outranks anything inside the component, so it would win against a
+	// placement asking to KEEP a block, which is the one thing per-placement
+	// control has to be able to do.
 	// -------------------------------------------------------------------------
 
-	public function test_an_empty_setting_emits_no_part_rule(): void {
-		$this->assertStringNotContainsString( '::part(', Theming::inline_css() );
-		$this->assertStringNotContainsString( '::part(', Theming::inline_css( true ) );
+	public function test_an_empty_setting_emits_no_attribute(): void {
+		$out = ComponentRenderer::render( 'generateNatalChart', $this->chart_data() );
+
+		$this->assertStringNotContainsString( 'hide-sections', $out );
 	}
 
-	public function test_several_names_emit_one_rule_each(): void {
+	public function test_the_site_setting_reaches_the_element(): void {
 		$this->set_hide_sections( 'patterns, aspects' );
+		$out = ComponentRenderer::render( 'generateNatalChart', $this->chart_data() );
 
-		$css = Theming::inline_css();
-		$this->assertStringContainsString( '.roxyapi-component::part(patterns){display:none}', $css );
-		$this->assertStringContainsString( '.roxyapi-component::part(aspects){display:none}', $css );
+		$this->assertStringContainsString( 'hide-sections="patterns,aspects"', $out );
 	}
 
 	/**
-	 * The Demo page and every block preview render through the forced-mode
-	 * branch, which returns early. The rules have to be on that path too or the
-	 * setting would look broken in wp-admin.
+	 * The point of the whole attribute: one placement disagreeing with the site.
 	 */
-	public function test_the_rules_are_emitted_in_the_admin_branch_too(): void {
-		update_option(
-			SettingsPage::OPTION_NAME,
-			array(
-				'hide_sections' => 'patterns',
-				'theme_mode'    => 'dark',
-			)
-		);
+	public function test_a_placement_overrides_the_site_setting(): void {
+		$this->set_hide_sections( 'patterns' );
+		$out = ComponentRenderer::render( 'generateNatalChart', $this->chart_data(), null, 'legend' );
 
-		$this->assertStringContainsString(
-			'.roxyapi-component::part(patterns){display:none}',
-			Theming::inline_css( true )
-		);
+		$this->assertStringContainsString( 'hide-sections="legend"', $out );
+		$this->assertStringNotContainsString( 'patterns', $this->element_attrs_of( $out ) );
+	}
+
+	/**
+	 * A boolean cannot say "hide nothing here", so the list has a word for it.
+	 * Without this a site hiding a block everywhere could never show it once.
+	 */
+	public function test_none_opts_one_placement_out_of_the_site_setting(): void {
+		$this->set_hide_sections( 'patterns' );
+		$out = ComponentRenderer::render( 'generateNatalChart', $this->chart_data(), null, 'none' );
+
+		$this->assertStringNotContainsString( 'hide-sections', $out );
+		$this->assertStringContainsString( 'Patterns (', $this->fallback_of( $out ), 'none restores the block in the no-JS view too.' );
+	}
+
+	public function test_inherit_and_empty_follow_the_site_setting(): void {
+		$this->set_hide_sections( 'patterns' );
+
+		foreach ( array( 'inherit', '', null ) as $value ) {
+			$out = ComponentRenderer::render( 'generateNatalChart', $this->chart_data(), null, $value );
+			$this->assertStringContainsString( 'hide-sections="patterns"', $out );
+		}
+	}
+
+	/**
+	 * A placement value is sanitized exactly like the setting, so a shortcode
+	 * cannot put anything in the attribute the settings field could not.
+	 */
+	public function test_a_placement_value_is_sanitized_like_the_setting(): void {
+		$out = ComponentRenderer::render( 'generateNatalChart', $this->chart_data(), null, 'Patterns , }html{display:none' );
+
+		$this->assertStringContainsString( 'hide-sections="patterns"', $out );
+		$this->assertStringNotContainsString( 'html{display:none}', $out );
+	}
+
+	/**
+	 * Guard against the global rule coming back. It is not a harmless extra:
+	 * it would silently defeat every override above.
+	 */
+	public function test_the_stylesheet_carries_no_part_rule_at_all(): void {
+		$this->set_hide_sections( 'patterns' );
+
+		$this->assertStringNotContainsString( '::part(', Theming::inline_css() );
+		$this->assertStringNotContainsString( '::part(', Theming::inline_css( true ) );
 	}
 
 	// -------------------------------------------------------------------------

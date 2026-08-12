@@ -276,9 +276,8 @@ class Theming {
 	 * @return string
 	 */
 	public static function inline_css( bool $resolve_forced_mode = false ): string {
-		$palette  = self::palette();
-		$mode     = self::mode();
-		$sections = self::hidden_sections_css();
+		$palette = self::palette();
+		$mode    = self::mode();
 
 		// Components inherit the site's own typeface unless the owner overrides
 		// the token: the shipped default names a font that is not on the page,
@@ -288,7 +287,7 @@ class Theming {
 		$base = '--roxy-font-sans:inherit;';
 
 		if ( $resolve_forced_mode && $mode !== 'auto' ) {
-			return ':root{' . $base . self::declarations( $palette[ $mode ] ) . '}' . $sections;
+			return ':root{' . $base . self::declarations( $palette[ $mode ] ) . '}';
 		}
 
 		$css  = ':root,:root[data-theme="light"]{' . $base;
@@ -300,17 +299,26 @@ class Theming {
 			$css .= '@media (prefers-color-scheme:dark){:root{' . $dark . '}}';
 		}
 
-		return $css . $sections;
+		return $css;
 	}
 
 	/**
-	 * Section names the site owner has hidden, normalised.
+	 * Section names the site owner has hidden, normalised. The SITE DEFAULT only.
 	 *
-	 * The one reader of the `hide_sections` setting. Two surfaces consume the
-	 * list and they must never disagree: the stylesheet below drops the block
-	 * out of the upgraded component, and {@link GenericRenderer} drops the same
-	 * block out of the server-rendered fallback the no-JavaScript view and a
-	 * crawler read.
+	 * The one reader of the `hide_sections` setting, and its only caller is
+	 * {@link ComponentRenderer}, which folds a per-placement attribute over it
+	 * and hands the resolved list to both surfaces that act on it: the
+	 * `hide-sections` attribute on the element, and {@link GenericRenderer},
+	 * which drops the same block out of the server-rendered fallback the
+	 * no-JavaScript view and a crawler read.
+	 *
+	 * **This deliberately no longer emits a stylesheet, and that is not a
+	 * simplification.** A site-wide `::part()` rule lives in the OUTER tree, so
+	 * it outranks anything inside the component and would win against a
+	 * placement asking to KEEP a block. Once one placement can opt out, a global
+	 * rule stops being a shortcut for the common case and becomes a rule that
+	 * cannot be overridden. The resolved list travels per element instead,
+	 * exactly as `hide-readings` already does.
 	 *
 	 * @return array<int, string>
 	 */
@@ -319,25 +327,6 @@ class Theming {
 		return Sanitize::section_names( $opts['hide_sections'] ?? '' );
 	}
 
-	/**
-	 * The rules that drop those sections out of every component on the page.
-	 *
-	 * `::part()` is the only lever a stylesheet has on a component's internals,
-	 * and it reaches exactly the blocks the component chooses to expose. Emitted
-	 * on `.roxyapi-component`, the class every element {@link ComponentRenderer}
-	 * writes carries, so one rule covers every reading on the site including the
-	 * admin Demo page. Names are already narrowed to `[a-z][a-z0-9-]*` by
-	 * {@link Sanitize::section_names}, so nothing here can close the rule.
-	 *
-	 * @return string
-	 */
-	private static function hidden_sections_css(): string {
-		$css = '';
-		foreach ( self::hidden_sections() as $name ) {
-			$css .= '.roxyapi-component::part(' . $name . '){display:none}';
-		}
-		return $css;
-	}
 
 	/**
 	 * Custom-property declarations for one mode.

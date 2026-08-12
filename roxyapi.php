@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 const ROXYAPI_VERSION     = '1.11.0';
-const ROXYAPI_UI_VERSION  = '0.27.2';
+const ROXYAPI_UI_VERSION  = '0.27.3';
 const ROXYAPI_PHP_MIN     = '7.4.0';
 const ROXYAPI_PLUGIN_FILE = __FILE__;
 

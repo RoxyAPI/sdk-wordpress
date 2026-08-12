@@ -1763,7 +1763,7 @@ class ${ className } {
 			...bodyFields.map( ( f ) => toSnakeAttr( f.name ) ),
 			...postQueryParams.map( ( p ) => toSnakeAttr( p.name ) ),
 		];
-		attsArray = withHideReadingsAtt(
+		attsArray = withReservedAtts(
 			[ ...new Set( allPostAtts ) ].map( ( p ) => `\t\t'${ p }' => '',` ),
 			'\t\t'
 		).join( '\n' );
@@ -1824,7 +1824,7 @@ class ${ className } {
 			...pathParams.map( toSnakeAttr ),
 			...queryParams.map( ( p ) => toSnakeAttr( p.name ) ),
 		];
-		attsArray = withHideReadingsAtt(
+		attsArray = withReservedAtts(
 			allAttParams.map( ( p ) => `\t\t'${ p }' => '',` ),
 			'\t\t'
 		).join( '\n' );
@@ -1900,7 +1900,7 @@ ${ accountGuard }
 
 		return ComponentRenderer::render( '${
 			op.operationId
-		}', is_array( $data ) ? $data : array(), ${ HIDE_READINGS_ARG } );
+		}', is_array( $data ) ? $data : array(), ${ RESERVED_ARGS } );
 	}
 }
 `;
@@ -2392,35 +2392,51 @@ function _attrSlotForOperation( attr, op ) {
 }
 
 /**
- * Attribute every rendering shortcode carries so one placement can override
- * the site-wide "hide written readings" setting. Declared here rather than per
- * hero in bin/hero-config.json because it is not an API input: it never reaches
- * a request body or query string, and a hero or endpoint added later has to
- * pick it up without anyone remembering to declare it. `inherit` follows the
- * setting; any other value is read as a boolean and wins over it.
+ * Attributes every rendering shortcode carries so one placement can override a
+ * site-wide display setting. Declared here rather than per hero in
+ * bin/hero-config.json because they are not API inputs: they never reach a
+ * request body or query string, and a hero or endpoint added later has to pick
+ * them up without anyone remembering to declare them.
+ *
+ * `inherit` follows the setting. `hide_readings` reads any other value as a
+ * boolean; `hide_sections` reads it as the same comma-separated name list the
+ * setting takes. Both are resolved in `ComponentRenderer`, the one place that
+ * knows how to fold a placement value over a site value.
+ *
+ * **A third one goes in this array and nowhere else.** The DEFAULTS line, the
+ * collision guard and the arguments passed to `ComponentRenderer::render` are
+ * all derived from it, in the order declared here, which is the order that
+ * method takes them.
  */
-const HIDE_READINGS_ATT = 'hide_readings';
-const HIDE_READINGS_DEFAULT = 'inherit';
-const HIDE_READINGS_ARG = `$atts['${ HIDE_READINGS_ATT }']`;
+const RESERVED_ATTS = [
+	{ att: 'hide_readings', default: 'inherit' },
+	{ att: 'hide_sections', default: 'inherit' },
+];
+const RESERVED_ARGS = RESERVED_ATTS.map(
+	( { att } ) => `$atts['${ att }']`
+).join( ', ' );
 
 /**
- * Append the reserved hide_readings attribute to a DEFAULTS line list. Throws
- * when an endpoint already declares an input of that name, since the shortcode
+ * Append every reserved attribute to a DEFAULTS line list. Throws when an
+ * endpoint already declares an input of one of those names, since the shortcode
  * would then have two meanings for one key.
  * @param lines  Existing `'key' => value,` lines.
  * @param indent Leading whitespace for one line.
  */
-function withHideReadingsAtt( lines, indent ) {
-	if (
-		lines.some( ( line ) => line.includes( `'${ HIDE_READINGS_ATT }'` ) )
-	) {
-		throw new Error(
-			`[generate] an operation declares a "${ HIDE_READINGS_ATT }" input, which collides with the reserved shortcode attribute`
-		);
+function withReservedAtts( lines, indent ) {
+	for ( const { att } of RESERVED_ATTS ) {
+		if ( lines.some( ( line ) => line.includes( `'${ att }'` ) ) ) {
+			throw new Error(
+				`[generate] an operation declares a "${ att }" input, which collides with the reserved shortcode attribute`
+			);
+		}
 	}
 	return [
 		...lines,
-		`${ indent }'${ HIDE_READINGS_ATT }' => '${ HIDE_READINGS_DEFAULT }',`,
+		...RESERVED_ATTS.map(
+			( { att, default: value } ) =>
+				`${ indent }'${ att }' => '${ value }',`
+		),
 	];
 }
 
@@ -2466,7 +2482,7 @@ function renderDefaultsArray( attributes, hasFormMode = false ) {
 		// the form; `static` preserves the legacy missing-attrs error message.
 		lines.push( `\t\t'mode' => 'auto',` );
 	}
-	return withHideReadingsAtt( lines, '\t\t' ).join( '\n' );
+	return withReservedAtts( lines, '\t\t' ).join( '\n' );
 }
 
 /**
@@ -2770,7 +2786,7 @@ function buildHeroBodyContent(
 
 	const successReturn = ( opId ) =>
 		returnsHtml
-			? `return \\RoxyAPI\\Support\\ComponentRenderer::render( '${ opId }', is_array( $data ) ? $data : array(), ${ HIDE_READINGS_ARG } );`
+			? `return \\RoxyAPI\\Support\\ComponentRenderer::render( '${ opId }', is_array( $data ) ? $data : array(), ${ RESERVED_ARGS } );`
 			: `return is_array( $data ) ? $data : array();`;
 	const errorReturn = returnsHtml
 		? `return \\RoxyAPI\\Support\\Templates::api_error( $data );`

@@ -28,6 +28,7 @@ class MoonPhase {
 	 */
 	public const DEFAULTS = array(
 		'hide_readings' => 'inherit',
+		'hide_sections' => 'inherit',
 	);
 
 	/**
@@ -53,6 +54,6 @@ class MoonPhase {
 			return \RoxyAPI\Support\Templates::api_error( $data );
 		}
 
-		return \RoxyAPI\Support\ComponentRenderer::render( 'getCurrentMoonPhase', is_array( $data ) ? $data : array(), $atts['hide_readings'] );
+		return \RoxyAPI\Support\ComponentRenderer::render( 'getCurrentMoonPhase', is_array( $data ) ? $data : array(), $atts['hide_readings'], $atts['hide_sections'] );
 	}
 }

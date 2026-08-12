@@ -197,6 +197,8 @@ Yes, at two levels. The RoxyAPI menu under Display has Written readings, which r
 
 Those two are separate on purpose. A chart pattern such as a T-square reports the figure, its element and modality, how tight it is and which planets form it. Those are measurements rather than prose, so turning off written readings leaves them in place.
 
+Both can be overridden on a single placement, so one page does not have to follow the whole site. Add `hide_sections="patterns"` to a shortcode and only that reading loses the block, or `hide_sections="none"` to keep a block on one page that the site setting hides everywhere else. `hide_readings="1"` and `hide_readings="0"` work the same way. A block placed in the editor follows the site setting.
+
 You can also target any section yourself from Appearance, Customize, Additional CSS, or from your child theme stylesheet. Every block of a reading is exposed as a CSS part:
 
 `roxy-natal-chart::part(patterns) { display: none }`
@@ -233,6 +235,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 8. Connect in seconds. Free to start, with copy-paste shortcodes and a guided quick start.
 
 == Changelog ==
+
+= 1.11.1 =
+* New: Hide sections can now be set on a single placement instead of the whole site. Add hide_sections="patterns" to one shortcode and only that reading loses the block; the Display tab setting still covers everywhere else. Use hide_sections="none" to keep a block on one page when the site setting hides it, which is the case a site-wide setting on its own could never answer.
 
 = 1.11.0 =
 * New: Hide sections, on the Display tab. Enter a section name such as patterns and that block comes off every reading that has one. Written readings already took away the interpretation; this takes away a block of data, which written readings leaves in place on purpose, because a chart pattern reports measurements rather than prose. It applies to the no JavaScript version of the reading too, so a hidden section is not left behind for search engines to read.
@@ -455,6 +460,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.11.1 =
+Worth updating if you hide a section and want an exception. Hide sections now takes a per shortcode value, so one page can drop a block the rest of the site keeps, or keep one the rest of the site drops.
 
 = 1.11.0 =
 Worth updating if you publish charts without the written report, or a monthly ephemeris. A single block of a reading, such as the chart patterns list, can now be taken off from the Display tab or with one line of CSS, and it comes off the no JavaScript version too. The monthly ephemeris gained Previous and Next links and a month and year picker, so visitors browse other months without leaving the page.
