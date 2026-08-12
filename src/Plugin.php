@@ -25,6 +25,7 @@ use RoxyAPI\Blocks\Bindings;
 use RoxyAPI\Blocks\Category;
 use RoxyAPI\Blocks\Registrar as BlocksRegistrar;
 use RoxyAPI\Shortcodes\Registrar as ShortcodesRegistrar;
+use RoxyAPI\Support\EphemerisNav;
 use RoxyAPI\Support\FormRouter;
 use RoxyAPI\Support\LocaleFallback;
 use RoxyAPI\Support\Theming;
@@ -107,6 +108,7 @@ class Plugin {
 		ShortcodesRegistrar::register();
 		Bindings::register();
 		FormRouter::register();
+		EphemerisNav::register();
 		UiBundle::register();
 		Theming::register();
 

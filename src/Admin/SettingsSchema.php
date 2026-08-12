@@ -81,6 +81,10 @@ class SettingsSchema {
 				'type'    => 'bool',
 				'default' => false,
 			),
+			'hide_sections'     => array(
+				'type'    => 'string',
+				'default' => '',
+			),
 			'disclaimer_show'   => array(
 				'type'    => 'bool',
 				'default' => false,

@@ -191,6 +191,20 @@ Yes. The plugin uses WordPress transients, which automatically use Redis or Memc
 
 Yes. Readings pick up your theme font, and the RoxyAPI menu under Branding gives you four ready-made palettes plus seven colors you can set yourself: accent, page background, card background, text, secondary text, borders and warnings. Each takes a light value and a dark value, so a dark brand color stays readable for a visitor in dark mode. Charts follow your light or dark mode automatically and read the --roxy-* CSS custom properties, so you can also override any token in your theme stylesheet. Every output element has a .roxyapi-* class you can target.
 
+= Can I hide part of a reading, such as the chart patterns? =
+
+Yes, at two levels. The RoxyAPI menu under Display has Written readings, which removes the interpretation from every reading and leaves the charts, tables and values in place. Below it, Hide sections takes a comma-separated list of section names and removes those blocks outright, so entering `patterns` removes the chart patterns block wherever it appears on your site.
+
+Those two are separate on purpose. A chart pattern such as a T-square reports the figure, its element and modality, how tight it is and which planets form it. Those are measurements rather than prose, so turning off written readings leaves them in place.
+
+You can also target any section yourself from Appearance, Customize, Additional CSS, or from your child theme stylesheet. Every block of a reading is exposed as a CSS part:
+
+`roxy-natal-chart::part(patterns) { display: none }`
+
+`roxy-ephemeris-table::part(changes) { display: none }`
+
+Common section names are readings, patterns, aspects, changes, chart, legend, table and details. A name means the same block everywhere it appears, so one rule covers every reading that has that block: `::part(aspects)` reaches the aspect grid on a natal chart and the aspect list on an aspects table alike. Open your browser inspector and read the part attribute off any block to find the name for it. The same selector restyles a section instead of hiding it, so you can give one block its own background or spacing without touching the rest.
+
 = Which calculation engine powers RoxyAPI? =
 
 RoxyAPI cross-checks its astronomy calculations against the NASA JPL Horizons ephemeris (a public NASA dataset; no affiliation with NASA or JPL). See https://roxyapi.com/methodology for the full breakdown.
@@ -219,6 +233,11 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 8. Connect in seconds. Free to start, with copy-paste shortcodes and a guided quick start.
 
 == Changelog ==
+
+= 1.11.0 =
+* New: Hide sections, on the Display tab. Enter a section name such as patterns and that block comes off every reading that has one. Written readings already took away the interpretation; this takes away a block of data, which written readings leaves in place on purpose, because a chart pattern reports measurements rather than prose. It applies to the no JavaScript version of the reading too, so a hidden section is not left behind for search engines to read.
+* New: the monthly ephemeris pages month to month. Previous and Next links plus a month and year picker sit under the table, in the shortcode and in the block. The month travels in the page address, so the view can be linked and shared, it works with no JavaScript, and your API key stays on the server.
+* New: every block of a reading can be targeted from your own stylesheet with a CSS part selector, so a section can be restyled instead of hidden. See the FAQ for the section names.
 
 = 1.10.0 =
 * New: the monthly ephemeris now renders as a real ephemeris. Days down the page, bodies across, each position as degree, sign and minute, retrogrades marked, and the days a body changes sign listed above the table. It reads the way a printed ephemeris reads, in all eight languages.
@@ -436,6 +455,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.11.0 =
+Worth updating if you publish charts without the written report, or a monthly ephemeris. A single block of a reading, such as the chart patterns list, can now be taken off from the Display tab or with one line of CSS, and it comes off the no JavaScript version too. The monthly ephemeris gained Previous and Next links and a month and year picker, so visitors browse other months without leaving the page.
 
 = 1.10.0 =
 Recommended for every site. The monthly ephemeris now renders as a real ephemeris instead of a collapsed box, and the six headline readings have full controls in the block editor. Two fixes worth knowing about: a reading placed in the middle of a paragraph used to draw twice, and saving one settings tab could silently switch off the toggles on another, including hide written readings. Check that setting after you update if you rely on it.

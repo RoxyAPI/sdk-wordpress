@@ -310,6 +310,24 @@ class SettingsFields {
 	}
 
 	/**
+	 * Pre-escaped HTML for the "Hide sections" text input.
+	 *
+	 * The placeholder is a literal section name and stays untranslated on
+	 * purpose: it is machinery, posted verbatim and matched against the
+	 * component, so a translated example would be an example that does nothing.
+	 *
+	 * @return string
+	 */
+	public static function hide_sections_html(): string {
+		$opts    = SettingsSchema::get_option();
+		$current = (string) ( $opts['hide_sections'] ?? '' );
+		return sprintf(
+			'<input type="text" id="roxyapi_hide_sections" name="roxyapi_settings[hide_sections]" value="%s" class="regular-text" placeholder="patterns" />',
+			esc_attr( $current )
+		);
+	}
+
+	/**
 	 * Pre-escaped HTML for the "Show disclaimer" checkbox.
 	 *
 	 * @return string

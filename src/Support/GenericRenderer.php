@@ -160,6 +160,7 @@ class GenericRenderer {
 	 * @return string
 	 */
 	public static function render( string $operation_id, array $data, bool $include_meta = true, bool $hide_readings = false ): string {
+		$data = self::strip_hidden_sections( $data );
 		if ( $hide_readings ) {
 			$data = self::strip_readings( $data );
 		}
@@ -563,6 +564,48 @@ class GenericRenderer {
 			// Boolean-true on those same fields surfaces as a badge inside
 			// render_scalar so it reads as "Karmic debt" not "Has karmic debt: 1".
 			if ( is_bool( $value ) && self::is_badge_field( $lc ) && ! $value ) {
+				continue;
+			}
+			$out[ $key ] = $value;
+		}
+		return $out;
+	}
+
+	/**
+	 * Drop the top-level blocks the site owner hid with the `hide_sections`
+	 * setting.
+	 *
+	 * The setting removes a block from a component through `::part()`, which is
+	 * a shadow-DOM lever and cannot reach this card: the card is light DOM, so a
+	 * hidden block would stay in the page for a visitor with no JavaScript and
+	 * in the HTML a crawler reads. Same contract as {@see strip_readings}, which
+	 * exists for the same reason: the fallback may never drift from the
+	 * component it backs.
+	 *
+	 * Matched on the name alone, collapsed the way every other name heuristic in
+	 * this file is, so `chart-patterns` finds `chartPatterns`. A part name that
+	 * is not a response key matches nothing and costs nothing, which is why
+	 * there is no per-component mapping table here. Top level only: a part is a
+	 * whole block of a reading, never a field inside one.
+	 *
+	 * @param array<string, mixed> $data Response data.
+	 * @return array<string, mixed>
+	 */
+	private static function strip_hidden_sections( array $data ): array {
+		$hidden = Theming::hidden_sections();
+		if ( $hidden === array() ) {
+			return $data;
+		}
+
+		$targets = array();
+		foreach ( $hidden as $name ) {
+			$targets[] = str_replace( '-', '', $name );
+		}
+
+		$out = array();
+		foreach ( $data as $key => $value ) {
+			$collapsed = str_replace( array( '_', '-' ), '', strtolower( (string) $key ) );
+			if ( in_array( $collapsed, $targets, true ) ) {
 				continue;
 			}
 			$out[ $key ] = $value;

@@ -207,6 +207,34 @@ class Sanitize {
 	}
 
 	/**
+	 * Sanitize a comma-separated list of reading section names.
+	 *
+	 * The result is interpolated into a `::part()` selector and matched against
+	 * response keys, so this is the boundary that decides what a stored setting
+	 * can put inside a stylesheet. A name is kept only when it is a lowercase
+	 * word of the shape a CSS part name has (`[a-z][a-z0-9-]*`); anything else
+	 * is dropped whole rather than repaired, because a name we cannot recognise
+	 * selects nothing anyway and guessing at one would be a CSS injection.
+	 *
+	 * @param mixed $value Raw stored or posted value.
+	 * @return array<int, string> Unique names, in the order given.
+	 */
+	public static function section_names( $value ): array {
+		if ( ! is_scalar( $value ) ) {
+			return array();
+		}
+		$out = array();
+		foreach ( explode( ',', strtolower( (string) $value ) ) as $name ) {
+			$name = trim( $name );
+			if ( preg_match( '/^[a-z][a-z0-9-]*$/', $name ) !== 1 || in_array( $name, $out, true ) ) {
+				continue;
+			}
+			$out[] = $name;
+		}
+		return $out;
+	}
+
+	/**
 	 * Sanitize a value to a bounded free-text string.
 	 *
 	 * @param mixed $value     Raw input value.

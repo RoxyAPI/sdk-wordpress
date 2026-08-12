@@ -24,6 +24,7 @@
  *   string $theme_mode_input
  *   string $display_language_input
  *   string $hide_readings_input
+ *   string $hide_sections_input
  *   string $disclaimer_show_input
  *   string $disclaimer_text_input
  *   string $form_title_input
@@ -62,6 +63,7 @@ $palette_is_custom      = ! empty( $palette_is_custom );
 $theme_mode_input       = isset( $theme_mode_input ) ? (string) $theme_mode_input : '';
 $display_language_input = isset( $display_language_input ) ? (string) $display_language_input : '';
 $hide_readings_input    = isset( $hide_readings_input ) ? (string) $hide_readings_input : '';
+$hide_sections_input    = isset( $hide_sections_input ) ? (string) $hide_sections_input : '';
 $disclaimer_show_input  = isset( $disclaimer_show_input ) ? (string) $disclaimer_show_input : '';
 $disclaimer_text_input  = isset( $disclaimer_text_input ) ? (string) $disclaimer_text_input : '';
 $form_title_input       = isset( $form_title_input ) ? (string) $form_title_input : '';
@@ -291,6 +293,16 @@ if ( $active_tab !== 'connect' ) {
 				</p>
 				<p class="description">
 					<?php echo esc_html__( 'Turn this on to show the chart on its own, without the written report. It applies to every reading on the site. To set it for one placement instead, add hide_readings="1" or hide_readings="0" to that shortcode.', 'roxyapi' ); ?>
+				</p>
+			</section>
+
+			<section class="roxyapi-section">
+				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Hide sections', 'roxyapi' ); ?></h2>
+				<p class="description">
+					<?php echo esc_html__( 'Take whole sections off every reading. Type the section names separated by commas. The common one is patterns, which removes the chart patterns block from a natal chart. Leave this blank to show everything, and note that a name matching no section is ignored.', 'roxyapi' ); ?>
+				</p>
+				<p class="roxyapi-attribution-row">
+					<?php echo wp_kses( $hide_sections_input, $kses_input ); ?>
 				</p>
 			</section>
 

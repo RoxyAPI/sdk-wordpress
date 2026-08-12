@@ -1,9 +1,11 @@
 <?php
 /**
- * Brand palette and forced light/dark theme for the RoxyAPI readings.
+ * Brand palette, forced light/dark theme, and hidden sections for the RoxyAPI
+ * readings.
  *
- * Two jobs, one file, because they answer the same question: which colours does
- * a reading draw with on this site.
+ * Three jobs, one file, because they answer the same question: what does a
+ * reading look like on this site. All three leave through one stylesheet,
+ * {@link Theming::inline_css}, which the plugin attaches to the frontend handle.
  *
  * The components read every colour from the vendored token stylesheet as a
  * `--roxy-*` custom property. Custom properties inherit downward and cross the
@@ -274,8 +276,9 @@ class Theming {
 	 * @return string
 	 */
 	public static function inline_css( bool $resolve_forced_mode = false ): string {
-		$palette = self::palette();
-		$mode    = self::mode();
+		$palette  = self::palette();
+		$mode     = self::mode();
+		$sections = self::hidden_sections_css();
 
 		// Components inherit the site's own typeface unless the owner overrides
 		// the token: the shipped default names a font that is not on the page,
@@ -285,7 +288,7 @@ class Theming {
 		$base = '--roxy-font-sans:inherit;';
 
 		if ( $resolve_forced_mode && $mode !== 'auto' ) {
-			return ':root{' . $base . self::declarations( $palette[ $mode ] ) . '}';
+			return ':root{' . $base . self::declarations( $palette[ $mode ] ) . '}' . $sections;
 		}
 
 		$css  = ':root,:root[data-theme="light"]{' . $base;
@@ -297,6 +300,42 @@ class Theming {
 			$css .= '@media (prefers-color-scheme:dark){:root{' . $dark . '}}';
 		}
 
+		return $css . $sections;
+	}
+
+	/**
+	 * Section names the site owner has hidden, normalised.
+	 *
+	 * The one reader of the `hide_sections` setting. Two surfaces consume the
+	 * list and they must never disagree: the stylesheet below drops the block
+	 * out of the upgraded component, and {@link GenericRenderer} drops the same
+	 * block out of the server-rendered fallback the no-JavaScript view and a
+	 * crawler read.
+	 *
+	 * @return array<int, string>
+	 */
+	public static function hidden_sections(): array {
+		$opts = SettingsSchema::get_option();
+		return Sanitize::section_names( $opts['hide_sections'] ?? '' );
+	}
+
+	/**
+	 * The rules that drop those sections out of every component on the page.
+	 *
+	 * `::part()` is the only lever a stylesheet has on a component's internals,
+	 * and it reaches exactly the blocks the component chooses to expose. Emitted
+	 * on `.roxyapi-component`, the class every element {@link ComponentRenderer}
+	 * writes carries, so one rule covers every reading on the site including the
+	 * admin Demo page. Names are already narrowed to `[a-z][a-z0-9-]*` by
+	 * {@link Sanitize::section_names}, so nothing here can close the rule.
+	 *
+	 * @return string
+	 */
+	private static function hidden_sections_css(): string {
+		$css = '';
+		foreach ( self::hidden_sections() as $name ) {
+			$css .= '.roxyapi-component::part(' . $name . '){display:none}';
+		}
 		return $css;
 	}
 
