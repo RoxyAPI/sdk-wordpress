@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology 1.11.0\n"
+"Project-Id-Version: RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology 1.11.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/roxyapi\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-12T09:31:55+00:00\n"
+"POT-Creation-Date: 2026-08-14T21:06:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: roxyapi\n"
@@ -246,138 +246,138 @@ msgstr ""
 msgid "No visitor data is sent to RoxyAPI when a page renders a static-attribute shortcode (the data is supplied by the site owner). Form-mode shortcodes are the only case where visitor input crosses to the third party."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:80
+#: src/Admin/SettingsFields.php:88
 msgid "Paste your RoxyAPI key"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:98
+#: src/Admin/SettingsFields.php:106
 msgid "Leave blank to use the localised default."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:177
-#: src/Admin/SettingsFields.php:255
+#: src/Admin/SettingsFields.php:185
+#: src/Admin/SettingsFields.php:263
 msgid "Light"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:178
-#: src/Admin/SettingsFields.php:256
+#: src/Admin/SettingsFields.php:186
+#: src/Admin/SettingsFields.php:264
 msgid "Dark"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:188
+#: src/Admin/SettingsFields.php:196
 #: blocks/_shared/generated-edit.js:56
 msgid "Default"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:206
+#: src/Admin/SettingsFields.php:214
 msgid "Reset colours to defaults"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:218
+#: src/Admin/SettingsFields.php:226
 msgid "Custom"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:219
+#: src/Admin/SettingsFields.php:227
 msgid "Practitioner"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:220
+#: src/Admin/SettingsFields.php:228
 msgid "Eucalyptus"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:221
+#: src/Admin/SettingsFields.php:229
 msgid "Kiln"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:222
+#: src/Admin/SettingsFields.php:230
 msgid "Moonlit"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:233
+#: src/Admin/SettingsFields.php:241
 msgid "Accent"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:234
+#: src/Admin/SettingsFields.php:242
 msgid "Page background"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:235
+#: src/Admin/SettingsFields.php:243
 msgid "Card background"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:236
+#: src/Admin/SettingsFields.php:244
 msgid "Text"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:237
+#: src/Admin/SettingsFields.php:245
 msgid "Secondary text"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:238
+#: src/Admin/SettingsFields.php:246
 msgid "Borders"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:239
+#: src/Admin/SettingsFields.php:247
 msgid "Warnings"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:254
+#: src/Admin/SettingsFields.php:262
 msgid "Auto: follow the visitor device setting"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:277
+#: src/Admin/SettingsFields.php:285
 msgid "Match site language"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:278
+#: src/Admin/SettingsFields.php:286
 msgid "English"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:279
+#: src/Admin/SettingsFields.php:287
 msgid "German"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:280
+#: src/Admin/SettingsFields.php:288
 msgid "Hindi"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:281
+#: src/Admin/SettingsFields.php:289
 msgid "Spanish"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:282
+#: src/Admin/SettingsFields.php:290
 msgid "Turkish"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:283
+#: src/Admin/SettingsFields.php:291
 msgid "Portuguese"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:284
+#: src/Admin/SettingsFields.php:292
 msgid "French"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:285
+#: src/Admin/SettingsFields.php:293
 msgid "Russian"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:308
+#: src/Admin/SettingsFields.php:316
 msgid "Hide the written text on every reading. Charts, tables, and values still show."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:342
+#: src/Admin/SettingsFields.php:362
 msgid "Show a disclaimer line at the bottom of every reading."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:354
+#: src/Admin/SettingsFields.php:374
 msgid "Leave blank to use the localised default (\"For entertainment purposes only…\")."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:373
+#: src/Admin/SettingsFields.php:393
 msgid "Your reading"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:388
+#: src/Admin/SettingsFields.php:408
 #: src/Generated/Forms/CalculateBioCompatibilityForm.php:24
 #: src/Generated/Forms/CalculateCompatibilityForm.php:24
 #: src/Generated/Forms/CalculateConnectionForm.php:24
@@ -396,42 +396,48 @@ msgstr ""
 msgid "Get reading"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:402
+#: src/Admin/SettingsFields.php:422
 msgid "Fresh: 15 minutes (most up-to-date, more API calls)"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:403
+#: src/Admin/SettingsFields.php:423
 msgid "Balanced: 1 hour (recommended)"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:404
+#: src/Admin/SettingsFields.php:424
 msgid "Quota saver: 24 hours (fewer API calls, less fresh)"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:432
+#: src/Admin/SettingsFields.php:452
 msgid "Show source line on each reading."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:467
+#: src/Admin/SettingsFields.php:487
 msgid "Defined via ROXYAPI_KEY constant in wp-config.php. The settings field is locked."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:470
+#: src/Admin/SettingsFields.php:490
 msgid "A key is saved. Paste a new one to replace it. Leave blank to keep the current key."
 msgstr ""
 
 #. translators: %s URL to RoxyAPI pricing page
-#: src/Admin/SettingsFields.php:474
+#: src/Admin/SettingsFields.php:494
 #, php-format
 msgid "No key yet? Get one at %s."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:660
+#: src/Admin/SettingsFields.php:690
 msgid "API key format is invalid. Get a key at roxyapi.com."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:669
+#: src/Admin/SettingsFields.php:699
 msgid "Could not encrypt API key. Check that PHP openssl is installed."
+msgstr ""
+
+#. translators: %s: comma-separated list of section names that matched no block.
+#: src/Admin/SettingsFields.php:747
+#, php-format
+msgid "Hide sections does not recognise %s, so nothing is hidden for it. These are internal names and stay the same whatever language your site is in. Click the field to see every name this version supports."
 msgstr ""
 
 #: src/Admin/SettingsPage.php:101
@@ -532,6 +538,7 @@ msgstr ""
 #: blocks/generated/get-forecast/index.js:11
 #: blocks/generated/get-kp-ruling-planets/index.js:39
 #: blocks/generated/get-phases/index.js:11
+#: blocks/generated/get-vedic-daily-reading/index.js:11
 #: blocks/generated/natal-chart/index.js:11
 #: blocks/generated/numerology/index.js:18
 msgid "Birth date"
@@ -606,43 +613,43 @@ msgid "RoxyAPI Daily Horoscope"
 msgstr ""
 
 #. translators: %s: shortcode attribute name.
-#: src/Generated/Client.php:50
-#: src/Generated/Client.php:101
-#: src/Generated/Client.php:241
-#: src/Generated/Client.php:244
-#: src/Generated/Client.php:478
-#: src/Generated/Client.php:507
-#: src/Generated/Client.php:536
-#: src/Generated/Client.php:963
+#: src/Generated/Client.php:74
+#: src/Generated/Client.php:125
+#: src/Generated/Client.php:265
+#: src/Generated/Client.php:268
+#: src/Generated/Client.php:502
+#: src/Generated/Client.php:531
+#: src/Generated/Client.php:560
 #: src/Generated/Client.php:987
-#: src/Generated/Client.php:990
+#: src/Generated/Client.php:1011
 #: src/Generated/Client.php:1014
-#: src/Generated/Client.php:1017
-#: src/Generated/Client.php:1020
+#: src/Generated/Client.php:1038
+#: src/Generated/Client.php:1041
 #: src/Generated/Client.php:1044
-#: src/Generated/Client.php:1047
-#: src/Generated/Client.php:1050
-#: src/Generated/Client.php:1053
-#: src/Generated/Client.php:1245
-#: src/Generated/Client.php:1680
-#: src/Generated/Client.php:1731
-#: src/Generated/Client.php:1844
-#: src/Generated/Client.php:2206
-#: src/Generated/Client.php:2275
-#: src/Generated/Client.php:2632
-#: src/Generated/Client.php:2698
-#: src/Generated/Client.php:2796
-#: src/Generated/Client.php:3207
-#: src/Generated/Client.php:3283
-#: src/Generated/Client.php:3310
-#: src/Generated/Client.php:3339
-#: src/Generated/Client.php:3368
-#: src/Generated/Client.php:3397
-#: src/Generated/Client.php:3451
-#: src/Generated/Client.php:3599
-#: src/Generated/Client.php:3701
-#: src/Generated/Client.php:3772
-#: src/Generated/Client.php:3894
+#: src/Generated/Client.php:1068
+#: src/Generated/Client.php:1071
+#: src/Generated/Client.php:1074
+#: src/Generated/Client.php:1077
+#: src/Generated/Client.php:1290
+#: src/Generated/Client.php:1725
+#: src/Generated/Client.php:1776
+#: src/Generated/Client.php:1889
+#: src/Generated/Client.php:2251
+#: src/Generated/Client.php:2320
+#: src/Generated/Client.php:2677
+#: src/Generated/Client.php:2743
+#: src/Generated/Client.php:2841
+#: src/Generated/Client.php:3252
+#: src/Generated/Client.php:3328
+#: src/Generated/Client.php:3355
+#: src/Generated/Client.php:3384
+#: src/Generated/Client.php:3413
+#: src/Generated/Client.php:3442
+#: src/Generated/Client.php:3496
+#: src/Generated/Client.php:3644
+#: src/Generated/Client.php:3746
+#: src/Generated/Client.php:3817
+#: src/Generated/Client.php:3939
 #, php-format
 msgid "Missing required attribute \"%s\" for this shortcode."
 msgstr ""
@@ -825,6 +832,7 @@ msgstr ""
 #: blocks/generated/get-sookshma-dashas/index.js:11
 #: blocks/generated/get-sub-dashas/index.js:11
 #: blocks/generated/get-upagraha-positions/index.js:11
+#: blocks/generated/get-vedic-daily-reading/index.js:46
 #: blocks/generated/get-weekly-horoscope/index.js:25
 msgid "Date"
 msgstr ""
@@ -887,6 +895,7 @@ msgstr ""
 #: blocks/generated/get-sookshma-dashas/index.js:13
 #: blocks/generated/get-sub-dashas/index.js:13
 #: blocks/generated/get-upagraha-positions/index.js:13
+#: blocks/generated/get-vedic-daily-reading/index.js:13
 msgid "Birth date in YYYY-MM-DD format"
 msgstr ""
 
@@ -1095,6 +1104,7 @@ msgstr ""
 #: blocks/generated/get-sookshma-dashas/index.js:25
 #: blocks/generated/get-sub-dashas/index.js:25
 #: blocks/generated/get-upagraha-positions/index.js:25
+#: blocks/generated/get-vedic-daily-reading/index.js:25
 #: blocks/generated/natal-chart/index.js:25
 msgid "Latitude"
 msgstr ""
@@ -1195,6 +1205,7 @@ msgstr ""
 #: blocks/generated/get-sookshma-dashas/index.js:32
 #: blocks/generated/get-sub-dashas/index.js:32
 #: blocks/generated/get-upagraha-positions/index.js:32
+#: blocks/generated/get-vedic-daily-reading/index.js:32
 #: blocks/generated/natal-chart/index.js:32
 msgid "Longitude"
 msgstr ""
@@ -1307,6 +1318,7 @@ msgstr ""
 #: blocks/generated/get-sookshma-dashas/index.js:39
 #: blocks/generated/get-sub-dashas/index.js:39
 #: blocks/generated/get-upagraha-positions/index.js:39
+#: blocks/generated/get-vedic-daily-reading/index.js:39
 #: blocks/generated/get-weekly-horoscope/index.js:32
 #: blocks/generated/natal-chart/index.js:39
 msgid "Timezone"
@@ -1372,6 +1384,7 @@ msgstr ""
 #: blocks/generated/get-pratyantardashas/index.js:68
 #: blocks/generated/get-sookshma-dashas/index.js:68
 #: blocks/generated/get-sub-dashas/index.js:68
+#: blocks/generated/get-vedic-daily-reading/index.js:53
 msgid "Node type"
 msgstr ""
 
@@ -1482,6 +1495,7 @@ msgstr ""
 #: blocks/generated/get-sookshma-dashas/index.js:27
 #: blocks/generated/get-sub-dashas/index.js:27
 #: blocks/generated/get-upagraha-positions/index.js:27
+#: blocks/generated/get-vedic-daily-reading/index.js:27
 msgid "Birth location latitude in decimal degrees"
 msgstr ""
 
@@ -1508,6 +1522,7 @@ msgstr ""
 #: blocks/generated/get-sookshma-dashas/index.js:34
 #: blocks/generated/get-sub-dashas/index.js:34
 #: blocks/generated/get-upagraha-positions/index.js:34
+#: blocks/generated/get-vedic-daily-reading/index.js:34
 msgid "Birth location longitude in decimal degrees"
 msgstr ""
 
@@ -2081,6 +2096,7 @@ msgstr ""
 #: blocks/generated/generate-planetary-return/index.js:18
 #: blocks/generated/generate-solar-return/index.js:18
 #: blocks/generated/get-kp-ruling-planets/index.js:46
+#: blocks/generated/get-vedic-daily-reading/index.js:18
 #: blocks/generated/natal-chart/index.js:18
 msgid "Birth time"
 msgstr ""
@@ -2464,27 +2480,27 @@ msgstr ""
 msgid "Show month"
 msgstr ""
 
-#: src/Support/FormRenderer.php:60
+#: src/Support/FormRenderer.php:65
 msgid "That reading has already been shown. Enter the details below to run it again."
 msgstr ""
 
-#: src/Support/FormRenderer.php:153
+#: src/Support/FormRenderer.php:162
 msgid "Submit"
 msgstr ""
 
-#: src/Support/FormRenderer.php:289
+#: src/Support/FormRenderer.php:298
 msgid "Find by city"
 msgstr ""
 
-#: src/Support/FormRenderer.php:292
+#: src/Support/FormRenderer.php:301
 msgid "Start typing a city name"
 msgstr ""
 
-#: src/Support/FormRenderer.php:295
+#: src/Support/FormRenderer.php:304
 msgid "Selecting a city auto-fills latitude, longitude, and timezone."
 msgstr ""
 
-#: src/Support/FormRenderer.php:311
+#: src/Support/FormRenderer.php:320
 msgid "I consent to sending my inputs to generate this reading. See the Privacy Policy for details."
 msgstr ""
 
@@ -2645,7 +2661,7 @@ msgid "Hide sections"
 msgstr ""
 
 #: templates/admin-connected.php:302
-msgid "Take whole sections off every reading. Type the section names separated by commas. The common one is patterns, which removes the chart patterns block from a natal chart. Leave this blank to show everything, and note that a name matching no section is ignored."
+msgid "Take whole sections off every reading. Type one or more section names separated by commas, and spaces around them are fine. The common one is patterns, which removes the chart patterns block from a natal chart. These are internal names and stay the same whatever language your site is in, so the title printed on the page will not work. Click the field to see every name this version supports. Leave it blank to show everything."
 msgstr ""
 
 #: templates/admin-connected.php:310
@@ -2889,6 +2905,7 @@ msgstr ""
 #: blocks/generated/get-crystal/index.js:17
 #: blocks/generated/get-crystals-by-chakra/index.js:17
 #: blocks/generated/get-crystals-by-element/index.js:17
+#: blocks/generated/get-field-labels/index.js:11
 #: blocks/generated/get-gate/index.js:17
 #: blocks/generated/get-hexagram/index.js:17
 #: blocks/generated/get-monthly-horoscope/index.js:17
@@ -2931,6 +2948,7 @@ msgstr ""
 #: blocks/generated/get-crystal/index.js:19
 #: blocks/generated/get-crystals-by-chakra/index.js:19
 #: blocks/generated/get-crystals-by-element/index.js:19
+#: blocks/generated/get-field-labels/index.js:13
 #: blocks/generated/get-gate/index.js:19
 #: blocks/generated/get-hexagram/index.js:19
 #: blocks/generated/get-monthly-horoscope/index.js:19
@@ -3230,6 +3248,7 @@ msgid "Full birth name (vowels will be extracted)"
 msgstr ""
 
 #: blocks/generated/calculate-transit/index.js:20
+#: blocks/generated/get-vedic-daily-reading/index.js:20
 msgid "Birth time in HH:MM:SS format (24-hour)"
 msgstr ""
 
@@ -3917,6 +3936,18 @@ msgstr ""
 msgid "Number of upcoming moon phase transitions to return (1-20)"
 msgstr ""
 
+#: blocks/generated/get-vedic-daily-reading/index.js:41
+msgid "Timezone: IANA name (e.g. \"Asia/Kolkata\", \"America/New_York\") OR decimal hours from UTC (e.g. -5 for EST, 5.5 for IST)"
+msgstr ""
+
+#: blocks/generated/get-vedic-daily-reading/index.js:48
+msgid "Civil date to read, in YYYY-MM-DD format"
+msgstr ""
+
+#: blocks/generated/get-vedic-daily-reading/index.js:55
+msgid "Lunar node type for Rahu and Ketu"
+msgstr ""
+
 #: blocks/generated/get-weekly-horoscope/index.js:27
 msgid "Any date inside the target week, in YYYY-MM-DD format"
 msgstr ""
@@ -4192,6 +4223,7 @@ msgstr ""
 #: blocks/generated/get-daily-number/block.json
 #: blocks/generated/get-dream-symbol/block.json
 #: blocks/generated/get-ecliptic-crossings/block.json
+#: blocks/generated/get-field-labels/block.json
 #: blocks/generated/get-forecast/block.json
 #: blocks/generated/get-gate/block.json
 #: blocks/generated/get-heliacal-visibility/block.json
@@ -4233,6 +4265,7 @@ msgstr ""
 #: blocks/generated/get-upagraha-positions/block.json
 #: blocks/generated/get-upcoming-moon-phases/block.json
 #: blocks/generated/get-usage-stats/block.json
+#: blocks/generated/get-vedic-daily-reading/block.json
 #: blocks/generated/get-weekly-horoscope/block.json
 #: blocks/generated/get-yoga/block.json
 #: blocks/generated/get-zodiac-sign/block.json
@@ -4519,6 +4552,7 @@ msgstr ""
 #: blocks/generated/get-sookshma-dashas/block.json
 #: blocks/generated/get-sub-dashas/block.json
 #: blocks/generated/get-upagraha-positions/block.json
+#: blocks/generated/get-vedic-daily-reading/block.json
 #: blocks/generated/get-yoga/block.json
 #: blocks/generated/list-avasthas/block.json
 #: blocks/generated/list-nakshatras/block.json
@@ -5203,7 +5237,7 @@ msgstr ""
 
 #: blocks/generated/detect-yogas/block.json
 msgctxt "block description"
-msgid "Chart-driven detection of 44 classical Vedic yogas"
+msgid "Chart-driven detection of 48 classical Vedic yogas"
 msgstr ""
 
 #: blocks/generated/detect-yogas/block.json
@@ -5524,6 +5558,7 @@ msgstr ""
 #: blocks/generated/get-daily-number/block.json
 #: blocks/generated/get-dream-symbol/block.json
 #: blocks/generated/get-ecliptic-crossings/block.json
+#: blocks/generated/get-field-labels/block.json
 #: blocks/generated/get-forecast/block.json
 #: blocks/generated/get-gate/block.json
 #: blocks/generated/get-heliacal-visibility/block.json
@@ -5565,6 +5600,7 @@ msgstr ""
 #: blocks/generated/get-upagraha-positions/block.json
 #: blocks/generated/get-upcoming-moon-phases/block.json
 #: blocks/generated/get-usage-stats/block.json
+#: blocks/generated/get-vedic-daily-reading/block.json
 #: blocks/generated/get-weekly-horoscope/block.json
 #: blocks/generated/get-yoga/block.json
 #: blocks/generated/get-zodiac-sign/block.json
@@ -5881,6 +5917,27 @@ msgstr ""
 #: blocks/generated/get-ecliptic-crossings/block.json
 msgctxt "block keyword"
 msgid "ecliptic"
+msgstr ""
+
+#: blocks/generated/get-field-labels/block.json
+msgctxt "block title"
+msgid "Field Labels for a Language"
+msgstr ""
+
+#: blocks/generated/get-field-labels/block.json
+msgctxt "block description"
+msgid "Returns the display label for every request field name and every selectable option across the , in the requested language"
+msgstr ""
+
+#: blocks/generated/get-field-labels/block.json
+#: blocks/generated/list-languages/block.json
+msgctxt "block keyword"
+msgid "languages"
+msgstr ""
+
+#: blocks/generated/get-field-labels/block.json
+msgctxt "block keyword"
+msgid "field"
 msgstr ""
 
 #: blocks/generated/get-forecast/block.json
@@ -6408,6 +6465,21 @@ msgctxt "block keyword"
 msgid "usage"
 msgstr ""
 
+#: blocks/generated/get-vedic-daily-reading/block.json
+msgctxt "block title"
+msgid "Daily Reading (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-vedic-daily-reading/block.json
+msgctxt "block description"
+msgid "Composed Gochara, Panchanga and Dasha for one native on one day"
+msgstr ""
+
+#: blocks/generated/get-vedic-daily-reading/block.json
+msgctxt "block keyword"
+msgid "vedic"
+msgstr ""
+
 #: blocks/generated/get-weekly-horoscope/block.json
 msgctxt "block title"
 msgid "Weekly Horoscope by Zodiac Sign (Western Astrology)"
@@ -6575,11 +6647,6 @@ msgstr ""
 #: blocks/generated/list-languages/block.json
 msgctxt "block description"
 msgid "Returns the language codes accepted by the `lang` query parameter on every i18n-aware endpoint"
-msgstr ""
-
-#: blocks/generated/list-languages/block.json
-msgctxt "block keyword"
-msgid "languages"
 msgstr ""
 
 #: blocks/generated/list-nakshatras/block.json
