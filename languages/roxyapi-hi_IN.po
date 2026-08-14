@@ -129,6 +129,7 @@ msgstr "जन्म विवरण"
 #: blocks/generated/get-forecast/index.js:11
 #: blocks/generated/get-kp-ruling-planets/index.js:39
 #: blocks/generated/get-phases/index.js:11
+#: blocks/generated/get-vedic-daily-reading/index.js:11
 #: blocks/generated/natal-chart/index.js:11
 #: blocks/generated/numerology/index.js:18
 msgid "Birth date"
@@ -192,6 +193,7 @@ msgstr "जन्म तिथि"
 #: blocks/generated/get-sookshma-dashas/index.js:13
 #: blocks/generated/get-sub-dashas/index.js:13
 #: blocks/generated/get-upagraha-positions/index.js:13
+#: blocks/generated/get-vedic-daily-reading/index.js:13
 msgid "Birth date in YYYY-MM-DD format"
 msgstr "YYYY-MM-DD प्रारूप में जन्म तिथि"
 
@@ -259,6 +261,7 @@ msgstr "दशमलव अंश में जन्म का अक्षा�
 #: blocks/generated/get-sookshma-dashas/index.js:27
 #: blocks/generated/get-sub-dashas/index.js:27
 #: blocks/generated/get-upagraha-positions/index.js:27
+#: blocks/generated/get-vedic-daily-reading/index.js:27
 msgid "Birth location latitude in decimal degrees"
 msgstr "दशमलव अंश में जन्म स्थान का अक्षांश"
 
@@ -305,6 +308,7 @@ msgstr "दशमलव अंश में जन्म स्थान का 
 #: blocks/generated/get-sookshma-dashas/index.js:34
 #: blocks/generated/get-sub-dashas/index.js:34
 #: blocks/generated/get-upagraha-positions/index.js:34
+#: blocks/generated/get-vedic-daily-reading/index.js:34
 msgid "Birth location longitude in decimal degrees"
 msgstr "दशमलव अंश में जन्म स्थान का देशांतर"
 
@@ -363,6 +367,7 @@ msgstr "जन्म का महीना (1-12)"
 #: blocks/generated/generate-planetary-return/index.js:18
 #: blocks/generated/generate-solar-return/index.js:18
 #: blocks/generated/get-kp-ruling-planets/index.js:46
+#: blocks/generated/get-vedic-daily-reading/index.js:18
 #: blocks/generated/natal-chart/index.js:18
 msgid "Birth time"
 msgstr "जन्म समय"
@@ -596,6 +601,7 @@ msgstr "दैनिक में एक कार्ड होता है। 
 #: blocks/generated/get-sookshma-dashas/index.js:11
 #: blocks/generated/get-sub-dashas/index.js:11
 #: blocks/generated/get-upagraha-positions/index.js:11
+#: blocks/generated/get-vedic-daily-reading/index.js:46
 #: blocks/generated/get-weekly-horoscope/index.js:25
 msgid "Date"
 msgstr "तिथि"
@@ -699,7 +705,7 @@ msgstr "अंतिम तिथि"
 msgid "Expression"
 msgstr "नामांक"
 
-#: src/Support/FormRenderer.php:289
+#: src/Support/FormRenderer.php:298
 msgid "Find by city"
 msgstr "शहर से खोजें"
 
@@ -754,7 +760,7 @@ msgstr "कुंडली बनाएँ"
 msgid "Get answer"
 msgstr "उत्तर पाएँ"
 
-#: src/Admin/SettingsFields.php:388
+#: src/Admin/SettingsFields.php:408
 #: src/Generated/Forms/CalculateBioCompatibilityForm.php:24
 #: src/Generated/Forms/CalculateCompatibilityForm.php:24
 #: src/Generated/Forms/CalculateConnectionForm.php:24
@@ -801,7 +807,7 @@ msgstr "दोनों जन्म कुंडलियों के लि�
 msgid "House system for the composite chart"
 msgstr "कंपोजिट चार्ट के लिए भाव पद्धति"
 
-#: src/Support/FormRenderer.php:311
+#: src/Support/FormRenderer.php:320
 msgid "I consent to sending my inputs to generate this reading. See the Privacy Policy for details."
 msgstr "मैं यह विश्लेषण तैयार करने के लिए अपनी जानकारी भेजने की सहमति देता हूँ। विवरण के लिए गोपनीयता नीति देखें।"
 
@@ -914,6 +920,7 @@ msgstr "अवधि का अंतिम दिन, YYYY-MM-DD प्रा�
 #: blocks/generated/get-sookshma-dashas/index.js:25
 #: blocks/generated/get-sub-dashas/index.js:25
 #: blocks/generated/get-upagraha-positions/index.js:25
+#: blocks/generated/get-vedic-daily-reading/index.js:25
 #: blocks/generated/natal-chart/index.js:25
 msgid "Latitude"
 msgstr "अक्षांश"
@@ -1021,6 +1028,7 @@ msgstr "24 घंटे के प्रारूप में जन्म क�
 #: blocks/generated/get-sookshma-dashas/index.js:32
 #: blocks/generated/get-sub-dashas/index.js:32
 #: blocks/generated/get-upagraha-positions/index.js:32
+#: blocks/generated/get-vedic-daily-reading/index.js:32
 #: blocks/generated/natal-chart/index.js:32
 msgid "Longitude"
 msgstr "देशांतर"
@@ -1156,6 +1164,7 @@ msgstr "कोई मिलता शहर नहीं मिला। वर�
 #: blocks/generated/get-pratyantardashas/index.js:68
 #: blocks/generated/get-sookshma-dashas/index.js:68
 #: blocks/generated/get-sub-dashas/index.js:68
+#: blocks/generated/get-vedic-daily-reading/index.js:53
 msgid "Node type"
 msgstr "नोड प्रकार"
 
@@ -1325,7 +1334,7 @@ msgstr "सीड"
 msgid "Select the timezone of the location."
 msgstr "स्थान का समय क्षेत्र चुनें।"
 
-#: src/Support/FormRenderer.php:295
+#: src/Support/FormRenderer.php:304
 msgid "Selecting a city auto-fills latitude, longitude, and timezone."
 msgstr "शहर चुनने पर अक्षांश, देशांतर और समय क्षेत्र स्वतः भर जाते हैं।"
 
@@ -1396,11 +1405,11 @@ msgstr "हर अवधि की आरंभ तिथि, YYYY-MM-DD प्�
 msgid "Start date"
 msgstr "आरंभ तिथि"
 
-#: src/Support/FormRenderer.php:292
+#: src/Support/FormRenderer.php:301
 msgid "Start typing a city name"
 msgstr "शहर का नाम लिखना शुरू करें"
 
-#: src/Support/FormRenderer.php:153
+#: src/Support/FormRenderer.php:162
 msgid "Submit"
 msgstr "भेजें"
 
@@ -1659,6 +1668,7 @@ msgstr "समय"
 #: blocks/generated/get-sookshma-dashas/index.js:39
 #: blocks/generated/get-sub-dashas/index.js:39
 #: blocks/generated/get-upagraha-positions/index.js:39
+#: blocks/generated/get-vedic-daily-reading/index.js:39
 #: blocks/generated/get-weekly-horoscope/index.js:32
 #: blocks/generated/natal-chart/index.js:39
 msgid "Timezone"
@@ -1803,7 +1813,7 @@ msgstr ""
 #. Description of the plugin
 #: roxyapi.php
 msgid "Add Astrology, Vedic, Forecast, Human Design and Numerology readings to any WordPress post, page or widget, as Gutenberg blocks and shortcodes. 12 or more domains on one key, readings in 8 languages, and charts verified against the NASA JPL Horizons ephemeris."
-msgstr ""
+msgstr "किसी भी WordPress पोस्ट, पेज या विजेट में ज्योतिष, वैदिक, फोरकास्ट, ह्यूमन डिज़ाइन और न्यूमेरोलॉजी के विश्लेषण जोड़ें, Gutenberg ब्लॉक और शॉर्टकोड दोनों के रूप में। एक ही कुंजी पर 12 या अधिक क्षेत्र, 8 भाषाओं में विश्लेषण, और NASA JPL Horizons एफ़ेमेरिस से सत्यापित चार्ट।"
 
 #. Author of the plugin
 #: roxyapi.php
@@ -1813,7 +1823,7 @@ msgstr ""
 #: src/Blocks/Category.php:31
 #: templates/admin-connected.php:124
 msgid "RoxyAPI"
-msgstr ""
+msgstr "RoxyAPI"
 
 #. Author URI of the plugin
 #: roxyapi.php
@@ -1848,55 +1858,55 @@ msgstr ""
 #: src/Admin/SettingsPage.php:92
 #: src/Admin/SettingsPage.php:93
 msgid "Settings"
-msgstr ""
+msgstr "सेटिंग्स"
 
 #: src/Admin/ActionLinks.php:59
 msgid "Sign up"
-msgstr ""
+msgstr "साइन अप"
 
 #: src/Admin/ActionLinks.php:64
 msgid "Documentation"
-msgstr ""
+msgstr "प्रलेखन"
 
 #: src/Admin/ActionLinks.php:69
 #: templates/admin-connected.php:418
 msgid "Support"
-msgstr ""
+msgstr "सहायता"
 
 #: src/Admin/Assets.php:56
 msgid "Testing..."
-msgstr ""
+msgstr "जांच हो रही है..."
 
 #: src/Admin/Assets.php:57
 #: src/Api/TestKeyRoute.php:83
 msgid "Connected."
-msgstr ""
+msgstr "कनेक्ट हो गया।"
 
 #: src/Admin/Assets.php:58
 msgid "Connected to RoxyAPI. Paste a shortcode below to render a reading on any page."
-msgstr ""
+msgstr "RoxyAPI से कनेक्ट हो गया। किसी भी पेज पर विश्लेषण दिखाने के लिए नीचे कोई शॉर्टकोड पेस्ट करें।"
 
 #: src/Admin/Assets.php:59
 msgid "Paste your API key in the field above and save before testing."
-msgstr ""
+msgstr "जांचने से पहले ऊपर दिए गए फ़ील्ड में अपनी API कुंजी पेस्ट करें और सहेजें।"
 
 #: src/Admin/Assets.php:60
 msgid "That key was rejected. Double check it on your roxyapi.com dashboard, paste it again, and save."
-msgstr ""
+msgstr "वह कुंजी अस्वीकार कर दी गई। अपने roxyapi.com डैशबोर्ड पर इसकी दोबारा जांच करें, इसे फिर से पेस्ट करें, और सहेजें।"
 
 #: src/Admin/Assets.php:61
 msgid "Connection test failed. Try again in a moment."
-msgstr ""
+msgstr "कनेक्शन जांच विफल रही। कुछ देर बाद फिर कोशिश करें।"
 
 #: src/Admin/Assets.php:62
 #: src/Admin/ShortcodesPage.php:114
 msgid "Copied"
-msgstr ""
+msgstr "कॉपी हो गया"
 
 #: src/Admin/Assets.php:63
 #: src/Admin/ShortcodesPage.php:115
 msgid "Copy failed"
-msgstr ""
+msgstr "कॉपी विफल रही"
 
 #: src/Admin/Assets.php:64
 #: src/Admin/DashboardWidget.php:132
@@ -1905,23 +1915,23 @@ msgstr ""
 #: templates/admin-onboarding.php:128
 #: templates/admin-shortcodes.php:136
 msgid "Copy"
-msgstr ""
+msgstr "कॉपी करें"
 
 #: src/Admin/DashboardWidget.php:43
 msgid "RoxyAPI connection"
-msgstr ""
+msgstr "RoxyAPI कनेक्शन"
 
 #: src/Admin/DashboardWidget.php:97
 msgid "RoxyAPI is not connected yet. Add your key to start rendering natal charts, horoscopes, kundli and Human Design readings."
-msgstr ""
+msgstr "RoxyAPI अभी कनेक्ट नहीं हुआ है। नेटल चार्ट, राशिफल, कुंडली और ह्यूमन डिज़ाइन विश्लेषण दिखाना शुरू करने के लिए अपनी कुंजी जोड़ें।"
 
 #: src/Admin/DashboardWidget.php:101
 msgid "Connect RoxyAPI"
-msgstr ""
+msgstr "RoxyAPI कनेक्ट करें"
 
 #: src/Admin/DashboardWidget.php:120
 msgid "Connected to RoxyAPI"
-msgstr ""
+msgstr "RoxyAPI से कनेक्ट हो गया"
 
 #. translators: %s: shortcode label
 #. translators: %s: shortcode title
@@ -1931,246 +1941,246 @@ msgstr ""
 #: templates/admin-shortcodes.php:134
 #, php-format
 msgid "Copy %s shortcode"
-msgstr ""
+msgstr "%s शॉर्टकोड कॉपी करें"
 
 #: src/Admin/DashboardWidget.php:137
 msgid "RoxyAPI widget links"
-msgstr ""
+msgstr "RoxyAPI विजेट लिंक"
 
 #: src/Admin/DashboardWidget.php:138
 msgid "Open settings"
-msgstr ""
+msgstr "सेटिंग्स खोलें"
 
 #: src/Admin/DashboardWidget.php:139
 msgid "Open RoxyAPI dashboard"
-msgstr ""
+msgstr "RoxyAPI डैशबोर्ड खोलें"
 
 #: src/Admin/DemoPage.php:82
 msgid "RoxyAPI Demo"
-msgstr ""
+msgstr "RoxyAPI डेमो"
 
 #: src/Admin/DemoPage.php:114
 msgid "Clear renders"
-msgstr ""
+msgstr "रेंडर साफ़ करें"
 
 #: src/Admin/DemoPage.php:141
 msgid "hero"
-msgstr ""
+msgstr "हीरो"
 
 #: src/Admin/DemoPage.php:144
 msgid "form"
-msgstr ""
+msgstr "फ़ॉर्म"
 
 #: src/Admin/DemoPage.php:148
 msgid "Run"
-msgstr ""
+msgstr "चलाएँ"
 
 #: src/Admin/DemoPage.php:156
 msgid "Click Run above to render this shortcode live."
-msgstr ""
+msgstr "इस शॉर्टकोड को लाइव दिखाने के लिए ऊपर \"चलाएँ\" पर क्लिक करें।"
 
 #: src/Admin/Notice.php:107
 msgid "is installed but not yet connected."
-msgstr ""
+msgstr "स्थापित है, लेकिन अभी कनेक्ट नहीं हुआ है।"
 
 #: src/Admin/Notice.php:109
 msgid "Add your API key"
-msgstr ""
+msgstr "अपनी API कुंजी जोड़ें"
 
 #: src/Admin/Notice.php:189
 msgid "RoxyAPI has used up its free daily allowance. It resets each day, so readings return on their own. To remove the daily limit and keep every reading live now,"
-msgstr ""
+msgstr "RoxyAPI ने अपना मुफ़्त दैनिक कोटा खत्म कर दिया है। यह हर दिन रीसेट होता है, इसलिए विश्लेषण अपने आप फिर से दिखने लगेंगे। दैनिक सीमा हटाने और अभी हर विश्लेषण को लाइव रखने के लिए,"
 
 #: src/Admin/Notice.php:194
 msgid "add your API key"
-msgstr ""
+msgstr "अपनी API कुंजी जोड़ें"
 
 #: src/Admin/Onboarding.php:78
 msgid "Three card tarot"
-msgstr ""
+msgstr "तीन-कार्ड टैरो"
 
 #: src/Admin/Onboarding.php:82
 msgid "Numerology reading"
-msgstr ""
+msgstr "न्यूमेरोलॉजी विश्लेषण"
 
 #: src/Admin/PrivacyPolicy.php:42
 msgid "When a visitor submits a RoxyAPI reading form on this site (for example a synastry or compatibility chart), the form data is sent to the third-party RoxyAPI service at https://roxyapi.com to compute the reading. The site owner controls when these forms appear by placing the matching shortcode or block on a page."
-msgstr ""
+msgstr "जब कोई आगंतुक इस साइट पर RoxyAPI विश्लेषण फ़ॉर्म सबमिट करता है (उदाहरण के लिए सिनेस्ट्री या अनुकूलता चार्ट), तो फ़ॉर्म डेटा विश्लेषण की गणना करने के लिए https://roxyapi.com पर तीसरे पक्ष की RoxyAPI सेवा को भेजा जाता है। साइट स्वामी संबंधित शॉर्टकोड या ब्लॉक को किसी पेज पर लगाकर तय करता है कि ये फ़ॉर्म कब दिखेंगे।"
 
 #: src/Admin/PrivacyPolicy.php:44
 msgid "What is sent: name (optional), birth date, birth time, latitude, longitude, and timezone. Birth time and location together qualify as special-category data under EU GDPR Art. 9, so a consent checkbox is required before each submission."
-msgstr ""
+msgstr "क्या भेजा जाता है: नाम (वैकल्पिक), जन्म तिथि, जन्म समय, अक्षांश, देशांतर, और समय क्षेत्र। जन्म समय और स्थान मिलकर EU GDPR अनुच्छेद 9 के तहत विशेष श्रेणी के डेटा में आते हैं, इसलिए हर सबमिशन से पहले सहमति चेकबॉक्स ज़रूरी है।"
 
 #: src/Admin/PrivacyPolicy.php:46
 msgid "How long it is stored on this site: the rendered reading is cached server-side for up to one hour by default (configurable). The visitor inputs themselves are not persisted. Only the final reading text is cached, keyed by a hash of the inputs."
-msgstr ""
+msgstr "इस साइट पर यह कितनी देर तक सुरक्षित रहता है: तैयार विश्लेषण डिफ़ॉल्ट रूप से सर्वर साइड पर अधिकतम एक घंटे के लिए कैश किया जाता है (यह बदला जा सकता है)। आगंतुक द्वारा दी गई जानकारी खुद सुरक्षित नहीं रखी जाती। केवल अंतिम विश्लेषण टेक्स्ट कैश किया जाता है, जिसकी कुंजी इनपुट के हैश से बनती है।"
 
 #: src/Admin/PrivacyPolicy.php:48
 msgid "How long RoxyAPI stores the data: see the RoxyAPI privacy policy at https://roxyapi.com/policy/privacy."
-msgstr ""
+msgstr "RoxyAPI डेटा को कितनी देर तक सुरक्षित रखता है: https://roxyapi.com/policy/privacy पर RoxyAPI की गोपनीयता नीति देखें।"
 
 #: src/Admin/PrivacyPolicy.php:50
 msgid "No visitor data is sent to RoxyAPI when a page renders a static-attribute shortcode (the data is supplied by the site owner). Form-mode shortcodes are the only case where visitor input crosses to the third party."
-msgstr ""
+msgstr "जब कोई पेज स्टैटिक-एट्रिब्यूट शॉर्टकोड दिखाता है, तो कोई आगंतुक डेटा RoxyAPI को नहीं भेजा जाता (यह डेटा साइट स्वामी द्वारा दिया जाता है)। फ़ॉर्म-मोड शॉर्टकोड ही एकमात्र स्थिति है जहाँ आगंतुक का इनपुट तीसरे पक्ष तक जाता है।"
 
-#: src/Admin/SettingsFields.php:80
+#: src/Admin/SettingsFields.php:88
 msgid "Paste your RoxyAPI key"
-msgstr ""
+msgstr "अपनी RoxyAPI कुंजी पेस्ट करें"
 
-#: src/Admin/SettingsFields.php:98
+#: src/Admin/SettingsFields.php:106
 msgid "Leave blank to use the localised default."
-msgstr ""
+msgstr "स्थानीयकृत डिफ़ॉल्ट का उपयोग करने के लिए खाली छोड़ें।"
 
-#: src/Admin/SettingsFields.php:254
+#: src/Admin/SettingsFields.php:262
 msgid "Auto: follow the visitor device setting"
-msgstr ""
+msgstr "ऑटो: आगंतुक के डिवाइस सेटिंग का पालन करें"
 
-#: src/Admin/SettingsFields.php:177
-#: src/Admin/SettingsFields.php:255
+#: src/Admin/SettingsFields.php:185
+#: src/Admin/SettingsFields.php:263
 msgid "Light"
-msgstr ""
+msgstr "लाइट"
 
-#: src/Admin/SettingsFields.php:178
-#: src/Admin/SettingsFields.php:256
+#: src/Admin/SettingsFields.php:186
+#: src/Admin/SettingsFields.php:264
 msgid "Dark"
-msgstr ""
-
-#: src/Admin/SettingsFields.php:277
-msgid "Match site language"
-msgstr ""
-
-#: src/Admin/SettingsFields.php:278
-msgid "English"
-msgstr ""
-
-#: src/Admin/SettingsFields.php:279
-msgid "German"
-msgstr ""
-
-#: src/Admin/SettingsFields.php:280
-msgid "Hindi"
-msgstr ""
-
-#: src/Admin/SettingsFields.php:281
-msgid "Spanish"
-msgstr ""
-
-#: src/Admin/SettingsFields.php:282
-msgid "Turkish"
-msgstr ""
-
-#: src/Admin/SettingsFields.php:283
-msgid "Portuguese"
-msgstr ""
-
-#: src/Admin/SettingsFields.php:284
-msgid "French"
-msgstr ""
+msgstr "डार्क"
 
 #: src/Admin/SettingsFields.php:285
+msgid "Match site language"
+msgstr "साइट की भाषा के अनुसार"
+
+#: src/Admin/SettingsFields.php:286
+msgid "English"
+msgstr "अंग्रेज़ी"
+
+#: src/Admin/SettingsFields.php:287
+msgid "German"
+msgstr "जर्मन"
+
+#: src/Admin/SettingsFields.php:288
+msgid "Hindi"
+msgstr "हिन्दी"
+
+#: src/Admin/SettingsFields.php:289
+msgid "Spanish"
+msgstr "स्पेनिश"
+
+#: src/Admin/SettingsFields.php:290
+msgid "Turkish"
+msgstr "तुर्की"
+
+#: src/Admin/SettingsFields.php:291
+msgid "Portuguese"
+msgstr "पुर्तगाली"
+
+#: src/Admin/SettingsFields.php:292
+msgid "French"
+msgstr "फ़्रेंच"
+
+#: src/Admin/SettingsFields.php:293
 msgid "Russian"
-msgstr ""
+msgstr "रूसी"
 
-#: src/Admin/SettingsFields.php:308
+#: src/Admin/SettingsFields.php:316
 msgid "Hide the written text on every reading. Charts, tables, and values still show."
-msgstr ""
+msgstr "हर विश्लेषण पर लिखा हुआ टेक्स्ट छिपाएँ। चार्ट, टेबल और वैल्यू फिर भी दिखेंगी।"
 
-#: src/Admin/SettingsFields.php:342
+#: src/Admin/SettingsFields.php:362
 msgid "Show a disclaimer line at the bottom of every reading."
-msgstr ""
+msgstr "हर विश्लेषण के नीचे एक अस्वीकरण पंक्ति दिखाएँ।"
 
-#: src/Admin/SettingsFields.php:354
+#: src/Admin/SettingsFields.php:374
 msgid "Leave blank to use the localised default (\"For entertainment purposes only…\")."
-msgstr ""
+msgstr "स्थानीयकृत डिफ़ॉल्ट (\"केवल मनोरंजन के लिए…\") इस्तेमाल करने के लिए खाली छोड़ें।"
 
-#: src/Admin/SettingsFields.php:373
+#: src/Admin/SettingsFields.php:393
 msgid "Your reading"
-msgstr ""
+msgstr "आपका विश्लेषण"
 
-#: src/Admin/SettingsFields.php:402
+#: src/Admin/SettingsFields.php:422
 msgid "Fresh: 15 minutes (most up-to-date, more API calls)"
-msgstr ""
+msgstr "ताज़ा: 15 मिनट (सबसे अपडेट, ज़्यादा API कॉल)"
 
-#: src/Admin/SettingsFields.php:403
+#: src/Admin/SettingsFields.php:423
 msgid "Balanced: 1 hour (recommended)"
-msgstr ""
+msgstr "संतुलित: 1 घंटा (अनुशंसित)"
 
-#: src/Admin/SettingsFields.php:404
+#: src/Admin/SettingsFields.php:424
 msgid "Quota saver: 24 hours (fewer API calls, less fresh)"
-msgstr ""
+msgstr "कोटा बचत: 24 घंटे (कम API कॉल, कम ताज़ा)"
 
-#: src/Admin/SettingsFields.php:432
+#: src/Admin/SettingsFields.php:452
 msgid "Show source line on each reading."
-msgstr ""
+msgstr "हर विश्लेषण पर स्रोत पंक्ति दिखाएँ।"
 
-#: src/Admin/SettingsFields.php:467
+#: src/Admin/SettingsFields.php:487
 msgid "Defined via ROXYAPI_KEY constant in wp-config.php. The settings field is locked."
-msgstr ""
+msgstr "wp-config.php में ROXYAPI_KEY कॉन्स्टेंट के ज़रिए तय किया गया है। सेटिंग्स फ़ील्ड लॉक है।"
 
-#: src/Admin/SettingsFields.php:470
+#: src/Admin/SettingsFields.php:490
 msgid "A key is saved. Paste a new one to replace it. Leave blank to keep the current key."
-msgstr ""
+msgstr "एक कुंजी सेव है। इसे बदलने के लिए नई कुंजी पेस्ट करें। मौजूदा कुंजी बनाए रखने के लिए खाली छोड़ें।"
 
 #. translators: %s URL to RoxyAPI pricing page
-#: src/Admin/SettingsFields.php:474
+#: src/Admin/SettingsFields.php:494
 #, php-format
 msgid "No key yet? Get one at %s."
-msgstr ""
+msgstr "अभी तक कुंजी नहीं है? %s पर एक पाएँ।"
 
-#: src/Admin/SettingsFields.php:660
+#: src/Admin/SettingsFields.php:690
 msgid "API key format is invalid. Get a key at roxyapi.com."
-msgstr ""
+msgstr "API कुंजी का फ़ॉर्मेट अमान्य है। roxyapi.com पर कुंजी पाएँ।"
 
-#: src/Admin/SettingsFields.php:669
+#: src/Admin/SettingsFields.php:699
 msgid "Could not encrypt API key. Check that PHP openssl is installed."
-msgstr ""
+msgstr "API कुंजी एन्क्रिप्ट नहीं हो सकी। जांचें कि PHP openssl स्थापित है।"
 
 #: src/Admin/SettingsPage.php:101
 #: src/Admin/SettingsPage.php:102
 msgid "Shortcodes"
-msgstr ""
+msgstr "शॉर्टकोड"
 
 #: src/Admin/SettingsPage.php:116
 #: src/Admin/SettingsPage.php:117
 msgid "Demo"
-msgstr ""
+msgstr "डेमो"
 
 #: src/Admin/ShortcodesPage.php:117
 #: templates/admin-shortcodes.php:156
 msgid "No shortcodes match. Try a different domain or clear the search."
-msgstr ""
+msgstr "कोई शॉर्टकोड मेल नहीं खाता। कोई अलग डोमेन आज़माएँ या खोज हटाएँ।"
 
 #: src/Admin/ShortcodesPage.php:118
 #: templates/admin-shortcodes.php:53
 #: templates/admin-shortcodes.php:60
 msgid "Search shortcodes"
-msgstr ""
+msgstr "शॉर्टकोड खोजें"
 
 #: src/Admin/SiteHealth.php:59
 msgid "Site language"
-msgstr ""
+msgstr "साइट भाषा"
 
 #: src/Admin/SiteHealth.php:63
 msgid "Language used for the interface"
-msgstr ""
+msgstr "इंटरफ़ेस में इस्तेमाल होने वाली भाषा"
 
 #. translators: %s: WordPress locale code.
 #: src/Admin/SiteHealth.php:67
 #, php-format
 msgid "%s (does not match the site language, so something on this site is overriding it)"
-msgstr ""
+msgstr "%s (साइट की भाषा से मेल नहीं खाती, इसलिए इस साइट पर कुछ इसे ओवरराइड कर रहा है)"
 
 #: src/Admin/SiteHealth.php:70
 msgid "Translation file"
-msgstr ""
+msgstr "अनुवाद फ़ाइल"
 
 #: src/Admin/SiteHealth.php:72
 msgid "None. This plugin ships no translation for that language."
-msgstr ""
+msgstr "कोई नहीं। यह प्लगइन उस भाषा के लिए कोई अनुवाद शामिल नहीं करता।"
 
 #: src/Admin/SiteHealth.php:76
 msgid "Translation file loaded"
-msgstr ""
+msgstr "अनुवाद फ़ाइल लोड हुई"
 
 #: src/Admin/SiteHealth.php:77
 #: src/Admin/SiteHealth.php:119
@@ -2186,126 +2196,126 @@ msgstr "नहीं"
 
 #: src/Admin/SiteHealth.php:80
 msgid "Sample string translates"
-msgstr ""
+msgstr "सैंपल स्ट्रिंग अनुवादित होती है"
 
 #: src/Admin/SiteHealth.php:84
 msgid "Languages included with the plugin"
-msgstr ""
+msgstr "प्लगइन के साथ शामिल भाषाएँ"
 
 #: src/Admin/SiteHealth.php:90
 msgid "RoxyAPI translations"
-msgstr ""
+msgstr "RoxyAPI अनुवाद"
 
 #: src/Admin/SiteHealth.php:91
 msgid "How this plugin is resolving the site language. Copy this section into any report about wording appearing in the wrong language."
-msgstr ""
+msgstr "यह प्लगइन साइट की भाषा कैसे तय कर रहा है। गलत भाषा में टेक्स्ट दिखने से जुड़ी किसी भी रिपोर्ट में यह सेक्शन कॉपी करें।"
 
 #: src/Admin/SiteHealth.php:122
 msgid "No. The interface will render in English."
-msgstr ""
+msgstr "नहीं। इंटरफ़ेस अंग्रेज़ी में दिखेगा।"
 
 #: src/Admin/SiteHealth.php:133
 msgid "None found."
-msgstr ""
+msgstr "कुछ नहीं मिला।"
 
 #: src/Api/Client.php:125
 msgid "Could not encode request body as JSON."
-msgstr ""
+msgstr "रिक्वेस्ट बॉडी को JSON के रूप में एन्कोड नहीं किया जा सका।"
 
 #: src/Api/Client.php:145
 msgid "Invalid JSON from RoxyAPI"
-msgstr ""
+msgstr "RoxyAPI से अमान्य JSON"
 
 #: src/Api/Client.php:178
 msgid "This reading has not been set up yet. Fill in its settings to choose what it should show."
-msgstr ""
+msgstr "यह विश्लेषण अभी सेट अप नहीं हुआ है। यह क्या दिखाएगा, यह तय करने के लिए इसकी सेटिंग्स भरें।"
 
 #: src/Api/Client.php:235
 msgid "This reading is temporarily unavailable. The site administrator needs to verify the connection."
-msgstr ""
+msgstr "यह विश्लेषण अभी अस्थायी रूप से उपलब्ध नहीं है। साइट व्यवस्थापक को कनेक्शन जांचना होगा।"
 
 #: src/Api/Client.php:242
 msgid "This reading is temporarily unavailable. Please check back later."
-msgstr ""
+msgstr "यह विश्लेषण अभी अस्थायी रूप से उपलब्ध नहीं है। कृपया बाद में फिर देखें।"
 
 #: src/Api/Client.php:246
 msgid "Daily readings are temporarily unavailable. Please check back later."
-msgstr ""
+msgstr "दैनिक विश्लेषण अभी अस्थायी रूप से उपलब्ध नहीं हैं। कृपया बाद में फिर देखें।"
 
 #: src/Api/Client.php:249
 msgid "The reading service is temporarily unavailable. Please try again in a few minutes."
-msgstr ""
+msgstr "विश्लेषण सेवा अभी अस्थायी रूप से उपलब्ध नहीं है। कृपया कुछ मिनट बाद फिर कोशिश करें।"
 
 #: src/Api/Client.php:252
 msgid "This reading could not be loaded right now. Please try again."
-msgstr ""
+msgstr "यह विश्लेषण अभी लोड नहीं हो सका। कृपया फिर कोशिश करें।"
 
 #: src/Api/GeocodeRoute.php:87
 msgid "Query is too short."
-msgstr ""
+msgstr "क्वेरी बहुत छोटी है।"
 
 #: src/Api/GeocodeRoute.php:90
 msgid "Query is too long."
-msgstr ""
+msgstr "क्वेरी बहुत लंबी है।"
 
 #: src/Api/GeocodeRoute.php:94
 msgid "Too many city lookups. Try again shortly."
-msgstr ""
+msgstr "बहुत ज़्यादा शहर खोजे गए। थोड़ी देर बाद फिर कोशिश करें।"
 
 #: src/Api/GeocodeRoute.php:110
 msgid "Search is temporarily unavailable."
-msgstr ""
+msgstr "खोज अभी अस्थायी रूप से उपलब्ध नहीं है।"
 
 #: src/Api/TestKeyRoute.php:52
 msgid "No API key configured."
-msgstr ""
+msgstr "कोई API कुंजी कॉन्फ़िगर नहीं है।"
 
 #: src/Api/TestKeyRoute.php:64
 msgid "Too many connection tests. Try again in an hour."
-msgstr ""
+msgstr "बहुत ज़्यादा कनेक्शन जांच हो चुकी हैं। एक घंटे बाद फिर कोशिश करें।"
 
 #: src/Blocks/Bindings.php:44
 msgid "RoxyAPI Daily Horoscope"
-msgstr ""
+msgstr "RoxyAPI दैनिक राशिफल"
 
 #. translators: %s: shortcode attribute name.
-#: src/Generated/Client.php:50
-#: src/Generated/Client.php:101
-#: src/Generated/Client.php:241
-#: src/Generated/Client.php:244
-#: src/Generated/Client.php:478
-#: src/Generated/Client.php:507
-#: src/Generated/Client.php:536
-#: src/Generated/Client.php:963
+#: src/Generated/Client.php:74
+#: src/Generated/Client.php:125
+#: src/Generated/Client.php:265
+#: src/Generated/Client.php:268
+#: src/Generated/Client.php:502
+#: src/Generated/Client.php:531
+#: src/Generated/Client.php:560
 #: src/Generated/Client.php:987
-#: src/Generated/Client.php:990
+#: src/Generated/Client.php:1011
 #: src/Generated/Client.php:1014
-#: src/Generated/Client.php:1017
-#: src/Generated/Client.php:1020
+#: src/Generated/Client.php:1038
+#: src/Generated/Client.php:1041
 #: src/Generated/Client.php:1044
-#: src/Generated/Client.php:1047
-#: src/Generated/Client.php:1050
-#: src/Generated/Client.php:1053
-#: src/Generated/Client.php:1245
-#: src/Generated/Client.php:1680
-#: src/Generated/Client.php:1731
-#: src/Generated/Client.php:1844
-#: src/Generated/Client.php:2206
-#: src/Generated/Client.php:2275
-#: src/Generated/Client.php:2632
-#: src/Generated/Client.php:2698
-#: src/Generated/Client.php:2796
-#: src/Generated/Client.php:3207
-#: src/Generated/Client.php:3283
-#: src/Generated/Client.php:3310
-#: src/Generated/Client.php:3339
-#: src/Generated/Client.php:3368
-#: src/Generated/Client.php:3397
-#: src/Generated/Client.php:3451
-#: src/Generated/Client.php:3599
-#: src/Generated/Client.php:3701
-#: src/Generated/Client.php:3772
-#: src/Generated/Client.php:3894
+#: src/Generated/Client.php:1068
+#: src/Generated/Client.php:1071
+#: src/Generated/Client.php:1074
+#: src/Generated/Client.php:1077
+#: src/Generated/Client.php:1290
+#: src/Generated/Client.php:1725
+#: src/Generated/Client.php:1776
+#: src/Generated/Client.php:1889
+#: src/Generated/Client.php:2251
+#: src/Generated/Client.php:2320
+#: src/Generated/Client.php:2677
+#: src/Generated/Client.php:2743
+#: src/Generated/Client.php:2841
+#: src/Generated/Client.php:3252
+#: src/Generated/Client.php:3328
+#: src/Generated/Client.php:3355
+#: src/Generated/Client.php:3384
+#: src/Generated/Client.php:3413
+#: src/Generated/Client.php:3442
+#: src/Generated/Client.php:3496
+#: src/Generated/Client.php:3644
+#: src/Generated/Client.php:3746
+#: src/Generated/Client.php:3817
+#: src/Generated/Client.php:3939
 #, php-format
 msgid "Missing required attribute \"%s\" for this shortcode."
 msgstr ""
@@ -2349,304 +2359,304 @@ msgstr "%s आवश्यक है।"
 
 #: templates/admin-connected.php:87
 msgid "Connect"
-msgstr ""
+msgstr "कनेक्ट करें"
 
 #: templates/admin-connected.php:88
 msgid "Branding"
-msgstr ""
+msgstr "ब्रांडिंग"
 
 #: templates/admin-connected.php:89
 msgid "Display"
-msgstr ""
+msgstr "डिस्प्ले"
 
 #: templates/admin-connected.php:90
 msgid "Privacy"
-msgstr ""
+msgstr "गोपनीयता"
 
 #: templates/admin-connected.php:91
 msgid "Advanced"
-msgstr ""
+msgstr "उन्नत"
 
 #: templates/admin-connected.php:127
 msgid "RoxyAPI is"
-msgstr ""
+msgstr "RoxyAPI"
 
 #: templates/admin-connected.php:128
 msgid "connected."
-msgstr ""
+msgstr "कनेक्ट हो गया।"
 
 #: templates/admin-connected.php:141
 msgid "RoxyAPI settings"
-msgstr ""
+msgstr "RoxyAPI सेटिंग्स"
 
 #: templates/admin-connected.php:178
 msgid "Connected to RoxyAPI."
-msgstr ""
+msgstr "RoxyAPI से कनेक्ट हो गया।"
 
 #: templates/admin-connected.php:179
 msgid "Drop a shortcode on any page to render a reading."
-msgstr ""
+msgstr "किसी भी पेज पर विश्लेषण दिखाने के लिए एक शॉर्टकोड डालें।"
 
 #: templates/admin-connected.php:184
 msgid "Quick start"
-msgstr ""
+msgstr "क्विक स्टार्ट"
 
 #: templates/admin-connected.php:186
 msgid "Three working shortcodes. Copy. Paste. Publish."
-msgstr ""
+msgstr "तीन तैयार शॉर्टकोड। कॉपी करें। पेस्ट करें। पब्लिश करें।"
 
 #: templates/admin-connected.php:205
 #: templates/admin-onboarding.php:135
 msgid "Browse all shortcodes"
-msgstr ""
+msgstr "सभी शॉर्टकोड ब्राउज़ करें"
 
 #: templates/admin-connected.php:212
 msgid "Manage your key"
-msgstr ""
+msgstr "अपनी कुंजी प्रबंधित करें"
 
 #: templates/admin-connected.php:214
 msgid "Replace key"
-msgstr ""
+msgstr "कुंजी बदलें"
 
 #: templates/admin-connected.php:220
 #: templates/admin-onboarding.php:98
 msgid "Save key"
-msgstr ""
+msgstr "कुंजी सहेजें"
 
 #: templates/admin-connected.php:223
 #: templates/admin-onboarding.php:101
 msgid "Test Connection"
-msgstr ""
+msgstr "कनेक्शन जांचें"
 
 #: templates/admin-connected.php:256
 msgid "Theme"
-msgstr ""
+msgstr "थीम"
 
 #: templates/admin-connected.php:258
 msgid "Light, dark, or auto for chart readings. Auto follows the visitor device setting."
-msgstr ""
+msgstr "चार्ट विश्लेषण के लिए लाइट, डार्क, या ऑटो। ऑटो आगंतुक की डिवाइस सेटिंग का पालन करता है।"
 
 #: templates/admin-connected.php:266
 msgid "Reading language"
-msgstr ""
+msgstr "विश्लेषण की भाषा"
 
 #: templates/admin-connected.php:268
 msgid "Language for visitor-facing reading text. Default follows the site language."
-msgstr ""
+msgstr "आगंतुकों को दिखने वाले विश्लेषण टेक्स्ट की भाषा। डिफ़ॉल्ट रूप से यह साइट की भाषा का पालन करती है।"
 
 #: templates/admin-connected.php:277
 msgid "Save branding"
-msgstr ""
+msgstr "ब्रांडिंग सहेजें"
 
 #: templates/admin-connected.php:290
 msgid "Written readings"
-msgstr ""
+msgstr "लिखित विश्लेषण"
 
 #: templates/admin-connected.php:295
 msgid "Turn this on to show the chart on its own, without the written report. It applies to every reading on the site. To set it for one placement instead, add hide_readings=\"1\" or hide_readings=\"0\" to that shortcode."
-msgstr ""
+msgstr "लिखित रिपोर्ट के बिना सिर्फ़ चार्ट दिखाने के लिए इसे चालू करें। यह साइट के हर विश्लेषण पर लागू होता है। इसके बजाय किसी एक जगह के लिए सेट करने के लिए, उस शॉर्टकोड में hide_readings=\"1\" या hide_readings=\"0\" जोड़ें।"
 
 #: templates/admin-connected.php:310
 msgid "Show source"
-msgstr ""
+msgstr "स्रोत दिखाएँ"
 
 #: templates/admin-connected.php:315
 msgid "A small line at the bottom of each card showing where the data comes from. Off by default."
-msgstr ""
+msgstr "हर कार्ड के नीचे एक छोटी पंक्ति, जो बताती है कि डेटा कहाँ से आया है। डिफ़ॉल्ट रूप से बंद।"
 
 #: templates/admin-connected.php:320
 msgid "Disclaimer"
-msgstr ""
+msgstr "अस्वीकरण"
 
 #: templates/admin-connected.php:325
 msgid "Append a disclaimer to every reading. Useful for jurisdictions that require an \"entertainment only\" line. Empty text falls back to the localised default."
-msgstr ""
+msgstr "हर विश्लेषण में एक अस्वीकरण जोड़ें। उन क्षेत्रों के लिए उपयोगी जहाँ \"केवल मनोरंजन के लिए\" जैसी पंक्ति ज़रूरी है। खाली टेक्स्ट होने पर स्थानीयकृत डिफ़ॉल्ट इस्तेमाल होता है।"
 
 #: templates/admin-connected.php:333
 msgid "Visitor form copy"
-msgstr ""
+msgstr "आगंतुक फ़ॉर्म टेक्स्ट"
 
 #: templates/admin-connected.php:335
 msgid "Override the title and submit button shown above visitor forms. Leave blank to use the localised default."
-msgstr ""
+msgstr "आगंतुक फ़ॉर्म के ऊपर दिखने वाला शीर्षक और 'भेजें' बटन बदलें। स्थानीयकृत डिफ़ॉल्ट इस्तेमाल करने के लिए खाली छोड़ें।"
 
 #: templates/admin-connected.php:339
 msgid "Form title"
-msgstr ""
+msgstr "फ़ॉर्म शीर्षक"
 
 #: templates/admin-connected.php:345
 msgid "Submit button text"
-msgstr ""
+msgstr "'भेजें' बटन का टेक्स्ट"
 
 #: templates/admin-connected.php:353
 msgid "Save display"
-msgstr ""
+msgstr "डिस्प्ले सहेजें"
 
 #: templates/admin-connected.php:362
 msgid "Visitor privacy"
-msgstr ""
+msgstr "आगंतुक गोपनीयता"
 
 #: templates/admin-connected.php:364
 msgid "Visitor forms collect birth date, time, and location to compute readings. Visitors must confirm consent before each submission. Edit the consent text below; leave blank for the localised default."
-msgstr ""
+msgstr "आगंतुक फ़ॉर्म विश्लेषण तैयार करने के लिए जन्म तिथि, समय और स्थान लेते हैं। हर सबमिशन से पहले आगंतुकों को सहमति देनी होगी। नीचे सहमति टेक्स्ट बदलें; स्थानीयकृत डिफ़ॉल्ट के लिए खाली छोड़ें।"
 
 #: templates/admin-connected.php:370
 msgid "Consent label shown next to the form checkbox"
-msgstr ""
+msgstr "फ़ॉर्म चेकबॉक्स के बगल में दिखने वाला सहमति लेबल"
 
 #. translators: %s: link to WordPress Privacy Policy editor
 #: templates/admin-connected.php:380
 #, php-format
 msgid "The plugin auto-injects suggested privacy text into the WordPress Privacy Policy editor. Review or accept it at %s."
-msgstr ""
+msgstr "यह प्लगइन सुझाया गया गोपनीयता टेक्स्ट अपने आप WordPress गोपनीयता नीति एडिटर में जोड़ देता है। इसे %s पर जाकर जांचें या स्वीकार करें।"
 
 #: templates/admin-connected.php:381
 msgid "Settings &rarr; Privacy"
-msgstr ""
+msgstr "सेटिंग्स &rarr; गोपनीयता"
 
 #: templates/admin-connected.php:387
 msgid "Save privacy"
-msgstr ""
+msgstr "गोपनीयता सहेजें"
 
 #: templates/admin-connected.php:397
 msgid "Cache"
-msgstr ""
+msgstr "कैश"
 
 #: templates/admin-connected.php:399
 msgid "How long RoxyAPI caches each reading on this site. Lower = fresher. Higher = saves API quota."
-msgstr ""
+msgstr "RoxyAPI इस साइट पर हर विश्लेषण को कितनी देर तक कैश करता है। कम = ज़्यादा ताज़ा। ज़्यादा = API कोटा की बचत।"
 
 #: templates/admin-connected.php:408
 msgid "Save advanced"
-msgstr ""
+msgstr "उन्नत सहेजें"
 
 #: templates/admin-connected.php:416
 msgid "RoxyAPI resources"
-msgstr ""
+msgstr "RoxyAPI संसाधन"
 
 #: templates/admin-connected.php:417
 msgid "Docs"
-msgstr ""
+msgstr "दस्तावेज़"
 
 #: templates/admin-connected.php:419
 msgid "Open dashboard at roxyapi.com"
-msgstr ""
+msgstr "roxyapi.com पर डैशबोर्ड खोलें"
 
 #: templates/admin-connected.php:130
 msgid "Connect RoxyAPI in"
-msgstr ""
+msgstr "RoxyAPI कनेक्ट करें"
 
 #: templates/admin-connected.php:131
 msgid "30 seconds."
-msgstr ""
+msgstr "बस 30 सेकंड में।"
 
 #: templates/admin-onboarding.php:47
 msgid "Drop natal charts, daily horoscopes, kundli, Forecast timelines, Human Design bodygraphs and Numerology onto any WordPress page. Start free in seconds. Add a key when you go live."
-msgstr ""
+msgstr "किसी भी WordPress पेज पर नेटल चार्ट, दैनिक राशिफल, कुंडली, फोरकास्ट टाइमलाइन, ह्यूमन डिज़ाइन बॉडीग्राफ और न्यूमेरोलॉजी डालें। कुछ ही सेकंड में मुफ़्त शुरू करें। लाइव जाने पर कुंजी जोड़ें।"
 
 #: templates/admin-onboarding.php:52
 msgid "A few readings render free every day with no key, so your pages work the moment you activate. Add your API key below to unlock full power: every domain and every reading under one key."
-msgstr ""
+msgstr "बिना कुंजी के भी हर दिन कुछ विश्लेषण मुफ़्त में दिखते हैं, इसलिए सक्रिय करते ही आपके पेज काम करने लगते हैं। पूरी क्षमता खोलने के लिए नीचे अपनी API कुंजी जोड़ें: एक ही कुंजी में हर डोमेन और हर विश्लेषण।"
 
 #: templates/admin-onboarding.php:59
 msgid "RoxyAPI setup steps"
-msgstr ""
+msgstr "RoxyAPI सेटअप के चरण"
 
 #: templates/admin-onboarding.php:62
 msgid "Step 1."
-msgstr ""
+msgstr "चरण 1।"
 
 #: templates/admin-onboarding.php:63
 msgid "Get your API key."
-msgstr ""
+msgstr "अपनी API कुंजी पाएँ।"
 
 #: templates/admin-onboarding.php:66
 msgid "Optional to start. An API key connects this plugin to your RoxyAPI account, removes the free daily limit, and covers every reading with one key. Pick a plan at roxyapi.com when you are ready for production."
-msgstr ""
+msgstr "शुरुआत में वैकल्पिक। API कुंजी इस प्लगइन को आपके RoxyAPI खाते से जोड़ती है, मुफ़्त दैनिक सीमा हटाती है, और एक ही कुंजी में हर विश्लेषण को कवर करती है। प्रोडक्शन के लिए तैयार होने पर roxyapi.com पर कोई प्लान चुनें।"
 
 #. translators: %s: link to the RoxyAPI Playground
 #: templates/admin-onboarding.php:72
 #, php-format
 msgid "Want to try the endpoints first? %s. No signup needed."
-msgstr ""
+msgstr "पहले एंडपॉइंट आज़माना चाहते हैं? %s। साइन अप की ज़रूरत नहीं।"
 
 #: templates/admin-onboarding.php:76
 msgid "Open the Playground"
-msgstr ""
+msgstr "प्लेग्राउंड खोलें"
 
 #: templates/admin-onboarding.php:82
 msgid "Sign up at roxyapi.com"
-msgstr ""
+msgstr "roxyapi.com पर साइन अप करें"
 
 #: templates/admin-onboarding.php:89
 msgid "Step 2."
-msgstr ""
+msgstr "चरण 2।"
 
 #: templates/admin-onboarding.php:90
 msgid "Paste it here."
-msgstr ""
+msgstr "इसे यहाँ पेस्ट करें।"
 
 #: templates/admin-onboarding.php:93
 msgid "Drop the key into the field below. The plugin encrypts it before saving. Your key never reaches the browser at render time."
-msgstr ""
+msgstr "नीचे दिए गए फ़ील्ड में कुंजी डालें। सेव करने से पहले प्लगइन इसे एन्क्रिप्ट कर देता है। रेंडर के समय आपकी कुंजी कभी भी ब्राउज़र तक नहीं पहुँचती।"
 
 #: templates/admin-onboarding.php:112
 msgid "Step 3."
-msgstr ""
+msgstr "चरण 3।"
 
 #: templates/admin-onboarding.php:113
 msgid "Drop a shortcode on a page."
-msgstr ""
+msgstr "किसी पेज पर एक शॉर्टकोड डालें।"
 
 #: templates/admin-onboarding.php:116
 msgid "Copy a shortcode below. Paste it into any post, page, or widget. RoxyAPI renders the reading server side. No JavaScript required on the front end."
-msgstr ""
+msgstr "नीचे दिया गया कोई शॉर्टकोड कॉपी करें। इसे किसी भी पोस्ट, पेज या विजेट में पेस्ट करें। RoxyAPI विश्लेषण को सर्वर साइड पर दिखाता है। फ़्रंट एंड पर किसी JavaScript की ज़रूरत नहीं।"
 
 #: templates/admin-shortcodes.php:33
 msgid "Every reading."
-msgstr ""
+msgstr "हर विश्लेषण।"
 
 #. translators: %d: total number of shortcodes available.
 #: templates/admin-shortcodes.php:39
 #, php-format
 msgid "%d shortcode."
 msgid_plural "%d shortcodes."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d शॉर्टकोड।"
+msgstr[1] "%d शॉर्टकोड।"
 
 #: templates/admin-shortcodes.php:48
 msgid "Browse, search, copy. Paste into any post, page, or widget."
-msgstr ""
+msgstr "ब्राउज़ करें, खोजें, कॉपी करें। किसी भी पोस्ट, पेज या विजेट में पेस्ट करें।"
 
 #: templates/admin-shortcodes.php:59
 msgid "Search by name or description"
-msgstr ""
+msgstr "नाम या विवरण से खोजें"
 
 #: templates/admin-shortcodes.php:63
 msgid "Shortcode domains"
-msgstr ""
+msgstr "शॉर्टकोड डोमेन"
 
 #: templates/admin-shortcodes.php:71
 msgid "All"
-msgstr ""
+msgstr "सभी"
 
 #: templates/admin-shortcodes.php:118
 msgid "Hero"
-msgstr ""
+msgstr "हीरो"
 
 #: templates/admin-shortcodes.php:121
 msgid "Form"
-msgstr ""
+msgstr "फ़ॉर्म"
 
 #. translators: %s: shortcode title
 #: templates/admin-shortcodes.php:142
 #, php-format
 msgid "Try %s in the Demo page"
-msgstr ""
+msgstr "डेमो पेज में %s आज़माएँ"
 
 #: templates/admin-shortcodes.php:144
 msgid "Try it"
-msgstr ""
+msgstr "आज़माएँ"
 
 #: templates/horoscope-form.php:46
 msgid "Your zodiac sign"
@@ -2695,6 +2705,7 @@ msgstr ""
 #: blocks/generated/get-crystal/index.js:17
 #: blocks/generated/get-crystals-by-chakra/index.js:17
 #: blocks/generated/get-crystals-by-element/index.js:17
+#: blocks/generated/get-field-labels/index.js:11
 #: blocks/generated/get-gate/index.js:17
 #: blocks/generated/get-hexagram/index.js:17
 #: blocks/generated/get-monthly-horoscope/index.js:17
@@ -2737,6 +2748,7 @@ msgstr ""
 #: blocks/generated/get-crystal/index.js:19
 #: blocks/generated/get-crystals-by-chakra/index.js:19
 #: blocks/generated/get-crystals-by-element/index.js:19
+#: blocks/generated/get-field-labels/index.js:13
 #: blocks/generated/get-gate/index.js:19
 #: blocks/generated/get-hexagram/index.js:19
 #: blocks/generated/get-monthly-horoscope/index.js:19
@@ -3029,6 +3041,7 @@ msgid "Full birth name (vowels will be extracted)"
 msgstr ""
 
 #: blocks/generated/calculate-transit/index.js:20
+#: blocks/generated/get-vedic-daily-reading/index.js:20
 msgid "Birth time in HH:MM:SS format (24-hour)"
 msgstr ""
 
@@ -3854,10 +3867,10 @@ msgstr ""
 msgid "Select an option"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:188
+#: src/Admin/SettingsFields.php:196
 #: blocks/_shared/generated-edit.js:56
 msgid "Default"
-msgstr ""
+msgstr "डिफ़ॉल्ट"
 
 #: blocks/_shared/generated-edit.js:128
 msgid "Reading Settings"
@@ -3978,6 +3991,7 @@ msgstr ""
 #: blocks/generated/get-daily-number/block.json
 #: blocks/generated/get-dream-symbol/block.json
 #: blocks/generated/get-ecliptic-crossings/block.json
+#: blocks/generated/get-field-labels/block.json
 #: blocks/generated/get-forecast/block.json
 #: blocks/generated/get-gate/block.json
 #: blocks/generated/get-heliacal-visibility/block.json
@@ -4019,6 +4033,7 @@ msgstr ""
 #: blocks/generated/get-upagraha-positions/block.json
 #: blocks/generated/get-upcoming-moon-phases/block.json
 #: blocks/generated/get-usage-stats/block.json
+#: blocks/generated/get-vedic-daily-reading/block.json
 #: blocks/generated/get-weekly-horoscope/block.json
 #: blocks/generated/get-yoga/block.json
 #: blocks/generated/get-zodiac-sign/block.json
@@ -4265,6 +4280,7 @@ msgstr ""
 #: blocks/generated/get-sookshma-dashas/block.json
 #: blocks/generated/get-sub-dashas/block.json
 #: blocks/generated/get-upagraha-positions/block.json
+#: blocks/generated/get-vedic-daily-reading/block.json
 #: blocks/generated/get-yoga/block.json
 #: blocks/generated/list-avasthas/block.json
 #: blocks/generated/list-nakshatras/block.json
@@ -4667,6 +4683,7 @@ msgstr ""
 #: blocks/generated/get-daily-number/block.json
 #: blocks/generated/get-dream-symbol/block.json
 #: blocks/generated/get-ecliptic-crossings/block.json
+#: blocks/generated/get-field-labels/block.json
 #: blocks/generated/get-forecast/block.json
 #: blocks/generated/get-gate/block.json
 #: blocks/generated/get-heliacal-visibility/block.json
@@ -4708,6 +4725,7 @@ msgstr ""
 #: blocks/generated/get-upagraha-positions/block.json
 #: blocks/generated/get-upcoming-moon-phases/block.json
 #: blocks/generated/get-usage-stats/block.json
+#: blocks/generated/get-vedic-daily-reading/block.json
 #: blocks/generated/get-weekly-horoscope/block.json
 #: blocks/generated/get-yoga/block.json
 #: blocks/generated/get-zodiac-sign/block.json
@@ -4964,6 +4982,7 @@ msgctxt "block keyword"
 msgid "hexagrams"
 msgstr ""
 
+#: blocks/generated/get-field-labels/block.json
 #: blocks/generated/list-languages/block.json
 msgctxt "block keyword"
 msgid "languages"
@@ -5148,7 +5167,7 @@ msgstr "माह दिखाएँ"
 msgid "Significant Dates"
 msgstr "महत्वपूर्ण तिथियाँ"
 
-#: src/Support/FormRenderer.php:60
+#: src/Support/FormRenderer.php:65
 msgid "That reading has already been shown. Enter the details below to run it again."
 msgstr "यह विश्लेषण पहले ही दिखाया जा चुका है। इसे दोबारा बनाने के लिए नीचे विवरण दर्ज करें।"
 
@@ -5162,87 +5181,83 @@ msgstr "पाश्चात्य ज्योतिष पूर्वान�
 
 #: src/Admin/DemoPage.php:83
 msgid "Live preview of every shortcode the plugin ships. Click \"Run\" on a row to render that one reading. Each run is a live call against your plan, so rows render one at a time and never in bulk. Results are cached server-side for an hour by default."
-msgstr ""
+msgstr "प्लगइन के साथ आने वाले हर शॉर्टकोड का लाइव पूर्वावलोकन। किसी पंक्ति में उस एक विश्लेषण को दिखाने के लिए \"चलाएँ\" पर क्लिक करें। हर बार चलाना आपकी योजना पर एक लाइव कॉल है, इसलिए पंक्तियाँ एक-एक करके दिखती हैं, कभी एक साथ नहीं। परिणाम डिफ़ॉल्ट रूप से सर्वर साइड पर एक घंटे के लिए कैश किए जाते हैं।"
 
-#: src/Admin/SettingsFields.php:206
+#: src/Admin/SettingsFields.php:214
 msgid "Reset colours to defaults"
-msgstr ""
+msgstr "रंगों को डिफ़ॉल्ट पर रीसेट करें"
 
-#: src/Admin/SettingsFields.php:218
+#: src/Admin/SettingsFields.php:226
 msgid "Custom"
-msgstr ""
+msgstr "कस्टम"
 
-#: src/Admin/SettingsFields.php:219
+#: src/Admin/SettingsFields.php:227
 msgid "Practitioner"
-msgstr ""
+msgstr "प्रैक्टिशनर"
 
-#: src/Admin/SettingsFields.php:220
+#: src/Admin/SettingsFields.php:228
 msgid "Eucalyptus"
-msgstr ""
+msgstr "यूकेलिप्टस"
 
-#: src/Admin/SettingsFields.php:221
+#: src/Admin/SettingsFields.php:229
 msgid "Kiln"
-msgstr ""
+msgstr "किल्न"
 
-#: src/Admin/SettingsFields.php:222
+#: src/Admin/SettingsFields.php:230
 msgid "Moonlit"
-msgstr ""
+msgstr "चांदनी"
 
-#: src/Admin/SettingsFields.php:233
+#: src/Admin/SettingsFields.php:241
 msgid "Accent"
-msgstr ""
+msgstr "एक्सेंट"
 
-#: src/Admin/SettingsFields.php:234
+#: src/Admin/SettingsFields.php:242
 msgid "Page background"
-msgstr ""
+msgstr "पेज बैकग्राउंड"
 
-#: src/Admin/SettingsFields.php:235
+#: src/Admin/SettingsFields.php:243
 msgid "Card background"
-msgstr ""
+msgstr "कार्ड बैकग्राउंड"
 
-#: src/Admin/SettingsFields.php:236
+#: src/Admin/SettingsFields.php:244
 msgid "Text"
-msgstr ""
+msgstr "टेक्स्ट"
 
-#: src/Admin/SettingsFields.php:237
+#: src/Admin/SettingsFields.php:245
 msgid "Secondary text"
-msgstr ""
+msgstr "द्वितीयक टेक्स्ट"
 
-#: src/Admin/SettingsFields.php:238
+#: src/Admin/SettingsFields.php:246
 msgid "Borders"
-msgstr ""
+msgstr "बॉर्डर"
 
-#: src/Admin/SettingsFields.php:239
+#: src/Admin/SettingsFields.php:247
 msgid "Warnings"
-msgstr ""
+msgstr "चेतावनी"
 
 #: src/Admin/SettingsPage.php:167
 msgid "Settings saved."
-msgstr ""
+msgstr "सेटिंग्स सहेज ली गईं।"
 
 #: templates/admin-connected.php:240
 msgid "Palette"
-msgstr ""
+msgstr "पैलेट"
 
 #: templates/admin-connected.php:242
 msgid "Colours for every reading on your site. Pick a palette, or choose Custom and set the seven colours yourself. Readings use your theme font either way."
-msgstr ""
+msgstr "आपकी साइट पर हर विश्लेषण के लिए रंग। कोई पैलेट चुनें, या कस्टम चुनकर सातों रंग खुद सेट करें। दोनों ही स्थिति में विश्लेषण आपकी थीम का फ़ॉन्ट इस्तेमाल करते हैं।"
 
 #: templates/admin-connected.php:247
 msgid "Set colours yourself"
-msgstr ""
+msgstr "रंग खुद सेट करें"
 
 #: templates/admin-connected.php:249
 msgid "Two values per colour, one for light readings and one for dark, so a brand colour stays readable in both. Leave a field blank to keep the default."
-msgstr ""
+msgstr "हर रंग के लिए दो वैल्यू होती हैं, एक लाइट विश्लेषण के लिए और एक डार्क के लिए, ताकि ब्रांड रंग दोनों में पढ़ने लायक बना रहे। डिफ़ॉल्ट बनाए रखने के लिए किसी फ़ील्ड को खाली छोड़ें।"
 
 #: templates/admin-connected.php:300
 msgid "Hide sections"
-msgstr ""
-
-#: templates/admin-connected.php:302
-msgid "Take whole sections off every reading. Type the section names separated by commas. The common one is patterns, which removes the chart patterns block from a natal chart. Leave this blank to show everything, and note that a name matching no section is ignored."
-msgstr ""
+msgstr "अनुभाग छिपाएँ"
 
 #: blocks/generated/angel-number/index.js:20
 #: blocks/generated/biorhythm/index.js:26
@@ -5725,11 +5740,6 @@ msgstr ""
 #: blocks/generated/detect-yogas/block.json
 msgctxt "block title"
 msgid "Classical Vedic Yogas in a Birth Chart (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/detect-yogas/block.json
-msgctxt "block description"
-msgid "Chart-driven detection of 44 classical Vedic yogas"
 msgstr ""
 
 #: blocks/generated/draw-cards/block.json
@@ -6781,4 +6791,61 @@ msgstr ""
 #: blocks/generated/tarot/block.json
 msgctxt "block description"
 msgid "Single card, three card, or Celtic Cross spreads."
+msgstr ""
+
+#. translators: %s: comma-separated list of section names that matched no block.
+#: src/Admin/SettingsFields.php:747
+#, php-format
+msgid "Hide sections does not recognise %s, so nothing is hidden for it. These are internal names and stay the same whatever language your site is in. Click the field to see every name this version supports."
+msgstr "अनुभाग छिपाएँ, %s को नहीं पहचानता, इसलिए इसके लिए कुछ भी नहीं छिपाया जाता। ये आंतरिक नाम हैं और आपकी साइट किसी भी भाषा में हो, ये वैसे ही रहते हैं। यह वर्शन जिन नामों को सपोर्ट करता है, वे देखने के लिए फ़ील्ड पर क्लिक करें।"
+
+#: templates/admin-connected.php:302
+msgid "Take whole sections off every reading. Type one or more section names separated by commas, and spaces around them are fine. The common one is patterns, which removes the chart patterns block from a natal chart. These are internal names and stay the same whatever language your site is in, so the title printed on the page will not work. Click the field to see every name this version supports. Leave it blank to show everything."
+msgstr "हर विश्लेषण से पूरे अनुभाग हटाएँ। एक या ज़्यादा अनुभाग नाम कॉमा से अलग करके लिखें, नामों के आसपास स्पेस होने पर भी कोई दिक्कत नहीं। सबसे आम नाम patterns है, जो नेटल चार्ट में से chart patterns ब्लॉक हटा देता है। ये आंतरिक नाम हैं और आपकी साइट किसी भी भाषा में हो, ये वैसे ही रहते हैं, इसलिए पेज पर छपा शीर्षक इस्तेमाल नहीं होगा। यह वर्शन जिन नामों को सपोर्ट करता है, वे सभी देखने के लिए फ़ील्ड पर क्लिक करें। सब कुछ दिखाने के लिए इसे खाली छोड़ें।"
+
+#: blocks/generated/get-vedic-daily-reading/index.js:41
+msgid "Timezone: IANA name (e.g. \"Asia/Kolkata\", \"America/New_York\") OR decimal hours from UTC (e.g. -5 for EST, 5.5 for IST)"
+msgstr ""
+
+#: blocks/generated/get-vedic-daily-reading/index.js:48
+msgid "Civil date to read, in YYYY-MM-DD format"
+msgstr ""
+
+#: blocks/generated/get-vedic-daily-reading/index.js:55
+msgid "Lunar node type for Rahu and Ketu"
+msgstr ""
+
+#: blocks/generated/detect-yogas/block.json
+msgctxt "block description"
+msgid "Chart-driven detection of 48 classical Vedic yogas"
+msgstr ""
+
+#: blocks/generated/get-field-labels/block.json
+msgctxt "block title"
+msgid "Field Labels for a Language"
+msgstr ""
+
+#: blocks/generated/get-field-labels/block.json
+msgctxt "block description"
+msgid "Returns the display label for every request field name and every selectable option across the , in the requested language"
+msgstr ""
+
+#: blocks/generated/get-field-labels/block.json
+msgctxt "block keyword"
+msgid "field"
+msgstr ""
+
+#: blocks/generated/get-vedic-daily-reading/block.json
+msgctxt "block title"
+msgid "Daily Reading (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-vedic-daily-reading/block.json
+msgctxt "block description"
+msgid "Composed Gochara, Panchanga and Dasha for one native on one day"
+msgstr ""
+
+#: blocks/generated/get-vedic-daily-reading/block.json
+msgctxt "block keyword"
+msgid "vedic"
 msgstr ""

@@ -238,6 +238,10 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.11.3 =
+* New: the RoxyAPI settings screens now read in your site language. Every tab, field label, help text, button and notice on them is translated, in all eight languages, as is the plugin description on your Plugins page. Until now the whole admin stayed English however your site was set, so a Spanish site was configured through an English screen. The domain names in the Shortcodes library, such as Human Design, stay as they are, the same way shortcode names do.
+* Fixed: the notice a visitor reads when a reading cannot be loaded, and the status messages under the city box on a birth details form, now read in your site language too. Fourteen more lines were coming out English on fully translated sites.
+
 = 1.11.2 =
 * Fixed: hiding the written readings, or a section, now works on every placement. Both settings could be set on one shortcode since 1.11.1, but three cases quietly ignored the attribute and followed the site setting instead: the horoscope shortcode, the synastry, Guna Milan and compatibility shortcodes, and ANY reading where the visitor fills in the details themselves rather than the site owner. A page that asked for a chart without the written report got the report back the moment a visitor used the form. The site-wide settings on the Display tab were never affected.
 * Fixed: dropdowns are readable in dark mode. A select looked correct until it was opened, and then listed its choices as white text on a white background. The same fix restores the date and time pickers, the number steppers and the scrollbars, which were all drawn in light colours inside a dark reading.
@@ -471,6 +475,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.11.3 =
+Worth updating on any site not run in English. The whole RoxyAPI settings area now reads in your site language, along with the notices a visitor sees when a reading cannot load and the messages under the city box.
 
 = 1.11.2 =
 Worth updating on any translated site: the ephemeris month controls and the form messages now read in your site language. Hide sections lists the names it accepts and warns when one matches nothing. Also fixes those settings being ignored on several shortcodes, and dropdowns in dark mode.
