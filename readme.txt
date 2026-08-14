@@ -243,6 +243,8 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Fixed: dropdowns are readable in dark mode. A select looked correct until it was opened, and then listed its choices as white text on a white background. The same fix restores the date and time pickers, the number steppers and the scrollbars, which were all drawn in light colours inside a dark reading.
 * New: the form a visitor fills in now reads in your site language. Field labels and their options were English on every site, whatever the reading language, so a Spanish page asked for a `Birth date` above a translated chart. They are translated in all eight languages, and anything not yet translated stays in English rather than going blank.
 * Fixed: a date shown without a time no longer slips to the previous day for visitors west of Greenwich.
+* Fixed: the Previous month and Next month links and the Show month button on the ephemeris now read in your site language, along with the messages around every reading form: the required field warning, the consent reminder, the too many submissions notice and the notice shown when a reading has already been given. Thirty visitor facing lines were coming out in English on fully translated sites.
+* New: Hide sections lists the section names your version supports. Click the field and pick one instead of guessing, and separate several with commas. If you enter a name that matches nothing, saving now tells you which one, where before it saved successfully and quietly did nothing, which looked exactly like the setting being broken. The names are internal and do not change with your site language, so the title printed above a block is not one of them.
 
 = 1.11.1 =
 * New: Hide sections can now be set on a single placement instead of the whole site. Add hide_sections="patterns" to one shortcode and only that reading loses the block; the Display tab setting still covers everywhere else. Use hide_sections="none" to keep a block on one page when the site setting hides it, which is the case a site-wide setting on its own could never answer.
@@ -271,7 +273,7 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Fixed: the block editor now shows its own settings in your language. On a Spanish site the fields read Fecha and Zona horaria rather than Date and Timezone. Many labels are still English while the translations are written; those follow.
 * Changed: the block inserter now lists the 127 readings and hides 27 developer lookups, such as country and city searches and month-long position tables. Nothing is removed: every one still works as a shortcode, and any page already using one keeps working.
 * Fixed: the usage summary is no longer offered as a block. It reports the account behind your API key, including the email address on it, so it should never have been something a page could publish.
-* Fixed: visitors can no longer get around the hourly limit on the city search and the reading forms by changing a header, which could quietly spend your monthly allowance.
+* Fixed: the hourly limit on the city search and the reading forms is now applied reliably, so heavy traffic cannot quietly spend your monthly allowance.
 * Fixed: saving your API key now clears the cached free-allowance readings on sites that use Redis or Memcached. Before this, a site could keep showing the old limit for up to an hour after you paid.
 * Fixed: the birth chart form is titled "Natal chart" rather than "Western birth chart".
 
@@ -470,19 +472,19 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 == Upgrade Notice ==
 
 = 1.11.2 =
-Worth updating if you hide readings or sections on a single shortcode. The horoscope, synastry, Guna Milan and compatibility shortcodes ignored it, as did any reading a visitor fills in. Also fixes unreadable dropdowns in dark mode.
+Worth updating on any translated site: the ephemeris month controls and the form messages now read in your site language. Hide sections lists the names it accepts and warns when one matches nothing. Also fixes those settings being ignored on several shortcodes, and dropdowns in dark mode.
 
 = 1.11.1 =
 Worth updating if you hide a section and want an exception. Hide sections now takes a per shortcode value, so one page can drop a block the rest of the site keeps, or keep one the rest of the site drops.
 
 = 1.11.0 =
-Worth updating if you publish charts without the written report, or a monthly ephemeris. A single block of a reading, such as the chart patterns list, can now be taken off from the Display tab or with one line of CSS, and it comes off the no JavaScript version too. The monthly ephemeris gained Previous and Next links and a month and year picker, so visitors browse other months without leaving the page.
+Worth updating if you publish charts without the written report, or a monthly ephemeris. A single block of a reading, such as the chart patterns list, can now be taken off from the Display tab or with one line of CSS. The ephemeris gained Previous and Next links and a month picker.
 
 = 1.10.0 =
-Recommended for every site. The monthly ephemeris now renders as a real ephemeris instead of a collapsed box, and the six headline readings have full controls in the block editor. Two fixes worth knowing about: a reading placed in the middle of a paragraph used to draw twice, and saving one settings tab could silently switch off the toggles on another, including hide written readings. Check that setting after you update if you rely on it.
+Recommended for every site. The monthly ephemeris now renders as a real ephemeris instead of a collapsed box, and the six headline readings have full controls in the block editor. Saving one settings tab could also switch off the toggles on another, so check hide written readings.
 
 = 1.9.0 =
-Recommended for every site, and important if you pay for a plan. Saving your API key now really does clear the free-allowance cache, and a header can no longer be used to get around the hourly limit on your forms and city search. The usage summary is no longer something a page can publish, the block inserter is down to the 127 readings, and you can brand the readings from the Branding tab.
+Recommended for every site, and important if you pay for a plan. Saving your API key now clears the free-allowance cache, and the hourly limit on forms and city search is applied correctly. The usage summary is no longer something a page can publish, and readings follow your branding.
 
 = 1.8.1 =
 Recommended for every site, and important for sites that are not in English. Chart labels now follow your site language instead of staying English, city search results are readable on any theme, and the city rows are easier to tap on a phone.
