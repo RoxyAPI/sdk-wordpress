@@ -14,6 +14,7 @@ msgstr ""
 "X-Generator: roxyapi build\n"
 
 #: src/Generated/Forms/AngelNumberForm.php:43
+#: blocks/generated/angel-number/index.js:14
 msgid "1111"
 msgstr "1111"
 
@@ -30,6 +31,7 @@ msgid "Angel number lookup"
 msgstr "Engelszahl nachschlagen"
 
 #: src/Generated/Forms/AngelNumberForm.php:42
+#: blocks/generated/angel-number/index.js:13
 msgid "Any whole number you keep noticing"
 msgstr "Eine ganze Zahl, die Ihnen immer wieder auffällt"
 
@@ -93,7 +95,6 @@ msgstr "Ayanamsa-Wert"
 #: src/Generated/Forms/GenerateDigestForm.php:99
 #: src/Generated/Forms/GenerateTimelineForm.php:99
 #: src/Generated/Heroes/Manifest.php:172
-#: blocks/biorhythm/edit.js:10
 msgid "Biorhythm"
 msgstr "Biorhythmus"
 
@@ -119,6 +120,7 @@ msgstr "Geburtsdaten"
 #: src/Generated/Forms/MangalDoshaForm.php:40
 #: src/Generated/Forms/NatalChartForm.php:40
 #: src/Generated/Forms/NumerologyForm.php:46
+#: blocks/generated/biorhythm/index.js:11
 #: blocks/generated/calculate-transit/index.js:11
 #: blocks/generated/generate-lunar-return/index.js:11
 #: blocks/generated/generate-planetary-return/index.js:11
@@ -127,22 +129,24 @@ msgstr "Geburtsdaten"
 #: blocks/generated/get-forecast/index.js:11
 #: blocks/generated/get-kp-ruling-planets/index.js:39
 #: blocks/generated/get-phases/index.js:11
+#: blocks/generated/natal-chart/index.js:11
+#: blocks/generated/numerology/index.js:18
 msgid "Birth date"
 msgstr "Geburtsdatum"
 
 #: src/Generated/Forms/CalculateCompatibilityForm.php:34
-#: src/Generated/Forms/CalculateCompatibilityForm.php:81
+#: src/Generated/Forms/CalculateCompatibilityForm.php:89
 #: src/Generated/Forms/CalculateConnectionForm.php:34
 #: src/Generated/Forms/CalculateConnectionForm.php:89
 #: src/Generated/Forms/CalculateGunMilanForm.php:34
 #: src/Generated/Forms/CalculateGunMilanForm.php:81
 #: src/Generated/Forms/CalculateSynastryForm.php:34
-#: src/Generated/Forms/CalculateSynastryForm.php:88
+#: src/Generated/Forms/CalculateSynastryForm.php:96
 #: src/Generated/Forms/CalculateTransitAspectsForm.php:34
 #: src/Generated/Forms/FindSignificantDatesForm.php:34
 #: src/Generated/Forms/ForecastTransitsForm.php:34
 #: src/Generated/Forms/GenerateCompositeChartForm.php:34
-#: src/Generated/Forms/GenerateCompositeChartForm.php:81
+#: src/Generated/Forms/GenerateCompositeChartForm.php:89
 #: src/Generated/Forms/GenerateDigestForm.php:34
 #: src/Generated/Forms/GenerateTimelineForm.php:34
 #: src/Generated/Forms/GenerateTransitForm.php:34
@@ -259,12 +263,12 @@ msgid "Birth location latitude in decimal degrees"
 msgstr "Breitengrad des Geburtsorts in Dezimalgrad"
 
 #: src/Generated/Forms/CalculateCompatibilityForm.php:48
-#: src/Generated/Forms/CalculateCompatibilityForm.php:95
+#: src/Generated/Forms/CalculateCompatibilityForm.php:103
 #: src/Generated/Forms/CalculateSynastryForm.php:48
-#: src/Generated/Forms/CalculateSynastryForm.php:102
+#: src/Generated/Forms/CalculateSynastryForm.php:110
 #: src/Generated/Forms/CalculateTransitAspectsForm.php:48
 #: src/Generated/Forms/GenerateCompositeChartForm.php:48
-#: src/Generated/Forms/GenerateCompositeChartForm.php:95
+#: src/Generated/Forms/GenerateCompositeChartForm.php:103
 #: blocks/generated/calculate-arabic-lots/index.js:27
 #: blocks/generated/calculate-houses/index.js:27
 #: blocks/generated/detect-aspect-patterns/index.js:27
@@ -305,12 +309,12 @@ msgid "Birth location longitude in decimal degrees"
 msgstr "Längengrad des Geburtsorts in Dezimalgrad"
 
 #: src/Generated/Forms/CalculateCompatibilityForm.php:58
-#: src/Generated/Forms/CalculateCompatibilityForm.php:105
+#: src/Generated/Forms/CalculateCompatibilityForm.php:113
 #: src/Generated/Forms/CalculateSynastryForm.php:58
-#: src/Generated/Forms/CalculateSynastryForm.php:112
+#: src/Generated/Forms/CalculateSynastryForm.php:120
 #: src/Generated/Forms/CalculateTransitAspectsForm.php:58
 #: src/Generated/Forms/GenerateCompositeChartForm.php:58
-#: src/Generated/Forms/GenerateCompositeChartForm.php:105
+#: src/Generated/Forms/GenerateCompositeChartForm.php:113
 #: blocks/generated/calculate-arabic-lots/index.js:34
 #: blocks/generated/calculate-houses/index.js:34
 #: blocks/generated/detect-aspect-patterns/index.js:34
@@ -359,22 +363,23 @@ msgstr "Geburtsmonat (1-12)"
 #: blocks/generated/generate-planetary-return/index.js:18
 #: blocks/generated/generate-solar-return/index.js:18
 #: blocks/generated/get-kp-ruling-planets/index.js:46
+#: blocks/generated/natal-chart/index.js:18
 msgid "Birth time"
 msgstr "Geburtszeit"
 
 #: src/Generated/Forms/CalculateCompatibilityForm.php:41
-#: src/Generated/Forms/CalculateCompatibilityForm.php:88
+#: src/Generated/Forms/CalculateCompatibilityForm.php:96
 #: src/Generated/Forms/CalculateConnectionForm.php:41
 #: src/Generated/Forms/CalculateConnectionForm.php:96
 #: src/Generated/Forms/CalculateGunMilanForm.php:41
 #: src/Generated/Forms/CalculateGunMilanForm.php:88
 #: src/Generated/Forms/CalculateSynastryForm.php:41
-#: src/Generated/Forms/CalculateSynastryForm.php:95
+#: src/Generated/Forms/CalculateSynastryForm.php:103
 #: src/Generated/Forms/CalculateTransitAspectsForm.php:41
 #: src/Generated/Forms/FindSignificantDatesForm.php:41
 #: src/Generated/Forms/ForecastTransitsForm.php:41
 #: src/Generated/Forms/GenerateCompositeChartForm.php:41
-#: src/Generated/Forms/GenerateCompositeChartForm.php:88
+#: src/Generated/Forms/GenerateCompositeChartForm.php:96
 #: src/Generated/Forms/GenerateDigestForm.php:41
 #: src/Generated/Forms/GenerateTimelineForm.php:41
 #: src/Generated/Forms/GenerateTransitForm.php:41
@@ -432,38 +437,14 @@ msgstr "Geburtsjahr zur automatischen Berechnung der Lebenszahl"
 msgid "Calculate"
 msgstr "Berechnen"
 
-#: src/Generated/Forms/CalculateNumCompatibilityForm.php:23
-msgid "Calculate Compatibility - Relationship dynamics between two people"
-msgstr "Kompatibilität berechnen. Beziehungsdynamik zwischen zwei Menschen"
-
-#: src/Generated/Forms/CalculatePentaForm.php:23
-msgid "Calculate Human Design Penta - Small-group BG5 operating system for three to five people"
-msgstr "Human Design Penta berechnen. BG5-System für Gruppen von drei bis fünf Personen"
-
-#: src/Generated/Forms/CalculateConnectionForm.php:23
-msgid "Calculate Human Design connection chart - Two-person composite bodygraph compatibility"
-msgstr "Human Design Verbindungschart berechnen. Bodygraph-Kompatibilität für zwei Personen"
-
 #: src/Generated/Forms/NatalChartForm.php:32
 #: src/Generated/Forms/NumerologyForm.php:32
 msgid "Calculate chart"
 msgstr "Chart berechnen"
 
-#: src/Generated/Forms/CalculateBioCompatibilityForm.php:23
-msgid "Calculate compatibility - Biorhythm alignment between two people"
-msgstr "Kompatibilität berechnen. Biorhythmus-Übereinstimmung zwischen zwei Menschen"
-
-#: src/Generated/Forms/CalculateGunMilanForm.php:23
-msgid "Calculate compatibility score - Gun Milan API (Ashtakoot Matching)"
-msgstr "Kompatibilitätswert berechnen. Gun Milan (Ashtakoot-Matching)"
-
 #: src/Generated/Forms/BiorhythmForm.php:32
 msgid "Calculate cycles"
 msgstr "Zyklen berechnen"
-
-#: src/Generated/Forms/CalculateSynastryForm.php:23
-msgid "Calculate synastry - Relationship compatibility analysis API"
-msgstr "Synastrie berechnen. Analyse der Beziehungskompatibilität"
 
 #: src/Generated/Forms/MangalDoshaForm.php:32
 msgid "Check Mangal Dosha"
@@ -473,25 +454,13 @@ msgstr "Mangal Dosha prüfen"
 msgid "Check Mangal Dosha (manglik) status for matrimonial compatibility, with severity, remedies, and exception conditions."
 msgstr "Prüft den Mangal-Dosha-Status (Manglik) für die Ehekompatibilität, mit Schweregrad, Abhilfen und Ausnahmebedingungen."
 
-#: src/Plugin.php:215
+#: src/Plugin.php:227
 msgid "City selected."
 msgstr "Stadt ausgewählt."
-
-#: src/Generated/Forms/CalculateCompatibilityForm.php:23
-msgid "Compatibility Score. Relationship compatibility analysis with category breakdown"
-msgstr "Kompatibilitätswert. Analyse der Beziehungskompatibilität mit Aufschlüsselung nach Kategorien"
 
 #: src/Generated/Heroes/Manifest.php:112
 msgid "Compatibility score"
 msgstr "Kompatibilitätswert"
-
-#: src/Generated/Forms/GenerateCompositeChartForm.php:23
-msgid "Composite Chart - Midpoint relationship chart with interpretations"
-msgstr "Composite-Chart. Halbdistanz-Beziehungschart mit Deutungen"
-
-#: src/Generated/Forms/GenerateTimelineForm.php:23
-msgid "Cross-domain forecast timeline - Transits, ingresses, stations, dasha changes, critical days"
-msgstr "Domänenübergreifende Prognose-Zeitleiste. Transite, Ingresse, Stationen, Dasha-Wechsel und kritische Tage"
 
 #: src/Generated/Heroes/Manifest.php:193
 msgid "Crystals and stones associated with any zodiac sign, with properties, color, and chakra."
@@ -545,22 +514,23 @@ msgid "Daily horoscope"
 msgstr "Tageshoroskop"
 
 #: src/Generated/Forms/TarotCardForm.php:50
+#: blocks/generated/tarot/index.js:21
 msgid "Daily is one card. Three is past, present, future. Celtic is a ten-card layout."
 msgstr "Täglich ist eine Karte. Drei steht für Vergangenheit, Gegenwart und Zukunft. Keltisch ist eine Legung mit zehn Karten."
 
 #: src/Generated/Forms/CalculateCompatibilityForm.php:32
-#: src/Generated/Forms/CalculateCompatibilityForm.php:79
+#: src/Generated/Forms/CalculateCompatibilityForm.php:87
 #: src/Generated/Forms/CalculateConnectionForm.php:32
 #: src/Generated/Forms/CalculateConnectionForm.php:87
 #: src/Generated/Forms/CalculateGunMilanForm.php:32
 #: src/Generated/Forms/CalculateGunMilanForm.php:79
 #: src/Generated/Forms/CalculateSynastryForm.php:32
-#: src/Generated/Forms/CalculateSynastryForm.php:86
+#: src/Generated/Forms/CalculateSynastryForm.php:94
 #: src/Generated/Forms/CalculateTransitAspectsForm.php:32
 #: src/Generated/Forms/FindSignificantDatesForm.php:32
 #: src/Generated/Forms/ForecastTransitsForm.php:32
 #: src/Generated/Forms/GenerateCompositeChartForm.php:32
-#: src/Generated/Forms/GenerateCompositeChartForm.php:79
+#: src/Generated/Forms/GenerateCompositeChartForm.php:87
 #: src/Generated/Forms/GenerateDigestForm.php:32
 #: src/Generated/Forms/GenerateTimelineForm.php:32
 #: src/Generated/Forms/GenerateTransitForm.php:32
@@ -659,6 +629,7 @@ msgstr "Tag"
 #: src/Generated/Forms/MangalDoshaForm.php:57
 #: src/Generated/Forms/NatalChartForm.php:57
 #: src/Generated/Forms/PanchangForm.php:50
+#: blocks/generated/natal-chart/index.js:27
 msgid "Decimal degrees, negative for south"
 msgstr "Dezimalgrad, negativ für Süd"
 
@@ -667,10 +638,12 @@ msgstr "Dezimalgrad, negativ für Süd"
 #: src/Generated/Forms/MangalDoshaForm.php:67
 #: src/Generated/Forms/NatalChartForm.php:67
 #: src/Generated/Forms/PanchangForm.php:60
+#: blocks/generated/natal-chart/index.js:34
 msgid "Decimal degrees, negative for west"
 msgstr "Dezimalgrad, negativ für West"
 
 #: src/Generated/Forms/BiorhythmForm.php:49
+#: blocks/generated/biorhythm/index.js:20
 msgid "Defaults to today if left blank"
 msgstr "Bleibt das Feld leer, wird das heutige Datum verwendet"
 
@@ -726,11 +699,12 @@ msgstr "Enddatum"
 msgid "Expression"
 msgstr "Ausdruckszahl"
 
-#: src/Support/FormRenderer.php:281
+#: src/Support/FormRenderer.php:289
 msgid "Find by city"
 msgstr "Nach Stadt suchen"
 
 #: src/Generated/Forms/NumerologyForm.php:42
+#: blocks/generated/numerology/index.js:13
 msgid "First and last name as recorded at birth"
 msgstr "Vor- und Nachname wie bei der Geburt eingetragen"
 
@@ -745,10 +719,6 @@ msgstr "Erster Tag des Transitzeitraums im Format JJJJ-MM-TT"
 #: src/Generated/Forms/FindSignificantDatesForm.php:115
 msgid "First day of the window in YYYY-MM-DD format"
 msgstr "Erster Tag des Zeitraums im Format JJJJ-MM-TT"
-
-#: src/Generated/Forms/GenerateDigestForm.php:23
-msgid "Forecast digest - Pre-summarized next 24h, 7d, 30d, and 90d rollups"
-msgstr "Prognose-Überblick. Zusammenfassung für die nächsten 24 Stunden, 7, 30 und 90 Tage"
 
 #: src/Generated/Forms/CalculateNumCompatibilityForm.php:61
 #: src/Generated/Forms/CalculateNumCompatibilityForm.php:128
@@ -768,12 +738,9 @@ msgid "Full name"
 msgstr "Vollständiger Name"
 
 #: src/Generated/Forms/NumerologyForm.php:39
+#: blocks/generated/numerology/index.js:11
 msgid "Full name at birth"
 msgstr "Vollständiger Geburtsname"
-
-#: src/Generated/Forms/GenerateTransitForm.php:23
-msgid "Generate Human Design transit overlay - Current planetary activations on a natal bodygraph"
-msgstr "Human Design Transit-Overlay erzeugen. Aktuelle planetare Aktivierungen im Geburts-Bodygraph"
 
 #: src/Generated/Forms/KpChartForm.php:32
 msgid "Generate KP chart"
@@ -787,7 +754,7 @@ msgstr "Kundli erzeugen"
 msgid "Get answer"
 msgstr "Antwort erhalten"
 
-#: src/Admin/SettingsFields.php:231
+#: src/Admin/SettingsFields.php:388
 #: src/Generated/Forms/CalculateBioCompatibilityForm.php:24
 #: src/Generated/Forms/CalculateCompatibilityForm.php:24
 #: src/Generated/Forms/CalculateConnectionForm.php:24
@@ -810,35 +777,36 @@ msgstr "Auswertung anzeigen"
 msgid "Gun Milan"
 msgstr "Gun Milan"
 
-#: src/Generated/Forms/CalculateSynastryForm.php:138
-#: src/Generated/Forms/CalculateTransitAspectsForm.php:101
-#: src/Generated/Forms/GenerateCompositeChartForm.php:124
-#: blocks/generated/calculate-arabic-lots/index.js:46
+#: src/Generated/Forms/CalculateSynastryForm.php:154
+#: src/Generated/Forms/CalculateTransitAspectsForm.php:109
+#: src/Generated/Forms/GenerateCompositeChartForm.php:140
+#: blocks/generated/calculate-arabic-lots/index.js:54
 #: blocks/generated/calculate-houses/index.js:46
 #: blocks/generated/forecast-solar-return/index.js:53
-#: blocks/generated/generate-asteroids/index.js:46
-#: blocks/generated/generate-lilith/index.js:46
+#: blocks/generated/generate-asteroids/index.js:54
+#: blocks/generated/generate-lilith/index.js:54
 #: blocks/generated/generate-lunar-return/index.js:53
 #: blocks/generated/generate-planetary-return/index.js:61
-#: blocks/generated/generate-profections/index.js:53
+#: blocks/generated/generate-profections/index.js:61
 #: blocks/generated/generate-relocation-chart/index.js:60
 #: blocks/generated/generate-solar-return/index.js:53
 msgid "House system"
 msgstr "Häusersystem"
 
-#: src/Generated/Forms/CalculateSynastryForm.php:140
+#: src/Generated/Forms/CalculateSynastryForm.php:156
 msgid "House system for both natal charts"
 msgstr "Häusersystem für beide Geburtscharts"
 
-#: src/Generated/Forms/GenerateCompositeChartForm.php:126
+#: src/Generated/Forms/GenerateCompositeChartForm.php:142
 msgid "House system for the composite chart"
 msgstr "Häusersystem für das Composite-Chart"
 
-#: src/Support/FormRenderer.php:303
+#: src/Support/FormRenderer.php:311
 msgid "I consent to sending my inputs to generate this reading. See the Privacy Policy for details."
 msgstr "Ich stimme zu, dass meine Angaben zur Erstellung dieser Auswertung übermittelt werden. Einzelheiten finden Sie in der Datenschutzerklärung."
 
 #: src/Generated/Forms/NatalChartForm.php:77
+#: blocks/generated/natal-chart/index.js:41
 msgid "IANA name like America/New_York"
 msgstr "IANA-Name wie America/New_York"
 
@@ -871,18 +839,18 @@ msgid "Last day of the window in YYYY-MM-DD format"
 msgstr "Letzter Tag des Zeitraums im Format JJJJ-MM-TT"
 
 #: src/Generated/Forms/CalculateCompatibilityForm.php:46
-#: src/Generated/Forms/CalculateCompatibilityForm.php:93
+#: src/Generated/Forms/CalculateCompatibilityForm.php:101
 #: src/Generated/Forms/CalculateConnectionForm.php:53
 #: src/Generated/Forms/CalculateConnectionForm.php:108
 #: src/Generated/Forms/CalculateGunMilanForm.php:46
 #: src/Generated/Forms/CalculateGunMilanForm.php:93
 #: src/Generated/Forms/CalculateSynastryForm.php:46
-#: src/Generated/Forms/CalculateSynastryForm.php:100
+#: src/Generated/Forms/CalculateSynastryForm.php:108
 #: src/Generated/Forms/CalculateTransitAspectsForm.php:46
 #: src/Generated/Forms/FindSignificantDatesForm.php:53
 #: src/Generated/Forms/ForecastTransitsForm.php:53
 #: src/Generated/Forms/GenerateCompositeChartForm.php:46
-#: src/Generated/Forms/GenerateCompositeChartForm.php:93
+#: src/Generated/Forms/GenerateCompositeChartForm.php:101
 #: src/Generated/Forms/GenerateDigestForm.php:53
 #: src/Generated/Forms/GenerateTimelineForm.php:53
 #: src/Generated/Forms/GenerateTransitForm.php:53
@@ -940,12 +908,13 @@ msgstr "Letzter Tag des Zeitraums im Format JJJJ-MM-TT"
 #: blocks/generated/get-kp-ruling-planets/index.js:11
 #: blocks/generated/get-major-dashas/index.js:25
 #: blocks/generated/get-planet-positions/index.js:25
-#: blocks/generated/get-planetary-positions/index.js:25
+#: blocks/generated/get-planetary-positions/index.js:33
 #: blocks/generated/get-prana-dashas/index.js:25
 #: blocks/generated/get-pratyantardashas/index.js:25
 #: blocks/generated/get-sookshma-dashas/index.js:25
 #: blocks/generated/get-sub-dashas/index.js:25
 #: blocks/generated/get-upagraha-positions/index.js:25
+#: blocks/generated/natal-chart/index.js:25
 msgid "Latitude"
 msgstr "Breitengrad"
 
@@ -972,22 +941,23 @@ msgstr "Lebenszahl, Ausdruckszahl und Seelenzahl aus Name und Datum."
 #: src/Generated/Forms/KundliForm.php:50
 #: src/Generated/Forms/MangalDoshaForm.php:50
 #: src/Generated/Forms/NatalChartForm.php:50
+#: blocks/generated/natal-chart/index.js:20
 msgid "Local time of birth in 24-hour format"
 msgstr "Ortszeit der Geburt im 24-Stunden-Format"
 
 #: src/Generated/Forms/CalculateCompatibilityForm.php:56
-#: src/Generated/Forms/CalculateCompatibilityForm.php:103
+#: src/Generated/Forms/CalculateCompatibilityForm.php:111
 #: src/Generated/Forms/CalculateConnectionForm.php:63
 #: src/Generated/Forms/CalculateConnectionForm.php:118
 #: src/Generated/Forms/CalculateGunMilanForm.php:56
 #: src/Generated/Forms/CalculateGunMilanForm.php:103
 #: src/Generated/Forms/CalculateSynastryForm.php:56
-#: src/Generated/Forms/CalculateSynastryForm.php:110
+#: src/Generated/Forms/CalculateSynastryForm.php:118
 #: src/Generated/Forms/CalculateTransitAspectsForm.php:56
 #: src/Generated/Forms/FindSignificantDatesForm.php:63
 #: src/Generated/Forms/ForecastTransitsForm.php:63
 #: src/Generated/Forms/GenerateCompositeChartForm.php:56
-#: src/Generated/Forms/GenerateCompositeChartForm.php:103
+#: src/Generated/Forms/GenerateCompositeChartForm.php:111
 #: src/Generated/Forms/GenerateDigestForm.php:63
 #: src/Generated/Forms/GenerateTimelineForm.php:63
 #: src/Generated/Forms/GenerateTransitForm.php:63
@@ -1045,12 +1015,13 @@ msgstr "Ortszeit der Geburt im 24-Stunden-Format"
 #: blocks/generated/get-kp-ruling-planets/index.js:18
 #: blocks/generated/get-major-dashas/index.js:32
 #: blocks/generated/get-planet-positions/index.js:32
-#: blocks/generated/get-planetary-positions/index.js:32
+#: blocks/generated/get-planetary-positions/index.js:40
 #: blocks/generated/get-prana-dashas/index.js:32
 #: blocks/generated/get-pratyantardashas/index.js:32
 #: blocks/generated/get-sookshma-dashas/index.js:32
 #: blocks/generated/get-sub-dashas/index.js:32
 #: blocks/generated/get-upagraha-positions/index.js:32
+#: blocks/generated/natal-chart/index.js:32
 msgid "Longitude"
 msgstr "Längengrad"
 
@@ -1061,19 +1032,6 @@ msgstr "Bedeutung nachschlagen"
 #: src/Generated/Forms/PanchangForm.php:32
 msgid "Look up panchang"
 msgstr "Panchang nachschlagen"
-
-#: src/Generated/Forms/CalculateConnectionForm.php:75
-#: src/Generated/Forms/CalculateConnectionForm.php:130
-#: src/Generated/Forms/GenerateTransitForm.php:75
-#: blocks/generated/calculate-centers/index.js:48
-#: blocks/generated/calculate-channels/index.js:48
-#: blocks/generated/calculate-gates/index.js:48
-#: blocks/generated/calculate-profile/index.js:48
-#: blocks/generated/calculate-type/index.js:48
-#: blocks/generated/calculate-variables/index.js:48
-#: blocks/generated/generate-bodygraph/index.js:48
-msgid "Lunar node convention for the North and South Node activations"
-msgstr "Mondknoten-Konvention für die Aktivierungen von Nord- und Südknoten"
 
 #: src/Generated/Heroes/Manifest.php:72
 msgid "Mangal Dosha"
@@ -1094,16 +1052,17 @@ msgstr "Bedeutung und Musteranalyse für jede Zahlenfolge."
 msgid "Min significance"
 msgstr "Mindestrelevanz"
 
-#: src/Generated/Forms/CalculateTransitAspectsForm.php:91
+#: src/Generated/Forms/CalculateTransitAspectsForm.php:99
 msgid "Min strength"
 msgstr "Mindeststärke"
 
-#: src/Generated/Forms/CalculateTransitAspectsForm.php:93
+#: src/Generated/Forms/CalculateTransitAspectsForm.php:101
 msgid "Minimum aspect strength threshold (0-100)"
 msgstr "Mindestschwelle für die Aspektstärke (0-100)"
 
 #: src/Generated/Forms/CalculateNumCompatibilityForm.php:75
 #: src/Generated/Forms/CalculateNumCompatibilityForm.php:142
+#: src/Support/EphemerisNav.php:292
 #: blocks/generated/calculate-bridge-numbers/index.js:25
 #: blocks/generated/calculate-maturity/index.js:39
 #: blocks/generated/calculate-personal-day/index.js:11
@@ -1137,8 +1096,8 @@ msgstr "Mondphase"
 msgid "Multiplier for this domain significance"
 msgstr "Multiplikator für die Relevanz dieser Domäne"
 
-#: src/Generated/Forms/CalculateSynastryForm.php:73
-#: src/Generated/Forms/CalculateSynastryForm.php:127
+#: src/Generated/Forms/CalculateSynastryForm.php:81
+#: src/Generated/Forms/CalculateSynastryForm.php:143
 #: blocks/generated/calculate-business-name/index.js:11
 #: blocks/generated/calculate-chaldean/index.js:11
 #: blocks/generated/calculate-dual/index.js:11
@@ -1148,25 +1107,42 @@ msgstr "Name"
 #: src/Generated/Forms/CalculateTransitAspectsForm.php:28
 #: src/Generated/Forms/NatalChartForm.php:31
 #: src/Generated/Heroes/Manifest.php:42
-#: blocks/generated/calculate-transits/index.js:32
+#: blocks/generated/calculate-transits/index.js:40
 msgid "Natal chart"
 msgstr "Geburtschart"
 
-#: src/Plugin.php:214
+#: src/Plugin.php:226
 msgid "No matching cities. Try a different spelling."
 msgstr "Keine passenden Städte gefunden. Versuchen Sie eine andere Schreibweise."
 
+#: src/Generated/Forms/CalculateCompatibilityForm.php:73
+#: src/Generated/Forms/CalculateCompatibilityForm.php:128
 #: src/Generated/Forms/CalculateConnectionForm.php:73
 #: src/Generated/Forms/CalculateConnectionForm.php:128
+#: src/Generated/Forms/CalculateSynastryForm.php:73
+#: src/Generated/Forms/CalculateSynastryForm.php:135
+#: src/Generated/Forms/CalculateTransitAspectsForm.php:73
+#: src/Generated/Forms/GenerateCompositeChartForm.php:73
+#: src/Generated/Forms/GenerateCompositeChartForm.php:128
 #: src/Generated/Forms/GenerateTransitForm.php:73
+#: blocks/generated/calculate-arabic-lots/index.js:46
 #: blocks/generated/calculate-centers/index.js:46
 #: blocks/generated/calculate-channels/index.js:46
 #: blocks/generated/calculate-gates/index.js:46
 #: blocks/generated/calculate-profile/index.js:46
+#: blocks/generated/calculate-transits/index.js:32
 #: blocks/generated/calculate-type/index.js:46
 #: blocks/generated/calculate-variables/index.js:46
 #: blocks/generated/cast-kp-horary-chart/index.js:68
+#: blocks/generated/detect-aspect-patterns/index.js:46
+#: blocks/generated/generate-asteroids/index.js:46
+#: blocks/generated/generate-astrocartography/index.js:46
 #: blocks/generated/generate-bodygraph/index.js:46
+#: blocks/generated/generate-fixed-stars/index.js:46
+#: blocks/generated/generate-lilith/index.js:46
+#: blocks/generated/generate-profections/index.js:46
+#: blocks/generated/generate-progressions/index.js:46
+#: blocks/generated/generate-solar-arc/index.js:46
 #: blocks/generated/get-current-dasha/index.js:68
 #: blocks/generated/get-kp-planets-interval/index.js:61
 #: blocks/generated/get-kp-planets/index.js:61
@@ -1175,6 +1151,7 @@ msgstr "Keine passenden Städte gefunden. Versuchen Sie eine andere Schreibweise
 #: blocks/generated/get-kp-ruling-planets/index.js:53
 #: blocks/generated/get-kp-sublord-changes/index.js:47
 #: blocks/generated/get-major-dashas/index.js:68
+#: blocks/generated/get-planetary-positions/index.js:25
 #: blocks/generated/get-prana-dashas/index.js:68
 #: blocks/generated/get-pratyantardashas/index.js:68
 #: blocks/generated/get-sookshma-dashas/index.js:68
@@ -1187,11 +1164,11 @@ msgid "Number of highest-significance events to surface per window"
 msgstr "Anzahl der relevantesten Ereignisse je Zeitraum"
 
 #: src/Generated/Forms/AngelNumberForm.php:39
+#: blocks/generated/angel-number/index.js:11
 msgid "Number sequence"
 msgstr "Zahlenfolge"
 
 #: src/Generated/Heroes/Manifest.php:152
-#: blocks/numerology/edit.js:10
 msgid "Numerology"
 msgstr "Numerologie"
 
@@ -1199,8 +1176,8 @@ msgstr "Numerologie"
 msgid "Numerology chart"
 msgstr "Numerologisches Chart"
 
-#: src/Generated/Forms/CalculateSynastryForm.php:75
-#: src/Generated/Forms/CalculateSynastryForm.php:129
+#: src/Generated/Forms/CalculateSynastryForm.php:83
+#: src/Generated/Forms/CalculateSynastryForm.php:145
 msgid "Optional display name for this person"
 msgstr "Optionaler Anzeigename für diese Person"
 
@@ -1226,6 +1203,7 @@ msgid "Optional. The card answers whatever you bring to it."
 msgstr "Optional. Die Karte antwortet auf das, was Sie mitbringen."
 
 #: src/Generated/Forms/TarotCardForm.php:42
+#: blocks/generated/tarot/index.js:13
 msgid "Optional. The cards reflect on whatever you bring to them."
 msgstr "Optional. Die Karten spiegeln das, was Sie mitbringen."
 
@@ -1255,11 +1233,11 @@ msgid "Person 1 Soul Urge number (1-9, 11, 22, 33)"
 msgstr "Seelenzahl von Person 1 (1-9, 11, 22, 33)"
 
 #: src/Generated/Forms/CalculateBioCompatibilityForm.php:41
-#: src/Generated/Forms/CalculateCompatibilityForm.php:75
+#: src/Generated/Forms/CalculateCompatibilityForm.php:83
 #: src/Generated/Forms/CalculateGunMilanForm.php:75
 #: src/Generated/Forms/CalculateNumCompatibilityForm.php:95
-#: src/Generated/Forms/CalculateSynastryForm.php:82
-#: src/Generated/Forms/GenerateCompositeChartForm.php:75
+#: src/Generated/Forms/CalculateSynastryForm.php:90
+#: src/Generated/Forms/GenerateCompositeChartForm.php:83
 msgid "Person 2"
 msgstr "Person 2"
 
@@ -1299,11 +1277,11 @@ msgstr "Wählen Sie Ihr Sternzeichen"
 msgid "Question"
 msgstr "Frage"
 
-#: src/Plugin.php:216
+#: src/Plugin.php:228
 msgid "Search is unavailable. Enter coordinates manually."
 msgstr "Die Suche ist nicht verfügbar. Geben Sie die Koordinaten manuell ein."
 
-#: src/Plugin.php:213
+#: src/Plugin.php:225
 msgid "Searching cities…"
 msgstr "Städte werden gesucht…"
 
@@ -1329,25 +1307,25 @@ msgid "Seed"
 msgstr "Startwert"
 
 #: src/Generated/Forms/CalculateCompatibilityForm.php:68
-#: src/Generated/Forms/CalculateCompatibilityForm.php:115
+#: src/Generated/Forms/CalculateCompatibilityForm.php:123
 #: src/Generated/Forms/CalculateConnectionForm.php:48
 #: src/Generated/Forms/CalculateConnectionForm.php:103
 #: src/Generated/Forms/CalculateGunMilanForm.php:68
 #: src/Generated/Forms/CalculateGunMilanForm.php:115
 #: src/Generated/Forms/CalculateSynastryForm.php:68
-#: src/Generated/Forms/CalculateSynastryForm.php:122
+#: src/Generated/Forms/CalculateSynastryForm.php:130
 #: src/Generated/Forms/CalculateTransitAspectsForm.php:68
 #: src/Generated/Forms/FindSignificantDatesForm.php:48
 #: src/Generated/Forms/ForecastTransitsForm.php:48
 #: src/Generated/Forms/GenerateCompositeChartForm.php:68
-#: src/Generated/Forms/GenerateCompositeChartForm.php:115
+#: src/Generated/Forms/GenerateCompositeChartForm.php:123
 #: src/Generated/Forms/GenerateDigestForm.php:48
 #: src/Generated/Forms/GenerateTimelineForm.php:48
 #: src/Generated/Forms/GenerateTransitForm.php:48
 msgid "Select the timezone of the location."
 msgstr "Wählen Sie die Zeitzone des Ortes."
 
-#: src/Support/FormRenderer.php:287
+#: src/Support/FormRenderer.php:295
 msgid "Selecting a city auto-fills latitude, longitude, and timezone."
 msgstr "Bei Auswahl einer Stadt werden Breitengrad, Längengrad und Zeitzone automatisch ausgefüllt."
 
@@ -1380,10 +1358,6 @@ msgstr "Siderischer Bezugsrahmen (Ayanamsa), in dem das Chart berechnet wird"
 msgid "Significance floor from 0 to 100 for what counts as a significant date"
 msgstr "Relevanzschwelle von 0 bis 100 dafür, was als bedeutendes Datum gilt"
 
-#: src/Generated/Forms/FindSignificantDatesForm.php:23
-msgid "Significant dates - High-significance cross-domain forecast highlights"
-msgstr "Bedeutende Daten. Höhepunkte der domänenübergreifenden Prognose"
-
 #: src/Generated/Heroes/Manifest.php:143
 msgid "Single card, three card, or Celtic Cross spreads."
 msgstr "Legungen mit einer Karte, drei Karten oder als Keltisches Kreuz."
@@ -1398,6 +1372,7 @@ msgid "Soul urge"
 msgstr "Seelenzahl"
 
 #: src/Generated/Forms/TarotCardForm.php:47
+#: blocks/generated/tarot/index.js:19
 msgid "Spread"
 msgstr "Legung"
 
@@ -1421,24 +1396,26 @@ msgstr "Startdatum für jeden Zeitraum im Format JJJJ-MM-TT"
 msgid "Start date"
 msgstr "Startdatum"
 
-#: src/Support/FormRenderer.php:284
+#: src/Support/FormRenderer.php:292
 msgid "Start typing a city name"
 msgstr "Beginnen Sie, einen Stadtnamen einzugeben"
 
-#: src/Support/FormRenderer.php:145
+#: src/Support/FormRenderer.php:153
 msgid "Submit"
 msgstr "Absenden"
 
+#: src/Generated/Forms/CalculateSynastryForm.php:23
 #: src/Generated/Heroes/Manifest.php:92
 msgid "Synastry"
 msgstr "Synastrie"
 
 #: src/Generated/Forms/BiorhythmForm.php:46
 #: src/Generated/Forms/CalculateBioCompatibilityForm.php:56
+#: blocks/generated/biorhythm/index.js:18
 #: blocks/generated/calculate-personal-day/index.js:25
-#: blocks/generated/generate-profections/index.js:46
-#: blocks/generated/generate-progressions/index.js:46
-#: blocks/generated/generate-solar-arc/index.js:46
+#: blocks/generated/generate-profections/index.js:54
+#: blocks/generated/generate-progressions/index.js:54
+#: blocks/generated/generate-solar-arc/index.js:54
 #: blocks/generated/get-phases/index.js:18
 msgid "Target date"
 msgstr "Zieldatum"
@@ -1457,87 +1434,87 @@ msgid "Tarot yes or no"
 msgstr "Tarot Ja oder Nein"
 
 #. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/Biorhythm.php:61
-#: src/Generated/Heroes/Biorhythm.php:96
-#: src/Generated/Heroes/LifePath.php:60
-#: src/Generated/Heroes/LifePath.php:95
+#: src/Generated/Heroes/Biorhythm.php:62
+#: src/Generated/Heroes/Biorhythm.php:97
+#: src/Generated/Heroes/LifePath.php:61
+#: src/Generated/Heroes/LifePath.php:96
 #, php-format
 msgid "The birth_date attribute is required. Example: %s"
 msgstr "Das Attribut birth_date ist erforderlich. Beispiel: %s"
 
 #. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/LifePath.php:66
-#: src/Generated/Heroes/LifePath.php:101
-#: src/Generated/Heroes/Numerology.php:68
-#: src/Generated/Heroes/Numerology.php:105
+#: src/Generated/Heroes/LifePath.php:67
+#: src/Generated/Heroes/LifePath.php:102
+#: src/Generated/Heroes/Numerology.php:69
+#: src/Generated/Heroes/Numerology.php:106
 #, php-format
 msgid "The birth_date attribute must be in YYYY-MM-DD format. Example: %s"
 msgstr "Das Attribut birth_date muss im Format JJJJ-MM-TT vorliegen. Beispiel: %s"
 
 #. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/KpChart.php:64
-#: src/Generated/Heroes/KpChart.php:101
-#: src/Generated/Heroes/MangalDosha.php:64
-#: src/Generated/Heroes/MangalDosha.php:101
+#: src/Generated/Heroes/KpChart.php:65
+#: src/Generated/Heroes/KpChart.php:102
+#: src/Generated/Heroes/MangalDosha.php:65
+#: src/Generated/Heroes/MangalDosha.php:102
 #, php-format
 msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s"
 msgstr "Die Attribute birth_date, birth_time, lat und lon sind erforderlich (tz standardmäßig 5.5 IST). Beispiel: %s"
 
 #. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/Kundli.php:64
-#: src/Generated/Heroes/Kundli.php:101
+#: src/Generated/Heroes/Kundli.php:65
+#: src/Generated/Heroes/Kundli.php:102
 #, php-format
 msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to 5.5 IST; pass an IANA name like Asia/Kolkata for DST-correct results). Example: %s"
 msgstr "Die Attribute birth_date, birth_time, lat und lon sind erforderlich (tz standardmäßig 5.5 IST; verwenden Sie einen IANA-Namen wie Asia/Kolkata für sommerzeitkorrekte Ergebnisse). Beispiel: %s"
 
 #. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/NatalChart.php:64
-#: src/Generated/Heroes/NatalChart.php:101
+#: src/Generated/Heroes/NatalChart.php:65
+#: src/Generated/Heroes/NatalChart.php:102
 #, php-format
 msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to UTC; pass an IANA name or decimal hours for accuracy). Example: %s"
 msgstr "Die Attribute birth_date, birth_time, lat und lon sind erforderlich (tz standardmäßig UTC; verwenden Sie einen IANA-Namen oder Dezimalstunden für mehr Genauigkeit). Beispiel: %s"
 
 #. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/Panchang.php:63
-#: src/Generated/Heroes/Panchang.php:98
+#: src/Generated/Heroes/Panchang.php:64
+#: src/Generated/Heroes/Panchang.php:99
 #, php-format
 msgid "The date, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s"
 msgstr "Die Attribute date, lat und lon sind erforderlich (tz standardmäßig 5.5 IST). Beispiel: %s"
 
 #. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/Numerology.php:61
-#: src/Generated/Heroes/Numerology.php:98
+#: src/Generated/Heroes/Numerology.php:62
+#: src/Generated/Heroes/Numerology.php:99
 #, php-format
 msgid "The name and birth_date attributes are required. Example: %s"
 msgstr "Die Attribute name und birth_date sind erforderlich. Beispiel: %s"
 
 #. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/AngelNumber.php:60
-#: src/Generated/Heroes/AngelNumber.php:87
+#: src/Generated/Heroes/AngelNumber.php:61
+#: src/Generated/Heroes/AngelNumber.php:88
 #, php-format
 msgid "The number attribute is required. Example: %s"
 msgstr "Das Attribut number ist erforderlich. Beispiel: %s"
 
 #. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/CrystalsByZodiac.php:60
-#: src/Generated/Heroes/CrystalsByZodiac.php:87
+#: src/Generated/Heroes/CrystalsByZodiac.php:61
+#: src/Generated/Heroes/CrystalsByZodiac.php:88
 #, php-format
 msgid "The sign attribute is required. Example: %s"
 msgstr "Das Attribut sign ist erforderlich. Beispiel: %s"
 
 #: src/Generated/Forms/CalculateCompatibilityForm.php:39
-#: src/Generated/Forms/CalculateCompatibilityForm.php:86
+#: src/Generated/Forms/CalculateCompatibilityForm.php:94
 #: src/Generated/Forms/CalculateConnectionForm.php:39
 #: src/Generated/Forms/CalculateConnectionForm.php:94
 #: src/Generated/Forms/CalculateGunMilanForm.php:39
 #: src/Generated/Forms/CalculateGunMilanForm.php:86
 #: src/Generated/Forms/CalculateSynastryForm.php:39
-#: src/Generated/Forms/CalculateSynastryForm.php:93
+#: src/Generated/Forms/CalculateSynastryForm.php:101
 #: src/Generated/Forms/CalculateTransitAspectsForm.php:39
 #: src/Generated/Forms/FindSignificantDatesForm.php:39
 #: src/Generated/Forms/ForecastTransitsForm.php:39
 #: src/Generated/Forms/GenerateCompositeChartForm.php:39
-#: src/Generated/Forms/GenerateCompositeChartForm.php:86
+#: src/Generated/Forms/GenerateCompositeChartForm.php:94
 #: src/Generated/Forms/GenerateDigestForm.php:39
 #: src/Generated/Forms/GenerateTimelineForm.php:39
 #: src/Generated/Forms/GenerateTransitForm.php:39
@@ -1595,18 +1572,18 @@ msgid "Time"
 msgstr "Uhrzeit"
 
 #: src/Generated/Forms/CalculateCompatibilityForm.php:66
-#: src/Generated/Forms/CalculateCompatibilityForm.php:113
+#: src/Generated/Forms/CalculateCompatibilityForm.php:121
 #: src/Generated/Forms/CalculateConnectionForm.php:46
 #: src/Generated/Forms/CalculateConnectionForm.php:101
 #: src/Generated/Forms/CalculateGunMilanForm.php:66
 #: src/Generated/Forms/CalculateGunMilanForm.php:113
 #: src/Generated/Forms/CalculateSynastryForm.php:66
-#: src/Generated/Forms/CalculateSynastryForm.php:120
+#: src/Generated/Forms/CalculateSynastryForm.php:128
 #: src/Generated/Forms/CalculateTransitAspectsForm.php:66
 #: src/Generated/Forms/FindSignificantDatesForm.php:46
 #: src/Generated/Forms/ForecastTransitsForm.php:46
 #: src/Generated/Forms/GenerateCompositeChartForm.php:66
-#: src/Generated/Forms/GenerateCompositeChartForm.php:113
+#: src/Generated/Forms/GenerateCompositeChartForm.php:121
 #: src/Generated/Forms/GenerateDigestForm.php:46
 #: src/Generated/Forms/GenerateTimelineForm.php:46
 #: src/Generated/Forms/GenerateTransitForm.php:46
@@ -1676,13 +1653,14 @@ msgstr "Uhrzeit"
 #: blocks/generated/get-monthly-parallels/index.js:25
 #: blocks/generated/get-monthly-transits/index.js:25
 #: blocks/generated/get-planet-positions/index.js:39
-#: blocks/generated/get-planetary-positions/index.js:39
+#: blocks/generated/get-planetary-positions/index.js:47
 #: blocks/generated/get-prana-dashas/index.js:39
 #: blocks/generated/get-pratyantardashas/index.js:39
 #: blocks/generated/get-sookshma-dashas/index.js:39
 #: blocks/generated/get-sub-dashas/index.js:39
 #: blocks/generated/get-upagraha-positions/index.js:39
 #: blocks/generated/get-weekly-horoscope/index.js:32
+#: blocks/generated/natal-chart/index.js:39
 msgid "Timezone"
 msgstr "Zeitzone"
 
@@ -1694,11 +1672,7 @@ msgstr "Zu viele Anfragen. Bitte versuchen Sie es in einer Stunde erneut."
 msgid "Top"
 msgstr "Maximum"
 
-#: src/Generated/Forms/CalculateTransitAspectsForm.php:23
-msgid "Transit Aspects - Detailed transit-to-natal aspect analysis with interpretations"
-msgstr "Transit-Aspekte. Ausführliche Analyse der Aspekte zwischen Transiten und Geburtschart mit Deutungen"
-
-#: src/Generated/Forms/CalculateTransitAspectsForm.php:77
+#: src/Generated/Forms/CalculateTransitAspectsForm.php:85
 #: blocks/generated/calculate-transit/index.js:25
 msgid "Transit date"
 msgstr "Transitdatum"
@@ -1707,11 +1681,11 @@ msgstr "Transitdatum"
 msgid "Transit date in YYYY-MM-DD UTC"
 msgstr "Transitdatum in JJJJ-MM-TT UTC"
 
-#: src/Generated/Forms/CalculateTransitAspectsForm.php:79
+#: src/Generated/Forms/CalculateTransitAspectsForm.php:87
 msgid "Transit date in YYYY-MM-DD format"
 msgstr "Transitdatum im Format JJJJ-MM-TT"
 
-#: src/Generated/Forms/CalculateTransitAspectsForm.php:84
+#: src/Generated/Forms/CalculateTransitAspectsForm.php:92
 #: blocks/generated/calculate-transit/index.js:32
 msgid "Transit time"
 msgstr "Transitzeit"
@@ -1720,7 +1694,7 @@ msgstr "Transitzeit"
 msgid "Transit time in HH:MM:SS UTC"
 msgstr "Transitzeit in HH:MM:SS UTC"
 
-#: src/Generated/Forms/CalculateTransitAspectsForm.php:86
+#: src/Generated/Forms/CalculateTransitAspectsForm.php:94
 msgid "Transit time in HH:MM:SS format"
 msgstr "Transitzeit im Format HH:MM:SS"
 
@@ -1752,12 +1726,7 @@ msgstr "Vedisches Kundli"
 msgid "Western"
 msgstr "Westlich"
 
-#: src/Generated/Forms/ForecastTransitsForm.php:23
-msgid "Western astrology forecast - aspects, ingresses, stations, eclipses, moon phases"
-msgstr "Prognose der westlichen Astrologie. Aspekte, Ingresse, Stationen, Finsternisse und Mondphasen"
-
 #: src/Generated/Heroes/Manifest.php:43
-#: blocks/natal-chart/edit.js:11
 msgid "Western birth chart with planets, houses, and aspects."
 msgstr "Westliches Geburtschart mit Planeten, Häusern und Aspekten."
 
@@ -1774,11 +1743,13 @@ msgid "Western synastry chart between two birth charts with compatibility score 
 msgstr "Westliches Synastrie-Chart zwischen zwei Geburtscharts mit Kompatibilitätswert und Interaspekten."
 
 #: src/Generated/Forms/TarotCardForm.php:43
+#: blocks/generated/tarot/index.js:14
 msgid "What should I focus on this week"
 msgstr "Worauf sollte ich mich diese Woche konzentrieren"
 
 #: src/Generated/Forms/CalculateNumCompatibilityForm.php:66
 #: src/Generated/Forms/CalculateNumCompatibilityForm.php:133
+#: src/Support/EphemerisNav.php:300
 #: blocks/generated/calculate-bridge-numbers/index.js:18
 #: blocks/generated/calculate-maturity/index.js:32
 #: blocks/generated/calculate-personal-month/index.js:25
@@ -1803,11 +1774,15 @@ msgstr "Jahr"
 #: src/Generated/Forms/MangalDoshaForm.php:43
 #: src/Generated/Forms/NatalChartForm.php:43
 #: src/Generated/Forms/NumerologyForm.php:49
+#: blocks/generated/biorhythm/index.js:13
+#: blocks/generated/natal-chart/index.js:13
+#: blocks/generated/numerology/index.js:20
 msgid "Year, month, and day of birth"
 msgstr "Jahr, Monat und Tag der Geburt"
 
 #: src/Generated/Forms/TarotCardForm.php:39
 #: src/Generated/Forms/TarotYesNoForm.php:39
+#: blocks/generated/tarot/index.js:11
 msgid "Your question"
 msgstr "Ihre Frage"
 
@@ -1836,6 +1811,7 @@ msgstr ""
 #: src/Admin/SettingsPage.php:78
 #: src/Admin/SettingsPage.php:79
 #: src/Blocks/Category.php:31
+#: templates/admin-connected.php:124
 msgid "RoxyAPI"
 msgstr ""
 
@@ -1883,50 +1859,50 @@ msgid "Documentation"
 msgstr ""
 
 #: src/Admin/ActionLinks.php:69
-#: templates/admin-connected.php:361
+#: templates/admin-connected.php:418
 msgid "Support"
 msgstr ""
 
-#: src/Admin/Assets.php:44
+#: src/Admin/Assets.php:56
 msgid "Testing..."
 msgstr ""
 
-#: src/Admin/Assets.php:45
+#: src/Admin/Assets.php:57
 #: src/Api/TestKeyRoute.php:83
 msgid "Connected."
 msgstr ""
 
-#: src/Admin/Assets.php:46
+#: src/Admin/Assets.php:58
 msgid "Connected to RoxyAPI. Paste a shortcode below to render a reading on any page."
 msgstr ""
 
-#: src/Admin/Assets.php:47
+#: src/Admin/Assets.php:59
 msgid "Paste your API key in the field above and save before testing."
 msgstr ""
 
-#: src/Admin/Assets.php:48
+#: src/Admin/Assets.php:60
 msgid "That key was rejected. Double check it on your roxyapi.com dashboard, paste it again, and save."
 msgstr ""
 
-#: src/Admin/Assets.php:49
+#: src/Admin/Assets.php:61
 msgid "Connection test failed. Try again in a moment."
 msgstr ""
 
-#: src/Admin/Assets.php:50
+#: src/Admin/Assets.php:62
 #: src/Admin/ShortcodesPage.php:114
 msgid "Copied"
 msgstr ""
 
-#: src/Admin/Assets.php:51
+#: src/Admin/Assets.php:63
 #: src/Admin/ShortcodesPage.php:115
 msgid "Copy failed"
 msgstr ""
 
-#: src/Admin/Assets.php:52
+#: src/Admin/Assets.php:64
 #: src/Admin/DashboardWidget.php:132
 #: src/Admin/ShortcodesPage.php:116
-#: templates/admin-connected.php:158
-#: templates/admin-onboarding.php:130
+#: templates/admin-connected.php:198
+#: templates/admin-onboarding.php:128
 #: templates/admin-shortcodes.php:136
 msgid "Copy"
 msgstr ""
@@ -1950,8 +1926,8 @@ msgstr ""
 #. translators: %s: shortcode label
 #. translators: %s: shortcode title
 #: src/Admin/DashboardWidget.php:130
-#: templates/admin-connected.php:156
-#: templates/admin-onboarding.php:128
+#: templates/admin-connected.php:196
+#: templates/admin-onboarding.php:126
 #: templates/admin-shortcodes.php:134
 #, php-format
 msgid "Copy %s shortcode"
@@ -1969,43 +1945,27 @@ msgstr ""
 msgid "Open RoxyAPI dashboard"
 msgstr ""
 
-#: src/Admin/DemoPage.php:76
+#: src/Admin/DemoPage.php:82
 msgid "RoxyAPI Demo"
 msgstr ""
 
-#: src/Admin/DemoPage.php:77
-msgid "Live preview of every shortcode the plugin ships. Click \"Run\" on any row to render it. Results are cached server-side for an hour by default."
-msgstr ""
-
-#: src/Admin/DemoPage.php:85
-msgid "Run all in this domain"
-msgstr ""
-
-#: src/Admin/DemoPage.php:106
-msgid "Run all"
-msgstr ""
-
-#: src/Admin/DemoPage.php:107
-msgid "Run heroes only"
-msgstr ""
-
-#: src/Admin/DemoPage.php:109
+#: src/Admin/DemoPage.php:114
 msgid "Clear renders"
 msgstr ""
 
-#: src/Admin/DemoPage.php:137
+#: src/Admin/DemoPage.php:141
 msgid "hero"
 msgstr ""
 
-#: src/Admin/DemoPage.php:140
+#: src/Admin/DemoPage.php:144
 msgid "form"
 msgstr ""
 
-#: src/Admin/DemoPage.php:144
+#: src/Admin/DemoPage.php:148
 msgid "Run"
 msgstr ""
 
-#: src/Admin/DemoPage.php:152
+#: src/Admin/DemoPage.php:156
 msgid "Click Run above to render this shortcode live."
 msgstr ""
 
@@ -2053,113 +2013,115 @@ msgstr ""
 msgid "No visitor data is sent to RoxyAPI when a page renders a static-attribute shortcode (the data is supplied by the site owner). Form-mode shortcodes are the only case where visitor input crosses to the third party."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:64
+#: src/Admin/SettingsFields.php:80
 msgid "Paste your RoxyAPI key"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:82
+#: src/Admin/SettingsFields.php:98
 msgid "Leave blank to use the localised default."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:117
+#: src/Admin/SettingsFields.php:254
 msgid "Auto: follow the visitor device setting"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:118
+#: src/Admin/SettingsFields.php:177
+#: src/Admin/SettingsFields.php:255
 msgid "Light"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:119
+#: src/Admin/SettingsFields.php:178
+#: src/Admin/SettingsFields.php:256
 msgid "Dark"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:140
+#: src/Admin/SettingsFields.php:277
 msgid "Match site language"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:141
+#: src/Admin/SettingsFields.php:278
 msgid "English"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:142
+#: src/Admin/SettingsFields.php:279
 msgid "German"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:143
+#: src/Admin/SettingsFields.php:280
 msgid "Hindi"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:144
+#: src/Admin/SettingsFields.php:281
 msgid "Spanish"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:145
+#: src/Admin/SettingsFields.php:282
 msgid "Turkish"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:146
+#: src/Admin/SettingsFields.php:283
 msgid "Portuguese"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:147
+#: src/Admin/SettingsFields.php:284
 msgid "French"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:148
+#: src/Admin/SettingsFields.php:285
 msgid "Russian"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:170
+#: src/Admin/SettingsFields.php:308
 msgid "Hide the written text on every reading. Charts, tables, and values still show."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:185
+#: src/Admin/SettingsFields.php:342
 msgid "Show a disclaimer line at the bottom of every reading."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:197
+#: src/Admin/SettingsFields.php:354
 msgid "Leave blank to use the localised default (\"For entertainment purposes only…\")."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:216
+#: src/Admin/SettingsFields.php:373
 msgid "Your reading"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:245
+#: src/Admin/SettingsFields.php:402
 msgid "Fresh: 15 minutes (most up-to-date, more API calls)"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:246
+#: src/Admin/SettingsFields.php:403
 msgid "Balanced: 1 hour (recommended)"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:247
+#: src/Admin/SettingsFields.php:404
 msgid "Quota saver: 24 hours (fewer API calls, less fresh)"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:274
+#: src/Admin/SettingsFields.php:432
 msgid "Show source line on each reading."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:285
+#: src/Admin/SettingsFields.php:467
 msgid "Defined via ROXYAPI_KEY constant in wp-config.php. The settings field is locked."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:288
+#: src/Admin/SettingsFields.php:470
 msgid "A key is saved. Paste a new one to replace it. Leave blank to keep the current key."
 msgstr ""
 
 #. translators: %s URL to RoxyAPI pricing page
-#: src/Admin/SettingsFields.php:292
+#: src/Admin/SettingsFields.php:474
 #, php-format
 msgid "No key yet? Get one at %s."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:422
+#: src/Admin/SettingsFields.php:660
 msgid "API key format is invalid. Get a key at roxyapi.com."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:431
+#: src/Admin/SettingsFields.php:669
 msgid "Could not encrypt API key. Check that PHP openssl is installed."
 msgstr ""
 
@@ -2212,15 +2174,15 @@ msgstr ""
 
 #: src/Admin/SiteHealth.php:77
 #: src/Admin/SiteHealth.php:119
-#: src/Support/GenericRenderer.php:785
-#: src/Support/GenericRenderer.php:788
+#: src/Support/GenericRenderer.php:834
+#: src/Support/GenericRenderer.php:837
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: src/Admin/SiteHealth.php:77
-#: src/Support/GenericRenderer.php:788
+#: src/Support/GenericRenderer.php:837
 msgid "No"
-msgstr ""
+msgstr "Nein"
 
 #: src/Admin/SiteHealth.php:80
 msgid "Sample string translates"
@@ -2246,35 +2208,35 @@ msgstr ""
 msgid "None found."
 msgstr ""
 
-#: src/Api/Client.php:106
+#: src/Api/Client.php:125
 msgid "Could not encode request body as JSON."
 msgstr ""
 
-#: src/Api/Client.php:126
+#: src/Api/Client.php:145
 msgid "Invalid JSON from RoxyAPI"
 msgstr ""
 
-#: src/Api/Client.php:159
+#: src/Api/Client.php:178
 msgid "This reading has not been set up yet. Fill in its settings to choose what it should show."
 msgstr ""
 
-#: src/Api/Client.php:216
+#: src/Api/Client.php:235
 msgid "This reading is temporarily unavailable. The site administrator needs to verify the connection."
 msgstr ""
 
-#: src/Api/Client.php:223
+#: src/Api/Client.php:242
 msgid "This reading is temporarily unavailable. Please check back later."
 msgstr ""
 
-#: src/Api/Client.php:227
+#: src/Api/Client.php:246
 msgid "Daily readings are temporarily unavailable. Please check back later."
 msgstr ""
 
-#: src/Api/Client.php:230
+#: src/Api/Client.php:249
 msgid "The reading service is temporarily unavailable. Please try again in a few minutes."
 msgstr ""
 
-#: src/Api/Client.php:233
+#: src/Api/Client.php:252
 msgid "This reading could not be loaded right now. Please try again."
 msgstr ""
 
@@ -2309,280 +2271,272 @@ msgstr ""
 #. translators: %s: shortcode attribute name.
 #: src/Generated/Client.php:50
 #: src/Generated/Client.php:101
-#: src/Generated/Client.php:238
 #: src/Generated/Client.php:241
-#: src/Generated/Client.php:465
-#: src/Generated/Client.php:494
-#: src/Generated/Client.php:523
-#: src/Generated/Client.php:930
-#: src/Generated/Client.php:953
-#: src/Generated/Client.php:956
-#: src/Generated/Client.php:979
-#: src/Generated/Client.php:982
-#: src/Generated/Client.php:985
-#: src/Generated/Client.php:1008
-#: src/Generated/Client.php:1011
+#: src/Generated/Client.php:244
+#: src/Generated/Client.php:478
+#: src/Generated/Client.php:507
+#: src/Generated/Client.php:536
+#: src/Generated/Client.php:963
+#: src/Generated/Client.php:987
+#: src/Generated/Client.php:990
 #: src/Generated/Client.php:1014
 #: src/Generated/Client.php:1017
-#: src/Generated/Client.php:1204
-#: src/Generated/Client.php:1629
+#: src/Generated/Client.php:1020
+#: src/Generated/Client.php:1044
+#: src/Generated/Client.php:1047
+#: src/Generated/Client.php:1050
+#: src/Generated/Client.php:1053
+#: src/Generated/Client.php:1245
 #: src/Generated/Client.php:1680
-#: src/Generated/Client.php:1792
-#: src/Generated/Client.php:2139
+#: src/Generated/Client.php:1731
+#: src/Generated/Client.php:1844
 #: src/Generated/Client.php:2206
-#: src/Generated/Client.php:2547
-#: src/Generated/Client.php:2611
-#: src/Generated/Client.php:2707
-#: src/Generated/Client.php:3102
-#: src/Generated/Client.php:3178
-#: src/Generated/Client.php:3205
-#: src/Generated/Client.php:3234
-#: src/Generated/Client.php:3263
-#: src/Generated/Client.php:3292
-#: src/Generated/Client.php:3346
-#: src/Generated/Client.php:3493
-#: src/Generated/Client.php:3595
-#: src/Generated/Client.php:3666
-#: src/Generated/Client.php:3787
+#: src/Generated/Client.php:2275
+#: src/Generated/Client.php:2632
+#: src/Generated/Client.php:2698
+#: src/Generated/Client.php:2796
+#: src/Generated/Client.php:3207
+#: src/Generated/Client.php:3283
+#: src/Generated/Client.php:3310
+#: src/Generated/Client.php:3339
+#: src/Generated/Client.php:3368
+#: src/Generated/Client.php:3397
+#: src/Generated/Client.php:3451
+#: src/Generated/Client.php:3599
+#: src/Generated/Client.php:3701
+#: src/Generated/Client.php:3772
+#: src/Generated/Client.php:3894
 #, php-format
 msgid "Missing required attribute \"%s\" for this shortcode."
 msgstr ""
 
-#: src/Generated/Forms/CalculateTransitAspectsForm.php:103
+#: src/Generated/Forms/CalculateTransitAspectsForm.php:111
 msgid "House system used to divide the natal chart into 12 houses"
-msgstr ""
+msgstr "Häusersystem, mit dem das Geburtschart in 12 Häuser unterteilt wird"
 
 #: src/Support/Attribution.php:209
 msgid "Spiritual data by RoxyAPI"
-msgstr ""
+msgstr "Spirituelle Daten von RoxyAPI"
 
 #. translators: %s: lowercased domain section, e.g. "astrology"
 #: src/Support/Attribution.php:213
 #, php-format
 msgid "%s data by RoxyAPI"
-msgstr ""
+msgstr "%s Daten von RoxyAPI"
 
 #: src/Support/Disclaimer.php:34
 msgid "For entertainment purposes only. Not a substitute for medical, legal, or financial advice."
-msgstr ""
+msgstr "Nur zu Unterhaltungszwecken. Kein Ersatz für medizinische, rechtliche oder finanzielle Beratung."
 
 #: src/Support/FormRouter.php:74
 msgid "Could not verify the form. Reload the page and try again."
-msgstr ""
+msgstr "Das Formular konnte nicht überprüft werden. Laden Sie die Seite neu und versuchen Sie es erneut."
 
 #: src/Support/FormRouter.php:82
 msgid "Too many submissions. Please wait a minute and try again."
-msgstr ""
+msgstr "Zu viele Übermittlungen. Bitte warten Sie eine Minute und versuchen Sie es erneut."
 
 #: src/Support/FormRouter.php:96
 msgid "Please confirm consent before submitting."
-msgstr ""
+msgstr "Bitte bestätigen Sie die Einwilligung vor dem Absenden."
 
 #. translators: %s: field label
-#: src/Support/FormRouter.php:310
-#: src/Support/FormRouter.php:324
+#: src/Support/FormRouter.php:328
+#: src/Support/FormRouter.php:342
 #, php-format
 msgid "%s is required."
-msgstr ""
+msgstr "%s ist erforderlich."
 
-#: templates/admin-connected.php:70
+#: templates/admin-connected.php:87
 msgid "Connect"
 msgstr ""
 
-#: templates/admin-connected.php:71
+#: templates/admin-connected.php:88
 msgid "Branding"
 msgstr ""
 
-#: templates/admin-connected.php:72
+#: templates/admin-connected.php:89
 msgid "Display"
 msgstr ""
 
-#: templates/admin-connected.php:73
+#: templates/admin-connected.php:90
 msgid "Privacy"
 msgstr ""
 
-#: templates/admin-connected.php:74
+#: templates/admin-connected.php:91
 msgid "Advanced"
 msgstr ""
 
-#: templates/admin-connected.php:104
+#: templates/admin-connected.php:127
 msgid "RoxyAPI is"
 msgstr ""
 
-#: templates/admin-connected.php:105
+#: templates/admin-connected.php:128
 msgid "connected."
 msgstr ""
 
-#: templates/admin-connected.php:110
+#: templates/admin-connected.php:141
 msgid "RoxyAPI settings"
 msgstr ""
 
-#: templates/admin-connected.php:138
+#: templates/admin-connected.php:178
 msgid "Connected to RoxyAPI."
 msgstr ""
 
-#: templates/admin-connected.php:139
+#: templates/admin-connected.php:179
 msgid "Drop a shortcode on any page to render a reading."
 msgstr ""
 
-#: templates/admin-connected.php:144
+#: templates/admin-connected.php:184
 msgid "Quick start"
 msgstr ""
 
-#: templates/admin-connected.php:146
+#: templates/admin-connected.php:186
 msgid "Three working shortcodes. Copy. Paste. Publish."
 msgstr ""
 
-#: templates/admin-connected.php:165
-#: templates/admin-onboarding.php:137
+#: templates/admin-connected.php:205
+#: templates/admin-onboarding.php:135
 msgid "Browse all shortcodes"
 msgstr ""
 
-#: templates/admin-connected.php:172
+#: templates/admin-connected.php:212
 msgid "Manage your key"
 msgstr ""
 
-#: templates/admin-connected.php:174
+#: templates/admin-connected.php:214
 msgid "Replace key"
 msgstr ""
 
-#: templates/admin-connected.php:180
-#: templates/admin-onboarding.php:100
+#: templates/admin-connected.php:220
+#: templates/admin-onboarding.php:98
 msgid "Save key"
 msgstr ""
 
-#: templates/admin-connected.php:183
-#: templates/admin-onboarding.php:103
+#: templates/admin-connected.php:223
+#: templates/admin-onboarding.php:101
 msgid "Test Connection"
 msgstr ""
 
-#: templates/admin-connected.php:200
-msgid "Brand accent"
-msgstr ""
-
-#: templates/admin-connected.php:202
-msgid "A single accent colour for card titles, form buttons, and source links. Leave blank to inherit your theme."
-msgstr ""
-
-#: templates/admin-connected.php:210
+#: templates/admin-connected.php:256
 msgid "Theme"
 msgstr ""
 
-#: templates/admin-connected.php:212
+#: templates/admin-connected.php:258
 msgid "Light, dark, or auto for chart readings. Auto follows the visitor device setting."
 msgstr ""
 
-#: templates/admin-connected.php:220
+#: templates/admin-connected.php:266
 msgid "Reading language"
 msgstr ""
 
-#: templates/admin-connected.php:222
+#: templates/admin-connected.php:268
 msgid "Language for visitor-facing reading text. Default follows the site language."
 msgstr ""
 
-#: templates/admin-connected.php:231
+#: templates/admin-connected.php:277
 msgid "Save branding"
 msgstr ""
 
-#: templates/admin-connected.php:243
+#: templates/admin-connected.php:290
 msgid "Written readings"
 msgstr ""
 
-#: templates/admin-connected.php:248
+#: templates/admin-connected.php:295
 msgid "Turn this on to show the chart on its own, without the written report. It applies to every reading on the site. To set it for one placement instead, add hide_readings=\"1\" or hide_readings=\"0\" to that shortcode."
 msgstr ""
 
-#: templates/admin-connected.php:253
+#: templates/admin-connected.php:310
 msgid "Show source"
 msgstr ""
 
-#: templates/admin-connected.php:258
+#: templates/admin-connected.php:315
 msgid "A small line at the bottom of each card showing where the data comes from. Off by default."
 msgstr ""
 
-#: templates/admin-connected.php:263
+#: templates/admin-connected.php:320
 msgid "Disclaimer"
 msgstr ""
 
-#: templates/admin-connected.php:268
+#: templates/admin-connected.php:325
 msgid "Append a disclaimer to every reading. Useful for jurisdictions that require an \"entertainment only\" line. Empty text falls back to the localised default."
 msgstr ""
 
-#: templates/admin-connected.php:276
+#: templates/admin-connected.php:333
 msgid "Visitor form copy"
 msgstr ""
 
-#: templates/admin-connected.php:278
+#: templates/admin-connected.php:335
 msgid "Override the title and submit button shown above visitor forms. Leave blank to use the localised default."
 msgstr ""
 
-#: templates/admin-connected.php:282
+#: templates/admin-connected.php:339
 msgid "Form title"
 msgstr ""
 
-#: templates/admin-connected.php:288
+#: templates/admin-connected.php:345
 msgid "Submit button text"
 msgstr ""
 
-#: templates/admin-connected.php:296
+#: templates/admin-connected.php:353
 msgid "Save display"
 msgstr ""
 
-#: templates/admin-connected.php:305
+#: templates/admin-connected.php:362
 msgid "Visitor privacy"
 msgstr ""
 
-#: templates/admin-connected.php:307
+#: templates/admin-connected.php:364
 msgid "Visitor forms collect birth date, time, and location to compute readings. Visitors must confirm consent before each submission. Edit the consent text below; leave blank for the localised default."
 msgstr ""
 
-#: templates/admin-connected.php:313
+#: templates/admin-connected.php:370
 msgid "Consent label shown next to the form checkbox"
 msgstr ""
 
 #. translators: %s: link to WordPress Privacy Policy editor
-#: templates/admin-connected.php:323
+#: templates/admin-connected.php:380
 #, php-format
 msgid "The plugin auto-injects suggested privacy text into the WordPress Privacy Policy editor. Review or accept it at %s."
 msgstr ""
 
-#: templates/admin-connected.php:324
+#: templates/admin-connected.php:381
 msgid "Settings &rarr; Privacy"
 msgstr ""
 
-#: templates/admin-connected.php:330
+#: templates/admin-connected.php:387
 msgid "Save privacy"
 msgstr ""
 
-#: templates/admin-connected.php:340
+#: templates/admin-connected.php:397
 msgid "Cache"
 msgstr ""
 
-#: templates/admin-connected.php:342
+#: templates/admin-connected.php:399
 msgid "How long RoxyAPI caches each reading on this site. Lower = fresher. Higher = saves API quota."
 msgstr ""
 
-#: templates/admin-connected.php:351
+#: templates/admin-connected.php:408
 msgid "Save advanced"
 msgstr ""
 
-#: templates/admin-connected.php:359
+#: templates/admin-connected.php:416
 msgid "RoxyAPI resources"
 msgstr ""
 
-#: templates/admin-connected.php:360
+#: templates/admin-connected.php:417
 msgid "Docs"
 msgstr ""
 
-#: templates/admin-connected.php:362
+#: templates/admin-connected.php:419
 msgid "Open dashboard at roxyapi.com"
 msgstr ""
 
-#: templates/admin-onboarding.php:43
+#: templates/admin-connected.php:130
 msgid "Connect RoxyAPI in"
 msgstr ""
 
-#: templates/admin-onboarding.php:44
+#: templates/admin-connected.php:131
 msgid "30 seconds."
 msgstr ""
 
@@ -2594,57 +2548,57 @@ msgstr ""
 msgid "A few readings render free every day with no key, so your pages work the moment you activate. Add your API key below to unlock full power: every domain and every reading under one key."
 msgstr ""
 
-#: templates/admin-onboarding.php:61
+#: templates/admin-onboarding.php:59
 msgid "RoxyAPI setup steps"
 msgstr ""
 
-#: templates/admin-onboarding.php:64
+#: templates/admin-onboarding.php:62
 msgid "Step 1."
 msgstr ""
 
-#: templates/admin-onboarding.php:65
+#: templates/admin-onboarding.php:63
 msgid "Get your API key."
 msgstr ""
 
-#: templates/admin-onboarding.php:68
+#: templates/admin-onboarding.php:66
 msgid "Optional to start. An API key connects this plugin to your RoxyAPI account, removes the free daily limit, and covers every reading with one key. Pick a plan at roxyapi.com when you are ready for production."
 msgstr ""
 
 #. translators: %s: link to the RoxyAPI Playground
-#: templates/admin-onboarding.php:74
+#: templates/admin-onboarding.php:72
 #, php-format
 msgid "Want to try the endpoints first? %s. No signup needed."
 msgstr ""
 
-#: templates/admin-onboarding.php:78
+#: templates/admin-onboarding.php:76
 msgid "Open the Playground"
 msgstr ""
 
-#: templates/admin-onboarding.php:84
+#: templates/admin-onboarding.php:82
 msgid "Sign up at roxyapi.com"
 msgstr ""
 
-#: templates/admin-onboarding.php:91
+#: templates/admin-onboarding.php:89
 msgid "Step 2."
 msgstr ""
 
-#: templates/admin-onboarding.php:92
+#: templates/admin-onboarding.php:90
 msgid "Paste it here."
 msgstr ""
 
-#: templates/admin-onboarding.php:95
+#: templates/admin-onboarding.php:93
 msgid "Drop the key into the field below. The plugin encrypts it before saving. Your key never reaches the browser at render time."
 msgstr ""
 
-#: templates/admin-onboarding.php:114
+#: templates/admin-onboarding.php:112
 msgid "Step 3."
 msgstr ""
 
-#: templates/admin-onboarding.php:115
+#: templates/admin-onboarding.php:113
 msgid "Drop a shortcode on a page."
 msgstr ""
 
-#: templates/admin-onboarding.php:118
+#: templates/admin-onboarding.php:116
 msgid "Copy a shortcode below. Paste it into any post, page, or widget. RoxyAPI renders the reading server side. No JavaScript required on the front end."
 msgstr ""
 
@@ -2696,23 +2650,15 @@ msgstr ""
 
 #: templates/horoscope-form.php:46
 msgid "Your zodiac sign"
-msgstr ""
+msgstr "Ihr Sternzeichen"
 
 #: templates/horoscope-form.php:49
 msgid "Pick a sign"
-msgstr ""
+msgstr "Sternzeichen wählen"
 
 #: templates/horoscope-form.php:60
 msgid "Read my horoscope"
-msgstr ""
-
-#: blocks/angel-number/edit.js:10
-msgid "Angel Number"
-msgstr ""
-
-#: blocks/angel-number/edit.js:11
-msgid "Angel number meanings and pattern analysis."
-msgstr ""
+msgstr "Mein Horoskop lesen"
 
 #: blocks/astrology-wrapper/edit.js:11
 msgid "No default (each child block decides)"
@@ -2732,10 +2678,6 @@ msgstr ""
 
 #: blocks/astrology-wrapper/edit.js:61
 msgid "YYYY-MM-DD format"
-msgstr ""
-
-#: blocks/biorhythm/edit.js:11
-msgid "Physical, emotional, intellectual, and intuitive cycles."
 msgstr ""
 
 #: blocks/generated/analyze-karmic-lessons/index.js:13
@@ -2878,7 +2820,7 @@ msgstr ""
 msgid "Timezone: IANA name (e.g. \"America/New_York\", \"Europe/London\") OR decimal hours from UTC (e.g. -5 for EST, 1 for CET)"
 msgstr ""
 
-#: blocks/generated/calculate-arabic-lots/index.js:48
+#: blocks/generated/calculate-arabic-lots/index.js:56
 msgid "House system used to place the Sun, which determines the chart sect (day when the Sun is above the horizon, night when below) and therefore which lot formula applies"
 msgstr ""
 
@@ -3110,7 +3052,7 @@ msgstr ""
 msgid "Transit timezone: decimal hours from UTC OR IANA name (e.g. \"America/New_York\")"
 msgstr ""
 
-#: blocks/generated/calculate-transits/index.js:34
+#: blocks/generated/calculate-transits/index.js:42
 msgid "Optional natal chart data to compare transits against"
 msgstr ""
 
@@ -3178,16 +3120,6 @@ msgstr ""
 #: blocks/generated/get-kp-ruling-interval/index.js:55
 #: blocks/generated/get-kp-sublord-changes/index.js:41
 msgid "Ayanamsa system for sidereal conversion"
-msgstr ""
-
-#: blocks/generated/cast-kp-horary-chart/index.js:70
-#: blocks/generated/get-kp-planets-interval/index.js:63
-#: blocks/generated/get-kp-planets/index.js:63
-#: blocks/generated/get-kp-rasi-changes/index.js:49
-#: blocks/generated/get-kp-ruling-interval/index.js:63
-#: blocks/generated/get-kp-ruling-planets/index.js:55
-#: blocks/generated/get-kp-sublord-changes/index.js:49
-msgid "Lunar node type for Rahu and Ketu positions"
 msgstr ""
 
 #: blocks/generated/cast-love-spread/index.js:13
@@ -3261,7 +3193,7 @@ msgstr ""
 msgid "House system for the return chart"
 msgstr ""
 
-#: blocks/generated/generate-asteroids/index.js:48
+#: blocks/generated/generate-asteroids/index.js:56
 msgid "House system used to assign each asteroid to a natal house"
 msgstr ""
 
@@ -3273,7 +3205,7 @@ msgstr ""
 msgid "Divisional chart number"
 msgstr ""
 
-#: blocks/generated/generate-lilith/index.js:48
+#: blocks/generated/generate-lilith/index.js:56
 msgid "House system used to place each Lilith variant in a house"
 msgstr ""
 
@@ -3352,15 +3284,15 @@ msgstr ""
 msgid "Longitude of the return location in decimal degrees (-180 to 180)."
 msgstr ""
 
-#: blocks/generated/generate-profections/index.js:48
+#: blocks/generated/generate-profections/index.js:56
 msgid "Date whose profection year you want, in YYYY-MM-DD format"
 msgstr ""
 
-#: blocks/generated/generate-profections/index.js:55
+#: blocks/generated/generate-profections/index.js:63
 msgid "House system used only to report where the lord of the year sits in the natal chart"
 msgstr ""
 
-#: blocks/generated/generate-progressions/index.js:48
+#: blocks/generated/generate-progressions/index.js:56
 msgid "Date to progress the chart to, in YYYY-MM-DD format"
 msgstr ""
 
@@ -3396,7 +3328,7 @@ msgstr ""
 msgid "House system for dividing the relocated chart into 12 houses"
 msgstr ""
 
-#: blocks/generated/generate-solar-arc/index.js:48
+#: blocks/generated/generate-solar-arc/index.js:56
 msgid "Date to direct the chart to, in YYYY-MM-DD format"
 msgstr ""
 
@@ -3760,15 +3692,15 @@ msgstr ""
 msgid "Time in 24-hour HH:MM:SS format for precise calculations"
 msgstr ""
 
-#: blocks/generated/get-planetary-positions/index.js:27
+#: blocks/generated/get-planetary-positions/index.js:35
 msgid "Observer latitude in decimal degrees (-90 to 90)"
 msgstr ""
 
-#: blocks/generated/get-planetary-positions/index.js:34
+#: blocks/generated/get-planetary-positions/index.js:42
 msgid "Observer longitude in decimal degrees (-180 to 180)"
 msgstr ""
 
-#: blocks/generated/get-planetary-positions/index.js:41
+#: blocks/generated/get-planetary-positions/index.js:49
 msgid "Decimal hours from UTC (e.g. -5 for EST, 5.5 for IST, 9 for JST, 5.75 for NPT) OR IANA name (e.g. \"America/New_York\")"
 msgstr ""
 
@@ -3874,10 +3806,6 @@ msgstr ""
 msgid "Q"
 msgstr ""
 
-#: blocks/generated/search-cities/index.js:13
-msgid "City name to search for"
-msgstr ""
-
 #: blocks/generated/search-crystals/index.js:21
 msgid "Search query (2-50 characters)"
 msgstr ""
@@ -3922,72 +3850,52 @@ msgstr ""
 msgid "Pick a zodiac sign in the sidebar to preview the daily reading, or publish as is to render a visitor sign picker on the front end."
 msgstr ""
 
-#: blocks/natal-chart/edit.js:10
-msgid "Natal Chart"
-msgstr ""
-
-#: blocks/numerology/edit.js:11
-msgid "Life path, expression, soul urge, and personal year numbers."
-msgstr ""
-
-#: blocks/tarot/edit.js:10
-msgid "Tarot"
-msgstr ""
-
-#: blocks/tarot/edit.js:11
-msgid "Tarot card readings: single, three card, Celtic Cross, and more."
-msgstr ""
-
-#: blocks/_shared/generated-edit.js:53
+#: blocks/_shared/generated-edit.js:55
 msgid "Select an option"
 msgstr ""
 
-#: blocks/_shared/generated-edit.js:54
+#: src/Admin/SettingsFields.php:188
+#: blocks/_shared/generated-edit.js:56
 msgid "Default"
 msgstr ""
 
-#: blocks/_shared/generated-edit.js:116
+#: blocks/_shared/generated-edit.js:128
 msgid "Reading Settings"
 msgstr ""
 
-#: blocks/_shared/generated-edit.js:150
+#: blocks/_shared/generated-edit.js:162
 msgid "Reading inputs needed"
 msgstr ""
 
-#: blocks/_shared/generated-edit.js:151
+#: blocks/_shared/generated-edit.js:165
 msgid "Fill in the required fields in the sidebar to preview and publish this reading."
 msgstr ""
 
-#: blocks/angel-number/block.json
+#: blocks/generated/angel-number/block.json
 msgctxt "block title"
 msgid "Angel Number"
 msgstr ""
 
-#: blocks/angel-number/block.json
-msgctxt "block description"
-msgid "Angel number meanings and pattern analysis."
-msgstr ""
-
-#: blocks/angel-number/block.json
+#: blocks/generated/angel-number/block.json
 msgctxt "block keyword"
 msgid "angel number"
 msgstr ""
 
-#: blocks/angel-number/block.json
+#: blocks/generated/angel-number/block.json
 msgctxt "block keyword"
 msgid "spiritual"
 msgstr ""
 
-#: blocks/angel-number/block.json
+#: blocks/generated/angel-number/block.json
 msgctxt "block keyword"
 msgid "guidance"
 msgstr ""
 
-#: blocks/angel-number/block.json
 #: blocks/astrology-wrapper/block.json
-#: blocks/biorhythm/block.json
 #: blocks/generated/analyze-karmic-lessons/block.json
 #: blocks/generated/analyze-number-sequence/block.json
+#: blocks/generated/angel-number/block.json
+#: blocks/generated/biorhythm/block.json
 #: blocks/generated/calculate-arabic-lots/block.json
 #: blocks/generated/calculate-arudha-padas/block.json
 #: blocks/generated/calculate-ashtakavarga/block.json
@@ -4130,13 +4038,13 @@ msgstr ""
 #: blocks/generated/list-yogas/block.json
 #: blocks/generated/list-zodiac-signs/block.json
 #: blocks/generated/lookup-hexagram/block.json
+#: blocks/generated/natal-chart/block.json
+#: blocks/generated/numerology/block.json
 #: blocks/generated/search-cities/block.json
 #: blocks/generated/search-crystals/block.json
 #: blocks/generated/search-dream-symbols/block.json
+#: blocks/generated/tarot/block.json
 #: blocks/horoscope/block.json
-#: blocks/natal-chart/block.json
-#: blocks/numerology/block.json
-#: blocks/tarot/block.json
 msgctxt "block keyword"
 msgid "roxyapi"
 msgstr ""
@@ -4152,8 +4060,8 @@ msgid "Wrapper block that shares a default zodiac sign and birth date with every
 msgstr ""
 
 #: blocks/astrology-wrapper/block.json
+#: blocks/generated/natal-chart/block.json
 #: blocks/horoscope/block.json
-#: blocks/natal-chart/block.json
 msgctxt "block keyword"
 msgid "astrology"
 msgstr ""
@@ -4171,17 +4079,12 @@ msgctxt "block keyword"
 msgid "section"
 msgstr ""
 
-#: blocks/biorhythm/block.json
+#: blocks/generated/biorhythm/block.json
 msgctxt "block title"
 msgid "Biorhythm"
 msgstr ""
 
-#: blocks/biorhythm/block.json
-msgctxt "block description"
-msgid "Physical, emotional, intellectual, and intuitive cycles."
-msgstr ""
-
-#: blocks/biorhythm/block.json
+#: blocks/generated/biorhythm/block.json
 #: blocks/generated/get-critical-days/block.json
 #: blocks/generated/get-daily-biorhythm/block.json
 #: blocks/generated/get-forecast/block.json
@@ -4190,24 +4093,14 @@ msgctxt "block keyword"
 msgid "biorhythm"
 msgstr ""
 
-#: blocks/biorhythm/block.json
+#: blocks/generated/biorhythm/block.json
 msgctxt "block keyword"
 msgid "cycles"
 msgstr ""
 
-#: blocks/biorhythm/block.json
+#: blocks/generated/biorhythm/block.json
 msgctxt "block keyword"
 msgid "wellness"
-msgstr ""
-
-#: blocks/generated/analyze-karmic-lessons/block.json
-msgctxt "block title"
-msgid "Analyze Karmic Lessons - Life lessons from missing numbers (Numerology)"
-msgstr ""
-
-#: blocks/generated/analyze-karmic-lessons/block.json
-msgctxt "block description"
-msgid "Analyze Karmic Lessons - Life lessons from missing numbers"
 msgstr ""
 
 #: blocks/generated/analyze-karmic-lessons/block.json
@@ -4227,7 +4120,7 @@ msgstr ""
 #: blocks/generated/get-compound-number/block.json
 #: blocks/generated/get-daily-number/block.json
 #: blocks/generated/get-number-meaning/block.json
-#: blocks/numerology/block.json
+#: blocks/generated/numerology/block.json
 msgctxt "block keyword"
 msgid "numerology"
 msgstr ""
@@ -4245,16 +4138,6 @@ msgid "karmic"
 msgstr ""
 
 #: blocks/generated/analyze-number-sequence/block.json
-msgctxt "block title"
-msgid "Analyze Any Number Sequence (Angel Numbers)"
-msgstr ""
-
-#: blocks/generated/analyze-number-sequence/block.json
-msgctxt "block description"
-msgid "Analyze Any Number Sequence"
-msgstr ""
-
-#: blocks/generated/analyze-number-sequence/block.json
 #: blocks/generated/get-daily-angel-number/block.json
 #: blocks/generated/list-angel-numbers/block.json
 msgctxt "block keyword"
@@ -4265,16 +4148,6 @@ msgstr ""
 #: blocks/generated/get-number-meaning/block.json
 msgctxt "block keyword"
 msgid "number"
-msgstr ""
-
-#: blocks/generated/calculate-arabic-lots/block.json
-msgctxt "block title"
-msgid "Arabic lots calculator - seven Hermetic parts including Part of Fortune and Spirit (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/calculate-arabic-lots/block.json
-msgctxt "block description"
-msgid "Arabic lots calculator - seven Hermetic parts including Part of Fortune and Spirit"
 msgstr ""
 
 #: blocks/generated/calculate-arabic-lots/block.json
@@ -4349,16 +4222,6 @@ msgid "arabic"
 msgstr ""
 
 #: blocks/generated/calculate-arudha-padas/block.json
-msgctxt "block title"
-msgid "Get the twelve Arudha padas - Arudha Lagna Calculator API (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/calculate-arudha-padas/block.json
-msgctxt "block description"
-msgid "Get the twelve Arudha padas - Arudha Lagna Calculator API"
-msgstr ""
-
-#: blocks/generated/calculate-arudha-padas/block.json
 #: blocks/generated/calculate-ashtakavarga/block.json
 #: blocks/generated/calculate-bhav-chalit/block.json
 #: blocks/generated/calculate-bhava-bala/block.json
@@ -4417,28 +4280,8 @@ msgid "arudha"
 msgstr ""
 
 #: blocks/generated/calculate-ashtakavarga/block.json
-msgctxt "block title"
-msgid "Get Ashtakavarga (planetary strength) analysis - Ashtakavarga Calculator API (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/calculate-ashtakavarga/block.json
-msgctxt "block description"
-msgid "Get Ashtakavarga (planetary strength) analysis - Ashtakavarga Calculator API"
-msgstr ""
-
-#: blocks/generated/calculate-ashtakavarga/block.json
 msgctxt "block keyword"
 msgid "ashtakavarga"
-msgstr ""
-
-#: blocks/generated/calculate-aspects/block.json
-msgctxt "block title"
-msgid "Calculate planetary aspects - Aspect finder for any date and time (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/calculate-aspects/block.json
-msgctxt "block description"
-msgid "Calculate planetary aspects - Aspect finder for any date and time"
 msgstr ""
 
 #: blocks/generated/calculate-aspects/block.json
@@ -4447,28 +4290,8 @@ msgid "aspects"
 msgstr ""
 
 #: blocks/generated/calculate-bhav-chalit/block.json
-msgctxt "block title"
-msgid "Get the Bhav Chalit (Chalit Kundli) cusp-based house chart - Bhav Chalit API (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/calculate-bhav-chalit/block.json
-msgctxt "block description"
-msgid "Get the Bhav Chalit (Chalit Kundli) cusp-based house chart - Bhav Chalit API"
-msgstr ""
-
-#: blocks/generated/calculate-bhav-chalit/block.json
 msgctxt "block keyword"
 msgid "bhav"
-msgstr ""
-
-#: blocks/generated/calculate-bhava-bala/block.json
-msgctxt "block title"
-msgid "Get Bhava Bala (house strength) for all twelve houses - Bhava Bala Calculator API (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/calculate-bhava-bala/block.json
-msgctxt "block description"
-msgid "Get Bhava Bala (house strength) for all twelve houses - Bhava Bala Calculator API"
 msgstr ""
 
 #: blocks/generated/calculate-bhava-bala/block.json
@@ -4477,28 +4300,8 @@ msgid "bhava"
 msgstr ""
 
 #: blocks/generated/calculate-birth-day/block.json
-msgctxt "block title"
-msgid "Calculate Birth Day number - Special talents from day of birth (Numerology)"
-msgstr ""
-
-#: blocks/generated/calculate-birth-day/block.json
-msgctxt "block description"
-msgid "Calculate Birth Day number - Special talents from day of birth"
-msgstr ""
-
-#: blocks/generated/calculate-birth-day/block.json
 msgctxt "block keyword"
 msgid "birth"
-msgstr ""
-
-#: blocks/generated/calculate-bridge-numbers/block.json
-msgctxt "block title"
-msgid "Calculate Bridge Numbers - Harmonize different aspects of personality (Numerology)"
-msgstr ""
-
-#: blocks/generated/calculate-bridge-numbers/block.json
-msgctxt "block description"
-msgid "Calculate Bridge Numbers - Harmonize different aspects of personality"
 msgstr ""
 
 #: blocks/generated/calculate-bridge-numbers/block.json
@@ -4507,28 +4310,8 @@ msgid "bridge"
 msgstr ""
 
 #: blocks/generated/calculate-business-name/block.json
-msgctxt "block title"
-msgid "Business name numerology - Chaldean brand name analysis and lucky numbers (Numerology)"
-msgstr ""
-
-#: blocks/generated/calculate-business-name/block.json
-msgctxt "block description"
-msgid "Business name numerology - Chaldean brand name analysis and lucky numbers"
-msgstr ""
-
-#: blocks/generated/calculate-business-name/block.json
 msgctxt "block keyword"
 msgid "business"
-msgstr ""
-
-#: blocks/generated/calculate-centers/block.json
-msgctxt "block title"
-msgid "Calculate the nine Human Design centers (Human Design)"
-msgstr ""
-
-#: blocks/generated/calculate-centers/block.json
-msgctxt "block description"
-msgid "Calculate the nine Human Design centers"
 msgstr ""
 
 #: blocks/generated/calculate-centers/block.json
@@ -4550,28 +4333,8 @@ msgid "centers"
 msgstr ""
 
 #: blocks/generated/calculate-chaldean/block.json
-msgctxt "block title"
-msgid "Chaldean numerology name reading - Destiny, compound number, planetary ruler (Numerology)"
-msgstr ""
-
-#: blocks/generated/calculate-chaldean/block.json
-msgctxt "block description"
-msgid "Chaldean numerology name reading - Destiny, compound number, planetary ruler"
-msgstr ""
-
-#: blocks/generated/calculate-chaldean/block.json
 msgctxt "block keyword"
 msgid "chaldean"
-msgstr ""
-
-#: blocks/generated/calculate-channels/block.json
-msgctxt "block title"
-msgid "Calculate the defined Human Design channels (Human Design)"
-msgstr ""
-
-#: blocks/generated/calculate-channels/block.json
-msgctxt "block description"
-msgid "Calculate the defined Human Design channels"
 msgstr ""
 
 #: blocks/generated/calculate-channels/block.json
@@ -4580,28 +4343,8 @@ msgid "channels"
 msgstr ""
 
 #: blocks/generated/calculate-chara-karakas/block.json
-msgctxt "block title"
-msgid "Get Chara Karakas including Atmakaraka - Jaimini Karaka Calculator API (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/calculate-chara-karakas/block.json
-msgctxt "block description"
-msgid "Get Chara Karakas including Atmakaraka - Jaimini Karaka Calculator API"
-msgstr ""
-
-#: blocks/generated/calculate-chara-karakas/block.json
 msgctxt "block keyword"
 msgid "chara"
-msgstr ""
-
-#: blocks/generated/calculate-drishti/block.json
-msgctxt "block title"
-msgid "Get planetary aspects (Drishti) - Mutual aspects between all planets (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/calculate-drishti/block.json
-msgctxt "block description"
-msgid "Get planetary aspects (Drishti) - Mutual aspects between all planets"
 msgstr ""
 
 #: blocks/generated/calculate-drishti/block.json
@@ -4610,28 +4353,8 @@ msgid "drishti"
 msgstr ""
 
 #: blocks/generated/calculate-dual/block.json
-msgctxt "block title"
-msgid "Dual numerology - Pythagorean and Chaldean name numbers in one call (Numerology)"
-msgstr ""
-
-#: blocks/generated/calculate-dual/block.json
-msgctxt "block description"
-msgid "Dual numerology - Pythagorean and Chaldean name numbers in one call"
-msgstr ""
-
-#: blocks/generated/calculate-dual/block.json
 msgctxt "block keyword"
 msgid "dual"
-msgstr ""
-
-#: blocks/generated/calculate-expression/block.json
-msgctxt "block title"
-msgid "Calculate Expression number - Natural talents and life goals (Numerology)"
-msgstr ""
-
-#: blocks/generated/calculate-expression/block.json
-msgctxt "block description"
-msgid "Calculate Expression number - Natural talents and life goals"
 msgstr ""
 
 #: blocks/generated/calculate-expression/block.json
@@ -4640,28 +4363,8 @@ msgid "expression"
 msgstr ""
 
 #: blocks/generated/calculate-gates/block.json
-msgctxt "block title"
-msgid "Calculate the 26 Human Design gate activations (Human Design)"
-msgstr ""
-
-#: blocks/generated/calculate-gates/block.json
-msgctxt "block description"
-msgid "Calculate the 26 Human Design gate activations"
-msgstr ""
-
-#: blocks/generated/calculate-gates/block.json
 msgctxt "block keyword"
 msgid "gates"
-msgstr ""
-
-#: blocks/generated/calculate-houses/block.json
-msgctxt "block title"
-msgid "Calculate house cusps - House system calculator with comparison (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/calculate-houses/block.json
-msgctxt "block description"
-msgid "Calculate house cusps - House system calculator with comparison"
 msgstr ""
 
 #: blocks/generated/calculate-houses/block.json
@@ -4670,43 +4373,13 @@ msgid "houses"
 msgstr ""
 
 #: blocks/generated/calculate-maturity/block.json
-msgctxt "block title"
-msgid "Calculate Maturity number - Who you become in later life (Numerology)"
-msgstr ""
-
-#: blocks/generated/calculate-maturity/block.json
-msgctxt "block description"
-msgid "Calculate Maturity number - Who you become in later life"
-msgstr ""
-
-#: blocks/generated/calculate-maturity/block.json
 msgctxt "block keyword"
 msgid "maturity"
 msgstr ""
 
 #: blocks/generated/calculate-parallels/block.json
-msgctxt "block title"
-msgid "Declination Parallels - Planets at same or opposite declination (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/calculate-parallels/block.json
-msgctxt "block description"
-msgid "Declination Parallels - Planets at same or opposite declination"
-msgstr ""
-
-#: blocks/generated/calculate-parallels/block.json
 msgctxt "block keyword"
 msgid "parallels"
-msgstr ""
-
-#: blocks/generated/calculate-personal-day/block.json
-msgctxt "block title"
-msgid "Calculate Personal Day - Daily personalized numerology forecast (Numerology)"
-msgstr ""
-
-#: blocks/generated/calculate-personal-day/block.json
-msgctxt "block description"
-msgid "Calculate Personal Day - Daily personalized numerology forecast"
 msgstr ""
 
 #: blocks/generated/calculate-personal-day/block.json
@@ -4716,49 +4389,9 @@ msgctxt "block keyword"
 msgid "personal"
 msgstr ""
 
-#: blocks/generated/calculate-personal-month/block.json
-msgctxt "block title"
-msgid "Calculate Personal Month - Monthly numerology forecast (Numerology)"
-msgstr ""
-
-#: blocks/generated/calculate-personal-month/block.json
-msgctxt "block description"
-msgid "Calculate Personal Month - Monthly numerology forecast"
-msgstr ""
-
-#: blocks/generated/calculate-personal-year/block.json
-msgctxt "block title"
-msgid "Calculate Personal Year - Annual cycle and forecast for current year (Numerology)"
-msgstr ""
-
-#: blocks/generated/calculate-personal-year/block.json
-msgctxt "block description"
-msgid "Calculate Personal Year - Annual cycle and forecast for current year"
-msgstr ""
-
-#: blocks/generated/calculate-personality/block.json
-msgctxt "block title"
-msgid "Calculate Personality number - How others perceive you (Numerology)"
-msgstr ""
-
-#: blocks/generated/calculate-personality/block.json
-msgctxt "block description"
-msgid "Calculate Personality number - How others perceive you"
-msgstr ""
-
 #: blocks/generated/calculate-personality/block.json
 msgctxt "block keyword"
 msgid "personality"
-msgstr ""
-
-#: blocks/generated/calculate-profile/block.json
-msgctxt "block title"
-msgid "Calculate the Human Design profile and line keynotes (Human Design)"
-msgstr ""
-
-#: blocks/generated/calculate-profile/block.json
-msgctxt "block description"
-msgid "Calculate the Human Design profile and line keynotes"
 msgstr ""
 
 #: blocks/generated/calculate-profile/block.json
@@ -4767,28 +4400,8 @@ msgid "profile"
 msgstr ""
 
 #: blocks/generated/calculate-shadbala/block.json
-msgctxt "block title"
-msgid "Get Shadbala (six-fold planetary strength) analysis - Shadbala Calculator API (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/calculate-shadbala/block.json
-msgctxt "block description"
-msgid "Get Shadbala (six-fold planetary strength) analysis - Shadbala Calculator API"
-msgstr ""
-
-#: blocks/generated/calculate-shadbala/block.json
 msgctxt "block keyword"
 msgid "shadbala"
-msgstr ""
-
-#: blocks/generated/calculate-soul-urge/block.json
-msgctxt "block title"
-msgid "Calculate Soul Urge number - Inner motivations and desires (Numerology)"
-msgstr ""
-
-#: blocks/generated/calculate-soul-urge/block.json
-msgctxt "block description"
-msgid "Calculate Soul Urge number - Inner motivations and desires"
 msgstr ""
 
 #: blocks/generated/calculate-soul-urge/block.json
@@ -4797,28 +4410,8 @@ msgid "soul"
 msgstr ""
 
 #: blocks/generated/calculate-transit/block.json
-msgctxt "block title"
-msgid "Transit Analysis - Compare current planets to natal chart (Gochar) (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/calculate-transit/block.json
-msgctxt "block description"
-msgid "Transit Analysis - Compare current planets to natal chart (Gochar)"
-msgstr ""
-
-#: blocks/generated/calculate-transit/block.json
 msgctxt "block keyword"
 msgid "transit"
-msgstr ""
-
-#: blocks/generated/calculate-transits/block.json
-msgctxt "block title"
-msgid "Calculate planetary transits - Current transits with natal chart comparison (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/calculate-transits/block.json
-msgctxt "block description"
-msgid "Calculate planetary transits - Current transits with natal chart comparison"
 msgstr ""
 
 #: blocks/generated/calculate-transits/block.json
@@ -4827,43 +4420,13 @@ msgid "transits"
 msgstr ""
 
 #: blocks/generated/calculate-type/block.json
-msgctxt "block title"
-msgid "Calculate Human Design type, authority and profile (Human Design)"
-msgstr ""
-
-#: blocks/generated/calculate-type/block.json
-msgctxt "block description"
-msgid "Calculate Human Design type, authority and profile"
-msgstr ""
-
-#: blocks/generated/calculate-type/block.json
 msgctxt "block keyword"
 msgid "type"
 msgstr ""
 
 #: blocks/generated/calculate-variables/block.json
-msgctxt "block title"
-msgid "Calculate Human Design Variables - The four arrows and Color, Tone, Base substructure (Human Design)"
-msgstr ""
-
-#: blocks/generated/calculate-variables/block.json
-msgctxt "block description"
-msgid "Calculate Human Design Variables - The four arrows and Color, Tone, Base substructure"
-msgstr ""
-
-#: blocks/generated/calculate-variables/block.json
 msgctxt "block keyword"
 msgid "variables"
-msgstr ""
-
-#: blocks/generated/cast-career-spread/block.json
-msgctxt "block title"
-msgid "Career Spread (7 cards) (Tarot)"
-msgstr ""
-
-#: blocks/generated/cast-career-spread/block.json
-msgctxt "block description"
-msgid "Career Spread (7 cards)"
 msgstr ""
 
 #: blocks/generated/cast-career-spread/block.json
@@ -4873,7 +4436,7 @@ msgstr ""
 #: blocks/generated/draw-cards/block.json
 #: blocks/generated/get-card/block.json
 #: blocks/generated/list-cards/block.json
-#: blocks/tarot/block.json
+#: blocks/generated/tarot/block.json
 msgctxt "block keyword"
 msgid "tarot"
 msgstr ""
@@ -4895,41 +4458,8 @@ msgid "career"
 msgstr ""
 
 #: blocks/generated/cast-celtic-cross/block.json
-msgctxt "block title"
-msgid "Celtic Cross Spread (10 cards) (Tarot)"
-msgstr ""
-
-#: blocks/generated/cast-celtic-cross/block.json
-msgctxt "block description"
-msgid "Celtic Cross Spread (10 cards)"
-msgstr ""
-
-#: blocks/generated/cast-celtic-cross/block.json
 msgctxt "block keyword"
 msgid "celtic"
-msgstr ""
-
-#: blocks/generated/cast-daily-reading/block.json
-msgctxt "block title"
-msgid "Cast daily I-Ching reading with changing lines (I-Ching)"
-msgstr ""
-
-#: blocks/generated/cast-daily-reading/block.json
-msgctxt "block description"
-msgid "Cast daily I-Ching reading with changing lines"
-msgstr ""
-
-#: blocks/generated/cast-daily-reading/block.json
-#: blocks/generated/cast-reading/block.json
-#: blocks/generated/get-daily-hexagram/block.json
-#: blocks/generated/get-hexagram/block.json
-#: blocks/generated/get-random-hexagram/block.json
-#: blocks/generated/get-trigram/block.json
-#: blocks/generated/list-hexagrams/block.json
-#: blocks/generated/list-trigrams/block.json
-#: blocks/generated/lookup-hexagram/block.json
-msgctxt "block keyword"
-msgid "i-ching"
 msgstr ""
 
 #: blocks/generated/cast-daily-reading/block.json
@@ -4941,16 +4471,6 @@ msgstr ""
 #: blocks/generated/get-daily-number/block.json
 msgctxt "block keyword"
 msgid "daily"
-msgstr ""
-
-#: blocks/generated/cast-kp-horary-chart/block.json
-msgctxt "block title"
-msgid "Cast a KP horary (Prashna) chart from a number 1-249 - KP Horary API (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/cast-kp-horary-chart/block.json
-msgctxt "block description"
-msgid "Cast a KP horary (Prashna) chart from a number 1-249 - KP Horary API"
 msgstr ""
 
 #: blocks/generated/cast-kp-horary-chart/block.json
@@ -4967,28 +4487,8 @@ msgid "kp"
 msgstr ""
 
 #: blocks/generated/cast-love-spread/block.json
-msgctxt "block title"
-msgid "Love Spread (5 cards) (Tarot)"
-msgstr ""
-
-#: blocks/generated/cast-love-spread/block.json
-msgctxt "block description"
-msgid "Love Spread (5 cards)"
-msgstr ""
-
-#: blocks/generated/cast-love-spread/block.json
 msgctxt "block keyword"
 msgid "love"
-msgstr ""
-
-#: blocks/generated/cast-reading/block.json
-msgctxt "block title"
-msgid "Cast an I-Ching reading (I-Ching)"
-msgstr ""
-
-#: blocks/generated/cast-reading/block.json
-msgctxt "block description"
-msgid "Cast an I-Ching reading"
 msgstr ""
 
 #: blocks/generated/cast-reading/block.json
@@ -4997,28 +4497,8 @@ msgid "reading"
 msgstr ""
 
 #: blocks/generated/cast-three-card/block.json
-msgctxt "block title"
-msgid "Three-Card Spread: Past, Present, Future (Tarot)"
-msgstr ""
-
-#: blocks/generated/cast-three-card/block.json
-msgctxt "block description"
-msgid "Three-Card Spread: Past, Present, Future"
-msgstr ""
-
-#: blocks/generated/cast-three-card/block.json
 msgctxt "block keyword"
 msgid "three"
-msgstr ""
-
-#: blocks/generated/check-kalsarpa-dosha/block.json
-msgctxt "block title"
-msgid "Check Kalsarpa Dosha - Kalsarpa Yoga Calculator API (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/check-kalsarpa-dosha/block.json
-msgctxt "block description"
-msgid "Check Kalsarpa Dosha - Kalsarpa Yoga Calculator API"
 msgstr ""
 
 #: blocks/generated/check-kalsarpa-dosha/block.json
@@ -5033,39 +4513,9 @@ msgctxt "block keyword"
 msgid "kalsarpa"
 msgstr ""
 
-#: blocks/generated/check-karmic-debt/block.json
-msgctxt "block title"
-msgid "Detect Karmic Debt numbers - Past life challenges (13, 14, 16, 19) (Numerology)"
-msgstr ""
-
-#: blocks/generated/check-karmic-debt/block.json
-msgctxt "block description"
-msgid "Detect Karmic Debt numbers - Past life challenges (13, 14, 16, 19)"
-msgstr ""
-
-#: blocks/generated/check-sadhesati/block.json
-msgctxt "block title"
-msgid "Check Sadhesati - Sade Sati Calculator API (Saturn Transit) (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/check-sadhesati/block.json
-msgctxt "block description"
-msgid "Check Sadhesati - Sade Sati Calculator API (Saturn Transit)"
-msgstr ""
-
 #: blocks/generated/check-sadhesati/block.json
 msgctxt "block keyword"
 msgid "sadhesati"
-msgstr ""
-
-#: blocks/generated/detect-aspect-patterns/block.json
-msgctxt "block title"
-msgid "Detect aspect patterns - Grand Trine, Kite, T-Square, Grand Cross, Yod, Mystic Rectangle, Stellium (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/detect-aspect-patterns/block.json
-msgctxt "block description"
-msgid "Detect aspect patterns - Grand Trine, Kite, T-Square, Grand Cross, Yod, Mystic Rectangle, Stellium"
 msgstr ""
 
 #: blocks/generated/detect-aspect-patterns/block.json
@@ -5080,29 +4530,9 @@ msgid "aspect"
 msgstr ""
 
 #: blocks/generated/detect-yogas/block.json
-msgctxt "block title"
-msgid "Detect classical Vedic yogas in a birth chart (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/detect-yogas/block.json
-msgctxt "block description"
-msgid "Detect classical Vedic yogas in a birth chart"
-msgstr ""
-
-#: blocks/generated/detect-yogas/block.json
 #: blocks/generated/list-yogas/block.json
 msgctxt "block keyword"
 msgid "yogas"
-msgstr ""
-
-#: blocks/generated/draw-cards/block.json
-msgctxt "block title"
-msgid "Draw random tarot cards with reproducible results (Tarot)"
-msgstr ""
-
-#: blocks/generated/draw-cards/block.json
-msgctxt "block description"
-msgid "Draw random tarot cards with reproducible results"
 msgstr ""
 
 #: blocks/generated/draw-cards/block.json
@@ -5117,16 +4547,6 @@ msgid "cards"
 msgstr ""
 
 #: blocks/generated/forecast-solar-return/block.json
-msgctxt "block title"
-msgid "Solar return chart - Annual birthday forecast chart for a single subject (Forecast)"
-msgstr ""
-
-#: blocks/generated/forecast-solar-return/block.json
-msgctxt "block description"
-msgid "Solar return chart - Annual birthday forecast chart for a single subject"
-msgstr ""
-
-#: blocks/generated/forecast-solar-return/block.json
 #: blocks/generated/get-forecast/block.json
 msgctxt "block keyword"
 msgid "forecast"
@@ -5137,16 +4557,6 @@ msgstr ""
 #: blocks/generated/generate-solar-return/block.json
 msgctxt "block keyword"
 msgid "solar"
-msgstr ""
-
-#: blocks/generated/generate-asteroids/block.json
-msgctxt "block title"
-msgid "Asteroid goddesses calculator - Ceres, Pallas, Juno, and Vesta natal positions (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/generate-asteroids/block.json
-msgctxt "block description"
-msgid "Asteroid goddesses calculator - Ceres, Pallas, Juno, and Vesta natal positions"
 msgstr ""
 
 #: blocks/generated/generate-asteroids/block.json
@@ -5174,28 +4584,8 @@ msgid "asteroids"
 msgstr ""
 
 #: blocks/generated/generate-astrocartography/block.json
-msgctxt "block title"
-msgid "Astrocartography map - planetary lines and relocation calculator (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/generate-astrocartography/block.json
-msgctxt "block description"
-msgid "Astrocartography map - planetary lines and relocation calculator"
-msgstr ""
-
-#: blocks/generated/generate-astrocartography/block.json
 msgctxt "block keyword"
 msgid "astrocartography"
-msgstr ""
-
-#: blocks/generated/generate-bodygraph/block.json
-msgctxt "block title"
-msgid "Generate full Human Design bodygraph - Type, authority, profile, centers, channels, gates (Human Design)"
-msgstr ""
-
-#: blocks/generated/generate-bodygraph/block.json
-msgctxt "block description"
-msgid "Generate full Human Design bodygraph - Type, authority, profile, centers, channels, gates"
 msgstr ""
 
 #: blocks/generated/generate-bodygraph/block.json
@@ -5204,28 +4594,8 @@ msgid "bodygraph"
 msgstr ""
 
 #: blocks/generated/generate-divisional-chart/block.json
-msgctxt "block title"
-msgid "Get divisional chart (Varga) - D2 to D60 Calculator (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/generate-divisional-chart/block.json
-msgctxt "block description"
-msgid "Get divisional chart (Varga) - D2 to D60 Calculator"
-msgstr ""
-
-#: blocks/generated/generate-divisional-chart/block.json
 msgctxt "block keyword"
 msgid "divisional"
-msgstr ""
-
-#: blocks/generated/generate-fixed-stars/block.json
-msgctxt "block title"
-msgid "Fixed stars and star conjunctions calculator - Regulus, Spica, Algol natal report (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/generate-fixed-stars/block.json
-msgctxt "block description"
-msgid "Fixed stars and star conjunctions calculator - Regulus, Spica, Algol natal report"
 msgstr ""
 
 #: blocks/generated/generate-fixed-stars/block.json
@@ -5234,43 +4604,13 @@ msgid "fixed"
 msgstr ""
 
 #: blocks/generated/generate-lilith/block.json
-msgctxt "block title"
-msgid "Black Moon Lilith calculator - mean and true lunar apogee in the natal chart (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/generate-lilith/block.json
-msgctxt "block description"
-msgid "Black Moon Lilith calculator - mean and true lunar apogee in the natal chart"
-msgstr ""
-
-#: blocks/generated/generate-lilith/block.json
 msgctxt "block keyword"
 msgid "lilith"
 msgstr ""
 
 #: blocks/generated/generate-local-space/block.json
-msgctxt "block title"
-msgid "Local space astrology map - Directional planetary compass lines (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/generate-local-space/block.json
-msgctxt "block description"
-msgid "Local space astrology map - Directional planetary compass lines"
-msgstr ""
-
-#: blocks/generated/generate-local-space/block.json
 msgctxt "block keyword"
 msgid "local"
-msgstr ""
-
-#: blocks/generated/generate-lunar-return/block.json
-msgctxt "block title"
-msgid "Lunar Return Chart - Monthly emotional forecast with Moon cycle chart (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/generate-lunar-return/block.json
-msgctxt "block description"
-msgid "Lunar Return Chart - Monthly emotional forecast with Moon cycle chart"
 msgstr ""
 
 #: blocks/generated/generate-lunar-return/block.json
@@ -5280,28 +4620,8 @@ msgid "lunar"
 msgstr ""
 
 #: blocks/generated/generate-navamsa/block.json
-msgctxt "block title"
-msgid "Get Navamsa chart (D9) - Marriage Compatibility Calculator (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/generate-navamsa/block.json
-msgctxt "block description"
-msgid "Get Navamsa chart (D9) - Marriage Compatibility Calculator"
-msgstr ""
-
-#: blocks/generated/generate-navamsa/block.json
 msgctxt "block keyword"
 msgid "navamsa"
-msgstr ""
-
-#: blocks/generated/generate-planetary-return/block.json
-msgctxt "block title"
-msgid "Planetary Return Chart - Saturn return, Jupiter return, and inner planet cycles (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/generate-planetary-return/block.json
-msgctxt "block description"
-msgid "Planetary Return Chart - Saturn return, Jupiter return, and inner planet cycles"
 msgstr ""
 
 #: blocks/generated/generate-planetary-return/block.json
@@ -5311,28 +4631,8 @@ msgid "planetary"
 msgstr ""
 
 #: blocks/generated/generate-profections/block.json
-msgctxt "block title"
-msgid "Annual profections calculator - lord of the year and yearly time lord by age (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/generate-profections/block.json
-msgctxt "block description"
-msgid "Annual profections calculator - lord of the year and yearly time lord by age"
-msgstr ""
-
-#: blocks/generated/generate-profections/block.json
 msgctxt "block keyword"
 msgid "profections"
-msgstr ""
-
-#: blocks/generated/generate-progressions/block.json
-msgctxt "block title"
-msgid "Secondary progressions calculator - progressed chart, progressed Sun and Moon (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/generate-progressions/block.json
-msgctxt "block description"
-msgid "Secondary progressions calculator - progressed chart, progressed Sun and Moon"
 msgstr ""
 
 #: blocks/generated/generate-progressions/block.json
@@ -5341,48 +4641,8 @@ msgid "progressions"
 msgstr ""
 
 #: blocks/generated/generate-relocation-chart/block.json
-msgctxt "block title"
-msgid "Generate relocation chart - Relocated birth chart calculator with shifted houses and angles (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/generate-relocation-chart/block.json
-msgctxt "block description"
-msgid "Generate relocation chart - Relocated birth chart calculator with shifted houses and angles"
-msgstr ""
-
-#: blocks/generated/generate-relocation-chart/block.json
 msgctxt "block keyword"
 msgid "relocation"
-msgstr ""
-
-#: blocks/generated/generate-solar-arc/block.json
-msgctxt "block title"
-msgid "Solar arc directions calculator - directed chart at one degree per year (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/generate-solar-arc/block.json
-msgctxt "block description"
-msgid "Solar arc directions calculator - directed chart at one degree per year"
-msgstr ""
-
-#: blocks/generated/generate-solar-return/block.json
-msgctxt "block title"
-msgid "Solar Return Chart - Annual birthday forecast with relocated chart (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/generate-solar-return/block.json
-msgctxt "block description"
-msgid "Solar Return Chart - Annual birthday forecast with relocated chart"
-msgstr ""
-
-#: blocks/generated/get-avastha/block.json
-msgctxt "block title"
-msgid "Get avastha by ID - Planetary State Detail (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-avastha/block.json
-msgctxt "block description"
-msgid "Get avastha by ID - Planetary State Detail"
 msgstr ""
 
 #: blocks/generated/get-avastha/block.json
@@ -5461,28 +4721,52 @@ msgid "avastha"
 msgstr ""
 
 #: blocks/generated/get-basic-panchang/block.json
-msgctxt "block title"
-msgid "Get basic Panchang - Tithi Nakshatra Yoga Karana Calculator (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-basic-panchang/block.json
-msgctxt "block description"
-msgid "Get basic Panchang - Tithi Nakshatra Yoga Karana Calculator"
-msgstr ""
-
-#: blocks/generated/get-basic-panchang/block.json
 msgctxt "block keyword"
 msgid "basic"
 msgstr ""
 
 #: blocks/generated/get-birthstones/block.json
-msgctxt "block title"
-msgid "Birthstone Crystals by Month (Crystals and Healing Stones)"
+msgctxt "block keyword"
+msgid "birthstones"
 msgstr ""
 
-#: blocks/generated/get-birthstones/block.json
-msgctxt "block description"
-msgid "Birthstone Crystals by Month"
+#: blocks/generated/get-card/block.json
+msgctxt "block keyword"
+msgid "card"
+msgstr ""
+
+#: blocks/generated/get-center/block.json
+msgctxt "block keyword"
+msgid "center"
+msgstr ""
+
+#: blocks/generated/get-choghadiya/block.json
+msgctxt "block keyword"
+msgid "choghadiya"
+msgstr ""
+
+#: blocks/generated/get-cities-by-country/block.json
+#: blocks/generated/search-cities/block.json
+msgctxt "block keyword"
+msgid "cities"
+msgstr ""
+
+#: blocks/generated/get-compound-number/block.json
+msgctxt "block keyword"
+msgid "compound"
+msgstr ""
+
+#: blocks/generated/get-critical-days/block.json
+msgctxt "block keyword"
+msgid "critical"
+msgstr ""
+
+#: blocks/generated/get-crystal-pairings/block.json
+#: blocks/generated/get-crystal/block.json
+#: blocks/generated/list-crystal-colors/block.json
+#: blocks/generated/list-crystal-planets/block.json
+msgctxt "block keyword"
+msgid "crystal"
 msgstr ""
 
 #: blocks/generated/get-birthstones/block.json
@@ -5497,260 +4781,12 @@ msgstr ""
 #: blocks/generated/list-crystals/block.json
 #: blocks/generated/search-crystals/block.json
 msgctxt "block keyword"
-msgid "crystals and healing stones"
-msgstr ""
-
-#: blocks/generated/get-birthstones/block.json
-msgctxt "block keyword"
-msgid "birthstones"
-msgstr ""
-
-#: blocks/generated/get-card/block.json
-msgctxt "block title"
-msgid "Get detailed tarot card information (Tarot)"
-msgstr ""
-
-#: blocks/generated/get-card/block.json
-msgctxt "block description"
-msgid "Get detailed tarot card information"
-msgstr ""
-
-#: blocks/generated/get-card/block.json
-msgctxt "block keyword"
-msgid "card"
-msgstr ""
-
-#: blocks/generated/get-center/block.json
-msgctxt "block title"
-msgid "Look up a Human Design center by id (Human Design)"
-msgstr ""
-
-#: blocks/generated/get-center/block.json
-msgctxt "block description"
-msgid "Look up a Human Design center by id"
-msgstr ""
-
-#: blocks/generated/get-center/block.json
-msgctxt "block keyword"
-msgid "center"
-msgstr ""
-
-#: blocks/generated/get-choghadiya/block.json
-msgctxt "block title"
-msgid "Get Choghadiya - 8 Muhurta divisions of day and night (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-choghadiya/block.json
-msgctxt "block description"
-msgid "Get Choghadiya - 8 Muhurta divisions of day and night"
-msgstr ""
-
-#: blocks/generated/get-choghadiya/block.json
-msgctxt "block keyword"
-msgid "choghadiya"
-msgstr ""
-
-#: blocks/generated/get-cities-by-country/block.json
-msgctxt "block title"
-msgid "Get cities in a country - Geocoding directory sorted by population (Location and Timezone)"
-msgstr ""
-
-#: blocks/generated/get-cities-by-country/block.json
-msgctxt "block description"
-msgid "Get cities in a country - Geocoding directory sorted by population"
-msgstr ""
-
-#: blocks/generated/get-cities-by-country/block.json
-#: blocks/generated/list-countries/block.json
-#: blocks/generated/search-cities/block.json
-msgctxt "block keyword"
-msgid "location and timezone"
-msgstr ""
-
-#: blocks/generated/get-cities-by-country/block.json
-#: blocks/generated/search-cities/block.json
-msgctxt "block keyword"
-msgid "cities"
-msgstr ""
-
-#: blocks/generated/get-compound-number/block.json
-msgctxt "block title"
-msgid "Compound number meaning - Cheiro Chaldean interpretation 10 to 52 (Numerology)"
-msgstr ""
-
-#: blocks/generated/get-compound-number/block.json
-msgctxt "block description"
-msgid "Compound number meaning - Cheiro Chaldean interpretation 10 to 52"
-msgstr ""
-
-#: blocks/generated/get-compound-number/block.json
-msgctxt "block keyword"
-msgid "compound"
-msgstr ""
-
-#: blocks/generated/get-critical-days/block.json
-msgctxt "block title"
-msgid "Find critical days - Zero crossing detection for any date range (Biorhythm)"
-msgstr ""
-
-#: blocks/generated/get-critical-days/block.json
-msgctxt "block description"
-msgid "Find critical days - Zero crossing detection for any date range"
-msgstr ""
-
-#: blocks/generated/get-critical-days/block.json
-msgctxt "block keyword"
-msgid "critical"
-msgstr ""
-
-#: blocks/generated/get-crystal-pairings/block.json
-msgctxt "block title"
-msgid "Crystal Pairings (Crystals and Healing Stones)"
-msgstr ""
-
-#: blocks/generated/get-crystal-pairings/block.json
-msgctxt "block description"
-msgid "Crystal Pairings"
-msgstr ""
-
-#: blocks/generated/get-crystal-pairings/block.json
-#: blocks/generated/get-crystal/block.json
-#: blocks/generated/list-crystal-colors/block.json
-#: blocks/generated/list-crystal-planets/block.json
-msgctxt "block keyword"
-msgid "crystal"
-msgstr ""
-
-#: blocks/generated/get-crystal/block.json
-msgctxt "block title"
-msgid "Get Crystal Healing Properties (Crystals and Healing Stones)"
-msgstr ""
-
-#: blocks/generated/get-crystal/block.json
-msgctxt "block description"
-msgid "Get Crystal Healing Properties"
-msgstr ""
-
-#: blocks/generated/get-crystals-by-chakra/block.json
-msgctxt "block title"
-msgid "Crystals by Chakra (Crystals and Healing Stones)"
-msgstr ""
-
-#: blocks/generated/get-crystals-by-chakra/block.json
-msgctxt "block description"
-msgid "Crystals by Chakra"
-msgstr ""
-
-#: blocks/generated/get-crystals-by-chakra/block.json
-#: blocks/generated/get-crystals-by-element/block.json
-#: blocks/generated/list-crystals/block.json
-#: blocks/generated/search-crystals/block.json
-msgctxt "block keyword"
 msgid "crystals"
-msgstr ""
-
-#: blocks/generated/get-crystals-by-element/block.json
-msgctxt "block title"
-msgid "Crystals by Element (Crystals and Healing Stones)"
-msgstr ""
-
-#: blocks/generated/get-crystals-by-element/block.json
-msgctxt "block description"
-msgid "Crystals by Element"
-msgstr ""
-
-#: blocks/generated/get-current-dasha/block.json
-msgctxt "block title"
-msgid "Get current Mahadasha, Antardasha, Pratyantardasha, Sookshma, Prana - Dasha Calculator API (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-current-dasha/block.json
-msgctxt "block description"
-msgid "Get current Mahadasha, Antardasha, Pratyantardasha, Sookshma, Prana - Dasha Calculator API"
 msgstr ""
 
 #: blocks/generated/get-current-dasha/block.json
 msgctxt "block keyword"
 msgid "current"
-msgstr ""
-
-#: blocks/generated/get-daily-angel-number/block.json
-msgctxt "block title"
-msgid "Daily Angel Number (Angel Numbers)"
-msgstr ""
-
-#: blocks/generated/get-daily-angel-number/block.json
-msgctxt "block description"
-msgid "Daily Angel Number"
-msgstr ""
-
-#: blocks/generated/get-daily-biorhythm/block.json
-msgctxt "block title"
-msgid "Get daily biorhythm - Seeded reading for daily check-in features (Biorhythm)"
-msgstr ""
-
-#: blocks/generated/get-daily-biorhythm/block.json
-msgctxt "block description"
-msgid "Get daily biorhythm - Seeded reading for daily check-in features"
-msgstr ""
-
-#: blocks/generated/get-daily-crystal/block.json
-msgctxt "block title"
-msgid "Daily Crystal (Crystals and Healing Stones)"
-msgstr ""
-
-#: blocks/generated/get-daily-crystal/block.json
-msgctxt "block description"
-msgid "Daily Crystal"
-msgstr ""
-
-#: blocks/generated/get-daily-dream-symbol/block.json
-msgctxt "block title"
-msgid "Get daily dream symbol (Dreams)"
-msgstr ""
-
-#: blocks/generated/get-daily-dream-symbol/block.json
-msgctxt "block description"
-msgid "Get daily dream symbol"
-msgstr ""
-
-#: blocks/generated/get-daily-dream-symbol/block.json
-#: blocks/generated/get-dream-symbol/block.json
-#: blocks/generated/get-random-symbols/block.json
-#: blocks/generated/get-symbol-letter-counts/block.json
-#: blocks/generated/search-dream-symbols/block.json
-msgctxt "block keyword"
-msgid "dreams"
-msgstr ""
-
-#: blocks/generated/get-daily-hexagram/block.json
-msgctxt "block title"
-msgid "Get daily I-Ching hexagram (I-Ching)"
-msgstr ""
-
-#: blocks/generated/get-daily-hexagram/block.json
-msgctxt "block description"
-msgid "Get daily I-Ching hexagram"
-msgstr ""
-
-#: blocks/generated/get-daily-number/block.json
-msgctxt "block title"
-msgid "Get daily numerology number - Number of the Day with interpretation (Numerology)"
-msgstr ""
-
-#: blocks/generated/get-daily-number/block.json
-msgctxt "block description"
-msgid "Get daily numerology number - Number of the Day with interpretation"
-msgstr ""
-
-#: blocks/generated/get-dream-symbol/block.json
-msgctxt "block title"
-msgid "Get dream symbol details (Dreams)"
-msgstr ""
-
-#: blocks/generated/get-dream-symbol/block.json
-msgctxt "block description"
-msgid "Get dream symbol details"
 msgstr ""
 
 #: blocks/generated/get-dream-symbol/block.json
@@ -5760,38 +4796,8 @@ msgid "dream"
 msgstr ""
 
 #: blocks/generated/get-ecliptic-crossings/block.json
-msgctxt "block title"
-msgid "Ecliptic Crossings - When planets cross the ecliptic plane (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-ecliptic-crossings/block.json
-msgctxt "block description"
-msgid "Ecliptic Crossings - When planets cross the ecliptic plane"
-msgstr ""
-
-#: blocks/generated/get-ecliptic-crossings/block.json
 msgctxt "block keyword"
 msgid "ecliptic"
-msgstr ""
-
-#: blocks/generated/get-forecast/block.json
-msgctxt "block title"
-msgid "Get biorhythm forecast - Multi-day cycle predictions with best and worst days (Biorhythm)"
-msgstr ""
-
-#: blocks/generated/get-forecast/block.json
-msgctxt "block description"
-msgid "Get biorhythm forecast - Multi-day cycle predictions with best and worst days"
-msgstr ""
-
-#: blocks/generated/get-gate/block.json
-msgctxt "block title"
-msgid "Look up a Human Design gate by number (Human Design)"
-msgstr ""
-
-#: blocks/generated/get-gate/block.json
-msgctxt "block description"
-msgid "Look up a Human Design gate by number"
 msgstr ""
 
 #: blocks/generated/get-gate/block.json
@@ -5800,28 +4806,8 @@ msgid "gate"
 msgstr ""
 
 #: blocks/generated/get-heliacal-visibility/block.json
-msgctxt "block title"
-msgid "Heliacal rising and setting (udaya and asta) - Graha Asta Calculator API (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-heliacal-visibility/block.json
-msgctxt "block description"
-msgid "Heliacal rising and setting (udaya and asta) - Graha Asta Calculator API"
-msgstr ""
-
-#: blocks/generated/get-heliacal-visibility/block.json
 msgctxt "block keyword"
 msgid "heliacal"
-msgstr ""
-
-#: blocks/generated/get-hexagram/block.json
-msgctxt "block title"
-msgid "Get hexagram by number (I-Ching)"
-msgstr ""
-
-#: blocks/generated/get-hexagram/block.json
-msgctxt "block description"
-msgid "Get hexagram by number"
 msgstr ""
 
 #: blocks/generated/get-hexagram/block.json
@@ -5831,133 +4817,13 @@ msgid "hexagram"
 msgstr ""
 
 #: blocks/generated/get-hora/block.json
-msgctxt "block title"
-msgid "Get Hora - 24 Planetary Hours (12 day + 12 night) (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-hora/block.json
-msgctxt "block description"
-msgid "Get Hora - 24 Planetary Hours (12 day + 12 night)"
-msgstr ""
-
-#: blocks/generated/get-hora/block.json
 msgctxt "block keyword"
 msgid "hora"
-msgstr ""
-
-#: blocks/generated/get-kp-ayanamsa/block.json
-msgctxt "block title"
-msgid "Get KP-Newcomb ayanamsa - Dynamic daily calculation (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-kp-ayanamsa/block.json
-msgctxt "block description"
-msgid "Get KP-Newcomb ayanamsa - Dynamic daily calculation"
-msgstr ""
-
-#: blocks/generated/get-kp-cusps/block.json
-msgctxt "block title"
-msgid "Get KP Placidus house cusps with sub-lords (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-kp-cusps/block.json
-msgctxt "block description"
-msgid "Get KP Placidus house cusps with sub-lords"
-msgstr ""
-
-#: blocks/generated/get-kp-planets-interval/block.json
-msgctxt "block title"
-msgid "Get KP planets at time intervals (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-kp-planets-interval/block.json
-msgctxt "block description"
-msgid "Get KP planets at time intervals"
-msgstr ""
-
-#: blocks/generated/get-kp-planets/block.json
-msgctxt "block title"
-msgid "Get KP planetary positions with sub-lords (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-kp-planets/block.json
-msgctxt "block description"
-msgid "Get KP planetary positions with sub-lords"
-msgstr ""
-
-#: blocks/generated/get-kp-rasi-changes/block.json
-msgctxt "block title"
-msgid "Find KP rasi ingress times (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-kp-rasi-changes/block.json
-msgctxt "block description"
-msgid "Find KP rasi ingress times"
-msgstr ""
-
-#: blocks/generated/get-kp-ruling-interval/block.json
-msgctxt "block title"
-msgid "Get KP ruling planets with significators at intervals (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-kp-ruling-interval/block.json
-msgctxt "block description"
-msgid "Get KP ruling planets with significators at intervals"
-msgstr ""
-
-#: blocks/generated/get-kp-ruling-planets/block.json
-msgctxt "block title"
-msgid "Get KP ruling planets with optional significators (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-kp-ruling-planets/block.json
-msgctxt "block description"
-msgid "Get KP ruling planets with optional significators"
-msgstr ""
-
-#: blocks/generated/get-kp-sublord-changes/block.json
-msgctxt "block title"
-msgid "Find KP sublord changes (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-kp-sublord-changes/block.json
-msgctxt "block description"
-msgid "Find KP sublord changes"
-msgstr ""
-
-#: blocks/generated/get-lunar-aspects/block.json
-msgctxt "block title"
-msgid "Monthly Lunar Aspects - Moon aspect events with all planets for a month (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-lunar-aspects/block.json
-msgctxt "block description"
-msgid "Monthly Lunar Aspects - Moon aspect events with all planets for a month"
-msgstr ""
-
-#: blocks/generated/get-major-dashas/block.json
-msgctxt "block title"
-msgid "Get all 9 Mahadasha periods (120-year cycle) (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-major-dashas/block.json
-msgctxt "block description"
-msgid "Get all 9 Mahadasha periods (120-year cycle)"
 msgstr ""
 
 #: blocks/generated/get-major-dashas/block.json
 msgctxt "block keyword"
 msgid "major"
-msgstr ""
-
-#: blocks/generated/get-monthly-aspects/block.json
-msgctxt "block title"
-msgid "Monthly Planetary Aspects - Major and minor aspect events for a month (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-monthly-aspects/block.json
-msgctxt "block description"
-msgid "Monthly Planetary Aspects - Major and minor aspect events for a month"
 msgstr ""
 
 #: blocks/generated/get-monthly-aspects/block.json
@@ -5970,79 +4836,9 @@ msgctxt "block keyword"
 msgid "monthly"
 msgstr ""
 
-#: blocks/generated/get-monthly-ephemeris/block.json
-msgctxt "block title"
-msgid "Monthly Ephemeris - Daily sidereal planetary positions for a month (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-monthly-ephemeris/block.json
-msgctxt "block description"
-msgid "Monthly Ephemeris - Daily sidereal planetary positions for a month"
-msgstr ""
-
-#: blocks/generated/get-monthly-horoscope/block.json
-msgctxt "block title"
-msgid "Monthly horoscope by zodiac sign - 30-day transit forecast with key dates (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/get-monthly-horoscope/block.json
-msgctxt "block description"
-msgid "Monthly horoscope by zodiac sign - 30-day transit forecast with key dates"
-msgstr ""
-
-#: blocks/generated/get-monthly-parallels/block.json
-msgctxt "block title"
-msgid "Monthly Declination Parallels - Parallel and contraparallel events for a month (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-monthly-parallels/block.json
-msgctxt "block description"
-msgid "Monthly Declination Parallels - Parallel and contraparallel events for a month"
-msgstr ""
-
-#: blocks/generated/get-monthly-transits/block.json
-msgctxt "block title"
-msgid "Monthly Transit - Planetary sign changes for an entire month (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-monthly-transits/block.json
-msgctxt "block description"
-msgid "Monthly Transit - Planetary sign changes for an entire month"
-msgstr ""
-
-#: blocks/generated/get-monthly-tropical-ephemeris/block.json
-msgctxt "block title"
-msgid "Monthly Ephemeris - Daily tropical planetary positions for a month (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/get-monthly-tropical-ephemeris/block.json
-msgctxt "block description"
-msgid "Monthly Ephemeris - Daily tropical planetary positions for a month"
-msgstr ""
-
-#: blocks/generated/get-moon-calendar/block.json
-msgctxt "block title"
-msgid "Get lunar calendar - Moon phases for entire month (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/get-moon-calendar/block.json
-msgctxt "block description"
-msgid "Get lunar calendar - Moon phases for entire month"
-msgstr ""
-
 #: blocks/generated/get-moon-calendar/block.json
 msgctxt "block keyword"
 msgid "moon"
-msgstr ""
-
-#: blocks/generated/get-nakshatra/block.json
-msgctxt "block title"
-msgid "Get Nakshatra by ID - Lunar Mansion Detail (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-nakshatra/block.json
-msgctxt "block description"
-msgid "Get Nakshatra by ID - Lunar Mansion Detail"
 msgstr ""
 
 #: blocks/generated/get-nakshatra/block.json
@@ -6050,39 +4846,9 @@ msgctxt "block keyword"
 msgid "nakshatra"
 msgstr ""
 
-#: blocks/generated/get-number-meaning/block.json
-msgctxt "block title"
-msgid "Get Number Meaning - Interpretation for any number 1-9, 11, 22, 33 (Numerology)"
-msgstr ""
-
-#: blocks/generated/get-number-meaning/block.json
-msgctxt "block description"
-msgid "Get Number Meaning - Interpretation for any number 1-9, 11, 22, 33"
-msgstr ""
-
-#: blocks/generated/get-phases/block.json
-msgctxt "block title"
-msgid "Get phase info - Lightweight cycle status for dashboards and widgets (Biorhythm)"
-msgstr ""
-
-#: blocks/generated/get-phases/block.json
-msgctxt "block description"
-msgid "Get phase info - Lightweight cycle status for dashboards and widgets"
-msgstr ""
-
 #: blocks/generated/get-phases/block.json
 msgctxt "block keyword"
 msgid "phases"
-msgstr ""
-
-#: blocks/generated/get-planet-meaning/block.json
-msgctxt "block title"
-msgid "Get planet meaning details - Complete astrology planet interpretation (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/get-planet-meaning/block.json
-msgctxt "block description"
-msgid "Get planet meaning details - Complete astrology planet interpretation"
 msgstr ""
 
 #: blocks/generated/get-planet-meaning/block.json
@@ -6092,64 +4858,14 @@ msgctxt "block keyword"
 msgid "planet"
 msgstr ""
 
-#: blocks/generated/get-planet-positions/block.json
-msgctxt "block title"
-msgid "Get planetary positions - Graha Positions API (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-planet-positions/block.json
-msgctxt "block description"
-msgid "Get planetary positions - Graha Positions API"
-msgstr ""
-
-#: blocks/generated/get-planetary-positions/block.json
-msgctxt "block title"
-msgid "Get planetary positions - Ephemeris calculator for all planets (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/get-planetary-positions/block.json
-msgctxt "block description"
-msgid "Get planetary positions - Ephemeris calculator for all planets"
-msgstr ""
-
-#: blocks/generated/get-prana-dashas/block.json
-msgctxt "block title"
-msgid "Get all Prana dashas for a Mahadasha, Antardasha, Pratyantardasha and Sookshma (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-prana-dashas/block.json
-msgctxt "block description"
-msgid "Get all Prana dashas for a Mahadasha, Antardasha, Pratyantardasha and Sookshma"
-msgstr ""
-
 #: blocks/generated/get-prana-dashas/block.json
 msgctxt "block keyword"
 msgid "prana"
 msgstr ""
 
 #: blocks/generated/get-pratyantardashas/block.json
-msgctxt "block title"
-msgid "Get all Pratyantardashas (antara periods) for a Mahadasha and Antardasha (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-pratyantardashas/block.json
-msgctxt "block description"
-msgid "Get all Pratyantardashas (antara periods) for a Mahadasha and Antardasha"
-msgstr ""
-
-#: blocks/generated/get-pratyantardashas/block.json
 msgctxt "block keyword"
 msgid "pratyantardashas"
-msgstr ""
-
-#: blocks/generated/get-random-crystal/block.json
-msgctxt "block title"
-msgid "Random Crystal (Crystals and Healing Stones)"
-msgstr ""
-
-#: blocks/generated/get-random-crystal/block.json
-msgctxt "block description"
-msgid "Random Crystal"
 msgstr ""
 
 #: blocks/generated/get-random-crystal/block.json
@@ -6159,49 +4875,9 @@ msgctxt "block keyword"
 msgid "random"
 msgstr ""
 
-#: blocks/generated/get-random-hexagram/block.json
-msgctxt "block title"
-msgid "Get a random hexagram (I-Ching)"
-msgstr ""
-
-#: blocks/generated/get-random-hexagram/block.json
-msgctxt "block description"
-msgid "Get a random hexagram"
-msgstr ""
-
-#: blocks/generated/get-random-symbols/block.json
-msgctxt "block title"
-msgid "Get random dream symbols (Dreams)"
-msgstr ""
-
-#: blocks/generated/get-random-symbols/block.json
-msgctxt "block description"
-msgid "Get random dream symbols"
-msgstr ""
-
-#: blocks/generated/get-rashi/block.json
-msgctxt "block title"
-msgid "Get Rashi by ID - Vedic Zodiac Sign Detail (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-rashi/block.json
-msgctxt "block description"
-msgid "Get Rashi by ID - Vedic Zodiac Sign Detail"
-msgstr ""
-
 #: blocks/generated/get-rashi/block.json
 msgctxt "block keyword"
 msgid "rashi"
-msgstr ""
-
-#: blocks/generated/get-sookshma-dashas/block.json
-msgctxt "block title"
-msgid "Get all Sookshma dashas for a Mahadasha, Antardasha and Pratyantardasha (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-sookshma-dashas/block.json
-msgctxt "block description"
-msgid "Get all Sookshma dashas for a Mahadasha, Antardasha and Pratyantardasha"
 msgstr ""
 
 #: blocks/generated/get-sookshma-dashas/block.json
@@ -6210,28 +4886,8 @@ msgid "sookshma"
 msgstr ""
 
 #: blocks/generated/get-sub-dashas/block.json
-msgctxt "block title"
-msgid "Get all Antardashas (sub-periods) for a specific Mahadasha (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-sub-dashas/block.json
-msgctxt "block description"
-msgid "Get all Antardashas (sub-periods) for a specific Mahadasha"
-msgstr ""
-
-#: blocks/generated/get-sub-dashas/block.json
 msgctxt "block keyword"
 msgid "sub"
-msgstr ""
-
-#: blocks/generated/get-symbol-letter-counts/block.json
-msgctxt "block title"
-msgid "Get symbol counts by letter (Dreams)"
-msgstr ""
-
-#: blocks/generated/get-symbol-letter-counts/block.json
-msgctxt "block description"
-msgid "Get symbol counts by letter"
 msgstr ""
 
 #: blocks/generated/get-symbol-letter-counts/block.json
@@ -6240,28 +4896,8 @@ msgid "symbol"
 msgstr ""
 
 #: blocks/generated/get-trigram/block.json
-msgctxt "block title"
-msgid "Get trigram by number or name (I-Ching)"
-msgstr ""
-
-#: blocks/generated/get-trigram/block.json
-msgctxt "block description"
-msgid "Get trigram by number or name"
-msgstr ""
-
-#: blocks/generated/get-trigram/block.json
 msgctxt "block keyword"
 msgid "trigram"
-msgstr ""
-
-#: blocks/generated/get-upagraha-positions/block.json
-msgctxt "block title"
-msgid "Get upagraha (sub-planet) positions - Upagraha Calculator API (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-upagraha-positions/block.json
-msgctxt "block description"
-msgid "Get upagraha (sub-planet) positions - Upagraha Calculator API"
 msgstr ""
 
 #: blocks/generated/get-upagraha-positions/block.json
@@ -6270,28 +4906,8 @@ msgid "upagraha"
 msgstr ""
 
 #: blocks/generated/get-upcoming-moon-phases/block.json
-msgctxt "block title"
-msgid "Get upcoming moon phases - Next new moon, full moon, quarters (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/get-upcoming-moon-phases/block.json
-msgctxt "block description"
-msgid "Get upcoming moon phases - Next new moon, full moon, quarters"
-msgstr ""
-
-#: blocks/generated/get-upcoming-moon-phases/block.json
 msgctxt "block keyword"
 msgid "upcoming"
-msgstr ""
-
-#: blocks/generated/get-usage-stats/block.json
-msgctxt "block title"
-msgid "Get API usage statistics (Usage)"
-msgstr ""
-
-#: blocks/generated/get-usage-stats/block.json
-msgctxt "block description"
-msgid "Get API usage statistics"
 msgstr ""
 
 #: blocks/generated/get-usage-stats/block.json
@@ -6300,53 +4916,13 @@ msgid "usage"
 msgstr ""
 
 #: blocks/generated/get-weekly-horoscope/block.json
-msgctxt "block title"
-msgid "Weekly horoscope by zodiac sign - 7-day transit forecast (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/get-weekly-horoscope/block.json
-msgctxt "block description"
-msgid "Weekly horoscope by zodiac sign - 7-day transit forecast"
-msgstr ""
-
-#: blocks/generated/get-weekly-horoscope/block.json
 msgctxt "block keyword"
 msgid "weekly"
 msgstr ""
 
 #: blocks/generated/get-yoga/block.json
-msgctxt "block title"
-msgid "Get yoga details by ID - Vedic Yoga Glossary Entry (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/get-yoga/block.json
-msgctxt "block description"
-msgid "Get yoga details by ID - Vedic Yoga Glossary Entry"
-msgstr ""
-
-#: blocks/generated/get-yoga/block.json
 msgctxt "block keyword"
 msgid "yoga"
-msgstr ""
-
-#: blocks/generated/get-zodiac-sign/block.json
-msgctxt "block title"
-msgid "Get zodiac sign details - Complete astrology sign profile with personality traits (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/get-zodiac-sign/block.json
-msgctxt "block description"
-msgid "Get zodiac sign details - Complete astrology sign profile with personality traits"
-msgstr ""
-
-#: blocks/generated/list-angel-numbers/block.json
-msgctxt "block title"
-msgid "List All Angel Numbers (Angel Numbers)"
-msgstr ""
-
-#: blocks/generated/list-angel-numbers/block.json
-msgctxt "block description"
-msgid "List All Angel Numbers"
 msgstr ""
 
 #: blocks/generated/list-angel-numbers/block.json
@@ -6374,83 +4950,13 @@ msgid "angel"
 msgstr ""
 
 #: blocks/generated/list-avasthas/block.json
-msgctxt "block title"
-msgid "List all 17 avastha states - Planetary State Reference (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/list-avasthas/block.json
-msgctxt "block description"
-msgid "List all 17 avastha states - Planetary State Reference"
-msgstr ""
-
-#: blocks/generated/list-avasthas/block.json
 msgctxt "block keyword"
 msgid "avasthas"
-msgstr ""
-
-#: blocks/generated/list-cards/block.json
-msgctxt "block title"
-msgid "List all 78 tarot cards (Tarot)"
-msgstr ""
-
-#: blocks/generated/list-cards/block.json
-msgctxt "block description"
-msgid "List all 78 tarot cards"
-msgstr ""
-
-#: blocks/generated/list-countries/block.json
-msgctxt "block title"
-msgid "List all countries - ISO codes and city coverage (Location and Timezone)"
-msgstr ""
-
-#: blocks/generated/list-countries/block.json
-msgctxt "block description"
-msgid "List all countries - ISO codes and city coverage"
 msgstr ""
 
 #: blocks/generated/list-countries/block.json
 msgctxt "block keyword"
 msgid "countries"
-msgstr ""
-
-#: blocks/generated/list-crystal-colors/block.json
-msgctxt "block title"
-msgid "List Crystal Colors (Crystals and Healing Stones)"
-msgstr ""
-
-#: blocks/generated/list-crystal-colors/block.json
-msgctxt "block description"
-msgid "List Crystal Colors"
-msgstr ""
-
-#: blocks/generated/list-crystal-planets/block.json
-msgctxt "block title"
-msgid "List Crystal Planets (Crystals and Healing Stones)"
-msgstr ""
-
-#: blocks/generated/list-crystal-planets/block.json
-msgctxt "block description"
-msgid "List Crystal Planets"
-msgstr ""
-
-#: blocks/generated/list-crystals/block.json
-msgctxt "block title"
-msgid "List All Crystals (Crystals and Healing Stones)"
-msgstr ""
-
-#: blocks/generated/list-crystals/block.json
-msgctxt "block description"
-msgid "List All Crystals"
-msgstr ""
-
-#: blocks/generated/list-hexagrams/block.json
-msgctxt "block title"
-msgid "List all 64 hexagrams (I-Ching)"
-msgstr ""
-
-#: blocks/generated/list-hexagrams/block.json
-msgctxt "block description"
-msgid "List all 64 hexagrams"
 msgstr ""
 
 #: blocks/generated/list-hexagrams/block.json
@@ -6459,53 +4965,13 @@ msgid "hexagrams"
 msgstr ""
 
 #: blocks/generated/list-languages/block.json
-msgctxt "block title"
-msgid "List supported response languages (Languages)"
-msgstr ""
-
-#: blocks/generated/list-languages/block.json
-msgctxt "block description"
-msgid "List supported response languages"
-msgstr ""
-
-#: blocks/generated/list-languages/block.json
 msgctxt "block keyword"
 msgid "languages"
 msgstr ""
 
 #: blocks/generated/list-nakshatras/block.json
-msgctxt "block title"
-msgid "List all 27 Nakshatras - Lunar Mansions Reference (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/list-nakshatras/block.json
-msgctxt "block description"
-msgid "List all 27 Nakshatras - Lunar Mansions Reference"
-msgstr ""
-
-#: blocks/generated/list-nakshatras/block.json
 msgctxt "block keyword"
 msgid "nakshatras"
-msgstr ""
-
-#: blocks/generated/list-planet-meanings/block.json
-msgctxt "block title"
-msgid "Get all planet meanings - Complete astrology planet interpretations list (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/list-planet-meanings/block.json
-msgctxt "block description"
-msgid "Get all planet meanings - Complete astrology planet interpretations list"
-msgstr ""
-
-#: blocks/generated/list-rashis/block.json
-msgctxt "block title"
-msgid "List all 12 Rashis - Vedic Zodiac Signs Reference (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/list-rashis/block.json
-msgctxt "block description"
-msgid "List all 12 Rashis - Vedic Zodiac Signs Reference"
 msgstr ""
 
 #: blocks/generated/list-rashis/block.json
@@ -6514,48 +4980,8 @@ msgid "rashis"
 msgstr ""
 
 #: blocks/generated/list-trigrams/block.json
-msgctxt "block title"
-msgid "List all 8 trigrams (I-Ching)"
-msgstr ""
-
-#: blocks/generated/list-trigrams/block.json
-msgctxt "block description"
-msgid "List all 8 trigrams"
-msgstr ""
-
-#: blocks/generated/list-trigrams/block.json
 msgctxt "block keyword"
 msgid "trigrams"
-msgstr ""
-
-#: blocks/generated/list-yogas/block.json
-msgctxt "block title"
-msgid "List all planetary yogas - 301 entry Vedic Yoga Glossary (Vedic Astrology)"
-msgstr ""
-
-#: blocks/generated/list-yogas/block.json
-msgctxt "block description"
-msgid "List all planetary yogas - 301 entry Vedic Yoga Glossary"
-msgstr ""
-
-#: blocks/generated/list-zodiac-signs/block.json
-msgctxt "block title"
-msgid "Get all zodiac signs - Complete zodiac signs list with dates and elements (Western Astrology)"
-msgstr ""
-
-#: blocks/generated/list-zodiac-signs/block.json
-msgctxt "block description"
-msgid "Get all zodiac signs - Complete zodiac signs list with dates and elements"
-msgstr ""
-
-#: blocks/generated/lookup-hexagram/block.json
-msgctxt "block title"
-msgid "Lookup hexagram by line pattern (I-Ching)"
-msgstr ""
-
-#: blocks/generated/lookup-hexagram/block.json
-msgctxt "block description"
-msgid "Lookup hexagram by line pattern"
 msgstr ""
 
 #: blocks/generated/lookup-hexagram/block.json
@@ -6564,40 +4990,10 @@ msgid "lookup"
 msgstr ""
 
 #: blocks/generated/search-cities/block.json
-msgctxt "block title"
-msgid "Search cities worldwide - Geocoding autocomplete with coordinates and timezone (Location and Timezone)"
-msgstr ""
-
-#: blocks/generated/search-cities/block.json
-msgctxt "block description"
-msgid "Search cities worldwide - Geocoding autocomplete with coordinates and timezone"
-msgstr ""
-
-#: blocks/generated/search-cities/block.json
 #: blocks/generated/search-crystals/block.json
 #: blocks/generated/search-dream-symbols/block.json
 msgctxt "block keyword"
 msgid "search"
-msgstr ""
-
-#: blocks/generated/search-crystals/block.json
-msgctxt "block title"
-msgid "Search Crystals (Crystals and Healing Stones)"
-msgstr ""
-
-#: blocks/generated/search-crystals/block.json
-msgctxt "block description"
-msgid "Search Crystals"
-msgstr ""
-
-#: blocks/generated/search-dream-symbols/block.json
-msgctxt "block title"
-msgid "List and search dream symbols (Dreams)"
-msgstr ""
-
-#: blocks/generated/search-dream-symbols/block.json
-msgctxt "block description"
-msgid "List and search dream symbols"
 msgstr ""
 
 #: blocks/horoscope/block.json
@@ -6615,62 +5011,1774 @@ msgctxt "block keyword"
 msgid "horoscope"
 msgstr ""
 
-#: blocks/natal-chart/block.json
+#: blocks/generated/natal-chart/block.json
 msgctxt "block title"
 msgid "Natal Chart"
 msgstr ""
 
-#: blocks/natal-chart/block.json
+#: blocks/generated/natal-chart/block.json
 msgctxt "block description"
 msgid "Western birth chart with planets, houses, and aspects."
 msgstr ""
 
-#: blocks/natal-chart/block.json
+#: blocks/generated/natal-chart/block.json
 msgctxt "block keyword"
 msgid "birth chart"
 msgstr ""
 
-#: blocks/natal-chart/block.json
+#: blocks/generated/natal-chart/block.json
 msgctxt "block keyword"
 msgid "natal chart"
 msgstr ""
 
-#: blocks/numerology/block.json
+#: blocks/generated/numerology/block.json
 msgctxt "block title"
 msgid "Numerology"
 msgstr ""
 
-#: blocks/numerology/block.json
-msgctxt "block description"
-msgid "Life path, expression, soul urge, and personal year numbers."
-msgstr ""
-
-#: blocks/numerology/block.json
+#: blocks/generated/numerology/block.json
 msgctxt "block keyword"
 msgid "life path"
 msgstr ""
 
-#: blocks/numerology/block.json
+#: blocks/generated/numerology/block.json
 msgctxt "block keyword"
 msgid "numbers"
 msgstr ""
 
-#: blocks/tarot/block.json
-msgctxt "block title"
-msgid "Tarot"
-msgstr ""
-
-#: blocks/tarot/block.json
-msgctxt "block description"
-msgid "Tarot card readings: single, three card, Celtic Cross, and more."
-msgstr ""
-
-#: blocks/tarot/block.json
+#: blocks/generated/tarot/block.json
 msgctxt "block keyword"
 msgid "card reading"
 msgstr ""
 
-#: blocks/tarot/block.json
+#: blocks/generated/tarot/block.json
 msgctxt "block keyword"
 msgid "spread"
+msgstr ""
+
+#: src/Generated/Forms/CalculateBioCompatibilityForm.php:23
+#: src/Generated/Forms/CalculateNumCompatibilityForm.php:23
+msgid "Compatibility"
+msgstr "Kompatibilität"
+
+#: src/Generated/Forms/CalculateCompatibilityForm.php:23
+#: src/Generated/Forms/CalculateGunMilanForm.php:23
+msgid "Compatibility Score"
+msgstr "Kompatibilitätswert"
+
+#: src/Generated/Forms/GenerateCompositeChartForm.php:23
+msgid "Composite Chart"
+msgstr "Kompositchart"
+
+#: src/Generated/Forms/GenerateTimelineForm.php:23
+msgid "Cross-domain Forecast Timeline"
+msgstr "Bereichsübergreifende Prognose-Zeitleiste"
+
+#: src/Support/EphemerisNav.php:252
+msgid "Ephemeris month"
+msgstr "Ephemeriden-Monat"
+
+#: src/Generated/Forms/GenerateDigestForm.php:23
+msgid "Forecast Digest"
+msgstr "Prognose-Überblick"
+
+#: src/Generated/Forms/CalculateConnectionForm.php:23
+msgid "Human Design Connection Chart"
+msgstr "Human Design Verbindungschart"
+
+#: src/Generated/Forms/CalculatePentaForm.php:23
+msgid "Human Design Penta"
+msgstr "Human Design Penta"
+
+#: src/Generated/Forms/GenerateTransitForm.php:23
+msgid "Human Design Transit Overlay"
+msgstr "Human Design Transit-Overlay"
+
+#: src/Generated/Forms/CalculateCompatibilityForm.php:75
+#: src/Generated/Forms/CalculateCompatibilityForm.php:130
+#: src/Generated/Forms/CalculateConnectionForm.php:75
+#: src/Generated/Forms/CalculateConnectionForm.php:130
+#: src/Generated/Forms/CalculateSynastryForm.php:75
+#: src/Generated/Forms/CalculateSynastryForm.php:137
+#: src/Generated/Forms/CalculateTransitAspectsForm.php:75
+#: src/Generated/Forms/GenerateCompositeChartForm.php:75
+#: src/Generated/Forms/GenerateCompositeChartForm.php:130
+#: src/Generated/Forms/GenerateTransitForm.php:75
+#: blocks/generated/calculate-arabic-lots/index.js:48
+#: blocks/generated/calculate-centers/index.js:48
+#: blocks/generated/calculate-channels/index.js:48
+#: blocks/generated/calculate-gates/index.js:48
+#: blocks/generated/calculate-profile/index.js:48
+#: blocks/generated/calculate-transits/index.js:34
+#: blocks/generated/calculate-type/index.js:48
+#: blocks/generated/calculate-variables/index.js:48
+#: blocks/generated/cast-kp-horary-chart/index.js:70
+#: blocks/generated/detect-aspect-patterns/index.js:48
+#: blocks/generated/generate-asteroids/index.js:48
+#: blocks/generated/generate-astrocartography/index.js:48
+#: blocks/generated/generate-bodygraph/index.js:48
+#: blocks/generated/generate-fixed-stars/index.js:48
+#: blocks/generated/generate-lilith/index.js:48
+#: blocks/generated/generate-profections/index.js:48
+#: blocks/generated/generate-progressions/index.js:48
+#: blocks/generated/generate-solar-arc/index.js:48
+#: blocks/generated/get-kp-planets-interval/index.js:63
+#: blocks/generated/get-kp-planets/index.js:63
+#: blocks/generated/get-kp-rasi-changes/index.js:49
+#: blocks/generated/get-kp-ruling-interval/index.js:63
+#: blocks/generated/get-kp-ruling-planets/index.js:55
+#: blocks/generated/get-kp-sublord-changes/index.js:49
+#: blocks/generated/get-planetary-positions/index.js:27
+msgid "Lunar node convention"
+msgstr "Mondknoten-Konvention"
+
+#: src/Support/EphemerisNav.php:256
+msgid "Next month"
+msgstr "Nächster Monat"
+
+#: src/Support/EphemerisNav.php:254
+msgid "Previous month"
+msgstr "Vorheriger Monat"
+
+#: src/Support/EphemerisNav.php:309
+msgid "Show month"
+msgstr "Monat anzeigen"
+
+#: src/Generated/Forms/FindSignificantDatesForm.php:23
+msgid "Significant Dates"
+msgstr "Wichtige Daten"
+
+#: src/Support/FormRenderer.php:60
+msgid "That reading has already been shown. Enter the details below to run it again."
+msgstr "Diese Auswertung wurde bereits angezeigt. Geben Sie die Daten unten ein, um sie erneut zu erstellen."
+
+#: src/Generated/Forms/CalculateTransitAspectsForm.php:23
+msgid "Transit Aspects"
+msgstr "Transit-Aspekte"
+
+#: src/Generated/Forms/ForecastTransitsForm.php:23
+msgid "Western Astrology Forecast"
+msgstr "Prognose der westlichen Astrologie"
+
+#: src/Admin/DemoPage.php:83
+msgid "Live preview of every shortcode the plugin ships. Click \"Run\" on a row to render that one reading. Each run is a live call against your plan, so rows render one at a time and never in bulk. Results are cached server-side for an hour by default."
+msgstr ""
+
+#: src/Admin/SettingsFields.php:206
+msgid "Reset colours to defaults"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:218
+msgid "Custom"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:219
+msgid "Practitioner"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:220
+msgid "Eucalyptus"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:221
+msgid "Kiln"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:222
+msgid "Moonlit"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:233
+msgid "Accent"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:234
+msgid "Page background"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:235
+msgid "Card background"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:236
+msgid "Text"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:237
+msgid "Secondary text"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:238
+msgid "Borders"
+msgstr ""
+
+#: src/Admin/SettingsFields.php:239
+msgid "Warnings"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:167
+msgid "Settings saved."
+msgstr ""
+
+#: templates/admin-connected.php:240
+msgid "Palette"
+msgstr ""
+
+#: templates/admin-connected.php:242
+msgid "Colours for every reading on your site. Pick a palette, or choose Custom and set the seven colours yourself. Readings use your theme font either way."
+msgstr ""
+
+#: templates/admin-connected.php:247
+msgid "Set colours yourself"
+msgstr ""
+
+#: templates/admin-connected.php:249
+msgid "Two values per colour, one for light readings and one for dark, so a brand colour stays readable in both. Leave a field blank to keep the default."
+msgstr ""
+
+#: templates/admin-connected.php:300
+msgid "Hide sections"
+msgstr ""
+
+#: templates/admin-connected.php:302
+msgid "Take whole sections off every reading. Type the section names separated by commas. The common one is patterns, which removes the chart patterns block from a natal chart. Leave this blank to show everything, and note that a name matching no section is ignored."
+msgstr ""
+
+#: blocks/generated/angel-number/index.js:20
+#: blocks/generated/biorhythm/index.js:26
+#: blocks/generated/natal-chart/index.js:47
+#: blocks/generated/numerology/index.js:26
+msgid "Fill these in to publish a fixed reading, or leave them blank to publish a form your visitors fill in."
+msgstr ""
+
+#: blocks/generated/search-cities/index.js:13
+msgid "Place to search for, written the way a person would"
+msgstr ""
+
+#: blocks/generated/tarot/index.js:28
+msgid "Choose the options in the sidebar to preview this reading here."
+msgstr ""
+
+#: blocks/generated/analyze-karmic-lessons/block.json
+msgctxt "block title"
+msgid "Karmic Lessons (Numerology)"
+msgstr ""
+
+#: blocks/generated/analyze-karmic-lessons/block.json
+msgctxt "block description"
+msgid "Life lessons from missing numbers"
+msgstr ""
+
+#: blocks/generated/analyze-number-sequence/block.json
+msgctxt "block title"
+msgid "Number Sequence (Angel Numbers)"
+msgstr ""
+
+#: blocks/generated/analyze-number-sequence/block.json
+msgctxt "block description"
+msgid "Smart angel number analysis that works for ANY number sequence, not just known angel numbers"
+msgstr ""
+
+#: blocks/generated/angel-number/block.json
+msgctxt "block description"
+msgid "Meaning and pattern analysis for any number sequence."
+msgstr ""
+
+#: blocks/generated/biorhythm/block.json
+msgctxt "block description"
+msgid "Physical, emotional, and intellectual cycle values."
+msgstr ""
+
+#: blocks/generated/calculate-arabic-lots/block.json
+msgctxt "block title"
+msgid "Arabic Lots (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/calculate-arabic-lots/block.json
+msgctxt "block description"
+msgid "seven Hermetic parts including Part of Fortune and Spirit"
+msgstr ""
+
+#: blocks/generated/calculate-arudha-padas/block.json
+msgctxt "block title"
+msgid "Arudha Padas (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/calculate-arudha-padas/block.json
+msgctxt "block description"
+msgid "Calculate the Arudha Lagna (AL) and all twelve Arudha padas of Jaimini astrology from birth details"
+msgstr ""
+
+#: blocks/generated/calculate-ashtakavarga/block.json
+msgctxt "block title"
+msgid "Ashtakavarga (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/calculate-ashtakavarga/block.json
+msgctxt "block description"
+msgid "Calculate complete Ashtakavarga analysis per Brihat Parashara Hora Shastra (BPHS)"
+msgstr ""
+
+#: blocks/generated/calculate-aspects/block.json
+msgctxt "block title"
+msgid "Planetary Aspects (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/calculate-aspects/block.json
+msgctxt "block description"
+msgid "Aspect finder for any date and time"
+msgstr ""
+
+#: blocks/generated/calculate-bhav-chalit/block.json
+msgctxt "block title"
+msgid "Bhav Chalit (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/calculate-bhav-chalit/block.json
+msgctxt "block description"
+msgid "Calculate the Bhav Chalit chart, also written Bhava Chalit or Chalit Kundli, placing every graha by unequal Sripati bhava cusps instead of by whole sign"
+msgstr ""
+
+#: blocks/generated/calculate-bhava-bala/block.json
+msgctxt "block title"
+msgid "Bhava Bala (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/calculate-bhava-bala/block.json
+msgctxt "block description"
+msgid "Calculate Bhava Bala (house strength) for all twelve bhavas per Brihat Parashara Hora Shastra (BPHS) and BV Raman Graha and Bhava Balas"
+msgstr ""
+
+#: blocks/generated/calculate-birth-day/block.json
+msgctxt "block title"
+msgid "Birth Day Number (Numerology)"
+msgstr ""
+
+#: blocks/generated/calculate-birth-day/block.json
+msgctxt "block description"
+msgid "Special talents from day of birth"
+msgstr ""
+
+#: blocks/generated/calculate-bridge-numbers/block.json
+msgctxt "block title"
+msgid "Bridge Numbers (Numerology)"
+msgstr ""
+
+#: blocks/generated/calculate-bridge-numbers/block.json
+msgctxt "block description"
+msgid "Harmonize different aspects of personality"
+msgstr ""
+
+#: blocks/generated/calculate-business-name/block.json
+msgctxt "block title"
+msgid "Business Name Numerology"
+msgstr ""
+
+#: blocks/generated/calculate-business-name/block.json
+msgctxt "block description"
+msgid "Chaldean brand name analysis and lucky numbers"
+msgstr ""
+
+#: blocks/generated/calculate-centers/block.json
+msgctxt "block title"
+msgid "Human Design Centers"
+msgstr ""
+
+#: blocks/generated/calculate-centers/block.json
+msgctxt "block description"
+msgid "Calculate the state of all nine Human Design centers for a birth moment: whether each is defined or open, whether it is a motor or an awareness center, its theme, and the active gates it holds"
+msgstr ""
+
+#: blocks/generated/calculate-chaldean/block.json
+msgctxt "block title"
+msgid "Chaldean Numerology Name Reading"
+msgstr ""
+
+#: blocks/generated/calculate-chaldean/block.json
+msgctxt "block description"
+msgid "Destiny, compound number, planetary ruler"
+msgstr ""
+
+#: blocks/generated/calculate-channels/block.json
+msgctxt "block title"
+msgid "Defined Human Design Channels"
+msgstr ""
+
+#: blocks/generated/calculate-channels/block.json
+msgctxt "block description"
+msgid "Calculate the defined channels for a birth moment"
+msgstr ""
+
+#: blocks/generated/calculate-chara-karakas/block.json
+msgctxt "block title"
+msgid "Chara Karakas (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/calculate-chara-karakas/block.json
+msgctxt "block description"
+msgid "Calculate the Chara Karakas of Jaimini astrology from birth details: the movable significators assigned by ranking each graha on how far it has advanced into its sign"
+msgstr ""
+
+#: blocks/generated/calculate-drishti/block.json
+msgctxt "block title"
+msgid "Planetary Aspects (Drishti)"
+msgstr ""
+
+#: blocks/generated/calculate-drishti/block.json
+msgctxt "block description"
+msgid "Mutual aspects between all planets"
+msgstr ""
+
+#: blocks/generated/calculate-dual/block.json
+msgctxt "block title"
+msgid "Dual Numerology"
+msgstr ""
+
+#: blocks/generated/calculate-dual/block.json
+msgctxt "block description"
+msgid "Pythagorean and Chaldean name numbers in one call"
+msgstr ""
+
+#: blocks/generated/calculate-expression/block.json
+msgctxt "block title"
+msgid "Expression Number (Numerology)"
+msgstr ""
+
+#: blocks/generated/calculate-expression/block.json
+msgctxt "block description"
+msgid "Natural talents and life goals"
+msgstr ""
+
+#: blocks/generated/calculate-gates/block.json
+msgctxt "block title"
+msgid "Human Design Gate Activations"
+msgstr ""
+
+#: blocks/generated/calculate-gates/block.json
+msgctxt "block description"
+msgid "Calculate the 26 gate activations for a birth moment, split into the 13 conscious Personality activations at birth and the 13 unconscious Design activations 88 degrees of solar arc earlier"
+msgstr ""
+
+#: blocks/generated/calculate-houses/block.json
+msgctxt "block title"
+msgid "House Cusps (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/calculate-houses/block.json
+msgctxt "block description"
+msgid "House system calculator with comparison"
+msgstr ""
+
+#: blocks/generated/calculate-maturity/block.json
+msgctxt "block title"
+msgid "Maturity Number (Numerology)"
+msgstr ""
+
+#: blocks/generated/calculate-maturity/block.json
+msgctxt "block description"
+msgid "Who you become in later life"
+msgstr ""
+
+#: blocks/generated/calculate-parallels/block.json
+msgctxt "block title"
+msgid "Declination Parallels (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/calculate-parallels/block.json
+msgctxt "block description"
+msgid "Planets at same or opposite declination"
+msgstr ""
+
+#: blocks/generated/calculate-personal-day/block.json
+msgctxt "block title"
+msgid "Personal Day (Numerology)"
+msgstr ""
+
+#: blocks/generated/calculate-personal-day/block.json
+msgctxt "block description"
+msgid "Daily personalized numerology forecast"
+msgstr ""
+
+#: blocks/generated/calculate-personal-month/block.json
+msgctxt "block title"
+msgid "Personal Month (Numerology)"
+msgstr ""
+
+#: blocks/generated/calculate-personal-month/block.json
+msgctxt "block description"
+msgid "Monthly numerology forecast"
+msgstr ""
+
+#: blocks/generated/calculate-personal-year/block.json
+msgctxt "block title"
+msgid "Personal Year (Numerology)"
+msgstr ""
+
+#: blocks/generated/calculate-personal-year/block.json
+msgctxt "block description"
+msgid "Annual cycle and forecast for current year"
+msgstr ""
+
+#: blocks/generated/calculate-personality/block.json
+msgctxt "block title"
+msgid "Personality Number (Numerology)"
+msgstr ""
+
+#: blocks/generated/calculate-personality/block.json
+msgctxt "block description"
+msgid "Calculate your Personality number from the consonants in your birth name using Pythagorean numerology"
+msgstr ""
+
+#: blocks/generated/calculate-profile/block.json
+msgctxt "block title"
+msgid "Human Design Profile and Line Keynotes"
+msgstr ""
+
+#: blocks/generated/calculate-profile/block.json
+msgctxt "block description"
+msgid "Calculate the Human Design profile for a birth moment: the conscious Personality Sun line over the unconscious Design Sun line, with the keynote for each"
+msgstr ""
+
+#: blocks/generated/calculate-shadbala/block.json
+msgctxt "block title"
+msgid "Shadbala (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/calculate-shadbala/block.json
+msgctxt "block description"
+msgid "Calculate complete Shadbala (six-fold planetary strength) per Brihat Parashara Hora Shastra (BPHS) and BV Raman Graha and Bhava Balas"
+msgstr ""
+
+#: blocks/generated/calculate-soul-urge/block.json
+msgctxt "block title"
+msgid "Soul Urge Number (Numerology)"
+msgstr ""
+
+#: blocks/generated/calculate-soul-urge/block.json
+msgctxt "block description"
+msgid "Inner motivations and desires"
+msgstr ""
+
+#: blocks/generated/calculate-transit/block.json
+msgctxt "block title"
+msgid "Transit Analysis (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/calculate-transit/block.json
+msgctxt "block description"
+msgid "Compare current planets to natal chart (Gochar)"
+msgstr ""
+
+#: blocks/generated/calculate-transits/block.json
+msgctxt "block title"
+msgid "Planetary Transits (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/calculate-transits/block.json
+msgctxt "block description"
+msgid "Current transits with natal chart comparison"
+msgstr ""
+
+#: blocks/generated/calculate-type/block.json
+msgctxt "block title"
+msgid "Human Design Type"
+msgstr ""
+
+#: blocks/generated/calculate-type/block.json
+msgctxt "block description"
+msgid "Calculate the core Human Design identity from a birth moment: the energy type, the aura strategy, the inner authority, the signature and not-self themes, and the profile"
+msgstr ""
+
+#: blocks/generated/calculate-variables/block.json
+msgctxt "block title"
+msgid "Human Design Variables"
+msgstr ""
+
+#: blocks/generated/calculate-variables/block.json
+msgctxt "block description"
+msgid "The four arrows and Color, Tone, Base substructure"
+msgstr ""
+
+#: blocks/generated/cast-career-spread/block.json
+msgctxt "block title"
+msgid "Career Spread (7 Cards)"
+msgstr ""
+
+#: blocks/generated/cast-career-spread/block.json
+msgctxt "block description"
+msgid "Perform a comprehensive 7-card career tarot spread using SWOT analysis framework (Strengths, Weaknesses, Opportunities, Threats) for professional guidance, business decisions, and vocational clarity"
+msgstr ""
+
+#: blocks/generated/cast-celtic-cross/block.json
+msgctxt "block title"
+msgid "Celtic Cross Spread (10 Cards)"
+msgstr ""
+
+#: blocks/generated/cast-celtic-cross/block.json
+msgctxt "block description"
+msgid "Perform the legendary Celtic Cross spread - the most comprehensive and detailed tarot reading available, used by professional tarot readers worldwide for over a century"
+msgstr ""
+
+#: blocks/generated/cast-daily-reading/block.json
+msgctxt "block title"
+msgid "Cast Daily I-Ching Reading"
+msgstr ""
+
+#: blocks/generated/cast-daily-reading/block.json
+msgctxt "block description"
+msgid "Cast a complete daily I-Ching reading using the traditional three-coin method with seeded randomness"
+msgstr ""
+
+#: blocks/generated/cast-daily-reading/block.json
+#: blocks/generated/cast-reading/block.json
+#: blocks/generated/get-daily-hexagram/block.json
+#: blocks/generated/get-hexagram/block.json
+#: blocks/generated/get-random-hexagram/block.json
+#: blocks/generated/get-trigram/block.json
+#: blocks/generated/list-hexagrams/block.json
+#: blocks/generated/list-trigrams/block.json
+#: blocks/generated/lookup-hexagram/block.json
+msgctxt "block keyword"
+msgid "i ching"
+msgstr ""
+
+#: blocks/generated/cast-kp-horary-chart/block.json
+msgctxt "block title"
+msgid "Cast a KP Horary (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/cast-kp-horary-chart/block.json
+msgctxt "block description"
+msgid "Cast a Krishnamurti Paddhati horary chart, also called Prashna, from a number between 1 and 249 given by the querent plus the moment and place the question is judged"
+msgstr ""
+
+#: blocks/generated/cast-love-spread/block.json
+msgctxt "block title"
+msgid "Love Spread (5 Cards)"
+msgstr ""
+
+#: blocks/generated/cast-love-spread/block.json
+msgctxt "block description"
+msgid "Perform a specialized 5-card relationship tarot spread analyzing romantic connections, emotional dynamics, and partnership potential"
+msgstr ""
+
+#: blocks/generated/cast-reading/block.json
+msgctxt "block title"
+msgid "Cast an I-Ching Reading"
+msgstr ""
+
+#: blocks/generated/cast-reading/block.json
+msgctxt "block description"
+msgid "Generate an authentic I-Ching reading using the traditional three-coin casting method"
+msgstr ""
+
+#: blocks/generated/cast-three-card/block.json
+msgctxt "block title"
+msgid "Three-Card Spread (Tarot)"
+msgstr ""
+
+#: blocks/generated/cast-three-card/block.json
+msgctxt "block description"
+msgid "Perform the classic three-card tarot spread revealing Past (what led to this situation), Present (current energy and circumstances), and Future (likely outcome if current path continues)"
+msgstr ""
+
+#: blocks/generated/check-kalsarpa-dosha/block.json
+msgctxt "block title"
+msgid "Kalsarpa Dosha (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/check-kalsarpa-dosha/block.json
+msgctxt "block description"
+msgid "Detect Kalsarpa dosha (Kalsarpa yoga) when all 7 planets are hemmed between Rahu-Ketu axis"
+msgstr ""
+
+#: blocks/generated/check-karmic-debt/block.json
+msgctxt "block title"
+msgid "Karmic Debt Numbers (Numerology)"
+msgstr ""
+
+#: blocks/generated/check-karmic-debt/block.json
+msgctxt "block description"
+msgid "Past life challenges (13, 14, 16, 19)"
+msgstr ""
+
+#: blocks/generated/check-sadhesati/block.json
+msgctxt "block title"
+msgid "Sadhesati (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/check-sadhesati/block.json
+msgctxt "block description"
+msgid "Sade Sati (Saturn Transit)"
+msgstr ""
+
+#: blocks/generated/detect-aspect-patterns/block.json
+msgctxt "block title"
+msgid "Aspect Patterns (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/detect-aspect-patterns/block.json
+msgctxt "block description"
+msgid "Grand Trine, Kite, T-Square, Grand Cross, Yod, Mystic Rectangle, Stellium"
+msgstr ""
+
+#: blocks/generated/detect-yogas/block.json
+msgctxt "block title"
+msgid "Classical Vedic Yogas in a Birth Chart (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/detect-yogas/block.json
+msgctxt "block description"
+msgid "Chart-driven detection of 44 classical Vedic yogas"
+msgstr ""
+
+#: blocks/generated/draw-cards/block.json
+msgctxt "block title"
+msgid "Draw Random Tarot Cards"
+msgstr ""
+
+#: blocks/generated/draw-cards/block.json
+msgctxt "block description"
+msgid "Draw 1-78 tarot cards from the complete Rider-Waite-Smith deck with seeded reproducibility for consistent personalized readings"
+msgstr ""
+
+#: blocks/generated/forecast-solar-return/block.json
+msgctxt "block title"
+msgid "Solar Return Chart (Forecast)"
+msgstr ""
+
+#: blocks/generated/forecast-solar-return/block.json
+msgctxt "block description"
+msgid "Annual birthday forecast chart for a single subject"
+msgstr ""
+
+#: blocks/generated/generate-asteroids/block.json
+msgctxt "block title"
+msgid "Asteroid Goddesses (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/generate-asteroids/block.json
+msgctxt "block description"
+msgid "Ceres, Pallas, Juno, and Vesta natal positions"
+msgstr ""
+
+#: blocks/generated/generate-astrocartography/block.json
+msgctxt "block title"
+msgid "Astrocartography Map (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/generate-astrocartography/block.json
+msgctxt "block description"
+msgid "planetary lines and relocation calculator"
+msgstr ""
+
+#: blocks/generated/generate-bodygraph/block.json
+msgctxt "block title"
+msgid "Human Design Bodygraph"
+msgstr ""
+
+#: blocks/generated/generate-bodygraph/block.json
+msgctxt "block description"
+msgid "Type, authority, profile, centers, channels, gates"
+msgstr ""
+
+#: blocks/generated/generate-divisional-chart/block.json
+msgctxt "block title"
+msgid "Divisional Chart (Varga)"
+msgstr ""
+
+#: blocks/generated/generate-divisional-chart/block.json
+msgctxt "block description"
+msgid "Calculate any Vedic divisional chart (Varga) from D2 Hora to D60 Shashtiamsa"
+msgstr ""
+
+#: blocks/generated/generate-fixed-stars/block.json
+msgctxt "block title"
+msgid "Fixed Stars and Star Conjunctions (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/generate-fixed-stars/block.json
+msgctxt "block description"
+msgid "Regulus, Spica, Algol natal report"
+msgstr ""
+
+#: blocks/generated/generate-lilith/block.json
+msgctxt "block title"
+msgid "Black Moon Lilith (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/generate-lilith/block.json
+msgctxt "block description"
+msgid "mean and true lunar apogee in the natal chart"
+msgstr ""
+
+#: blocks/generated/generate-local-space/block.json
+msgctxt "block title"
+msgid "Local Space Astrology Map (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/generate-local-space/block.json
+msgctxt "block description"
+msgid "Directional planetary compass lines"
+msgstr ""
+
+#: blocks/generated/generate-lunar-return/block.json
+msgctxt "block title"
+msgid "Lunar Return Chart (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/generate-lunar-return/block.json
+msgctxt "block description"
+msgid "Monthly emotional forecast with Moon cycle chart"
+msgstr ""
+
+#: blocks/generated/generate-navamsa/block.json
+msgctxt "block title"
+msgid "Navamsa Chart (D9)"
+msgstr ""
+
+#: blocks/generated/generate-navamsa/block.json
+msgctxt "block description"
+msgid "Marriage Compatibility Calculator"
+msgstr ""
+
+#: blocks/generated/generate-planetary-return/block.json
+msgctxt "block title"
+msgid "Planetary Return Chart (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/generate-planetary-return/block.json
+msgctxt "block description"
+msgid "Saturn return, Jupiter return, and inner planet cycles"
+msgstr ""
+
+#: blocks/generated/generate-profections/block.json
+msgctxt "block title"
+msgid "Annual Profections (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/generate-profections/block.json
+msgctxt "block description"
+msgid "lord of the year and yearly time lord by age"
+msgstr ""
+
+#: blocks/generated/generate-progressions/block.json
+msgctxt "block title"
+msgid "Secondary Progressions (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/generate-progressions/block.json
+msgctxt "block description"
+msgid "progressed chart, progressed Sun and Moon"
+msgstr ""
+
+#: blocks/generated/generate-relocation-chart/block.json
+msgctxt "block title"
+msgid "Relocation Chart (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/generate-relocation-chart/block.json
+msgctxt "block description"
+msgid "Relocated birth chart calculator with shifted houses and angles"
+msgstr ""
+
+#: blocks/generated/generate-solar-arc/block.json
+msgctxt "block title"
+msgid "Solar Arc Directions (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/generate-solar-arc/block.json
+msgctxt "block description"
+msgid "directed chart at one degree per year"
+msgstr ""
+
+#: blocks/generated/generate-solar-return/block.json
+msgctxt "block title"
+msgid "Solar Return Chart (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/generate-solar-return/block.json
+msgctxt "block description"
+msgid "Annual birthday forecast with relocated chart"
+msgstr ""
+
+#: blocks/generated/get-avastha/block.json
+msgctxt "block title"
+msgid "Avastha by ID (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-avastha/block.json
+msgctxt "block description"
+msgid "Look up a single avastha state by its slug, which is the lowercased state name a birth chart returns in `awastha`, `jagradadi` or `deeptadi`"
+msgstr ""
+
+#: blocks/generated/get-basic-panchang/block.json
+msgctxt "block title"
+msgid "Basic Panchang (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-basic-panchang/block.json
+msgctxt "block description"
+msgid "Tithi Nakshatra Yoga Karana Calculator"
+msgstr ""
+
+#: blocks/generated/get-birthstones/block.json
+msgctxt "block title"
+msgid "Birthstone Crystals by Month"
+msgstr ""
+
+#: blocks/generated/get-birthstones/block.json
+msgctxt "block description"
+msgid "Get the traditional birthstone crystals for a given birth month"
+msgstr ""
+
+#: blocks/generated/get-card/block.json
+msgctxt "block title"
+msgid "Detailed Tarot Card Information"
+msgstr ""
+
+#: blocks/generated/get-card/block.json
+msgctxt "block description"
+msgid "Retrieve comprehensive details for a specific tarot card from the traditional Rider-Waite-Smith deck including complete upright meanings (card drawn normally) and reversed meanings (inverted/upside down interpretations for nuanced guidance)"
+msgstr ""
+
+#: blocks/generated/get-center/block.json
+msgctxt "block title"
+msgid "Human Design Center by ID"
+msgstr ""
+
+#: blocks/generated/get-center/block.json
+msgctxt "block description"
+msgid "Look up the static reference data for one of the nine Human Design centers by its id: the display name, whether it is a motor or awareness center, and what it means both defined and undefined"
+msgstr ""
+
+#: blocks/generated/get-choghadiya/block.json
+msgctxt "block title"
+msgid "Choghadiya (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-choghadiya/block.json
+msgctxt "block description"
+msgid "8 Muhurta divisions of day and night"
+msgstr ""
+
+#: blocks/generated/get-cities-by-country/block.json
+msgctxt "block title"
+msgid "Cities in a Country (Location)"
+msgstr ""
+
+#: blocks/generated/get-cities-by-country/block.json
+msgctxt "block description"
+msgid "Geocoding directory sorted by population"
+msgstr ""
+
+#: blocks/generated/get-cities-by-country/block.json
+#: blocks/generated/list-countries/block.json
+#: blocks/generated/search-cities/block.json
+msgctxt "block keyword"
+msgid "location"
+msgstr ""
+
+#: blocks/generated/get-compound-number/block.json
+msgctxt "block title"
+msgid "Compound Number Meaning (Numerology)"
+msgstr ""
+
+#: blocks/generated/get-compound-number/block.json
+msgctxt "block description"
+msgid "Cheiro Chaldean interpretation 10 to 52"
+msgstr ""
+
+#: blocks/generated/get-critical-days/block.json
+msgctxt "block title"
+msgid "Critical Days (Biorhythm)"
+msgstr ""
+
+#: blocks/generated/get-critical-days/block.json
+msgctxt "block description"
+msgid "Zero crossing detection for any date range"
+msgstr ""
+
+#: blocks/generated/get-crystal-pairings/block.json
+msgctxt "block title"
+msgid "Crystal Pairings"
+msgstr ""
+
+#: blocks/generated/get-crystal-pairings/block.json
+msgctxt "block description"
+msgid "Get crystals that pair well with a given crystal for enhanced healing combinations"
+msgstr ""
+
+#: blocks/generated/get-crystal/block.json
+msgctxt "block title"
+msgid "Crystal Healing Properties"
+msgstr ""
+
+#: blocks/generated/get-crystal/block.json
+msgctxt "block description"
+msgid "Get complete healing properties and metaphysical data for a specific crystal or gemstone"
+msgstr ""
+
+#: blocks/generated/get-crystals-by-chakra/block.json
+msgctxt "block title"
+msgid "Crystals by Chakra"
+msgstr ""
+
+#: blocks/generated/get-crystals-by-chakra/block.json
+msgctxt "block description"
+msgid "Get healing crystals and gemstones that resonate with a specific chakra energy center"
+msgstr ""
+
+#: blocks/generated/get-crystals-by-element/block.json
+msgctxt "block title"
+msgid "Crystals by Element"
+msgstr ""
+
+#: blocks/generated/get-crystals-by-element/block.json
+msgctxt "block description"
+msgid "Get healing crystals and gemstones associated with a specific natural element"
+msgstr ""
+
+#: blocks/generated/get-current-dasha/block.json
+msgctxt "block title"
+msgid "Current Mahadasha (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-current-dasha/block.json
+msgctxt "block description"
+msgid "Calculate all five running Vimshottari Dasha levels (Mahadasha, Antardasha, Pratyantardasha, Sookshma, Prana) with remaining time in each"
+msgstr ""
+
+#: blocks/generated/get-daily-angel-number/block.json
+msgctxt "block title"
+msgid "Daily Angel Number"
+msgstr ""
+
+#: blocks/generated/get-daily-angel-number/block.json
+msgctxt "block description"
+msgid "Get the angel number of the day with full meaning and interpretation"
+msgstr ""
+
+#: blocks/generated/get-daily-biorhythm/block.json
+msgctxt "block title"
+msgid "Daily Biorhythm"
+msgstr ""
+
+#: blocks/generated/get-daily-biorhythm/block.json
+msgctxt "block description"
+msgid "Seeded reading for daily check-in features"
+msgstr ""
+
+#: blocks/generated/get-daily-crystal/block.json
+msgctxt "block title"
+msgid "Daily Crystal"
+msgstr ""
+
+#: blocks/generated/get-daily-crystal/block.json
+msgctxt "block description"
+msgid "Get the crystal of the day as a discovery teaser"
+msgstr ""
+
+#: blocks/generated/get-daily-dream-symbol/block.json
+msgctxt "block title"
+msgid "Daily Dream Symbol"
+msgstr ""
+
+#: blocks/generated/get-daily-dream-symbol/block.json
+msgctxt "block description"
+msgid "Receive a single dream symbol for daily reflection and subconscious exploration"
+msgstr ""
+
+#: blocks/generated/get-daily-dream-symbol/block.json
+#: blocks/generated/get-dream-symbol/block.json
+#: blocks/generated/get-random-symbols/block.json
+#: blocks/generated/get-symbol-letter-counts/block.json
+#: blocks/generated/search-dream-symbols/block.json
+msgctxt "block keyword"
+msgid "dream interpretation"
+msgstr ""
+
+#: blocks/generated/get-daily-hexagram/block.json
+msgctxt "block title"
+msgid "Daily I-Ching Hexagram"
+msgstr ""
+
+#: blocks/generated/get-daily-hexagram/block.json
+msgctxt "block description"
+msgid "Receive a daily I-Ching hexagram for guidance and reflection"
+msgstr ""
+
+#: blocks/generated/get-daily-number/block.json
+msgctxt "block title"
+msgid "Daily Numerology Number"
+msgstr ""
+
+#: blocks/generated/get-daily-number/block.json
+msgctxt "block description"
+msgid "Number of the Day with interpretation"
+msgstr ""
+
+#: blocks/generated/get-dream-symbol/block.json
+msgctxt "block title"
+msgid "Dream Symbol Details"
+msgstr ""
+
+#: blocks/generated/get-dream-symbol/block.json
+msgctxt "block description"
+msgid "Get the complete dream interpretation for a specific symbol"
+msgstr ""
+
+#: blocks/generated/get-ecliptic-crossings/block.json
+msgctxt "block title"
+msgid "Ecliptic Crossings (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-ecliptic-crossings/block.json
+msgctxt "block description"
+msgid "When planets cross the ecliptic plane"
+msgstr ""
+
+#: blocks/generated/get-forecast/block.json
+msgctxt "block title"
+msgid "Biorhythm Forecast"
+msgstr ""
+
+#: blocks/generated/get-forecast/block.json
+msgctxt "block description"
+msgid "Multi-day cycle predictions with best and worst days"
+msgstr ""
+
+#: blocks/generated/get-gate/block.json
+msgctxt "block title"
+msgid "Human Design Gate by Number"
+msgstr ""
+
+#: blocks/generated/get-gate/block.json
+msgctxt "block description"
+msgid "Look up the static reference data for a Human Design gate by its number from 1 to 64: the gate keynote name, the center it sits in, the matching I-Ching hexagram, and the gates that form a channel with it"
+msgstr ""
+
+#: blocks/generated/get-heliacal-visibility/block.json
+msgctxt "block title"
+msgid "Heliacal Rising and Setting (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-heliacal-visibility/block.json
+msgctxt "block description"
+msgid "Calculate heliacal rising (udaya) and setting (asta) of the six visible grahas for any date and place, by the Surya Siddhanta rule"
+msgstr ""
+
+#: blocks/generated/get-hexagram/block.json
+msgctxt "block title"
+msgid "Hexagram by Number (I Ching)"
+msgstr ""
+
+#: blocks/generated/get-hexagram/block.json
+msgctxt "block description"
+msgid "Retrieve complete I-Ching hexagram details by King Wen sequence number (1-64)"
+msgstr ""
+
+#: blocks/generated/get-hora/block.json
+msgctxt "block title"
+msgid "Hora (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-hora/block.json
+msgctxt "block description"
+msgid "24 Planetary Hours (12 day + 12 night)"
+msgstr ""
+
+#: blocks/generated/get-kp-ayanamsa/block.json
+msgctxt "block title"
+msgid "KP-Newcomb Ayanamsa (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-kp-ayanamsa/block.json
+msgctxt "block description"
+msgid "Dynamic daily calculation"
+msgstr ""
+
+#: blocks/generated/get-kp-cusps/block.json
+msgctxt "block title"
+msgid "KP Placidus House Cusps (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-kp-cusps/block.json
+msgctxt "block description"
+msgid "Calculate unequal Placidus house cusps with ruling sign-lord, nakshatra-lord, and sub-lord for each cusp"
+msgstr ""
+
+#: blocks/generated/get-kp-planets-interval/block.json
+msgctxt "block title"
+msgid "KP Planets at Time Intervals (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-kp-planets-interval/block.json
+msgctxt "block description"
+msgid "Calculate positions of all 9 planets (Sun through Saturn, Rahu, Ketu) at regular time intervals with full KP hierarchy: sign lord, star lord, sublord, and sub-sublord"
+msgstr ""
+
+#: blocks/generated/get-kp-planets/block.json
+msgctxt "block title"
+msgid "KP Planetary Positions (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-kp-planets/block.json
+msgctxt "block description"
+msgid "Get planetary positions with detailed KP star-lord and sub-lord calculations for precise event timing and significator analysis"
+msgstr ""
+
+#: blocks/generated/get-kp-rasi-changes/block.json
+msgctxt "block title"
+msgid "KP Rasi Ingress Times (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-kp-rasi-changes/block.json
+msgctxt "block description"
+msgid "Track when planets enter new zodiac signs (rasi) with precise ingress timestamps"
+msgstr ""
+
+#: blocks/generated/get-kp-ruling-interval/block.json
+msgctxt "block title"
+msgid "KP Ruling Planets with Significators (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-kp-ruling-interval/block.json
+msgctxt "block description"
+msgid "Calculate ruling planets and their KP significators at regular time intervals using Krishnamurti Paddhati prashna (horary) astrology"
+msgstr ""
+
+#: blocks/generated/get-kp-ruling-planets/block.json
+msgctxt "block title"
+msgid "KP Ruling Planets with Optional Significators (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-kp-ruling-planets/block.json
+msgctxt "block description"
+msgid "Calculate the 5 ruling planets at any moment using Krishnamurti Paddhati horary astrology"
+msgstr ""
+
+#: blocks/generated/get-kp-sublord-changes/block.json
+msgctxt "block title"
+msgid "KP Sublord Changes (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-kp-sublord-changes/block.json
+msgctxt "block description"
+msgid "Track when planets cross KP sublord boundaries (1-249 divisions) for precise Krishnamurti Paddhati event timing"
+msgstr ""
+
+#: blocks/generated/get-lunar-aspects/block.json
+msgctxt "block title"
+msgid "Monthly Lunar Aspects (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-lunar-aspects/block.json
+msgctxt "block description"
+msgid "Moon aspect events with all planets for a month"
+msgstr ""
+
+#: blocks/generated/get-major-dashas/block.json
+msgctxt "block title"
+msgid "Mahadasha Periods (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-major-dashas/block.json
+msgctxt "block description"
+msgid "Returns complete Vimshottari Dasha cycle starting from birth"
+msgstr ""
+
+#: blocks/generated/get-monthly-aspects/block.json
+msgctxt "block title"
+msgid "Monthly Planetary Aspects (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-monthly-aspects/block.json
+msgctxt "block description"
+msgid "Major and minor aspect events for a month"
+msgstr ""
+
+#: blocks/generated/get-monthly-ephemeris/block.json
+msgctxt "block title"
+msgid "Monthly Ephemeris (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-monthly-ephemeris/block.json
+msgctxt "block description"
+msgid "Daily sidereal planetary positions for a month"
+msgstr ""
+
+#: blocks/generated/get-monthly-horoscope/block.json
+msgctxt "block title"
+msgid "Monthly Horoscope by Zodiac Sign (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/get-monthly-horoscope/block.json
+msgctxt "block description"
+msgid "30-day transit forecast with key dates"
+msgstr ""
+
+#: blocks/generated/get-monthly-parallels/block.json
+msgctxt "block title"
+msgid "Monthly Declination Parallels (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-monthly-parallels/block.json
+msgctxt "block description"
+msgid "Parallel and contraparallel events for a month"
+msgstr ""
+
+#: blocks/generated/get-monthly-transits/block.json
+msgctxt "block title"
+msgid "Monthly Transit (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-monthly-transits/block.json
+msgctxt "block description"
+msgid "Planetary sign changes for an entire month"
+msgstr ""
+
+#: blocks/generated/get-monthly-tropical-ephemeris/block.json
+msgctxt "block title"
+msgid "Monthly Ephemeris (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/get-monthly-tropical-ephemeris/block.json
+msgctxt "block description"
+msgid "Daily tropical planetary positions for a month"
+msgstr ""
+
+#: blocks/generated/get-moon-calendar/block.json
+msgctxt "block title"
+msgid "Lunar Calendar (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/get-moon-calendar/block.json
+msgctxt "block description"
+msgid "Moon phases for entire month"
+msgstr ""
+
+#: blocks/generated/get-nakshatra/block.json
+msgctxt "block title"
+msgid "Nakshatra by ID (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-nakshatra/block.json
+msgctxt "block description"
+msgid "Get detailed information for a single nakshatra (lunar mansion) by its ID slug"
+msgstr ""
+
+#: blocks/generated/get-number-meaning/block.json
+msgctxt "block title"
+msgid "Number Meaning (Numerology)"
+msgstr ""
+
+#: blocks/generated/get-number-meaning/block.json
+msgctxt "block description"
+msgid "Interpretation for any number 1-9, 11, 22, 33"
+msgstr ""
+
+#: blocks/generated/get-phases/block.json
+msgctxt "block title"
+msgid "Phase Info (Biorhythm)"
+msgstr ""
+
+#: blocks/generated/get-phases/block.json
+msgctxt "block description"
+msgid "Lightweight cycle status for dashboards and widgets"
+msgstr ""
+
+#: blocks/generated/get-planet-meaning/block.json
+msgctxt "block title"
+msgid "Planet Meaning Details (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/get-planet-meaning/block.json
+msgctxt "block description"
+msgid "Complete astrology planet interpretation"
+msgstr ""
+
+#: blocks/generated/get-planet-positions/block.json
+msgctxt "block title"
+msgid "Planetary Positions (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-planet-positions/block.json
+msgctxt "block description"
+msgid "Get simplified planetary positions (graha positions) for all 9 planets (Sun through Ketu) plus Ascendant (Lagna)"
+msgstr ""
+
+#: blocks/generated/get-planetary-positions/block.json
+msgctxt "block title"
+msgid "Planetary Positions (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/get-planetary-positions/block.json
+msgctxt "block description"
+msgid "Ephemeris calculator for all planets"
+msgstr ""
+
+#: blocks/generated/get-prana-dashas/block.json
+msgctxt "block title"
+msgid "Prana Dashas (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-prana-dashas/block.json
+msgctxt "block description"
+msgid "Returns the 9 Prana periods inside a chosen Sookshma dasha, the fifth and finest level of the Vimshottari dasha hierarchy"
+msgstr ""
+
+#: blocks/generated/get-pratyantardashas/block.json
+msgctxt "block title"
+msgid "Pratyantardashas (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-pratyantardashas/block.json
+msgctxt "block description"
+msgid "Returns the 9 Pratyantardasha (antara) periods inside a chosen Antardasha, the third level of the Vimshottari dasha hierarchy"
+msgstr ""
+
+#: blocks/generated/get-random-crystal/block.json
+msgctxt "block title"
+msgid "Random Crystal"
+msgstr ""
+
+#: blocks/generated/get-random-crystal/block.json
+msgctxt "block description"
+msgid "Get a randomly selected healing crystal as a discovery teaser"
+msgstr ""
+
+#: blocks/generated/get-random-hexagram/block.json
+msgctxt "block title"
+msgid "Random Hexagram (I Ching)"
+msgstr ""
+
+#: blocks/generated/get-random-hexagram/block.json
+msgctxt "block description"
+msgid "Receive a random I-Ching hexagram with full interpretation"
+msgstr ""
+
+#: blocks/generated/get-random-symbols/block.json
+msgctxt "block title"
+msgid "Random Dream Symbols"
+msgstr ""
+
+#: blocks/generated/get-random-symbols/block.json
+msgctxt "block description"
+msgid "Discover random dream symbols and their interpretations for daily dream insights and exploration"
+msgstr ""
+
+#: blocks/generated/get-rashi/block.json
+msgctxt "block title"
+msgid "Rashi by ID (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-rashi/block.json
+msgctxt "block description"
+msgid "Vedic Zodiac Sign Detail"
+msgstr ""
+
+#: blocks/generated/get-sookshma-dashas/block.json
+msgctxt "block title"
+msgid "Sookshma Dashas (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-sookshma-dashas/block.json
+msgctxt "block description"
+msgid "Returns the 9 Sookshma periods inside a chosen Pratyantardasha, the fourth and finest level of the Vimshottari dasha hierarchy"
+msgstr ""
+
+#: blocks/generated/get-sub-dashas/block.json
+msgctxt "block title"
+msgid "Antardashas (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-sub-dashas/block.json
+msgctxt "block description"
+msgid "Returns 9 Antardasha sub-periods within a Mahadasha"
+msgstr ""
+
+#: blocks/generated/get-symbol-letter-counts/block.json
+msgctxt "block title"
+msgid "Symbol Counts by Letter (Dream Interpretation)"
+msgstr ""
+
+#: blocks/generated/get-symbol-letter-counts/block.json
+msgctxt "block description"
+msgid "Get the count of dream symbols available for each letter A-Z"
+msgstr ""
+
+#: blocks/generated/get-trigram/block.json
+msgctxt "block title"
+msgid "Trigram by Number or Name (I Ching)"
+msgstr ""
+
+#: blocks/generated/get-trigram/block.json
+msgctxt "block description"
+msgid "Retrieve a specific I-Ching trigram by its number (1-8) or English name (Heaven, Earth, Thunder, Wind, Water, Fire, Mountain, Lake)"
+msgstr ""
+
+#: blocks/generated/get-upagraha-positions/block.json
+msgctxt "block title"
+msgid "Upagraha (Sub-planet) Positions (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-upagraha-positions/block.json
+msgctxt "block description"
+msgid "Calculate all 11 Vedic upagraha (sub-planet) positions per Brihat Parashara Hora Shastra (BPHS)"
+msgstr ""
+
+#: blocks/generated/get-upcoming-moon-phases/block.json
+msgctxt "block title"
+msgid "Upcoming Moon Phases (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/get-upcoming-moon-phases/block.json
+msgctxt "block description"
+msgid "Next new moon, full moon, quarters"
+msgstr ""
+
+#: blocks/generated/get-usage-stats/block.json
+msgctxt "block title"
+msgid "Usage Statistics"
+msgstr ""
+
+#: blocks/generated/get-usage-stats/block.json
+msgctxt "block description"
+msgid "Returns current usage and plan limits for your subscription."
+msgstr ""
+
+#: blocks/generated/get-weekly-horoscope/block.json
+msgctxt "block title"
+msgid "Weekly Horoscope by Zodiac Sign (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/get-weekly-horoscope/block.json
+msgctxt "block description"
+msgid "Get weekly horoscope for any zodiac sign"
+msgstr ""
+
+#: blocks/generated/get-yoga/block.json
+msgctxt "block title"
+msgid "Yoga Details by ID (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/get-yoga/block.json
+msgctxt "block description"
+msgid "Vedic Yoga Glossary Entry"
+msgstr ""
+
+#: blocks/generated/get-zodiac-sign/block.json
+msgctxt "block title"
+msgid "Zodiac Sign Details (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/get-zodiac-sign/block.json
+msgctxt "block description"
+msgid "Complete astrology sign profile with personality traits"
+msgstr ""
+
+#: blocks/generated/list-angel-numbers/block.json
+msgctxt "block title"
+msgid "Angel Numbers"
+msgstr ""
+
+#: blocks/generated/list-angel-numbers/block.json
+msgctxt "block description"
+msgid "Retrieve the complete database of angel numbers with summary information"
+msgstr ""
+
+#: blocks/generated/list-avasthas/block.json
+msgctxt "block title"
+msgid "Avastha States (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/list-avasthas/block.json
+msgctxt "block description"
+msgid "Planetary State Reference"
+msgstr ""
+
+#: blocks/generated/list-cards/block.json
+msgctxt "block title"
+msgid "Tarot Cards"
+msgstr ""
+
+#: blocks/generated/list-cards/block.json
+msgctxt "block description"
+msgid "Retrieve the complete Rider-Waite-Smith tarot deck of 78 cards: 22 Major Arcana (numbered 0-21, representing life lessons, spiritual themes, and karmic influences like The Fool, Death, The Tower) plus 56 Minor Arcana (4 suits × 14 cards each for daily situations and practical matters)"
+msgstr ""
+
+#: blocks/generated/list-countries/block.json
+msgctxt "block title"
+msgid "Countries (Location)"
+msgstr ""
+
+#: blocks/generated/list-countries/block.json
+msgctxt "block description"
+msgid "ISO codes and city coverage"
+msgstr ""
+
+#: blocks/generated/list-crystal-colors/block.json
+msgctxt "block title"
+msgid "Crystal Colors"
+msgstr ""
+
+#: blocks/generated/list-crystal-colors/block.json
+msgctxt "block description"
+msgid "List all unique crystal colors available in the database"
+msgstr ""
+
+#: blocks/generated/list-crystal-planets/block.json
+msgctxt "block title"
+msgid "Crystal Planets"
+msgstr ""
+
+#: blocks/generated/list-crystal-planets/block.json
+msgctxt "block description"
+msgid "List all unique planetary associations available in the database"
+msgstr ""
+
+#: blocks/generated/list-crystals/block.json
+msgctxt "block title"
+msgid "Crystals"
+msgstr ""
+
+#: blocks/generated/list-crystals/block.json
+msgctxt "block description"
+msgid "Retrieve healing crystals and gemstones with pagination"
+msgstr ""
+
+#: blocks/generated/list-hexagrams/block.json
+msgctxt "block title"
+msgid "Hexagrams (I Ching)"
+msgstr ""
+
+#: blocks/generated/list-hexagrams/block.json
+msgctxt "block description"
+msgid "Browse all 64 I-Ching hexagrams from the Book of Changes with their Chinese names, English translations, and trigram compositions"
+msgstr ""
+
+#: blocks/generated/list-languages/block.json
+msgctxt "block title"
+msgid "Supported Response Languages"
+msgstr ""
+
+#: blocks/generated/list-languages/block.json
+msgctxt "block description"
+msgid "Returns the language codes accepted by the `lang` query parameter on every i18n-aware endpoint"
+msgstr ""
+
+#: blocks/generated/list-nakshatras/block.json
+msgctxt "block title"
+msgid "Nakshatras (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/list-nakshatras/block.json
+msgctxt "block description"
+msgid "Lunar Mansions Reference"
+msgstr ""
+
+#: blocks/generated/list-planet-meanings/block.json
+msgctxt "block title"
+msgid "Planet Meanings (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/list-planet-meanings/block.json
+msgctxt "block description"
+msgid "Complete astrology planet interpretations list"
+msgstr ""
+
+#: blocks/generated/list-rashis/block.json
+msgctxt "block title"
+msgid "Rashis (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/list-rashis/block.json
+msgctxt "block description"
+msgid "Vedic Zodiac Signs Reference"
+msgstr ""
+
+#: blocks/generated/list-trigrams/block.json
+msgctxt "block title"
+msgid "Trigrams (I Ching)"
+msgstr ""
+
+#: blocks/generated/list-trigrams/block.json
+msgctxt "block description"
+msgid "Retrieve all 8 I-Ching trigrams (bagua) - the fundamental building blocks of hexagrams"
+msgstr ""
+
+#: blocks/generated/list-yogas/block.json
+msgctxt "block title"
+msgid "Planetary Yogas (Vedic Astrology)"
+msgstr ""
+
+#: blocks/generated/list-yogas/block.json
+msgctxt "block description"
+msgid "301 entry Vedic Yoga Glossary"
+msgstr ""
+
+#: blocks/generated/list-zodiac-signs/block.json
+msgctxt "block title"
+msgid "Zodiac Signs (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/list-zodiac-signs/block.json
+msgctxt "block description"
+msgid "Complete zodiac signs list with dates and elements"
+msgstr ""
+
+#: blocks/generated/lookup-hexagram/block.json
+msgctxt "block title"
+msgid "Hexagram by Line Pattern (I Ching)"
+msgstr ""
+
+#: blocks/generated/lookup-hexagram/block.json
+msgctxt "block description"
+msgid "Find an I-Ching hexagram by its binary line pattern"
+msgstr ""
+
+#: blocks/generated/numerology/block.json
+msgctxt "block description"
+msgid "Life path, expression, and soul urge from a name and date."
+msgstr ""
+
+#: blocks/generated/search-cities/block.json
+msgctxt "block title"
+msgid "Search Cities Worldwide (Location)"
+msgstr ""
+
+#: blocks/generated/search-cities/block.json
+msgctxt "block description"
+msgid "Geocoding autocomplete with coordinates and timezone"
+msgstr ""
+
+#: blocks/generated/search-crystals/block.json
+msgctxt "block title"
+msgid "Search Crystals"
+msgstr ""
+
+#: blocks/generated/search-crystals/block.json
+msgctxt "block description"
+msgid "Search for healing crystals by keyword or name"
+msgstr ""
+
+#: blocks/generated/search-dream-symbols/block.json
+msgctxt "block title"
+msgid "Search Dream Symbols"
+msgstr ""
+
+#: blocks/generated/search-dream-symbols/block.json
+msgctxt "block description"
+msgid "Browse and search our complete dream interpretation dictionary containing 2,000+ dream symbols with psychological meanings"
+msgstr ""
+
+#: blocks/generated/tarot/block.json
+msgctxt "block title"
+msgid "Tarot Card"
+msgstr ""
+
+#: blocks/generated/tarot/block.json
+msgctxt "block description"
+msgid "Single card, three card, or Celtic Cross spreads."
 msgstr ""

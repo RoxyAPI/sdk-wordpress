@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use RoxyAPI\Generated\ComponentMap;
 use RoxyAPI\Support\ApiKey;
 use RoxyAPI\Support\Encryption;
 use RoxyAPI\Support\Theming;
@@ -33,7 +34,7 @@ class SettingsFields {
 	 */
 	public static function input_kses_allowed(): array {
 		return array(
-			'input'  => array(
+			'input'    => array(
 				'type'         => true,
 				'id'           => true,
 				'name'         => true,
@@ -47,18 +48,25 @@ class SettingsFields {
 				'max'          => true,
 				'step'         => true,
 				'required'     => true,
+				'list'         => true,
 			),
-			'label'  => array(
+			// A `<datalist>` left out of this map is stripped without a word, and
+			// the field it belongs to still renders, so the suggestions simply
+			// never appear. Kept beside `input` because `list` above is the half
+			// that points at it and neither half works alone.
+			'datalist' => array( 'id' => true ),
+			'option'   => array( 'value' => true ),
+			'label'    => array(
 				'class' => true,
 				'for'   => true,
 			),
-			'span'   => array(
+			'span'     => array(
 				'class'       => true,
 				'style'       => true,
 				'aria-hidden' => true,
 			),
-			'div'    => array( 'class' => true ),
-			'button' => array(
+			'div'      => array( 'class' => true ),
+			'button'   => array(
 				'type'  => true,
 				'name'  => true,
 				'value' => true,
@@ -316,14 +324,26 @@ class SettingsFields {
 	 * purpose: it is machinery, posted verbatim and matched against the
 	 * component, so a translated example would be an example that does nothing.
 	 *
+	 * The suggestion list is the same reason the field carries one at all. A
+	 * name is matched against the block names the components publish, and one
+	 * that matches none is dropped, so a translated title or a near miss hides
+	 * nothing and looks exactly like a setting that does not work. The names
+	 * come from the pinned bundle through {@see ComponentMap::parts()}, so the
+	 * list cannot drift from what the site actually renders.
+	 *
 	 * @return string
 	 */
 	public static function hide_sections_html(): string {
 		$opts    = SettingsSchema::get_option();
 		$current = (string) ( $opts['hide_sections'] ?? '' );
+		$options = '';
+		foreach ( ComponentMap::parts() as $name ) {
+			$options .= sprintf( '<option value="%s"></option>', esc_attr( $name ) );
+		}
 		return sprintf(
-			'<input type="text" id="roxyapi_hide_sections" name="roxyapi_settings[hide_sections]" value="%s" class="regular-text" placeholder="patterns" />',
-			esc_attr( $current )
+			'<input type="text" id="roxyapi_hide_sections" name="roxyapi_settings[hide_sections]" value="%s" class="regular-text" placeholder="patterns" list="roxyapi_hide_sections_names" autocomplete="off" /><datalist id="roxyapi_hide_sections_names">%s</datalist>',
+			esc_attr( $current ),
+			$options
 		);
 	}
 
@@ -574,6 +594,16 @@ class SettingsFields {
 					$out[ $option_key ] = self::sanitize_encrypted_key( $input, $existing, $option_key, $input_key );
 					break;
 
+				case 'section_names':
+					if ( isset( $input[ $input_key ] ) ) {
+						$value              = sanitize_text_field( wp_unslash( $input[ $input_key ] ) );
+						$out[ $option_key ] = $value;
+						self::report_unknown_sections( $value );
+					} else {
+						$out[ $option_key ] = (string) ( $existing[ $option_key ] ?? $field['default'] ?? '' );
+					}
+					break;
+
 				case 'string':
 				default:
 					if ( isset( $input[ $input_key ] ) ) {
@@ -671,6 +701,54 @@ class SettingsFields {
 			return (string) ( $existing[ $option_key ] ?? '' );
 		}
 		return (string) $enc;
+	}
+
+	/**
+	 * Tell the site owner about `hide_sections` entries that name no block.
+	 *
+	 * The setting cannot report its own failure from the front end, because a
+	 * name that reaches nothing and a name whose block is already absent from
+	 * that reading both render the same page. Saving is the one moment the full
+	 * vocabulary is in hand, so it is the only place the difference can be
+	 * stated.
+	 *
+	 * Two kinds of entry land here and both are worth the same sentence: a
+	 * translated panel title, which never matches because the names are
+	 * machinery and do not follow the site language, and a name that is shaped
+	 * like one but is not published by the pinned bundle.
+	 *
+	 * The value is stored either way rather than silently corrected. An owner
+	 * who mistyped can see and repair what they wrote, and dropping it would
+	 * hand back an empty box with no clue what was rejected.
+	 *
+	 * @param string $value Raw comma-separated value as submitted.
+	 * @return void
+	 */
+	private static function report_unknown_sections( string $value ): void {
+		$typed = array_filter(
+			array_map( 'trim', explode( ',', strtolower( $value ) ) ),
+			static function ( $name ) {
+				return $name !== '';
+			}
+		);
+		if ( $typed === array() ) {
+			return;
+		}
+
+		$unknown = array_values( array_unique( array_diff( $typed, ComponentMap::parts() ) ) );
+		if ( $unknown === array() ) {
+			return;
+		}
+
+		self::add_settings_error_once(
+			'unknown_hide_sections',
+			sprintf(
+				/* translators: %s: comma-separated list of section names that matched no block. */
+				esc_html__( 'Hide sections does not recognise %s, so nothing is hidden for it. These are internal names and stay the same whatever language your site is in. Click the field to see every name this version supports.', 'roxyapi' ),
+				esc_html( implode( ', ', $unknown ) )
+			),
+			'warning'
+		);
 	}
 
 	/**

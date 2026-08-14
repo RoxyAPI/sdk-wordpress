@@ -349,6 +349,51 @@ if ( catalog ) {
 		}
 	}
 
+	// The recorded vocabulary has to be the pinned build's, because it is what
+	// the Hide sections field offers a site owner and what it checks their
+	// input against. Recording it rather than fetching at runtime is what lets
+	// the plugin do that with no network; checking it here is what stops the
+	// copy going stale, which would be worse than having none, because the
+	// field would report a name the bundle does publish as unrecognised.
+	if ( publishedParts.size > 0 ) {
+		const expected = [ ...publishedParts ]
+			.filter( ( name ) => /^[a-z][a-z0-9-]*$/.test( name ) )
+			.sort();
+		const recorded = Array.isArray( map?._meta?.published_parts )
+			? map._meta.published_parts
+			: null;
+		if ( recorded === null ) {
+			console.error(
+				'component-map.json is missing _meta.published_parts. Run `npm run fetch:ui` to record it from the pinned bundle.'
+			);
+			process.exit( 1 );
+		}
+		if ( recorded.join( ',' ) !== expected.join( ',' ) ) {
+			const missing = expected.filter(
+				( n ) => ! recorded.includes( n )
+			);
+			const stale = recorded.filter( ( n ) => ! expected.includes( n ) );
+			console.error(
+				`_meta.published_parts disagrees with ${ catalogUrl }: ${ missing.length } not recorded, ${ stale.length } no longer published.`
+			);
+			if ( missing.length > 0 ) {
+				console.error( `  not recorded: ${ missing.join( ', ' ) }` );
+			}
+			if ( stale.length > 0 ) {
+				console.error(
+					`  no longer published: ${ stale.join( ', ' ) }`
+				);
+			}
+			console.error(
+				'Run `npm run fetch:ui` to re-record it, then `npm run generate`.'
+			);
+			process.exit( 1 );
+		}
+		console.log(
+			`published parts OK: _meta.published_parts records all ${ expected.length } name(s) the pinned build publishes`
+		);
+	}
+
 	// No parts at all means the pin predates the `parts` array, added in
 	// 0.27.2. Say so rather than failing every documented name.
 	if ( publishedParts.size === 0 ) {

@@ -195,6 +195,8 @@ Yes. Readings pick up your theme font, and the RoxyAPI menu under Branding gives
 
 Yes, at two levels. The RoxyAPI menu under Display has Written readings, which removes the interpretation from every reading and leaves the charts, tables and values in place. Below it, Hide sections takes a comma-separated list of section names and removes those blocks outright, so entering `patterns` removes the chart patterns block wherever it appears on your site.
 
+Click the Hide sections field to see every name your version supports, and separate several with commas. The names are internal and stay the same whatever language your site runs in, so the title printed above a block is not one of them. If you enter a name that matches nothing, saving tells you which one, rather than leaving you with a setting that appears to have saved and quietly does nothing.
+
 Those two are separate on purpose. A chart pattern such as a T-square reports the figure, its element and modality, how tight it is and which planets form it. Those are measurements rather than prose, so turning off written readings leaves them in place.
 
 Both can be overridden on a single placement, so one page does not have to follow the whole site. Add `hide_sections="patterns"` to a shortcode and only that reading loses the block, or `hide_sections="none"` to keep a block on one page that the site setting hides everywhere else. `hide_readings="1"` and `hide_readings="0"` work the same way. A block placed in the editor follows the site setting.

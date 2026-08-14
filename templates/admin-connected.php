@@ -299,7 +299,7 @@ if ( $active_tab !== 'connect' ) {
 			<section class="roxyapi-section">
 				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Hide sections', 'roxyapi' ); ?></h2>
 				<p class="description">
-					<?php echo esc_html__( 'Take whole sections off every reading. Type the section names separated by commas. The common one is patterns, which removes the chart patterns block from a natal chart. Leave this blank to show everything, and note that a name matching no section is ignored.', 'roxyapi' ); ?>
+					<?php echo esc_html__( 'Take whole sections off every reading. Type one or more section names separated by commas, and spaces around them are fine. The common one is patterns, which removes the chart patterns block from a natal chart. These are internal names and stay the same whatever language your site is in, so the title printed on the page will not work. Click the field to see every name this version supports. Leave it blank to show everything.', 'roxyapi' ); ?>
 				</p>
 				<p class="roxyapi-attribution-row">
 					<?php echo wp_kses( $hide_sections_input, $kses_input ); ?>

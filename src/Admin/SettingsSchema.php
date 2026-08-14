@@ -82,7 +82,7 @@ class SettingsSchema {
 				'default' => false,
 			),
 			'hide_sections'     => array(
-				'type'    => 'string',
+				'type'    => 'section_names',
 				'default' => '',
 			),
 			'disclaimer_show'   => array(

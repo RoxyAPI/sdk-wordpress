@@ -1629,6 +1629,22 @@ function emitComponentMapPhp() {
 		} )
 		.join( '\n' );
 
+	// The vocabulary the `hide_sections` setting and attribute accept, carried
+	// through from the pinned bundle by bin/fetch-ui-bundle.mjs. Emitted so the
+	// admin field can name the legal values instead of leaving a site owner to
+	// discover that an unrecognised one is dropped in silence.
+	const partNames = ( componentMap._meta?.published_parts || [] ).filter(
+		( name ) => /^[a-z][a-z0-9-]*$/.test( name )
+	);
+	if ( partNames.length === 0 ) {
+		throw new Error(
+			'[generate] component-map: _meta.published_parts is empty. Run `npm run fetch:ui` to read it from the pinned bundle.'
+		);
+	}
+	const partsPhp = partNames
+		.map( ( name ) => `\t\t\t${ sq( name ) },` )
+		.join( '\n' );
+
 	return `<?php
 /**
  * Auto-generated operationId to web-component map.
@@ -1659,6 +1675,23 @@ ${ entries }
 		);
 
 		return $map[ $operation_id ] ?? array();
+	}
+
+	/**
+	 * Every \`part\` name the pinned component bundle publishes, sorted.
+	 *
+	 * The list a \`hide_sections\` value is checked against. A name outside it
+	 * reaches no block, so it is worth telling the site owner about rather than
+	 * dropping quietly: the setting cannot report its own failure, because a
+	 * name that matches nothing and a name that matches a block already hidden
+	 * produce the same empty page.
+	 *
+	 * @return array<int, string>
+	 */
+	public static function parts(): array {
+		return array(
+${ partsPhp }
+		);
 	}
 }
 `;

@@ -109,14 +109,63 @@ async function resolveVersion() {
 }
 
 /**
+ * The `part` names the pinned build publishes, across every component, as one
+ * sorted list.
+ *
+ * This is the vocabulary the `hide_sections` setting and its shortcode
+ * attribute both accept, and it belongs to the BUNDLE rather than to the API
+ * spec, so it moves when the pin moves and cannot be derived at generate time.
+ * Reading it here is what keeps it a fact about the build actually vendored
+ * instead of a list somebody remembers to update.
+ *
+ * A name is only usable if it survives the same `[a-z][a-z0-9-]*` narrowing the
+ * plugin applies before it reaches a selector, so anything else is dropped here
+ * rather than offered to a site owner as a name that cannot work.
+ *
+ * @param {string} version The resolved version.
+ * @return {Promise<string[]>} Sorted, unique part names.
+ */
+async function fetchPublishedParts( version ) {
+	const url = cdnUrl( version, 'components-catalog.json' );
+	console.log( `[fetch-ui-bundle] fetching ${ url }` );
+	const response = await fetch( url );
+	if ( ! response.ok ) {
+		console.error(
+			`[fetch-ui-bundle] could not read the component catalogue: ${ response.status } ${ response.statusText }; refusing to write`
+		);
+		process.exit( 1 );
+	}
+	const catalog = await response.json();
+	const components = Array.isArray( catalog )
+		? catalog
+		: catalog.components || [];
+	const parts = new Set();
+	for ( const component of components ) {
+		for ( const part of component.parts || [] ) {
+			if ( /^[a-z][a-z0-9-]*$/.test( part ) ) {
+				parts.add( part );
+			}
+		}
+	}
+	if ( parts.size === 0 ) {
+		console.error(
+			`[fetch-ui-bundle] ${ PACKAGE }@${ version } publishes no part names, so the Hide sections setting would have nothing to validate against; refusing to write`
+		);
+		process.exit( 1 );
+	}
+	return [ ...parts ].sort();
+}
+
+/**
  * Rewrite every pin to the version actually vendored, so the cache-buster, the
  * manifest the component-map check validates against, and the vendored bytes can
  * never disagree.
  *
- * @param {string} version The resolved version.
+ * @param {string}   version The resolved version.
+ * @param {string[]} parts   Part names the pinned build publishes.
  * @return {void}
  */
-function writeBackPins( version ) {
+function writeBackPins( version, parts ) {
 	const php = fs.readFileSync( PLUGIN_FILE, 'utf8' );
 	const phpPinned = php.replace(
 		/(const\s+ROXYAPI_UI_VERSION\s*=\s*')[^']+(')/,
@@ -134,16 +183,32 @@ function writeBackPins( version ) {
 	// hand-maintained and re-serializing it reformats all 500 lines, burying the
 	// two-line pin bump in noise no reviewer can scan.
 	const raw = fs.readFileSync( MAP_FILE, 'utf8' );
+	if ( ! /"published_parts"\s*:\s*\[/.test( raw ) ) {
+		console.error(
+			'[fetch-ui-bundle] could not find _meta.published_parts in component-map.json'
+		);
+		process.exit( 1 );
+	}
+	// Indented by hand to the surrounding tab style. This file is excluded from
+	// the formatter, so nothing downstream will normalise it back.
+	const partsJson =
+		'[\n' +
+		parts
+			.map( ( part ) => `\t\t\t${ JSON.stringify( part ) }` )
+			.join( ',\n' ) +
+		'\n\t\t]';
 	const mapPinned = raw
 		.replace( /("ui_version_pinned"\s*:\s*")[^"]+(")/, `$1${ version }$2` )
 		.replace(
 			/("ui_manifest_url"\s*:\s*")[^"]+(")/,
 			`$1${ cdnUrl( version, 'dist/manifest.json' ) }$2`
-		);
+		)
+		.replace( /("published_parts"\s*:\s*)\[[^\]]*\]/, `$1${ partsJson }` );
 	const meta = JSON.parse( mapPinned )._meta;
 	if (
 		meta?.ui_version_pinned !== version ||
-		! String( meta?.ui_manifest_url ).includes( `@${ version }/` )
+		! String( meta?.ui_manifest_url ).includes( `@${ version }/` ) ||
+		meta?.published_parts?.join( ',' ) !== parts.join( ',' )
 	) {
 		console.error(
 			'[fetch-ui-bundle] failed to rewrite the component-map pins; refusing to write'
@@ -320,4 +385,4 @@ await vendorLocales( version );
 
 // Last, so a failed or rejected download can never leave the pins advertising a
 // version that is not the one sitting in assets/.
-writeBackPins( version );
+writeBackPins( version, await fetchPublishedParts( version ) );
