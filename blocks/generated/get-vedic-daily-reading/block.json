@@ -1,16 +1,16 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "roxyapi/detect-yogas",
-	"title": "Classical Vedic Yogas in a Birth Chart (Vedic Astrology)",
+	"name": "roxyapi/get-vedic-daily-reading",
+	"title": "Daily Reading (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Chart-driven detection of 48 classical Vedic yogas",
+	"description": "Composed Gochara, Panchanga and Dasha for one native on one day",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",
-		"detect",
-		"yogas"
+		"get",
+		"vedic"
 	],
 	"version": "1.0.0",
 	"textdomain": "roxyapi",
@@ -30,11 +30,11 @@
 		}
 	},
 	"attributes": {
-		"date": {
+		"birthDate": {
 			"type": "string",
 			"default": ""
 		},
-		"time": {
+		"birthTime": {
 			"type": "string",
 			"default": ""
 		},
@@ -50,11 +50,11 @@
 			"type": "string",
 			"default": ""
 		},
-		"ayanamsa": {
+		"date": {
 			"type": "string",
 			"default": ""
 		},
-		"ayanamsaValue": {
+		"nodeType": {
 			"type": "string",
 			"default": ""
 		}

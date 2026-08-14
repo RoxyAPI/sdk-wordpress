@@ -137,6 +137,7 @@
 	"getSookshmaDashas": 2592000,
 	"getSubDashas": 2592000,
 	"getUpagrahaPositions": 2592000,
+	"getVedicDailyReading": 3600,
 	"getYoga": 2592000,
 	"listAvasthas": 2592000,
 	"listNakshatras": 2592000,

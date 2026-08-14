@@ -1090,6 +1090,27 @@ class Client {
 	}
 
 	/**
+	 * Daily Reading - Composed Gochara, Panchanga and Dasha for one native on one day
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function getVedicDailyReading( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'birthDate', 'birthTime', 'latitude', 'longitude' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'vedic-astrology/daily',
+			array_merge( $body, $query ),
+			3600,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/daily', $body, $query );
+			}
+		);
+	}
+
+	/**
 	 * Get basic Panchang - Tithi Nakshatra Yoga Karana Calculator
 	 *
 	 * @param array $body Request body.

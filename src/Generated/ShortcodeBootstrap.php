@@ -62,6 +62,7 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\GetPratyantardashas::register();
 		\RoxyAPI\Generated\Shortcodes\GetSookshmaDashas::register();
 		\RoxyAPI\Generated\Shortcodes\GetPranaDashas::register();
+		\RoxyAPI\Generated\Shortcodes\GetVedicDailyReading::register();
 		\RoxyAPI\Generated\Shortcodes\GetBasicPanchang::register();
 		\RoxyAPI\Generated\Shortcodes\GetChoghadiya::register();
 		\RoxyAPI\Generated\Shortcodes\GetHora::register();
