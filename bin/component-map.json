@@ -1,8 +1,8 @@
 {
 	"_meta": {
 		"ui_package": "@roxyapi/ui",
-		"ui_version_pinned": "0.27.4",
-		"ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.27.4/dist/manifest.json",
+		"ui_version_pinned": "0.27.6",
+		"ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.27.6/dist/manifest.json",
 		"published_parts": [
 			"action-steps",
 			"activations",
