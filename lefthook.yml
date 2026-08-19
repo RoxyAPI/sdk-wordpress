@@ -88,6 +88,13 @@ pre-push:
             run: npm run check:geocode
             priority: 1
 
+        # A reading sits in whatever section the site owner built. Renders the
+        # real stylesheet inside one that paints only a background and measures
+        # the contrast a visitor gets. Skips itself if no chromium is installed.
+        frontend-contrast-check:
+            run: npm run check:contrast
+            priority: 1
+
         # Full format pass (auto-fix). PHP first, then JS/CSS so each tool
         # only touches files it owns.
         php-format:

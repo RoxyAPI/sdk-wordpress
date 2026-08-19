@@ -70,6 +70,8 @@ jobs:
               run: npx playwright install --with-deps chromium
             - name: City search dropdown survives a hostile theme
               run: npm run check:geocode
+            - name: Readings stay readable inside a section with its own background
+              run: npm run check:contrast
             # --update forces a fresh pull of plugin-check.latest-stable.zip;
             # without it wp-env reuses a stale cached copy and misses newer checks.
             - run: npx wp-env start --update

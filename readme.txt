@@ -238,6 +238,10 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.11.4 =
+* Fixed: a reading stays readable inside a section that has a background of its own. The month controls under the ephemeris, the reading card, the visitor form and the error and notice lines now carry their own background and text colour together, instead of taking one from the page and the other from your theme.
+* Fixed: reading titles, badges, links and the submit button now meet the WCAG AA contrast minimum, in both light and dark.
+
 = 1.11.3 =
 * New: the RoxyAPI settings screens now read in your site language. Every tab, field label, help text, button and notice on them is translated, in all eight languages, as is the plugin description on your Plugins page. Until now the whole admin stayed English however your site was set, so a Spanish site was configured through an English screen. The domain names in the Shortcodes library, such as Human Design, stay as they are, the same way shortcode names do.
 * Fixed: the notice a visitor reads when a reading cannot be loaded, and the status messages under the city box on a birth details form, now read in your site language too. Fourteen more lines were coming out English on fully translated sites.
@@ -475,6 +479,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.11.4 =
+Worth updating if any reading sits on a coloured or dark section. The reading card and the ephemeris month controls now bring their own background, so their text cannot end up dark on dark.
 
 = 1.11.3 =
 Worth updating on any site not run in English. The whole RoxyAPI settings area now reads in your site language, along with the notices a visitor sees when a reading cannot load and the messages under the city box.

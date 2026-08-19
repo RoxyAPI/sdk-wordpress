@@ -4,9 +4,14 @@
  * Single stylesheet for every shortcode and generated block on the front end.
  * Inherits theme.json tokens with sensible fallbacks so the output blends with
  * any theme. Selectors use :where() so a theme can override anything without
- * fighting !important.
+ * fighting !important. Two exceptions, both below, and both because losing the
+ * declaration makes the output unusable rather than merely restyled.
  *
- * The one exception is the city-search dropdown at the end of this file, which
+ * The first is colour on a painted surface: a theme reaches `a`, `h3` and
+ * `button` by element, which outranks :where(), so those rules carry class
+ * weight and no !important.
+ *
+ * The second is the city-search dropdown at the end of this file, which
  * floats over other fields and is therefore unusable rather than merely
  * restyled when a theme wins. Its integrity declarations are !important and
  * read from --roxyapi-geocode-* custom properties, which stay overridable. The
@@ -28,22 +33,58 @@
  *   .roxyapi-details        Collapsed section for long nested content.
  */
 
-/*
- * Theme-overridable design tokens. Themes can override any of these on
- * `:root` (or a wrapping selector) to restyle every Roxy card without
- * touching the primitive rules below. Defaults are intentionally subtle
- * so the cards feel native on a wide range of light themes; dark themes
- * pick up the right contrast through the `currentColor`-relative mixes.
- */
-:where(.roxyapi-card, .roxyapi-form-wrap) {
+/* Theme-overridable tokens: redeclare any of these on `:root` to restyle every
+   reading. Colours read the `--roxy-*` layer, so cards and charts share one
+   palette and one light/dark mode. */
+:where(:root) {
 	--roxyapi-radius: var(--wp--custom--border--radius, 12px);
 	--roxyapi-pad-y: var(--wp--preset--spacing--40, 1.5rem);
 	--roxyapi-pad-x: var(--wp--preset--spacing--50, 1.75rem);
-	--roxyapi-border: color-mix(in srgb, currentcolor 10%, transparent);
-	--roxyapi-surface: color-mix(in srgb, currentcolor 2%, transparent);
+	--roxyapi-border: var(--roxy-border, #e4e4e7);
+	--roxyapi-surface: var(--roxy-surface, #fff);
+	--roxyapi-fg: var(--roxy-fg, #0a0a0a);
 	--roxyapi-shadow:
 		0 1px 2px color-mix(in srgb, currentcolor 6%, transparent),
 		0 8px 24px -12px color-mix(in srgb, currentcolor 18%, transparent);
+}
+
+/* Top-level output paints both halves of the pair, so a reading stays readable
+   inside a section that carries a background of its own. */
+:where(.roxyapi-card, .roxyapi-form-wrap, .roxyapi-eph-nav) {
+	background: var(--roxyapi-surface);
+}
+
+/* Colour leaves :where(): an element rule from the theme outranks a
+   zero-specificity class and repaints text tuned for a different background.
+   Every other declaration in this file stays overridable. */
+.roxyapi-card,
+.roxyapi-form-wrap,
+.roxyapi-eph-nav,
+.roxyapi-section-title,
+.roxyapi-fields dd,
+.roxyapi-error,
+.roxyapi-notice {
+	color: var(--roxyapi-fg);
+}
+
+.roxyapi-card-title,
+.roxyapi-badge,
+.roxyapi-eph-link {
+	color: var(--roxy-accent-ink, var(--roxyapi-fg));
+}
+
+.roxyapi-form-submit,
+.roxyapi-eph-submit {
+	color: var(--roxy-bg, #fff);
+}
+
+.roxyapi-link {
+	color: inherit;
+}
+
+.roxyapi-eph-form select {
+	background: var(--roxyapi-surface);
+	color: var(--roxyapi-fg);
 }
 
 :where(.roxyapi-card) {
@@ -53,9 +94,7 @@
 	padding: var(--roxyapi-pad-y) var(--roxyapi-pad-x);
 	border: 1px solid var(--roxyapi-border);
 	border-radius: var(--roxyapi-radius);
-	background: var(--roxyapi-surface);
 	box-shadow: var(--roxyapi-shadow);
-	color: var(--wp--preset--color--foreground, currentColor);
 	font-size: var(--wp--preset--font-size--medium, 1rem);
 	line-height: 1.6;
 }
@@ -91,7 +130,6 @@
 	font-weight: 700;
 	letter-spacing: -0.015em;
 	line-height: 1.15;
-	color: var(--roxy-accent, var(--wp--preset--color--foreground, currentcolor));
 }
 
 :where(.roxyapi-section .roxyapi-card-title) {
@@ -140,7 +178,7 @@
 }
 
 :where(.roxyapi-credit-link:hover) {
-	color: var(--wp--preset--color--foreground, currentColor);
+	color: var(--roxyapi-fg);
 	border-block-end-color: currentcolor;
 }
 
@@ -188,7 +226,6 @@
 }
 
 :where(.roxyapi-link) {
-	color: inherit;
 	text-decoration: underline;
 	text-decoration-color: color-mix(in srgb, currentcolor 40%, transparent);
 	text-underline-offset: 2px;
@@ -219,7 +256,6 @@
 	font-size: var(--wp--preset--font-size--medium, 1.0625rem);
 	font-weight: 600;
 	letter-spacing: -0.005em;
-	color: var(--wp--preset--color--foreground, currentColor);
 }
 
 /*
@@ -263,7 +299,6 @@
 
 :where(.roxyapi-fields dd) {
 	margin: 0;
-	color: var(--wp--preset--color--foreground, currentColor);
 }
 
 /*
@@ -332,7 +367,6 @@
 	padding: 0.1rem 0.55rem;
 	border-radius: 999px;
 	background: color-mix(in srgb, var(--roxy-accent, currentcolor) 12%, transparent);
-	color: var(--roxy-accent, var(--wp--preset--color--foreground, currentcolor));
 	font-size: 0.8125rem;
 	font-weight: 600;
 	letter-spacing: 0.01em;
@@ -387,8 +421,7 @@
 	border-inline-start-width: 4px;
 	border-inline-start-color: color-mix(in srgb, var(--roxy-danger-fg, #b91c1c) 70%, currentColor);
 	border-radius: var(--wp--custom--border--radius, 6px);
-	background: color-mix(in srgb, #fee2e2 30%, transparent);
-	color: var(--wp--preset--color--foreground, currentColor);
+	background: color-mix(in srgb, var(--roxy-danger, #dc2626) 8%, var(--roxyapi-surface));
 	font-size: var(--wp--preset--font-size--small, 0.9375rem);
 }
 
@@ -402,8 +435,7 @@
 	border-inline-start-width: 4px;
 	border-inline-start-color: color-mix(in srgb, var(--roxy-accent, #64748b) 70%, currentColor);
 	border-radius: var(--wp--custom--border--radius, 6px);
-	background: color-mix(in srgb, currentcolor 4%, transparent);
-	color: var(--wp--preset--color--foreground, currentColor);
+	background: color-mix(in srgb, currentcolor 4%, var(--roxyapi-surface));
 	font-size: var(--wp--preset--font-size--small, 0.9375rem);
 }
 
@@ -541,18 +573,21 @@
 	margin: 0;
 }
 
-:where(.roxyapi-form-submit) {
+/* One filled button, two placements, on the same ink pair as the components. */
+:where(.roxyapi-form-submit, .roxyapi-eph-submit) {
 	cursor: pointer;
-	padding: 0.6rem 1.2rem;
 	font-weight: 600;
-	font-size: var(--wp--preset--font-size--medium, 1rem);
 	border: 0;
 	border-radius: var(--wp--custom--border--radius, 6px);
-	background: var(--roxy-accent, var(--wp--preset--color--foreground, #111));
-	color: var(--wp--preset--color--background, #fff);
+	background: var(--roxy-accent-ink, #b45309);
 }
 
-:where(.roxyapi-form-submit:hover) {
+:where(.roxyapi-form-submit) {
+	padding: 0.6rem 1.2rem;
+	font-size: var(--wp--preset--font-size--medium, 1rem);
+}
+
+:where(.roxyapi-form-submit:hover, .roxyapi-eph-submit:hover) {
 	opacity: 0.9;
 }
 
@@ -596,8 +631,8 @@
 	max-block-size: 16rem !important;
 	overflow-y: auto !important;
 	list-style: none !important;
-	background: var(--roxyapi-geocode-bg, var(--wp--preset--color--background, #fff)) !important;
-	color: var(--roxyapi-geocode-fg, var(--wp--preset--color--foreground, #111)) !important;
+	background: var(--roxyapi-geocode-bg, var(--roxyapi-surface)) !important;
+	color: var(--roxyapi-geocode-fg, var(--roxyapi-fg)) !important;
 	border: var(--roxyapi-geocode-border, 1px solid color-mix(in srgb, currentcolor 18%, transparent)) !important;
 }
 
@@ -663,6 +698,9 @@
 	justify-content: space-between;
 	gap: 0.75rem 1.5rem;
 	margin-block: var(--wp--preset--spacing--30, 1rem);
+	padding: 0.75rem 1rem;
+	border: 1px solid var(--roxyapi-border);
+	border-radius: var(--roxyapi-radius);
 	font-size: var(--wp--preset--font-size--small, 0.9375rem);
 }
 
@@ -700,17 +738,9 @@
 	font-size: inherit;
 	border: 1px solid color-mix(in srgb, currentcolor 18%, transparent);
 	border-radius: var(--wp--custom--border--radius, 6px);
-	background: color-mix(in srgb, currentcolor 1%, transparent);
-	color: inherit;
 }
 
 :where(.roxyapi-eph-submit) {
-	cursor: pointer;
 	padding: 0.4rem 0.9rem;
-	font-weight: 600;
 	font-size: inherit;
-	border: 0;
-	border-radius: var(--wp--custom--border--radius, 6px);
-	background: var(--roxy-accent, var(--wp--preset--color--foreground, #111));
-	color: var(--wp--preset--color--background, #fff);
 }
