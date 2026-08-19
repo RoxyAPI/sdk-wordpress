@@ -164,8 +164,10 @@ class ComponentRenderer {
 		// element hides its light-DOM fallback once it upgrades, so anything
 		// nested inside would vanish for JavaScript visitors. Emitting them here
 		// keeps them present in both the upgraded and the no-JavaScript view, and
-		// once per shortcode rather than once per stacked component.
-		return $markup . Meta::block( $operation_id, $data );
+		// once per shortcode rather than once per stacked component. Outside the
+		// element also means outside a surface, which is why this is the
+		// standalone form: it brings its own.
+		return $markup . Meta::standalone_block( $operation_id, $data );
 	}
 
 	/**

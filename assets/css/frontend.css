@@ -50,7 +50,7 @@
 
 /* Top-level output paints both halves of the pair, so a reading stays readable
    inside a section that carries a background of its own. */
-:where(.roxyapi-card, .roxyapi-form-wrap, .roxyapi-eph-nav) {
+:where(.roxyapi-card, .roxyapi-form-wrap, .roxyapi-eph-nav, .roxyapi-meta) {
 	background: var(--roxyapi-surface);
 }
 
@@ -60,6 +60,7 @@
 .roxyapi-card,
 .roxyapi-form-wrap,
 .roxyapi-eph-nav,
+.roxyapi-meta,
 .roxyapi-section-title,
 .roxyapi-fields dd,
 .roxyapi-error,
@@ -78,7 +79,8 @@
 	color: var(--roxy-bg, #fff);
 }
 
-.roxyapi-link {
+.roxyapi-link,
+.roxyapi-credit-link {
 	color: inherit;
 }
 
@@ -151,6 +153,18 @@
 	color: color-mix(in srgb, currentcolor 70%, transparent);
 }
 
+:where(.roxyapi-meta) {
+	margin-block: var(--wp--preset--spacing--30, 1rem);
+	padding: 0.75rem 1rem;
+	border-radius: var(--roxyapi-radius);
+}
+
+:where(.roxyapi-meta > :first-child) {
+	margin-block-start: 0;
+	padding-block-start: 0;
+	border-block-start: 0;
+}
+
 :where(.roxyapi-card-disclaimer) {
 	margin: var(--wp--preset--spacing--30, 1rem) 0 0;
 	padding-block-start: 0.5rem;
@@ -170,7 +184,6 @@
 }
 
 :where(.roxyapi-credit-link) {
-	color: inherit;
 	text-decoration: none;
 	border-block-end:
 		1px dotted

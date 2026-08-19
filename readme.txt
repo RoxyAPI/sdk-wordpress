@@ -241,6 +241,7 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 = 1.11.4 =
 * Fixed: a reading stays readable inside a section that has a background of its own. The month controls under the ephemeris, the reading card, the visitor form and the error and notice lines now carry their own background and text colour together, instead of taking one from the page and the other from your theme.
 * Fixed: reading titles, badges, links and the submit button now meet the WCAG AA contrast minimum, in both light and dark.
+* Fixed: the sign picker on [roxy_horoscope] now looks like every other RoxyAPI form. It was the one form carrying its own set of class names, so none of the shared field, button and spacing styles ever reached it.
 
 = 1.11.3 =
 * New: the RoxyAPI settings screens now read in your site language. Every tab, field label, help text, button and notice on them is translated, in all eight languages, as is the plugin description on your Plugins page. Until now the whole admin stayed English however your site was set, so a Spanish site was configured through an English screen. The domain names in the Shortcodes library, such as Human Design, stay as they are, the same way shortcode names do.

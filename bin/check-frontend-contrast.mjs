@@ -15,8 +15,9 @@
  * inside a hostile section, in both forced modes, and measures what a visitor
  * gets; it is skipped when no browser binary is available.
  *
- * A new top-level container is unmeasured until it is listed in SURFACES or
- * INHERITS. Nothing derives that list.
+ * The container set comes from `bin/painted-surfaces.json`, and the phpunit
+ * sweep fails on any top-level container the plugin renders that the list does
+ * not name, so new chrome cannot ship unmeasured.
  */
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
@@ -37,27 +38,28 @@ const fail = ( msg ) => failures.push( msg );
 /** Minimum contrast for body-sized text, WCAG 2.2 AA (1.4.3). */
 const AA = 4.5;
 
-/**
- * Containers that may be the outermost node of a shortcode's output, mapped to
- * the renderer that emits each one. The fixture below stands in for that
- * markup, so the source is checked for the class as a drift guard: a rename
- * would otherwise leave this measuring an element that no longer ships.
- */
-const SURFACES = {
-	'roxyapi-card': 'src/Support/GenericRenderer.php',
-	'roxyapi-form-wrap': 'src/Support/FormRenderer.php',
-	'roxyapi-eph-nav': 'src/Support/EphemerisNav.php',
-	'roxyapi-error': 'src/Support/Templates.php',
-	'roxyapi-notice': 'src/Support/FormRenderer.php',
-};
+const listed = JSON.parse( read( 'bin/painted-surfaces.json' ) );
 
 /**
- * Top-level output that deliberately takes both halves from the page. Small
- * print under a reading reads as page furniture rather than as part of the
- * card, and painting it puts a second panel under every reading. The cost is
- * that it is only as readable as the section it sits in.
+ * The containers that carry text at the top level of a reading, mapped to the
+ * renderer that emits each one. Read from `bin/painted-surfaces.json` so this
+ * check and `tests/phpunit/test-painted-surfaces.php` cannot hold different
+ * ideas of the set: that test renders the plugin and fails on any top-level
+ * container the list does not name, which is what stops new chrome shipping
+ * unmeasured.
+ *
+ * @type {Record<string, string>}
  */
-const INHERITS = [ 'roxyapi-card-disclaimer', 'roxyapi-credit' ];
+const SURFACES = listed.surfaces;
+
+/** Top-level containers that carry no text of their own, so nothing to measure. */
+const PASSTHROUGH = listed.passthrough;
+
+for ( const [ cls, where ] of Object.entries( PASSTHROUGH ) ) {
+	if ( ! read( where ).includes( cls ) ) {
+		fail( `.${ cls } is no longer emitted by ${ where }.` );
+	}
+}
 
 for ( const [ cls, where ] of Object.entries( SURFACES ) ) {
 	if ( ! read( where ).includes( cls ) ) {
@@ -111,14 +113,6 @@ for ( const cls of Object.keys( SURFACES ) ) {
 				`.${ cls } does not declare \`${ half }\`. A container that paints one half and inherits the other is readable only while the page happens to agree.`
 			);
 		}
-	}
-}
-
-for ( const cls of INHERITS ) {
-	if ( declaredProps( cls ).has( 'background' ) ) {
-		fail(
-			`.${ cls } is listed as inheriting from the page but paints a background. Move it to SURFACES so it is measured.`
-		);
 	}
 }
 
@@ -188,6 +182,10 @@ const FIXTURE = `
 	</nav>
 	<div class="roxyapi-error">The reading could not be loaded.</div>
 	<div class="roxyapi-notice">This reading was already delivered.</div>
+	<div class="roxyapi-meta">
+		<p class="roxyapi-card-disclaimer">For entertainment purposes only.</p>
+		<p class="roxyapi-credit"><a class="roxyapi-credit-link" href="#">Astrology data by RoxyAPI</a></p>
+	</div>
 </div>`;
 
 // Reads a computed colour of any form the stylesheet can produce, including the

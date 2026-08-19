@@ -37,11 +37,12 @@ $roxyapi_form_action = isset( $_SERVER['REQUEST_URI'] )
 	? esc_url( sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) )
 	: '';
 ?>
+<div class="roxyapi-form-wrap">
 <form class="roxyapi-form roxyapi-form--horoscope" method="post" action="<?php echo esc_url( $roxyapi_form_action ); ?>">
 	<input type="hidden" name="roxyapi_action" value="<?php echo esc_attr( $action ); ?>" />
 	<input type="hidden" name="roxyapi_nonce" value="<?php echo esc_attr( $nonce ); ?>" />
 
-	<div class="roxyapi-form__field">
+	<div class="roxyapi-form-field">
 		<label for="roxyapi-horoscope-sign">
 			<?php echo esc_html__( 'Your zodiac sign', 'roxyapi' ); ?>
 		</label>
@@ -55,9 +56,10 @@ $roxyapi_form_action = isset( $_SERVER['REQUEST_URI'] )
 		</select>
 	</div>
 
-	<div class="roxyapi-form__actions">
-		<button type="submit" class="roxyapi-form__submit">
+	<div class="roxyapi-form-actions">
+		<button type="submit" class="roxyapi-form-submit">
 			<?php echo esc_html__( 'Read my horoscope', 'roxyapi' ); ?>
 		</button>
 	</div>
 </form>
+</div>

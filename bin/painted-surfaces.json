@@ -1,0 +1,16 @@
+{
+	"_meta": {
+		"note": "Every container the plugin can emit at the top level of a reading, where nothing of ours is painted behind it. `surfaces` carry text and therefore paint their own background AND foreground; `passthrough` carry none of their own. Two enforcers read this one list: bin/check-frontend-contrast.mjs proves each surface paints both halves and clears AA in both modes against a hostile theme, and tests/phpunit/test-painted-surfaces.php proves rendered output opens with nothing that is not listed here. The value is the file that emits the class, checked so a rename cannot leave either enforcer measuring markup that no longer ships."
+	},
+	"surfaces": {
+		"roxyapi-card": "src/Support/GenericRenderer.php",
+		"roxyapi-form-wrap": "src/Support/FormRenderer.php",
+		"roxyapi-eph-nav": "src/Support/EphemerisNav.php",
+		"roxyapi-error": "src/Support/Templates.php",
+		"roxyapi-notice": "src/Support/FormRenderer.php",
+		"roxyapi-meta": "src/Support/Meta.php"
+	},
+	"passthrough": {
+		"roxyapi-embed": "src/Support/ComponentRenderer.php"
+	}
+}
