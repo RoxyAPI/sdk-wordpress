@@ -31,9 +31,13 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\CalculateSynastry::register();
 		\RoxyAPI\Generated\Shortcodes\CalculateHouses::register();
 		\RoxyAPI\Generated\Shortcodes\CalculateAspects::register();
+		\RoxyAPI\Generated\Shortcodes\GetMonthlyTropicalAspects::register();
 		\RoxyAPI\Generated\Shortcodes\DetectAspectPatterns::register();
 		\RoxyAPI\Generated\Shortcodes\CalculateTransits::register();
+		\RoxyAPI\Generated\Shortcodes\GetMonthlyTropicalTransits::register();
 		\RoxyAPI\Generated\Shortcodes\CalculateTransitAspects::register();
+		\RoxyAPI\Generated\Shortcodes\GetMonthlyDeclinationParallels::register();
+		\RoxyAPI\Generated\Shortcodes\GetPlanetaryNodePassages::register();
 		\RoxyAPI\Generated\Shortcodes\GenerateSolarReturn::register();
 		\RoxyAPI\Generated\Shortcodes\GenerateLunarReturn::register();
 		\RoxyAPI\Generated\Shortcodes\GenerateCompositeChart::register();

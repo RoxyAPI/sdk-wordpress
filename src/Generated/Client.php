@@ -349,6 +349,24 @@ class Client {
 	}
 
 	/**
+	 * Monthly Aspects - Tropical aspect calendar for an entire month
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function getMonthlyTropicalAspects( $body = array(), $query = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'astrology/aspects/monthly',
+			array_merge( $body, $query ),
+			3600,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/aspects/monthly', $body, $query );
+			}
+		);
+	}
+
+	/**
 	 * Detect aspect patterns - Grand Trine, Kite, T-Square, Grand Cross, Yod, Mystic Rectangle, Stellium
 	 *
 	 * @param array $body Request body.
@@ -388,6 +406,24 @@ class Client {
 	}
 
 	/**
+	 * Monthly Transits - Tropical sign ingresses for an entire month
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function getMonthlyTropicalTransits( $body = array(), $query = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'astrology/transits/monthly',
+			array_merge( $body, $query ),
+			3600,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/transits/monthly', $body, $query );
+			}
+		);
+	}
+
+	/**
 	 * Transit Aspects - Detailed transit-to-natal aspect analysis with interpretations
 	 *
 	 * @param array $body Request body.
@@ -404,6 +440,45 @@ class Client {
 			3600,
 			static function () use ( $body, $query ) {
 				return \RoxyAPI\Api\Client::post( 'astrology/transit-aspects', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Monthly Parallels - Declination contacts for an entire month
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function getMonthlyDeclinationParallels( $body = array(), $query = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'astrology/parallels/monthly',
+			array_merge( $body, $query ),
+			3600,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/parallels/monthly', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Ecliptic Crossings - Node passages for a whole year
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function getPlanetaryNodePassages( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'year' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'astrology/ecliptic-crossings',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'astrology/ecliptic-crossings', $body, $query );
 			}
 		);
 	}

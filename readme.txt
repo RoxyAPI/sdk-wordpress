@@ -239,6 +239,7 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 == Changelog ==
 
 = 1.11.4 =
+* New: four Western timing readings, each as a shortcode and a block. [roxy_get_monthly_tropical_aspects] for a month of aspects, [roxy_get_monthly_tropical_transits] for a month of sign ingresses, [roxy_get_monthly_declination_parallels] for a month of declination contacts, and [roxy_get_planetary_node_passages] for a year of ecliptic crossings.
 * Fixed: a reading stays readable inside a section that has a background of its own. The month controls under the ephemeris, the reading card, the visitor form and the error and notice lines now carry their own background and text colour together, instead of taking one from the page and the other from your theme.
 * Fixed: reading titles, badges, links and the submit button now meet the WCAG AA contrast minimum, in both light and dark.
 * Fixed: the sign picker on [roxy_horoscope] now looks like every other RoxyAPI form. It was the one form carrying its own set of class names, so none of the shared field, button and spacing styles ever reached it.
