@@ -77,6 +77,8 @@ jobs:
               run: npx playwright install --with-deps chromium
             - name: City search dropdown survives a hostile theme
               run: npm run check:geocode
+            - name: Readings stay readable inside a section with its own background
+              run: npm run check:contrast
 
             - name: PHPUnit
               env:
