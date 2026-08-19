@@ -238,6 +238,14 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.12.0 =
+* New: the daily Vedic reading renders as a full reading instead of a plain list of values. Panchang, the grahas of the day with their state, tara and chandrabala, the finance read and the running dasha, each in its own block.
+* Improved: chart labels read in your site language across the whole reading library. Headings, column names and vocabulary were still drawing in English on a long list of readings whatever the reading language, among them panchang, dasha, biorhythm, numerology, crystal, dream, hora, kundli, dosha, angel number, yoga, synastry, transit and the strength tables.
+* Improved: kundli and Western position tables mark a combust graha and a planetary war, and carry the nakshatra lord and essential dignity.
+* Improved: aspect lines on every chart are weighted by how exact the contact is, so a close aspect no longer reads the same as a wide one.
+* Fixed: Gochara reads from the natal Moon, and a chart with no ascendant falls back to a sign-fixed layout instead of coming out blank.
+* Fixed: synastry names each sign sector, shows each planet house in its own chart, and translates the score label.
+
 = 1.11.4 =
 * New: four Western timing readings, each as a shortcode and a block. [roxy_get_monthly_tropical_aspects] for a month of aspects, [roxy_get_monthly_tropical_transits] for a month of sign ingresses, [roxy_get_monthly_declination_parallels] for a month of declination contacts, and [roxy_get_planetary_node_passages] for a year of ecliptic crossings.
 * Fixed: a reading stays readable inside a section that has a background of its own. The month controls under the ephemeris, the reading card, the visitor form and the error and notice lines now carry their own background and text colour together, instead of taking one from the page and the other from your theme.
@@ -481,6 +489,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
 
 == Upgrade Notice ==
+
+= 1.12.0 =
+Worth updating on any translated site. Chart labels and column headings now read in your site language across the whole reading library, and the daily Vedic reading renders as a full reading rather than a list of values.
 
 = 1.11.4 =
 Worth updating if any reading sits on a coloured or dark section. The reading card and the ephemeris month controls now bring their own background, so their text cannot end up dark on dark.

@@ -1,11 +1,12 @@
 {
 	"_meta": {
 		"ui_package": "@roxyapi/ui",
-		"ui_version_pinned": "0.27.6",
-		"ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.27.6/dist/manifest.json",
+		"ui_version_pinned": "0.32.1",
+		"ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.32.1/dist/manifest.json",
 		"published_parts": [
 			"action-steps",
 			"activations",
+			"advanced",
 			"angular-planets",
 			"arrows",
 			"aspect-breakdown",
@@ -34,23 +35,30 @@
 			"crystals",
 			"current",
 			"daily",
+			"dasha",
 			"details",
 			"digit-root",
 			"edit-bar",
 			"effects",
 			"element-balance",
 			"element-modality",
+			"empty",
 			"error",
 			"events",
 			"exceptions",
 			"fact",
 			"facts",
+			"field",
+			"finance",
 			"form",
 			"frame",
 			"gates",
+			"grahas",
+			"group",
 			"header",
 			"house-changes",
 			"inauspicious",
+			"input",
 			"inter-aspects",
 			"karmic-debt",
 			"karmic-lessons",
@@ -72,8 +80,10 @@
 			"name-letters",
 			"name-numbers",
 			"obstacle-periods",
+			"option",
 			"outlook",
 			"pairs-with",
+			"panchanga",
 			"panel",
 			"pattern",
 			"patterns",
@@ -84,12 +94,14 @@
 			"reading",
 			"readings",
 			"remedies",
+			"results",
 			"section",
 			"sky",
 			"spotlight",
 			"stack",
 			"strengths-challenges",
 			"strongest",
+			"submit",
 			"sun-based",
 			"symbols",
 			"tab",
@@ -98,11 +110,14 @@
 			"themes",
 			"time-based",
 			"timeline",
+			"title",
 			"transitions",
+			"validation-error",
 			"verdict",
 			"verdicts",
 			"week-by-week",
 			"window",
+			"windows",
 			"yogas"
 		]
 	},
@@ -777,6 +792,11 @@
 		"getUpagrahaPositions": [
 			{
 				"component": "roxy-upagraha-table"
+			}
+		],
+		"getVedicDailyReading": [
+			{
+				"component": "roxy-vedic-daily"
 			}
 		],
 		"getUpcomingMoonPhases": [
