@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology 1.11.2\n"
+"Project-Id-Version: RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology 1.11.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/roxyapi\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-14T23:48:00+00:00\n"
+"POT-Creation-Date: 2026-08-19T05:20:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: roxyapi\n"
@@ -617,39 +617,39 @@ msgstr ""
 #: src/Generated/Client.php:125
 #: src/Generated/Client.php:265
 #: src/Generated/Client.php:268
-#: src/Generated/Client.php:502
-#: src/Generated/Client.php:531
-#: src/Generated/Client.php:560
-#: src/Generated/Client.php:987
-#: src/Generated/Client.php:1011
-#: src/Generated/Client.php:1014
-#: src/Generated/Client.php:1038
-#: src/Generated/Client.php:1041
-#: src/Generated/Client.php:1044
-#: src/Generated/Client.php:1068
-#: src/Generated/Client.php:1071
-#: src/Generated/Client.php:1074
-#: src/Generated/Client.php:1077
-#: src/Generated/Client.php:1290
-#: src/Generated/Client.php:1725
-#: src/Generated/Client.php:1776
-#: src/Generated/Client.php:1889
-#: src/Generated/Client.php:2251
-#: src/Generated/Client.php:2320
-#: src/Generated/Client.php:2677
-#: src/Generated/Client.php:2743
-#: src/Generated/Client.php:2841
-#: src/Generated/Client.php:3252
-#: src/Generated/Client.php:3328
-#: src/Generated/Client.php:3355
-#: src/Generated/Client.php:3384
-#: src/Generated/Client.php:3413
-#: src/Generated/Client.php:3442
-#: src/Generated/Client.php:3496
-#: src/Generated/Client.php:3644
-#: src/Generated/Client.php:3746
-#: src/Generated/Client.php:3817
-#: src/Generated/Client.php:3939
+#: src/Generated/Client.php:577
+#: src/Generated/Client.php:606
+#: src/Generated/Client.php:635
+#: src/Generated/Client.php:1062
+#: src/Generated/Client.php:1086
+#: src/Generated/Client.php:1089
+#: src/Generated/Client.php:1113
+#: src/Generated/Client.php:1116
+#: src/Generated/Client.php:1119
+#: src/Generated/Client.php:1143
+#: src/Generated/Client.php:1146
+#: src/Generated/Client.php:1149
+#: src/Generated/Client.php:1152
+#: src/Generated/Client.php:1365
+#: src/Generated/Client.php:1800
+#: src/Generated/Client.php:1851
+#: src/Generated/Client.php:1964
+#: src/Generated/Client.php:2326
+#: src/Generated/Client.php:2395
+#: src/Generated/Client.php:2752
+#: src/Generated/Client.php:2818
+#: src/Generated/Client.php:2916
+#: src/Generated/Client.php:3327
+#: src/Generated/Client.php:3403
+#: src/Generated/Client.php:3430
+#: src/Generated/Client.php:3459
+#: src/Generated/Client.php:3488
+#: src/Generated/Client.php:3517
+#: src/Generated/Client.php:3571
+#: src/Generated/Client.php:3719
+#: src/Generated/Client.php:3821
+#: src/Generated/Client.php:3892
+#: src/Generated/Client.php:4014
 #, php-format
 msgid "Missing required attribute \"%s\" for this shortcode."
 msgstr ""
@@ -1308,10 +1308,14 @@ msgstr ""
 #: blocks/generated/get-lunar-aspects/index.js:25
 #: blocks/generated/get-major-dashas/index.js:39
 #: blocks/generated/get-monthly-aspects/index.js:25
+#: blocks/generated/get-monthly-declination-parallels/index.js:25
 #: blocks/generated/get-monthly-horoscope/index.js:32
 #: blocks/generated/get-monthly-parallels/index.js:25
 #: blocks/generated/get-monthly-transits/index.js:25
+#: blocks/generated/get-monthly-tropical-aspects/index.js:25
+#: blocks/generated/get-monthly-tropical-transits/index.js:25
 #: blocks/generated/get-planet-positions/index.js:39
+#: blocks/generated/get-planetary-node-passages/index.js:18
 #: blocks/generated/get-planetary-positions/index.js:47
 #: blocks/generated/get-prana-dashas/index.js:39
 #: blocks/generated/get-pratyantardashas/index.js:39
@@ -1379,6 +1383,9 @@ msgstr ""
 #: blocks/generated/get-kp-ruling-planets/index.js:53
 #: blocks/generated/get-kp-sublord-changes/index.js:47
 #: blocks/generated/get-major-dashas/index.js:68
+#: blocks/generated/get-monthly-declination-parallels/index.js:39
+#: blocks/generated/get-monthly-tropical-aspects/index.js:32
+#: blocks/generated/get-monthly-tropical-transits/index.js:32
 #: blocks/generated/get-planetary-positions/index.js:25
 #: blocks/generated/get-prana-dashas/index.js:68
 #: blocks/generated/get-pratyantardashas/index.js:68
@@ -1422,6 +1429,9 @@ msgstr ""
 #: blocks/generated/get-kp-ruling-interval/index.js:63
 #: blocks/generated/get-kp-ruling-planets/index.js:55
 #: blocks/generated/get-kp-sublord-changes/index.js:49
+#: blocks/generated/get-monthly-declination-parallels/index.js:41
+#: blocks/generated/get-monthly-tropical-aspects/index.js:34
+#: blocks/generated/get-monthly-tropical-transits/index.js:34
 #: blocks/generated/get-planetary-positions/index.js:27
 msgid "Lunar node convention"
 msgstr ""
@@ -1684,11 +1694,15 @@ msgstr ""
 #: blocks/generated/get-ecliptic-crossings/index.js:11
 #: blocks/generated/get-lunar-aspects/index.js:11
 #: blocks/generated/get-monthly-aspects/index.js:11
+#: blocks/generated/get-monthly-declination-parallels/index.js:11
 #: blocks/generated/get-monthly-ephemeris/index.js:11
 #: blocks/generated/get-monthly-parallels/index.js:11
 #: blocks/generated/get-monthly-transits/index.js:11
+#: blocks/generated/get-monthly-tropical-aspects/index.js:11
 #: blocks/generated/get-monthly-tropical-ephemeris/index.js:11
+#: blocks/generated/get-monthly-tropical-transits/index.js:11
 #: blocks/generated/get-moon-calendar/index.js:11
+#: blocks/generated/get-planetary-node-passages/index.js:11
 msgid "Year"
 msgstr ""
 
@@ -1710,10 +1724,13 @@ msgstr ""
 #: blocks/generated/get-birthstones/index.js:11
 #: blocks/generated/get-lunar-aspects/index.js:18
 #: blocks/generated/get-monthly-aspects/index.js:18
+#: blocks/generated/get-monthly-declination-parallels/index.js:18
 #: blocks/generated/get-monthly-ephemeris/index.js:18
 #: blocks/generated/get-monthly-parallels/index.js:18
 #: blocks/generated/get-monthly-transits/index.js:18
+#: blocks/generated/get-monthly-tropical-aspects/index.js:18
 #: blocks/generated/get-monthly-tropical-ephemeris/index.js:18
+#: blocks/generated/get-monthly-tropical-transits/index.js:18
 #: blocks/generated/get-moon-calendar/index.js:17
 msgid "Month"
 msgstr ""
@@ -2858,15 +2875,15 @@ msgstr ""
 msgid "Try it"
 msgstr ""
 
-#: templates/horoscope-form.php:46
+#: templates/horoscope-form.php:47
 msgid "Your zodiac sign"
 msgstr ""
 
-#: templates/horoscope-form.php:49
+#: templates/horoscope-form.php:50
 msgid "Pick a sign"
 msgstr ""
 
-#: templates/horoscope-form.php:60
+#: templates/horoscope-form.php:61
 msgid "Read my horoscope"
 msgstr ""
 
@@ -3157,8 +3174,12 @@ msgstr ""
 #: blocks/generated/get-kp-planets/index.js:41
 #: blocks/generated/get-lunar-aspects/index.js:27
 #: blocks/generated/get-monthly-aspects/index.js:27
+#: blocks/generated/get-monthly-declination-parallels/index.js:27
 #: blocks/generated/get-monthly-parallels/index.js:27
 #: blocks/generated/get-monthly-transits/index.js:27
+#: blocks/generated/get-monthly-tropical-aspects/index.js:27
+#: blocks/generated/get-monthly-tropical-transits/index.js:27
+#: blocks/generated/get-planetary-node-passages/index.js:20
 msgid "Timezone offset from UTC in hours"
 msgstr ""
 
@@ -3212,6 +3233,7 @@ msgid "Full birth name to calculate Expression number automatically"
 msgstr ""
 
 #: blocks/generated/calculate-parallels/index.js:46
+#: blocks/generated/get-monthly-declination-parallels/index.js:32
 msgid "Orb"
 msgstr ""
 
@@ -3851,7 +3873,18 @@ msgstr ""
 
 #: blocks/generated/get-lunar-aspects/index.js:20
 #: blocks/generated/get-monthly-aspects/index.js:20
+#: blocks/generated/get-monthly-declination-parallels/index.js:20
+#: blocks/generated/get-monthly-tropical-aspects/index.js:20
+#: blocks/generated/get-monthly-tropical-transits/index.js:20
 msgid "Month number (1-12)"
+msgstr ""
+
+#: blocks/generated/get-monthly-declination-parallels/index.js:13
+msgid "Year for the declination calendar (1900-2100)"
+msgstr ""
+
+#: blocks/generated/get-monthly-declination-parallels/index.js:34
+msgid "How far from exact still counts, in degrees"
 msgstr ""
 
 #: blocks/generated/get-monthly-ephemeris/index.js:13
@@ -3892,6 +3925,10 @@ msgstr ""
 msgid "Month number (1-12) for transit analysis"
 msgstr ""
 
+#: blocks/generated/get-monthly-tropical-aspects/index.js:13
+msgid "Year for the aspect calendar (1900-2100)"
+msgstr ""
+
 #: blocks/generated/get-monthly-tropical-ephemeris/index.js:13
 msgid "Year for the monthly ephemeris (1900-2100)"
 msgstr ""
@@ -3900,8 +3937,16 @@ msgstr ""
 msgid "Month number (1-12) for the ephemeris"
 msgstr ""
 
+#: blocks/generated/get-monthly-tropical-transits/index.js:13
+msgid "Year for the monthly transit table (1900-2100)"
+msgstr ""
+
 #: blocks/generated/get-phases/index.js:20
 msgid "Date to get phase information for in YYYY-MM-DD format"
+msgstr ""
+
+#: blocks/generated/get-planetary-node-passages/index.js:13
+msgid "Year to scan for node passages (1900-2100)."
 msgstr ""
 
 #: blocks/generated/get-planetary-positions/index.js:13
@@ -4240,17 +4285,21 @@ msgstr ""
 #: blocks/generated/get-lunar-aspects/block.json
 #: blocks/generated/get-major-dashas/block.json
 #: blocks/generated/get-monthly-aspects/block.json
+#: blocks/generated/get-monthly-declination-parallels/block.json
 #: blocks/generated/get-monthly-ephemeris/block.json
 #: blocks/generated/get-monthly-horoscope/block.json
 #: blocks/generated/get-monthly-parallels/block.json
 #: blocks/generated/get-monthly-transits/block.json
+#: blocks/generated/get-monthly-tropical-aspects/block.json
 #: blocks/generated/get-monthly-tropical-ephemeris/block.json
+#: blocks/generated/get-monthly-tropical-transits/block.json
 #: blocks/generated/get-moon-calendar/block.json
 #: blocks/generated/get-nakshatra/block.json
 #: blocks/generated/get-number-meaning/block.json
 #: blocks/generated/get-phases/block.json
 #: blocks/generated/get-planet-meaning/block.json
 #: blocks/generated/get-planet-positions/block.json
+#: blocks/generated/get-planetary-node-passages/block.json
 #: blocks/generated/get-planetary-positions/block.json
 #: blocks/generated/get-prana-dashas/block.json
 #: blocks/generated/get-pratyantardashas/block.json
@@ -4444,10 +4493,14 @@ msgstr ""
 #: blocks/generated/generate-relocation-chart/block.json
 #: blocks/generated/generate-solar-arc/block.json
 #: blocks/generated/generate-solar-return/block.json
+#: blocks/generated/get-monthly-declination-parallels/block.json
 #: blocks/generated/get-monthly-horoscope/block.json
+#: blocks/generated/get-monthly-tropical-aspects/block.json
 #: blocks/generated/get-monthly-tropical-ephemeris/block.json
+#: blocks/generated/get-monthly-tropical-transits/block.json
 #: blocks/generated/get-moon-calendar/block.json
 #: blocks/generated/get-planet-meaning/block.json
+#: blocks/generated/get-planetary-node-passages/block.json
 #: blocks/generated/get-planetary-positions/block.json
 #: blocks/generated/get-upcoming-moon-phases/block.json
 #: blocks/generated/get-weekly-horoscope/block.json
@@ -5456,6 +5509,7 @@ msgid "Saturn return, Jupiter return, and inner planet cycles"
 msgstr ""
 
 #: blocks/generated/generate-planetary-return/block.json
+#: blocks/generated/get-planetary-node-passages/block.json
 #: blocks/generated/get-planetary-positions/block.json
 msgctxt "block keyword"
 msgid "planetary"
@@ -5575,17 +5629,21 @@ msgstr ""
 #: blocks/generated/get-lunar-aspects/block.json
 #: blocks/generated/get-major-dashas/block.json
 #: blocks/generated/get-monthly-aspects/block.json
+#: blocks/generated/get-monthly-declination-parallels/block.json
 #: blocks/generated/get-monthly-ephemeris/block.json
 #: blocks/generated/get-monthly-horoscope/block.json
 #: blocks/generated/get-monthly-parallels/block.json
 #: blocks/generated/get-monthly-transits/block.json
+#: blocks/generated/get-monthly-tropical-aspects/block.json
 #: blocks/generated/get-monthly-tropical-ephemeris/block.json
+#: blocks/generated/get-monthly-tropical-transits/block.json
 #: blocks/generated/get-moon-calendar/block.json
 #: blocks/generated/get-nakshatra/block.json
 #: blocks/generated/get-number-meaning/block.json
 #: blocks/generated/get-phases/block.json
 #: blocks/generated/get-planet-meaning/block.json
 #: blocks/generated/get-planet-positions/block.json
+#: blocks/generated/get-planetary-node-passages/block.json
 #: blocks/generated/get-planetary-positions/block.json
 #: blocks/generated/get-prana-dashas/block.json
 #: blocks/generated/get-pratyantardashas/block.json
@@ -6127,13 +6185,26 @@ msgid "Major and minor aspect events for a month"
 msgstr ""
 
 #: blocks/generated/get-monthly-aspects/block.json
+#: blocks/generated/get-monthly-declination-parallels/block.json
 #: blocks/generated/get-monthly-ephemeris/block.json
 #: blocks/generated/get-monthly-horoscope/block.json
 #: blocks/generated/get-monthly-parallels/block.json
 #: blocks/generated/get-monthly-transits/block.json
+#: blocks/generated/get-monthly-tropical-aspects/block.json
 #: blocks/generated/get-monthly-tropical-ephemeris/block.json
+#: blocks/generated/get-monthly-tropical-transits/block.json
 msgctxt "block keyword"
 msgid "monthly"
+msgstr ""
+
+#: blocks/generated/get-monthly-declination-parallels/block.json
+msgctxt "block title"
+msgid "Monthly Parallels (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/get-monthly-declination-parallels/block.json
+msgctxt "block description"
+msgid "Declination contacts for an entire month"
 msgstr ""
 
 #: blocks/generated/get-monthly-ephemeris/block.json
@@ -6176,6 +6247,16 @@ msgctxt "block description"
 msgid "Planetary sign changes for an entire month"
 msgstr ""
 
+#: blocks/generated/get-monthly-tropical-aspects/block.json
+msgctxt "block title"
+msgid "Monthly Aspects (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/get-monthly-tropical-aspects/block.json
+msgctxt "block description"
+msgid "Tropical aspect calendar for an entire month"
+msgstr ""
+
 #: blocks/generated/get-monthly-tropical-ephemeris/block.json
 msgctxt "block title"
 msgid "Monthly Ephemeris (Western Astrology)"
@@ -6184,6 +6265,16 @@ msgstr ""
 #: blocks/generated/get-monthly-tropical-ephemeris/block.json
 msgctxt "block description"
 msgid "Daily tropical planetary positions for a month"
+msgstr ""
+
+#: blocks/generated/get-monthly-tropical-transits/block.json
+msgctxt "block title"
+msgid "Monthly Transits (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/get-monthly-tropical-transits/block.json
+msgctxt "block description"
+msgid "Tropical sign ingresses for an entire month"
 msgstr ""
 
 #: blocks/generated/get-moon-calendar/block.json
@@ -6266,6 +6357,16 @@ msgstr ""
 #: blocks/generated/get-planet-positions/block.json
 msgctxt "block description"
 msgid "Get simplified planetary positions (graha positions) for all 9 planets (Sun through Ketu) plus Ascendant (Lagna)"
+msgstr ""
+
+#: blocks/generated/get-planetary-node-passages/block.json
+msgctxt "block title"
+msgid "Ecliptic Crossings (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/get-planetary-node-passages/block.json
+msgctxt "block description"
+msgid "Node passages for a whole year"
 msgstr ""
 
 #: blocks/generated/get-planetary-positions/block.json
