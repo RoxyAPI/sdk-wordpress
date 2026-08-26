@@ -1,0 +1,49 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/list-flying-stars",
+	"title": "Flying Stars (Feng Shui)",
+	"category": "roxyapi",
+	"icon": "lightbulb",
+	"description": "The reference catalogue of the nine flying stars: name, Chinese characters, five phase, home palace and trigram, the period each rules, what each means, and which element strengthens or drains it",
+	"keywords": [
+		"feng shui",
+		"roxyapi",
+		"list",
+		"flying"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		},
+		"inserter": false
+	},
+	"attributes": {
+		"lang": {
+			"type": "string",
+			"default": ""
+		},
+		"limit": {
+			"type": "string",
+			"default": ""
+		},
+		"offset": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php",
+	"editorScript": "file:./index.js"
+}

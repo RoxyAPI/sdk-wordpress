@@ -606,8 +606,21 @@ const TITLE_SMALL_WORDS = new Set( [
 const SUMMARY_LEAD_VERBS =
 	/^(get|list|calculate|generate|detect|check|find|analy[sz]e|look\s?up|fetch|retrieve|create)\b[\s:]*/i;
 const SUMMARY_LEAD_FILLER = /^(all|the|a|an|any|your|complete|full|and)\s+/i;
+/**
+ * The subset of those verbs where the noun IS the answer, so the bare noun
+ * names the reading on its own. Everything else names what the reading DOES.
+ * Read only when two operations in one domain collapse to the same name.
+ */
+const SUMMARY_RETRIEVAL_VERBS = /^(get|list|look\s?up|fetch|retrieve)\b/i;
+/**
+ * A leading count, dropped because "the 24 solar terms" is a reading called
+ * Solar Terms. Case sensitive on purpose: a spelled-out number CAPITALISED in
+ * the summary is part of the technique's name, not a count of anything, so
+ * Eight Mansions and Five Elements keep theirs while "the five elements" loses
+ * it the same way "the 27 nakshatras" does.
+ */
 const SUMMARY_LEAD_COUNT =
-	/^(\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\s+/i;
+	/^(\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\s+/;
 
 /**
  * Where a descriptive tail begins, so a long name can be cut back to its
@@ -681,8 +694,10 @@ function titleCase( text ) {
  * The subject of an operation, taken from its own summary.
  * @param summary
  * @param operationId
+ * @param keepVerb    Keep the lead verb, which `buildDisplayNames` asks for when
+ *                    dropping it would make this operation read the same as a peer in its domain.
  */
-function deriveDisplayName( summary, operationId ) {
+function deriveDisplayName( summary, operationId, keepVerb = false ) {
 	const head = stripApiWords(
 		String( summary || operationId ).split( /\s-\s|\.\s/ )[ 0 ]
 	);
@@ -690,8 +705,10 @@ function deriveDisplayName( summary, operationId ) {
 	let previous;
 	do {
 		previous = name;
+		if ( ! keepVerb ) {
+			name = name.replace( SUMMARY_LEAD_VERBS, '' );
+		}
 		name = name
-			.replace( SUMMARY_LEAD_VERBS, '' )
 			.replace( SUMMARY_LEAD_FILLER, '' )
 			.replace( SUMMARY_LEAD_COUNT, '' );
 	} while ( name !== previous );
@@ -759,7 +776,44 @@ function buildDisplayNames( ops ) {
 		if ( ! fullByTag.has( op.tag ) ) {
 			fullByTag.set( op.tag, [] );
 		}
-		fullByTag.get( op.tag ).push( { operationId: op.operationId, full } );
+		fullByTag
+			.get( op.tag )
+			.push( { operationId: op.operationId, summary: op.summary, full } );
+	}
+	// When dropping the lead verb leaves two operations in one domain reading
+	// the same, the verb was the only thing separating them, so the one naming
+	// an ACTION keeps it and the retrieval keeps the bare noun. That is the
+	// split `listCrystals` and `searchCrystals` already ship; deriving it from
+	// the collision covers the next pair without a verb added to a list by
+	// hand. Two retrievals that still collide are genuinely the same name and
+	// the block-title guard rejects them.
+	for ( const peers of fullByTag.values() ) {
+		const byName = new Map();
+		for ( const entry of peers ) {
+			if ( ! byName.has( entry.full ) ) {
+				byName.set( entry.full, [] );
+			}
+			byName.get( entry.full ).push( entry );
+		}
+		for ( const group of byName.values() ) {
+			if ( group.length < 2 ) {
+				continue;
+			}
+			for ( const entry of group ) {
+				if (
+					SUMMARY_RETRIEVAL_VERBS.test(
+						String( entry.summary || '' )
+					)
+				) {
+					continue;
+				}
+				entry.full = deriveDisplayName(
+					entry.summary,
+					entry.operationId,
+					true
+				);
+			}
+		}
 	}
 	const names = {};
 	for ( const op of ops ) {
@@ -1532,14 +1586,19 @@ const NON_READING_OPERATIONS = new Set( [
 	'getFieldLabels',
 	'getSymbolLetterCounts',
 	'listAvasthas',
+	'listBaguaSectors',
 	'listCountries',
 	'listCrystalColors',
 	'listCrystalPlanets',
+	'listFiveElements',
+	'listFlyingStars',
 	'listHexagrams',
 	'listLanguages',
 	'listNakshatras',
+	'listNinePeriods',
 	'listRashis',
 	'listTrigrams',
+	'listZodiacAnimals',
 	'listZodiacSigns',
 	'searchCities',
 	// Random pickers: non-deterministic, so a published page never matches the
@@ -1553,6 +1612,7 @@ const NON_READING_OPERATIONS = new Set( [
 	'getKpRulingInterval',
 	'getKpSublordChanges',
 	'getLunarAspects',
+	'getMonthlyAlmanac',
 	'getMonthlyAspects',
 	'getMonthlyEphemeris',
 	'getMonthlyParallels',

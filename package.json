@@ -70,6 +70,7 @@
 		"roxyapi.php",
 		"uninstall.php",
 		"readme.txt",
+		"changelog.txt",
 		"LICENSE",
 		"src/",
 		"templates/",

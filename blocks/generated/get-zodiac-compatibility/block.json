@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/get-zodiac-compatibility",
+	"title": "Chinese Zodiac Compatibility (Chinese Astrology)",
+	"category": "roxyapi",
+	"icon": "lightbulb",
+	"description": "Trine, six harmony, clash and harm analysis",
+	"keywords": [
+		"chinese astrology",
+		"roxyapi",
+		"get",
+		"zodiac"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"sign1": {
+			"type": "string",
+			"default": ""
+		},
+		"sign2": {
+			"type": "string",
+			"default": ""
+		},
+		"lang": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php",
+	"editorScript": "file:./index.js"
+}

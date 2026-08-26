@@ -107,7 +107,7 @@ class SettingsPage {
 
 		// The Demo page renders live shortcode output for QA. It only ships in
 		// non-production environments because (a) it burns API quota when run
-		// across all 130 endpoints, (b) it exposes the full surface to anyone
+		// across every endpoint in the spec, (b) it exposes the full surface to anyone
 		// with manage_options, and (c) the WordPress.org review guidelines
 		// discourage admin pages that have no production purpose.
 		if ( DemoPage::is_available() ) {

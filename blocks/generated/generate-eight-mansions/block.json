@@ -1,0 +1,56 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/generate-eight-mansions",
+	"title": "Eight Mansions Map (Feng Shui)",
+	"category": "roxyapi",
+	"icon": "lightbulb",
+	"description": "Build the full Eight Mansions (Ba Zhai) map for a person: all eight compass sectors classified into the four favourable stars, Sheng Chi, Tian Yi, Yan Nian and Fu Wei, and the four unfavourable ones, Huo Hai, Wu Gui, Liu Sha and Jue Ming",
+	"keywords": [
+		"feng shui",
+		"roxyapi",
+		"generate",
+		"eight"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"kua": {
+			"type": "string",
+			"default": ""
+		},
+		"date": {
+			"type": "string",
+			"default": ""
+		},
+		"gender": {
+			"type": "string",
+			"default": ""
+		},
+		"yearBoundary": {
+			"type": "string",
+			"default": ""
+		},
+		"facing": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php",
+	"editorScript": "file:./index.js"
+}

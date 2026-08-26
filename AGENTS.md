@@ -1,6 +1,6 @@
 # roxyapi WordPress plugin: Agent Guide
 
-WordPress plugin for [RoxyAPI](https://roxyapi.com). Drop Western and Vedic astrology, forecasts, human design, Chinese astrology, feng shui, numerology, tarot, biorhythm, I Ching, crystals, dream symbols, and angel number readings onto any WordPress page with shortcodes or Gutenberg blocks. One API key, twelve spiritual data domains, 209+ endpoints.
+WordPress plugin for [RoxyAPI](https://roxyapi.com). Drop Western and Vedic astrology, forecasts, human design, Chinese astrology, feng shui, numerology, tarot, biorhythm, I Ching, crystals, dream symbols, and angel number readings onto any WordPress page with shortcodes or Gutenberg blocks. One API key, 14+ spiritual data domains, 209+ endpoints.
 
 The upstream OpenAPI spec is the source of truth: `https://roxyapi.com/api/v2/openapi.json`.
 
@@ -89,7 +89,7 @@ Override the form or result template from your theme by copying the matching fil
 
 ## Use a Gutenberg block
 
-In the editor, open the inserter and search for "Horoscope", "Tarot", "Numerology", "I Ching", or "Natal Chart". Each block opens a variation picker (Daily, Weekly, Monthly, Love, Career, Chinese, Celtic Cross, Three Card, Life Path, Expression, Soul Urge, and so on).
+In the editor, open the inserter and search for "Horoscope", "Tarot", "Numerology", "I Ching", or "Natal Chart". Each block opens a variation picker (Daily, Weekly, Monthly, Celtic Cross, Three Card, Life Path, Expression, Soul Urge, and so on).
 
 Every other reading is a block too. Insert any long-tail reading and its inputs (birth date, name, zodiac sign, and so on) show as sidebar controls generated from the API spec: a date picker for dates, a dropdown for fixed choices, text and number fields for the rest, with a live preview that updates as you type.
 
@@ -99,7 +99,7 @@ Drop one Astrology Section wrapper block on the page, set the zodiac sign in its
 
 | Block / shortcode prefix | What it covers                                                                    |
 | ------------------------ | --------------------------------------------------------------------------------- |
-| Horoscope                | Western horoscopes: daily, weekly, monthly, love, career, Chinese                 |
+| Horoscope                | Western horoscopes: daily, weekly, monthly                                        |
 | Natal Chart              | Western birth chart: planets, houses, aspects, transits                           |
 | Synastry, Compatibility  | Two-chart Western compatibility: synastry aspects and lighter compatibility score |
 | Moon Phase               | Current moon phase, illumination, sign, meaning                                   |
@@ -112,7 +112,7 @@ Drop one Astrology Section wrapper block on the page, set the zodiac sign in its
 | Angel Number             | Number meanings and pattern analysis                                              |
 | Crystals by Zodiac       | Healing crystals filtered by zodiac sign                                          |
 
-For everything else (human design bodygraph, forecast timelines, KP horary, dasha, navamsa, dream symbols, single-crystal lookup, I Ching casts, full angel number catalog, etc.) use the auto-generated long-tail shortcodes browsable at Roxy > Shortcodes.
+For everything else (human design bodygraph, forecast timelines, BaZi four pillars and the Chinese almanac, feng shui Kua numbers and flying star charts, KP horary, dasha, navamsa, dream symbols, single-crystal lookup, I Ching casts, full angel number catalog, etc.) use the auto-generated long-tail shortcodes browsable at Roxy > Shortcodes.
 
 ## How the plugin reads your API key
 

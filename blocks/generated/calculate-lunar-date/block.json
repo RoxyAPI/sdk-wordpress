@@ -1,0 +1,56 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/calculate-lunar-date",
+	"title": "Convert Lunar and Gregorian Dates (Chinese Astrology)",
+	"category": "roxyapi",
+	"icon": "lightbulb",
+	"description": "Chinese lunisolar calendar",
+	"keywords": [
+		"chinese astrology",
+		"roxyapi",
+		"calculate",
+		"lunar"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"date": {
+			"type": "string",
+			"default": ""
+		},
+		"lunarYear": {
+			"type": "string",
+			"default": ""
+		},
+		"lunarMonth": {
+			"type": "string",
+			"default": ""
+		},
+		"lunarDay": {
+			"type": "string",
+			"default": ""
+		},
+		"isLeapMonth": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php",
+	"editorScript": "file:./index.js"
+}

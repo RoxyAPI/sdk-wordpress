@@ -2,17 +2,17 @@
 Contributors: roxyapi
 Tags: astrology, horoscope, tarot, vedic, human design
 Requires at least: 6.5
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 1.12.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Birth charts, horoscopes, kundli, Human Design, Numerology and Tarot as blocks and shortcodes. 14+ domains on one key. Free to start.
+Birth charts, horoscopes, kundli, Human Design, BaZi and Feng Shui as blocks and shortcodes. 14+ domains on one key. Free to start.
 
 == Description ==
 
-RoxyAPI adds Astrology, Vedic, Forecast, Human Design and Numerology readings to any WordPress post, page or widget, as Gutenberg blocks and shortcodes. Drop one on a page and it renders a real reading, server side, the moment you activate the plugin. No account, no setup, no calculation code to write. Start free, then add an API key when you go live.
+RoxyAPI adds Astrology, Vedic, Forecast, Human Design, Chinese Astrology and Feng Shui readings to any WordPress post, page or widget, as Gutenberg blocks and shortcodes. Drop one on a page and it renders a real reading, server side, the moment you activate the plugin. No account, no setup, no calculation code to write. Start free, then add an API key when you go live.
 
 **One API key. 14+ domains. 209+ endpoints.** Most astrology plugins cover one system. RoxyAPI covers the whole stack, so you build the entire experience without stitching services together:
 
@@ -20,6 +20,8 @@ RoxyAPI adds Astrology, Vedic, Forecast, Human Design and Numerology readings to
 * **Vedic astrology:** kundli, KP charts, panchang, Vimshottari dasha, divisional charts, nakshatras, yogas, gochara transits, and the Bhava Bala and Bhav Chalit house readings
 * **Forecast:** cross-domain timelines, transit forecasts, solar returns, and significant dates
 * **Human Design:** full bodygraph with type, authority, profile, centers, channels, gates, variables, and penta
+* **Chinese astrology:** BaZi four pillars, Day Master strength, luck pillars, zodiac signs and compatibility, the 24 solar terms, and the lunisolar almanac
+* **Feng shui:** Kua numbers, Eight Mansions directions, flying star charts, and annual afflictions
 * **Numerology:** Life Path, Expression, Soul Urge, and Personality numbers
 * **Tarot:** single card, three card, Celtic Cross, and custom spreads
 * **Plus:** biorhythm, I Ching, crystals, dream interpretation, and angel numbers
@@ -90,10 +92,12 @@ A matching shortcode exists for every endpoint in the spec. A sample across the 
 
 * Western astrology: `[roxy_calculate_aspects date="1990-07-15" time="14:30:00" timezone="UTC"]` and `[roxy_get_weekly_horoscope sign="aries"]`
 * Vedic astrology: `[roxy_get_hora date="2026-02-03" latitude="17.385044" longitude="78.486671" timezone="UTC"]` and `[roxy_calculate_drishti date="2026-02-03" time="12:00:00" latitude="17.385044" longitude="78.486671" timezone="UTC"]`
-* Tarot: `[roxy_cast_celtic_cross question="What should I know about this path"]`
-* Numerology: `[roxy_calculate_expression full_name="Ada Lovelace"]`
-* Human Design: `[roxy_generate_bodygraph date="1990-07-15" time="13:00:00" timezone="UTC" latitude="40.7128" longitude="-74.0060"]`, `[roxy_calculate_variables date="1990-07-15" time="13:00:00" timezone="UTC" latitude="40.7128" longitude="-74.0060"]`, plus the two chart `[roxy_calculate_connection]` and `[roxy_calculate_penta]` which render visitor forms and take no attributes
 * Forecast: `[roxy_generate_digest]` (renders a visitor form, no attributes)
+* Human Design: `[roxy_generate_bodygraph date="1990-07-15" time="13:00:00" timezone="UTC" latitude="40.7128" longitude="-74.0060"]`, `[roxy_calculate_variables date="1990-07-15" time="13:00:00" timezone="UTC" latitude="40.7128" longitude="-74.0060"]`, plus the two chart `[roxy_calculate_connection]` and `[roxy_calculate_penta]` which render visitor forms and take no attributes
+* Chinese astrology: `[roxy_generate_bazi_chart date="1990-06-15" time="14:30:00" timezone="Asia/Shanghai"]`, `[roxy_get_zodiac_animal id="dragon"]` and `[roxy_get_almanac_day date="2026-02-17"]`
+* Feng shui: `[roxy_calculate_kua_number date="1985-07-15" gender="male"]` and `[roxy_get_annual_flying_stars year="2026"]`
+* Numerology: `[roxy_calculate_expression full_name="Ada Lovelace"]`
+* Tarot: `[roxy_cast_celtic_cross question="What should I know about this path"]`
 * I Ching: `[roxy_get_daily_hexagram]`
 * Crystals: `[roxy_get_crystal id="amethyst"]`
 * Dreams: `[roxy_search_dream_symbols q="water"]`
@@ -135,7 +139,7 @@ Not to get started. A limited number of free readings per day are allowed right 
 
 = What readings can I add to my site? =
 
-One key covers 14 domains. Western astrology: natal chart, daily / weekly / monthly horoscopes, synastry, compatibility, transits, aspect patterns, and moon phases. Vedic astrology: kundli, KP chart, panchang, Vimshottari dasha, divisional charts, nakshatras, doshas (Manglik, Kaal Sarpa, Sade Sati), and classical yogas. Numerology: Life Path, Expression, Soul Urge, Personality, personal year, and compatibility. Tarot: single card, three card, Celtic Cross, and the full 78 card catalog. Human Design: bodygraph, type, authority, profile, centers, channels, and gates. Forecasts: timelines, transit forecasts, solar returns, and significant dates. Chinese astrology: BaZi four pillars, luck pillars, zodiac signs and compatibility, solar terms, and the lunisolar almanac. Feng shui: Kua numbers, Eight Mansions directions, flying star charts, and annual afflictions. Plus biorhythm, I Ching hexagrams, crystal reference data, dream symbols, and angel numbers. Every reading is available as a shortcode. More than 130 of them also ship a matching Gutenberg block, each with sidebar controls for its inputs (a date picker for dates, a dropdown for fixed choices, text and number fields for the rest) and a live preview in the editor. The headline readings (horoscope, natal chart, tarot, numerology, biorhythm, angel number) are built the same way, and the horoscope block adds a variation picker. Interactive multi input readings such as two chart compatibility and nested birth forms stay shortcode and visitor form mode, because the block editor cannot collect their nested input. Browse the full list inside WordPress under RoxyAPI, Shortcodes.
+One key covers 14 domains. Western astrology: natal chart, daily / weekly / monthly horoscopes, synastry, compatibility, transits, aspect patterns, and moon phases. Vedic astrology: kundli, KP chart, panchang, Vimshottari dasha, divisional charts, nakshatras, doshas (Manglik, Kaal Sarpa, Sade Sati), and classical yogas. Numerology: Life Path, Expression, Soul Urge, Personality, personal year, and compatibility. Tarot: single card, three card, Celtic Cross, and the full 78 card catalog. Human Design: bodygraph, type, authority, profile, centers, channels, and gates. Forecasts: timelines, transit forecasts, solar returns, and significant dates. Chinese astrology: BaZi four pillars, Day Master strength, luck pillars, zodiac signs and compatibility, the 24 solar terms, and the lunisolar almanac. Feng shui: Kua numbers, Eight Mansions directions, flying star charts, and annual afflictions. Plus biorhythm, I Ching hexagrams, crystal reference data, dream symbols, and angel numbers. Every reading is available as a shortcode. More than 150 of them also ship a matching Gutenberg block, each with sidebar controls for its inputs (a date picker for dates, a dropdown for fixed choices, text and number fields for the rest) and a live preview in the editor. The headline readings (horoscope, natal chart, tarot, numerology, biorhythm, angel number) are built the same way, and the horoscope block adds a variation picker. Interactive multi input readings such as two chart compatibility and nested birth forms stay shortcode and visitor form mode, because the block editor cannot collect their nested input. Browse the full list inside WordPress under RoxyAPI, Shortcodes.
 
 = Can I show readings in another language? =
 
@@ -238,6 +242,12 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.13.0 =
+* New: two whole domains, Chinese astrology and feng shui, as 27 readings with matching Gutenberg blocks. BaZi four pillars, Day Master strength, luck pillars, BaZi compatibility and the annual forecast, the twelve zodiac animals with daily readings and compatibility, lunar date conversion, the Tong Shu almanac, the 24 solar terms and date selection for weddings and openings. On the feng shui side, Kua numbers, Eight Mansions directions, flying star natal, annual and monthly charts, the bagua sectors, the nine periods and the annual afflictions.
+* New: readings that turn on a school rule report which one they used, so a chart can be reconciled against the one a practitioner already draws. The day boundary, the year boundary and the hour clock come back on every BaZi response.
+* Improved: tested against WordPress 7.1.
+* Improved: the plugin listing leads with the domains people ask for most, and names the two new ones.
+
 = 1.12.0 =
 * New: the daily Vedic reading renders as a full reading instead of a plain list of values. Panchang, the grahas of the day with their state, tara and chandrabala, the finance read and the running dasha, each in its own block.
 * Improved: chart labels read in your site language across the whole reading library. Headings, column names and vocabulary were still drawing in English on a long list of readings whatever the reading language, among them panchang, dasha, biorhythm, numerology, crystal, dream, hora, kundli, dosha, angel number, yoga, synastry, transit and the strength tables.
@@ -256,239 +266,12 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * New: the RoxyAPI settings screens now read in your site language. Every tab, field label, help text, button and notice on them is translated, in all eight languages, as is the plugin description on your Plugins page. Until now the whole admin stayed English however your site was set, so a Spanish site was configured through an English screen. The domain names in the Shortcodes library, such as Human Design, stay as they are, the same way shortcode names do.
 * Fixed: the notice a visitor reads when a reading cannot be loaded, and the status messages under the city box on a birth details form, now read in your site language too. Fourteen more lines were coming out English on fully translated sites.
 
-= 1.11.2 =
-* Fixed: hiding the written readings, or a section, now works on every placement. Both settings could be set on one shortcode since 1.11.1, but three cases quietly ignored the attribute and followed the site setting instead: the horoscope shortcode, the synastry, Guna Milan and compatibility shortcodes, and ANY reading where the visitor fills in the details themselves rather than the site owner. A page that asked for a chart without the written report got the report back the moment a visitor used the form. The site-wide settings on the Display tab were never affected.
-* Fixed: dropdowns are readable in dark mode. A select looked correct until it was opened, and then listed its choices as white text on a white background. The same fix restores the date and time pickers, the number steppers and the scrollbars, which were all drawn in light colours inside a dark reading.
-* New: the form a visitor fills in now reads in your site language. Field labels and their options were English on every site, whatever the reading language, so a Spanish page asked for a `Birth date` above a translated chart. They are translated in all eight languages, and anything not yet translated stays in English rather than going blank.
-* Fixed: a date shown without a time no longer slips to the previous day for visitors west of Greenwich.
-* Fixed: the Previous month and Next month links and the Show month button on the ephemeris now read in your site language, along with the messages around every reading form: the required field warning, the consent reminder, the too many submissions notice and the notice shown when a reading has already been given. Thirty visitor facing lines were coming out in English on fully translated sites.
-* New: a Vedic daily reading, composing the day gochara, panchanga and dasha for one person into a single reading. Available as the [roxy_get_vedic_daily_reading] shortcode and as a block.
-* New: Hide sections lists the section names your version supports. Click the field and pick one instead of guessing, and separate several with commas. If you enter a name that matches nothing, saving now tells you which one, where before it saved successfully and quietly did nothing, which looked exactly like the setting being broken. The names are internal and do not change with your site language, so the title printed above a block is not one of them.
-
-= 1.11.1 =
-* New: Hide sections can now be set on a single placement instead of the whole site. Add hide_sections="patterns" to one shortcode and only that reading loses the block; the Display tab setting still covers everywhere else. Use hide_sections="none" to keep a block on one page when the site setting hides it, which is the case a site-wide setting on its own could never answer.
-
-= 1.11.0 =
-* New: Hide sections, on the Display tab. Enter a section name such as patterns and that block comes off every reading that has one. Written readings already took away the interpretation; this takes away a block of data, which written readings leaves in place on purpose, because a chart pattern reports measurements rather than prose. It applies to the no JavaScript version of the reading too, so a hidden section is not left behind for search engines to read.
-* New: the monthly ephemeris pages month to month. Previous and Next links plus a month and year picker sit under the table, in the shortcode and in the block. The month travels in the page address, so the view can be linked and shared, it works with no JavaScript, and your API key stays on the server.
-* New: every block of a reading can be targeted from your own stylesheet with a CSS part selector, so a section can be restyled instead of hidden. See the FAQ for the section names.
-
-= 1.10.0 =
-* New: the monthly ephemeris now renders as a real ephemeris. Days down the page, bodies across, each position as degree, sign and minute, retrogrades marked, and the days a body changes sign listed above the table. It reads the way a printed ephemeris reads, in all eight languages.
-* New: Branding, Display, Privacy and Advanced are available straight after you activate the plugin, before you add an API key. Readings render from the moment you activate, so the settings that shape them are there from the moment you activate too.
-* New: the six headline readings (horoscope, natal chart, tarot, numerology, biorhythm, angel number) now have full sidebar controls and a live preview in the block editor, the same as every other reading. Before this they were placeholders with nowhere to enter a birth date.
-* Fixed: a reading placed in the middle of a paragraph rendered twice, the second copy unstyled and ignoring your colours. It now renders once wherever you put it.
-* Fixed: saving one settings tab no longer switches off the toggles on another. Choosing a palette could silently turn hide written readings back on.
-* Fixed: saving any setting now confirms it saved. Before this the page reloaded looking identical whether it had worked or not.
-* Fixed: reopening or sharing a link to a submitted reading now explains that the reading has already been shown, instead of returning a blank form.
-* Fixed: the copy buttons in the Shortcodes library no longer hand out settings the shortcode ignores, and no longer bake in a fixed month. A pasted ephemeris shortcode now shows the current month wherever it is used.
-* Changed: block names and form headings read as readings rather than as endpoints. "Get the twelve Arudha padas - Arudha Lagna Calculator API" is now "Arudha Padas".
-* Changed: the Demo screen runs one reading per click. The buttons that ran a whole domain, or every reading at once, are gone, because each one is a live call against your plan.
-
-= 1.9.0 =
-* New: brand the readings from the RoxyAPI menu, Branding tab. Pick one of four ready-made palettes or set seven colours yourself, with separate values for light and dark, a live colour picker, and a button to put everything back to the defaults.
-* New: the readings now use the font your theme already sets instead of ours, so they read as part of your site rather than something pasted into it.
-* Fixed: a brand colour chosen for a light site is no longer reused as text on a dark one, which could leave the words unreadable.
-* Fixed: the block editor now shows its own settings in your language. On a Spanish site the fields read Fecha and Zona horaria rather than Date and Timezone. Many labels are still English while the translations are written; those follow.
-* Changed: the block inserter now lists the 127 readings and hides 27 developer lookups, such as country and city searches and month-long position tables. Nothing is removed: every one still works as a shortcode, and any page already using one keeps working.
-* Fixed: the usage summary is no longer offered as a block. It reports the account behind your API key, including the email address on it, so it should never have been something a page could publish.
-* Fixed: the hourly limit on the city search and the reading forms is now applied reliably, so heavy traffic cannot quietly spend your monthly allowance.
-* Fixed: saving your API key now clears the cached free-allowance readings on sites that use Redis or Memcached. Before this, a site could keep showing the old limit for up to an hour after you paid.
-* Fixed: the birth chart form is titled "Natal chart" rather than "Western birth chart".
-
-= 1.8.1 =
-* Fixed: on some themes the city search results were see-through and overlapped the fields underneath. They now render as a solid panel on any theme.
-* Fixed: the city rows are a comfortable size to tap on a phone.
-* Fixed: the messages under the city box now follow your site language.
-* Fixed: chart headings, tabs and panel titles now follow your site language, along with planet names, sign names and dates. The chart patterns panel and the plain table headings are still English.
-* Added: roxy_get_monthly_tropical_ephemeris, a Western monthly ephemeris on the tropical zodiac, including the outer planets. The existing roxy_get_monthly_ephemeris stays sidereal, for Vedic astrology.
-* Added: leave year and month out of either monthly ephemeris and it shows the current month.
-
-= 1.8.0 =
-* New: show the chart without the written reading. Tick "Hide written readings" under Display to keep the wheels, tables and numbers while leaving the interpretation out, or set hide_readings on a single shortcode to control one placement. Off by default, so nothing changes until you turn it on.
-* New: a transit wheel. [roxy_calculate_transit_aspects] now draws the birth chart on an inner ring and the transiting planets on an outer ring, with the aspects between them, instead of a table of aspects.
-* Fixed: the birth details form and the reading stayed in English on some sites even when the site language was set correctly. The plugin now loads its own translations rather than waiting for WordPress to find them.
-* New: Tools then Site Health then Info now carries a RoxyAPI section showing your site language, the language the plugin is actually using, and whether its translations loaded. Paste that into a support message and we can answer in one reply.
-* Fixed: on some themes the city search results appeared as a see-through bulleted list sitting on top of the fields below. They now render as a proper dropdown on any theme.
-* Fixed: city search stopped returning results after a handful of tries. The hourly limit per visitor is five times higher, and when it is reached the form now says so instead of showing an empty list.
-
-= 1.7.6 =
-* Regional language settings now show the translated form. A site set to Spanish (Argentina), Spanish (Mexico), Portuguese (Portugal), German (Austria) or French (Canada) previously fell back to English even though that language was included. It now uses the translation for that language.
-
-= 1.7.5 =
-* The visitor form is now translated into German, Spanish, French, Hindi, Portuguese, Russian, and Turkish. Set your site language and the birth details form, its help text, and its buttons appear in that language alongside the reading itself.
-
-= 1.7.4 =
-* The block editor now follows your site language too. Reading settings panels in the editor were left in English even when the rest of your dashboard was translated.
-
-= 1.7.3 =
-* The visitor form is now translatable. Field labels, help text, section headings and form titles are all available to translators, so a site in German, Spanish, Hindi, Turkish, Portuguese, French or Russian can show the birth details form in that language instead of English. Translations are contributed at translate.wordpress.org and arrive automatically as language packs.
-
-= 1.7.2 =
-* Fixed: readings came back in English on a site set to another language. The chosen language reached the service correctly for a handful of readings and was dropped for the rest, which covered the headline ones: natal chart, kundli, panchang, synastry, Guna Milan, numerology, tarot, and biorhythm. Every reading now follows your site language, or the reading language you pick under the Branding tab.
-* Updated the chart and card rendering to the latest release.
-* Corrected the language instructions on this page. The site language and the Branding setting cover every reading; the lang attribute applies only to some of the long tail shortcodes.
-
-= 1.7.1 =
-* Fixed: a reading that had not been filled in yet contacted the service on every single page view and got nothing back. Because a browser asks for a site icon on each admin screen, and WordPress answers that by rendering your front page, an unconfigured reading on the front page could repeat that call on every screen you opened. An unconfigured reading now sends nothing at all.
-* Fixed: readings are cached far more widely. Most of them were not cached before, so the same reading was recalculated for every visitor on every view. Repeat views of the same reading now reuse the stored result and leave your daily allowance for real traffic.
-* Fixed: a reading the service could not accept was retried on every view even though the answer could never change. It is now remembered for an hour, and correcting the settings takes effect immediately.
-* Fixed: the block editor refused to preview a reading until you added an API key, even though readings work without one. Previews now render straight away.
-* An unconfigured reading no longer shows visitors anything. Setup guidance is shown only to users who can edit the page.
-
-= 1.7.0 =
-* Three new readings: Gochara transits, Bhava Bala and Bhav Chalit. Each is available as a block and a shortcode like every other reading.
-* Nine readings that used to show a plain list of values now draw as proper readings. Gochara transits, Bhava Bala, Bhav Chalit, heliacal visibility, Upagraha, Chara Karakas, Arudha padas, the tarot card catalogue and the Human Design type card were all affected.
-* Vedic charts and strength tables now state which sidereal frame they were cast in. Two charts cast in different frames can place a graha in different signs, so without this a reader had no way to reconcile one against another.
-* Yoga detection reads correctly in every language. The group of yogas that match their rule but are outranked by a stronger one was only recognised in English, and appeared as simply absent in the other seven.
-* Gochara transits show where a graha sits within its current kaksha rather than a single verdict, so a reader can see how long the reading holds before it turns.
-
-= 1.6.6 =
-* Aspect names now read the same way everywhere. A summary chip said "Semi sextile" while the row below it said "Semi-sextile"; both now use the proper hyphenated name.
-* Compatibility readings format their aspect and cycle wording consistently with the rest of the plugin.
-
-= 1.6.5 =
-* Chart aspect symbols are now the standard astrological glyphs. Two of them were swapped with one another, and two more had no symbol at all and showed up as letters.
-* Aspect names read as names again, so a chart shows "Semi-sextile" rather than a raw code.
-* Dates read as dates everywhere, so a reading shows "Jan 15, 1990" instead of the raw format.
-* Readings fit properly on a phone. A few of them ran off the edge of the card, and the compatibility score table lost its Score column entirely on a narrow screen.
-* Dasha timelines always show the year, and no longer print the same month at both ends of a short period.
-* Transit speeds carry their unit, and forecast windows list the strongest events first.
-
-= 1.6.4 =
-* Yes or no tarot readings are now titled "Yes or no" instead of "Three card", so the heading matches the reading your visitor is looking at.
-* The details panel on a dasha reading is now labelled "Chart details", since it lists the birth chart values behind the dates rather than drawing a chart.
-
-= 1.6.3 =
-* The Vimshottari dasha reading now goes four levels deep. You can open a major period, then the sub period inside it, and keep going down to the short sookshma periods that land on specific days.
-* Dasha readings are now organised into tabs, so the timeline, the written interpretation, and the chart details each have their own place instead of running together in one long column.
-* Two new readings for the deeper dasha levels, available as blocks and shortcodes like every other reading.
-* Dasha dates now show the right amount of detail for the period you are looking at: years for the long major periods, and days for the short ones.
-
-= 1.6.2 =
-* Reading blocks now show the full interactive reading in the editor preview, the same chart or card your visitors see, instead of a plain text fallback.
-* Number fields in the reading blocks, such as latitude and longitude, now accept decimal values directly in the block sidebar.
-
-= 1.6.1 =
-* Every reading block now has its own editor controls. Insert any reading from the block inserter and fill in the birth date, name, zodiac sign, or other details right in the block sidebar, with a date picker for dates, a dropdown for fixed choices, and a live preview that updates as you type. Until now the long-tail reading blocks rendered but gave you no way to enter their inputs in the editor.
-* Fixed multi-word inputs on the reading blocks. Fields such as a full name, birth date, or node type now reach the reading correctly. Before, some blocks could return an empty or unavailable reading when those fields were set.
-
-= 1.6.0 =
-* Every reading is now a Gutenberg block, not only the headline ones. The full catalog across all twelve domains is available directly from the block inserter, matching the shortcodes one to one. This adds blocks for the Human Design bodygraph, type, profile, centers, channels, gates, and variables, and for Forecast transits, solar returns, and cross domain forecasts, alongside the western, vedic, tarot, numerology, and reference blocks. Until now only a small set of headline readings had blocks and everything else was shortcode only.
-* Human Design readings can now match either lunar node convention. Add node_type="mean" to a Human Design reading to line it up with a chart calculator that uses the mean node, or leave it unset for the true node used by professional Human Design software. On a chart where a node sits on a gate boundary this can change the type or authority, so the option lets you match the chart your visitors already know.
-* Refreshed the bundled component library.
-
-= 1.5.7 =
-* The KP chart now shows the KP number for Rahu and Ketu. Every other body in that table carried it and those two rows sat blank, even though the reading always included the value. The KP number is the 1 to 249 position a KP reader looks at first, so a blank cell dropped the part of the row that matters most.
-
-= 1.5.6 =
-* Your brand color now themes the whole reading. Set an accent in Branding and it carries through every chart, table and card, including the highlighted labels, the chart angle markers and the focus outlines. Previously those kept the default amber no matter what you picked.
-* Roomier readings. Where a reading nests a table inside a table, the inner column now gets the width it needs instead of being squeezed into a sliver, and very deep sections start folded so a long reading is scannable rather than endless.
-* Cleaner cards. Long summary text is no longer promoted into a heading, and nested cards no longer stack borders inside borders.
-
-= 1.5.5 =
-* Cleaner reading cards. Readings no longer show internal working: the step by step arithmetic behind a number, the schema label for the reading type, and the page counters on list readings are all hidden now. They were only ever visible when JavaScript was on, so a reading could look different depending on the visitor. Affirmations and mantras render as a quoted line, long tables fold away behind their row count, and every data table now announces what it holds to a screen reader.
-* Consistent times in the muhurta readings. Hora, choghadiya and panchang each formatted their times differently, and one of them changed format depending on the visitor's region. All three now read the same way, and a chart time can no longer shift by an hour for a visitor in a daylight saving changeover.
-
-= 1.5.4 =
-* Clearer plugin listing: the description now leads with the full breadth (12+ domains and 160+ endpoints under one API key) as a scannable list, so you can see every reading type you can add at a glance.
-
-= 1.5.3 =
-* Quieter first run: the one-time "installed but not yet connected" setup notice no longer shows. The plugin already renders readings out of the box on the free daily allowance, so there is nothing to connect before you see it working.
-* Friendlier message when the free daily allowance is used up for the day. It now reassures you that the allowance resets each day and readings return on their own, and points you to add an API key to remove the daily limit.
-
-= 1.5.2 =
-* Detailed readings such as solar returns, lunar returns, and the monthly ephemeris now render as clean readable tables: rounded numbers, formatted dates, Yes and No flags, clickable links, and full width sections. Wide tables scroll sideways instead of squeezing.
-* Return charts, significant dates, forecast timelines, and other date window readings are now cached, so repeat page views load faster and spend less quota.
-* Fixed the Quota saver cache preset shortening the cache for long lived readings such as natal charts.
-* Fixed a truncated help note under the timezone field in visitor forms.
-* Refreshed the bundled component library.
-
-= 1.5.1 =
-* Added a Browse all shortcodes button on the settings screen, so you can jump straight to the full shortcode library in one click.
-
-= 1.5.0 =
-* Five more Western readings: asteroids, Black Moon Lilith, secondary progressions, solar arc directions, and annual profections.
-* The new location and predictive readings now render as rich interactive charts and tables instead of plain cards: astrocartography map, local space compass, relocation wheel, position tables for asteroids, Lilith, progressions, solar arc, and the Arabic lots, fixed star conjunctions, and the annual profection card.
-* Refreshed the bundled component library. The astrocartography map now plots its planetary lines over a world map of the continents for clearer relocation and travel planning.
-
-= 1.4.5 =
-* Maintenance and upstream data refresh.
-
-= 1.4.4 =
-* New readings: astrocartography, local space, relocation chart, fixed stars, and the Arabic lots.
-* Upstream data refresh.
-
-= 1.4.3 =
-* Maintenance and upstream data refresh.
-
-= 1.4.2 =
-* Maintenance and upstream data refresh.
-
-= 1.4.1 =
-* Free to start: new installs open the Shortcodes library so you can drop a reading on a page right away, no key needed.
-* The Settings screen now explains the free daily allowance and what an API key unlocks.
-* Clearer wording on trying the plugin for free before subscribing.
-
-= 1.4.0 =
-* Ten new interactive readings: natal and transit aspects with chart-pattern detection, Vedic graha drishti aspects, planetary hours (hora), a cross-domain forecast digest, single-crystal detail, dream-symbol search, Human Design connection, penta, and variables, plus a reference card for zodiac, planet, rashi, gate, center, and number lookups.
-* Refreshed the bundled component library.
-* Fixed numeric inputs such as timezone in attribute-mode shortcodes so they reach the service correctly.
-
-= 1.3.1 =
-* The admin Shortcodes library now groups Human Design, Forecast, and Languages under the right headings instead of Other.
-* Readings default to the light theme.
-
-= 1.3.0 =
-* Gutenberg blocks now render the full interactive charts and cards, matching the shortcodes.
-* New interactive components for Human Design (bodygraph) and forecast timelines, plus synastry, compatibility, crystals, dream symbols, and angel numbers.
-* Visitor forms now return to the same page after submission and render the interactive result in place.
-* The response language setting applies to every reading, and changing it refreshes cached readings.
-* Renamed the admin Connect menu item to Settings. Refreshed the bundled component library.
-
-= 1.2.5 =
-* Build and dependency maintenance.
-
-= 1.2.4 =
-* The API key field now accepts the current publishable and secret key formats (pk and sk) alongside older keys. Saving or rotating a key also clears the cached readings.
-
-= 1.2.3 =
-* Dependency maintenance.
-
-= 1.2.2 =
-* Dependency maintenance.
-
-= 1.2.1 =
-* Dependency maintenance.
-
-= 1.2.0 =
-* Build and release-tooling maintenance.
-
-= 1.1.0 =
-* Charts now render as interactive SVG: natal, kundli, KP, panchang, dasha, and more, instead of plain tables.
-* Light and dark mode. Charts follow the visitor device automatically. Pick an accent color and a theme in the RoxyAPI menu under Branding.
-* Try it free. A limited number of free readings per day are allowed right after install, with no account.
-
-= 1.0.4 =
-* Tidy distribution: drop maintainer-only files (CITATION.cff, eslint.config.cjs, empty patterns scaffold) that were leaking into the published zip.
-
-= 1.0.3 =
-* Sync to the latest RoxyAPI spec, now 133 endpoints across 10 spiritual domains.
-* Western astrology: detect aspect patterns (Grand Trine, Kite, T-Square, Grand Cross, Yod, Mystic Rectangle, Stellium) via new [roxy_detect_aspect_patterns] shortcode + matching block.
-* Vedic astrology: detect classical Vedic yogas in a birth chart via new [roxy_detect_yogas] shortcode + matching block.
-* Natal chart, transits, and aspect calculations now include Black Moon Lilith alongside the lunar nodes and Chiron for full 14-body planetary coverage.
-* Yoga catalog entries reworded for clearer glossary phrasing in both the list and the per-yoga detail responses.
-
-= 1.0.2 =
-* Initial public release on the WordPress Plugin Directory.
-* 131 endpoints across 10 spiritual domains under one RoxyAPI key. 17 hero shortcodes with matching Gutenberg blocks (Western astrology, Vedic astrology, tarot, numerology, biorhythm, angel numbers, crystals) plus 117 auto-generated long-tail shortcodes for the full spec.
-* Compatible with the declared WordPress 6.5 minimum: block registration no longer calls a WordPress 6.7 only function.
-* Form mode on every hero shortcode: drop with no attributes and visitors fill the form themselves. Server-side submission, API key never reaches the browser, GDPR Article 9 consent gate, per-IP rate limit.
-* Two-chart heroes (Synastry, Gun Milan, Compatibility) ship form-only with Person 1 / Person 2 fieldsets and ARIA 1.2 combobox city autocomplete via a key-protected /wp-json/roxyapi/v1/geocode proxy.
-* Tabbed admin settings (Connect, Branding, Display, Privacy, Advanced) with accent color, response-language picker, disclaimer line, cache preset (fresh / balanced / quota saver), and inline Test Connection button. API key supports a ROXYAPI_KEY wp-config constant override.
-* Encryption at rest via AES 256 CTR. Server-side caching with per-endpoint TTL via WordPress transients (Redis / Memcached compatible). Block Bindings API source roxyapi/daily-text for inline horoscope binding.
+Older entries are in changelog.txt.
 
 == Upgrade Notice ==
+
+= 1.13.0 =
+Worth updating if you publish Chinese astrology or feng shui. Adds both domains, 27 readings with matching blocks, from BaZi four pillars and the Tong Shu almanac to Kua numbers and flying star charts.
 
 = 1.12.0 =
 Worth updating on any translated site. Chart labels and column headings now read in your site language across the whole reading library, and the daily Vedic reading renders as a full reading rather than a list of values.
@@ -498,114 +281,3 @@ Worth updating if any reading sits on a coloured or dark section. The reading ca
 
 = 1.11.3 =
 Worth updating on any site not run in English. The whole RoxyAPI settings area now reads in your site language, along with the notices a visitor sees when a reading cannot load and the messages under the city box.
-
-= 1.11.2 =
-Worth updating on any translated site: the ephemeris month controls and the form messages now read in your site language. Hide sections lists the names it accepts and warns when one matches nothing. Also fixes those settings being ignored on several shortcodes, and dropdowns in dark mode.
-
-= 1.11.1 =
-Worth updating if you hide a section and want an exception. Hide sections now takes a per shortcode value, so one page can drop a block the rest of the site keeps, or keep one the rest of the site drops.
-
-= 1.11.0 =
-Worth updating if you publish charts without the written report, or a monthly ephemeris. A single block of a reading, such as the chart patterns list, can now be taken off from the Display tab or with one line of CSS. The ephemeris gained Previous and Next links and a month picker.
-
-= 1.10.0 =
-Recommended for every site. The monthly ephemeris now renders as a real ephemeris instead of a collapsed box, and the six headline readings have full controls in the block editor. Saving one settings tab could also switch off the toggles on another, so check hide written readings.
-
-= 1.9.0 =
-Recommended for every site, and important if you pay for a plan. Saving your API key now clears the free-allowance cache, and the hourly limit on forms and city search is applied correctly. The usage summary is no longer something a page can publish, and readings follow your branding.
-
-= 1.8.1 =
-Recommended for every site, and important for sites that are not in English. Chart labels now follow your site language instead of staying English, city search results are readable on any theme, and the city rows are easier to tap on a phone.
-
-= 1.8.0 =
-Recommended for every site. Non-English sites get translations that load reliably, city search is fixed on themes that were breaking the results list, and you can now show a chart without its written reading.
-
-= 1.7.6 =
-Recommended if your site language is a regional variant such as Spanish (Argentina) or Portuguese (Portugal). Those sites now get the translated form.
-
-= 1.7.5 =
-Recommended for sites in German, Spanish, French, Hindi, Portuguese, Russian, or Turkish. The visitor form now appears in your site language.
-
-= 1.7.4 =
-Completes the translation work in 1.7.3 by covering the block editor panels.
-
-= 1.7.3 =
-Recommended for sites that are not in English. The visitor form can now be translated, so the form your visitors fill in can match the rest of your site.
-
-= 1.7.2 =
-Recommended for any site that is not in English. Readings now follow your site language across every reading, including natal chart, kundli, panchang, and compatibility, which previously stayed in English.
-
-= 1.7.1 =
-Recommended for every site. Unconfigured and rejected readings no longer contact the service on every page view, and most readings are now cached, which frees up a large share of your daily allowance for real visitors.
-
-= 1.7.0 =
-Adds Gochara transits, Bhava Bala and Bhav Chalit, draws nine readings properly that previously showed a plain list of values, and fixes yoga detection in the seven non English languages.
-
-= 1.6.6 =
-Aspect names now read consistently between the summary chips and the rows beneath them.
-
-= 1.6.5 =
-Corrects the aspect symbols drawn on charts, formats every date for reading, and fixes readings that ran off the edge on a phone.
-
-= 1.6.4 =
-Yes or no tarot readings now carry the right heading, and the dasha details panel is labelled more clearly.
-
-= 1.6.3 =
-Dasha readings now go four levels deep, down to the short sookshma periods, with the timeline, interpretation and chart details split into tabs.
-
-= 1.6.2 =
-Reading blocks now preview the full interactive reading in the editor, number fields accept decimals, plus refreshed listing screenshots.
-
-= 1.6.1 =
-Every reading block now has editor controls to enter its inputs (birth date, name, and more) with a live preview, and a fix so multi-word fields reach the reading correctly.
-
-= 1.6.0 =
-Every reading is now a Gutenberg block, including Human Design and Forecast. Adds a lunar node option for Human Design and a refreshed component library.
-
-= 1.5.4 =
-Listing and description improvements only. No functional or code changes.
-
-= 1.5.3 =
-Quieter first run and a clearer, more reassuring message when the free daily allowance is used up for the day.
-
-= 1.5.2 =
-Cleaner tables for detailed readings, caching for return charts and forecasts, and a Quota saver preset fix.
-
-= 1.5.1 =
-A Browse all shortcodes button on the settings screen for one-click access to the full library.
-
-= 1.5.0 =
-Five more Western readings and rich interactive charts for the location and predictive readings.
-
-= 1.4.1 =
-New installs open the Shortcodes library so you can start free in seconds, and Settings now explains the free daily allowance.
-
-= 1.4.0 =
-Ten new interactive readings including aspects, planetary hours, forecast digest, crystal detail, dream search, and Human Design connection, penta, and variables.
-
-= 1.3.0 =
-Blocks now render the full interactive charts and cards, Human Design and forecast components are added, and visitor form submissions return to the page with the result.
-
-== External Services ==
-
-**This plugin connects to a third-party service (RoxyAPI) to calculate every reading it displays. Without it the plugin has nothing to show, so this is not optional.**
-
-* Service: RoxyAPI (https://roxyapi.com)
-* Service operator: RoxyAPI
-* Terms of Service: https://roxyapi.com/policy/terms
-* Privacy Policy: https://roxyapi.com/policy/privacy
-* Pricing: https://roxyapi.com/pricing
-
-**When does the plugin contact RoxyAPI?** A request is sent when, and only when, a RoxyAPI reading is rendered or you explicitly ask for one:
-
-* A page, post or widget containing a RoxyAPI block or shortcode is rendered, on the front end or in the editor preview. Readings render with or without an API key, so these requests also happen before you connect one.
-* A visitor submits a RoxyAPI reading form.
-* You click Test Connection on the settings screen, or type in the city search field.
-
-Installing and activating the plugin, and then placing a reading on your site, is the consent for these calls. The plugin does NOT contact RoxyAPI on activation, on deactivation, on update, on a schedule, or on admin screens that do not render a reading. A reading that has not been configured yet sends nothing at all, and responses are cached so a repeat view of the same reading does not repeat the request.
-
-**What data is sent?** The reading parameters you supply via the block or shortcode (zodiac sign, birth date, name, location coordinates, question text), your site URL, and a plugin name and version identifier. Your server outbound IP is incidentally captured by RoxyAPI, like any HTTP request. **No site visitor data is collected by the plugin itself.**
-
-**Where is the API key stored?** Either as the `ROXYAPI_KEY` constant in your `wp-config.php` (recommended) or AES-256-CTR encrypted in the `wp_options` table under `roxyapi_settings`. The plain key is never sent to the browser at any time.
-
-**What does RoxyAPI do with the data?** See https://roxyapi.com/policy/privacy.

@@ -135,6 +135,8 @@ msgstr "जन्म विवरण"
 msgid "Birth date"
 msgstr "जन्म तिथि"
 
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:34
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:105
 #: src/Generated/Forms/CalculateCompatibilityForm.php:34
 #: src/Generated/Forms/CalculateCompatibilityForm.php:89
 #: src/Generated/Forms/CalculateConnectionForm.php:34
@@ -151,6 +153,7 @@ msgstr "जन्म तिथि"
 #: src/Generated/Forms/GenerateDigestForm.php:34
 #: src/Generated/Forms/GenerateTimelineForm.php:34
 #: src/Generated/Forms/GenerateTransitForm.php:34
+#: blocks/generated/calculate-annual-forecast/index.js:13
 #: blocks/generated/calculate-arabic-lots/index.js:13
 #: blocks/generated/calculate-arudha-padas/index.js:13
 #: blocks/generated/calculate-ashtakavarga/index.js:13
@@ -159,13 +162,17 @@ msgstr "जन्म तिथि"
 #: blocks/generated/calculate-centers/index.js:13
 #: blocks/generated/calculate-channels/index.js:13
 #: blocks/generated/calculate-chara-karakas/index.js:13
+#: blocks/generated/calculate-day-master-strength/index.js:13
 #: blocks/generated/calculate-gates/index.js:13
 #: blocks/generated/calculate-houses/index.js:13
+#: blocks/generated/calculate-kua-number/index.js:13
+#: blocks/generated/calculate-luck-pillars/index.js:13
 #: blocks/generated/calculate-profile/index.js:13
 #: blocks/generated/calculate-shadbala/index.js:13
 #: blocks/generated/calculate-transit/index.js:13
 #: blocks/generated/calculate-type/index.js:13
 #: blocks/generated/calculate-variables/index.js:13
+#: blocks/generated/calculate-zodiac-animal/index.js:13
 #: blocks/generated/check-kalsarpa-dosha/index.js:13
 #: blocks/generated/check-sadhesati/index.js:13
 #: blocks/generated/detect-aspect-patterns/index.js:13
@@ -173,6 +180,7 @@ msgstr "जन्म तिथि"
 #: blocks/generated/forecast-solar-return/index.js:13
 #: blocks/generated/generate-asteroids/index.js:13
 #: blocks/generated/generate-astrocartography/index.js:13
+#: blocks/generated/generate-bazi-chart/index.js:13
 #: blocks/generated/generate-bodygraph/index.js:13
 #: blocks/generated/generate-divisional-chart/index.js:13
 #: blocks/generated/generate-fixed-stars/index.js:13
@@ -221,6 +229,8 @@ msgstr "जन्म का दिन (1-31)"
 msgid "Birth details"
 msgstr "जन्म विवरण"
 
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:55
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:126
 #: src/Generated/Forms/CalculateConnectionForm.php:55
 #: src/Generated/Forms/CalculateConnectionForm.php:110
 #: src/Generated/Forms/FindSignificantDatesForm.php:55
@@ -228,12 +238,16 @@ msgstr "जन्म विवरण"
 #: src/Generated/Forms/GenerateDigestForm.php:55
 #: src/Generated/Forms/GenerateTimelineForm.php:55
 #: src/Generated/Forms/GenerateTransitForm.php:55
+#: blocks/generated/calculate-annual-forecast/index.js:34
 #: blocks/generated/calculate-centers/index.js:34
 #: blocks/generated/calculate-channels/index.js:34
+#: blocks/generated/calculate-day-master-strength/index.js:34
 #: blocks/generated/calculate-gates/index.js:34
+#: blocks/generated/calculate-luck-pillars/index.js:34
 #: blocks/generated/calculate-profile/index.js:34
 #: blocks/generated/calculate-type/index.js:34
 #: blocks/generated/calculate-variables/index.js:34
+#: blocks/generated/generate-bazi-chart/index.js:34
 #: blocks/generated/generate-bodygraph/index.js:34
 msgid "Birth latitude in decimal degrees"
 msgstr "दशमलव अंश में जन्म का अक्षांश"
@@ -332,6 +346,8 @@ msgstr "दशमलव अंश में जन्म स्थान का 
 msgid "Birth location longitude in decimal degrees (-180 to 180)"
 msgstr "दशमलव अंश में जन्म स्थान का देशांतर (-180 से 180)"
 
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:65
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:136
 #: src/Generated/Forms/CalculateConnectionForm.php:65
 #: src/Generated/Forms/CalculateConnectionForm.php:120
 #: src/Generated/Forms/FindSignificantDatesForm.php:65
@@ -339,12 +355,16 @@ msgstr "दशमलव अंश में जन्म स्थान का 
 #: src/Generated/Forms/GenerateDigestForm.php:65
 #: src/Generated/Forms/GenerateTimelineForm.php:65
 #: src/Generated/Forms/GenerateTransitForm.php:65
+#: blocks/generated/calculate-annual-forecast/index.js:41
 #: blocks/generated/calculate-centers/index.js:41
 #: blocks/generated/calculate-channels/index.js:41
+#: blocks/generated/calculate-day-master-strength/index.js:41
 #: blocks/generated/calculate-gates/index.js:41
+#: blocks/generated/calculate-luck-pillars/index.js:41
 #: blocks/generated/calculate-profile/index.js:41
 #: blocks/generated/calculate-type/index.js:41
 #: blocks/generated/calculate-variables/index.js:41
+#: blocks/generated/generate-bazi-chart/index.js:41
 #: blocks/generated/generate-bodygraph/index.js:41
 msgid "Birth longitude in decimal degrees"
 msgstr "दशमलव अंश में जन्म का देशांतर"
@@ -372,6 +392,8 @@ msgstr "जन्म का महीना (1-12)"
 msgid "Birth time"
 msgstr "जन्म समय"
 
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:41
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:112
 #: src/Generated/Forms/CalculateCompatibilityForm.php:41
 #: src/Generated/Forms/CalculateCompatibilityForm.php:96
 #: src/Generated/Forms/CalculateConnectionForm.php:41
@@ -388,6 +410,7 @@ msgstr "जन्म समय"
 #: src/Generated/Forms/GenerateDigestForm.php:41
 #: src/Generated/Forms/GenerateTimelineForm.php:41
 #: src/Generated/Forms/GenerateTransitForm.php:41
+#: blocks/generated/calculate-annual-forecast/index.js:20
 #: blocks/generated/calculate-arabic-lots/index.js:20
 #: blocks/generated/calculate-arudha-padas/index.js:20
 #: blocks/generated/calculate-ashtakavarga/index.js:20
@@ -396,8 +419,10 @@ msgstr "जन्म समय"
 #: blocks/generated/calculate-centers/index.js:20
 #: blocks/generated/calculate-channels/index.js:20
 #: blocks/generated/calculate-chara-karakas/index.js:20
+#: blocks/generated/calculate-day-master-strength/index.js:20
 #: blocks/generated/calculate-gates/index.js:20
 #: blocks/generated/calculate-houses/index.js:20
+#: blocks/generated/calculate-luck-pillars/index.js:20
 #: blocks/generated/calculate-profile/index.js:20
 #: blocks/generated/calculate-shadbala/index.js:20
 #: blocks/generated/calculate-type/index.js:20
@@ -409,6 +434,7 @@ msgstr "जन्म समय"
 #: blocks/generated/forecast-solar-return/index.js:20
 #: blocks/generated/generate-asteroids/index.js:20
 #: blocks/generated/generate-astrocartography/index.js:20
+#: blocks/generated/generate-bazi-chart/index.js:20
 #: blocks/generated/generate-bodygraph/index.js:20
 #: blocks/generated/generate-divisional-chart/index.js:20
 #: blocks/generated/generate-fixed-stars/index.js:20
@@ -523,6 +549,8 @@ msgstr "दैनिक राशिफल"
 msgid "Daily is one card. Three is past, present, future. Celtic is a ten-card layout."
 msgstr "दैनिक में एक कार्ड होता है। तीन कार्ड भूत, वर्तमान और भविष्य दर्शाते हैं। सेल्टिक क्रॉस दस कार्डों का विन्यास है।"
 
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:32
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:103
 #: src/Generated/Forms/CalculateCompatibilityForm.php:32
 #: src/Generated/Forms/CalculateCompatibilityForm.php:87
 #: src/Generated/Forms/CalculateConnectionForm.php:32
@@ -541,6 +569,7 @@ msgstr "दैनिक में एक कार्ड होता है। 
 #: src/Generated/Forms/GenerateTransitForm.php:32
 #: src/Generated/Forms/GenerateTransitForm.php:85
 #: src/Generated/Forms/PanchangForm.php:40
+#: blocks/generated/calculate-annual-forecast/index.js:11
 #: blocks/generated/calculate-arabic-lots/index.js:11
 #: blocks/generated/calculate-arudha-padas/index.js:11
 #: blocks/generated/calculate-ashtakavarga/index.js:11
@@ -550,15 +579,20 @@ msgstr "दैनिक में एक कार्ड होता है। 
 #: blocks/generated/calculate-centers/index.js:11
 #: blocks/generated/calculate-channels/index.js:11
 #: blocks/generated/calculate-chara-karakas/index.js:11
+#: blocks/generated/calculate-day-master-strength/index.js:11
 #: blocks/generated/calculate-drishti/index.js:11
 #: blocks/generated/calculate-gates/index.js:11
 #: blocks/generated/calculate-houses/index.js:11
+#: blocks/generated/calculate-kua-number/index.js:11
+#: blocks/generated/calculate-luck-pillars/index.js:11
+#: blocks/generated/calculate-lunar-date/index.js:11
 #: blocks/generated/calculate-parallels/index.js:11
 #: blocks/generated/calculate-profile/index.js:11
 #: blocks/generated/calculate-shadbala/index.js:11
 #: blocks/generated/calculate-transits/index.js:11
 #: blocks/generated/calculate-type/index.js:11
 #: blocks/generated/calculate-variables/index.js:11
+#: blocks/generated/calculate-zodiac-animal/index.js:11
 #: blocks/generated/cast-daily-reading/index.js:18
 #: blocks/generated/cast-kp-horary-chart/index.js:18
 #: blocks/generated/check-kalsarpa-dosha/index.js:11
@@ -568,8 +602,10 @@ msgstr "दैनिक में एक कार्ड होता है। 
 #: blocks/generated/forecast-solar-return/index.js:11
 #: blocks/generated/generate-asteroids/index.js:11
 #: blocks/generated/generate-astrocartography/index.js:11
+#: blocks/generated/generate-bazi-chart/index.js:11
 #: blocks/generated/generate-bodygraph/index.js:11
 #: blocks/generated/generate-divisional-chart/index.js:11
+#: blocks/generated/generate-eight-mansions/index.js:18
 #: blocks/generated/generate-fixed-stars/index.js:11
 #: blocks/generated/generate-lilith/index.js:11
 #: blocks/generated/generate-local-space/index.js:11
@@ -578,6 +614,7 @@ msgstr "दैनिक में एक कार्ड होता है। 
 #: blocks/generated/generate-progressions/index.js:11
 #: blocks/generated/generate-relocation-chart/index.js:11
 #: blocks/generated/generate-solar-arc/index.js:11
+#: blocks/generated/get-almanac-day/index.js:11
 #: blocks/generated/get-basic-panchang/index.js:11
 #: blocks/generated/get-choghadiya/index.js:11
 #: blocks/generated/get-current-dasha/index.js:11
@@ -587,6 +624,7 @@ msgstr "दैनिक में एक कार्ड होता है। 
 #: blocks/generated/get-daily-dream-symbol/index.js:18
 #: blocks/generated/get-daily-hexagram/index.js:18
 #: blocks/generated/get-daily-number/index.js:18
+#: blocks/generated/get-daily-zodiac-reading/index.js:25
 #: blocks/generated/get-heliacal-visibility/index.js:11
 #: blocks/generated/get-hora/index.js:11
 #: blocks/generated/get-kp-ayanamsa/index.js:11
@@ -603,6 +641,7 @@ msgstr "दैनिक में एक कार्ड होता है। 
 #: blocks/generated/get-upagraha-positions/index.js:11
 #: blocks/generated/get-vedic-daily-reading/index.js:46
 #: blocks/generated/get-weekly-horoscope/index.js:25
+#: blocks/generated/list-nine-periods/index.js:19
 msgid "Date"
 msgstr "तिथि"
 
@@ -696,6 +735,7 @@ msgstr "0 से 100 के इस महत्व स्तर से नीच
 #: blocks/generated/get-forecast/index.js:25
 #: blocks/generated/get-kp-rasi-changes/index.js:25
 #: blocks/generated/get-kp-sublord-changes/index.js:25
+#: blocks/generated/lookup-auspicious-days/index.js:26
 msgid "End date"
 msgstr "अंतिम तिथि"
 
@@ -761,6 +801,7 @@ msgid "Get answer"
 msgstr "उत्तर पाएँ"
 
 #: src/Admin/SettingsFields.php:408
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:24
 #: src/Generated/Forms/CalculateBioCompatibilityForm.php:24
 #: src/Generated/Forms/CalculateCompatibilityForm.php:24
 #: src/Generated/Forms/CalculateConnectionForm.php:24
@@ -844,6 +885,8 @@ msgstr "गोचर अवधि का अंतिम दिन, YYYY-MM-DD �
 msgid "Last day of the window in YYYY-MM-DD format"
 msgstr "अवधि का अंतिम दिन, YYYY-MM-DD प्रारूप में"
 
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:53
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:124
 #: src/Generated/Forms/CalculateCompatibilityForm.php:46
 #: src/Generated/Forms/CalculateCompatibilityForm.php:101
 #: src/Generated/Forms/CalculateConnectionForm.php:53
@@ -865,6 +908,7 @@ msgstr "अवधि का अंतिम दिन, YYYY-MM-DD प्रा�
 #: src/Generated/Forms/MangalDoshaForm.php:54
 #: src/Generated/Forms/NatalChartForm.php:54
 #: src/Generated/Forms/PanchangForm.php:47
+#: blocks/generated/calculate-annual-forecast/index.js:32
 #: blocks/generated/calculate-arabic-lots/index.js:25
 #: blocks/generated/calculate-arudha-padas/index.js:25
 #: blocks/generated/calculate-ashtakavarga/index.js:25
@@ -873,9 +917,11 @@ msgstr "अवधि का अंतिम दिन, YYYY-MM-DD प्रा�
 #: blocks/generated/calculate-centers/index.js:32
 #: blocks/generated/calculate-channels/index.js:32
 #: blocks/generated/calculate-chara-karakas/index.js:25
+#: blocks/generated/calculate-day-master-strength/index.js:32
 #: blocks/generated/calculate-drishti/index.js:25
 #: blocks/generated/calculate-gates/index.js:32
 #: blocks/generated/calculate-houses/index.js:25
+#: blocks/generated/calculate-luck-pillars/index.js:32
 #: blocks/generated/calculate-parallels/index.js:25
 #: blocks/generated/calculate-profile/index.js:32
 #: blocks/generated/calculate-shadbala/index.js:25
@@ -890,6 +936,7 @@ msgstr "अवधि का अंतिम दिन, YYYY-MM-DD प्रा�
 #: blocks/generated/forecast-solar-return/index.js:32
 #: blocks/generated/generate-asteroids/index.js:25
 #: blocks/generated/generate-astrocartography/index.js:25
+#: blocks/generated/generate-bazi-chart/index.js:32
 #: blocks/generated/generate-bodygraph/index.js:32
 #: blocks/generated/generate-divisional-chart/index.js:25
 #: blocks/generated/generate-fixed-stars/index.js:25
@@ -952,6 +999,8 @@ msgstr "नाम और तिथि से मूलांक, नामां
 msgid "Local time of birth in 24-hour format"
 msgstr "24 घंटे के प्रारूप में जन्म का स्थानीय समय"
 
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:63
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:134
 #: src/Generated/Forms/CalculateCompatibilityForm.php:56
 #: src/Generated/Forms/CalculateCompatibilityForm.php:111
 #: src/Generated/Forms/CalculateConnectionForm.php:63
@@ -973,6 +1022,7 @@ msgstr "24 घंटे के प्रारूप में जन्म क�
 #: src/Generated/Forms/MangalDoshaForm.php:64
 #: src/Generated/Forms/NatalChartForm.php:64
 #: src/Generated/Forms/PanchangForm.php:57
+#: blocks/generated/calculate-annual-forecast/index.js:39
 #: blocks/generated/calculate-arabic-lots/index.js:32
 #: blocks/generated/calculate-arudha-padas/index.js:32
 #: blocks/generated/calculate-ashtakavarga/index.js:32
@@ -981,9 +1031,11 @@ msgstr "24 घंटे के प्रारूप में जन्म क�
 #: blocks/generated/calculate-centers/index.js:39
 #: blocks/generated/calculate-channels/index.js:39
 #: blocks/generated/calculate-chara-karakas/index.js:32
+#: blocks/generated/calculate-day-master-strength/index.js:39
 #: blocks/generated/calculate-drishti/index.js:32
 #: blocks/generated/calculate-gates/index.js:39
 #: blocks/generated/calculate-houses/index.js:32
+#: blocks/generated/calculate-luck-pillars/index.js:39
 #: blocks/generated/calculate-parallels/index.js:32
 #: blocks/generated/calculate-profile/index.js:39
 #: blocks/generated/calculate-shadbala/index.js:32
@@ -998,6 +1050,7 @@ msgstr "24 घंटे के प्रारूप में जन्म क�
 #: blocks/generated/forecast-solar-return/index.js:39
 #: blocks/generated/generate-asteroids/index.js:32
 #: blocks/generated/generate-astrocartography/index.js:32
+#: blocks/generated/generate-bazi-chart/index.js:39
 #: blocks/generated/generate-bodygraph/index.js:39
 #: blocks/generated/generate-divisional-chart/index.js:32
 #: blocks/generated/generate-fixed-stars/index.js:32
@@ -1079,11 +1132,16 @@ msgstr "दृष्टि बल का न्यूनतम स्तर (0-1
 #: blocks/generated/check-karmic-debt/index.js:18
 #: blocks/generated/get-birthstones/index.js:11
 #: blocks/generated/get-lunar-aspects/index.js:18
+#: blocks/generated/get-monthly-almanac/index.js:26
 #: blocks/generated/get-monthly-aspects/index.js:18
+#: blocks/generated/get-monthly-declination-parallels/index.js:18
 #: blocks/generated/get-monthly-ephemeris/index.js:18
+#: blocks/generated/get-monthly-flying-stars/index.js:26
 #: blocks/generated/get-monthly-parallels/index.js:18
 #: blocks/generated/get-monthly-transits/index.js:18
+#: blocks/generated/get-monthly-tropical-aspects/index.js:18
 #: blocks/generated/get-monthly-tropical-ephemeris/index.js:18
+#: blocks/generated/get-monthly-tropical-transits/index.js:18
 #: blocks/generated/get-moon-calendar/index.js:17
 msgid "Month"
 msgstr "महीना"
@@ -1159,6 +1217,9 @@ msgstr "कोई मिलता शहर नहीं मिला। वर�
 #: blocks/generated/get-kp-ruling-planets/index.js:53
 #: blocks/generated/get-kp-sublord-changes/index.js:47
 #: blocks/generated/get-major-dashas/index.js:68
+#: blocks/generated/get-monthly-declination-parallels/index.js:39
+#: blocks/generated/get-monthly-tropical-aspects/index.js:32
+#: blocks/generated/get-monthly-tropical-transits/index.js:32
 #: blocks/generated/get-planetary-positions/index.js:25
 #: blocks/generated/get-prana-dashas/index.js:68
 #: blocks/generated/get-pratyantardashas/index.js:68
@@ -1262,10 +1323,12 @@ msgstr "दूसरे व्यक्ति का मूलांक (1-9, 11
 msgid "Person 2 Soul Urge number (1-9, 11, 22, 33)"
 msgstr "दूसरे व्यक्ति का अंतरांक (1-9, 11, 22, 33)"
 
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:28
 #: src/Generated/Forms/CalculateConnectionForm.php:28
 msgid "Person a"
 msgstr "व्यक्ति अ"
 
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:99
 #: src/Generated/Forms/CalculateConnectionForm.php:83
 msgid "Person b"
 msgstr "व्यक्ति ब"
@@ -1315,6 +1378,8 @@ msgstr "सुरक्षा जाँच विफल रही। कृप�
 msgid "Seed"
 msgstr "सीड"
 
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:48
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:119
 #: src/Generated/Forms/CalculateCompatibilityForm.php:68
 #: src/Generated/Forms/CalculateCompatibilityForm.php:123
 #: src/Generated/Forms/CalculateConnectionForm.php:48
@@ -1402,6 +1467,7 @@ msgstr "हर अवधि की आरंभ तिथि, YYYY-MM-DD प्�
 #: blocks/generated/get-kp-rasi-changes/index.js:18
 #: blocks/generated/get-kp-sublord-changes/index.js:18
 #: blocks/generated/get-upcoming-moon-phases/index.js:19
+#: blocks/generated/lookup-auspicious-days/index.js:19
 msgid "Start date"
 msgstr "आरंभ तिथि"
 
@@ -1511,6 +1577,8 @@ msgstr "number विशेषता आवश्यक है। उदाह�
 msgid "The sign attribute is required. Example: %s"
 msgstr "sign विशेषता आवश्यक है। उदाहरण: %s"
 
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:39
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:110
 #: src/Generated/Forms/CalculateCompatibilityForm.php:39
 #: src/Generated/Forms/CalculateCompatibilityForm.php:94
 #: src/Generated/Forms/CalculateConnectionForm.php:39
@@ -1528,6 +1596,7 @@ msgstr "sign विशेषता आवश्यक है। उदाहर�
 #: src/Generated/Forms/GenerateTimelineForm.php:39
 #: src/Generated/Forms/GenerateTransitForm.php:39
 #: src/Generated/Forms/GenerateTransitForm.php:92
+#: blocks/generated/calculate-annual-forecast/index.js:18
 #: blocks/generated/calculate-arabic-lots/index.js:18
 #: blocks/generated/calculate-arudha-padas/index.js:18
 #: blocks/generated/calculate-ashtakavarga/index.js:18
@@ -1537,9 +1606,11 @@ msgstr "sign विशेषता आवश्यक है। उदाहर�
 #: blocks/generated/calculate-centers/index.js:18
 #: blocks/generated/calculate-channels/index.js:18
 #: blocks/generated/calculate-chara-karakas/index.js:18
+#: blocks/generated/calculate-day-master-strength/index.js:18
 #: blocks/generated/calculate-drishti/index.js:18
 #: blocks/generated/calculate-gates/index.js:18
 #: blocks/generated/calculate-houses/index.js:18
+#: blocks/generated/calculate-luck-pillars/index.js:18
 #: blocks/generated/calculate-parallels/index.js:18
 #: blocks/generated/calculate-profile/index.js:18
 #: blocks/generated/calculate-shadbala/index.js:18
@@ -1554,6 +1625,7 @@ msgstr "sign विशेषता आवश्यक है। उदाहर�
 #: blocks/generated/forecast-solar-return/index.js:18
 #: blocks/generated/generate-asteroids/index.js:18
 #: blocks/generated/generate-astrocartography/index.js:18
+#: blocks/generated/generate-bazi-chart/index.js:18
 #: blocks/generated/generate-bodygraph/index.js:18
 #: blocks/generated/generate-divisional-chart/index.js:18
 #: blocks/generated/generate-fixed-stars/index.js:18
@@ -1580,6 +1652,8 @@ msgstr "sign विशेषता आवश्यक है। उदाहर�
 msgid "Time"
 msgstr "समय"
 
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:46
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:117
 #: src/Generated/Forms/CalculateCompatibilityForm.php:66
 #: src/Generated/Forms/CalculateCompatibilityForm.php:121
 #: src/Generated/Forms/CalculateConnectionForm.php:46
@@ -1601,6 +1675,7 @@ msgstr "समय"
 #: src/Generated/Forms/MangalDoshaForm.php:74
 #: src/Generated/Forms/NatalChartForm.php:74
 #: src/Generated/Forms/PanchangForm.php:67
+#: blocks/generated/calculate-annual-forecast/index.js:25
 #: blocks/generated/calculate-arabic-lots/index.js:39
 #: blocks/generated/calculate-arudha-padas/index.js:39
 #: blocks/generated/calculate-ashtakavarga/index.js:39
@@ -1610,9 +1685,11 @@ msgstr "समय"
 #: blocks/generated/calculate-centers/index.js:25
 #: blocks/generated/calculate-channels/index.js:25
 #: blocks/generated/calculate-chara-karakas/index.js:39
+#: blocks/generated/calculate-day-master-strength/index.js:25
 #: blocks/generated/calculate-drishti/index.js:39
 #: blocks/generated/calculate-gates/index.js:25
 #: blocks/generated/calculate-houses/index.js:39
+#: blocks/generated/calculate-luck-pillars/index.js:25
 #: blocks/generated/calculate-parallels/index.js:39
 #: blocks/generated/calculate-profile/index.js:25
 #: blocks/generated/calculate-shadbala/index.js:39
@@ -1628,6 +1705,7 @@ msgstr "समय"
 #: blocks/generated/forecast-solar-return/index.js:46
 #: blocks/generated/generate-asteroids/index.js:39
 #: blocks/generated/generate-astrocartography/index.js:39
+#: blocks/generated/generate-bazi-chart/index.js:25
 #: blocks/generated/generate-bodygraph/index.js:25
 #: blocks/generated/generate-divisional-chart/index.js:39
 #: blocks/generated/generate-fixed-stars/index.js:39
@@ -1644,6 +1722,7 @@ msgstr "समय"
 #: blocks/generated/get-basic-panchang/index.js:39
 #: blocks/generated/get-choghadiya/index.js:32
 #: blocks/generated/get-current-dasha/index.js:39
+#: blocks/generated/get-daily-zodiac-reading/index.js:32
 #: blocks/generated/get-ecliptic-crossings/index.js:18
 #: blocks/generated/get-heliacal-visibility/index.js:32
 #: blocks/generated/get-hora/index.js:32
@@ -1658,10 +1737,14 @@ msgstr "समय"
 #: blocks/generated/get-lunar-aspects/index.js:25
 #: blocks/generated/get-major-dashas/index.js:39
 #: blocks/generated/get-monthly-aspects/index.js:25
+#: blocks/generated/get-monthly-declination-parallels/index.js:25
 #: blocks/generated/get-monthly-horoscope/index.js:32
 #: blocks/generated/get-monthly-parallels/index.js:25
 #: blocks/generated/get-monthly-transits/index.js:25
+#: blocks/generated/get-monthly-tropical-aspects/index.js:25
+#: blocks/generated/get-monthly-tropical-transits/index.js:25
 #: blocks/generated/get-planet-positions/index.js:39
+#: blocks/generated/get-planetary-node-passages/index.js:18
 #: blocks/generated/get-planetary-positions/index.js:47
 #: blocks/generated/get-prana-dashas/index.js:39
 #: blocks/generated/get-pratyantardashas/index.js:39
@@ -1760,20 +1843,30 @@ msgstr "इस सप्ताह मुझे किस पर ध्यान 
 #: src/Generated/Forms/CalculateNumCompatibilityForm.php:66
 #: src/Generated/Forms/CalculateNumCompatibilityForm.php:133
 #: src/Support/EphemerisNav.php:300
+#: blocks/generated/calculate-annual-forecast/index.js:70
 #: blocks/generated/calculate-bridge-numbers/index.js:18
 #: blocks/generated/calculate-maturity/index.js:32
 #: blocks/generated/calculate-personal-month/index.js:25
 #: blocks/generated/calculate-personal-year/index.js:25
 #: blocks/generated/check-karmic-debt/index.js:11
 #: blocks/generated/forecast-solar-return/index.js:25
+#: blocks/generated/get-annual-afflictions/index.js:11
+#: blocks/generated/get-annual-flying-stars/index.js:11
 #: blocks/generated/get-ecliptic-crossings/index.js:11
 #: blocks/generated/get-lunar-aspects/index.js:11
+#: blocks/generated/get-monthly-almanac/index.js:19
 #: blocks/generated/get-monthly-aspects/index.js:11
+#: blocks/generated/get-monthly-declination-parallels/index.js:11
 #: blocks/generated/get-monthly-ephemeris/index.js:11
+#: blocks/generated/get-monthly-flying-stars/index.js:19
 #: blocks/generated/get-monthly-parallels/index.js:11
 #: blocks/generated/get-monthly-transits/index.js:11
+#: blocks/generated/get-monthly-tropical-aspects/index.js:11
 #: blocks/generated/get-monthly-tropical-ephemeris/index.js:11
+#: blocks/generated/get-monthly-tropical-transits/index.js:11
 #: blocks/generated/get-moon-calendar/index.js:11
+#: blocks/generated/get-planetary-node-passages/index.js:11
+#: blocks/generated/list-solar-terms/index.js:11
 msgid "Year"
 msgstr "वर्ष"
 
@@ -1812,8 +1905,8 @@ msgstr ""
 
 #. Description of the plugin
 #: roxyapi.php
-msgid "Add Astrology, Vedic, Forecast, Human Design and Numerology readings to any WordPress post, page or widget, as Gutenberg blocks and shortcodes. 12 or more domains on one key, readings in 8 languages, and charts verified against the NASA JPL Horizons ephemeris."
-msgstr "किसी भी WordPress पोस्ट, पेज या विजेट में ज्योतिष, वैदिक, फोरकास्ट, ह्यूमन डिज़ाइन और न्यूमेरोलॉजी के विश्लेषण जोड़ें, Gutenberg ब्लॉक और शॉर्टकोड दोनों के रूप में। एक ही कुंजी पर 12 या अधिक क्षेत्र, 8 भाषाओं में विश्लेषण, और NASA JPL Horizons एफ़ेमेरिस से सत्यापित चार्ट।"
+msgid "Add Astrology, Vedic, Forecast, Human Design, Chinese Astrology and Feng Shui readings to any WordPress post, page or widget, as Gutenberg blocks and shortcodes. 14 or more domains on one key, readings in 8 languages, and charts verified against the NASA JPL Horizons ephemeris."
+msgstr "किसी भी WordPress पोस्ट, पेज या विजेट में ज्योतिष, वैदिक, फोरकास्ट, ह्यूमन डिज़ाइन, चीनी ज्योतिष और फेंग शुई के विश्लेषण जोड़ें, Gutenberg ब्लॉक और शॉर्टकोड दोनों के रूप में। एक ही कुंजी पर 14 या अधिक क्षेत्र, 8 भाषाओं में विश्लेषण, और NASA JPL Horizons एफ़ेमेरिस से सत्यापित चार्ट।"
 
 #. Author of the plugin
 #: roxyapi.php
@@ -2283,39 +2376,49 @@ msgstr "RoxyAPI दैनिक राशिफल"
 #: src/Generated/Client.php:125
 #: src/Generated/Client.php:265
 #: src/Generated/Client.php:268
-#: src/Generated/Client.php:502
-#: src/Generated/Client.php:531
-#: src/Generated/Client.php:560
-#: src/Generated/Client.php:987
-#: src/Generated/Client.php:1011
-#: src/Generated/Client.php:1014
-#: src/Generated/Client.php:1038
-#: src/Generated/Client.php:1041
-#: src/Generated/Client.php:1044
-#: src/Generated/Client.php:1068
-#: src/Generated/Client.php:1071
-#: src/Generated/Client.php:1074
-#: src/Generated/Client.php:1077
-#: src/Generated/Client.php:1290
-#: src/Generated/Client.php:1725
-#: src/Generated/Client.php:1776
-#: src/Generated/Client.php:1889
-#: src/Generated/Client.php:2251
-#: src/Generated/Client.php:2320
-#: src/Generated/Client.php:2677
-#: src/Generated/Client.php:2743
-#: src/Generated/Client.php:2841
-#: src/Generated/Client.php:3252
-#: src/Generated/Client.php:3328
-#: src/Generated/Client.php:3355
-#: src/Generated/Client.php:3384
-#: src/Generated/Client.php:3413
-#: src/Generated/Client.php:3442
-#: src/Generated/Client.php:3496
-#: src/Generated/Client.php:3644
-#: src/Generated/Client.php:3746
-#: src/Generated/Client.php:3817
-#: src/Generated/Client.php:3939
+#: src/Generated/Client.php:577
+#: src/Generated/Client.php:606
+#: src/Generated/Client.php:635
+#: src/Generated/Client.php:1062
+#: src/Generated/Client.php:1086
+#: src/Generated/Client.php:1089
+#: src/Generated/Client.php:1113
+#: src/Generated/Client.php:1116
+#: src/Generated/Client.php:1119
+#: src/Generated/Client.php:1143
+#: src/Generated/Client.php:1146
+#: src/Generated/Client.php:1149
+#: src/Generated/Client.php:1152
+#: src/Generated/Client.php:1365
+#: src/Generated/Client.php:1800
+#: src/Generated/Client.php:1851
+#: src/Generated/Client.php:1964
+#: src/Generated/Client.php:2326
+#: src/Generated/Client.php:2395
+#: src/Generated/Client.php:2595
+#: src/Generated/Client.php:2643
+#: src/Generated/Client.php:2646
+#: src/Generated/Client.php:2673
+#: src/Generated/Client.php:2702
+#: src/Generated/Client.php:2747
+#: src/Generated/Client.php:2868
+#: src/Generated/Client.php:2931
+#: src/Generated/Client.php:3010
+#: src/Generated/Client.php:3063
+#: src/Generated/Client.php:3403
+#: src/Generated/Client.php:3469
+#: src/Generated/Client.php:3567
+#: src/Generated/Client.php:3978
+#: src/Generated/Client.php:4054
+#: src/Generated/Client.php:4081
+#: src/Generated/Client.php:4110
+#: src/Generated/Client.php:4139
+#: src/Generated/Client.php:4168
+#: src/Generated/Client.php:4222
+#: src/Generated/Client.php:4370
+#: src/Generated/Client.php:4472
+#: src/Generated/Client.php:4543
+#: src/Generated/Client.php:4665
 #, php-format
 msgid "Missing required attribute \"%s\" for this shortcode."
 msgstr ""
@@ -2658,15 +2761,15 @@ msgstr "डेमो पेज में %s आज़माएँ"
 msgid "Try it"
 msgstr "आज़माएँ"
 
-#: templates/horoscope-form.php:46
+#: templates/horoscope-form.php:47
 msgid "Your zodiac sign"
 msgstr "आपकी राशि"
 
-#: templates/horoscope-form.php:49
+#: templates/horoscope-form.php:50
 msgid "Pick a sign"
 msgstr "राशि चुनें"
 
-#: templates/horoscope-form.php:60
+#: templates/horoscope-form.php:61
 msgid "Read my horoscope"
 msgstr "मेरा राशिफल पढ़ें"
 
@@ -2696,7 +2799,11 @@ msgstr ""
 
 #: blocks/generated/analyze-number-sequence/index.js:11
 #: blocks/generated/cast-reading/index.js:11
+#: blocks/generated/get-almanac-day/index.js:17
+#: blocks/generated/get-annual-afflictions/index.js:17
+#: blocks/generated/get-annual-flying-stars/index.js:17
 #: blocks/generated/get-avastha/index.js:17
+#: blocks/generated/get-bagua-sector/index.js:17
 #: blocks/generated/get-birthstones/index.js:17
 #: blocks/generated/get-card/index.js:17
 #: blocks/generated/get-center/index.js:17
@@ -2705,9 +2812,13 @@ msgstr ""
 #: blocks/generated/get-crystal/index.js:17
 #: blocks/generated/get-crystals-by-chakra/index.js:17
 #: blocks/generated/get-crystals-by-element/index.js:17
+#: blocks/generated/get-daily-zodiac-reading/index.js:17
 #: blocks/generated/get-field-labels/index.js:11
 #: blocks/generated/get-gate/index.js:17
 #: blocks/generated/get-hexagram/index.js:17
+#: blocks/generated/get-kua-number/index.js:17
+#: blocks/generated/get-monthly-almanac/index.js:11
+#: blocks/generated/get-monthly-flying-stars/index.js:11
 #: blocks/generated/get-monthly-horoscope/index.js:17
 #: blocks/generated/get-moon-calendar/index.js:23
 #: blocks/generated/get-nakshatra/index.js:17
@@ -2720,70 +2831,36 @@ msgstr ""
 #: blocks/generated/get-upcoming-moon-phases/index.js:11
 #: blocks/generated/get-weekly-horoscope/index.js:17
 #: blocks/generated/get-yoga/index.js:17
+#: blocks/generated/get-zodiac-animal/index.js:17
+#: blocks/generated/get-zodiac-compatibility/index.js:23
 #: blocks/generated/get-zodiac-sign/index.js:17
 #: blocks/generated/list-angel-numbers/index.js:11
 #: blocks/generated/list-avasthas/index.js:11
+#: blocks/generated/list-bagua-sectors/index.js:11
 #: blocks/generated/list-cards/index.js:11
 #: blocks/generated/list-crystals/index.js:11
+#: blocks/generated/list-five-elements/index.js:11
+#: blocks/generated/list-flying-stars/index.js:11
 #: blocks/generated/list-hexagrams/index.js:11
 #: blocks/generated/list-nakshatras/index.js:11
+#: blocks/generated/list-nine-periods/index.js:11
 #: blocks/generated/list-planet-meanings/index.js:11
 #: blocks/generated/list-rashis/index.js:11
+#: blocks/generated/list-solar-terms/index.js:17
 #: blocks/generated/list-trigrams/index.js:11
 #: blocks/generated/list-yogas/index.js:11
+#: blocks/generated/list-zodiac-animals/index.js:11
 #: blocks/generated/list-zodiac-signs/index.js:11
 #: blocks/generated/lookup-hexagram/index.js:11
 #: blocks/generated/search-crystals/index.js:11
 msgid "Lang"
 msgstr ""
 
-#: blocks/generated/analyze-number-sequence/index.js:13
-#: blocks/generated/cast-reading/index.js:13
-#: blocks/generated/get-avastha/index.js:19
-#: blocks/generated/get-birthstones/index.js:19
-#: blocks/generated/get-card/index.js:19
-#: blocks/generated/get-center/index.js:19
-#: blocks/generated/get-compound-number/index.js:19
-#: blocks/generated/get-crystal-pairings/index.js:19
-#: blocks/generated/get-crystal/index.js:19
-#: blocks/generated/get-crystals-by-chakra/index.js:19
-#: blocks/generated/get-crystals-by-element/index.js:19
-#: blocks/generated/get-field-labels/index.js:13
-#: blocks/generated/get-gate/index.js:19
-#: blocks/generated/get-hexagram/index.js:19
-#: blocks/generated/get-monthly-horoscope/index.js:19
-#: blocks/generated/get-moon-calendar/index.js:25
-#: blocks/generated/get-nakshatra/index.js:19
-#: blocks/generated/get-number-meaning/index.js:19
-#: blocks/generated/get-planet-meaning/index.js:19
-#: blocks/generated/get-random-crystal/index.js:13
-#: blocks/generated/get-random-hexagram/index.js:13
-#: blocks/generated/get-rashi/index.js:19
-#: blocks/generated/get-trigram/index.js:19
-#: blocks/generated/get-upcoming-moon-phases/index.js:13
-#: blocks/generated/get-weekly-horoscope/index.js:19
-#: blocks/generated/get-yoga/index.js:19
-#: blocks/generated/get-zodiac-sign/index.js:19
-#: blocks/generated/list-angel-numbers/index.js:13
-#: blocks/generated/list-avasthas/index.js:13
-#: blocks/generated/list-cards/index.js:13
-#: blocks/generated/list-crystals/index.js:13
-#: blocks/generated/list-hexagrams/index.js:13
-#: blocks/generated/list-nakshatras/index.js:13
-#: blocks/generated/list-planet-meanings/index.js:13
-#: blocks/generated/list-rashis/index.js:13
-#: blocks/generated/list-trigrams/index.js:13
-#: blocks/generated/list-yogas/index.js:13
-#: blocks/generated/list-zodiac-signs/index.js:13
-#: blocks/generated/lookup-hexagram/index.js:13
-#: blocks/generated/search-crystals/index.js:13
-msgid "Response language (ISO 639-1)"
-msgstr ""
-
 #: blocks/generated/analyze-number-sequence/index.js:19
 #: blocks/generated/get-compound-number/index.js:11
 #: blocks/generated/get-gate/index.js:11
 #: blocks/generated/get-hexagram/index.js:11
+#: blocks/generated/get-kua-number/index.js:11
 #: blocks/generated/get-number-meaning/index.js:11
 #: blocks/generated/list-cards/index.js:49
 msgid "Number"
@@ -2896,13 +2973,17 @@ msgstr ""
 msgid "The business or brand name to evaluate."
 msgstr ""
 
+#: blocks/generated/calculate-annual-forecast/index.js:27
 #: blocks/generated/calculate-centers/index.js:27
 #: blocks/generated/calculate-channels/index.js:27
+#: blocks/generated/calculate-day-master-strength/index.js:27
 #: blocks/generated/calculate-gates/index.js:27
+#: blocks/generated/calculate-luck-pillars/index.js:27
 #: blocks/generated/calculate-profile/index.js:27
 #: blocks/generated/calculate-type/index.js:27
 #: blocks/generated/calculate-variables/index.js:27
 #: blocks/generated/forecast-solar-return/index.js:48
+#: blocks/generated/generate-bazi-chart/index.js:27
 #: blocks/generated/generate-bodygraph/index.js:27
 msgid "IANA name (e.g. \"America/New_York\", \"Europe/London\", \"UTC\"), decimal hours (e.g. -5 for EST, 1 for CET), or a fixed UTC offset (e.g. \"-05:00\", \"+01:00\")"
 msgstr ""
@@ -2950,8 +3031,12 @@ msgstr ""
 #: blocks/generated/get-kp-planets/index.js:41
 #: blocks/generated/get-lunar-aspects/index.js:27
 #: blocks/generated/get-monthly-aspects/index.js:27
+#: blocks/generated/get-monthly-declination-parallels/index.js:27
 #: blocks/generated/get-monthly-parallels/index.js:27
 #: blocks/generated/get-monthly-transits/index.js:27
+#: blocks/generated/get-monthly-tropical-aspects/index.js:27
+#: blocks/generated/get-monthly-tropical-transits/index.js:27
+#: blocks/generated/get-planetary-node-passages/index.js:20
 msgid "Timezone offset from UTC in hours"
 msgstr ""
 
@@ -3005,6 +3090,7 @@ msgid "Full birth name to calculate Expression number automatically"
 msgstr ""
 
 #: blocks/generated/calculate-parallels/index.js:46
+#: blocks/generated/get-monthly-declination-parallels/index.js:32
 msgid "Orb"
 msgstr ""
 
@@ -3163,6 +3249,7 @@ msgstr ""
 msgid "Full birth name (checks Expression, Soul Urge, Personality)"
 msgstr ""
 
+#: blocks/generated/calculate-luck-pillars/index.js:78
 #: blocks/generated/draw-cards/index.js:11
 #: blocks/generated/get-random-symbols/index.js:11
 #: blocks/generated/get-upcoming-moon-phases/index.js:26
@@ -3366,16 +3453,19 @@ msgid "House system for the solar return chart"
 msgstr ""
 
 #: blocks/generated/get-avastha/index.js:11
+#: blocks/generated/get-bagua-sector/index.js:11
 #: blocks/generated/get-card/index.js:11
 #: blocks/generated/get-center/index.js:11
 #: blocks/generated/get-crystal-pairings/index.js:11
 #: blocks/generated/get-crystal/index.js:11
+#: blocks/generated/get-daily-zodiac-reading/index.js:11
 #: blocks/generated/get-dream-symbol/index.js:11
 #: blocks/generated/get-nakshatra/index.js:11
 #: blocks/generated/get-planet-meaning/index.js:11
 #: blocks/generated/get-rashi/index.js:11
 #: blocks/generated/get-trigram/index.js:11
 #: blocks/generated/get-yoga/index.js:11
+#: blocks/generated/get-zodiac-animal/index.js:11
 #: blocks/generated/get-zodiac-sign/index.js:11
 msgid "Id"
 msgstr ""
@@ -3395,10 +3485,14 @@ msgstr ""
 #: blocks/generated/get-crystals-by-chakra/index.js:25
 #: blocks/generated/get-crystals-by-element/index.js:25
 #: blocks/generated/list-angel-numbers/index.js:19
+#: blocks/generated/list-bagua-sectors/index.js:19
 #: blocks/generated/list-cards/index.js:19
 #: blocks/generated/list-countries/index.js:11
 #: blocks/generated/list-crystals/index.js:57
+#: blocks/generated/list-five-elements/index.js:19
+#: blocks/generated/list-flying-stars/index.js:19
 #: blocks/generated/list-hexagrams/index.js:19
+#: blocks/generated/list-zodiac-animals/index.js:19
 #: blocks/generated/search-cities/index.js:18
 #: blocks/generated/search-crystals/index.js:26
 #: blocks/generated/search-dream-symbols/index.js:25
@@ -3412,7 +3506,9 @@ msgstr ""
 #: blocks/generated/list-cards/index.js:21
 #: blocks/generated/list-countries/index.js:13
 #: blocks/generated/list-crystals/index.js:59
+#: blocks/generated/list-five-elements/index.js:21
 #: blocks/generated/list-hexagrams/index.js:21
+#: blocks/generated/list-zodiac-animals/index.js:21
 #: blocks/generated/search-cities/index.js:20
 #: blocks/generated/search-crystals/index.js:28
 #: blocks/generated/search-dream-symbols/index.js:27
@@ -3423,10 +3519,14 @@ msgstr ""
 #: blocks/generated/get-crystals-by-chakra/index.js:32
 #: blocks/generated/get-crystals-by-element/index.js:32
 #: blocks/generated/list-angel-numbers/index.js:26
+#: blocks/generated/list-bagua-sectors/index.js:26
 #: blocks/generated/list-cards/index.js:26
 #: blocks/generated/list-countries/index.js:18
 #: blocks/generated/list-crystals/index.js:64
+#: blocks/generated/list-five-elements/index.js:26
+#: blocks/generated/list-flying-stars/index.js:26
 #: blocks/generated/list-hexagrams/index.js:26
+#: blocks/generated/list-zodiac-animals/index.js:26
 #: blocks/generated/search-cities/index.js:25
 #: blocks/generated/search-crystals/index.js:33
 #: blocks/generated/search-dream-symbols/index.js:32
@@ -3440,7 +3540,9 @@ msgstr ""
 #: blocks/generated/list-cards/index.js:28
 #: blocks/generated/list-countries/index.js:20
 #: blocks/generated/list-crystals/index.js:66
+#: blocks/generated/list-five-elements/index.js:28
 #: blocks/generated/list-hexagrams/index.js:28
+#: blocks/generated/list-zodiac-animals/index.js:28
 #: blocks/generated/search-cities/index.js:27
 #: blocks/generated/search-crystals/index.js:35
 #: blocks/generated/search-dream-symbols/index.js:34
@@ -3644,6 +3746,9 @@ msgstr ""
 
 #: blocks/generated/get-lunar-aspects/index.js:20
 #: blocks/generated/get-monthly-aspects/index.js:20
+#: blocks/generated/get-monthly-declination-parallels/index.js:20
+#: blocks/generated/get-monthly-tropical-aspects/index.js:20
+#: blocks/generated/get-monthly-tropical-transits/index.js:20
 msgid "Month number (1-12)"
 msgstr ""
 
@@ -3851,6 +3956,7 @@ msgstr ""
 msgid "Leave blank to render a visitor sign picker on the front end."
 msgstr ""
 
+#: blocks/generated/generate-flying-star-chart/index.js:11
 #: blocks/horoscope/edit.js:66
 msgid "Period"
 msgstr ""
@@ -3909,6 +4015,7 @@ msgstr ""
 #: blocks/generated/analyze-number-sequence/block.json
 #: blocks/generated/angel-number/block.json
 #: blocks/generated/biorhythm/block.json
+#: blocks/generated/calculate-annual-forecast/block.json
 #: blocks/generated/calculate-arabic-lots/block.json
 #: blocks/generated/calculate-arudha-padas/block.json
 #: blocks/generated/calculate-ashtakavarga/block.json
@@ -3922,11 +4029,15 @@ msgstr ""
 #: blocks/generated/calculate-chaldean/block.json
 #: blocks/generated/calculate-channels/block.json
 #: blocks/generated/calculate-chara-karakas/block.json
+#: blocks/generated/calculate-day-master-strength/block.json
 #: blocks/generated/calculate-drishti/block.json
 #: blocks/generated/calculate-dual/block.json
 #: blocks/generated/calculate-expression/block.json
 #: blocks/generated/calculate-gates/block.json
 #: blocks/generated/calculate-houses/block.json
+#: blocks/generated/calculate-kua-number/block.json
+#: blocks/generated/calculate-luck-pillars/block.json
+#: blocks/generated/calculate-lunar-date/block.json
 #: blocks/generated/calculate-maturity/block.json
 #: blocks/generated/calculate-parallels/block.json
 #: blocks/generated/calculate-personal-day/block.json
@@ -3940,6 +4051,7 @@ msgstr ""
 #: blocks/generated/calculate-transits/block.json
 #: blocks/generated/calculate-type/block.json
 #: blocks/generated/calculate-variables/block.json
+#: blocks/generated/calculate-zodiac-animal/block.json
 #: blocks/generated/cast-career-spread/block.json
 #: blocks/generated/cast-celtic-cross/block.json
 #: blocks/generated/cast-daily-reading/block.json
@@ -3956,9 +4068,12 @@ msgstr ""
 #: blocks/generated/forecast-solar-return/block.json
 #: blocks/generated/generate-asteroids/block.json
 #: blocks/generated/generate-astrocartography/block.json
+#: blocks/generated/generate-bazi-chart/block.json
 #: blocks/generated/generate-bodygraph/block.json
 #: blocks/generated/generate-divisional-chart/block.json
+#: blocks/generated/generate-eight-mansions/block.json
 #: blocks/generated/generate-fixed-stars/block.json
+#: blocks/generated/generate-flying-star-chart/block.json
 #: blocks/generated/generate-lilith/block.json
 #: blocks/generated/generate-local-space/block.json
 #: blocks/generated/generate-lunar-return/block.json
@@ -3969,7 +4084,11 @@ msgstr ""
 #: blocks/generated/generate-relocation-chart/block.json
 #: blocks/generated/generate-solar-arc/block.json
 #: blocks/generated/generate-solar-return/block.json
+#: blocks/generated/get-almanac-day/block.json
+#: blocks/generated/get-annual-afflictions/block.json
+#: blocks/generated/get-annual-flying-stars/block.json
 #: blocks/generated/get-avastha/block.json
+#: blocks/generated/get-bagua-sector/block.json
 #: blocks/generated/get-basic-panchang/block.json
 #: blocks/generated/get-birthstones/block.json
 #: blocks/generated/get-card/block.json
@@ -3989,6 +4108,7 @@ msgstr ""
 #: blocks/generated/get-daily-dream-symbol/block.json
 #: blocks/generated/get-daily-hexagram/block.json
 #: blocks/generated/get-daily-number/block.json
+#: blocks/generated/get-daily-zodiac-reading/block.json
 #: blocks/generated/get-dream-symbol/block.json
 #: blocks/generated/get-ecliptic-crossings/block.json
 #: blocks/generated/get-field-labels/block.json
@@ -4005,20 +4125,27 @@ msgstr ""
 #: blocks/generated/get-kp-ruling-interval/block.json
 #: blocks/generated/get-kp-ruling-planets/block.json
 #: blocks/generated/get-kp-sublord-changes/block.json
+#: blocks/generated/get-kua-number/block.json
 #: blocks/generated/get-lunar-aspects/block.json
 #: blocks/generated/get-major-dashas/block.json
+#: blocks/generated/get-monthly-almanac/block.json
 #: blocks/generated/get-monthly-aspects/block.json
+#: blocks/generated/get-monthly-declination-parallels/block.json
 #: blocks/generated/get-monthly-ephemeris/block.json
+#: blocks/generated/get-monthly-flying-stars/block.json
 #: blocks/generated/get-monthly-horoscope/block.json
 #: blocks/generated/get-monthly-parallels/block.json
 #: blocks/generated/get-monthly-transits/block.json
+#: blocks/generated/get-monthly-tropical-aspects/block.json
 #: blocks/generated/get-monthly-tropical-ephemeris/block.json
+#: blocks/generated/get-monthly-tropical-transits/block.json
 #: blocks/generated/get-moon-calendar/block.json
 #: blocks/generated/get-nakshatra/block.json
 #: blocks/generated/get-number-meaning/block.json
 #: blocks/generated/get-phases/block.json
 #: blocks/generated/get-planet-meaning/block.json
 #: blocks/generated/get-planet-positions/block.json
+#: blocks/generated/get-planetary-node-passages/block.json
 #: blocks/generated/get-planetary-positions/block.json
 #: blocks/generated/get-prana-dashas/block.json
 #: blocks/generated/get-pratyantardashas/block.json
@@ -4036,22 +4163,31 @@ msgstr ""
 #: blocks/generated/get-vedic-daily-reading/block.json
 #: blocks/generated/get-weekly-horoscope/block.json
 #: blocks/generated/get-yoga/block.json
+#: blocks/generated/get-zodiac-animal/block.json
+#: blocks/generated/get-zodiac-compatibility/block.json
 #: blocks/generated/get-zodiac-sign/block.json
 #: blocks/generated/list-angel-numbers/block.json
 #: blocks/generated/list-avasthas/block.json
+#: blocks/generated/list-bagua-sectors/block.json
 #: blocks/generated/list-cards/block.json
 #: blocks/generated/list-countries/block.json
 #: blocks/generated/list-crystal-colors/block.json
 #: blocks/generated/list-crystal-planets/block.json
 #: blocks/generated/list-crystals/block.json
+#: blocks/generated/list-five-elements/block.json
+#: blocks/generated/list-flying-stars/block.json
 #: blocks/generated/list-hexagrams/block.json
 #: blocks/generated/list-languages/block.json
 #: blocks/generated/list-nakshatras/block.json
+#: blocks/generated/list-nine-periods/block.json
 #: blocks/generated/list-planet-meanings/block.json
 #: blocks/generated/list-rashis/block.json
+#: blocks/generated/list-solar-terms/block.json
 #: blocks/generated/list-trigrams/block.json
 #: blocks/generated/list-yogas/block.json
+#: blocks/generated/list-zodiac-animals/block.json
 #: blocks/generated/list-zodiac-signs/block.json
+#: blocks/generated/lookup-auspicious-days/block.json
 #: blocks/generated/lookup-hexagram/block.json
 #: blocks/generated/natal-chart/block.json
 #: blocks/generated/numerology/block.json
@@ -4082,7 +4218,11 @@ msgid "astrology"
 msgstr ""
 
 #: blocks/astrology-wrapper/block.json
+#: blocks/generated/calculate-zodiac-animal/block.json
+#: blocks/generated/get-zodiac-animal/block.json
+#: blocks/generated/get-zodiac-compatibility/block.json
 #: blocks/generated/get-zodiac-sign/block.json
+#: blocks/generated/list-zodiac-animals/block.json
 #: blocks/generated/list-zodiac-signs/block.json
 #: blocks/horoscope/block.json
 msgctxt "block keyword"
@@ -4182,10 +4322,14 @@ msgstr ""
 #: blocks/generated/generate-relocation-chart/block.json
 #: blocks/generated/generate-solar-arc/block.json
 #: blocks/generated/generate-solar-return/block.json
+#: blocks/generated/get-monthly-declination-parallels/block.json
 #: blocks/generated/get-monthly-horoscope/block.json
+#: blocks/generated/get-monthly-tropical-aspects/block.json
 #: blocks/generated/get-monthly-tropical-ephemeris/block.json
+#: blocks/generated/get-monthly-tropical-transits/block.json
 #: blocks/generated/get-moon-calendar/block.json
 #: blocks/generated/get-planet-meaning/block.json
+#: blocks/generated/get-planetary-node-passages/block.json
 #: blocks/generated/get-planetary-positions/block.json
 #: blocks/generated/get-upcoming-moon-phases/block.json
 #: blocks/generated/get-weekly-horoscope/block.json
@@ -4196,6 +4340,7 @@ msgctxt "block keyword"
 msgid "western astrology"
 msgstr ""
 
+#: blocks/generated/calculate-annual-forecast/block.json
 #: blocks/generated/calculate-arabic-lots/block.json
 #: blocks/generated/calculate-arudha-padas/block.json
 #: blocks/generated/calculate-ashtakavarga/block.json
@@ -4209,11 +4354,15 @@ msgstr ""
 #: blocks/generated/calculate-chaldean/block.json
 #: blocks/generated/calculate-channels/block.json
 #: blocks/generated/calculate-chara-karakas/block.json
+#: blocks/generated/calculate-day-master-strength/block.json
 #: blocks/generated/calculate-drishti/block.json
 #: blocks/generated/calculate-dual/block.json
 #: blocks/generated/calculate-expression/block.json
 #: blocks/generated/calculate-gates/block.json
 #: blocks/generated/calculate-houses/block.json
+#: blocks/generated/calculate-kua-number/block.json
+#: blocks/generated/calculate-luck-pillars/block.json
+#: blocks/generated/calculate-lunar-date/block.json
 #: blocks/generated/calculate-maturity/block.json
 #: blocks/generated/calculate-parallels/block.json
 #: blocks/generated/calculate-personal-day/block.json
@@ -4227,6 +4376,7 @@ msgstr ""
 #: blocks/generated/calculate-transits/block.json
 #: blocks/generated/calculate-type/block.json
 #: blocks/generated/calculate-variables/block.json
+#: blocks/generated/calculate-zodiac-animal/block.json
 msgctxt "block keyword"
 msgid "calculate"
 msgstr ""
@@ -4485,6 +4635,7 @@ msgstr ""
 #: blocks/generated/get-daily-dream-symbol/block.json
 #: blocks/generated/get-daily-hexagram/block.json
 #: blocks/generated/get-daily-number/block.json
+#: blocks/generated/get-daily-zodiac-reading/block.json
 msgctxt "block keyword"
 msgid "daily"
 msgstr ""
@@ -4571,15 +4722,19 @@ msgstr ""
 #: blocks/generated/forecast-solar-return/block.json
 #: blocks/generated/generate-solar-arc/block.json
 #: blocks/generated/generate-solar-return/block.json
+#: blocks/generated/list-solar-terms/block.json
 msgctxt "block keyword"
 msgid "solar"
 msgstr ""
 
 #: blocks/generated/generate-asteroids/block.json
 #: blocks/generated/generate-astrocartography/block.json
+#: blocks/generated/generate-bazi-chart/block.json
 #: blocks/generated/generate-bodygraph/block.json
 #: blocks/generated/generate-divisional-chart/block.json
+#: blocks/generated/generate-eight-mansions/block.json
 #: blocks/generated/generate-fixed-stars/block.json
+#: blocks/generated/generate-flying-star-chart/block.json
 #: blocks/generated/generate-lilith/block.json
 #: blocks/generated/generate-local-space/block.json
 #: blocks/generated/generate-lunar-return/block.json
@@ -4629,6 +4784,7 @@ msgctxt "block keyword"
 msgid "local"
 msgstr ""
 
+#: blocks/generated/calculate-lunar-date/block.json
 #: blocks/generated/generate-lunar-return/block.json
 #: blocks/generated/get-lunar-aspects/block.json
 msgctxt "block keyword"
@@ -4641,6 +4797,7 @@ msgid "navamsa"
 msgstr ""
 
 #: blocks/generated/generate-planetary-return/block.json
+#: blocks/generated/get-planetary-node-passages/block.json
 #: blocks/generated/get-planetary-positions/block.json
 msgctxt "block keyword"
 msgid "planetary"
@@ -4661,7 +4818,11 @@ msgctxt "block keyword"
 msgid "relocation"
 msgstr ""
 
+#: blocks/generated/get-almanac-day/block.json
+#: blocks/generated/get-annual-afflictions/block.json
+#: blocks/generated/get-annual-flying-stars/block.json
 #: blocks/generated/get-avastha/block.json
+#: blocks/generated/get-bagua-sector/block.json
 #: blocks/generated/get-basic-panchang/block.json
 #: blocks/generated/get-birthstones/block.json
 #: blocks/generated/get-card/block.json
@@ -4681,6 +4842,7 @@ msgstr ""
 #: blocks/generated/get-daily-dream-symbol/block.json
 #: blocks/generated/get-daily-hexagram/block.json
 #: blocks/generated/get-daily-number/block.json
+#: blocks/generated/get-daily-zodiac-reading/block.json
 #: blocks/generated/get-dream-symbol/block.json
 #: blocks/generated/get-ecliptic-crossings/block.json
 #: blocks/generated/get-field-labels/block.json
@@ -4697,20 +4859,27 @@ msgstr ""
 #: blocks/generated/get-kp-ruling-interval/block.json
 #: blocks/generated/get-kp-ruling-planets/block.json
 #: blocks/generated/get-kp-sublord-changes/block.json
+#: blocks/generated/get-kua-number/block.json
 #: blocks/generated/get-lunar-aspects/block.json
 #: blocks/generated/get-major-dashas/block.json
+#: blocks/generated/get-monthly-almanac/block.json
 #: blocks/generated/get-monthly-aspects/block.json
+#: blocks/generated/get-monthly-declination-parallels/block.json
 #: blocks/generated/get-monthly-ephemeris/block.json
+#: blocks/generated/get-monthly-flying-stars/block.json
 #: blocks/generated/get-monthly-horoscope/block.json
 #: blocks/generated/get-monthly-parallels/block.json
 #: blocks/generated/get-monthly-transits/block.json
+#: blocks/generated/get-monthly-tropical-aspects/block.json
 #: blocks/generated/get-monthly-tropical-ephemeris/block.json
+#: blocks/generated/get-monthly-tropical-transits/block.json
 #: blocks/generated/get-moon-calendar/block.json
 #: blocks/generated/get-nakshatra/block.json
 #: blocks/generated/get-number-meaning/block.json
 #: blocks/generated/get-phases/block.json
 #: blocks/generated/get-planet-meaning/block.json
 #: blocks/generated/get-planet-positions/block.json
+#: blocks/generated/get-planetary-node-passages/block.json
 #: blocks/generated/get-planetary-positions/block.json
 #: blocks/generated/get-prana-dashas/block.json
 #: blocks/generated/get-pratyantardashas/block.json
@@ -4728,6 +4897,8 @@ msgstr ""
 #: blocks/generated/get-vedic-daily-reading/block.json
 #: blocks/generated/get-weekly-horoscope/block.json
 #: blocks/generated/get-yoga/block.json
+#: blocks/generated/get-zodiac-animal/block.json
+#: blocks/generated/get-zodiac-compatibility/block.json
 #: blocks/generated/get-zodiac-sign/block.json
 msgctxt "block keyword"
 msgid "get"
@@ -4844,12 +5015,17 @@ msgctxt "block keyword"
 msgid "major"
 msgstr ""
 
+#: blocks/generated/get-monthly-almanac/block.json
 #: blocks/generated/get-monthly-aspects/block.json
+#: blocks/generated/get-monthly-declination-parallels/block.json
 #: blocks/generated/get-monthly-ephemeris/block.json
+#: blocks/generated/get-monthly-flying-stars/block.json
 #: blocks/generated/get-monthly-horoscope/block.json
 #: blocks/generated/get-monthly-parallels/block.json
 #: blocks/generated/get-monthly-transits/block.json
+#: blocks/generated/get-monthly-tropical-aspects/block.json
 #: blocks/generated/get-monthly-tropical-ephemeris/block.json
+#: blocks/generated/get-monthly-tropical-transits/block.json
 msgctxt "block keyword"
 msgid "monthly"
 msgstr ""
@@ -4945,18 +5121,24 @@ msgstr ""
 
 #: blocks/generated/list-angel-numbers/block.json
 #: blocks/generated/list-avasthas/block.json
+#: blocks/generated/list-bagua-sectors/block.json
 #: blocks/generated/list-cards/block.json
 #: blocks/generated/list-countries/block.json
 #: blocks/generated/list-crystal-colors/block.json
 #: blocks/generated/list-crystal-planets/block.json
 #: blocks/generated/list-crystals/block.json
+#: blocks/generated/list-five-elements/block.json
+#: blocks/generated/list-flying-stars/block.json
 #: blocks/generated/list-hexagrams/block.json
 #: blocks/generated/list-languages/block.json
 #: blocks/generated/list-nakshatras/block.json
+#: blocks/generated/list-nine-periods/block.json
 #: blocks/generated/list-planet-meanings/block.json
 #: blocks/generated/list-rashis/block.json
+#: blocks/generated/list-solar-terms/block.json
 #: blocks/generated/list-trigrams/block.json
 #: blocks/generated/list-yogas/block.json
+#: blocks/generated/list-zodiac-animals/block.json
 #: blocks/generated/list-zodiac-signs/block.json
 msgctxt "block keyword"
 msgid "list"
@@ -5003,6 +5185,7 @@ msgctxt "block keyword"
 msgid "trigrams"
 msgstr ""
 
+#: blocks/generated/lookup-auspicious-days/block.json
 #: blocks/generated/lookup-hexagram/block.json
 msgctxt "block keyword"
 msgid "lookup"
@@ -5147,6 +5330,9 @@ msgstr "ह्यूमन डिज़ाइन गोचर ओवरले"
 #: blocks/generated/get-kp-ruling-interval/index.js:63
 #: blocks/generated/get-kp-ruling-planets/index.js:55
 #: blocks/generated/get-kp-sublord-changes/index.js:49
+#: blocks/generated/get-monthly-declination-parallels/index.js:41
+#: blocks/generated/get-monthly-tropical-aspects/index.js:34
+#: blocks/generated/get-monthly-tropical-transits/index.js:34
 #: blocks/generated/get-planetary-positions/index.js:27
 msgid "Lunar node convention"
 msgstr "चंद्र नोड परिपाटी"
@@ -6848,4 +7034,743 @@ msgstr ""
 #: blocks/generated/get-vedic-daily-reading/block.json
 msgctxt "block keyword"
 msgid "vedic"
+msgstr ""
+
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:23
+msgid "BaZi Compatibility"
+msgstr ""
+
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:73
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:144
+#: blocks/generated/calculate-annual-forecast/index.js:46
+#: blocks/generated/calculate-day-master-strength/index.js:46
+#: blocks/generated/calculate-luck-pillars/index.js:46
+#: blocks/generated/generate-bazi-chart/index.js:46
+msgid "Day boundary"
+msgstr ""
+
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:75
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:146
+#: blocks/generated/calculate-annual-forecast/index.js:48
+#: blocks/generated/calculate-day-master-strength/index.js:48
+#: blocks/generated/calculate-luck-pillars/index.js:48
+#: blocks/generated/generate-bazi-chart/index.js:48
+msgid "Which instant starts the sexagenary DAY, which only matters for a birth between 23:00 and 23:59"
+msgstr ""
+
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:81
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:152
+#: blocks/generated/calculate-annual-forecast/index.js:54
+#: blocks/generated/calculate-day-master-strength/index.js:54
+#: blocks/generated/calculate-kua-number/index.js:26
+#: blocks/generated/calculate-luck-pillars/index.js:54
+#: blocks/generated/calculate-zodiac-animal/index.js:18
+#: blocks/generated/generate-bazi-chart/index.js:54
+#: blocks/generated/generate-eight-mansions/index.js:33
+msgid "Year boundary"
+msgstr ""
+
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:83
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:154
+#: blocks/generated/calculate-annual-forecast/index.js:56
+#: blocks/generated/calculate-day-master-strength/index.js:56
+#: blocks/generated/calculate-luck-pillars/index.js:56
+#: blocks/generated/generate-bazi-chart/index.js:56
+msgid "Which instant starts the sexagenary YEAR"
+msgstr ""
+
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:89
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:160
+#: blocks/generated/calculate-annual-forecast/index.js:62
+#: blocks/generated/calculate-day-master-strength/index.js:62
+#: blocks/generated/calculate-luck-pillars/index.js:62
+#: blocks/generated/generate-bazi-chart/index.js:62
+msgid "Hour clock"
+msgstr ""
+
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:91
+#: src/Generated/Forms/CalculateBaziCompatibilityForm.php:162
+#: blocks/generated/calculate-annual-forecast/index.js:64
+#: blocks/generated/calculate-day-master-strength/index.js:64
+#: blocks/generated/calculate-luck-pillars/index.js:64
+#: blocks/generated/generate-bazi-chart/index.js:64
+msgid "Which clock the HOUR branch is read from"
+msgstr ""
+
+#: blocks/generated/analyze-number-sequence/index.js:13
+#: blocks/generated/cast-reading/index.js:13
+#: blocks/generated/get-almanac-day/index.js:19
+#: blocks/generated/get-annual-afflictions/index.js:19
+#: blocks/generated/get-annual-flying-stars/index.js:19
+#: blocks/generated/get-avastha/index.js:19
+#: blocks/generated/get-bagua-sector/index.js:19
+#: blocks/generated/get-birthstones/index.js:19
+#: blocks/generated/get-card/index.js:19
+#: blocks/generated/get-center/index.js:19
+#: blocks/generated/get-compound-number/index.js:19
+#: blocks/generated/get-crystal-pairings/index.js:19
+#: blocks/generated/get-crystal/index.js:19
+#: blocks/generated/get-crystals-by-chakra/index.js:19
+#: blocks/generated/get-crystals-by-element/index.js:19
+#: blocks/generated/get-daily-zodiac-reading/index.js:19
+#: blocks/generated/get-field-labels/index.js:13
+#: blocks/generated/get-gate/index.js:19
+#: blocks/generated/get-hexagram/index.js:19
+#: blocks/generated/get-kua-number/index.js:19
+#: blocks/generated/get-monthly-almanac/index.js:13
+#: blocks/generated/get-monthly-flying-stars/index.js:13
+#: blocks/generated/get-monthly-horoscope/index.js:19
+#: blocks/generated/get-moon-calendar/index.js:25
+#: blocks/generated/get-nakshatra/index.js:19
+#: blocks/generated/get-number-meaning/index.js:19
+#: blocks/generated/get-planet-meaning/index.js:19
+#: blocks/generated/get-random-crystal/index.js:13
+#: blocks/generated/get-random-hexagram/index.js:13
+#: blocks/generated/get-rashi/index.js:19
+#: blocks/generated/get-trigram/index.js:19
+#: blocks/generated/get-upcoming-moon-phases/index.js:13
+#: blocks/generated/get-weekly-horoscope/index.js:19
+#: blocks/generated/get-yoga/index.js:19
+#: blocks/generated/get-zodiac-animal/index.js:19
+#: blocks/generated/get-zodiac-compatibility/index.js:25
+#: blocks/generated/get-zodiac-sign/index.js:19
+#: blocks/generated/list-angel-numbers/index.js:13
+#: blocks/generated/list-avasthas/index.js:13
+#: blocks/generated/list-bagua-sectors/index.js:13
+#: blocks/generated/list-cards/index.js:13
+#: blocks/generated/list-crystals/index.js:13
+#: blocks/generated/list-five-elements/index.js:13
+#: blocks/generated/list-flying-stars/index.js:13
+#: blocks/generated/list-hexagrams/index.js:13
+#: blocks/generated/list-nakshatras/index.js:13
+#: blocks/generated/list-nine-periods/index.js:13
+#: blocks/generated/list-planet-meanings/index.js:13
+#: blocks/generated/list-rashis/index.js:13
+#: blocks/generated/list-solar-terms/index.js:19
+#: blocks/generated/list-trigrams/index.js:13
+#: blocks/generated/list-yogas/index.js:13
+#: blocks/generated/list-zodiac-animals/index.js:13
+#: blocks/generated/list-zodiac-signs/index.js:13
+#: blocks/generated/lookup-hexagram/index.js:13
+#: blocks/generated/search-crystals/index.js:13
+msgid "Response language (BCP 47)"
+msgstr ""
+
+#: blocks/generated/calculate-annual-forecast/index.js:72
+msgid "Gregorian year to read against the natal chart"
+msgstr ""
+
+#: blocks/generated/calculate-kua-number/index.js:18
+#: blocks/generated/calculate-luck-pillars/index.js:70
+#: blocks/generated/generate-eight-mansions/index.js:25
+msgid "Gender"
+msgstr ""
+
+#: blocks/generated/calculate-kua-number/index.js:20
+#: blocks/generated/generate-eight-mansions/index.js:27
+msgid "Selects the Kua formula variant"
+msgstr ""
+
+#: blocks/generated/calculate-kua-number/index.js:28
+msgid "Which boundary starts the Chinese year"
+msgstr ""
+
+#: blocks/generated/calculate-luck-pillars/index.js:72
+msgid "Subject sex, used only to pick the luck-pillar direction: a male born in a yang-stem year and a female born in a yin-stem year run forward through the sexagenary cycle, and the other two combinations run backward"
+msgstr ""
+
+#: blocks/generated/calculate-luck-pillars/index.js:80
+msgid "How many ten-year luck pillars to return, 1 to 12"
+msgstr ""
+
+#: blocks/generated/calculate-luck-pillars/index.js:85
+msgid "Annual from year"
+msgstr ""
+
+#: blocks/generated/calculate-luck-pillars/index.js:87
+msgid "First Gregorian year of the annual pillar overlay"
+msgstr ""
+
+#: blocks/generated/calculate-luck-pillars/index.js:92
+msgid "Annual years"
+msgstr ""
+
+#: blocks/generated/calculate-luck-pillars/index.js:94
+msgid "How many consecutive years the annual overlay covers, 1 to 20"
+msgstr ""
+
+#: blocks/generated/calculate-lunar-date/index.js:13
+msgid "Gregorian date to convert to the lunisolar calendar"
+msgstr ""
+
+#: blocks/generated/calculate-lunar-date/index.js:18
+msgid "Lunar year"
+msgstr ""
+
+#: blocks/generated/calculate-lunar-date/index.js:20
+msgid "Lunisolar year to convert back to a Gregorian date"
+msgstr ""
+
+#: blocks/generated/calculate-lunar-date/index.js:25
+msgid "Lunar month"
+msgstr ""
+
+#: blocks/generated/calculate-lunar-date/index.js:27
+msgid "Lunar month, 1 to 12"
+msgstr ""
+
+#: blocks/generated/calculate-lunar-date/index.js:32
+msgid "Lunar day"
+msgstr ""
+
+#: blocks/generated/calculate-lunar-date/index.js:34
+msgid "Day of the lunar month, 1 to 30"
+msgstr ""
+
+#: blocks/generated/calculate-lunar-date/index.js:39
+msgid "Is leap month"
+msgstr ""
+
+#: blocks/generated/calculate-lunar-date/index.js:41
+msgid "Set true to address the leap repetition of lunarMonth rather than the first pass"
+msgstr ""
+
+#: blocks/generated/calculate-zodiac-animal/index.js:20
+msgid "Which instant starts the zodiac year"
+msgstr ""
+
+#: blocks/generated/generate-eight-mansions/index.js:11
+msgid "Kua"
+msgstr ""
+
+#: blocks/generated/generate-eight-mansions/index.js:13
+msgid "Kua number to build the map for, if you already have one"
+msgstr ""
+
+#: blocks/generated/generate-eight-mansions/index.js:20
+msgid "Birth date in YYYY-MM-DD format, used to derive the Kua when no kua is sent"
+msgstr ""
+
+#: blocks/generated/generate-eight-mansions/index.js:35
+msgid "Which boundary starts the Chinese year when the Kua is derived from a birth date"
+msgstr ""
+
+#: blocks/generated/generate-eight-mansions/index.js:41
+#: blocks/generated/generate-flying-star-chart/index.js:18
+msgid "Facing"
+msgstr ""
+
+#: blocks/generated/generate-eight-mansions/index.js:43
+msgid "Optional compass sector the main door faces, one of North, Northeast, East, Southeast, South, Southwest, West, Northwest"
+msgstr ""
+
+#: blocks/generated/generate-flying-star-chart/index.js:13
+msgid "Construction period of the building, 1 to 9"
+msgstr ""
+
+#: blocks/generated/generate-flying-star-chart/index.js:20
+msgid "The mountain the front of the building faces, by id or by compass label such as S2"
+msgstr ""
+
+#: blocks/generated/generate-flying-star-chart/index.js:26
+msgid "Facing degrees"
+msgstr ""
+
+#: blocks/generated/generate-flying-star-chart/index.js:28
+msgid "The compass bearing the front of the building faces, 0 to 360 degrees, measured looking out from inside"
+msgstr ""
+
+#: blocks/generated/get-daily-zodiac-reading/index.js:27
+msgid "Reading date in YYYY-MM-DD format"
+msgstr ""
+
+#: blocks/generated/get-daily-zodiac-reading/index.js:34
+msgid "Selects which day counts as current when date is omitted"
+msgstr ""
+
+#: blocks/generated/get-monthly-almanac/index.js:21
+msgid "Gregorian year, 1900 to 2100"
+msgstr ""
+
+#: blocks/generated/get-monthly-almanac/index.js:28
+msgid "Gregorian month, 1 to 12"
+msgstr ""
+
+#: blocks/generated/get-monthly-declination-parallels/index.js:13
+msgid "Year for the declination calendar (1900-2100)"
+msgstr ""
+
+#: blocks/generated/get-monthly-declination-parallels/index.js:34
+msgid "How far from exact still counts, in degrees"
+msgstr ""
+
+#: blocks/generated/get-monthly-flying-stars/index.js:21
+msgid "Solar year, 1900 to 2100"
+msgstr ""
+
+#: blocks/generated/get-monthly-flying-stars/index.js:28
+msgid "Solar month, 1 to 12, where 1 begins at Li Chun in early February"
+msgstr ""
+
+#: blocks/generated/get-monthly-tropical-aspects/index.js:13
+msgid "Year for the aspect calendar (1900-2100)"
+msgstr ""
+
+#: blocks/generated/get-monthly-tropical-transits/index.js:13
+msgid "Year for the monthly transit table (1900-2100)"
+msgstr ""
+
+#: blocks/generated/get-planetary-node-passages/index.js:13
+msgid "Year to scan for node passages (1900-2100)."
+msgstr ""
+
+#: blocks/generated/get-zodiac-compatibility/index.js:11
+msgid "Sign 1"
+msgstr ""
+
+#: blocks/generated/get-zodiac-compatibility/index.js:17
+msgid "Sign 2"
+msgstr ""
+
+#: blocks/generated/list-bagua-sectors/index.js:21
+msgid "Maximum sectors to return per page"
+msgstr ""
+
+#: blocks/generated/list-bagua-sectors/index.js:28
+msgid "Number of sectors to skip for pagination"
+msgstr ""
+
+#: blocks/generated/list-flying-stars/index.js:21
+msgid "Maximum stars to return per page"
+msgstr ""
+
+#: blocks/generated/list-flying-stars/index.js:28
+msgid "Number of stars to skip for pagination"
+msgstr ""
+
+#: blocks/generated/list-nine-periods/index.js:21
+msgid "Date to resolve the current period for, in YYYY-MM-DD format"
+msgstr ""
+
+#: blocks/generated/lookup-auspicious-days/index.js:11
+msgid "Activity"
+msgstr ""
+
+#: blocks/generated/lookup-auspicious-days/index.js:13
+msgid "Activity to choose a date for"
+msgstr ""
+
+#: blocks/generated/lookup-auspicious-days/index.js:21
+msgid "First date of the range to search, inclusive."
+msgstr ""
+
+#: blocks/generated/lookup-auspicious-days/index.js:28
+msgid "Last date of the range to search, inclusive"
+msgstr ""
+
+#: blocks/generated/lookup-auspicious-days/index.js:33
+msgid "Avoid animal"
+msgstr ""
+
+#: blocks/generated/lookup-auspicious-days/index.js:35
+msgid "Zodiac animal to protect"
+msgstr ""
+
+#: blocks/generated/calculate-annual-forecast/block.json
+msgctxt "block title"
+msgid "BaZi Annual Forecast (Chinese Astrology)"
+msgstr ""
+
+#: blocks/generated/calculate-annual-forecast/block.json
+msgctxt "block description"
+msgid "Read one Gregorian year against a natal BaZi chart"
+msgstr ""
+
+#: blocks/generated/calculate-annual-forecast/block.json
+#: blocks/generated/calculate-day-master-strength/block.json
+#: blocks/generated/calculate-luck-pillars/block.json
+#: blocks/generated/calculate-lunar-date/block.json
+#: blocks/generated/calculate-zodiac-animal/block.json
+#: blocks/generated/generate-bazi-chart/block.json
+#: blocks/generated/get-almanac-day/block.json
+#: blocks/generated/get-daily-zodiac-reading/block.json
+#: blocks/generated/get-monthly-almanac/block.json
+#: blocks/generated/get-zodiac-animal/block.json
+#: blocks/generated/get-zodiac-compatibility/block.json
+#: blocks/generated/list-five-elements/block.json
+#: blocks/generated/list-solar-terms/block.json
+#: blocks/generated/list-zodiac-animals/block.json
+#: blocks/generated/lookup-auspicious-days/block.json
+msgctxt "block keyword"
+msgid "chinese astrology"
+msgstr ""
+
+#: blocks/generated/calculate-annual-forecast/block.json
+#: blocks/generated/get-annual-afflictions/block.json
+#: blocks/generated/get-annual-flying-stars/block.json
+msgctxt "block keyword"
+msgid "annual"
+msgstr ""
+
+#: blocks/generated/calculate-day-master-strength/block.json
+msgctxt "block title"
+msgid "Day Master Strength (Chinese Astrology)"
+msgstr ""
+
+#: blocks/generated/calculate-day-master-strength/block.json
+msgctxt "block description"
+msgid "Assess how well the Day Master is supported by the rest of a BaZi chart, and which of the five elements help it"
+msgstr ""
+
+#: blocks/generated/calculate-day-master-strength/block.json
+msgctxt "block keyword"
+msgid "day"
+msgstr ""
+
+#: blocks/generated/calculate-kua-number/block.json
+msgctxt "block title"
+msgid "Calculate Kua Number (Feng Shui)"
+msgstr ""
+
+#: blocks/generated/calculate-kua-number/block.json
+msgctxt "block description"
+msgid "Feng shui personal direction"
+msgstr ""
+
+#: blocks/generated/calculate-kua-number/block.json
+#: blocks/generated/generate-eight-mansions/block.json
+#: blocks/generated/generate-flying-star-chart/block.json
+#: blocks/generated/get-annual-afflictions/block.json
+#: blocks/generated/get-annual-flying-stars/block.json
+#: blocks/generated/get-bagua-sector/block.json
+#: blocks/generated/get-kua-number/block.json
+#: blocks/generated/get-monthly-flying-stars/block.json
+#: blocks/generated/list-bagua-sectors/block.json
+#: blocks/generated/list-flying-stars/block.json
+#: blocks/generated/list-nine-periods/block.json
+msgctxt "block keyword"
+msgid "feng shui"
+msgstr ""
+
+#: blocks/generated/calculate-kua-number/block.json
+#: blocks/generated/get-kua-number/block.json
+msgctxt "block keyword"
+msgid "kua"
+msgstr ""
+
+#: blocks/generated/calculate-luck-pillars/block.json
+msgctxt "block title"
+msgid "Luck Pillars (Chinese Astrology)"
+msgstr ""
+
+#: blocks/generated/calculate-luck-pillars/block.json
+msgctxt "block description"
+msgid "BaZi Da Yun ten-year cycle"
+msgstr ""
+
+#: blocks/generated/calculate-luck-pillars/block.json
+msgctxt "block keyword"
+msgid "luck"
+msgstr ""
+
+#: blocks/generated/calculate-lunar-date/block.json
+msgctxt "block title"
+msgid "Convert Lunar and Gregorian Dates (Chinese Astrology)"
+msgstr ""
+
+#: blocks/generated/calculate-lunar-date/block.json
+msgctxt "block description"
+msgid "Chinese lunisolar calendar"
+msgstr ""
+
+#: blocks/generated/calculate-zodiac-animal/block.json
+msgctxt "block title"
+msgid "Chinese Zodiac Animal for a Birth Date (Chinese Astrology)"
+msgstr ""
+
+#: blocks/generated/calculate-zodiac-animal/block.json
+msgctxt "block description"
+msgid "Resolve a birth date to its Chinese zodiac animal, the sexagenary year pillar behind it, and the Five Element phase of that year, so a 1990 birth returns Horse as a Metal Horse rather than merely a Horse"
+msgstr ""
+
+#: blocks/generated/generate-bazi-chart/block.json
+msgctxt "block title"
+msgid "BaZi Chart (Chinese Astrology)"
+msgstr ""
+
+#: blocks/generated/generate-bazi-chart/block.json
+msgctxt "block description"
+msgid "Calculate a complete BaZi chart, the Four Pillars of Destiny, from a birth moment"
+msgstr ""
+
+#: blocks/generated/generate-bazi-chart/block.json
+msgctxt "block keyword"
+msgid "bazi"
+msgstr ""
+
+#: blocks/generated/generate-eight-mansions/block.json
+msgctxt "block title"
+msgid "Eight Mansions Map (Feng Shui)"
+msgstr ""
+
+#: blocks/generated/generate-eight-mansions/block.json
+msgctxt "block description"
+msgid "Build the full Eight Mansions (Ba Zhai) map for a person: all eight compass sectors classified into the four favourable stars, Sheng Chi, Tian Yi, Yan Nian and Fu Wei, and the four unfavourable ones, Huo Hai, Wu Gui, Liu Sha and Jue Ming"
+msgstr ""
+
+#: blocks/generated/generate-eight-mansions/block.json
+msgctxt "block keyword"
+msgid "eight"
+msgstr ""
+
+#: blocks/generated/generate-flying-star-chart/block.json
+msgctxt "block title"
+msgid "Flying Star Natal Chart (Feng Shui)"
+msgstr ""
+
+#: blocks/generated/generate-flying-star-chart/block.json
+msgctxt "block description"
+msgid "Cast the Xuan Kong flying star natal chart for a building from its construction period and the direction it faces"
+msgstr ""
+
+#: blocks/generated/generate-flying-star-chart/block.json
+#: blocks/generated/list-flying-stars/block.json
+msgctxt "block keyword"
+msgid "flying"
+msgstr ""
+
+#: blocks/generated/get-almanac-day/block.json
+msgctxt "block title"
+msgid "Almanac for a Day (Chinese Astrology)"
+msgstr ""
+
+#: blocks/generated/get-almanac-day/block.json
+msgctxt "block description"
+msgid "Tong Shu with day officers and mansions"
+msgstr ""
+
+#: blocks/generated/get-almanac-day/block.json
+msgctxt "block keyword"
+msgid "almanac"
+msgstr ""
+
+#: blocks/generated/get-annual-afflictions/block.json
+msgctxt "block title"
+msgid "Annual Afflictions (Feng Shui)"
+msgstr ""
+
+#: blocks/generated/get-annual-afflictions/block.json
+msgctxt "block description"
+msgid "Tai Sui, San Sha and Five Yellow"
+msgstr ""
+
+#: blocks/generated/get-annual-flying-stars/block.json
+msgctxt "block title"
+msgid "Annual Flying Stars (Feng Shui)"
+msgstr ""
+
+#: blocks/generated/get-annual-flying-stars/block.json
+msgctxt "block description"
+msgid "Yearly feng shui star chart"
+msgstr ""
+
+#: blocks/generated/get-bagua-sector/block.json
+msgctxt "block title"
+msgid "Bagua Sector (Feng Shui)"
+msgstr ""
+
+#: blocks/generated/get-bagua-sector/block.json
+msgctxt "block description"
+msgid "Look up one palace of the compass Bagua map by its life area id, such as wealth, career or love"
+msgstr ""
+
+#: blocks/generated/get-bagua-sector/block.json
+#: blocks/generated/list-bagua-sectors/block.json
+msgctxt "block keyword"
+msgid "bagua"
+msgstr ""
+
+#: blocks/generated/get-daily-zodiac-reading/block.json
+msgctxt "block title"
+msgid "Daily Chinese Zodiac Reading (Chinese Astrology)"
+msgstr ""
+
+#: blocks/generated/get-daily-zodiac-reading/block.json
+msgctxt "block description"
+msgid "Day pillar forecast by animal sign"
+msgstr ""
+
+#: blocks/generated/get-kua-number/block.json
+msgctxt "block title"
+msgid "Kua Number (Feng Shui)"
+msgstr ""
+
+#: blocks/generated/get-kua-number/block.json
+msgctxt "block description"
+msgid "Look up the reference chart for one Kua number: its trigram, its east or west life group, and how it classifies all eight compass sectors"
+msgstr ""
+
+#: blocks/generated/get-monthly-almanac/block.json
+msgctxt "block title"
+msgid "Month of Almanac Days (Chinese Astrology)"
+msgstr ""
+
+#: blocks/generated/get-monthly-almanac/block.json
+msgctxt "block description"
+msgid "Chinese calendar month view"
+msgstr ""
+
+#: blocks/generated/get-monthly-declination-parallels/block.json
+msgctxt "block title"
+msgid "Monthly Parallels (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/get-monthly-declination-parallels/block.json
+msgctxt "block description"
+msgid "Declination contacts for an entire month"
+msgstr ""
+
+#: blocks/generated/get-monthly-flying-stars/block.json
+msgctxt "block title"
+msgid "Monthly Flying Stars (Feng Shui)"
+msgstr ""
+
+#: blocks/generated/get-monthly-flying-stars/block.json
+msgctxt "block description"
+msgid "Month by month feng shui overlay"
+msgstr ""
+
+#: blocks/generated/get-monthly-tropical-aspects/block.json
+msgctxt "block title"
+msgid "Monthly Aspects (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/get-monthly-tropical-aspects/block.json
+msgctxt "block description"
+msgid "Tropical aspect calendar for an entire month"
+msgstr ""
+
+#: blocks/generated/get-monthly-tropical-transits/block.json
+msgctxt "block title"
+msgid "Monthly Transits (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/get-monthly-tropical-transits/block.json
+msgctxt "block description"
+msgid "Tropical sign ingresses for an entire month"
+msgstr ""
+
+#: blocks/generated/get-planetary-node-passages/block.json
+msgctxt "block title"
+msgid "Ecliptic Crossings (Western Astrology)"
+msgstr ""
+
+#: blocks/generated/get-planetary-node-passages/block.json
+msgctxt "block description"
+msgid "Node passages for a whole year"
+msgstr ""
+
+#: blocks/generated/get-zodiac-animal/block.json
+msgctxt "block title"
+msgid "Chinese Zodiac Animal (Chinese Astrology)"
+msgstr ""
+
+#: blocks/generated/get-zodiac-animal/block.json
+msgctxt "block description"
+msgid "Full sign profile with compatibility partners"
+msgstr ""
+
+#: blocks/generated/get-zodiac-compatibility/block.json
+msgctxt "block title"
+msgid "Chinese Zodiac Compatibility (Chinese Astrology)"
+msgstr ""
+
+#: blocks/generated/get-zodiac-compatibility/block.json
+msgctxt "block description"
+msgid "Trine, six harmony, clash and harm analysis"
+msgstr ""
+
+#: blocks/generated/list-bagua-sectors/block.json
+msgctxt "block title"
+msgid "Bagua Sectors (Feng Shui)"
+msgstr ""
+
+#: blocks/generated/list-bagua-sectors/block.json
+msgctxt "block description"
+msgid "The nine palaces of the compass Bagua map: the eight trigram sectors plus the centre, each with the life area it governs, its five phase, its colours, and both its Later Heaven and Earlier Heaven trigrams"
+msgstr ""
+
+#: blocks/generated/list-five-elements/block.json
+msgctxt "block title"
+msgid "Elements (Chinese Astrology)"
+msgstr ""
+
+#: blocks/generated/list-five-elements/block.json
+msgctxt "block description"
+msgid "Wu Xing with generating and controlling cycles"
+msgstr ""
+
+#: blocks/generated/list-five-elements/block.json
+msgctxt "block keyword"
+msgid "five"
+msgstr ""
+
+#: blocks/generated/list-flying-stars/block.json
+msgctxt "block title"
+msgid "Flying Stars (Feng Shui)"
+msgstr ""
+
+#: blocks/generated/list-flying-stars/block.json
+msgctxt "block description"
+msgid "The reference catalogue of the nine flying stars: name, Chinese characters, five phase, home palace and trigram, the period each rules, what each means, and which element strengthens or drains it"
+msgstr ""
+
+#: blocks/generated/list-nine-periods/block.json
+msgctxt "block title"
+msgid "Periods (Feng Shui)"
+msgstr ""
+
+#: blocks/generated/list-nine-periods/block.json
+msgctxt "block description"
+msgid "The nine twenty year periods of the 180 year San Yuan cycle from 1864 to 2043, each with its ruling star, five phase, palace and the exact Li Chun date it opened, plus which period is in force on a given date"
+msgstr ""
+
+#: blocks/generated/list-nine-periods/block.json
+msgctxt "block keyword"
+msgid "nine"
+msgstr ""
+
+#: blocks/generated/list-solar-terms/block.json
+msgctxt "block title"
+msgid "Solar Terms (Chinese Astrology)"
+msgstr ""
+
+#: blocks/generated/list-solar-terms/block.json
+msgctxt "block description"
+msgid "Jie Qi calendar with exact instants"
+msgstr ""
+
+#: blocks/generated/list-zodiac-animals/block.json
+msgctxt "block title"
+msgid "Chinese Zodiac Animals (Chinese Astrology)"
+msgstr ""
+
+#: blocks/generated/list-zodiac-animals/block.json
+msgctxt "block description"
+msgid "Sheng Xiao sign catalogue"
+msgstr ""
+
+#: blocks/generated/lookup-auspicious-days/block.json
+msgctxt "block title"
+msgid "Auspicious Days (Chinese Astrology)"
+msgstr ""
+
+#: blocks/generated/lookup-auspicious-days/block.json
+msgctxt "block description"
+msgid "Chinese date selection for weddings and openings"
+msgstr ""
+
+#: blocks/generated/lookup-auspicious-days/block.json
+msgctxt "block keyword"
+msgid "auspicious"
 msgstr ""

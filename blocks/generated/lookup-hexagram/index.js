@@ -10,8 +10,8 @@ const fields = [
 		control: 'select',
 		label: __( 'Lang', 'roxyapi' ),
 		required: false,
-		help: __( 'Response language (ISO 639-1)', 'roxyapi' ),
-		options: [ 'en', 'tr', 'de', 'es', 'hi', 'pt', 'fr', 'ru' ],
+		help: __( 'Response language (BCP 47)', 'roxyapi' ),
+		options: [ 'en', 'tr', 'de', 'es', 'hi', 'pt', 'fr', 'ru', 'zh-Hans', 'zh-Hant' ],
 	},
 	{
 		name: 'lines',

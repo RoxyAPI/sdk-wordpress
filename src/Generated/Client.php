@@ -2455,6 +2455,657 @@ class Client {
 	}
 
 	/**
+	 * Generate BaZi chart - Four Pillars of Destiny calculator API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function generateBaziChart( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'timezone' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'chinese-astrology/bazi/chart',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'chinese-astrology/bazi/chart', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Calculate luck pillars - BaZi Da Yun ten-year cycle API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateLuckPillars( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'timezone', 'gender' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'chinese-astrology/bazi/luck-pillars',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'chinese-astrology/bazi/luck-pillars', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Calculate Day Master strength - BaZi favorable element API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateDayMasterStrength( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'timezone' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'chinese-astrology/bazi/day-master',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'chinese-astrology/bazi/day-master', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Calculate BaZi compatibility - Four Pillars matchmaking API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateBaziCompatibility( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'personA', 'personB' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'chinese-astrology/bazi/compatibility',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'chinese-astrology/bazi/compatibility', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Calculate BaZi annual forecast - Liu Nian yearly pillar API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateAnnualForecast( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'timezone', 'year' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'chinese-astrology/bazi/annual-forecast',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'chinese-astrology/bazi/annual-forecast', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * List the 12 Chinese zodiac animals - Sheng Xiao sign catalogue
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listZodiacAnimals( $lang = null, $limit = null, $offset = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'chinese-astrology/zodiac/animals',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'chinese-astrology/zodiac/animals', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get one Chinese zodiac animal - Full sign profile with compatibility partners
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getZodiacAnimal( $id, $lang = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'chinese-astrology/zodiac/animals/' . rawurlencode( $id ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $id ) {
+				return \RoxyAPI\Api\Client::get( 'chinese-astrology/zodiac/animals/' . rawurlencode( $id ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Find the Chinese zodiac animal for a birth date - Sheng Xiao calculator
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateZodiacAnimal( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'chinese-astrology/zodiac/sign',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'chinese-astrology/zodiac/sign', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Chinese zodiac compatibility - Trine, six harmony, clash and harm analysis
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getZodiacCompatibility( $sign1, $sign2, $lang = null ) {
+		if ( $sign1 === '' || $sign1 === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'sign1' ) );
+		}
+		if ( $sign2 === '' || $sign2 === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'sign2' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'chinese-astrology/zodiac/compatibility/' . rawurlencode( $sign1 ) . '/' . rawurlencode( $sign2 ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $sign1, $sign2 ) {
+				return \RoxyAPI\Api\Client::get( 'chinese-astrology/zodiac/compatibility/' . rawurlencode( $sign1 ) . '/' . rawurlencode( $sign2 ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Daily Chinese zodiac reading - Day pillar forecast by animal sign
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getDailyZodiacReading( $id, $lang = null, $date = null, $timezone = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'date' => $date,
+			'timezone' => $timezone,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'chinese-astrology/zodiac/' . rawurlencode( $id ) . '/daily',
+			$query,
+			3600,
+			static function () use ( $query, $id ) {
+				return \RoxyAPI\Api\Client::get( 'chinese-astrology/zodiac/' . rawurlencode( $id ) . '/daily', $query );
+			}
+		);
+	}
+
+	/**
+	 * List the 24 solar terms - Jie Qi calendar API with exact instants
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listSolarTerms( $year, $lang = null ) {
+		if ( $year === '' || $year === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'year' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'chinese-astrology/calendar/solar-terms/' . rawurlencode( $year ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $year ) {
+				return \RoxyAPI\Api\Client::get( 'chinese-astrology/calendar/solar-terms/' . rawurlencode( $year ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Convert lunar and Gregorian dates - Chinese lunisolar calendar API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateLunarDate( $body = array(), $query = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'chinese-astrology/calendar/lunar-date',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'chinese-astrology/calendar/lunar-date', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Get the almanac for a day - Tong Shu API with day officers and mansions
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getAlmanacDay( $date, $lang = null ) {
+		if ( $date === '' || $date === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'date' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'chinese-astrology/calendar/day/' . rawurlencode( $date ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $date ) {
+				return \RoxyAPI\Api\Client::get( 'chinese-astrology/calendar/day/' . rawurlencode( $date ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get a month of almanac days - Chinese calendar month view API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getMonthlyAlmanac( $lang = null, $year = null, $month = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'year' => $year,
+			'month' => $month,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'chinese-astrology/calendar/monthly',
+			$query,
+			3600,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'chinese-astrology/calendar/monthly', $query );
+			}
+		);
+	}
+
+	/**
+	 * Find auspicious days - Chinese date selection API for weddings and openings
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function lookupAuspiciousDays( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'activity', 'startDate', 'endDate' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'chinese-astrology/calendar/auspicious-days',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'chinese-astrology/calendar/auspicious-days', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * List the five elements - Wu Xing API with generating and controlling cycles
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listFiveElements( $lang = null, $limit = null, $offset = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'chinese-astrology/elements',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'chinese-astrology/elements', $query );
+			}
+		);
+	}
+
+	/**
+	 * Calculate Kua number - Feng shui personal direction calculator API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateKuaNumber( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'gender' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'feng-shui/kua',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'feng-shui/kua', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Look up a Kua number - Eight Mansions reference API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getKuaNumber( $number, $lang = null ) {
+		if ( $number === '' || $number === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'number' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'feng-shui/kua/' . rawurlencode( $number ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $number ) {
+				return \RoxyAPI\Api\Client::get( 'feng-shui/kua/' . rawurlencode( $number ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Generate Eight Mansions map - Ba Zhai lucky direction API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function generateEightMansions( $body = array(), $query = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'feng-shui/eight-mansions',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'feng-shui/eight-mansions', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Generate flying star natal chart - Xuan Kong Fei Xing API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function generateFlyingStarChart( $body = array(), $query = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'feng-shui/flying-stars/natal',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'feng-shui/flying-stars/natal', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Annual flying stars - Yearly feng shui star chart API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getAnnualFlyingStars( $year, $lang = null ) {
+		if ( $year === '' || $year === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'year' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'feng-shui/flying-stars/annual/' . rawurlencode( $year ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $year ) {
+				return \RoxyAPI\Api\Client::get( 'feng-shui/flying-stars/annual/' . rawurlencode( $year ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Monthly flying stars - Month by month feng shui overlay API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getMonthlyFlyingStars( $lang = null, $year = null, $month = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'year' => $year,
+			'month' => $month,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'feng-shui/flying-stars/monthly',
+			$query,
+			3600,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'feng-shui/flying-stars/monthly', $query );
+			}
+		);
+	}
+
+	/**
+	 * List the nine flying stars - Xuan Kong star reference API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listFlyingStars( $lang = null, $limit = null, $offset = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'feng-shui/flying-stars/stars',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'feng-shui/flying-stars/stars', $query );
+			}
+		);
+	}
+
+	/**
+	 * Annual afflictions - Tai Sui, San Sha and Five Yellow API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getAnnualAfflictions( $year, $lang = null ) {
+		if ( $year === '' || $year === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'year' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'feng-shui/afflictions/' . rawurlencode( $year ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $year ) {
+				return \RoxyAPI\Api\Client::get( 'feng-shui/afflictions/' . rawurlencode( $year ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * List Bagua sectors - Feng shui bagua map API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listBaguaSectors( $lang = null, $limit = null, $offset = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'feng-shui/bagua',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'feng-shui/bagua', $query );
+			}
+		);
+	}
+
+	/**
+	 * Look up a Bagua sector - Life area reference API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getBaguaSector( $id, $lang = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'feng-shui/bagua/' . rawurlencode( $id ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $id ) {
+				return \RoxyAPI\Api\Client::get( 'feng-shui/bagua/' . rawurlencode( $id ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * List the nine periods - San Yuan period table API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listNinePeriods( $lang = null, $date = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'date' => $date,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'feng-shui/periods',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'feng-shui/periods', $query );
+			}
+		);
+	}
+
+	/**
 	 * Calculate Life Path number - Most important numerology calculation
 	 *
 	 * @param array $body Request body.

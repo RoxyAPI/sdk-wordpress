@@ -12,7 +12,7 @@
 
 ## Ship a complete Astrology, Vedic, or Human Design site this weekend. Not this quarter.
 
-The only multi domain spiritual intelligence plugin for WordPress. Drop natal charts, daily horoscopes, kundli, Human Design bodygraphs, Numerology charts, and Tarot pulls onto any page. One API key, 14+ spiritual data domains, 209+ endpoints. Verified against NASA JPL Horizons.
+The only multi domain spiritual intelligence plugin for WordPress. Drop natal charts, daily horoscopes, kundli, forecast timelines, Human Design bodygraphs, BaZi four pillars, and feng shui flying star charts onto any page. One API key, 14+ spiritual data domains, 209+ endpoints. Verified against NASA JPL Horizons.
 
 Interactive forms for your visitors. Gutenberg blocks for your editor. Shortcodes for anywhere else. Server side rendering keeps your API key out of the browser. Transient caching keeps your quota intact.
 
@@ -85,14 +85,14 @@ Form submissions post back to the same page over HTTPS. The plugin validates the
 
 In the block editor, open the inserter and pick a block from the **RoxyAPI** category. The headline readings, of which Horoscope adds a variation picker:
 
--   **Horoscope** (daily, weekly, monthly, love, career, Chinese)
+-   **Horoscope** (daily, weekly, monthly)
 -   **Natal Chart**
 -   **Tarot** (daily, three card, Celtic Cross)
 -   **Numerology** (life path, expression, soul urge, full chart)
 -   **Biorhythm**
 -   **Angel Number**
 
-Beyond these, every long-tail endpoint (I Ching, dream symbols, crystals, Human Design, forecasts, and more) generates a matching block from the OpenAPI spec, so the full catalog is in the inserter alongside the shortcodes. Every block, headline readings included, is generated the same way and gets sidebar controls for its inputs derived from the spec params (a date picker for dates, a dropdown for enums, text and number fields for the rest), with a live server-rendered preview. Only readings that need two charts or nested birth details (such as synastry or gun milan) stay shortcode and visitor-form only, because the block editor cannot collect their nested input.
+Beyond these, every long-tail endpoint (Chinese astrology, feng shui, Human Design, forecasts, I Ching, dream symbols, crystals, and more) generates a matching block from the OpenAPI spec, so the full catalog is in the inserter alongside the shortcodes. Every block, headline readings included, is generated the same way and gets sidebar controls for its inputs derived from the spec params (a date picker for dates, a dropdown for enums, text and number fields for the rest), with a live server-rendered preview. Only readings that need two charts or nested birth details (such as synastry or gun milan) stay shortcode and visitor-form only, because the block editor cannot collect their nested input.
 
 All blocks are built flat under `build/blocks/<name>/` and registered with a single directory scan using only `register_block_type`, so the plugin stays compatible with its declared minimum WordPress version (6.5) with no version-gated core functions.
 
@@ -123,20 +123,22 @@ When `ROXYAPI_KEY` is defined, the settings field is read only and the constant 
 
 ## 14+ domains, 209+ endpoints, one key
 
-| Domain            | What you get                                                                                                    |
-| ----------------- | --------------------------------------------------------------------------------------------------------------- |
-| Western astrology | Natal charts, horoscopes (daily, weekly, monthly, love, career), transits, synastry, moon phases, compatibility |
-| Vedic astrology   | Kundli, nakshatras, Dasha, Panchang, KP system, doshas, yogas, muhurta                                          |
-| Numerology        | Life path, expression, soul urge, personal year, personality, karmic analysis                                   |
-| Tarot             | Rider Waite Smith deck, single card, three card, Celtic Cross, custom spreads                                   |
-| Human Design      | Bodygraph with type, authority, profile, centers, channels, gates, plus two chart connection charts             |
-| Forecast          | Cross domain timelines, transit forecasts, solar returns, and significant dates                                 |
-| Biorhythm         | Physical, emotional, intellectual, intuitive cycles plus six extended cycles                                    |
-| I Ching           | Hexagrams, trigrams, coin casting, daily readings                                                               |
-| Crystals          | Healing properties, zodiac and chakra pairings, birthstones                                                     |
-| Dreams            | Symbol dictionary with 2,000+ entries, pattern analysis                                                         |
-| Angel numbers     | Meanings, daily guidance, repetition analysis                                                                   |
-| Location          | City geocoding for birth chart coordinates                                                                      |
+| Domain            | What you get                                                                                        |
+| ----------------- | --------------------------------------------------------------------------------------------------- |
+| Western astrology | Natal charts, horoscopes (daily, weekly, monthly), transits, synastry, moon phases, compatibility   |
+| Vedic astrology   | Kundli, nakshatras, Dasha, Panchang, KP system, doshas, yogas, muhurta                              |
+| Forecast          | Cross domain timelines, transit forecasts, solar returns, and significant dates                     |
+| Human Design      | Bodygraph with type, authority, profile, centers, channels, gates, plus two chart connection charts |
+| Chinese astrology | BaZi four pillars, Day Master strength, luck pillars, zodiac animals, solar terms, Tong Shu almanac |
+| Feng shui         | Kua numbers, Eight Mansions directions, flying star charts, bagua sectors, annual afflictions       |
+| Numerology        | Life path, expression, soul urge, personal year, personality, karmic analysis                       |
+| Tarot             | Rider Waite Smith deck, single card, three card, Celtic Cross, custom spreads                       |
+| Biorhythm         | Physical, emotional, intellectual, intuitive cycles plus six extended cycles                        |
+| I Ching           | Hexagrams, trigrams, coin casting, daily readings                                                   |
+| Crystals          | Healing properties, zodiac and chakra pairings, birthstones                                         |
+| Dreams            | Symbol dictionary with 2,000+ entries, pattern analysis                                             |
+| Angel numbers     | Meanings, daily guidance, repetition analysis                                                       |
+| Location          | City geocoding for birth chart coordinates                                                          |
 
 Every endpoint is cached with a per endpoint TTL so cached responses do not cost API quota. Object cache backends (Redis, Memcached) are picked up automatically.
 
