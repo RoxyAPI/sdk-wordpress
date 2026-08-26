@@ -3,7 +3,7 @@
  * Plugin Name:       RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology
  * Plugin URI:        https://roxyapi.com/docs/integrations/wordpress
  * Description:       Add Astrology, Vedic, Forecast, Human Design, Chinese Astrology and Feng Shui readings to any WordPress post, page or widget, as Gutenberg blocks and shortcodes. 14 or more domains on one key, readings in 8 languages, and charts verified against the NASA JPL Horizons ephemeris.
- * Version:           1.12.0
+ * Version:           1.13.0
  * Requires at least: 6.5
  * Tested up to:      7.1
  * Requires PHP:      7.4
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const ROXYAPI_VERSION     = '1.12.0';
+const ROXYAPI_VERSION     = '1.13.0';
 const ROXYAPI_UI_VERSION  = '0.33.0';
 const ROXYAPI_PHP_MIN     = '7.4.0';
 const ROXYAPI_PLUGIN_FILE = __FILE__;
