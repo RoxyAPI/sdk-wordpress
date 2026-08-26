@@ -1,5 +1,5 @@
 {
-	"_comment": "Brand-domain registry. Keys are canonical OpenAPI tag strings (must match Endpoints.php tag exactly); values are admin-UI metadata (human label, slug for tab data attribute / URL hash, accent colour). Brand-positioning rule: astrology first (Western, then Vedic), then Numerology, Tarot, Human Design, Forecast, Biorhythm, I Ching, Crystals, Dreams, Angel Numbers. Languages, Location, and Usage at the end. Any OpenAPI tag with no entry here falls through to the catch-all Other tab, so every tag in Endpoints.php needs a row. New OpenAPI tag = new entry here, then npm run generate; no PHP edits required.",
+	"_comment": "Brand-domain registry. Keys are canonical OpenAPI tag strings (must match Endpoints.php tag exactly); values are admin-UI metadata (human label, slug for tab data attribute / URL hash, accent colour). Brand-positioning rule, canonical domain order: Western Astrology, Vedic Astrology, Forecast, Human Design, Chinese Astrology, Feng Shui, Numerology, Tarot, Biorhythm, I Ching, Crystals, Dreams, Angel Numbers. Languages, Location, and Usage at the end. Accent must be one of the eight the admin CSS defines (amber, blue, green, indigo, neutral, orange, pink, purple); anything else renders unstyled. Any OpenAPI tag with no entry here falls through to the catch-all Other tab, so every tag in Endpoints.php needs a row. New OpenAPI tag = new entry here, then npm run generate; no PHP edits required.",
 
 	"Western Astrology": {
 		"label": "Western Astrology",
@@ -26,6 +26,16 @@
 		"label": "Forecast",
 		"slug": "forecast",
 		"accent": "blue"
+	},
+	"Chinese Astrology": {
+		"label": "Chinese Astrology",
+		"slug": "chinese-astrology",
+		"accent": "amber"
+	},
+	"Feng Shui": {
+		"label": "Feng Shui",
+		"slug": "feng-shui",
+		"accent": "green"
 	},
 	"I-Ching": { "label": "I Ching", "slug": "i-ching", "accent": "green" },
 	"Dreams": {

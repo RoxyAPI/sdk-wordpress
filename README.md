@@ -12,7 +12,7 @@
 
 ## Ship a complete Astrology, Vedic, or Human Design site this weekend. Not this quarter.
 
-The only multi domain spiritual intelligence plugin for WordPress. Drop natal charts, daily horoscopes, kundli, Human Design bodygraphs, Numerology charts, and Tarot pulls onto any page. One API key, 12+ spiritual data domains, 171+ endpoints. Verified against NASA JPL Horizons.
+The only multi domain spiritual intelligence plugin for WordPress. Drop natal charts, daily horoscopes, kundli, Human Design bodygraphs, Numerology charts, and Tarot pulls onto any page. One API key, 14+ spiritual data domains, 209+ endpoints. Verified against NASA JPL Horizons.
 
 Interactive forms for your visitors. Gutenberg blocks for your editor. Shortcodes for anywhere else. Server side rendering keeps your API key out of the browser. Transient caching keeps your quota intact.
 
@@ -121,7 +121,7 @@ define( 'ROXYAPI_ENCRYPTION_SALT', getenv( 'ROXYAPI_ENCRYPTION_SALT' ) );
 
 When `ROXYAPI_KEY` is defined, the settings field is read only and the constant takes priority. Your key never enters the database.
 
-## 12+ domains, 171+ endpoints, one key
+## 14+ domains, 209+ endpoints, one key
 
 | Domain            | What you get                                                                                                    |
 | ----------------- | --------------------------------------------------------------------------------------------------------------- |

@@ -53,6 +53,16 @@ class Domains {
 				'slug'   => "forecast",
 				'accent' => "blue",
 			),
+			"Chinese Astrology" => array(
+				'label'  => "Chinese Astrology",
+				'slug'   => "chinese-astrology",
+				'accent' => "amber",
+			),
+			"Feng Shui" => array(
+				'label'  => "Feng Shui",
+				'slug'   => "feng-shui",
+				'accent' => "green",
+			),
 			"I-Ching" => array(
 				'label'  => "I Ching",
 				'slug'   => "i-ching",
