@@ -20,7 +20,7 @@ class ComponentMap {
 	 * Component rows for a given operationId, or an empty array when the
 	 * operation has no mapped component.
 	 *
-	 * @return array<int, array{component: string, kind: string}>
+	 * @return array<int, array{component: string, attrs?: array<string, string>}>
 	 */
 	public static function for( string $operation_id ): array {
 		$map = array(
@@ -111,12 +111,25 @@ class ComponentMap {
 					'component' => 'roxy-guna-milan',
 				),
 			),
+			'calculateKuaNumber' => array(
+				array(
+					'component' => 'roxy-kua-card',
+					'attrs'     => array(
+						'mode' => 'kua',
+					),
+				),
+			),
 			'calculateLifePath' => array(
 				array(
 					'component' => 'roxy-numerology-card',
 					'attrs'     => array(
 						'type' => 'life-path',
 					),
+				),
+			),
+			'calculateLuckPillars' => array(
+				array(
+					'component' => 'roxy-luck-pillars',
 				),
 			),
 			'calculateMaturity' => array(
@@ -218,6 +231,14 @@ class ComponentMap {
 			'calculateVariables' => array(
 				array(
 					'component' => 'roxy-hd-variables',
+				),
+			),
+			'calculateZodiacAnimal' => array(
+				array(
+					'component' => 'roxy-zodiac-card',
+					'attrs'     => array(
+						'mode' => 'sign',
+					),
 				),
 			),
 			'castCareerSpread' => array(
@@ -335,6 +356,11 @@ class ComponentMap {
 					'component' => 'roxy-astrocartography-map',
 				),
 			),
+			'generateBaziChart' => array(
+				array(
+					'component' => 'roxy-bazi-chart',
+				),
+			),
 			'generateBirthChart' => array(
 				array(
 					'component' => 'roxy-vedic-kundli',
@@ -355,9 +381,25 @@ class ComponentMap {
 					'component' => 'roxy-divisional-chart',
 				),
 			),
+			'generateEightMansions' => array(
+				array(
+					'component' => 'roxy-kua-card',
+					'attrs'     => array(
+						'mode' => 'mansions',
+					),
+				),
+			),
 			'generateFixedStars' => array(
 				array(
 					'component' => 'roxy-fixed-stars',
+				),
+			),
+			'generateFlyingStarChart' => array(
+				array(
+					'component' => 'roxy-flying-star-chart',
+					'attrs'     => array(
+						'mode' => 'natal',
+					),
 				),
 			),
 			'generateKpChart' => array(
@@ -418,9 +460,25 @@ class ComponentMap {
 					'component' => 'roxy-forecast-timeline',
 				),
 			),
+			'getAlmanacDay' => array(
+				array(
+					'component' => 'roxy-almanac-day',
+					'attrs'     => array(
+						'mode' => 'day',
+					),
+				),
+			),
 			'getAngelNumber' => array(
 				array(
 					'component' => 'roxy-angel-number-card',
+				),
+			),
+			'getAnnualFlyingStars' => array(
+				array(
+					'component' => 'roxy-flying-star-chart',
+					'attrs'     => array(
+						'mode' => 'annual',
+					),
 				),
 			),
 			'getAvastha' => array(
@@ -539,6 +597,14 @@ class ComponentMap {
 					),
 				),
 			),
+			'getDailyZodiacReading' => array(
+				array(
+					'component' => 'roxy-zodiac-card',
+					'attrs'     => array(
+						'mode' => 'daily',
+					),
+				),
+			),
 			'getDetailedPanchang' => array(
 				array(
 					'component' => 'roxy-panchang-table',
@@ -595,6 +661,14 @@ class ComponentMap {
 					'component' => 'roxy-dasha-timeline',
 					'attrs'     => array(
 						'period' => 'major',
+					),
+				),
+			),
+			'getMonthlyAlmanac' => array(
+				array(
+					'component' => 'roxy-almanac-day',
+					'attrs'     => array(
+						'mode' => 'month',
 					),
 				),
 			),
@@ -717,9 +791,33 @@ class ComponentMap {
 					),
 				),
 			),
+			'getYearlyHoroscope' => array(
+				array(
+					'component' => 'roxy-horoscope-card',
+					'attrs'     => array(
+						'period' => 'yearly',
+					),
+				),
+			),
 			'getYoga' => array(
 				array(
 					'component' => 'roxy-yoga-list',
+				),
+			),
+			'getZodiacAnimal' => array(
+				array(
+					'component' => 'roxy-zodiac-card',
+					'attrs'     => array(
+						'mode' => 'animal',
+					),
+				),
+			),
+			'getZodiacCompatibility' => array(
+				array(
+					'component' => 'roxy-zodiac-card',
+					'attrs'     => array(
+						'mode' => 'compatibility',
+					),
 				),
 			),
 			'getZodiacSign' => array(
@@ -740,6 +838,14 @@ class ComponentMap {
 			'listYogas' => array(
 				array(
 					'component' => 'roxy-yoga-list',
+				),
+			),
+			'lookupAuspiciousDays' => array(
+				array(
+					'component' => 'roxy-almanac-day',
+					'attrs'     => array(
+						'mode' => 'auspicious',
+					),
 				),
 			),
 			'lookupHexagram' => array(
@@ -777,8 +883,10 @@ class ComponentMap {
 		return array(
 			'action-steps',
 			'activations',
+			'activities',
 			'advanced',
 			'angular-planets',
+			'annual-pillars',
 			'arrows',
 			'aspect-breakdown',
 			'aspect-grid',
@@ -787,6 +895,7 @@ class ComponentMap {
 			'auspicious',
 			'balams',
 			'bars',
+			'best-periods',
 			'bhava-significations',
 			'birth-day-profile',
 			'breakdown',
@@ -799,6 +908,7 @@ class ComponentMap {
 			'channels',
 			'characteristics',
 			'chart',
+			'column',
 			'combustion',
 			'conjunctions',
 			'context',
@@ -807,12 +917,16 @@ class ComponentMap {
 			'current',
 			'daily',
 			'dasha',
+			'day-master',
+			'days',
 			'details',
 			'digit-root',
+			'eclipses',
 			'edit-bar',
 			'effects',
 			'element-balance',
 			'element-modality',
+			'elements',
 			'empty',
 			'error',
 			'events',
@@ -828,13 +942,17 @@ class ComponentMap {
 			'group',
 			'header',
 			'house-changes',
+			'house-overlay',
 			'inauspicious',
 			'input',
 			'inter-aspects',
+			'interactions',
+			'interpretation',
 			'karmic-debt',
 			'karmic-lessons',
 			'key-aspects',
 			'key-dates',
+			'key-periods',
 			'key-transits',
 			'keynotes',
 			'keywords',
@@ -842,6 +960,7 @@ class ComponentMap {
 			'layout',
 			'legend',
 			'lines',
+			'list',
 			'loading',
 			'lucky-associations',
 			'maturity',
@@ -853,12 +972,16 @@ class ComponentMap {
 			'obstacle-periods',
 			'option',
 			'outlook',
+			'overview',
 			'pairs-with',
+			'palaces',
 			'panchanga',
 			'panel',
+			'partners',
 			'pattern',
 			'patterns',
 			'personal-year',
+			'pillar',
 			'pinnacles',
 			'planetary-war',
 			'positions',
@@ -866,13 +989,17 @@ class ComponentMap {
 			'readings',
 			'remedies',
 			'results',
+			'retrogrades',
 			'section',
+			'sectors',
 			'sky',
 			'spotlight',
 			'stack',
 			'strengths-challenges',
 			'strongest',
+			'structure',
 			'submit',
+			'summary',
 			'sun-based',
 			'symbols',
 			'tab',
@@ -882,7 +1009,9 @@ class ComponentMap {
 			'time-based',
 			'timeline',
 			'title',
+			'traits',
 			'transitions',
+			'trine',
 			'validation-error',
 			'verdict',
 			'verdicts',

@@ -1,16 +1,16 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "roxyapi/get-weekly-horoscope",
-	"title": "Weekly Horoscope by Zodiac Sign (Western Astrology)",
+	"name": "roxyapi/get-yearly-horoscope",
+	"title": "Yearly Horoscope by Zodiac Sign (Western Astrology)",
 	"category": "roxyapi",
 	"icon": "admin-customizer",
-	"description": "Seven-day editorial column",
+	"description": "Year ahead forecast with themes, key periods, eclipses and retrogrades",
 	"keywords": [
 		"western astrology",
 		"roxyapi",
 		"get",
-		"weekly"
+		"yearly"
 	],
 	"version": "1.0.0",
 	"textdomain": "roxyapi",
@@ -38,7 +38,7 @@
 			"type": "string",
 			"default": ""
 		},
-		"date": {
+		"year": {
 			"type": "string",
 			"default": ""
 		},

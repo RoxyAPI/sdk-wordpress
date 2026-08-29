@@ -55,6 +55,7 @@ class Horoscope {
 		'daily'   => 'getDailyHoroscope',
 		'weekly'  => 'getWeeklyHoroscope',
 		'monthly' => 'getMonthlyHoroscope',
+		'yearly'  => 'getYearlyHoroscope',
 	);
 
 	/**
@@ -124,7 +125,7 @@ class Horoscope {
 	 *
 	 * @param string               $sign          Sanitised zodiac sign slug.
 	 * @param string               $date          YYYY-MM-DD date.
-	 * @param string               $period        daily | weekly | monthly.
+	 * @param string               $period        daily | weekly | monthly | yearly.
 	 * @param array<string, mixed> $atts   Resolved shortcode attributes. The reserved
 	 *                                     display attributes are read out of this by
 	 *                                     `ComponentRenderer::render_atts()`, so a new
@@ -134,15 +135,18 @@ class Horoscope {
 	private static function render_result( string $sign, string $date, string $period = 'daily', array $atts = array() ): string {
 		$op_id = self::PERIOD_OPS[ $period ] ?? 'getDailyHoroscope';
 
-		// Each period dispatches to its own operation. All three map to
+		// Each period dispatches to its own operation. All four map to
 		// roxy-horoscope-card via the component map, so ComponentRenderer emits
 		// the web component (with a server-rendered fallback) and handles the
 		// disclaimer and attribution. Unmapped or empty responses degrade to the
-		// generic card renderer inside ComponentRenderer.
+		// generic card renderer inside ComponentRenderer. Only the daily period
+		// takes the date attribute; the longer periods resolve their own window.
 		if ( $op_id === 'getWeeklyHoroscope' ) {
 			$data = GeneratedClient::getWeeklyHoroscope( $sign );
 		} elseif ( $op_id === 'getMonthlyHoroscope' ) {
 			$data = GeneratedClient::getMonthlyHoroscope( $sign );
+		} elseif ( $op_id === 'getYearlyHoroscope' ) {
+			$data = GeneratedClient::getYearlyHoroscope( $sign );
 		} else {
 			$data = GeneratedClient::getDailyHoroscope( $sign, null, $date );
 		}

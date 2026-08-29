@@ -3,9 +3,9 @@
  * Block variations for the Horoscope block.
  *
  * One variation per real horoscope endpoint exposed by the API:
- * `getDailyHoroscope`, `getWeeklyHoroscope`, `getMonthlyHoroscope`.
- * Variations only differ by the `period` attribute, which the shortcode
- * dispatches on at render time.
+ * `getDailyHoroscope`, `getWeeklyHoroscope`, `getMonthlyHoroscope`,
+ * `getYearlyHoroscope`. Variations only differ by the `period` attribute,
+ * which the shortcode dispatches on at render time.
  *
  * Each variation is a preset that changes attributes. Users pick one
  * from the block inserter or transform menu. PHP file variations
@@ -45,6 +45,15 @@ return array(
 		'description' => __( "This month's horoscope for a zodiac sign.", 'roxyapi' ),
 		'attributes'  => array(
 			'period' => 'monthly',
+		),
+		'scope'       => array( 'inserter', 'transform' ),
+	),
+	array(
+		'name'        => 'yearly',
+		'title'       => __( 'Yearly Horoscope', 'roxyapi' ),
+		'description' => __( 'The year ahead for a zodiac sign.', 'roxyapi' ),
+		'attributes'  => array(
+			'period' => 'yearly',
 		),
 		'scope'       => array( 'inserter', 'transform' ),
 	),

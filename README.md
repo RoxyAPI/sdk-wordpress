@@ -12,7 +12,7 @@
 
 ## Ship a complete Astrology, Vedic, or Human Design site this weekend. Not this quarter.
 
-The only multi domain spiritual intelligence plugin for WordPress. Drop natal charts, daily horoscopes, kundli, forecast timelines, Human Design bodygraphs, BaZi four pillars, and feng shui flying star charts onto any page. One API key, 14+ spiritual data domains, 209+ endpoints. Verified against NASA JPL Horizons.
+The only multi domain spiritual intelligence plugin for WordPress. Drop natal charts, daily horoscopes, kundli, forecast timelines, Human Design bodygraphs, BaZi Four Pillars charts, and feng shui Flying Star charts onto any page. One API key, 14+ spiritual data domains, 210+ endpoints. Verified against NASA JPL Horizons.
 
 Interactive forms for your visitors. Gutenberg blocks for your editor. Shortcodes for anywhere else. Server side rendering keeps your API key out of the browser. Transient caching keeps your quota intact.
 
@@ -85,7 +85,7 @@ Form submissions post back to the same page over HTTPS. The plugin validates the
 
 In the block editor, open the inserter and pick a block from the **RoxyAPI** category. The headline readings, of which Horoscope adds a variation picker:
 
--   **Horoscope** (daily, weekly, monthly)
+-   **Horoscope** (daily, weekly, monthly, yearly)
 -   **Natal Chart**
 -   **Tarot** (daily, three card, Celtic Cross)
 -   **Numerology** (life path, expression, soul urge, full chart)
@@ -121,24 +121,24 @@ define( 'ROXYAPI_ENCRYPTION_SALT', getenv( 'ROXYAPI_ENCRYPTION_SALT' ) );
 
 When `ROXYAPI_KEY` is defined, the settings field is read only and the constant takes priority. Your key never enters the database.
 
-## 14+ domains, 209+ endpoints, one key
+## 14+ domains, 210+ endpoints, one key
 
-| Domain            | What you get                                                                                        |
-| ----------------- | --------------------------------------------------------------------------------------------------- |
-| Western astrology | Natal charts, horoscopes (daily, weekly, monthly), transits, synastry, moon phases, compatibility   |
-| Vedic astrology   | Kundli, nakshatras, Dasha, Panchang, KP system, doshas, yogas, muhurta                              |
-| Forecast          | Cross domain timelines, transit forecasts, solar returns, and significant dates                     |
-| Human Design      | Bodygraph with type, authority, profile, centers, channels, gates, plus two chart connection charts |
-| Chinese astrology | BaZi four pillars, Day Master strength, luck pillars, zodiac animals, solar terms, Tong Shu almanac |
-| Feng shui         | Kua numbers, Eight Mansions directions, flying star charts, bagua sectors, annual afflictions       |
-| Numerology        | Life path, expression, soul urge, personal year, personality, karmic analysis                       |
-| Tarot             | Rider Waite Smith deck, single card, three card, Celtic Cross, custom spreads                       |
-| Biorhythm         | Physical, emotional, intellectual, intuitive cycles plus six extended cycles                        |
-| I Ching           | Hexagrams, trigrams, coin casting, daily readings                                                   |
-| Crystals          | Healing properties, zodiac and chakra pairings, birthstones                                         |
-| Dreams            | Symbol dictionary with 2,000+ entries, pattern analysis                                             |
-| Angel numbers     | Meanings, daily guidance, repetition analysis                                                       |
-| Location          | City geocoding for birth chart coordinates                                                          |
+| Domain            | What you get                                                                                                                                            |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Western astrology | Natal charts, horoscopes (daily, weekly, monthly, yearly), transits, synastry with house overlay, moon phases, compatibility                            |
+| Vedic astrology   | Kundli, nakshatras, Dasha, Panchang, KP system, doshas, yogas, muhurta                                                                                  |
+| Forecast          | Cross domain timelines, transit forecasts, solar returns, and significant dates                                                                         |
+| Human Design      | Bodygraph with type, authority, profile, centers, channels, gates, plus two chart connection charts                                                     |
+| Chinese astrology | BaZi Four Pillars chart, Day Master strength, ten year luck pillars, Chinese zodiac sign and compatibility, solar terms, Chinese almanac day (Tong Shu) |
+| Feng shui         | Kua number and Eight Mansions directions, nine palace Flying Star chart, bagua sectors, annual afflictions                                              |
+| Numerology        | Life path, expression, soul urge, personal year, personality, karmic analysis                                                                           |
+| Tarot             | Rider Waite Smith deck, single card, three card, Celtic Cross, custom spreads                                                                           |
+| Biorhythm         | Physical, emotional, intellectual, intuitive cycles plus six extended cycles                                                                            |
+| I Ching           | Hexagrams, trigrams, coin casting, daily readings                                                                                                       |
+| Crystals          | Healing properties, zodiac and chakra pairings, birthstones                                                                                             |
+| Dreams            | Symbol dictionary with 2,000+ entries, pattern analysis                                                                                                 |
+| Angel numbers     | Meanings, daily guidance, repetition analysis                                                                                                           |
+| Location          | City geocoding for birth chart coordinates                                                                                                              |
 
 Every endpoint is cached with a per endpoint TTL so cached responses do not cost API quota. Object cache backends (Redis, Memcached) are picked up automatically.
 

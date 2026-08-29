@@ -1,7 +1,7 @@
 {
 	"name": "roxyapi",
 	"version": "1.13.0",
-	"description": "WordPress plugin for RoxyAPI. Astrology, tarot, numerology, horoscope, I Ching, biorhythm, and more.",
+	"description": "WordPress plugin for RoxyAPI. Western and Vedic astrology, forecast, Human Design, Chinese astrology, feng shui, numerology, tarot, biorhythm, I Ching, and more.",
 	"license": "GPL-2.0-or-later",
 	"author": {
 		"name": "RoxyAPI",
@@ -23,6 +23,9 @@
 		"shortcode",
 		"astrology",
 		"vedic",
+		"human-design",
+		"chinese-astrology",
+		"feng-shui",
 		"tarot",
 		"numerology",
 		"horoscope",

@@ -31,6 +31,7 @@ const PERIODS = [
 	{ label: 'Daily', value: 'daily' },
 	{ label: 'Weekly', value: 'weekly' },
 	{ label: 'Monthly', value: 'monthly' },
+	{ label: 'Yearly', value: 'yearly' },
 ];
 
 export default function Edit( { attributes, setAttributes, context } ) {

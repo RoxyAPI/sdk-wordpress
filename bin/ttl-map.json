@@ -3,6 +3,7 @@
 	"getDailyHoroscope": 3600,
 	"getWeeklyHoroscope": 86400,
 	"getMonthlyHoroscope": 86400,
+	"getYearlyHoroscope": 86400,
 	"generateNatalChart": 2592000,
 	"generateNumerologyChart": 2592000,
 	"calculateLifePath": 2592000,

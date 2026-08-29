@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: 'If you use this plugin, please cite it as below.'
 title: 'RoxyAPI for WordPress'
-abstract: 'Official WordPress plugin for RoxyAPI. Drop astrology, tarot, numerology, horoscope, I Ching, biorhythm, and crystal blocks and shortcodes onto any WordPress page.'
+abstract: 'Official WordPress plugin for RoxyAPI. Drop Western and Vedic astrology, forecast, Human Design, Chinese astrology, feng shui, numerology, tarot, biorhythm, I Ching, and crystal blocks and shortcodes onto any WordPress page.'
 authors:
     - name: 'RoxyAPI'
 url: 'https://github.com/RoxyAPI/sdk-wordpress'
@@ -13,6 +13,10 @@ keywords:
     - wordpress-plugin
     - gutenberg
     - astrology
+    - vedic
+    - human-design
+    - chinese-astrology
+    - feng-shui
     - tarot
     - numerology
     - horoscope

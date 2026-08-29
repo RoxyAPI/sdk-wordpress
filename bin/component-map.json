@@ -1,13 +1,15 @@
 {
 	"_meta": {
 		"ui_package": "@roxyapi/ui",
-		"ui_version_pinned": "0.33.0",
-		"ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.33.0/dist/manifest.json",
+		"ui_version_pinned": "0.34.0",
+		"ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.34.0/dist/manifest.json",
 		"published_parts": [
 			"action-steps",
 			"activations",
+			"activities",
 			"advanced",
 			"angular-planets",
+			"annual-pillars",
 			"arrows",
 			"aspect-breakdown",
 			"aspect-grid",
@@ -16,6 +18,7 @@
 			"auspicious",
 			"balams",
 			"bars",
+			"best-periods",
 			"bhava-significations",
 			"birth-day-profile",
 			"breakdown",
@@ -28,6 +31,7 @@
 			"channels",
 			"characteristics",
 			"chart",
+			"column",
 			"combustion",
 			"conjunctions",
 			"context",
@@ -36,12 +40,16 @@
 			"current",
 			"daily",
 			"dasha",
+			"day-master",
+			"days",
 			"details",
 			"digit-root",
+			"eclipses",
 			"edit-bar",
 			"effects",
 			"element-balance",
 			"element-modality",
+			"elements",
 			"empty",
 			"error",
 			"events",
@@ -57,13 +65,17 @@
 			"group",
 			"header",
 			"house-changes",
+			"house-overlay",
 			"inauspicious",
 			"input",
 			"inter-aspects",
+			"interactions",
+			"interpretation",
 			"karmic-debt",
 			"karmic-lessons",
 			"key-aspects",
 			"key-dates",
+			"key-periods",
 			"key-transits",
 			"keynotes",
 			"keywords",
@@ -71,6 +83,7 @@
 			"layout",
 			"legend",
 			"lines",
+			"list",
 			"loading",
 			"lucky-associations",
 			"maturity",
@@ -82,12 +95,16 @@
 			"obstacle-periods",
 			"option",
 			"outlook",
+			"overview",
 			"pairs-with",
+			"palaces",
 			"panchanga",
 			"panel",
+			"partners",
 			"pattern",
 			"patterns",
 			"personal-year",
+			"pillar",
 			"pinnacles",
 			"planetary-war",
 			"positions",
@@ -95,13 +112,17 @@
 			"readings",
 			"remedies",
 			"results",
+			"retrogrades",
 			"section",
+			"sectors",
 			"sky",
 			"spotlight",
 			"stack",
 			"strengths-challenges",
 			"strongest",
+			"structure",
 			"submit",
+			"summary",
 			"sun-based",
 			"symbols",
 			"tab",
@@ -111,7 +132,9 @@
 			"time-based",
 			"timeline",
 			"title",
+			"traits",
 			"transitions",
+			"trine",
 			"validation-error",
 			"verdict",
 			"verdicts",
@@ -209,12 +232,25 @@
 				"component": "roxy-guna-milan"
 			}
 		],
+		"calculateKuaNumber": [
+			{
+				"component": "roxy-kua-card",
+				"attrs": {
+					"mode": "kua"
+				}
+			}
+		],
 		"calculateLifePath": [
 			{
 				"component": "roxy-numerology-card",
 				"attrs": {
 					"type": "life-path"
 				}
+			}
+		],
+		"calculateLuckPillars": [
+			{
+				"component": "roxy-luck-pillars"
 			}
 		],
 		"calculateMaturity": [
@@ -316,6 +352,14 @@
 		"calculateVariables": [
 			{
 				"component": "roxy-hd-variables"
+			}
+		],
+		"calculateZodiacAnimal": [
+			{
+				"component": "roxy-zodiac-card",
+				"attrs": {
+					"mode": "sign"
+				}
 			}
 		],
 		"castCareerSpread": [
@@ -433,6 +477,11 @@
 				"component": "roxy-astrocartography-map"
 			}
 		],
+		"generateBaziChart": [
+			{
+				"component": "roxy-bazi-chart"
+			}
+		],
 		"generateBirthChart": [
 			{
 				"component": "roxy-vedic-kundli"
@@ -453,9 +502,25 @@
 				"component": "roxy-divisional-chart"
 			}
 		],
+		"generateEightMansions": [
+			{
+				"component": "roxy-kua-card",
+				"attrs": {
+					"mode": "mansions"
+				}
+			}
+		],
 		"generateFixedStars": [
 			{
 				"component": "roxy-fixed-stars"
+			}
+		],
+		"generateFlyingStarChart": [
+			{
+				"component": "roxy-flying-star-chart",
+				"attrs": {
+					"mode": "natal"
+				}
 			}
 		],
 		"generateKpChart": [
@@ -516,9 +581,25 @@
 				"component": "roxy-forecast-timeline"
 			}
 		],
+		"getAlmanacDay": [
+			{
+				"component": "roxy-almanac-day",
+				"attrs": {
+					"mode": "day"
+				}
+			}
+		],
 		"getAngelNumber": [
 			{
 				"component": "roxy-angel-number-card"
+			}
+		],
+		"getAnnualFlyingStars": [
+			{
+				"component": "roxy-flying-star-chart",
+				"attrs": {
+					"mode": "annual"
+				}
 			}
 		],
 		"getAvastha": [
@@ -637,6 +718,14 @@
 				}
 			}
 		],
+		"getDailyZodiacReading": [
+			{
+				"component": "roxy-zodiac-card",
+				"attrs": {
+					"mode": "daily"
+				}
+			}
+		],
 		"getDetailedPanchang": [
 			{
 				"component": "roxy-panchang-table",
@@ -693,6 +782,14 @@
 				"component": "roxy-dasha-timeline",
 				"attrs": {
 					"period": "major"
+				}
+			}
+		],
+		"getMonthlyAlmanac": [
+			{
+				"component": "roxy-almanac-day",
+				"attrs": {
+					"mode": "month"
 				}
 			}
 		],
@@ -794,17 +891,17 @@
 				"component": "roxy-upagraha-table"
 			}
 		],
-		"getVedicDailyReading": [
-			{
-				"component": "roxy-vedic-daily"
-			}
-		],
 		"getUpcomingMoonPhases": [
 			{
 				"component": "roxy-moon-phase",
 				"attrs": {
 					"mode": "upcoming"
 				}
+			}
+		],
+		"getVedicDailyReading": [
+			{
+				"component": "roxy-vedic-daily"
 			}
 		],
 		"getWeeklyHoroscope": [
@@ -815,9 +912,33 @@
 				}
 			}
 		],
+		"getYearlyHoroscope": [
+			{
+				"component": "roxy-horoscope-card",
+				"attrs": {
+					"period": "yearly"
+				}
+			}
+		],
 		"getYoga": [
 			{
 				"component": "roxy-yoga-list"
+			}
+		],
+		"getZodiacAnimal": [
+			{
+				"component": "roxy-zodiac-card",
+				"attrs": {
+					"mode": "animal"
+				}
+			}
+		],
+		"getZodiacCompatibility": [
+			{
+				"component": "roxy-zodiac-card",
+				"attrs": {
+					"mode": "compatibility"
+				}
 			}
 		],
 		"getZodiacSign": [
@@ -838,6 +959,14 @@
 		"listYogas": [
 			{
 				"component": "roxy-yoga-list"
+			}
+		],
+		"lookupAuspiciousDays": [
+			{
+				"component": "roxy-almanac-day",
+				"attrs": {
+					"mode": "auspicious"
+				}
 			}
 		],
 		"lookupHexagram": [

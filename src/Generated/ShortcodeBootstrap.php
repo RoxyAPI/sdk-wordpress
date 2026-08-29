@@ -44,6 +44,7 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\CalculateCompatibility::register();
 		\RoxyAPI\Generated\Shortcodes\GetWeeklyHoroscope::register();
 		\RoxyAPI\Generated\Shortcodes\GetMonthlyHoroscope::register();
+		\RoxyAPI\Generated\Shortcodes\GetYearlyHoroscope::register();
 		\RoxyAPI\Generated\Shortcodes\GeneratePlanetaryReturn::register();
 		\RoxyAPI\Generated\Shortcodes\GenerateAstrocartography::register();
 		\RoxyAPI\Generated\Shortcodes\GenerateRelocationChart::register();

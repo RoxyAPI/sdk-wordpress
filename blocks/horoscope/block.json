@@ -5,7 +5,7 @@
 	"title": "Horoscope",
 	"category": "roxyapi",
 	"icon": "star-filled",
-	"description": "Daily, weekly, or monthly horoscope for any zodiac sign.",
+	"description": "Daily, weekly, monthly, or yearly horoscope for any zodiac sign.",
 	"keywords": [ "horoscope", "astrology", "zodiac", "roxyapi" ],
 	"version": "1.0.0",
 	"textdomain": "roxyapi",

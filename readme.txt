@@ -14,14 +14,14 @@ Birth charts, horoscopes, kundli, Human Design, BaZi and Feng Shui as blocks and
 
 RoxyAPI adds Astrology, Vedic, Forecast, Human Design, Chinese Astrology and Feng Shui readings to any WordPress post, page or widget, as Gutenberg blocks and shortcodes. Drop one on a page and it renders a real reading, server side, the moment you activate the plugin. No account, no setup, no calculation code to write. Start free, then add an API key when you go live.
 
-**One API key. 14+ domains. 209+ endpoints.** Most astrology plugins cover one system. RoxyAPI covers the whole stack, so you build the entire experience without stitching services together:
+**One API key. 14+ domains. 210+ endpoints.** Most astrology plugins cover one system. RoxyAPI covers the whole stack, so you build the entire experience without stitching services together:
 
-* **Western astrology:** natal and birth charts, daily, weekly, and monthly horoscopes, synastry, compatibility, transits, and moon phases
+* **Western astrology:** natal and birth charts, daily, weekly, monthly, and yearly horoscopes, synastry with a house overlay, compatibility, transits, and moon phases
 * **Vedic astrology:** kundli, KP charts, panchang, Vimshottari dasha, divisional charts, nakshatras, yogas, gochara transits, and the Bhava Bala and Bhav Chalit house readings
 * **Forecast:** cross-domain timelines, transit forecasts, solar returns, and significant dates
 * **Human Design:** full bodygraph with type, authority, profile, centers, channels, gates, variables, and penta
-* **Chinese astrology:** BaZi four pillars, Day Master strength, luck pillars, zodiac signs and compatibility, the 24 solar terms, and the lunisolar almanac
-* **Feng shui:** Kua numbers, Eight Mansions directions, flying star charts, and annual afflictions
+* **Chinese astrology:** the BaZi Four Pillars chart, Day Master strength, ten year luck pillars, the Chinese zodiac sign with daily readings and compatibility, the 24 solar terms, and the Chinese almanac day (Tong Shu)
+* **Feng shui:** the Kua number with Eight Mansions directions, the nine palace Flying Star chart, bagua sectors, and annual afflictions
 * **Numerology:** Life Path, Expression, Soul Urge, and Personality numbers
 * **Tarot:** single card, three card, Celtic Cross, and custom spreads
 * **Plus:** biorhythm, I Ching, crystals, dream interpretation, and angel numbers
@@ -64,6 +64,7 @@ Every reading is a shortcode. Pass attributes for a fixed reading the site owner
 **Hero shortcodes**
 
 `[roxy_horoscope sign="aries"]`
+`[roxy_horoscope sign="aries" period="yearly"]`
 `[roxy_natal_chart birth_date="1990-05-15" birth_time="14:30" lat="40.7128" lon="-74.0060" tz="America/New_York"]`
 `[roxy_kundli birth_date="1990-05-15" birth_time="14:30" lat="28.6139" lon="77.2090" tz="Asia/Kolkata"]`
 `[roxy_panchang date="2026-04-28" lat="28.6139" lon="77.2090" tz="Asia/Kolkata"]`
@@ -90,7 +91,7 @@ Leave the attributes off any hero shortcode to render a form instead. For exampl
 
 A matching shortcode exists for every endpoint in the spec. A sample across the domains:
 
-* Western astrology: `[roxy_calculate_aspects date="1990-07-15" time="14:30:00" timezone="UTC"]` and `[roxy_get_weekly_horoscope sign="aries"]`
+* Western astrology: `[roxy_calculate_aspects date="1990-07-15" time="14:30:00" timezone="UTC"]`, `[roxy_get_weekly_horoscope sign="aries"]` and `[roxy_get_yearly_horoscope sign="aries"]`
 * Vedic astrology: `[roxy_get_hora date="2026-02-03" latitude="17.385044" longitude="78.486671" timezone="UTC"]` and `[roxy_calculate_drishti date="2026-02-03" time="12:00:00" latitude="17.385044" longitude="78.486671" timezone="UTC"]`
 * Forecast: `[roxy_generate_digest]` (renders a visitor form, no attributes)
 * Human Design: `[roxy_generate_bodygraph date="1990-07-15" time="13:00:00" timezone="UTC" latitude="40.7128" longitude="-74.0060"]`, `[roxy_calculate_variables date="1990-07-15" time="13:00:00" timezone="UTC" latitude="40.7128" longitude="-74.0060"]`, plus the two chart `[roxy_calculate_connection]` and `[roxy_calculate_penta]` which render visitor forms and take no attributes
@@ -139,7 +140,7 @@ Not to get started. A limited number of free readings per day are allowed right 
 
 = What readings can I add to my site? =
 
-One key covers 14 domains. Western astrology: natal chart, daily / weekly / monthly horoscopes, synastry, compatibility, transits, aspect patterns, and moon phases. Vedic astrology: kundli, KP chart, panchang, Vimshottari dasha, divisional charts, nakshatras, doshas (Manglik, Kaal Sarpa, Sade Sati), and classical yogas. Numerology: Life Path, Expression, Soul Urge, Personality, personal year, and compatibility. Tarot: single card, three card, Celtic Cross, and the full 78 card catalog. Human Design: bodygraph, type, authority, profile, centers, channels, and gates. Forecasts: timelines, transit forecasts, solar returns, and significant dates. Chinese astrology: BaZi four pillars, Day Master strength, luck pillars, zodiac signs and compatibility, the 24 solar terms, and the lunisolar almanac. Feng shui: Kua numbers, Eight Mansions directions, flying star charts, and annual afflictions. Plus biorhythm, I Ching hexagrams, crystal reference data, dream symbols, and angel numbers. Every reading is available as a shortcode. More than 150 of them also ship a matching Gutenberg block, each with sidebar controls for its inputs (a date picker for dates, a dropdown for fixed choices, text and number fields for the rest) and a live preview in the editor. The headline readings (horoscope, natal chart, tarot, numerology, biorhythm, angel number) are built the same way, and the horoscope block adds a variation picker. Interactive multi input readings such as two chart compatibility and nested birth forms stay shortcode and visitor form mode, because the block editor cannot collect their nested input. Browse the full list inside WordPress under RoxyAPI, Shortcodes.
+One key covers 14 domains. Western astrology: natal chart, daily / weekly / monthly / yearly horoscopes, synastry with a two way house overlay, compatibility, transits, aspect patterns, and moon phases. Vedic astrology: kundli, KP chart, panchang, Vimshottari dasha, divisional charts, nakshatras, doshas (Manglik, Kaal Sarpa, Sade Sati), and classical yogas. Numerology: Life Path, Expression, Soul Urge, Personality, personal year, and compatibility. Tarot: single card, three card, Celtic Cross, and the full 78 card catalog. Human Design: bodygraph, type, authority, profile, centers, channels, and gates. Forecasts: timelines, transit forecasts, solar returns, and significant dates. Chinese astrology: the BaZi Four Pillars chart, Day Master strength, ten year luck pillars, the Chinese zodiac sign with daily readings and compatibility, the 24 solar terms, and the Chinese almanac day (Tong Shu) with its day officer. Feng shui: the Kua number and Eight Mansions directions, the nine palace Flying Star chart for a building or a year, bagua sectors, and annual afflictions. Plus biorhythm, I Ching hexagrams, crystal reference data, dream symbols, and angel numbers. Every reading is available as a shortcode. More than 180 of them also ship a matching Gutenberg block, each with sidebar controls for its inputs (a date picker for dates, a dropdown for fixed choices, text and number fields for the rest) and a live preview in the editor. The headline readings (horoscope, natal chart, tarot, numerology, biorhythm, angel number) are built the same way, and the horoscope block adds a variation picker. Interactive multi input readings such as two chart compatibility and nested birth forms stay shortcode and visitor form mode, because the block editor cannot collect their nested input. Browse the full list inside WordPress under RoxyAPI, Shortcodes.
 
 = Can I show readings in another language? =
 
@@ -242,6 +243,12 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.14.0 =
+* New: the Chinese astrology and feng shui readings now draw as charts and cards instead of lists of values. BaZi comes out as the four pillars in hanzi with their hidden stems, Ten Gods, Na Yin and element balance. The luck pillars render as a ten year strip with the ages and years behind each one. The flying star reading becomes a nine palace plate carrying the period, mountain and water star per palace, with the facing and sitting mountains. The Kua number sits over an eight sector direction map with the favourable and unfavourable sectors ranked, and the zodiac animal, the pair score and the Tong Shu almanac day each get a card of their own with the day officer, what it favours and avoids, and the animal it clashes with.
+* New: a yearly horoscope, as a shortcode and a block. Add period="yearly" to [roxy_horoscope], or pick the Yearly Horoscope variation in the editor, for the year ahead with the themes behind it, a dated key period for each house, the best months, and the eclipses and retrogrades to plan around.
+* Improved: every horoscope period now leads with a written column and lists the dated events it calls out, so a daily, weekly, monthly or yearly card reads as a piece of writing rather than a row of scores.
+* Improved: the synastry reading adds a house overlay table, shown both ways round, so you can read where one set of planets lands in the other chart.
+
 = 1.13.0 =
 * New: two whole domains, Chinese astrology and feng shui, as 27 readings with matching Gutenberg blocks. BaZi four pillars, Day Master strength, luck pillars, BaZi compatibility and the annual forecast, the twelve zodiac animals with daily readings and compatibility, lunar date conversion, the Tong Shu almanac, the 24 solar terms and date selection for weddings and openings. On the feng shui side, Kua numbers, Eight Mansions directions, flying star natal, annual and monthly charts, the bagua sectors, the nine periods and the annual afflictions.
 * New: readings that turn on a school rule report which one they used, so a chart can be reconciled against the one a practitioner already draws. The day boundary, the year boundary and the hour clock come back on every BaZi response.
@@ -262,13 +269,12 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Fixed: reading titles, badges, links and the submit button now meet the WCAG AA contrast minimum, in both light and dark.
 * Fixed: the sign picker on [roxy_horoscope] now looks like every other RoxyAPI form. It was the one form carrying its own set of class names, so none of the shared field, button and spacing styles ever reached it.
 
-= 1.11.3 =
-* New: the RoxyAPI settings screens now read in your site language. Every tab, field label, help text, button and notice on them is translated, in all eight languages, as is the plugin description on your Plugins page. Until now the whole admin stayed English however your site was set, so a Spanish site was configured through an English screen. The domain names in the Shortcodes library, such as Human Design, stay as they are, the same way shortcode names do.
-* Fixed: the notice a visitor reads when a reading cannot be loaded, and the status messages under the city box on a birth details form, now read in your site language too. Fourteen more lines were coming out English on fully translated sites.
-
 Older entries are in changelog.txt.
 
 == Upgrade Notice ==
+
+= 1.14.0 =
+Worth updating if you publish Chinese astrology or feng shui. Those readings now draw as charts and cards rather than lists of values, and a yearly horoscope joins the daily, weekly and monthly ones.
 
 = 1.13.0 =
 Worth updating if you publish Chinese astrology or feng shui. Adds both domains, 27 readings with matching blocks, from BaZi four pillars and the Tong Shu almanac to Kua numbers and flying star charts.
@@ -278,6 +284,3 @@ Worth updating on any translated site. Chart labels and column headings now read
 
 = 1.11.4 =
 Worth updating if any reading sits on a coloured or dark section. The reading card and the ephemeris month controls now bring their own background, so their text cannot end up dark on dark.
-
-= 1.11.3 =
-Worth updating on any site not run in English. The whole RoxyAPI settings area now reads in your site language, along with the notices a visitor sees when a reading cannot load and the messages under the city box.

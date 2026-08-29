@@ -568,7 +568,7 @@ class Client {
 	}
 
 	/**
-	 * Daily horoscope by zodiac sign - Transit-based forecast with house activations
+	 * Daily horoscope by zodiac sign - Transit-based editorial columns
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -597,7 +597,7 @@ class Client {
 	}
 
 	/**
-	 * Weekly horoscope by zodiac sign - 7-day transit forecast
+	 * Weekly horoscope by zodiac sign - Seven-day editorial column
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -626,7 +626,7 @@ class Client {
 	}
 
 	/**
-	 * Monthly horoscope by zodiac sign - 30-day transit forecast with key dates
+	 * Monthly horoscope by zodiac sign - Editorial column with key dates
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -650,6 +650,35 @@ class Client {
 			86400,
 			static function () use ( $query, $sign ) {
 				return \RoxyAPI\Api\Client::get( 'astrology/horoscope/' . rawurlencode( $sign ) . '/monthly', $query );
+			}
+		);
+	}
+
+	/**
+	 * Yearly horoscope by zodiac sign - Year ahead forecast with themes, key periods, eclipses and retrogrades
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getYearlyHoroscope( $sign, $lang = null, $year = null, $timezone = null ) {
+		if ( $sign === '' || $sign === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'sign' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'year' => $year,
+			'timezone' => $timezone,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'astrology/horoscope/' . rawurlencode( $sign ) . '/yearly',
+			$query,
+			86400,
+			static function () use ( $query, $sign ) {
+				return \RoxyAPI\Api\Client::get( 'astrology/horoscope/' . rawurlencode( $sign ) . '/yearly', $query );
 			}
 		);
 	}

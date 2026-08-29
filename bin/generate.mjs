@@ -1727,7 +1727,7 @@ class ComponentMap {
 	 * Component rows for a given operationId, or an empty array when the
 	 * operation has no mapped component.
 	 *
-	 * @return array<int, array{component: string, kind: string}>
+	 * @return array<int, array{component: string, attrs?: array<string, string>}>
 	 */
 	public static function for( string $operation_id ): array {
 		$map = array(

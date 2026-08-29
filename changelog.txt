@@ -3,6 +3,12 @@
 The full release history for the RoxyAPI plugin. The most recent releases are
 also listed in readme.txt, which wordpress.org displays on the plugin page.
 
+= 1.14.0 =
+* New: the Chinese astrology and feng shui readings now draw as charts and cards instead of lists of values. BaZi comes out as the four pillars in hanzi with their hidden stems, Ten Gods, Na Yin and element balance. The luck pillars render as a ten year strip with the ages and years behind each one. The flying star reading becomes a nine palace plate carrying the period, mountain and water star per palace, with the facing and sitting mountains. The Kua number sits over an eight sector direction map with the favourable and unfavourable sectors ranked, and the zodiac animal, the pair score and the Tong Shu almanac day each get a card of their own with the day officer, what it favours and avoids, and the animal it clashes with.
+* New: a yearly horoscope, as a shortcode and a block. Add period="yearly" to [roxy_horoscope], or pick the Yearly Horoscope variation in the editor, for the year ahead with the themes behind it, a dated key period for each house, the best months, and the eclipses and retrogrades to plan around.
+* Improved: every horoscope period now leads with a written column and lists the dated events it calls out, so a daily, weekly, monthly or yearly card reads as a piece of writing rather than a row of scores.
+* Improved: the synastry reading adds a house overlay table, shown both ways round, so you can read where one set of planets lands in the other chart.
+
 = 1.13.0 =
 * New: two whole domains, Chinese astrology and feng shui, as 27 readings with matching Gutenberg blocks. BaZi four pillars, Day Master strength, luck pillars, BaZi compatibility and the annual forecast, the twelve zodiac animals with daily readings and compatibility, lunar date conversion, the Tong Shu almanac, the 24 solar terms and date selection for weddings and openings. On the feng shui side, Kua numbers, Eight Mansions directions, flying star natal, annual and monthly charts, the bagua sectors, the nine periods and the annual afflictions.
 * New: readings that turn on a school rule report which one they used, so a chart can be reconciled against the one a practitioner already draws. The day boundary, the year boundary and the hour clock come back on every BaZi response.
