@@ -1,0 +1,52 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/get-tree-of-life",
+	"title": "Tree of Life (Kabbalah)",
+	"category": "roxyapi",
+	"icon": "format-image",
+	"description": "sephirot and 22 paths with typed school variants",
+	"keywords": [
+		"kabbalah",
+		"roxyapi",
+		"get",
+		"tree"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"lang": {
+			"type": "string",
+			"default": ""
+		},
+		"treeVariant": {
+			"type": "string",
+			"default": ""
+		},
+		"sephirotSystem": {
+			"type": "string",
+			"default": ""
+		},
+		"letterAttribution": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php",
+	"editorScript": "file:./index.js"
+}

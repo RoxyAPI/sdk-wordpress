@@ -8,10 +8,13 @@
  * generated entries from {@see \RoxyAPI\Generated\Endpoints::all()} into one
  * normalised list.
  *
- * Domain ordering follows the brand book: astrology first (Western, then
- * Vedic), then Tarot, Numerology, I Ching, Dreams, Biorhythm, Angel Numbers,
- * Crystals. Location and Usage sit at the end. Anything unrecognised falls
- * to "Other" at the very end.
+ * Domain ordering follows the brand book: Western Astrology, Vedic
+ * Astrology, Forecast, Human Design, Chinese Astrology, Feng Shui,
+ * Mesoamerican Astrology, Vastu, Numerology, Kabbalah, Tarot, Biorhythm,
+ * Ayurveda, I Ching, Crystals, Dreams, Angel Numbers, Location. Languages
+ * and Usage sit at the end. Anything unrecognised falls to "Other" at the
+ * very end. Order is pulled from `bin/domains.json` key order, never
+ * hardcoded here.
  *
  * @package RoxyAPI
  */

@@ -33,25 +33,15 @@ class Domains {
 				'slug'   => "vedic-astrology",
 				'accent' => "indigo",
 			),
-			"Tarot" => array(
-				'label'  => "Tarot",
-				'slug'   => "tarot",
-				'accent' => "amber",
-			),
-			"Numerology" => array(
-				'label'  => "Numerology",
-				'slug'   => "numerology",
+			"Forecast" => array(
+				'label'  => "Forecast",
+				'slug'   => "forecast",
 				'accent' => "blue",
 			),
 			"Human Design" => array(
 				'label'  => "Human Design",
 				'slug'   => "human-design",
 				'accent' => "indigo",
-			),
-			"Forecast" => array(
-				'label'  => "Forecast",
-				'slug'   => "forecast",
-				'accent' => "blue",
 			),
 			"Chinese Astrology" => array(
 				'label'  => "Chinese Astrology",
@@ -63,44 +53,74 @@ class Domains {
 				'slug'   => "feng-shui",
 				'accent' => "green",
 			),
-			"I-Ching" => array(
-				'label'  => "I Ching",
-				'slug'   => "i-ching",
+			"Mesoamerican Astrology" => array(
+				'label'  => "Mesoamerican Astrology",
+				'slug'   => "mesoamerican-astrology",
+				'accent' => "orange",
+			),
+			"Vastu" => array(
+				'label'  => "Vastu",
+				'slug'   => "vastu",
 				'accent' => "green",
 			),
-			"Dreams" => array(
-				'label'  => "Dream Interpretation",
-				'slug'   => "dreams",
-				'accent' => "indigo",
+			"Numerology" => array(
+				'label'  => "Numerology",
+				'slug'   => "numerology",
+				'accent' => "blue",
+			),
+			"Kabbalah" => array(
+				'label'  => "Kabbalah",
+				'slug'   => "kabbalah",
+				'accent' => "purple",
+			),
+			"Tarot" => array(
+				'label'  => "Tarot",
+				'slug'   => "tarot",
+				'accent' => "amber",
 			),
 			"Biorhythm" => array(
 				'label'  => "Biorhythm",
 				'slug'   => "biorhythm",
 				'accent' => "pink",
 			),
-			"Angel Numbers" => array(
-				'label'  => "Angel Numbers",
-				'slug'   => "angel-numbers",
+			"Ayurveda" => array(
+				'label'  => "Ayurveda",
+				'slug'   => "ayurveda",
 				'accent' => "orange",
+			),
+			"I-Ching" => array(
+				'label'  => "I Ching",
+				'slug'   => "i-ching",
+				'accent' => "green",
 			),
 			"Crystals and Healing Stones" => array(
 				'label'  => "Crystals",
 				'slug'   => "crystals",
 				'accent' => "pink",
 			),
+			"Dreams" => array(
+				'label'  => "Dream Interpretation",
+				'slug'   => "dreams",
+				'accent' => "indigo",
+			),
+			"Angel Numbers" => array(
+				'label'  => "Angel Numbers",
+				'slug'   => "angel-numbers",
+				'accent' => "orange",
+			),
 			"Location and Timezone" => array(
 				'label'  => "Location",
 				'slug'   => "location",
 				'accent' => "blue",
 			),
-			"Languages" => array(
-				'label'  => "Languages",
-				'slug'   => "languages",
-				'accent' => "neutral",
-			),
 			"Usage" => array(
 				'label'  => "Usage",
 				'slug'   => "usage",
+				'accent' => "neutral",
+			),
+			"Languages" => array(
+				'label'  => "Languages",
+				'slug'   => "languages",
 				'accent' => "neutral",
 			),
 		);

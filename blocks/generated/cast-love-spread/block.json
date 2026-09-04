@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/cast-love-spread",
-	"title": "Love Spread (5 Cards)",
+	"title": "Love Spread, 5 Cards (Tarot)",
 	"category": "roxyapi",
 	"icon": "heart",
-	"description": "Perform a specialized 5-card relationship tarot spread analyzing romantic connections, emotional dynamics, and partnership potential",
+	"description": "Relationship tarot reading",
 	"keywords": [
 		"tarot",
 		"roxyapi",

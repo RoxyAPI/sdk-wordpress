@@ -5,7 +5,7 @@
 	"title": "Hexagrams (I Ching)",
 	"category": "roxyapi",
 	"icon": "superhero",
-	"description": "Browse all 64 I-Ching hexagrams from the Book of Changes with their Chinese names, English translations, and trigram compositions",
+	"description": "I-Ching hexagram catalog",
 	"keywords": [
 		"i ching",
 		"roxyapi",

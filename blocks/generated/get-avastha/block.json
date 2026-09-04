@@ -5,7 +5,7 @@
 	"title": "Avastha by ID (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Look up a single avastha state by its slug, which is the lowercased state name a birth chart returns in `awastha`, `jagradadi` or `deeptadi`",
+	"description": "Look up a single avastha state by its slug, which is the lowercased state name a Vedic birth chart returns in `awastha`, `jagradadi` or `deeptadi`",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

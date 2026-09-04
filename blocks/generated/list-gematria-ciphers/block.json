@@ -1,0 +1,40 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/list-gematria-ciphers",
+	"title": "Gematria Ciphers (Kabbalah)",
+	"category": "roxyapi",
+	"icon": "format-image",
+	"description": "gematria methods with provenance on every row",
+	"keywords": [
+		"kabbalah",
+		"roxyapi",
+		"list",
+		"gematria"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"lang": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php",
+	"editorScript": "file:./index.js"
+}

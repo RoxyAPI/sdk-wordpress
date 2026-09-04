@@ -5,7 +5,7 @@
 	"title": "Crystals",
 	"category": "roxyapi",
 	"icon": "star-filled",
-	"description": "Retrieve healing crystals and gemstones with pagination",
+	"description": "Crystal healing database",
 	"keywords": [
 		"crystals",
 		"roxyapi",

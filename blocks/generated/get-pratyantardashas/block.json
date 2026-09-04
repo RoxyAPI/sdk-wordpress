@@ -5,7 +5,7 @@
 	"title": "Pratyantardashas (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Returns the 9 Pratyantardasha (antara) periods inside a chosen Antardasha, the third level of the Vimshottari dasha hierarchy",
+	"description": "Pratyantardasha for Vedic astrology",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

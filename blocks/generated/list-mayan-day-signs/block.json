@@ -1,0 +1,52 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/list-mayan-day-signs",
+	"title": "Mayan Day Signs (Mesoamerican Astrology)",
+	"category": "roxyapi",
+	"icon": "visibility",
+	"description": "Retrieve all twenty Tzolkin day signs in sequence order from Imix to Ajaw",
+	"keywords": [
+		"mesoamerican astrology",
+		"roxyapi",
+		"list",
+		"mayan"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"lang": {
+			"type": "string",
+			"default": ""
+		},
+		"directionScheme": {
+			"type": "string",
+			"default": ""
+		},
+		"limit": {
+			"type": "string",
+			"default": ""
+		},
+		"offset": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php",
+	"editorScript": "file:./index.js"
+}

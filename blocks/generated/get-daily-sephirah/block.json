@@ -1,0 +1,52 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/get-daily-sephirah",
+	"title": "Sephirah of the Day (Kabbalah)",
+	"category": "roxyapi",
+	"icon": "format-image",
+	"description": "Omer count with the sephirot pairing",
+	"keywords": [
+		"kabbalah",
+		"roxyapi",
+		"get",
+		"daily"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"lang": {
+			"type": "string",
+			"default": ""
+		},
+		"date": {
+			"type": "string",
+			"default": ""
+		},
+		"timezone": {
+			"type": "string",
+			"default": ""
+		},
+		"afterSunset": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php",
+	"editorScript": "file:./index.js"
+}

@@ -5,7 +5,7 @@
 	"title": "Usage Statistics",
 	"category": "roxyapi",
 	"icon": "star-half",
-	"description": "Returns current usage and plan limits for your subscription.",
+	"description": "Returns the live quota position for the key on the request: plan name, billable requests used in the current UTC calendar month, the monthly allowance, and how many requests remain",
 	"keywords": [
 		"usage",
 		"roxyapi",

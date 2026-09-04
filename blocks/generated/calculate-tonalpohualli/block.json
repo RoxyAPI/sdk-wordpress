@@ -1,0 +1,40 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/calculate-tonalpohualli",
+	"title": "Aztec Day Sign for a Date (Mesoamerican Astrology)",
+	"category": "roxyapi",
+	"icon": "visibility",
+	"description": "Aztec calendar day sign calculator: returns the tonalpohualli day sign, its coefficient 1 to 13 and its trecena for any Gregorian date, with a composed reading",
+	"keywords": [
+		"mesoamerican astrology",
+		"roxyapi",
+		"calculate",
+		"tonalpohualli"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"date": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php",
+	"editorScript": "file:./index.js"
+}

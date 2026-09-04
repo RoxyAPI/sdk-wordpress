@@ -30,7 +30,12 @@
 		},
 		"inserter": false
 	},
-	"attributes": {},
+	"attributes": {
+		"lang": {
+			"type": "string",
+			"default": ""
+		}
+	},
 	"render": "file:./render.php",
 	"editorScript": "file:./index.js"
 }

@@ -547,7 +547,7 @@ class Client {
 	}
 
 	/**
-	 * Compatibility Score. Relationship compatibility analysis with category breakdown
+	 * Compatibility score - Relationship compatibility API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -3135,6 +3135,685 @@ class Client {
 	}
 
 	/**
+	 * Mayan day sign for a date - Tzolkin calculator API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateTzolkin( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'mesoamerican-astrology/mayan/tzolkin',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'mesoamerican-astrology/mayan/tzolkin', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Generate a Mayan chart - Tzolkin, Haab and Long Count calculator API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function generateMayanChart( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'mesoamerican-astrology/mayan/chart',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'mesoamerican-astrology/mayan/chart', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Convert a Maya Long Count - Long Count calendar converter API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function convertLongCount( $body = array(), $query = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'mesoamerican-astrology/mayan/long-count/convert',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'mesoamerican-astrology/mayan/long-count/convert', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Daily Mayan energy reading - Tzolkin day sign of the day API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getDailyMayanReading( $lang = null, $date = null, $correlation = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'date' => $date,
+			'correlation' => $correlation,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'mesoamerican-astrology/mayan/daily',
+			$query,
+			3600,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'mesoamerican-astrology/mayan/daily', $query );
+			}
+		);
+	}
+
+	/**
+	 * Monthly Tzolkin calendar grid - Maya calendar month API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getMonthlyTzolkinCalendar( $lang = null, $year = null, $month = null, $correlation = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'year' => $year,
+			'month' => $month,
+			'correlation' => $correlation,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'mesoamerican-astrology/mayan/calendar/monthly',
+			$query,
+			3600,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'mesoamerican-astrology/mayan/calendar/monthly', $query );
+			}
+		);
+	}
+
+	/**
+	 * Mayan nawal compatibility - Tzolkin pair analysis API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateMayanCompatibility( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'personA', 'personB' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'mesoamerican-astrology/mayan/compatibility',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'mesoamerican-astrology/mayan/compatibility', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * List the 20 Mayan day signs - Tzolkin nawal catalogue API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listMayanDaySigns( $lang = null, $directionScheme = null, $limit = null, $offset = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'directionScheme' => $directionScheme,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'mesoamerican-astrology/mayan/day-signs',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'mesoamerican-astrology/mayan/day-signs', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get one Mayan day sign - Nawal profile API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getMayanDaySign( $id, $lang = null, $directionScheme = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'directionScheme' => $directionScheme,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'mesoamerican-astrology/mayan/day-signs/' . rawurlencode( $id ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $id ) {
+				return \RoxyAPI\Api\Client::get( 'mesoamerican-astrology/mayan/day-signs/' . rawurlencode( $id ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * List the 20 Mayan trecenas - Tzolkin thirteen day period API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listTrecenas( $lang = null, $limit = null, $offset = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'mesoamerican-astrology/mayan/trecenas',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'mesoamerican-astrology/mayan/trecenas', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get one Mayan trecena - Thirteen day period profile API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getTrecena( $number, $lang = null ) {
+		if ( $number === '' || $number === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'number' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'mesoamerican-astrology/mayan/trecenas/' . rawurlencode( $number ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $number ) {
+				return \RoxyAPI\Api\Client::get( 'mesoamerican-astrology/mayan/trecenas/' . rawurlencode( $number ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * List the 19 Haab periods - Maya solar calendar month API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listHaabMonths( $lang = null, $limit = null, $offset = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'mesoamerican-astrology/mayan/haab-months',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'mesoamerican-astrology/mayan/haab-months', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get one Haab period - Maya solar calendar month profile API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getHaabMonth( $id, $lang = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'mesoamerican-astrology/mayan/haab-months/' . rawurlencode( $id ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $id ) {
+				return \RoxyAPI\Api\Client::get( 'mesoamerican-astrology/mayan/haab-months/' . rawurlencode( $id ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Aztec day sign for a date - Tonalpohualli calculator API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateTonalpohualli( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'mesoamerican-astrology/aztec/tonalpohualli',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'mesoamerican-astrology/aztec/tonalpohualli', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Daily Aztec energy reading - Tonalpohualli day sign of the day API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getDailyAztecReading( $lang = null, $date = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'date' => $date,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'mesoamerican-astrology/aztec/daily',
+			$query,
+			3600,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'mesoamerican-astrology/aztec/daily', $query );
+			}
+		);
+	}
+
+	/**
+	 * List the 20 Aztec day signs - Tonalpohualli sign catalogue API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listAztecDaySigns( $lang = null, $limit = null, $offset = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'mesoamerican-astrology/aztec/day-signs',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'mesoamerican-astrology/aztec/day-signs', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get one Aztec day sign - Tonalpohualli sign profile API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getAztecDaySign( $id, $lang = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'mesoamerican-astrology/aztec/day-signs/' . rawurlencode( $id ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $id ) {
+				return \RoxyAPI\Api\Client::get( 'mesoamerican-astrology/aztec/day-signs/' . rawurlencode( $id ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * List the 20 Aztec trecenas - Tonalpohualli thirteen day period API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listAztecTrecenas( $lang = null, $limit = null, $offset = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'mesoamerican-astrology/aztec/trecenas',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'mesoamerican-astrology/aztec/trecenas', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get one Aztec trecena - Tonalpohualli period profile API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getAztecTrecena( $number, $lang = null ) {
+		if ( $number === '' || $number === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'number' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'mesoamerican-astrology/aztec/trecenas/' . rawurlencode( $number ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $number ) {
+				return \RoxyAPI\Api\Client::get( 'mesoamerican-astrology/aztec/trecenas/' . rawurlencode( $number ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Calculate entrance pada - Vastu main door direction API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateEntrancePada( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'plot' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'vastu/entrance',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vastu/entrance', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Generate Vastu Purusha Mandala - 81 pada and 64 pada grid API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function generateMandala( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'plot' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'vastu/mandala',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vastu/mandala', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Analyse a plot - Vastu land and site assessment API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function calculatePlotAnalysis( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'plot' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'vastu/plot',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vastu/plot', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Calculate Ayadi shadvarga - Vastu proportion and yoni calculator API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateAyadi( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'length', 'breadth' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'vastu/ayadi',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vastu/ayadi', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Check room placement - Vastu room direction compliance API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateRoomCompliance( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'plot', 'rooms' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'vastu/rooms',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vastu/rooms', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Find griha pravesh dates - Vastu house warming muhurta API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function findGrihaPraveshDates( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'startDate', 'endDate', 'latitude', 'longitude', 'timezone' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'vastu/timing/griha-pravesh',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vastu/timing/griha-pravesh', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * List the eight directions - Vastu dikpala and direction reference API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listDikpalaDirections( $lang = null, $limit = null, $offset = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'vastu/directions',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'vastu/directions', $query );
+			}
+		);
+	}
+
+	/**
+	 * Look up one direction - Vastu dikpala reference API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getDikpalaDirection( $id, $lang = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'vastu/directions/' . rawurlencode( $id ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $id ) {
+				return \RoxyAPI\Api\Client::get( 'vastu/directions/' . rawurlencode( $id ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * List the 45 devatas - Vastu Purusha Mandala reference API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listDevatas( $lang = null, $limit = null, $offset = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'vastu/devatas',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'vastu/devatas', $query );
+			}
+		);
+	}
+
+	/**
+	 * Look up one devata - Vastu mandala devata reference API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getDevata( $id, $lang = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'vastu/devatas/' . rawurlencode( $id ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $id ) {
+				return \RoxyAPI\Api\Client::get( 'vastu/devatas/' . rawurlencode( $id ) . '', $query );
+			}
+		);
+	}
+
+	/**
 	 * Calculate Life Path number - Most important numerology calculation
 	 *
 	 * @param array $body Request body.
@@ -3558,7 +4237,296 @@ class Client {
 	}
 
 	/**
-	 * List all 78 tarot cards
+	 * Calculate gematria - Hebrew gematria calculator API with every spelling shown
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateGematria( $body = array(), $query = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'kabbalah/gematria',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'kabbalah/gematria', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * List gematria ciphers - gematria methods API with provenance on every row
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listGematriaCiphers( $lang = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'kabbalah/ciphers',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'kabbalah/ciphers', $query );
+			}
+		);
+	}
+
+	/**
+	 * Generate a name profile - Kabbalah name numerology API with the spelling shown
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function generateNameProfile( $body = array(), $query = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'kabbalah/name-profile',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'kabbalah/name-profile', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Generate a birth profile - Hebrew birthday and birth angel API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function generateBirthProfile( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'timezone' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'kabbalah/birth-profile',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'kabbalah/birth-profile', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * List the 72 names - Shem HaMephorash API derived from the verses
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listShemNames( $lang = null, $limit = null, $offset = null, $longitude = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'limit' => $limit,
+			'offset' => $offset,
+			'longitude' => $longitude,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'kabbalah/names',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'kabbalah/names', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get one of the 72 names - 72 names of God API by index
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getShemName( $number, $lang = null ) {
+		if ( $number === '' || $number === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'number' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'kabbalah/names/' . rawurlencode( $number ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $number ) {
+				return \RoxyAPI\Api\Client::get( 'kabbalah/names/' . rawurlencode( $number ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get the Tree of Life - sephirot and 22 paths API with typed school variants
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getTreeOfLife( $lang = null, $treeVariant = null, $sephirotSystem = null, $letterAttribution = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'treeVariant' => $treeVariant,
+			'sephirotSystem' => $sephirotSystem,
+			'letterAttribution' => $letterAttribution,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'kabbalah/tree',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'kabbalah/tree', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get one sephirah - sefirot meaning API with the paths that touch it
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getSephirah( $id, $lang = null, $sephirotSystem = null, $letterAttribution = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'sephirotSystem' => $sephirotSystem,
+			'letterAttribution' => $letterAttribution,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'kabbalah/sephirot/' . rawurlencode( $id ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $id ) {
+				return \RoxyAPI\Api\Client::get( 'kabbalah/sephirot/' . rawurlencode( $id ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * List the Hebrew letters - Hebrew alphabet API with the Sefer Yetzirah attributions
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listHebrewLetters( $lang = null, $letterAttribution = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'letterAttribution' => $letterAttribution,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'kabbalah/letters',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'kabbalah/letters', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get one Hebrew letter - Hebrew letter meaning API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getHebrewLetter( $id, $lang = null, $letterAttribution = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'letterAttribution' => $letterAttribution,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'kabbalah/letters/' . rawurlencode( $id ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $id ) {
+				return \RoxyAPI\Api\Client::get( 'kabbalah/letters/' . rawurlencode( $id ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * Compare two names - gematria name compatibility API with every component published
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateNameCompatibility( $body = array(), $query = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'kabbalah/compatibility',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'kabbalah/compatibility', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Get the sephirah of the day - Omer count API with the sephirot pairing
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getDailySephirah( $lang = null, $date = null, $timezone = null, $afterSunset = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'date' => $date,
+			'timezone' => $timezone,
+			'afterSunset' => $afterSunset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'kabbalah/daily',
+			$query,
+			3600,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'kabbalah/daily', $query );
+			}
+		);
+	}
+
+	/**
+	 * List all 78 tarot cards - Tarot deck catalog API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -3587,7 +4555,7 @@ class Client {
 	}
 
 	/**
-	 * Get detailed tarot card information
+	 * Get tarot card by id - Tarot card meaning API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -3614,7 +4582,7 @@ class Client {
 	}
 
 	/**
-	 * Draw random tarot cards with reproducible results
+	 * Draw tarot cards - Seeded tarot draw API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -3635,7 +4603,7 @@ class Client {
 	}
 
 	/**
-	 * Get daily tarot card reading
+	 * Daily tarot card - Card of the day API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -3653,7 +4621,7 @@ class Client {
 	}
 
 	/**
-	 * Get yes/no answer to your question
+	 * Yes or no answer - Yes no tarot reading API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -3671,7 +4639,7 @@ class Client {
 	}
 
 	/**
-	 * Three-Card Spread: Past, Present, Future
+	 * Three card spread, past present future - Tarot spread API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -3689,7 +4657,7 @@ class Client {
 	}
 
 	/**
-	 * Celtic Cross Spread (10 cards)
+	 * Celtic Cross spread, 10 cards - Tarot spread API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -3707,7 +4675,7 @@ class Client {
 	}
 
 	/**
-	 * Love Spread (5 cards)
+	 * Love spread, 5 cards - Relationship tarot reading API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -3725,7 +4693,7 @@ class Client {
 	}
 
 	/**
-	 * Career Spread (7 cards)
+	 * Career spread, 7 cards - Career tarot reading API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -3743,7 +4711,7 @@ class Client {
 	}
 
 	/**
-	 * Custom Spread Builder
+	 * Custom spread builder - Configurable tarot spread API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -3887,7 +4855,203 @@ class Client {
 	}
 
 	/**
-	 * Get daily I-Ching hexagram
+	 * Ayurvedic constitution from a birth chart - Dosha profile API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateAyurvedicConstitution( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'ayurveda/constitution',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'ayurveda/constitution', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Dinacharya daily routine - Brahma muhurta and dosha clock API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function getDinacharyaSchedule( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'latitude', 'longitude' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'ayurveda/dinacharya',
+			array_merge( $body, $query ),
+			3600,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'ayurveda/dinacharya', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Ayurveda seasonal regimen - Ritucharya and ritu resolution API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function getRitucharya( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'ayurveda/ritucharya',
+			array_merge( $body, $query ),
+			3600,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'ayurveda/ritucharya', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Daily Ayurveda reading - Dosha clock and brahma muhurta by location API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getDailyAyurvedaReading( $lang = null, $date = null, $latitude = null, $longitude = null, $timezone = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'date' => $date,
+			'latitude' => $latitude,
+			'longitude' => $longitude,
+			'timezone' => $timezone,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'ayurveda/daily',
+			$query,
+			3600,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'ayurveda/daily', $query );
+			}
+		);
+	}
+
+	/**
+	 * List the three doshas - Dosha catalogue API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listDoshas( $lang = null, $limit = null, $offset = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'ayurveda/doshas',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'ayurveda/doshas', $query );
+			}
+		);
+	}
+
+	/**
+	 * Get one dosha - Vata pitta kapha profile API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function getDosha( $id, $lang = null ) {
+		if ( $id === '' || $id === null ) {
+			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		}
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'ayurveda/doshas/' . rawurlencode( $id ) . '',
+			$query,
+			2592000,
+			static function () use ( $query, $id ) {
+				return \RoxyAPI\Api\Client::get( 'ayurveda/doshas/' . rawurlencode( $id ) . '', $query );
+			}
+		);
+	}
+
+	/**
+	 * List the six tastes - Ayurveda rasa and dosha matrix API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listRasas( $lang = null, $limit = null, $offset = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'ayurveda/tastes',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'ayurveda/tastes', $query );
+			}
+		);
+	}
+
+	/**
+	 * List the twenty qualities - Ayurveda guna pairs API
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function listGunas( $lang = null, $limit = null, $offset = null ) {
+		$query = array_filter(
+			array(
+			'lang' => $lang,
+			'limit' => $limit,
+			'offset' => $offset,
+			),
+			static function ( $v ) {
+				return $v !== null && $v !== '';
+			}
+		);
+		return \RoxyAPI\Api\Cache::remember(
+			'ayurveda/qualities',
+			$query,
+			2592000,
+			static function () use ( $query ) {
+				return \RoxyAPI\Api\Client::get( 'ayurveda/qualities', $query );
+			}
+		);
+	}
+
+	/**
+	 * Daily hexagram - Daily I-Ching oracle API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -3905,7 +5069,7 @@ class Client {
 	}
 
 	/**
-	 * Cast daily I-Ching reading with changing lines
+	 * Cast daily reading with changing lines - I-Ching divination API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -3923,7 +5087,7 @@ class Client {
 	}
 
 	/**
-	 * List all 64 hexagrams
+	 * List all 64 hexagrams - I-Ching hexagram catalog API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -3949,7 +5113,7 @@ class Client {
 	}
 
 	/**
-	 * Get a random hexagram
+	 * Random hexagram - I-Ching hexagram picker API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -3973,7 +5137,7 @@ class Client {
 	}
 
 	/**
-	 * Lookup hexagram by line pattern
+	 * Lookup hexagram by line pattern - I-Ching binary lookup API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -3998,7 +5162,7 @@ class Client {
 	}
 
 	/**
-	 * Get hexagram by number
+	 * Get hexagram by number - I-Ching hexagram detail API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4025,7 +5189,7 @@ class Client {
 	}
 
 	/**
-	 * Cast an I-Ching reading
+	 * Cast an I-Ching reading - Hexagram divination API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4050,7 +5214,7 @@ class Client {
 	}
 
 	/**
-	 * List all 8 trigrams
+	 * List all 8 trigrams - Bagua trigram catalog API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4074,7 +5238,7 @@ class Client {
 	}
 
 	/**
-	 * Get trigram by number or name
+	 * Get trigram by number or name - Bagua trigram detail API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4101,7 +5265,7 @@ class Client {
 	}
 
 	/**
-	 * Crystals by Zodiac Sign
+	 * Crystals by zodiac sign - Zodiac birthstone API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4130,7 +5294,7 @@ class Client {
 	}
 
 	/**
-	 * Crystals by Chakra
+	 * Crystals by chakra - Chakra healing stones API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4159,7 +5323,7 @@ class Client {
 	}
 
 	/**
-	 * Crystals by Element
+	 * Crystals by element - Elemental crystal lookup API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4188,7 +5352,7 @@ class Client {
 	}
 
 	/**
-	 * Birthstone Crystals by Month
+	 * Birthstones by month - Birthstone lookup API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4215,7 +5379,7 @@ class Client {
 	}
 
 	/**
-	 * Search Crystals
+	 * Search crystals - Crystal search API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4242,7 +5406,7 @@ class Client {
 	}
 
 	/**
-	 * Crystal Pairings
+	 * Crystal pairings - Crystal combination API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4269,7 +5433,7 @@ class Client {
 	}
 
 	/**
-	 * Daily Crystal
+	 * Daily crystal - Crystal of the day API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -4287,7 +5451,7 @@ class Client {
 	}
 
 	/**
-	 * Random Crystal
+	 * Random crystal - Crystal discovery API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4311,14 +5475,14 @@ class Client {
 	}
 
 	/**
-	 * List Crystal Colors
+	 * List crystal colors - Crystal color filter API
 	 *
 	 * @return array|\WP_Error
 	 */
-	public static function listCrystalColors(  ) {
+	public static function listCrystalColors( $lang = null ) {
 		$query = array_filter(
 			array(
-
+			'lang' => $lang,
 			),
 			static function ( $v ) {
 				return $v !== null && $v !== '';
@@ -4335,14 +5499,14 @@ class Client {
 	}
 
 	/**
-	 * List Crystal Planets
+	 * List crystal planets - Planetary ruler filter API
 	 *
 	 * @return array|\WP_Error
 	 */
-	public static function listCrystalPlanets(  ) {
+	public static function listCrystalPlanets( $lang = null ) {
 		$query = array_filter(
 			array(
-
+			'lang' => $lang,
 			),
 			static function ( $v ) {
 				return $v !== null && $v !== '';
@@ -4359,7 +5523,7 @@ class Client {
 	}
 
 	/**
-	 * List All Crystals
+	 * List all crystals - Crystal healing database API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4390,7 +5554,7 @@ class Client {
 	}
 
 	/**
-	 * Get Crystal Healing Properties
+	 * Get crystal by id - Crystal healing properties API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4417,7 +5581,7 @@ class Client {
 	}
 
 	/**
-	 * List and search dream symbols
+	 * List and search dream symbols - Dream dictionary API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4444,7 +5608,7 @@ class Client {
 	}
 
 	/**
-	 * Get random dream symbols
+	 * Random dream symbols - Dream symbol discovery API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4468,7 +5632,7 @@ class Client {
 	}
 
 	/**
-	 * Get symbol counts by letter
+	 * Symbol counts by letter - Dream dictionary index API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4492,7 +5656,7 @@ class Client {
 	}
 
 	/**
-	 * Get dream symbol details
+	 * Get dream symbol by id - Dream interpretation API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4519,7 +5683,7 @@ class Client {
 	}
 
 	/**
-	 * Get daily dream symbol
+	 * Daily dream symbol - Dream symbol of the day API
 	 *
 	 * @param array $body Request body.
 	 * @return array|\WP_Error
@@ -4536,7 +5700,7 @@ class Client {
 	}
 
 	/**
-	 * List All Angel Numbers
+	 * List all angel numbers - Angel number catalog API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4563,7 +5727,7 @@ class Client {
 	}
 
 	/**
-	 * Get Angel Number Meaning
+	 * Get angel number meaning - Angel number lookup API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4590,7 +5754,7 @@ class Client {
 	}
 
 	/**
-	 * Analyze Any Number Sequence
+	 * Analyze any number sequence - Angel number analysis API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4616,7 +5780,7 @@ class Client {
 	}
 
 	/**
-	 * Daily Angel Number
+	 * Daily angel number - Angel number of the day API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.

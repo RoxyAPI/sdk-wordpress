@@ -1,5 +1,5 @@
 {
-	"_comment": "Brand-domain registry. Keys are canonical OpenAPI tag strings (must match Endpoints.php tag exactly); values are admin-UI metadata (human label, slug for tab data attribute / URL hash, accent colour). Brand-positioning rule, canonical domain order: Western Astrology, Vedic Astrology, Forecast, Human Design, Chinese Astrology, Feng Shui, Numerology, Tarot, Biorhythm, I Ching, Crystals, Dreams, Angel Numbers. Languages, Location, and Usage at the end. Accent must be one of the eight the admin CSS defines (amber, blue, green, indigo, neutral, orange, pink, purple); anything else renders unstyled. Any OpenAPI tag with no entry here falls through to the catch-all Other tab, so every tag in Endpoints.php needs a row. New OpenAPI tag = new entry here, then npm run generate; no PHP edits required.",
+	"_comment": "Brand-domain registry. Keys are canonical OpenAPI tag strings (must match Endpoints.php tag exactly); values are admin-UI metadata (human label, slug for tab data attribute / URL hash, accent colour). Brand-positioning rule, canonical domain order: Western Astrology, Vedic Astrology, Forecast, Human Design, Chinese Astrology, Feng Shui, Mesoamerican Astrology, Vastu, Numerology, Kabbalah, Tarot, Biorhythm, Ayurveda, I-Ching, Crystals, Dreams, Angel Numbers, Location and Timezone. Languages and Usage at the end. Accent must be one of the eight the admin CSS defines (amber, blue, green, indigo, neutral, orange, pink, purple); anything else renders unstyled. Any OpenAPI tag with no entry here falls through to the catch-all Other tab, so every tag in Endpoints.php needs a row. New OpenAPI tag = new entry here, then npm run generate; no PHP edits required.",
 
 	"Western Astrology": {
 		"label": "Western Astrology",
@@ -11,21 +11,15 @@
 		"slug": "vedic-astrology",
 		"accent": "indigo"
 	},
-	"Tarot": { "label": "Tarot", "slug": "tarot", "accent": "amber" },
-	"Numerology": {
-		"label": "Numerology",
-		"slug": "numerology",
+	"Forecast": {
+		"label": "Forecast",
+		"slug": "forecast",
 		"accent": "blue"
 	},
 	"Human Design": {
 		"label": "Human Design",
 		"slug": "human-design",
 		"accent": "indigo"
-	},
-	"Forecast": {
-		"label": "Forecast",
-		"slug": "forecast",
-		"accent": "blue"
 	},
 	"Chinese Astrology": {
 		"label": "Chinese Astrology",
@@ -37,36 +31,62 @@
 		"slug": "feng-shui",
 		"accent": "green"
 	},
-	"I-Ching": { "label": "I Ching", "slug": "i-ching", "accent": "green" },
-	"Dreams": {
-		"label": "Dream Interpretation",
-		"slug": "dreams",
-		"accent": "indigo"
+	"Mesoamerican Astrology": {
+		"label": "Mesoamerican Astrology",
+		"slug": "mesoamerican-astrology",
+		"accent": "orange"
 	},
+	"Vastu": {
+		"label": "Vastu",
+		"slug": "vastu",
+		"accent": "green"
+	},
+	"Numerology": {
+		"label": "Numerology",
+		"slug": "numerology",
+		"accent": "blue"
+	},
+	"Kabbalah": {
+		"label": "Kabbalah",
+		"slug": "kabbalah",
+		"accent": "purple"
+	},
+	"Tarot": { "label": "Tarot", "slug": "tarot", "accent": "amber" },
 	"Biorhythm": {
 		"label": "Biorhythm",
 		"slug": "biorhythm",
 		"accent": "pink"
+	},
+	"Ayurveda": {
+		"label": "Ayurveda",
+		"slug": "ayurveda",
+		"accent": "orange"
+	},
+	"I-Ching": { "label": "I Ching", "slug": "i-ching", "accent": "green" },
+	"Crystals and Healing Stones": {
+		"label": "Crystals",
+		"slug": "crystals",
+		"accent": "pink"
+	},
+	"Dreams": {
+		"label": "Dream Interpretation",
+		"slug": "dreams",
+		"accent": "indigo"
 	},
 	"Angel Numbers": {
 		"label": "Angel Numbers",
 		"slug": "angel-numbers",
 		"accent": "orange"
 	},
-	"Crystals and Healing Stones": {
-		"label": "Crystals",
-		"slug": "crystals",
-		"accent": "pink"
-	},
 	"Location and Timezone": {
 		"label": "Location",
 		"slug": "location",
 		"accent": "blue"
 	},
+	"Usage": { "label": "Usage", "slug": "usage", "accent": "neutral" },
 	"Languages": {
 		"label": "Languages",
 		"slug": "languages",
 		"accent": "neutral"
-	},
-	"Usage": { "label": "Usage", "slug": "usage", "accent": "neutral" }
+	}
 }

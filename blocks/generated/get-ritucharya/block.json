@@ -1,0 +1,52 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/get-ritucharya",
+	"title": "Ayurveda Seasonal Regimen",
+	"category": "roxyapi",
+	"icon": "star-half",
+	"description": "Ritucharya and ritu resolution",
+	"keywords": [
+		"ayurveda",
+		"roxyapi",
+		"get",
+		"ritucharya"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"date": {
+			"type": "string",
+			"default": ""
+		},
+		"ritucharyaScheme": {
+			"type": "string",
+			"default": ""
+		},
+		"rituZodiac": {
+			"type": "string",
+			"default": ""
+		},
+		"hemisphere": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php",
+	"editorScript": "file:./index.js"
+}

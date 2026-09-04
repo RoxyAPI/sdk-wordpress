@@ -5,7 +5,7 @@
 	"title": "Nakshatra by ID (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Get detailed information for a single nakshatra (lunar mansion) by its ID slug",
+	"description": "Get detailed information for a single nakshatra (lunar mansion) by its ID slug, one of the 27 nakshatras of Vedic astrology",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

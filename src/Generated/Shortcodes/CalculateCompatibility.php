@@ -2,7 +2,7 @@
 /**
  * Auto-generated shortcode: [roxy_calculate_compatibility]
  *
- * Compatibility Score. Relationship compatibility analysis with category breakdown
+ * Compatibility score - Relationship compatibility API
  *
  * Renders a visitor-facing form (FormRenderer) when invoked. Submission is
  * handled by FormRouter at init priority 5 — nonce + rate-limit + sanitize

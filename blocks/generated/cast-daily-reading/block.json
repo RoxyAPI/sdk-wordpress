@@ -2,7 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/cast-daily-reading",
-	"title": "Cast Daily I-Ching Reading",
+	"title": "Cast Daily Reading (I Ching)",
 	"category": "roxyapi",
 	"icon": "superhero",
 	"description": "Cast a complete daily I-Ching reading using the traditional three-coin method with seeded randomness",

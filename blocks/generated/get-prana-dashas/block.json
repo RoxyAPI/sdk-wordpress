@@ -5,7 +5,7 @@
 	"title": "Prana Dashas (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Returns the 9 Prana periods inside a chosen Sookshma dasha, the fifth and finest level of the Vimshottari dasha hierarchy",
+	"description": "Prana dasha for Vedic astrology",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

@@ -5,7 +5,7 @@
 	"title": "Mahadasha Periods (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Returns complete Vimshottari Dasha cycle starting from birth",
+	"description": "Returns the complete Vimshottari dasha cycle from birth, all 9 Mahadasha periods across the full 120 year span",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

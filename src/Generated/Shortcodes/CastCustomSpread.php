@@ -2,7 +2,7 @@
 /**
  * Auto-generated shortcode: [roxy_cast_custom_spread]
  *
- * Custom Spread Builder
+ * Custom spread builder - Configurable tarot spread API
  *
  * Renders a visitor-facing form (FormRenderer) when invoked. Submission is
  * handled by FormRouter at init priority 5 — nonce + rate-limit + sanitize

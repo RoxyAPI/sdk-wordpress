@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/get-mayan-day-sign",
+	"title": "Mayan Day Sign (Mesoamerican Astrology)",
+	"category": "roxyapi",
+	"icon": "visibility",
+	"description": "Retrieve the full profile of one Tzolkin day sign: both naming traditions, both published glosses, the world direction and colour under the requested scheme, a composed keynote, what the sign does well, where the same temperament costs it something, and one line of guidance",
+	"keywords": [
+		"mesoamerican astrology",
+		"roxyapi",
+		"get",
+		"mayan"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"id": {
+			"type": "string",
+			"default": ""
+		},
+		"lang": {
+			"type": "string",
+			"default": ""
+		},
+		"directionScheme": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php",
+	"editorScript": "file:./index.js"
+}
