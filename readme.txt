@@ -8,13 +8,13 @@ Stable tag: 1.14.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Birth charts, horoscopes, kundli, Human Design, BaZi and Feng Shui as blocks and shortcodes. 14+ domains on one key. Free to start.
+Birth charts, horoscopes, kundli, Human Design, BaZi and Feng Shui as blocks and shortcodes. 18+ domains on one key. Free to start.
 
 == Description ==
 
 RoxyAPI adds Astrology, Vedic, Forecast, Human Design, Chinese Astrology and Feng Shui readings to any WordPress post, page or widget, as Gutenberg blocks and shortcodes. Drop one on a page and it renders a real reading, server side, the moment you activate the plugin. No account, no setup, no calculation code to write. Start free, then add an API key when you go live.
 
-**One API key. 14+ domains. 210+ endpoints.** Most astrology plugins cover one system. RoxyAPI covers the whole stack, so you build the entire experience without stitching services together:
+**One API key. 18+ domains. 258+ endpoints.** Most astrology plugins cover one system. RoxyAPI covers the whole stack, so you build the entire experience without stitching services together:
 
 * **Western astrology:** natal and birth charts, daily, weekly, monthly, and yearly horoscopes, synastry with a house overlay, compatibility, transits, and moon phases
 * **Vedic astrology:** kundli, KP charts, panchang, Vimshottari dasha, divisional charts, nakshatras, yogas, gochara transits, and the Bhava Bala and Bhav Chalit house readings
@@ -22,9 +22,12 @@ RoxyAPI adds Astrology, Vedic, Forecast, Human Design, Chinese Astrology and Fen
 * **Human Design:** full bodygraph with type, authority, profile, centers, channels, gates, variables, and penta
 * **Chinese astrology:** the BaZi Four Pillars chart, Day Master strength, ten year luck pillars, the Chinese zodiac sign with daily readings and compatibility, the 24 solar terms, and the Chinese almanac day (Tong Shu)
 * **Feng shui:** the Kua number with Eight Mansions directions, the nine palace Flying Star chart, bagua sectors, and annual afflictions
+* **Mesoamerican astrology:** the Tzolkin day sign, the Mayan chart with Haab and Long Count, a Long Count converter, daily and monthly readings, nawal compatibility, and the Aztec tonalpohualli
+* **Vastu:** entrance pada, the Vastu Purusha Mandala, plot analysis, Ayadi, room compliance, and griha pravesh dates
 * **Numerology:** Life Path, Expression, Soul Urge, and Personality numbers
+* **Kabbalah:** gematria with every spelling shown, name and birth profiles, the 72 names, the Tree of Life, and the Hebrew letters
 * **Tarot:** single card, three card, Celtic Cross, and custom spreads
-* **Plus:** biorhythm, I Ching, crystals, dream interpretation, and angel numbers
+* **Plus:** biorhythm, Ayurveda, I Ching, crystals, dream interpretation, and angel numbers
 
 Every chart is calculated by Roxy Ephemeris and verified against NASA JPL Horizons, with readings in 8 languages. One key, one plan, no per-domain fees.
 
@@ -39,7 +42,7 @@ Every chart is calculated by Roxy Ephemeris and verified against NASA JPL Horizo
 
 **Free to start. Add a key when you go live.**
 
-Every reading works the moment you activate the plugin, with no account. A free daily allowance, shared across your site, covers casual traffic so you can build and preview complete pages at no cost. When you are ready for production, add a RoxyAPI API key and the daily limit is removed. There is no separate paid plugin and no locked reading types: the same blocks and shortcodes cover every domain whether or not a key is set. A key simply lifts the daily cap, covers production traffic, and keeps all 14+ domains live under one key. Pick a plan at https://roxyapi.com/pricing.
+Every reading works the moment you activate the plugin, with no account. A free daily allowance, shared across your site, covers casual traffic so you can build and preview complete pages at no cost. When you are ready for production, add a RoxyAPI API key and the daily limit is removed. There is no separate paid plugin and no locked reading types: the same blocks and shortcodes cover every domain whether or not a key is set. A key simply lifts the daily cap, covers production traffic, and keeps all 18+ domains live under one key. Pick a plan at https://roxyapi.com/pricing.
 
 **Also built in:**
 
@@ -140,7 +143,7 @@ Not to get started. A limited number of free readings per day are allowed right 
 
 = What readings can I add to my site? =
 
-One key covers 14 domains. Western astrology: natal chart, daily / weekly / monthly / yearly horoscopes, synastry with a two way house overlay, compatibility, transits, aspect patterns, and moon phases. Vedic astrology: kundli, KP chart, panchang, Vimshottari dasha, divisional charts, nakshatras, doshas (Manglik, Kaal Sarpa, Sade Sati), and classical yogas. Numerology: Life Path, Expression, Soul Urge, Personality, personal year, and compatibility. Tarot: single card, three card, Celtic Cross, and the full 78 card catalog. Human Design: bodygraph, type, authority, profile, centers, channels, and gates. Forecasts: timelines, transit forecasts, solar returns, and significant dates. Chinese astrology: the BaZi Four Pillars chart, Day Master strength, ten year luck pillars, the Chinese zodiac sign with daily readings and compatibility, the 24 solar terms, and the Chinese almanac day (Tong Shu) with its day officer. Feng shui: the Kua number and Eight Mansions directions, the nine palace Flying Star chart for a building or a year, bagua sectors, and annual afflictions. Plus biorhythm, I Ching hexagrams, crystal reference data, dream symbols, and angel numbers. Every reading is available as a shortcode. More than 180 of them also ship a matching Gutenberg block, each with sidebar controls for its inputs (a date picker for dates, a dropdown for fixed choices, text and number fields for the rest) and a live preview in the editor. The headline readings (horoscope, natal chart, tarot, numerology, biorhythm, angel number) are built the same way, and the horoscope block adds a variation picker. Interactive multi input readings such as two chart compatibility and nested birth forms stay shortcode and visitor form mode, because the block editor cannot collect their nested input. Browse the full list inside WordPress under RoxyAPI, Shortcodes.
+One key covers 18 domains. Western astrology: natal chart, daily / weekly / monthly / yearly horoscopes, synastry with a two way house overlay, compatibility, transits, aspect patterns, and moon phases. Vedic astrology: kundli, KP chart, panchang, Vimshottari dasha, divisional charts, nakshatras, doshas (Manglik, Kaal Sarpa, Sade Sati), and classical yogas. Numerology: Life Path, Expression, Soul Urge, Personality, personal year, and compatibility. Tarot: single card, three card, Celtic Cross, and the full 78 card catalog. Human Design: bodygraph, type, authority, profile, centers, channels, and gates. Forecasts: timelines, transit forecasts, solar returns, and significant dates. Chinese astrology: the BaZi Four Pillars chart, Day Master strength, ten year luck pillars, the Chinese zodiac sign with daily readings and compatibility, the 24 solar terms, and the Chinese almanac day (Tong Shu) with its day officer. Feng shui: the Kua number and Eight Mansions directions, the nine palace Flying Star chart for a building or a year, bagua sectors, and annual afflictions. Mesoamerican astrology: the Tzolkin day sign, the Mayan chart, a Long Count converter, daily and monthly readings, nawal compatibility, and the Aztec tonalpohualli. Vastu: entrance pada, the Vastu Purusha Mandala, plot analysis, Ayadi, room compliance, and griha pravesh dates. Kabbalah: gematria, name and birth profiles, the 72 names, the Tree of Life, and the Hebrew letters. Ayurveda: constitution from the birth chart, dinacharya, ritucharya, a daily reading, and the dosha, rasa, and guna catalogues. Plus biorhythm, I Ching hexagrams, crystal reference data, dream symbols, and angel numbers. Every reading is available as a shortcode. More than 180 of them also ship a matching Gutenberg block, each with sidebar controls for its inputs (a date picker for dates, a dropdown for fixed choices, text and number fields for the rest) and a live preview in the editor. The headline readings (horoscope, natal chart, tarot, numerology, biorhythm, angel number) are built the same way, and the horoscope block adds a variation picker. Interactive multi input readings such as two chart compatibility and nested birth forms stay shortcode and visitor form mode, because the block editor cannot collect their nested input. Browse the full list inside WordPress under RoxyAPI, Shortcodes.
 
 = Can I show readings in another language? =
 
