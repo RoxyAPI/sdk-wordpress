@@ -49,6 +49,11 @@ class ComponentMap {
 					'component' => 'roxy-aspects-table',
 				),
 			),
+			'calculateAyurvedicConstitution' => array(
+				array(
+					'component' => 'roxy-dosha-constitution',
+				),
+			),
 			'calculateBhavChalit' => array(
 				array(
 					'component' => 'roxy-bhav-chalit-table',
@@ -98,12 +103,25 @@ class ComponentMap {
 					'component' => 'roxy-vedic-aspects',
 				),
 			),
+			'calculateEntrancePada' => array(
+				array(
+					'component' => 'roxy-vastu-mandala',
+					'attrs'     => array(
+						'mode' => 'entrance',
+					),
+				),
+			),
 			'calculateExpression' => array(
 				array(
 					'component' => 'roxy-numerology-card',
 					'attrs'     => array(
 						'type' => 'expression',
 					),
+				),
+			),
+			'calculateGematria' => array(
+				array(
+					'component' => 'roxy-gematria',
 				),
 			),
 			'calculateGunMilan' => array(
@@ -226,6 +244,14 @@ class ComponentMap {
 			'calculateType' => array(
 				array(
 					'component' => 'roxy-hd-type-card',
+				),
+			),
+			'calculateTzolkin' => array(
+				array(
+					'component' => 'roxy-mayan-day-sign',
+					'attrs'     => array(
+						'mode' => 'day',
+					),
 				),
 			),
 			'calculateVariables' => array(
@@ -415,6 +441,22 @@ class ComponentMap {
 			'generateLocalSpace' => array(
 				array(
 					'component' => 'roxy-local-space-compass',
+				),
+			),
+			'generateMandala' => array(
+				array(
+					'component' => 'roxy-vastu-mandala',
+					'attrs'     => array(
+						'mode' => 'mandala',
+					),
+				),
+			),
+			'generateMayanChart' => array(
+				array(
+					'component' => 'roxy-mayan-day-sign',
+					'attrs'     => array(
+						'mode' => 'chart',
+					),
 				),
 			),
 			'generateNatalChart' => array(
@@ -913,6 +955,7 @@ class ComponentMap {
 			'conjunctions',
 			'context',
 			'cores',
+			'cross',
 			'crystals',
 			'current',
 			'daily',
@@ -920,7 +963,9 @@ class ComponentMap {
 			'day-master',
 			'days',
 			'details',
+			'devatas',
 			'digit-root',
+			'disclaimer',
 			'eclipses',
 			'edit-bar',
 			'effects',
@@ -932,6 +977,7 @@ class ComponentMap {
 			'events',
 			'exceptions',
 			'fact',
+			'factors',
 			'facts',
 			'field',
 			'finance',
@@ -957,12 +1003,15 @@ class ComponentMap {
 			'keynotes',
 			'keywords',
 			'known-meaning',
+			'latin-ciphers',
 			'layout',
 			'legend',
+			'letters',
 			'lines',
 			'list',
 			'loading',
 			'lucky-associations',
+			'matches',
 			'maturity',
 			'meaning',
 			'moved',
@@ -983,8 +1032,11 @@ class ComponentMap {
 			'personal-year',
 			'pillar',
 			'pinnacles',
+			'planet-humours',
 			'planetary-war',
+			'plate',
 			'positions',
+			'ranking',
 			'reading',
 			'readings',
 			'remedies',
@@ -993,12 +1045,15 @@ class ComponentMap {
 			'section',
 			'sectors',
 			'sky',
+			'sources',
+			'spellings',
 			'spotlight',
 			'stack',
 			'strengths-challenges',
 			'strongest',
 			'structure',
 			'submit',
+			'substitutions',
 			'summary',
 			'sun-based',
 			'symbols',
@@ -1013,6 +1068,7 @@ class ComponentMap {
 			'transitions',
 			'trine',
 			'validation-error',
+			'values',
 			'verdict',
 			'verdicts',
 			'week-by-week',

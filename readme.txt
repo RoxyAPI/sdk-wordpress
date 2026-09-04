@@ -246,6 +246,10 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.15.0 =
+* New: four whole domains, Mesoamerican astrology, Vastu, Kabbalah and Ayurveda, as 48 readings with matching Gutenberg blocks. Mesoamerican astrology brings the Tzolkin day sign, the Mayan chart with Haab and Long Count, the Aztec tonalpohualli, nawal compatibility and a Long Count converter. Vastu brings the Vastu Purusha Mandala, the entrance pada, plot analysis, room compliance, Ayadi and griha pravesh dates. Kabbalah brings gematria with every spelling shown, name and birth profiles, the 72 names, the Tree of Life and the Hebrew letters. Ayurveda brings the constitution from a birth chart, a daily reading, dinacharya and ritucharya.
+* New: the day sign, the Vastu mandala, gematria and the dosha constitution now draw as dedicated charts and cards instead of a plain list of values. The day sign carries its coefficient and trecena, with the full Calendar Round on the chart. The mandala lays out the pada grid with a devata in every square and the brahmasthan marked, and lights the entrance pada with its effect. Gematria shows the value by cipher beside every candidate Hebrew spelling with its letter by letter breakdown, plus equal value words. The constitution renders vata, pitta and kapha as one bar with the dominant humour and the birth chart factors behind it.
+
 = 1.14.0 =
 * New: the Chinese astrology and feng shui readings now draw as charts and cards instead of lists of values. BaZi comes out as the four pillars in hanzi with their hidden stems, Ten Gods, Na Yin and element balance. The luck pillars render as a ten year strip with the ages and years behind each one. The flying star reading becomes a nine palace plate carrying the period, mountain and water star per palace, with the facing and sitting mountains. The Kua number sits over an eight sector direction map with the favourable and unfavourable sectors ranked, and the zodiac animal, the pair score and the Tong Shu almanac day each get a card of their own with the day officer, what it favours and avoids, and the animal it clashes with.
 * New: a yearly horoscope, as a shortcode and a block. Add period="yearly" to [roxy_horoscope], or pick the Yearly Horoscope variation in the editor, for the year ahead with the themes behind it, a dated key period for each house, the best months, and the eclipses and retrogrades to plan around.
@@ -266,15 +270,12 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Fixed: Gochara reads from the natal Moon, and a chart with no ascendant falls back to a sign-fixed layout instead of coming out blank.
 * Fixed: synastry names each sign sector, shows each planet house in its own chart, and translates the score label.
 
-= 1.11.4 =
-* New: four Western timing readings, each as a shortcode and a block. [roxy_get_monthly_tropical_aspects] for a month of aspects, [roxy_get_monthly_tropical_transits] for a month of sign ingresses, [roxy_get_monthly_declination_parallels] for a month of declination contacts, and [roxy_get_planetary_node_passages] for a year of ecliptic crossings.
-* Fixed: a reading stays readable inside a section that has a background of its own. The month controls under the ephemeris, the reading card, the visitor form and the error and notice lines now carry their own background and text colour together, instead of taking one from the page and the other from your theme.
-* Fixed: reading titles, badges, links and the submit button now meet the WCAG AA contrast minimum, in both light and dark.
-* Fixed: the sign picker on [roxy_horoscope] now looks like every other RoxyAPI form. It was the one form carrying its own set of class names, so none of the shared field, button and spacing styles ever reached it.
-
 Older entries are in changelog.txt.
 
 == Upgrade Notice ==
+
+= 1.15.0 =
+Worth updating if you want Mesoamerican astrology, Vastu, Kabbalah or Ayurveda readings. Four new domains land as shortcodes and blocks, and the day sign, the mandala, gematria and the dosha constitution now draw as dedicated charts instead of a plain list of values.
 
 = 1.14.0 =
 Worth updating if you publish Chinese astrology or feng shui. Those readings now draw as charts and cards rather than lists of values, and a yearly horoscope joins the daily, weekly and monthly ones.
@@ -284,6 +285,3 @@ Worth updating if you publish Chinese astrology or feng shui. Adds both domains,
 
 = 1.12.0 =
 Worth updating on any translated site. Chart labels and column headings now read in your site language across the whole reading library, and the daily Vedic reading renders as a full reading rather than a list of values.
-
-= 1.11.4 =
-Worth updating if any reading sits on a coloured or dark section. The reading card and the ephemeris month controls now bring their own background, so their text cannot end up dark on dark.

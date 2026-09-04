@@ -1,8 +1,8 @@
 {
 	"_meta": {
 		"ui_package": "@roxyapi/ui",
-		"ui_version_pinned": "0.34.0",
-		"ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.34.0/dist/manifest.json",
+		"ui_version_pinned": "0.37.0",
+		"ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.37.0/dist/manifest.json",
 		"published_parts": [
 			"action-steps",
 			"activations",
@@ -36,6 +36,7 @@
 			"conjunctions",
 			"context",
 			"cores",
+			"cross",
 			"crystals",
 			"current",
 			"daily",
@@ -43,7 +44,9 @@
 			"day-master",
 			"days",
 			"details",
+			"devatas",
 			"digit-root",
+			"disclaimer",
 			"eclipses",
 			"edit-bar",
 			"effects",
@@ -55,6 +58,7 @@
 			"events",
 			"exceptions",
 			"fact",
+			"factors",
 			"facts",
 			"field",
 			"finance",
@@ -80,12 +84,15 @@
 			"keynotes",
 			"keywords",
 			"known-meaning",
+			"latin-ciphers",
 			"layout",
 			"legend",
+			"letters",
 			"lines",
 			"list",
 			"loading",
 			"lucky-associations",
+			"matches",
 			"maturity",
 			"meaning",
 			"moved",
@@ -106,8 +113,11 @@
 			"personal-year",
 			"pillar",
 			"pinnacles",
+			"planet-humours",
 			"planetary-war",
+			"plate",
 			"positions",
+			"ranking",
 			"reading",
 			"readings",
 			"remedies",
@@ -116,12 +126,15 @@
 			"section",
 			"sectors",
 			"sky",
+			"sources",
+			"spellings",
 			"spotlight",
 			"stack",
 			"strengths-challenges",
 			"strongest",
 			"structure",
 			"submit",
+			"substitutions",
 			"summary",
 			"sun-based",
 			"symbols",
@@ -136,6 +149,7 @@
 			"transitions",
 			"trine",
 			"validation-error",
+			"values",
 			"verdict",
 			"verdicts",
 			"week-by-week",
@@ -168,6 +182,11 @@
 		"calculateAspects": [
 			{
 				"component": "roxy-aspects-table"
+			}
+		],
+		"calculateAyurvedicConstitution": [
+			{
+				"component": "roxy-dosha-constitution"
 			}
 		],
 		"calculateBhavChalit": [
@@ -219,12 +238,25 @@
 				"component": "roxy-vedic-aspects"
 			}
 		],
+		"calculateEntrancePada": [
+			{
+				"component": "roxy-vastu-mandala",
+				"attrs": {
+					"mode": "entrance"
+				}
+			}
+		],
 		"calculateExpression": [
 			{
 				"component": "roxy-numerology-card",
 				"attrs": {
 					"type": "expression"
 				}
+			}
+		],
+		"calculateGematria": [
+			{
+				"component": "roxy-gematria"
 			}
 		],
 		"calculateGunMilan": [
@@ -347,6 +379,14 @@
 		"calculateType": [
 			{
 				"component": "roxy-hd-type-card"
+			}
+		],
+		"calculateTzolkin": [
+			{
+				"component": "roxy-mayan-day-sign",
+				"attrs": {
+					"mode": "day"
+				}
 			}
 		],
 		"calculateVariables": [
@@ -536,6 +576,22 @@
 		"generateLocalSpace": [
 			{
 				"component": "roxy-local-space-compass"
+			}
+		],
+		"generateMandala": [
+			{
+				"component": "roxy-vastu-mandala",
+				"attrs": {
+					"mode": "mandala"
+				}
+			}
+		],
+		"generateMayanChart": [
+			{
+				"component": "roxy-mayan-day-sign",
+				"attrs": {
+					"mode": "chart"
+				}
 			}
 		],
 		"generateNatalChart": [
