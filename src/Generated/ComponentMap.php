@@ -1003,6 +1003,7 @@ class ComponentMap {
 			'keynotes',
 			'keywords',
 			'known-meaning',
+			'label-track',
 			'latin-ciphers',
 			'layout',
 			'legend',
