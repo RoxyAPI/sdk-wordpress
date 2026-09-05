@@ -60,8 +60,8 @@
 		"i18n:json": "node bin/build-i18n-map.mjs && docker run --rm -v \"$PWD\":/plugin -w /plugin -u \"$(id -u):$(id -g)\" wordpress:cli wp i18n make-json languages languages --no-purge --use-map=build/i18n-map.json"
 	},
 	"devDependencies": {
-		"@wordpress/env": "11.12.0",
-		"@wordpress/scripts": "^33.0.0",
+		"@wordpress/env": "11.14.0",
+		"@wordpress/scripts": "^34.2.0",
 		"@wordpress/server-side-render": "^6.28.0",
 		"ajv": "^8.20.0",
 		"ajv-formats": "^3.0.1",
