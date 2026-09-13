@@ -3,6 +3,12 @@
 The full release history for the RoxyAPI plugin. The most recent releases are
 also listed in readme.txt, which wordpress.org displays on the plugin page.
 
+= 1.15.1 =
+* New: the finance section of the Vedic daily reading carries a combined score. One word for the day, the score beside it, and the three readings behind it with a score each, so a client can see what the verdict rests on.
+* New: the current dasha reading takes a datetime, so you can prepare a reading for a day ahead or read the running periods at a past moment. Add datetime="2026-10-01T09:00:00" to the shortcode, or fill the field in the block.
+* Improved: the I Ching daily cast now draws as a hexagram card, with any changing lines named, instead of a plain list of values.
+* Improved: the choghadiya grid and the hora table head their daylight column Daytime instead of Day, which reads correctly beside the night periods. Translated sites get that heading and the combined score in the site language.
+
 = 1.15.0 =
 * New: four whole domains, Mesoamerican astrology, Vastu, Kabbalah and Ayurveda, as 48 readings with matching Gutenberg blocks. Mesoamerican astrology brings the Tzolkin day sign, the Mayan chart with Haab and Long Count, the Aztec tonalpohualli, nawal compatibility and a Long Count converter. Vastu brings the Vastu Purusha Mandala, the entrance pada, plot analysis, room compliance, Ayadi and griha pravesh dates. Kabbalah brings gematria with every spelling shown, name and birth profiles, the 72 names, the Tree of Life and the Hebrew letters. Ayurveda brings the constitution from a birth chart, a daily reading, dinacharya and ritucharya.
 * New: the day sign, the Vastu mandala, gematria and the dosha constitution now draw as dedicated charts and cards instead of a plain list of values. The day sign carries its coefficient and trecena, with the full Calendar Round on the chart. The mandala lays out the pada grid with a devata in every square and the brahmasthan marked, and lights the entrance pada with its effect. Gematria shows the value by cipher beside every candidate Hebrew spelling with its letter by letter breakdown, plus equal value words. The constitution renders vata, pitta and kapha as one bar with the dominant humour and the birth chart factors behind it.

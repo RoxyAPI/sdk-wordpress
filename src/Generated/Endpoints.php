@@ -2465,7 +2465,7 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_list_flying_stars',
 			'attributes' => array(
 				'lang' => 'en',
-				'limit' => '20',
+				'limit' => '9',
 				'offset' => '0',
 			),
 		),
@@ -2496,7 +2496,7 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_list_bagua_sectors',
 			'attributes' => array(
 				'lang' => 'en',
-				'limit' => '20',
+				'limit' => '9',
 				'offset' => '0',
 			),
 		),

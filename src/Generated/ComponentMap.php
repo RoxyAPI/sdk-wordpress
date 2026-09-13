@@ -291,6 +291,11 @@ class ComponentMap {
 					),
 				),
 			),
+			'castDailyReading' => array(
+				array(
+					'component' => 'roxy-hexagram',
+				),
+			),
 			'castLoveSpread' => array(
 				array(
 					'component' => 'roxy-tarot-spread',
@@ -987,6 +992,7 @@ class ComponentMap {
 			'grahas',
 			'group',
 			'header',
+			'hint',
 			'house-changes',
 			'house-overlay',
 			'inauspicious',

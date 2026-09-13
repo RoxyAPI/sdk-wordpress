@@ -70,6 +70,13 @@ const fields = [
 		help: __( 'Lunar node type for Rahu and Ketu, used ONLY when "significators" is true', 'roxyapi' ),
 		options: [ 'mean', 'true' ],
 	},
+	{
+		name: 'datetime',
+		control: 'text',
+		label: __( 'Datetime', 'roxyapi' ),
+		required: false,
+		help: __( 'ISO 8601 datetime (YYYY-MM-DDTHH:MM:SS) to read the running periods at, for a reading prepared for a future day, a backtest, or a chart cast for a past moment', 'roxyapi' ),
+	},
 ];
 
 registerBlockType( metadata.name, {

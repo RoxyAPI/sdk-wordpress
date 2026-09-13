@@ -65,6 +65,10 @@
 		"nodeType": {
 			"type": "string",
 			"default": ""
+		},
+		"datetime": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"render": "file:./render.php",

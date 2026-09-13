@@ -38,6 +38,7 @@ class GetCurrentDasha {
 		'ayanamsa_value' => '',
 		'significators' => '',
 		'node_type' => '',
+		'datetime' => '',
 		'lang' => '',
 		'focus' => '',
 		'hide_readings' => 'inherit',
@@ -71,6 +72,7 @@ class GetCurrentDasha {
 				'ayanamsaValue' => $atts['ayanamsa_value'] !== '' ? (float) $atts['ayanamsa_value'] : '',
 				'significators' => $atts['significators'] !== '' ? filter_var( $atts['significators'], FILTER_VALIDATE_BOOLEAN ) : '',
 				'nodeType' => $atts['node_type'],
+				'datetime' => $atts['datetime'],
 			),
 			static function ( $v ) {
 				return $v !== '';

@@ -1,6 +1,6 @@
 # roxyapi WordPress plugin: Agent Guide
 
-WordPress plugin for [RoxyAPI](https://roxyapi.com). Drop Western and Vedic astrology, forecasts, human design, Chinese astrology, feng shui, numerology, tarot, biorhythm, I Ching, crystals, dream symbols, angel number, and city location readings onto any WordPress page with shortcodes or Gutenberg blocks. One API key, 14+ spiritual data domains, 210+ endpoints.
+WordPress plugin for [RoxyAPI](https://roxyapi.com). Drop Western and Vedic astrology, forecasts, human design, Chinese astrology, feng shui, Mesoamerican astrology, Vastu, numerology, Kabbalah, tarot, biorhythm, Ayurveda, I Ching, crystals, dream symbols, angel number, and city location readings onto any WordPress page with shortcodes or Gutenberg blocks. One API key, 18+ insight domains, 258+ endpoints.
 
 The upstream OpenAPI spec is the source of truth: `https://roxyapi.com/api/v2/openapi.json`.
 
@@ -8,12 +8,11 @@ The upstream OpenAPI spec is the source of truth: `https://roxyapi.com/api/v2/op
 
 ```bash
 # WordPress admin
-Plugins > Add New > search "Astrology Horoscope Tarot Numerology by Roxy" > Install > Activate
-Roxy menu (admin sidebar) > paste API key > Save
+Plugins > Add New > search "RoxyAPI" > Install > Activate
+RoxyAPI menu (admin sidebar) > paste API key > Save
 
-# wp-cli
+# wp-cli (the key is stored encrypted, so set it via the settings page or the constant below)
 wp plugin install roxyapi --activate
-wp option update roxyapi_settings '{"api_key":"..."}' --format=json
 
 # Production: store the key in wp-config.php instead of the database
 define( 'ROXYAPI_KEY', getenv( 'ROXYAPI_KEY' ) );
@@ -21,7 +20,7 @@ define( 'ROXYAPI_KEY', getenv( 'ROXYAPI_KEY' ) );
 
 ## Use a shortcode
 
-Browse the full library at Roxy > Shortcodes in the WordPress admin sidebar. 17 hand-curated hero shortcodes cover the highest-demand readings; every other endpoint is reachable via auto-generated long-tail shortcodes.
+Browse the full library at RoxyAPI > Shortcodes in the WordPress admin sidebar. 17 hand-curated hero shortcodes cover the highest-demand readings; every other endpoint is reachable via auto-generated long-tail shortcodes.
 
 Every hero shortcode has two modes, auto detected.
 

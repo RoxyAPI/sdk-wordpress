@@ -7,31 +7,32 @@ import { makeEdit } from '../../_shared/generated-edit';
 const fields = [
 	{
 		name: 'planet',
-		control: 'text',
+		control: 'select',
 		label: __( 'Planet', 'roxyapi' ),
 		required: true,
 		help: __( 'Planet to track (case-insensitive)', 'roxyapi' ),
+		options: [ 'Sun', 'Moon', 'Mars', 'Mercury', 'Jupiter', 'Venus', 'Saturn' ],
 	},
 	{
 		name: 'startDate',
 		control: 'date',
 		label: __( 'Start date', 'roxyapi' ),
 		required: true,
-		help: __( 'Start date for sign ingress search (YYYY-MM-DD format)', 'roxyapi' ),
+		help: __( 'First day of the search (YYYY-MM-DD), a calendar day in `timezone`.', 'roxyapi' ),
 	},
 	{
 		name: 'endDate',
 		control: 'date',
 		label: __( 'End date', 'roxyapi' ),
 		required: true,
-		help: __( 'End date for sign ingress search (YYYY-MM-DD format)', 'roxyapi' ),
+		help: __( 'Last day of the search, inclusive (YYYY-MM-DD), a calendar day in `timezone`', 'roxyapi' ),
 	},
 	{
 		name: 'timezone',
 		control: 'text',
 		label: __( 'Timezone', 'roxyapi' ),
 		required: false,
-		help: __( 'IANA name (e.g. "America/New_York", "Europe/London") OR decimal hours from UTC', 'roxyapi' ),
+		help: __( 'IANA name (e.g. "America/New_York", "Europe/London"), a fixed offset like "+05:30", OR decimal hours from UTC', 'roxyapi' ),
 	},
 	{
 		name: 'ayanamsa',
