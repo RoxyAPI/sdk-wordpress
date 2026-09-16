@@ -174,6 +174,8 @@ Cached responses do not consume RoxyAPI quota. Object cache backends (Redis, Mem
 -   **The API key never goes into the browser.** Every call is server side in PHP, in both the editor preview and the frontend render, so a shortcode is safe on a fully public page.
 -   **Date format is `YYYY-MM-DD`, time is `HH:MM`.** Both are strings.
 -   **Coordinates are decimal degrees.** Negative for west and south. Never hardcode them: drop the shortcode without `lat`/`lon` and visitors get a city search that fills them in.
+-   **A list attribute is a comma list, an object attribute is JSON.** `planets="Sun, Moon"`, `ciphers="mispar-hechrachi, mispar-gadol"`, `gain_houses="2, 11"` reach the API as lists with numbers as numbers; `weights='{"cusps":30,"dasha":40,"rulingPlanets":15,"moonWindows":15}'` reaches it as an object. Single quotes around the JSON, so the double quotes inside survive the shortcode parser.
+-   **`[roxy_horoscope]` takes one `date` for every `period`.** The day itself for daily, any day inside the week or month for weekly and monthly, any day of the year for yearly, so `period="monthly" date="2026-10-01"` is the October page. Leave it off and the current period follows the site timezone.
 -   **Language is a setting, not a shortcode attribute.** Hero shortcodes ignore `lang`. Readings follow the WordPress site language, or **Reading language** on the Branding tab if you want them to differ.
 -   **A reading is cached per endpoint.** Attribute changes produce a different cache key and call through immediately, so you never have to clear a cache after editing a shortcode.
 
