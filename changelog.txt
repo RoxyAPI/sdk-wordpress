@@ -4,7 +4,7 @@ The full release history for the RoxyAPI plugin. The most recent releases are
 also listed in readme.txt, which wordpress.org displays on the plugin page.
 
 = 1.16.0 =
-* New: a KP daily finance reading, [roxy_get_kp_daily_finance], with a Daily Finance Score block. Four Krishnamurti Paddhati layers are scored against the money houses and weighed into one number for the day, every row printed, and the gain houses, loss houses and layer weights can be overridden.
+* New: a KP daily finance reading, [roxy_get_kp_daily_finance], with a Daily Finance Score block. Four Krishnamurti Paddhati layers are scored against the money houses and weighed into one number for the day, every row printed, and the gain houses, loss houses and layer weights can be overridden. It draws as a card of its own: the band and score, the gain and loss significators with the evidence by house, the four layers as tables with their weights, and the best and worst Moon windows of the day, with every heading in your site language.
 * New: the gematria, name profile and name compatibility readings take a second letter map. Add transliteration="letter-map-modern" for the modern Israeli transcription, which writes every Latin letter, or leave it off for the Hermetic map.
 * New: the finance section of the Vedic daily reading carries a combined score. One word for the day, the score beside it, and the three readings behind it with a score each, so a client can see what the verdict rests on.
 * New: the current dasha reading takes a datetime, so you can prepare a reading for a day ahead or read the running periods at a past moment. Add datetime="2026-10-01T09:00:00" to the shortcode, or fill the field in the block.

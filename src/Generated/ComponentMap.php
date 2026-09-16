@@ -693,6 +693,11 @@ class ComponentMap {
 					'component' => 'roxy-hora-table',
 				),
 			),
+			'getKpDailyFinance' => array(
+				array(
+					'component' => 'roxy-kp-finance-card',
+				),
+			),
 			'getKpPlanets' => array(
 				array(
 					'component' => 'roxy-kp-planets-table',
@@ -963,6 +968,7 @@ class ComponentMap {
 			'cross',
 			'crystals',
 			'current',
+			'cusps',
 			'daily',
 			'dasha',
 			'day-master',
@@ -1021,6 +1027,7 @@ class ComponentMap {
 			'matches',
 			'maturity',
 			'meaning',
+			'moon-windows',
 			'moved',
 			'mutual-aspects',
 			'name-letters',
@@ -1049,8 +1056,10 @@ class ComponentMap {
 			'remedies',
 			'results',
 			'retrogrades',
+			'ruling-planets',
 			'section',
 			'sectors',
+			'significators',
 			'sky',
 			'sources',
 			'spellings',
