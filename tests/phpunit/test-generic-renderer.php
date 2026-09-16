@@ -451,4 +451,28 @@ class Test_Generic_Renderer extends \WP_UnitTestCase {
 		$this->assertStringContainsString( '<th>Omen localized</th>', $out );
 		$this->assertStringContainsString( '<td>Presagio Alpha</td>', $out );
 	}
+	public function test_blank_lines_in_a_field_render_as_paragraphs(): void {
+		$out = GenericRenderer::render(
+			'getMonthlyHoroscope',
+			array( 'column' => "Venus turns retrograde on the 3rd.\n\nThe stretch it opens runs through November.\n\nKeep the 25th free." )
+		);
+		$this->assertStringContainsString( '<dd><p>Venus turns retrograde on the 3rd.</p><p>The stretch it opens runs through November.</p><p>Keep the 25th free.</p></dd>', $out );
+	}
+
+	public function test_blank_lines_in_the_lede_render_as_lede_paragraphs(): void {
+		$out = GenericRenderer::render( 'getX', array( 'overview' => "First.\n \nSecond." ) );
+		$this->assertSame( 2, substr_count( $out, '<p class="roxyapi-card-lede">' ) );
+		$this->assertStringContainsString( '<p class="roxyapi-card-lede">Second.</p>', $out );
+	}
+
+	public function test_a_single_newline_does_not_split_a_paragraph(): void {
+		$out = GenericRenderer::render( 'getX', array( 'note' => "one line\nwrapped" ) );
+		$this->assertStringNotContainsString( '<p>', $out );
+		$this->assertStringContainsString( "one line\nwrapped", $out );
+	}
+
+	public function test_paragraphs_are_escaped(): void {
+		$out = GenericRenderer::render( 'getX', array( 'note' => "<b>a</b>\n\n<i>b</i>" ) );
+		$this->assertStringContainsString( '<p>&lt;b&gt;a&lt;/b&gt;</p><p>&lt;i&gt;b&lt;/i&gt;</p>', $out );
+	}
 }

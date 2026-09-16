@@ -256,8 +256,10 @@ class GenericRenderer {
 			$out .= '</header>';
 		}
 
-		if ( $lede !== null && is_scalar( $lede ) && (string) $lede !== '' ) {
-			$out .= '<p class="roxyapi-card-lede">' . esc_html( (string) $lede ) . '</p>';
+		if ( $lede !== null && is_scalar( $lede ) ) {
+			foreach ( self::paragraphs( (string) $lede ) as $paragraph ) {
+				$out .= '<p class="roxyapi-card-lede">' . esc_html( $paragraph ) . '</p>';
+			}
 		}
 
 		if ( $quote !== null && is_scalar( $quote ) && (string) $quote !== '' ) {
@@ -854,7 +856,39 @@ class GenericRenderer {
 		if ( self::looks_like_url( $value_str ) ) {
 			return self::render_link( $value_str );
 		}
+		$paragraphs = self::paragraphs( $value_str );
+		if ( count( $paragraphs ) > 1 ) {
+			return '<p>' . implode( '</p><p>', array_map( 'esc_html', $paragraphs ) ) . '</p>';
+		}
 		return esc_html( $value_str );
+	}
+
+	/**
+	 * A written field as the paragraphs the API set in it.
+	 *
+	 * A long reading separates its paragraphs with a blank line, which HTML
+	 * collapses to one space, so the no-JavaScript fallback of a monthly
+	 * horoscope column ran six hundred words together while the component in
+	 * front of it kept the breaks. Mirrors `paragraphs()` in the horoscope card
+	 * of `@roxyapi/ui`: split on a blank line only, never on a single newline,
+	 * so a line wrap inside a paragraph stays inside it.
+	 *
+	 * @param string $text Raw string value.
+	 * @return array<int, string> Non-empty paragraphs, trimmed, in order.
+	 */
+	private static function paragraphs( string $text ): array {
+		$parts = preg_split( '/\R\s*\R/', $text );
+		if ( $parts === false ) {
+			return array( $text );
+		}
+		return array_values(
+			array_filter(
+				array_map( 'trim', $parts ),
+				static function ( string $paragraph ): bool {
+					return $paragraph !== '';
+				}
+			)
+		);
 	}
 
 	/**

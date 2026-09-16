@@ -60,8 +60,8 @@ class CalculateAspects {
 				'date' => $atts['date'],
 				'time' => $atts['time'],
 				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
-				'planets' => $atts['planets'],
-				'aspectTypes' => $atts['aspect_types'],
+				'planets' => $atts['planets'] !== '' ? \RoxyAPI\Support\Sanitize::comma_list( $atts['planets'], 'string' ) : '',
+				'aspectTypes' => $atts['aspect_types'] !== '' ? \RoxyAPI\Support\Sanitize::comma_list( $atts['aspect_types'], 'string' ) : '',
 			),
 			static function ( $v ) {
 				return $v !== '';

@@ -440,6 +440,7 @@ function extractBodyFields( op ) {
 			name,
 			required: required.has( name ),
 			type: resolvedProp.type || 'string',
+			items: resolveRef( resolvedProp.items || {} ).type || 'string',
 			enum: resolvedProp.enum,
 			format: resolvedProp.format,
 			numericString,
@@ -1887,6 +1888,16 @@ ${ withReservedAtts( [], '\t\t' ).join( '\n' ) }
 							}
 							if ( f.numericString ) {
 								return `\t\t\t\t'${ f.name }' => $atts['${ attr }'] !== '' ? ( is_numeric( $atts['${ attr }'] ) ? (float) $atts['${ attr }'] : $atts['${ attr }'] ) : '',`;
+							}
+							// An array or object field is one text attribute on a
+							// shortcode and one text control in the block sidebar, so
+							// the site owner types a comma list or a JSON object and
+							// the string posted verbatim is a 400 on every one of them.
+							if ( f.type === 'array' ) {
+								return `\t\t\t\t'${ f.name }' => $atts['${ attr }'] !== '' ? \\RoxyAPI\\Support\\Sanitize::comma_list( $atts['${ attr }'], '${ f.items }' ) : '',`;
+							}
+							if ( f.type === 'object' ) {
+								return `\t\t\t\t'${ f.name }' => $atts['${ attr }'] !== '' ? \\RoxyAPI\\Support\\Sanitize::json_object( $atts['${ attr }'] ) : '',`;
 							}
 							return `\t\t\t\t'${ f.name }' => $atts['${ attr }'],`;
 						} )

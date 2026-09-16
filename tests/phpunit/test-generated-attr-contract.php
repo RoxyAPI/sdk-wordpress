@@ -19,6 +19,12 @@
  *    Catches the `birthDate: expected string, received undefined` regression
  *    that broke the camelCase → lowercase shortcode-attr round-trip.
  *
+ * 3. For every generated POST shortcode whose body declares an array-of-scalars
+ *    or an object field, a comma list or a JSON object typed into that
+ *    attribute reaches the API as a JSON array or object, with array items
+ *    cast to the declared item type. The raw string used to be posted and
+ *    every one of them was a 400.
+ *
  * Tests are skipped per-operation when the example set is incomplete (e.g.
  * required body field with no spec example, or nested-object body that flat
  * shortcode attrs cannot express). That is by design: a partial example
@@ -203,6 +209,75 @@ class Test_Generated_Attr_Contract extends \WP_UnitTestCase {
 		$this->assertSame( array(), $violations, "Required-field contract violations:\n  " . implode( "\n  ", $violations ) );
 	}
 
+	/**
+	 * Test: an array-of-scalars body field typed as a comma list posts a JSON
+	 * array of the declared item type, and an object field typed as JSON posts
+	 * a JSON object. Derived from the spec, so a new operation carrying either
+	 * shape is covered the day it lands.
+	 */
+	public function test_array_and_object_body_fields_encode_as_json_structures(): void {
+		$violations = array();
+		$checked    = 0;
+
+		foreach ( Endpoints::all() as $op_id => $ep ) {
+			if ( $ep['method'] !== 'POST' || ! empty( $ep['hero'] ) ) {
+				continue;
+			}
+			$body_schema = self::body_schema_for( (string) $op_id );
+			if ( $body_schema === null ) {
+				continue;
+			}
+			$structured = self::structured_scalar_fields( $body_schema );
+			if ( empty( $structured ) ) {
+				continue;
+			}
+			// Only shortcodes that accept the field as an attribute: a form-mode
+			// operation collects its input through FormRenderer, not attributes.
+			$attrs = $ep['attributes'] ?? array();
+			foreach ( $structured as $field => $shape ) {
+				$attr = strtolower( (string) preg_replace( '/(?<!^)([A-Z])/', '_$1', $field ) );
+				$attrs[ $attr ] = $shape['sample'];
+			}
+
+			$this->captured = null;
+			do_shortcode( self::build_shortcode_call( (string) $op_id, $attrs ) );
+			if ( $this->captured === null || ! isset( $this->captured['body'] ) ) {
+				continue;
+			}
+			$decoded = json_decode( (string) $this->captured['body'], true );
+			if ( ! is_array( $decoded ) ) {
+				continue;
+			}
+			++$checked;
+
+			foreach ( $structured as $field => $shape ) {
+				$sent = $decoded[ $field ] ?? null;
+				if ( ! is_array( $sent ) ) {
+					$violations[] = sprintf( '%s.%s sent as %s, expected a JSON %s', $op_id, $field, gettype( $sent ), $shape['type'] );
+					continue;
+				}
+				if ( $shape['type'] === 'object' ) {
+					if ( $sent !== json_decode( $shape['sample'], true ) ) {
+						$violations[] = sprintf( '%s.%s did not round-trip the typed object', $op_id, $field );
+					}
+					continue;
+				}
+				$want_type = $shape['items'] === 'integer' ? 'integer' : ( $shape['items'] === 'number' ? 'double' : 'string' );
+				foreach ( $sent as $item ) {
+					if ( gettype( $item ) !== $want_type ) {
+						$violations[] = sprintf( '%s.%s item %s is %s, expected %s', $op_id, $field, var_export( $item, true ), gettype( $item ), $want_type );
+					}
+				}
+				if ( count( $sent ) !== 2 ) {
+					$violations[] = sprintf( '%s.%s posted %d items from a two-item list', $op_id, $field, count( $sent ) );
+				}
+			}
+		}
+
+		$this->assertGreaterThan( 0, $checked, 'No POST shortcode with an array or object body field was exercised.' );
+		$this->assertSame( array(), $violations, "Structured-body-field contract violations:\n  " . implode( "\n  ", $violations ) );
+	}
+
 	// -------------------------------------------------------------------------
 	// helpers
 	// -------------------------------------------------------------------------
@@ -223,7 +298,11 @@ class Test_Generated_Attr_Contract extends \WP_UnitTestCase {
 			if ( ! is_scalar( $value ) || (string) $value === '' ) {
 				continue;
 			}
-			$parts[] = $name . '="' . str_replace( '"', '&quot;', (string) $value ) . '"';
+			// A JSON value carries double quotes, which the shortcode parser
+			// accepts inside a single-quoted attribute, exactly as a site owner
+			// types it.
+			$quote   = strpos( (string) $value, '"' ) === false ? '"' : "'";
+			$parts[] = $name . '=' . $quote . $value . $quote;
 		}
 		return '[' . implode( ' ', $parts ) . ']';
 	}
@@ -250,6 +329,43 @@ class Test_Generated_Attr_Contract extends \WP_UnitTestCase {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * Body properties a flat attribute can carry as a comma list or a JSON
+	 * object: arrays of scalars and objects. Arrays of objects are left out,
+	 * since those operations render a visitor form instead of a shortcode.
+	 *
+	 * @param array<string,mixed> $schema
+	 * @return array<string, array{type: string, items: string, sample: string}>
+	 */
+	private static function structured_scalar_fields( array $schema ): array {
+		$out = array();
+		foreach ( ( $schema['properties'] ?? array() ) as $name => $prop ) {
+			$resolved = self::resolve_ref( is_array( $prop ) ? $prop : array() );
+			$type     = $resolved['type'] ?? null;
+			if ( $type === 'object' ) {
+				$out[ (string) $name ] = array(
+					'type'   => 'object',
+					'items'  => '',
+					'sample' => '{"a":1,"b":"two"}',
+				);
+				continue;
+			}
+			if ( $type !== 'array' ) {
+				continue;
+			}
+			$items = self::resolve_ref( is_array( $resolved['items'] ?? null ) ? $resolved['items'] : array() )['type'] ?? 'string';
+			if ( $items === 'object' ) {
+				continue;
+			}
+			$out[ (string) $name ] = array(
+				'type'   => 'array',
+				'items'  => $items,
+				'sample' => $items === 'string' ? 'first, second' : '2, 11',
+			);
+		}
+		return $out;
 	}
 
 	/**

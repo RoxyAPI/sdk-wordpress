@@ -39,7 +39,7 @@ const fields = [
 		label: __( 'Transliteration', 'roxyapi' ),
 		required: false,
 		help: __( 'How a Latin name is written in Hebrew before it is scored', 'roxyapi' ),
-		options: [ 'letter-map-mathers' ],
+		options: [ 'letter-map-mathers', 'letter-map-modern' ],
 	},
 	{
 		name: 'misparGadol',

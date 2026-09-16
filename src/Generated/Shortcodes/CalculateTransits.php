@@ -61,7 +61,7 @@ class CalculateTransits {
 				'time' => $atts['time'],
 				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
 				'nodeType' => $atts['node_type'],
-				'natalChart' => $atts['natal_chart'],
+				'natalChart' => $atts['natal_chart'] !== '' ? \RoxyAPI\Support\Sanitize::json_object( $atts['natal_chart'] ) : '',
 			),
 			static function ( $v ) {
 				return $v !== '';

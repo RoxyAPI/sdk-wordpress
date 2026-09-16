@@ -68,6 +68,7 @@ Every reading is a shortcode. Pass attributes for a fixed reading the site owner
 
 `[roxy_horoscope sign="aries"]`
 `[roxy_horoscope sign="aries" period="yearly"]`
+`[roxy_horoscope sign="aries" period="monthly" date="2026-10-01"]`
 `[roxy_natal_chart birth_date="1990-05-15" birth_time="14:30" lat="40.7128" lon="-74.0060" tz="America/New_York"]`
 `[roxy_kundli birth_date="1990-05-15" birth_time="14:30" lat="28.6139" lon="77.2090" tz="Asia/Kolkata"]`
 `[roxy_panchang date="2026-04-28" lat="28.6139" lon="77.2090" tz="Asia/Kolkata"]`
@@ -246,11 +247,17 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
-= 1.15.1 =
+= 1.16.0 =
+* New: a KP daily finance reading, [roxy_get_kp_daily_finance], with a Daily Finance Score block. Four Krishnamurti Paddhati layers are scored against the money houses and weighed into one number for the day, every row printed, and the gain houses, loss houses and layer weights can be overridden.
+* New: the gematria, name profile and name compatibility readings take a second letter map. Add transliteration="letter-map-modern" for the modern Israeli transcription, which writes every Latin letter, or leave it off for the Hermetic map.
 * New: the finance section of the Vedic daily reading carries a combined score. One word for the day, the score beside it, and the three readings behind it with a score each, so a client can see what the verdict rests on.
 * New: the current dasha reading takes a datetime, so you can prepare a reading for a day ahead or read the running periods at a past moment. Add datetime="2026-10-01T09:00:00" to the shortcode, or fill the field in the block.
+* Fixed: the date attribute on [roxy_horoscope] now reaches the weekly, monthly and yearly periods, so period="monthly" date="2026-10-01" publishes the October reading. It was silently ignored on every period but daily. The current week and month also turn over on your site clock rather than at midnight UTC, and one reading is fetched per week or month however many days a page is viewed on.
+* Fixed: the sign picker under [roxy_horoscope period="monthly"] answers with the monthly reading. It answered with the daily whatever period was placed.
+* Fixed: a list attribute, such as planets, aspect_types, ciphers, gain_houses or loss_houses, is read as a comma list, and an object attribute such as weights as JSON. Each was posted as typed and refused by the API.
 * Improved: the I Ching daily cast now draws as a hexagram card, with any changing lines named, instead of a plain list of values.
 * Improved: the choghadiya grid and the hora table head their daylight column Daytime instead of Day, which reads correctly beside the night periods. Translated sites get that heading and the combined score in the site language.
+* Improved: a long reading keeps its paragraphs in the version search engines and readers without JavaScript receive. A monthly horoscope column ran as one block there.
 
 = 1.15.0 =
 * New: four whole domains, Mesoamerican astrology, Vastu, Kabbalah and Ayurveda, as 48 readings with matching Gutenberg blocks. Mesoamerican astrology brings the Tzolkin day sign, the Mayan chart with Haab and Long Count, the Aztec tonalpohualli, nawal compatibility and a Long Count converter. Vastu brings the Vastu Purusha Mandala, the entrance pada, plot analysis, room compliance, Ayadi and griha pravesh dates. Kabbalah brings gematria with every spelling shown, name and birth profiles, the 72 names, the Tree of Life and the Hebrew letters. Ayurveda brings the constitution from a birth chart, a daily reading, dinacharya and ritucharya.
@@ -259,21 +266,12 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Improved: the Kua number map and the flying star plate resize to fit their container and stay legible on a phone screen, with compass and palace labels that no longer break in the middle of a word.
 * Improved: the label column beside a reading, including on the Kua map, the flying star plate, the dosha constitution and the daily horoscope key dates, never grows past a quarter of the card width, so the reading text keeps the room it needs on a narrow screen.
 
-= 1.14.0 =
-* New: the Chinese astrology and feng shui readings now draw as charts and cards instead of lists of values. BaZi comes out as the four pillars in hanzi with their hidden stems, Ten Gods, Na Yin and element balance. The luck pillars render as a ten year strip with the ages and years behind each one. The flying star reading becomes a nine palace plate carrying the period, mountain and water star per palace, with the facing and sitting mountains. The Kua number sits over an eight sector direction map with the favourable and unfavourable sectors ranked, and the zodiac animal, the pair score and the Tong Shu almanac day each get a card of their own with the day officer, what it favours and avoids, and the animal it clashes with.
-* New: a yearly horoscope, as a shortcode and a block. Add period="yearly" to [roxy_horoscope], or pick the Yearly Horoscope variation in the editor, for the year ahead with the themes behind it, a dated key period for each house, the best months, and the eclipses and retrogrades to plan around.
-* Improved: every horoscope period now leads with a written column and lists the dated events it calls out, so a daily, weekly, monthly or yearly card reads as a piece of writing rather than a row of scores.
-* Improved: the synastry reading adds a house overlay table, shown both ways round, so you can read where one set of planets lands in the other chart.
-
 Older entries are in changelog.txt.
 
 == Upgrade Notice ==
 
-= 1.15.1 =
-Worth updating if you publish Vedic readings. The daily reading gains a combined finance score, the current dasha reading can be read at any moment you choose, and the daytime column headings read correctly in your site language.
+= 1.16.0 =
+Worth updating if you publish horoscope pages by date, Vedic finance readings or Kabbalah names: the horoscope date attribute now works on every period, a KP daily finance reading joins the library, and gematria takes the modern letter map.
 
 = 1.15.0 =
 Worth updating if you want Mesoamerican astrology, Vastu, Kabbalah or Ayurveda readings, now with dedicated charts and cards, or want the Chinese astrology and feng shui cards to read in your site language and fit a phone screen.
-
-= 1.14.0 =
-Worth updating if you publish Chinese astrology or feng shui. Those readings now draw as charts and cards rather than lists of values, and a yearly horoscope joins the daily, weekly and monthly ones.

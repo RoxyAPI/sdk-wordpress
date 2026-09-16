@@ -83,12 +83,7 @@ class Horoscope {
 
 		// Static mode: site owner passed a sign attribute.
 		if ( $atts['sign'] !== '' ) {
-			return self::render_result(
-				Sanitize::zodiac_sign( $atts['sign'] ),
-				Sanitize::date_string( $atts['date'] ),
-				(string) ( $atts['period'] ?? 'daily' ),
-				$atts
-			);
+			return self::render_result( Sanitize::zodiac_sign( $atts['sign'] ), $atts );
 		}
 
 		// Form mode: no sign given, render the picker form.
@@ -117,36 +112,36 @@ class Horoscope {
 		$raw_sign = isset( $_POST['sign'] ) ? sanitize_text_field( wp_unslash( $_POST['sign'] ) ) : '';
 		$sign     = Sanitize::zodiac_sign( $raw_sign );
 
-		return self::render_result( $sign, Sanitize::date_string( 'today' ), 'daily', $atts ) . self::render_form( $sign );
+		return self::render_result( $sign, $atts ) . self::render_form( $sign );
 	}
 
 	/**
 	 * Fetch and render one horoscope period.
 	 *
-	 * @param string               $sign          Sanitised zodiac sign slug.
-	 * @param string               $date          YYYY-MM-DD date.
-	 * @param string               $period        daily | weekly | monthly | yearly.
-	 * @param array<string, mixed> $atts   Resolved shortcode attributes. The reserved
-	 *                                     display attributes are read out of this by
-	 *                                     `ComponentRenderer::render_atts()`, so a new
-	 *                                     one needs no change here.
+	 * @param string               $sign Sanitised zodiac sign slug.
+	 * @param array<string, mixed> $atts Resolved shortcode attributes: `period` and
+	 *                                   `date` are read here, so the visitor form and
+	 *                                   the static placement resolve them the same way,
+	 *                                   and the reserved display attributes are read by
+	 *                                   `ComponentRenderer::render_atts()`, so a new one
+	 *                                   needs no change here.
 	 * @return string
 	 */
-	private static function render_result( string $sign, string $date, string $period = 'daily', array $atts = array() ): string {
-		$op_id = self::PERIOD_OPS[ $period ] ?? 'getDailyHoroscope';
+	private static function render_result( string $sign, array $atts ): string {
+		$op_id = self::PERIOD_OPS[ (string) $atts['period'] ] ?? 'getDailyHoroscope';
+		$date  = self::period_anchor( Sanitize::date_string( (string) $atts['date'] ), $op_id );
 
 		// Each period dispatches to its own operation. All four map to
 		// roxy-horoscope-card via the component map, so ComponentRenderer emits
 		// the web component (with a server-rendered fallback) and handles the
 		// disclaimer and attribution. Unmapped or empty responses degrade to the
-		// generic card renderer inside ComponentRenderer. Only the daily period
-		// takes the date attribute; the longer periods resolve their own window.
+		// generic card renderer inside ComponentRenderer.
 		if ( $op_id === 'getWeeklyHoroscope' ) {
-			$data = GeneratedClient::getWeeklyHoroscope( $sign );
+			$data = GeneratedClient::getWeeklyHoroscope( $sign, null, $date );
 		} elseif ( $op_id === 'getMonthlyHoroscope' ) {
-			$data = GeneratedClient::getMonthlyHoroscope( $sign );
+			$data = GeneratedClient::getMonthlyHoroscope( $sign, null, $date );
 		} elseif ( $op_id === 'getYearlyHoroscope' ) {
-			$data = GeneratedClient::getYearlyHoroscope( $sign );
+			$data = GeneratedClient::getYearlyHoroscope( $sign, null, substr( $date, 0, 4 ) );
 		} else {
 			$data = GeneratedClient::getDailyHoroscope( $sign, null, $date );
 		}
@@ -156,6 +151,40 @@ class Horoscope {
 		}
 
 		return ComponentRenderer::render_atts( $op_id, is_array( $data ) ? $data : array(), $atts );
+	}
+
+	/**
+	 * The first day of the period a date falls in, for the operation that reads it.
+	 *
+	 * One `date` attribute serves every period, and it is sent on every call:
+	 * the day itself, any day of the Monday to Sunday week, any day of the
+	 * month, or the year it falls in. Sending it is what makes the current
+	 * period roll over on the site clock, since `Sanitize::date_string()`
+	 * resolves `today` in the site timezone while the API rolls over at 00:00
+	 * UTC when the date is omitted. Anchoring it is what keeps the cache to one
+	 * entry, and one metered call, per period: the API returns the same week
+	 * for any of its seven days, so a key carrying the day would call through
+	 * seven times.
+	 *
+	 * @param string $date  YYYY-MM-DD.
+	 * @param string $op_id The period operation.
+	 * @return string YYYY-MM-DD.
+	 */
+	private static function period_anchor( string $date, string $op_id ): string {
+		$day = \DateTimeImmutable::createFromFormat( '!Y-m-d', $date, wp_timezone() );
+		if ( $day === false ) {
+			return $date;
+		}
+		switch ( $op_id ) {
+			case 'getWeeklyHoroscope':
+				return $day->modify( '-' . ( (int) $day->format( 'N' ) - 1 ) . ' days' )->format( 'Y-m-d' );
+			case 'getMonthlyHoroscope':
+				return $day->format( 'Y-m-01' );
+			case 'getYearlyHoroscope':
+				return $day->format( 'Y-01-01' );
+			default:
+				return $date;
+		}
 	}
 
 	private static function render_form( string $selected = '' ): string {

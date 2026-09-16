@@ -117,6 +117,7 @@
 	"getHora": 3600,
 	"getKpAyanamsa": 3600,
 	"getKpCusps": 2592000,
+	"getKpDailyFinance": 3600,
 	"getKpPlanets": 2592000,
 	"getKpPlanetsInterval": 3600,
 	"getKpRasiChanges": 3600,

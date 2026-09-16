@@ -190,4 +190,32 @@ class Test_Sanitize extends \WP_UnitTestCase {
 	public function test_bounded_text_short_input_unchanged(): void {
 		$this->assertSame( 'short', Sanitize::bounded_text( 'short', 100 ) );
 	}
+	public function test_comma_list_casts_items_to_the_declared_type(): void {
+		$this->assertSame( array( 2, 11 ), Sanitize::comma_list( '2, 11', 'integer' ) );
+		$this->assertSame( array( 1.5, 30.0 ), Sanitize::comma_list( '1.5,30', 'number' ) );
+		$this->assertSame( array( 'mispar-hechrachi', 'mispar-gadol' ), Sanitize::comma_list( ' mispar-hechrachi ,mispar-gadol, ', 'string' ) );
+	}
+
+	public function test_comma_list_drops_empty_entries_and_non_scalars(): void {
+		$this->assertSame( array( 'a' ), Sanitize::comma_list( ',a,,', 'string' ) );
+		$this->assertSame( array(), Sanitize::comma_list( array( 'a' ), 'string' ) );
+	}
+
+	public function test_comma_list_strips_markup_from_items(): void {
+		// Tags go, a script goes with its contents, and an item left empty by
+		// that is dropped rather than posted as "".
+		$this->assertSame( array( 'bold' ), Sanitize::comma_list( '<b>bold</b>, <script>alert(1)</script>', 'string' ) );
+	}
+
+	public function test_json_object_decodes_an_object(): void {
+		$this->assertSame( array( 'cusps' => 30, 'dasha' => 70 ), Sanitize::json_object( '{"cusps":30,"dasha":70}' ) );
+	}
+
+	public function test_json_object_returns_anything_else_as_typed(): void {
+		// A list, a scalar and garbage all go through as the string typed, so the
+		// API rejects the field by name instead of the plugin silently dropping it.
+		$this->assertSame( '[1,2]', Sanitize::json_object( '[1,2]' ) );
+		$this->assertSame( '30', Sanitize::json_object( '30' ) );
+		$this->assertSame( 'not json', Sanitize::json_object( 'not json' ) );
+	}
 }

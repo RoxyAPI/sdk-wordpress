@@ -314,6 +314,15 @@
 	margin: 0;
 }
 
+/* A written field that arrived as several paragraphs keeps them. */
+:where(.roxyapi-fields dd > p) {
+	margin: 0 0 0.75em;
+}
+
+:where(.roxyapi-fields dd > p:last-child) {
+	margin-block-end: 0;
+}
+
 /*
  * Tables get rounded corners + soft zebra stripes + sticky header. A
  * horizontal scroll wrapper kicks in below ~480px so wide tables stay

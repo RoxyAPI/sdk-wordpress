@@ -85,6 +85,7 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\GetKpRasiChanges::register();
 		\RoxyAPI\Generated\Shortcodes\GetKpPlanetsInterval::register();
 		\RoxyAPI\Generated\Shortcodes\CastKpHoraryChart::register();
+		\RoxyAPI\Generated\Shortcodes\GetKpDailyFinance::register();
 		\RoxyAPI\Generated\Shortcodes\CalculateDrishti::register();
 		\RoxyAPI\Generated\Shortcodes\GetMonthlyAspects::register();
 		\RoxyAPI\Generated\Shortcodes\GetLunarAspects::register();

@@ -235,6 +235,59 @@ class Sanitize {
 	}
 
 	/**
+	 * Read a comma list typed into a shortcode attribute or a block text
+	 * control as the array-of-scalars body field the API declares.
+	 *
+	 * An array field has no control of its own on either surface, so the site
+	 * owner types `2, 11` or `mispar-hechrachi, mispar-gadol`, and the raw
+	 * string posted in its place is a 400 on every operation that carries one.
+	 * Items are cast by the declared item type so `[2, 11]` reaches the API as
+	 * integers, never `["2", "11"]`. Empty entries are dropped; nothing else is
+	 * repaired, so a wrong item still fails loudly at the API with its name.
+	 *
+	 * @param mixed  $value     Raw attribute value.
+	 * @param string $item_type OpenAPI item type: `integer`, `number` or `string`.
+	 * @return array<int, int|float|string> Items in the order given.
+	 */
+	public static function comma_list( $value, string $item_type = 'string' ): array {
+		if ( ! is_scalar( $value ) ) {
+			return array();
+		}
+		$out = array();
+		foreach ( explode( ',', (string) $value ) as $item ) {
+			$item = sanitize_text_field( $item );
+			if ( $item === '' ) {
+				continue;
+			}
+			if ( $item_type === 'integer' ) {
+				$out[] = (int) $item;
+			} elseif ( $item_type === 'number' ) {
+				$out[] = (float) $item;
+			} else {
+				$out[] = $item;
+			}
+		}
+		return $out;
+	}
+
+	/**
+	 * Read a JSON object typed into a shortcode attribute or a block text
+	 * control as the object body field the API declares.
+	 *
+	 * Anything that does not decode to an object is returned as typed, so the
+	 * API answers with its own 400 naming the field rather than the plugin
+	 * silently dropping the override and rendering the default as if it had
+	 * been honoured.
+	 *
+	 * @param mixed $value Raw attribute value.
+	 * @return array<string, mixed>|string The decoded object, or the raw string.
+	 */
+	public static function json_object( $value ) {
+		$decoded = json_decode( (string) $value, true );
+		return is_array( $decoded ) && ! array_is_list( $decoded ) ? $decoded : (string) $value;
+	}
+
+	/**
 	 * Sanitize a value to a bounded free-text string.
 	 *
 	 * @param mixed $value     Raw input value.

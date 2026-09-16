@@ -3,11 +3,17 @@
 The full release history for the RoxyAPI plugin. The most recent releases are
 also listed in readme.txt, which wordpress.org displays on the plugin page.
 
-= 1.15.1 =
+= 1.16.0 =
+* New: a KP daily finance reading, [roxy_get_kp_daily_finance], with a Daily Finance Score block. Four Krishnamurti Paddhati layers are scored against the money houses and weighed into one number for the day, every row printed, and the gain houses, loss houses and layer weights can be overridden.
+* New: the gematria, name profile and name compatibility readings take a second letter map. Add transliteration="letter-map-modern" for the modern Israeli transcription, which writes every Latin letter, or leave it off for the Hermetic map.
 * New: the finance section of the Vedic daily reading carries a combined score. One word for the day, the score beside it, and the three readings behind it with a score each, so a client can see what the verdict rests on.
 * New: the current dasha reading takes a datetime, so you can prepare a reading for a day ahead or read the running periods at a past moment. Add datetime="2026-10-01T09:00:00" to the shortcode, or fill the field in the block.
+* Fixed: the date attribute on [roxy_horoscope] now reaches the weekly, monthly and yearly periods, so period="monthly" date="2026-10-01" publishes the October reading. It was silently ignored on every period but daily. The current week and month also turn over on your site clock rather than at midnight UTC, and one reading is fetched per week or month however many days a page is viewed on.
+* Fixed: the sign picker under [roxy_horoscope period="monthly"] answers with the monthly reading. It answered with the daily whatever period was placed.
+* Fixed: a list attribute, such as planets, aspect_types, ciphers, gain_houses or loss_houses, is read as a comma list, and an object attribute such as weights as JSON. Each was posted as typed and refused by the API.
 * Improved: the I Ching daily cast now draws as a hexagram card, with any changing lines named, instead of a plain list of values.
 * Improved: the choghadiya grid and the hora table head their daylight column Daytime instead of Day, which reads correctly beside the night periods. Translated sites get that heading and the combined score in the site language.
+* Improved: a long reading keeps its paragraphs in the version search engines and readers without JavaScript receive. A monthly horoscope column ran as one block there.
 
 = 1.15.0 =
 * New: four whole domains, Mesoamerican astrology, Vastu, Kabbalah and Ayurveda, as 48 readings with matching Gutenberg blocks. Mesoamerican astrology brings the Tzolkin day sign, the Mayan chart with Haab and Long Count, the Aztec tonalpohualli, nawal compatibility and a Long Count converter. Vastu brings the Vastu Purusha Mandala, the entrance pada, plot analysis, room compliance, Ayadi and griha pravesh dates. Kabbalah brings gematria with every spelling shown, name and birth profiles, the 72 names, the Tree of Life and the Hebrew letters. Ayurveda brings the constitution from a birth chart, a daily reading, dinacharya and ritucharya.

@@ -1644,6 +1644,26 @@ class Client {
 	}
 
 	/**
+	 * Daily finance score from four KP sub lord layers - KP Daily Finance API
+	 *
+	 * @param array $body Request body.
+	 * @return array|\WP_Error
+	 */
+	public static function getKpDailyFinance( $body = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'birthDate', 'birthTime', 'latitude', 'longitude' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'vedic-astrology/kp/daily-finance',
+			$body,
+			3600,
+			static function () use ( $body ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/kp/daily-finance', $body );
+			}
+		);
+	}
+
+	/**
 	 * Get planetary aspects (Drishti) - Mutual aspects between all planets
 	 *
 	 * @param array $body Request body.

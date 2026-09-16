@@ -63,7 +63,7 @@ class CalculateGematria {
 				'text' => $atts['text'],
 				'textHebrew' => $atts['text_hebrew'],
 				'transliteration' => $atts['transliteration'],
-				'ciphers' => $atts['ciphers'],
+				'ciphers' => $atts['ciphers'] !== '' ? \RoxyAPI\Support\Sanitize::comma_list( $atts['ciphers'], 'string' ) : '',
 				'misparGadol' => $atts['mispar_gadol'],
 				'atbashOutput' => $atts['atbash_output'],
 				'includeMatches' => $atts['include_matches'] !== '' ? filter_var( $atts['include_matches'], FILTER_VALIDATE_BOOLEAN ) : '',
