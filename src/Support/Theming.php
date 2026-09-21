@@ -233,10 +233,17 @@ class Theming {
 	public static function palette(): array {
 		$opts   = SettingsSchema::get_option();
 		$preset = self::preset( (string) ( $opts['palette_preset'] ?? '' ) );
-		if ( $preset !== array() ) {
-			return $preset;
-		}
+		return $preset !== array() ? $preset : self::custom();
+	}
 
+	/**
+	 * The site's own saved colours, whether or not a preset is in force, so the
+	 * Custom card can preview them while a preset answers the page.
+	 *
+	 * @return array<string, array<string, string>>
+	 */
+	public static function custom(): array {
+		$opts    = SettingsSchema::get_option();
 		$palette = array(
 			'light' => array(),
 			'dark'  => array(),

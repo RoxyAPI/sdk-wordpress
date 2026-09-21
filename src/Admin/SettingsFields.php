@@ -150,7 +150,7 @@ class SettingsFields {
 	 * @return string
 	 */
 	private static function palette_swatches( array $palette ): string {
-		$colors = $palette['light'] ?? Theming::palette()['light'];
+		$colors = $palette['light'] ?? Theming::custom()['light'];
 		$out    = '';
 		foreach ( array( 'bg', 'surface', 'accent', 'fg' ) as $token ) {
 			$value = isset( $colors[ $token ] ) ? sanitize_hex_color( (string) $colors[ $token ] ) : null;
@@ -211,7 +211,7 @@ class SettingsFields {
 	public static function palette_reset_html(): string {
 		return sprintf(
 			'<button type="submit" name="roxyapi_settings[reset_palette]" value="1" class="button button-link roxyapi-palette-reset">%s</button>',
-			esc_html__( 'Reset colours to defaults', 'roxyapi' )
+			esc_html__( 'Clear every colour and use the defaults', 'roxyapi' )
 		);
 	}
 
@@ -619,14 +619,10 @@ class SettingsFields {
 	}
 
 	/**
-	 * Resolve the two palette controls the Branding tab posts beside the fields.
-	 *
-	 * Reset wins over everything and clears the preset plus all fourteen
-	 * colours. Otherwise a selected preset copies its own HEX values over them,
-	 * every save and not only the one that selected it, so switching back to
-	 * Custom later starts from the palette that was on screen rather than from
-	 * blank. Nothing here reads a colour out of the request: the values come from
-	 * a constant, keyed by a name the schema has already narrowed to one of four.
+	 * Resolve the reset control the Branding tab posts beside the fields: it
+	 * clears the preset plus all fourteen colours. A preset never writes into
+	 * the colour fields, so a site owner can try one and come back to the
+	 * colours they set by hand.
 	 *
 	 * Reset is deliberately not a stored field. It is an action, and a stored one
 	 * would blank the palette again on every subsequent save.
@@ -640,18 +636,6 @@ class SettingsFields {
 			$out['palette_preset'] = '';
 			foreach ( Theming::option_keys() as $key ) {
 				$out[ $key ] = '';
-			}
-			return $out;
-		}
-
-		$palette = Theming::preset( (string) ( $out['palette_preset'] ?? '' ) );
-		if ( $palette === array() ) {
-			return $out;
-		}
-
-		foreach ( Theming::tokens() as $token ) {
-			foreach ( array( 'light', 'dark' ) as $mode ) {
-				$out[ Theming::option_key( $token, $mode ) ] = (string) ( $palette[ $mode ][ $token ] ?? '' );
 			}
 		}
 		return $out;

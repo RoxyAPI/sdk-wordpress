@@ -250,6 +250,22 @@ class Test_Settings_Screen extends Mock_Http_TestCase {
 		$this->assertTrue( ApiKey::is_configured() );
 	}
 
+	/**
+	 * A preset answers the page on its own, so trying one must leave the colours
+	 * a site owner set by hand where they were, and coming back to Custom must
+	 * find them again.
+	 */
+	public function test_a_preset_leaves_the_custom_colours_alone(): void {
+		$this->save_tab( array( 'palette_preset' => '', 'accent_color' => '#123456' ) );
+		$this->save_tab( array( 'palette_preset' => 'kiln' ) );
+		$this->assertSame( '#123456', get_option( SettingsPage::OPTION_NAME )['accent_color'] );
+		$this->assertSame( '#123456', \RoxyAPI\Support\Theming::custom()['light']['accent'] );
+		$this->assertNotSame( '#123456', \RoxyAPI\Support\Theming::palette()['light']['accent'], 'The preset answers the page while it is chosen.' );
+
+		$this->save_tab( array( 'palette_preset' => '' ) );
+		$this->assertSame( '#123456', \RoxyAPI\Support\Theming::palette()['light']['accent'] );
+	}
+
 	/** Saving one tab must not reset a sibling tab's values either. */
 	public function test_tabs_do_not_overwrite_each_other(): void {
 		$this->save_tab( array( 'display_language' => 'de' ) );

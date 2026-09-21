@@ -194,16 +194,13 @@ class Test_Theming extends \WP_UnitTestCase {
 		$this->assertStringNotContainsString( '#8B5CF6', $css );
 	}
 
-	/**
-	 * Choosing a preset copies its values into the colour fields so switching to
-	 * Custom afterwards starts from the palette that was on screen.
-	 */
-	public function test_choosing_a_preset_seeds_the_colour_fields(): void {
+	/** Choosing a preset never writes into the colour fields; they stay the site owner's own. */
+	public function test_choosing_a_preset_leaves_the_colour_fields_alone(): void {
 		$stored = $this->save( array( 'palette_preset' => 'kiln' ) );
 
-		$this->assertSame( '#a44a24', $stored['accent_color'] );
-		$this->assertSame( '#d98d5f', $stored['accent_color_dark'] );
-		$this->assertSame( '#e6d8c2', $stored['border_color'] );
+		$this->assertSame( '', $stored['accent_color'] );
+		$this->assertSame( '', $stored['accent_color_dark'] );
+		$this->assertSame( '', $stored['border_color'] );
 	}
 
 	public function test_an_unknown_preset_name_falls_back_to_custom(): void {

@@ -254,6 +254,7 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * New: a city search in the block editor sidebar for every reading that takes a place. Pick a city and the latitude, longitude and timezone fill in, the same search the visitor form already has.
 * Improved: a visitor form folds a section nobody has to fill in, such as the domain weights on the forecast timeline, behind its heading until it is opened, and opens it on its own when it holds a value or an error.
 * Improved: the Connect screen leads with the shortcode that already works, then the key. The Shortcodes library lists readings only; the usage and language lookups are gone from it.
+* Improved: on the Branding tab a palette no longer overwrites the colours you set by hand, so you can try a palette and come back to your own; the colour fields fold away the moment a palette is picked, and the reset link says what it does.
 
 = 1.17.0 =
 * New: [roxy_forecast], a featured forecast timeline. Visitors enter their birth details and an optional date window, and the reading merges transits, sign ingresses, retrograde stations, eclipses, moon phases, Vimshottari dasha changes and biorhythm critical days into one timeline of up to 90 days.
