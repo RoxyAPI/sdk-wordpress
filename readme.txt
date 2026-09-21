@@ -251,6 +251,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 = 1.18.0 =
 * Improved: the block inserter lists the featured readings under RoxyAPI and every other reading under a second category, RoxyAPI: every reading, so the headline blocks are one short list to browse. Search still finds every block.
+* New: a city search in the block editor sidebar for every reading that takes a place. Pick a city and the latitude, longitude and timezone fill in, the same search the visitor form already has.
+* Improved: a visitor form folds a section nobody has to fill in, such as the domain weights on the forecast timeline, behind its heading until it is opened, and opens it on its own when it holds a value or an error.
+* Improved: the Connect screen leads with the shortcode that already works, then the key. The Shortcodes library lists readings only; the usage and language lookups are gone from it.
 
 = 1.17.0 =
 * New: [roxy_forecast], a featured forecast timeline. Visitors enter their birth details and an optional date window, and the reading merges transits, sign ingresses, retrograde stations, eclipses, moon phases, Vimshottari dasha changes and biorhythm critical days into one timeline of up to 90 days.
@@ -263,28 +266,14 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Improved: three chart labels corrected on German, French and Portuguese sites.
 * Improved: a sample copied from the Shortcodes library no longer carries a language attribute, so a pasted reading follows the site language. Featured readings in the library keep their catalogue order instead of sorting by name, and the Connect tab fits a phone screen.
 
-= 1.16.0 =
-* New: a KP daily finance reading, [roxy_get_kp_daily_finance], with a Daily Finance Score block. Four Krishnamurti Paddhati layers are scored against the money houses and weighed into one number for the day, every row printed, and the gain houses, loss houses and layer weights can be overridden. It draws as a card of its own: the band and score, the gain and loss significators with the evidence by house, the four layers as tables with their weights, and the best and worst Moon windows of the day, with every heading in your site language.
-* New: the gematria, name profile and name compatibility readings take a second letter map. Add transliteration="letter-map-modern" for the modern Israeli transcription, which writes every Latin letter, or leave it off for the Hermetic map.
-* New: the finance section of the Vedic daily reading carries a combined score. One word for the day, the score beside it, and the three readings behind it with a score each, so a client can see what the verdict rests on.
-* New: the current dasha reading takes a datetime, so you can prepare a reading for a day ahead or read the running periods at a past moment. Add datetime="2026-10-01T09:00:00" to the shortcode, or fill the field in the block.
-* Fixed: the date attribute on [roxy_horoscope] now reaches the weekly, monthly and yearly periods, so period="monthly" date="2026-10-01" publishes the October reading. It was silently ignored on every period but daily. The current week and month also turn over on your site clock rather than at midnight UTC, and one reading is fetched per week or month however many days a page is viewed on.
-* Fixed: the sign picker under [roxy_horoscope period="monthly"] answers with the monthly reading. It answered with the daily whatever period was placed.
-* Fixed: a list attribute, such as planets, aspect_types, ciphers, gain_houses or loss_houses, is read as a comma list, and an object attribute such as weights as JSON. Each was posted as typed and refused by the API.
-* Improved: the I Ching daily cast now draws as a hexagram card, with any changing lines named, instead of a plain list of values.
-* Improved: the choghadiya grid and the hora table head their daylight column Daytime instead of Day, which reads correctly beside the night periods. Translated sites get that heading and the combined score in the site language.
-* Improved: a long reading keeps its paragraphs in the version search engines and readers without JavaScript receive. A monthly horoscope column ran as one block there.
-
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
 
 = 1.18.0 =
-Worth updating if you build pages in the block editor: the featured readings are one short RoxyAPI list in the inserter and every other reading sits under RoxyAPI: every reading.
+Worth updating if you build pages in the block editor: a city search fills coordinates in every block sidebar, the featured readings are one short RoxyAPI list in the inserter, and visitor forms fold their optional sections away.
 
 = 1.17.0 =
 Worth updating if you build pages in the block editor: nine more featured readings become blocks with sidebar inputs, a forecast timeline and a Human Design bodygraph join the library with visitor forms, and two Vedic matching readings arrive.
 
-= 1.16.0 =
-Worth updating if you publish horoscope pages by date, Vedic finance readings or Kabbalah names: the horoscope date attribute now works on every period, a KP daily finance reading joins the library, and gematria takes the modern letter map.
 

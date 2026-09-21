@@ -127,7 +127,7 @@ if ( $active_tab !== 'connect' ) {
 	$roxy_head_lede  = __( 'RoxyAPI is', 'roxyapi' );
 	$roxy_head_punch = __( 'connected.', 'roxyapi' );
 } else {
-	$roxy_head_lede  = __( 'Connect RoxyAPI in', 'roxyapi' );
+	$roxy_head_lede  = __( 'Your first reading in', 'roxyapi' );
 	$roxy_head_punch = __( '30 seconds.', 'roxyapi' );
 }
 ?>

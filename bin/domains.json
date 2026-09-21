@@ -1,5 +1,5 @@
 {
-	"_comment": "Brand-domain registry. Keys are canonical OpenAPI tag strings (must match Endpoints.php tag exactly); values are admin-UI metadata (human label, slug for tab data attribute / URL hash, accent colour). Brand-positioning rule, canonical domain order: Western Astrology, Vedic Astrology, Forecast, Human Design, Chinese Astrology, Feng Shui, Mesoamerican Astrology, Vastu, Numerology, Kabbalah, Tarot, Biorhythm, Ayurveda, I-Ching, Crystals, Dreams, Angel Numbers, Location and Timezone. Languages and Usage at the end. Accent must be one of the eight the admin CSS defines (amber, blue, green, indigo, neutral, orange, pink, purple); anything else renders unstyled. Any OpenAPI tag with no entry here falls through to the catch-all Other tab, so every tag in Endpoints.php needs a row. New OpenAPI tag = new entry here, then npm run generate; no PHP edits required.",
+	"_comment": "Brand-domain registry. Keys are canonical OpenAPI tag strings (must match Endpoints.php tag exactly); values are admin-UI metadata (human label, slug for tab data attribute / URL hash, accent colour). Brand-positioning rule, canonical domain order: Western Astrology, Vedic Astrology, Forecast, Human Design, Chinese Astrology, Feng Shui, Mesoamerican Astrology, Vastu, Numerology, Kabbalah, Tarot, Biorhythm, Ayurveda, I-Ching, Crystals, Dreams, Angel Numbers, Location and Timezone. Languages and Usage at the end, with `library: false` because they are developer endpoints, not readings, and the Shortcodes Library skips them. Accent must be one of the eight the admin CSS defines (amber, blue, green, indigo, neutral, orange, pink, purple); anything else renders unstyled. Any OpenAPI tag with no entry here falls through to the catch-all Other tab, so every tag in Endpoints.php needs a row. New OpenAPI tag = new entry here, then npm run generate; no PHP edits required.",
 
 	"Western Astrology": {
 		"label": "Western Astrology",
@@ -83,10 +83,16 @@
 		"slug": "location",
 		"accent": "blue"
 	},
-	"Usage": { "label": "Usage", "slug": "usage", "accent": "neutral" },
+	"Usage": {
+		"label": "Usage",
+		"slug": "usage",
+		"accent": "neutral",
+		"library": false
+	},
 	"Languages": {
 		"label": "Languages",
 		"slug": "languages",
-		"accent": "neutral"
+		"accent": "neutral",
+		"library": false
 	}
 }

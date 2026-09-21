@@ -57,9 +57,39 @@ $option_group   = isset( $option_group ) ? (string) $option_group : 'roxyapi';
 	<?php settings_fields( $option_group ); ?>
 
 	<div class="roxyapi-steps" role="list" aria-label="<?php echo esc_attr__( 'RoxyAPI setup steps', 'roxyapi' ); ?>">
-		<section class="roxyapi-step-card" role="listitem">
+		<section class="roxyapi-step-card" id="roxyapi-shortcode-section" role="listitem">
 			<h2 class="roxyapi-step-title">
 				<span class="roxyapi-setup"><?php echo esc_html__( 'Step 1.', 'roxyapi' ); ?></span>
+				<span class="roxyapi-punchline"><?php echo esc_html__( 'Drop a shortcode on a page.', 'roxyapi' ); ?></span>
+			</h2>
+			<p class="roxyapi-step-body">
+				<?php echo esc_html__( 'Copy a shortcode below, paste it into any post, page, or widget, and open the page: the reading is already there, rendered server side with no JavaScript required. No key needed to start.', 'roxyapi' ); ?>
+			</p>
+			<ul class="roxyapi-shortcode-list">
+				<?php foreach ( $samples as $sample ) : ?>
+					<li class="roxyapi-shortcode">
+						<code class="roxyapi-shortcode-code"><?php echo esc_html( $sample['code'] ); ?></code>
+						<button
+							type="button"
+							class="roxyapi-copy"
+							data-roxyapi-copy="<?php echo esc_attr( $sample['code'] ); ?>"
+							aria-label="<?php echo esc_attr( sprintf( /* translators: %s: shortcode label */ __( 'Copy %s shortcode', 'roxyapi' ), $sample['label'] ) ); ?>"
+						>
+							<?php echo esc_html__( 'Copy', 'roxyapi' ); ?>
+						</button>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+			<?php if ( '' !== $shortcodes_url ) : ?>
+				<a class="roxyapi-cta roxyapi-cta--secondary" href="<?php echo esc_url( $shortcodes_url ); ?>">
+					<?php echo esc_html__( 'Browse all shortcodes', 'roxyapi' ); ?>
+					<span class="roxyapi-cta-arrow" aria-hidden="true">&rarr;</span>
+				</a>
+			<?php endif; ?>
+		</section>
+		<section class="roxyapi-step-card" role="listitem">
+			<h2 class="roxyapi-step-title">
+				<span class="roxyapi-setup"><?php echo esc_html__( 'Step 2.', 'roxyapi' ); ?></span>
 				<span class="roxyapi-punchline"><?php echo esc_html__( 'Get your API key.', 'roxyapi' ); ?></span>
 			</h2>
 			<p class="roxyapi-step-body">
@@ -86,7 +116,7 @@ $option_group   = isset( $option_group ) ? (string) $option_group : 'roxyapi';
 
 		<section class="roxyapi-step-card" role="listitem">
 			<h2 class="roxyapi-step-title">
-				<span class="roxyapi-setup"><?php echo esc_html__( 'Step 2.', 'roxyapi' ); ?></span>
+				<span class="roxyapi-setup"><?php echo esc_html__( 'Step 3.', 'roxyapi' ); ?></span>
 				<span class="roxyapi-punchline"><?php echo esc_html__( 'Paste it here.', 'roxyapi' ); ?></span>
 			</h2>
 			<p class="roxyapi-step-body">
@@ -107,35 +137,5 @@ $option_group   = isset( $option_group ) ? (string) $option_group : 'roxyapi';
 			</p>
 		</section>
 
-		<section class="roxyapi-step-card" id="roxyapi-shortcode-section" role="listitem">
-			<h2 class="roxyapi-step-title">
-				<span class="roxyapi-setup"><?php echo esc_html__( 'Step 3.', 'roxyapi' ); ?></span>
-				<span class="roxyapi-punchline"><?php echo esc_html__( 'Drop a shortcode on a page.', 'roxyapi' ); ?></span>
-			</h2>
-			<p class="roxyapi-step-body">
-				<?php echo esc_html__( 'Copy a shortcode below. Paste it into any post, page, or widget. RoxyAPI renders the reading server side. No JavaScript required on the front end.', 'roxyapi' ); ?>
-			</p>
-			<ul class="roxyapi-shortcode-list">
-				<?php foreach ( $samples as $sample ) : ?>
-					<li class="roxyapi-shortcode">
-						<code class="roxyapi-shortcode-code"><?php echo esc_html( $sample['code'] ); ?></code>
-						<button
-							type="button"
-							class="roxyapi-copy"
-							data-roxyapi-copy="<?php echo esc_attr( $sample['code'] ); ?>"
-							aria-label="<?php echo esc_attr( sprintf( /* translators: %s: shortcode label */ __( 'Copy %s shortcode', 'roxyapi' ), $sample['label'] ) ); ?>"
-						>
-							<?php echo esc_html__( 'Copy', 'roxyapi' ); ?>
-						</button>
-					</li>
-				<?php endforeach; ?>
-			</ul>
-			<?php if ( '' !== $shortcodes_url ) : ?>
-				<a class="roxyapi-cta roxyapi-cta--secondary" href="<?php echo esc_url( $shortcodes_url ); ?>">
-					<?php echo esc_html__( 'Browse all shortcodes', 'roxyapi' ); ?>
-					<span class="roxyapi-cta-arrow" aria-hidden="true">&rarr;</span>
-				</a>
-			<?php endif; ?>
-		</section>
 	</div>
 </form>

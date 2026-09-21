@@ -118,8 +118,17 @@ class FormRenderer {
 			$section_errs = isset( $errors_by_key[ $section_name ] ) && is_array( $errors_by_key[ $section_name ] ) ? $errors_by_key[ $section_name ] : array();
 			$has_geo      = self::section_has_geo_triplet( $section );
 			$section_id   = 'roxyapi-section-' . sanitize_html_class( $form_id . '-' . $section_name );
-			$out         .= '<fieldset class="roxyapi-form-section" id="' . esc_attr( $section_id ) . '">';
-			$out         .= '<legend>' . esc_html( (string) $section['label'] ) . '</legend>';
+			// A section nobody has to fill in stays folded until a visitor wants
+			// it, and unfolds on its own when it holds a value or an error.
+			$optional = self::section_is_optional( $section );
+			if ( $optional ) {
+				$open = ( array_filter( $section_prev, static fn( $v ) => (string) $v !== '' ) || $section_errs ) ? ' open' : '';
+				$out .= '<details class="roxyapi-form-section roxyapi-form-section--optional" id="' . esc_attr( $section_id ) . '"' . $open . '>';
+				$out .= '<summary>' . esc_html( (string) $section['label'] ) . '</summary>';
+			} else {
+				$out .= '<fieldset class="roxyapi-form-section" id="' . esc_attr( $section_id ) . '">';
+				$out .= '<legend>' . esc_html( (string) $section['label'] ) . '</legend>';
+			}
 			if ( $has_geo ) {
 				$has_geo_section = true;
 				$out            .= self::render_city_search( $section_id, $section_name );
@@ -132,7 +141,7 @@ class FormRenderer {
 					$section_errs[ $field['name'] ] ?? ''
 				);
 			}
-			$out .= '</fieldset>';
+			$out .= $optional ? '</details>' : '</fieldset>';
 		}
 
 		if ( $has_geo_section ) {
@@ -261,6 +270,20 @@ class FormRenderer {
 
 		$out .= '</p>';
 		return $out;
+	}
+
+	/**
+	 * Whether every field in a section is optional.
+	 *
+	 * @param array<string,mixed> $section Section spec.
+	 */
+	private static function section_is_optional( array $section ): bool {
+		foreach ( ( $section['fields'] ?? array() ) as $field ) {
+			if ( ! empty( $field['required'] ) ) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**

@@ -147,7 +147,7 @@ class Test_Settings_Screen extends Mock_Http_TestCase {
 	 * screen that announced itself as connected would be a lie.
 	 */
 	public function test_connect_heading_reflects_connection_state(): void {
-		$this->assertStringContainsString( 'Connect RoxyAPI in', $this->render( 'connect' ) );
+		$this->assertStringContainsString( 'Your first reading in', $this->render( 'connect' ) );
 
 		$this->connect();
 		$this->assertStringContainsString( 'connected.', $this->render( 'connect' ) );
@@ -158,7 +158,7 @@ class Test_Settings_Screen extends Mock_Http_TestCase {
 		foreach ( array( 'branding' => 'Branding.', 'display' => 'Display.', 'privacy' => 'Privacy.', 'advanced' => 'Advanced.' ) as $tab => $heading ) {
 			$html = $this->render( $tab );
 			$this->assertStringContainsString( $heading, $html );
-			$this->assertStringNotContainsString( 'Connect RoxyAPI in', $html, "The {$tab} tab must not nag about connecting." );
+			$this->assertStringNotContainsString( 'Your first reading in', $html, "The {$tab} tab must not nag about connecting." );
 		}
 	}
 

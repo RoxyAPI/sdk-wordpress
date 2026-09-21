@@ -508,13 +508,19 @@
 	margin: 0;
 }
 
-:where(.roxyapi-form-section > legend) {
+:where(.roxyapi-form-section > legend),
+:where(.roxyapi-form-section > summary) {
 	padding-inline: 0.4rem;
 	font-weight: 600;
 	font-size: var(--wp--preset--font-size--small, 0.875rem);
 	text-transform: uppercase;
 	letter-spacing: 0.06em;
 	color: color-mix(in srgb, currentcolor 70%, transparent);
+}
+
+:where(.roxyapi-form-section > summary) {
+	grid-column: 1 / -1;
+	cursor: pointer;
 }
 
 :where(.roxyapi-form-field) {

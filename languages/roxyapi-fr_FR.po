@@ -823,7 +823,7 @@ msgstr "Date de fin"
 msgid "Expression"
 msgstr "Expression"
 
-#: src/Support/FormRenderer.php:298
+#: src/Support/FormRenderer.php:321
 msgid "Find by city"
 msgstr "Rechercher par ville"
 
@@ -933,7 +933,7 @@ msgstr "Système de maisons pour les deux thèmes natals"
 msgid "House system for the composite chart"
 msgstr "Système de maisons pour le thème composite"
 
-#: src/Support/FormRenderer.php:320
+#: src/Support/FormRenderer.php:343
 msgid "I consent to sending my inputs to generate this reading. See the Privacy Policy for details."
 msgstr "J'accepte l'envoi de mes informations pour générer cette lecture. Consultez la politique de confidentialité pour plus de détails."
 
@@ -1541,7 +1541,7 @@ msgstr "Graine"
 msgid "Select the timezone of the location."
 msgstr "Sélectionnez le fuseau horaire du lieu."
 
-#: src/Support/FormRenderer.php:304
+#: src/Support/FormRenderer.php:327
 msgid "Selecting a city auto-fills latitude, longitude, and timezone."
 msgstr "Choisir une ville remplit automatiquement la latitude, la longitude et le fuseau horaire."
 
@@ -1617,11 +1617,12 @@ msgstr "Date de départ de chaque période au format AAAA-MM-JJ"
 msgid "Start date"
 msgstr "Date de début"
 
-#: src/Support/FormRenderer.php:301
+#: src/Support/FormRenderer.php:324
+#: blocks/_shared/generated-edit.js:111
 msgid "Start typing a city name"
 msgstr "Commencez à saisir le nom d'une ville"
 
-#: src/Support/FormRenderer.php:162
+#: src/Support/FormRenderer.php:171
 msgid "Submit"
 msgstr "Envoyer"
 
@@ -2183,7 +2184,7 @@ msgstr "Échec de la copie"
 #: src/Admin/DashboardWidget.php:132
 #: src/Admin/ShortcodesPage.php:116
 #: templates/admin-connected.php:198
-#: templates/admin-onboarding.php:128
+#: templates/admin-onboarding.php:78
 #: templates/admin-shortcodes.php:136
 msgid "Copy"
 msgstr "Copier"
@@ -2208,7 +2209,7 @@ msgstr "Connecté à RoxyAPI"
 #. translators: %s: shortcode title
 #: src/Admin/DashboardWidget.php:130
 #: templates/admin-connected.php:196
-#: templates/admin-onboarding.php:126
+#: templates/admin-onboarding.php:76
 #: templates/admin-shortcodes.php:134
 #, php-format
 msgid "Copy %s shortcode"
@@ -2691,7 +2692,7 @@ msgid "Three working shortcodes. Copy. Paste. Publish."
 msgstr "Trois shortcodes prêts à l'emploi. Copiez. Collez. Publiez."
 
 #: templates/admin-connected.php:205
-#: templates/admin-onboarding.php:135
+#: templates/admin-onboarding.php:85
 msgid "Browse all shortcodes"
 msgstr "Parcourir tous les shortcodes"
 
@@ -2704,12 +2705,12 @@ msgid "Replace key"
 msgstr "Remplacer la clé"
 
 #: templates/admin-connected.php:220
-#: templates/admin-onboarding.php:98
+#: templates/admin-onboarding.php:128
 msgid "Save key"
 msgstr "Enregistrer la clé"
 
 #: templates/admin-connected.php:223
-#: templates/admin-onboarding.php:101
+#: templates/admin-onboarding.php:131
 msgid "Test Connection"
 msgstr "Tester la connexion"
 
@@ -2827,10 +2828,6 @@ msgstr "Docs"
 msgid "Open dashboard at roxyapi.com"
 msgstr "Ouvrir le tableau de bord sur roxyapi.com"
 
-#: templates/admin-connected.php:130
-msgid "Connect RoxyAPI in"
-msgstr "Connecter RoxyAPI en"
-
 #: templates/admin-connected.php:131
 msgid "30 seconds."
 msgstr "30 secondes."
@@ -2851,51 +2848,47 @@ msgstr "Étapes de configuration RoxyAPI"
 msgid "Step 1."
 msgstr "Étape 1."
 
-#: templates/admin-onboarding.php:63
+#: templates/admin-onboarding.php:93
 msgid "Get your API key."
 msgstr "Obtenez votre clé API."
 
-#: templates/admin-onboarding.php:66
+#: templates/admin-onboarding.php:96
 msgid "Optional to start. An API key connects this plugin to your RoxyAPI account, removes the free daily limit, and covers every reading with one key. Pick a plan at roxyapi.com when you are ready for production."
 msgstr "Facultatif pour commencer. Une clé API connecte cette extension à votre compte RoxyAPI, supprime la limite quotidienne gratuite et couvre chaque lecture avec une seule clé. Choisissez un forfait sur roxyapi.com lorsque vous êtes prêt pour la production."
 
 #. translators: %s: link to the RoxyAPI Playground
-#: templates/admin-onboarding.php:72
+#: templates/admin-onboarding.php:102
 #, php-format
 msgid "Want to try the endpoints first? %s. No signup needed."
 msgstr "Vous voulez d'abord essayer les points de terminaison ? %s. Aucune inscription requise."
 
-#: templates/admin-onboarding.php:76
+#: templates/admin-onboarding.php:106
 msgid "Open the Playground"
 msgstr "Ouvrir le Playground"
 
-#: templates/admin-onboarding.php:82
+#: templates/admin-onboarding.php:112
 msgid "Sign up at roxyapi.com"
 msgstr "S'inscrire sur roxyapi.com"
 
-#: templates/admin-onboarding.php:89
+#: templates/admin-onboarding.php:92
 msgid "Step 2."
 msgstr "Étape 2."
 
-#: templates/admin-onboarding.php:90
+#: templates/admin-onboarding.php:120
 msgid "Paste it here."
 msgstr "Collez-la ici."
 
-#: templates/admin-onboarding.php:93
+#: templates/admin-onboarding.php:123
 msgid "Drop the key into the field below. The plugin encrypts it before saving. Your key never reaches the browser at render time."
 msgstr "Déposez la clé dans le champ ci-dessous. L'extension la chiffre avant l'enregistrement. Votre clé n'atteint jamais le navigateur lors de l'affichage."
 
-#: templates/admin-onboarding.php:112
+#: templates/admin-onboarding.php:119
 msgid "Step 3."
 msgstr "Étape 3."
 
-#: templates/admin-onboarding.php:113
+#: templates/admin-onboarding.php:63
 msgid "Drop a shortcode on a page."
 msgstr "Déposez un shortcode sur une page."
-
-#: templates/admin-onboarding.php:116
-msgid "Copy a shortcode below. Paste it into any post, page, or widget. RoxyAPI renders the reading server side. No JavaScript required on the front end."
-msgstr "Copiez un shortcode ci-dessous. Collez-le dans n'importe quel article, page ou widget. RoxyAPI affiche la lecture côté serveur. Aucun JavaScript requis côté visiteur."
 
 #: templates/admin-shortcodes.php:33
 msgid "Every reading."
@@ -4230,24 +4223,24 @@ msgstr ""
 msgid "Pick a zodiac sign in the sidebar to preview the daily reading, or publish as is to render a visitor sign picker on the front end."
 msgstr ""
 
-#: blocks/_shared/generated-edit.js:55
+#: blocks/_shared/generated-edit.js:156
 msgid "Select an option"
 msgstr ""
 
 #: src/Admin/SettingsFields.php:196
-#: blocks/_shared/generated-edit.js:56
+#: blocks/_shared/generated-edit.js:157
 msgid "Default"
 msgstr "Par défaut"
 
-#: blocks/_shared/generated-edit.js:130
+#: blocks/_shared/generated-edit.js:232
 msgid "Reading Settings"
 msgstr ""
 
-#: blocks/_shared/generated-edit.js:164
+#: blocks/_shared/generated-edit.js:272
 msgid "Reading inputs needed"
 msgstr ""
 
-#: blocks/_shared/generated-edit.js:167
+#: blocks/_shared/generated-edit.js:275
 msgid "Fill in the required fields in the sidebar to preview and publish this reading."
 msgstr ""
 
@@ -4272,242 +4265,18 @@ msgid "guidance"
 msgstr ""
 
 #: blocks/astrology-wrapper/block.json
-#: blocks/generated/analyze-karmic-lessons/block.json
-#: blocks/generated/analyze-number-sequence/block.json
 #: blocks/generated/angel-number/block.json
 #: blocks/generated/biorhythm/block.json
 #: blocks/generated/bodygraph/block.json
-#: blocks/generated/calculate-annual-forecast/block.json
-#: blocks/generated/calculate-arabic-lots/block.json
-#: blocks/generated/calculate-arudha-padas/block.json
-#: blocks/generated/calculate-ashtakavarga/block.json
-#: blocks/generated/calculate-aspects/block.json
-#: blocks/generated/calculate-ayadi/block.json
-#: blocks/generated/calculate-ayurvedic-constitution/block.json
-#: blocks/generated/calculate-bhav-chalit/block.json
-#: blocks/generated/calculate-bhava-bala/block.json
-#: blocks/generated/calculate-birth-day/block.json
-#: blocks/generated/calculate-bridge-numbers/block.json
-#: blocks/generated/calculate-business-name/block.json
-#: blocks/generated/calculate-centers/block.json
-#: blocks/generated/calculate-chaldean/block.json
-#: blocks/generated/calculate-channels/block.json
-#: blocks/generated/calculate-chara-karakas/block.json
-#: blocks/generated/calculate-day-master-strength/block.json
-#: blocks/generated/calculate-drishti/block.json
-#: blocks/generated/calculate-dual/block.json
-#: blocks/generated/calculate-expression/block.json
-#: blocks/generated/calculate-gates/block.json
-#: blocks/generated/calculate-gematria/block.json
-#: blocks/generated/calculate-houses/block.json
-#: blocks/generated/calculate-kua-number/block.json
-#: blocks/generated/calculate-luck-pillars/block.json
-#: blocks/generated/calculate-lunar-date/block.json
-#: blocks/generated/calculate-maturity/block.json
-#: blocks/generated/calculate-name-compatibility/block.json
-#: blocks/generated/calculate-parallels/block.json
-#: blocks/generated/calculate-personal-day/block.json
-#: blocks/generated/calculate-personal-month/block.json
-#: blocks/generated/calculate-personal-year/block.json
-#: blocks/generated/calculate-personality/block.json
-#: blocks/generated/calculate-profile/block.json
-#: blocks/generated/calculate-shadbala/block.json
-#: blocks/generated/calculate-soul-urge/block.json
-#: blocks/generated/calculate-tonalpohualli/block.json
-#: blocks/generated/calculate-transit/block.json
-#: blocks/generated/calculate-transits/block.json
-#: blocks/generated/calculate-type/block.json
-#: blocks/generated/calculate-tzolkin/block.json
-#: blocks/generated/calculate-variables/block.json
-#: blocks/generated/calculate-zodiac-animal/block.json
-#: blocks/generated/cast-career-spread/block.json
-#: blocks/generated/cast-celtic-cross/block.json
-#: blocks/generated/cast-daily-reading/block.json
-#: blocks/generated/cast-kp-horary-chart/block.json
-#: blocks/generated/cast-love-spread/block.json
-#: blocks/generated/cast-reading/block.json
-#: blocks/generated/cast-three-card/block.json
-#: blocks/generated/check-kalsarpa-dosha/block.json
-#: blocks/generated/check-karmic-debt/block.json
-#: blocks/generated/check-sadhesati/block.json
-#: blocks/generated/convert-long-count/block.json
 #: blocks/generated/crystals-by-zodiac/block.json
-#: blocks/generated/detect-aspect-patterns/block.json
-#: blocks/generated/detect-yogas/block.json
-#: blocks/generated/draw-cards/block.json
-#: blocks/generated/find-griha-pravesh-dates/block.json
-#: blocks/generated/forecast-solar-return/block.json
-#: blocks/generated/generate-asteroids/block.json
-#: blocks/generated/generate-astrocartography/block.json
-#: blocks/generated/generate-bazi-chart/block.json
-#: blocks/generated/generate-birth-profile/block.json
-#: blocks/generated/generate-bodygraph/block.json
-#: blocks/generated/generate-divisional-chart/block.json
-#: blocks/generated/generate-eight-mansions/block.json
-#: blocks/generated/generate-fixed-stars/block.json
-#: blocks/generated/generate-flying-star-chart/block.json
-#: blocks/generated/generate-lilith/block.json
-#: blocks/generated/generate-local-space/block.json
-#: blocks/generated/generate-lunar-return/block.json
-#: blocks/generated/generate-mayan-chart/block.json
-#: blocks/generated/generate-name-profile/block.json
-#: blocks/generated/generate-navamsa/block.json
-#: blocks/generated/generate-planetary-return/block.json
-#: blocks/generated/generate-profections/block.json
-#: blocks/generated/generate-progressions/block.json
-#: blocks/generated/generate-relocation-chart/block.json
-#: blocks/generated/generate-solar-arc/block.json
-#: blocks/generated/generate-solar-return/block.json
-#: blocks/generated/get-almanac-day/block.json
-#: blocks/generated/get-annual-afflictions/block.json
-#: blocks/generated/get-annual-flying-stars/block.json
-#: blocks/generated/get-avastha/block.json
-#: blocks/generated/get-aztec-day-sign/block.json
-#: blocks/generated/get-aztec-trecena/block.json
-#: blocks/generated/get-bagua-sector/block.json
-#: blocks/generated/get-basic-panchang/block.json
-#: blocks/generated/get-birthstones/block.json
-#: blocks/generated/get-card/block.json
-#: blocks/generated/get-center/block.json
-#: blocks/generated/get-choghadiya/block.json
-#: blocks/generated/get-cities-by-country/block.json
-#: blocks/generated/get-compound-number/block.json
-#: blocks/generated/get-critical-days/block.json
-#: blocks/generated/get-crystal-pairings/block.json
-#: blocks/generated/get-crystal/block.json
-#: blocks/generated/get-crystals-by-chakra/block.json
-#: blocks/generated/get-crystals-by-element/block.json
-#: blocks/generated/get-current-dasha/block.json
-#: blocks/generated/get-daily-angel-number/block.json
-#: blocks/generated/get-daily-ayurveda-reading/block.json
-#: blocks/generated/get-daily-aztec-reading/block.json
-#: blocks/generated/get-daily-biorhythm/block.json
-#: blocks/generated/get-daily-crystal/block.json
-#: blocks/generated/get-daily-dream-symbol/block.json
-#: blocks/generated/get-daily-hexagram/block.json
-#: blocks/generated/get-daily-mayan-reading/block.json
-#: blocks/generated/get-daily-number/block.json
-#: blocks/generated/get-daily-sephirah/block.json
-#: blocks/generated/get-daily-zodiac-reading/block.json
-#: blocks/generated/get-devata/block.json
-#: blocks/generated/get-dikpala-direction/block.json
-#: blocks/generated/get-dinacharya-schedule/block.json
-#: blocks/generated/get-dosha/block.json
-#: blocks/generated/get-dream-symbol/block.json
-#: blocks/generated/get-ecliptic-crossings/block.json
-#: blocks/generated/get-field-labels/block.json
-#: blocks/generated/get-forecast/block.json
-#: blocks/generated/get-gate/block.json
-#: blocks/generated/get-haab-month/block.json
-#: blocks/generated/get-hebrew-letter/block.json
-#: blocks/generated/get-heliacal-visibility/block.json
-#: blocks/generated/get-hexagram/block.json
-#: blocks/generated/get-hora/block.json
-#: blocks/generated/get-kp-ayanamsa/block.json
-#: blocks/generated/get-kp-cusps/block.json
-#: blocks/generated/get-kp-daily-finance/block.json
-#: blocks/generated/get-kp-planets-interval/block.json
-#: blocks/generated/get-kp-planets/block.json
-#: blocks/generated/get-kp-rasi-changes/block.json
-#: blocks/generated/get-kp-ruling-interval/block.json
-#: blocks/generated/get-kp-ruling-planets/block.json
-#: blocks/generated/get-kp-sublord-changes/block.json
-#: blocks/generated/get-kua-number/block.json
-#: blocks/generated/get-lunar-aspects/block.json
-#: blocks/generated/get-major-dashas/block.json
-#: blocks/generated/get-mayan-day-sign/block.json
-#: blocks/generated/get-monthly-almanac/block.json
-#: blocks/generated/get-monthly-aspects/block.json
-#: blocks/generated/get-monthly-declination-parallels/block.json
-#: blocks/generated/get-monthly-ephemeris/block.json
-#: blocks/generated/get-monthly-flying-stars/block.json
-#: blocks/generated/get-monthly-horoscope/block.json
-#: blocks/generated/get-monthly-parallels/block.json
-#: blocks/generated/get-monthly-transits/block.json
-#: blocks/generated/get-monthly-tropical-aspects/block.json
-#: blocks/generated/get-monthly-tropical-ephemeris/block.json
-#: blocks/generated/get-monthly-tropical-transits/block.json
-#: blocks/generated/get-monthly-tzolkin-calendar/block.json
-#: blocks/generated/get-moon-calendar/block.json
-#: blocks/generated/get-nakshatra/block.json
-#: blocks/generated/get-number-meaning/block.json
-#: blocks/generated/get-phases/block.json
-#: blocks/generated/get-planet-meaning/block.json
-#: blocks/generated/get-planet-positions/block.json
-#: blocks/generated/get-planetary-node-passages/block.json
-#: blocks/generated/get-planetary-positions/block.json
-#: blocks/generated/get-prana-dashas/block.json
-#: blocks/generated/get-pratyantardashas/block.json
-#: blocks/generated/get-random-crystal/block.json
-#: blocks/generated/get-random-hexagram/block.json
-#: blocks/generated/get-random-symbols/block.json
-#: blocks/generated/get-rashi/block.json
-#: blocks/generated/get-ritucharya/block.json
-#: blocks/generated/get-sephirah/block.json
-#: blocks/generated/get-shem-name/block.json
-#: blocks/generated/get-sookshma-dashas/block.json
-#: blocks/generated/get-sub-dashas/block.json
-#: blocks/generated/get-symbol-letter-counts/block.json
-#: blocks/generated/get-trecena/block.json
-#: blocks/generated/get-tree-of-life/block.json
-#: blocks/generated/get-trigram/block.json
-#: blocks/generated/get-upagraha-positions/block.json
-#: blocks/generated/get-upcoming-moon-phases/block.json
-#: blocks/generated/get-usage-stats/block.json
-#: blocks/generated/get-vedic-daily-reading/block.json
-#: blocks/generated/get-weekly-horoscope/block.json
-#: blocks/generated/get-yearly-horoscope/block.json
-#: blocks/generated/get-yoga/block.json
-#: blocks/generated/get-zodiac-animal/block.json
-#: blocks/generated/get-zodiac-compatibility/block.json
-#: blocks/generated/get-zodiac-sign/block.json
 #: blocks/generated/kp-chart/block.json
 #: blocks/generated/kundli/block.json
 #: blocks/generated/life-path/block.json
-#: blocks/generated/list-angel-numbers/block.json
-#: blocks/generated/list-avasthas/block.json
-#: blocks/generated/list-aztec-day-signs/block.json
-#: blocks/generated/list-aztec-trecenas/block.json
-#: blocks/generated/list-bagua-sectors/block.json
-#: blocks/generated/list-cards/block.json
-#: blocks/generated/list-countries/block.json
-#: blocks/generated/list-crystal-colors/block.json
-#: blocks/generated/list-crystal-planets/block.json
-#: blocks/generated/list-crystals/block.json
-#: blocks/generated/list-devatas/block.json
-#: blocks/generated/list-dikpala-directions/block.json
-#: blocks/generated/list-doshas/block.json
-#: blocks/generated/list-five-elements/block.json
-#: blocks/generated/list-flying-stars/block.json
-#: blocks/generated/list-gematria-ciphers/block.json
-#: blocks/generated/list-gunas/block.json
-#: blocks/generated/list-haab-months/block.json
-#: blocks/generated/list-hebrew-letters/block.json
-#: blocks/generated/list-hexagrams/block.json
-#: blocks/generated/list-languages/block.json
-#: blocks/generated/list-mayan-day-signs/block.json
-#: blocks/generated/list-nakshatras/block.json
-#: blocks/generated/list-nine-periods/block.json
-#: blocks/generated/list-planet-meanings/block.json
-#: blocks/generated/list-rasas/block.json
-#: blocks/generated/list-rashis/block.json
-#: blocks/generated/list-shem-names/block.json
-#: blocks/generated/list-solar-terms/block.json
-#: blocks/generated/list-trecenas/block.json
-#: blocks/generated/list-trigrams/block.json
-#: blocks/generated/list-yogas/block.json
-#: blocks/generated/list-zodiac-animals/block.json
-#: blocks/generated/list-zodiac-signs/block.json
-#: blocks/generated/lookup-auspicious-days/block.json
-#: blocks/generated/lookup-hexagram/block.json
 #: blocks/generated/mangal-dosha/block.json
 #: blocks/generated/moon-phase/block.json
 #: blocks/generated/natal-chart/block.json
 #: blocks/generated/numerology/block.json
 #: blocks/generated/panchang/block.json
-#: blocks/generated/search-cities/block.json
-#: blocks/generated/search-crystals/block.json
-#: blocks/generated/search-dream-symbols/block.json
 #: blocks/generated/tarot-yes-no/block.json
 #: blocks/generated/tarot/block.json
 #: blocks/horoscope/block.json
@@ -9725,4 +9494,20 @@ msgstr ""
 #: blocks/generated/tarot-yes-no/block.json
 msgctxt "block keyword"
 msgid "yes or no"
+msgstr ""
+
+#: templates/admin-connected.php:130
+msgid "Your first reading in"
+msgstr "Votre première lecture en"
+
+#: templates/admin-onboarding.php:66
+msgid "Copy a shortcode below, paste it into any post, page, or widget, and open the page: the reading is already there, rendered server side with no JavaScript required. No key needed to start."
+msgstr "Copiez un shortcode ci-dessous, collez-le dans un article, une page ou un widget, puis ouvrez la page : la lecture est déjà là, rendue côté serveur et sans JavaScript. Aucune clé nécessaire pour commencer."
+
+#: blocks/_shared/generated-edit.js:108
+msgid "Search by city"
+msgstr ""
+
+#: blocks/_shared/generated-edit.js:112
+msgid "Picking a city fills the coordinates and timezone below."
 msgstr ""

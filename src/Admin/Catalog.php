@@ -223,12 +223,22 @@ class Catalog {
 		// template renders sections in the right order even if a domain has
 		// only a hero or only generated entries.
 		$ordered = array();
+		$hidden  = array();
 		foreach ( self::domain_map() as $info ) {
+			if ( empty( $info['library'] ) ) {
+				// Developer endpoints (usage, languages) carry `library: false`
+				// in bin/domains.json and stay out of a list built for readings.
+				$hidden[ $info['slug'] ] = true;
+				continue;
+			}
 			$ordered[ $info['slug'] ] = array();
 		}
 
 		foreach ( self::all() as $row ) {
 			$slug = $row['domain_slug'];
+			if ( isset( $hidden[ $slug ] ) ) {
+				continue;
+			}
 			if ( ! isset( $ordered[ $slug ] ) ) {
 				$ordered[ $slug ] = array();
 			}
