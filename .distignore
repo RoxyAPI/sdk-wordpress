@@ -8,6 +8,7 @@
 /.editorconfig
 /.npmrc
 /.wordpress-org
+/assets/hero.png
 /.wp-env.json
 /.vscode
 /.idea
