@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-dikpala-direction",
 	"title": "Direction (Vastu)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-half",
 	"description": "Look up one Vastu direction: its dikpala, the mandala squares it covers with their devatas, what the chapter places there, and what standing water in that quarter brings",
 	"keywords": [

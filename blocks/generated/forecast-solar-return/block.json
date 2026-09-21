@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/forecast-solar-return",
 	"title": "Solar Return Chart (Forecast)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Annual birthday forecast chart for a single subject",
 	"keywords": [

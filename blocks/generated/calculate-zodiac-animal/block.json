@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-zodiac-animal",
 	"title": "Chinese Zodiac Animal for a Birth Date (Chinese Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Resolve a birth date to its Chinese zodiac animal, the sexagenary year pillar behind it, and the Five Element phase of that year, so a 1990 birth returns Horse as a Metal Horse rather than merely a Horse",
 	"keywords": [

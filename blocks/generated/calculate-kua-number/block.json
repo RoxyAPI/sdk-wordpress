@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-kua-number",
 	"title": "Calculate Kua Number (Feng Shui)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Feng shui personal direction",
 	"keywords": [

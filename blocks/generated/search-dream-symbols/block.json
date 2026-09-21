@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/search-dream-symbols",
 	"title": "Search Dream Symbols",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "book",
 	"description": "Browse and search our complete dream interpretation dictionary containing 2,000+ dream symbols with psychological meanings",
 	"keywords": [

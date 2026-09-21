@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-nakshatras",
 	"title": "Nakshatras (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Lunar Mansions Reference",
 	"keywords": [

@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-monthly-parallels",
 	"title": "Monthly Declination Parallels (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Parallel and contraparallel events for a month",
 	"keywords": [

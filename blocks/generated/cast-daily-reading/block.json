@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/cast-daily-reading",
 	"title": "Cast Daily Reading (I Ching)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "superhero",
 	"description": "Cast a complete daily I-Ching reading using the traditional three-coin method with seeded randomness",
 	"keywords": [

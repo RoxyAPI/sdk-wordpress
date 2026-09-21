@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-random-crystal",
 	"title": "Random Crystal",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-filled",
 	"description": "Get a randomly selected healing crystal as a discovery teaser",
 	"keywords": [

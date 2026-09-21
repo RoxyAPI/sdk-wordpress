@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/generate-name-profile",
 	"title": "Name Profile (Kabbalah)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "format-image",
 	"description": "Kabbalah name numerology with the spelling shown",
 	"keywords": [

@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/generate-mayan-chart",
 	"title": "Mayan Chart (Mesoamerican Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "visibility",
 	"description": "Tzolkin, Haab and Long Count",
 	"keywords": [

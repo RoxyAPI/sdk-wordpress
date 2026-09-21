@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/cast-three-card",
 	"title": "Three Card Spread (Tarot)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "heart",
 	"description": "Perform the classic three-card tarot spread revealing Past, Present, and Future",
 	"keywords": [

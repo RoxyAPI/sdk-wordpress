@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-dikpala-directions",
 	"title": "Directions (Vastu)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-half",
 	"description": "Vastu dikpala and direction",
 	"keywords": [

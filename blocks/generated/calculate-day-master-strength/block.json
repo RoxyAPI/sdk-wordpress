@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-day-master-strength",
 	"title": "Day Master Strength (Chinese Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Assess how well the Day Master is supported by the rest of a BaZi chart, and which of the five elements help it",
 	"keywords": [

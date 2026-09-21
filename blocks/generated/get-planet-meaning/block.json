@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-planet-meaning",
 	"title": "Planet Meaning Details (Western Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "admin-customizer",
 	"description": "Complete astrology planet interpretation",
 	"keywords": [

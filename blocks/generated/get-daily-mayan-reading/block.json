@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-daily-mayan-reading",
 	"title": "Daily Mayan Energy Reading (Mesoamerican Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "visibility",
 	"description": "Tzolkin day sign of the day",
 	"keywords": [

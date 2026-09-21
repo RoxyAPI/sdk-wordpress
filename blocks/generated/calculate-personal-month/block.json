@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-personal-month",
 	"title": "Personal Month (Numerology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "chart-line",
 	"description": "Monthly numerology forecast",
 	"keywords": [

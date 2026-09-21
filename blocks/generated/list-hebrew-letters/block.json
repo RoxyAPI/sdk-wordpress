@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-hebrew-letters",
 	"title": "Hebrew Letters (Kabbalah)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "format-image",
 	"description": "Hebrew alphabet with the Sefer Yetzirah attributions",
 	"keywords": [

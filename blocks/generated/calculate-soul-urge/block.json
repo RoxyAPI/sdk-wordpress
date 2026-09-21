@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-soul-urge",
 	"title": "Soul Urge Number (Numerology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "chart-line",
 	"description": "Inner motivations and desires",
 	"keywords": [

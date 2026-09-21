@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-monthly-almanac",
 	"title": "Month of Almanac Days (Chinese Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Chinese calendar month view",
 	"keywords": [

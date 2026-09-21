@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-kp-daily-finance",
 	"title": "Daily Finance Score (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "A Krishnamurti Paddhati daily finance reading for one native on one date",
 	"keywords": [

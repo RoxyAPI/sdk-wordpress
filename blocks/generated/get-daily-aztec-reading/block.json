@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-daily-aztec-reading",
 	"title": "Daily Aztec Energy Reading (Mesoamerican Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "visibility",
 	"description": "Tonalpohualli day sign of the day",
 	"keywords": [

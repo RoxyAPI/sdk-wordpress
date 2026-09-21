@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/cast-love-spread",
 	"title": "Love Spread, 5 Cards (Tarot)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "heart",
 	"description": "Relationship tarot reading",
 	"keywords": [

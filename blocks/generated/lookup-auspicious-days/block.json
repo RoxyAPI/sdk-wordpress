@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/lookup-auspicious-days",
 	"title": "Auspicious Days (Chinese Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Chinese date selection for weddings and openings",
 	"keywords": [

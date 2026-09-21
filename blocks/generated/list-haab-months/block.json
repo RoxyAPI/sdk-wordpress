@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-haab-months",
 	"title": "Haab Periods (Mesoamerican Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "visibility",
 	"description": "Maya solar calendar month",
 	"keywords": [

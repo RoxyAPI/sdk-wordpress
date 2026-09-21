@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/cast-career-spread",
 	"title": "Career Spread, 7 Cards (Tarot)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "heart",
 	"description": "Perform a comprehensive 7-card career tarot spread using SWOT analysis framework (Strengths, Weaknesses, Opportunities, Threats) for professional guidance, business decisions, and vocational clarity",
 	"keywords": [

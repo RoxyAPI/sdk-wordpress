@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-personal-day",
 	"title": "Personal Day (Numerology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "chart-line",
 	"description": "Daily personalized numerology forecast",
 	"keywords": [

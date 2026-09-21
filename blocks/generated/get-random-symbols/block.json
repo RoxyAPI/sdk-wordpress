@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-random-symbols",
 	"title": "Random Dream Symbols",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "book",
 	"description": "Discover random dream symbols and their interpretations for daily dream insights and exploration",
 	"keywords": [

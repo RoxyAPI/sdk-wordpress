@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-yogas",
 	"title": "Planetary Yogas (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "301 entry Vedic Yoga Glossary",
 	"keywords": [

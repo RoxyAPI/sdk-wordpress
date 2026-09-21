@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-bagua-sectors",
 	"title": "Bagua Sectors (Feng Shui)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "The nine palaces of the compass Bagua map: the eight trigram sectors plus the centre, each with the life area it governs, its five phase, its colours, and both its Later Heaven and Earlier Heaven trigrams",
 	"keywords": [

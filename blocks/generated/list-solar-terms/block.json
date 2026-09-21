@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-solar-terms",
 	"title": "Solar Terms (Chinese Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Jie Qi calendar with exact instants",
 	"keywords": [

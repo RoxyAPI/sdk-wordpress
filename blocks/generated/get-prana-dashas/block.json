@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-prana-dashas",
 	"title": "Prana Dashas (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Prana dasha for Vedic astrology",
 	"keywords": [

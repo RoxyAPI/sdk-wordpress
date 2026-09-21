@@ -2045,7 +2045,7 @@ ${ accountGuard }
  *
  * @typedef {{slug: string, name: string, title: string, description: string,
  *   icon: string, keywords: string[], attributes: Object, fields: Array,
- *   phpClass: string, hidden: boolean, instructions: (string|null),
+ *   phpClass: string, hidden: boolean, category: string, instructions: (string|null),
  *   sourceLabel: string}} BlockDescriptor
  */
 
@@ -2092,6 +2092,9 @@ function blockFromOperation( op ) {
 			op.operationId
 		) }`,
 		hidden: isHiddenFromInserter( op.operationId ),
+		// The long tail browses under its own inserter category so the hero
+		// blocks are the RoxyAPI list; search still finds every block.
+		category: 'roxyapi-catalog',
 		instructions: null,
 		sourceLabel: op.operationId,
 	};
@@ -2217,6 +2220,7 @@ function blockFromHero( tagSuffix, cfg ) {
 			tagSuffix
 		) }`,
 		hidden: false,
+		category: 'roxyapi',
 		instructions:
 			cfg.form_mode && takesInput
 				? 'Fill these in to publish a fixed reading, or leave them blank to publish a form your visitors fill in.'
@@ -2236,7 +2240,7 @@ function emitBlockJson( block ) {
 				apiVersion: 3,
 				name: block.name,
 				title: block.title,
-				category: 'roxyapi',
+				category: block.category,
 				icon: block.icon,
 				description: block.description,
 				keywords: block.keywords,

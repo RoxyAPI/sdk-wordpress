@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-ayadi",
 	"title": "Ayadi Shadvarga (Vastu)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-half",
 	"description": "Vastu proportion and yoni",
 	"keywords": [

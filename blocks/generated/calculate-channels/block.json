@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-channels",
 	"title": "Defined Human Design Channels",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Calculate the defined channels for a birth moment",
 	"keywords": [

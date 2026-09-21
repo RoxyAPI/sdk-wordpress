@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/generate-asteroids",
 	"title": "Asteroid Goddesses (Western Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "admin-customizer",
 	"description": "Ceres, Pallas, Juno, and Vesta natal positions",
 	"keywords": [

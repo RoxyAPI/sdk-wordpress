@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-daily-hexagram",
 	"title": "Daily Hexagram (I Ching)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "superhero",
 	"description": "Receive a daily I-Ching hexagram for guidance and reflection",
 	"keywords": [

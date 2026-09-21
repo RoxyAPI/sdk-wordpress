@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/analyze-karmic-lessons",
 	"title": "Karmic Lessons (Numerology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "chart-line",
 	"description": "Life lessons from missing numbers",
 	"keywords": [

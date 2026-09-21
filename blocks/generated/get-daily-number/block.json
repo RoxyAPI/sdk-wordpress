@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-daily-number",
 	"title": "Daily Numerology Number",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "chart-line",
 	"description": "Number of the Day with interpretation",
 	"keywords": [

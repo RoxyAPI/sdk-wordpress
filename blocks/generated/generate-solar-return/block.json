@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/generate-solar-return",
 	"title": "Solar Return Chart (Western Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "admin-customizer",
 	"description": "Annual birthday forecast with relocated chart",
 	"keywords": [

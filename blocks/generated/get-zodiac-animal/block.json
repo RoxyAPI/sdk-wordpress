@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-zodiac-animal",
 	"title": "Chinese Zodiac Animal (Chinese Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Full sign profile with compatibility partners",
 	"keywords": [

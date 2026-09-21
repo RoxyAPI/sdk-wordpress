@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-name-compatibility",
 	"title": "Compare Two Names (Kabbalah)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "format-image",
 	"description": "gematria name compatibility with every component published",
 	"keywords": [

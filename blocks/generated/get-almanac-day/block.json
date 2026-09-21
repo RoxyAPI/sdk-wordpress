@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-almanac-day",
 	"title": "Almanac for a Day (Chinese Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Tong Shu with day officers and mansions",
 	"keywords": [

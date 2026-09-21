@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-variables",
 	"title": "Human Design Variables",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "The four arrows and Color, Tone, Base substructure",
 	"keywords": [

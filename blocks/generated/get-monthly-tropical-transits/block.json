@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-monthly-tropical-transits",
 	"title": "Monthly Transits (Western Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "admin-customizer",
 	"description": "Tropical sign ingresses for an entire month",
 	"keywords": [

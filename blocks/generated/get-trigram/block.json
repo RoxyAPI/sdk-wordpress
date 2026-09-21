@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-trigram",
 	"title": "Trigram by Number or Name (I Ching)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "superhero",
 	"description": "Retrieve a specific I-Ching trigram by its number (1-8) or English name (Heaven, Earth, Thunder, Wind, Water, Fire, Mountain, Lake)",
 	"keywords": [

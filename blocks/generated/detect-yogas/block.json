@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/detect-yogas",
 	"title": "Classical Vedic Yogas in a Birth Chart (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Chart-driven detection of 48 classical Vedic yogas",
 	"keywords": [

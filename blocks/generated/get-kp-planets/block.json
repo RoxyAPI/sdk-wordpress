@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-kp-planets",
 	"title": "KP Planetary Positions (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Get planetary positions with detailed KP star-lord and sub-lord calculations for precise event timing and significator analysis",
 	"keywords": [

@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-daily-angel-number",
 	"title": "Daily Angel Number",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "chart-line",
 	"description": "Get the angel number of the day with full meaning and interpretation",
 	"keywords": [

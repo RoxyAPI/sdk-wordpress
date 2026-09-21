@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-tonalpohualli",
 	"title": "Aztec Day Sign for a Date (Mesoamerican Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "visibility",
 	"description": "Aztec calendar day sign calculator: returns the tonalpohualli day sign, its coefficient 1 to 13 and its trecena for any Gregorian date, with a composed reading",
 	"keywords": [

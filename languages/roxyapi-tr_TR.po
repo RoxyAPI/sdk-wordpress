@@ -129,6 +129,7 @@ msgstr "Doğum bilgileri"
 #: src/Generated/Forms/NatalChartForm.php:40
 #: src/Generated/Forms/NumerologyForm.php:46
 #: blocks/generated/biorhythm/index.js:11
+#: blocks/generated/bodygraph/index.js:11
 #: blocks/generated/calculate-transit/index.js:11
 #: blocks/generated/generate-lunar-return/index.js:11
 #: blocks/generated/generate-planetary-return/index.js:11
@@ -139,6 +140,10 @@ msgstr "Doğum bilgileri"
 #: blocks/generated/get-kp-ruling-planets/index.js:39
 #: blocks/generated/get-phases/index.js:11
 #: blocks/generated/get-vedic-daily-reading/index.js:11
+#: blocks/generated/kp-chart/index.js:11
+#: blocks/generated/kundli/index.js:11
+#: blocks/generated/life-path/index.js:11
+#: blocks/generated/mangal-dosha/index.js:11
 #: blocks/generated/natal-chart/index.js:11
 #: blocks/generated/numerology/index.js:18
 msgid "Birth date"
@@ -409,6 +414,7 @@ msgstr "Doğum ayı (1-12)"
 #: src/Generated/Forms/KundliForm.php:47
 #: src/Generated/Forms/MangalDoshaForm.php:47
 #: src/Generated/Forms/NatalChartForm.php:47
+#: blocks/generated/bodygraph/index.js:18
 #: blocks/generated/calculate-transit/index.js:18
 #: blocks/generated/generate-lunar-return/index.js:18
 #: blocks/generated/generate-planetary-return/index.js:18
@@ -416,6 +422,9 @@ msgstr "Doğum ayı (1-12)"
 #: blocks/generated/get-kp-daily-finance/index.js:18
 #: blocks/generated/get-kp-ruling-planets/index.js:46
 #: blocks/generated/get-vedic-daily-reading/index.js:18
+#: blocks/generated/kp-chart/index.js:18
+#: blocks/generated/kundli/index.js:18
+#: blocks/generated/mangal-dosha/index.js:18
 #: blocks/generated/natal-chart/index.js:18
 msgid "Birth time"
 msgstr "Doğum saati"
@@ -696,6 +705,7 @@ msgstr "Günlük tek karttır. Üçlü geçmiş, şimdi ve geleceği gösterir. 
 #: blocks/generated/get-vedic-daily-reading/index.js:46
 #: blocks/generated/get-weekly-horoscope/index.js:25
 #: blocks/generated/list-nine-periods/index.js:19
+#: blocks/generated/panchang/index.js:11
 msgid "Date"
 msgstr "Tarih"
 
@@ -704,6 +714,7 @@ msgid "Date and location"
 msgstr "Tarih ve konum"
 
 #: src/Generated/Forms/PanchangForm.php:43
+#: blocks/generated/panchang/index.js:13
 msgid "Date for the panchang reading"
 msgstr "Panchang okuması için tarih"
 
@@ -729,7 +740,12 @@ msgstr "Gün"
 #: src/Generated/Forms/MangalDoshaForm.php:57
 #: src/Generated/Forms/NatalChartForm.php:57
 #: src/Generated/Forms/PanchangForm.php:50
+#: blocks/generated/bodygraph/index.js:27
+#: blocks/generated/kp-chart/index.js:27
+#: blocks/generated/kundli/index.js:27
+#: blocks/generated/mangal-dosha/index.js:27
 #: blocks/generated/natal-chart/index.js:27
+#: blocks/generated/panchang/index.js:20
 msgid "Decimal degrees, negative for south"
 msgstr "Ondalık derece, güney için negatif"
 
@@ -739,7 +755,12 @@ msgstr "Ondalık derece, güney için negatif"
 #: src/Generated/Forms/MangalDoshaForm.php:67
 #: src/Generated/Forms/NatalChartForm.php:67
 #: src/Generated/Forms/PanchangForm.php:60
+#: blocks/generated/bodygraph/index.js:34
+#: blocks/generated/kp-chart/index.js:34
+#: blocks/generated/kundli/index.js:34
+#: blocks/generated/mangal-dosha/index.js:34
 #: blocks/generated/natal-chart/index.js:34
+#: blocks/generated/panchang/index.js:27
 msgid "Decimal degrees, negative for west"
 msgstr "Ondalık derece, batı için negatif"
 
@@ -918,6 +939,7 @@ msgstr "Bu okumanın oluşturulması için bilgilerimin gönderilmesini onaylıy
 
 #: src/Generated/Forms/BodygraphForm.php:77
 #: src/Generated/Forms/NatalChartForm.php:77
+#: blocks/generated/bodygraph/index.js:41
 #: blocks/generated/natal-chart/index.js:41
 msgid "IANA name like America/New_York"
 msgstr "America/New_York gibi bir IANA adı"
@@ -926,6 +948,10 @@ msgstr "America/New_York gibi bir IANA adı"
 #: src/Generated/Forms/KundliForm.php:77
 #: src/Generated/Forms/MangalDoshaForm.php:77
 #: src/Generated/Forms/PanchangForm.php:70
+#: blocks/generated/kp-chart/index.js:41
+#: blocks/generated/kundli/index.js:41
+#: blocks/generated/mangal-dosha/index.js:41
+#: blocks/generated/panchang/index.js:34
 msgid "IANA name like Asia/Kolkata"
 msgstr "Asia/Kolkata gibi bir IANA adı"
 
@@ -978,6 +1004,7 @@ msgstr "Aralığın son günü, YYYY-AA-GG biçiminde"
 #: src/Generated/Forms/MangalDoshaForm.php:54
 #: src/Generated/Forms/NatalChartForm.php:54
 #: src/Generated/Forms/PanchangForm.php:47
+#: blocks/generated/bodygraph/index.js:25
 #: blocks/generated/calculate-annual-forecast/index.js:32
 #: blocks/generated/calculate-arabic-lots/index.js:25
 #: blocks/generated/calculate-arudha-padas/index.js:25
@@ -1043,7 +1070,11 @@ msgstr "Aralığın son günü, YYYY-AA-GG biçiminde"
 #: blocks/generated/get-sub-dashas/index.js:25
 #: blocks/generated/get-upagraha-positions/index.js:25
 #: blocks/generated/get-vedic-daily-reading/index.js:25
+#: blocks/generated/kp-chart/index.js:25
+#: blocks/generated/kundli/index.js:25
+#: blocks/generated/mangal-dosha/index.js:25
 #: blocks/generated/natal-chart/index.js:25
+#: blocks/generated/panchang/index.js:18
 msgid "Latitude"
 msgstr "Enlem"
 
@@ -1071,6 +1102,10 @@ msgstr "Bir ad ve tarihten yaşam yolu, ifade ve ruh arzusu sayıları."
 #: src/Generated/Forms/KundliForm.php:50
 #: src/Generated/Forms/MangalDoshaForm.php:50
 #: src/Generated/Forms/NatalChartForm.php:50
+#: blocks/generated/bodygraph/index.js:20
+#: blocks/generated/kp-chart/index.js:20
+#: blocks/generated/kundli/index.js:20
+#: blocks/generated/mangal-dosha/index.js:20
 #: blocks/generated/natal-chart/index.js:20
 msgid "Local time of birth in 24-hour format"
 msgstr "24 saat biçiminde yerel doğum saati"
@@ -1103,6 +1138,7 @@ msgstr "24 saat biçiminde yerel doğum saati"
 #: src/Generated/Forms/MangalDoshaForm.php:64
 #: src/Generated/Forms/NatalChartForm.php:64
 #: src/Generated/Forms/PanchangForm.php:57
+#: blocks/generated/bodygraph/index.js:32
 #: blocks/generated/calculate-annual-forecast/index.js:39
 #: blocks/generated/calculate-arabic-lots/index.js:32
 #: blocks/generated/calculate-arudha-padas/index.js:32
@@ -1168,8 +1204,12 @@ msgstr "24 saat biçiminde yerel doğum saati"
 #: blocks/generated/get-sub-dashas/index.js:32
 #: blocks/generated/get-upagraha-positions/index.js:32
 #: blocks/generated/get-vedic-daily-reading/index.js:32
+#: blocks/generated/kp-chart/index.js:32
+#: blocks/generated/kundli/index.js:32
 #: blocks/generated/list-shem-names/index.js:33
+#: blocks/generated/mangal-dosha/index.js:32
 #: blocks/generated/natal-chart/index.js:32
+#: blocks/generated/panchang/index.js:25
 msgid "Longitude"
 msgstr "Boylam"
 
@@ -1359,6 +1399,7 @@ msgid "Optional seed for reproducible results"
 msgstr "Yinelenebilir sonuçlar için isteğe bağlı başlangıç değeri"
 
 #: src/Generated/Forms/TarotYesNoForm.php:42
+#: blocks/generated/tarot-yes-no/index.js:13
 msgid "Optional. The card answers whatever you bring to it."
 msgstr "İsteğe bağlı. Kart, ona getirdiğiniz her şeye yanıt verir."
 
@@ -1434,6 +1475,7 @@ msgid "Physical, emotional, and intellectual cycle values."
 msgstr "Fiziksel, duygusal ve zihinsel döngü değerleri."
 
 #: src/Generated/Forms/CrystalsByZodiacForm.php:42
+#: blocks/generated/crystals-by-zodiac/index.js:13
 msgid "Pick your Sun sign"
 msgstr "Güneş burcunuzu seçin"
 
@@ -1504,6 +1546,7 @@ msgid "Selecting a city auto-fills latitude, longitude, and timezone."
 msgstr "Bir şehir seçtiğinizde enlem, boylam ve saat dilimi otomatik doldurulur."
 
 #: src/Generated/Forms/TarotYesNoForm.php:43
+#: blocks/generated/tarot-yes-no/index.js:14
 msgid "Should I take the new job"
 msgstr "Yeni işi kabul etmeli miyim"
 
@@ -1792,6 +1835,7 @@ msgstr "Saat"
 #: src/Generated/Forms/MangalDoshaForm.php:74
 #: src/Generated/Forms/NatalChartForm.php:74
 #: src/Generated/Forms/PanchangForm.php:67
+#: blocks/generated/bodygraph/index.js:39
 #: blocks/generated/calculate-annual-forecast/index.js:25
 #: blocks/generated/calculate-arabic-lots/index.js:39
 #: blocks/generated/calculate-arudha-padas/index.js:39
@@ -1878,7 +1922,11 @@ msgstr "Saat"
 #: blocks/generated/get-vedic-daily-reading/index.js:39
 #: blocks/generated/get-weekly-horoscope/index.js:32
 #: blocks/generated/get-yearly-horoscope/index.js:32
+#: blocks/generated/kp-chart/index.js:39
+#: blocks/generated/kundli/index.js:39
+#: blocks/generated/mangal-dosha/index.js:39
 #: blocks/generated/natal-chart/index.js:39
+#: blocks/generated/panchang/index.js:32
 msgid "Timezone"
 msgstr "Saat dilimi"
 
@@ -2006,6 +2054,11 @@ msgstr "Yıl"
 #: src/Generated/Forms/NatalChartForm.php:43
 #: src/Generated/Forms/NumerologyForm.php:49
 #: blocks/generated/biorhythm/index.js:13
+#: blocks/generated/bodygraph/index.js:13
+#: blocks/generated/kp-chart/index.js:13
+#: blocks/generated/kundli/index.js:13
+#: blocks/generated/life-path/index.js:13
+#: blocks/generated/mangal-dosha/index.js:13
 #: blocks/generated/natal-chart/index.js:13
 #: blocks/generated/numerology/index.js:20
 msgid "Year, month, and day of birth"
@@ -2013,11 +2066,13 @@ msgstr "Doğum yılı, ayı ve günü"
 
 #: src/Generated/Forms/TarotCardForm.php:39
 #: src/Generated/Forms/TarotYesNoForm.php:39
+#: blocks/generated/tarot-yes-no/index.js:11
 #: blocks/generated/tarot/index.js:11
 msgid "Your question"
 msgstr "Sorunuz"
 
 #: src/Generated/Forms/CrystalsByZodiacForm.php:39
+#: blocks/generated/crystals-by-zodiac/index.js:11
 msgid "Zodiac sign"
 msgstr "Burç"
 
@@ -2036,7 +2091,7 @@ msgstr ""
 #: src/Admin/Notice.php:106
 #: src/Admin/SettingsPage.php:78
 #: src/Admin/SettingsPage.php:79
-#: src/Blocks/Category.php:31
+#: src/Blocks/Category.php:33
 #: templates/admin-connected.php:124
 msgid "RoxyAPI"
 msgstr "RoxyAPI"
@@ -4184,15 +4239,15 @@ msgstr ""
 msgid "Default"
 msgstr "Varsayılan"
 
-#: blocks/_shared/generated-edit.js:128
+#: blocks/_shared/generated-edit.js:130
 msgid "Reading Settings"
 msgstr ""
 
-#: blocks/_shared/generated-edit.js:162
+#: blocks/_shared/generated-edit.js:164
 msgid "Reading inputs needed"
 msgstr ""
 
-#: blocks/_shared/generated-edit.js:165
+#: blocks/_shared/generated-edit.js:167
 msgid "Fill in the required fields in the sidebar to preview and publish this reading."
 msgstr ""
 
@@ -4221,6 +4276,7 @@ msgstr ""
 #: blocks/generated/analyze-number-sequence/block.json
 #: blocks/generated/angel-number/block.json
 #: blocks/generated/biorhythm/block.json
+#: blocks/generated/bodygraph/block.json
 #: blocks/generated/calculate-annual-forecast/block.json
 #: blocks/generated/calculate-arabic-lots/block.json
 #: blocks/generated/calculate-arudha-padas/block.json
@@ -4275,6 +4331,7 @@ msgstr ""
 #: blocks/generated/check-karmic-debt/block.json
 #: blocks/generated/check-sadhesati/block.json
 #: blocks/generated/convert-long-count/block.json
+#: blocks/generated/crystals-by-zodiac/block.json
 #: blocks/generated/detect-aspect-patterns/block.json
 #: blocks/generated/detect-yogas/block.json
 #: blocks/generated/draw-cards/block.json
@@ -4404,6 +4461,9 @@ msgstr ""
 #: blocks/generated/get-zodiac-animal/block.json
 #: blocks/generated/get-zodiac-compatibility/block.json
 #: blocks/generated/get-zodiac-sign/block.json
+#: blocks/generated/kp-chart/block.json
+#: blocks/generated/kundli/block.json
+#: blocks/generated/life-path/block.json
 #: blocks/generated/list-angel-numbers/block.json
 #: blocks/generated/list-avasthas/block.json
 #: blocks/generated/list-aztec-day-signs/block.json
@@ -4440,11 +4500,15 @@ msgstr ""
 #: blocks/generated/list-zodiac-signs/block.json
 #: blocks/generated/lookup-auspicious-days/block.json
 #: blocks/generated/lookup-hexagram/block.json
+#: blocks/generated/mangal-dosha/block.json
+#: blocks/generated/moon-phase/block.json
 #: blocks/generated/natal-chart/block.json
 #: blocks/generated/numerology/block.json
+#: blocks/generated/panchang/block.json
 #: blocks/generated/search-cities/block.json
 #: blocks/generated/search-crystals/block.json
 #: blocks/generated/search-dream-symbols/block.json
+#: blocks/generated/tarot-yes-no/block.json
 #: blocks/generated/tarot/block.json
 #: blocks/horoscope/block.json
 msgctxt "block keyword"
@@ -4470,6 +4534,7 @@ msgstr ""
 
 #: blocks/astrology-wrapper/block.json
 #: blocks/generated/calculate-zodiac-animal/block.json
+#: blocks/generated/crystals-by-zodiac/block.json
 #: blocks/generated/get-zodiac-animal/block.json
 #: blocks/generated/get-zodiac-compatibility/block.json
 #: blocks/generated/get-zodiac-sign/block.json
@@ -4526,6 +4591,7 @@ msgstr ""
 #: blocks/generated/get-compound-number/block.json
 #: blocks/generated/get-daily-number/block.json
 #: blocks/generated/get-number-meaning/block.json
+#: blocks/generated/life-path/block.json
 #: blocks/generated/numerology/block.json
 msgctxt "block keyword"
 msgid "numerology"
@@ -4740,6 +4806,7 @@ msgctxt "block keyword"
 msgid "business"
 msgstr ""
 
+#: blocks/generated/bodygraph/block.json
 #: blocks/generated/calculate-centers/block.json
 #: blocks/generated/calculate-channels/block.json
 #: blocks/generated/calculate-gates/block.json
@@ -4862,6 +4929,7 @@ msgstr ""
 #: blocks/generated/draw-cards/block.json
 #: blocks/generated/get-card/block.json
 #: blocks/generated/list-cards/block.json
+#: blocks/generated/tarot-yes-no/block.json
 #: blocks/generated/tarot/block.json
 msgctxt "block keyword"
 msgid "tarot"
@@ -5027,6 +5095,7 @@ msgctxt "block keyword"
 msgid "astrocartography"
 msgstr ""
 
+#: blocks/generated/bodygraph/block.json
 #: blocks/generated/generate-bodygraph/block.json
 msgctxt "block keyword"
 msgid "bodygraph"
@@ -5055,6 +5124,7 @@ msgstr ""
 #: blocks/generated/calculate-lunar-date/block.json
 #: blocks/generated/generate-lunar-return/block.json
 #: blocks/generated/get-lunar-aspects/block.json
+#: blocks/generated/moon-phase/block.json
 msgctxt "block keyword"
 msgid "lunar"
 msgstr ""
@@ -5209,6 +5279,7 @@ msgid "birthstones"
 msgstr ""
 
 #: blocks/generated/get-card/block.json
+#: blocks/generated/tarot-yes-no/block.json
 msgctxt "block keyword"
 msgid "card"
 msgstr ""
@@ -5247,6 +5318,7 @@ msgctxt "block keyword"
 msgid "crystal"
 msgstr ""
 
+#: blocks/generated/crystals-by-zodiac/block.json
 #: blocks/generated/get-birthstones/block.json
 #: blocks/generated/get-crystal-pairings/block.json
 #: blocks/generated/get-crystal/block.json
@@ -5321,11 +5393,13 @@ msgid "monthly"
 msgstr ""
 
 #: blocks/generated/get-moon-calendar/block.json
+#: blocks/generated/moon-phase/block.json
 msgctxt "block keyword"
 msgid "moon"
 msgstr ""
 
 #: blocks/generated/get-nakshatra/block.json
+#: blocks/generated/panchang/block.json
 msgctxt "block keyword"
 msgid "nakshatra"
 msgstr ""
@@ -5521,6 +5595,7 @@ msgctxt "block description"
 msgid "Western birth chart with planets, houses, and aspects."
 msgstr ""
 
+#: blocks/generated/kundli/block.json
 #: blocks/generated/natal-chart/block.json
 msgctxt "block keyword"
 msgid "birth chart"
@@ -5536,6 +5611,7 @@ msgctxt "block title"
 msgid "Numerology"
 msgstr ""
 
+#: blocks/generated/life-path/block.json
 #: blocks/generated/numerology/block.json
 msgctxt "block keyword"
 msgid "life path"
@@ -5747,8 +5823,15 @@ msgstr "Bölümleri gizle"
 
 #: blocks/generated/angel-number/index.js:20
 #: blocks/generated/biorhythm/index.js:26
+#: blocks/generated/bodygraph/index.js:47
+#: blocks/generated/crystals-by-zodiac/index.js:20
+#: blocks/generated/kp-chart/index.js:47
+#: blocks/generated/kundli/index.js:47
+#: blocks/generated/life-path/index.js:19
+#: blocks/generated/mangal-dosha/index.js:47
 #: blocks/generated/natal-chart/index.js:47
 #: blocks/generated/numerology/index.js:26
+#: blocks/generated/panchang/index.js:40
 msgid "Fill these in to publish a fixed reading, or leave them blank to publish a form your visitors fill in."
 msgstr ""
 
@@ -5756,6 +5839,8 @@ msgstr ""
 msgid "Place to search for, written the way a person would"
 msgstr ""
 
+#: blocks/generated/moon-phase/index.js:11
+#: blocks/generated/tarot-yes-no/index.js:20
 #: blocks/generated/tarot/index.js:28
 msgid "Choose the options in the sidebar to preview this reading here."
 msgstr ""
@@ -7182,6 +7267,10 @@ msgid "Composed Gochara, Panchanga and Dasha for one native on one day"
 msgstr ""
 
 #: blocks/generated/get-vedic-daily-reading/block.json
+#: blocks/generated/kp-chart/block.json
+#: blocks/generated/kundli/block.json
+#: blocks/generated/mangal-dosha/block.json
+#: blocks/generated/panchang/block.json
 msgctxt "block keyword"
 msgid "vedic"
 msgstr ""
@@ -9473,3 +9562,167 @@ msgstr "Ziyaretçi formlu doğum haritası"
 #: src/Admin/Onboarding.php:82
 msgid "Human Design bodygraph with a visitor form"
 msgstr "Ziyaretçi formlu Human Design bodygraph"
+
+#: src/Blocks/Category.php:41
+msgid "RoxyAPI: every reading"
+msgstr "RoxyAPI: her okuma"
+
+#: blocks/generated/bodygraph/block.json
+msgctxt "block title"
+msgid "Bodygraph"
+msgstr ""
+
+#: blocks/generated/bodygraph/block.json
+msgctxt "block description"
+msgid "Human Design bodygraph with type, strategy, authority, profile, the nine centers, channels, and gates."
+msgstr ""
+
+#: blocks/generated/bodygraph/block.json
+msgctxt "block keyword"
+msgid "hd chart"
+msgstr ""
+
+#: blocks/generated/crystals-by-zodiac/block.json
+msgctxt "block title"
+msgid "Crystals by Zodiac"
+msgstr ""
+
+#: blocks/generated/crystals-by-zodiac/block.json
+msgctxt "block description"
+msgid "Crystals and stones associated with any zodiac sign, with properties, color, and chakra."
+msgstr ""
+
+#: blocks/generated/crystals-by-zodiac/block.json
+msgctxt "block keyword"
+msgid "healing stones"
+msgstr ""
+
+#: blocks/generated/kp-chart/block.json
+msgctxt "block title"
+msgid "KP Chart"
+msgstr ""
+
+#: blocks/generated/kp-chart/block.json
+msgctxt "block description"
+msgid "Krishnamurti Paddhati chart with cusps, planets, sub-lords, and significators."
+msgstr ""
+
+#: blocks/generated/kp-chart/block.json
+msgctxt "block keyword"
+msgid "kp chart"
+msgstr ""
+
+#: blocks/generated/kp-chart/block.json
+msgctxt "block keyword"
+msgid "krishnamurti"
+msgstr ""
+
+#: blocks/generated/kundli/block.json
+msgctxt "block title"
+msgid "Vedic Kundli"
+msgstr ""
+
+#: blocks/generated/kundli/block.json
+msgctxt "block description"
+msgid "Vedic birth chart with twelve rashis, planetary positions, nakshatra, and per-house interpretations."
+msgstr ""
+
+#: blocks/generated/kundli/block.json
+msgctxt "block keyword"
+msgid "kundli"
+msgstr ""
+
+#: blocks/generated/kundli/block.json
+msgctxt "block keyword"
+msgid "janam kundali"
+msgstr ""
+
+#: blocks/generated/life-path/block.json
+msgctxt "block title"
+msgid "Life Path"
+msgstr ""
+
+#: blocks/generated/life-path/block.json
+msgctxt "block description"
+msgid "Life path number and core meaning from a birth date."
+msgstr ""
+
+#: blocks/generated/life-path/block.json
+msgctxt "block keyword"
+msgid "birth date"
+msgstr ""
+
+#: blocks/generated/mangal-dosha/block.json
+msgctxt "block title"
+msgid "Mangal Dosha"
+msgstr ""
+
+#: blocks/generated/mangal-dosha/block.json
+msgctxt "block description"
+msgid "Check Mangal Dosha (manglik) status for matrimonial compatibility, with severity, remedies, and exception conditions."
+msgstr ""
+
+#: blocks/generated/mangal-dosha/block.json
+msgctxt "block keyword"
+msgid "mangal dosha"
+msgstr ""
+
+#: blocks/generated/mangal-dosha/block.json
+msgctxt "block keyword"
+msgid "manglik"
+msgstr ""
+
+#: blocks/generated/mangal-dosha/block.json
+msgctxt "block keyword"
+msgid "kuja dosha"
+msgstr ""
+
+#: blocks/generated/moon-phase/block.json
+msgctxt "block title"
+msgid "Moon Phase"
+msgstr ""
+
+#: blocks/generated/moon-phase/block.json
+msgctxt "block description"
+msgid "Current moon phase, illumination, sign, degree, and meaning."
+msgstr ""
+
+#: blocks/generated/moon-phase/block.json
+msgctxt "block keyword"
+msgid "moon phase"
+msgstr ""
+
+#: blocks/generated/panchang/block.json
+msgctxt "block title"
+msgid "Panchang"
+msgstr ""
+
+#: blocks/generated/panchang/block.json
+msgctxt "block description"
+msgid "Detailed Hindu calendar for any date and location: tithi, nakshatra, yoga, karana, rahu kaal, abhijit muhurta, brahma muhurta, and more."
+msgstr ""
+
+#: blocks/generated/panchang/block.json
+msgctxt "block keyword"
+msgid "panchang"
+msgstr ""
+
+#: blocks/generated/panchang/block.json
+msgctxt "block keyword"
+msgid "tithi"
+msgstr ""
+
+#: blocks/generated/tarot-yes-no/block.json
+msgctxt "block title"
+msgid "Tarot Yes or No"
+msgstr ""
+
+#: blocks/generated/tarot-yes-no/block.json
+msgctxt "block description"
+msgid "Single-card Yes / No / Maybe answer with strength rating and interpretation."
+msgstr ""
+
+#: blocks/generated/tarot-yes-no/block.json
+msgctxt "block keyword"
+msgid "yes or no"
+msgstr ""

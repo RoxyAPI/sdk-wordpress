@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-mayan-day-sign",
 	"title": "Mayan Day Sign (Mesoamerican Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "visibility",
 	"description": "Retrieve the full profile of one Tzolkin day sign: both naming traditions, both published glosses, the world direction and colour under the requested scheme, a composed keynote, what the sign does well, where the same temperament costs it something, and one line of guidance",
 	"keywords": [

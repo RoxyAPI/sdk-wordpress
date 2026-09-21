@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/search-cities",
 	"title": "Search Cities Worldwide (Location)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "superhero",
 	"description": "Geocoding autocomplete with coordinates and timezone",
 	"keywords": [

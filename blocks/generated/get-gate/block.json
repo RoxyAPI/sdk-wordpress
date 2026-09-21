@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-gate",
 	"title": "Human Design Gate by Number",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Look up the static reference data for a Human Design gate by its number from 1 to 64: the gate keynote name, the center it sits in, the matching I-Ching hexagram, and the gates that form a channel with it",
 	"keywords": [

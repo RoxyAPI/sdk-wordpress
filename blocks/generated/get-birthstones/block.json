@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-birthstones",
 	"title": "Birthstones by Month (Crystals)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-filled",
 	"description": "Get the traditional birthstone crystals for a given birth month",
 	"keywords": [

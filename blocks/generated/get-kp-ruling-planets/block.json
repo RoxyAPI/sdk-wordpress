@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-kp-ruling-planets",
 	"title": "KP Ruling Planets with Optional Significators (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Calculate the 5 ruling planets at any moment using Krishnamurti Paddhati horary astrology",
 	"keywords": [

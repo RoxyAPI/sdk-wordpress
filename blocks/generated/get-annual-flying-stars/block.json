@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-annual-flying-stars",
 	"title": "Annual Flying Stars (Feng Shui)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Yearly feng shui star chart",
 	"keywords": [

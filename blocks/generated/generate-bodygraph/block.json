@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/generate-bodygraph",
 	"title": "Human Design Bodygraph",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Type, authority, profile, centers, channels, gates",
 	"keywords": [

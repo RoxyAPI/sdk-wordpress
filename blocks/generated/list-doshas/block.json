@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-doshas",
 	"title": "Doshas (Ayurveda)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-half",
 	"description": "Return vata, pitta and kapha with the qualities, seats and five sub-doshas each carries, and the three states the seasonal cycle moves them through",
 	"keywords": [

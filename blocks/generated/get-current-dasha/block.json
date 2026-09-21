@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-current-dasha",
 	"title": "Current Mahadasha (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Calculate all five running Vimshottari Dasha levels with remaining time in each",
 	"keywords": [

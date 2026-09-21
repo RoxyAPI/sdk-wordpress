@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-drishti",
 	"title": "Planetary Aspects (Drishti)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Mutual aspects between all planets",
 	"keywords": [

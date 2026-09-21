@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/generate-planetary-return",
 	"title": "Planetary Return Chart (Western Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "admin-customizer",
 	"description": "Saturn return, Jupiter return, and inner planet cycles",
 	"keywords": [

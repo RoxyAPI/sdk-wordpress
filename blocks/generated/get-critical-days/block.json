@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-critical-days",
 	"title": "Critical Days (Biorhythm)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "tide",
 	"description": "Zero crossing detection for any date range",
 	"keywords": [

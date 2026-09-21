@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-monthly-tropical-ephemeris",
 	"title": "Monthly Ephemeris (Western Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "admin-customizer",
 	"description": "Daily tropical planetary positions for a month",
 	"keywords": [

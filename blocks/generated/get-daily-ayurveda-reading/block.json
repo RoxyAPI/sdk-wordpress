@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-daily-ayurveda-reading",
 	"title": "Daily Ayurveda Reading",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-half",
 	"description": "Dosha clock and brahma muhurta by location",
 	"keywords": [

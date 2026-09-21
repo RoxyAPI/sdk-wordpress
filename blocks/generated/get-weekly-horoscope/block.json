@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-weekly-horoscope",
 	"title": "Weekly Horoscope by Zodiac Sign (Western Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "admin-customizer",
 	"description": "Seven-day editorial column",
 	"keywords": [

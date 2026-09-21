@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/lookup-hexagram",
 	"title": "Hexagram by Line Pattern (I Ching)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "superhero",
 	"description": "Find an I-Ching hexagram by its binary line pattern",
 	"keywords": [

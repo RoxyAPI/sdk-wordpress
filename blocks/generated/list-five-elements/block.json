@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-five-elements",
 	"title": "Elements (Chinese Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Wu Xing with generating and controlling cycles",
 	"keywords": [

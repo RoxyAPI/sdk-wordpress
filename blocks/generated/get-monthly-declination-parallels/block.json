@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-monthly-declination-parallels",
 	"title": "Monthly Parallels (Western Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "admin-customizer",
 	"description": "Declination contacts for an entire month",
 	"keywords": [

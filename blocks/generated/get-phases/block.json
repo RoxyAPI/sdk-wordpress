@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-phases",
 	"title": "Phase Info (Biorhythm)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "tide",
 	"description": "Lightweight cycle status for dashboards and widgets",
 	"keywords": [

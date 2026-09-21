@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-ritucharya",
 	"title": "Ayurveda Seasonal Regimen",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-half",
 	"description": "Ritucharya and ritu resolution",
 	"keywords": [

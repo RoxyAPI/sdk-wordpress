@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-crystals-by-element",
 	"title": "Crystals by Element",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-filled",
 	"description": "Elemental crystal lookup",
 	"keywords": [

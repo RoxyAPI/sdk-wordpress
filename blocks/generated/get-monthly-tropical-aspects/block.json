@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-monthly-tropical-aspects",
 	"title": "Monthly Aspects (Western Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "admin-customizer",
 	"description": "Tropical aspect calendar for an entire month",
 	"keywords": [

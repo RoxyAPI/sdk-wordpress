@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-crystals",
 	"title": "Crystals",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-filled",
 	"description": "Crystal healing database",
 	"keywords": [

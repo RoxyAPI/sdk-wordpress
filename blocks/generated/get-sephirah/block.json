@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-sephirah",
 	"title": "Sephirah (Kabbalah)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "format-image",
 	"description": "sefirot meaning with the paths that touch it",
 	"keywords": [

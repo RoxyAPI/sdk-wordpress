@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/detect-aspect-patterns",
 	"title": "Aspect Patterns (Western Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "admin-customizer",
 	"description": "Grand Trine, Kite, T-Square, Grand Cross, Yod, Mystic Rectangle, Stellium",
 	"keywords": [

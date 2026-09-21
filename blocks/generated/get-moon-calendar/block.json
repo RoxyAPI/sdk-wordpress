@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-moon-calendar",
 	"title": "Lunar Calendar (Western Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "admin-customizer",
 	"description": "Moon phases for entire month",
 	"keywords": [

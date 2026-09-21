@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-monthly-horoscope",
 	"title": "Monthly Horoscope by Zodiac Sign (Western Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "admin-customizer",
 	"description": "Editorial column with key dates",
 	"keywords": [

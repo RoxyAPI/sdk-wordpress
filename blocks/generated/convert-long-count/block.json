@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/convert-long-count",
 	"title": "Convert a Maya Long Count (Mesoamerican Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "visibility",
 	"description": "Long Count calendar converter",
 	"keywords": [

@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-rashis",
 	"title": "Rashis (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Vedic Zodiac Signs Reference",
 	"keywords": [

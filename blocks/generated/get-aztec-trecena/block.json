@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-aztec-trecena",
 	"title": "Aztec Trecena (Mesoamerican Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "visibility",
 	"description": "Tonalpohualli period profile",
 	"keywords": [

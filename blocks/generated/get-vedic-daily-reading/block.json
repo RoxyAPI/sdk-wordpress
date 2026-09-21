@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-vedic-daily-reading",
 	"title": "Daily Reading (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Composed Gochara, Panchanga and Dasha for one native on one day",
 	"keywords": [

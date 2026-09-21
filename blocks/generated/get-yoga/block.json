@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-yoga",
 	"title": "Yoga Details by ID (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Vedic Yoga Glossary Entry",
 	"keywords": [

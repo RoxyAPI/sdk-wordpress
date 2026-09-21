@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/find-griha-pravesh-dates",
 	"title": "Griha Pravesh Dates (Vastu)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-half",
 	"description": "Vastu house warming muhurta",
 	"keywords": [

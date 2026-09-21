@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-kp-ruling-interval",
 	"title": "KP Ruling Planets with Significators (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Calculate ruling planets and their KP significators at regular time intervals using Krishnamurti Paddhati prashna (horary) astrology",
 	"keywords": [

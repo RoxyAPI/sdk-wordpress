@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/check-sadhesati",
 	"title": "Sadhesati (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Sade Sati (Saturn Transit)",
 	"keywords": [

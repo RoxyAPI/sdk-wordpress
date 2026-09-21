@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-daily-biorhythm",
 	"title": "Daily Biorhythm",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "tide",
 	"description": "Seeded reading for daily check-in features",
 	"keywords": [

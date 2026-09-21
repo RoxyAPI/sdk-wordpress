@@ -1,6 +1,8 @@
 <?php
 /**
- * Registers the "RoxyAPI" block category in the inserter.
+ * Registers the two RoxyAPI block categories in the inserter: the hero blocks
+ * under "RoxyAPI", every other reading under "RoxyAPI: every reading", so the
+ * curated list is what a browse shows first.
  *
  * @package RoxyAPI
  */
@@ -18,7 +20,7 @@ class Category {
 	}
 
 	/**
-	 * Prepend the RoxyAPI category to the block inserter list.
+	 * Prepend the hero category and append the catalogue category.
 	 *
 	 * @param array<int, array<string, string>> $categories Existing block categories.
 	 * @return array<int, array<string, string>>
@@ -32,7 +34,14 @@ class Category {
 					'icon'  => 'star-filled',
 				),
 			),
-			$categories
+			$categories,
+			array(
+				array(
+					'slug'  => 'roxyapi-catalog',
+					'title' => __( 'RoxyAPI: every reading', 'roxyapi' ),
+					'icon'  => 'star-empty',
+				),
+			)
 		);
 	}
 }

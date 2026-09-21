@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-arudha-padas",
 	"title": "Arudha Padas (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Calculate the Arudha Lagna (AL) and all twelve Arudha padas of Jaimini astrology from birth details",
 	"keywords": [

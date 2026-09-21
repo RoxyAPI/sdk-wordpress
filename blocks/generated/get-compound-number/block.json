@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-compound-number",
 	"title": "Compound Number Meaning (Numerology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "chart-line",
 	"description": "Cheiro Chaldean interpretation 10 to 52",
 	"keywords": [

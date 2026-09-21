@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-crystal",
 	"title": "Crystal by ID",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-filled",
 	"description": "Crystal healing properties",
 	"keywords": [

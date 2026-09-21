@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/generate-bazi-chart",
 	"title": "BaZi Chart (Chinese Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Calculate a complete BaZi chart, the Four Pillars of Destiny, from a birth moment",
 	"keywords": [

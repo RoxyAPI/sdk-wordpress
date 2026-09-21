@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-arabic-lots",
 	"title": "Arabic Lots (Western Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "admin-customizer",
 	"description": "seven Hermetic parts including Part of Fortune and Spirit",
 	"keywords": [

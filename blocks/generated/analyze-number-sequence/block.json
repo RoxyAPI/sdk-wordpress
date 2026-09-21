@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/analyze-number-sequence",
 	"title": "Number Sequence (Angel Numbers)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "chart-line",
 	"description": "Smart angel number analysis that works for ANY number sequence, not just known angel numbers",
 	"keywords": [

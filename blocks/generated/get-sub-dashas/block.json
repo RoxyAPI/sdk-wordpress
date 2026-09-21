@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-sub-dashas",
 	"title": "Antardashas (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Returns the 9 Antardasha sub periods inside a chosen Mahadasha, each proportional to the Vimshottari years of its lord",
 	"keywords": [

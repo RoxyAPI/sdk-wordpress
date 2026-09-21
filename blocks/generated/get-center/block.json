@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-center",
 	"title": "Human Design Center by ID",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Look up the static reference data for one of the nine Human Design centers by its id: the display name, whether it is a motor or awareness center, and what it means both defined and undefined",
 	"keywords": [

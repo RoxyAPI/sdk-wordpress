@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-business-name",
 	"title": "Business Name Numerology",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "chart-line",
 	"description": "Chaldean brand name analysis and lucky numbers",
 	"keywords": [

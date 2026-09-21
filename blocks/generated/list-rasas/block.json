@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-rasas",
 	"title": "Tastes (Ayurveda)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-half",
 	"description": "Ayurveda rasa and dosha matrix",
 	"keywords": [

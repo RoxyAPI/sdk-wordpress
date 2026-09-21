@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-bagua-sector",
 	"title": "Bagua Sector (Feng Shui)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Look up one palace of the compass Bagua map by its life area id, such as wealth, career or love",
 	"keywords": [

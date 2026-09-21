@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-annual-afflictions",
 	"title": "Annual Afflictions (Feng Shui)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Tai Sui, San Sha and Five Yellow",
 	"keywords": [

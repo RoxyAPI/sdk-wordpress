@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-shem-name",
 	"title": "Of the 72 Names (Kabbalah)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "format-image",
 	"description": "72 names of God by index",
 	"keywords": [

@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-heliacal-visibility",
 	"title": "Heliacal Rising and Setting (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Calculate heliacal rising (udaya) and setting (asta) of the six visible grahas for any date and place, by the Surya Siddhanta rule",
 	"keywords": [

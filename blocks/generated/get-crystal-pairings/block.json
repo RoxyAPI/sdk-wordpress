@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-crystal-pairings",
 	"title": "Crystal Pairings",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-filled",
 	"description": "Get crystals that pair well with a given crystal for enhanced healing combinations",
 	"keywords": [

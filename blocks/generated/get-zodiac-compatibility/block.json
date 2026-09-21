@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-zodiac-compatibility",
 	"title": "Chinese Zodiac Compatibility (Chinese Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Trine, six harmony, clash and harm analysis",
 	"keywords": [

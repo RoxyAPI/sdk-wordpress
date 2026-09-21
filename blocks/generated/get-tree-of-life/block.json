@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-tree-of-life",
 	"title": "Tree of Life (Kabbalah)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "format-image",
 	"description": "sephirot and 22 paths with typed school variants",
 	"keywords": [

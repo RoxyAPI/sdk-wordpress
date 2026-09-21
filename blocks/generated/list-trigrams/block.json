@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-trigrams",
 	"title": "Trigrams (I Ching)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "superhero",
 	"description": "Retrieve all 8 I-Ching trigrams (bagua), the fundamental building blocks of hexagrams",
 	"keywords": [

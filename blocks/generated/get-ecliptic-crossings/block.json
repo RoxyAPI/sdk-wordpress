@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-ecliptic-crossings",
 	"title": "Ecliptic Crossings (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "When planets cross the ecliptic plane",
 	"keywords": [

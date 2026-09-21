@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/generate-navamsa",
 	"title": "Navamsa Chart (D9)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Marriage Compatibility Calculator",
 	"keywords": [

@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-hora",
 	"title": "Hora (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "24 Planetary Hours (12 day + 12 night)",
 	"keywords": [

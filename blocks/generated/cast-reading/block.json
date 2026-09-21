@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/cast-reading",
 	"title": "Cast an I-Ching Reading",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "superhero",
 	"description": "Generate an authentic I-Ching reading using the traditional three-coin casting method",
 	"keywords": [

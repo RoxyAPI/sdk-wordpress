@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-forecast",
 	"title": "Biorhythm Forecast",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "tide",
 	"description": "Multi-day cycle predictions with best and worst days",
 	"keywords": [

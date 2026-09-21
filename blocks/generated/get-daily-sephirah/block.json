@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-daily-sephirah",
 	"title": "Sephirah of the Day (Kabbalah)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "format-image",
 	"description": "Omer count with the sephirot pairing",
 	"keywords": [

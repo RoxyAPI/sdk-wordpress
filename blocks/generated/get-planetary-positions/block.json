@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-planetary-positions",
 	"title": "Planetary Positions (Western Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "admin-customizer",
 	"description": "Ephemeris calculator for all planets",
 	"keywords": [

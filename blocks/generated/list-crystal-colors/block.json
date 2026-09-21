@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-crystal-colors",
 	"title": "Crystal Colors",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-filled",
 	"description": "List all unique crystal colors available in the database",
 	"keywords": [

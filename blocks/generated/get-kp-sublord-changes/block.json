@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-kp-sublord-changes",
 	"title": "KP Sublord Changes (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Track when planets cross KP sublord boundaries (1-249 divisions) for precise Krishnamurti Paddhati event timing",
 	"keywords": [

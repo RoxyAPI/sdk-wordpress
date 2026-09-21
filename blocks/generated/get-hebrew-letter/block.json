@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-hebrew-letter",
 	"title": "Hebrew Letter (Kabbalah)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "format-image",
 	"description": "Return one Hebrew letter in full: its glyph and final form, its value under the standard and the finals reading, its Sefer Yetzirah class and what that class means, the element or planet or sign it carries under the requested reading, the tarot trump on its path, and the path number",
 	"keywords": [

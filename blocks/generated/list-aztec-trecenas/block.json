@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-aztec-trecenas",
 	"title": "Aztec Trecenas (Mesoamerican Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "visibility",
 	"description": "Tonalpohualli thirteen day period",
 	"keywords": [

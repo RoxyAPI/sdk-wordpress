@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-flying-stars",
 	"title": "Flying Stars (Feng Shui)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "The reference catalogue of the nine flying stars: name, Chinese characters, five phase, home palace and trigram, the period each rules, what each means, and which element strengthens or drains it",
 	"keywords": [

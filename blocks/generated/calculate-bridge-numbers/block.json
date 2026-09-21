@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-bridge-numbers",
 	"title": "Bridge Numbers (Numerology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "chart-line",
 	"description": "Harmonize different aspects of personality",
 	"keywords": [

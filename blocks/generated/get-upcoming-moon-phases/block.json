@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-upcoming-moon-phases",
 	"title": "Upcoming Moon Phases (Western Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "admin-customizer",
 	"description": "Next new moon, full moon, quarters",
 	"keywords": [

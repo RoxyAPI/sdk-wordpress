@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-planetary-node-passages",
 	"title": "Ecliptic Crossings (Western Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "admin-customizer",
 	"description": "Node passages for a whole year",
 	"keywords": [

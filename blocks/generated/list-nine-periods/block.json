@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-nine-periods",
 	"title": "Periods (Feng Shui)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "The nine twenty year periods of the 180 year San Yuan cycle from 1864 to 2043, each with its ruling star, five phase, palace and the exact Li Chun date it opened, plus which period is in force on a given date",
 	"keywords": [

@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/generate-lilith",
 	"title": "Black Moon Lilith (Western Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "admin-customizer",
 	"description": "mean and true lunar apogee in the natal chart",
 	"keywords": [

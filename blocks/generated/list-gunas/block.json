@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-gunas",
 	"title": "Twenty Qualities (Ayurveda)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-half",
 	"description": "Return the twenty gunas, the qualities of Ayurveda, as the ten opposed pairs the commentaries spell out, each member with the single action word attached to it, and the half-verse that states the like-increases-like rule the whole domain runs on",
 	"keywords": [

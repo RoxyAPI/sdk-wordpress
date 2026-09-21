@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-devatas",
 	"title": "Devatas (Vastu)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-half",
 	"description": "Reference table of the 45 devatas of the Vastu Purusha Mandala: which squares of the 81 pada grid each one holds, which ring and which side, how many padas, and the verses that place it",
 	"keywords": [

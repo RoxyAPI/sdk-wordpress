@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-yearly-horoscope",
 	"title": "Yearly Horoscope by Zodiac Sign (Western Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "admin-customizer",
 	"description": "Year ahead forecast with themes, key periods, eclipses and retrogrades",
 	"keywords": [

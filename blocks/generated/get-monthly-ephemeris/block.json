@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-monthly-ephemeris",
 	"title": "Monthly Ephemeris (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Daily sidereal planetary positions for a month",
 	"keywords": [

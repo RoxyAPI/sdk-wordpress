@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-lunar-aspects",
 	"title": "Monthly Lunar Aspects (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Moon aspect events with all planets for a month",
 	"keywords": [

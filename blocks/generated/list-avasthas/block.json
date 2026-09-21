@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-avasthas",
 	"title": "Avastha States (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Planetary State Reference",
 	"keywords": [

@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-major-dashas",
 	"title": "Mahadasha Periods (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Returns the complete Vimshottari dasha cycle from birth, all 9 Mahadasha periods across the full 120 year span",
 	"keywords": [

@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-hexagram",
 	"title": "Hexagram by Number (I Ching)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "superhero",
 	"description": "Retrieve complete I-Ching hexagram details by King Wen sequence number (1-64)",
 	"keywords": [

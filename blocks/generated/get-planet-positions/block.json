@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-planet-positions",
 	"title": "Planetary Positions (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Get simplified planetary positions (graha positions) for all 9 planets (Sun through Ketu) plus Ascendant (Lagna)",
 	"keywords": [

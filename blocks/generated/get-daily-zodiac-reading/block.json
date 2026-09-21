@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-daily-zodiac-reading",
 	"title": "Daily Chinese Zodiac Reading (Chinese Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Day pillar forecast by animal sign",
 	"keywords": [

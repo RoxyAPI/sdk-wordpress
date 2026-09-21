@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-aztec-day-signs",
 	"title": "Aztec Day Signs (Mesoamerican Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "visibility",
 	"description": "Tonalpohualli sign catalogue",
 	"keywords": [

@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-kua-number",
 	"title": "Kua Number (Feng Shui)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Look up the reference chart for one Kua number: its trigram, its east or west life group, and how it classifies all eight compass sectors",
 	"keywords": [

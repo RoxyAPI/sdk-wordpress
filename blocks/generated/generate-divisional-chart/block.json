@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/generate-divisional-chart",
 	"title": "Divisional Chart (Varga)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Calculate any Vedic divisional chart (Varga) from D2 Hora to D60 Shashtiamsa",
 	"keywords": [

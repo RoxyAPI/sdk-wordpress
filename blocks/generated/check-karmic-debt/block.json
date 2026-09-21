@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/check-karmic-debt",
 	"title": "Karmic Debt Numbers (Numerology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "chart-line",
 	"description": "Past life challenges (13, 14, 16, 19)",
 	"keywords": [

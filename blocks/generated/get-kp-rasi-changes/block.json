@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-kp-rasi-changes",
 	"title": "KP Rasi Ingress Times (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Track when planets enter new zodiac signs (rasi) with precise ingress timestamps",
 	"keywords": [

@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-lunar-date",
 	"title": "Convert Lunar and Gregorian Dates (Chinese Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Chinese lunisolar calendar",
 	"keywords": [

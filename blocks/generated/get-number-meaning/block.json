@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-number-meaning",
 	"title": "Number Meaning (Numerology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "chart-line",
 	"description": "Interpretation for any number 1-9, 11, 22, 33",
 	"keywords": [

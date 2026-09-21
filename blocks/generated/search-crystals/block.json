@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/search-crystals",
 	"title": "Search Crystals",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-filled",
 	"description": "Search for healing crystals by keyword or name",
 	"keywords": [

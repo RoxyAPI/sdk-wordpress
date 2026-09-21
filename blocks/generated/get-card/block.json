@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-card",
 	"title": "Tarot Card by ID",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "heart",
 	"description": "Retrieve comprehensive details for a specific tarot card from the traditional Rider-Waite-Smith deck including complete upright meanings (card drawn normally) and reversed meanings (inverted/upside down interpretations for nuanced guidance)",
 	"keywords": [

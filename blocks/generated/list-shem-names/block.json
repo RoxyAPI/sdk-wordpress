@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-shem-names",
 	"title": "Names (Kabbalah)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "format-image",
 	"description": "Shem HaMephorash derived from the verses",
 	"keywords": [

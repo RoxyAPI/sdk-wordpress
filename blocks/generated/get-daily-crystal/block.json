@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-daily-crystal",
 	"title": "Daily Crystal",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-filled",
 	"description": "Get the crystal of the day as a discovery teaser",
 	"keywords": [

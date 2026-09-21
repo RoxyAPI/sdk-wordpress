@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-random-hexagram",
 	"title": "Random Hexagram (I Ching)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "superhero",
 	"description": "Receive a random I-Ching hexagram with full interpretation",
 	"keywords": [

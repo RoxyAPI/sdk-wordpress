@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-trecenas",
 	"title": "Mayan Trecenas (Mesoamerican Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "visibility",
 	"description": "Tzolkin thirteen day period",
 	"keywords": [

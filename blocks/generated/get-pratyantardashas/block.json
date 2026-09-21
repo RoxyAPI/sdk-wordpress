@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-pratyantardashas",
 	"title": "Pratyantardashas (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Pratyantardasha for Vedic astrology",
 	"keywords": [

@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-angel-numbers",
 	"title": "Angel Numbers",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "chart-line",
 	"description": "Retrieve the complete database of angel numbers with summary information",
 	"keywords": [

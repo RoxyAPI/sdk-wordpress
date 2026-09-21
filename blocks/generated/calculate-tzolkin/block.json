@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-tzolkin",
 	"title": "Mayan Day Sign for a Date (Mesoamerican Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "visibility",
 	"description": "Mayan astrology day sign calculator: returns the Tzolkin day sign, the coefficient 1 to 13 and the trecena for any Gregorian date, under the correlation living daykeepers use, with a composed nawal reading",
 	"keywords": [

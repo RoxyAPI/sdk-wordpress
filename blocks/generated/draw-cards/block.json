@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/draw-cards",
 	"title": "Draw Tarot Cards",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "heart",
 	"description": "Draw 1-78 tarot cards from the complete Rider-Waite-Smith deck with seeded reproducibility for consistent personalized readings",
 	"keywords": [

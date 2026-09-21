@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-monthly-tzolkin-calendar",
 	"title": "Monthly Tzolkin Calendar Grid (Mesoamerican Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "visibility",
 	"description": "Mayan calendar grid for a whole civil month: every day of the month with its Tzolkin day sign and coefficient, its trecena, its Haab date and its Long Count",
 	"keywords": [

@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-field-labels",
 	"title": "Field Labels for a Language",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "portfolio",
 	"description": "Returns the display label for every request field name and every selectable option across the , in the requested language",
 	"keywords": [

@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-gematria-ciphers",
 	"title": "Gematria Ciphers (Kabbalah)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "format-image",
 	"description": "gematria methods with provenance on every row",
 	"keywords": [

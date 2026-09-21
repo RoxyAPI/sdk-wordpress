@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-mayan-day-signs",
 	"title": "Mayan Day Signs (Mesoamerican Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "visibility",
 	"description": "Retrieve all twenty Tzolkin day signs in sequence order from Imix to Ajaw",
 	"keywords": [

@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-upagraha-positions",
 	"title": "Upagraha (Sub-planet) Positions (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Calculate all 11 Vedic upagraha (sub-planet) positions per Brihat Parashara Hora Shastra (BPHS)",
 	"keywords": [

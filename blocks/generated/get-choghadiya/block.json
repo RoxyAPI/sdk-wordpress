@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-choghadiya",
 	"title": "Choghadiya (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "8 Muhurta divisions of day and night",
 	"keywords": [

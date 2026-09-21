@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-trecena",
 	"title": "Mayan Trecena (Mesoamerican Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "visibility",
 	"description": "Thirteen day period profile",
 	"keywords": [

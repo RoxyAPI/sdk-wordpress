@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-cards",
 	"title": "Tarot Cards",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "heart",
 	"description": "Retrieve the complete Rider-Waite-Smith tarot deck of 78 cards",
 	"keywords": [

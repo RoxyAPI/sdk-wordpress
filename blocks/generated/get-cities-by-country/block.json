@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-cities-by-country",
 	"title": "Cities in a Country (Location)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "superhero",
 	"description": "Geocoding directory sorted by population",
 	"keywords": [

@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-zodiac-animals",
 	"title": "Chinese Zodiac Animals (Chinese Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Sheng Xiao sign catalogue",
 	"keywords": [

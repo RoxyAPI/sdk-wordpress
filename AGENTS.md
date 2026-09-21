@@ -93,7 +93,7 @@ Override the form or result template from your theme by copying the matching fil
 
 In the editor, open the inserter and search for "Horoscope", "Natal Chart", "Kundli", "Panchang", "Bodygraph", "Tarot", "Numerology" or "Moon Phase". Horoscope opens a variation picker (Daily, Weekly, Monthly, Yearly); every other hero block takes its inputs in the sidebar and previews the reading in place.
 
-Every other reading is a block too. Insert any long-tail reading and its inputs (birth date, name, zodiac sign, and so on) show as sidebar controls generated from the API spec: a date picker for dates, a dropdown for fixed choices, text and number fields for the rest, with a live preview that updates as you type.
+Every other reading is a block too, under the **RoxyAPI: every reading** inserter category. Insert any long-tail reading and its inputs (birth date, name, zodiac sign, and so on) show as sidebar controls generated from the API spec: a date picker for dates, a dropdown for fixed choices, text and number fields for the rest, with a live preview that updates as you type.
 
 Drop one Astrology Section wrapper block on the page, set the zodiac sign in its Inspector, and every child RoxyAPI block inside inherits the sign via block context. No per-block configuration.
 

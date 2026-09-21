@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-sookshma-dashas",
 	"title": "Sookshma Dashas (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Returns the 9 Sookshma periods inside a chosen Pratyantardasha, the fourth and finest level of the Vimshottari dasha hierarchy",
 	"keywords": [

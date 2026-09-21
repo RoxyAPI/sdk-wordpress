@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-kp-ayanamsa",
 	"title": "KP-Newcomb Ayanamsa (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Dynamic daily calculation",
 	"keywords": [

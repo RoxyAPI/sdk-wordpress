@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-crystals-by-chakra",
 	"title": "Crystals by Chakra",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-filled",
 	"description": "Get healing crystals and gemstones that resonate with a specific chakra energy center",
 	"keywords": [

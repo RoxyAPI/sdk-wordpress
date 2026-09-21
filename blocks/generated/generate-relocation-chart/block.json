@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/generate-relocation-chart",
 	"title": "Relocation Chart (Western Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "admin-customizer",
 	"description": "Relocated birth chart calculator with shifted houses and angles",
 	"keywords": [

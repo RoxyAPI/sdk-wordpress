@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/check-kalsarpa-dosha",
 	"title": "Kalsarpa Dosha (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Detect Kalsarpa dosha (Kalsarpa yoga) when all 7 planets are hemmed between Rahu-Ketu axis",
 	"keywords": [

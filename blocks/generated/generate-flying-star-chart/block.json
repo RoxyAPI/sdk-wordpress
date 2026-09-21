@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/generate-flying-star-chart",
 	"title": "Flying Star Natal Chart (Feng Shui)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "lightbulb",
 	"description": "Cast the Xuan Kong flying star natal chart for a building from its construction period and the direction it faces",
 	"keywords": [

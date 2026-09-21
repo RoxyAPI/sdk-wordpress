@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-symbol-letter-counts",
 	"title": "Symbol Counts by Letter (Dream Interpretation)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "book",
 	"description": "Get the count of dream symbols available for each letter A-Z",
 	"keywords": [

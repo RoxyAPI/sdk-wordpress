@@ -249,6 +249,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.18.0 =
+* Improved: the block inserter lists the featured readings under RoxyAPI and every other reading under a second category, RoxyAPI: every reading, so the headline blocks are one short list to browse. Search still finds every block.
+
 = 1.17.0 =
 * New: [roxy_forecast], a featured forecast timeline. Visitors enter their birth details and an optional date window, and the reading merges transits, sign ingresses, retrograde stations, eclipses, moon phases, Vimshottari dasha changes and biorhythm critical days into one timeline of up to 90 days.
 * New: [roxy_bodygraph], a featured Human Design reading. Pass birth_date, birth_time, lat, lon and tz for a fixed bodygraph, or leave them off for a visitor form with city search. Type, strategy, authority, profile, centers, channels and gates on one chart, with the Design moment printed under the title.
@@ -275,6 +278,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.18.0 =
+Worth updating if you build pages in the block editor: the featured readings are one short RoxyAPI list in the inserter and every other reading sits under RoxyAPI: every reading.
 
 = 1.17.0 =
 Worth updating if you build pages in the block editor: nine more featured readings become blocks with sidebar inputs, a forecast timeline and a Human Design bodygraph join the library with visitor forms, and two Vedic matching readings arrive.

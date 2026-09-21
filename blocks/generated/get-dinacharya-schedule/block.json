@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-dinacharya-schedule",
 	"title": "Dinacharya Daily Routine (Ayurveda)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-half",
 	"description": "Brahma muhurta and dosha clock",
 	"keywords": [

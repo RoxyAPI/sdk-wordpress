@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-rashi",
 	"title": "Rashi by ID (Vedic Astrology)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "database",
 	"description": "Vedic Zodiac Sign Detail",
 	"keywords": [

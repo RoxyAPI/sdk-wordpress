@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/list-languages",
 	"title": "Supported Response Languages",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "portfolio",
 	"description": "Returns the language codes accepted by the `lang` query parameter on every i18n-aware endpoint",
 	"keywords": [

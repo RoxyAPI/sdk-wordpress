@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-dream-symbol",
 	"title": "Dream Symbol by ID",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "book",
 	"description": "Get the complete dream interpretation for a specific symbol",
 	"keywords": [

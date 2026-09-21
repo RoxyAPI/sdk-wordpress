@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "roxyapi/get-devata",
 	"title": "Devata (Vastu)",
-	"category": "roxyapi",
+	"category": "roxyapi-catalog",
 	"icon": "star-half",
 	"description": "Look up one devata of the Vastu Purusha Mandala: the squares it holds, its ring and side, its pada count, the entrance pada it governs where it sits on the perimeter, and the verses that place it",
 	"keywords": [
