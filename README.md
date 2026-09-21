@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://roxyapi.com">
-    <img src="https://raw.githubusercontent.com/RoxyAPI/sdk-wordpress/main/assets/hero.png" alt="RoxyAPI WordPress plugin: the Spiritual OS layer for agentic AI. One key, flat pricing. Shortcodes and Gutenberg blocks, server side rendering." width="100%">
+    <img src="https://raw.githubusercontent.com/RoxyAPI/sdk-wordpress/main/assets/hero.png" alt="RoxyAPI WordPress plugin, blocks and shortcodes. The Spiritual OS layer for agentic AI. One key, flat pricing. Server side rendering." width="100%">
   </a>
 </p>
 
