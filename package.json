@@ -78,7 +78,8 @@
 		"src/",
 		"templates/",
 		"build/",
-		"assets/",
+		"assets/css/",
+		"assets/js/",
 		"languages/"
 	]
 }

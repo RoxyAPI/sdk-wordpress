@@ -122,7 +122,7 @@ class Test_Codegen_Drift extends \WP_UnitTestCase {
 		$unlisted = array_diff( self::$live_ops, array_keys( $ttl ) );
 		$this->assertEmpty(
 			$unlisted,
-			'Every operation needs an explicit bin/ttl-map.json entry (see CLAUDE.md for how to choose a value). Missing: '
+			'Every operation needs an explicit bin/ttl-map.json entry (the _comment in that file explains how to choose a value). Missing: '
 				. implode( ', ', (array) $unlisted )
 		);
 	}

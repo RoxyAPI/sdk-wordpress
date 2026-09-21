@@ -22,16 +22,16 @@ const fields = [
 	},
 	{
 		name: 'latitude',
-		control: 'text',
+		control: 'number',
 		label: __( 'Latitude', 'roxyapi' ),
-		required: false,
+		required: true,
 		help: __( 'Latitude in decimal degrees', 'roxyapi' ),
 	},
 	{
 		name: 'longitude',
-		control: 'text',
+		control: 'number',
 		label: __( 'Longitude', 'roxyapi' ),
-		required: false,
+		required: true,
 		help: __( 'Longitude in decimal degrees', 'roxyapi' ),
 	},
 	{

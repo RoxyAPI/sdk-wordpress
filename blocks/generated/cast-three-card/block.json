@@ -5,7 +5,7 @@
 	"title": "Three Card Spread (Tarot)",
 	"category": "roxyapi",
 	"icon": "heart",
-	"description": "Perform the classic three-card tarot spread revealing Past (what led to this situation), Present (current energy and circumstances), and Future (likely outcome if current path continues)",
+	"description": "Perform the classic three-card tarot spread revealing Past, Present, and Future",
 	"keywords": [
 		"tarot",
 		"roxyapi",

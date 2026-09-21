@@ -212,6 +212,11 @@ class Test_Spec_Contract extends \WP_UnitTestCase {
 		$this->assert_compliant( 'getCrystalsByZodiac' );
 	}
 
+	public function test_bodygraph_matches_spec(): void {
+		do_shortcode( $this->hero_example( 'roxy_bodygraph' ) );
+		$this->assert_compliant( 'generateBodygraph' );
+	}
+
 	// ---------------------------------------------------------------------
 	// Negative tests: prove the validator actually fails when given a
 	// non-compliant request. Without these, a broken validator could rubber

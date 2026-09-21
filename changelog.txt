@@ -3,6 +3,17 @@
 The full release history for the RoxyAPI plugin. The most recent releases are
 also listed in readme.txt, which wordpress.org displays on the plugin page.
 
+= 1.17.0 =
+* New: [roxy_forecast], a featured forecast timeline. Visitors enter their birth details and an optional date window, and the reading merges transits, sign ingresses, retrograde stations, eclipses, moon phases, Vimshottari dasha changes and biorhythm critical days into one timeline of up to 90 days.
+* New: [roxy_bodygraph], a featured Human Design reading. Pass birth_date, birth_time, lat, lon and tz for a fixed bodygraph, or leave them off for a visitor form with city search. Type, strategy, authority, profile, centers, channels and gates on one chart, with the Design moment printed under the title.
+* New: nine more featured readings as Gutenberg blocks: Vedic Kundli, Panchang, Mangal Dosha, KP Chart, Moon Phase, Bodygraph, Tarot Yes or No, Life Path and Crystals by Zodiac, each with sidebar inputs and a live preview in the editor.
+* New: two Vedic matching readings. [roxy_calculate_dashakoot] scores the ten porutham South Indian match and [roxy_calculate_papasamyam] compares malefic affliction between two charts. Both render a two person visitor form.
+* Improved: every wheel, map and compass spaces its labels by their measured width, so long sign and planet names no longer overlap on a phone screen.
+* Improved: the bodygraph captions its side centers outside the triangles, tables and charts share one degree notation, and the biorhythm chart draws its bars above and below the axis.
+* Improved: the KP planets table prints the pada beside each node, and a reading the dedicated card cannot draw falls back to the generic table instead of an empty card.
+* Improved: three chart labels corrected on German, French and Portuguese sites.
+* Improved: a sample copied from the Shortcodes library no longer carries a language attribute, so a pasted reading follows the site language. Featured readings in the library keep their catalogue order instead of sorting by name, and the Connect tab fits a phone screen.
+
 = 1.16.0 =
 * New: a KP daily finance reading, [roxy_get_kp_daily_finance], with a Daily Finance Score block. Four Krishnamurti Paddhati layers are scored against the money houses and weighed into one number for the day, every row printed, and the gain houses, loss houses and layer weights can be overridden. It draws as a card of its own: the band and score, the gain and loss significators with the evidence by house, the four layers as tables with their weights, and the best and worst Moon windows of the day, with every heading in your site language.
 * New: the gematria, name profile and name compatibility readings take a second letter map. Add transliteration="letter-map-modern" for the modern Israeli transcription, which writes every Latin letter, or leave it off for the Hermetic map.

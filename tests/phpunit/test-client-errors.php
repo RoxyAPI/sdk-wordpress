@@ -142,12 +142,9 @@ class Test_Client_Errors extends \WP_UnitTestCase {
 	}
 
 	public function test_no_api_key_configured_omits_header_and_passes_through(): void {
-		// With no key configured, the plugin no longer short-circuits with a
-		// `roxyapi_no_key` WP_Error. Instead, the request goes out with the
-		// X-API-Key header absent, so the SaaS free-tier sandbox sees the
-		// unauthenticated path and either serves a demo response or returns
-		// 429 with `code: free_tier_exhausted`. Here we mock a 200 to assert
-		// the request travels through and the header is omitted.
+		// With no key configured the request still goes out, without an
+		// X-API-Key header, and whatever the service answers is returned as is.
+		// A 200 is mocked to assert the pass-through and the omitted header.
 		delete_option( 'roxyapi_settings' );
 
 		$captured_headers = null;
@@ -172,7 +169,7 @@ class Test_Client_Errors extends \WP_UnitTestCase {
 		$this->assertSame( true, $out['ok'] );
 		$this->assertIsArray( $captured_headers );
 		$this->assertArrayNotHasKey( 'X-API-Key', $captured_headers );
-		// Sanity-check the other identifying headers stay attached.
+		// The client identification headers stay attached either way.
 		$this->assertArrayHasKey( 'X-SDK-Client', $captured_headers );
 		$this->assertArrayHasKey( 'X-Site-URL', $captured_headers );
 		$this->assertArrayHasKey( 'Accept', $captured_headers );

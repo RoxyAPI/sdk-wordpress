@@ -1,8 +1,8 @@
 {
 	"_meta": {
 		"ui_package": "@roxyapi/ui",
-		"ui_version_pinned": "0.42.1",
-		"ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.42.1/dist/manifest.json",
+		"ui_version_pinned": "0.45.0",
+		"ui_manifest_url": "https://cdn.jsdelivr.net/npm/@roxyapi/ui@0.45.0/dist/manifest.json",
 		"published_parts": [
 			"action-steps",
 			"activations",
@@ -44,6 +44,7 @@
 			"dasha",
 			"day-master",
 			"days",
+			"detail",
 			"details",
 			"devatas",
 			"digit-root",
@@ -62,6 +63,7 @@
 			"factors",
 			"facts",
 			"field",
+			"field-error",
 			"finance",
 			"form",
 			"frame",

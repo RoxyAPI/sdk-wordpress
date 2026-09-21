@@ -56,7 +56,7 @@ class DrawCards {
 
 				$body = array_filter(
 			array(
-				'count' => $atts['count'] !== '' ? (float) $atts['count'] : '',
+				'count' => $atts['count'] !== '' ? (int) $atts['count'] : '',
 				'seed' => $atts['seed'],
 				'allowReversals' => $atts['allow_reversals'] !== '' ? filter_var( $atts['allow_reversals'], FILTER_VALIDATE_BOOLEAN ) : '',
 				'allowDuplicates' => $atts['allow_duplicates'] !== '' ? filter_var( $atts['allow_duplicates'], FILTER_VALIDATE_BOOLEAN ) : '',

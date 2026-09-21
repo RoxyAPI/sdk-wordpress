@@ -254,6 +254,27 @@ read -r -d '' QA_PAGE_CONTENT <<'EOF' || true
 <!-- wp:separator --><hr class="wp-block-separator has-alpha-channel-opacity"/><!-- /wp:separator -->
 
 <!-- wp:heading -->
+<h2>18. Forecast timeline (form only, nested birth data)</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph --><p><strong>Form</strong>: expect birth details plus an optional window; a blank window returns 30 days.</p><!-- /wp:paragraph -->
+[roxy_forecast]
+
+<!-- wp:separator --><hr class="wp-block-separator has-alpha-channel-opacity"/><!-- /wp:separator -->
+
+<!-- wp:heading -->
+<h2>19. Human Design bodygraph</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph --><p><strong>Static</strong>: expect a bodygraph with type, authority and profile.</p><!-- /wp:paragraph -->
+[roxy_bodygraph birth_date="1990-05-15" birth_time="14:30" lat="40.7128" lon="-74.0060" tz="America/New_York"]
+
+<!-- wp:paragraph --><p><strong>Form</strong>: expect birth details with the city picker.</p><!-- /wp:paragraph -->
+[roxy_bodygraph]
+
+<!-- wp:separator --><hr class="wp-block-separator has-alpha-channel-opacity"/><!-- /wp:separator -->
+
+<!-- wp:heading -->
 <h2>§6 — Block Binding (paragraph bound to roxyapi/daily-text)</h2>
 <!-- /wp:heading -->
 

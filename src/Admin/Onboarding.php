@@ -75,22 +75,18 @@ class Onboarding {
 				'code'  => '[roxy_horoscope sign="aries"]',
 			),
 			array(
-				'label' => __( 'Three card tarot', 'roxyapi' ),
-				'code'  => '[roxy_tarot_card spread="three"]',
+				'label' => __( 'Natal chart with a visitor form', 'roxyapi' ),
+				'code'  => '[roxy_natal_chart]',
 			),
 			array(
-				'label' => __( 'Numerology reading', 'roxyapi' ),
-				'code'  => '[roxy_numerology name="Ada Lovelace" birth_date="1815-12-10"]',
+				'label' => __( 'Human Design bodygraph with a visitor form', 'roxyapi' ),
+				'code'  => '[roxy_bodygraph]',
 			),
 		);
 	}
 
 	/**
-	 * Every hero shortcode, in brand-book domain order.
-	 *
-	 * Astrology first, then tarot, numerology, I Ching, dreams, biorhythm,
-	 * angel numbers, crystals. Life path sits under the numerology umbrella
-	 * and is kept at the end.
+	 * Every hero shortcode, in the order `bin/hero-config.json` lists them.
 	 *
 	 * Reads from the auto-generated `\RoxyAPI\Generated\Heroes\Manifest`
 	 * which derives every entry, and the count of them, from

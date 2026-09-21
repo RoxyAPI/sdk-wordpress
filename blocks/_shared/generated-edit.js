@@ -123,7 +123,9 @@ export function makeEdit( fields, blockName, options = {} ) {
 	return function Edit( { attributes, setAttributes } ) {
 		const blockProps = useBlockProps();
 
-		const inspector = (
+		// A reading with no inputs, such as the current moon phase, has no
+		// settings panel to show.
+		const inspector = fields.length > 0 && (
 			<InspectorControls>
 				<PanelBody title={ __( 'Reading Settings', 'roxyapi' ) }>
 					{ fields.map( ( field ) => (

@@ -5,7 +5,7 @@
 	"title": "Current Mahadasha (Vedic Astrology)",
 	"category": "roxyapi",
 	"icon": "database",
-	"description": "Calculate all five running Vimshottari Dasha levels (Mahadasha, Antardasha, Pratyantardasha, Sookshma, Prana) with remaining time in each",
+	"description": "Calculate all five running Vimshottari Dasha levels with remaining time in each",
 	"keywords": [
 		"vedic astrology",
 		"roxyapi",

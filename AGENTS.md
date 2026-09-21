@@ -20,7 +20,7 @@ define( 'ROXYAPI_KEY', getenv( 'ROXYAPI_KEY' ) );
 
 ## Use a shortcode
 
-Browse the full library at RoxyAPI > Shortcodes in the WordPress admin sidebar. 17 hand-curated hero shortcodes cover the highest-demand readings; every other endpoint is reachable via auto-generated long-tail shortcodes.
+Browse the full library at RoxyAPI > Shortcodes in the WordPress admin sidebar. 19 hand-curated hero shortcodes cover the highest-demand readings; every other endpoint is reachable via auto-generated long-tail shortcodes.
 
 Every hero shortcode has two modes, auto detected.
 
@@ -36,6 +36,7 @@ Pass all required attributes and the shortcode renders a fixed reading that neve
 [roxy_mangal_dosha birth_date="1992-09-08" birth_time="22:30" lat="13.0827" lon="80.2707" tz="Asia/Kolkata"]
 [roxy_kp_chart birth_date="1990-05-15" birth_time="14:30" lat="28.6139" lon="77.2090" tz="Asia/Kolkata"]
 [roxy_moon_phase]
+[roxy_bodygraph birth_date="1990-05-15" birth_time="14:30" lat="40.7128" lon="-74.0060" tz="America/New_York"]
 [roxy_tarot_card spread="three" question="What should I focus on this week"]
 [roxy_tarot_yes_no question="Should I take the new job"]
 [roxy_numerology name="Ada Lovelace" birth_date="1815-12-10"]
@@ -45,7 +46,7 @@ Pass all required attributes and the shortcode renders a fixed reading that neve
 [roxy_crystals_by_zodiac sign="aries"]
 ```
 
-Two-chart heroes (`[roxy_synastry]`, `[roxy_gun_milan]`, `[roxy_compatibility]`) ship as form-mode only because static mode would need ten or more inline attributes per chart. Drop the shortcode on a page and visitors fill in both birth charts. I Ching, dream symbol, and single-crystal lookups remain available via auto-generated long-tail shortcodes (browse the catalog at Roxy then Shortcodes in the WordPress admin sidebar).
+Two-chart heroes (`[roxy_synastry]`, `[roxy_gun_milan]`, `[roxy_compatibility]`) ship as form-mode only because static mode would need ten or more inline attributes per chart, and so does the forecast timeline (`[roxy_forecast]`), whose birth details and date window nest inside one request. Drop the shortcode on a page and visitors fill in the details. I Ching, dream symbol, and single-crystal lookups remain available via auto-generated long-tail shortcodes (browse the catalog at Roxy then Shortcodes in the WordPress admin sidebar).
 
 How readings render: chart-shaped endpoints (natal, kundli, KP, panchang, dasha, and more) render as interactive SVG components from `@roxyapi/ui`, loaded from a bundle shipped inside the plugin and themed by the `--roxy-*` CSS custom properties. The remaining content reads render as a server-side card. The plugin fetches server side and embeds the response, so the API key never reaches the browser either way.
 
@@ -71,6 +72,8 @@ Leave the required attributes off and the shortcode renders an HTML form. Visito
 [roxy_synastry]             -> two birth charts (Western synastry)
 [roxy_gun_milan]            -> two birth charts (Vedic Ashtakoota)
 [roxy_compatibility]        -> two birth charts (Western compatibility)
+[roxy_forecast]             -> birth details and an optional forecast window
+[roxy_bodygraph]            -> birth date, time, and city picker
 [roxy_tarot_card]           -> question input with spread selector
 [roxy_tarot_yes_no]         -> question text input
 [roxy_numerology]           -> name and birth date form
@@ -88,7 +91,7 @@ Override the form or result template from your theme by copying the matching fil
 
 ## Use a Gutenberg block
 
-In the editor, open the inserter and search for "Horoscope", "Tarot", "Numerology", "I Ching", or "Natal Chart". Each block opens a variation picker (Daily, Weekly, Monthly, Celtic Cross, Three Card, Life Path, Expression, Soul Urge, and so on).
+In the editor, open the inserter and search for "Horoscope", "Natal Chart", "Kundli", "Panchang", "Bodygraph", "Tarot", "Numerology" or "Moon Phase". Horoscope opens a variation picker (Daily, Weekly, Monthly, Yearly); every other hero block takes its inputs in the sidebar and previews the reading in place.
 
 Every other reading is a block too. Insert any long-tail reading and its inputs (birth date, name, zodiac sign, and so on) show as sidebar controls generated from the API spec: a date picker for dates, a dropdown for fixed choices, text and number fields for the rest, with a live preview that updates as you type.
 

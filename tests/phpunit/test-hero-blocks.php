@@ -1,14 +1,10 @@
 <?php
 /**
- * The five headline blocks are configurable, and their names never move.
+ * The hero blocks are configurable, and their names never move.
  *
- * `natal-chart`, `numerology`, `tarot`, `biorhythm` and `angel-number` shipped
- * as hand-written placeholders: `"attributes": {}` and a static editor with
- * nowhere to type a birth date, while the ~147 generated long-tail blocks had
- * spec-derived controls and a live preview. Nothing regenerated the five, so
- * the quality gradient ran backwards and stayed there. They are described by
- * `block` in bin/hero-config.json now and emitted by the same three emitters as
- * the long tail.
+ * Each hero block is described by `block` in bin/hero-config.json and emitted
+ * by the same three emitters as the long tail, so it carries spec-derived
+ * controls and a live preview like every other block.
  *
  * The names are the part that cannot be got wrong. A saved post references a
  * block BY NAME, so `roxyapi/natal-chart` staying `roxyapi/natal-chart` is what
@@ -31,11 +27,20 @@ class Test_Hero_Blocks extends \WP_UnitTestCase {
 	 * operationId cannot quietly carry the block name along with it.
 	 */
 	private const HERO_BLOCKS = array(
-		'roxyapi/natal-chart'  => 'NatalChart',
-		'roxyapi/numerology'   => 'Numerology',
-		'roxyapi/tarot'        => 'TarotCard',
-		'roxyapi/biorhythm'    => 'Biorhythm',
-		'roxyapi/angel-number' => 'AngelNumber',
+		'roxyapi/natal-chart'        => 'NatalChart',
+		'roxyapi/kundli'             => 'Kundli',
+		'roxyapi/panchang'           => 'Panchang',
+		'roxyapi/mangal-dosha'       => 'MangalDosha',
+		'roxyapi/kp-chart'           => 'KpChart',
+		'roxyapi/moon-phase'         => 'MoonPhase',
+		'roxyapi/bodygraph'          => 'Bodygraph',
+		'roxyapi/tarot-yes-no'       => 'TarotYesNo',
+		'roxyapi/tarot'              => 'TarotCard',
+		'roxyapi/numerology'         => 'Numerology',
+		'roxyapi/life-path'          => 'LifePath',
+		'roxyapi/biorhythm'          => 'Biorhythm',
+		'roxyapi/angel-number'       => 'AngelNumber',
+		'roxyapi/crystals-by-zodiac' => 'CrystalsByZodiac',
 	);
 
 	private static function blocks_dir(): string {
@@ -88,10 +93,6 @@ class Test_Hero_Blocks extends \WP_UnitTestCase {
 	 */
 	public function test_the_block_declares_the_inputs_its_reading_needs( string $name, string $class ): void {
 		$attributes = $this->block_json( $name )['attributes'] ?? array();
-		$this->assertNotEmpty(
-			$attributes,
-			"{$name} shipped with an empty attribute map, which is what left it inert."
-		);
 
 		$hero = '\\RoxyAPI\\Generated\\Heroes\\' . $class;
 		$this->assertTrue( class_exists( $hero ) );

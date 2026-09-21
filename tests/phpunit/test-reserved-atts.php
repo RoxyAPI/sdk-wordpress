@@ -116,8 +116,8 @@ class Test_Reserved_Atts extends Mock_Http_TestCase {
 			array_keys( $this->reserved_atts() ),
 			array_keys( self::SAMPLES ),
 			'A reserved attribute was added or removed in bin/generate.mjs. Add its sample ' .
-			'value here, and update the readme FAQ, the WordPress integration guide and ' .
-			'docs/ecosystem/wordpress-plugin.md, which document this set to site owners.'
+			'value here, and update the readme FAQ and the WordPress integration guide, ' .
+			'which document this set to site owners.'
 		);
 	}
 

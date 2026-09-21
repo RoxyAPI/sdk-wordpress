@@ -29,7 +29,7 @@ RoxyAPI adds Astrology, Vedic, Forecast, Human Design, Chinese Astrology and Fen
 * **Tarot:** single card, three card, Celtic Cross, and custom spreads
 * **Plus:** biorhythm, Ayurveda, I Ching, crystals, dream interpretation, and angel numbers
 
-Every chart is calculated by Roxy Ephemeris and verified against NASA JPL Horizons, with readings in 8 languages. One key, one plan, no per-domain fees.
+Every chart is calculated by Roxy Ephemeris and verified against NASA JPL Horizons, with readings in your site language. One key, one plan, no per-domain fees.
 
 **Frequently asked, answered up front**
 
@@ -49,7 +49,7 @@ Every reading works the moment you activate the plugin, with no account. A free 
 * Gutenberg blocks and shortcodes for every reading, plus a visitor form mode for interactive inputs like birth details
 * Pythagorean numerology, full 78 card tarot, and a 2,000+ entry dream symbol dictionary
 * Interactive SVG charts and cards that follow your light or dark theme automatically
-* Readings in 8 languages (English, German, Hindi, Spanish, Turkish, Portuguese, French, Russian) via one setting
+* Readings in English, German, Hindi, Spanish, Turkish, Portuguese, French, and Russian, following the site language or one setting
 * Parent Astrology Section wrapper block that sets the zodiac sign for the Horoscope blocks placed inside it
 * Server side caching with per endpoint TTL to keep your API quota low
 * API key stays server side. Never exposed to the browser.
@@ -75,6 +75,7 @@ Every reading is a shortcode. Pass attributes for a fixed reading the site owner
 `[roxy_mangal_dosha birth_date="1990-05-15" birth_time="14:30" lat="28.6139" lon="77.2090" tz="Asia/Kolkata"]`
 `[roxy_kp_chart birth_date="1990-05-15" birth_time="14:30" lat="28.6139" lon="77.2090" tz="Asia/Kolkata"]`
 `[roxy_moon_phase]`
+`[roxy_bodygraph birth_date="1990-05-15" birth_time="14:30" lat="40.7128" lon="-74.0060" tz="America/New_York"]`
 `[roxy_tarot_card spread="three" question="What should I focus on this week"]`
 `[roxy_tarot_yes_no question="Should I take the new job"]`
 `[roxy_numerology name="Ada Lovelace" birth_date="1815-12-10"]`
@@ -83,11 +84,12 @@ Every reading is a shortcode. Pass attributes for a fixed reading the site owner
 `[roxy_angel_number number="1111"]`
 `[roxy_crystals_by_zodiac sign="aries"]`
 
-The three two chart compatibility heroes render a visitor form for both people and take no attributes:
+Four heroes take no attributes: the three two-person compatibility readings render a visitor form for both people, and the forecast timeline renders a visitor form for the birth details and an optional date window:
 
 `[roxy_synastry]`
 `[roxy_gun_milan]`
 `[roxy_compatibility]`
+`[roxy_forecast]`
 
 Leave the attributes off any hero shortcode to render a form instead. For example `[roxy_horoscope]` shows a zodiac sign picker and `[roxy_natal_chart]` shows a birth date, time, and city picker.
 
@@ -247,6 +249,17 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.17.0 =
+* New: [roxy_forecast], a featured forecast timeline. Visitors enter their birth details and an optional date window, and the reading merges transits, sign ingresses, retrograde stations, eclipses, moon phases, Vimshottari dasha changes and biorhythm critical days into one timeline of up to 90 days.
+* New: [roxy_bodygraph], a featured Human Design reading. Pass birth_date, birth_time, lat, lon and tz for a fixed bodygraph, or leave them off for a visitor form with city search. Type, strategy, authority, profile, centers, channels and gates on one chart, with the Design moment printed under the title.
+* New: nine more featured readings as Gutenberg blocks: Vedic Kundli, Panchang, Mangal Dosha, KP Chart, Moon Phase, Bodygraph, Tarot Yes or No, Life Path and Crystals by Zodiac, each with sidebar inputs and a live preview in the editor.
+* New: two Vedic matching readings. [roxy_calculate_dashakoot] scores the ten porutham South Indian match and [roxy_calculate_papasamyam] compares malefic affliction between two charts. Both render a two person visitor form.
+* Improved: every wheel, map and compass spaces its labels by their measured width, so long sign and planet names no longer overlap on a phone screen.
+* Improved: the bodygraph captions its side centers outside the triangles, tables and charts share one degree notation, and the biorhythm chart draws its bars above and below the axis.
+* Improved: the KP planets table prints the pada beside each node, and a reading the dedicated card cannot draw falls back to the generic table instead of an empty card.
+* Improved: three chart labels corrected on German, French and Portuguese sites.
+* Improved: a sample copied from the Shortcodes library no longer carries a language attribute, so a pasted reading follows the site language. Featured readings in the library keep their catalogue order instead of sorting by name, and the Connect tab fits a phone screen.
+
 = 1.16.0 =
 * New: a KP daily finance reading, [roxy_get_kp_daily_finance], with a Daily Finance Score block. Four Krishnamurti Paddhati layers are scored against the money houses and weighed into one number for the day, every row printed, and the gain houses, loss houses and layer weights can be overridden. It draws as a card of its own: the band and score, the gain and loss significators with the evidence by house, the four layers as tables with their weights, and the best and worst Moon windows of the day, with every heading in your site language.
 * New: the gematria, name profile and name compatibility readings take a second letter map. Add transliteration="letter-map-modern" for the modern Israeli transcription, which writes every Latin letter, or leave it off for the Hermetic map.
@@ -259,19 +272,13 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Improved: the choghadiya grid and the hora table head their daylight column Daytime instead of Day, which reads correctly beside the night periods. Translated sites get that heading and the combined score in the site language.
 * Improved: a long reading keeps its paragraphs in the version search engines and readers without JavaScript receive. A monthly horoscope column ran as one block there.
 
-= 1.15.0 =
-* New: four whole domains, Mesoamerican astrology, Vastu, Kabbalah and Ayurveda, as 48 readings with matching Gutenberg blocks. Mesoamerican astrology brings the Tzolkin day sign, the Mayan chart with Haab and Long Count, the Aztec tonalpohualli, nawal compatibility and a Long Count converter. Vastu brings the Vastu Purusha Mandala, the entrance pada, plot analysis, room compliance, Ayadi and griha pravesh dates. Kabbalah brings gematria with every spelling shown, name and birth profiles, the 72 names, the Tree of Life and the Hebrew letters. Ayurveda brings the constitution from a birth chart, a daily reading, dinacharya and ritucharya.
-* New: the day sign, the Vastu mandala, gematria and the dosha constitution now draw as dedicated charts and cards instead of a plain list of values. The day sign carries its coefficient and trecena, with the full Calendar Round on the chart. The mandala lays out the pada grid with a devata in every square and the brahmasthan marked, and lights the entrance pada with its effect. Gematria shows the value by cipher beside every candidate Hebrew spelling with its letter by letter breakdown, plus equal value words. The constitution renders vata, pitta and kapha as one bar with the dominant humour and the birth chart factors behind it.
-* Improved: the BaZi four pillars, the luck pillars strip, the Kua number map, the flying star plate, the Chinese zodiac animal and pair score cards, and the Tong Shu almanac day now draw their headings and labels in your site language instead of English.
-* Improved: the Kua number map and the flying star plate resize to fit their container and stay legible on a phone screen, with compass and palace labels that no longer break in the middle of a word.
-* Improved: the label column beside a reading, including on the Kua map, the flying star plate, the dosha constitution and the daily horoscope key dates, never grows past a quarter of the card width, so the reading text keeps the room it needs on a narrow screen.
-
-Older entries are in changelog.txt.
+Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.17.0 =
+Worth updating if you build pages in the block editor: nine more featured readings become blocks with sidebar inputs, a forecast timeline and a Human Design bodygraph join the library with visitor forms, and two Vedic matching readings arrive.
 
 = 1.16.0 =
 Worth updating if you publish horoscope pages by date, Vedic finance readings or Kabbalah names: the horoscope date attribute now works on every period, a KP daily finance reading joins the library, and gematria takes the modern letter map.
 
-= 1.15.0 =
-Worth updating if you want Mesoamerican astrology, Vastu, Kabbalah or Ayurveda readings, now with dedicated charts and cards, or want the Chinese astrology and feng shui cards to read in your site language and fit a phone screen.

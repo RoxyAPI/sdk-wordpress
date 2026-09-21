@@ -30,7 +30,7 @@ const fields = [
 	},
 	{
 		name: 'offset',
-		control: 'text',
+		control: 'number',
 		label: __( 'Offset', 'roxyapi' ),
 		required: false,
 		help: __( 'Number of items to skip for pagination', 'roxyapi' ),

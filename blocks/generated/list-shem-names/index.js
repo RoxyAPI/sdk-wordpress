@@ -22,14 +22,14 @@ const fields = [
 	},
 	{
 		name: 'offset',
-		control: 'text',
+		control: 'number',
 		label: __( 'Offset', 'roxyapi' ),
 		required: false,
 		help: __( 'Number of items to skip for pagination', 'roxyapi' ),
 	},
 	{
 		name: 'longitude',
-		control: 'text',
+		control: 'number',
 		label: __( 'Longitude', 'roxyapi' ),
 		required: false,
 		help: __( 'Ecliptic longitude in degrees, 0 inclusive to 360 exclusive, measured from 0 Aries', 'roxyapi' ),

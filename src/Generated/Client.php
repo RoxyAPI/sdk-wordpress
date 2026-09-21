@@ -999,6 +999,48 @@ class Client {
 	}
 
 	/**
+	 * Calculate ten porutham match - Dashakoot South Indian Kundli Matching API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function calculateDashakoot( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'person1', 'person2' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'vedic-astrology/compatibility/dashakoot',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/compatibility/dashakoot', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Compare malefic affliction - Papasamyam Kundli Matching API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function calculatePapasamyam( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'person1', 'person2' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'vedic-astrology/compatibility/papasamyam',
+			array_merge( $body, $query ),
+			2592000,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/compatibility/papasamyam', $body, $query );
+			}
+		);
+	}
+
+	/**
 	 * Get planetary positions - Graha Positions API
 	 *
 	 * @param array $body Request body.

@@ -36,6 +36,8 @@ class Registrar {
 		'roxy_gun_milan'          => \RoxyAPI\Generated\Heroes\GunMilan::class,
 		'roxy_compatibility'      => \RoxyAPI\Generated\Heroes\Compatibility::class,
 		'roxy_moon_phase'         => \RoxyAPI\Generated\Heroes\MoonPhase::class,
+		'roxy_forecast'           => \RoxyAPI\Generated\Heroes\Forecast::class,
+		'roxy_bodygraph'          => \RoxyAPI\Generated\Heroes\Bodygraph::class,
 		'roxy_tarot_card'         => \RoxyAPI\Generated\Heroes\TarotCard::class,
 		'roxy_tarot_yes_no'       => \RoxyAPI\Generated\Heroes\TarotYesNo::class,
 		'roxy_numerology'         => \RoxyAPI\Generated\Heroes\Numerology::class,

@@ -16,7 +16,7 @@ The only multi domain spiritual intelligence plugin for WordPress. Drop natal ch
 
 Interactive forms for your visitors. Gutenberg blocks for your editor. Shortcodes for anywhere else. Server side rendering keeps your API key out of the browser. Transient caching keeps your quota intact.
 
--   **17 hero shortcodes** covering Western astrology, Vedic astrology (kundli, panchang, mangal dosha, KP chart, gun milan), Forecast, Human Design, Numerology, Tarot (daily, three card, yes or no), biorhythm, angel numbers, crystals by zodiac, current moon phase, and two-chart compatibility (synastry, gun milan, Western compatibility). Every reading ships a matching Gutenberg block generated from the same spec, with sidebar controls for its inputs and a live preview in the editor. The Horoscope block adds a variation picker.
+-   **19 hero shortcodes** covering Western astrology, Vedic astrology (kundli, panchang, mangal dosha, KP chart, gun milan), Forecast (the cross-domain timeline), Human Design (the bodygraph), Numerology, Tarot (daily, three card, yes or no), biorhythm, angel numbers, crystals by zodiac, current moon phase, and two-chart compatibility (synastry, gun milan, Western compatibility). Every reading ships a matching Gutenberg block generated from the same spec, with sidebar controls for its inputs and a live preview in the editor. The Horoscope block adds a variation picker.
 -   **Auto generated shortcodes** for the long tail. Every endpoint in the RoxyAPI OpenAPI spec is reachable from a shortcode.
 -   **Form mode on every hero shortcode.** Let visitors submit their own sign, name, birth date, or question and render a personalized reading. No JavaScript required.
 -   **Zero client side secrets.** All calls run in PHP. The API key never reaches the browser.
@@ -49,12 +49,13 @@ Every hero shortcode works in two modes. Pass all required attributes for a **st
 [roxy_mangal_dosha birth_date="1992-09-08" birth_time="22:30" lat="13.0827" lon="80.2707" tz="Asia/Kolkata"]
 [roxy_kp_chart birth_date="1990-05-15" birth_time="14:30" lat="28.6139" lon="77.2090" tz="Asia/Kolkata"]
 [roxy_moon_phase]
+[roxy_bodygraph birth_date="1990-05-15" birth_time="14:30" lat="40.7128" lon="-74.0060" tz="America/New_York"]
 [roxy_biorhythm birth_date="1990-05-15" target_date="today"]
 [roxy_angel_number number="1111"]
 [roxy_crystals_by_zodiac sign="aries"]
 ```
 
-Two-chart compatibility heroes (`[roxy_synastry]`, `[roxy_gun_milan]`, `[roxy_compatibility]`) are form-mode only because static mode would need ten or more inline attributes per chart. Drop the shortcode on a page and visitors fill in both birth charts themselves.
+Two-chart compatibility heroes (`[roxy_synastry]`, `[roxy_gun_milan]`, `[roxy_compatibility]`) are form-mode only because static mode would need ten or more inline attributes per chart, and so is the forecast timeline (`[roxy_forecast]`), whose birth details and date window nest inside one request. Drop the shortcode on a page and visitors fill in the details themselves.
 
 ### Form mode (visitors pick the values)
 
@@ -70,6 +71,8 @@ Leave the attributes off and the shortcode renders an input form for your visito
 [roxy_synastry]             → two birth charts (Western synastry)
 [roxy_gun_milan]            → two birth charts (Vedic Ashtakoota)
 [roxy_compatibility]        → two birth charts (Western compatibility score)
+[roxy_forecast]             → birth details and an optional forecast window
+[roxy_bodygraph]            → birth date, time, and city picker
 [roxy_tarot_card]           → question input with spread selector
 [roxy_tarot_yes_no]         → question text input
 [roxy_numerology]           → name and birth date form
@@ -86,11 +89,14 @@ Form submissions post back to the same page over HTTPS. The plugin validates the
 In the block editor, open the inserter and pick a block from the **RoxyAPI** category. The headline readings, of which Horoscope adds a variation picker:
 
 -   **Horoscope** (daily, weekly, monthly, yearly)
--   **Natal Chart**
--   **Tarot** (daily, three card, Celtic Cross)
--   **Numerology** (life path, expression, soul urge, full chart)
+-   **Natal Chart** and **Moon Phase**
+-   **Vedic Kundli**, **Panchang**, **Mangal Dosha** and **KP Chart**
+-   **Bodygraph** (Human Design)
+-   **Tarot** (daily, three card, Celtic Cross) and **Tarot Yes or No**
+-   **Numerology** (life path, expression, soul urge, full chart) and **Life Path**
 -   **Biorhythm**
 -   **Angel Number**
+-   **Crystals by Zodiac**
 
 Beyond these, every long-tail endpoint (Chinese astrology, feng shui, Human Design, forecasts, I Ching, dream symbols, crystals, and more) generates a matching block from the OpenAPI spec, so the full catalog is in the inserter alongside the shortcodes. Every block, headline readings included, is generated the same way and gets sidebar controls for its inputs derived from the spec params (a date picker for dates, a dropdown for enums, text and number fields for the rest), with a live server-rendered preview. Only readings that need two charts or nested birth details (such as synastry or gun milan) stay shortcode and visitor-form only, because the block editor cannot collect their nested input.
 
@@ -161,7 +167,7 @@ The RoxyAPI admin page is split into five tabs:
 
 -   **Connect.** Paste the API key, test the connection.
 -   **Branding.** Four ready-made palettes, or seven colors set by hand with a light and a dark value each, plus a light, dark, or auto theme and the reading language.
--   **Display.** Default response language, optional disclaimer line.
+-   **Display.** Written readings on or off, hidden sections, the source credit, an optional disclaimer line, and the visitor form copy.
 -   **Privacy.** Visitor consent label. Birth date and time are special category data under GDPR Article 9; submission is gated on an explicit opt in checkbox and the plugin registers privacy policy content via `wp_add_privacy_policy_content`.
 -   **Advanced.** Cache preset (fresh / balanced / quota saver) and a connection status panel.
 

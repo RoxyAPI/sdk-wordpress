@@ -59,6 +59,8 @@ class ShortcodeBootstrap {
 		\RoxyAPI\Generated\Shortcodes\GenerateNavamsa::register();
 		\RoxyAPI\Generated\Shortcodes\GenerateDivisionalChart::register();
 		\RoxyAPI\Generated\Shortcodes\CalculateGunMilan::register();
+		\RoxyAPI\Generated\Shortcodes\CalculateDashakoot::register();
+		\RoxyAPI\Generated\Shortcodes\CalculatePapasamyam::register();
 		\RoxyAPI\Generated\Shortcodes\GetPlanetPositions::register();
 		\RoxyAPI\Generated\Shortcodes\GetMonthlyEphemeris::register();
 		\RoxyAPI\Generated\Shortcodes\GetCurrentDasha::register();

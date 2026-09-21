@@ -1,0 +1,40 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/crystals-by-zodiac",
+	"title": "Crystals by Zodiac",
+	"category": "roxyapi",
+	"icon": "image-filter",
+	"description": "Crystals and stones associated with any zodiac sign, with properties, color, and chakra.",
+	"keywords": [
+		"crystals",
+		"zodiac",
+		"healing stones",
+		"roxyapi"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"sign": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php",
+	"editorScript": "file:./index.js"
+}

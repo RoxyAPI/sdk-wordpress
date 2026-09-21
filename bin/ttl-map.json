@@ -96,6 +96,8 @@
 	"calculateCharaKarakas": 2592000,
 	"calculateDrishti": 2592000,
 	"calculateGunMilan": 2592000,
+	"calculateDashakoot": 2592000,
+	"calculatePapasamyam": 2592000,
 	"calculateParallels": 2592000,
 	"calculateShadbala": 2592000,
 	"calculateTransit": 3600,

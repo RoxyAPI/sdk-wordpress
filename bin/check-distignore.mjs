@@ -76,7 +76,10 @@ function matchedByDistignore( entry ) {
 
 const drift = [];
 for ( const entry of topLevel ) {
-	const inFiles = filesField.has( entry ) || filesField.has( entry + '/' );
+	// A directory is shipped when it is listed whole or through a path inside it.
+	const inFiles = [ ...filesField ].some(
+		( f ) => f === entry || f.startsWith( entry + '/' )
+	);
 	const inIgnore = matchedByDistignore( entry );
 	if ( ! inFiles && ! inIgnore ) {
 		drift.push( entry );

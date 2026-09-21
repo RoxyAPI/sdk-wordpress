@@ -69,6 +69,11 @@
 		}
 	},
 	"kundli": {
+		"block": {
+			"name": "roxyapi/kundli",
+			"icon": "grid-view",
+			"keywords": [ "kundli", "vedic", "birth chart", "janam kundali", "roxyapi" ]
+		},
 		"operationId": "generateBirthChart",
 		"title": "Vedic kundli",
 		"description": "Vedic birth chart with twelve rashis, planetary positions, nakshatra, and per-house interpretations.",
@@ -124,6 +129,11 @@
 		}
 	},
 	"panchang": {
+		"block": {
+			"name": "roxyapi/panchang",
+			"icon": "calendar-alt",
+			"keywords": [ "panchang", "tithi", "nakshatra", "vedic", "roxyapi" ]
+		},
 		"operationId": "getDetailedPanchang",
 		"title": "Panchang",
 		"description": "Detailed Hindu calendar for any date and location: tithi, nakshatra, yoga, karana, rahu kaal, abhijit muhurta, brahma muhurta, and more.",
@@ -172,6 +182,11 @@
 		}
 	},
 	"mangal_dosha": {
+		"block": {
+			"name": "roxyapi/mangal-dosha",
+			"icon": "shield",
+			"keywords": [ "mangal dosha", "manglik", "kuja dosha", "vedic", "roxyapi" ]
+		},
 		"operationId": "checkManglikDosha",
 		"title": "Mangal Dosha",
 		"description": "Check Mangal Dosha (manglik) status for matrimonial compatibility, with severity, remedies, and exception conditions.",
@@ -227,6 +242,11 @@
 		}
 	},
 	"kp_chart": {
+		"block": {
+			"name": "roxyapi/kp-chart",
+			"icon": "editor-table",
+			"keywords": [ "kp chart", "krishnamurti", "vedic", "roxyapi" ]
+		},
 		"operationId": "generateKpChart",
 		"title": "KP chart",
 		"description": "Krishnamurti Paddhati chart with cusps, planets, sub-lords, and significators.",
@@ -303,6 +323,11 @@
 		"delegate_to_form": "CalculateCompatibilityForm"
 	},
 	"moon_phase": {
+		"block": {
+			"name": "roxyapi/moon-phase",
+			"icon": "star-half",
+			"keywords": [ "moon phase", "lunar", "moon", "roxyapi" ]
+		},
 		"operationId": "getCurrentMoonPhase",
 		"title": "Moon phase",
 		"description": "Current moon phase, illumination, sign, degree, and meaning.",
@@ -310,7 +335,79 @@
 		"example": "[roxy_moon_phase]",
 		"attributes": {}
 	},
+	"forecast": {
+		"title": "Forecast timeline",
+		"description": "Cross-domain forecast for one birth chart: transits, ingresses, stations, dasha changes, and biorhythm critical days over a window of up to 90 days.",
+		"domain": "Forecast",
+		"example": "[roxy_forecast]",
+		"delegate_to_form": "GenerateTimelineForm"
+	},
+	"bodygraph": {
+		"block": {
+			"name": "roxyapi/bodygraph",
+			"icon": "universal-access",
+			"keywords": [ "human design", "bodygraph", "hd chart", "roxyapi" ]
+		},
+		"operationId": "generateBodygraph",
+		"title": "Bodygraph",
+		"description": "Human Design bodygraph with type, strategy, authority, profile, the nine centers, channels, and gates.",
+		"domain": "Human Design",
+		"example": "[roxy_bodygraph birth_date=\"1990-05-15\" birth_time=\"14:30\" lat=\"40.7128\" lon=\"-74.0060\" tz=\"America/New_York\"]",
+		"attributes": {
+			"birth_date": {
+				"default": "",
+				"required": true,
+				"sanitize": "date_string",
+				"spec_field": "date"
+			},
+			"birth_time": {
+				"default": "",
+				"required": true,
+				"sanitize": "time_string",
+				"spec_field": "time"
+			},
+			"lat": {
+				"default": "",
+				"required": true,
+				"sanitize": "latitude",
+				"spec_field": "latitude"
+			},
+			"lon": {
+				"default": "",
+				"required": true,
+				"sanitize": "longitude",
+				"spec_field": "longitude"
+			},
+			"tz": {
+				"default": "UTC",
+				"required": false,
+				"sanitize": "timezone",
+				"spec_field": "timezone"
+			}
+		},
+		"missing_message": "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to UTC; pass an IANA name or decimal hours for accuracy). Example: %s",
+		"form_mode": {
+			"title": "Human Design bodygraph",
+			"submit_label": "Generate bodygraph",
+			"section": {
+				"name": "birth",
+				"label": "Birth details"
+			},
+			"fields": [
+				{ "attr": "birth_date", "label": "Birth date", "type": "date", "required": true, "help": "Year, month, and day of birth" },
+				{ "attr": "birth_time", "label": "Birth time", "type": "time", "required": true, "help": "Local time of birth in 24-hour format" },
+				{ "attr": "lat", "label": "Latitude", "type": "number", "required": true, "min": -90, "max": 90, "step": "any", "help": "Decimal degrees, negative for south" },
+				{ "attr": "lon", "label": "Longitude", "type": "number", "required": true, "min": -180, "max": 180, "step": "any", "help": "Decimal degrees, negative for west" },
+				{ "attr": "tz", "label": "Timezone", "type": "timezone", "required": true, "help": "IANA name like America/New_York" }
+			]
+		}
+	},
 	"tarot_yes_no": {
+		"block": {
+			"name": "roxyapi/tarot-yes-no",
+			"icon": "yes-alt",
+			"keywords": [ "tarot", "yes or no", "card", "roxyapi" ]
+		},
 		"operationId": "castYesNo",
 		"title": "Tarot yes or no",
 		"description": "Single-card Yes / No / Maybe answer with strength rating and interpretation.",
@@ -409,6 +506,11 @@
 		}
 	},
 	"life_path": {
+		"block": {
+			"name": "roxyapi/life-path",
+			"icon": "chart-pie",
+			"keywords": [ "life path", "numerology", "birth date", "roxyapi" ]
+		},
 		"operationId": "calculateLifePath",
 		"title": "Life path",
 		"description": "Life path number and core meaning from a birth date.",
@@ -496,6 +598,11 @@
 		}
 	},
 	"crystals_by_zodiac": {
+		"block": {
+			"name": "roxyapi/crystals-by-zodiac",
+			"icon": "image-filter",
+			"keywords": [ "crystals", "zodiac", "healing stones", "roxyapi" ]
+		},
 		"operationId": "getCrystalsByZodiac",
 		"title": "Crystals by zodiac",
 		"description": "Crystals and stones associated with any zodiac sign, with properties, color, and chakra.",

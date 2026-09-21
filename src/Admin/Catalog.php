@@ -243,13 +243,20 @@ class Catalog {
 			}
 		);
 
-		// Sort each group: heroes first, then alphabetised by title.
+		// Sort each group: heroes first in their catalogue order, then the rest alphabetised by title.
 		foreach ( $ordered as $slug => $items ) {
+			$rank = array();
+			foreach ( $items as $position => $row ) {
+				$rank[ $row['tag'] ] = $position;
+			}
 			usort(
 				$items,
-				static function ( $a, $b ) {
+				static function ( $a, $b ) use ( $rank ) {
 					if ( $a['hero'] !== $b['hero'] ) {
 						return $a['hero'] ? -1 : 1;
+					}
+					if ( $a['hero'] ) {
+						return $rank[ $a['tag'] ] <=> $rank[ $b['tag'] ];
 					}
 					return strcasecmp( $a['title'], $b['title'] );
 				}

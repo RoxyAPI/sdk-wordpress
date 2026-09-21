@@ -1,0 +1,57 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/mangal-dosha",
+	"title": "Mangal Dosha",
+	"category": "roxyapi",
+	"icon": "shield",
+	"description": "Check Mangal Dosha (manglik) status for matrimonial compatibility, with severity, remedies, and exception conditions.",
+	"keywords": [
+		"mangal dosha",
+		"manglik",
+		"kuja dosha",
+		"vedic",
+		"roxyapi"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"birth_date": {
+			"type": "string",
+			"default": ""
+		},
+		"birth_time": {
+			"type": "string",
+			"default": ""
+		},
+		"lat": {
+			"type": "string",
+			"default": ""
+		},
+		"lon": {
+			"type": "string",
+			"default": ""
+		},
+		"tz": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php",
+	"editorScript": "file:./index.js"
+}

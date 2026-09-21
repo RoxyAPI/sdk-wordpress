@@ -33,9 +33,7 @@ class Endpoints {
 			'hero'          => false,
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_field_labels',
-			'attributes' => array(
-				'lang' => 'en',
-			),
+			'attributes' => array(),
 		),
 		'listZodiacSigns' => array(
 			'path'          => '/astrology/signs',
@@ -47,9 +45,7 @@ class Endpoints {
 			'hero'          => false,
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_zodiac_signs',
-			'attributes' => array(
-				'lang' => 'en',
-			),
+			'attributes' => array(),
 		),
 		'getZodiacSign' => array(
 			'path'          => '/astrology/signs/{id}',
@@ -63,7 +59,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_zodiac_sign',
 			'attributes' => array(
 				'id' => 'aries',
-				'lang' => 'en',
 			),
 		),
 		'listPlanetMeanings' => array(
@@ -76,9 +71,7 @@ class Endpoints {
 			'hero'          => false,
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_planet_meanings',
-			'attributes' => array(
-				'lang' => 'en',
-			),
+			'attributes' => array(),
 		),
 		'getPlanetMeaning' => array(
 			'path'          => '/astrology/planet-meanings/{id}',
@@ -92,7 +85,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_planet_meaning',
 			'attributes' => array(
 				'id' => 'sun',
-				'lang' => 'en',
 			),
 		),
 		'generateNatalChart' => array(
@@ -106,7 +98,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_natal_chart',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-15',
 				'time' => '14:30:00',
 				'latitude' => '40.7128',
@@ -127,7 +118,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_planetary_positions',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '2025-12-18',
 				'time' => '12:00:00',
 				'node_type' => 'true',
@@ -146,9 +136,7 @@ class Endpoints {
 			'hero'          => false,
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_monthly_tropical_ephemeris',
-			'attributes' => array(
-				'lang' => 'en',
-			),
+			'attributes' => array(),
 		),
 		'getCurrentMoonPhase' => array(
 			'path'          => '/astrology/moon-phase/current',
@@ -161,7 +149,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_current_moon_phase',
 			'attributes' => array(
-				'lang' => 'en',
 				'time' => '12:00:00',
 				'timezone' => 'UTC',
 			),
@@ -177,7 +164,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_upcoming_moon_phases',
 			'attributes' => array(
-				'lang' => 'en',
 				'count' => '8',
 			),
 		),
@@ -194,7 +180,6 @@ class Endpoints {
 			'attributes' => array(
 				'year' => '2026',
 				'month' => '3',
-				'lang' => 'en',
 			),
 		),
 		'calculateSynastry' => array(
@@ -220,7 +205,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_houses',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-15',
 				'time' => '14:30:00',
 				'latitude' => '40.7128',
@@ -240,7 +224,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_aspects',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-15',
 				'time' => '14:30:00',
 				'timezone' => 'UTC',
@@ -257,7 +240,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_monthly_tropical_aspects',
 			'attributes' => array(
-				'lang' => 'en',
 				'timezone' => 'UTC',
 				'node_type' => 'true',
 			),
@@ -273,7 +255,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_detect_aspect_patterns',
 			'attributes' => array(
-				'lang' => 'en',
 				'strict_orbs' => 'false',
 				'include' => '',
 				'date' => '1990-07-15',
@@ -295,7 +276,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_transits',
 			'attributes' => array(
-				'lang' => 'en',
 				'timezone' => 'UTC',
 				'node_type' => 'true',
 			),
@@ -311,7 +291,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_monthly_tropical_transits',
 			'attributes' => array(
-				'lang' => 'en',
 				'timezone' => 'UTC',
 				'node_type' => 'true',
 			),
@@ -339,7 +318,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_monthly_declination_parallels',
 			'attributes' => array(
-				'lang' => 'en',
 				'timezone' => 'UTC',
 				'orb' => '1.5',
 				'node_type' => 'true',
@@ -356,7 +334,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_planetary_node_passages',
 			'attributes' => array(
-				'lang' => 'en',
 				'year' => '2026',
 				'timezone' => 'UTC',
 			),
@@ -372,7 +349,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_solar_return',
 			'attributes' => array(
-				'lang' => 'en',
 				'birth_date' => '1990-07-15',
 				'birth_time' => '14:30:00',
 				'return_year' => '2026',
@@ -393,7 +369,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_lunar_return',
 			'attributes' => array(
-				'lang' => 'en',
 				'birth_date' => '1990-07-15',
 				'birth_time' => '14:30:00',
 				'return_date' => '2026-02-12',
@@ -439,7 +414,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_daily_horoscope',
 			'attributes' => array(
 				'sign' => 'aries',
-				'lang' => 'en',
 				'timezone' => 'UTC',
 			),
 		),
@@ -455,7 +429,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_weekly_horoscope',
 			'attributes' => array(
 				'sign' => 'aries',
-				'lang' => 'en',
 				'timezone' => 'UTC',
 			),
 		),
@@ -471,7 +444,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_monthly_horoscope',
 			'attributes' => array(
 				'sign' => 'aries',
-				'lang' => 'en',
 				'timezone' => 'UTC',
 			),
 		),
@@ -487,7 +459,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_yearly_horoscope',
 			'attributes' => array(
 				'sign' => 'aries',
-				'lang' => 'en',
 				'timezone' => 'UTC',
 			),
 		),
@@ -502,7 +473,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_planetary_return',
 			'attributes' => array(
-				'lang' => 'en',
 				'birth_date' => '1990-07-15',
 				'birth_time' => '14:30:00',
 				'planet' => 'Jupiter',
@@ -524,7 +494,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_astrocartography',
 			'attributes' => array(
-				'lang' => 'en',
 				'include' => 'chiron',
 				'date' => '1990-07-15',
 				'time' => '14:30:00',
@@ -545,7 +514,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_relocation_chart',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1961-08-04',
 				'time' => '19:24:00',
 				'timezone' => 'UTC',
@@ -567,7 +535,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_local_space',
 			'attributes' => array(
-				'lang' => 'en',
 				'include' => 'chiron,lilith',
 				'date' => '1990-07-15',
 				'time' => '14:30:00',
@@ -587,7 +554,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_fixed_stars',
 			'attributes' => array(
-				'lang' => 'en',
 				'orb' => '1',
 				'date' => '1990-07-15',
 				'time' => '14:30:00',
@@ -608,7 +574,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_arabic_lots',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-15',
 				'time' => '14:30:00',
 				'latitude' => '40.7128',
@@ -629,7 +594,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_asteroids',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-15',
 				'time' => '14:30:00',
 				'latitude' => '40.7128',
@@ -650,7 +614,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_lilith',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-15',
 				'time' => '14:30:00',
 				'latitude' => '40.7128',
@@ -671,7 +634,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_progressions',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-15',
 				'time' => '14:30:00',
 				'latitude' => '40.7128',
@@ -692,7 +654,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_solar_arc',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-15',
 				'time' => '14:30:00',
 				'latitude' => '40.7128',
@@ -713,7 +674,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_profections',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-15',
 				'time' => '14:30:00',
 				'latitude' => '40.7128',
@@ -735,7 +695,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_birth_chart',
 			'attributes' => array(
-				'lang' => 'en',
 				'focus' => 'general',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
@@ -759,7 +718,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_navamsa',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
 				'latitude' => '28.6139',
@@ -780,7 +738,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_divisional_chart',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
 				'latitude' => '28.6139',
@@ -803,6 +760,30 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_calculate_gun_milan',
 			'attributes' => array(),
 		),
+		'calculateDashakoot' => array(
+			'path'          => '/vedic-astrology/compatibility/dashakoot',
+			'method'        => 'POST',
+			'tag'           => 'Vedic Astrology',
+			'summary'       => 'Calculate ten porutham match - Dashakoot South Indian Kundli Matching API',
+			'display_name'  => 'Porutham Match',
+			'ttl'           => 2592000,
+			'hero'          => false,
+			'block_only'    => true,
+			'shortcode_tag' => 'roxy_calculate_dashakoot',
+			'attributes' => array(),
+		),
+		'calculatePapasamyam' => array(
+			'path'          => '/vedic-astrology/compatibility/papasamyam',
+			'method'        => 'POST',
+			'tag'           => 'Vedic Astrology',
+			'summary'       => 'Compare malefic affliction - Papasamyam Kundli Matching API',
+			'display_name'  => 'Compare Malefic Affliction',
+			'ttl'           => 2592000,
+			'hero'          => false,
+			'block_only'    => true,
+			'shortcode_tag' => 'roxy_calculate_papasamyam',
+			'attributes' => array(),
+		),
 		'getPlanetPositions' => array(
 			'path'          => '/vedic-astrology/planetary-positions',
 			'method'        => 'POST',
@@ -814,7 +795,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_planet_positions',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
 				'latitude' => '28.6139',
@@ -835,7 +815,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_monthly_ephemeris',
 			'attributes' => array(
-				'lang' => 'en',
 				'coordinate_system' => 'sidereal',
 			),
 		),
@@ -850,7 +829,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_current_dasha',
 			'attributes' => array(
-				'lang' => 'en',
 				'focus' => 'general',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
@@ -874,7 +852,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_major_dashas',
 			'attributes' => array(
-				'lang' => 'en',
 				'focus' => 'general',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
@@ -899,7 +876,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_sub_dashas',
 			'attributes' => array(
 				'mahadasha' => 'Jupiter',
-				'lang' => 'en',
 				'focus' => 'general',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
@@ -925,7 +901,6 @@ class Endpoints {
 			'attributes' => array(
 				'mahadasha' => 'Saturn',
 				'antardasha' => 'Venus',
-				'lang' => 'en',
 				'focus' => 'general',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
@@ -952,7 +927,6 @@ class Endpoints {
 				'mahadasha' => 'Saturn',
 				'antardasha' => 'Venus',
 				'pratyantardasha' => 'Rahu',
-				'lang' => 'en',
 				'focus' => 'general',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
@@ -980,7 +954,6 @@ class Endpoints {
 				'antardasha' => 'Venus',
 				'pratyantardasha' => 'Rahu',
 				'sookshma' => 'Jupiter',
-				'lang' => 'en',
 				'focus' => 'general',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
@@ -1004,7 +977,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_vedic_daily_reading',
 			'attributes' => array(
-				'lang' => 'en',
 				'focus' => 'general',
 				'birth_date' => '1984-11-03',
 				'birth_time' => '01:35:00',
@@ -1025,7 +997,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_basic_panchang',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '2025-12-17',
 				'time' => '12:00:00',
 				'latitude' => '28.6139',
@@ -1044,7 +1015,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_detailed_panchang',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '2026-02-03',
 				'latitude' => '28.6139',
 				'longitude' => '77.209',
@@ -1096,7 +1066,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_check_manglik_dosha',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
 				'latitude' => '28.6139',
@@ -1117,7 +1086,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_check_kalsarpa_dosha',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
 				'latitude' => '28.6139',
@@ -1138,7 +1106,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_check_sadhesati',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
 				'latitude' => '28.6139',
@@ -1159,7 +1126,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_yogas',
 			'attributes' => array(
-				'lang' => 'en',
 				'family' => 'akriti',
 			),
 		),
@@ -1175,7 +1141,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_yoga',
 			'attributes' => array(
 				'id' => 'gajakesari',
-				'lang' => 'en',
 			),
 		),
 		'detectYogas' => array(
@@ -1189,7 +1154,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_detect_yogas',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
 				'latitude' => '28.6139',
@@ -1246,7 +1210,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_kp_cusps',
 			'attributes' => array(
-				'lang' => 'en',
 				'focus' => 'general',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
@@ -1268,7 +1231,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_kp_chart',
 			'attributes' => array(
-				'lang' => 'en',
 				'focus' => 'general',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
@@ -1291,7 +1253,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_kp_ruling_planets',
 			'attributes' => array(
-				'lang' => 'en',
 				'focus' => 'general',
 				'latitude' => '28.6139',
 				'longitude' => '77.209',
@@ -1312,7 +1273,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_kp_ruling_interval',
 			'attributes' => array(
-				'lang' => 'en',
 				'focus' => 'general',
 				'start_datetime' => '2026-02-03T00:00:00Z',
 				'end_datetime' => '2026-02-03T01:00:00Z',
@@ -1394,7 +1354,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_cast_kp_horary_chart',
 			'attributes' => array(
-				'lang' => 'en',
 				'focus' => 'general',
 				'horary_number' => '108',
 				'date' => '2026-03-08',
@@ -1458,7 +1417,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_monthly_aspects',
 			'attributes' => array(
-				'lang' => 'en',
 				'timezone' => 'UTC',
 				'coordinate_system' => 'sidereal',
 			),
@@ -1474,7 +1432,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_lunar_aspects',
 			'attributes' => array(
-				'lang' => 'en',
 				'timezone' => 'UTC',
 				'coordinate_system' => 'sidereal',
 			),
@@ -1511,7 +1468,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_monthly_transits',
 			'attributes' => array(
-				'lang' => 'en',
 				'timezone' => 'UTC',
 				'coordinate_system' => 'sidereal',
 			),
@@ -1546,7 +1502,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_monthly_parallels',
 			'attributes' => array(
-				'lang' => 'en',
 				'timezone' => 'UTC',
 			),
 		),
@@ -1576,9 +1531,7 @@ class Endpoints {
 			'hero'          => false,
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_rashis',
-			'attributes' => array(
-				'lang' => 'en',
-			),
+			'attributes' => array(),
 		),
 		'getRashi' => array(
 			'path'          => '/vedic-astrology/rashis/{id}',
@@ -1592,7 +1545,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_rashi',
 			'attributes' => array(
 				'id' => 'mesha',
-				'lang' => 'en',
 			),
 		),
 		'listNakshatras' => array(
@@ -1605,9 +1557,7 @@ class Endpoints {
 			'hero'          => false,
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_nakshatras',
-			'attributes' => array(
-				'lang' => 'en',
-			),
+			'attributes' => array(),
 		),
 		'getNakshatra' => array(
 			'path'          => '/vedic-astrology/nakshatras/{id}',
@@ -1621,7 +1571,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_nakshatra',
 			'attributes' => array(
 				'id' => 'ashwini',
-				'lang' => 'en',
 			),
 		),
 		'getUpagrahaPositions' => array(
@@ -1675,7 +1624,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_shadbala',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
 				'latitude' => '28.6139',
@@ -1696,7 +1644,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_avasthas',
 			'attributes' => array(
-				'lang' => 'en',
 				'system' => 'deeptadi',
 			),
 		),
@@ -1712,7 +1659,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_avastha',
 			'attributes' => array(
 				'id' => 'dipta',
-				'lang' => 'en',
 			),
 		),
 		'calculateArudhaPadas' => array(
@@ -1726,7 +1672,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_arudha_padas',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
 				'latitude' => '28.6139',
@@ -1747,7 +1692,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_chara_karakas',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
 				'latitude' => '28.6139',
@@ -1769,7 +1713,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_bhava_bala',
 			'attributes' => array(
-				'lang' => 'en',
 				'focus' => 'general',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
@@ -1791,7 +1734,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_bhav_chalit',
 			'attributes' => array(
-				'lang' => 'en',
 				'focus' => 'general',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
@@ -1878,7 +1820,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_forecast_solar_return',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-15',
 				'time' => '14:30:00',
 				'year' => '2026',
@@ -1899,7 +1840,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_bodygraph',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-15',
 				'time' => '13:00:00',
 				'timezone' => 'UTC',
@@ -1955,7 +1895,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_type',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-15',
 				'time' => '13:00:00',
 				'timezone' => 'UTC',
@@ -1975,7 +1914,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_gates',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-15',
 				'time' => '13:00:00',
 				'timezone' => 'UTC',
@@ -1996,7 +1934,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_gate',
 			'attributes' => array(
 				'number' => '34',
-				'lang' => 'en',
 			),
 		),
 		'calculateChannels' => array(
@@ -2010,7 +1947,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_channels',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-15',
 				'time' => '13:00:00',
 				'timezone' => 'UTC',
@@ -2030,7 +1966,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_centers',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-15',
 				'time' => '13:00:00',
 				'timezone' => 'UTC',
@@ -2051,7 +1986,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_center',
 			'attributes' => array(
 				'id' => 'sacral',
-				'lang' => 'en',
 			),
 		),
 		'calculateProfile' => array(
@@ -2065,7 +1999,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_profile',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-15',
 				'time' => '13:00:00',
 				'timezone' => 'UTC',
@@ -2085,7 +2018,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_variables',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-15',
 				'time' => '13:00:00',
 				'timezone' => 'UTC',
@@ -2105,7 +2037,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_bazi_chart',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-06-15',
 				'time' => '14:30:00',
 				'timezone' => 'UTC',
@@ -2127,7 +2058,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_luck_pillars',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-06-15',
 				'time' => '14:30:00',
 				'timezone' => 'UTC',
@@ -2153,7 +2083,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_day_master_strength',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-06-15',
 				'time' => '14:30:00',
 				'timezone' => 'UTC',
@@ -2187,7 +2116,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_annual_forecast',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-06-15',
 				'time' => '14:30:00',
 				'timezone' => 'UTC',
@@ -2210,7 +2138,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_zodiac_animals',
 			'attributes' => array(
-				'lang' => 'en',
 				'limit' => '12',
 				'offset' => '0',
 			),
@@ -2227,7 +2154,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_zodiac_animal',
 			'attributes' => array(
 				'id' => 'rat',
-				'lang' => 'en',
 			),
 		),
 		'calculateZodiacAnimal' => array(
@@ -2241,7 +2167,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_zodiac_animal',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-06-15',
 				'year_boundary' => 'lunar-new-year',
 			),
@@ -2259,7 +2184,6 @@ class Endpoints {
 			'attributes' => array(
 				'sign1' => 'rat',
 				'sign2' => 'dragon',
-				'lang' => 'en',
 			),
 		),
 		'getDailyZodiacReading' => array(
@@ -2274,7 +2198,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_daily_zodiac_reading',
 			'attributes' => array(
 				'id' => 'rat',
-				'lang' => 'en',
 				'timezone' => 'UTC',
 			),
 		),
@@ -2290,7 +2213,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_list_solar_terms',
 			'attributes' => array(
 				'year' => '2026',
-				'lang' => 'en',
 			),
 		),
 		'calculateLunarDate' => array(
@@ -2304,7 +2226,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_lunar_date',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-06-15',
 				'lunar_year' => '1990',
 				'lunar_month' => '5',
@@ -2324,7 +2245,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_almanac_day',
 			'attributes' => array(
 				'date' => '1990-06-15',
-				'lang' => 'en',
 			),
 		),
 		'getMonthlyAlmanac' => array(
@@ -2337,9 +2257,7 @@ class Endpoints {
 			'hero'          => false,
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_monthly_almanac',
-			'attributes' => array(
-				'lang' => 'en',
-			),
+			'attributes' => array(),
 		),
 		'lookupAuspiciousDays' => array(
 			'path'          => '/chinese-astrology/calendar/auspicious-days',
@@ -2352,7 +2270,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_lookup_auspicious_days',
 			'attributes' => array(
-				'lang' => 'en',
 				'activity' => 'wedding',
 				'start_date' => '2026-03-01',
 				'end_date' => '2026-04-30',
@@ -2370,7 +2287,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_five_elements',
 			'attributes' => array(
-				'lang' => 'en',
 				'limit' => '5',
 				'offset' => '0',
 			),
@@ -2386,7 +2302,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_kua_number',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1985-07-15',
 				'gender' => 'male',
 				'year_boundary' => 'li-chun',
@@ -2404,7 +2319,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_kua_number',
 			'attributes' => array(
 				'number' => '8',
-				'lang' => 'en',
 			),
 		),
 		'generateEightMansions' => array(
@@ -2418,7 +2332,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_eight_mansions',
 			'attributes' => array(
-				'lang' => 'en',
 				'kua' => '6',
 				'date' => '1985-07-15',
 				'gender' => 'male',
@@ -2437,7 +2350,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_flying_star_chart',
 			'attributes' => array(
-				'lang' => 'en',
 				'period' => '9',
 				'facing' => 'wu',
 				'facing_degrees' => '180',
@@ -2455,7 +2367,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_annual_flying_stars',
 			'attributes' => array(
 				'year' => '2026',
-				'lang' => 'en',
 			),
 		),
 		'getMonthlyFlyingStars' => array(
@@ -2469,7 +2380,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_monthly_flying_stars',
 			'attributes' => array(
-				'lang' => 'en',
 				'year' => '2026',
 				'month' => '1',
 			),
@@ -2485,7 +2395,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_flying_stars',
 			'attributes' => array(
-				'lang' => 'en',
 				'limit' => '9',
 				'offset' => '0',
 			),
@@ -2502,7 +2411,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_annual_afflictions',
 			'attributes' => array(
 				'year' => '2026',
-				'lang' => 'en',
 			),
 		),
 		'listBaguaSectors' => array(
@@ -2516,7 +2424,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_bagua_sectors',
 			'attributes' => array(
-				'lang' => 'en',
 				'limit' => '9',
 				'offset' => '0',
 			),
@@ -2533,7 +2440,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_bagua_sector',
 			'attributes' => array(
 				'id' => 'wealth',
-				'lang' => 'en',
 			),
 		),
 		'listNinePeriods' => array(
@@ -2546,9 +2452,7 @@ class Endpoints {
 			'hero'          => false,
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_nine_periods',
-			'attributes' => array(
-				'lang' => 'en',
-			),
+			'attributes' => array(),
 		),
 		'calculateTzolkin' => array(
 			'path'          => '/mesoamerican-astrology/mayan/tzolkin',
@@ -2561,7 +2465,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_tzolkin',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '2012-12-21',
 				'correlation' => 'gmt-584283',
 			),
@@ -2577,7 +2480,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_mayan_chart',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '2012-12-21',
 				'correlation' => 'gmt-584283',
 				'year_bearer_system' => 'classic',
@@ -2594,7 +2496,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_convert_long_count',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '2012-12-21',
 				'long_count' => '13.0.0.0.0',
 				'correlation' => 'gmt-584283',
@@ -2611,7 +2512,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_daily_mayan_reading',
 			'attributes' => array(
-				'lang' => 'en',
 				'correlation' => 'gmt-584283',
 			),
 		),
@@ -2626,7 +2526,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_monthly_tzolkin_calendar',
 			'attributes' => array(
-				'lang' => 'en',
 				'correlation' => 'gmt-584283',
 			),
 		),
@@ -2653,7 +2552,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_mayan_day_signs',
 			'attributes' => array(
-				'lang' => 'en',
 				'direction_scheme' => 'madrid-codex',
 				'limit' => '20',
 				'offset' => '0',
@@ -2671,7 +2569,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_mayan_day_sign',
 			'attributes' => array(
 				'id' => 'imix',
-				'lang' => 'en',
 				'direction_scheme' => 'madrid-codex',
 			),
 		),
@@ -2686,7 +2583,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_trecenas',
 			'attributes' => array(
-				'lang' => 'en',
 				'limit' => '20',
 				'offset' => '0',
 			),
@@ -2703,7 +2599,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_trecena',
 			'attributes' => array(
 				'number' => '1',
-				'lang' => 'en',
 			),
 		),
 		'listHaabMonths' => array(
@@ -2717,7 +2612,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_haab_months',
 			'attributes' => array(
-				'lang' => 'en',
 				'limit' => '19',
 				'offset' => '0',
 			),
@@ -2734,7 +2628,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_haab_month',
 			'attributes' => array(
 				'id' => 'pop',
-				'lang' => 'en',
 			),
 		),
 		'calculateTonalpohualli' => array(
@@ -2748,7 +2641,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_tonalpohualli',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '2012-12-21',
 			),
 		),
@@ -2762,9 +2654,7 @@ class Endpoints {
 			'hero'          => false,
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_daily_aztec_reading',
-			'attributes' => array(
-				'lang' => 'en',
-			),
+			'attributes' => array(),
 		),
 		'listAztecDaySigns' => array(
 			'path'          => '/mesoamerican-astrology/aztec/day-signs',
@@ -2777,7 +2667,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_aztec_day_signs',
 			'attributes' => array(
-				'lang' => 'en',
 				'limit' => '20',
 				'offset' => '0',
 			),
@@ -2794,7 +2683,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_aztec_day_sign',
 			'attributes' => array(
 				'id' => 'cipactli',
-				'lang' => 'en',
 			),
 		),
 		'listAztecTrecenas' => array(
@@ -2808,7 +2696,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_aztec_trecenas',
 			'attributes' => array(
-				'lang' => 'en',
 				'limit' => '20',
 				'offset' => '0',
 			),
@@ -2825,7 +2712,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_aztec_trecena',
 			'attributes' => array(
 				'number' => '1',
-				'lang' => 'en',
 			),
 		),
 		'calculateEntrancePada' => array(
@@ -2875,7 +2761,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_ayadi',
 			'attributes' => array(
-				'lang' => 'en',
 				'length' => '11',
 				'breadth' => '11',
 				'perimeter' => '11',
@@ -2909,7 +2794,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_find_griha_pravesh_dates',
 			'attributes' => array(
-				'lang' => 'en',
 				'start_date' => '2027-01-20',
 				'end_date' => '2027-03-20',
 				'latitude' => '28.6139',
@@ -2929,7 +2813,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_dikpala_directions',
 			'attributes' => array(
-				'lang' => 'en',
 				'limit' => '8',
 				'offset' => '0',
 			),
@@ -2946,7 +2829,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_dikpala_direction',
 			'attributes' => array(
 				'id' => 'Northeast',
-				'lang' => 'en',
 			),
 		),
 		'listDevatas' => array(
@@ -2960,7 +2842,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_devatas',
 			'attributes' => array(
-				'lang' => 'en',
 				'limit' => '45',
 				'offset' => '0',
 			),
@@ -2977,7 +2858,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_devata',
 			'attributes' => array(
 				'id' => 'jayanta',
-				'lang' => 'en',
 			),
 		),
 		'calculateLifePath' => array(
@@ -2991,7 +2871,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_life_path',
 			'attributes' => array(
-				'lang' => 'en',
 				'year' => '1990',
 				'month' => '7',
 				'day' => '15',
@@ -3008,7 +2887,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_expression',
 			'attributes' => array(
-				'lang' => 'en',
 				'full_name' => 'John William Smith',
 			),
 		),
@@ -3023,7 +2901,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_bridge_numbers',
 			'attributes' => array(
-				'lang' => 'en',
 				'full_name' => 'John William Smith',
 				'year' => '1990',
 				'month' => '7',
@@ -3041,7 +2918,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_soul_urge',
 			'attributes' => array(
-				'lang' => 'en',
 				'full_name' => 'John William Smith',
 			),
 		),
@@ -3056,7 +2932,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_personality',
 			'attributes' => array(
-				'lang' => 'en',
 				'full_name' => 'John William Smith',
 			),
 		),
@@ -3071,7 +2946,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_birth_day',
 			'attributes' => array(
-				'lang' => 'en',
 				'day' => '23',
 			),
 		),
@@ -3086,7 +2960,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_maturity',
 			'attributes' => array(
-				'lang' => 'en',
 				'life_path' => '5',
 				'expression' => '7',
 				'full_name' => 'John William Smith',
@@ -3106,7 +2979,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_analyze_karmic_lessons',
 			'attributes' => array(
-				'lang' => 'en',
 				'full_name' => 'John William Smith',
 			),
 		),
@@ -3121,7 +2993,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_check_karmic_debt',
 			'attributes' => array(
-				'lang' => 'en',
 				'year' => '1990',
 				'month' => '7',
 				'day' => '15',
@@ -3139,7 +3010,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_personal_day',
 			'attributes' => array(
-				'lang' => 'en',
 				'month' => '7',
 				'day' => '18',
 			),
@@ -3155,7 +3025,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_personal_month',
 			'attributes' => array(
-				'lang' => 'en',
 				'month' => '7',
 				'day' => '18',
 			),
@@ -3171,7 +3040,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_personal_year',
 			'attributes' => array(
-				'lang' => 'en',
 				'month' => '7',
 				'day' => '15',
 			),
@@ -3199,7 +3067,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_numerology_chart',
 			'attributes' => array(
-				'lang' => 'en',
 				'full_name' => 'John William Smith',
 				'year' => '1990',
 				'month' => '7',
@@ -3218,7 +3085,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_number_meaning',
 			'attributes' => array(
 				'number' => '5',
-				'lang' => 'en',
 			),
 		),
 		'getDailyNumber' => array(
@@ -3232,7 +3098,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_daily_number',
 			'attributes' => array(
-				'lang' => 'en',
 				'seed' => 'user123',
 			),
 		),
@@ -3247,7 +3112,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_chaldean',
 			'attributes' => array(
-				'lang' => 'en',
 				'name' => 'Helen',
 			),
 		),
@@ -3263,7 +3127,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_compound_number',
 			'attributes' => array(
 				'number' => '23',
-				'lang' => 'en',
 			),
 		),
 		'calculateDual' => array(
@@ -3277,7 +3140,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_dual',
 			'attributes' => array(
-				'lang' => 'en',
 				'name' => 'David',
 			),
 		),
@@ -3292,7 +3154,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_business_name',
 			'attributes' => array(
-				'lang' => 'en',
 				'name' => 'Ford',
 			),
 		),
@@ -3307,7 +3168,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_gematria',
 			'attributes' => array(
-				'lang' => 'en',
 				'text' => 'Sarah',
 				'text_hebrew' => 'שלום',
 				'transliteration' => 'letter-map-mathers',
@@ -3327,9 +3187,7 @@ class Endpoints {
 			'hero'          => false,
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_gematria_ciphers',
-			'attributes' => array(
-				'lang' => 'en',
-			),
+			'attributes' => array(),
 		),
 		'generateNameProfile' => array(
 			'path'          => '/kabbalah/name-profile',
@@ -3342,7 +3200,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_name_profile',
 			'attributes' => array(
-				'lang' => 'en',
 				'name' => 'Sarah',
 				'name_hebrew' => 'שרה',
 				'transliteration' => 'letter-map-mathers',
@@ -3360,7 +3217,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_generate_birth_profile',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-06-15',
 				'time' => '14:30:00',
 				'timezone' => 'UTC',
@@ -3381,7 +3237,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_shem_names',
 			'attributes' => array(
-				'lang' => 'en',
 				'limit' => '20',
 				'offset' => '0',
 				'longitude' => '131.18',
@@ -3399,7 +3254,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_shem_name',
 			'attributes' => array(
 				'number' => '27',
-				'lang' => 'en',
 			),
 		),
 		'getTreeOfLife' => array(
@@ -3413,7 +3267,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_tree_of_life',
 			'attributes' => array(
-				'lang' => 'en',
 				'tree_variant' => 'kircher',
 				'sephirot_system' => 'classical',
 				'letter_attribution' => 'sefer-yetzirah-gra',
@@ -3431,7 +3284,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_sephirah',
 			'attributes' => array(
 				'id' => 'tiferet',
-				'lang' => 'en',
 				'sephirot_system' => 'classical',
 				'letter_attribution' => 'sefer-yetzirah-gra',
 			),
@@ -3447,7 +3299,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_hebrew_letters',
 			'attributes' => array(
-				'lang' => 'en',
 				'letter_attribution' => 'sefer-yetzirah-gra',
 			),
 		),
@@ -3463,7 +3314,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_hebrew_letter',
 			'attributes' => array(
 				'id' => 'shin',
-				'lang' => 'en',
 				'letter_attribution' => 'sefer-yetzirah-gra',
 			),
 		),
@@ -3478,7 +3328,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_name_compatibility',
 			'attributes' => array(
-				'lang' => 'en',
 				'first_name' => 'Sarah',
 				'first_name_hebrew' => 'שרה',
 				'second_name' => 'David',
@@ -3498,7 +3347,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_daily_sephirah',
 			'attributes' => array(
-				'lang' => 'en',
 				'timezone' => 'UTC',
 				'after_sunset' => 'false',
 			),
@@ -3514,7 +3362,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_cards',
 			'attributes' => array(
-				'lang' => 'en',
 				'limit' => '20',
 				'offset' => '0',
 				'arcana' => 'major',
@@ -3534,7 +3381,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_card',
 			'attributes' => array(
 				'id' => 'fool',
-				'lang' => 'en',
 			),
 		),
 		'drawCards' => array(
@@ -3548,7 +3394,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_draw_cards',
 			'attributes' => array(
-				'lang' => 'en',
 				'count' => '3',
 				'seed' => 'user123-2025-12-27',
 				'allow_reversals' => '1',
@@ -3566,7 +3411,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_daily_card',
 			'attributes' => array(
-				'lang' => 'en',
 				'seed' => 'user123',
 			),
 		),
@@ -3581,7 +3425,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_cast_yes_no',
 			'attributes' => array(
-				'lang' => 'en',
 				'question' => 'Should I accept the job offer?',
 				'seed' => 'reading-2f9c1a',
 			),
@@ -3597,7 +3440,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_cast_three_card',
 			'attributes' => array(
-				'lang' => 'en',
 				'question' => 'What do I need to know about my career?',
 				'seed' => 'reading-2f9c1a',
 			),
@@ -3613,7 +3455,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_cast_celtic_cross',
 			'attributes' => array(
-				'lang' => 'en',
 				'question' => 'What should I know about this situation?',
 				'seed' => 'reading-2f9c1a',
 			),
@@ -3629,7 +3470,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_cast_love_spread',
 			'attributes' => array(
-				'lang' => 'en',
 				'question' => 'What do I need to know about my relationship?',
 				'seed' => 'reading-2f9c1a',
 			),
@@ -3645,7 +3485,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_cast_career_spread',
 			'attributes' => array(
-				'lang' => 'en',
 				'question' => 'What do I need to know about my career path?',
 				'seed' => 'reading-2f9c1a',
 			),
@@ -3673,7 +3512,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_reading',
 			'attributes' => array(
-				'lang' => 'en',
 				'birth_date' => '1990-07-15',
 			),
 		),
@@ -3688,7 +3526,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_forecast',
 			'attributes' => array(
-				'lang' => 'en',
 				'birth_date' => '1990-07-15',
 				'end_date' => '2026-04-30',
 			),
@@ -3704,7 +3541,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_critical_days',
 			'attributes' => array(
-				'lang' => 'en',
 				'birth_date' => '1990-07-15',
 				'end_date' => '2026-06-30',
 			),
@@ -3732,7 +3568,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_phases',
 			'attributes' => array(
-				'lang' => 'en',
 				'birth_date' => '1990-07-15',
 			),
 		),
@@ -3747,7 +3582,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_daily_biorhythm',
 			'attributes' => array(
-				'lang' => 'en',
 				'seed' => 'user123',
 			),
 		),
@@ -3762,7 +3596,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_calculate_ayurvedic_constitution',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '1990-07-04',
 				'time' => '10:12:00',
 				'latitude' => '28.6139',
@@ -3784,7 +3617,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_dinacharya_schedule',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '2026-06-21',
 				'latitude' => '51.5074',
 				'longitude' => '-0.1278',
@@ -3803,7 +3635,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_ritucharya',
 			'attributes' => array(
-				'lang' => 'en',
 				'date' => '2026-03-01',
 				'ritucharya_scheme' => 'sutrasthana-6',
 				'ritu_zodiac' => 'sayana',
@@ -3821,7 +3652,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_daily_ayurveda_reading',
 			'attributes' => array(
-				'lang' => 'en',
 				'latitude' => '51.5074',
 				'longitude' => '-0.1278',
 				'timezone' => 'UTC',
@@ -3838,7 +3668,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_doshas',
 			'attributes' => array(
-				'lang' => 'en',
 				'limit' => '3',
 				'offset' => '0',
 			),
@@ -3855,7 +3684,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_dosha',
 			'attributes' => array(
 				'id' => 'vata',
-				'lang' => 'en',
 			),
 		),
 		'listRasas' => array(
@@ -3869,7 +3697,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_rasas',
 			'attributes' => array(
-				'lang' => 'en',
 				'limit' => '6',
 				'offset' => '0',
 			),
@@ -3885,7 +3712,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_gunas',
 			'attributes' => array(
-				'lang' => 'en',
 				'limit' => '10',
 				'offset' => '0',
 			),
@@ -3901,7 +3727,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_daily_hexagram',
 			'attributes' => array(
-				'lang' => 'en',
 				'seed' => 'user123',
 			),
 		),
@@ -3916,7 +3741,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_cast_daily_reading',
 			'attributes' => array(
-				'lang' => 'en',
 				'seed' => 'user123',
 			),
 		),
@@ -3931,7 +3755,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_hexagrams',
 			'attributes' => array(
-				'lang' => 'en',
 				'limit' => '20',
 				'offset' => '0',
 			),
@@ -3946,9 +3769,7 @@ class Endpoints {
 			'hero'          => false,
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_random_hexagram',
-			'attributes' => array(
-				'lang' => 'en',
-			),
+			'attributes' => array(),
 		),
 		'lookupHexagram' => array(
 			'path'          => '/iching/hexagrams/lookup',
@@ -3961,7 +3782,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_lookup_hexagram',
 			'attributes' => array(
-				'lang' => 'en',
 				'lines' => '111111',
 			),
 		),
@@ -3977,7 +3797,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_hexagram',
 			'attributes' => array(
 				'number' => '1',
-				'lang' => 'en',
 			),
 		),
 		'castReading' => array(
@@ -3991,7 +3810,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_cast_reading',
 			'attributes' => array(
-				'lang' => 'en',
 				'seed' => 'user123-question1',
 			),
 		),
@@ -4005,9 +3823,7 @@ class Endpoints {
 			'hero'          => false,
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_trigrams',
-			'attributes' => array(
-				'lang' => 'en',
-			),
+			'attributes' => array(),
 		),
 		'getTrigram' => array(
 			'path'          => '/iching/trigrams/{id}',
@@ -4021,7 +3837,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_trigram',
 			'attributes' => array(
 				'id' => 'Heaven',
-				'lang' => 'en',
 			),
 		),
 		'getCrystalsByZodiac' => array(
@@ -4036,7 +3851,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_crystals_by_zodiac',
 			'attributes' => array(
 				'sign' => 'pisces',
-				'lang' => 'en',
 				'limit' => '20',
 				'offset' => '0',
 			),
@@ -4053,7 +3867,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_crystals_by_chakra',
 			'attributes' => array(
 				'chakra' => 'Heart',
-				'lang' => 'en',
 				'limit' => '20',
 				'offset' => '0',
 			),
@@ -4070,7 +3883,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_crystals_by_element',
 			'attributes' => array(
 				'element' => 'Water',
-				'lang' => 'en',
 				'limit' => '20',
 				'offset' => '0',
 			),
@@ -4087,7 +3899,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_birthstones',
 			'attributes' => array(
 				'month' => '2',
-				'lang' => 'en',
 			),
 		),
 		'searchCrystals' => array(
@@ -4101,7 +3912,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_search_crystals',
 			'attributes' => array(
-				'lang' => 'en',
 				'q' => 'love',
 				'limit' => '20',
 				'offset' => '0',
@@ -4119,7 +3929,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_crystal_pairings',
 			'attributes' => array(
 				'id' => 'amethyst',
-				'lang' => 'en',
 			),
 		),
 		'getDailyCrystal' => array(
@@ -4133,7 +3942,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_daily_crystal',
 			'attributes' => array(
-				'lang' => 'en',
 				'seed' => 'user123',
 			),
 		),
@@ -4147,9 +3955,7 @@ class Endpoints {
 			'hero'          => false,
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_random_crystal',
-			'attributes' => array(
-				'lang' => 'en',
-			),
+			'attributes' => array(),
 		),
 		'listCrystalColors' => array(
 			'path'          => '/crystals/colors',
@@ -4161,9 +3967,7 @@ class Endpoints {
 			'hero'          => false,
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_crystal_colors',
-			'attributes' => array(
-				'lang' => 'en',
-			),
+			'attributes' => array(),
 		),
 		'listCrystalPlanets' => array(
 			'path'          => '/crystals/planets',
@@ -4175,9 +3979,7 @@ class Endpoints {
 			'hero'          => false,
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_crystal_planets',
-			'attributes' => array(
-				'lang' => 'en',
-			),
+			'attributes' => array(),
 		),
 		'listCrystals' => array(
 			'path'          => '/crystals',
@@ -4190,7 +3992,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_crystals',
 			'attributes' => array(
-				'lang' => 'en',
 				'chakra' => 'Heart',
 				'zodiac' => 'pisces',
 				'element' => 'Water',
@@ -4212,7 +4013,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_crystal',
 			'attributes' => array(
 				'id' => 'amethyst',
-				'lang' => 'en',
 			),
 		),
 		'searchDreamSymbols' => array(
@@ -4297,7 +4097,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_list_angel_numbers',
 			'attributes' => array(
-				'lang' => 'en',
 				'limit' => '20',
 				'offset' => '0',
 				'type' => 'repeating',
@@ -4315,7 +4114,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_get_angel_number',
 			'attributes' => array(
 				'number' => '444',
-				'lang' => 'en',
 			),
 		),
 		'analyzeNumberSequence' => array(
@@ -4329,7 +4127,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_analyze_number_sequence',
 			'attributes' => array(
-				'lang' => 'en',
 				'number' => '1234',
 				'context' => 'clock',
 			),
@@ -4345,7 +4142,6 @@ class Endpoints {
 			'block_only'    => false,
 			'shortcode_tag' => 'roxy_get_daily_angel_number',
 			'attributes' => array(
-				'lang' => 'en',
 				'seed' => 'user123',
 			),
 		),

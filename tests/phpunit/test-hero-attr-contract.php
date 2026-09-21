@@ -116,7 +116,7 @@ class Test_Hero_Attr_Contract extends \WP_UnitTestCase {
 	}
 
 	/**
-	 * The hero list grew from 10 (v1.0) to 17 (v1.1 money-hero rewrite).
+	 * The hero list is config-driven and grows over time.
 	 * Onboarding (sourced from Manifest) and Registrar (hand-maintained
 	 * tag → class map) must agree exactly: any drift means a new hero was
 	 * added in only one place and will not register at runtime.
