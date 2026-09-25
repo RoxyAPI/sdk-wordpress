@@ -1,8 +1,8 @@
 # roxyapi WordPress plugin: Agent Guide
 
-WordPress plugin for [RoxyAPI](https://roxyapi.com). Drop Western and Vedic astrology, forecasts, human design, Chinese astrology, feng shui, Mesoamerican astrology, Vastu, numerology, Kabbalah, tarot, biorhythm, Ayurveda, I Ching, crystals, dream symbols, angel number, and city location readings onto any WordPress page with shortcodes or Gutenberg blocks. One API key, 18+ insight domains, 258+ endpoints.
+WordPress plugin for [RoxyAPI](https://roxyapi.com). Drop Western and Vedic astrology, forecasts, human design, Chinese astrology, feng shui, Mesoamerican astrology, Vastu, numerology, Kabbalah, tarot, biorhythm, Ayurveda, I Ching, crystals, dream symbols, angel number, and city location readings onto any WordPress page with shortcodes or Gutenberg blocks. One API key, 18+ insight domains.
 
-The upstream OpenAPI spec is the source of truth: `https://roxyapi.com/api/v2/openapi.json`.
+The upstream OpenAPI spec is the source of truth: `https://roxyapi.com/api/v2/openapi.json`. To look up any operation or field, query it with the jq recipe in `https://roxyapi.com/AGENTS.md`, or search the keyless Docs MCP server at `https://roxyapi.com/mcp/docs` (one tool, `search_docs`).
 
 ## Install
 
