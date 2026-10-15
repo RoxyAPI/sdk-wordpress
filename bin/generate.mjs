@@ -1089,12 +1089,11 @@ function buildFormFieldSpec( op, modelField ) {
 		label_key: modelField.label ? '' : modelField.name,
 		required: modelField.required,
 	};
-	// The timezone dropdown explains itself; the spec describes the wire
-	// format, which a visitor never types.
+	// Spec descriptions are written for developers (wire formats, endpoint
+	// notes), so a visitor form carries its labels and only the timezone
+	// dropdown's own line.
 	if ( type === 'timezone' ) {
 		field.help = 'Select the timezone of the location.';
-	} else if ( modelField.description ) {
-		field.help = firstSentence( modelField.description );
 	}
 	field.type = type;
 	for ( const key of [ 'enum', 'min', 'max', 'default' ] ) {
@@ -1108,9 +1107,6 @@ function buildFormFieldSpec( op, modelField ) {
 			( value ) =>
 				formLabels.enums[ `${ modelField.name }.${ value }` ] || value
 		);
-	}
-	if ( modelField.example !== undefined ) {
-		field.placeholder = String( modelField.example );
 	}
 	if ( type === 'number' ) {
 		field.step = 'any';
@@ -3668,7 +3664,16 @@ function emitHeroFormPhp( tagSuffix, cfg ) {
 		const wireName = cfg.attributes?.[ name ]?.spec_field || name;
 		const modelField =
 			op && formInputs( op ).find( ( entry ) => entry.key === wireName );
-		const shape = modelField ? buildFormFieldSpec( op, modelField ) : {};
+		// Featured forms have always shown the spec example as a placeholder;
+		// generated visitor forms leave it out.
+		const shape = modelField
+			? {
+					...buildFormFieldSpec( op, modelField ),
+					...( modelField.example !== undefined && {
+						placeholder: String( modelField.example ),
+					} ),
+			  }
+			: {};
 		// Only shapes inherit: the curated copy, order and grouping stay intact.
 		const defaults = Object.fromEntries(
 			[
