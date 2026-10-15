@@ -1,6 +1,7 @@
 # Auto-generated outputs — owned by bin/generate.mjs, never hand-edit.
 src/Generated/
 blocks/generated/
+builder/manifest.json
 
 # CSS is owned by stylelint (wp-scripts lint-style). Prettier disagrees with
 # stylelint on multi-line declaration formatting; let stylelint be the single

@@ -12,6 +12,8 @@
  *   specs/openapi.json                 - committed spec snapshot (drift baseline)
  *   src/Generated/Client.php           - typed PHP method per endpoint
  *   src/Generated/Endpoints.php        - endpoint registry with TTLs
+ *   src/Generated/Builder/Manifest.php - shortcode builder metadata for wp-admin
+ *   builder/manifest.json              - the same metadata for the web page
  *   src/Generated/Shortcodes/*.php     - one shortcode class per non-hero endpoint
  *   blocks/generated/{slug}/block.json - one generated block.json per non-hero endpoint
  *
@@ -3972,6 +3974,302 @@ ${ calls.join( '\n' ) }
 }
 
 // ---------------------------------------------------------------------------
+// Builder metadata: one object shared by the PHP and web-page writers.
+// ---------------------------------------------------------------------------
+
+/**
+ * Describe one accepted attribute, retaining catalogue keys for screen-locale
+ * labels. Defaults here are shortcode defaults, never upstream API defaults.
+ * @param op
+ * @param att
+ * @param info
+ * @param curated
+ */
+function builderAttribute( op, att, info = {}, curated = {} ) {
+	const wireName = info.spec_field || info.name || att;
+	const model = op && formInputs( op ).find( ( f ) => f.key === wireName );
+	const schema = op ? formFieldSchema( op, { key: wireName } ) : {};
+	const labelKey = model?.label ? '' : model?.name || lowerCamelCase( att );
+	const choices = info.enum || curated.enum || model?.enum || schema.enum;
+	const types = {
+		string: 'text',
+		array: 'list',
+		object: 'json',
+		toggle: 'boolean',
+	};
+	let type =
+		curated.type || model?.kind || schema.type || info.type || 'text';
+	if ( [ 'tiles', 'select' ].includes( type ) || choices ) {
+		type = 'enum';
+	} else if ( type === 'number' && schema.type === 'integer' ) {
+		type = 'integer';
+	}
+	type = types[ type ] || type;
+	if ( [ 'timezone', 'tz' ].includes( wireName.toLowerCase() ) ) {
+		type = 'timezone';
+	}
+	if ( type === 'datetime' ) {
+		type = 'text';
+	}
+	const locationGroup = op
+		? uiForms[ op.operationId ].groups.findIndex( ( group ) =>
+				group.location?.fields.includes( wireName )
+		  )
+		: -1;
+	const locationRole =
+		model?.role === 'location'
+			? wireName
+					.match( /latitude|longitude|timezone/i )?.[ 0 ]
+					.toLowerCase()
+			: null;
+	return {
+		att,
+		label:
+			formLabels.fields[ labelKey ] ||
+			model?.label ||
+			curated.label ||
+			humanLabel( att ),
+		label_key: labelKey,
+		type,
+		enum: choices || [],
+		enum_key: model?.name || labelKey,
+		enum_labels: ( choices || [] ).map(
+			( value ) =>
+				formLabels.enums[ `${ model?.name || labelKey }.${ value }` ] ||
+				String( value )
+		),
+		required: !! info.required,
+		default: info.default ?? '',
+		example:
+			applyExampleOverride(
+				op?.operationId,
+				wireName,
+				info.example ??
+					model?.example ??
+					schema.example ??
+					curated.placeholder
+			) ?? null,
+		min: curated.min ?? model?.min ?? schema.minimum ?? null,
+		max: curated.max ?? model?.max ?? schema.maximum ?? null,
+		location:
+			locationGroup >= 0 && locationRole
+				? {
+						group:
+							uiForms[ op.operationId ].groups[ locationGroup ]
+								.key || 'location',
+						role: locationRole,
+				  }
+				: null,
+	};
+}
+
+/** The mode attribute exists only where the shortcode actually accepts it. */
+function builderModeAttribute() {
+	return builderAttribute( null, 'mode', {
+		default: 'auto',
+		enum: [ 'auto', 'form', 'static' ],
+	} );
+}
+
+/** Build every registered tag, with heroes winning any tag collision. */
+function buildBuilderManifest() {
+	const parts = componentMap._meta.published_parts;
+	const domains = Object.fromEntries(
+		Object.entries( domainRegistry ).filter(
+			( [ key ] ) => ! key.startsWith( '_' )
+		)
+	);
+	const entries = new Map();
+	for ( const [ suffix, cfg ] of Object.entries( heroConfig ) ) {
+		const opId =
+			cfg.operationId ||
+			( cfg.delegate_to_form
+				? lowerCamelCase( cfg.delegate_to_form.replace( /Form$/, '' ) )
+				: (
+						cfg.dispatch?.find( ( branch ) => branch.default ) ||
+						cfg.dispatch?.[ 0 ]
+				  )?.operationId );
+		const op = opsByIdMap[ opId ];
+		const attributes = Object.entries( cfg.attributes || {} ).map(
+			( [ att, info ] ) => {
+				const curated =
+					cfg.form_mode?.fields.find(
+						( field ) => ( field.attr || field.name ) === att
+					) || {};
+				return builderAttribute( op, att, info, curated );
+			}
+		);
+		if ( cfg.form_mode && ! cfg.hand_written ) {
+			attributes.push( builderModeAttribute() );
+		}
+		const formOnly = !! cfg.delegate_to_form;
+		const visitor = formOnly || !! cfg.form_mode;
+		const tag = cfg.tag || `roxy_${ suffix }`;
+		entries.set( tag, {
+			tag,
+			title: cfg.title,
+			description: cfg.description.replace( /\s+/g, ' ' ).trim(),
+			domain: cfg.domain,
+			order: 0,
+			operationId: cfg.hand_written ? null : opId,
+			hero: true,
+			modes: [
+				...( visitor ? [ 'visitor' ] : [] ),
+				...( ! formOnly && attributes.length ? [ 'set' ] : [] ),
+				...( ! formOnly &&
+				! attributes.some( ( field ) => field.required )
+					? [ 'none' ]
+					: [] ),
+			],
+			formOnly,
+			attributes,
+		} );
+	}
+	for ( const op of generated ) {
+		const tag = `roxy_${ toSnakeCase( op.operationId ) }`;
+		if ( entries.has( tag ) ) {
+			continue;
+		}
+		const formOnly = hasRequiredObjectBody( op );
+		const visitor = formOnly || offersVisitorForm( op );
+		const params = extractParams( op );
+		const inputs = formOnly
+			? []
+			: [
+					...extractPathParams( op.path ).map( ( name ) => ( {
+						...params.find( ( p ) => p.name === name ),
+						name,
+						required: true,
+					} ) ),
+					...( op.method === 'POST' ? extractBodyFields( op ) : [] ),
+					...params.filter( ( p ) => p.in === 'query' ),
+			  ];
+		const attributes = [
+			...new Map(
+				inputs.map( ( info ) => {
+					const att = toSnakeAttr( info.name );
+					return [ att, builderAttribute( op, att, info ) ];
+				} )
+			).values(),
+		];
+		if ( visitor && ! formOnly ) {
+			attributes.push( builderModeAttribute() );
+		}
+		entries.set( tag, {
+			tag,
+			title: displayNames[ op.operationId ],
+			description: blockDescriptionFor( op )
+				.replace( /\s+/g, ' ' )
+				.trim(),
+			domain: op.tag,
+			order: 0,
+			operationId: op.operationId,
+			hero: false,
+			modes: [
+				...( visitor ? [ 'visitor' ] : [] ),
+				...( ! formOnly && attributes.length ? [ 'set' ] : [] ),
+				...( ! formOnly &&
+				! attributes.some( ( field ) => field.required )
+					? [ 'none' ]
+					: [] ),
+			],
+			formOnly,
+			attributes,
+		} );
+	}
+	const domainOrder = Object.keys( domains );
+	const readings = [ ...entries.values() ]
+		.sort( ( a, b ) => {
+			const rank = ( domain ) =>
+				domainOrder.includes( domain )
+					? domainOrder.indexOf( domain )
+					: domainOrder.length;
+			return (
+				rank( a.domain ) - rank( b.domain ) ||
+				Number( b.hero ) - Number( a.hero ) ||
+				( a.hero
+					? 0
+					: a.title
+							.toLowerCase()
+							.localeCompare( b.title.toLowerCase(), 'en' ) )
+			);
+		} )
+		.map( ( entry, order ) => ( { ...entry, order } ) );
+	return {
+		version: 1,
+		domains,
+		reservedAttributes: RESERVED_ATTS.map( ( info ) => ( {
+			...builderAttribute( null, info.att, info ),
+			type: info.att === 'hide_readings' ? 'boolean' : 'list',
+			description:
+				info.att === 'hide_readings'
+					? 'inherit follows the site setting; 1 hides written readings; 0 shows them.'
+					: 'inherit follows the site setting; comma-separated part names hide those sections; none shows every section.',
+		} ) ),
+		parts,
+		entries: readings,
+	};
+}
+
+/**
+ * PHP array writer with native nulls and the same label ownership as forms.
+ * No JSON is parsed by wp-admin, and locale is resolved when all() is called.
+ * @param value
+ * @param indent
+ */
+function builderValuePhp( value, indent = '\t\t' ) {
+	if ( value === null ) {
+		return 'null';
+	}
+	if ( typeof value !== 'object' ) {
+		return phpLiteral( value );
+	}
+	const list = Array.isArray( value );
+	const rows = Object.entries( value ).map( ( [ key, item ] ) => {
+		let php = builderValuePhp( item, indent + '\t' );
+		if ( key === 'label' && value.label_key !== undefined ) {
+			php = uiLabelPhp( 'fields', value.label_key, item );
+		} else if ( key === 'enum_labels' ) {
+			php = generatedFieldEntryPhp( key, item, value );
+		}
+		return `${ indent }\t${
+			list ? '' : phpLiteral( key ) + ' => '
+		}${ php },`;
+	} );
+	return rows.length
+		? `array(\n${ rows.join( '\n' ) }\n${ indent })`
+		: 'array()';
+}
+
+/** @param manifest Shared builder metadata. */
+function emitBuilderManifestPhp( manifest ) {
+	return `<?php
+/**
+ * Shortcode builder metadata. DO NOT EDIT. Generated by bin/generate.mjs.
+ *
+ * @package RoxyAPI
+ */
+namespace RoxyAPI\\Generated\\Builder;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+class Manifest {
+	/**
+	 * Every shortcode and its accepted attributes, labelled for the screen locale.
+	 *
+	 * @return array<string, mixed>
+	 */
+	public static function all(): array {
+		$labels = \\RoxyAPI\\Generated\\FormLabels::for_language( \\RoxyAPI\\Support\\Language::from_locale( determine_locale() ) );
+		return ${ builderValuePhp( manifest ) };
+	}
+}
+`;
+}
+
+// ---------------------------------------------------------------------------
 // Write everything
 // ---------------------------------------------------------------------------
 
@@ -4260,6 +4558,24 @@ console.log(
 		Object.keys( domainRegistry ).filter( ( k ) => ! k.startsWith( '_' ) )
 			.length
 	} domains)`
+);
+
+// 8c. One builder manifest, emitted for wp-admin and the standalone web page.
+const builderManifest = buildBuilderManifest();
+await fs.mkdir( path.join( OUT_PHP, 'Builder' ), { recursive: true } );
+await fs.mkdir( path.join( ROOT, 'builder' ), { recursive: true } );
+await fs.writeFile(
+	path.join( OUT_PHP, 'Builder', 'Manifest.php' ),
+	emitBuilderManifestPhp( builderManifest ),
+	'utf8'
+);
+await fs.writeFile(
+	path.join( ROOT, 'builder', 'manifest.json' ),
+	JSON.stringify( builderManifest ) + '\n',
+	'utf8'
+);
+console.log(
+	`[generate] wrote builder manifests (${ builderManifest.entries.length } entries)`
 );
 
 // 9. Restore README
