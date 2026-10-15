@@ -42,8 +42,8 @@ class BuilderPage {
 		Assets::enqueue_admin_css();
 		wp_enqueue_style( 'roxyapi-builder', plugins_url( 'assets/css/builder.css', ROXYAPI_PLUGIN_FILE ), array( 'roxyapi-admin' ), ROXYAPI_VERSION );
 		// Build the persistent city inputs before the shared combobox scans the DOM.
-		wp_enqueue_script( 'roxyapi-builder', plugins_url( 'assets/js/builder.js', ROXYAPI_PLUGIN_FILE ), array(), ROXYAPI_VERSION, true );
-		wp_enqueue_script( 'roxyapi-geocode' );
+		\RoxyAPI\Plugin::register_geocode_script();
+		wp_enqueue_script( 'roxyapi-builder', plugins_url( 'assets/js/builder.js', ROXYAPI_PLUGIN_FILE ), array( 'roxyapi-geocode' ), ROXYAPI_VERSION, true );
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only selection on a capability-checked page.
 		$reading = isset( $_GET['reading'] ) && is_string( $_GET['reading'] ) ? sanitize_key( wp_unslash( $_GET['reading'] ) ) : '';
@@ -82,12 +82,12 @@ class BuilderPage {
 					'show'          => __( 'Show', 'roxyapi' ),
 					'hide'          => __( 'Hide', 'roxyapi' ),
 					'inherit'       => __( 'Follow my site setting', 'roxyapi' ),
-					'sections'      => __( 'Hide parts of this reading', 'roxyapi' ),
 					'copy'          => __( 'Copy shortcode', 'roxyapi' ),
 					'copied'        => __( 'Copied. Paste it into any page.', 'roxyapi' ),
 					'copyFailed'    => __( 'Copy failed. Select the text and copy it.', 'roxyapi' ),
 					'paste'         => __( 'In the block editor, add a Shortcode block and paste it there.', 'roxyapi' ),
 					'city'          => __( 'City', 'roxyapi' ),
+					'cityHelp'      => __( 'Start typing. We fill in the timezone for you.', 'roxyapi' ),
 					'yes'           => __( 'Yes', 'roxyapi' ),
 					'no'            => __( 'No', 'roxyapi' ),
 				),

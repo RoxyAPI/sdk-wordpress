@@ -8,7 +8,6 @@
 namespace RoxyAPI\Tests;
 
 use RoxyAPI\Generated\Builder\Manifest;
-use RoxyAPI\Generated\ComponentMap;
 use RoxyAPI\Generated\FormLabels;
 use RoxyAPI\Shortcodes\Registrar;
 use RoxyAPI\Support\ComponentRenderer;
@@ -76,38 +75,14 @@ class Test_Builder_Manifest extends \WP_UnitTestCase {
 
 	public function test_reserved_display_attributes_are_described_once(): void {
 		$manifest = Manifest::all();
-		$this->assertSame( ComponentRenderer::RESERVED_ATTS, array_column( $manifest['reservedAttributes'], 'att' ) );
-		$this->assertNotEmpty( $manifest['parts'] );
-		$this->assertSame( ComponentMap::parts(), $manifest['parts'] );
+		$this->assertSame( array( 'hide_readings' ), array_column( $manifest['reservedAttributes'], 'att' ) );
+		$this->assertArrayNotHasKey( 'parts', $manifest );
 		foreach ( $manifest['entries'] as $order => $entry ) {
 			$this->assertSame( $order, $entry['order'] );
-			$this->assertArrayHasKey( 'parts', $entry, $entry['tag'] );
-			$this->assertIsArray( $entry['parts'], $entry['tag'] );
-			$this->assertNotSame( $manifest['parts'], $entry['parts'], $entry['tag'] . ' must not repeat the global parts vocabulary.' );
-			$this->assertSame( array(), array_values( array_diff( $entry['parts'], $manifest['parts'] ) ), $entry['tag'] );
-			$this->assertCount( count( array_unique( $entry['parts'] ) ), $entry['parts'], $entry['tag'] );
+			$this->assertArrayNotHasKey( 'parts', $entry, $entry['tag'] );
 			$this->assertArrayHasKey( $entry['domain'], $manifest['domains'] );
 			$this->assertSame( array(), array_values( array_intersect( ComponentRenderer::RESERVED_ATTS, array_column( $entry['attributes'], 'att' ) ) ) );
 		}
-	}
-
-	public function test_reading_parts_match_the_vendored_components_including_hand_written_horoscope(): void {
-		$entries = $this->entries();
-		$map     = wp_json_file_decode( dirname( __DIR__, 2 ) . '/bin/component-map.json', array( 'associative' => true ) );
-		$heroes  = \RoxyAPI\Generated\Heroes\Manifest::all();
-		foreach ( array( 'roxy_natal_chart', 'roxy_calculate_luck_pillars', 'roxy_horoscope' ) as $tag ) {
-			$operation = $entries[ $tag ]['operationId'] ?? $heroes[ $tag ]['operation_id'];
-			$expected  = array();
-			foreach ( ComponentMap::for( $operation ) as $row ) {
-				$this->assertArrayHasKey( $row['component'], $map['_meta']['component_parts'] );
-				$expected = array_merge( $expected, $map['_meta']['component_parts'][ $row['component'] ] );
-			}
-			$expected = array_values( array_unique( $expected ) );
-			sort( $expected );
-			$this->assertNotEmpty( $expected, $tag );
-			$this->assertSame( $expected, $entries[ $tag ]['parts'], $tag );
-		}
-		$this->assertSame( array(), $entries['roxy_generate_composite_chart']['parts'], 'An unmapped reading must not inherit global parts.' );
 	}
 
 	public function test_json_and_php_share_the_english_metadata(): void {

@@ -84,7 +84,7 @@ class Test_Builder_Page extends \WP_UnitTestCase {
 		$this->assertStringContainsString( 'id="roxyapi-builder"', $html );
 		$this->assertStringContainsString( 'Create a reading', $html );
 		$this->assertTrue( wp_script_is( 'roxyapi-builder', 'enqueued' ) );
-		$this->assertTrue( wp_script_is( 'roxyapi-geocode', 'enqueued' ) );
+		$this->assertContains( 'roxyapi-geocode', wp_scripts()->registered['roxyapi-builder']->deps, 'The city search loads with the builder.' );
 		$this->assertTrue( wp_style_is( 'roxyapi-builder', 'enqueued' ) );
 
 		$inline = wp_scripts()->get_data( 'roxyapi-builder', 'data' );
@@ -92,11 +92,10 @@ class Test_Builder_Page extends \WP_UnitTestCase {
 		$this->assertSame( 1, preg_match( '/var RoxyAPIBuilder = (.*);/', $inline, $matches ) );
 		$data = json_decode( $matches[1], true );
 		$this->assertSame( Manifest::all(), $data['manifest'] );
-		$entries = array_column( $data['manifest']['entries'], null, 'tag' );
-		$this->assertContains( 'patterns', $entries['roxy_natal_chart']['parts'] );
-		$this->assertNotContains( 'annual-pillars', $entries['roxy_natal_chart']['parts'] );
-		$this->assertContains( 'annual-pillars', $entries['roxy_calculate_luck_pillars']['parts'] );
-		$this->assertSame( array(), $entries['roxy_generate_composite_chart']['parts'] );
+		$this->assertArrayNotHasKey( 'parts', $data['manifest'] );
+		foreach ( $data['manifest']['entries'] as $entry ) {
+			$this->assertArrayNotHasKey( 'parts', $entry, $entry['tag'] );
+		}
 		$this->assertSame( 'roxy_natal_chart', $data['reading'] );
 		$this->assertContains( 'America/New_York', $data['timezones'] );
 		$this->assertSame( 'Needed before the shortcode works.', $data['i18n']['needed'] );

@@ -4072,28 +4072,6 @@ function builderModeAttribute() {
 }
 
 /**
- * Parts of exactly the mapped components, using the vendored catalogue.
- * @param operationIds
- */
-function builderParts( operationIds ) {
-	const parts = new Set();
-	for ( const operationId of operationIds ) {
-		for ( const row of componentMap.operations[ operationId ] || [] ) {
-			const names = componentMap._meta.component_parts?.[ row.component ];
-			if ( ! Array.isArray( names ) ) {
-				throw new Error(
-					`Missing parts for ${ row.component }. Run npm run fetch:ui with the pinned version.`
-				);
-			}
-			for ( const part of names ) {
-				parts.add( part );
-			}
-		}
-	}
-	return [ ...parts ].sort();
-}
-
-/**
  * Normalise builder descriptions without changing other generated copy.
  * @param text
  */
@@ -4104,7 +4082,6 @@ function builderDescription( text ) {
 
 /** Build every registered tag, with heroes winning any tag collision. */
 function buildBuilderManifest() {
-	const parts = componentMap._meta.published_parts;
 	const domains = Object.fromEntries(
 		Object.entries( domainRegistry ).filter(
 			( [ key ] ) => ! key.startsWith( '_' )
@@ -4143,12 +4120,6 @@ function buildBuilderManifest() {
 			domain: cfg.domain,
 			order: 0,
 			operationId: cfg.hand_written ? null : opId,
-			parts: builderParts( [
-				opId,
-				...( cfg.dispatch || [] ).map(
-					( branch ) => branch.operationId
-				),
-			] ),
 			hero: true,
 			modes: [
 				...( visitor ? [ 'visitor' ] : [] ),
@@ -4199,7 +4170,6 @@ function buildBuilderManifest() {
 			domain: op.tag,
 			order: 0,
 			operationId: op.operationId,
-			parts: builderParts( [ op.operationId ] ),
 			hero: false,
 			modes: [
 				...( visitor ? [ 'visitor' ] : [] ),
@@ -4234,15 +4204,14 @@ function buildBuilderManifest() {
 	return {
 		version: 1,
 		domains,
-		reservedAttributes: RESERVED_ATTS.map( ( info ) => ( {
+		reservedAttributes: RESERVED_ATTS.filter(
+			( info ) => info.att === 'hide_readings'
+		).map( ( info ) => ( {
 			...builderAttribute( null, info.att, info ),
-			type: info.att === 'hide_readings' ? 'boolean' : 'list',
+			type: 'boolean',
 			description:
-				info.att === 'hide_readings'
-					? 'inherit follows the site setting; 1 hides written readings; 0 shows them.'
-					: 'inherit follows the site setting; comma-separated part names hide those sections; none shows every section.',
+				'inherit follows the site setting; 1 hides written readings; 0 shows them.',
 		} ) ),
-		parts,
 		entries: readings,
 	};
 }

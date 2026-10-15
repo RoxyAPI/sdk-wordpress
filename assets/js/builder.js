@@ -55,6 +55,7 @@
 		const panel = element( 'section', '', 'card roxyapi-builder-step' );
 		panel.hidden = true;
 		const heading = element( 'h2', strings[ name ] );
+		heading.id = 'roxyapi-builder-step-' + name;
 		heading.tabIndex = -1;
 		panel.appendChild( heading );
 		root.appendChild( panel );
@@ -72,8 +73,10 @@
 	steps.pick.appendChild( groups );
 
 	const modeChoices = element( 'fieldset', '', 'roxyapi-builder-choices' );
-	const modeLegend = element( 'legend', strings.who, 'screen-reader-text' );
-	modeChoices.appendChild( modeLegend );
+	modeChoices.setAttribute(
+		'aria-labelledby',
+		steps.who.querySelector( 'h2' ).id
+	);
 	const modeInputs = {};
 	[ 'visitor', 'set' ].forEach( ( value ) => {
 		const label = element( 'label', '', 'roxyapi-builder-choice' );
@@ -140,7 +143,10 @@
 				'data-roxyapi-geocode-fields',
 				JSON.stringify( location.fields )
 			);
-			wrapper.append( label, input );
+			const help = element( 'p', strings.cityHelp, 'description' );
+			help.id = input.id + '-help';
+			input.setAttribute( 'aria-describedby', help.id );
+			wrapper.append( label, input, help );
 			( location.required ? required : optional ).appendChild( wrapper );
 		} );
 		readings.set( entry.tag, {
@@ -218,11 +224,6 @@
 		[ '1', strings.hide ],
 	].forEach( ( [ value, label ] ) => addOption( written, value, label ) );
 	steps.display.append( writtenLabel, written );
-	const sections = element( 'fieldset', '', 'roxyapi-builder-sections' );
-	sections.setAttribute( 'aria-label', strings.sections );
-	const partsDisclosure = element( 'details' );
-	partsDisclosure.append( element( 'summary', strings.sections ), sections );
-	steps.display.appendChild( partsDisclosure );
 
 	const output = element( 'textarea' );
 	output.readOnly = true;
@@ -396,20 +397,6 @@
 	function selectReading( tag ) {
 		attemptedDetails = false;
 		selected = readings.get( tag );
-		sections.replaceChildren();
-		selected.entry.parts.forEach( ( part ) => {
-			const label = element( 'label' );
-			const input = element( 'input' );
-			input.type = 'checkbox';
-			input.value = part;
-			const text =
-				part.charAt( 0 ).toUpperCase() +
-				part.slice( 1 ).replace( /-/g, ' ' );
-			label.append( input, element( 'span', text ) );
-			sections.appendChild( label );
-		} );
-		partsDisclosure.open = false;
-		partsDisclosure.hidden = selected.entry.parts.length === 0;
 		initializeControls( selected );
 		readings.forEach( ( reading ) => {
 			reading.panel.hidden = reading !== selected;
@@ -517,13 +504,6 @@
 		}
 		if ( written.value !== '' ) {
 			attributes.push( 'hide_readings="' + written.value + '"' );
-		}
-		const hidden = Array.from(
-			sections.querySelectorAll( 'input:checked' ),
-			( input ) => input.value
-		);
-		if ( hidden.length ) {
-			attributes.push( 'hide_sections="' + hidden.join( ', ' ) + '"' );
 		}
 		return (
 			'[' +

@@ -135,7 +135,11 @@
 		status.id = statusId;
 		status.className = 'roxyapi-geocode-status';
 		if ( input.hasAttribute( 'data-roxyapi-geocode-quiet' ) ) {
-			input.setAttribute( 'aria-describedby', statusId );
+			const description = input.getAttribute( 'aria-describedby' );
+			input.setAttribute(
+				'aria-describedby',
+				[ description, statusId ].filter( Boolean ).join( ' ' )
+			);
 		} else {
 			status.setAttribute( 'role', 'status' );
 			status.setAttribute( 'aria-live', 'polite' );
