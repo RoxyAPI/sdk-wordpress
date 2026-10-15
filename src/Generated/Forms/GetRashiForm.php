@@ -34,7 +34,7 @@ class GetRashiForm {
 					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'mesha', 'vrishabha', 'mithun', 'karka', 'simha', 'kanya', 'tula', 'vrischika', 'dhanu', 'makar', 'kumbha', 'meen' ),
-					'enum_labels' => array( __( 'Mesha', 'roxyapi' ), __( 'Vrishabha', 'roxyapi' ), __( 'Mithun', 'roxyapi' ), __( 'Karka', 'roxyapi' ), __( 'Simha', 'roxyapi' ), __( 'Kanya', 'roxyapi' ), __( 'Tula', 'roxyapi' ), __( 'Vrischika', 'roxyapi' ), __( 'Dhanu', 'roxyapi' ), __( 'Makar', 'roxyapi' ), __( 'Kumbha', 'roxyapi' ), __( 'Meen', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['id.mesha'] ?? 'Aries', $labels['enums']['id.vrishabha'] ?? 'Taurus', $labels['enums']['id.mithun'] ?? 'Gemini', $labels['enums']['id.karka'] ?? 'Cancer', $labels['enums']['id.simha'] ?? 'Leo', $labels['enums']['id.kanya'] ?? 'Virgo', $labels['enums']['id.tula'] ?? 'Libra', $labels['enums']['id.vrischika'] ?? 'Scorpio', $labels['enums']['id.dhanu'] ?? 'Sagittarius', $labels['enums']['id.makar'] ?? 'Capricorn', $labels['enums']['id.kumbha'] ?? 'Aquarius', $labels['enums']['id.meen'] ?? 'Pisces' ),
 					'fold' => false,
 				),
 			),

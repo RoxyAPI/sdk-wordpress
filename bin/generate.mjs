@@ -3990,13 +3990,10 @@ function builderAttribute( op, att, info = {}, curated = {} ) {
 	};
 }
 
-/** The mode attribute exists only where the shortcode actually accepts it. */
-function builderModeAttribute() {
-	return builderAttribute( null, 'mode', {
-		default: 'auto',
-		enum: [ 'auto', 'form', 'static' ],
-	} );
-}
+const BUILDER_EXCLUDED_ATTRIBUTES = new Set( [
+	'lang', // Readings follow the site language and Branding setting.
+	'mode', // Step 2 decides who fills in the details.
+] );
 
 /**
  * Normalise builder descriptions without changing other generated copy.
@@ -4025,18 +4022,15 @@ function buildBuilderManifest() {
 						cfg.dispatch?.[ 0 ]
 				  )?.operationId );
 		const op = opsByIdMap[ opId ];
-		const attributes = Object.entries( cfg.attributes || {} ).map(
-			( [ att, info ] ) => {
+		const attributes = Object.entries( cfg.attributes || {} )
+			.filter( ( [ att ] ) => ! BUILDER_EXCLUDED_ATTRIBUTES.has( att ) )
+			.map( ( [ att, info ] ) => {
 				const curated =
 					cfg.form_mode?.fields.find(
 						( field ) => ( field.attr || field.name ) === att
 					) || {};
 				return builderAttribute( op, att, info, curated );
-			}
-		);
-		if ( cfg.form_mode && ! cfg.hand_written ) {
-			attributes.push( builderModeAttribute() );
-		}
+			} );
 		const formOnly = !! cfg.delegate_to_form;
 		const visitor = formOnly || !! cfg.form_mode;
 		const tag = cfg.tag || `roxy_${ suffix }`;
@@ -4081,15 +4075,19 @@ function buildBuilderManifest() {
 			  ];
 		const attributes = [
 			...new Map(
-				inputs.map( ( info ) => {
-					const att = toSnakeAttr( info.name );
-					return [ att, builderAttribute( op, att, info ) ];
-				} )
+				inputs
+					.filter(
+						( info ) =>
+							! BUILDER_EXCLUDED_ATTRIBUTES.has(
+								toSnakeAttr( info.name )
+							)
+					)
+					.map( ( info ) => {
+						const att = toSnakeAttr( info.name );
+						return [ att, builderAttribute( op, att, info ) ];
+					} )
 			).values(),
 		];
-		if ( visitor && ! formOnly ) {
-			attributes.push( builderModeAttribute() );
-		}
 		entries.set( tag, {
 			tag,
 			title: displayNames[ op.operationId ],
@@ -4131,14 +4129,6 @@ function buildBuilderManifest() {
 	return {
 		version: 1,
 		domains,
-		reservedAttributes: RESERVED_ATTS.filter(
-			( info ) => info.att === 'hide_readings'
-		).map( ( info ) => ( {
-			...builderAttribute( null, info.att, info ),
-			type: 'boolean',
-			description:
-				'inherit follows the site setting; 1 hides written readings; 0 shows them.',
-		} ) ),
 		entries: readings,
 	};
 }

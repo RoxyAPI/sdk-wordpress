@@ -34,7 +34,7 @@ class GetHaabMonthForm {
 					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'pop', 'wo', 'sip', 'sotz', 'sek', 'xul', 'yaxkin', 'mol', 'chen', 'yax', 'sak', 'keh', 'mak', 'kankin', 'muwan', 'pax', 'kayab', 'kumku', 'wayeb' ),
-					'enum_labels' => array( __( 'Pop', 'roxyapi' ), __( 'Wo', 'roxyapi' ), __( 'Sip', 'roxyapi' ), __( 'Sotz', 'roxyapi' ), __( 'Sek', 'roxyapi' ), __( 'Xul', 'roxyapi' ), __( 'Yaxkin', 'roxyapi' ), __( 'Mol', 'roxyapi' ), __( 'Chen', 'roxyapi' ), __( 'Yax', 'roxyapi' ), __( 'Sak', 'roxyapi' ), __( 'Keh', 'roxyapi' ), __( 'Mak', 'roxyapi' ), __( 'Kankin', 'roxyapi' ), __( 'Muwan', 'roxyapi' ), __( 'Pax', 'roxyapi' ), __( 'Kayab', 'roxyapi' ), __( 'Kumku', 'roxyapi' ), __( 'Wayeb', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['id.pop'] ?? 'mat', $labels['enums']['id.wo'] ?? 'black conjunction', $labels['enums']['id.sip'] ?? 'red conjunction', $labels['enums']['id.sotz'] ?? 'bat', $labels['enums']['id.sek'] ?? 'death', $labels['enums']['id.xul'] ?? 'dog', $labels['enums']['id.yaxkin'] ?? 'new sun', $labels['enums']['id.mol'] ?? 'water', $labels['enums']['id.chen'] ?? 'black storm', $labels['enums']['id.yax'] ?? 'green storm', $labels['enums']['id.sak'] ?? 'white storm', $labels['enums']['id.keh'] ?? 'red storm', $labels['enums']['id.mak'] ?? 'enclosed', $labels['enums']['id.kankin'] ?? 'yellow sun', $labels['enums']['id.muwan'] ?? 'owl', $labels['enums']['id.pax'] ?? 'planting time', $labels['enums']['id.kayab'] ?? 'turtle', $labels['enums']['id.kumku'] ?? 'granary', $labels['enums']['id.wayeb'] ?? 'five unlucky days' ),
 					'fold' => false,
 				),
 			),

@@ -29,7 +29,25 @@ assert.equal(
 	manifest.entries.length,
 	'Duplicate reading tags in manifest'
 );
-const reserved = new Set( [ 'mode', 'hide_readings', 'hide_sections' ] );
+// Language belongs to site/Branding settings; mode belongs to builder step 2.
+const reserved = new Set( [
+	'lang',
+	'mode',
+	'hide_readings',
+	'hide_sections',
+] );
+for ( const entry of manifest.entries ) {
+	for ( const field of entry.attributes ) {
+		assert.ok(
+			! reserved.has( field.att ),
+			`${ entry.tag }: ${ field.att } is not a reading input`
+		);
+	}
+}
+assert.ok(
+	! ( 'reservedAttributes' in manifest ),
+	'Display metadata belongs to the builder UI'
+);
 
 // The renderer contracts are independent of the builder's generated metadata.
 const heroes = JSON.parse( read( 'bin/hero-config.json' ) );
@@ -38,6 +56,9 @@ for ( const [ suffix, hero ] of Object.entries( heroes ) ) {
 	const entry = entries.get( tag );
 	assert.ok( entry, `${ tag }: hero missing from manifest` );
 	for ( const [ att, info ] of Object.entries( hero.attributes || {} ) ) {
+		if ( reserved.has( att ) ) {
+			continue;
+		}
 		const field = entry.attributes.find(
 			( attribute ) => attribute.att === att
 		);
@@ -174,12 +195,6 @@ try {
 			const failures = await page.evaluate( () => {
 				const issues = [];
 				const data = window.RoxyAPIBuilder;
-				const excluded = new Set( [
-					'mode',
-					...data.manifest.reservedAttributes.map(
-						( field ) => field.att
-					),
-				] );
 				for ( const entry of data.manifest.entries ) {
 					const choices = [
 						...document.querySelectorAll(
@@ -202,9 +217,6 @@ try {
 							'div[id^="roxyapi-builder-reading-"]:not([hidden])'
 						);
 					for ( const field of entry.attributes ) {
-						if ( excluded.has( field.att ) ) {
-							continue;
-						}
 						const controls = [
 							...panel.querySelectorAll( '[name]' ),
 						].filter( ( input ) => input.name === field.att );

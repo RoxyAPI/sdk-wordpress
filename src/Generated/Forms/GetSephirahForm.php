@@ -34,7 +34,7 @@ class GetSephirahForm {
 					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'keter', 'chokhmah', 'binah', 'chesed', 'gevurah', 'tiferet', 'netzach', 'hod', 'yesod', 'malkuth', 'daat' ),
-					'enum_labels' => array( __( 'Keter', 'roxyapi' ), __( 'Chokhmah', 'roxyapi' ), __( 'Binah', 'roxyapi' ), __( 'Chesed', 'roxyapi' ), __( 'Gevurah', 'roxyapi' ), __( 'Tiferet', 'roxyapi' ), __( 'Netzach', 'roxyapi' ), __( 'Hod', 'roxyapi' ), __( 'Yesod', 'roxyapi' ), __( 'Malkuth', 'roxyapi' ), __( 'Daat', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['id.keter'] ?? 'Crown', $labels['enums']['id.chokhmah'] ?? 'Wisdom', $labels['enums']['id.binah'] ?? 'Understanding', $labels['enums']['id.chesed'] ?? 'Mercy', $labels['enums']['id.gevurah'] ?? 'Severity', $labels['enums']['id.tiferet'] ?? 'Beauty', $labels['enums']['id.netzach'] ?? 'Victory', $labels['enums']['id.hod'] ?? 'Splendour', $labels['enums']['id.yesod'] ?? 'Foundation', $labels['enums']['id.malkuth'] ?? 'Kingdom', $labels['enums']['id.daat'] ?? 'Knowledge' ),
 					'fold' => false,
 				),
 				array(

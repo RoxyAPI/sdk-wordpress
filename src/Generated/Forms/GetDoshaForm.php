@@ -34,7 +34,7 @@ class GetDoshaForm {
 					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'vata', 'pitta', 'kapha' ),
-					'enum_labels' => array( __( 'Vata', 'roxyapi' ), __( 'Pitta', 'roxyapi' ), __( 'Kapha', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['id.vata'] ?? 'vāta', $labels['enums']['id.pitta'] ?? 'pitta', $labels['enums']['id.kapha'] ?? 'kapha' ),
 					'fold' => false,
 				),
 			),

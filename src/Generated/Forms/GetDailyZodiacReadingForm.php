@@ -34,7 +34,7 @@ class GetDailyZodiacReadingForm {
 					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'rat', 'ox', 'tiger', 'rabbit', 'dragon', 'snake', 'horse', 'goat', 'monkey', 'rooster', 'dog', 'pig' ),
-					'enum_labels' => array( __( 'Rat', 'roxyapi' ), __( 'Ox', 'roxyapi' ), __( 'Tiger', 'roxyapi' ), __( 'Rabbit', 'roxyapi' ), __( 'Dragon', 'roxyapi' ), __( 'Snake', 'roxyapi' ), __( 'Horse', 'roxyapi' ), __( 'Goat', 'roxyapi' ), __( 'Monkey', 'roxyapi' ), __( 'Rooster', 'roxyapi' ), __( 'Dog', 'roxyapi' ), __( 'Pig', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['id.rat'] ?? 'Rat', $labels['enums']['id.ox'] ?? 'Ox', $labels['enums']['id.tiger'] ?? 'Tiger', $labels['enums']['id.rabbit'] ?? 'Rabbit', $labels['enums']['id.dragon'] ?? 'Dragon', $labels['enums']['id.snake'] ?? 'Snake', $labels['enums']['id.horse'] ?? 'Horse', $labels['enums']['id.goat'] ?? 'Goat', $labels['enums']['id.monkey'] ?? 'Monkey', $labels['enums']['id.rooster'] ?? 'Rooster', $labels['enums']['id.dog'] ?? 'Dog', $labels['enums']['id.pig'] ?? 'Pig' ),
 					'fold' => false,
 				),
 				array(

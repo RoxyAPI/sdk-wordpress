@@ -34,7 +34,7 @@ class GetHebrewLetterForm {
 					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'alef', 'bet', 'gimel', 'dalet', 'he', 'vav', 'zayin', 'chet', 'tet', 'yod', 'kaf', 'lamed', 'mem', 'nun', 'samekh', 'ayin', 'pe', 'tzadi', 'qof', 'resh', 'shin', 'tav' ),
-					'enum_labels' => array( __( 'Alef', 'roxyapi' ), __( 'Bet', 'roxyapi' ), __( 'Gimel', 'roxyapi' ), __( 'Dalet', 'roxyapi' ), __( 'He', 'roxyapi' ), __( 'Vav', 'roxyapi' ), __( 'Zayin', 'roxyapi' ), __( 'Chet', 'roxyapi' ), __( 'Tet', 'roxyapi' ), __( 'Yod', 'roxyapi' ), __( 'Kaf', 'roxyapi' ), __( 'Lamed', 'roxyapi' ), __( 'Mem', 'roxyapi' ), __( 'Nun', 'roxyapi' ), __( 'Samekh', 'roxyapi' ), __( 'Ayin', 'roxyapi' ), __( 'Pe', 'roxyapi' ), __( 'Tzadi', 'roxyapi' ), __( 'Qof', 'roxyapi' ), __( 'Resh', 'roxyapi' ), __( 'Shin', 'roxyapi' ), __( 'Tav', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['id.alef'] ?? 'Aleph', $labels['enums']['id.bet'] ?? 'Beth', $labels['enums']['id.gimel'] ?? 'Gimel', $labels['enums']['id.dalet'] ?? 'Daleth', $labels['enums']['id.he'] ?? 'He', $labels['enums']['id.vav'] ?? 'Vau', $labels['enums']['id.zayin'] ?? 'Zayin', $labels['enums']['id.chet'] ?? 'Cheth', $labels['enums']['id.tet'] ?? 'Teth', $labels['enums']['id.yod'] ?? 'Yod', $labels['enums']['id.kaf'] ?? 'Caph', $labels['enums']['id.lamed'] ?? 'Lamed', $labels['enums']['id.mem'] ?? 'Mem', $labels['enums']['id.nun'] ?? 'Nun', $labels['enums']['id.samekh'] ?? 'Samekh', $labels['enums']['id.ayin'] ?? 'Ayin', $labels['enums']['id.pe'] ?? 'Pe', $labels['enums']['id.tzadi'] ?? 'Tzaddi', $labels['enums']['id.qof'] ?? 'Qoph', $labels['enums']['id.resh'] ?? 'Resh', $labels['enums']['id.shin'] ?? 'Shin', $labels['enums']['id.tav'] ?? 'Tau' ),
 					'fold' => false,
 				),
 				array(

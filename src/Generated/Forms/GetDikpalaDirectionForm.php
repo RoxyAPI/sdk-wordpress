@@ -34,7 +34,7 @@ class GetDikpalaDirectionForm {
 					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'North', 'Northeast', 'East', 'Southeast', 'South', 'Southwest', 'West', 'Northwest' ),
-					'enum_labels' => array( __( 'North', 'roxyapi' ), __( 'Northeast', 'roxyapi' ), __( 'East', 'roxyapi' ), __( 'Southeast', 'roxyapi' ), __( 'South', 'roxyapi' ), __( 'Southwest', 'roxyapi' ), __( 'West', 'roxyapi' ), __( 'Northwest', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['id.North'] ?? 'North', $labels['enums']['id.Northeast'] ?? 'Northeast', $labels['enums']['id.East'] ?? 'East', $labels['enums']['id.Southeast'] ?? 'Southeast', $labels['enums']['id.South'] ?? 'South', $labels['enums']['id.Southwest'] ?? 'Southwest', $labels['enums']['id.West'] ?? 'West', $labels['enums']['id.Northwest'] ?? 'Northwest' ),
 					'fold' => false,
 				),
 			),

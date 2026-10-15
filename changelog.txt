@@ -3,6 +3,12 @@
 The full release history for the RoxyAPI plugin. The most recent releases are
 also listed in readme.txt, which wordpress.org displays on the plugin page.
 
+= 1.21.0 =
+* New: Create a reading. Answer a few questions, one per screen, and copy a finished shortcode: pick a reading, choose whether your visitor fills in the details or you set them once, and paste. Every reading in the Shortcodes library has a Customize link that opens it there, and new installs start on it.
+* New: a Sell readings tab shows how to keep one reading free and charge for the deeper ones, and a Help screen answers the questions site owners ask most.
+* Improved: visitor forms place a city search for every place a reading asks for, so a relocation chart finds both cities, and option names read in the site language.
+* Improved: visitor forms show plain labels without technical hints, and the whole form follows the site language while the reading keeps its reading language.
+
 = 1.20.0 =
 * New: sixteen more readings take a visitor form, among them the daily Chinese zodiac reading, rashis, nakshatras, Mayan and Aztec day signs, bagua life areas and doshas. Visitors pick from a list and their reading appears on the same page.
 * Improved: visitor form labels and headings read in German, Spanish, French, Hindi, Portuguese, Russian and Turkish on every reading.

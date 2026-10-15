@@ -34,7 +34,7 @@ class GetBaguaSectorForm {
 					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'career', 'knowledge', 'family', 'wealth', 'fame', 'love', 'children', 'helpful-people', 'health' ),
-					'enum_labels' => array( __( 'Career', 'roxyapi' ), __( 'Knowledge', 'roxyapi' ), __( 'Family', 'roxyapi' ), __( 'Wealth', 'roxyapi' ), __( 'Fame', 'roxyapi' ), __( 'Love', 'roxyapi' ), __( 'Children', 'roxyapi' ), __( 'Helpful people', 'roxyapi' ), __( 'Health', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['id.career'] ?? 'Career and Path', $labels['enums']['id.knowledge'] ?? 'Knowledge and Cultivation', $labels['enums']['id.family'] ?? 'Family and Foundations', $labels['enums']['id.wealth'] ?? 'Wealth and Abundance', $labels['enums']['id.fame'] ?? 'Fame and Recognition', $labels['enums']['id.love'] ?? 'Love and Partnership', $labels['enums']['id.children'] ?? 'Children and Creativity', $labels['enums']['id.helpful-people'] ?? 'Helpful People and Travel', $labels['enums']['id.health'] ?? 'Health and Centre' ),
 					'fold' => false,
 				),
 			),

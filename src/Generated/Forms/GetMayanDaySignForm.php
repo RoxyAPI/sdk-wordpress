@@ -34,7 +34,7 @@ class GetMayanDaySignForm {
 					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'imix', 'ik', 'akbal', 'kan', 'chikchan', 'kimi', 'manik', 'lamat', 'muluk', 'ok', 'chuwen', 'eb', 'ben', 'ix', 'men', 'kib', 'kaban', 'etznab', 'kawak', 'ajaw' ),
-					'enum_labels' => array( __( 'Imix', 'roxyapi' ), __( 'Ik', 'roxyapi' ), __( 'Akbal', 'roxyapi' ), __( 'Kan', 'roxyapi' ), __( 'Chikchan', 'roxyapi' ), __( 'Kimi', 'roxyapi' ), __( 'Manik', 'roxyapi' ), __( 'Lamat', 'roxyapi' ), __( 'Muluk', 'roxyapi' ), __( 'Ok', 'roxyapi' ), __( 'Chuwen', 'roxyapi' ), __( 'Eb', 'roxyapi' ), __( 'Ben', 'roxyapi' ), __( 'Ix', 'roxyapi' ), __( 'Men', 'roxyapi' ), __( 'Kib', 'roxyapi' ), __( 'Kaban', 'roxyapi' ), __( 'Etznab', 'roxyapi' ), __( 'Kawak', 'roxyapi' ), __( 'Ajaw', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['id.imix'] ?? 'crocodile', $labels['enums']['id.ik'] ?? 'wind', $labels['enums']['id.akbal'] ?? 'night', $labels['enums']['id.kan'] ?? 'seed', $labels['enums']['id.chikchan'] ?? 'serpent', $labels['enums']['id.kimi'] ?? 'death', $labels['enums']['id.manik'] ?? 'deer', $labels['enums']['id.lamat'] ?? 'rabbit or star', $labels['enums']['id.muluk'] ?? 'water', $labels['enums']['id.ok'] ?? 'dog', $labels['enums']['id.chuwen'] ?? 'monkey', $labels['enums']['id.eb'] ?? 'road or grass', $labels['enums']['id.ben'] ?? 'reed', $labels['enums']['id.ix'] ?? 'jaguar', $labels['enums']['id.men'] ?? 'eagle', $labels['enums']['id.kib'] ?? 'owl or vulture', $labels['enums']['id.kaban'] ?? 'earth', $labels['enums']['id.etznab'] ?? 'flint', $labels['enums']['id.kawak'] ?? 'storm', $labels['enums']['id.ajaw'] ?? 'lord' ),
 					'fold' => false,
 				),
 				array(

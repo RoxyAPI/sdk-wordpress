@@ -34,7 +34,7 @@ class GetCenterForm {
 					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'head', 'ajna', 'throat', 'g', 'heart', 'sacral', 'solar-plexus', 'spleen', 'root' ),
-					'enum_labels' => array( __( 'Head', 'roxyapi' ), __( 'Ajna', 'roxyapi' ), __( 'Throat', 'roxyapi' ), __( 'G', 'roxyapi' ), __( 'Heart', 'roxyapi' ), __( 'Sacral', 'roxyapi' ), __( 'Solar plexus', 'roxyapi' ), __( 'Spleen', 'roxyapi' ), __( 'Root', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['id.head'] ?? 'Head', $labels['enums']['id.ajna'] ?? 'Ajna', $labels['enums']['id.throat'] ?? 'Throat', $labels['enums']['id.g'] ?? 'G Center', $labels['enums']['id.heart'] ?? 'Heart', $labels['enums']['id.sacral'] ?? 'Sacral', $labels['enums']['id.solar-plexus'] ?? 'Solar Plexus', $labels['enums']['id.spleen'] ?? 'Spleen', $labels['enums']['id.root'] ?? 'Root' ),
 					'fold' => false,
 				),
 			),

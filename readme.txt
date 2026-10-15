@@ -37,6 +37,7 @@ Every chart is calculated by Roxy Ephemeris and verified against NASA JPL Horizo
 * **Do I need to know astrology to use it?** No. Every reading arrives calculated and formatted, so you place a block and pick your options.
 * **Is the birth chart accurate?** Charts come from Roxy Ephemeris and are verified against NASA JPL Horizons.
 * **Can visitors enter their own birth details?** Yes. Leave the attributes off a reading that takes details and it renders a form; the submission is processed server side.
+* **Do I have to write shortcodes?** No. RoxyAPI, Create a reading asks a few questions and writes the shortcode for you to paste.
 * **Does it work with my theme?** Yes. Charts are SVG and follow your light or dark theme through CSS custom properties.
 * **Where does my API key live?** On your server only. It is never sent to the browser.
 
@@ -264,6 +265,12 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.21.0 =
+* New: Create a reading. Answer a few questions, one per screen, and copy a finished shortcode: pick a reading, choose whether your visitor fills in the details or you set them once, and paste. Every reading in the Shortcodes library has a Customize link that opens it there, and new installs start on it.
+* New: a Sell readings tab shows how to keep one reading free and charge for the deeper ones, and a Help screen answers the questions site owners ask most.
+* Improved: visitor forms place a city search for every place a reading asks for, so a relocation chart finds both cities, and option names read in the site language.
+* Improved: visitor forms show plain labels without technical hints, and the whole form follows the site language while the reading keeps its reading language.
+
 = 1.20.0 =
 * New: sixteen more readings take a visitor form, among them the daily Chinese zodiac reading, rashis, nakshatras, Mayan and Aztec day signs, bagua life areas and doshas. Visitors pick from a list and their reading appears on the same page.
 * Improved: visitor form labels and headings read in German, Spanish, French, Hindi, Portuguese, Russian and Turkish on every reading.
@@ -283,20 +290,12 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Improved: the Connect screen leads with the shortcode that already works, then the key. The Shortcodes library lists readings only; the usage and language lookups are gone from it.
 * Improved: on the Branding tab a palette no longer overwrites the colours you set by hand, so you can try a palette and come back to your own; the colour fields fold away the moment a palette is picked, and the reset link says what it does.
 
-= 1.17.0 =
-* New: [roxy_forecast], a featured forecast timeline. Visitors enter their birth details and an optional date window, and the reading merges transits, sign ingresses, retrograde stations, eclipses, moon phases, Vimshottari dasha changes and biorhythm critical days into one timeline of up to 90 days.
-* New: [roxy_bodygraph], a featured Human Design reading. Pass birth_date, birth_time, lat, lon and tz for a fixed bodygraph, or leave them off for a visitor form with city search. Type, strategy, authority, profile, centers, channels and gates on one chart, with the Design moment printed under the title.
-* New: nine more featured readings as Gutenberg blocks: Vedic Kundli, Panchang, Mangal Dosha, KP Chart, Moon Phase, Bodygraph, Tarot Yes or No, Life Path and Crystals by Zodiac, each with sidebar inputs and a live preview in the editor.
-* New: two Vedic matching readings. [roxy_calculate_dashakoot] scores the ten porutham South Indian match and [roxy_calculate_papasamyam] compares malefic affliction between two charts. Both render a two person visitor form.
-* Improved: every wheel, map and compass spaces its labels by their measured width, so long sign and planet names no longer overlap on a phone screen.
-* Improved: the bodygraph captions its side centers outside the triangles, tables and charts share one degree notation, and the biorhythm chart draws its bars above and below the axis.
-* Improved: the KP planets table prints the pada beside each node, and a reading the dedicated card cannot draw falls back to the generic table instead of an empty card.
-* Improved: three chart labels corrected on German, French and Portuguese sites.
-* Improved: a sample copied from the Shortcodes library no longer carries a language attribute, so a pasted reading follows the site language. Featured readings in the library keep their catalogue order instead of sorting by name, and the Connect tab fits a phone screen.
-
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.21.0 =
+Worth updating if you would rather answer a few questions than write shortcodes: Create a reading builds them for you, and new Sell readings and Help screens show how to charge for readings.
 
 = 1.20.0 =
 Worth updating if visitors should pick their own sign or entry: sixteen more readings, the daily Chinese zodiac among them, show a visitor form when placed without attributes.
@@ -306,6 +305,3 @@ Worth updating if visitors should enter their own details: over a hundred more r
 
 = 1.18.0 =
 Worth updating if you build pages in the block editor: a city search fills coordinates in every block sidebar, the featured readings are one short RoxyAPI list in the inserter, and visitor forms fold their optional sections away.
-
-= 1.17.0 =
-Worth updating if you build pages in the block editor: nine more featured readings become blocks with sidebar inputs, a forecast timeline and a Human Design bodygraph join the library with visitor forms, and two Vedic matching readings arrive.

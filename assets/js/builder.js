@@ -102,10 +102,6 @@
 		root.textContent = strings.loadFailed;
 		return;
 	}
-	const reserved = new Set( [
-		'mode',
-		...manifest.reservedAttributes.map( ( attribute ) => attribute.att ),
-	] );
 	const entries = manifest.entries
 		.slice()
 		.sort( ( a, b ) => a.order - b.order );
@@ -216,9 +212,7 @@
 		optional.appendChild( element( 'summary', strings.more ) );
 		panel.append( required, optional );
 		steps.details.appendChild( panel );
-		const attributes = entry.attributes.filter(
-			( attribute ) => ! reserved.has( attribute.att )
-		);
+		const attributes = entry.attributes;
 		const locations = new Map();
 		attributes.forEach( ( attribute ) => {
 			if ( attribute.location ) {

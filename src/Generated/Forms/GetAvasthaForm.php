@@ -34,7 +34,7 @@ class GetAvasthaForm {
 					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'bala', 'kumara', 'yuva', 'vriddha', 'mrita', 'jagrat', 'swapna', 'sushupti', 'dipta', 'svastha', 'pramudita', 'shanta', 'dina', 'duhkhita', 'vikala', 'khala', 'kopa' ),
-					'enum_labels' => array( __( 'Bala', 'roxyapi' ), __( 'Kumara', 'roxyapi' ), __( 'Yuva', 'roxyapi' ), __( 'Vriddha', 'roxyapi' ), __( 'Mrita', 'roxyapi' ), __( 'Jagrat', 'roxyapi' ), __( 'Swapna', 'roxyapi' ), __( 'Sushupti', 'roxyapi' ), __( 'Dipta', 'roxyapi' ), __( 'Svastha', 'roxyapi' ), __( 'Pramudita', 'roxyapi' ), __( 'Shanta', 'roxyapi' ), __( 'Dina', 'roxyapi' ), __( 'Duhkhita', 'roxyapi' ), __( 'Vikala', 'roxyapi' ), __( 'Khala', 'roxyapi' ), __( 'Kopa', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['id.bala'] ?? 'Bala', $labels['enums']['id.kumara'] ?? 'Kumara', $labels['enums']['id.yuva'] ?? 'Yuva', $labels['enums']['id.vriddha'] ?? 'Vriddha', $labels['enums']['id.mrita'] ?? 'Mrita', $labels['enums']['id.jagrat'] ?? 'Jagrat', $labels['enums']['id.swapna'] ?? 'Swapna', $labels['enums']['id.sushupti'] ?? 'Sushupti', $labels['enums']['id.dipta'] ?? 'Dipta', $labels['enums']['id.svastha'] ?? 'Svastha', $labels['enums']['id.pramudita'] ?? 'Pramudita', $labels['enums']['id.shanta'] ?? 'Shanta', $labels['enums']['id.dina'] ?? 'Dina', $labels['enums']['id.duhkhita'] ?? 'Duhkhita', $labels['enums']['id.vikala'] ?? 'Vikala', $labels['enums']['id.khala'] ?? 'Khala', $labels['enums']['id.kopa'] ?? 'Kopa' ),
 					'fold' => false,
 				),
 			),

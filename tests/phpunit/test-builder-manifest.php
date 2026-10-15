@@ -30,8 +30,10 @@ class Test_Builder_Manifest extends \WP_UnitTestCase {
 	public function test_every_registered_tag_and_defaults_key_is_described(): void {
 		global $shortcode_tags;
 
-		$entries = $this->entries();
-		$tags    = array();
+		// Language belongs to site/Branding settings; mode belongs to builder step 2.
+		$excluded = array( 'lang', 'mode' );
+		$entries  = $this->entries();
+		$tags     = array();
 		foreach ( $shortcode_tags as $tag => $callback ) {
 			if ( strpos( $tag, 'roxy_' ) !== 0 ) {
 				continue;
@@ -41,12 +43,12 @@ class Test_Builder_Manifest extends \WP_UnitTestCase {
 			$class = Registrar::HERO_SHORTCODES[ $tag ] ?? $callback[0];
 			$class = is_object( $class ) ? get_class( $class ) : $class;
 			$this->assertTrue( defined( $class . '::DEFAULTS' ), $tag );
-			$expected = array_diff( array_keys( $class::DEFAULTS ), ComponentRenderer::RESERVED_ATTS );
+			$expected = array_diff( array_keys( $class::DEFAULTS ), ComponentRenderer::RESERVED_ATTS, $excluded );
 			$actual   = array_column( $entries[ $tag ]['attributes'], 'att' );
 			$this->assertCount( count( array_unique( $actual ) ), $actual, $tag . ' repeats an attribute.' );
 			sort( $expected );
 			sort( $actual );
-			$this->assertSame( $expected, $actual, $tag . ' must describe exactly DEFAULTS minus display attributes.' );
+			$this->assertSame( $expected, $actual, $tag . ' must describe exactly DEFAULTS minus display attributes, lang and mode.' );
 			foreach ( $entries[ $tag ]['attributes'] as $attribute ) {
 				$this->assertSame( $class::DEFAULTS[ $attribute['att'] ], $attribute['default'], $tag . ' default for ' . $attribute['att'] );
 			}
@@ -74,14 +76,16 @@ class Test_Builder_Manifest extends \WP_UnitTestCase {
 		$this->assertNull( $this->entries()['roxy_horoscope']['operationId'] );
 	}
 
-	public function test_reserved_display_attributes_are_described_once(): void {
+	public function test_display_and_builder_owned_attributes_are_not_reading_inputs(): void {
 		$manifest = Manifest::all();
-		$this->assertSame( array( 'hide_readings' ), array_column( $manifest['reservedAttributes'], 'att' ) );
+		$this->assertArrayNotHasKey( 'reservedAttributes', $manifest );
 		$this->assertArrayNotHasKey( 'parts', $manifest );
 		foreach ( $manifest['entries'] as $order => $entry ) {
 			$this->assertSame( $order, $entry['order'] );
 			$this->assertArrayNotHasKey( 'parts', $entry, $entry['tag'] );
 			$this->assertArrayHasKey( $entry['domain'], $manifest['domains'] );
+			$this->assertNotContains( 'lang', array_column( $entry['attributes'], 'att' ), $entry['tag'] );
+			$this->assertNotContains( 'mode', array_column( $entry['attributes'], 'att' ), $entry['tag'] );
 			$this->assertSame( array(), array_values( array_intersect( ComponentRenderer::RESERVED_ATTS, array_column( $entry['attributes'], 'att' ) ) ) );
 		}
 	}
