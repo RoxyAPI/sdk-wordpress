@@ -18,20 +18,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculateBioCompatibilityForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculateBioCompatibility',
 			'title'        => __( 'Compatibility', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 				array(
 					'name'   => 'person1',
-					'label'  => __( 'Person 1', 'roxyapi' ),
+					'label'  => $labels['groups']['person1'] ?? 'Person 1',
 					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'birthDate',
-						'label' => __( 'Birth date', 'roxyapi' ),
+						'label' => $labels['fields']['birthDate'] ?? 'Birth date',
 						'required' => true,
 						'help' => __( 'Birth date of person 1 in YYYY-MM-DD format.', 'roxyapi' ),
 						'type' => 'date',
@@ -42,12 +43,12 @@ class CalculateBioCompatibilityForm {
 				),
 				array(
 					'name'   => 'person2',
-					'label'  => __( 'Person 2', 'roxyapi' ),
+					'label'  => $labels['groups']['person2'] ?? 'Person 2',
 					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'birthDate',
-						'label' => __( 'Birth date', 'roxyapi' ),
+						'label' => $labels['fields']['birthDate'] ?? 'Birth date',
 						'required' => true,
 						'help' => __( 'Birth date of person 2 in YYYY-MM-DD format.', 'roxyapi' ),
 						'type' => 'date',
@@ -60,7 +61,7 @@ class CalculateBioCompatibilityForm {
 			'flat_fields'  => array(
 				array(
 					'name' => 'targetDate',
-					'label' => __( 'Target date', 'roxyapi' ),
+					'label' => $labels['fields']['targetDate'] ?? 'Target date',
 					'required' => false,
 					'help' => __( 'Date to evaluate compatibility on in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',

@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CastCustomSpreadForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'castCustomSpread',
 			'title'        => __( 'Custom Spread Builder', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'spreadName',
-					'label' => __( 'Spread name', 'roxyapi' ),
+					'label' => $labels['fields']['spreadName'] ?? 'Spread name',
 					'required' => false,
 					'help' => __( 'Optional name for your custom tarot spread layout', 'roxyapi' ),
 					'type' => 'text',
@@ -38,7 +39,7 @@ class CastCustomSpreadForm {
 				),
 				array(
 					'name' => 'question',
-					'label' => __( 'Your question', 'roxyapi' ),
+					'label' => $labels['fields']['question'] ?? 'Your question',
 					'required' => false,
 					'help' => __( 'Optional querent question to focus the custom tarot reading', 'roxyapi' ),
 					'type' => 'text',
@@ -47,7 +48,7 @@ class CastCustomSpreadForm {
 				),
 				array(
 					'name' => 'seed',
-					'label' => __( 'Seed', 'roxyapi' ),
+					'label' => $labels['fields']['seed'] ?? 'Seed',
 					'required' => false,
 					'help' => __( 'Optional seed for reproducible results', 'roxyapi' ),
 					'type' => 'text',

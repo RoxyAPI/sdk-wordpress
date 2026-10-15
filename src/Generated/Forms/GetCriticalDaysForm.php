@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetCriticalDaysForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getCriticalDays',
 			'title'        => __( 'Critical Days', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'birthDate',
-					'label' => __( 'Birth date', 'roxyapi' ),
+					'label' => $labels['fields']['birthDate'] ?? 'Birth date',
 					'required' => true,
 					'help' => __( 'Birth date of the person in YYYY-MM-DD format.', 'roxyapi' ),
 					'type' => 'date',
@@ -38,7 +39,7 @@ class GetCriticalDaysForm {
 				),
 				array(
 					'name' => 'startDate',
-					'label' => __( 'Start date', 'roxyapi' ),
+					'label' => $labels['fields']['startDate'] ?? 'Start date',
 					'required' => false,
 					'help' => __( 'Start date of the search range in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -47,7 +48,7 @@ class GetCriticalDaysForm {
 				),
 				array(
 					'name' => 'endDate',
-					'label' => __( 'End date', 'roxyapi' ),
+					'label' => $labels['fields']['endDate'] ?? 'End date',
 					'required' => false,
 					'help' => __( 'End date of the search range in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',

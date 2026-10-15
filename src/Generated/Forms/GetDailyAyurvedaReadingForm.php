@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetDailyAyurvedaReadingForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getDailyAyurvedaReading',
 			'title'        => __( 'Daily Ayurveda Reading', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'latitude', 'section' => '', 'id' => '', 'fields' => array( 'latitude' => 'latitude', 'longitude' => 'longitude', 'timezone' => 'timezone' ) ) ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => false,
 					'help' => __( 'Reading date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -38,7 +39,7 @@ class GetDailyAyurvedaReadingForm {
 				),
 				array(
 					'name' => 'latitude',
-					'label' => __( 'Latitude', 'roxyapi' ),
+					'label' => $labels['fields']['latitude'] ?? 'Latitude',
 					'required' => true,
 					'help' => __( 'Latitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -50,7 +51,7 @@ class GetDailyAyurvedaReadingForm {
 				),
 				array(
 					'name' => 'longitude',
-					'label' => __( 'Longitude', 'roxyapi' ),
+					'label' => $labels['fields']['longitude'] ?? 'Longitude',
 					'required' => true,
 					'help' => __( 'Longitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -62,7 +63,7 @@ class GetDailyAyurvedaReadingForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',

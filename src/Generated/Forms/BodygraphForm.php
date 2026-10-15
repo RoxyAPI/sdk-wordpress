@@ -30,10 +30,12 @@ class BodygraphForm {
 			'render_operation_id' => 'generateBodygraph',
 			'title'        => __( 'Human Design bodygraph', 'roxyapi' ),
 			'submit_label' => __( 'Generate bodygraph', 'roxyapi' ),
+			'locations'    => array( array( 'anchor' => 'birth[birth_date]', 'section' => 'birth', 'id' => '', 'fields' => array( 'latitude' => 'birth[lat]', 'longitude' => 'birth[lon]', 'timezone' => 'birth[tz]' ) ) ),
 			'sections'     => array(
 			array(
 				'name'   => 'birth',
 				'label'  => __( 'Birth details', 'roxyapi' ),
+				'fold'   => false,
 				'fields' => array(
 					array(
 						'name' => 'birth_date',

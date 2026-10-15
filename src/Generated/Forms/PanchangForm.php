@@ -30,10 +30,12 @@ class PanchangForm {
 			'render_operation_id' => 'getDetailedPanchang',
 			'title'        => __( 'Detailed panchang', 'roxyapi' ),
 			'submit_label' => __( 'Look up panchang', 'roxyapi' ),
+			'locations'    => array( array( 'anchor' => 'details[date]', 'section' => 'details', 'id' => '', 'fields' => array( 'latitude' => 'details[lat]', 'longitude' => 'details[lon]', 'timezone' => 'details[tz]' ) ) ),
 			'sections'     => array(
 			array(
 				'name'   => 'details',
 				'label'  => __( 'Date and location', 'roxyapi' ),
+				'fold'   => false,
 				'fields' => array(
 					array(
 						'name' => 'date',

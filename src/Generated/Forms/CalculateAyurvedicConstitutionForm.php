@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculateAyurvedicConstitutionForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculateAyurvedicConstitution',
 			'title'        => __( 'Ayurvedic Constitution', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'latitude', 'section' => '', 'id' => '', 'fields' => array( 'latitude' => 'latitude', 'longitude' => 'longitude', 'timezone' => 'timezone' ) ) ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -38,7 +39,7 @@ class CalculateAyurvedicConstitutionForm {
 				),
 				array(
 					'name' => 'time',
-					'label' => __( 'Time', 'roxyapi' ),
+					'label' => $labels['fields']['time'] ?? 'Time',
 					'required' => true,
 					'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 					'type' => 'time',
@@ -47,7 +48,7 @@ class CalculateAyurvedicConstitutionForm {
 				),
 				array(
 					'name' => 'latitude',
-					'label' => __( 'Latitude', 'roxyapi' ),
+					'label' => $labels['fields']['latitude'] ?? 'Latitude',
 					'required' => true,
 					'help' => __( 'Birth latitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -59,7 +60,7 @@ class CalculateAyurvedicConstitutionForm {
 				),
 				array(
 					'name' => 'longitude',
-					'label' => __( 'Longitude', 'roxyapi' ),
+					'label' => $labels['fields']['longitude'] ?? 'Longitude',
 					'required' => true,
 					'help' => __( 'Birth longitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -71,7 +72,7 @@ class CalculateAyurvedicConstitutionForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
@@ -83,19 +84,19 @@ class CalculateAyurvedicConstitutionForm {
 				),
 				array(
 					'name' => 'ayanamsa',
-					'label' => __( 'Ayanamsa', 'roxyapi' ),
+					'label' => $labels['fields']['ayanamsa'] ?? 'Ayanamsa',
 					'required' => false,
 					'help' => __( 'Sidereal frame the chart is cast in', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'kp-newcomb', 'kp-old', 'lahiri', 'raman', 'custom' ),
 					'default' => 'lahiri',
-					'enum_labels' => array( __( 'Kp newcomb', 'roxyapi' ), __( 'Kp old', 'roxyapi' ), __( 'Lahiri', 'roxyapi' ), __( 'Raman', 'roxyapi' ), __( 'Custom', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['ayanamsa.kp-newcomb'] ?? 'Kp newcomb', $labels['enums']['ayanamsa.kp-old'] ?? 'Kp old', $labels['enums']['ayanamsa.lahiri'] ?? 'Lahiri', $labels['enums']['ayanamsa.raman'] ?? 'Raman', $labels['enums']['ayanamsa.custom'] ?? 'Custom' ),
 					'placeholder' => __( 'lahiri', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'ayanamsaValue',
-					'label' => __( 'Custom ayanamsa value', 'roxyapi' ),
+					'label' => $labels['fields']['ayanamsaValue'] ?? 'Custom ayanamsa value',
 					'required' => false,
 					'help' => __( 'Custom sidereal frame value in degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -105,13 +106,13 @@ class CalculateAyurvedicConstitutionForm {
 				),
 				array(
 					'name' => 'signDoshaScheme',
-					'label' => __( 'Sign humour table', 'roxyapi' ),
+					'label' => $labels['fields']['signDoshaScheme'] ?? 'Sign humour table',
 					'required' => false,
 					'help' => __( 'Which classical sign table the rising sign and the Moon sign are read through', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'satyacharya', 'bphs' ),
 					'default' => 'satyacharya',
-					'enum_labels' => array( __( 'Satyacharya', 'roxyapi' ), __( 'Bphs', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['signDoshaScheme.satyacharya'] ?? 'Satyacharya', $labels['enums']['signDoshaScheme.bphs'] ?? 'Bphs' ),
 					'placeholder' => __( 'satyacharya', 'roxyapi' ),
 					'fold' => true,
 				),

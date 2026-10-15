@@ -18,11 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculatePentaForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculatePenta',
 			'title'        => __( 'Human Design Penta', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),

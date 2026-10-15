@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculateBridgeNumbersForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculateBridgeNumbers',
 			'title'        => __( 'Bridge Numbers', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'fullName',
-					'label' => __( 'Full name', 'roxyapi' ),
+					'label' => $labels['fields']['fullName'] ?? 'Full name',
 					'required' => true,
 					'help' => __( 'Full birth name as it appears on the birth certificate, first, middle and last names separated by spaces', 'roxyapi' ),
 					'type' => 'text',
@@ -38,7 +39,7 @@ class CalculateBridgeNumbersForm {
 				),
 				array(
 					'name' => 'year',
-					'label' => __( 'Year', 'roxyapi' ),
+					'label' => $labels['fields']['year'] ?? 'Year',
 					'required' => true,
 					'help' => __( 'Birth year between 100 and 2100', 'roxyapi' ),
 					'type' => 'integer',
@@ -49,7 +50,7 @@ class CalculateBridgeNumbersForm {
 				),
 				array(
 					'name' => 'month',
-					'label' => __( 'Month', 'roxyapi' ),
+					'label' => $labels['fields']['month'] ?? 'Month',
 					'required' => true,
 					'help' => __( 'Birth month (1 to 12)', 'roxyapi' ),
 					'type' => 'integer',
@@ -60,7 +61,7 @@ class CalculateBridgeNumbersForm {
 				),
 				array(
 					'name' => 'day',
-					'label' => __( 'Day', 'roxyapi' ),
+					'label' => $labels['fields']['day'] ?? 'Day',
 					'required' => true,
 					'help' => __( 'Birth day (1 to 31)', 'roxyapi' ),
 					'type' => 'integer',

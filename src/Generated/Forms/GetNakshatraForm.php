@@ -18,11 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetNakshatraForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getNakshatra',
 			'title'        => __( 'Nakshatra', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),

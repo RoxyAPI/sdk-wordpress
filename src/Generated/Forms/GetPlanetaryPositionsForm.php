@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetPlanetaryPositionsForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getPlanetaryPositions',
 			'title'        => __( 'Planetary Positions', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'latitude', 'section' => '', 'id' => '', 'fields' => array( 'latitude' => 'latitude', 'longitude' => 'longitude', 'timezone' => 'timezone' ) ) ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => true,
 					'help' => __( 'Target date for planetary positions in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -38,7 +39,7 @@ class GetPlanetaryPositionsForm {
 				),
 				array(
 					'name' => 'time',
-					'label' => __( 'Time', 'roxyapi' ),
+					'label' => $labels['fields']['time'] ?? 'Time',
 					'required' => true,
 					'help' => __( 'Time in 24-hour HH:MM:SS format for precise calculations', 'roxyapi' ),
 					'type' => 'time',
@@ -47,19 +48,19 @@ class GetPlanetaryPositionsForm {
 				),
 				array(
 					'name' => 'nodeType',
-					'label' => __( 'Lunar node type', 'roxyapi' ),
+					'label' => $labels['fields']['nodeType'] ?? 'Lunar node type',
 					'required' => false,
 					'help' => __( 'Lunar node convention', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'mean', 'true' ),
 					'default' => 'true',
-					'enum_labels' => array( __( 'Mean', 'roxyapi' ), __( 'True', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['nodeType.mean'] ?? 'Mean', $labels['enums']['nodeType.true'] ?? 'True' ),
 					'placeholder' => __( 'true', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'latitude',
-					'label' => __( 'Latitude', 'roxyapi' ),
+					'label' => $labels['fields']['latitude'] ?? 'Latitude',
 					'required' => true,
 					'help' => __( 'Observer latitude in decimal degrees (-90 to 90)', 'roxyapi' ),
 					'type' => 'number',
@@ -71,7 +72,7 @@ class GetPlanetaryPositionsForm {
 				),
 				array(
 					'name' => 'longitude',
-					'label' => __( 'Longitude', 'roxyapi' ),
+					'label' => $labels['fields']['longitude'] ?? 'Longitude',
 					'required' => true,
 					'help' => __( 'Observer longitude in decimal degrees (-180 to 180)', 'roxyapi' ),
 					'type' => 'number',
@@ -83,7 +84,7 @@ class GetPlanetaryPositionsForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => true,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',

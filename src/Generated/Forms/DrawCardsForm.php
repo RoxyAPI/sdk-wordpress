@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class DrawCardsForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'drawCards',
 			'title'        => __( 'Draw Tarot Cards', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'count',
-					'label' => __( 'How many', 'roxyapi' ),
+					'label' => $labels['fields']['count'] ?? 'How many',
 					'required' => true,
 					'help' => __( 'Number of cards to draw (1-78)', 'roxyapi' ),
 					'type' => 'integer',
@@ -40,7 +41,7 @@ class DrawCardsForm {
 				),
 				array(
 					'name' => 'seed',
-					'label' => __( 'Seed', 'roxyapi' ),
+					'label' => $labels['fields']['seed'] ?? 'Seed',
 					'required' => false,
 					'help' => __( 'Optional seed for reproducible results', 'roxyapi' ),
 					'type' => 'text',
@@ -49,7 +50,7 @@ class DrawCardsForm {
 				),
 				array(
 					'name' => 'allowReversals',
-					'label' => __( 'Allow reversed cards', 'roxyapi' ),
+					'label' => $labels['fields']['allowReversals'] ?? 'Allow reversed cards',
 					'required' => false,
 					'help' => __( 'Whether cards can appear reversed (upside down)', 'roxyapi' ),
 					'type' => 'text',
@@ -59,7 +60,7 @@ class DrawCardsForm {
 				),
 				array(
 					'name' => 'allowDuplicates',
-					'label' => __( 'Allow duplicate cards', 'roxyapi' ),
+					'label' => $labels['fields']['allowDuplicates'] ?? 'Allow duplicate cards',
 					'required' => false,
 					'help' => __( 'Whether same card can be drawn multiple times', 'roxyapi' ),
 					'type' => 'text',

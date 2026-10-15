@@ -18,11 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetMayanDaySignForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getMayanDaySign',
 			'title'        => __( 'Mayan Day Sign', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
@@ -40,13 +41,13 @@ class GetMayanDaySignForm {
 				),
 				array(
 					'name' => 'directionScheme',
-					'label' => __( 'Direction reading', 'roxyapi' ),
+					'label' => $labels['fields']['directionScheme'] ?? 'Direction reading',
 					'required' => false,
 					'help' => __( 'Which reading of the world direction and colour to serve for a day sign', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'madrid-codex', 'landa' ),
 					'default' => 'madrid-codex',
-					'enum_labels' => array( __( 'Madrid codex', 'roxyapi' ), __( 'Landa', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['directionScheme.madrid-codex'] ?? 'Madrid codex', $labels['enums']['directionScheme.landa'] ?? 'Landa' ),
 					'placeholder' => __( 'madrid-codex', 'roxyapi' ),
 					'fold' => true,
 				),

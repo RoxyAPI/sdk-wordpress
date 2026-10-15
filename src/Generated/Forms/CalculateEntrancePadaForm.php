@@ -18,20 +18,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculateEntrancePadaForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculateEntrancePada',
 			'title'        => __( 'Entrance Pada', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 				array(
 					'name'   => 'plot',
-					'label'  => __( 'Plot', 'roxyapi' ),
+					'label'  => $labels['groups']['plot'] ?? 'Plot',
 					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'width',
-						'label' => __( 'Width, east to west', 'roxyapi' ),
+						'label' => $labels['fields']['width'] ?? 'Width, east to west',
 						'required' => false,
 						'help' => __( 'East-west extent of a rectangular plot, in the unit given', 'roxyapi' ),
 						'type' => 'number',
@@ -42,7 +43,7 @@ class CalculateEntrancePadaForm {
 					),
 					array(
 						'name' => 'depth',
-						'label' => __( 'Depth, north to south', 'roxyapi' ),
+						'label' => $labels['fields']['depth'] ?? 'Depth, north to south',
 						'required' => false,
 						'help' => __( 'North-south extent of a rectangular plot, in the unit given', 'roxyapi' ),
 						'type' => 'number',
@@ -53,13 +54,13 @@ class CalculateEntrancePadaForm {
 					),
 					array(
 						'name' => 'unit',
-						'label' => __( 'Unit', 'roxyapi' ),
+						'label' => $labels['fields']['unit'] ?? 'Unit',
 						'required' => false,
 						'help' => __( 'Unit the plot dimensions are given in', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'feet', 'metres' ),
 						'default' => 'feet',
-						'enum_labels' => array( __( 'Feet', 'roxyapi' ), __( 'Metres', 'roxyapi' ) ),
+						'enum_labels' => array( $labels['enums']['unit.feet'] ?? 'Feet', $labels['enums']['unit.metres'] ?? 'Metres' ),
 						'placeholder' => __( 'feet', 'roxyapi' ),
 						'fold' => false,
 					),
@@ -67,12 +68,12 @@ class CalculateEntrancePadaForm {
 				),
 				array(
 					'name'   => 'door',
-					'label'  => __( 'Door', 'roxyapi' ),
+					'label'  => $labels['groups']['door'] ?? 'Door',
 					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'x',
-						'label' => __( 'Distance east', 'roxyapi' ),
+						'label' => $labels['fields']['x'] ?? 'Distance east',
 						'required' => false,
 						'help' => __( 'Distance east of the plot origin, in the same unit as the plot', 'roxyapi' ),
 						'type' => 'number',
@@ -82,7 +83,7 @@ class CalculateEntrancePadaForm {
 					),
 					array(
 						'name' => 'y',
-						'label' => __( 'Distance north', 'roxyapi' ),
+						'label' => $labels['fields']['y'] ?? 'Distance north',
 						'required' => false,
 						'help' => __( 'Distance north of the plot origin, in the same unit as the plot', 'roxyapi' ),
 						'type' => 'number',
@@ -96,18 +97,18 @@ class CalculateEntrancePadaForm {
 			'flat_fields'  => array(
 				array(
 					'name' => 'facing',
-					'label' => __( 'Facing direction', 'roxyapi' ),
+					'label' => $labels['fields']['facing'] ?? 'Facing direction',
 					'required' => false,
 					'help' => __( 'Direction the front of the house looks out toward, one of the eight compass sectors', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'North', 'Northeast', 'East', 'Southeast', 'South', 'Southwest', 'West', 'Northwest' ),
-					'enum_labels' => array( __( 'North', 'roxyapi' ), __( 'Northeast', 'roxyapi' ), __( 'East', 'roxyapi' ), __( 'Southeast', 'roxyapi' ), __( 'South', 'roxyapi' ), __( 'Southwest', 'roxyapi' ), __( 'West', 'roxyapi' ), __( 'Northwest', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['facing.North'] ?? 'North', $labels['enums']['facing.Northeast'] ?? 'Northeast', $labels['enums']['facing.East'] ?? 'East', $labels['enums']['facing.Southeast'] ?? 'Southeast', $labels['enums']['facing.South'] ?? 'South', $labels['enums']['facing.Southwest'] ?? 'Southwest', $labels['enums']['facing.West'] ?? 'West', $labels['enums']['facing.Northwest'] ?? 'Northwest' ),
 					'placeholder' => __( 'North', 'roxyapi' ),
 					'fold' => false,
 				),
 				array(
 					'name' => 'facingDegrees',
-					'label' => __( 'Facing degrees', 'roxyapi' ),
+					'label' => $labels['fields']['facingDegrees'] ?? 'Facing degrees',
 					'required' => false,
 					'help' => __( 'Direction the front of the house looks out toward, as a compass bearing in degrees clockwise from true north, measured looking OUT from the building', 'roxyapi' ),
 					'type' => 'number',
@@ -119,7 +120,7 @@ class CalculateEntrancePadaForm {
 				),
 				array(
 					'name' => 'doorPosition',
-					'label' => __( 'Door position along the side', 'roxyapi' ),
+					'label' => $labels['fields']['doorPosition'] ?? 'Door position along the side',
 					'required' => false,
 					'help' => __( 'Where the main door sits along the facing side, as a fraction from 0 to 1 measured from the corner the chapter starts that side at: the north-east for an east facing, the south-east for a south facing, the south-west for a west facing and the north-west for a north facing', 'roxyapi' ),
 					'type' => 'number',
@@ -131,13 +132,13 @@ class CalculateEntrancePadaForm {
 				),
 				array(
 					'name' => 'grid',
-					'label' => __( 'Mandala grid', 'roxyapi' ),
+					'label' => $labels['fields']['grid'] ?? 'Mandala grid',
 					'required' => false,
 					'help' => __( 'Which division of the ground to read: 81-pada is the Paramasayika of Brihat Samhita 53.42, the grid the chapter numbers and names every devata on, and 64-pada is the Manduka of 53.55, for which the chapter gives structure only and no devata names', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( '81-pada', '64-pada' ),
 					'default' => '81-pada',
-					'enum_labels' => array( __( '81 pada', 'roxyapi' ), __( '64 pada', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['grid.81-pada'] ?? '81 pada', $labels['enums']['grid.64-pada'] ?? '64 pada' ),
 					'placeholder' => __( '81-pada', 'roxyapi' ),
 					'fold' => true,
 				),

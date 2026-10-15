@@ -18,11 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetSephirahForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getSephirah',
 			'title'        => __( 'Sephirah', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
@@ -40,25 +41,25 @@ class GetSephirahForm {
 				),
 				array(
 					'name' => 'sephirotSystem',
-					'label' => __( 'Sephirot reading', 'roxyapi' ),
+					'label' => $labels['fields']['sephirotSystem'] ?? 'Sephirot reading',
 					'required' => false,
 					'help' => __( 'Which reading assigns a sphere to each sephirah', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'classical', 'golden-dawn' ),
 					'default' => 'classical',
-					'enum_labels' => array( __( 'Classical', 'roxyapi' ), __( 'Golden dawn', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['sephirotSystem.classical'] ?? 'Classical', $labels['enums']['sephirotSystem.golden-dawn'] ?? 'Golden dawn' ),
 					'placeholder' => __( 'classical', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'letterAttribution',
-					'label' => __( 'Letter attribution reading', 'roxyapi' ),
+					'label' => $labels['fields']['letterAttribution'] ?? 'Letter attribution reading',
 					'required' => false,
 					'help' => __( 'Which reading assigns the element, planet or sign to each letter', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'sefer-yetzirah-gra', 'sefer-yetzirah-short', 'sefer-yetzirah-saadia', 'golden-dawn' ),
 					'default' => 'sefer-yetzirah-gra',
-					'enum_labels' => array( __( 'Sefer yetzirah gra', 'roxyapi' ), __( 'Sefer yetzirah short', 'roxyapi' ), __( 'Sefer yetzirah saadia', 'roxyapi' ), __( 'Golden dawn', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['letterAttribution.sefer-yetzirah-gra'] ?? 'Sefer yetzirah gra', $labels['enums']['letterAttribution.sefer-yetzirah-short'] ?? 'Sefer yetzirah short', $labels['enums']['letterAttribution.sefer-yetzirah-saadia'] ?? 'Sefer yetzirah saadia', $labels['enums']['letterAttribution.golden-dawn'] ?? 'Golden dawn' ),
 					'placeholder' => __( 'sefer-yetzirah-gra', 'roxyapi' ),
 					'fold' => true,
 				),

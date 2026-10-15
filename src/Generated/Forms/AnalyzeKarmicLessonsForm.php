@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class AnalyzeKarmicLessonsForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'analyzeKarmicLessons',
 			'title'        => __( 'Karmic Lessons', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'fullName',
-					'label' => __( 'Full name', 'roxyapi' ),
+					'label' => $labels['fields']['fullName'] ?? 'Full name',
 					'required' => true,
 					'help' => __( 'Full birth name to analyze for missing numbers', 'roxyapi' ),
 					'type' => 'text',

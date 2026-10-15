@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class FindGrihaPraveshDatesForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'findGrihaPraveshDates',
 			'title'        => __( 'Griha Pravesh Dates', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'latitude', 'section' => '', 'id' => '', 'fields' => array( 'latitude' => 'latitude', 'longitude' => 'longitude', 'timezone' => 'timezone' ) ) ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'startDate',
-					'label' => __( 'Start date', 'roxyapi' ),
+					'label' => $labels['fields']['startDate'] ?? 'Start date',
 					'required' => true,
 					'help' => __( 'First day of the search window, in YYYY-MM-DD', 'roxyapi' ),
 					'type' => 'date',
@@ -38,7 +39,7 @@ class FindGrihaPraveshDatesForm {
 				),
 				array(
 					'name' => 'endDate',
-					'label' => __( 'End date', 'roxyapi' ),
+					'label' => $labels['fields']['endDate'] ?? 'End date',
 					'required' => true,
 					'help' => __( 'Last day of the search window, in YYYY-MM-DD, inclusive', 'roxyapi' ),
 					'type' => 'date',
@@ -47,7 +48,7 @@ class FindGrihaPraveshDatesForm {
 				),
 				array(
 					'name' => 'latitude',
-					'label' => __( 'Latitude', 'roxyapi' ),
+					'label' => $labels['fields']['latitude'] ?? 'Latitude',
 					'required' => true,
 					'help' => __( 'Latitude of the house, in decimal degrees, positive north', 'roxyapi' ),
 					'type' => 'number',
@@ -59,7 +60,7 @@ class FindGrihaPraveshDatesForm {
 				),
 				array(
 					'name' => 'longitude',
-					'label' => __( 'Longitude', 'roxyapi' ),
+					'label' => $labels['fields']['longitude'] ?? 'Longitude',
 					'required' => true,
 					'help' => __( 'Longitude of the house, in decimal degrees, positive east.', 'roxyapi' ),
 					'type' => 'number',
@@ -71,7 +72,7 @@ class FindGrihaPraveshDatesForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => true,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
@@ -82,13 +83,13 @@ class FindGrihaPraveshDatesForm {
 				),
 				array(
 					'name' => 'muhurtaText',
-					'label' => __( 'Muhurta text', 'roxyapi' ),
+					'label' => $labels['fields']['muhurtaText'] ?? 'Muhurta text',
 					'required' => false,
 					'help' => __( 'Which Muhurta text supplies the admissible nakshatras for entering a new house', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'muhurta-chintamani', 'kalaprakasika' ),
 					'default' => 'muhurta-chintamani',
-					'enum_labels' => array( __( 'Muhurta chintamani', 'roxyapi' ), __( 'Kalaprakasika', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['muhurtaText.muhurta-chintamani'] ?? 'Muhurta chintamani', $labels['enums']['muhurtaText.kalaprakasika'] ?? 'Kalaprakasika' ),
 					'placeholder' => __( 'muhurta-chintamani', 'roxyapi' ),
 					'fold' => true,
 				),

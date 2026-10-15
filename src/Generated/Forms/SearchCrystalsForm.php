@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class SearchCrystalsForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'searchCrystals',
 			'title'        => __( 'Search Crystals', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'q',
-					'label' => __( 'Search', 'roxyapi' ),
+					'label' => $labels['fields']['q'] ?? 'Search',
 					'required' => true,
 					'help' => __( 'Search query (2-50 characters)', 'roxyapi' ),
 					'type' => 'text',
@@ -38,7 +39,7 @@ class SearchCrystalsForm {
 				),
 				array(
 					'name' => 'limit',
-					'label' => __( 'Results per page', 'roxyapi' ),
+					'label' => $labels['fields']['limit'] ?? 'Results per page',
 					'required' => false,
 					'help' => __( 'Maximum items to return per page', 'roxyapi' ),
 					'type' => 'integer',
@@ -50,7 +51,7 @@ class SearchCrystalsForm {
 				),
 				array(
 					'name' => 'offset',
-					'label' => __( 'Results to skip', 'roxyapi' ),
+					'label' => $labels['fields']['offset'] ?? 'Results to skip',
 					'required' => false,
 					'help' => __( 'Number of items to skip for pagination', 'roxyapi' ),
 					'type' => 'integer',

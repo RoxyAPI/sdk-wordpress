@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class LookupHexagramForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'lookupHexagram',
 			'title'        => __( 'Hexagram by Line Pattern', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'lines',
-					'label' => __( 'Line pattern', 'roxyapi' ),
+					'label' => $labels['fields']['lines'] ?? 'Line pattern',
 					'required' => true,
 					'help' => __( 'Six-digit binary pattern (0=yin/broken, 1=yang/solid) from bottom to top.', 'roxyapi' ),
 					'type' => 'text',

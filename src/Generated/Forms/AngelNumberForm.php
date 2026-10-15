@@ -30,6 +30,7 @@ class AngelNumberForm {
 			'render_operation_id' => 'getAngelNumber',
 			'title'        => __( 'Angel number lookup', 'roxyapi' ),
 			'submit_label' => __( 'Look up meaning', 'roxyapi' ),
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),

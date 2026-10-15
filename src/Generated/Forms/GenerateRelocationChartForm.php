@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GenerateRelocationChartForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'generateRelocationChart',
 			'title'        => __( 'Relocation Chart', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'timezone', 'section' => '', 'id' => 'birth', 'fields' => array( 'timezone' => 'timezone', 'latitude' => 'birthLatitude', 'longitude' => 'birthLongitude' ) ), array( 'anchor' => 'relocationLatitude', 'section' => '', 'id' => 'relocation', 'fields' => array( 'latitude' => 'relocationLatitude', 'longitude' => 'relocationLongitude' ) ) ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -38,7 +39,7 @@ class GenerateRelocationChartForm {
 				),
 				array(
 					'name' => 'time',
-					'label' => __( 'Time', 'roxyapi' ),
+					'label' => $labels['fields']['time'] ?? 'Time',
 					'required' => true,
 					'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 					'type' => 'time',
@@ -47,7 +48,7 @@ class GenerateRelocationChartForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => true,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
@@ -106,13 +107,13 @@ class GenerateRelocationChartForm {
 				),
 				array(
 					'name' => 'houseSystem',
-					'label' => __( 'House system', 'roxyapi' ),
+					'label' => $labels['fields']['houseSystem'] ?? 'House system',
 					'required' => false,
 					'help' => __( 'House system for dividing the relocated chart into 12 houses', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'placidus', 'whole-sign', 'equal', 'koch' ),
 					'default' => 'placidus',
-					'enum_labels' => array( __( 'Placidus', 'roxyapi' ), __( 'Whole sign', 'roxyapi' ), __( 'Equal', 'roxyapi' ), __( 'Koch', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['houseSystem.placidus'] ?? 'Placidus', $labels['enums']['houseSystem.whole-sign'] ?? 'Whole sign', $labels['enums']['houseSystem.equal'] ?? 'Equal', $labels['enums']['houseSystem.koch'] ?? 'Koch' ),
 					'placeholder' => __( 'placidus', 'roxyapi' ),
 					'fold' => true,
 				),

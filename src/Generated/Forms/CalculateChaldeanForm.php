@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculateChaldeanForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculateChaldean',
 			'title'        => __( 'Chaldean Numerology', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'name',
-					'label' => __( 'Name', 'roxyapi' ),
+					'label' => $labels['fields']['name'] ?? 'Name',
 					'required' => true,
 					'help' => __( 'The name to analyze', 'roxyapi' ),
 					'type' => 'text',

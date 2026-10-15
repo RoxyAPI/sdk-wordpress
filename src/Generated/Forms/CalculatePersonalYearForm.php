@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculatePersonalYearForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculatePersonalYear',
 			'title'        => __( 'Personal Year', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'month',
-					'label' => __( 'Month', 'roxyapi' ),
+					'label' => $labels['fields']['month'] ?? 'Month',
 					'required' => true,
 					'help' => __( 'Birth month (1-12)', 'roxyapi' ),
 					'type' => 'integer',
@@ -40,7 +41,7 @@ class CalculatePersonalYearForm {
 				),
 				array(
 					'name' => 'day',
-					'label' => __( 'Day', 'roxyapi' ),
+					'label' => $labels['fields']['day'] ?? 'Day',
 					'required' => true,
 					'help' => __( 'Birth day (1-31)', 'roxyapi' ),
 					'type' => 'integer',
@@ -51,7 +52,7 @@ class CalculatePersonalYearForm {
 				),
 				array(
 					'name' => 'year',
-					'label' => __( 'Year', 'roxyapi' ),
+					'label' => $labels['fields']['year'] ?? 'Year',
 					'required' => false,
 					'help' => __( 'Year to forecast', 'roxyapi' ),
 					'type' => 'integer',

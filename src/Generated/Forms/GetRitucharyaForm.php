@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetRitucharyaForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getRitucharya',
 			'title'        => __( 'Ayurveda Seasonal Regimen', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => true,
 					'help' => __( 'The date to resolve, in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -38,37 +39,37 @@ class GetRitucharyaForm {
 				),
 				array(
 					'name' => 'ritucharyaScheme',
-					'label' => __( 'Season division', 'roxyapi' ),
+					'label' => $labels['fields']['ritucharyaScheme'] ?? 'Season division',
 					'required' => false,
 					'help' => __( 'Which six-season division the year is cut into', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'sutrasthana-6', 'vimana-8' ),
 					'default' => 'sutrasthana-6',
-					'enum_labels' => array( __( 'Sutrasthana 6', 'roxyapi' ), __( 'Vimana 8', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['ritucharyaScheme.sutrasthana-6'] ?? 'Sutrasthana 6', $labels['enums']['ritucharyaScheme.vimana-8'] ?? 'Vimana 8' ),
 					'placeholder' => __( 'sutrasthana-6', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'rituZodiac',
-					'label' => __( 'Zodiac the season boundaries are measured in', 'roxyapi' ),
+					'label' => $labels['fields']['rituZodiac'] ?? 'Zodiac the season boundaries are measured in',
 					'required' => false,
 					'help' => __( 'Which zodiac the solar-month boundaries are measured in', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'sayana', 'nirayana' ),
 					'default' => 'sayana',
-					'enum_labels' => array( __( 'Sayana', 'roxyapi' ), __( 'Nirayana', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['rituZodiac.sayana'] ?? 'Sayana', $labels['enums']['rituZodiac.nirayana'] ?? 'Nirayana' ),
 					'placeholder' => __( 'sayana', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'hemisphere',
-					'label' => __( 'Hemisphere', 'roxyapi' ),
+					'label' => $labels['fields']['hemisphere'] ?? 'Hemisphere',
 					'required' => false,
 					'help' => __( 'Which half of the world the season names are stated for', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'northern', 'southern' ),
 					'default' => 'northern',
-					'enum_labels' => array( __( 'Northern', 'roxyapi' ), __( 'Southern', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['hemisphere.northern'] ?? 'Northern', $labels['enums']['hemisphere.southern'] ?? 'Southern' ),
 					'placeholder' => __( 'northern', 'roxyapi' ),
 					'fold' => true,
 				),

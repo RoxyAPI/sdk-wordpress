@@ -30,10 +30,12 @@ class MangalDoshaForm {
 			'render_operation_id' => 'checkManglikDosha',
 			'title'        => __( 'Mangal Dosha check', 'roxyapi' ),
 			'submit_label' => __( 'Check Mangal Dosha', 'roxyapi' ),
+			'locations'    => array( array( 'anchor' => 'birth[birth_date]', 'section' => 'birth', 'id' => '', 'fields' => array( 'latitude' => 'birth[lat]', 'longitude' => 'birth[lon]', 'timezone' => 'birth[tz]' ) ) ),
 			'sections'     => array(
 			array(
 				'name'   => 'birth',
 				'label'  => __( 'Birth details', 'roxyapi' ),
+				'fold'   => false,
 				'fields' => array(
 					array(
 						'name' => 'birth_date',

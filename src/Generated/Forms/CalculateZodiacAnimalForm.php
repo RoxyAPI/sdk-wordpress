@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculateZodiacAnimalForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculateZodiacAnimal',
 			'title'        => __( 'Chinese Zodiac Animal for a Birth Date', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -38,13 +39,13 @@ class CalculateZodiacAnimalForm {
 				),
 				array(
 					'name' => 'yearBoundary',
-					'label' => __( 'Year boundary', 'roxyapi' ),
+					'label' => $labels['fields']['yearBoundary'] ?? 'Year boundary',
 					'required' => false,
 					'help' => __( 'Which instant starts the zodiac year', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'lunar-new-year', 'li-chun' ),
 					'default' => 'lunar-new-year',
-					'enum_labels' => array( __( 'Lunar new year', 'roxyapi' ), __( 'Li chun', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['yearBoundary.lunar-new-year'] ?? 'Lunar new year', $labels['enums']['yearBoundary.li-chun'] ?? 'Li chun' ),
 					'placeholder' => __( 'lunar-new-year', 'roxyapi' ),
 					'fold' => true,
 				),

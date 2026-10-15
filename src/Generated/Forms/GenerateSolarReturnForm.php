@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GenerateSolarReturnForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'generateSolarReturn',
 			'title'        => __( 'Solar Return Chart', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'latitude', 'section' => '', 'id' => '', 'fields' => array( 'latitude' => 'latitude', 'longitude' => 'longitude', 'timezone' => 'timezone' ) ) ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'birthDate',
-					'label' => __( 'Birth date', 'roxyapi' ),
+					'label' => $labels['fields']['birthDate'] ?? 'Birth date',
 					'required' => true,
 					'help' => __( 'Original birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -38,7 +39,7 @@ class GenerateSolarReturnForm {
 				),
 				array(
 					'name' => 'birthTime',
-					'label' => __( 'Birth time', 'roxyapi' ),
+					'label' => $labels['fields']['birthTime'] ?? 'Birth time',
 					'required' => true,
 					'help' => __( 'Original birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 					'type' => 'time',
@@ -47,7 +48,7 @@ class GenerateSolarReturnForm {
 				),
 				array(
 					'name' => 'returnYear',
-					'label' => __( 'Return year', 'roxyapi' ),
+					'label' => $labels['fields']['returnYear'] ?? 'Return year',
 					'required' => true,
 					'help' => __( 'Year for which to cast the solar return chart', 'roxyapi' ),
 					'type' => 'integer',
@@ -56,7 +57,7 @@ class GenerateSolarReturnForm {
 				),
 				array(
 					'name' => 'latitude',
-					'label' => __( 'Latitude', 'roxyapi' ),
+					'label' => $labels['fields']['latitude'] ?? 'Latitude',
 					'required' => true,
 					'help' => __( 'Latitude of the solar return location in decimal degrees (-90 to 90)', 'roxyapi' ),
 					'type' => 'number',
@@ -68,7 +69,7 @@ class GenerateSolarReturnForm {
 				),
 				array(
 					'name' => 'longitude',
-					'label' => __( 'Longitude', 'roxyapi' ),
+					'label' => $labels['fields']['longitude'] ?? 'Longitude',
 					'required' => true,
 					'help' => __( 'Longitude of the solar return location in decimal degrees (-180 to 180)', 'roxyapi' ),
 					'type' => 'number',
@@ -80,7 +81,7 @@ class GenerateSolarReturnForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => true,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
@@ -91,13 +92,13 @@ class GenerateSolarReturnForm {
 				),
 				array(
 					'name' => 'houseSystem',
-					'label' => __( 'House system', 'roxyapi' ),
+					'label' => $labels['fields']['houseSystem'] ?? 'House system',
 					'required' => false,
 					'help' => __( 'House system for the solar return chart', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'placidus', 'whole-sign', 'equal', 'koch' ),
 					'default' => 'placidus',
-					'enum_labels' => array( __( 'Placidus', 'roxyapi' ), __( 'Whole sign', 'roxyapi' ), __( 'Equal', 'roxyapi' ), __( 'Koch', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['houseSystem.placidus'] ?? 'Placidus', $labels['enums']['houseSystem.whole-sign'] ?? 'Whole sign', $labels['enums']['houseSystem.equal'] ?? 'Equal', $labels['enums']['houseSystem.koch'] ?? 'Koch' ),
 					'placeholder' => __( 'placidus', 'roxyapi' ),
 					'fold' => true,
 				),

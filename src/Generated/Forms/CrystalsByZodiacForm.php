@@ -30,6 +30,7 @@ class CrystalsByZodiacForm {
 			'render_operation_id' => 'getCrystalsByZodiac',
 			'title'        => __( 'Crystals for your sign', 'roxyapi' ),
 			'submit_label' => __( 'Show crystals', 'roxyapi' ),
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),

@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GenerateBaziChartForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'generateBaziChart',
 			'title'        => __( 'BaZi Chart', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'timezone', 'section' => '', 'id' => '', 'fields' => array( 'timezone' => 'timezone', 'latitude' => 'latitude', 'longitude' => 'longitude' ) ) ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -38,7 +39,7 @@ class GenerateBaziChartForm {
 				),
 				array(
 					'name' => 'time',
-					'label' => __( 'Time', 'roxyapi' ),
+					'label' => $labels['fields']['time'] ?? 'Time',
 					'required' => true,
 					'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 					'type' => 'time',
@@ -47,7 +48,7 @@ class GenerateBaziChartForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => true,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
@@ -58,7 +59,7 @@ class GenerateBaziChartForm {
 				),
 				array(
 					'name' => 'latitude',
-					'label' => __( 'Latitude', 'roxyapi' ),
+					'label' => $labels['fields']['latitude'] ?? 'Latitude',
 					'required' => false,
 					'help' => __( 'Birth latitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -71,7 +72,7 @@ class GenerateBaziChartForm {
 				),
 				array(
 					'name' => 'longitude',
-					'label' => __( 'Longitude', 'roxyapi' ),
+					'label' => $labels['fields']['longitude'] ?? 'Longitude',
 					'required' => false,
 					'help' => __( 'Birth longitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -83,37 +84,37 @@ class GenerateBaziChartForm {
 				),
 				array(
 					'name' => 'dayBoundary',
-					'label' => __( 'Day boundary', 'roxyapi' ),
+					'label' => $labels['fields']['dayBoundary'] ?? 'Day boundary',
 					'required' => false,
 					'help' => __( 'Which instant starts the sexagenary DAY, which only matters for a birth between 23:00 and 23:59', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'split-zi', 'midnight', 'early-zi' ),
 					'default' => 'split-zi',
-					'enum_labels' => array( __( 'Split zi', 'roxyapi' ), __( 'Midnight', 'roxyapi' ), __( 'Early zi', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['dayBoundary.split-zi'] ?? 'Split zi', $labels['enums']['dayBoundary.midnight'] ?? 'Midnight', $labels['enums']['dayBoundary.early-zi'] ?? 'Early zi' ),
 					'placeholder' => __( 'split-zi', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'yearBoundary',
-					'label' => __( 'Year boundary', 'roxyapi' ),
+					'label' => $labels['fields']['yearBoundary'] ?? 'Year boundary',
 					'required' => false,
 					'help' => __( 'Which instant starts the sexagenary YEAR', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'li-chun', 'lunar-new-year' ),
 					'default' => 'li-chun',
-					'enum_labels' => array( __( 'Li chun', 'roxyapi' ), __( 'Lunar new year', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['yearBoundary.li-chun'] ?? 'Li chun', $labels['enums']['yearBoundary.lunar-new-year'] ?? 'Lunar new year' ),
 					'placeholder' => __( 'li-chun', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'hourClock',
-					'label' => __( 'Hour clock', 'roxyapi' ),
+					'label' => $labels['fields']['hourClock'] ?? 'Hour clock',
 					'required' => false,
 					'help' => __( 'Which clock the day boundary and the hour branch are read from, so a correction that carries a birth across midnight moves the day pillar with the hour', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'clock', 'local-mean', 'solar' ),
 					'default' => 'clock',
-					'enum_labels' => array( __( 'Clock', 'roxyapi' ), __( 'Local mean', 'roxyapi' ), __( 'Solar', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['hourClock.clock'] ?? 'Clock', $labels['enums']['hourClock.local-mean'] ?? 'Local mean', $labels['enums']['hourClock.solar'] ?? 'Solar' ),
 					'placeholder' => __( 'clock', 'roxyapi' ),
 					'fold' => true,
 				),

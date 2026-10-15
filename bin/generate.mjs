@@ -58,7 +58,7 @@ const componentMap = JSON.parse(
 	await fs.readFile( path.join( __dirname, 'component-map.json' ), 'utf8' )
 );
 
-// The vendored UI model owns visitor-field classification and English labels.
+// The vendored UI model owns visitor-field classification and render intent.
 const { forms: uiForms } = JSON.parse(
 	await fs.readFile(
 		path.join( __dirname, 'ui-forms', 'forms.json' ),
@@ -71,6 +71,20 @@ const formLabels = JSON.parse(
 		'utf8'
 	)
 );
+
+const localizedFormLabels = {};
+for ( const file of (
+	await fs.readdir( path.join( __dirname, 'ui-forms', 'labels' ) )
+).sort() ) {
+	if ( file.endsWith( '.json' ) ) {
+		localizedFormLabels[ path.basename( file, '.json' ) ] = JSON.parse(
+			await fs.readFile(
+				path.join( __dirname, 'ui-forms', 'labels', file ),
+				'utf8'
+			)
+		);
+	}
+}
 
 /**
  * Apply per-field overrides over a raw spec example. Used when the OpenAPI spec
@@ -1065,9 +1079,12 @@ function buildFormFieldSpec( op, modelField ) {
 	) {
 		type = 'timezone';
 	}
+	// Inline model labels retain gettext ownership, including labels on
+	// prefixed wire names such as birthLatitude. Shared labels use fields[name].
 	const field = {
 		name: modelField.name,
 		label: formLabel( modelField ),
+		label_key: modelField.label ? '' : modelField.name,
 		required: modelField.required,
 	};
 	// The timezone dropdown explains itself; the spec describes the wire
@@ -1084,6 +1101,7 @@ function buildFormFieldSpec( op, modelField ) {
 		}
 	}
 	if ( modelField.enum ) {
+		field.enum_key = modelField.name;
 		field.enum_labels = modelField.enum.map(
 			( value ) =>
 				formLabels.enums[ `${ modelField.name }.${ value }` ] || value
@@ -1095,7 +1113,7 @@ function buildFormFieldSpec( op, modelField ) {
 	if ( type === 'number' ) {
 		field.step = 'any';
 	}
-	// Carried for the next renderer update; curated heroes retain their layout.
+	// Curated heroes do not inherit the model's folds.
 	field.fold = !! modelField.fold;
 	return field;
 }
@@ -1114,7 +1132,7 @@ function extractFormSpec( op ) {
 		)
 		.map( ( g ) => ( {
 			name: g.key,
-			label: formLabel( g ),
+			label: formLabels.groups[ g.key ] ?? formLabel( g ),
 			fold: !! g.fold,
 			fields: [],
 		} ) );
@@ -1138,26 +1156,93 @@ function extractFormSpec( op ) {
 			flatFields.push( field );
 		}
 	}
-	return { sections, flatFields };
+	const locations = model.groups
+		.filter(
+			( g ) =>
+				g.location &&
+				g.location.fields.every(
+					( key ) => key.split( '.' ).length <= 2
+				)
+		)
+		.map( ( g ) => {
+			const fields = model.fields.filter( ( f ) =>
+				g.location.fields.includes( f.key )
+			);
+			const section = sections.find( ( entry ) =>
+				fields.every( ( f ) => f.key.startsWith( `${ entry.name }.` ) )
+			);
+			return {
+				anchor: postedFormName( fields[ 0 ].key ),
+				section: section?.name || '',
+				id: section ? '' : g.key || '',
+				fields: Object.fromEntries(
+					fields.map( ( f ) => [ f.name, postedFormName( f.key ) ] )
+				),
+			};
+		} );
+	return { sections, flatFields, locations };
 }
 
 /**
- * Form-spec keys whose value is prose a VISITOR reads, so it has to reach the
- * translators. Everything else in a field spec is machinery: `name` is the
- * request key, `type` picks the control, and `enum` values are the API's own
- * strings submitted verbatim. `enum_labels` carries their translated UI display
- * text separately, ready for the renderer to consume without changing values.
- *
- * ONE list, consumed by BOTH form emitters. The long-tail forms and the hero
- * forms build their spec arrays in separate functions, so this must stay a
- * single shared list or a change applies to only half the forms.
+ * Preserve the existing flat and one-level nested POST names.
+ * @param key
  */
-const TRANSLATABLE_SPEC_KEYS = new Set( [
-	'label',
-	'help',
-	'placeholder',
-	'enum_labels',
-] );
+function postedFormName( key ) {
+	const [ section, name ] = key.split( '.' );
+	return name ? `${ section }[${ name }]` : key;
+}
+
+/** Gettext owns help, placeholders and labels without complete UI catalogues. */
+const TRANSLATABLE_SPEC_KEYS = new Set( [ 'help', 'placeholder' ] );
+
+/**
+ * Use the UI catalogue only when every vendored language publishes the label.
+ * Inline model copy and incomplete catalogue entries retain gettext ownership.
+ * @param category
+ * @param key
+ * @param fallback
+ */
+function uiLabelPhp( category, key, fallback ) {
+	if (
+		! key ||
+		! Object.values( localizedFormLabels ).every(
+			( labels ) => typeof labels[ category ]?.[ key ] === 'string'
+		)
+	) {
+		return translatablePhp( fallback );
+	}
+	return `$labels['${ category }'][${ phpLiteral( key ) }] ?? ${ phpLiteral(
+		fallback
+	) }`;
+}
+
+/**
+ * Emit each field label through its single owner: UI catalogues or gettext.
+ * @param key
+ * @param value
+ * @param field
+ */
+function generatedFieldEntryPhp( key, value, field ) {
+	if ( key === 'label' ) {
+		return uiLabelPhp( 'fields', field.label_key, value );
+	}
+	if ( key === 'enum_labels' ) {
+		return (
+			'array( ' +
+			field.enum
+				.map( ( option, index ) =>
+					uiLabelPhp(
+						'enums',
+						`${ field.enum_key }.${ option }`,
+						value[ index ]
+					)
+				)
+				.join( ', ' ) +
+			' )'
+		);
+	}
+	return specEntryPhp( key, value );
+}
 
 /**
  * A PHP string literal wrapped in `__()` so `wp i18n make-pot` and
@@ -1191,7 +1276,7 @@ function specEntryPhp( key, value ) {
 }
 
 /**
- * PHP literal for a JS value — strings/numbers/bools/lists. Strict ASCII safe.
+ * PHP literal for a JS value, including lists and keyed objects.
  * @param v
  */
 function phpLiteral( v ) {
@@ -1206,6 +1291,18 @@ function phpLiteral( v ) {
 	}
 	if ( Array.isArray( v ) ) {
 		return 'array( ' + v.map( phpLiteral ).join( ', ' ) + ' )';
+	}
+	if ( typeof v === 'object' ) {
+		return (
+			'array( ' +
+			Object.entries( v )
+				.map(
+					( [ k, value ] ) =>
+						`${ phpLiteral( k ) } => ${ phpLiteral( value ) }`
+				)
+				.join( ', ' ) +
+			' )'
+		);
 	}
 	return (
 		"'" + String( v ).replace( /\\/g, '\\\\' ).replace( /'/g, "\\'" ) + "'"
@@ -1273,11 +1370,16 @@ function emitFormPhp( op ) {
 			const fieldsPhp = s.fields
 				.map( ( f ) => {
 					const parts = Object.entries( f )
+						.filter(
+							( [ k ] ) =>
+								! [ 'label_key', 'enum_key' ].includes( k )
+						)
 						.map(
 							( [ k, v ] ) =>
-								`\t\t\t\t\t\t'${ k }' => ${ specEntryPhp(
+								`\t\t\t\t\t\t'${ k }' => ${ generatedFieldEntryPhp(
 									k,
-									v
+									v,
+									f
 								) },`
 						)
 						.join( '\n' );
@@ -1286,7 +1388,7 @@ function emitFormPhp( op ) {
 				.join( '\n' );
 			return `\t\t\t\tarray(
 					'name'   => ${ phpLiteral( s.name ) },
-					'label'  => ${ translatablePhp( s.label ) },
+					'label'  => ${ uiLabelPhp( 'groups', s.name, s.label ) },
 					'fold'   => ${ phpLiteral( s.fold ) },
 					'fields' => array(
 ${ fieldsPhp }
@@ -1298,15 +1400,24 @@ ${ fieldsPhp }
 	const flatPhp = ( formSpec.flatFields || [] )
 		.map( ( f ) => {
 			const parts = Object.entries( f )
+				.filter(
+					( [ k ] ) => ! [ 'label_key', 'enum_key' ].includes( k )
+				)
 				.map(
 					( [ k, v ] ) =>
-						`\t\t\t\t\t'${ k }' => ${ specEntryPhp( k, v ) },`
+						`\t\t\t\t\t'${ k }' => ${ generatedFieldEntryPhp(
+							k,
+							v,
+							f
+						) },`
 				)
 				.join( '\n' );
 			return `\t\t\t\tarray(\n${ parts }\n\t\t\t\t),`;
 		} )
 		.join( '\n' );
 
+	// Form labels are page chrome: they follow the screen locale like gettext and
+	// the component catalogues, while the reading follows the reading language.
 	return `<?php
 /**
  * Auto-generated visitor form for ${ op.operationId }.
@@ -1327,11 +1438,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 class ${ className } {
 
 	public static function spec(): array {
+		$labels = \\RoxyAPI\\Generated\\FormLabels::for_language( \\RoxyAPI\\Support\\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => ${ phpLiteral( op.operationId ) },
 			'title'        => ${ translatablePhp( title ) },
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => ${ phpLiteral( formSpec.locations ) },
 			'sections'     => array(
 ${ sectionsPhp }
 			),
@@ -3539,7 +3651,11 @@ function heroFormFieldToPhp( field, indent ) {
 			continue;
 		}
 		lines.push(
-			`${ indent }\t'${ key }' => ${ specEntryPhp( key, field[ key ] ) },`
+			`${ indent }\t'${ key }' => ${
+				key === 'label'
+					? translatablePhp( field[ key ] )
+					: specEntryPhp( key, field[ key ] )
+			},`
 		);
 	}
 	return `${ indent }array(\n${ lines.join( '\n' ) }\n${ indent }),`;
@@ -3567,9 +3683,7 @@ function emitHeroFormPhp( tagSuffix, cfg ) {
 		`${ tagSuffix } form heading`
 	);
 
-	// Build PHP fragments for fields. A single-section spec keeps the
-	// FormRenderer geo autocomplete heuristic working (lat / lon / tz in
-	// the same fieldset). Without a section, all fields go into flat_fields.
+	// Curated controls retain their copy, order and grouping.
 	const op = operations.find(
 		( entry ) => entry.operationId === cfg.operationId
 	);
@@ -3597,11 +3711,40 @@ function emitHeroFormPhp( tagSuffix, cfg ) {
 		return { ...defaults, ...f, name };
 	} );
 
+	const sectionName = fm.section?.name || '';
+	const locationFields = fields.filter( ( f ) =>
+		[ 'lat', 'lon', 'tz' ].includes( f.name )
+	);
+	const locations =
+		locationFields.some( ( f ) => f.name === 'lat' ) &&
+		locationFields.some( ( f ) => f.name === 'lon' )
+			? [
+					{
+						anchor: sectionName
+							? `${ sectionName }[${ fields[ 0 ].name }]`
+							: locationFields[ 0 ].name,
+						section: sectionName,
+						id: '',
+						fields: Object.fromEntries(
+							locationFields.map( ( f ) => [
+								{
+									lat: 'latitude',
+									lon: 'longitude',
+									tz: 'timezone',
+								}[ f.name ],
+								sectionName
+									? `${ sectionName }[${ f.name }]`
+									: f.name,
+							] )
+						),
+					},
+			  ]
+			: [];
+
 	let sectionsPhp = '';
 	let flatPhp = '';
 	let callBodyMap = '$body';
 	if ( fm.section ) {
-		const sectionName = fm.section.name;
 		const modelGroup =
 			op &&
 			uiForms[ op.operationId ].groups.find(
@@ -3615,6 +3758,7 @@ function emitHeroFormPhp( tagSuffix, cfg ) {
 		sectionsPhp = `\t\t\tarray(
 				'name'   => ${ phpLiteral( sectionName ) },
 				'label'  => ${ translatablePhp( sectionLabel ) },
+				'fold'   => ${ fields.every( ( f ) => ! f.required ) },
 				'fields' => array(
 ${ fieldEntries }
 				),
@@ -3662,6 +3806,7 @@ class ${ formClassName } {
 			'render_operation_id' => ${ phpLiteral( cfg.operationId ) },
 			'title'        => ${ translatablePhp( title ) },
 			'submit_label' => __( ${ phpLiteral( submitLabel ) }, 'roxyapi' ),
+			'locations'    => ${ phpLiteral( locations ) },
 			'sections'     => array(
 ${ sectionsPhp }
 			),
@@ -3876,6 +4021,36 @@ console.log(
 );
 
 // 3b. Generated form classes (visitor-form mode)
+// Ship UI catalogues as PHP so visitor requests never read JSON.
+await fs.writeFile(
+	path.join( OUT_PHP, 'FormLabels.php' ),
+	`<?php
+/**
+ * UI-owned visitor form labels. DO NOT EDIT. Generated by bin/generate.mjs.
+ *
+ * @package RoxyAPI
+ */
+namespace RoxyAPI\\Generated;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+class FormLabels {
+	private const LABELS = ${ phpLiteral( localizedFormLabels ) };
+
+	/**
+	 * @param string $language Resolved reading language.
+	 * @return array<string, array<string, string>>
+	 */
+	public static function for_language( string $language ): array {
+		return array_replace_recursive( self::LABELS['en'], self::LABELS[ $language ] ?? array() );
+	}
+}
+`,
+	'utf8'
+);
+
 let formCount = 0;
 for ( const op of generated ) {
 	if ( ! hasRequiredObjectBody( op ) && ! offersVisitorForm( op ) ) {

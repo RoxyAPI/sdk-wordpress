@@ -18,20 +18,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculateGunMilanForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculateGunMilan',
 			'title'        => __( 'Compatibility Score', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'person1[latitude]', 'section' => 'person1', 'id' => '', 'fields' => array( 'latitude' => 'person1[latitude]', 'longitude' => 'person1[longitude]', 'timezone' => 'person1[timezone]' ) ), array( 'anchor' => 'person2[latitude]', 'section' => 'person2', 'id' => '', 'fields' => array( 'latitude' => 'person2[latitude]', 'longitude' => 'person2[longitude]', 'timezone' => 'person2[timezone]' ) ) ),
 			'sections'     => array(
 				array(
 					'name'   => 'person1',
-					'label'  => __( 'Person 1', 'roxyapi' ),
+					'label'  => $labels['groups']['person1'] ?? 'Person 1',
 					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'date',
-						'label' => __( 'Date', 'roxyapi' ),
+						'label' => $labels['fields']['date'] ?? 'Date',
 						'required' => true,
 						'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 						'type' => 'date',
@@ -40,7 +41,7 @@ class CalculateGunMilanForm {
 					),
 					array(
 						'name' => 'time',
-						'label' => __( 'Time', 'roxyapi' ),
+						'label' => $labels['fields']['time'] ?? 'Time',
 						'required' => true,
 						'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 						'type' => 'time',
@@ -49,7 +50,7 @@ class CalculateGunMilanForm {
 					),
 					array(
 						'name' => 'latitude',
-						'label' => __( 'Latitude', 'roxyapi' ),
+						'label' => $labels['fields']['latitude'] ?? 'Latitude',
 						'required' => true,
 						'help' => __( 'Birth location latitude in decimal degrees', 'roxyapi' ),
 						'type' => 'number',
@@ -61,7 +62,7 @@ class CalculateGunMilanForm {
 					),
 					array(
 						'name' => 'longitude',
-						'label' => __( 'Longitude', 'roxyapi' ),
+						'label' => $labels['fields']['longitude'] ?? 'Longitude',
 						'required' => true,
 						'help' => __( 'Birth location longitude in decimal degrees', 'roxyapi' ),
 						'type' => 'number',
@@ -73,7 +74,7 @@ class CalculateGunMilanForm {
 					),
 					array(
 						'name' => 'timezone',
-						'label' => __( 'Timezone', 'roxyapi' ),
+						'label' => $labels['fields']['timezone'] ?? 'Timezone',
 						'required' => false,
 						'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 						'type' => 'timezone',
@@ -87,12 +88,12 @@ class CalculateGunMilanForm {
 				),
 				array(
 					'name'   => 'person2',
-					'label'  => __( 'Person 2', 'roxyapi' ),
+					'label'  => $labels['groups']['person2'] ?? 'Person 2',
 					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'date',
-						'label' => __( 'Date', 'roxyapi' ),
+						'label' => $labels['fields']['date'] ?? 'Date',
 						'required' => true,
 						'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 						'type' => 'date',
@@ -101,7 +102,7 @@ class CalculateGunMilanForm {
 					),
 					array(
 						'name' => 'time',
-						'label' => __( 'Time', 'roxyapi' ),
+						'label' => $labels['fields']['time'] ?? 'Time',
 						'required' => true,
 						'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 						'type' => 'time',
@@ -110,7 +111,7 @@ class CalculateGunMilanForm {
 					),
 					array(
 						'name' => 'latitude',
-						'label' => __( 'Latitude', 'roxyapi' ),
+						'label' => $labels['fields']['latitude'] ?? 'Latitude',
 						'required' => true,
 						'help' => __( 'Birth location latitude in decimal degrees', 'roxyapi' ),
 						'type' => 'number',
@@ -122,7 +123,7 @@ class CalculateGunMilanForm {
 					),
 					array(
 						'name' => 'longitude',
-						'label' => __( 'Longitude', 'roxyapi' ),
+						'label' => $labels['fields']['longitude'] ?? 'Longitude',
 						'required' => true,
 						'help' => __( 'Birth location longitude in decimal degrees', 'roxyapi' ),
 						'type' => 'number',
@@ -134,7 +135,7 @@ class CalculateGunMilanForm {
 					),
 					array(
 						'name' => 'timezone',
-						'label' => __( 'Timezone', 'roxyapi' ),
+						'label' => $labels['fields']['timezone'] ?? 'Timezone',
 						'required' => false,
 						'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 						'type' => 'timezone',
@@ -150,19 +151,19 @@ class CalculateGunMilanForm {
 			'flat_fields'  => array(
 				array(
 					'name' => 'ayanamsa',
-					'label' => __( 'Ayanamsa', 'roxyapi' ),
+					'label' => $labels['fields']['ayanamsa'] ?? 'Ayanamsa',
 					'required' => false,
 					'help' => __( 'Sidereal frame (ayanamsa) the chart is cast in', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'kp-newcomb', 'kp-old', 'lahiri', 'raman', 'custom' ),
 					'default' => 'lahiri',
-					'enum_labels' => array( __( 'Kp newcomb', 'roxyapi' ), __( 'Kp old', 'roxyapi' ), __( 'Lahiri', 'roxyapi' ), __( 'Raman', 'roxyapi' ), __( 'Custom', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['ayanamsa.kp-newcomb'] ?? 'Kp newcomb', $labels['enums']['ayanamsa.kp-old'] ?? 'Kp old', $labels['enums']['ayanamsa.lahiri'] ?? 'Lahiri', $labels['enums']['ayanamsa.raman'] ?? 'Raman', $labels['enums']['ayanamsa.custom'] ?? 'Custom' ),
 					'placeholder' => __( 'lahiri', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'ayanamsaValue',
-					'label' => __( 'Custom ayanamsa value', 'roxyapi' ),
+					'label' => $labels['fields']['ayanamsaValue'] ?? 'Custom ayanamsa value',
 					'required' => false,
 					'help' => __( 'Custom ayanamsa value in degrees', 'roxyapi' ),
 					'type' => 'number',

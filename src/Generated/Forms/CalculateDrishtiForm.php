@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculateDrishtiForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculateDrishti',
 			'title'        => __( 'Planetary Aspects (Drishti)', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'latitude', 'section' => '', 'id' => '', 'fields' => array( 'latitude' => 'latitude', 'longitude' => 'longitude', 'timezone' => 'timezone' ) ) ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => true,
 					'help' => __( 'Date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -38,7 +39,7 @@ class CalculateDrishtiForm {
 				),
 				array(
 					'name' => 'time',
-					'label' => __( 'Time', 'roxyapi' ),
+					'label' => $labels['fields']['time'] ?? 'Time',
 					'required' => true,
 					'help' => __( 'Time in HH:MM:SS format (24-hour)', 'roxyapi' ),
 					'type' => 'time',
@@ -47,7 +48,7 @@ class CalculateDrishtiForm {
 				),
 				array(
 					'name' => 'latitude',
-					'label' => __( 'Latitude', 'roxyapi' ),
+					'label' => $labels['fields']['latitude'] ?? 'Latitude',
 					'required' => true,
 					'help' => __( 'Observer latitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -59,7 +60,7 @@ class CalculateDrishtiForm {
 				),
 				array(
 					'name' => 'longitude',
-					'label' => __( 'Longitude', 'roxyapi' ),
+					'label' => $labels['fields']['longitude'] ?? 'Longitude',
 					'required' => true,
 					'help' => __( 'Observer longitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -71,7 +72,7 @@ class CalculateDrishtiForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
@@ -83,13 +84,13 @@ class CalculateDrishtiForm {
 				),
 				array(
 					'name' => 'coordinateSystem',
-					'label' => __( 'Coordinate system', 'roxyapi' ),
+					'label' => $labels['fields']['coordinateSystem'] ?? 'Coordinate system',
 					'required' => false,
 					'help' => __( 'Coordinate system for longitude output', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'sidereal', 'tropical' ),
 					'default' => 'sidereal',
-					'enum_labels' => array( __( 'Sidereal', 'roxyapi' ), __( 'Tropical', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['coordinateSystem.sidereal'] ?? 'Sidereal', $labels['enums']['coordinateSystem.tropical'] ?? 'Tropical' ),
 					'placeholder' => __( 'sidereal', 'roxyapi' ),
 					'fold' => true,
 				),

@@ -18,20 +18,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculateNumCompatibilityForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculateNumCompatibility',
 			'title'        => __( 'Numerology Compatibility', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 				array(
 					'name'   => 'person1',
-					'label'  => __( 'Person 1', 'roxyapi' ),
+					'label'  => $labels['groups']['person1'] ?? 'Person 1',
 					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'fullName',
-						'label' => __( 'Full name', 'roxyapi' ),
+						'label' => $labels['fields']['fullName'] ?? 'Full name',
 						'required' => false,
 						'help' => __( 'Full birth name to calculate Expression and Soul Urge numbers automatically', 'roxyapi' ),
 						'type' => 'text',
@@ -40,7 +41,7 @@ class CalculateNumCompatibilityForm {
 					),
 					array(
 						'name' => 'year',
-						'label' => __( 'Year', 'roxyapi' ),
+						'label' => $labels['fields']['year'] ?? 'Year',
 						'required' => false,
 						'help' => __( 'Birth year to calculate Life Path automatically', 'roxyapi' ),
 						'type' => 'integer',
@@ -51,7 +52,7 @@ class CalculateNumCompatibilityForm {
 					),
 					array(
 						'name' => 'month',
-						'label' => __( 'Month', 'roxyapi' ),
+						'label' => $labels['fields']['month'] ?? 'Month',
 						'required' => false,
 						'help' => __( 'Birth month (1-12)', 'roxyapi' ),
 						'type' => 'integer',
@@ -62,7 +63,7 @@ class CalculateNumCompatibilityForm {
 					),
 					array(
 						'name' => 'day',
-						'label' => __( 'Day', 'roxyapi' ),
+						'label' => $labels['fields']['day'] ?? 'Day',
 						'required' => false,
 						'help' => __( 'Birth day (1-31)', 'roxyapi' ),
 						'type' => 'integer',
@@ -73,7 +74,7 @@ class CalculateNumCompatibilityForm {
 					),
 					array(
 						'name' => 'lifePath',
-						'label' => __( 'Life Path number', 'roxyapi' ),
+						'label' => $labels['fields']['lifePath'] ?? 'Life Path number',
 						'required' => false,
 						'help' => __( 'Person 1 Life Path number (1-9, 11, 22, 33)', 'roxyapi' ),
 						'type' => 'integer',
@@ -84,7 +85,7 @@ class CalculateNumCompatibilityForm {
 					),
 					array(
 						'name' => 'expression',
-						'label' => __( 'Expression number', 'roxyapi' ),
+						'label' => $labels['fields']['expression'] ?? 'Expression number',
 						'required' => false,
 						'help' => __( 'Person 1 Expression number (1-9, 11, 22, 33)', 'roxyapi' ),
 						'type' => 'integer',
@@ -95,7 +96,7 @@ class CalculateNumCompatibilityForm {
 					),
 					array(
 						'name' => 'soulUrge',
-						'label' => __( 'Soul Urge number', 'roxyapi' ),
+						'label' => $labels['fields']['soulUrge'] ?? 'Soul Urge number',
 						'required' => false,
 						'help' => __( 'Person 1 Soul Urge number (1-9, 11, 22, 33)', 'roxyapi' ),
 						'type' => 'integer',
@@ -108,12 +109,12 @@ class CalculateNumCompatibilityForm {
 				),
 				array(
 					'name'   => 'person2',
-					'label'  => __( 'Person 2', 'roxyapi' ),
+					'label'  => $labels['groups']['person2'] ?? 'Person 2',
 					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'fullName',
-						'label' => __( 'Full name', 'roxyapi' ),
+						'label' => $labels['fields']['fullName'] ?? 'Full name',
 						'required' => false,
 						'help' => __( 'Full birth name to calculate Expression and Soul Urge numbers automatically', 'roxyapi' ),
 						'type' => 'text',
@@ -122,7 +123,7 @@ class CalculateNumCompatibilityForm {
 					),
 					array(
 						'name' => 'year',
-						'label' => __( 'Year', 'roxyapi' ),
+						'label' => $labels['fields']['year'] ?? 'Year',
 						'required' => false,
 						'help' => __( 'Birth year to calculate Life Path automatically', 'roxyapi' ),
 						'type' => 'integer',
@@ -133,7 +134,7 @@ class CalculateNumCompatibilityForm {
 					),
 					array(
 						'name' => 'month',
-						'label' => __( 'Month', 'roxyapi' ),
+						'label' => $labels['fields']['month'] ?? 'Month',
 						'required' => false,
 						'help' => __( 'Birth month (1-12)', 'roxyapi' ),
 						'type' => 'integer',
@@ -144,7 +145,7 @@ class CalculateNumCompatibilityForm {
 					),
 					array(
 						'name' => 'day',
-						'label' => __( 'Day', 'roxyapi' ),
+						'label' => $labels['fields']['day'] ?? 'Day',
 						'required' => false,
 						'help' => __( 'Birth day (1-31)', 'roxyapi' ),
 						'type' => 'integer',
@@ -155,7 +156,7 @@ class CalculateNumCompatibilityForm {
 					),
 					array(
 						'name' => 'lifePath',
-						'label' => __( 'Life Path number', 'roxyapi' ),
+						'label' => $labels['fields']['lifePath'] ?? 'Life Path number',
 						'required' => false,
 						'help' => __( 'Person 2 Life Path number (1-9, 11, 22, 33)', 'roxyapi' ),
 						'type' => 'integer',
@@ -166,7 +167,7 @@ class CalculateNumCompatibilityForm {
 					),
 					array(
 						'name' => 'expression',
-						'label' => __( 'Expression number', 'roxyapi' ),
+						'label' => $labels['fields']['expression'] ?? 'Expression number',
 						'required' => false,
 						'help' => __( 'Person 2 Expression number (1-9, 11, 22, 33)', 'roxyapi' ),
 						'type' => 'integer',
@@ -177,7 +178,7 @@ class CalculateNumCompatibilityForm {
 					),
 					array(
 						'name' => 'soulUrge',
-						'label' => __( 'Soul Urge number', 'roxyapi' ),
+						'label' => $labels['fields']['soulUrge'] ?? 'Soul Urge number',
 						'required' => false,
 						'help' => __( 'Person 2 Soul Urge number (1-9, 11, 22, 33)', 'roxyapi' ),
 						'type' => 'integer',

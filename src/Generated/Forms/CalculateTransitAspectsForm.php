@@ -18,20 +18,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculateTransitAspectsForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculateTransitAspects',
 			'title'        => __( 'Transit Aspects', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'natalChart[latitude]', 'section' => 'natalChart', 'id' => '', 'fields' => array( 'latitude' => 'natalChart[latitude]', 'longitude' => 'natalChart[longitude]', 'timezone' => 'natalChart[timezone]' ) ) ),
 			'sections'     => array(
 				array(
 					'name'   => 'natalChart',
-					'label'  => __( 'Natal Chart', 'roxyapi' ),
+					'label'  => $labels['groups']['natalChart'] ?? 'Natal Chart',
 					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'date',
-						'label' => __( 'Date', 'roxyapi' ),
+						'label' => $labels['fields']['date'] ?? 'Date',
 						'required' => true,
 						'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 						'type' => 'date',
@@ -40,7 +41,7 @@ class CalculateTransitAspectsForm {
 					),
 					array(
 						'name' => 'time',
-						'label' => __( 'Time', 'roxyapi' ),
+						'label' => $labels['fields']['time'] ?? 'Time',
 						'required' => true,
 						'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 						'type' => 'time',
@@ -49,7 +50,7 @@ class CalculateTransitAspectsForm {
 					),
 					array(
 						'name' => 'latitude',
-						'label' => __( 'Latitude', 'roxyapi' ),
+						'label' => $labels['fields']['latitude'] ?? 'Latitude',
 						'required' => true,
 						'help' => __( 'Birth location latitude in decimal degrees (-90 to 90)', 'roxyapi' ),
 						'type' => 'number',
@@ -61,7 +62,7 @@ class CalculateTransitAspectsForm {
 					),
 					array(
 						'name' => 'longitude',
-						'label' => __( 'Longitude', 'roxyapi' ),
+						'label' => $labels['fields']['longitude'] ?? 'Longitude',
 						'required' => true,
 						'help' => __( 'Birth location longitude in decimal degrees (-180 to 180)', 'roxyapi' ),
 						'type' => 'number',
@@ -73,7 +74,7 @@ class CalculateTransitAspectsForm {
 					),
 					array(
 						'name' => 'timezone',
-						'label' => __( 'Timezone', 'roxyapi' ),
+						'label' => $labels['fields']['timezone'] ?? 'Timezone',
 						'required' => true,
 						'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 						'type' => 'timezone',
@@ -84,13 +85,13 @@ class CalculateTransitAspectsForm {
 					),
 					array(
 						'name' => 'nodeType',
-						'label' => __( 'Lunar node type', 'roxyapi' ),
+						'label' => $labels['fields']['nodeType'] ?? 'Lunar node type',
 						'required' => false,
 						'help' => __( 'Lunar node convention', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'mean', 'true' ),
 						'default' => 'true',
-						'enum_labels' => array( __( 'Mean', 'roxyapi' ), __( 'True', 'roxyapi' ) ),
+						'enum_labels' => array( $labels['enums']['nodeType.mean'] ?? 'Mean', $labels['enums']['nodeType.true'] ?? 'True' ),
 						'placeholder' => __( 'true', 'roxyapi' ),
 						'fold' => false,
 					),
@@ -100,7 +101,7 @@ class CalculateTransitAspectsForm {
 			'flat_fields'  => array(
 				array(
 					'name' => 'transitDate',
-					'label' => __( 'Transit date', 'roxyapi' ),
+					'label' => $labels['fields']['transitDate'] ?? 'Transit date',
 					'required' => false,
 					'help' => __( 'Transit date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -109,7 +110,7 @@ class CalculateTransitAspectsForm {
 				),
 				array(
 					'name' => 'transitTime',
-					'label' => __( 'Transit time', 'roxyapi' ),
+					'label' => $labels['fields']['transitTime'] ?? 'Transit time',
 					'required' => false,
 					'help' => __( 'Transit time in HH:MM:SS format, read on the clock of the natal chart timezone at the transit date (an IANA zone takes the offset in force on that date, daylight saving included)', 'roxyapi' ),
 					'type' => 'time',
@@ -118,7 +119,7 @@ class CalculateTransitAspectsForm {
 				),
 				array(
 					'name' => 'minStrength',
-					'label' => __( 'Minimum strength', 'roxyapi' ),
+					'label' => $labels['fields']['minStrength'] ?? 'Minimum strength',
 					'required' => false,
 					'help' => __( 'Minimum aspect strength threshold (0-100)', 'roxyapi' ),
 					'type' => 'number',
@@ -130,13 +131,13 @@ class CalculateTransitAspectsForm {
 				),
 				array(
 					'name' => 'houseSystem',
-					'label' => __( 'House system', 'roxyapi' ),
+					'label' => $labels['fields']['houseSystem'] ?? 'House system',
 					'required' => false,
 					'help' => __( 'House system used to divide the natal chart into 12 houses', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'placidus', 'whole-sign', 'equal', 'koch' ),
 					'default' => 'placidus',
-					'enum_labels' => array( __( 'Placidus', 'roxyapi' ), __( 'Whole sign', 'roxyapi' ), __( 'Equal', 'roxyapi' ), __( 'Koch', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['houseSystem.placidus'] ?? 'Placidus', $labels['enums']['houseSystem.whole-sign'] ?? 'Whole sign', $labels['enums']['houseSystem.equal'] ?? 'Equal', $labels['enums']['houseSystem.koch'] ?? 'Koch' ),
 					'placeholder' => __( 'placidus', 'roxyapi' ),
 					'fold' => true,
 				),

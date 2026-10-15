@@ -18,29 +18,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetCrystalsByElementForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getCrystalsByElement',
 			'title'        => __( 'Crystals by Element', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'element',
-					'label' => __( 'Element', 'roxyapi' ),
+					'label' => $labels['fields']['element'] ?? 'Element',
 					'required' => true,
 					'help' => __( 'Element name, case-insensitive (e.g., water, Water, WATER all work)', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'Earth', 'Water', 'Fire', 'Air', 'Storm' ),
-					'enum_labels' => array( __( 'Earth', 'roxyapi' ), __( 'Water', 'roxyapi' ), __( 'Fire', 'roxyapi' ), __( 'Air', 'roxyapi' ), __( 'Storm', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['element.Earth'] ?? 'Earth', $labels['enums']['element.Water'] ?? 'Water', $labels['enums']['element.Fire'] ?? 'Fire', $labels['enums']['element.Air'] ?? 'Air', $labels['enums']['element.Storm'] ?? 'Storm' ),
 					'placeholder' => __( 'Water', 'roxyapi' ),
 					'fold' => false,
 				),
 				array(
 					'name' => 'limit',
-					'label' => __( 'Results per page', 'roxyapi' ),
+					'label' => $labels['fields']['limit'] ?? 'Results per page',
 					'required' => false,
 					'help' => __( 'Maximum items to return per page', 'roxyapi' ),
 					'type' => 'integer',
@@ -52,7 +53,7 @@ class GetCrystalsByElementForm {
 				),
 				array(
 					'name' => 'offset',
-					'label' => __( 'Results to skip', 'roxyapi' ),
+					'label' => $labels['fields']['offset'] ?? 'Results to skip',
 					'required' => false,
 					'help' => __( 'Number of items to skip for pagination', 'roxyapi' ),
 					'type' => 'integer',

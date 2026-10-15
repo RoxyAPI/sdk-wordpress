@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetPlanetaryNodePassagesForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getPlanetaryNodePassages',
 			'title'        => __( 'Ecliptic Crossings', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'year',
-					'label' => __( 'Year', 'roxyapi' ),
+					'label' => $labels['fields']['year'] ?? 'Year',
 					'required' => true,
 					'help' => __( 'Year to scan for node passages (1551 to 2649).', 'roxyapi' ),
 					'type' => 'integer',
@@ -40,7 +41,7 @@ class GetPlanetaryNodePassagesForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',

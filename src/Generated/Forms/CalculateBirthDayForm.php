@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculateBirthDayForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculateBirthDay',
 			'title'        => __( 'Birth Day Number', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'day',
-					'label' => __( 'Day', 'roxyapi' ),
+					'label' => $labels['fields']['day'] ?? 'Day',
 					'required' => true,
 					'help' => __( 'Day of birth (1-31)', 'roxyapi' ),
 					'type' => 'integer',

@@ -18,20 +18,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculateConnectionForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculateConnection',
 			'title'        => __( 'Human Design Connection Chart', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'personA[timezone]', 'section' => 'personA', 'id' => '', 'fields' => array( 'timezone' => 'personA[timezone]', 'latitude' => 'personA[latitude]', 'longitude' => 'personA[longitude]' ) ), array( 'anchor' => 'personB[timezone]', 'section' => 'personB', 'id' => '', 'fields' => array( 'timezone' => 'personB[timezone]', 'latitude' => 'personB[latitude]', 'longitude' => 'personB[longitude]' ) ) ),
 			'sections'     => array(
 				array(
 					'name'   => 'personA',
-					'label'  => __( 'Person A', 'roxyapi' ),
+					'label'  => $labels['groups']['personA'] ?? 'Person A',
 					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'date',
-						'label' => __( 'Date', 'roxyapi' ),
+						'label' => $labels['fields']['date'] ?? 'Date',
 						'required' => true,
 						'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 						'type' => 'date',
@@ -40,7 +41,7 @@ class CalculateConnectionForm {
 					),
 					array(
 						'name' => 'time',
-						'label' => __( 'Time', 'roxyapi' ),
+						'label' => $labels['fields']['time'] ?? 'Time',
 						'required' => true,
 						'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 						'type' => 'time',
@@ -49,7 +50,7 @@ class CalculateConnectionForm {
 					),
 					array(
 						'name' => 'timezone',
-						'label' => __( 'Timezone', 'roxyapi' ),
+						'label' => $labels['fields']['timezone'] ?? 'Timezone',
 						'required' => true,
 						'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 						'type' => 'timezone',
@@ -60,7 +61,7 @@ class CalculateConnectionForm {
 					),
 					array(
 						'name' => 'latitude',
-						'label' => __( 'Latitude', 'roxyapi' ),
+						'label' => $labels['fields']['latitude'] ?? 'Latitude',
 						'required' => false,
 						'help' => __( 'Birth latitude in decimal degrees', 'roxyapi' ),
 						'type' => 'number',
@@ -73,7 +74,7 @@ class CalculateConnectionForm {
 					),
 					array(
 						'name' => 'longitude',
-						'label' => __( 'Longitude', 'roxyapi' ),
+						'label' => $labels['fields']['longitude'] ?? 'Longitude',
 						'required' => false,
 						'help' => __( 'Birth longitude in decimal degrees', 'roxyapi' ),
 						'type' => 'number',
@@ -86,13 +87,13 @@ class CalculateConnectionForm {
 					),
 					array(
 						'name' => 'nodeType',
-						'label' => __( 'Lunar node type', 'roxyapi' ),
+						'label' => $labels['fields']['nodeType'] ?? 'Lunar node type',
 						'required' => false,
 						'help' => __( 'Lunar node convention', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'mean', 'true' ),
 						'default' => 'true',
-						'enum_labels' => array( __( 'Mean', 'roxyapi' ), __( 'True', 'roxyapi' ) ),
+						'enum_labels' => array( $labels['enums']['nodeType.mean'] ?? 'Mean', $labels['enums']['nodeType.true'] ?? 'True' ),
 						'placeholder' => __( 'true', 'roxyapi' ),
 						'fold' => false,
 					),
@@ -100,12 +101,12 @@ class CalculateConnectionForm {
 				),
 				array(
 					'name'   => 'personB',
-					'label'  => __( 'Person B', 'roxyapi' ),
+					'label'  => $labels['groups']['personB'] ?? 'Person B',
 					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'date',
-						'label' => __( 'Date', 'roxyapi' ),
+						'label' => $labels['fields']['date'] ?? 'Date',
 						'required' => true,
 						'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 						'type' => 'date',
@@ -114,7 +115,7 @@ class CalculateConnectionForm {
 					),
 					array(
 						'name' => 'time',
-						'label' => __( 'Time', 'roxyapi' ),
+						'label' => $labels['fields']['time'] ?? 'Time',
 						'required' => true,
 						'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 						'type' => 'time',
@@ -123,7 +124,7 @@ class CalculateConnectionForm {
 					),
 					array(
 						'name' => 'timezone',
-						'label' => __( 'Timezone', 'roxyapi' ),
+						'label' => $labels['fields']['timezone'] ?? 'Timezone',
 						'required' => true,
 						'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 						'type' => 'timezone',
@@ -134,7 +135,7 @@ class CalculateConnectionForm {
 					),
 					array(
 						'name' => 'latitude',
-						'label' => __( 'Latitude', 'roxyapi' ),
+						'label' => $labels['fields']['latitude'] ?? 'Latitude',
 						'required' => false,
 						'help' => __( 'Birth latitude in decimal degrees', 'roxyapi' ),
 						'type' => 'number',
@@ -147,7 +148,7 @@ class CalculateConnectionForm {
 					),
 					array(
 						'name' => 'longitude',
-						'label' => __( 'Longitude', 'roxyapi' ),
+						'label' => $labels['fields']['longitude'] ?? 'Longitude',
 						'required' => false,
 						'help' => __( 'Birth longitude in decimal degrees', 'roxyapi' ),
 						'type' => 'number',
@@ -160,13 +161,13 @@ class CalculateConnectionForm {
 					),
 					array(
 						'name' => 'nodeType',
-						'label' => __( 'Lunar node type', 'roxyapi' ),
+						'label' => $labels['fields']['nodeType'] ?? 'Lunar node type',
 						'required' => false,
 						'help' => __( 'Lunar node convention', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'mean', 'true' ),
 						'default' => 'true',
-						'enum_labels' => array( __( 'Mean', 'roxyapi' ), __( 'True', 'roxyapi' ) ),
+						'enum_labels' => array( $labels['enums']['nodeType.mean'] ?? 'Mean', $labels['enums']['nodeType.true'] ?? 'True' ),
 						'placeholder' => __( 'true', 'roxyapi' ),
 						'fold' => false,
 					),

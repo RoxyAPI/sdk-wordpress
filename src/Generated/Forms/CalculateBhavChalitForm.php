@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculateBhavChalitForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculateBhavChalit',
 			'title'        => __( 'Bhav Chalit', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'latitude', 'section' => '', 'id' => '', 'fields' => array( 'latitude' => 'latitude', 'longitude' => 'longitude', 'timezone' => 'timezone' ) ) ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -38,7 +39,7 @@ class CalculateBhavChalitForm {
 				),
 				array(
 					'name' => 'time',
-					'label' => __( 'Time', 'roxyapi' ),
+					'label' => $labels['fields']['time'] ?? 'Time',
 					'required' => true,
 					'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 					'type' => 'time',
@@ -47,7 +48,7 @@ class CalculateBhavChalitForm {
 				),
 				array(
 					'name' => 'latitude',
-					'label' => __( 'Latitude', 'roxyapi' ),
+					'label' => $labels['fields']['latitude'] ?? 'Latitude',
 					'required' => true,
 					'help' => __( 'Birth location latitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -59,7 +60,7 @@ class CalculateBhavChalitForm {
 				),
 				array(
 					'name' => 'longitude',
-					'label' => __( 'Longitude', 'roxyapi' ),
+					'label' => $labels['fields']['longitude'] ?? 'Longitude',
 					'required' => true,
 					'help' => __( 'Birth location longitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -71,7 +72,7 @@ class CalculateBhavChalitForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
@@ -83,19 +84,19 @@ class CalculateBhavChalitForm {
 				),
 				array(
 					'name' => 'ayanamsa',
-					'label' => __( 'Ayanamsa', 'roxyapi' ),
+					'label' => $labels['fields']['ayanamsa'] ?? 'Ayanamsa',
 					'required' => false,
 					'help' => __( 'Sidereal frame (ayanamsa) the chart is cast in', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'kp-newcomb', 'kp-old', 'lahiri', 'raman', 'custom' ),
 					'default' => 'lahiri',
-					'enum_labels' => array( __( 'Kp newcomb', 'roxyapi' ), __( 'Kp old', 'roxyapi' ), __( 'Lahiri', 'roxyapi' ), __( 'Raman', 'roxyapi' ), __( 'Custom', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['ayanamsa.kp-newcomb'] ?? 'Kp newcomb', $labels['enums']['ayanamsa.kp-old'] ?? 'Kp old', $labels['enums']['ayanamsa.lahiri'] ?? 'Lahiri', $labels['enums']['ayanamsa.raman'] ?? 'Raman', $labels['enums']['ayanamsa.custom'] ?? 'Custom' ),
 					'placeholder' => __( 'lahiri', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'ayanamsaValue',
-					'label' => __( 'Custom ayanamsa value', 'roxyapi' ),
+					'label' => $labels['fields']['ayanamsaValue'] ?? 'Custom ayanamsa value',
 					'required' => false,
 					'help' => __( 'Custom ayanamsa value in degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -105,13 +106,13 @@ class CalculateBhavChalitForm {
 				),
 				array(
 					'name' => 'focus',
-					'label' => __( 'Focus', 'roxyapi' ),
+					'label' => $labels['fields']['focus'] ?? 'Focus',
 					'required' => false,
 					'help' => __( 'Which signification vocabulary the houseThemes map returns', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'general', 'finance' ),
 					'default' => 'general',
-					'enum_labels' => array( __( 'General', 'roxyapi' ), __( 'Finance', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['focus.general'] ?? 'General', $labels['enums']['focus.finance'] ?? 'Finance' ),
 					'placeholder' => __( 'general', 'roxyapi' ),
 					'fold' => true,
 				),

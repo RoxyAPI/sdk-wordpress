@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetMoonCalendarForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getMoonCalendar',
 			'title'        => __( 'Lunar Calendar', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'year',
-					'label' => __( 'Year', 'roxyapi' ),
+					'label' => $labels['fields']['year'] ?? 'Year',
 					'required' => true,
 					'help' => __( 'Calendar year, 1551 to 2649.', 'roxyapi' ),
 					'type' => 'integer',
@@ -40,7 +41,7 @@ class GetMoonCalendarForm {
 				),
 				array(
 					'name' => 'month',
-					'label' => __( 'Month', 'roxyapi' ),
+					'label' => $labels['fields']['month'] ?? 'Month',
 					'required' => true,
 					'help' => __( 'Calendar month (1-12)', 'roxyapi' ),
 					'type' => 'integer',

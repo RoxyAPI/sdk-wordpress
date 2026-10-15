@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetPratyantardashasForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getPratyantardashas',
 			'title'        => __( 'Pratyantardashas', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'latitude', 'section' => '', 'id' => '', 'fields' => array( 'latitude' => 'latitude', 'longitude' => 'longitude', 'timezone' => 'timezone' ) ) ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -38,7 +39,7 @@ class GetPratyantardashasForm {
 				),
 				array(
 					'name' => 'time',
-					'label' => __( 'Time', 'roxyapi' ),
+					'label' => $labels['fields']['time'] ?? 'Time',
 					'required' => true,
 					'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 					'type' => 'time',
@@ -47,7 +48,7 @@ class GetPratyantardashasForm {
 				),
 				array(
 					'name' => 'latitude',
-					'label' => __( 'Latitude', 'roxyapi' ),
+					'label' => $labels['fields']['latitude'] ?? 'Latitude',
 					'required' => true,
 					'help' => __( 'Birth location latitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -59,7 +60,7 @@ class GetPratyantardashasForm {
 				),
 				array(
 					'name' => 'longitude',
-					'label' => __( 'Longitude', 'roxyapi' ),
+					'label' => $labels['fields']['longitude'] ?? 'Longitude',
 					'required' => true,
 					'help' => __( 'Birth location longitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -71,7 +72,7 @@ class GetPratyantardashasForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
@@ -83,19 +84,19 @@ class GetPratyantardashasForm {
 				),
 				array(
 					'name' => 'ayanamsa',
-					'label' => __( 'Ayanamsa', 'roxyapi' ),
+					'label' => $labels['fields']['ayanamsa'] ?? 'Ayanamsa',
 					'required' => false,
 					'help' => __( 'Ayanamsa system used to place the birth Moon in its nakshatra, which sets every dasha start and end date', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'kp-newcomb', 'kp-old', 'lahiri', 'raman', 'custom' ),
 					'default' => 'lahiri',
-					'enum_labels' => array( __( 'Kp newcomb', 'roxyapi' ), __( 'Kp old', 'roxyapi' ), __( 'Lahiri', 'roxyapi' ), __( 'Raman', 'roxyapi' ), __( 'Custom', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['ayanamsa.kp-newcomb'] ?? 'Kp newcomb', $labels['enums']['ayanamsa.kp-old'] ?? 'Kp old', $labels['enums']['ayanamsa.lahiri'] ?? 'Lahiri', $labels['enums']['ayanamsa.raman'] ?? 'Raman', $labels['enums']['ayanamsa.custom'] ?? 'Custom' ),
 					'placeholder' => __( 'lahiri', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'ayanamsaValue',
-					'label' => __( 'Custom ayanamsa value', 'roxyapi' ),
+					'label' => $labels['fields']['ayanamsaValue'] ?? 'Custom ayanamsa value',
 					'required' => false,
 					'help' => __( 'Custom ayanamsa value in degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -105,7 +106,7 @@ class GetPratyantardashasForm {
 				),
 				array(
 					'name' => 'significators',
-					'label' => __( 'Include KP significators', 'roxyapi' ),
+					'label' => $labels['fields']['significators'] ?? 'Include KP significators',
 					'required' => false,
 					'help' => __( 'Set true to attach the KP significators of each period lord: its star lord, sub lord, occupied house, the houses it signifies at levels L1 to L4, and a strength grade', 'roxyapi' ),
 					'type' => 'text',
@@ -115,19 +116,19 @@ class GetPratyantardashasForm {
 				),
 				array(
 					'name' => 'nodeType',
-					'label' => __( 'Lunar node type', 'roxyapi' ),
+					'label' => $labels['fields']['nodeType'] ?? 'Lunar node type',
 					'required' => false,
 					'help' => __( 'Lunar node type for Rahu and Ketu, used ONLY when "significators" is true', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'mean', 'true' ),
 					'default' => 'mean',
-					'enum_labels' => array( __( 'Mean', 'roxyapi' ), __( 'True', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['nodeType.mean'] ?? 'Mean', $labels['enums']['nodeType.true'] ?? 'True' ),
 					'placeholder' => __( 'mean', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'mahadasha',
-					'label' => __( 'Mahadasha', 'roxyapi' ),
+					'label' => $labels['fields']['mahadasha'] ?? 'Mahadasha',
 					'required' => true,
 					'help' => __( 'Mahadasha planet name, case-insensitive (e.g. saturn, Saturn, SATURN all work)', 'roxyapi' ),
 					'type' => 'enum',
@@ -138,7 +139,7 @@ class GetPratyantardashasForm {
 				),
 				array(
 					'name' => 'antardasha',
-					'label' => __( 'Antardasha', 'roxyapi' ),
+					'label' => $labels['fields']['antardasha'] ?? 'Antardasha',
 					'required' => true,
 					'help' => __( 'Antardasha (bhukti) planet name inside that Mahadasha, case-insensitive', 'roxyapi' ),
 					'type' => 'enum',
@@ -149,13 +150,13 @@ class GetPratyantardashasForm {
 				),
 				array(
 					'name' => 'focus',
-					'label' => __( 'Focus', 'roxyapi' ),
+					'label' => $labels['fields']['focus'] ?? 'Focus',
 					'required' => false,
 					'help' => __( 'Which signification vocabulary the houseThemes map returns', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'general', 'finance' ),
 					'default' => 'general',
-					'enum_labels' => array( __( 'General', 'roxyapi' ), __( 'Finance', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['focus.general'] ?? 'General', $labels['enums']['focus.finance'] ?? 'Finance' ),
 					'placeholder' => __( 'general', 'roxyapi' ),
 					'fold' => true,
 				),

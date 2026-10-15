@@ -30,6 +30,7 @@ class TarotCardForm {
 			'render_operation_id' => '',
 			'title'        => __( 'Tarot reading', 'roxyapi' ),
 			'submit_label' => __( 'Draw cards', 'roxyapi' ),
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),

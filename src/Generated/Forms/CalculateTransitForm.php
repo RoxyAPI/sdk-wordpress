@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculateTransitForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculateTransit',
 			'title'        => __( 'Transit Analysis', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'latitude', 'section' => '', 'id' => '', 'fields' => array( 'latitude' => 'latitude', 'longitude' => 'longitude', 'timezone' => 'timezone' ) ) ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'birthDate',
-					'label' => __( 'Birth date', 'roxyapi' ),
+					'label' => $labels['fields']['birthDate'] ?? 'Birth date',
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -38,7 +39,7 @@ class CalculateTransitForm {
 				),
 				array(
 					'name' => 'birthTime',
-					'label' => __( 'Birth time', 'roxyapi' ),
+					'label' => $labels['fields']['birthTime'] ?? 'Birth time',
 					'required' => true,
 					'help' => __( 'Birth time in HH:MM:SS format (24-hour)', 'roxyapi' ),
 					'type' => 'time',
@@ -47,7 +48,7 @@ class CalculateTransitForm {
 				),
 				array(
 					'name' => 'transitDate',
-					'label' => __( 'Transit date', 'roxyapi' ),
+					'label' => $labels['fields']['transitDate'] ?? 'Transit date',
 					'required' => true,
 					'help' => __( 'Transit date to analyze in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -56,7 +57,7 @@ class CalculateTransitForm {
 				),
 				array(
 					'name' => 'transitTime',
-					'label' => __( 'Transit time', 'roxyapi' ),
+					'label' => $labels['fields']['transitTime'] ?? 'Transit time',
 					'required' => false,
 					'help' => __( 'Transit time in HH:MM:SS format (24-hour)', 'roxyapi' ),
 					'type' => 'time',
@@ -65,7 +66,7 @@ class CalculateTransitForm {
 				),
 				array(
 					'name' => 'latitude',
-					'label' => __( 'Latitude', 'roxyapi' ),
+					'label' => $labels['fields']['latitude'] ?? 'Latitude',
 					'required' => true,
 					'help' => __( 'Observer latitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -77,7 +78,7 @@ class CalculateTransitForm {
 				),
 				array(
 					'name' => 'longitude',
-					'label' => __( 'Longitude', 'roxyapi' ),
+					'label' => $labels['fields']['longitude'] ?? 'Longitude',
 					'required' => true,
 					'help' => __( 'Observer longitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -89,7 +90,7 @@ class CalculateTransitForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
@@ -101,13 +102,13 @@ class CalculateTransitForm {
 				),
 				array(
 					'name' => 'coordinateSystem',
-					'label' => __( 'Coordinate system', 'roxyapi' ),
+					'label' => $labels['fields']['coordinateSystem'] ?? 'Coordinate system',
 					'required' => false,
 					'help' => __( 'Coordinate system for longitude output', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'sidereal', 'tropical' ),
 					'default' => 'sidereal',
-					'enum_labels' => array( __( 'Sidereal', 'roxyapi' ), __( 'Tropical', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['coordinateSystem.sidereal'] ?? 'Sidereal', $labels['enums']['coordinateSystem.tropical'] ?? 'Tropical' ),
 					'placeholder' => __( 'sidereal', 'roxyapi' ),
 					'fold' => true,
 				),

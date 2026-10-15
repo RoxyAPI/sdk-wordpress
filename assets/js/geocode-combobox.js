@@ -2,10 +2,10 @@
  * Roxy geocode combobox — ARIA 1.2 editable combobox with list autocomplete.
  *
  * Selector: any element with `data-roxyapi-geocode` whose value is a CSS
- * selector pointing at the section or form that holds the matching lat / lon /
- * tz inputs (`[name$="[lat]"]` in a section, `[name="lat"]` flat). Selecting a
- * city fills those three with the upstream values; the visible coordinate inputs
- * update too so the visitor can edit if they want.
+ * selector pointing at the section or form holding the location controls.
+ * `data-roxyapi-geocode-fields` maps latitude, longitude and timezone to their
+ * exact posted names. Selecting a city fills only those controls; they remain
+ * visible so the visitor can enter or edit coordinates without JavaScript.
  *
  * Implements the WAI-ARIA APG combobox-autocomplete-list pattern:
  *   role="combobox", aria-autocomplete="list", aria-expanded, aria-controls,
@@ -73,21 +73,19 @@
 		} );
 	}
 
-	function findField( section, suffix ) {
-		// A section field carries a bracket name like `person1[lat]` and a flat
-		// field the bare name `lat`; the short and long names both occur.
-		return section.querySelector(
-			`input[name$="[${ suffix }]"], select[name$="[${ suffix }]"], input[name="${ suffix }"], select[name="${ suffix }"]`
+	function findField( section, name ) {
+		return Array.prototype.find.call(
+			section.querySelectorAll( 'input[name], select[name]' ),
+			function ( field ) {
+				return field.name === name;
+			}
 		);
 	}
 
-	function applyCity( section, city ) {
-		const lat =
-			findField( section, 'lat' ) || findField( section, 'latitude' );
-		const lon =
-			findField( section, 'lon' ) || findField( section, 'longitude' );
-		const tz =
-			findField( section, 'tz' ) || findField( section, 'timezone' );
+	function applyCity( section, fields, city ) {
+		const lat = findField( section, fields.latitude );
+		const lon = findField( section, fields.longitude );
+		const tz = findField( section, fields.timezone );
 		if ( lat ) {
 			lat.value = String( city.lat );
 		}
@@ -106,6 +104,18 @@
 		}
 		const section = document.querySelector( sectionSelector );
 		if ( ! section ) {
+			return;
+		}
+
+		let fields;
+		try {
+			fields = JSON.parse(
+				input.getAttribute( 'data-roxyapi-geocode-fields' )
+			);
+		} catch ( e ) {
+			return;
+		}
+		if ( ! fields || typeof fields !== 'object' ) {
 			return;
 		}
 
@@ -190,7 +200,7 @@
 
 		function pick( city ) {
 			input.value = city.label;
-			applyCity( section, city );
+			applyCity( section, fields, city );
 			close();
 			setStatus( status, I18N.selected || '' );
 		}

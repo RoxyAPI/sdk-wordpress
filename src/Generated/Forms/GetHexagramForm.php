@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetHexagramForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getHexagram',
 			'title'        => __( 'Hexagram by Number', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'number',
-					'label' => __( 'Number', 'roxyapi' ),
+					'label' => $labels['fields']['number'] ?? 'Number',
 					'required' => true,
 					'help' => __( 'Hexagram number in King Wen sequence (1-64).', 'roxyapi' ),
 					'type' => 'integer',

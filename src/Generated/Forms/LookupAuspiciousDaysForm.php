@@ -18,29 +18,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 class LookupAuspiciousDaysForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'lookupAuspiciousDays',
 			'title'        => __( 'Auspicious Days', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'activity',
-					'label' => __( 'Activity', 'roxyapi' ),
+					'label' => $labels['fields']['activity'] ?? 'Activity',
 					'required' => true,
 					'help' => __( 'Activity to choose a date for', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'wedding', 'travel', 'moving-house', 'opening-business', 'signing-contracts', 'construction', 'groundbreaking', 'burial', 'medical-treatment', 'praying' ),
-					'enum_labels' => array( __( 'Wedding', 'roxyapi' ), __( 'Travel', 'roxyapi' ), __( 'Moving house', 'roxyapi' ), __( 'Opening business', 'roxyapi' ), __( 'Signing contracts', 'roxyapi' ), __( 'Construction', 'roxyapi' ), __( 'Groundbreaking', 'roxyapi' ), __( 'Burial', 'roxyapi' ), __( 'Medical treatment', 'roxyapi' ), __( 'Praying', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['activity.wedding'] ?? 'Wedding', $labels['enums']['activity.travel'] ?? 'Travel', $labels['enums']['activity.moving-house'] ?? 'Moving house', $labels['enums']['activity.opening-business'] ?? 'Opening business', $labels['enums']['activity.signing-contracts'] ?? 'Signing contracts', $labels['enums']['activity.construction'] ?? 'Construction', $labels['enums']['activity.groundbreaking'] ?? 'Groundbreaking', $labels['enums']['activity.burial'] ?? 'Burial', $labels['enums']['activity.medical-treatment'] ?? 'Medical treatment', $labels['enums']['activity.praying'] ?? 'Praying' ),
 					'placeholder' => __( 'wedding', 'roxyapi' ),
 					'fold' => false,
 				),
 				array(
 					'name' => 'startDate',
-					'label' => __( 'Start date', 'roxyapi' ),
+					'label' => $labels['fields']['startDate'] ?? 'Start date',
 					'required' => true,
 					'help' => __( 'First date of the range to search, inclusive.', 'roxyapi' ),
 					'type' => 'date',
@@ -49,7 +50,7 @@ class LookupAuspiciousDaysForm {
 				),
 				array(
 					'name' => 'endDate',
-					'label' => __( 'End date', 'roxyapi' ),
+					'label' => $labels['fields']['endDate'] ?? 'End date',
 					'required' => true,
 					'help' => __( 'Last date of the range to search, inclusive', 'roxyapi' ),
 					'type' => 'date',
@@ -58,12 +59,12 @@ class LookupAuspiciousDaysForm {
 				),
 				array(
 					'name' => 'avoidAnimal',
-					'label' => __( 'Avoid clashes with', 'roxyapi' ),
+					'label' => $labels['fields']['avoidAnimal'] ?? 'Avoid clashes with',
 					'required' => false,
 					'help' => __( 'Zodiac animal to protect', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'rat', 'ox', 'tiger', 'rabbit', 'dragon', 'snake', 'horse', 'goat', 'monkey', 'rooster', 'dog', 'pig' ),
-					'enum_labels' => array( __( 'Rat', 'roxyapi' ), __( 'Ox', 'roxyapi' ), __( 'Tiger', 'roxyapi' ), __( 'Rabbit', 'roxyapi' ), __( 'Dragon', 'roxyapi' ), __( 'Snake', 'roxyapi' ), __( 'Horse', 'roxyapi' ), __( 'Goat', 'roxyapi' ), __( 'Monkey', 'roxyapi' ), __( 'Rooster', 'roxyapi' ), __( 'Dog', 'roxyapi' ), __( 'Pig', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['avoidAnimal.rat'] ?? 'Rat', $labels['enums']['avoidAnimal.ox'] ?? 'Ox', $labels['enums']['avoidAnimal.tiger'] ?? 'Tiger', $labels['enums']['avoidAnimal.rabbit'] ?? 'Rabbit', $labels['enums']['avoidAnimal.dragon'] ?? 'Dragon', $labels['enums']['avoidAnimal.snake'] ?? 'Snake', $labels['enums']['avoidAnimal.horse'] ?? 'Horse', $labels['enums']['avoidAnimal.goat'] ?? 'Goat', $labels['enums']['avoidAnimal.monkey'] ?? 'Monkey', $labels['enums']['avoidAnimal.rooster'] ?? 'Rooster', $labels['enums']['avoidAnimal.dog'] ?? 'Dog', $labels['enums']['avoidAnimal.pig'] ?? 'Pig' ),
 					'placeholder' => __( 'rat', 'roxyapi' ),
 					'fold' => true,
 				),

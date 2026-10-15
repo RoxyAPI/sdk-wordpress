@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GenerateBirthProfileForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'generateBirthProfile',
 			'title'        => __( 'Birth Profile', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD, proleptic Gregorian', 'roxyapi' ),
 					'type' => 'date',
@@ -38,7 +39,7 @@ class GenerateBirthProfileForm {
 				),
 				array(
 					'name' => 'time',
-					'label' => __( 'Time', 'roxyapi' ),
+					'label' => $labels['fields']['time'] ?? 'Time',
 					'required' => false,
 					'help' => __( 'Birth time in HH:MM:SS local to the timezone field', 'roxyapi' ),
 					'type' => 'time',
@@ -47,7 +48,7 @@ class GenerateBirthProfileForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => true,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
@@ -58,43 +59,43 @@ class GenerateBirthProfileForm {
 				),
 				array(
 					'name' => 'angelDating',
-					'label' => __( 'How the name of the day is dated', 'roxyapi' ),
+					'label' => $labels['fields']['angelDating'] ?? 'How the name of the day is dated',
 					'required' => false,
 					'help' => __( 'How the name of the day is found', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'solar-longitude', 'lenain-blocks' ),
 					'default' => 'solar-longitude',
-					'enum_labels' => array( __( 'Solar longitude', 'roxyapi' ), __( 'Lenain blocks', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['angelDating.solar-longitude'] ?? 'Solar longitude', $labels['enums']['angelDating.lenain-blocks'] ?? 'Lenain blocks' ),
 					'placeholder' => __( 'solar-longitude', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'yearStart',
-					'label' => __( 'Wheel year start', 'roxyapi' ),
+					'label' => $labels['fields']['yearStart'] ?? 'Wheel year start',
 					'required' => false,
 					'help' => __( 'Which date the civil wheel of five day periods opens on', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'march-21', 'march-20' ),
 					'default' => 'march-21',
-					'enum_labels' => array( __( 'March 21', 'roxyapi' ), __( 'March 20', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['yearStart.march-21'] ?? 'March 21', $labels['enums']['yearStart.march-20'] ?? 'March 20' ),
 					'placeholder' => __( 'march-21', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'leapDayPolicy',
-					'label' => __( 'Where 29 February falls', 'roxyapi' ),
+					'label' => $labels['fields']['leapDayPolicy'] ?? 'Where 29 February falls',
 					'required' => false,
 					'help' => __( 'Where 29 February falls', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'extend-previous', 'next-angel' ),
 					'default' => 'extend-previous',
-					'enum_labels' => array( __( 'Extend previous', 'roxyapi' ), __( 'Next angel', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['leapDayPolicy.extend-previous'] ?? 'Extend previous', $labels['enums']['leapDayPolicy.next-angel'] ?? 'Next angel' ),
 					'placeholder' => __( 'extend-previous', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'afterSunset',
-					'label' => __( 'Born after sunset', 'roxyapi' ),
+					'label' => $labels['fields']['afterSunset'] ?? 'Born after sunset',
 					'required' => false,
 					'help' => __( 'Set true when the moment falls after nightfall, which advances the Hebrew date by one day because the Hebrew day begins in the evening', 'roxyapi' ),
 					'type' => 'text',

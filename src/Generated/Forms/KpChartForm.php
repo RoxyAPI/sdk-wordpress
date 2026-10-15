@@ -30,10 +30,12 @@ class KpChartForm {
 			'render_operation_id' => 'generateKpChart',
 			'title'        => __( 'KP chart', 'roxyapi' ),
 			'submit_label' => __( 'Generate KP chart', 'roxyapi' ),
+			'locations'    => array( array( 'anchor' => 'birth[birth_date]', 'section' => 'birth', 'id' => '', 'fields' => array( 'latitude' => 'birth[lat]', 'longitude' => 'birth[lon]', 'timezone' => 'birth[tz]' ) ) ),
 			'sections'     => array(
 			array(
 				'name'   => 'birth',
 				'label'  => __( 'Birth details', 'roxyapi' ),
+				'fold'   => false,
 				'fields' => array(
 					array(
 						'name' => 'birth_date',

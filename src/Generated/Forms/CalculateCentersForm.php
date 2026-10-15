@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculateCentersForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculateCenters',
 			'title'        => __( 'Human Design Centers', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'timezone', 'section' => '', 'id' => '', 'fields' => array( 'timezone' => 'timezone', 'latitude' => 'latitude', 'longitude' => 'longitude' ) ) ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -38,7 +39,7 @@ class CalculateCentersForm {
 				),
 				array(
 					'name' => 'time',
-					'label' => __( 'Time', 'roxyapi' ),
+					'label' => $labels['fields']['time'] ?? 'Time',
 					'required' => true,
 					'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 					'type' => 'time',
@@ -47,7 +48,7 @@ class CalculateCentersForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => true,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
@@ -58,7 +59,7 @@ class CalculateCentersForm {
 				),
 				array(
 					'name' => 'latitude',
-					'label' => __( 'Latitude', 'roxyapi' ),
+					'label' => $labels['fields']['latitude'] ?? 'Latitude',
 					'required' => false,
 					'help' => __( 'Birth latitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -71,7 +72,7 @@ class CalculateCentersForm {
 				),
 				array(
 					'name' => 'longitude',
-					'label' => __( 'Longitude', 'roxyapi' ),
+					'label' => $labels['fields']['longitude'] ?? 'Longitude',
 					'required' => false,
 					'help' => __( 'Birth longitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -84,13 +85,13 @@ class CalculateCentersForm {
 				),
 				array(
 					'name' => 'nodeType',
-					'label' => __( 'Lunar node type', 'roxyapi' ),
+					'label' => $labels['fields']['nodeType'] ?? 'Lunar node type',
 					'required' => false,
 					'help' => __( 'Lunar node convention', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'mean', 'true' ),
 					'default' => 'true',
-					'enum_labels' => array( __( 'Mean', 'roxyapi' ), __( 'True', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['nodeType.mean'] ?? 'Mean', $labels['enums']['nodeType.true'] ?? 'True' ),
 					'placeholder' => __( 'true', 'roxyapi' ),
 					'fold' => true,
 				),

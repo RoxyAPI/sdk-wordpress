@@ -18,29 +18,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetCrystalsByChakraForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getCrystalsByChakra',
 			'title'        => __( 'Crystals by Chakra', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'chakra',
-					'label' => __( 'Chakra', 'roxyapi' ),
+					'label' => $labels['fields']['chakra'] ?? 'Chakra',
 					'required' => true,
 					'help' => __( 'Chakra name, case-insensitive (e.g., heart, Heart, HEART all work)', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'Root', 'Sacral', 'Solar Plexus', 'Heart', 'Throat', 'Third Eye', 'Crown' ),
-					'enum_labels' => array( __( 'Root', 'roxyapi' ), __( 'Sacral', 'roxyapi' ), __( 'Solar Plexus', 'roxyapi' ), __( 'Heart', 'roxyapi' ), __( 'Throat', 'roxyapi' ), __( 'Third Eye', 'roxyapi' ), __( 'Crown', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['chakra.Root'] ?? 'Root', $labels['enums']['chakra.Sacral'] ?? 'Sacral', $labels['enums']['chakra.Solar Plexus'] ?? 'Solar Plexus', $labels['enums']['chakra.Heart'] ?? 'Heart', $labels['enums']['chakra.Throat'] ?? 'Throat', $labels['enums']['chakra.Third Eye'] ?? 'Third Eye', $labels['enums']['chakra.Crown'] ?? 'Crown' ),
 					'placeholder' => __( 'Heart', 'roxyapi' ),
 					'fold' => false,
 				),
 				array(
 					'name' => 'limit',
-					'label' => __( 'Results per page', 'roxyapi' ),
+					'label' => $labels['fields']['limit'] ?? 'Results per page',
 					'required' => false,
 					'help' => __( 'Maximum items to return per page', 'roxyapi' ),
 					'type' => 'integer',
@@ -52,7 +53,7 @@ class GetCrystalsByChakraForm {
 				),
 				array(
 					'name' => 'offset',
-					'label' => __( 'Results to skip', 'roxyapi' ),
+					'label' => $labels['fields']['offset'] ?? 'Results to skip',
 					'required' => false,
 					'help' => __( 'Number of items to skip for pagination', 'roxyapi' ),
 					'type' => 'integer',

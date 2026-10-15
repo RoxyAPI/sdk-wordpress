@@ -30,6 +30,7 @@ class LifePathForm {
 			'render_operation_id' => 'calculateLifePath',
 			'title'        => __( 'Life path number', 'roxyapi' ),
 			'submit_label' => __( 'Calculate', 'roxyapi' ),
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),

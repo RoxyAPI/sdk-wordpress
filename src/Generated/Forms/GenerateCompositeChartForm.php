@@ -18,20 +18,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GenerateCompositeChartForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'generateCompositeChart',
 			'title'        => __( 'Composite Chart', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'person1[latitude]', 'section' => 'person1', 'id' => '', 'fields' => array( 'latitude' => 'person1[latitude]', 'longitude' => 'person1[longitude]', 'timezone' => 'person1[timezone]' ) ), array( 'anchor' => 'person2[latitude]', 'section' => 'person2', 'id' => '', 'fields' => array( 'latitude' => 'person2[latitude]', 'longitude' => 'person2[longitude]', 'timezone' => 'person2[timezone]' ) ) ),
 			'sections'     => array(
 				array(
 					'name'   => 'person1',
-					'label'  => __( 'Person 1', 'roxyapi' ),
+					'label'  => $labels['groups']['person1'] ?? 'Person 1',
 					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'date',
-						'label' => __( 'Date', 'roxyapi' ),
+						'label' => $labels['fields']['date'] ?? 'Date',
 						'required' => true,
 						'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 						'type' => 'date',
@@ -40,7 +41,7 @@ class GenerateCompositeChartForm {
 					),
 					array(
 						'name' => 'time',
-						'label' => __( 'Time', 'roxyapi' ),
+						'label' => $labels['fields']['time'] ?? 'Time',
 						'required' => true,
 						'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 						'type' => 'time',
@@ -49,7 +50,7 @@ class GenerateCompositeChartForm {
 					),
 					array(
 						'name' => 'latitude',
-						'label' => __( 'Latitude', 'roxyapi' ),
+						'label' => $labels['fields']['latitude'] ?? 'Latitude',
 						'required' => true,
 						'help' => __( 'Birth location latitude in decimal degrees (-90 to 90)', 'roxyapi' ),
 						'type' => 'number',
@@ -61,7 +62,7 @@ class GenerateCompositeChartForm {
 					),
 					array(
 						'name' => 'longitude',
-						'label' => __( 'Longitude', 'roxyapi' ),
+						'label' => $labels['fields']['longitude'] ?? 'Longitude',
 						'required' => true,
 						'help' => __( 'Birth location longitude in decimal degrees (-180 to 180)', 'roxyapi' ),
 						'type' => 'number',
@@ -73,7 +74,7 @@ class GenerateCompositeChartForm {
 					),
 					array(
 						'name' => 'timezone',
-						'label' => __( 'Timezone', 'roxyapi' ),
+						'label' => $labels['fields']['timezone'] ?? 'Timezone',
 						'required' => true,
 						'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 						'type' => 'timezone',
@@ -84,13 +85,13 @@ class GenerateCompositeChartForm {
 					),
 					array(
 						'name' => 'nodeType',
-						'label' => __( 'Lunar node type', 'roxyapi' ),
+						'label' => $labels['fields']['nodeType'] ?? 'Lunar node type',
 						'required' => false,
 						'help' => __( 'Lunar node convention', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'mean', 'true' ),
 						'default' => 'true',
-						'enum_labels' => array( __( 'Mean', 'roxyapi' ), __( 'True', 'roxyapi' ) ),
+						'enum_labels' => array( $labels['enums']['nodeType.mean'] ?? 'Mean', $labels['enums']['nodeType.true'] ?? 'True' ),
 						'placeholder' => __( 'true', 'roxyapi' ),
 						'fold' => false,
 					),
@@ -98,12 +99,12 @@ class GenerateCompositeChartForm {
 				),
 				array(
 					'name'   => 'person2',
-					'label'  => __( 'Person 2', 'roxyapi' ),
+					'label'  => $labels['groups']['person2'] ?? 'Person 2',
 					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'date',
-						'label' => __( 'Date', 'roxyapi' ),
+						'label' => $labels['fields']['date'] ?? 'Date',
 						'required' => true,
 						'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 						'type' => 'date',
@@ -112,7 +113,7 @@ class GenerateCompositeChartForm {
 					),
 					array(
 						'name' => 'time',
-						'label' => __( 'Time', 'roxyapi' ),
+						'label' => $labels['fields']['time'] ?? 'Time',
 						'required' => true,
 						'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 						'type' => 'time',
@@ -121,7 +122,7 @@ class GenerateCompositeChartForm {
 					),
 					array(
 						'name' => 'latitude',
-						'label' => __( 'Latitude', 'roxyapi' ),
+						'label' => $labels['fields']['latitude'] ?? 'Latitude',
 						'required' => true,
 						'help' => __( 'Birth location latitude in decimal degrees (-90 to 90)', 'roxyapi' ),
 						'type' => 'number',
@@ -133,7 +134,7 @@ class GenerateCompositeChartForm {
 					),
 					array(
 						'name' => 'longitude',
-						'label' => __( 'Longitude', 'roxyapi' ),
+						'label' => $labels['fields']['longitude'] ?? 'Longitude',
 						'required' => true,
 						'help' => __( 'Birth location longitude in decimal degrees (-180 to 180)', 'roxyapi' ),
 						'type' => 'number',
@@ -145,7 +146,7 @@ class GenerateCompositeChartForm {
 					),
 					array(
 						'name' => 'timezone',
-						'label' => __( 'Timezone', 'roxyapi' ),
+						'label' => $labels['fields']['timezone'] ?? 'Timezone',
 						'required' => true,
 						'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 						'type' => 'timezone',
@@ -156,13 +157,13 @@ class GenerateCompositeChartForm {
 					),
 					array(
 						'name' => 'nodeType',
-						'label' => __( 'Lunar node type', 'roxyapi' ),
+						'label' => $labels['fields']['nodeType'] ?? 'Lunar node type',
 						'required' => false,
 						'help' => __( 'Lunar node convention', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'mean', 'true' ),
 						'default' => 'true',
-						'enum_labels' => array( __( 'Mean', 'roxyapi' ), __( 'True', 'roxyapi' ) ),
+						'enum_labels' => array( $labels['enums']['nodeType.mean'] ?? 'Mean', $labels['enums']['nodeType.true'] ?? 'True' ),
 						'placeholder' => __( 'true', 'roxyapi' ),
 						'fold' => false,
 					),
@@ -172,13 +173,13 @@ class GenerateCompositeChartForm {
 			'flat_fields'  => array(
 				array(
 					'name' => 'houseSystem',
-					'label' => __( 'House system', 'roxyapi' ),
+					'label' => $labels['fields']['houseSystem'] ?? 'House system',
 					'required' => false,
 					'help' => __( 'House system for the composite chart', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'placidus', 'whole-sign', 'equal', 'koch' ),
 					'default' => 'placidus',
-					'enum_labels' => array( __( 'Placidus', 'roxyapi' ), __( 'Whole sign', 'roxyapi' ), __( 'Equal', 'roxyapi' ), __( 'Koch', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['houseSystem.placidus'] ?? 'Placidus', $labels['enums']['houseSystem.whole-sign'] ?? 'Whole sign', $labels['enums']['houseSystem.equal'] ?? 'Equal', $labels['enums']['houseSystem.koch'] ?? 'Koch' ),
 					'placeholder' => __( 'placidus', 'roxyapi' ),
 					'fold' => true,
 				),

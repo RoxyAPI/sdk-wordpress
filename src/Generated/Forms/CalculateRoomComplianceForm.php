@@ -18,20 +18,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculateRoomComplianceForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculateRoomCompliance',
 			'title'        => __( 'Room Placement', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 				array(
 					'name'   => 'plot',
-					'label'  => __( 'Plot', 'roxyapi' ),
+					'label'  => $labels['groups']['plot'] ?? 'Plot',
 					'fold'   => true,
 					'fields' => array(
 					array(
 						'name' => 'width',
-						'label' => __( 'Width, east to west', 'roxyapi' ),
+						'label' => $labels['fields']['width'] ?? 'Width, east to west',
 						'required' => false,
 						'help' => __( 'East-west extent of a rectangular plot, in the unit given', 'roxyapi' ),
 						'type' => 'number',
@@ -42,7 +43,7 @@ class CalculateRoomComplianceForm {
 					),
 					array(
 						'name' => 'depth',
-						'label' => __( 'Depth, north to south', 'roxyapi' ),
+						'label' => $labels['fields']['depth'] ?? 'Depth, north to south',
 						'required' => false,
 						'help' => __( 'North-south extent of a rectangular plot, in the unit given', 'roxyapi' ),
 						'type' => 'number',
@@ -53,13 +54,13 @@ class CalculateRoomComplianceForm {
 					),
 					array(
 						'name' => 'unit',
-						'label' => __( 'Unit', 'roxyapi' ),
+						'label' => $labels['fields']['unit'] ?? 'Unit',
 						'required' => false,
 						'help' => __( 'Unit the plot dimensions are given in', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'feet', 'metres' ),
 						'default' => 'feet',
-						'enum_labels' => array( __( 'Feet', 'roxyapi' ), __( 'Metres', 'roxyapi' ) ),
+						'enum_labels' => array( $labels['enums']['unit.feet'] ?? 'Feet', $labels['enums']['unit.metres'] ?? 'Metres' ),
 						'placeholder' => __( 'feet', 'roxyapi' ),
 						'fold' => true,
 					),
@@ -69,18 +70,18 @@ class CalculateRoomComplianceForm {
 			'flat_fields'  => array(
 				array(
 					'name' => 'facing',
-					'label' => __( 'Facing direction', 'roxyapi' ),
+					'label' => $labels['fields']['facing'] ?? 'Facing direction',
 					'required' => false,
 					'help' => __( 'Direction the front of the house looks out toward, one of the eight compass sectors', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'North', 'Northeast', 'East', 'Southeast', 'South', 'Southwest', 'West', 'Northwest' ),
-					'enum_labels' => array( __( 'North', 'roxyapi' ), __( 'Northeast', 'roxyapi' ), __( 'East', 'roxyapi' ), __( 'Southeast', 'roxyapi' ), __( 'South', 'roxyapi' ), __( 'Southwest', 'roxyapi' ), __( 'West', 'roxyapi' ), __( 'Northwest', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['facing.North'] ?? 'North', $labels['enums']['facing.Northeast'] ?? 'Northeast', $labels['enums']['facing.East'] ?? 'East', $labels['enums']['facing.Southeast'] ?? 'Southeast', $labels['enums']['facing.South'] ?? 'South', $labels['enums']['facing.Southwest'] ?? 'Southwest', $labels['enums']['facing.West'] ?? 'West', $labels['enums']['facing.Northwest'] ?? 'Northwest' ),
 					'placeholder' => __( 'North', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'facingDegrees',
-					'label' => __( 'Facing degrees', 'roxyapi' ),
+					'label' => $labels['fields']['facingDegrees'] ?? 'Facing degrees',
 					'required' => false,
 					'help' => __( 'Direction the front of the house looks out toward, as a compass bearing in degrees clockwise from true north, measured looking OUT from the building', 'roxyapi' ),
 					'type' => 'number',

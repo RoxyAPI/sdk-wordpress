@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GenerateMayanChartForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'generateMayanChart',
 			'title'        => __( 'Mayan Chart', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => true,
 					'help' => __( 'Date in YYYY-MM-DD format, in the PROLEPTIC GREGORIAN calendar, extended backwards unchanged through the 1582 reform', 'roxyapi' ),
 					'type' => 'date',
@@ -38,25 +39,25 @@ class GenerateMayanChartForm {
 				),
 				array(
 					'name' => 'correlation',
-					'label' => __( 'Correlation constant', 'roxyapi' ),
+					'label' => $labels['fields']['correlation'] ?? 'Correlation constant',
 					'required' => false,
 					'help' => __( 'Which correlation constant ties the day count to a civil date', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'gmt-584283', 'martinez-hernandez-584281', 'astronomical-584285', 'martin-skidmore-584286' ),
 					'default' => 'gmt-584283',
-					'enum_labels' => array( __( 'Gmt 584283', 'roxyapi' ), __( 'Martinez hernandez 584281', 'roxyapi' ), __( 'Astronomical 584285', 'roxyapi' ), __( 'Martin skidmore 584286', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['correlation.gmt-584283'] ?? 'Gmt 584283', $labels['enums']['correlation.martinez-hernandez-584281'] ?? 'Martinez hernandez 584281', $labels['enums']['correlation.astronomical-584285'] ?? 'Astronomical 584285', $labels['enums']['correlation.martin-skidmore-584286'] ?? 'Martin skidmore 584286' ),
 					'placeholder' => __( 'gmt-584283', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'yearBearerSystem',
-					'label' => __( 'Year Bearer school', 'roxyapi' ),
+					'label' => $labels['fields']['yearBearerSystem'] ?? 'Year Bearer school',
 					'required' => false,
 					'help' => __( 'Which Haab day is read as the start of the year when naming its Year Bearer', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'classic', 'campeche', 'colonial-yucatec' ),
 					'default' => 'classic',
-					'enum_labels' => array( __( 'Classic', 'roxyapi' ), __( 'Campeche', 'roxyapi' ), __( 'Colonial yucatec', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['yearBearerSystem.classic'] ?? 'Classic', $labels['enums']['yearBearerSystem.campeche'] ?? 'Campeche', $labels['enums']['yearBearerSystem.colonial-yucatec'] ?? 'Colonial yucatec' ),
 					'placeholder' => __( 'classic', 'roxyapi' ),
 					'fold' => true,
 				),

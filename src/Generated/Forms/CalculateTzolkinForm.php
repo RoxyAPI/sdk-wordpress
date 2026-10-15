@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculateTzolkinForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculateTzolkin',
 			'title'        => __( 'Mayan Day Sign for a Date', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => true,
 					'help' => __( 'Date in YYYY-MM-DD format, in the PROLEPTIC GREGORIAN calendar, extended backwards unchanged through the 1582 reform', 'roxyapi' ),
 					'type' => 'date',
@@ -38,13 +39,13 @@ class CalculateTzolkinForm {
 				),
 				array(
 					'name' => 'correlation',
-					'label' => __( 'Correlation constant', 'roxyapi' ),
+					'label' => $labels['fields']['correlation'] ?? 'Correlation constant',
 					'required' => false,
 					'help' => __( 'Which correlation constant ties the day count to a civil date', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'gmt-584283', 'martinez-hernandez-584281', 'astronomical-584285', 'martin-skidmore-584286' ),
 					'default' => 'gmt-584283',
-					'enum_labels' => array( __( 'Gmt 584283', 'roxyapi' ), __( 'Martinez hernandez 584281', 'roxyapi' ), __( 'Astronomical 584285', 'roxyapi' ), __( 'Martin skidmore 584286', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['correlation.gmt-584283'] ?? 'Gmt 584283', $labels['enums']['correlation.martinez-hernandez-584281'] ?? 'Martinez hernandez 584281', $labels['enums']['correlation.astronomical-584285'] ?? 'Astronomical 584285', $labels['enums']['correlation.martin-skidmore-584286'] ?? 'Martin skidmore 584286' ),
 					'placeholder' => __( 'gmt-584283', 'roxyapi' ),
 					'fold' => true,
 				),

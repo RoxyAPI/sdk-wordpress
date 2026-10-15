@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class DetectAspectPatternsForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'detectAspectPatterns',
 			'title'        => __( 'Aspect Patterns', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'latitude', 'section' => '', 'id' => '', 'fields' => array( 'latitude' => 'latitude', 'longitude' => 'longitude', 'timezone' => 'timezone' ) ) ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -38,7 +39,7 @@ class DetectAspectPatternsForm {
 				),
 				array(
 					'name' => 'time',
-					'label' => __( 'Time', 'roxyapi' ),
+					'label' => $labels['fields']['time'] ?? 'Time',
 					'required' => true,
 					'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 					'type' => 'time',
@@ -47,7 +48,7 @@ class DetectAspectPatternsForm {
 				),
 				array(
 					'name' => 'latitude',
-					'label' => __( 'Latitude', 'roxyapi' ),
+					'label' => $labels['fields']['latitude'] ?? 'Latitude',
 					'required' => true,
 					'help' => __( 'Birth location latitude in decimal degrees (-90 to 90)', 'roxyapi' ),
 					'type' => 'number',
@@ -59,7 +60,7 @@ class DetectAspectPatternsForm {
 				),
 				array(
 					'name' => 'longitude',
-					'label' => __( 'Longitude', 'roxyapi' ),
+					'label' => $labels['fields']['longitude'] ?? 'Longitude',
 					'required' => true,
 					'help' => __( 'Birth location longitude in decimal degrees (-180 to 180)', 'roxyapi' ),
 					'type' => 'number',
@@ -71,7 +72,7 @@ class DetectAspectPatternsForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => true,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
@@ -82,19 +83,19 @@ class DetectAspectPatternsForm {
 				),
 				array(
 					'name' => 'nodeType',
-					'label' => __( 'Lunar node type', 'roxyapi' ),
+					'label' => $labels['fields']['nodeType'] ?? 'Lunar node type',
 					'required' => false,
 					'help' => __( 'Lunar node convention', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'mean', 'true' ),
 					'default' => 'true',
-					'enum_labels' => array( __( 'Mean', 'roxyapi' ), __( 'True', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['nodeType.mean'] ?? 'Mean', $labels['enums']['nodeType.true'] ?? 'True' ),
 					'placeholder' => __( 'true', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'strictOrbs',
-					'label' => __( 'Use tighter orbs', 'roxyapi' ),
+					'label' => $labels['fields']['strictOrbs'] ?? 'Use tighter orbs',
 					'required' => false,
 					'help' => __( 'Use tighter orbs, so only closely formed patterns are reported', 'roxyapi' ),
 					'type' => 'text',
@@ -103,7 +104,7 @@ class DetectAspectPatternsForm {
 				),
 				array(
 					'name' => 'include',
-					'label' => __( 'Additional bodies', 'roxyapi' ),
+					'label' => $labels['fields']['include'] ?? 'Additional bodies',
 					'required' => false,
 					'help' => __( 'Comma-separated list of optional bodies to include beyond the classical 10 planets', 'roxyapi' ),
 					'type' => 'text',

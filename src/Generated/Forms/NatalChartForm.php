@@ -30,10 +30,12 @@ class NatalChartForm {
 			'render_operation_id' => 'generateNatalChart',
 			'title'        => __( 'Natal chart', 'roxyapi' ),
 			'submit_label' => __( 'Calculate chart', 'roxyapi' ),
+			'locations'    => array( array( 'anchor' => 'birth[birth_date]', 'section' => 'birth', 'id' => '', 'fields' => array( 'latitude' => 'birth[lat]', 'longitude' => 'birth[lon]', 'timezone' => 'birth[tz]' ) ) ),
 			'sections'     => array(
 			array(
 				'name'   => 'birth',
 				'label'  => __( 'Birth details', 'roxyapi' ),
+				'fold'   => false,
 				'fields' => array(
 					array(
 						'name' => 'birth_date',

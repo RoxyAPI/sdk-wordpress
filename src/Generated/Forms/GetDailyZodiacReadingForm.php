@@ -18,11 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetDailyZodiacReadingForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getDailyZodiacReading',
 			'title'        => __( 'Daily Chinese Zodiac Reading', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
@@ -40,7 +41,7 @@ class GetDailyZodiacReadingForm {
 				),
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => false,
 					'help' => __( 'Reading date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -49,7 +50,7 @@ class GetDailyZodiacReadingForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',

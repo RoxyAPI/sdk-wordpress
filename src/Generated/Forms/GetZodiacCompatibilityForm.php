@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetZodiacCompatibilityForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getZodiacCompatibility',
 			'title'        => __( 'Chinese Zodiac Compatibility', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'sign1',
-					'label' => __( 'First animal sign', 'roxyapi' ),
+					'label' => $labels['fields']['sign1'] ?? 'First animal sign',
 					'required' => true,
 					'help' => __( 'First animal id, case-insensitive', 'roxyapi' ),
 					'type' => 'enum',
@@ -40,7 +41,7 @@ class GetZodiacCompatibilityForm {
 				),
 				array(
 					'name' => 'sign2',
-					'label' => __( 'Second animal sign', 'roxyapi' ),
+					'label' => $labels['fields']['sign2'] ?? 'Second animal sign',
 					'required' => true,
 					'help' => __( 'Second animal id, case-insensitive', 'roxyapi' ),
 					'type' => 'enum',

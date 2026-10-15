@@ -30,6 +30,7 @@ class BiorhythmForm {
 			'render_operation_id' => 'getReading',
 			'title'        => __( 'Biorhythm reading', 'roxyapi' ),
 			'submit_label' => __( 'Calculate cycles', 'roxyapi' ),
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),

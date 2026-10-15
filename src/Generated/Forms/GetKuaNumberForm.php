@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetKuaNumberForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getKuaNumber',
 			'title'        => __( 'Kua Number', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'number',
-					'label' => __( 'Number', 'roxyapi' ),
+					'label' => $labels['fields']['number'] ?? 'Number',
 					'required' => true,
 					'help' => __( 'Kua number, 1 to 9.', 'roxyapi' ),
 					'type' => 'integer',

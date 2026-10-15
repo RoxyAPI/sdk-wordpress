@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetBirthstonesForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getBirthstones',
 			'title'        => __( 'Birthstones by Month', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'month',
-					'label' => __( 'Month', 'roxyapi' ),
+					'label' => $labels['fields']['month'] ?? 'Month',
 					'required' => true,
 					'help' => __( 'Birth month as a number from 1 (January) to 12 (December).', 'roxyapi' ),
 					'type' => 'integer',

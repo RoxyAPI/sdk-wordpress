@@ -18,20 +18,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetKpDailyFinanceForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getKpDailyFinance',
 			'title'        => __( 'Daily Finance Score', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'latitude', 'section' => '', 'id' => '', 'fields' => array( 'latitude' => 'latitude', 'longitude' => 'longitude', 'timezone' => 'timezone' ) ) ),
 			'sections'     => array(
 				array(
 					'name'   => 'weights',
-					'label'  => __( 'Weights', 'roxyapi' ),
+					'label'  => $labels['groups']['weights'] ?? 'Weights',
 					'fold'   => true,
 					'fields' => array(
 					array(
 						'name' => 'cusps',
-						'label' => __( 'Cusps', 'roxyapi' ),
+						'label' => $labels['fields']['cusps'] ?? 'Cusps',
 						'required' => false,
 						'help' => __( 'Percent of the final score the cusps layer carries.', 'roxyapi' ),
 						'type' => 'number',
@@ -43,7 +44,7 @@ class GetKpDailyFinanceForm {
 					),
 					array(
 						'name' => 'dasha',
-						'label' => __( 'Dasha lords', 'roxyapi' ),
+						'label' => $labels['fields']['dasha'] ?? 'Dasha lords',
 						'required' => false,
 						'help' => __( 'Percent of the final score the dasha layer carries.', 'roxyapi' ),
 						'type' => 'number',
@@ -55,7 +56,7 @@ class GetKpDailyFinanceForm {
 					),
 					array(
 						'name' => 'rulingPlanets',
-						'label' => __( 'Ruling planets', 'roxyapi' ),
+						'label' => $labels['fields']['rulingPlanets'] ?? 'Ruling planets',
 						'required' => false,
 						'help' => __( 'Percent of the final score the rulingPlanets layer carries.', 'roxyapi' ),
 						'type' => 'number',
@@ -67,7 +68,7 @@ class GetKpDailyFinanceForm {
 					),
 					array(
 						'name' => 'moonWindows',
-						'label' => __( 'Moon windows', 'roxyapi' ),
+						'label' => $labels['fields']['moonWindows'] ?? 'Moon windows',
 						'required' => false,
 						'help' => __( 'Percent of the final score the moonWindows layer carries.', 'roxyapi' ),
 						'type' => 'number',
@@ -83,7 +84,7 @@ class GetKpDailyFinanceForm {
 			'flat_fields'  => array(
 				array(
 					'name' => 'birthDate',
-					'label' => __( 'Birth date', 'roxyapi' ),
+					'label' => $labels['fields']['birthDate'] ?? 'Birth date',
 					'required' => true,
 					'help' => __( 'Birth date, YYYY-MM-DD', 'roxyapi' ),
 					'type' => 'date',
@@ -92,7 +93,7 @@ class GetKpDailyFinanceForm {
 				),
 				array(
 					'name' => 'birthTime',
-					'label' => __( 'Birth time', 'roxyapi' ),
+					'label' => $labels['fields']['birthTime'] ?? 'Birth time',
 					'required' => true,
 					'help' => __( 'Birth time, HH:MM:SS, 24 hour, local to the birth place', 'roxyapi' ),
 					'type' => 'time',
@@ -101,7 +102,7 @@ class GetKpDailyFinanceForm {
 				),
 				array(
 					'name' => 'latitude',
-					'label' => __( 'Latitude', 'roxyapi' ),
+					'label' => $labels['fields']['latitude'] ?? 'Latitude',
 					'required' => true,
 					'help' => __( 'Birth latitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -113,7 +114,7 @@ class GetKpDailyFinanceForm {
 				),
 				array(
 					'name' => 'longitude',
-					'label' => __( 'Longitude', 'roxyapi' ),
+					'label' => $labels['fields']['longitude'] ?? 'Longitude',
 					'required' => true,
 					'help' => __( 'Birth longitude in decimal degrees, east positive.', 'roxyapi' ),
 					'type' => 'number',
@@ -125,7 +126,7 @@ class GetKpDailyFinanceForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
@@ -137,7 +138,7 @@ class GetKpDailyFinanceForm {
 				),
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => false,
 					'help' => __( 'Civil date to read, YYYY-MM-DD in the request timezone', 'roxyapi' ),
 					'type' => 'date',
@@ -146,7 +147,7 @@ class GetKpDailyFinanceForm {
 				),
 				array(
 					'name' => 'time',
-					'label' => __( 'Time', 'roxyapi' ),
+					'label' => $labels['fields']['time'] ?? 'Time',
 					'required' => false,
 					'help' => __( 'Reading moment on that date, HH:MM:SS local', 'roxyapi' ),
 					'type' => 'time',
@@ -155,25 +156,25 @@ class GetKpDailyFinanceForm {
 				),
 				array(
 					'name' => 'ayanamsa',
-					'label' => __( 'Ayanamsa', 'roxyapi' ),
+					'label' => $labels['fields']['ayanamsa'] ?? 'Ayanamsa',
 					'required' => false,
 					'help' => __( 'Ayanamsa system for sidereal conversion', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'kp-newcomb', 'kp-old', 'lahiri', 'raman' ),
 					'default' => 'kp-newcomb',
-					'enum_labels' => array( __( 'Kp newcomb', 'roxyapi' ), __( 'Kp old', 'roxyapi' ), __( 'Lahiri', 'roxyapi' ), __( 'Raman', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['ayanamsa.kp-newcomb'] ?? 'Kp newcomb', $labels['enums']['ayanamsa.kp-old'] ?? 'Kp old', $labels['enums']['ayanamsa.lahiri'] ?? 'Lahiri', $labels['enums']['ayanamsa.raman'] ?? 'Raman' ),
 					'placeholder' => __( 'kp-newcomb', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'nodeType',
-					'label' => __( 'Lunar node type', 'roxyapi' ),
+					'label' => $labels['fields']['nodeType'] ?? 'Lunar node type',
 					'required' => false,
 					'help' => __( 'Lunar node convention', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'mean', 'true' ),
 					'default' => 'mean',
-					'enum_labels' => array( __( 'Mean', 'roxyapi' ), __( 'True', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['nodeType.mean'] ?? 'Mean', $labels['enums']['nodeType.true'] ?? 'True' ),
 					'placeholder' => __( 'mean', 'roxyapi' ),
 					'fold' => true,
 				),

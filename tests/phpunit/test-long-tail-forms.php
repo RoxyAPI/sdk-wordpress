@@ -151,13 +151,15 @@ class Test_Long_Tail_Forms extends \WP_UnitTestCase {
 		$this->assertCount( 1, $this->requested, 'Every required input placed renders the reading.' );
 	}
 
-	public function test_optional_inputs_fold_and_the_city_search_fills_the_flat_location(): void {
+	public function test_model_folded_inputs_fold_and_the_city_search_fills_the_flat_location(): void {
 		$html = \RoxyAPI\Generated\Shortcodes\CalculateLuckPillars::render( array() );
 
 		$this->assertStringContainsString( 'data-roxyapi-geocode="#roxyapi-form-calculateLuckPillars"', $html );
 		$this->assertStringContainsString( 'id="roxyapi-form-calculateLuckPillars"', $html );
 		$advanced = substr( $html, (int) strpos( $html, 'roxyapi-form-calculateLuckPillars-advanced' ) );
-		$this->assertStringContainsString( 'name="dayBoundary"', $advanced, 'An optional input folds under Advanced.' );
+		$this->assertStringContainsString( 'name="dayBoundary"', $advanced, 'An input marked fold by the UI model folds under Advanced.' );
+		$this->assertStringNotContainsString( 'name="latitude"', $advanced, 'Optional location inputs stay visible when the model does not fold them.' );
+		$this->assertStringNotContainsString( 'name="longitude"', $advanced );
 		$this->assertStringNotContainsString( 'name="gender"', $advanced, 'A required input stays in view.' );
 	}
 

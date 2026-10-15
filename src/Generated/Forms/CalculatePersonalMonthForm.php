@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculatePersonalMonthForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculatePersonalMonth',
 			'title'        => __( 'Personal Month', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'month',
-					'label' => __( 'Month', 'roxyapi' ),
+					'label' => $labels['fields']['month'] ?? 'Month',
 					'required' => true,
 					'help' => __( 'Birth month (1-12)', 'roxyapi' ),
 					'type' => 'integer',
@@ -40,7 +41,7 @@ class CalculatePersonalMonthForm {
 				),
 				array(
 					'name' => 'day',
-					'label' => __( 'Day', 'roxyapi' ),
+					'label' => $labels['fields']['day'] ?? 'Day',
 					'required' => true,
 					'help' => __( 'Birth day (1-31)', 'roxyapi' ),
 					'type' => 'integer',
@@ -51,7 +52,7 @@ class CalculatePersonalMonthForm {
 				),
 				array(
 					'name' => 'year',
-					'label' => __( 'Year', 'roxyapi' ),
+					'label' => $labels['fields']['year'] ?? 'Year',
 					'required' => false,
 					'help' => __( 'Target year', 'roxyapi' ),
 					'type' => 'integer',
@@ -62,7 +63,7 @@ class CalculatePersonalMonthForm {
 				),
 				array(
 					'name' => 'targetMonth',
-					'label' => __( 'Target month', 'roxyapi' ),
+					'label' => $labels['fields']['targetMonth'] ?? 'Target month',
 					'required' => false,
 					'help' => __( 'Target calendar month to forecast (1 to 12)', 'roxyapi' ),
 					'type' => 'integer',

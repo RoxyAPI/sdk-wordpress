@@ -30,6 +30,7 @@ class NumerologyForm {
 			'render_operation_id' => 'generateNumerologyChart',
 			'title'        => __( 'Numerology chart', 'roxyapi' ),
 			'submit_label' => __( 'Calculate chart', 'roxyapi' ),
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),

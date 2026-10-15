@@ -30,6 +30,7 @@ class TarotYesNoForm {
 			'render_operation_id' => 'castYesNo',
 			'title'        => __( 'Tarot yes or no', 'roxyapi' ),
 			'submit_label' => __( 'Get answer', 'roxyapi' ),
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),

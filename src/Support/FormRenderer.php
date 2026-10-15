@@ -6,7 +6,7 @@
  * carries a `spec()` array with sections, fields, and submit copy. The
  * renderer walks the spec, emits a `<form method="post">` with a nonce, the
  * `roxyapi_form` dispatch hidden input, and a control per field whose type
- * derives from the OpenAPI body schema. Submission is handled by FormRouter.
+ * comes from the vendored UI model. Submission is handled by FormRouter.
  *
  * If the request follows a PRG redirect carrying `?roxyapi_r=<key>`, the
  * stored result (success, validation errors, or upstream WP_Error) renders
@@ -112,66 +112,31 @@ class FormRenderer {
 			$out .= '<p class="roxyapi-form-lede">' . esc_html( $lede ) . '</p>';
 		}
 
-		$needs_geocode = false;
+		$city_searches = array();
+		foreach ( $spec['locations'] ?? array() as $location ) {
+			$scope_id = empty( $location['section'] )
+				? $form_dom_id
+				: 'roxyapi-section-' . sanitize_html_class( $form_id . '-' . $location['section'] );
+
+			$city_searches[ $location['anchor'] ] = self::render_city_search( $scope_id, $location['fields'], (string) ( $location['id'] ?? '' ) );
+		}
 		foreach ( ( $spec['sections'] ?? array() ) as $section ) {
 			$section_name = (string) $section['name'];
 			$section_prev = isset( $prev[ $section_name ] ) && is_array( $prev[ $section_name ] ) ? $prev[ $section_name ] : array();
 			$section_errs = isset( $errors_by_key[ $section_name ] ) && is_array( $errors_by_key[ $section_name ] ) ? $errors_by_key[ $section_name ] : array();
-			$fields       = $section['fields'] ?? array();
 			$section_id   = 'roxyapi-section-' . sanitize_html_class( $form_id . '-' . $section_name );
-			$optional     = self::section_is_optional( $section );
+			$fold         = ! empty( $section['fold'] );
 			$out         .= self::open_group(
 				$section_id,
 				(string) $section['label'],
-				$optional,
-				array_filter( $section_prev, static fn( $v ) => (string) $v !== '' ) || $section_errs
+				$fold,
+				(bool) ( array_filter( $section_prev, static fn( $v ) => is_scalar( $v ) && (string) $v !== '' ) || $section_errs )
 			);
-			if ( self::geocode_anchor( $fields ) !== null ) {
-				$needs_geocode = true;
-				$out          .= self::render_city_search( $section_id );
-			}
-			foreach ( $fields as $field ) {
-				$out .= self::render_field(
-					$section_name . '[' . $field['name'] . ']',
-					$field,
-					$section_prev[ $field['name'] ] ?? '',
-					$section_errs[ $field['name'] ] ?? ''
-				);
-			}
-			$out .= $optional ? '</details>' : '</fieldset>';
+			$out         .= self::render_fields( $section['fields'] ?? array(), $section_name, $section_id, $section_prev, $section_errs, $city_searches, $fold );
+			$out         .= $fold ? '</details>' : '</fieldset>';
 		}
-
-		// A spec that sets `fold_optional` keeps the flat fields a visitor must
-		// fill in in view and folds the optional rest under one Advanced group;
-		// a curated form lays out its own. A city search writes the coordinates
-		// and timezone wherever they sit in the form, so it goes beside the
-		// first location field a visitor has to fill in.
-		$fold        = ! empty( $spec['fold_optional'] );
-		$flat        = $spec['flat_fields'] ?? array();
-		$anchor      = self::geocode_anchor( $flat );
-		$shown_html  = '';
-		$folded_html = '';
-		$folded_open = false;
-		foreach ( $flat as $field ) {
-			$name  = (string) $field['name'];
-			$value = $prev[ $name ] ?? '';
-			$error = is_string( $errors_by_key[ $name ] ?? null ) ? $errors_by_key[ $name ] : '';
-			$html  = $name === $anchor ? self::render_city_search( $form_dom_id ) : '';
-			$html .= self::render_field( $name, $field, $value, $error );
-			if ( ! $fold || ! empty( $field['required'] ) ) {
-				$shown_html .= $html;
-				continue;
-			}
-			$folded_html .= $html;
-			$folded_open  = $folded_open || ( is_scalar( $value ) && (string) $value !== '' ) || $error !== '';
-		}
-		$out .= $shown_html;
-		if ( $folded_html !== '' ) {
-			$out .= self::open_group( $form_dom_id . '-advanced', __( 'Advanced', 'roxyapi' ), true, $folded_open )
-				. $folded_html
-				. '</details>';
-		}
-		if ( $needs_geocode || $anchor !== null ) {
+		$out .= self::render_fields( $spec['flat_fields'] ?? array(), '', $form_dom_id, $prev, $errors_by_key, $city_searches );
+		if ( $city_searches ) {
 			wp_enqueue_script( 'roxyapi-geocode' );
 		}
 
@@ -193,6 +158,43 @@ class FormRenderer {
 		$out            .= '</form>';
 		$out            .= '</div>';
 		return $out;
+	}
+
+	/**
+	 * Render controls in model order, folding only fields marked by the model.
+	 * Values and validation errors open their containing fold without JavaScript.
+	 *
+	 * @param array<int, array<string, mixed>> $fields        Field specs.
+	 * @param string                           $section       Posted section name, or empty for flat fields.
+	 * @param string                           $group_id      DOM id of the containing group.
+	 * @param array<string, mixed>             $previous      Submitted values.
+	 * @param array<string, mixed>             $errors        Validation errors.
+	 * @param array<string, string>            $city_searches City controls keyed by exact posted anchor name.
+	 * @param bool                             $group_folded Whether the containing section already folds.
+	 * @return string
+	 */
+	private static function render_fields( array $fields, string $section, string $group_id, array $previous, array $errors, array $city_searches, bool $group_folded = false ): string {
+		$shown_html  = '';
+		$folded_html = '';
+		$folded_open = false;
+		foreach ( $fields as $field ) {
+			$key   = (string) $field['name'];
+			$name  = $section === '' ? $key : $section . '[' . $key . ']';
+			$value = $previous[ $key ] ?? '';
+			$error = is_string( $errors[ $key ] ?? null ) ? $errors[ $key ] : '';
+			$html  = ( $city_searches[ $name ] ?? '' ) . self::render_field( $name, $field, $value, $error );
+			if ( $group_folded || empty( $field['fold'] ) ) {
+				$shown_html .= $html;
+				continue;
+			}
+			$folded_html .= $html;
+			$folded_open  = $folded_open || ( is_scalar( $value ) && (string) $value !== '' ) || $error !== '';
+		}
+		if ( $folded_html !== '' ) {
+			$shown_html .= self::open_group( $group_id . '-advanced', __( 'Advanced', 'roxyapi' ), true, $folded_open )
+				. $folded_html . '</details>';
+		}
+		return $shown_html;
 	}
 
 	/**
@@ -262,11 +264,11 @@ class FormRenderer {
 				if ( ! $required ) {
 					$out .= '<option value=""></option>';
 				}
-				foreach ( $enum as $opt ) {
+				foreach ( $enum as $index => $opt ) {
 					$opt_str  = (string) $opt;
 					$selected = $opt_str === $value_str ? ' selected' : '';
 					$out     .= '<option value="' . esc_attr( $opt_str ) . '"' . $selected . '>'
-						. esc_html( ucwords( str_replace( array( '-', '_' ), ' ', $opt_str ) ) )
+						. esc_html( (string) ( $field['enum_labels'][ $index ] ?? ucwords( str_replace( array( '-', '_' ), ' ', $opt_str ) ) ) )
 						. '</option>';
 				}
 				$out .= '</select>';
@@ -291,31 +293,17 @@ class FormRenderer {
 	}
 
 	/**
-	 * Whether every field in a section is optional.
-	 *
-	 * @param array<string,mixed> $section Section spec.
-	 */
-	private static function section_is_optional( array $section ): bool {
-		foreach ( ( $section['fields'] ?? array() ) as $field ) {
-			if ( ! empty( $field['required'] ) ) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	/**
-	 * Open a fieldset, or a `<details>` fold when nothing in it is required. A
+	 * Open a fieldset, or a `<details>` fold when the model requests it. A
 	 * fold opens on its own when it holds a value or an error.
 	 *
 	 * @param string $id       DOM id of the group.
 	 * @param string $label    Legend or summary text.
-	 * @param bool   $optional Whether every field in the group is optional.
+	 * @param bool   $fold     Whether the model folds this group.
 	 * @param bool   $open     Whether a fold starts open.
 	 * @return string
 	 */
-	private static function open_group( string $id, string $label, bool $optional, bool $open ): string {
-		if ( $optional ) {
+	private static function open_group( string $id, string $label, bool $fold, bool $open ): string {
+		if ( $fold ) {
 			return '<details class="roxyapi-form-section roxyapi-form-section--optional" id="' . esc_attr( $id ) . '"' . ( $open ? ' open' : '' ) . '>'
 				. '<summary>' . esc_html( $label ) . '</summary>';
 		}
@@ -324,50 +312,25 @@ class FormRenderer {
 	}
 
 	/**
-	 * The field a city search sits beside, or null when the fields hold no
-	 * latitude and longitude pair: the first required location field, else the
-	 * first location field. Short (`lat`/`lon`/`tz`) and long (`latitude`/
-	 * `longitude`/`timezone`) names both occur in the spec.
-	 *
-	 * @param array<int, array<string,mixed>> $fields Field specs.
-	 * @return string|null
-	 */
-	private static function geocode_anchor( array $fields ): ?string {
-		$geo   = array_values(
-			array_filter(
-				$fields,
-				static fn( $field ) => in_array( strtolower( (string) ( $field['name'] ?? '' ) ), array( 'lat', 'latitude', 'lon', 'longitude', 'tz', 'timezone' ), true )
-			)
-		);
-		$names = array_map( static fn( $field ) => strtolower( (string) $field['name'] ), $geo );
-		if ( ! array_intersect( array( 'lat', 'latitude' ), $names ) || ! array_intersect( array( 'lon', 'longitude' ), $names ) ) {
-			return null;
-		}
-		foreach ( $geo as $field ) {
-			if ( ! empty( $field['required'] ) ) {
-				return (string) $field['name'];
-			}
-		}
-		return (string) $geo[0]['name'];
-	}
-
-	/**
 	 * Render the visible city-search combobox. The matching JS attaches
-	 * autocomplete behaviour and writes to the lat / lon / tz inputs inside
+	 * autocomplete behaviour and writes to the exact posted names inside
 	 * the scope on selection. Without JS the field is a labelled hint and the
 	 * coordinate inputs remain fully usable.
 	 *
-	 * @param string $scope_id DOM id of the element holding the location fields.
+	 * @param string                $scope_id DOM id of the element holding the location fields.
+	 * @param array<string, string> $fields   Exact posted names keyed by latitude, longitude and timezone.
+	 * @param string                $group_id Distinguishes multiple location groups sharing a scope.
 	 * @return string
 	 */
-	private static function render_city_search( string $scope_id ): string {
-		$input_id = 'roxyapi-geocode-' . sanitize_html_class( $scope_id );
+	private static function render_city_search( string $scope_id, array $fields, string $group_id = '' ): string {
+		$input_id = 'roxyapi-geocode-' . sanitize_html_class( $scope_id . ( $group_id !== '' ? '-' . $group_id : '' ) );
 		$out      = '<p class="roxyapi-form-field roxyapi-form-geocode">';
 		$out     .= '<label for="' . esc_attr( $input_id ) . '">' . esc_html__( 'Find by city', 'roxyapi' ) . '</label>';
 		$out     .= '<input type="text" id="' . esc_attr( $input_id ) . '"'
 			. ' class="roxyapi-form-geocode-input"'
 			. ' placeholder="' . esc_attr__( 'Start typing a city name', 'roxyapi' ) . '"'
 			. ' data-roxyapi-geocode="' . esc_attr( '#' . $scope_id ) . '"'
+			. ' data-roxyapi-geocode-fields="' . esc_attr( (string) wp_json_encode( $fields ) ) . '"'
 			. ' autocomplete="off">';
 		$out     .= '<span class="roxyapi-form-help">' . esc_html__( 'Selecting a city auto-fills latitude, longitude, and timezone.', 'roxyapi' ) . '</span>';
 		$out     .= '</p>';

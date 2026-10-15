@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetKpRulingPlanetsForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getKpRulingPlanets',
 			'title'        => __( 'KP Ruling Planets with Optional Significators', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'latitude', 'section' => '', 'id' => '', 'fields' => array( 'latitude' => 'latitude', 'longitude' => 'longitude', 'timezone' => 'timezone' ) ) ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'latitude',
-					'label' => __( 'Latitude', 'roxyapi' ),
+					'label' => $labels['fields']['latitude'] ?? 'Latitude',
 					'required' => true,
 					'help' => __( 'Observer latitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -41,7 +42,7 @@ class GetKpRulingPlanetsForm {
 				),
 				array(
 					'name' => 'longitude',
-					'label' => __( 'Longitude', 'roxyapi' ),
+					'label' => $labels['fields']['longitude'] ?? 'Longitude',
 					'required' => true,
 					'help' => __( 'Observer longitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -53,7 +54,7 @@ class GetKpRulingPlanetsForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
@@ -65,7 +66,7 @@ class GetKpRulingPlanetsForm {
 				),
 				array(
 					'name' => 'datetime',
-					'label' => __( 'Date and time', 'roxyapi' ),
+					'label' => $labels['fields']['datetime'] ?? 'Date and time',
 					'required' => false,
 					'help' => __( 'ISO 8601 datetime (YYYY-MM-DDTHH:MM:SS) for ruling planets', 'roxyapi' ),
 					'type' => 'time',
@@ -74,7 +75,7 @@ class GetKpRulingPlanetsForm {
 				),
 				array(
 					'name' => 'birthDate',
-					'label' => __( 'Birth date', 'roxyapi' ),
+					'label' => $labels['fields']['birthDate'] ?? 'Birth date',
 					'required' => false,
 					'help' => __( 'Birth date (YYYY-MM-DD) to calculate significators', 'roxyapi' ),
 					'type' => 'date',
@@ -83,7 +84,7 @@ class GetKpRulingPlanetsForm {
 				),
 				array(
 					'name' => 'birthTime',
-					'label' => __( 'Birth time', 'roxyapi' ),
+					'label' => $labels['fields']['birthTime'] ?? 'Birth time',
 					'required' => false,
 					'help' => __( 'Birth time (HH:MM:SS) for significator calculation', 'roxyapi' ),
 					'type' => 'time',
@@ -92,25 +93,25 @@ class GetKpRulingPlanetsForm {
 				),
 				array(
 					'name' => 'nodeType',
-					'label' => __( 'Lunar node type', 'roxyapi' ),
+					'label' => $labels['fields']['nodeType'] ?? 'Lunar node type',
 					'required' => false,
 					'help' => __( 'Lunar node convention', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'mean', 'true' ),
 					'default' => 'mean',
-					'enum_labels' => array( __( 'Mean', 'roxyapi' ), __( 'True', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['nodeType.mean'] ?? 'Mean', $labels['enums']['nodeType.true'] ?? 'True' ),
 					'placeholder' => __( 'mean', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'focus',
-					'label' => __( 'Focus', 'roxyapi' ),
+					'label' => $labels['fields']['focus'] ?? 'Focus',
 					'required' => false,
 					'help' => __( 'Which signification vocabulary the houseThemes map returns', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'general', 'finance' ),
 					'default' => 'general',
-					'enum_labels' => array( __( 'General', 'roxyapi' ), __( 'Finance', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['focus.general'] ?? 'General', $labels['enums']['focus.finance'] ?? 'Finance' ),
 					'placeholder' => __( 'general', 'roxyapi' ),
 					'fold' => true,
 				),

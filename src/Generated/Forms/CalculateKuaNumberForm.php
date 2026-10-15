@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculateKuaNumberForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculateKuaNumber',
 			'title'        => __( 'Calculate Kua Number', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -38,24 +39,24 @@ class CalculateKuaNumberForm {
 				),
 				array(
 					'name' => 'gender',
-					'label' => __( 'Gender', 'roxyapi' ),
+					'label' => $labels['fields']['gender'] ?? 'Gender',
 					'required' => true,
 					'help' => __( 'Selects the Kua formula variant', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'male', 'female' ),
-					'enum_labels' => array( __( 'Male', 'roxyapi' ), __( 'Female', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['gender.male'] ?? 'Male', $labels['enums']['gender.female'] ?? 'Female' ),
 					'placeholder' => __( 'male', 'roxyapi' ),
 					'fold' => false,
 				),
 				array(
 					'name' => 'yearBoundary',
-					'label' => __( 'Year boundary', 'roxyapi' ),
+					'label' => $labels['fields']['yearBoundary'] ?? 'Year boundary',
 					'required' => false,
 					'help' => __( 'Which boundary starts the Chinese year', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'li-chun', 'lunar-new-year' ),
 					'default' => 'li-chun',
-					'enum_labels' => array( __( 'Li chun', 'roxyapi' ), __( 'Lunar new year', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['yearBoundary.li-chun'] ?? 'Li chun', $labels['enums']['yearBoundary.lunar-new-year'] ?? 'Lunar new year' ),
 					'placeholder' => __( 'li-chun', 'roxyapi' ),
 					'fold' => true,
 				),

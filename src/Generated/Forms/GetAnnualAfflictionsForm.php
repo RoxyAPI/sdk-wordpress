@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetAnnualAfflictionsForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getAnnualAfflictions',
 			'title'        => __( 'Annual Afflictions', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'year',
-					'label' => __( 'Year', 'roxyapi' ),
+					'label' => $labels['fields']['year'] ?? 'Year',
 					'required' => true,
 					'help' => __( 'Solar year, 1900 to 2100', 'roxyapi' ),
 					'type' => 'integer',

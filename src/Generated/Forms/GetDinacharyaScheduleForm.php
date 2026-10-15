@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetDinacharyaScheduleForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getDinacharyaSchedule',
 			'title'        => __( 'Dinacharya Daily Routine', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'latitude', 'section' => '', 'id' => '', 'fields' => array( 'latitude' => 'latitude', 'longitude' => 'longitude', 'timezone' => 'timezone' ) ) ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => true,
 					'help' => __( 'The local calendar date, in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -38,7 +39,7 @@ class GetDinacharyaScheduleForm {
 				),
 				array(
 					'name' => 'latitude',
-					'label' => __( 'Latitude', 'roxyapi' ),
+					'label' => $labels['fields']['latitude'] ?? 'Latitude',
 					'required' => true,
 					'help' => __( 'Latitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -50,7 +51,7 @@ class GetDinacharyaScheduleForm {
 				),
 				array(
 					'name' => 'longitude',
-					'label' => __( 'Longitude', 'roxyapi' ),
+					'label' => $labels['fields']['longitude'] ?? 'Longitude',
 					'required' => true,
 					'help' => __( 'Longitude in decimal degrees', 'roxyapi' ),
 					'type' => 'number',
@@ -62,7 +63,7 @@ class GetDinacharyaScheduleForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
@@ -74,13 +75,13 @@ class GetDinacharyaScheduleForm {
 				),
 				array(
 					'name' => 'doshaClock',
-					'label' => __( 'How the dosha periods are cut', 'roxyapi' ),
+					'label' => $labels['fields']['doshaClock'] ?? 'How the dosha periods are cut',
 					'required' => false,
 					'help' => __( 'How the six dosha periods are cut', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'sunrise-anchored', 'clock-hours' ),
 					'default' => 'sunrise-anchored',
-					'enum_labels' => array( __( 'Sunrise anchored', 'roxyapi' ), __( 'Clock hours', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['doshaClock.sunrise-anchored'] ?? 'Sunrise anchored', $labels['enums']['doshaClock.clock-hours'] ?? 'Clock hours' ),
 					'placeholder' => __( 'sunrise-anchored', 'roxyapi' ),
 					'fold' => true,
 				),

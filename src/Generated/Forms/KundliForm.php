@@ -30,10 +30,12 @@ class KundliForm {
 			'render_operation_id' => 'generateBirthChart',
 			'title'        => __( 'Vedic birth chart', 'roxyapi' ),
 			'submit_label' => __( 'Generate kundli', 'roxyapi' ),
+			'locations'    => array( array( 'anchor' => 'birth[birth_date]', 'section' => 'birth', 'id' => '', 'fields' => array( 'latitude' => 'birth[lat]', 'longitude' => 'birth[lon]', 'timezone' => 'birth[tz]' ) ) ),
 			'sections'     => array(
 			array(
 				'name'   => 'birth',
 				'label'  => __( 'Birth details', 'roxyapi' ),
+				'fold'   => false,
 				'fields' => array(
 					array(
 						'name' => 'birth_date',

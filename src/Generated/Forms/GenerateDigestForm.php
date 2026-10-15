@@ -18,20 +18,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GenerateDigestForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'generateDigest',
 			'title'        => __( 'Forecast Digest', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'birthData[timezone]', 'section' => 'birthData', 'id' => '', 'fields' => array( 'timezone' => 'birthData[timezone]', 'latitude' => 'birthData[latitude]', 'longitude' => 'birthData[longitude]' ) ) ),
 			'sections'     => array(
 				array(
 					'name'   => 'birthData',
-					'label'  => __( 'Birth Data', 'roxyapi' ),
+					'label'  => $labels['groups']['birthData'] ?? 'Birth Data',
 					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'date',
-						'label' => __( 'Date', 'roxyapi' ),
+						'label' => $labels['fields']['date'] ?? 'Date',
 						'required' => true,
 						'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 						'type' => 'date',
@@ -40,7 +41,7 @@ class GenerateDigestForm {
 					),
 					array(
 						'name' => 'time',
-						'label' => __( 'Time', 'roxyapi' ),
+						'label' => $labels['fields']['time'] ?? 'Time',
 						'required' => true,
 						'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 						'type' => 'time',
@@ -49,7 +50,7 @@ class GenerateDigestForm {
 					),
 					array(
 						'name' => 'timezone',
-						'label' => __( 'Timezone', 'roxyapi' ),
+						'label' => $labels['fields']['timezone'] ?? 'Timezone',
 						'required' => true,
 						'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 						'type' => 'timezone',
@@ -60,7 +61,7 @@ class GenerateDigestForm {
 					),
 					array(
 						'name' => 'latitude',
-						'label' => __( 'Latitude', 'roxyapi' ),
+						'label' => $labels['fields']['latitude'] ?? 'Latitude',
 						'required' => false,
 						'help' => __( 'Birth latitude in decimal degrees', 'roxyapi' ),
 						'type' => 'number',
@@ -73,7 +74,7 @@ class GenerateDigestForm {
 					),
 					array(
 						'name' => 'longitude',
-						'label' => __( 'Longitude', 'roxyapi' ),
+						'label' => $labels['fields']['longitude'] ?? 'Longitude',
 						'required' => false,
 						'help' => __( 'Birth longitude in decimal degrees', 'roxyapi' ),
 						'type' => 'number',
@@ -88,12 +89,12 @@ class GenerateDigestForm {
 				),
 				array(
 					'name'   => 'domainWeights',
-					'label'  => __( 'Domain Weights', 'roxyapi' ),
+					'label'  => $labels['groups']['domainWeights'] ?? 'Domain Weights',
 					'fold'   => true,
 					'fields' => array(
 					array(
 						'name' => 'western',
-						'label' => __( 'Western', 'roxyapi' ),
+						'label' => $labels['fields']['western'] ?? 'Western',
 						'required' => false,
 						'help' => __( 'Multiplier for this domain significance', 'roxyapi' ),
 						'type' => 'number',
@@ -105,7 +106,7 @@ class GenerateDigestForm {
 					),
 					array(
 						'name' => 'vedic',
-						'label' => __( 'Vedic', 'roxyapi' ),
+						'label' => $labels['fields']['vedic'] ?? 'Vedic',
 						'required' => false,
 						'help' => __( 'Multiplier for this domain significance', 'roxyapi' ),
 						'type' => 'number',
@@ -117,7 +118,7 @@ class GenerateDigestForm {
 					),
 					array(
 						'name' => 'biorhythm',
-						'label' => __( 'Biorhythm', 'roxyapi' ),
+						'label' => $labels['fields']['biorhythm'] ?? 'Biorhythm',
 						'required' => false,
 						'help' => __( 'Multiplier for this domain significance', 'roxyapi' ),
 						'type' => 'number',
@@ -133,7 +134,7 @@ class GenerateDigestForm {
 			'flat_fields'  => array(
 				array(
 					'name' => 'startDate',
-					'label' => __( 'Start date', 'roxyapi' ),
+					'label' => $labels['fields']['startDate'] ?? 'Start date',
 					'required' => false,
 					'help' => __( 'Start anchor for every window in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -142,7 +143,7 @@ class GenerateDigestForm {
 				),
 				array(
 					'name' => 'minSignificance',
-					'label' => __( 'Minimum significance', 'roxyapi' ),
+					'label' => $labels['fields']['minSignificance'] ?? 'Minimum significance',
 					'required' => false,
 					'help' => __( 'Drop events scoring below this significance threshold from 0 to 100 before the rollup', 'roxyapi' ),
 					'type' => 'number',
@@ -154,7 +155,7 @@ class GenerateDigestForm {
 				),
 				array(
 					'name' => 'top',
-					'label' => __( 'Top events per window', 'roxyapi' ),
+					'label' => $labels['fields']['top'] ?? 'Top events per window',
 					'required' => false,
 					'help' => __( 'Number of highest-significance events to surface per window', 'roxyapi' ),
 					'type' => 'integer',

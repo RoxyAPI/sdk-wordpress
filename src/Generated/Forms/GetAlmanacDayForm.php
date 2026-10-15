@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetAlmanacDayForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getAlmanacDay',
 			'title'        => __( 'Almanac for a Day', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'date',
-					'label' => __( 'Date', 'roxyapi' ),
+					'label' => $labels['fields']['date'] ?? 'Date',
 					'required' => true,
 					'help' => __( 'Gregorian date in YYYY-MM-DD format, evaluated at the reference meridian', 'roxyapi' ),
 					'type' => 'date',

@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GeneratePlanetaryReturnForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'generatePlanetaryReturn',
 			'title'        => __( 'Planetary Return Chart', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array( array( 'anchor' => 'latitude', 'section' => '', 'id' => '', 'fields' => array( 'latitude' => 'latitude', 'longitude' => 'longitude', 'timezone' => 'timezone' ) ) ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'birthDate',
-					'label' => __( 'Birth date', 'roxyapi' ),
+					'label' => $labels['fields']['birthDate'] ?? 'Birth date',
 					'required' => true,
 					'help' => __( 'Original birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
@@ -38,7 +39,7 @@ class GeneratePlanetaryReturnForm {
 				),
 				array(
 					'name' => 'birthTime',
-					'label' => __( 'Birth time', 'roxyapi' ),
+					'label' => $labels['fields']['birthTime'] ?? 'Birth time',
 					'required' => true,
 					'help' => __( 'Original birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 					'type' => 'time',
@@ -47,18 +48,18 @@ class GeneratePlanetaryReturnForm {
 				),
 				array(
 					'name' => 'planet',
-					'label' => __( 'Planet', 'roxyapi' ),
+					'label' => $labels['fields']['planet'] ?? 'Planet',
 					'required' => true,
 					'help' => __( 'Planet for the return calculation', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn' ),
-					'enum_labels' => array( __( 'Mercury', 'roxyapi' ), __( 'Venus', 'roxyapi' ), __( 'Mars', 'roxyapi' ), __( 'Jupiter', 'roxyapi' ), __( 'Saturn', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['planet.Mercury'] ?? 'Mercury', $labels['enums']['planet.Venus'] ?? 'Venus', $labels['enums']['planet.Mars'] ?? 'Mars', $labels['enums']['planet.Jupiter'] ?? 'Jupiter', $labels['enums']['planet.Saturn'] ?? 'Saturn' ),
 					'placeholder' => __( 'Jupiter', 'roxyapi' ),
 					'fold' => false,
 				),
 				array(
 					'name' => 'approximateDate',
-					'label' => __( 'Approximate date', 'roxyapi' ),
+					'label' => $labels['fields']['approximateDate'] ?? 'Approximate date',
 					'required' => true,
 					'help' => __( 'Approximate date near the expected planetary return (YYYY-MM-DD)', 'roxyapi' ),
 					'type' => 'date',
@@ -67,7 +68,7 @@ class GeneratePlanetaryReturnForm {
 				),
 				array(
 					'name' => 'latitude',
-					'label' => __( 'Latitude', 'roxyapi' ),
+					'label' => $labels['fields']['latitude'] ?? 'Latitude',
 					'required' => true,
 					'help' => __( 'Latitude of the return location in decimal degrees (-90 to 90)', 'roxyapi' ),
 					'type' => 'number',
@@ -79,7 +80,7 @@ class GeneratePlanetaryReturnForm {
 				),
 				array(
 					'name' => 'longitude',
-					'label' => __( 'Longitude', 'roxyapi' ),
+					'label' => $labels['fields']['longitude'] ?? 'Longitude',
 					'required' => true,
 					'help' => __( 'Longitude of the return location in decimal degrees (-180 to 180).', 'roxyapi' ),
 					'type' => 'number',
@@ -91,7 +92,7 @@ class GeneratePlanetaryReturnForm {
 				),
 				array(
 					'name' => 'timezone',
-					'label' => __( 'Timezone', 'roxyapi' ),
+					'label' => $labels['fields']['timezone'] ?? 'Timezone',
 					'required' => true,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
@@ -102,13 +103,13 @@ class GeneratePlanetaryReturnForm {
 				),
 				array(
 					'name' => 'houseSystem',
-					'label' => __( 'House system', 'roxyapi' ),
+					'label' => $labels['fields']['houseSystem'] ?? 'House system',
 					'required' => false,
 					'help' => __( 'House system for the return chart', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'placidus', 'whole-sign', 'equal', 'koch' ),
 					'default' => 'placidus',
-					'enum_labels' => array( __( 'Placidus', 'roxyapi' ), __( 'Whole sign', 'roxyapi' ), __( 'Equal', 'roxyapi' ), __( 'Koch', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['houseSystem.placidus'] ?? 'Placidus', $labels['enums']['houseSystem.whole-sign'] ?? 'Whole sign', $labels['enums']['houseSystem.equal'] ?? 'Equal', $labels['enums']['houseSystem.koch'] ?? 'Koch' ),
 					'placeholder' => __( 'placidus', 'roxyapi' ),
 					'fold' => true,
 				),

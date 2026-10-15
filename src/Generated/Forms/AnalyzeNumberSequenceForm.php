@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class AnalyzeNumberSequenceForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'analyzeNumberSequence',
 			'title'        => __( 'Number Sequence', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'number',
-					'label' => __( 'Number', 'roxyapi' ),
+					'label' => $labels['fields']['number'] ?? 'Number',
 					'required' => true,
 					'help' => __( 'Number sequence to analyze (1-8 digits)', 'roxyapi' ),
 					'type' => 'text',
@@ -38,12 +39,12 @@ class AnalyzeNumberSequenceForm {
 				),
 				array(
 					'name' => 'context',
-					'label' => __( 'Where you saw it', 'roxyapi' ),
+					'label' => $labels['fields']['context'] ?? 'Where you saw it',
 					'required' => false,
 					'help' => __( 'Where the number was seen', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'clock', 'receipt', 'license-plate', 'phone', 'address', 'price' ),
-					'enum_labels' => array( __( 'Clock', 'roxyapi' ), __( 'Receipt', 'roxyapi' ), __( 'License plate', 'roxyapi' ), __( 'Phone', 'roxyapi' ), __( 'Address', 'roxyapi' ), __( 'Price', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['context.clock'] ?? 'Clock', $labels['enums']['context.receipt'] ?? 'Receipt', $labels['enums']['context.license-plate'] ?? 'License plate', $labels['enums']['context.phone'] ?? 'Phone', $labels['enums']['context.address'] ?? 'Address', $labels['enums']['context.price'] ?? 'Price' ),
 					'placeholder' => __( 'clock', 'roxyapi' ),
 					'fold' => true,
 				),

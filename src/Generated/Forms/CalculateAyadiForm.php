@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CalculateAyadiForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'calculateAyadi',
 			'title'        => __( 'Ayadi Shadvarga', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'length',
-					'label' => __( 'Length', 'roxyapi' ),
+					'label' => $labels['fields']['length'] ?? 'Length',
 					'required' => true,
 					'help' => __( 'Length of the building or room, in the unit given', 'roxyapi' ),
 					'type' => 'number',
@@ -40,7 +41,7 @@ class CalculateAyadiForm {
 				),
 				array(
 					'name' => 'breadth',
-					'label' => __( 'Breadth', 'roxyapi' ),
+					'label' => $labels['fields']['breadth'] ?? 'Breadth',
 					'required' => true,
 					'help' => __( 'Breadth of the building or room, in the unit given', 'roxyapi' ),
 					'type' => 'number',
@@ -51,7 +52,7 @@ class CalculateAyadiForm {
 				),
 				array(
 					'name' => 'perimeter',
-					'label' => __( 'Perimeter', 'roxyapi' ),
+					'label' => $labels['fields']['perimeter'] ?? 'Perimeter',
 					'required' => false,
 					'help' => __( 'Perimeter of the plan, if it is not simply twice the length plus twice the breadth', 'roxyapi' ),
 					'type' => 'number',
@@ -62,7 +63,7 @@ class CalculateAyadiForm {
 				),
 				array(
 					'name' => 'circumference',
-					'label' => __( 'Circumference', 'roxyapi' ),
+					'label' => $labels['fields']['circumference'] ?? 'Circumference',
 					'required' => false,
 					'help' => __( 'Circumference or height, if the Manasara vara and tithi formulas should read something other than the perimeter', 'roxyapi' ),
 					'type' => 'number',
@@ -73,19 +74,19 @@ class CalculateAyadiForm {
 				),
 				array(
 					'name' => 'unit',
-					'label' => __( 'Unit', 'roxyapi' ),
+					'label' => $labels['fields']['unit'] ?? 'Unit',
 					'required' => false,
 					'help' => __( 'Unit the Ayadi dimensions are given in', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'hasta', 'feet', 'metres' ),
 					'default' => 'hasta',
-					'enum_labels' => array( __( 'Hasta', 'roxyapi' ), __( 'Feet', 'roxyapi' ), __( 'Metres', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['unit.hasta'] ?? 'Hasta', $labels['enums']['unit.feet'] ?? 'Feet', $labels['enums']['unit.metres'] ?? 'Metres' ),
 					'placeholder' => __( 'hasta', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'hastaInches',
-					'label' => __( 'Length of one hasta in inches', 'roxyapi' ),
+					'label' => $labels['fields']['hastaInches'] ?? 'Length of one hasta in inches',
 					'required' => false,
 					'help' => __( 'Length of one hasta, the classical cubit, in inches', 'roxyapi' ),
 					'type' => 'number',
@@ -97,25 +98,25 @@ class CalculateAyadiForm {
 				),
 				array(
 					'name' => 'ayadiText',
-					'label' => __( 'Ayadi text family', 'roxyapi' ),
+					'label' => $labels['fields']['ayadiText'] ?? 'Ayadi text family',
 					'required' => false,
 					'help' => __( 'Which family of Ayadi formulas to apply', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'manasara', 'perimeter-texts', 'utpala' ),
 					'default' => 'manasara',
-					'enum_labels' => array( __( 'Manasara', 'roxyapi' ), __( 'Perimeter texts', 'roxyapi' ), __( 'Utpala', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['ayadiText.manasara'] ?? 'Manasara', $labels['enums']['ayadiText.perimeter-texts'] ?? 'Perimeter texts', $labels['enums']['ayadiText.utpala'] ?? 'Utpala' ),
 					'placeholder' => __( 'manasara', 'roxyapi' ),
 					'fold' => true,
 				),
 				array(
 					'name' => 'vyayaFormula',
-					'label' => __( 'Vyaya formula', 'roxyapi' ),
+					'label' => $labels['fields']['vyayaFormula'] ?? 'Vyaya formula',
 					'required' => false,
 					'help' => __( 'Which vyaya formula the perimeter family uses', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'p9-10', 'p3-14' ),
 					'default' => 'p9-10',
-					'enum_labels' => array( __( 'P 9 10', 'roxyapi' ), __( 'P 3 14', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['vyayaFormula.p9-10'] ?? 'P 9 10', $labels['enums']['vyayaFormula.p3-14'] ?? 'P 3 14' ),
 					'placeholder' => __( 'p9-10', 'roxyapi' ),
 					'fold' => true,
 				),

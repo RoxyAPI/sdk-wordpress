@@ -18,18 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GetPhasesForm {
 
 	public static function spec(): array {
+		$labels = \RoxyAPI\Generated\FormLabels::for_language( \RoxyAPI\Support\Language::from_locale( determine_locale() ) );
 		return array(
 			'operation_id' => 'getPhases',
 			'title'        => __( 'Phase Info', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
-			'fold_optional' => true,
+			'locations'    => array(  ),
 			'sections'     => array(
 
 			),
 			'flat_fields'  => array(
 				array(
 					'name' => 'birthDate',
-					'label' => __( 'Birth date', 'roxyapi' ),
+					'label' => $labels['fields']['birthDate'] ?? 'Birth date',
 					'required' => true,
 					'help' => __( 'Birth date of the person in YYYY-MM-DD format.', 'roxyapi' ),
 					'type' => 'date',
@@ -38,7 +39,7 @@ class GetPhasesForm {
 				),
 				array(
 					'name' => 'targetDate',
-					'label' => __( 'Target date', 'roxyapi' ),
+					'label' => $labels['fields']['targetDate'] ?? 'Target date',
 					'required' => false,
 					'help' => __( 'Date to get phase information for in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
