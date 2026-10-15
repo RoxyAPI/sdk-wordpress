@@ -1,0 +1,3150 @@
+{
+	"version": "1.20.0",
+	"shortcodes": {
+		"roxy_analyze_karmic_lessons": [
+			"full_name",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_analyze_number_sequence": [
+			"lang",
+			"number",
+			"context",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_angel_number": [
+			"number",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_biorhythm": [
+			"birth_date",
+			"target_date",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_bodygraph": [
+			"birth_date",
+			"birth_time",
+			"lat",
+			"lon",
+			"tz",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_annual_forecast": [
+			"date",
+			"time",
+			"timezone",
+			"latitude",
+			"longitude",
+			"day_boundary",
+			"year_boundary",
+			"hour_clock",
+			"year",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_arabic_lots": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"node_type",
+			"house_system",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_arudha_padas": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_ashtakavarga": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_aspects": [
+			"date",
+			"time",
+			"timezone",
+			"planets",
+			"aspect_types",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_ayadi": [
+			"length",
+			"breadth",
+			"perimeter",
+			"circumference",
+			"unit",
+			"hasta_inches",
+			"ayadi_text",
+			"vyaya_formula",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_ayurvedic_constitution": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"sign_dosha_scheme",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_bazi_compatibility": [
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_bhav_chalit": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"lang",
+			"focus",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_bhava_bala": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"lang",
+			"focus",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_bio_compatibility": [
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_birth_day": [
+			"day",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_bridge_numbers": [
+			"full_name",
+			"year",
+			"month",
+			"day",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_business_name": [
+			"name",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_centers": [
+			"date",
+			"time",
+			"timezone",
+			"latitude",
+			"longitude",
+			"node_type",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_chaldean": [
+			"name",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_channels": [
+			"date",
+			"time",
+			"timezone",
+			"latitude",
+			"longitude",
+			"node_type",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_chara_karakas": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"scheme",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_compatibility": [ "hide_readings", "hide_sections" ],
+		"roxy_calculate_connection": [ "hide_readings", "hide_sections" ],
+		"roxy_calculate_dashakoot": [ "hide_readings", "hide_sections" ],
+		"roxy_calculate_day_master_strength": [
+			"date",
+			"time",
+			"timezone",
+			"latitude",
+			"longitude",
+			"day_boundary",
+			"year_boundary",
+			"hour_clock",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_drishti": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"coordinate_system",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_dual": [
+			"name",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_entrance_pada": [ "hide_readings", "hide_sections" ],
+		"roxy_calculate_expression": [
+			"full_name",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_gates": [
+			"date",
+			"time",
+			"timezone",
+			"latitude",
+			"longitude",
+			"node_type",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_gematria": [
+			"text",
+			"text_hebrew",
+			"transliteration",
+			"ciphers",
+			"mispar_gadol",
+			"atbash_output",
+			"include_matches",
+			"latin_ciphers",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_gun_milan": [ "hide_readings", "hide_sections" ],
+		"roxy_calculate_houses": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"house_system",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_kua_number": [
+			"date",
+			"gender",
+			"year_boundary",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_luck_pillars": [
+			"date",
+			"time",
+			"timezone",
+			"latitude",
+			"longitude",
+			"day_boundary",
+			"year_boundary",
+			"hour_clock",
+			"gender",
+			"count",
+			"annual_from_year",
+			"annual_years",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_lunar_date": [
+			"date",
+			"lunar_year",
+			"lunar_month",
+			"lunar_day",
+			"is_leap_month",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_maturity": [
+			"life_path",
+			"expression",
+			"full_name",
+			"year",
+			"month",
+			"day",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_mayan_compatibility": [
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_name_compatibility": [
+			"first_name",
+			"first_name_hebrew",
+			"second_name",
+			"second_name_hebrew",
+			"transliteration",
+			"mispar_gadol",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_num_compatibility": [
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_papasamyam": [ "hide_readings", "hide_sections" ],
+		"roxy_calculate_parallels": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"orb",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_penta": [ "hide_readings", "hide_sections" ],
+		"roxy_calculate_personal_day": [
+			"month",
+			"day",
+			"target_date",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_personal_month": [
+			"month",
+			"day",
+			"year",
+			"target_month",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_personal_year": [
+			"month",
+			"day",
+			"year",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_personality": [
+			"full_name",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_plot_analysis": [ "hide_readings", "hide_sections" ],
+		"roxy_calculate_profile": [
+			"date",
+			"time",
+			"timezone",
+			"latitude",
+			"longitude",
+			"node_type",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_room_compliance": [ "hide_readings", "hide_sections" ],
+		"roxy_calculate_shadbala": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_soul_urge": [
+			"full_name",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_synastry": [ "hide_readings", "hide_sections" ],
+		"roxy_calculate_tonalpohualli": [
+			"date",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_transit": [
+			"birth_date",
+			"birth_time",
+			"transit_date",
+			"transit_time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"coordinate_system",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_transit_aspects": [ "hide_readings", "hide_sections" ],
+		"roxy_calculate_transits": [
+			"date",
+			"time",
+			"timezone",
+			"node_type",
+			"natal_chart",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_type": [
+			"date",
+			"time",
+			"timezone",
+			"latitude",
+			"longitude",
+			"node_type",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_tzolkin": [
+			"date",
+			"correlation",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_variables": [
+			"date",
+			"time",
+			"timezone",
+			"latitude",
+			"longitude",
+			"node_type",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_calculate_zodiac_animal": [
+			"date",
+			"year_boundary",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_cast_career_spread": [
+			"question",
+			"seed",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_cast_celtic_cross": [
+			"question",
+			"seed",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_cast_custom_spread": [ "hide_readings", "hide_sections" ],
+		"roxy_cast_daily_reading": [
+			"seed",
+			"date",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_cast_kp_horary_chart": [
+			"horary_number",
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"node_type",
+			"lang",
+			"focus",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_cast_love_spread": [
+			"question",
+			"seed",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_cast_reading": [
+			"lang",
+			"seed",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_cast_three_card": [
+			"question",
+			"seed",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_check_kalsarpa_dosha": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_check_karmic_debt": [
+			"year",
+			"month",
+			"day",
+			"full_name",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_check_sadhesati": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_compatibility": [ "hide_readings", "hide_sections" ],
+		"roxy_convert_long_count": [
+			"date",
+			"long_count",
+			"correlation",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_crystals_by_zodiac": [
+			"sign",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_detect_aspect_patterns": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"node_type",
+			"lang",
+			"strict_orbs",
+			"include",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_detect_yogas": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_draw_cards": [
+			"count",
+			"seed",
+			"allow_reversals",
+			"allow_duplicates",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_find_griha_pravesh_dates": [
+			"start_date",
+			"end_date",
+			"latitude",
+			"longitude",
+			"timezone",
+			"muhurta_text",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_find_significant_dates": [ "hide_readings", "hide_sections" ],
+		"roxy_forecast": [ "hide_readings", "hide_sections" ],
+		"roxy_forecast_solar_return": [
+			"date",
+			"time",
+			"year",
+			"latitude",
+			"longitude",
+			"timezone",
+			"house_system",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_forecast_transits": [ "hide_readings", "hide_sections" ],
+		"roxy_generate_asteroids": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"node_type",
+			"house_system",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_astrocartography": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"node_type",
+			"lang",
+			"include",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_bazi_chart": [
+			"date",
+			"time",
+			"timezone",
+			"latitude",
+			"longitude",
+			"day_boundary",
+			"year_boundary",
+			"hour_clock",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_birth_profile": [
+			"date",
+			"time",
+			"timezone",
+			"angel_dating",
+			"year_start",
+			"leap_day_policy",
+			"after_sunset",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_bodygraph": [
+			"date",
+			"time",
+			"timezone",
+			"latitude",
+			"longitude",
+			"node_type",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_composite_chart": [ "hide_readings", "hide_sections" ],
+		"roxy_generate_digest": [ "hide_readings", "hide_sections" ],
+		"roxy_generate_divisional_chart": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"division",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_eight_mansions": [
+			"kua",
+			"date",
+			"gender",
+			"year_boundary",
+			"facing",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_fixed_stars": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"node_type",
+			"lang",
+			"orb",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_flying_star_chart": [
+			"period",
+			"facing",
+			"facing_degrees",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_lilith": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"node_type",
+			"house_system",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_local_space": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"lang",
+			"include",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_lunar_return": [
+			"birth_date",
+			"birth_time",
+			"return_date",
+			"latitude",
+			"longitude",
+			"timezone",
+			"house_system",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_mandala": [ "hide_readings", "hide_sections" ],
+		"roxy_generate_mayan_chart": [
+			"date",
+			"correlation",
+			"year_bearer_system",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_name_profile": [
+			"name",
+			"name_hebrew",
+			"transliteration",
+			"mispar_gadol",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_navamsa": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_planetary_return": [
+			"birth_date",
+			"birth_time",
+			"planet",
+			"approximate_date",
+			"latitude",
+			"longitude",
+			"timezone",
+			"house_system",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_profections": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"node_type",
+			"target_date",
+			"house_system",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_progressions": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"node_type",
+			"target_date",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_relocation_chart": [
+			"date",
+			"time",
+			"timezone",
+			"birth_latitude",
+			"birth_longitude",
+			"relocation_latitude",
+			"relocation_longitude",
+			"house_system",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_solar_arc": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"node_type",
+			"target_date",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_solar_return": [
+			"birth_date",
+			"birth_time",
+			"return_year",
+			"latitude",
+			"longitude",
+			"timezone",
+			"house_system",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_generate_timeline": [ "hide_readings", "hide_sections" ],
+		"roxy_generate_transit": [ "hide_readings", "hide_sections" ],
+		"roxy_get_almanac_day": [
+			"date",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_annual_afflictions": [
+			"year",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_annual_flying_stars": [
+			"year",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_avastha": [
+			"id",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_aztec_day_sign": [
+			"id",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_aztec_trecena": [
+			"number",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_bagua_sector": [
+			"id",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_basic_panchang": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_birthstones": [
+			"month",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_card": [ "id", "lang", "hide_readings", "hide_sections" ],
+		"roxy_get_center": [
+			"id",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_choghadiya": [
+			"date",
+			"latitude",
+			"longitude",
+			"timezone",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_cities_by_country": [
+			"iso2",
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_compound_number": [
+			"number",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_critical_days": [
+			"birth_date",
+			"start_date",
+			"end_date",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_crystal": [ "id", "lang", "hide_readings", "hide_sections" ],
+		"roxy_get_crystal_pairings": [
+			"id",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_crystals_by_chakra": [
+			"chakra",
+			"lang",
+			"limit",
+			"offset",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_crystals_by_element": [
+			"element",
+			"lang",
+			"limit",
+			"offset",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_current_dasha": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"significators",
+			"node_type",
+			"datetime",
+			"lang",
+			"focus",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_daily_angel_number": [
+			"seed",
+			"date",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_daily_ayurveda_reading": [
+			"lang",
+			"date",
+			"latitude",
+			"longitude",
+			"timezone",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_daily_aztec_reading": [
+			"lang",
+			"date",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_daily_biorhythm": [
+			"seed",
+			"date",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_daily_crystal": [
+			"seed",
+			"date",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_daily_dream_symbol": [
+			"seed",
+			"date",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_daily_hexagram": [
+			"seed",
+			"date",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_daily_mayan_reading": [
+			"lang",
+			"date",
+			"correlation",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_daily_number": [
+			"seed",
+			"date",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_daily_sephirah": [
+			"lang",
+			"date",
+			"timezone",
+			"after_sunset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_daily_zodiac_reading": [
+			"id",
+			"lang",
+			"date",
+			"timezone",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_devata": [
+			"id",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_dikpala_direction": [
+			"id",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_dinacharya_schedule": [
+			"date",
+			"latitude",
+			"longitude",
+			"timezone",
+			"dosha_clock",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_dosha": [
+			"id",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_dream_symbol": [ "id", "hide_readings", "hide_sections" ],
+		"roxy_get_ecliptic_crossings": [
+			"year",
+			"timezone",
+			"coordinate_system",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_field_labels": [ "lang", "hide_readings", "hide_sections" ],
+		"roxy_get_forecast": [
+			"birth_date",
+			"start_date",
+			"end_date",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_gate": [
+			"number",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_haab_month": [
+			"id",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_hebrew_letter": [
+			"id",
+			"lang",
+			"letter_attribution",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_heliacal_visibility": [
+			"date",
+			"latitude",
+			"longitude",
+			"timezone",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_hexagram": [
+			"number",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_hora": [
+			"date",
+			"latitude",
+			"longitude",
+			"timezone",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_kp_ayanamsa": [
+			"date",
+			"time",
+			"timezone",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_kp_cusps": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"lang",
+			"focus",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_kp_daily_finance": [
+			"birth_date",
+			"birth_time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"date",
+			"time",
+			"ayanamsa",
+			"node_type",
+			"gain_houses",
+			"loss_houses",
+			"weights",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_kp_planets": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"node_type",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_kp_planets_interval": [
+			"start_datetime",
+			"end_datetime",
+			"interval_minutes",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"node_type",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_kp_rasi_changes": [
+			"planet",
+			"start_date",
+			"end_date",
+			"timezone",
+			"ayanamsa",
+			"node_type",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_kp_ruling_interval": [
+			"start_datetime",
+			"end_datetime",
+			"interval_minutes",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"node_type",
+			"lang",
+			"focus",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_kp_ruling_planets": [
+			"latitude",
+			"longitude",
+			"timezone",
+			"datetime",
+			"birth_date",
+			"birth_time",
+			"node_type",
+			"lang",
+			"focus",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_kp_sublord_changes": [
+			"planet",
+			"start_date",
+			"end_date",
+			"timezone",
+			"ayanamsa",
+			"node_type",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_kua_number": [
+			"number",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_lunar_aspects": [
+			"year",
+			"month",
+			"timezone",
+			"coordinate_system",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_major_dashas": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"significators",
+			"node_type",
+			"lang",
+			"focus",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_mayan_day_sign": [
+			"id",
+			"lang",
+			"direction_scheme",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_monthly_almanac": [
+			"lang",
+			"year",
+			"month",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_monthly_aspects": [
+			"year",
+			"month",
+			"timezone",
+			"coordinate_system",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_monthly_declination_parallels": [
+			"year",
+			"month",
+			"timezone",
+			"orb",
+			"node_type",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_monthly_ephemeris": [
+			"year",
+			"month",
+			"coordinate_system",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_monthly_flying_stars": [
+			"lang",
+			"year",
+			"month",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_monthly_horoscope": [
+			"sign",
+			"lang",
+			"date",
+			"timezone",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_monthly_parallels": [
+			"year",
+			"month",
+			"timezone",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_monthly_transits": [
+			"year",
+			"month",
+			"timezone",
+			"coordinate_system",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_monthly_tropical_aspects": [
+			"year",
+			"month",
+			"timezone",
+			"node_type",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_monthly_tropical_ephemeris": [
+			"year",
+			"month",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_monthly_tropical_transits": [
+			"year",
+			"month",
+			"timezone",
+			"node_type",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_monthly_tzolkin_calendar": [
+			"lang",
+			"year",
+			"month",
+			"correlation",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_moon_calendar": [
+			"year",
+			"month",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_nakshatra": [
+			"id",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_number_meaning": [
+			"number",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_phases": [
+			"birth_date",
+			"target_date",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_planet_meaning": [
+			"id",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_planet_positions": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_planetary_node_passages": [
+			"year",
+			"timezone",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_planetary_positions": [
+			"date",
+			"time",
+			"node_type",
+			"latitude",
+			"longitude",
+			"timezone",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_prana_dashas": [
+			"mahadasha",
+			"antardasha",
+			"pratyantardasha",
+			"sookshma",
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"significators",
+			"node_type",
+			"lang",
+			"focus",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_pratyantardashas": [
+			"mahadasha",
+			"antardasha",
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"significators",
+			"node_type",
+			"lang",
+			"focus",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_random_crystal": [ "lang", "hide_readings", "hide_sections" ],
+		"roxy_get_random_hexagram": [
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_random_symbols": [
+			"count",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_rashi": [
+			"id",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_ritucharya": [
+			"date",
+			"ritucharya_scheme",
+			"ritu_zodiac",
+			"hemisphere",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_sephirah": [
+			"id",
+			"lang",
+			"sephirot_system",
+			"letter_attribution",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_shem_name": [
+			"number",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_sookshma_dashas": [
+			"mahadasha",
+			"antardasha",
+			"pratyantardasha",
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"significators",
+			"node_type",
+			"lang",
+			"focus",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_sub_dashas": [
+			"mahadasha",
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"significators",
+			"node_type",
+			"lang",
+			"focus",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_symbol_letter_counts": [ "hide_readings", "hide_sections" ],
+		"roxy_get_trecena": [
+			"number",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_tree_of_life": [
+			"lang",
+			"tree_variant",
+			"sephirot_system",
+			"letter_attribution",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_trigram": [ "id", "lang", "hide_readings", "hide_sections" ],
+		"roxy_get_upagraha_positions": [
+			"date",
+			"time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"ayanamsa",
+			"ayanamsa_value",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_upcoming_moon_phases": [
+			"lang",
+			"start_date",
+			"count",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_usage_stats": [ "hide_readings", "hide_sections" ],
+		"roxy_get_vedic_daily_reading": [
+			"birth_date",
+			"birth_time",
+			"latitude",
+			"longitude",
+			"timezone",
+			"date",
+			"node_type",
+			"lang",
+			"focus",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_weekly_horoscope": [
+			"sign",
+			"lang",
+			"date",
+			"timezone",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_yearly_horoscope": [
+			"sign",
+			"lang",
+			"year",
+			"timezone",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_yoga": [
+			"id",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_zodiac_animal": [
+			"id",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_zodiac_compatibility": [
+			"sign1",
+			"sign2",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_get_zodiac_sign": [
+			"id",
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_gun_milan": [ "hide_readings", "hide_sections" ],
+		"roxy_horoscope": [
+			"sign",
+			"date",
+			"period",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_kp_chart": [
+			"birth_date",
+			"birth_time",
+			"lat",
+			"lon",
+			"tz",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_kundli": [
+			"birth_date",
+			"birth_time",
+			"lat",
+			"lon",
+			"tz",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_life_path": [
+			"birth_date",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_angel_numbers": [
+			"lang",
+			"limit",
+			"offset",
+			"type",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_avasthas": [
+			"lang",
+			"system",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_aztec_day_signs": [
+			"lang",
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_aztec_trecenas": [
+			"lang",
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_bagua_sectors": [
+			"lang",
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_cards": [
+			"lang",
+			"limit",
+			"offset",
+			"arcana",
+			"suit",
+			"number",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_countries": [
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_crystal_colors": [
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_crystal_planets": [
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_crystals": [
+			"lang",
+			"chakra",
+			"zodiac",
+			"element",
+			"color",
+			"planet",
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_devatas": [
+			"lang",
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_dikpala_directions": [
+			"lang",
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_doshas": [
+			"lang",
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_five_elements": [
+			"lang",
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_flying_stars": [
+			"lang",
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_gematria_ciphers": [
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_gunas": [
+			"lang",
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_haab_months": [
+			"lang",
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_hebrew_letters": [
+			"lang",
+			"letter_attribution",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_hexagrams": [
+			"lang",
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_languages": [ "hide_readings", "hide_sections" ],
+		"roxy_list_mayan_day_signs": [
+			"lang",
+			"direction_scheme",
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_nakshatras": [ "lang", "hide_readings", "hide_sections" ],
+		"roxy_list_nine_periods": [
+			"lang",
+			"date",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_planet_meanings": [
+			"lang",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_rasas": [
+			"lang",
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_rashis": [ "lang", "hide_readings", "hide_sections" ],
+		"roxy_list_shem_names": [
+			"lang",
+			"limit",
+			"offset",
+			"longitude",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_solar_terms": [
+			"year",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_trecenas": [
+			"lang",
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_trigrams": [ "lang", "hide_readings", "hide_sections" ],
+		"roxy_list_yogas": [
+			"lang",
+			"family",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_zodiac_animals": [
+			"lang",
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_list_zodiac_signs": [ "lang", "hide_readings", "hide_sections" ],
+		"roxy_lookup_auspicious_days": [
+			"activity",
+			"start_date",
+			"end_date",
+			"avoid_animal",
+			"lang",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_lookup_hexagram": [
+			"lang",
+			"lines",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_mangal_dosha": [
+			"birth_date",
+			"birth_time",
+			"lat",
+			"lon",
+			"tz",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_moon_phase": [ "hide_readings", "hide_sections" ],
+		"roxy_natal_chart": [
+			"birth_date",
+			"birth_time",
+			"lat",
+			"lon",
+			"tz",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_numerology": [
+			"name",
+			"birth_date",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_panchang": [
+			"date",
+			"lat",
+			"lon",
+			"tz",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_search_cities": [
+			"q",
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_search_crystals": [
+			"lang",
+			"q",
+			"limit",
+			"offset",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_search_dream_symbols": [
+			"q",
+			"letter",
+			"limit",
+			"offset",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_synastry": [ "hide_readings", "hide_sections" ],
+		"roxy_tarot_card": [
+			"spread",
+			"question",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		],
+		"roxy_tarot_yes_no": [
+			"question",
+			"mode",
+			"hide_readings",
+			"hide_sections"
+		]
+	},
+	"forms": {
+		"analyzeKarmicLessons": [ "fullName" ],
+		"analyzeNumberSequence": [ "context", "number" ],
+		"angelNumber": [ "number" ],
+		"biorhythm": [ "birth_date", "target_date" ],
+		"bodygraph": [
+			"birth[birth_date]",
+			"birth[birth_time]",
+			"birth[lat]",
+			"birth[lon]",
+			"birth[tz]"
+		],
+		"calculateAnnualForecast": [
+			"date",
+			"dayBoundary",
+			"hourClock",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone",
+			"year",
+			"yearBoundary"
+		],
+		"calculateArabicLots": [
+			"date",
+			"houseSystem",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"time",
+			"timezone"
+		],
+		"calculateArudhaPadas": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone"
+		],
+		"calculateAshtakavarga": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone"
+		],
+		"calculateAspects": [ "date", "time", "timezone" ],
+		"calculateAyadi": [
+			"ayadiText",
+			"breadth",
+			"circumference",
+			"hastaInches",
+			"length",
+			"perimeter",
+			"unit",
+			"vyayaFormula"
+		],
+		"calculateAyurvedicConstitution": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"signDoshaScheme",
+			"time",
+			"timezone"
+		],
+		"calculateBaziCompatibility": [
+			"personA[date]",
+			"personA[dayBoundary]",
+			"personA[hourClock]",
+			"personA[latitude]",
+			"personA[longitude]",
+			"personA[time]",
+			"personA[timezone]",
+			"personA[yearBoundary]",
+			"personB[date]",
+			"personB[dayBoundary]",
+			"personB[hourClock]",
+			"personB[latitude]",
+			"personB[longitude]",
+			"personB[time]",
+			"personB[timezone]",
+			"personB[yearBoundary]"
+		],
+		"calculateBhavChalit": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone"
+		],
+		"calculateBhavaBala": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone"
+		],
+		"calculateBioCompatibility": [
+			"person1[birthDate]",
+			"person2[birthDate]",
+			"targetDate"
+		],
+		"calculateBirthDay": [ "day" ],
+		"calculateBridgeNumbers": [ "day", "fullName", "month", "year" ],
+		"calculateBusinessName": [ "name" ],
+		"calculateCenters": [
+			"date",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"time",
+			"timezone"
+		],
+		"calculateChaldean": [ "name" ],
+		"calculateChannels": [
+			"date",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"time",
+			"timezone"
+		],
+		"calculateCharaKarakas": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"scheme",
+			"time",
+			"timezone"
+		],
+		"calculateCompatibility": [
+			"person1[date]",
+			"person1[latitude]",
+			"person1[longitude]",
+			"person1[nodeType]",
+			"person1[time]",
+			"person1[timezone]",
+			"person2[date]",
+			"person2[latitude]",
+			"person2[longitude]",
+			"person2[nodeType]",
+			"person2[time]",
+			"person2[timezone]"
+		],
+		"calculateConnection": [
+			"personA[date]",
+			"personA[latitude]",
+			"personA[longitude]",
+			"personA[nodeType]",
+			"personA[time]",
+			"personA[timezone]",
+			"personB[date]",
+			"personB[latitude]",
+			"personB[longitude]",
+			"personB[nodeType]",
+			"personB[time]",
+			"personB[timezone]"
+		],
+		"calculateDashakoot": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"person1[date]",
+			"person1[latitude]",
+			"person1[longitude]",
+			"person1[time]",
+			"person1[timezone]",
+			"person2[date]",
+			"person2[latitude]",
+			"person2[longitude]",
+			"person2[time]",
+			"person2[timezone]"
+		],
+		"calculateDayMasterStrength": [
+			"date",
+			"dayBoundary",
+			"hourClock",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone",
+			"yearBoundary"
+		],
+		"calculateDrishti": [
+			"coordinateSystem",
+			"date",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone"
+		],
+		"calculateDual": [ "name" ],
+		"calculateEntrancePada": [
+			"doorPosition",
+			"door[x]",
+			"door[y]",
+			"facing",
+			"facingDegrees",
+			"grid",
+			"plot[depth]",
+			"plot[unit]",
+			"plot[width]"
+		],
+		"calculateExpression": [ "fullName" ],
+		"calculateGates": [
+			"date",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"time",
+			"timezone"
+		],
+		"calculateGunMilan": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"person1[date]",
+			"person1[latitude]",
+			"person1[longitude]",
+			"person1[time]",
+			"person1[timezone]",
+			"person2[date]",
+			"person2[latitude]",
+			"person2[longitude]",
+			"person2[time]",
+			"person2[timezone]"
+		],
+		"calculateHouses": [
+			"date",
+			"houseSystem",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone"
+		],
+		"calculateKuaNumber": [ "date", "gender", "yearBoundary" ],
+		"calculateLuckPillars": [
+			"annualFromYear",
+			"annualYears",
+			"count",
+			"date",
+			"dayBoundary",
+			"gender",
+			"hourClock",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone",
+			"yearBoundary"
+		],
+		"calculateMayanCompatibility": [
+			"correlation",
+			"directionScheme",
+			"personA[date]",
+			"personB[date]"
+		],
+		"calculateNumCompatibility": [
+			"person1[day]",
+			"person1[expression]",
+			"person1[fullName]",
+			"person1[lifePath]",
+			"person1[month]",
+			"person1[soulUrge]",
+			"person1[year]",
+			"person2[day]",
+			"person2[expression]",
+			"person2[fullName]",
+			"person2[lifePath]",
+			"person2[month]",
+			"person2[soulUrge]",
+			"person2[year]"
+		],
+		"calculatePapasamyam": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"person1[date]",
+			"person1[latitude]",
+			"person1[longitude]",
+			"person1[time]",
+			"person1[timezone]",
+			"person2[date]",
+			"person2[latitude]",
+			"person2[longitude]",
+			"person2[time]",
+			"person2[timezone]"
+		],
+		"calculateParallels": [
+			"date",
+			"latitude",
+			"longitude",
+			"orb",
+			"time",
+			"timezone"
+		],
+		"calculatePenta": [],
+		"calculatePersonalDay": [ "day", "month", "targetDate" ],
+		"calculatePersonalMonth": [ "day", "month", "targetMonth", "year" ],
+		"calculatePersonalYear": [ "day", "month", "year" ],
+		"calculatePersonality": [ "fullName" ],
+		"calculatePlotAnalysis": [
+			"facing",
+			"facingDegrees",
+			"plot[depth]",
+			"plot[unit]",
+			"plot[width]",
+			"road",
+			"slopeLowDirection",
+			"slopeSchool",
+			"water"
+		],
+		"calculateProfile": [
+			"date",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"time",
+			"timezone"
+		],
+		"calculateRoomCompliance": [
+			"facing",
+			"facingDegrees",
+			"plot[depth]",
+			"plot[unit]",
+			"plot[width]"
+		],
+		"calculateShadbala": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone"
+		],
+		"calculateSoulUrge": [ "fullName" ],
+		"calculateSynastry": [
+			"houseSystem",
+			"person1[date]",
+			"person1[latitude]",
+			"person1[longitude]",
+			"person1[name]",
+			"person1[nodeType]",
+			"person1[time]",
+			"person1[timezone]",
+			"person2[date]",
+			"person2[latitude]",
+			"person2[longitude]",
+			"person2[name]",
+			"person2[nodeType]",
+			"person2[time]",
+			"person2[timezone]"
+		],
+		"calculateTonalpohualli": [ "date" ],
+		"calculateTransit": [
+			"birthDate",
+			"birthTime",
+			"coordinateSystem",
+			"latitude",
+			"longitude",
+			"timezone",
+			"transitDate",
+			"transitTime"
+		],
+		"calculateTransitAspects": [
+			"houseSystem",
+			"minStrength",
+			"natalChart[date]",
+			"natalChart[latitude]",
+			"natalChart[longitude]",
+			"natalChart[nodeType]",
+			"natalChart[time]",
+			"natalChart[timezone]",
+			"transitDate",
+			"transitTime"
+		],
+		"calculateType": [
+			"date",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"time",
+			"timezone"
+		],
+		"calculateTzolkin": [ "correlation", "date" ],
+		"calculateVariables": [
+			"date",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"time",
+			"timezone"
+		],
+		"calculateZodiacAnimal": [ "date", "yearBoundary" ],
+		"castCustomSpread": [ "question", "seed", "spreadName" ],
+		"castKpHoraryChart": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"horaryNumber",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"time",
+			"timezone"
+		],
+		"checkKalsarpaDosha": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone"
+		],
+		"checkSadhesati": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone"
+		],
+		"crystalsByZodiac": [ "sign" ],
+		"detectAspectPatterns": [
+			"date",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"time",
+			"timezone"
+		],
+		"detectYogas": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone"
+		],
+		"drawCards": [ "allowDuplicates", "allowReversals", "count", "seed" ],
+		"findGrihaPraveshDates": [
+			"endDate",
+			"latitude",
+			"longitude",
+			"muhurtaText",
+			"startDate",
+			"timezone"
+		],
+		"findSignificantDates": [
+			"birthData[date]",
+			"birthData[latitude]",
+			"birthData[longitude]",
+			"birthData[time]",
+			"birthData[timezone]",
+			"domainWeights[biorhythm]",
+			"domainWeights[vedic]",
+			"domainWeights[western]",
+			"endDate",
+			"minSignificance",
+			"startDate"
+		],
+		"forecastSolarReturn": [
+			"date",
+			"houseSystem",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone",
+			"year"
+		],
+		"forecastTransits": [
+			"birthData[date]",
+			"birthData[latitude]",
+			"birthData[longitude]",
+			"birthData[time]",
+			"birthData[timezone]",
+			"endDate",
+			"minSignificance",
+			"startDate"
+		],
+		"generateAsteroids": [
+			"date",
+			"houseSystem",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"time",
+			"timezone"
+		],
+		"generateAstrocartography": [
+			"date",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"time",
+			"timezone"
+		],
+		"generateBaziChart": [
+			"date",
+			"dayBoundary",
+			"hourClock",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone",
+			"yearBoundary"
+		],
+		"generateBirthProfile": [
+			"afterSunset",
+			"angelDating",
+			"date",
+			"leapDayPolicy",
+			"time",
+			"timezone",
+			"yearStart"
+		],
+		"generateBodygraph": [
+			"date",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"time",
+			"timezone"
+		],
+		"generateCompositeChart": [
+			"houseSystem",
+			"person1[date]",
+			"person1[latitude]",
+			"person1[longitude]",
+			"person1[nodeType]",
+			"person1[time]",
+			"person1[timezone]",
+			"person2[date]",
+			"person2[latitude]",
+			"person2[longitude]",
+			"person2[nodeType]",
+			"person2[time]",
+			"person2[timezone]"
+		],
+		"generateDigest": [
+			"birthData[date]",
+			"birthData[latitude]",
+			"birthData[longitude]",
+			"birthData[time]",
+			"birthData[timezone]",
+			"domainWeights[biorhythm]",
+			"domainWeights[vedic]",
+			"domainWeights[western]",
+			"minSignificance",
+			"startDate",
+			"top"
+		],
+		"generateDivisionalChart": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"division",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone"
+		],
+		"generateFixedStars": [
+			"date",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"time",
+			"timezone"
+		],
+		"generateLilith": [
+			"date",
+			"houseSystem",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"time",
+			"timezone"
+		],
+		"generateLocalSpace": [
+			"date",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone"
+		],
+		"generateLunarReturn": [
+			"birthDate",
+			"birthTime",
+			"houseSystem",
+			"latitude",
+			"longitude",
+			"returnDate",
+			"timezone"
+		],
+		"generateMandala": [
+			"grid",
+			"plot[depth]",
+			"plot[unit]",
+			"plot[width]"
+		],
+		"generateMayanChart": [ "correlation", "date", "yearBearerSystem" ],
+		"generateNavamsa": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone"
+		],
+		"generatePlanetaryReturn": [
+			"approximateDate",
+			"birthDate",
+			"birthTime",
+			"houseSystem",
+			"latitude",
+			"longitude",
+			"planet",
+			"timezone"
+		],
+		"generateProfections": [
+			"date",
+			"houseSystem",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"targetDate",
+			"time",
+			"timezone"
+		],
+		"generateProgressions": [
+			"date",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"targetDate",
+			"time",
+			"timezone"
+		],
+		"generateRelocationChart": [
+			"birthLatitude",
+			"birthLongitude",
+			"date",
+			"houseSystem",
+			"relocationLatitude",
+			"relocationLongitude",
+			"time",
+			"timezone"
+		],
+		"generateSolarArc": [
+			"date",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"targetDate",
+			"time",
+			"timezone"
+		],
+		"generateSolarReturn": [
+			"birthDate",
+			"birthTime",
+			"houseSystem",
+			"latitude",
+			"longitude",
+			"returnYear",
+			"timezone"
+		],
+		"generateTimeline": [
+			"birthData[date]",
+			"birthData[latitude]",
+			"birthData[longitude]",
+			"birthData[time]",
+			"birthData[timezone]",
+			"domainWeights[biorhythm]",
+			"domainWeights[vedic]",
+			"domainWeights[western]",
+			"endDate",
+			"minSignificance",
+			"startDate"
+		],
+		"generateTransit": [
+			"birthData[date]",
+			"birthData[latitude]",
+			"birthData[longitude]",
+			"birthData[nodeType]",
+			"birthData[time]",
+			"birthData[timezone]",
+			"date",
+			"time"
+		],
+		"getAlmanacDay": [ "date" ],
+		"getAnnualAfflictions": [ "year" ],
+		"getAnnualFlyingStars": [ "year" ],
+		"getAvastha": [ "id" ],
+		"getAztecDaySign": [ "id" ],
+		"getAztecTrecena": [ "number" ],
+		"getBaguaSector": [ "id" ],
+		"getBasicPanchang": [
+			"date",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone"
+		],
+		"getBirthstones": [ "month" ],
+		"getCenter": [ "id" ],
+		"getChoghadiya": [ "date", "latitude", "longitude", "timezone" ],
+		"getCriticalDays": [ "birthDate", "endDate", "startDate" ],
+		"getCrystalsByChakra": [ "chakra", "limit", "offset" ],
+		"getCrystalsByElement": [ "element", "limit", "offset" ],
+		"getCurrentDasha": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"datetime",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"significators",
+			"time",
+			"timezone"
+		],
+		"getDailyAyurvedaReading": [
+			"date",
+			"latitude",
+			"longitude",
+			"timezone"
+		],
+		"getDailyZodiacReading": [ "date", "id", "timezone" ],
+		"getDevata": [ "id" ],
+		"getDikpalaDirection": [ "id" ],
+		"getDinacharyaSchedule": [
+			"date",
+			"doshaClock",
+			"latitude",
+			"longitude",
+			"timezone"
+		],
+		"getDosha": [ "id" ],
+		"getForecast": [ "birthDate", "endDate", "startDate" ],
+		"getGate": [ "number" ],
+		"getHaabMonth": [ "id" ],
+		"getHebrewLetter": [ "id", "letterAttribution" ],
+		"getHeliacalVisibility": [
+			"date",
+			"latitude",
+			"longitude",
+			"timezone"
+		],
+		"getHexagram": [ "number" ],
+		"getHora": [ "date", "latitude", "longitude", "timezone" ],
+		"getKpCusps": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone"
+		],
+		"getKpDailyFinance": [
+			"ayanamsa",
+			"birthDate",
+			"birthTime",
+			"date",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"time",
+			"timezone",
+			"weights[cusps]",
+			"weights[dasha]",
+			"weights[moonWindows]",
+			"weights[rulingPlanets]"
+		],
+		"getKpPlanets": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"time",
+			"timezone"
+		],
+		"getKpRulingPlanets": [
+			"birthDate",
+			"birthTime",
+			"datetime",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"timezone"
+		],
+		"getKuaNumber": [ "number" ],
+		"getMajorDashas": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"significators",
+			"time",
+			"timezone"
+		],
+		"getMayanDaySign": [ "directionScheme", "id" ],
+		"getMonthlyHoroscope": [ "date", "sign", "timezone" ],
+		"getMoonCalendar": [ "month", "year" ],
+		"getNakshatra": [ "id" ],
+		"getPhases": [ "birthDate", "targetDate" ],
+		"getPlanetPositions": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone"
+		],
+		"getPlanetaryNodePassages": [ "timezone", "year" ],
+		"getPlanetaryPositions": [
+			"date",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"time",
+			"timezone"
+		],
+		"getPranaDashas": [
+			"antardasha",
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"mahadasha",
+			"nodeType",
+			"pratyantardasha",
+			"significators",
+			"sookshma",
+			"time",
+			"timezone"
+		],
+		"getPratyantardashas": [
+			"antardasha",
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"mahadasha",
+			"nodeType",
+			"significators",
+			"time",
+			"timezone"
+		],
+		"getRashi": [ "id" ],
+		"getRitucharya": [
+			"date",
+			"hemisphere",
+			"rituZodiac",
+			"ritucharyaScheme"
+		],
+		"getSephirah": [ "id", "letterAttribution", "sephirotSystem" ],
+		"getShemName": [ "number" ],
+		"getSookshmaDashas": [
+			"antardasha",
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"mahadasha",
+			"nodeType",
+			"pratyantardasha",
+			"significators",
+			"time",
+			"timezone"
+		],
+		"getSubDashas": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"mahadasha",
+			"nodeType",
+			"significators",
+			"time",
+			"timezone"
+		],
+		"getTrecena": [ "number" ],
+		"getUpagrahaPositions": [
+			"ayanamsa",
+			"ayanamsaValue",
+			"date",
+			"latitude",
+			"longitude",
+			"time",
+			"timezone"
+		],
+		"getVedicDailyReading": [
+			"birthDate",
+			"birthTime",
+			"date",
+			"latitude",
+			"longitude",
+			"nodeType",
+			"timezone"
+		],
+		"getWeeklyHoroscope": [ "date", "sign", "timezone" ],
+		"getYearlyHoroscope": [ "sign", "timezone", "year" ],
+		"getYoga": [ "id" ],
+		"getZodiacAnimal": [ "id" ],
+		"getZodiacCompatibility": [ "sign1", "sign2" ],
+		"kpChart": [
+			"birth[birth_date]",
+			"birth[birth_time]",
+			"birth[lat]",
+			"birth[lon]",
+			"birth[tz]"
+		],
+		"kundli": [
+			"birth[birth_date]",
+			"birth[birth_time]",
+			"birth[lat]",
+			"birth[lon]",
+			"birth[tz]"
+		],
+		"lifePath": [ "birth_date" ],
+		"listSolarTerms": [ "year" ],
+		"lookupAuspiciousDays": [
+			"activity",
+			"avoidAnimal",
+			"endDate",
+			"startDate"
+		],
+		"lookupHexagram": [ "lines" ],
+		"mangalDosha": [
+			"birth[birth_date]",
+			"birth[birth_time]",
+			"birth[lat]",
+			"birth[lon]",
+			"birth[tz]"
+		],
+		"natalChart": [
+			"birth[birth_date]",
+			"birth[birth_time]",
+			"birth[lat]",
+			"birth[lon]",
+			"birth[tz]"
+		],
+		"numerology": [ "birth_date", "name" ],
+		"panchang": [
+			"details[date]",
+			"details[lat]",
+			"details[lon]",
+			"details[tz]"
+		],
+		"searchCrystals": [ "limit", "offset", "q" ],
+		"tarotCard": [ "question", "spread" ],
+		"tarotYesNo": [ "question" ]
+	}
+}
