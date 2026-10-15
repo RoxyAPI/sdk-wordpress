@@ -72,6 +72,8 @@ jobs:
               run: npm run check:geocode
             - name: Readings stay readable inside a section with its own background
               run: npm run check:contrast
+            - name: Shortcode builder offers every reading and attribute
+              run: npm run check:builder
             # --update forces a fresh pull of plugin-check.latest-stable.zip;
             # without it wp-env reuses a stale cached copy and misses newer checks.
             - run: npx wp-env start --update

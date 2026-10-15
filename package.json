@@ -53,6 +53,7 @@
 		"check:blocks": "node bin/check-block-layout.mjs",
 		"check:geocode": "node bin/check-geocode-armour.mjs",
 		"check:contrast": "node bin/check-frontend-contrast.mjs",
+		"check:builder": "node bin/check-builder.mjs",
 		"upgrade": "npx npm-check-updates --target minor --upgrade",
 		"check-outdated": "npx npm-check-updates",
 		"i18n:pot": "docker run --rm -v \"$PWD\":/plugin -w /plugin -u \"$(id -u):$(id -g)\" wordpress:cli wp i18n make-pot . languages/roxyapi.pot --slug=roxyapi --skip-audit --exclude=build,builder,assets/js/roxy-ui.js,assets/js/locales",

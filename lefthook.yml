@@ -108,6 +108,10 @@ pre-push:
             run: npm run check:contrast
             priority: 1
 
+        builder-check:
+            run: npm run check:builder
+            priority: 1
+
         # Full format pass (auto-fix). PHP first, then JS/CSS so each tool
         # only touches files it owns.
         php-format:
