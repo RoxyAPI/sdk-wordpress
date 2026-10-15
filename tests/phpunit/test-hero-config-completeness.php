@@ -63,6 +63,46 @@ class Test_Hero_Config_Completeness extends \WP_UnitTestCase {
 	}
 
 	/**
+	 * The hand-written horoscope must expose its complete attribute contract
+	 * to config consumers, including defaults and supported reading periods.
+	 */
+	public function test_horoscope_config_matches_hand_written_contract(): void {
+		$config = $this->load_config();
+		$this->assertArrayHasKey( 'horoscope', $config );
+		$entry = $config['horoscope'];
+		$this->assertTrue( $entry['hand_written'] );
+		$this->assertSame( \RoxyAPI\Shortcodes\Horoscope::class, \RoxyAPI\Shortcodes\Registrar::HERO_SHORTCODES[ $entry['tag'] ] );
+		$this->assertArrayHasKey( 'attributes', $entry );
+
+		// The reserved display attributes belong to every reading and live in one list.
+		$defaults   = array_diff_key( \RoxyAPI\Shortcodes\Horoscope::DEFAULTS, array_flip( \RoxyAPI\Support\ComponentRenderer::RESERVED_ATTS ) );
+		$attributes = $entry['attributes'];
+		$this->assertEqualsCanonicalizing(
+			array_keys( $defaults ),
+			array_keys( $attributes ),
+			'Horoscope config must declare every DEFAULTS key and no extra attributes.'
+		);
+		foreach ( $defaults as $attr => $default ) {
+			$this->assertSame( $default, $attributes[ $attr ]['default'], "Horoscope config default for '{$attr}' must match DEFAULTS." );
+		}
+
+		$reflection = new \ReflectionClass( \RoxyAPI\Shortcodes\Horoscope::class );
+		$period_ops = $reflection->getConstant( 'PERIOD_OPS' );
+		$this->assertIsArray( $period_ops );
+		$this->assertEqualsCanonicalizing( array_keys( $period_ops ), $attributes['period']['enum'] );
+		$this->assertSame( \RoxyAPI\Support\Sanitize::ZODIAC_SIGNS, $attributes['sign']['enum'] );
+
+		// Only the sign is collected from visitors; period and date remain
+		// placement attributes, and there is no mode override in DEFAULTS.
+		$fields = $entry['form_mode']['fields'];
+		$this->assertSame( array( 'sign' ), array_column( $fields, 'attr' ) );
+		$this->assertTrue( $attributes['sign']['required'] );
+		$this->assertTrue( $fields[0]['required'] );
+		$this->assertSame( 'enum', $fields[0]['type'] );
+		$this->assertSame( $attributes['sign']['enum'], $fields[0]['enum'] );
+	}
+
+	/**
 	 * Walk every hero config entry and assert each operationId it references
 	 * (single-target or via dispatch) is registered in the spec with a
 	 * non-empty parameter or requestBody set.

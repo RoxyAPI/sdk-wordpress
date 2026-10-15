@@ -6,7 +6,36 @@
 		"domain": "Western Astrology",
 		"tag": "roxy_horoscope",
 		"example": "[roxy_horoscope sign=\"aries\"]",
-		"hand_written": true
+		"hand_written": true,
+		"attributes": {
+			"sign": {
+				"default": "",
+				"required": true,
+				"sanitize": "zodiac_sign",
+				"spec_field": "sign",
+				"enum": [ "aries", "taurus", "gemini", "cancer", "leo", "virgo", "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces" ]
+			},
+			"date": {
+				"default": "today",
+				"required": false,
+				"sanitize": "date_string",
+				"spec_field": "date",
+				"description": "YYYY-MM-DD, today, tomorrow, or yesterday. Selects the day, week, month, or year containing that date; defaults to today in the site timezone."
+			},
+			"period": {
+				"default": "daily",
+				"required": false,
+				"enum": [ "daily", "weekly", "monthly", "yearly" ],
+				"description": "Reading period. Unrecognized values fall back to daily."
+			}
+		},
+		"form_mode": {
+			"title": "Horoscope",
+			"submit_label": "Read my horoscope",
+			"fields": [
+				{ "attr": "sign", "label": "Your zodiac sign", "type": "enum", "required": true, "enum": [ "aries", "taurus", "gemini", "cancer", "leo", "virgo", "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces" ] }
+			]
+		}
 	},
 	"natal_chart": {
 		"block": {
