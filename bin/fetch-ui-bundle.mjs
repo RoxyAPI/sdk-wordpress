@@ -12,6 +12,8 @@
  *     `--roxy-*` defaults plus the automatic dark-mode block the elements read)
  *   - one catalogue per translated language to assets/js/locales/{lang}.js,
  *     which is what puts the labels around a chart into the site language
+ *   - the forms manifest and its label catalogues to bin/ui-forms/, for the
+ *     generator only; bin/ is excluded from the shipped plugin
  *
  * The catalogues are separate payloads rather than part of the bundle, so which
  * languages exist is a property of the version being vendored. The manifest
@@ -51,6 +53,7 @@ const MAP_FILE = path.join( ROOT, 'bin', 'component-map.json' );
 const JS_OUT_FILE = path.join( ROOT, 'assets', 'js', 'roxy-ui.js' );
 const CSS_OUT_FILE = path.join( ROOT, 'assets', 'css', 'roxy-ui-tokens.css' );
 const LOCALES_OUT_DIR = path.join( ROOT, 'assets', 'js', 'locales' );
+const FORMS_OUT_DIR = path.join( ROOT, 'bin', 'ui-forms' );
 
 const PACKAGE = '@roxyapi/ui';
 const SEMVER = /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/;
@@ -286,18 +289,12 @@ async function vendor( url, outFile, validate, transform = ( body ) => body ) {
 }
 
 /**
- * Vendor one catalogue per language the pinned build ships, and delete any that
- * it does not.
- *
- * The prune half is the load-bearing one. Vendoring an older version on purpose
- * would otherwise leave catalogues from the newer one in place, and the plugin
- * enqueues whichever file it finds, so a site would be served labels built
- * against a bundle it is not running.
+ * Read and validate the pinned build's languages for both catalogue vendors.
  *
  * @param {string} version The resolved version.
- * @return {Promise<void>}
+ * @return {Promise<string[]>} Published translated languages.
  */
-async function vendorLocales( version ) {
+async function fetchPublishedLocales( version ) {
 	const manifestUrl = cdnUrl( version, 'dist/manifest.json' );
 	console.log( `[fetch-ui-bundle] fetching ${ manifestUrl }` );
 	const response = await fetch( manifestUrl );
@@ -318,7 +315,23 @@ async function vendorLocales( version ) {
 		);
 		process.exit( 1 );
 	}
+	return wanted;
+}
 
+/**
+ * Vendor one catalogue per language the pinned build ships, and delete any that
+ * it does not.
+ *
+ * The prune half is the load-bearing one. Vendoring an older version on purpose
+ * would otherwise leave catalogues from the newer one in place, and the plugin
+ * enqueues whichever file it finds, so a site would be served labels built
+ * against a bundle it is not running.
+ *
+ * @param {string}   version The resolved version.
+ * @param {string[]} wanted  Languages from the shared manifest read.
+ * @return {Promise<void>}
+ */
+async function vendorLocales( version, wanted ) {
 	fs.mkdirSync( LOCALES_OUT_DIR, { recursive: true } );
 	const stale = fs
 		.readdirSync( LOCALES_OUT_DIR )
@@ -354,6 +367,68 @@ async function vendorLocales( version ) {
 	}
 }
 
+/**
+ * Vendor the forms contract and every label catalogue the package publishes.
+ * Form labels include base English plus the manifest's translated languages.
+ * Prune labels on a downgrade.
+ *
+ * @param {string}   version The resolved version.
+ * @param {string[]} locales Languages from the shared manifest read.
+ * @return {Promise<void>}
+ */
+async function vendorForms( version, locales ) {
+	const url = cdnUrl( version, 'dist/forms.json' );
+	console.log( `[fetch-ui-bundle] fetching ${ url }` );
+	const response = await fetch( url );
+	if ( ! response.ok ) {
+		console.error(
+			`[fetch-ui-bundle] could not read dist/forms.json for ${ PACKAGE }@${ version }: ${ response.status } ${ response.statusText }; a published forms manifest is required; refusing to write`
+		);
+		process.exit( 1 );
+	}
+	const body = await response.text();
+	const forms = JSON.parse( body );
+	if ( ! forms?.forms || Object.keys( forms.forms ).length === 0 ) {
+		console.error(
+			`[fetch-ui-bundle] ${ PACKAGE }@${ version } publishes no forms; refusing to write`
+		);
+		process.exit( 1 );
+	}
+
+	const wanted = [ ...new Set( [ 'en', ...locales ] ) ].sort();
+	const labelsDir = path.join( FORMS_OUT_DIR, 'labels' );
+	fs.mkdirSync( labelsDir, { recursive: true } );
+	fs.writeFileSync( path.join( FORMS_OUT_DIR, 'forms.json' ), body );
+	for ( const lang of wanted ) {
+		await vendor(
+			cdnUrl( version, `dist/forms/labels/${ lang }.json` ),
+			path.join( labelsDir, `${ lang }.json` ),
+			( text ) => {
+				try {
+					const labels = JSON.parse( text );
+					return labels?.fields && labels?.enums
+						? null
+						: `downloaded ${ lang } form labels have no fields or enums`;
+				} catch {
+					return `downloaded ${ lang } form labels are not JSON`;
+				}
+			}
+		);
+	}
+	for ( const file of fs.readdirSync( labelsDir ) ) {
+		if (
+			file.endsWith( '.json' ) &&
+			! wanted.includes( file.slice( 0, -5 ) )
+		) {
+			fs.rmSync( path.join( labelsDir, file ) );
+		}
+	}
+}
+
+// Refuse a version without forms before replacing any runtime assets or pins.
+const locales = await fetchPublishedLocales( version );
+await vendorForms( version, locales );
+
 await vendor(
 	cdnUrl( version, 'dist/cdn/roxy-ui.js' ),
 	JS_OUT_FILE,
@@ -381,7 +456,7 @@ await vendor(
 	}
 );
 
-await vendorLocales( version );
+await vendorLocales( version, locales );
 
 // Last, so a failed or rejected download can never leave the pins advertising a
 // version that is not the one sitting in assets/.
