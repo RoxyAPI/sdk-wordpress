@@ -22,6 +22,7 @@ class CalculatePapasamyamForm {
 			'operation_id' => 'calculatePapasamyam',
 			'title'        => __( 'Compare Malefic Affliction', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
+			'fold_optional' => true,
 			'sections'     => array(
 				array(
 					'name'   => 'person1',

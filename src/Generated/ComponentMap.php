@@ -563,7 +563,7 @@ class ComponentMap {
 			),
 			'getCompoundNumber' => array(
 				array(
-					'component' => 'roxy-reference-card',
+					'component' => 'roxy-compound-number',
 				),
 			),
 			'getCriticalDays' => array(
@@ -608,6 +608,11 @@ class ComponentMap {
 					'attrs'     => array(
 						'mode' => 'current',
 					),
+				),
+			),
+			'getDailyAngelNumber' => array(
+				array(
+					'component' => 'roxy-angel-number-card',
 				),
 			),
 			'getDailyBiorhythm' => array(
@@ -1030,6 +1035,7 @@ class ComponentMap {
 			'maturity',
 			'meaning',
 			'moon-windows',
+			'more',
 			'moved',
 			'mutual-aspects',
 			'name-letters',

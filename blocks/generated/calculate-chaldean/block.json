@@ -2,10 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "roxyapi/calculate-chaldean",
-	"title": "Chaldean Numerology Name Reading",
+	"title": "Chaldean Numerology",
 	"category": "roxyapi-catalog",
 	"icon": "chart-line",
-	"description": "Destiny, compound number, planetary ruler",
+	"description": "Calculate a complete Chaldean numerology reading for a name, following Cheiro",
 	"keywords": [
 		"numerology",
 		"roxyapi",

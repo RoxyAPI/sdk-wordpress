@@ -33,6 +33,7 @@ class SearchCrystals {
 		'q' => '',
 		'limit' => '',
 		'offset' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -52,6 +53,10 @@ class SearchCrystals {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['q'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\SearchCrystalsForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::searchCrystals( $atts['lang'], $atts['q'], $atts['limit'], $atts['offset'] );
 

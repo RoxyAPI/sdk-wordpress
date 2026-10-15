@@ -31,6 +31,7 @@ class GetShemName {
 	public const DEFAULTS = array(
 		'number' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -50,6 +51,10 @@ class GetShemName {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['number'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetShemNameForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getShemName( $atts['number'], $atts['lang'] );
 

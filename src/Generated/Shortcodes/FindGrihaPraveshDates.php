@@ -36,6 +36,7 @@ class FindGrihaPraveshDates {
 		'timezone' => '',
 		'muhurta_text' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -55,6 +56,10 @@ class FindGrihaPraveshDates {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['start_date'] === '' || $atts['end_date'] === '' || $atts['latitude'] === '' || $atts['longitude'] === '' || $atts['timezone'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\FindGrihaPraveshDatesForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

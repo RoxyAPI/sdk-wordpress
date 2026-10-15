@@ -34,6 +34,7 @@ class GetRitucharya {
 		'ritu_zodiac' => '',
 		'hemisphere' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -53,6 +54,10 @@ class GetRitucharya {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['date'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetRitucharyaForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

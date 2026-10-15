@@ -31,6 +31,7 @@ class GetAztecTrecena {
 	public const DEFAULTS = array(
 		'number' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -50,6 +51,10 @@ class GetAztecTrecena {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['number'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetAztecTrecenaForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getAztecTrecena( $atts['number'], $atts['lang'] );
 

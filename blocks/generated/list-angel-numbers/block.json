@@ -5,7 +5,7 @@
 	"title": "Angel Numbers",
 	"category": "roxyapi-catalog",
 	"icon": "chart-line",
-	"description": "Retrieve the complete database of angel numbers with summary information",
+	"description": "Retrieve the angel number catalog with summary information",
 	"keywords": [
 		"angel numbers",
 		"roxyapi",

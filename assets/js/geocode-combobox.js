@@ -2,9 +2,9 @@
  * Roxy geocode combobox — ARIA 1.2 editable combobox with list autocomplete.
  *
  * Selector: any element with `data-roxyapi-geocode` whose value is a CSS
- * selector pointing at the section that holds the matching `[name$="[lat]"]`
- * / `[name$="[lon]"]` / `[name$="[tz]"]` hidden inputs. Selecting a city
- * fills those three with the upstream values; the visible coordinate inputs
+ * selector pointing at the section or form that holds the matching lat / lon /
+ * tz inputs (`[name$="[lat]"]` in a section, `[name="lat"]` flat). Selecting a
+ * city fills those three with the upstream values; the visible coordinate inputs
  * update too so the visitor can edit if they want.
  *
  * Implements the WAI-ARIA APG combobox-autocomplete-list pattern:
@@ -74,12 +74,10 @@
 	}
 
 	function findField( section, suffix ) {
-		// The form uses bracket-notation names like `person1[lat]`; match any
-		// suffix `[lat]` / `[latitude]` / `[lon]` / `[longitude]` / `[tz]` /
-		// `[timezone]`. Prefer the shorter, but accept either.
-		return (
-			section.querySelector( 'input[name$="[' + suffix + ']"]' ) ||
-			section.querySelector( 'select[name$="[' + suffix + ']"]' )
+		// A section field carries a bracket name like `person1[lat]` and a flat
+		// field the bare name `lat`; the short and long names both occur.
+		return section.querySelector(
+			`input[name$="[${ suffix }]"], select[name$="[${ suffix }]"], input[name="${ suffix }"], select[name="${ suffix }"]`
 		);
 	}
 

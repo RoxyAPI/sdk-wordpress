@@ -38,6 +38,7 @@ class CalculateCharaKarakas {
 		'ayanamsa_value' => '',
 		'scheme' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -57,6 +58,10 @@ class CalculateCharaKarakas {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['date'] === '' || $atts['time'] === '' || $atts['latitude'] === '' || $atts['longitude'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CalculateCharaKarakasForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

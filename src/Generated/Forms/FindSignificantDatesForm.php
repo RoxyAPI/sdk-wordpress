@@ -22,6 +22,7 @@ class FindSignificantDatesForm {
 			'operation_id' => 'findSignificantDates',
 			'title'        => __( 'Significant Dates', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
+			'fold_optional' => true,
 			'sections'     => array(
 				array(
 					'name'   => 'birthData',

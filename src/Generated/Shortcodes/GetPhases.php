@@ -32,6 +32,7 @@ class GetPhases {
 		'birth_date' => '',
 		'target_date' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -51,6 +52,10 @@ class GetPhases {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['birth_date'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetPhasesForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

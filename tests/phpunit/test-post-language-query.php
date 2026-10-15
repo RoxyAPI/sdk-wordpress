@@ -1,3 +1,4 @@
+<?php
 /**
  * `lang` must reach the API on the QUERY STRING, on POST as well as GET.
  *

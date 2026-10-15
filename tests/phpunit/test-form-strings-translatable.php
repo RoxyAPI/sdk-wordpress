@@ -1,3 +1,4 @@
+<?php
 /**
  * Every visitor-facing string in a GENERATED form spec must be wrapped in `__()`.
  *

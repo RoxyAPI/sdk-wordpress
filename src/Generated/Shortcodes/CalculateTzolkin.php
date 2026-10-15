@@ -32,6 +32,7 @@ class CalculateTzolkin {
 		'date' => '',
 		'correlation' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -51,6 +52,10 @@ class CalculateTzolkin {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['date'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CalculateTzolkinForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

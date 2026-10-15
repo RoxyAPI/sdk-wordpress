@@ -22,6 +22,7 @@ class CalculatePlotAnalysisForm {
 			'operation_id' => 'calculatePlotAnalysis',
 			'title'        => __( 'Plot', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
+			'fold_optional' => true,
 			'sections'     => array(
 				array(
 					'name'   => 'plot',

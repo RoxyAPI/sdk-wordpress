@@ -38,6 +38,7 @@ class CalculateAyurvedicConstitution {
 		'ayanamsa_value' => '',
 		'sign_dosha_scheme' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -57,6 +58,10 @@ class CalculateAyurvedicConstitution {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['date'] === '' || $atts['time'] === '' || $atts['latitude'] === '' || $atts['longitude'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CalculateAyurvedicConstitutionForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

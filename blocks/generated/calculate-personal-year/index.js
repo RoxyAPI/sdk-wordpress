@@ -24,7 +24,7 @@ const fields = [
 		control: 'number',
 		label: __( 'Year', 'roxyapi' ),
 		required: false,
-		help: __( 'Year to calculate (defaults to current year)', 'roxyapi' ),
+		help: __( 'Year to forecast', 'roxyapi' ),
 	},
 ];
 

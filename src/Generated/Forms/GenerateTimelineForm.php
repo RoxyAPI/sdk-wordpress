@@ -22,6 +22,7 @@ class GenerateTimelineForm {
 			'operation_id' => 'generateTimeline',
 			'title'        => __( 'Cross-domain Forecast Timeline', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
+			'fold_optional' => true,
 			'sections'     => array(
 				array(
 					'name'   => 'birthData',

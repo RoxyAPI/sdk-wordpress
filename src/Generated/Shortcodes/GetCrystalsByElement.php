@@ -33,6 +33,7 @@ class GetCrystalsByElement {
 		'lang' => '',
 		'limit' => '',
 		'offset' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -52,6 +53,10 @@ class GetCrystalsByElement {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['element'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetCrystalsByElementForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getCrystalsByElement( $atts['element'], $atts['lang'], $atts['limit'], $atts['offset'] );
 

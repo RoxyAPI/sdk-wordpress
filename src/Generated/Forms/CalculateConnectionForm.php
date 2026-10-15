@@ -22,6 +22,7 @@ class CalculateConnectionForm {
 			'operation_id' => 'calculateConnection',
 			'title'        => __( 'Human Design Connection Chart', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
+			'fold_optional' => true,
 			'sections'     => array(
 				array(
 					'name'   => 'personA',

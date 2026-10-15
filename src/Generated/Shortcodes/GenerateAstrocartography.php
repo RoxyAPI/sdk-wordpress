@@ -37,6 +37,7 @@ class GenerateAstrocartography {
 		'node_type' => '',
 		'lang' => '',
 		'include' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -56,6 +57,10 @@ class GenerateAstrocartography {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['date'] === '' || $atts['time'] === '' || $atts['latitude'] === '' || $atts['longitude'] === '' || $atts['timezone'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GenerateAstrocartographyForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

@@ -1841,18 +1841,19 @@ class Client {
 	 * Ecliptic Crossings - When planets cross the ecliptic plane
 	 *
 	 * @param array $body Request body.
+	 * @param array $query Query parameters.
 	 * @return array|\WP_Error
 	 */
-	public static function getEclipticCrossings( $body = array() ) {
+	public static function getEclipticCrossings( $body = array(), $query = array() ) {
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'year' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
 			'vedic-astrology/ecliptic-crossings',
-			$body,
+			array_merge( $body, $query ),
 			3600,
-			static function () use ( $body ) {
-				return \RoxyAPI\Api\Client::post( 'vedic-astrology/ecliptic-crossings', $body );
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'vedic-astrology/ecliptic-crossings', $body, $query );
 			}
 		);
 	}
@@ -3876,7 +3877,7 @@ class Client {
 	}
 
 	/**
-	 * Calculate Life Path number - Most important numerology calculation
+	 * Calculate Life Path number - Calculator and meaning API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -3897,7 +3898,7 @@ class Client {
 	}
 
 	/**
-	 * Calculate Expression number - Natural talents and life goals
+	 * Calculate Expression number - Destiny number calculator API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -3918,7 +3919,7 @@ class Client {
 	}
 
 	/**
-	 * Calculate Bridge Numbers - Harmonize different aspects of personality
+	 * Calculate Bridge Numbers - Numerology bridge numbers API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -3939,7 +3940,7 @@ class Client {
 	}
 
 	/**
-	 * Calculate Soul Urge number - Inner motivations and desires
+	 * Calculate Soul Urge number - Heart Desire number calculator API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -3960,7 +3961,7 @@ class Client {
 	}
 
 	/**
-	 * Calculate Personality number - How others perceive you
+	 * Calculate Personality number - Outer personality numerology API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -3981,7 +3982,7 @@ class Client {
 	}
 
 	/**
-	 * Calculate Birth Day number - Special talents from day of birth
+	 * Calculate Birth Day number - Birthday numerology API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -4002,7 +4003,7 @@ class Client {
 	}
 
 	/**
-	 * Calculate Maturity number - Who you become in later life
+	 * Calculate Maturity number - Realization number numerology API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -4020,7 +4021,7 @@ class Client {
 	}
 
 	/**
-	 * Analyze Karmic Lessons - Life lessons from missing numbers
+	 * Analyze Karmic Lessons - Missing numbers numerology API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -4041,7 +4042,7 @@ class Client {
 	}
 
 	/**
-	 * Detect Karmic Debt numbers - Past life challenges (13, 14, 16, 19)
+	 * Detect Karmic Debt numbers - Karmic debt 13, 14, 16, 19 API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -4059,7 +4060,7 @@ class Client {
 	}
 
 	/**
-	 * Calculate Personal Day - Daily personalized numerology forecast
+	 * Calculate Personal Day - Daily numerology forecast API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -4080,7 +4081,7 @@ class Client {
 	}
 
 	/**
-	 * Calculate Personal Month - Monthly numerology forecast
+	 * Calculate Personal Month - Monthly numerology forecast API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -4101,7 +4102,7 @@ class Client {
 	}
 
 	/**
-	 * Calculate Personal Year - Annual cycle and forecast for current year
+	 * Calculate Personal Year - Personal Year number forecast API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -4122,7 +4123,7 @@ class Client {
 	}
 
 	/**
-	 * Calculate Compatibility - Relationship dynamics between two people
+	 * Calculate numerology compatibility - Love match scoring API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -4143,7 +4144,7 @@ class Client {
 	}
 
 	/**
-	 * Generate Complete Numerology Chart - Full profile analysis
+	 * Generate numerology chart - Complete numerology reading API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -4164,7 +4165,7 @@ class Client {
 	}
 
 	/**
-	 * Get Number Meaning - Interpretation for any number 1-9, 11, 22, 33
+	 * Get number meaning - Numerology number meanings API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4191,7 +4192,7 @@ class Client {
 	}
 
 	/**
-	 * Get daily numerology number - Number of the Day with interpretation
+	 * Get daily numerology number - Number of the Day API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -4209,7 +4210,7 @@ class Client {
 	}
 
 	/**
-	 * Chaldean numerology name reading - Destiny, compound number, planetary ruler
+	 * Calculate Chaldean numerology - Chaldean name number calculator API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -4230,7 +4231,7 @@ class Client {
 	}
 
 	/**
-	 * Compound number meaning - Cheiro Chaldean interpretation 10 to 52
+	 * Get compound number meaning - Chaldean compound numbers 10 to 52 API
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -4257,7 +4258,7 @@ class Client {
 	}
 
 	/**
-	 * Dual numerology - Pythagorean and Chaldean name numbers in one call
+	 * Calculate dual numerology - Pythagorean and Chaldean name number API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
@@ -4278,7 +4279,7 @@ class Client {
 	}
 
 	/**
-	 * Business name numerology - Chaldean brand name analysis and lucky numbers
+	 * Calculate business name numerology - Brand name numerology API
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.

@@ -31,6 +31,7 @@ class GetAnnualFlyingStars {
 	public const DEFAULTS = array(
 		'year' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -50,6 +51,10 @@ class GetAnnualFlyingStars {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['year'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetAnnualFlyingStarsForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getAnnualFlyingStars( $atts['year'], $atts['lang'] );
 

@@ -36,7 +36,7 @@ Every chart is calculated by Roxy Ephemeris and verified against NASA JPL Horizo
 * **Do I need an account to try it?** No. Blocks and shortcodes render readings straight after activation on a free daily allowance.
 * **Do I need to know astrology to use it?** No. Every reading arrives calculated and formatted, so you place a block and pick your options.
 * **Is the birth chart accurate?** Charts come from Roxy Ephemeris and are verified against NASA JPL Horizons.
-* **Can visitors enter their own birth details?** Yes. Leave the attributes off a hero shortcode and it renders a form; the submission is processed server side.
+* **Can visitors enter their own birth details?** Yes. Leave the attributes off a reading that takes details and it renders a form; the submission is processed server side.
 * **Does it work with my theme?** Yes. Charts are SVG and follow your light or dark theme through CSS custom properties.
 * **Where does my API key live?** On your server only. It is never sent to the browser.
 
@@ -91,7 +91,7 @@ Four heroes take no attributes: the three two-person compatibility readings rend
 `[roxy_compatibility]`
 `[roxy_forecast]`
 
-Leave the attributes off any hero shortcode to render a form instead. For example `[roxy_horoscope]` shows a zodiac sign picker and `[roxy_natal_chart]` shows a birth date, time, and city picker.
+Leave the attributes off any reading that takes details to render a form instead. For example `[roxy_horoscope]` shows a zodiac sign picker and `[roxy_natal_chart]` shows a birth date, time, and city picker.
 
 **Long-tail shortcodes**
 
@@ -174,7 +174,7 @@ No site visitor data is collected by the plugin when a visitor only views a page
 
 = Can visitors fill in their own birth details? =
 
-Yes. Drop a hero shortcode with no attributes (for example [roxy_natal_chart]) and the plugin renders an accessible form with a city search that fills in coordinates automatically. On submit the plugin validates the input, applies a per-IP rate limit and a consent checkbox, calls the API server side, and renders the result on the same page. The API key never reaches the browser.
+Yes. Drop a reading shortcode with no attributes (for example [roxy_natal_chart]) and the plugin renders an accessible form with a city search that fills in coordinates automatically. On submit the plugin validates the input, applies a per-IP rate limit and a consent checkbox, calls the API server side, and renders the result on the same page. The API key never reaches the browser.
 
 = I am behind Cloudflare or a reverse proxy. Does the visitor rate limit still count each visitor? =
 
@@ -249,6 +249,13 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.19.0 =
+* New: visitor forms on over a hundred more readings. Place a reading such as [roxy_calculate_luck_pillars] or [roxy_get_annual_flying_stars] with no attributes and visitors fill in their own details; pass every attribute for a fixed reading, or add mode="static" to keep it fixed. Optional inputs fold under Advanced, and a city search fills in the place and timezone.
+* Improved: the compound number reading has its own card with the root number, its fortune and the meaning, and the daily angel number uses the angel number card.
+* Improved: years print as years, Year 2026 rather than 2,026, on feng shui and Chinese astrology readings.
+* Improved: the moon phase prints the published illumination, wheel labels clear their planet glyphs, crowded North Indian kundli cells keep the house number clear, and biorhythm cycle names translate.
+* Improved: fields inside a folded form section line up in columns and stay inside the card on a phone.
+
 = 1.18.0 =
 * Improved: the block inserter lists the featured readings under RoxyAPI and every other reading under a second category, RoxyAPI: every reading, so the headline blocks are one short list to browse. Search still finds every block.
 * New: a city search in the block editor sidebar for every reading that takes a place. Pick a city and the latitude, longitude and timezone fill in, the same search the visitor form already has.
@@ -271,10 +278,11 @@ Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blo
 
 == Upgrade Notice ==
 
+= 1.19.0 =
+Worth updating if visitors should enter their own details: over a hundred more readings, luck pillars among them, show a visitor form when placed without attributes.
+
 = 1.18.0 =
 Worth updating if you build pages in the block editor: a city search fills coordinates in every block sidebar, the featured readings are one short RoxyAPI list in the inserter, and visitor forms fold their optional sections away.
 
 = 1.17.0 =
 Worth updating if you build pages in the block editor: nine more featured readings become blocks with sidebar inputs, a forecast timeline and a Human Design bodygraph join the library with visitor forms, and two Vedic matching readings arrive.
-
-

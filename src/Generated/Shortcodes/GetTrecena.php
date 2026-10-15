@@ -31,6 +31,7 @@ class GetTrecena {
 	public const DEFAULTS = array(
 		'number' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -50,6 +51,10 @@ class GetTrecena {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['number'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetTrecenaForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getTrecena( $atts['number'], $atts['lang'] );
 

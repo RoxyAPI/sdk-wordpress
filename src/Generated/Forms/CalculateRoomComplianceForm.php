@@ -22,6 +22,7 @@ class CalculateRoomComplianceForm {
 			'operation_id' => 'calculateRoomCompliance',
 			'title'        => __( 'Room Placement', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
+			'fold_optional' => true,
 			'sections'     => array(
 				array(
 					'name'   => 'plot',

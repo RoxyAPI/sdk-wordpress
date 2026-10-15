@@ -37,6 +37,7 @@ class GenerateLilith {
 		'node_type' => '',
 		'house_system' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -56,6 +57,10 @@ class GenerateLilith {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['date'] === '' || $atts['time'] === '' || $atts['latitude'] === '' || $atts['longitude'] === '' || $atts['timezone'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GenerateLilithForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

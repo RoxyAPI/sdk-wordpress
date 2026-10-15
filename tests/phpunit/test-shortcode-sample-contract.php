@@ -103,7 +103,7 @@ class Test_Shortcode_Sample_Contract extends Mock_Http_TestCase {
 	public function test_a_form_only_reading_offers_a_bare_sample(): void {
 		$synastry = Endpoints::get( 'calculateSynastry' );
 		$this->assertNotNull( $synastry );
-		$this->assertTrue( (bool) $synastry['block_only'] );
+		$this->assertTrue( (bool) $synastry['form_only'] );
 		$this->assertSame( array(), $synastry['attributes'] );
 	}
 

@@ -37,6 +37,7 @@ class GenerateSolarArc {
 		'node_type' => '',
 		'target_date' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -56,6 +57,10 @@ class GenerateSolarArc {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['date'] === '' || $atts['time'] === '' || $atts['latitude'] === '' || $atts['longitude'] === '' || $atts['timezone'] === '' || $atts['target_date'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GenerateSolarArcForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

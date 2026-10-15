@@ -10,7 +10,7 @@ const fields = [
 		control: 'text',
 		label: __( 'Full name', 'roxyapi' ),
 		required: true,
-		help: __( 'Full birth name (consonants will be extracted)', 'roxyapi' ),
+		help: __( 'Full birth name', 'roxyapi' ),
 	},
 ];
 

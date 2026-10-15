@@ -10,14 +10,14 @@ const fields = [
 		control: 'number',
 		label: __( 'Year', 'roxyapi' ),
 		required: true,
-		help: __( 'Year to scan for node passages (1900-2100).', 'roxyapi' ),
+		help: __( 'Year to scan for node passages (1551 to 2649).', 'roxyapi' ),
 	},
 	{
 		name: 'timezone',
 		control: 'text',
 		label: __( 'Timezone', 'roxyapi' ),
 		required: false,
-		help: __( 'Timezone offset from UTC in hours', 'roxyapi' ),
+		help: __( 'Timezone: an IANA name (e.g. "America/New_York", "Europe/London", or `cities[0].timezone` from /location/search) or decimal hours from UTC (e.g. -5 for EST, 5.5 for IST)', 'roxyapi' ),
 	},
 ];
 

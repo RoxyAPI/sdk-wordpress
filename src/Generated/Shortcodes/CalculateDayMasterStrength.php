@@ -38,6 +38,7 @@ class CalculateDayMasterStrength {
 		'year_boundary' => '',
 		'hour_clock' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -57,6 +58,10 @@ class CalculateDayMasterStrength {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['date'] === '' || $atts['time'] === '' || $atts['timezone'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CalculateDayMasterStrengthForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

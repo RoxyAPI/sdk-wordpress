@@ -42,6 +42,7 @@ class CalculateLuckPillars {
 		'annual_from_year' => '',
 		'annual_years' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -61,6 +62,10 @@ class CalculateLuckPillars {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['date'] === '' || $atts['time'] === '' || $atts['timezone'] === '' || $atts['gender'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CalculateLuckPillarsForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

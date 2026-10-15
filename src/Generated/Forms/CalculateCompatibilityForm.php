@@ -22,6 +22,7 @@ class CalculateCompatibilityForm {
 			'operation_id' => 'calculateCompatibility',
 			'title'        => __( 'Compatibility Score', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
+			'fold_optional' => true,
 			'sections'     => array(
 				array(
 					'name'   => 'person1',

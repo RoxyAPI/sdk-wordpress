@@ -10,7 +10,7 @@ const fields = [
 		control: 'text',
 		label: __( 'Full name', 'roxyapi' ),
 		required: true,
-		help: __( 'Full legal birth name as it appears on the birth certificate', 'roxyapi' ),
+		help: __( 'Full birth name as it appears on the birth certificate, first, middle and last names separated by spaces', 'roxyapi' ),
 	},
 	{
 		name: 'year',

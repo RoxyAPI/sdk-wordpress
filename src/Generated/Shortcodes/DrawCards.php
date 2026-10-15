@@ -34,6 +34,7 @@ class DrawCards {
 		'allow_reversals' => '',
 		'allow_duplicates' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -53,6 +54,10 @@ class DrawCards {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['count'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\DrawCardsForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

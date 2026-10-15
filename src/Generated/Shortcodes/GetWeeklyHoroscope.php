@@ -33,6 +33,7 @@ class GetWeeklyHoroscope {
 		'lang' => '',
 		'date' => '',
 		'timezone' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -52,6 +53,10 @@ class GetWeeklyHoroscope {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['sign'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetWeeklyHoroscopeForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getWeeklyHoroscope( $atts['sign'], $atts['lang'], $atts['date'], $atts['timezone'] );
 

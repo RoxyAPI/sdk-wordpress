@@ -38,7 +38,7 @@ const fields = [
 		control: 'text',
 		label: __( 'Timezone', 'roxyapi' ),
 		required: false,
-		help: __( 'Timezone offset from UTC in hours', 'roxyapi' ),
+		help: __( 'Timezone: an IANA name (e.g. "America/New_York", "Europe/London", or `cities[0].timezone` from /location/search) or decimal hours from UTC (e.g. -5 for EST, 5.5 for IST)', 'roxyapi' ),
 	},
 	{
 		name: 'ayanamsa',

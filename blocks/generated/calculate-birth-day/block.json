@@ -5,7 +5,7 @@
 	"title": "Birth Day Number (Numerology)",
 	"category": "roxyapi-catalog",
 	"icon": "chart-line",
-	"description": "Special talents from day of birth",
+	"description": "Calculate the Birth Day number from the day of the month a person was born, 1 to 31, with Pythagorean numerology",
 	"keywords": [
 		"numerology",
 		"roxyapi",

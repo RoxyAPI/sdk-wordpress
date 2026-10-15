@@ -22,7 +22,7 @@ define( 'ROXYAPI_KEY', getenv( 'ROXYAPI_KEY' ) );
 
 Browse the full library at RoxyAPI > Shortcodes in the WordPress admin sidebar. 19 hand-curated hero shortcodes cover the highest-demand readings; every other endpoint is reachable via auto-generated long-tail shortcodes.
 
-Every hero shortcode has two modes, auto detected.
+Every hero shortcode, and every other reading whose inputs a visitor can enter, has two modes, auto detected.
 
 ### Static mode: site owner picks the values
 
@@ -82,6 +82,8 @@ Leave the required attributes off and the shortcode renders an HTML form. Visito
 [roxy_angel_number]         -> number input
 [roxy_crystals_by_zodiac]   -> zodiac sign picker
 ```
+
+Readings outside this list work the same way whenever every input they need is one a visitor can enter: `[roxy_calculate_luck_pillars]` asks for a birth date, time, timezone, and gender, and `[roxy_get_annual_flying_stars]` for a year. Optional inputs fold under Advanced. Add `mode="form"` to show the form even when attributes are set, or `mode="static"` to keep a placement fixed.
 
 Form submissions post back to the same page. The plugin uses `wp_verify_nonce` for CSRF, gates submission on an explicit GDPR Article 9 consent checkbox, runs `RoxyAPI\Support\RateLimit` for per IP throttling (the ceiling is `RateLimit::DEFAULT_LIMIT`, and each scope gets its own bucket), and calls `wp_remote_request` for the API hit. All output is escaped via `esc_html` or `wp_kses_post`. The API key never reaches the browser in either mode.
 

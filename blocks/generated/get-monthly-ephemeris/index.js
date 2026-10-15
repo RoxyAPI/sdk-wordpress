@@ -10,7 +10,7 @@ const fields = [
 		control: 'number',
 		label: __( 'Year', 'roxyapi' ),
 		required: false,
-		help: __( 'Year for monthly ephemeris (1900-2100)', 'roxyapi' ),
+		help: __( 'Year for monthly ephemeris (1551 to 2649)', 'roxyapi' ),
 	},
 	{
 		name: 'month',

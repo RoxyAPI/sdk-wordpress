@@ -115,7 +115,7 @@ class Catalog {
 	 *   sample: string,
 	 *   attributes: array<string, string>,
 	 *   hero: bool,
-	 *   block_only: bool,
+	 *   form_only: bool,
 	 *   ttl: int,
 	 * }>
 	 */
@@ -151,7 +151,7 @@ class Catalog {
 				'sample'      => (string) $hero['code'],
 				'attributes'  => array(),
 				'hero'        => true,
-				'block_only'  => false,
+				'form_only'   => false,
 				'ttl'         => $ttl,
 			);
 			$seen_tags[ $tag ] = true;
@@ -191,7 +191,7 @@ class Catalog {
 				'sample'      => $sample,
 				'attributes'  => $attr_examples,
 				'hero'        => false,
-				'block_only'  => ! empty( $ep['block_only'] ),
+				'form_only'   => ! empty( $ep['form_only'] ),
 				'ttl'         => (int) $ep['ttl'],
 			);
 			$seen_tags[ $shortcode_tag ] = true;
@@ -214,7 +214,7 @@ class Catalog {
 	 *   sample: string,
 	 *   attributes: array<string, string>,
 	 *   hero: bool,
-	 *   block_only: bool,
+	 *   form_only: bool,
 	 *   ttl: int,
 	 * }>>
 	 */
@@ -303,7 +303,7 @@ class Catalog {
 	 * Endpoints index. Wraps the generated registry in a defensive callable
 	 * lookup so PHPStan stays happy if generation has not run.
 	 *
-	 * @return array<string, array{path: string, method: string, tag: string, summary: string, display_name: string, ttl: int, hero: bool, block_only: bool, attributes: array<string, string>}>
+	 * @return array<string, array{path: string, method: string, tag: string, summary: string, display_name: string, ttl: int, hero: bool, form_only: bool, attributes: array<string, string>}>
 	 */
 	private static function endpoints_index(): array {
 		if ( ! class_exists( '\\RoxyAPI\\Generated\\Endpoints' ) ) {

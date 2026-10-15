@@ -35,6 +35,7 @@ class CalculateDrishti {
 		'longitude' => '',
 		'timezone' => '',
 		'coordinate_system' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -54,6 +55,10 @@ class CalculateDrishti {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['date'] === '' || $atts['time'] === '' || $atts['latitude'] === '' || $atts['longitude'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CalculateDrishtiForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

@@ -38,6 +38,7 @@ class GenerateRelocationChart {
 		'relocation_longitude' => '',
 		'house_system' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -57,6 +58,10 @@ class GenerateRelocationChart {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['date'] === '' || $atts['time'] === '' || $atts['timezone'] === '' || $atts['birth_latitude'] === '' || $atts['birth_longitude'] === '' || $atts['relocation_latitude'] === '' || $atts['relocation_longitude'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GenerateRelocationChartForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

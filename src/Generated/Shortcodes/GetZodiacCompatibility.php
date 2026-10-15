@@ -32,6 +32,7 @@ class GetZodiacCompatibility {
 		'sign1' => '',
 		'sign2' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -51,6 +52,10 @@ class GetZodiacCompatibility {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['sign1'] === '' || $atts['sign2'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetZodiacCompatibilityForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getZodiacCompatibility( $atts['sign1'], $atts['sign2'], $atts['lang'] );
 

@@ -22,6 +22,7 @@ class CalculateMayanCompatibilityForm {
 			'operation_id' => 'calculateMayanCompatibility',
 			'title'        => __( 'Mayan Nawal Compatibility', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
+			'fold_optional' => true,
 			'sections'     => array(
 				array(
 					'name'   => 'personA',

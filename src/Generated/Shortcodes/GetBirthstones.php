@@ -31,6 +31,7 @@ class GetBirthstones {
 	public const DEFAULTS = array(
 		'month' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -50,6 +51,10 @@ class GetBirthstones {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['month'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetBirthstonesForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getBirthstones( $atts['month'], $atts['lang'] );
 

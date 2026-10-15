@@ -31,6 +31,7 @@ class LookupHexagram {
 	public const DEFAULTS = array(
 		'lang' => '',
 		'lines' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -50,6 +51,10 @@ class LookupHexagram {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['lines'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\LookupHexagramForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::lookupHexagram( $atts['lang'], $atts['lines'] );
 

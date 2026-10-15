@@ -22,6 +22,7 @@ class GenerateTransitForm {
 			'operation_id' => 'generateTransit',
 			'title'        => __( 'Human Design Transit Overlay', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
+			'fold_optional' => true,
 			'sections'     => array(
 				array(
 					'name'   => 'birthData',

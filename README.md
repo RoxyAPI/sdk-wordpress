@@ -18,7 +18,7 @@ Interactive forms for your visitors. Gutenberg blocks for your editor. Shortcode
 
 -   **19 hero shortcodes** covering Western astrology, Vedic astrology (kundli, panchang, mangal dosha, KP chart, gun milan), Forecast (the cross-domain timeline), Human Design (the bodygraph), Numerology, Tarot (daily, three card, yes or no), biorhythm, angel numbers, crystals by zodiac, current moon phase, and two-chart compatibility (synastry, gun milan, Western compatibility). Every reading ships a matching Gutenberg block generated from the same spec, with sidebar controls for its inputs and a live preview in the editor. The Horoscope block adds a variation picker.
 -   **Auto generated shortcodes** for the long tail. Every endpoint in the RoxyAPI OpenAPI spec is reachable from a shortcode.
--   **Form mode on every hero shortcode.** Let visitors submit their own sign, name, birth date, or question and render a personalized reading. No JavaScript required.
+-   **Form mode on every reading a visitor can fill in.** Let visitors submit their own sign, name, birth date, or question and render a personalized reading. No JavaScript required.
 -   **Zero client side secrets.** All calls run in PHP. The API key never reaches the browser.
 
 ## Ship this weekend
@@ -33,7 +33,7 @@ All three pages monetize the same way: drop an email opt in, a Stripe buy button
 
 ## Shortcodes
 
-Every hero shortcode works in two modes. Pass all required attributes for a **static reading** that the site owner controls. Omit them and the shortcode renders a **form** so visitors submit their own inputs.
+Every hero shortcode, and every other reading whose inputs a visitor can enter, works in two modes. Pass all required attributes for a **static reading** that the site owner controls. Omit them and the shortcode renders a **form** so visitors submit their own inputs.
 
 ### Static mode (site owner picks the values)
 
@@ -81,6 +81,8 @@ Leave the attributes off and the shortcode renders an input form for your visito
 [roxy_angel_number]         → number input
 [roxy_crystals_by_zodiac]   → zodiac sign picker
 ```
+
+Readings outside this list work the same way whenever every input they need is one a visitor can enter: `[roxy_calculate_luck_pillars]` asks for a birth date, time, timezone, and gender, and `[roxy_get_annual_flying_stars]` for a year. Optional inputs fold under Advanced. Add `mode="form"` to show the form even when attributes are set, or `mode="static"` to keep a placement fixed.
 
 Form submissions post back to the same page over HTTPS. The plugin validates the nonce, rate limits per IP, calls RoxyAPI server side, and renders the result above the form. Nothing to wire up, nothing to style. Override the template from your theme if you want a custom layout.
 

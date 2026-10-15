@@ -19,7 +19,7 @@ class Endpoints {
 	/**
 	 * All registered endpoints keyed by operationId.
 	 *
-	 * @return array<string, array{path: string, method: string, tag: string, summary: string, display_name: string, ttl: int, hero: bool, block_only: bool, shortcode_tag: string, attributes: array<string, string>}>
+	 * @return array<string, array{path: string, method: string, tag: string, summary: string, display_name: string, ttl: int, hero: bool, form_only: bool, shortcode_tag: string, attributes: array<string, string>}>
 	 */
 	public static function all(): array {
 		return array(
@@ -31,7 +31,7 @@ class Endpoints {
 			'display_name'  => 'Field Labels for a Language',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_field_labels',
 			'attributes' => array(),
 		),
@@ -43,7 +43,7 @@ class Endpoints {
 			'display_name'  => 'Zodiac Signs',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_zodiac_signs',
 			'attributes' => array(),
 		),
@@ -55,7 +55,7 @@ class Endpoints {
 			'display_name'  => 'Zodiac Sign Details',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_zodiac_sign',
 			'attributes' => array(
 				'id' => 'aries',
@@ -69,7 +69,7 @@ class Endpoints {
 			'display_name'  => 'Planet Meanings',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_planet_meanings',
 			'attributes' => array(),
 		),
@@ -81,7 +81,7 @@ class Endpoints {
 			'display_name'  => 'Planet Meaning Details',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_planet_meaning',
 			'attributes' => array(
 				'id' => 'sun',
@@ -95,7 +95,7 @@ class Endpoints {
 			'display_name'  => 'Natal Chart',
 			'ttl'           => 2592000,
 			'hero'          => true,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_natal_chart',
 			'attributes' => array(
 				'date' => '1990-07-15',
@@ -115,7 +115,7 @@ class Endpoints {
 			'display_name'  => 'Planetary Positions',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_planetary_positions',
 			'attributes' => array(
 				'date' => '2025-12-18',
@@ -134,7 +134,7 @@ class Endpoints {
 			'display_name'  => 'Monthly Ephemeris',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_monthly_tropical_ephemeris',
 			'attributes' => array(),
 		),
@@ -146,7 +146,7 @@ class Endpoints {
 			'display_name'  => 'Current Moon Phase',
 			'ttl'           => 3600,
 			'hero'          => true,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_current_moon_phase',
 			'attributes' => array(
 				'time' => '12:00:00',
@@ -161,7 +161,7 @@ class Endpoints {
 			'display_name'  => 'Upcoming Moon Phases',
 			'ttl'           => 86400,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_upcoming_moon_phases',
 			'attributes' => array(
 				'count' => '8',
@@ -175,7 +175,7 @@ class Endpoints {
 			'display_name'  => 'Lunar Calendar',
 			'ttl'           => 86400,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_moon_calendar',
 			'attributes' => array(
 				'year' => '2026',
@@ -190,7 +190,7 @@ class Endpoints {
 			'display_name'  => 'Synastry',
 			'ttl'           => 604800,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_calculate_synastry',
 			'attributes' => array(),
 		),
@@ -202,7 +202,7 @@ class Endpoints {
 			'display_name'  => 'House Cusps',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_houses',
 			'attributes' => array(
 				'date' => '1990-07-15',
@@ -221,7 +221,7 @@ class Endpoints {
 			'display_name'  => 'Planetary Aspects',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_aspects',
 			'attributes' => array(
 				'date' => '1990-07-15',
@@ -237,7 +237,7 @@ class Endpoints {
 			'display_name'  => 'Monthly Aspects',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_monthly_tropical_aspects',
 			'attributes' => array(
 				'timezone' => 'UTC',
@@ -252,7 +252,7 @@ class Endpoints {
 			'display_name'  => 'Aspect Patterns',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_detect_aspect_patterns',
 			'attributes' => array(
 				'strict_orbs' => 'false',
@@ -273,7 +273,7 @@ class Endpoints {
 			'display_name'  => 'Planetary Transits',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_transits',
 			'attributes' => array(
 				'timezone' => 'UTC',
@@ -288,7 +288,7 @@ class Endpoints {
 			'display_name'  => 'Monthly Transits',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_monthly_tropical_transits',
 			'attributes' => array(
 				'timezone' => 'UTC',
@@ -303,7 +303,7 @@ class Endpoints {
 			'display_name'  => 'Transit Aspects',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_calculate_transit_aspects',
 			'attributes' => array(),
 		),
@@ -315,7 +315,7 @@ class Endpoints {
 			'display_name'  => 'Monthly Parallels',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_monthly_declination_parallels',
 			'attributes' => array(
 				'timezone' => 'UTC',
@@ -331,7 +331,7 @@ class Endpoints {
 			'display_name'  => 'Ecliptic Crossings',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_planetary_node_passages',
 			'attributes' => array(
 				'year' => '2026',
@@ -346,7 +346,7 @@ class Endpoints {
 			'display_name'  => 'Solar Return Chart',
 			'ttl'           => 86400,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_solar_return',
 			'attributes' => array(
 				'birth_date' => '1990-07-15',
@@ -366,7 +366,7 @@ class Endpoints {
 			'display_name'  => 'Lunar Return Chart',
 			'ttl'           => 86400,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_lunar_return',
 			'attributes' => array(
 				'birth_date' => '1990-07-15',
@@ -386,7 +386,7 @@ class Endpoints {
 			'display_name'  => 'Composite Chart',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_generate_composite_chart',
 			'attributes' => array(),
 		),
@@ -398,7 +398,7 @@ class Endpoints {
 			'display_name'  => 'Compatibility Score',
 			'ttl'           => 604800,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_calculate_compatibility',
 			'attributes' => array(),
 		),
@@ -410,7 +410,7 @@ class Endpoints {
 			'display_name'  => 'Daily Horoscope by Zodiac Sign',
 			'ttl'           => 3600,
 			'hero'          => true,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_daily_horoscope',
 			'attributes' => array(
 				'sign' => 'aries',
@@ -425,7 +425,7 @@ class Endpoints {
 			'display_name'  => 'Weekly Horoscope by Zodiac Sign',
 			'ttl'           => 86400,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_weekly_horoscope',
 			'attributes' => array(
 				'sign' => 'aries',
@@ -440,7 +440,7 @@ class Endpoints {
 			'display_name'  => 'Monthly Horoscope by Zodiac Sign',
 			'ttl'           => 86400,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_monthly_horoscope',
 			'attributes' => array(
 				'sign' => 'aries',
@@ -455,7 +455,7 @@ class Endpoints {
 			'display_name'  => 'Yearly Horoscope by Zodiac Sign',
 			'ttl'           => 86400,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_yearly_horoscope',
 			'attributes' => array(
 				'sign' => 'aries',
@@ -470,7 +470,7 @@ class Endpoints {
 			'display_name'  => 'Planetary Return Chart',
 			'ttl'           => 86400,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_planetary_return',
 			'attributes' => array(
 				'birth_date' => '1990-07-15',
@@ -491,7 +491,7 @@ class Endpoints {
 			'display_name'  => 'Astrocartography Map',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_astrocartography',
 			'attributes' => array(
 				'include' => 'chiron',
@@ -511,7 +511,7 @@ class Endpoints {
 			'display_name'  => 'Relocation Chart',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_relocation_chart',
 			'attributes' => array(
 				'date' => '1961-08-04',
@@ -532,7 +532,7 @@ class Endpoints {
 			'display_name'  => 'Local Space Astrology Map',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_local_space',
 			'attributes' => array(
 				'include' => 'chiron,lilith',
@@ -551,7 +551,7 @@ class Endpoints {
 			'display_name'  => 'Fixed Stars and Star Conjunctions',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_fixed_stars',
 			'attributes' => array(
 				'orb' => '1',
@@ -571,7 +571,7 @@ class Endpoints {
 			'display_name'  => 'Arabic Lots',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_arabic_lots',
 			'attributes' => array(
 				'date' => '1990-07-15',
@@ -591,7 +591,7 @@ class Endpoints {
 			'display_name'  => 'Asteroid Goddesses',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_asteroids',
 			'attributes' => array(
 				'date' => '1990-07-15',
@@ -611,7 +611,7 @@ class Endpoints {
 			'display_name'  => 'Black Moon Lilith',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_lilith',
 			'attributes' => array(
 				'date' => '1990-07-15',
@@ -631,7 +631,7 @@ class Endpoints {
 			'display_name'  => 'Secondary Progressions',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_progressions',
 			'attributes' => array(
 				'date' => '1990-07-15',
@@ -651,7 +651,7 @@ class Endpoints {
 			'display_name'  => 'Solar Arc Directions',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_solar_arc',
 			'attributes' => array(
 				'date' => '1990-07-15',
@@ -671,7 +671,7 @@ class Endpoints {
 			'display_name'  => 'Annual Profections',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_profections',
 			'attributes' => array(
 				'date' => '1990-07-15',
@@ -692,7 +692,7 @@ class Endpoints {
 			'display_name'  => 'Birth Chart (D1 Rashi Chart)',
 			'ttl'           => 2592000,
 			'hero'          => true,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_birth_chart',
 			'attributes' => array(
 				'focus' => 'general',
@@ -715,7 +715,7 @@ class Endpoints {
 			'display_name'  => 'Navamsa Chart (D9)',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_navamsa',
 			'attributes' => array(
 				'date' => '1990-07-04',
@@ -735,7 +735,7 @@ class Endpoints {
 			'display_name'  => 'Divisional Chart (Varga)',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_divisional_chart',
 			'attributes' => array(
 				'date' => '1990-07-04',
@@ -756,7 +756,7 @@ class Endpoints {
 			'display_name'  => 'Compatibility Score',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_calculate_gun_milan',
 			'attributes' => array(),
 		),
@@ -768,7 +768,7 @@ class Endpoints {
 			'display_name'  => 'Porutham Match',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_calculate_dashakoot',
 			'attributes' => array(),
 		),
@@ -780,7 +780,7 @@ class Endpoints {
 			'display_name'  => 'Compare Malefic Affliction',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_calculate_papasamyam',
 			'attributes' => array(),
 		),
@@ -792,7 +792,7 @@ class Endpoints {
 			'display_name'  => 'Planetary Positions',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_planet_positions',
 			'attributes' => array(
 				'date' => '1990-07-04',
@@ -812,7 +812,7 @@ class Endpoints {
 			'display_name'  => 'Monthly Ephemeris',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_monthly_ephemeris',
 			'attributes' => array(
 				'coordinate_system' => 'sidereal',
@@ -826,7 +826,7 @@ class Endpoints {
 			'display_name'  => 'Current Mahadasha',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_current_dasha',
 			'attributes' => array(
 				'focus' => 'general',
@@ -849,7 +849,7 @@ class Endpoints {
 			'display_name'  => 'Mahadasha Periods',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_major_dashas',
 			'attributes' => array(
 				'focus' => 'general',
@@ -872,7 +872,7 @@ class Endpoints {
 			'display_name'  => 'Antardashas',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_sub_dashas',
 			'attributes' => array(
 				'mahadasha' => 'Jupiter',
@@ -896,7 +896,7 @@ class Endpoints {
 			'display_name'  => 'Pratyantardashas',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_pratyantardashas',
 			'attributes' => array(
 				'mahadasha' => 'Saturn',
@@ -921,7 +921,7 @@ class Endpoints {
 			'display_name'  => 'Sookshma Dashas',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_sookshma_dashas',
 			'attributes' => array(
 				'mahadasha' => 'Saturn',
@@ -947,7 +947,7 @@ class Endpoints {
 			'display_name'  => 'Prana Dashas',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_prana_dashas',
 			'attributes' => array(
 				'mahadasha' => 'Saturn',
@@ -974,7 +974,7 @@ class Endpoints {
 			'display_name'  => 'Daily Reading',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_vedic_daily_reading',
 			'attributes' => array(
 				'focus' => 'general',
@@ -994,7 +994,7 @@ class Endpoints {
 			'display_name'  => 'Basic Panchang',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_basic_panchang',
 			'attributes' => array(
 				'date' => '2025-12-17',
@@ -1012,7 +1012,7 @@ class Endpoints {
 			'display_name'  => 'Detailed Panchang',
 			'ttl'           => 3600,
 			'hero'          => true,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_detailed_panchang',
 			'attributes' => array(
 				'date' => '2026-02-03',
@@ -1029,7 +1029,7 @@ class Endpoints {
 			'display_name'  => 'Choghadiya',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_choghadiya',
 			'attributes' => array(
 				'date' => '2026-02-03',
@@ -1046,7 +1046,7 @@ class Endpoints {
 			'display_name'  => 'Hora',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_hora',
 			'attributes' => array(
 				'date' => '2026-02-03',
@@ -1063,7 +1063,7 @@ class Endpoints {
 			'display_name'  => 'Manglik Dosha',
 			'ttl'           => 2592000,
 			'hero'          => true,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_check_manglik_dosha',
 			'attributes' => array(
 				'date' => '1990-07-04',
@@ -1083,7 +1083,7 @@ class Endpoints {
 			'display_name'  => 'Kalsarpa Dosha',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_check_kalsarpa_dosha',
 			'attributes' => array(
 				'date' => '1990-07-04',
@@ -1103,7 +1103,7 @@ class Endpoints {
 			'display_name'  => 'Sadhesati',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_check_sadhesati',
 			'attributes' => array(
 				'date' => '1990-07-04',
@@ -1123,7 +1123,7 @@ class Endpoints {
 			'display_name'  => 'Planetary Yogas',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_yogas',
 			'attributes' => array(
 				'family' => 'akriti',
@@ -1137,7 +1137,7 @@ class Endpoints {
 			'display_name'  => 'Yoga Details by ID',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_yoga',
 			'attributes' => array(
 				'id' => 'gajakesari',
@@ -1151,7 +1151,7 @@ class Endpoints {
 			'display_name'  => 'Classical Vedic Yogas in a Birth Chart',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_detect_yogas',
 			'attributes' => array(
 				'date' => '1990-07-04',
@@ -1171,7 +1171,7 @@ class Endpoints {
 			'display_name'  => 'KP-Newcomb Ayanamsa',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_kp_ayanamsa',
 			'attributes' => array(
 				'time' => '09:00:00',
@@ -1186,7 +1186,7 @@ class Endpoints {
 			'display_name'  => 'KP Planetary Positions',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_kp_planets',
 			'attributes' => array(
 				'date' => '1990-07-04',
@@ -1207,7 +1207,7 @@ class Endpoints {
 			'display_name'  => 'KP Placidus House Cusps',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_kp_cusps',
 			'attributes' => array(
 				'focus' => 'general',
@@ -1228,7 +1228,7 @@ class Endpoints {
 			'display_name'  => 'KP Birth Chart',
 			'ttl'           => 2592000,
 			'hero'          => true,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_kp_chart',
 			'attributes' => array(
 				'focus' => 'general',
@@ -1250,7 +1250,7 @@ class Endpoints {
 			'display_name'  => 'KP Ruling Planets with Optional Significators',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_kp_ruling_planets',
 			'attributes' => array(
 				'focus' => 'general',
@@ -1270,7 +1270,7 @@ class Endpoints {
 			'display_name'  => 'KP Ruling Planets with Significators',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_kp_ruling_interval',
 			'attributes' => array(
 				'focus' => 'general',
@@ -1292,7 +1292,7 @@ class Endpoints {
 			'display_name'  => 'KP Sublord Changes',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_kp_sublord_changes',
 			'attributes' => array(
 				'planet' => 'Moon',
@@ -1311,7 +1311,7 @@ class Endpoints {
 			'display_name'  => 'KP Rasi Ingress Times',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_kp_rasi_changes',
 			'attributes' => array(
 				'planet' => 'Sun',
@@ -1330,7 +1330,7 @@ class Endpoints {
 			'display_name'  => 'KP Planets at Time Intervals',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_kp_planets_interval',
 			'attributes' => array(
 				'start_datetime' => '2025-01-15T00:00:00Z',
@@ -1351,7 +1351,7 @@ class Endpoints {
 			'display_name'  => 'Cast a KP Horary',
 			'ttl'           => 0,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_cast_kp_horary_chart',
 			'attributes' => array(
 				'focus' => 'general',
@@ -1374,7 +1374,7 @@ class Endpoints {
 			'display_name'  => 'Daily Finance Score',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_kp_daily_finance',
 			'attributes' => array(
 				'birth_date' => '1990-06-15',
@@ -1395,7 +1395,7 @@ class Endpoints {
 			'display_name'  => 'Planetary Aspects (Drishti)',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_drishti',
 			'attributes' => array(
 				'date' => '2026-02-03',
@@ -1414,7 +1414,7 @@ class Endpoints {
 			'display_name'  => 'Monthly Planetary Aspects',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_monthly_aspects',
 			'attributes' => array(
 				'timezone' => 'UTC',
@@ -1429,7 +1429,7 @@ class Endpoints {
 			'display_name'  => 'Monthly Lunar Aspects',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_lunar_aspects',
 			'attributes' => array(
 				'timezone' => 'UTC',
@@ -1444,7 +1444,7 @@ class Endpoints {
 			'display_name'  => 'Transit Analysis',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_transit',
 			'attributes' => array(
 				'birth_date' => '1990-07-04',
@@ -1465,7 +1465,7 @@ class Endpoints {
 			'display_name'  => 'Monthly Transit',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_monthly_transits',
 			'attributes' => array(
 				'timezone' => 'UTC',
@@ -1480,7 +1480,7 @@ class Endpoints {
 			'display_name'  => 'Declination Parallels',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_parallels',
 			'attributes' => array(
 				'date' => '2026-02-03',
@@ -1499,7 +1499,7 @@ class Endpoints {
 			'display_name'  => 'Monthly Declination Parallels',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_monthly_parallels',
 			'attributes' => array(
 				'timezone' => 'UTC',
@@ -1513,7 +1513,7 @@ class Endpoints {
 			'display_name'  => 'Ecliptic Crossings',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_ecliptic_crossings',
 			'attributes' => array(
 				'year' => '2026',
@@ -1529,7 +1529,7 @@ class Endpoints {
 			'display_name'  => 'Rashis',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_rashis',
 			'attributes' => array(),
 		),
@@ -1541,7 +1541,7 @@ class Endpoints {
 			'display_name'  => 'Rashi by ID',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_rashi',
 			'attributes' => array(
 				'id' => 'mesha',
@@ -1555,7 +1555,7 @@ class Endpoints {
 			'display_name'  => 'Nakshatras',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_nakshatras',
 			'attributes' => array(),
 		),
@@ -1567,7 +1567,7 @@ class Endpoints {
 			'display_name'  => 'Nakshatra by ID',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_nakshatra',
 			'attributes' => array(
 				'id' => 'ashwini',
@@ -1581,7 +1581,7 @@ class Endpoints {
 			'display_name'  => 'Upagraha (Sub-planet) Positions',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_upagraha_positions',
 			'attributes' => array(
 				'date' => '1990-07-04',
@@ -1601,7 +1601,7 @@ class Endpoints {
 			'display_name'  => 'Ashtakavarga',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_ashtakavarga',
 			'attributes' => array(
 				'date' => '1990-07-04',
@@ -1621,7 +1621,7 @@ class Endpoints {
 			'display_name'  => 'Shadbala',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_shadbala',
 			'attributes' => array(
 				'date' => '1990-07-04',
@@ -1641,7 +1641,7 @@ class Endpoints {
 			'display_name'  => 'Avastha States',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_avasthas',
 			'attributes' => array(
 				'system' => 'deeptadi',
@@ -1655,7 +1655,7 @@ class Endpoints {
 			'display_name'  => 'Avastha by ID',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_avastha',
 			'attributes' => array(
 				'id' => 'dipta',
@@ -1669,7 +1669,7 @@ class Endpoints {
 			'display_name'  => 'Arudha Padas',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_arudha_padas',
 			'attributes' => array(
 				'date' => '1990-07-04',
@@ -1689,7 +1689,7 @@ class Endpoints {
 			'display_name'  => 'Chara Karakas',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_chara_karakas',
 			'attributes' => array(
 				'date' => '1990-07-04',
@@ -1710,7 +1710,7 @@ class Endpoints {
 			'display_name'  => 'Bhava Bala',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_bhava_bala',
 			'attributes' => array(
 				'focus' => 'general',
@@ -1731,7 +1731,7 @@ class Endpoints {
 			'display_name'  => 'Bhav Chalit',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_bhav_chalit',
 			'attributes' => array(
 				'focus' => 'general',
@@ -1752,7 +1752,7 @@ class Endpoints {
 			'display_name'  => 'Heliacal Rising and Setting',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_heliacal_visibility',
 			'attributes' => array(
 				'date' => '2026-07-25',
@@ -1769,7 +1769,7 @@ class Endpoints {
 			'display_name'  => 'Cross-domain Forecast Timeline',
 			'ttl'           => 86400,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_generate_timeline',
 			'attributes' => array(),
 		),
@@ -1781,7 +1781,7 @@ class Endpoints {
 			'display_name'  => 'Western Astrology Forecast',
 			'ttl'           => 86400,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_forecast_transits',
 			'attributes' => array(),
 		),
@@ -1793,7 +1793,7 @@ class Endpoints {
 			'display_name'  => 'Significant Dates',
 			'ttl'           => 86400,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_find_significant_dates',
 			'attributes' => array(),
 		),
@@ -1805,7 +1805,7 @@ class Endpoints {
 			'display_name'  => 'Forecast Digest',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_generate_digest',
 			'attributes' => array(),
 		),
@@ -1817,7 +1817,7 @@ class Endpoints {
 			'display_name'  => 'Solar Return Chart',
 			'ttl'           => 86400,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_forecast_solar_return',
 			'attributes' => array(
 				'date' => '1990-07-15',
@@ -1837,7 +1837,7 @@ class Endpoints {
 			'display_name'  => 'Human Design Bodygraph',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_bodygraph',
 			'attributes' => array(
 				'date' => '1990-07-15',
@@ -1856,7 +1856,7 @@ class Endpoints {
 			'display_name'  => 'Human Design Connection Chart',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_calculate_connection',
 			'attributes' => array(),
 		),
@@ -1868,7 +1868,7 @@ class Endpoints {
 			'display_name'  => 'Human Design Penta',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_calculate_penta',
 			'attributes' => array(),
 		),
@@ -1880,7 +1880,7 @@ class Endpoints {
 			'display_name'  => 'Human Design Transit Overlay',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_generate_transit',
 			'attributes' => array(),
 		),
@@ -1892,7 +1892,7 @@ class Endpoints {
 			'display_name'  => 'Human Design Type',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_type',
 			'attributes' => array(
 				'date' => '1990-07-15',
@@ -1911,7 +1911,7 @@ class Endpoints {
 			'display_name'  => 'Human Design Gate Activations',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_gates',
 			'attributes' => array(
 				'date' => '1990-07-15',
@@ -1930,7 +1930,7 @@ class Endpoints {
 			'display_name'  => 'Human Design Gate by Number',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_gate',
 			'attributes' => array(
 				'number' => '34',
@@ -1944,7 +1944,7 @@ class Endpoints {
 			'display_name'  => 'Defined Human Design Channels',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_channels',
 			'attributes' => array(
 				'date' => '1990-07-15',
@@ -1963,7 +1963,7 @@ class Endpoints {
 			'display_name'  => 'Human Design Centers',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_centers',
 			'attributes' => array(
 				'date' => '1990-07-15',
@@ -1982,7 +1982,7 @@ class Endpoints {
 			'display_name'  => 'Human Design Center by ID',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_center',
 			'attributes' => array(
 				'id' => 'sacral',
@@ -1996,7 +1996,7 @@ class Endpoints {
 			'display_name'  => 'Human Design Profile and Line Keynotes',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_profile',
 			'attributes' => array(
 				'date' => '1990-07-15',
@@ -2015,7 +2015,7 @@ class Endpoints {
 			'display_name'  => 'Human Design Variables',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_variables',
 			'attributes' => array(
 				'date' => '1990-07-15',
@@ -2034,7 +2034,7 @@ class Endpoints {
 			'display_name'  => 'BaZi Chart',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_bazi_chart',
 			'attributes' => array(
 				'date' => '1990-06-15',
@@ -2055,7 +2055,7 @@ class Endpoints {
 			'display_name'  => 'Luck Pillars',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_luck_pillars',
 			'attributes' => array(
 				'date' => '1990-06-15',
@@ -2080,7 +2080,7 @@ class Endpoints {
 			'display_name'  => 'Day Master Strength',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_day_master_strength',
 			'attributes' => array(
 				'date' => '1990-06-15',
@@ -2101,7 +2101,7 @@ class Endpoints {
 			'display_name'  => 'BaZi Compatibility',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_calculate_bazi_compatibility',
 			'attributes' => array(),
 		),
@@ -2113,7 +2113,7 @@ class Endpoints {
 			'display_name'  => 'BaZi Annual Forecast',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_annual_forecast',
 			'attributes' => array(
 				'date' => '1990-06-15',
@@ -2135,7 +2135,7 @@ class Endpoints {
 			'display_name'  => 'Chinese Zodiac Animals',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_zodiac_animals',
 			'attributes' => array(
 				'limit' => '12',
@@ -2150,7 +2150,7 @@ class Endpoints {
 			'display_name'  => 'Chinese Zodiac Animal',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_zodiac_animal',
 			'attributes' => array(
 				'id' => 'rat',
@@ -2164,7 +2164,7 @@ class Endpoints {
 			'display_name'  => 'Chinese Zodiac Animal for a Birth Date',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_zodiac_animal',
 			'attributes' => array(
 				'date' => '1990-06-15',
@@ -2179,7 +2179,7 @@ class Endpoints {
 			'display_name'  => 'Chinese Zodiac Compatibility',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_zodiac_compatibility',
 			'attributes' => array(
 				'sign1' => 'rat',
@@ -2194,7 +2194,7 @@ class Endpoints {
 			'display_name'  => 'Daily Chinese Zodiac Reading',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_daily_zodiac_reading',
 			'attributes' => array(
 				'id' => 'rat',
@@ -2209,7 +2209,7 @@ class Endpoints {
 			'display_name'  => 'Solar Terms',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_solar_terms',
 			'attributes' => array(
 				'year' => '2026',
@@ -2223,7 +2223,7 @@ class Endpoints {
 			'display_name'  => 'Convert Lunar and Gregorian Dates',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_lunar_date',
 			'attributes' => array(
 				'date' => '1990-06-15',
@@ -2241,7 +2241,7 @@ class Endpoints {
 			'display_name'  => 'Almanac for a Day',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_almanac_day',
 			'attributes' => array(
 				'date' => '1990-06-15',
@@ -2255,7 +2255,7 @@ class Endpoints {
 			'display_name'  => 'Month of Almanac Days',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_monthly_almanac',
 			'attributes' => array(),
 		),
@@ -2267,7 +2267,7 @@ class Endpoints {
 			'display_name'  => 'Auspicious Days',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_lookup_auspicious_days',
 			'attributes' => array(
 				'activity' => 'wedding',
@@ -2284,7 +2284,7 @@ class Endpoints {
 			'display_name'  => 'Elements',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_five_elements',
 			'attributes' => array(
 				'limit' => '5',
@@ -2299,7 +2299,7 @@ class Endpoints {
 			'display_name'  => 'Calculate Kua Number',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_kua_number',
 			'attributes' => array(
 				'date' => '1985-07-15',
@@ -2315,7 +2315,7 @@ class Endpoints {
 			'display_name'  => 'Kua Number',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_kua_number',
 			'attributes' => array(
 				'number' => '8',
@@ -2329,7 +2329,7 @@ class Endpoints {
 			'display_name'  => 'Eight Mansions Map',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_eight_mansions',
 			'attributes' => array(
 				'kua' => '6',
@@ -2347,7 +2347,7 @@ class Endpoints {
 			'display_name'  => 'Flying Star Natal Chart',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_flying_star_chart',
 			'attributes' => array(
 				'period' => '9',
@@ -2363,7 +2363,7 @@ class Endpoints {
 			'display_name'  => 'Annual Flying Stars',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_annual_flying_stars',
 			'attributes' => array(
 				'year' => '2026',
@@ -2377,7 +2377,7 @@ class Endpoints {
 			'display_name'  => 'Monthly Flying Stars',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_monthly_flying_stars',
 			'attributes' => array(
 				'year' => '2026',
@@ -2392,7 +2392,7 @@ class Endpoints {
 			'display_name'  => 'Flying Stars',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_flying_stars',
 			'attributes' => array(
 				'limit' => '9',
@@ -2407,7 +2407,7 @@ class Endpoints {
 			'display_name'  => 'Annual Afflictions',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_annual_afflictions',
 			'attributes' => array(
 				'year' => '2026',
@@ -2421,7 +2421,7 @@ class Endpoints {
 			'display_name'  => 'Bagua Sectors',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_bagua_sectors',
 			'attributes' => array(
 				'limit' => '9',
@@ -2436,7 +2436,7 @@ class Endpoints {
 			'display_name'  => 'Bagua Sector',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_bagua_sector',
 			'attributes' => array(
 				'id' => 'wealth',
@@ -2450,7 +2450,7 @@ class Endpoints {
 			'display_name'  => 'Periods',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_nine_periods',
 			'attributes' => array(),
 		),
@@ -2462,7 +2462,7 @@ class Endpoints {
 			'display_name'  => 'Mayan Day Sign for a Date',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_tzolkin',
 			'attributes' => array(
 				'date' => '2012-12-21',
@@ -2477,7 +2477,7 @@ class Endpoints {
 			'display_name'  => 'Mayan Chart',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_mayan_chart',
 			'attributes' => array(
 				'date' => '2012-12-21',
@@ -2493,7 +2493,7 @@ class Endpoints {
 			'display_name'  => 'Convert a Maya Long Count',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_convert_long_count',
 			'attributes' => array(
 				'date' => '2012-12-21',
@@ -2509,7 +2509,7 @@ class Endpoints {
 			'display_name'  => 'Daily Mayan Energy Reading',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_daily_mayan_reading',
 			'attributes' => array(
 				'correlation' => 'gmt-584283',
@@ -2523,7 +2523,7 @@ class Endpoints {
 			'display_name'  => 'Monthly Tzolkin Calendar Grid',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_monthly_tzolkin_calendar',
 			'attributes' => array(
 				'correlation' => 'gmt-584283',
@@ -2537,7 +2537,7 @@ class Endpoints {
 			'display_name'  => 'Mayan Nawal Compatibility',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_calculate_mayan_compatibility',
 			'attributes' => array(),
 		),
@@ -2549,7 +2549,7 @@ class Endpoints {
 			'display_name'  => 'Mayan Day Signs',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_mayan_day_signs',
 			'attributes' => array(
 				'direction_scheme' => 'madrid-codex',
@@ -2565,7 +2565,7 @@ class Endpoints {
 			'display_name'  => 'Mayan Day Sign',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_mayan_day_sign',
 			'attributes' => array(
 				'id' => 'imix',
@@ -2580,7 +2580,7 @@ class Endpoints {
 			'display_name'  => 'Mayan Trecenas',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_trecenas',
 			'attributes' => array(
 				'limit' => '20',
@@ -2595,7 +2595,7 @@ class Endpoints {
 			'display_name'  => 'Mayan Trecena',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_trecena',
 			'attributes' => array(
 				'number' => '1',
@@ -2609,7 +2609,7 @@ class Endpoints {
 			'display_name'  => 'Haab Periods',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_haab_months',
 			'attributes' => array(
 				'limit' => '19',
@@ -2624,7 +2624,7 @@ class Endpoints {
 			'display_name'  => 'Haab Period',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_haab_month',
 			'attributes' => array(
 				'id' => 'pop',
@@ -2638,7 +2638,7 @@ class Endpoints {
 			'display_name'  => 'Aztec Day Sign for a Date',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_tonalpohualli',
 			'attributes' => array(
 				'date' => '2012-12-21',
@@ -2652,7 +2652,7 @@ class Endpoints {
 			'display_name'  => 'Daily Aztec Energy Reading',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_daily_aztec_reading',
 			'attributes' => array(),
 		),
@@ -2664,7 +2664,7 @@ class Endpoints {
 			'display_name'  => 'Aztec Day Signs',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_aztec_day_signs',
 			'attributes' => array(
 				'limit' => '20',
@@ -2679,7 +2679,7 @@ class Endpoints {
 			'display_name'  => 'Aztec Day Sign',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_aztec_day_sign',
 			'attributes' => array(
 				'id' => 'cipactli',
@@ -2693,7 +2693,7 @@ class Endpoints {
 			'display_name'  => 'Aztec Trecenas',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_aztec_trecenas',
 			'attributes' => array(
 				'limit' => '20',
@@ -2708,7 +2708,7 @@ class Endpoints {
 			'display_name'  => 'Aztec Trecena',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_aztec_trecena',
 			'attributes' => array(
 				'number' => '1',
@@ -2722,7 +2722,7 @@ class Endpoints {
 			'display_name'  => 'Entrance Pada',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_calculate_entrance_pada',
 			'attributes' => array(),
 		),
@@ -2734,7 +2734,7 @@ class Endpoints {
 			'display_name'  => 'Vastu Purusha Mandala',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_generate_mandala',
 			'attributes' => array(),
 		),
@@ -2746,7 +2746,7 @@ class Endpoints {
 			'display_name'  => 'Plot',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_calculate_plot_analysis',
 			'attributes' => array(),
 		),
@@ -2758,7 +2758,7 @@ class Endpoints {
 			'display_name'  => 'Ayadi Shadvarga',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_ayadi',
 			'attributes' => array(
 				'length' => '11',
@@ -2779,7 +2779,7 @@ class Endpoints {
 			'display_name'  => 'Room Placement',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_calculate_room_compliance',
 			'attributes' => array(),
 		),
@@ -2791,7 +2791,7 @@ class Endpoints {
 			'display_name'  => 'Griha Pravesh Dates',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_find_griha_pravesh_dates',
 			'attributes' => array(
 				'start_date' => '2027-01-20',
@@ -2810,7 +2810,7 @@ class Endpoints {
 			'display_name'  => 'Directions',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_dikpala_directions',
 			'attributes' => array(
 				'limit' => '8',
@@ -2825,7 +2825,7 @@ class Endpoints {
 			'display_name'  => 'Direction',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_dikpala_direction',
 			'attributes' => array(
 				'id' => 'Northeast',
@@ -2839,7 +2839,7 @@ class Endpoints {
 			'display_name'  => 'Devatas',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_devatas',
 			'attributes' => array(
 				'limit' => '45',
@@ -2854,7 +2854,7 @@ class Endpoints {
 			'display_name'  => 'Devata',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_devata',
 			'attributes' => array(
 				'id' => 'jayanta',
@@ -2864,11 +2864,11 @@ class Endpoints {
 			'path'          => '/numerology/life-path',
 			'method'        => 'POST',
 			'tag'           => 'Numerology',
-			'summary'       => 'Calculate Life Path number - Most important numerology calculation',
+			'summary'       => 'Calculate Life Path number - Calculator and meaning API',
 			'display_name'  => 'Life Path Number',
 			'ttl'           => 2592000,
 			'hero'          => true,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_life_path',
 			'attributes' => array(
 				'year' => '1990',
@@ -2880,11 +2880,11 @@ class Endpoints {
 			'path'          => '/numerology/expression',
 			'method'        => 'POST',
 			'tag'           => 'Numerology',
-			'summary'       => 'Calculate Expression number - Natural talents and life goals',
+			'summary'       => 'Calculate Expression number - Destiny number calculator API',
 			'display_name'  => 'Expression Number',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_expression',
 			'attributes' => array(
 				'full_name' => 'John William Smith',
@@ -2894,11 +2894,11 @@ class Endpoints {
 			'path'          => '/numerology/bridge',
 			'method'        => 'POST',
 			'tag'           => 'Numerology',
-			'summary'       => 'Calculate Bridge Numbers - Harmonize different aspects of personality',
+			'summary'       => 'Calculate Bridge Numbers - Numerology bridge numbers API',
 			'display_name'  => 'Bridge Numbers',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_bridge_numbers',
 			'attributes' => array(
 				'full_name' => 'John William Smith',
@@ -2911,11 +2911,11 @@ class Endpoints {
 			'path'          => '/numerology/soul-urge',
 			'method'        => 'POST',
 			'tag'           => 'Numerology',
-			'summary'       => 'Calculate Soul Urge number - Inner motivations and desires',
+			'summary'       => 'Calculate Soul Urge number - Heart Desire number calculator API',
 			'display_name'  => 'Soul Urge Number',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_soul_urge',
 			'attributes' => array(
 				'full_name' => 'John William Smith',
@@ -2925,11 +2925,11 @@ class Endpoints {
 			'path'          => '/numerology/personality',
 			'method'        => 'POST',
 			'tag'           => 'Numerology',
-			'summary'       => 'Calculate Personality number - How others perceive you',
+			'summary'       => 'Calculate Personality number - Outer personality numerology API',
 			'display_name'  => 'Personality Number',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_personality',
 			'attributes' => array(
 				'full_name' => 'John William Smith',
@@ -2939,11 +2939,11 @@ class Endpoints {
 			'path'          => '/numerology/birth-day',
 			'method'        => 'POST',
 			'tag'           => 'Numerology',
-			'summary'       => 'Calculate Birth Day number - Special talents from day of birth',
+			'summary'       => 'Calculate Birth Day number - Birthday numerology API',
 			'display_name'  => 'Birth Day Number',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_birth_day',
 			'attributes' => array(
 				'day' => '23',
@@ -2953,11 +2953,11 @@ class Endpoints {
 			'path'          => '/numerology/maturity',
 			'method'        => 'POST',
 			'tag'           => 'Numerology',
-			'summary'       => 'Calculate Maturity number - Who you become in later life',
+			'summary'       => 'Calculate Maturity number - Realization number numerology API',
 			'display_name'  => 'Maturity Number',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_maturity',
 			'attributes' => array(
 				'life_path' => '5',
@@ -2972,11 +2972,11 @@ class Endpoints {
 			'path'          => '/numerology/karmic-lessons',
 			'method'        => 'POST',
 			'tag'           => 'Numerology',
-			'summary'       => 'Analyze Karmic Lessons - Life lessons from missing numbers',
+			'summary'       => 'Analyze Karmic Lessons - Missing numbers numerology API',
 			'display_name'  => 'Karmic Lessons',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_analyze_karmic_lessons',
 			'attributes' => array(
 				'full_name' => 'John William Smith',
@@ -2986,11 +2986,11 @@ class Endpoints {
 			'path'          => '/numerology/karmic-debt',
 			'method'        => 'POST',
 			'tag'           => 'Numerology',
-			'summary'       => 'Detect Karmic Debt numbers - Past life challenges (13, 14, 16, 19)',
+			'summary'       => 'Detect Karmic Debt numbers - Karmic debt 13, 14, 16, 19 API',
 			'display_name'  => 'Karmic Debt Numbers',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_check_karmic_debt',
 			'attributes' => array(
 				'year' => '1990',
@@ -3003,11 +3003,11 @@ class Endpoints {
 			'path'          => '/numerology/personal-day',
 			'method'        => 'POST',
 			'tag'           => 'Numerology',
-			'summary'       => 'Calculate Personal Day - Daily personalized numerology forecast',
+			'summary'       => 'Calculate Personal Day - Daily numerology forecast API',
 			'display_name'  => 'Personal Day',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_personal_day',
 			'attributes' => array(
 				'month' => '7',
@@ -3018,11 +3018,11 @@ class Endpoints {
 			'path'          => '/numerology/personal-month',
 			'method'        => 'POST',
 			'tag'           => 'Numerology',
-			'summary'       => 'Calculate Personal Month - Monthly numerology forecast',
+			'summary'       => 'Calculate Personal Month - Monthly numerology forecast API',
 			'display_name'  => 'Personal Month',
 			'ttl'           => 86400,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_personal_month',
 			'attributes' => array(
 				'month' => '7',
@@ -3033,11 +3033,11 @@ class Endpoints {
 			'path'          => '/numerology/personal-year',
 			'method'        => 'POST',
 			'tag'           => 'Numerology',
-			'summary'       => 'Calculate Personal Year - Annual cycle and forecast for current year',
+			'summary'       => 'Calculate Personal Year - Personal Year number forecast API',
 			'display_name'  => 'Personal Year',
 			'ttl'           => 86400,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_personal_year',
 			'attributes' => array(
 				'month' => '7',
@@ -3048,11 +3048,11 @@ class Endpoints {
 			'path'          => '/numerology/compatibility',
 			'method'        => 'POST',
 			'tag'           => 'Numerology',
-			'summary'       => 'Calculate Compatibility - Relationship dynamics between two people',
-			'display_name'  => 'Compatibility',
+			'summary'       => 'Calculate numerology compatibility - Love match scoring API',
+			'display_name'  => 'Numerology Compatibility',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_calculate_num_compatibility',
 			'attributes' => array(),
 		),
@@ -3060,11 +3060,11 @@ class Endpoints {
 			'path'          => '/numerology/chart',
 			'method'        => 'POST',
 			'tag'           => 'Numerology',
-			'summary'       => 'Generate Complete Numerology Chart - Full profile analysis',
+			'summary'       => 'Generate numerology chart - Complete numerology reading API',
 			'display_name'  => 'Numerology Chart',
 			'ttl'           => 2592000,
 			'hero'          => true,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_numerology_chart',
 			'attributes' => array(
 				'full_name' => 'John William Smith',
@@ -3077,11 +3077,11 @@ class Endpoints {
 			'path'          => '/numerology/meanings/{number}',
 			'method'        => 'GET',
 			'tag'           => 'Numerology',
-			'summary'       => 'Get Number Meaning - Interpretation for any number 1-9, 11, 22, 33',
+			'summary'       => 'Get number meaning - Numerology number meanings API',
 			'display_name'  => 'Number Meaning',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_number_meaning',
 			'attributes' => array(
 				'number' => '5',
@@ -3091,11 +3091,11 @@ class Endpoints {
 			'path'          => '/numerology/daily',
 			'method'        => 'POST',
 			'tag'           => 'Numerology',
-			'summary'       => 'Get daily numerology number - Number of the Day with interpretation',
+			'summary'       => 'Get daily numerology number - Number of the Day API',
 			'display_name'  => 'Daily Numerology Number',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_daily_number',
 			'attributes' => array(
 				'seed' => 'user123',
@@ -3105,11 +3105,11 @@ class Endpoints {
 			'path'          => '/numerology/chaldean',
 			'method'        => 'POST',
 			'tag'           => 'Numerology',
-			'summary'       => 'Chaldean numerology name reading - Destiny, compound number, planetary ruler',
-			'display_name'  => 'Chaldean Numerology Name Reading',
+			'summary'       => 'Calculate Chaldean numerology - Chaldean name number calculator API',
+			'display_name'  => 'Chaldean Numerology',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_chaldean',
 			'attributes' => array(
 				'name' => 'Helen',
@@ -3119,11 +3119,11 @@ class Endpoints {
 			'path'          => '/numerology/compound-number/{number}',
 			'method'        => 'GET',
 			'tag'           => 'Numerology',
-			'summary'       => 'Compound number meaning - Cheiro Chaldean interpretation 10 to 52',
+			'summary'       => 'Get compound number meaning - Chaldean compound numbers 10 to 52 API',
 			'display_name'  => 'Compound Number Meaning',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_compound_number',
 			'attributes' => array(
 				'number' => '23',
@@ -3133,11 +3133,11 @@ class Endpoints {
 			'path'          => '/numerology/dual',
 			'method'        => 'POST',
 			'tag'           => 'Numerology',
-			'summary'       => 'Dual numerology - Pythagorean and Chaldean name numbers in one call',
+			'summary'       => 'Calculate dual numerology - Pythagorean and Chaldean name number API',
 			'display_name'  => 'Dual Numerology',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_dual',
 			'attributes' => array(
 				'name' => 'David',
@@ -3147,11 +3147,11 @@ class Endpoints {
 			'path'          => '/numerology/business-name',
 			'method'        => 'POST',
 			'tag'           => 'Numerology',
-			'summary'       => 'Business name numerology - Chaldean brand name analysis and lucky numbers',
+			'summary'       => 'Calculate business name numerology - Brand name numerology API',
 			'display_name'  => 'Business Name Numerology',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_business_name',
 			'attributes' => array(
 				'name' => 'Ford',
@@ -3165,7 +3165,7 @@ class Endpoints {
 			'display_name'  => 'Gematria',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_gematria',
 			'attributes' => array(
 				'text' => 'Sarah',
@@ -3185,7 +3185,7 @@ class Endpoints {
 			'display_name'  => 'Gematria Ciphers',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_gematria_ciphers',
 			'attributes' => array(),
 		),
@@ -3197,7 +3197,7 @@ class Endpoints {
 			'display_name'  => 'Name Profile',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_name_profile',
 			'attributes' => array(
 				'name' => 'Sarah',
@@ -3214,7 +3214,7 @@ class Endpoints {
 			'display_name'  => 'Birth Profile',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_generate_birth_profile',
 			'attributes' => array(
 				'date' => '1990-06-15',
@@ -3234,7 +3234,7 @@ class Endpoints {
 			'display_name'  => 'Names',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_shem_names',
 			'attributes' => array(
 				'limit' => '20',
@@ -3250,7 +3250,7 @@ class Endpoints {
 			'display_name'  => 'Of the 72 Names',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_shem_name',
 			'attributes' => array(
 				'number' => '27',
@@ -3264,7 +3264,7 @@ class Endpoints {
 			'display_name'  => 'Tree of Life',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_tree_of_life',
 			'attributes' => array(
 				'tree_variant' => 'kircher',
@@ -3280,7 +3280,7 @@ class Endpoints {
 			'display_name'  => 'Sephirah',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_sephirah',
 			'attributes' => array(
 				'id' => 'tiferet',
@@ -3296,7 +3296,7 @@ class Endpoints {
 			'display_name'  => 'Hebrew Letters',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_hebrew_letters',
 			'attributes' => array(
 				'letter_attribution' => 'sefer-yetzirah-gra',
@@ -3310,7 +3310,7 @@ class Endpoints {
 			'display_name'  => 'Hebrew Letter',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_hebrew_letter',
 			'attributes' => array(
 				'id' => 'shin',
@@ -3325,7 +3325,7 @@ class Endpoints {
 			'display_name'  => 'Compare Two Names',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_name_compatibility',
 			'attributes' => array(
 				'first_name' => 'Sarah',
@@ -3344,7 +3344,7 @@ class Endpoints {
 			'display_name'  => 'Sephirah of the Day',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_daily_sephirah',
 			'attributes' => array(
 				'timezone' => 'UTC',
@@ -3359,7 +3359,7 @@ class Endpoints {
 			'display_name'  => 'Tarot Cards',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_cards',
 			'attributes' => array(
 				'limit' => '20',
@@ -3377,7 +3377,7 @@ class Endpoints {
 			'display_name'  => 'Tarot Card by ID',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_card',
 			'attributes' => array(
 				'id' => 'fool',
@@ -3391,7 +3391,7 @@ class Endpoints {
 			'display_name'  => 'Draw Tarot Cards',
 			'ttl'           => 0,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_draw_cards',
 			'attributes' => array(
 				'count' => '3',
@@ -3408,7 +3408,7 @@ class Endpoints {
 			'display_name'  => 'Daily Tarot Card',
 			'ttl'           => 3600,
 			'hero'          => true,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_daily_card',
 			'attributes' => array(
 				'seed' => 'user123',
@@ -3422,7 +3422,7 @@ class Endpoints {
 			'display_name'  => 'Yes or No Answer',
 			'ttl'           => 0,
 			'hero'          => true,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_cast_yes_no',
 			'attributes' => array(
 				'question' => 'Should I accept the job offer?',
@@ -3437,7 +3437,7 @@ class Endpoints {
 			'display_name'  => 'Three Card Spread',
 			'ttl'           => 0,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_cast_three_card',
 			'attributes' => array(
 				'question' => 'What do I need to know about my career?',
@@ -3452,7 +3452,7 @@ class Endpoints {
 			'display_name'  => 'Celtic Cross Spread, 10 Cards',
 			'ttl'           => 0,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_cast_celtic_cross',
 			'attributes' => array(
 				'question' => 'What should I know about this situation?',
@@ -3467,7 +3467,7 @@ class Endpoints {
 			'display_name'  => 'Love Spread, 5 Cards',
 			'ttl'           => 0,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_cast_love_spread',
 			'attributes' => array(
 				'question' => 'What do I need to know about my relationship?',
@@ -3482,7 +3482,7 @@ class Endpoints {
 			'display_name'  => 'Career Spread, 7 Cards',
 			'ttl'           => 0,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_cast_career_spread',
 			'attributes' => array(
 				'question' => 'What do I need to know about my career path?',
@@ -3497,7 +3497,7 @@ class Endpoints {
 			'display_name'  => 'Custom Spread Builder',
 			'ttl'           => 0,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_cast_custom_spread',
 			'attributes' => array(),
 		),
@@ -3509,7 +3509,7 @@ class Endpoints {
 			'display_name'  => 'Biorhythm Reading',
 			'ttl'           => 86400,
 			'hero'          => true,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_reading',
 			'attributes' => array(
 				'birth_date' => '1990-07-15',
@@ -3523,7 +3523,7 @@ class Endpoints {
 			'display_name'  => 'Biorhythm Forecast',
 			'ttl'           => 86400,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_forecast',
 			'attributes' => array(
 				'birth_date' => '1990-07-15',
@@ -3538,7 +3538,7 @@ class Endpoints {
 			'display_name'  => 'Critical Days',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_critical_days',
 			'attributes' => array(
 				'birth_date' => '1990-07-15',
@@ -3553,7 +3553,7 @@ class Endpoints {
 			'display_name'  => 'Compatibility',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => true,
+			'form_only'     => true,
 			'shortcode_tag' => 'roxy_calculate_bio_compatibility',
 			'attributes' => array(),
 		),
@@ -3565,7 +3565,7 @@ class Endpoints {
 			'display_name'  => 'Phase Info',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_phases',
 			'attributes' => array(
 				'birth_date' => '1990-07-15',
@@ -3579,7 +3579,7 @@ class Endpoints {
 			'display_name'  => 'Daily Biorhythm',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_daily_biorhythm',
 			'attributes' => array(
 				'seed' => 'user123',
@@ -3593,7 +3593,7 @@ class Endpoints {
 			'display_name'  => 'Ayurvedic Constitution',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_calculate_ayurvedic_constitution',
 			'attributes' => array(
 				'date' => '1990-07-04',
@@ -3614,7 +3614,7 @@ class Endpoints {
 			'display_name'  => 'Dinacharya Daily Routine',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_dinacharya_schedule',
 			'attributes' => array(
 				'date' => '2026-06-21',
@@ -3632,7 +3632,7 @@ class Endpoints {
 			'display_name'  => 'Ayurveda Seasonal Regimen',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_ritucharya',
 			'attributes' => array(
 				'date' => '2026-03-01',
@@ -3649,7 +3649,7 @@ class Endpoints {
 			'display_name'  => 'Daily Ayurveda Reading',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_daily_ayurveda_reading',
 			'attributes' => array(
 				'latitude' => '51.5074',
@@ -3665,7 +3665,7 @@ class Endpoints {
 			'display_name'  => 'Doshas',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_doshas',
 			'attributes' => array(
 				'limit' => '3',
@@ -3680,7 +3680,7 @@ class Endpoints {
 			'display_name'  => 'Dosha',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_dosha',
 			'attributes' => array(
 				'id' => 'vata',
@@ -3694,7 +3694,7 @@ class Endpoints {
 			'display_name'  => 'Tastes',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_rasas',
 			'attributes' => array(
 				'limit' => '6',
@@ -3709,7 +3709,7 @@ class Endpoints {
 			'display_name'  => 'Twenty Qualities',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_gunas',
 			'attributes' => array(
 				'limit' => '10',
@@ -3724,7 +3724,7 @@ class Endpoints {
 			'display_name'  => 'Daily Hexagram',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_daily_hexagram',
 			'attributes' => array(
 				'seed' => 'user123',
@@ -3738,7 +3738,7 @@ class Endpoints {
 			'display_name'  => 'Cast Daily Reading',
 			'ttl'           => 0,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_cast_daily_reading',
 			'attributes' => array(
 				'seed' => 'user123',
@@ -3752,7 +3752,7 @@ class Endpoints {
 			'display_name'  => 'Hexagrams',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_hexagrams',
 			'attributes' => array(
 				'limit' => '20',
@@ -3767,7 +3767,7 @@ class Endpoints {
 			'display_name'  => 'Random Hexagram',
 			'ttl'           => 0,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_random_hexagram',
 			'attributes' => array(),
 		),
@@ -3779,7 +3779,7 @@ class Endpoints {
 			'display_name'  => 'Hexagram by Line Pattern',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_lookup_hexagram',
 			'attributes' => array(
 				'lines' => '111111',
@@ -3793,7 +3793,7 @@ class Endpoints {
 			'display_name'  => 'Hexagram by Number',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_hexagram',
 			'attributes' => array(
 				'number' => '1',
@@ -3807,7 +3807,7 @@ class Endpoints {
 			'display_name'  => 'Cast an I-Ching Reading',
 			'ttl'           => 0,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_cast_reading',
 			'attributes' => array(
 				'seed' => 'user123-question1',
@@ -3821,7 +3821,7 @@ class Endpoints {
 			'display_name'  => 'Trigrams',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_trigrams',
 			'attributes' => array(),
 		),
@@ -3833,7 +3833,7 @@ class Endpoints {
 			'display_name'  => 'Trigram by Number or Name',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_trigram',
 			'attributes' => array(
 				'id' => 'Heaven',
@@ -3847,7 +3847,7 @@ class Endpoints {
 			'display_name'  => 'Crystals by Zodiac Sign',
 			'ttl'           => 2592000,
 			'hero'          => true,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_crystals_by_zodiac',
 			'attributes' => array(
 				'sign' => 'pisces',
@@ -3863,7 +3863,7 @@ class Endpoints {
 			'display_name'  => 'Crystals by Chakra',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_crystals_by_chakra',
 			'attributes' => array(
 				'chakra' => 'Heart',
@@ -3879,7 +3879,7 @@ class Endpoints {
 			'display_name'  => 'Crystals by Element',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_crystals_by_element',
 			'attributes' => array(
 				'element' => 'Water',
@@ -3895,7 +3895,7 @@ class Endpoints {
 			'display_name'  => 'Birthstones by Month',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_birthstones',
 			'attributes' => array(
 				'month' => '2',
@@ -3909,7 +3909,7 @@ class Endpoints {
 			'display_name'  => 'Search Crystals',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_search_crystals',
 			'attributes' => array(
 				'q' => 'love',
@@ -3925,7 +3925,7 @@ class Endpoints {
 			'display_name'  => 'Crystal Pairings',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_crystal_pairings',
 			'attributes' => array(
 				'id' => 'amethyst',
@@ -3939,7 +3939,7 @@ class Endpoints {
 			'display_name'  => 'Daily Crystal',
 			'ttl'           => 86400,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_daily_crystal',
 			'attributes' => array(
 				'seed' => 'user123',
@@ -3953,7 +3953,7 @@ class Endpoints {
 			'display_name'  => 'Random Crystal',
 			'ttl'           => 0,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_random_crystal',
 			'attributes' => array(),
 		),
@@ -3965,7 +3965,7 @@ class Endpoints {
 			'display_name'  => 'Crystal Colors',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_crystal_colors',
 			'attributes' => array(),
 		),
@@ -3977,7 +3977,7 @@ class Endpoints {
 			'display_name'  => 'Crystal Planets',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_crystal_planets',
 			'attributes' => array(),
 		),
@@ -3989,7 +3989,7 @@ class Endpoints {
 			'display_name'  => 'Crystals',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_crystals',
 			'attributes' => array(
 				'chakra' => 'Heart',
@@ -4009,7 +4009,7 @@ class Endpoints {
 			'display_name'  => 'Crystal by ID',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_crystal',
 			'attributes' => array(
 				'id' => 'amethyst',
@@ -4023,7 +4023,7 @@ class Endpoints {
 			'display_name'  => 'Search Dream Symbols',
 			'ttl'           => 604800,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_search_dream_symbols',
 			'attributes' => array(
 				'q' => 'water',
@@ -4040,7 +4040,7 @@ class Endpoints {
 			'display_name'  => 'Random Dream Symbols',
 			'ttl'           => 0,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_random_symbols',
 			'attributes' => array(
 				'count' => '1',
@@ -4054,7 +4054,7 @@ class Endpoints {
 			'display_name'  => 'Symbol Counts by Letter',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_symbol_letter_counts',
 			'attributes' => array(),
 		),
@@ -4066,7 +4066,7 @@ class Endpoints {
 			'display_name'  => 'Dream Symbol by ID',
 			'ttl'           => 604800,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_dream_symbol',
 			'attributes' => array(
 				'id' => 'snake',
@@ -4080,7 +4080,7 @@ class Endpoints {
 			'display_name'  => 'Daily Dream Symbol',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_daily_dream_symbol',
 			'attributes' => array(
 				'seed' => 'user123',
@@ -4094,7 +4094,7 @@ class Endpoints {
 			'display_name'  => 'Angel Numbers',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_angel_numbers',
 			'attributes' => array(
 				'limit' => '20',
@@ -4110,7 +4110,7 @@ class Endpoints {
 			'display_name'  => 'Angel Number Meaning',
 			'ttl'           => 2592000,
 			'hero'          => true,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_angel_number',
 			'attributes' => array(
 				'number' => '444',
@@ -4124,7 +4124,7 @@ class Endpoints {
 			'display_name'  => 'Number Sequence',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_analyze_number_sequence',
 			'attributes' => array(
 				'number' => '1234',
@@ -4139,7 +4139,7 @@ class Endpoints {
 			'display_name'  => 'Daily Angel Number',
 			'ttl'           => 3600,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_daily_angel_number',
 			'attributes' => array(
 				'seed' => 'user123',
@@ -4153,7 +4153,7 @@ class Endpoints {
 			'display_name'  => 'Search Cities Worldwide',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_search_cities',
 			'attributes' => array(
 				'q' => 'berlin',
@@ -4169,7 +4169,7 @@ class Endpoints {
 			'display_name'  => 'Countries',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_countries',
 			'attributes' => array(
 				'limit' => '50',
@@ -4184,7 +4184,7 @@ class Endpoints {
 			'display_name'  => 'Cities in a Country',
 			'ttl'           => 86400,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_cities_by_country',
 			'attributes' => array(
 				'iso2' => 'DE',
@@ -4200,7 +4200,7 @@ class Endpoints {
 			'display_name'  => 'Usage Statistics',
 			'ttl'           => 0,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_get_usage_stats',
 			'attributes' => array(),
 		),
@@ -4212,7 +4212,7 @@ class Endpoints {
 			'display_name'  => 'Supported Response Languages',
 			'ttl'           => 2592000,
 			'hero'          => false,
-			'block_only'    => false,
+			'form_only'     => false,
 			'shortcode_tag' => 'roxy_list_languages',
 			'attributes' => array(),
 		),
@@ -4222,7 +4222,7 @@ class Endpoints {
 	/**
 	 * Get a single endpoint by operationId.
 	 *
-	 * @return array{path: string, method: string, tag: string, summary: string, display_name: string, ttl: int, hero: bool, block_only: bool, shortcode_tag: string, attributes: array<string, string>}|null
+	 * @return array{path: string, method: string, tag: string, summary: string, display_name: string, ttl: int, hero: bool, form_only: bool, shortcode_tag: string, attributes: array<string, string>}|null
 	 */
 	public static function get( string $operation_id ): ?array {
 		$all = self::all();
@@ -4232,7 +4232,7 @@ class Endpoints {
 	/**
 	 * Only the non-hero (generated) endpoints.
 	 *
-	 * @return array<string, array{path: string, method: string, tag: string, summary: string, display_name: string, ttl: int, hero: bool, block_only: bool, shortcode_tag: string, attributes: array<string, string>}>
+	 * @return array<string, array{path: string, method: string, tag: string, summary: string, display_name: string, ttl: int, hero: bool, form_only: bool, shortcode_tag: string, attributes: array<string, string>}>
 	 */
 	public static function generated(): array {
 		return array_filter(

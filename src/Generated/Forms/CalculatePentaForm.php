@@ -22,6 +22,7 @@ class CalculatePentaForm {
 			'operation_id' => 'calculatePenta',
 			'title'        => __( 'Human Design Penta', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
+			'fold_optional' => true,
 			'sections'     => array(
 
 			),

@@ -32,6 +32,7 @@ class GetMoonCalendar {
 		'year' => '',
 		'month' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -51,6 +52,10 @@ class GetMoonCalendar {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['year'] === '' || $atts['month'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetMoonCalendarForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getMoonCalendar( $atts['year'], $atts['month'], $atts['lang'] );
 

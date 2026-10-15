@@ -22,6 +22,7 @@ class CalculateDashakootForm {
 			'operation_id' => 'calculateDashakoot',
 			'title'        => __( 'Porutham Match', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
+			'fold_optional' => true,
 			'sections'     => array(
 				array(
 					'name'   => 'person1',

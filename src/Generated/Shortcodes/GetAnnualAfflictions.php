@@ -31,6 +31,7 @@ class GetAnnualAfflictions {
 	public const DEFAULTS = array(
 		'year' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -50,6 +51,10 @@ class GetAnnualAfflictions {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['year'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetAnnualAfflictionsForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getAnnualAfflictions( $atts['year'], $atts['lang'] );
 

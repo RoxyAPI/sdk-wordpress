@@ -32,6 +32,7 @@ class GetPlanetaryNodePassages {
 		'year' => '',
 		'timezone' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -51,6 +52,10 @@ class GetPlanetaryNodePassages {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['year'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetPlanetaryNodePassagesForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

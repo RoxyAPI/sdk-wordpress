@@ -24,7 +24,7 @@ const fields = [
 		control: 'text',
 		label: __( 'Full name', 'roxyapi' ),
 		required: false,
-		help: __( 'Full birth name to calculate Expression number automatically', 'roxyapi' ),
+		help: __( 'Full birth name to calculate the Expression number automatically', 'roxyapi' ),
 	},
 	{
 		name: 'year',

@@ -22,6 +22,7 @@ class GenerateCompositeChartForm {
 			'operation_id' => 'generateCompositeChart',
 			'title'        => __( 'Composite Chart', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
+			'fold_optional' => true,
 			'sections'     => array(
 				array(
 					'name'   => 'person1',

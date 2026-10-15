@@ -22,6 +22,7 @@ class CalculateTransitAspectsForm {
 			'operation_id' => 'calculateTransitAspects',
 			'title'        => __( 'Transit Aspects', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
+			'fold_optional' => true,
 			'sections'     => array(
 				array(
 					'name'   => 'natalChart',
@@ -91,7 +92,7 @@ class CalculateTransitAspectsForm {
 					'name' => 'transitTime',
 					'label' => __( 'Transit time', 'roxyapi' ),
 					'required' => false,
-					'help' => __( 'Transit time in HH:MM:SS format', 'roxyapi' ),
+					'help' => __( 'Transit time in HH:MM:SS format, read on the clock of the natal chart timezone at the transit date (an IANA zone takes the offset in force on that date, daylight saving included)', 'roxyapi' ),
 					'type' => 'time',
 				),
 				array(

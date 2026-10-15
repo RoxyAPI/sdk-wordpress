@@ -22,6 +22,7 @@ class CastCustomSpreadForm {
 			'operation_id' => 'castCustomSpread',
 			'title'        => __( 'Custom Spread Builder', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
+			'fold_optional' => true,
 			'sections'     => array(
 
 			),

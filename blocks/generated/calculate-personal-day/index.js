@@ -24,7 +24,7 @@ const fields = [
 		control: 'date',
 		label: __( 'Target date', 'roxyapi' ),
 		required: false,
-		help: __( 'Target date in YYYY-MM-DD format', 'roxyapi' ),
+		help: __( 'Target date in YYYY-MM-DD format, in the years 100 to 2100', 'roxyapi' ),
 	},
 ];
 

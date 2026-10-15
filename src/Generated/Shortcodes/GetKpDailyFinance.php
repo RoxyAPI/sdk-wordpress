@@ -41,6 +41,7 @@ class GetKpDailyFinance {
 		'gain_houses' => '',
 		'loss_houses' => '',
 		'weights' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -60,6 +61,10 @@ class GetKpDailyFinance {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['birth_date'] === '' || $atts['birth_time'] === '' || $atts['latitude'] === '' || $atts['longitude'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetKpDailyFinanceForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

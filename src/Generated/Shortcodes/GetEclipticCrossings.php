@@ -32,6 +32,7 @@ class GetEclipticCrossings {
 		'year' => '',
 		'timezone' => '',
 		'coordinate_system' => '',
+		'lang' => '',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -62,7 +63,15 @@ class GetEclipticCrossings {
 				return $v !== '';
 			}
 		);
-		$data = \RoxyAPI\Generated\Client::getEclipticCrossings( $body );
+		$query = array_filter(
+			array(
+				'lang' => $atts['lang'],
+			),
+			static function ( $v ) {
+				return $v !== '';
+			}
+		);
+		$data = \RoxyAPI\Generated\Client::getEclipticCrossings( $body, $query );
 
 		if ( is_wp_error( $data ) ) {
 			return \RoxyAPI\Support\Templates::api_error( $data );

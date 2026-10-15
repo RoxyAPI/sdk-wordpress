@@ -2,7 +2,7 @@
 /**
  * Auto-generated shortcode: [roxy_calculate_num_compatibility]
  *
- * Calculate Compatibility - Relationship dynamics between two people
+ * Calculate numerology compatibility - Love match scoring API
  *
  * Renders a visitor-facing form (FormRenderer) when invoked. Submission is
  * handled by FormRouter at init priority 5 — nonce + rate-limit + sanitize

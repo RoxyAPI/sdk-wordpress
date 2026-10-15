@@ -523,6 +523,14 @@
 	cursor: pointer;
 }
 
+/* A fold holds its fields in one content box, so that box carries the grid. */
+:where(.roxyapi-form-section)::details-content {
+	grid-column: 1 / -1;
+	display: grid;
+	grid-template-columns: inherit;
+	gap: inherit;
+}
+
 :where(.roxyapi-form-field) {
 	display: flex;
 	flex-direction: column;
@@ -541,7 +549,9 @@
 
 :where(.roxyapi-form-field input),
 :where(.roxyapi-form-field select) {
+	box-sizing: border-box;
 	inline-size: 100%;
+	min-inline-size: 0;
 	padding: 0.5rem 0.65rem;
 	font-size: var(--wp--preset--font-size--medium, 1rem);
 	border: 1px solid color-mix(in srgb, currentcolor 18%, transparent);

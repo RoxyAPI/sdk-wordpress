@@ -33,6 +33,7 @@ class GetCrystalsByChakra {
 		'lang' => '',
 		'limit' => '',
 		'offset' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -52,6 +53,10 @@ class GetCrystalsByChakra {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['chakra'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetCrystalsByChakraForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getCrystalsByChakra( $atts['chakra'], $atts['lang'], $atts['limit'], $atts['offset'] );
 

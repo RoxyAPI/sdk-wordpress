@@ -24,7 +24,7 @@ const fields = [
 		control: 'number',
 		label: __( 'Day', 'roxyapi' ),
 		required: false,
-		help: __( 'Birth day (checks Life Path)', 'roxyapi' ),
+		help: __( 'Birth day (checks Birth Day on its own, and Life Path with year and month)', 'roxyapi' ),
 	},
 	{
 		name: 'fullName',

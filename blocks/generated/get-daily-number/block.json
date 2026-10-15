@@ -5,7 +5,7 @@
 	"title": "Daily Numerology Number",
 	"category": "roxyapi-catalog",
 	"icon": "chart-line",
-	"description": "Number of the Day with interpretation",
+	"description": "Get the numerology Number of the Day, one of 1 to 9, 11, 22 or 33, with its full interpretation",
 	"keywords": [
 		"numerology",
 		"roxyapi",

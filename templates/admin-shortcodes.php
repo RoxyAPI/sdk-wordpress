@@ -117,7 +117,7 @@ $try_base_url = $can_try ? admin_url( 'admin.php?page=' . \RoxyAPI\Admin\DemoPag
 								<?php if ( ! empty( $item['hero'] ) ) : ?>
 									<span class="roxyapi-library-badge"><?php echo esc_html__( 'Hero', 'roxyapi' ); ?></span>
 								<?php endif; ?>
-								<?php if ( ! empty( $item['block_only'] ) ) : ?>
+								<?php if ( ! empty( $item['form_only'] ) ) : ?>
 									<span class="roxyapi-library-badge roxyapi-library-badge-form"><?php echo esc_html__( 'Form', 'roxyapi' ); ?></span>
 								<?php endif; ?>
 							</div>
@@ -135,7 +135,7 @@ $try_base_url = $can_try ? admin_url( 'admin.php?page=' . \RoxyAPI\Admin\DemoPag
 							>
 								<?php echo esc_html__( 'Copy', 'roxyapi' ); ?>
 							</button>
-							<?php if ( $can_try && empty( $item['block_only'] ) ) : ?>
+							<?php if ( $can_try && empty( $item['form_only'] ) ) : ?>
 								<a
 									class="button button-small roxyapi-try-link"
 									href="<?php echo esc_url( add_query_arg( 'run', $item['tag'], $try_base_url ) ); ?>#row-<?php echo esc_attr( sanitize_html_class( $item['tag'] ) ); ?>"

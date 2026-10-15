@@ -33,6 +33,7 @@ class GetYearlyHoroscope {
 		'lang' => '',
 		'year' => '',
 		'timezone' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -52,6 +53,10 @@ class GetYearlyHoroscope {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['sign'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetYearlyHoroscopeForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getYearlyHoroscope( $atts['sign'], $atts['lang'], $atts['year'], $atts['timezone'] );
 

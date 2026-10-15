@@ -24,14 +24,14 @@ const fields = [
 		control: 'number',
 		label: __( 'Year', 'roxyapi' ),
 		required: false,
-		help: __( 'Target year for calculation (defaults to current year)', 'roxyapi' ),
+		help: __( 'Target year', 'roxyapi' ),
 	},
 	{
 		name: 'targetMonth',
 		control: 'number',
 		label: __( 'Target month', 'roxyapi' ),
 		required: false,
-		help: __( 'Target calendar month to forecast (1-12, defaults to current month)', 'roxyapi' ),
+		help: __( 'Target calendar month to forecast (1 to 12)', 'roxyapi' ),
 	},
 ];
 

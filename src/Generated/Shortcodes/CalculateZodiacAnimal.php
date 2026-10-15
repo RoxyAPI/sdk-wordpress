@@ -32,6 +32,7 @@ class CalculateZodiacAnimal {
 		'date' => '',
 		'year_boundary' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -51,6 +52,10 @@ class CalculateZodiacAnimal {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['date'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CalculateZodiacAnimalForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

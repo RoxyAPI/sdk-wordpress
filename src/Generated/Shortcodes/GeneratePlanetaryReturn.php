@@ -38,6 +38,7 @@ class GeneratePlanetaryReturn {
 		'timezone' => '',
 		'house_system' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -57,6 +58,10 @@ class GeneratePlanetaryReturn {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['birth_date'] === '' || $atts['birth_time'] === '' || $atts['planet'] === '' || $atts['approximate_date'] === '' || $atts['latitude'] === '' || $atts['longitude'] === '' || $atts['timezone'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GeneratePlanetaryReturnForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

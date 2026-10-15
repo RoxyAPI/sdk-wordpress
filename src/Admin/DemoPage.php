@@ -127,7 +127,7 @@ class DemoPage {
 		$title     = (string) ( $row['title'] ?? $tag );
 		$sample    = (string) ( $row['sample'] ?? '[' . $tag . ']' );
 		$hero      = ! empty( $row['hero'] );
-		$form_mode = ! empty( $row['block_only'] );
+		$form_mode = ! empty( $row['form_only'] );
 		$slug      = (string) ( $row['domain_slug'] ?? '' );
 
 		$should_run = self::should_run( $run, $tag );

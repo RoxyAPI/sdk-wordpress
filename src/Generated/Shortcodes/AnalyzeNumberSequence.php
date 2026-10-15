@@ -32,6 +32,7 @@ class AnalyzeNumberSequence {
 		'lang' => '',
 		'number' => '',
 		'context' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -51,6 +52,10 @@ class AnalyzeNumberSequence {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['number'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\AnalyzeNumberSequenceForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::analyzeNumberSequence( $atts['lang'], $atts['number'], $atts['context'] );
 

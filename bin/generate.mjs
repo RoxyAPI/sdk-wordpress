@@ -535,6 +535,68 @@ function hasRequiredObjectBody( op ) {
 }
 
 /**
+ * Whether a parameter is one a visitor form asks for: every path parameter,
+ * and the query of a GET. A POST reads its inputs from the body, so its query
+ * carries only display options the site resolves.
+ * @param op
+ * @param param Raw spec parameter or an extractParams() entry.
+ */
+function isFormParam( op, param ) {
+	return (
+		( param.in === 'path' ||
+			( op.method !== 'POST' && param.in === 'query' ) ) &&
+		! isSiteResolved( param )
+	);
+}
+
+/**
+ * The flat inputs a visitor form collects, in the order the form shows them:
+ * path parameters, then the body of a POST or the query of a GET.
+ * @param op
+ */
+function formInputs( op ) {
+	return [
+		...extractParams( op ).filter( ( p ) => isFormParam( op, p ) ),
+		...( op.method === 'POST' ? extractBodyFields( op ) : [] ).filter(
+			( f ) => ! isSiteResolved( f )
+		),
+	];
+}
+
+/**
+ * Whether a flat shortcode renders a visitor form when its required inputs are
+ * missing, or always under `mode="form"`. Every required input must be one the
+ * form has a control for: never a list, and never an identifier path parameter
+ * (`id`, or a value the form could only offer as a free text box), which names
+ * an entry of the API vocabulary a visitor cannot know. Catalogue and account
+ * readings stay placed by the site owner.
+ * @param op
+ */
+function offersVisitorForm( op ) {
+	if (
+		hasRequiredObjectBody( op ) ||
+		NON_READING_OPERATIONS.has( op.operationId ) ||
+		ACCOUNT_SCOPED_OPERATIONS.has( op.operationId )
+	) {
+		return false;
+	}
+	const required = formInputs( op ).filter( ( f ) => f.required );
+	return (
+		required.length > 0 &&
+		required.every(
+			( f ) =>
+				f.type !== 'array' &&
+				f.type !== 'object' &&
+				! (
+					f.in === 'path' &&
+					( f.name === 'id' ||
+						buildFormFieldSpec( f.name, f, true ).type === 'text' )
+				)
+		)
+	);
+}
+
+/**
  * Humanise a property name for use as a form label.
  * `birthDate` -> `Birth date`, `house_system` -> `House system`.
  * @param name
@@ -1002,20 +1064,30 @@ function buildFormFieldSpec( name, schema, required ) {
 }
 
 /**
- * Walk a POST request-body schema and produce a FormRenderer-shaped spec
- * with `sections` for nested objects and `flat_fields` for top-level scalars.
+ * Produce a FormRenderer-shaped spec from an operation's form inputs:
+ * `sections` for nested body objects, `flat_fields` for the path and GET query
+ * parameters followed by the top-level body scalars.
  * @param op
  */
 function extractFormSpec( op ) {
-	const content = op.requestBody?.content?.[ 'application/json' ];
-	if ( ! content?.schema ) {
-		return null;
-	}
-	const schema = resolveRef( content.schema );
-	const required = new Set( schema.required || [] );
 	const sections = [];
-	const flatFields = [];
+	const flatFields = ( op.parameters || [] )
+		.filter( ( p ) => isFormParam( op, p ) )
+		.map( ( p ) => {
+			const schema = resolveRef( p.schema );
+			return buildFormFieldSpec(
+				p.name,
+				{ ...schema, description: p.description || schema.description },
+				p.in === 'path' || !! p.required
+			);
+		} );
+	const content = op.requestBody?.content?.[ 'application/json' ];
+	const schema = resolveRef( content?.schema || {} );
+	const required = new Set( schema.required || [] );
 	for ( const [ name, prop ] of Object.entries( schema.properties || {} ) ) {
+		if ( isSiteResolved( { name } ) ) {
+			continue;
+		}
 		const resolved = resolveRef( prop );
 		if ( resolved.type === 'object' ) {
 			const subRequired = new Set( resolved.required || [] );
@@ -1116,12 +1188,34 @@ function phpLiteral( v ) {
 }
 
 /**
- * Emit src/Generated/Forms/<Op>Form.php for a nested-object endpoint.
+ * Emit src/Generated/Forms/<Op>Form.php for an endpoint that takes a visitor
+ * form: a nested-object body, or flat inputs (`offersVisitorForm`).
  * @param op
  */
 function emitFormPhp( op ) {
 	const className = toPascalCase( op.operationId ) + 'Form';
 	const formSpec = extractFormSpec( op );
+	// FormRouter hands call() one flat array keyed by input name, so the client
+	// call takes the path parameters back out of it in signature order.
+	const pathParams = extractPathParams( op.path );
+	const clientArgs = [
+		...pathParams.map( ( p ) => `(string) ( $body['${ p }'] ?? '' )` ),
+		...( op.method === 'POST'
+			? [
+					pathParams.length
+						? `array_diff_key( $body, array_flip( ${ phpLiteral(
+								pathParams
+						  ) } ) )`
+						: '$body',
+			  ]
+			: extractParams( op )
+					.filter( ( p ) => p.in === 'query' )
+					.map( ( p ) =>
+						isFormParam( op, p )
+							? `$body['${ p.name }'] ?? null`
+							: 'null'
+					) ),
+	].join( ', ' );
 	// The heading a VISITOR reads above the form, so it is the reading's name.
 	// The raw summary put "Transit Aspects - Detailed transit-to-natal aspect
 	// analysis with interpretations" across three lines at phone width.
@@ -1192,6 +1286,7 @@ class ${ className } {
 			'operation_id' => ${ phpLiteral( op.operationId ) },
 			'title'        => ${ translatablePhp( title ) },
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
+			'fold_optional' => true,
 			'sections'     => array(
 ${ sectionsPhp }
 			),
@@ -1206,7 +1301,7 @@ ${ flatPhp }
 	 * @return array<string, mixed>|\\WP_Error
 	 */
 	public static function call( array $body ) {
-		return \\RoxyAPI\\Generated\\Client::${ op.operationId }( $body );
+		return \\RoxyAPI\\Generated\\Client::${ op.operationId }( ${ clientArgs } );
 	}
 }
 `;
@@ -1460,7 +1555,7 @@ function emitEndpointsPhp() {
 				  ) }\n\t\t\t),`
 				: `\n\t\t\t'attributes' => array(),`;
 
-		const blockOnly = hasRequiredObjectBody( op );
+		const formOnly = hasRequiredObjectBody( op );
 		const shortcodeTag = `roxy_${ toSnakeCase( op.operationId ) }`;
 
 		const displayName = assertNoApiWording(
@@ -1476,7 +1571,7 @@ function emitEndpointsPhp() {
 			'display_name'  => '${ displayName.replace( /'/g, "\\'" ) }',
 			'ttl'           => ${ ttl },
 			'hero'          => ${ isHero ? 'true' : 'false' },
-			'block_only'    => ${ blockOnly ? 'true' : 'false' },
+			'form_only'     => ${ formOnly ? 'true' : 'false' },
 			'shortcode_tag' => '${ shortcodeTag }',${ attributesPhp }
 		),`;
 	} );
@@ -1502,7 +1597,7 @@ class Endpoints {
 	/**
 	 * All registered endpoints keyed by operationId.
 	 *
-	 * @return array<string, array{path: string, method: string, tag: string, summary: string, display_name: string, ttl: int, hero: bool, block_only: bool, shortcode_tag: string, attributes: array<string, string>}>
+	 * @return array<string, array{path: string, method: string, tag: string, summary: string, display_name: string, ttl: int, hero: bool, form_only: bool, shortcode_tag: string, attributes: array<string, string>}>
 	 */
 	public static function all(): array {
 		return array(
@@ -1513,7 +1608,7 @@ ${ entries.join( '\n' ) }
 	/**
 	 * Get a single endpoint by operationId.
 	 *
-	 * @return array{path: string, method: string, tag: string, summary: string, display_name: string, ttl: int, hero: bool, block_only: bool, shortcode_tag: string, attributes: array<string, string>}|null
+	 * @return array{path: string, method: string, tag: string, summary: string, display_name: string, ttl: int, hero: bool, form_only: bool, shortcode_tag: string, attributes: array<string, string>}|null
 	 */
 	public static function get( string $operation_id ): ?array {
 		$all = self::all();
@@ -1523,7 +1618,7 @@ ${ entries.join( '\n' ) }
 	/**
 	 * Only the non-hero (generated) endpoints.
 	 *
-	 * @return array<string, array{path: string, method: string, tag: string, summary: string, display_name: string, ttl: int, hero: bool, block_only: bool, shortcode_tag: string, attributes: array<string, string>}>
+	 * @return array<string, array{path: string, method: string, tag: string, summary: string, display_name: string, ttl: int, hero: bool, form_only: bool, shortcode_tag: string, attributes: array<string, string>}>
 	 */
 	public static function generated(): array {
 		return array_filter(
@@ -1838,6 +1933,25 @@ ${ withReservedAtts( [], '\t\t' ).join( '\n' ) }
 `;
 	}
 
+	const formClass = offersVisitorForm( op )
+		? toPascalCase( op.operationId ) + 'Form'
+		: null;
+	// `mode` follows the heroes: `auto` shows the visitor form while a required
+	// input is missing, `form` always shows it, `static` keeps the owner notice.
+	const modeAtt = formClass ? [ `\t\t'mode' => 'auto',` ] : [];
+	const formGate = formClass
+		? `
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( ${ formInputs(
+			op
+		)
+			.filter( ( f ) => f.required )
+			.map( ( f ) => `$atts['${ toSnakeAttr( f.name ) }'] === ''` )
+			.join( ' || ' ) } ) ) ) {
+			return \\RoxyAPI\\Support\\FormRenderer::render( \\RoxyAPI\\Generated\\Forms\\${ formClass }::class, $atts );
+		}
+`
+		: '';
+
 	let attsArray = '';
 	// Account-scoped operations refuse to render for anyone who cannot manage the
 	// site. Returning empty rather than an error keeps a page that a subscriber
@@ -1874,7 +1988,12 @@ ${ withReservedAtts( [], '\t\t' ).join( '\n' ) }
 			...postQueryParams.map( ( p ) => toSnakeAttr( p.name ) ),
 		];
 		attsArray = withReservedAtts(
-			[ ...new Set( allPostAtts ) ].map( ( p ) => `\t\t'${ p }' => '',` ),
+			[
+				...[ ...new Set( allPostAtts ) ].map(
+					( p ) => `\t\t'${ p }' => '',`
+				),
+				...modeAtt,
+			],
 			'\t\t'
 		).join( '\n' );
 
@@ -1945,7 +2064,10 @@ ${ withReservedAtts( [], '\t\t' ).join( '\n' ) }
 			...queryParams.map( ( p ) => toSnakeAttr( p.name ) ),
 		];
 		attsArray = withReservedAtts(
-			allAttParams.map( ( p ) => `\t\t'${ p }' => '',` ),
+			[
+				...allAttParams.map( ( p ) => `\t\t'${ p }' => '',` ),
+				...modeAtt,
+			],
 			'\t\t'
 		).join( '\n' );
 
@@ -2011,7 +2133,7 @@ ${ attsArray }
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
-${ accountGuard }
+${ accountGuard }${ formGate }
 		${ clientCall }
 
 		if ( is_wp_error( $data ) ) {
@@ -3679,10 +3801,10 @@ console.log(
 	`[generate] wrote ${ generated.length } shortcode classes to src/Generated/Shortcodes/`
 );
 
-// 3b. Generated form classes (visitor-form mode for nested-object endpoints)
+// 3b. Generated form classes (visitor-form mode)
 let formCount = 0;
 for ( const op of generated ) {
-	if ( ! hasRequiredObjectBody( op ) ) {
+	if ( ! hasRequiredObjectBody( op ) && ! offersVisitorForm( op ) ) {
 		continue;
 	}
 	const className = toPascalCase( op.operationId ) + 'Form';

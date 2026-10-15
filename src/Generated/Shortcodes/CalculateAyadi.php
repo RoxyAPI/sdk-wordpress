@@ -38,6 +38,7 @@ class CalculateAyadi {
 		'ayadi_text' => '',
 		'vyaya_formula' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -57,6 +58,10 @@ class CalculateAyadi {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['length'] === '' || $atts['breadth'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CalculateAyadiForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

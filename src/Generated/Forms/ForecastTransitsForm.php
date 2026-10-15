@@ -22,6 +22,7 @@ class ForecastTransitsForm {
 			'operation_id' => 'forecastTransits',
 			'title'        => __( 'Western Astrology Forecast', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
+			'fold_optional' => true,
 			'sections'     => array(
 				array(
 					'name'   => 'birthData',

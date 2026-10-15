@@ -10,7 +10,7 @@ const fields = [
 		control: 'text',
 		label: __( 'Name', 'roxyapi' ),
 		required: true,
-		help: __( 'The name to analyze in both systems.', 'roxyapi' ),
+		help: __( 'The name to analyze in both systems', 'roxyapi' ),
 	},
 ];
 

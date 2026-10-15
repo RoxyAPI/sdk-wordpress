@@ -34,6 +34,7 @@ class GetDailyAyurvedaReading {
 		'latitude' => '',
 		'longitude' => '',
 		'timezone' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -53,6 +54,10 @@ class GetDailyAyurvedaReading {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['latitude'] === '' || $atts['longitude'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetDailyAyurvedaReadingForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getDailyAyurvedaReading( $atts['lang'], $atts['date'], $atts['latitude'], $atts['longitude'], $atts['timezone'] );
 

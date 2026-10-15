@@ -33,6 +33,7 @@ class GetMonthlyHoroscope {
 		'lang' => '',
 		'date' => '',
 		'timezone' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -52,6 +53,10 @@ class GetMonthlyHoroscope {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['sign'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetMonthlyHoroscopeForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getMonthlyHoroscope( $atts['sign'], $atts['lang'], $atts['date'], $atts['timezone'] );
 

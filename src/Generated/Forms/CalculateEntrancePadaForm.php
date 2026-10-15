@@ -22,6 +22,7 @@ class CalculateEntrancePadaForm {
 			'operation_id' => 'calculateEntrancePada',
 			'title'        => __( 'Entrance Pada', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
+			'fold_optional' => true,
 			'sections'     => array(
 				array(
 					'name'   => 'plot',

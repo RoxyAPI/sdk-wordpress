@@ -22,6 +22,7 @@ class CalculateBaziCompatibilityForm {
 			'operation_id' => 'calculateBaziCompatibility',
 			'title'        => __( 'BaZi Compatibility', 'roxyapi' ),
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
+			'fold_optional' => true,
 			'sections'     => array(
 				array(
 					'name'   => 'personA',
@@ -88,7 +89,7 @@ class CalculateBaziCompatibilityForm {
 						'name' => 'hourClock',
 						'label' => __( 'Hour clock', 'roxyapi' ),
 						'required' => false,
-						'help' => __( 'Which clock the HOUR branch is read from', 'roxyapi' ),
+						'help' => __( 'Which clock the day boundary and the hour branch are read from, so a correction that carries a birth across midnight moves the day pillar with the hour', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'clock', 'local-mean', 'solar' ),
 					),
@@ -159,7 +160,7 @@ class CalculateBaziCompatibilityForm {
 						'name' => 'hourClock',
 						'label' => __( 'Hour clock', 'roxyapi' ),
 						'required' => false,
-						'help' => __( 'Which clock the HOUR branch is read from', 'roxyapi' ),
+						'help' => __( 'Which clock the day boundary and the hour branch are read from, so a correction that carries a birth across midnight moves the day pillar with the hour', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'clock', 'local-mean', 'solar' ),
 					),

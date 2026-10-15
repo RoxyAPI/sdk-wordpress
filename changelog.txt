@@ -3,6 +3,13 @@
 The full release history for the RoxyAPI plugin. The most recent releases are
 also listed in readme.txt, which wordpress.org displays on the plugin page.
 
+= 1.19.0 =
+* New: visitor forms on over a hundred more readings. Place a reading such as [roxy_calculate_luck_pillars] or [roxy_get_annual_flying_stars] with no attributes and visitors fill in their own details; pass every attribute for a fixed reading, or add mode="static" to keep it fixed. Optional inputs fold under Advanced, and a city search fills in the place and timezone.
+* Improved: the compound number reading has its own card with the root number, its fortune and the meaning, and the daily angel number uses the angel number card.
+* Improved: years print as years, Year 2026 rather than 2,026, on feng shui and Chinese astrology readings.
+* Improved: the moon phase prints the published illumination, wheel labels clear their planet glyphs, crowded North Indian kundli cells keep the house number clear, and biorhythm cycle names translate.
+* Improved: fields inside a folded form section line up in columns and stay inside the card on a phone.
+
 = 1.18.0 =
 * Improved: the block inserter lists the featured readings under RoxyAPI and every other reading under a second category, RoxyAPI: every reading, so the headline blocks are one short list to browse. Search still finds every block.
 * New: a city search in the block editor sidebar for every reading that takes a place. Pick a city and the latitude, longitude and timezone fill in, the same search the visitor form already has.

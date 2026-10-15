@@ -34,6 +34,7 @@ class LookupAuspiciousDays {
 		'end_date' => '',
 		'avoid_animal' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -53,6 +54,10 @@ class LookupAuspiciousDays {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['activity'] === '' || $atts['start_date'] === '' || $atts['end_date'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\LookupAuspiciousDaysForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

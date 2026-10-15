@@ -61,7 +61,7 @@ const fields = [
 		control: 'select',
 		label: __( 'Hour clock', 'roxyapi' ),
 		required: false,
-		help: __( 'Which clock the HOUR branch is read from', 'roxyapi' ),
+		help: __( 'Which clock the day boundary and the hour branch are read from, so a correction that carries a birth across midnight moves the day pillar with the hour', 'roxyapi' ),
 		options: [ 'clock', 'local-mean', 'solar' ],
 	},
 ];
