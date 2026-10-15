@@ -62,7 +62,7 @@ class Manifest {
 					'accent' => 'green',
 				),
 				'Numerology' => array(
-					'label' => 'Numerology',
+					'label' => __( 'Numerology', 'roxyapi' ),
 					'slug' => 'numerology',
 					'accent' => 'blue',
 				),
@@ -77,7 +77,7 @@ class Manifest {
 					'accent' => 'amber',
 				),
 				'Biorhythm' => array(
-					'label' => 'Biorhythm',
+					'label' => __( 'Biorhythm', 'roxyapi' ),
 					'slug' => 'biorhythm',
 					'accent' => 'pink',
 				),
@@ -145,7 +145,7 @@ class Manifest {
 			'entries' => array(
 				array(
 					'tag' => 'roxy_horoscope',
-					'title' => 'Daily horoscope',
+					'title' => __( 'Daily horoscope', 'roxyapi' ),
 					'description' => 'Western daily reading for any zodiac sign.',
 					'domain' => 'Western Astrology',
 					'order' => 0,
@@ -224,7 +224,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_natal_chart',
-					'title' => 'Natal chart',
+					'title' => __( 'Natal chart', 'roxyapi' ),
 					'description' => 'Western birth chart with planets, houses, and aspects.',
 					'domain' => 'Western Astrology',
 					'order' => 1,
@@ -343,7 +343,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_synastry',
-					'title' => 'Synastry',
+					'title' => __( 'Synastry', 'roxyapi' ),
 					'description' => 'Western synastry chart between two birth charts with compatibility score and inter-aspects.',
 					'domain' => 'Western Astrology',
 					'order' => 2,
@@ -357,7 +357,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_compatibility',
-					'title' => 'Compatibility score',
+					'title' => __( 'Compatibility score', 'roxyapi' ),
 					'description' => 'Western compatibility percentage between two charts with sign, element, and aspect breakdown.',
 					'domain' => 'Western Astrology',
 					'order' => 3,
@@ -371,7 +371,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_moon_phase',
-					'title' => 'Moon phase',
+					'title' => __( 'Moon phase', 'roxyapi' ),
 					'description' => 'Current moon phase, illumination, sign, degree, and meaning.',
 					'domain' => 'Western Astrology',
 					'order' => 4,
@@ -385,7 +385,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_profections',
-					'title' => 'Annual Profections',
+					'title' => __( 'Annual Profections', 'roxyapi' ),
 					'description' => 'Lord of the year and yearly time lord by age',
 					'domain' => 'Western Astrology',
 					'order' => 5,
@@ -583,7 +583,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_arabic_lots',
-					'title' => 'Arabic Lots',
+					'title' => __( 'Arabic Lots', 'roxyapi' ),
 					'description' => 'Seven Hermetic parts including Part of Fortune and Spirit',
 					'domain' => 'Western Astrology',
 					'order' => 6,
@@ -766,7 +766,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_detect_aspect_patterns',
-					'title' => 'Aspect Patterns',
+					'title' => __( 'Aspect Patterns', 'roxyapi' ),
 					'description' => 'Grand Trine, Kite, T-Square, Grand Cross, Yod, Mystic Rectangle, Stellium',
 					'domain' => 'Western Astrology',
 					'order' => 7,
@@ -959,7 +959,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_asteroids',
-					'title' => 'Asteroid Goddesses',
+					'title' => __( 'Asteroid Goddesses', 'roxyapi' ),
 					'description' => 'Ceres, Pallas, Juno, and Vesta natal positions',
 					'domain' => 'Western Astrology',
 					'order' => 8,
@@ -1142,7 +1142,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_astrocartography',
-					'title' => 'Astrocartography Map',
+					'title' => __( 'Astrocartography Map', 'roxyapi' ),
 					'description' => 'Planetary lines and relocation calculator',
 					'domain' => 'Western Astrology',
 					'order' => 9,
@@ -1320,7 +1320,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_lilith',
-					'title' => 'Black Moon Lilith',
+					'title' => __( 'Black Moon Lilith', 'roxyapi' ),
 					'description' => 'Mean and true lunar apogee in the natal chart',
 					'domain' => 'Western Astrology',
 					'order' => 10,
@@ -1503,7 +1503,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_compatibility',
-					'title' => 'Compatibility Score',
+					'title' => __( 'Compatibility Score', 'roxyapi' ),
 					'description' => 'Relationship compatibility',
 					'domain' => 'Western Astrology',
 					'order' => 11,
@@ -1517,7 +1517,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_composite_chart',
-					'title' => 'Composite Chart',
+					'title' => __( 'Composite Chart', 'roxyapi' ),
 					'description' => 'Midpoint relationship chart with interpretations',
 					'domain' => 'Western Astrology',
 					'order' => 12,
@@ -1531,7 +1531,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_planetary_node_passages',
-					'title' => 'Ecliptic Crossings',
+					'title' => __( 'Ecliptic Crossings', 'roxyapi' ),
 					'description' => 'Node passages for a whole year',
 					'domain' => 'Western Astrology',
 					'order' => 13,
@@ -1622,7 +1622,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_fixed_stars',
-					'title' => 'Fixed Stars and Star Conjunctions',
+					'title' => __( 'Fixed Stars and Star Conjunctions', 'roxyapi' ),
 					'description' => 'Regulus, Spica, Algol natal report',
 					'domain' => 'Western Astrology',
 					'order' => 14,
@@ -1800,7 +1800,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_houses',
-					'title' => 'House Cusps',
+					'title' => __( 'House Cusps', 'roxyapi' ),
 					'description' => 'House system calculator with comparison',
 					'domain' => 'Western Astrology',
 					'order' => 15,
@@ -1965,7 +1965,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_local_space',
-					'title' => 'Local Space Astrology Map',
+					'title' => __( 'Local Space Astrology Map', 'roxyapi' ),
 					'description' => 'Directional planetary compass lines',
 					'domain' => 'Western Astrology',
 					'order' => 16,
@@ -2125,7 +2125,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_moon_calendar',
-					'title' => 'Lunar Calendar',
+					'title' => __( 'Lunar Calendar', 'roxyapi' ),
 					'description' => 'Moon phases for entire month',
 					'domain' => 'Western Astrology',
 					'order' => 17,
@@ -2216,7 +2216,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_lunar_return',
-					'title' => 'Lunar Return Chart',
+					'title' => __( 'Lunar Return Chart', 'roxyapi' ),
 					'description' => 'Monthly emotional forecast with Moon cycle chart',
 					'domain' => 'Western Astrology',
 					'order' => 18,
@@ -2396,7 +2396,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_monthly_tropical_aspects',
-					'title' => 'Monthly Aspects',
+					'title' => __( 'Monthly Aspects', 'roxyapi' ),
 					'description' => 'Tropical aspect calendar for an entire month',
 					'domain' => 'Western Astrology',
 					'order' => 19,
@@ -2501,7 +2501,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_monthly_tropical_ephemeris',
-					'title' => 'Monthly Ephemeris',
+					'title' => __( 'Monthly Ephemeris', 'roxyapi' ),
 					'description' => 'Daily tropical planetary positions for a month',
 					'domain' => 'Western Astrology',
 					'order' => 20,
@@ -2573,7 +2573,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_monthly_horoscope',
-					'title' => 'Monthly Horoscope by Zodiac Sign',
+					'title' => __( 'Monthly Horoscope by Zodiac Sign', 'roxyapi' ),
 					'description' => 'Editorial column with key dates',
 					'domain' => 'Western Astrology',
 					'order' => 21,
@@ -2692,7 +2692,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_monthly_declination_parallels',
-					'title' => 'Monthly Parallels',
+					'title' => __( 'Monthly Parallels', 'roxyapi' ),
 					'description' => 'Declination contacts for an entire month',
 					'domain' => 'Western Astrology',
 					'order' => 22,
@@ -2812,7 +2812,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_monthly_tropical_transits',
-					'title' => 'Monthly Transits',
+					'title' => __( 'Monthly Transits', 'roxyapi' ),
 					'description' => 'Tropical sign ingresses for an entire month',
 					'domain' => 'Western Astrology',
 					'order' => 23,
@@ -2917,7 +2917,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_planet_meaning',
-					'title' => 'Planet Meaning Details',
+					'title' => __( 'Planet Meaning Details', 'roxyapi' ),
 					'description' => 'Complete astrology planet interpretation',
 					'domain' => 'Western Astrology',
 					'order' => 24,
@@ -2973,7 +2973,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_planet_meanings',
-					'title' => 'Planet Meanings',
+					'title' => __( 'Planet Meanings', 'roxyapi' ),
 					'description' => 'Complete astrology planet interpretations list',
 					'domain' => 'Western Astrology',
 					'order' => 25,
@@ -3015,7 +3015,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_aspects',
-					'title' => 'Planetary Aspects',
+					'title' => __( 'Planetary Aspects', 'roxyapi' ),
 					'description' => 'Aspect finder for any date and time',
 					'domain' => 'Western Astrology',
 					'order' => 26,
@@ -3162,7 +3162,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_planetary_positions',
-					'title' => 'Planetary Positions',
+					'title' => __( 'Planetary Positions', 'roxyapi' ),
 					'description' => 'Ephemeris calculator for all planets',
 					'domain' => 'Western Astrology',
 					'order' => 27,
@@ -3325,7 +3325,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_planetary_return',
-					'title' => 'Planetary Return Chart',
+					'title' => __( 'Planetary Return Chart', 'roxyapi' ),
 					'description' => 'Saturn return, Jupiter return, and inner planet cycles',
 					'domain' => 'Western Astrology',
 					'order' => 28,
@@ -3526,7 +3526,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_transits',
-					'title' => 'Planetary Transits',
+					'title' => __( 'Planetary Transits', 'roxyapi' ),
 					'description' => 'Current transits with natal chart comparison',
 					'domain' => 'Western Astrology',
 					'order' => 29,
@@ -3646,7 +3646,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_relocation_chart',
-					'title' => 'Relocation Chart',
+					'title' => __( 'Relocation Chart', 'roxyapi' ),
 					'description' => 'Relocated birth chart calculator with shifted houses and angles',
 					'domain' => 'Western Astrology',
 					'order' => 30,
@@ -3847,7 +3847,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_progressions',
-					'title' => 'Secondary Progressions',
+					'title' => __( 'Secondary Progressions', 'roxyapi' ),
 					'description' => 'Progressed chart, progressed Sun and Moon',
 					'domain' => 'Western Astrology',
 					'order' => 31,
@@ -4025,7 +4025,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_solar_arc',
-					'title' => 'Solar Arc Directions',
+					'title' => __( 'Solar Arc Directions', 'roxyapi' ),
 					'description' => 'Directed chart at one degree per year',
 					'domain' => 'Western Astrology',
 					'order' => 32,
@@ -4203,7 +4203,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_solar_return',
-					'title' => 'Solar Return Chart',
+					'title' => __( 'Solar Return Chart', 'roxyapi' ),
 					'description' => 'Annual birthday forecast with relocated chart',
 					'domain' => 'Western Astrology',
 					'order' => 33,
@@ -4383,7 +4383,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_synastry',
-					'title' => 'Synastry',
+					'title' => __( 'Synastry', 'roxyapi' ),
 					'description' => 'Relationship compatibility analysis',
 					'domain' => 'Western Astrology',
 					'order' => 34,
@@ -4397,7 +4397,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_transit_aspects',
-					'title' => 'Transit Aspects',
+					'title' => __( 'Transit Aspects', 'roxyapi' ),
 					'description' => 'Detailed transit-to-natal aspect analysis with interpretations',
 					'domain' => 'Western Astrology',
 					'order' => 35,
@@ -4411,7 +4411,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_upcoming_moon_phases',
-					'title' => 'Upcoming Moon Phases',
+					'title' => __( 'Upcoming Moon Phases', 'roxyapi' ),
 					'description' => 'Next new moon, full moon, quarters',
 					'domain' => 'Western Astrology',
 					'order' => 36,
@@ -4483,7 +4483,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_weekly_horoscope',
-					'title' => 'Weekly Horoscope by Zodiac Sign',
+					'title' => __( 'Weekly Horoscope by Zodiac Sign', 'roxyapi' ),
 					'description' => 'Seven-day editorial column',
 					'domain' => 'Western Astrology',
 					'order' => 37,
@@ -4602,7 +4602,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_yearly_horoscope',
-					'title' => 'Yearly Horoscope by Zodiac Sign',
+					'title' => __( 'Yearly Horoscope by Zodiac Sign', 'roxyapi' ),
 					'description' => 'Year ahead forecast with themes, key periods, eclipses and retrogrades',
 					'domain' => 'Western Astrology',
 					'order' => 38,
@@ -4721,7 +4721,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_zodiac_sign',
-					'title' => 'Zodiac Sign Details',
+					'title' => __( 'Zodiac Sign Details', 'roxyapi' ),
 					'description' => 'Complete astrology sign profile with personality traits',
 					'domain' => 'Western Astrology',
 					'order' => 39,
@@ -4777,7 +4777,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_zodiac_signs',
-					'title' => 'Zodiac Signs',
+					'title' => __( 'Zodiac Signs', 'roxyapi' ),
 					'description' => 'Complete zodiac signs list with dates and elements',
 					'domain' => 'Western Astrology',
 					'order' => 40,
@@ -4819,7 +4819,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_kundli',
-					'title' => 'Vedic kundli',
+					'title' => __( 'Vedic kundli', 'roxyapi' ),
 					'description' => 'Vedic birth chart with twelve rashis, planetary positions, nakshatra, and per-house interpretations.',
 					'domain' => 'Vedic Astrology',
 					'order' => 41,
@@ -4938,7 +4938,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_panchang',
-					'title' => 'Panchang',
+					'title' => __( 'Panchang', 'roxyapi' ),
 					'description' => 'Detailed Hindu calendar for any date and location: tithi, nakshatra, yoga, karana, rahu kaal, abhijit muhurta, brahma muhurta, and more.',
 					'domain' => 'Vedic Astrology',
 					'order' => 42,
@@ -5042,7 +5042,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_mangal_dosha',
-					'title' => 'Mangal Dosha',
+					'title' => __( 'Mangal Dosha', 'roxyapi' ),
 					'description' => 'Check Mangal Dosha (manglik) status for matrimonial compatibility, with severity, remedies, and exception conditions.',
 					'domain' => 'Vedic Astrology',
 					'order' => 43,
@@ -5161,7 +5161,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_kp_chart',
-					'title' => 'KP chart',
+					'title' => __( 'KP chart', 'roxyapi' ),
 					'description' => 'Krishnamurti Paddhati chart with cusps, planets, sub-lords, and significators.',
 					'domain' => 'Vedic Astrology',
 					'order' => 44,
@@ -5280,7 +5280,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_gun_milan',
-					'title' => 'Gun Milan',
+					'title' => __( 'Gun Milan', 'roxyapi' ),
 					'description' => 'Vedic 36-point Ashtakoota matrimonial compatibility with dosha cancellations and per-koot breakdown.',
 					'domain' => 'Vedic Astrology',
 					'order' => 45,
@@ -5294,7 +5294,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_sub_dashas',
-					'title' => 'Antardashas',
+					'title' => __( 'Antardashas', 'roxyapi' ),
 					'description' => 'Returns the 9 Antardasha sub periods inside a chosen Mahadasha, each proportional to the Vimshottari years of its lord',
 					'domain' => 'Vedic Astrology',
 					'order' => 46,
@@ -5551,7 +5551,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_arudha_padas',
-					'title' => 'Arudha Padas',
+					'title' => __( 'Arudha Padas', 'roxyapi' ),
 					'description' => 'Calculate the Arudha Lagna (AL) and all twelve Arudha padas of Jaimini astrology from birth details',
 					'domain' => 'Vedic Astrology',
 					'order' => 47,
@@ -5732,7 +5732,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_ashtakavarga',
-					'title' => 'Ashtakavarga',
+					'title' => __( 'Ashtakavarga', 'roxyapi' ),
 					'description' => 'Calculate complete Ashtakavarga analysis per Brihat Parashara Hora Shastra (BPHS)',
 					'domain' => 'Vedic Astrology',
 					'order' => 48,
@@ -5887,7 +5887,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_avastha',
-					'title' => 'Avastha by ID',
+					'title' => __( 'Avastha by ID', 'roxyapi' ),
 					'description' => 'Look up a single avastha state by its slug, which is the lowercased state name a Vedic birth chart returns in `awastha`, `jagradadi` or `deeptadi`',
 					'domain' => 'Vedic Astrology',
 					'order' => 49,
@@ -5981,7 +5981,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_avasthas',
-					'title' => 'Avastha States',
+					'title' => __( 'Avastha States', 'roxyapi' ),
 					'description' => 'Planetary State Reference',
 					'domain' => 'Vedic Astrology',
 					'order' => 50,
@@ -6042,7 +6042,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_basic_panchang',
-					'title' => 'Basic Panchang',
+					'title' => __( 'Basic Panchang', 'roxyapi' ),
 					'description' => 'Tithi Nakshatra Yoga Karana Calculator',
 					'domain' => 'Vedic Astrology',
 					'order' => 51,
@@ -6187,7 +6187,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_bhav_chalit',
-					'title' => 'Bhav Chalit',
+					'title' => __( 'Bhav Chalit', 'roxyapi' ),
 					'description' => 'Calculate the Bhav Chalit chart, also written Bhava Chalit or Chalit Kundli, placing every graha by unequal Sripati bhava cusps instead of by whole sign',
 					'domain' => 'Vedic Astrology',
 					'order' => 52,
@@ -6386,7 +6386,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_bhava_bala',
-					'title' => 'Bhava Bala',
+					'title' => __( 'Bhava Bala', 'roxyapi' ),
 					'description' => 'Calculate Bhava Bala (house strength) for all twelve bhavas per Brihat Parashara Hora Shastra (BPHS) and BV Raman Graha and Bhava Balas',
 					'domain' => 'Vedic Astrology',
 					'order' => 53,
@@ -6585,7 +6585,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_cast_kp_horary_chart',
-					'title' => 'Cast a KP Horary',
+					'title' => __( 'Cast a KP Horary', 'roxyapi' ),
 					'description' => 'Cast a Krishnamurti Paddhati horary chart, also called Prashna, from a number between 1 and 249 given by the querent plus the moment and place the question is judged',
 					'domain' => 'Vedic Astrology',
 					'order' => 54,
@@ -6817,7 +6817,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_chara_karakas',
-					'title' => 'Chara Karakas',
+					'title' => __( 'Chara Karakas', 'roxyapi' ),
 					'description' => 'Calculate the Chara Karakas of Jaimini astrology from birth details: the movable significators assigned by ranking each graha on how far it has advanced into its sign',
 					'domain' => 'Vedic Astrology',
 					'order' => 55,
@@ -7016,7 +7016,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_choghadiya',
-					'title' => 'Choghadiya',
+					'title' => __( 'Choghadiya', 'roxyapi' ),
 					'description' => '8 Muhurta divisions of day and night',
 					'domain' => 'Vedic Astrology',
 					'order' => 56,
@@ -7120,7 +7120,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_detect_yogas',
-					'title' => 'Classical Vedic Yogas in a Birth Chart',
+					'title' => __( 'Classical Vedic Yogas in a Birth Chart', 'roxyapi' ),
 					'description' => 'Chart-driven detection of 48 classical Vedic yogas',
 					'domain' => 'Vedic Astrology',
 					'order' => 57,
@@ -7301,7 +7301,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_papasamyam',
-					'title' => 'Compare Malefic Affliction',
+					'title' => __( 'Compare Malefic Affliction', 'roxyapi' ),
 					'description' => 'Papasamyam Kundli Matching',
 					'domain' => 'Vedic Astrology',
 					'order' => 58,
@@ -7315,7 +7315,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_gun_milan',
-					'title' => 'Compatibility Score',
+					'title' => __( 'Compatibility Score', 'roxyapi' ),
 					'description' => 'Gun Milan (Ashtakoot Matching)',
 					'domain' => 'Vedic Astrology',
 					'order' => 59,
@@ -7329,7 +7329,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_current_dasha',
-					'title' => 'Current Mahadasha',
+					'title' => __( 'Current Mahadasha', 'roxyapi' ),
 					'description' => 'Calculate all five running Vimshottari Dasha levels with remaining time in each',
 					'domain' => 'Vedic Astrology',
 					'order' => 60,
@@ -7576,7 +7576,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_kp_daily_finance',
-					'title' => 'Daily Finance Score',
+					'title' => __( 'Daily Finance Score', 'roxyapi' ),
 					'description' => 'A Krishnamurti Paddhati daily finance reading for one native on one date',
 					'domain' => 'Vedic Astrology',
 					'order' => 61,
@@ -7820,7 +7820,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_vedic_daily_reading',
-					'title' => 'Daily Reading',
+					'title' => __( 'Daily Reading', 'roxyapi' ),
 					'description' => 'Composed Gochara, Panchanga and Dasha for one native on one day',
 					'domain' => 'Vedic Astrology',
 					'order' => 62,
@@ -8016,7 +8016,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_parallels',
-					'title' => 'Declination Parallels',
+					'title' => __( 'Declination Parallels', 'roxyapi' ),
 					'description' => 'Planets at same or opposite declination',
 					'domain' => 'Vedic Astrology',
 					'order' => 63,
@@ -8150,7 +8150,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_divisional_chart',
-					'title' => 'Divisional Chart (Varga)',
+					'title' => __( 'Divisional Chart (Varga)', 'roxyapi' ),
 					'description' => 'Calculate any Vedic divisional chart (Varga) from D2 Hora to D60 Shashtiamsa',
 					'domain' => 'Vedic Astrology',
 					'order' => 64,
@@ -8346,7 +8346,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_ecliptic_crossings',
-					'title' => 'Ecliptic Crossings',
+					'title' => __( 'Ecliptic Crossings', 'roxyapi' ),
 					'description' => 'When planets cross the ecliptic plane',
 					'domain' => 'Vedic Astrology',
 					'order' => 65,
@@ -8435,7 +8435,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_heliacal_visibility',
-					'title' => 'Heliacal Rising and Setting',
+					'title' => __( 'Heliacal Rising and Setting', 'roxyapi' ),
 					'description' => 'Calculate heliacal rising (udaya) and setting (asta) of the six visible grahas for any date and place, by the Surya Siddhanta rule',
 					'domain' => 'Vedic Astrology',
 					'order' => 66,
@@ -8539,7 +8539,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_hora',
-					'title' => 'Hora',
+					'title' => __( 'Hora', 'roxyapi' ),
 					'description' => '24 Planetary Hours (12 day + 12 night)',
 					'domain' => 'Vedic Astrology',
 					'order' => 67,
@@ -8643,7 +8643,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_check_kalsarpa_dosha',
-					'title' => 'Kalsarpa Dosha',
+					'title' => __( 'Kalsarpa Dosha', 'roxyapi' ),
 					'description' => 'Detect Kalsarpa dosha (Kalsarpa yoga) when all 7 planets are hemmed between Rahu-Ketu axis',
 					'domain' => 'Vedic Astrology',
 					'order' => 68,
@@ -8824,7 +8824,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_kp_cusps',
-					'title' => 'KP Placidus House Cusps',
+					'title' => __( 'KP Placidus House Cusps', 'roxyapi' ),
 					'description' => 'Calculate unequal Placidus house cusps with ruling sign-lord, nakshatra-lord, and sub-lord for each cusp',
 					'domain' => 'Vedic Astrology',
 					'order' => 69,
@@ -9023,7 +9023,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_kp_planets',
-					'title' => 'KP Planetary Positions',
+					'title' => __( 'KP Planetary Positions', 'roxyapi' ),
 					'description' => 'Get planetary positions with detailed KP star-lord and sub-lord calculations for precise event timing and significator analysis',
 					'domain' => 'Vedic Astrology',
 					'order' => 70,
@@ -9196,7 +9196,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_kp_planets_interval',
-					'title' => 'KP Planets at Time Intervals',
+					'title' => __( 'KP Planets at Time Intervals', 'roxyapi' ),
 					'description' => 'Calculate positions of all 9 planets (Sun through Saturn, Rahu, Ketu) at regular time intervals with full KP hierarchy: sign lord, star lord, sublord, and sub-sublord',
 					'domain' => 'Vedic Astrology',
 					'order' => 71,
@@ -9348,7 +9348,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_kp_rasi_changes',
-					'title' => 'KP Rasi Ingress Times',
+					'title' => __( 'KP Rasi Ingress Times', 'roxyapi' ),
 					'description' => 'Track when planets enter new zodiac signs (rasi) with precise ingress timestamps',
 					'domain' => 'Vedic Astrology',
 					'order' => 72,
@@ -9469,7 +9469,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_kp_ruling_planets',
-					'title' => 'KP Ruling Planets with Optional Significators',
+					'title' => __( 'KP Ruling Planets with Optional Significators', 'roxyapi' ),
 					'description' => 'Calculate the 5 ruling planets at any moment using Krishnamurti Paddhati horary astrology',
 					'domain' => 'Vedic Astrology',
 					'order' => 73,
@@ -9665,7 +9665,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_kp_ruling_interval',
-					'title' => 'KP Ruling Planets with Significators',
+					'title' => __( 'KP Ruling Planets with Significators', 'roxyapi' ),
 					'description' => 'Calculate ruling planets and their KP significators at regular time intervals using Krishnamurti Paddhati prashna (horary) astrology',
 					'domain' => 'Vedic Astrology',
 					'order' => 74,
@@ -9861,7 +9861,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_kp_sublord_changes',
-					'title' => 'KP Sublord Changes',
+					'title' => __( 'KP Sublord Changes', 'roxyapi' ),
 					'description' => 'Track when planets cross KP sublord boundaries (1-249 divisions) for precise Krishnamurti Paddhati event timing',
 					'domain' => 'Vedic Astrology',
 					'order' => 75,
@@ -9982,7 +9982,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_kp_ayanamsa',
-					'title' => 'KP-Newcomb Ayanamsa',
+					'title' => __( 'KP-Newcomb Ayanamsa', 'roxyapi' ),
 					'description' => 'Dynamic daily calculation',
 					'domain' => 'Vedic Astrology',
 					'order' => 76,
@@ -10043,7 +10043,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_major_dashas',
-					'title' => 'Mahadasha Periods',
+					'title' => __( 'Mahadasha Periods', 'roxyapi' ),
 					'description' => 'Returns the complete Vimshottari dasha cycle from birth, all 9 Mahadasha periods across the full 120 year span',
 					'domain' => 'Vedic Astrology',
 					'order' => 77,
@@ -10275,7 +10275,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_monthly_parallels',
-					'title' => 'Monthly Declination Parallels',
+					'title' => __( 'Monthly Declination Parallels', 'roxyapi' ),
 					'description' => 'Parallel and contraparallel events for a month',
 					'domain' => 'Vedic Astrology',
 					'order' => 78,
@@ -10362,7 +10362,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_monthly_ephemeris',
-					'title' => 'Monthly Ephemeris',
+					'title' => __( 'Monthly Ephemeris', 'roxyapi' ),
 					'description' => 'Daily sidereal planetary positions for a month',
 					'domain' => 'Vedic Astrology',
 					'order' => 79,
@@ -10452,7 +10452,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_lunar_aspects',
-					'title' => 'Monthly Lunar Aspects',
+					'title' => __( 'Monthly Lunar Aspects', 'roxyapi' ),
 					'description' => 'Moon aspect events with all planets for a month',
 					'domain' => 'Vedic Astrology',
 					'order' => 80,
@@ -10557,7 +10557,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_monthly_aspects',
-					'title' => 'Monthly Planetary Aspects',
+					'title' => __( 'Monthly Planetary Aspects', 'roxyapi' ),
 					'description' => 'Major and minor aspect events for a month',
 					'domain' => 'Vedic Astrology',
 					'order' => 81,
@@ -10662,7 +10662,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_monthly_transits',
-					'title' => 'Monthly Transit',
+					'title' => __( 'Monthly Transit', 'roxyapi' ),
 					'description' => 'Planetary sign changes for an entire month',
 					'domain' => 'Vedic Astrology',
 					'order' => 82,
@@ -10767,7 +10767,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_nakshatra',
-					'title' => 'Nakshatra by ID',
+					'title' => __( 'Nakshatra by ID', 'roxyapi' ),
 					'description' => 'Get detailed information for a single nakshatra (lunar mansion) by its ID slug, one of the 27 nakshatras of Vedic astrology',
 					'domain' => 'Vedic Astrology',
 					'order' => 83,
@@ -10871,7 +10871,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_nakshatras',
-					'title' => 'Nakshatras',
+					'title' => __( 'Nakshatras', 'roxyapi' ),
 					'description' => 'Lunar Mansions Reference',
 					'domain' => 'Vedic Astrology',
 					'order' => 84,
@@ -10913,7 +10913,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_navamsa',
-					'title' => 'Navamsa Chart (D9)',
+					'title' => __( 'Navamsa Chart (D9)', 'roxyapi' ),
 					'description' => 'Marriage Compatibility Calculator',
 					'domain' => 'Vedic Astrology',
 					'order' => 85,
@@ -11094,7 +11094,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_drishti',
-					'title' => 'Planetary Aspects (Drishti)',
+					'title' => __( 'Planetary Aspects (Drishti)', 'roxyapi' ),
 					'description' => 'Mutual aspects between all planets',
 					'domain' => 'Vedic Astrology',
 					'order' => 86,
@@ -11231,7 +11231,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_planet_positions',
-					'title' => 'Planetary Positions',
+					'title' => __( 'Planetary Positions', 'roxyapi' ),
 					'description' => 'Get simplified planetary positions (graha positions) for all 9 planets (Sun through Ketu) plus Ascendant (Lagna)',
 					'domain' => 'Vedic Astrology',
 					'order' => 87,
@@ -11412,7 +11412,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_yogas',
-					'title' => 'Planetary Yogas',
+					'title' => __( 'Planetary Yogas', 'roxyapi' ),
 					'description' => '301 entry Vedic Yoga Glossary',
 					'domain' => 'Vedic Astrology',
 					'order' => 88,
@@ -11475,7 +11475,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_dashakoot',
-					'title' => 'Porutham Match',
+					'title' => __( 'Porutham Match', 'roxyapi' ),
 					'description' => 'Dashakoot South Indian Kundli Matching',
 					'domain' => 'Vedic Astrology',
 					'order' => 89,
@@ -11489,7 +11489,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_prana_dashas',
-					'title' => 'Prana Dashas',
+					'title' => __( 'Prana Dashas', 'roxyapi' ),
 					'description' => 'Prana dasha for Vedic astrology',
 					'domain' => 'Vedic Astrology',
 					'order' => 90,
@@ -11821,7 +11821,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_pratyantardashas',
-					'title' => 'Pratyantardashas',
+					'title' => __( 'Pratyantardashas', 'roxyapi' ),
 					'description' => 'Pratyantardasha for Vedic astrology',
 					'domain' => 'Vedic Astrology',
 					'order' => 91,
@@ -12103,7 +12103,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_rashi',
-					'title' => 'Rashi by ID',
+					'title' => __( 'Rashi by ID', 'roxyapi' ),
 					'description' => 'Vedic Zodiac Sign Detail',
 					'domain' => 'Vedic Astrology',
 					'order' => 92,
@@ -12192,7 +12192,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_rashis',
-					'title' => 'Rashis',
+					'title' => __( 'Rashis', 'roxyapi' ),
 					'description' => 'Vedic Zodiac Signs Reference',
 					'domain' => 'Vedic Astrology',
 					'order' => 93,
@@ -12234,7 +12234,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_check_sadhesati',
-					'title' => 'Sadhesati',
+					'title' => __( 'Sadhesati', 'roxyapi' ),
 					'description' => 'Sade Sati (Saturn Transit)',
 					'domain' => 'Vedic Astrology',
 					'order' => 94,
@@ -12415,7 +12415,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_shadbala',
-					'title' => 'Shadbala',
+					'title' => __( 'Shadbala', 'roxyapi' ),
 					'description' => 'Calculate complete Shadbala (six-fold planetary strength) per Brihat Parashara Hora Shastra (BPHS) and BV Raman Graha and Bhava Balas',
 					'domain' => 'Vedic Astrology',
 					'order' => 95,
@@ -12596,7 +12596,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_sookshma_dashas',
-					'title' => 'Sookshma Dashas',
+					'title' => __( 'Sookshma Dashas', 'roxyapi' ),
 					'description' => 'Returns the 9 Sookshma periods inside a chosen Pratyantardasha, the fourth and finest level of the Vimshottari dasha hierarchy',
 					'domain' => 'Vedic Astrology',
 					'order' => 96,
@@ -12903,7 +12903,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_transit',
-					'title' => 'Transit Analysis',
+					'title' => __( 'Transit Analysis', 'roxyapi' ),
 					'description' => 'Compare current planets to natal chart (Gochar)',
 					'domain' => 'Vedic Astrology',
 					'order' => 97,
@@ -13070,7 +13070,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_upagraha_positions',
-					'title' => 'Upagraha (Sub-planet) Positions',
+					'title' => __( 'Upagraha (Sub-planet) Positions', 'roxyapi' ),
 					'description' => 'Calculate all 11 Vedic upagraha (sub-planet) positions per Brihat Parashara Hora Shastra (BPHS)',
 					'domain' => 'Vedic Astrology',
 					'order' => 98,
@@ -13225,7 +13225,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_yoga',
-					'title' => 'Yoga Details by ID',
+					'title' => __( 'Yoga Details by ID', 'roxyapi' ),
 					'description' => 'Vedic Yoga Glossary Entry',
 					'domain' => 'Vedic Astrology',
 					'order' => 99,
@@ -13603,7 +13603,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_forecast',
-					'title' => 'Forecast timeline',
+					'title' => __( 'Forecast timeline', 'roxyapi' ),
 					'description' => 'Cross-domain forecast for one birth chart: transits, ingresses, stations, dasha changes, and biorhythm critical days over a window of up to 90 days.',
 					'domain' => 'Forecast',
 					'order' => 100,
@@ -13617,7 +13617,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_timeline',
-					'title' => 'Cross-domain Forecast Timeline',
+					'title' => __( 'Cross-domain Forecast Timeline', 'roxyapi' ),
 					'description' => 'Transits, ingresses, stations, dasha changes, critical days',
 					'domain' => 'Forecast',
 					'order' => 101,
@@ -13631,7 +13631,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_digest',
-					'title' => 'Forecast Digest',
+					'title' => __( 'Forecast Digest', 'roxyapi' ),
 					'description' => 'Pre-summarized next 24h, 7d, 30d, and 90d rollups',
 					'domain' => 'Forecast',
 					'order' => 102,
@@ -13645,7 +13645,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_find_significant_dates',
-					'title' => 'Significant Dates',
+					'title' => __( 'Significant Dates', 'roxyapi' ),
 					'description' => 'High-significance cross-domain forecast highlights',
 					'domain' => 'Forecast',
 					'order' => 103,
@@ -13659,7 +13659,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_forecast_solar_return',
-					'title' => 'Solar Return Chart',
+					'title' => __( 'Solar Return Chart', 'roxyapi' ),
 					'description' => 'Annual birthday forecast chart for a single subject',
 					'domain' => 'Forecast',
 					'order' => 104,
@@ -13839,7 +13839,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_forecast_transits',
-					'title' => 'Western Astrology Forecast',
+					'title' => __( 'Western Astrology Forecast', 'roxyapi' ),
 					'description' => 'Aspects, ingresses, stations, eclipses, moon phases',
 					'domain' => 'Forecast',
 					'order' => 105,
@@ -13853,7 +13853,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_bodygraph',
-					'title' => 'Bodygraph',
+					'title' => __( 'Bodygraph', 'roxyapi' ),
 					'description' => 'Human Design bodygraph with type, strategy, authority, profile, the nine centers, channels, and gates.',
 					'domain' => 'Human Design',
 					'order' => 106,
@@ -13972,7 +13972,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_channels',
-					'title' => 'Defined Human Design Channels',
+					'title' => __( 'Defined Human Design Channels', 'roxyapi' ),
 					'description' => 'Calculate the defined channels for a birth moment',
 					'domain' => 'Human Design',
 					'order' => 107,
@@ -14135,7 +14135,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_bodygraph',
-					'title' => 'Human Design Bodygraph',
+					'title' => __( 'Human Design Bodygraph', 'roxyapi' ),
 					'description' => 'Type, authority, profile, centers, channels, gates',
 					'domain' => 'Human Design',
 					'order' => 108,
@@ -14298,7 +14298,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_center',
-					'title' => 'Human Design Center by ID',
+					'title' => __( 'Human Design Center by ID', 'roxyapi' ),
 					'description' => 'Look up the static reference data for one of the nine Human Design centers by its id: the display name, whether it is a motor or awareness center, and what it means both defined and undefined',
 					'domain' => 'Human Design',
 					'order' => 109,
@@ -14384,7 +14384,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_centers',
-					'title' => 'Human Design Centers',
+					'title' => __( 'Human Design Centers', 'roxyapi' ),
 					'description' => 'Calculate the state of all nine Human Design centers for a birth moment: whether each is defined or open, whether it is a motor or an awareness center, its theme, and the active gates it holds',
 					'domain' => 'Human Design',
 					'order' => 110,
@@ -14547,7 +14547,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_connection',
-					'title' => 'Human Design Connection Chart',
+					'title' => __( 'Human Design Connection Chart', 'roxyapi' ),
 					'description' => 'Two-person composite bodygraph compatibility',
 					'domain' => 'Human Design',
 					'order' => 111,
@@ -14561,7 +14561,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_gates',
-					'title' => 'Human Design Gate Activations',
+					'title' => __( 'Human Design Gate Activations', 'roxyapi' ),
 					'description' => 'Calculate the 26 gate activations for a birth moment, split into the 13 conscious Personality activations at birth and the 13 unconscious Design activations 88 degrees of solar arc earlier',
 					'domain' => 'Human Design',
 					'order' => 112,
@@ -14724,7 +14724,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_gate',
-					'title' => 'Human Design Gate by Number',
+					'title' => __( 'Human Design Gate by Number', 'roxyapi' ),
 					'description' => 'Look up the static reference data for a Human Design gate by its number from 1 to 64: the gate keynote name, the center it sits in, the matching I-Ching hexagram, and the gates that form a channel with it',
 					'domain' => 'Human Design',
 					'order' => 113,
@@ -14800,7 +14800,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_penta',
-					'title' => 'Human Design Penta',
+					'title' => __( 'Human Design Penta', 'roxyapi' ),
 					'description' => 'Small-group BG5 operating system for three to five people',
 					'domain' => 'Human Design',
 					'order' => 114,
@@ -14814,7 +14814,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_profile',
-					'title' => 'Human Design Profile and Line Keynotes',
+					'title' => __( 'Human Design Profile and Line Keynotes', 'roxyapi' ),
 					'description' => 'Calculate the Human Design profile for a birth moment: the conscious Personality Sun line over the unconscious Design Sun line, with the keynote for each',
 					'domain' => 'Human Design',
 					'order' => 115,
@@ -14977,7 +14977,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_transit',
-					'title' => 'Human Design Transit Overlay',
+					'title' => __( 'Human Design Transit Overlay', 'roxyapi' ),
 					'description' => 'Current planetary activations on a natal bodygraph',
 					'domain' => 'Human Design',
 					'order' => 116,
@@ -14991,7 +14991,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_type',
-					'title' => 'Human Design Type',
+					'title' => __( 'Human Design Type', 'roxyapi' ),
 					'description' => 'Calculate the core Human Design identity from a birth moment: the energy type, the aura strategy, the inner authority, the signature and not-self themes, and the profile',
 					'domain' => 'Human Design',
 					'order' => 117,
@@ -15154,7 +15154,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_variables',
-					'title' => 'Human Design Variables',
+					'title' => __( 'Human Design Variables', 'roxyapi' ),
 					'description' => 'The four arrows and Color, Tone, Base substructure',
 					'domain' => 'Human Design',
 					'order' => 118,
@@ -15317,7 +15317,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_almanac_day',
-					'title' => 'Almanac for a Day',
+					'title' => __( 'Almanac for a Day', 'roxyapi' ),
 					'description' => 'Tong Shu with day officers and mansions',
 					'domain' => 'Chinese Astrology',
 					'order' => 119,
@@ -15393,7 +15393,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_lookup_auspicious_days',
-					'title' => 'Auspicious Days',
+					'title' => __( 'Auspicious Days', 'roxyapi' ),
 					'description' => 'Chinese date selection for weddings and openings',
 					'domain' => 'Chinese Astrology',
 					'order' => 120,
@@ -15538,7 +15538,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_annual_forecast',
-					'title' => 'BaZi Annual Forecast',
+					'title' => __( 'BaZi Annual Forecast', 'roxyapi' ),
 					'description' => 'Read one Gregorian year against a natal BaZi chart',
 					'domain' => 'Chinese Astrology',
 					'order' => 121,
@@ -15754,7 +15754,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_bazi_chart',
-					'title' => 'BaZi Chart',
+					'title' => __( 'BaZi Chart', 'roxyapi' ),
 					'description' => 'Calculate a complete BaZi chart, the Four Pillars of Destiny, from a birth moment',
 					'domain' => 'Chinese Astrology',
 					'order' => 122,
@@ -15955,7 +15955,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_bazi_compatibility',
-					'title' => 'BaZi Compatibility',
+					'title' => __( 'BaZi Compatibility', 'roxyapi' ),
 					'description' => 'Four Pillars matchmaking',
 					'domain' => 'Chinese Astrology',
 					'order' => 123,
@@ -15969,7 +15969,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_zodiac_animal',
-					'title' => 'Chinese Zodiac Animal',
+					'title' => __( 'Chinese Zodiac Animal', 'roxyapi' ),
 					'description' => 'Full sign profile with compatibility partners',
 					'domain' => 'Chinese Astrology',
 					'order' => 124,
@@ -16058,7 +16058,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_zodiac_animal',
-					'title' => 'Chinese Zodiac Animal for a Birth Date',
+					'title' => __( 'Chinese Zodiac Animal for a Birth Date', 'roxyapi' ),
 					'description' => 'Resolve a birth date to its Chinese zodiac animal, the sexagenary year pillar behind it, and the Five Element phase of that year, so a 1990 birth returns Horse as a Metal Horse rather than merely a Horse',
 					'domain' => 'Chinese Astrology',
 					'order' => 125,
@@ -16152,7 +16152,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_zodiac_animals',
-					'title' => 'Chinese Zodiac Animals',
+					'title' => __( 'Chinese Zodiac Animals', 'roxyapi' ),
 					'description' => 'Sheng Xiao sign catalogue',
 					'domain' => 'Chinese Astrology',
 					'order' => 126,
@@ -16224,7 +16224,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_zodiac_compatibility',
-					'title' => 'Chinese Zodiac Compatibility',
+					'title' => __( 'Chinese Zodiac Compatibility', 'roxyapi' ),
 					'description' => 'Trine, six harmony, clash and harm analysis',
 					'domain' => 'Chinese Astrology',
 					'order' => 127,
@@ -16341,7 +16341,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_lunar_date',
-					'title' => 'Convert Lunar and Gregorian Dates',
+					'title' => __( 'Convert Lunar and Gregorian Dates', 'roxyapi' ),
 					'description' => 'Chinese lunisolar calendar',
 					'domain' => 'Chinese Astrology',
 					'order' => 128,
@@ -16458,7 +16458,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_daily_zodiac_reading',
-					'title' => 'Daily Chinese Zodiac Reading',
+					'title' => __( 'Daily Chinese Zodiac Reading', 'roxyapi' ),
 					'description' => 'Day pillar forecast by animal sign',
 					'domain' => 'Chinese Astrology',
 					'order' => 129,
@@ -16577,7 +16577,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_day_master_strength',
-					'title' => 'Day Master Strength',
+					'title' => __( 'Day Master Strength', 'roxyapi' ),
 					'description' => 'Assess how well the Day Master is supported by the rest of a BaZi chart, and which of the five elements help it',
 					'domain' => 'Chinese Astrology',
 					'order' => 130,
@@ -16778,7 +16778,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_five_elements',
-					'title' => 'Elements',
+					'title' => __( 'Elements', 'roxyapi' ),
 					'description' => 'Wu Xing with generating and controlling cycles',
 					'domain' => 'Chinese Astrology',
 					'order' => 131,
@@ -16850,7 +16850,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_luck_pillars',
-					'title' => 'Luck Pillars',
+					'title' => __( 'Luck Pillars', 'roxyapi' ),
 					'description' => 'BaZi Da Yun ten-year cycle',
 					'domain' => 'Chinese Astrology',
 					'order' => 132,
@@ -17114,7 +17114,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_monthly_almanac',
-					'title' => 'Month of Almanac Days',
+					'title' => __( 'Month of Almanac Days', 'roxyapi' ),
 					'description' => 'Chinese calendar month view',
 					'domain' => 'Chinese Astrology',
 					'order' => 133,
@@ -17186,7 +17186,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_solar_terms',
-					'title' => 'Solar Terms',
+					'title' => __( 'Solar Terms', 'roxyapi' ),
 					'description' => 'Jie Qi calendar with exact instants',
 					'domain' => 'Chinese Astrology',
 					'order' => 134,
@@ -17262,7 +17262,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_annual_afflictions',
-					'title' => 'Annual Afflictions',
+					'title' => __( 'Annual Afflictions', 'roxyapi' ),
 					'description' => 'Tai Sui, San Sha and Five Yellow',
 					'domain' => 'Feng Shui',
 					'order' => 135,
@@ -17338,7 +17338,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_annual_flying_stars',
-					'title' => 'Annual Flying Stars',
+					'title' => __( 'Annual Flying Stars', 'roxyapi' ),
 					'description' => 'Yearly feng shui star chart',
 					'domain' => 'Feng Shui',
 					'order' => 136,
@@ -17414,7 +17414,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_bagua_sector',
-					'title' => 'Bagua Sector',
+					'title' => __( 'Bagua Sector', 'roxyapi' ),
 					'description' => 'Look up one palace of the compass Bagua map by its life area id, such as wealth, career or love',
 					'domain' => 'Feng Shui',
 					'order' => 137,
@@ -17500,7 +17500,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_bagua_sectors',
-					'title' => 'Bagua Sectors',
+					'title' => __( 'Bagua Sectors', 'roxyapi' ),
 					'description' => 'The nine palaces of the compass Bagua map: the eight trigram sectors plus the centre, each with the life area it governs, its five phase, its colours, and both its Later Heaven and Earlier Heaven trigrams',
 					'domain' => 'Feng Shui',
 					'order' => 138,
@@ -17572,7 +17572,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_kua_number',
-					'title' => 'Calculate Kua Number',
+					'title' => __( 'Calculate Kua Number', 'roxyapi' ),
 					'description' => 'Feng shui personal direction',
 					'domain' => 'Feng Shui',
 					'order' => 139,
@@ -17684,7 +17684,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_eight_mansions',
-					'title' => 'Eight Mansions Map',
+					'title' => __( 'Eight Mansions Map', 'roxyapi' ),
 					'description' => 'Build the full Eight Mansions (Ba Zhai) map for a person: all eight compass sectors classified into the four favourable stars, Sheng Chi, Tian Yi, Yan Nian and Fu Wei, and the four unfavourable ones, Huo Hai, Wu Gui, Liu Sha and Jue Ming',
 					'domain' => 'Feng Shui',
 					'order' => 140,
@@ -17816,7 +17816,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_flying_star_chart',
-					'title' => 'Flying Star Natal Chart',
+					'title' => __( 'Flying Star Natal Chart', 'roxyapi' ),
 					'description' => 'Cast the Xuan Kong flying star natal chart for a building from its construction period and the direction it faces',
 					'domain' => 'Feng Shui',
 					'order' => 141,
@@ -17952,7 +17952,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_flying_stars',
-					'title' => 'Flying Stars',
+					'title' => __( 'Flying Stars', 'roxyapi' ),
 					'description' => 'The reference catalogue of the nine flying stars: name, Chinese characters, five phase, home palace and trigram, the period each rules, what each means, and which element strengthens or drains it',
 					'domain' => 'Feng Shui',
 					'order' => 142,
@@ -18024,7 +18024,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_kua_number',
-					'title' => 'Kua Number',
+					'title' => __( 'Kua Number', 'roxyapi' ),
 					'description' => 'Look up the reference chart for one Kua number: its trigram, its east or west life group, and how it classifies all eight compass sectors',
 					'domain' => 'Feng Shui',
 					'order' => 143,
@@ -18100,7 +18100,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_monthly_flying_stars',
-					'title' => 'Monthly Flying Stars',
+					'title' => __( 'Monthly Flying Stars', 'roxyapi' ),
 					'description' => 'Month by month feng shui overlay',
 					'domain' => 'Feng Shui',
 					'order' => 144,
@@ -18172,7 +18172,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_nine_periods',
-					'title' => 'Periods',
+					'title' => __( 'Periods', 'roxyapi' ),
 					'description' => 'The nine twenty year periods of the 180 year San Yuan cycle from 1864 to 2043, each with its ruling star, five phase, palace and the exact Li Chun date it opened, plus which period is in force on a given date',
 					'domain' => 'Feng Shui',
 					'order' => 145,
@@ -18229,7 +18229,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_aztec_day_sign',
-					'title' => 'Aztec Day Sign',
+					'title' => __( 'Aztec Day Sign', 'roxyapi' ),
 					'description' => 'Tonalpohualli sign profile',
 					'domain' => 'Mesoamerican Astrology',
 					'order' => 146,
@@ -18326,7 +18326,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_tonalpohualli',
-					'title' => 'Aztec Day Sign for a Date',
+					'title' => __( 'Aztec Day Sign for a Date', 'roxyapi' ),
 					'description' => 'Aztec calendar day sign calculator: returns the tonalpohualli day sign, its coefficient 1 to 13 and its trecena for any Gregorian date, with a composed reading',
 					'domain' => 'Mesoamerican Astrology',
 					'order' => 147,
@@ -18402,7 +18402,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_aztec_day_signs',
-					'title' => 'Aztec Day Signs',
+					'title' => __( 'Aztec Day Signs', 'roxyapi' ),
 					'description' => 'Tonalpohualli sign catalogue',
 					'domain' => 'Mesoamerican Astrology',
 					'order' => 148,
@@ -18474,7 +18474,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_aztec_trecena',
-					'title' => 'Aztec Trecena',
+					'title' => __( 'Aztec Trecena', 'roxyapi' ),
 					'description' => 'Tonalpohualli period profile',
 					'domain' => 'Mesoamerican Astrology',
 					'order' => 149,
@@ -18550,7 +18550,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_aztec_trecenas',
-					'title' => 'Aztec Trecenas',
+					'title' => __( 'Aztec Trecenas', 'roxyapi' ),
 					'description' => 'Tonalpohualli thirteen day period',
 					'domain' => 'Mesoamerican Astrology',
 					'order' => 150,
@@ -18622,7 +18622,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_convert_long_count',
-					'title' => 'Convert a Maya Long Count',
+					'title' => __( 'Convert a Maya Long Count', 'roxyapi' ),
 					'description' => 'Long Count calendar converter',
 					'domain' => 'Mesoamerican Astrology',
 					'order' => 151,
@@ -18714,7 +18714,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_daily_aztec_reading',
-					'title' => 'Daily Aztec Energy Reading',
+					'title' => __( 'Daily Aztec Energy Reading', 'roxyapi' ),
 					'description' => 'Tonalpohualli day sign of the day',
 					'domain' => 'Mesoamerican Astrology',
 					'order' => 152,
@@ -18771,7 +18771,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_daily_mayan_reading',
-					'title' => 'Daily Mayan Energy Reading',
+					'title' => __( 'Daily Mayan Energy Reading', 'roxyapi' ),
 					'description' => 'Tzolkin day sign of the day',
 					'domain' => 'Mesoamerican Astrology',
 					'order' => 153,
@@ -18848,7 +18848,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_haab_month',
-					'title' => 'Haab Period',
+					'title' => __( 'Haab Period', 'roxyapi' ),
 					'description' => 'Maya solar calendar month profile',
 					'domain' => 'Mesoamerican Astrology',
 					'order' => 154,
@@ -18944,7 +18944,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_haab_months',
-					'title' => 'Haab Periods',
+					'title' => __( 'Haab Periods', 'roxyapi' ),
 					'description' => 'Maya solar calendar month',
 					'domain' => 'Mesoamerican Astrology',
 					'order' => 155,
@@ -19016,7 +19016,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_mayan_chart',
-					'title' => 'Mayan Chart',
+					'title' => __( 'Mayan Chart', 'roxyapi' ),
 					'description' => 'Tzolkin, Haab and Long Count',
 					'domain' => 'Mesoamerican Astrology',
 					'order' => 156,
@@ -19131,7 +19131,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_mayan_day_sign',
-					'title' => 'Mayan Day Sign',
+					'title' => __( 'Mayan Day Sign', 'roxyapi' ),
 					'description' => 'Retrieve the full profile of one Tzolkin day sign: both naming traditions, both published glosses, the world direction and colour under the requested scheme, a composed keynote, what the sign does well, where the same temperament costs it something, and one line of guidance',
 					'domain' => 'Mesoamerican Astrology',
 					'order' => 157,
@@ -19246,7 +19246,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_tzolkin',
-					'title' => 'Mayan Day Sign for a Date',
+					'title' => __( 'Mayan Day Sign for a Date', 'roxyapi' ),
 					'description' => 'Mayan astrology day sign calculator: returns the Tzolkin day sign, the coefficient 1 to 13 and the trecena for any Gregorian date, under the correlation living daykeepers use, with a composed nawal reading',
 					'domain' => 'Mesoamerican Astrology',
 					'order' => 158,
@@ -19342,7 +19342,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_mayan_day_signs',
-					'title' => 'Mayan Day Signs',
+					'title' => __( 'Mayan Day Signs', 'roxyapi' ),
 					'description' => 'Retrieve all twenty Tzolkin day signs in sequence order from Imix to Ajaw',
 					'domain' => 'Mesoamerican Astrology',
 					'order' => 159,
@@ -19432,7 +19432,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_mayan_compatibility',
-					'title' => 'Mayan Nawal Compatibility',
+					'title' => __( 'Mayan Nawal Compatibility', 'roxyapi' ),
 					'description' => 'Mayan compatibility between two birth dates, published as its parts rather than as a verdict: both nawals with their coefficients and trecenas, the five structural ties the pair either has or does not, the weight each tie carries, and a composite score built from them',
 					'domain' => 'Mesoamerican Astrology',
 					'order' => 160,
@@ -19446,7 +19446,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_trecena',
-					'title' => 'Mayan Trecena',
+					'title' => __( 'Mayan Trecena', 'roxyapi' ),
 					'description' => 'Thirteen day period profile',
 					'domain' => 'Mesoamerican Astrology',
 					'order' => 161,
@@ -19522,7 +19522,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_trecenas',
-					'title' => 'Mayan Trecenas',
+					'title' => __( 'Mayan Trecenas', 'roxyapi' ),
 					'description' => 'Tzolkin thirteen day period',
 					'domain' => 'Mesoamerican Astrology',
 					'order' => 162,
@@ -19594,7 +19594,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_monthly_tzolkin_calendar',
-					'title' => 'Monthly Tzolkin Calendar Grid',
+					'title' => __( 'Monthly Tzolkin Calendar Grid', 'roxyapi' ),
 					'description' => 'Mayan calendar grid for a whole civil month: every day of the month with its Tzolkin day sign and coefficient, its trecena, its Haab date and its Long Count',
 					'domain' => 'Mesoamerican Astrology',
 					'order' => 163,
@@ -19686,7 +19686,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_ayadi',
-					'title' => 'Ayadi Shadvarga',
+					'title' => __( 'Ayadi Shadvarga', 'roxyapi' ),
 					'description' => 'Vastu proportion and yoni',
 					'domain' => 'Vastu',
 					'order' => 164,
@@ -19878,7 +19878,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_devata',
-					'title' => 'Devata',
+					'title' => __( 'Devata', 'roxyapi' ),
 					'description' => 'Look up one devata of the Vastu Purusha Mandala: the squares it holds, its ring and side, its pada count, the entrance pada it governs where it sits on the perimeter, and the verses that place it',
 					'domain' => 'Vastu',
 					'order' => 165,
@@ -20000,7 +20000,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_devatas',
-					'title' => 'Devatas',
+					'title' => __( 'Devatas', 'roxyapi' ),
 					'description' => 'Reference table of the 45 devatas of the Vastu Purusha Mandala: which squares of the 81 pada grid each one holds, which ring and which side, how many padas, and the verses that place it',
 					'domain' => 'Vastu',
 					'order' => 166,
@@ -20072,7 +20072,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_dikpala_direction',
-					'title' => 'Direction',
+					'title' => __( 'Direction', 'roxyapi' ),
 					'description' => 'Look up one Vastu direction: its dikpala, the mandala squares it covers with their devatas, what the chapter places there, and what standing water in that quarter brings',
 					'domain' => 'Vastu',
 					'order' => 167,
@@ -20157,7 +20157,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_dikpala_directions',
-					'title' => 'Directions',
+					'title' => __( 'Directions', 'roxyapi' ),
 					'description' => 'Vastu dikpala and direction',
 					'domain' => 'Vastu',
 					'order' => 168,
@@ -20229,7 +20229,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_entrance_pada',
-					'title' => 'Entrance Pada',
+					'title' => __( 'Entrance Pada', 'roxyapi' ),
 					'description' => 'Vastu main door direction',
 					'domain' => 'Vastu',
 					'order' => 169,
@@ -20243,7 +20243,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_find_griha_pravesh_dates',
-					'title' => 'Griha Pravesh Dates',
+					'title' => __( 'Griha Pravesh Dates', 'roxyapi' ),
 					'description' => 'Vastu house warming muhurta',
 					'domain' => 'Vastu',
 					'order' => 170,
@@ -20406,7 +20406,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_plot_analysis',
-					'title' => 'Plot',
+					'title' => __( 'Plot', 'roxyapi' ),
 					'description' => 'Vastu land and site assessment',
 					'domain' => 'Vastu',
 					'order' => 171,
@@ -20420,7 +20420,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_room_compliance',
-					'title' => 'Room Placement',
+					'title' => __( 'Room Placement', 'roxyapi' ),
 					'description' => 'Vastu room direction compliance',
 					'domain' => 'Vastu',
 					'order' => 172,
@@ -20434,7 +20434,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_mandala',
-					'title' => 'Vastu Purusha Mandala',
+					'title' => __( 'Vastu Purusha Mandala', 'roxyapi' ),
 					'description' => '81 pada and 64 pada grid',
 					'domain' => 'Vastu',
 					'order' => 173,
@@ -20448,7 +20448,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_numerology',
-					'title' => 'Numerology',
+					'title' => __( 'Numerology', 'roxyapi' ),
 					'description' => 'Life path, expression, and soul urge from a name and date.',
 					'domain' => 'Numerology',
 					'order' => 174,
@@ -20513,7 +20513,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_life_path',
-					'title' => 'Life path',
+					'title' => __( 'Life path', 'roxyapi' ),
 					'description' => 'Life path number and core meaning from a birth date.',
 					'domain' => 'Numerology',
 					'order' => 175,
@@ -20563,7 +20563,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_birth_day',
-					'title' => 'Birth Day Number',
+					'title' => __( 'Birth Day Number', 'roxyapi' ),
 					'description' => 'Calculate the Birth Day number from the day of the month a person was born, 1 to 31, with Pythagorean numerology',
 					'domain' => 'Numerology',
 					'order' => 176,
@@ -20639,7 +20639,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_bridge_numbers',
-					'title' => 'Bridge Numbers',
+					'title' => __( 'Bridge Numbers', 'roxyapi' ),
 					'description' => 'Numerology bridge numbers',
 					'domain' => 'Numerology',
 					'order' => 177,
@@ -20760,7 +20760,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_business_name',
-					'title' => 'Business Name Numerology',
+					'title' => __( 'Business Name Numerology', 'roxyapi' ),
 					'description' => 'Analyze a business or brand name with Chaldean numerology, the system practitioners use for trade names',
 					'domain' => 'Numerology',
 					'order' => 178,
@@ -20836,7 +20836,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_chaldean',
-					'title' => 'Chaldean Numerology',
+					'title' => __( 'Chaldean Numerology', 'roxyapi' ),
 					'description' => 'Calculate a complete Chaldean numerology reading for a name, following Cheiro',
 					'domain' => 'Numerology',
 					'order' => 179,
@@ -20912,7 +20912,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_compound_number',
-					'title' => 'Compound Number Meaning',
+					'title' => __( 'Compound Number Meaning', 'roxyapi' ),
 					'description' => 'Chaldean compound numbers 10 to 52',
 					'domain' => 'Numerology',
 					'order' => 180,
@@ -20968,7 +20968,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_daily_number',
-					'title' => 'Daily Numerology Number',
+					'title' => __( 'Daily Numerology Number', 'roxyapi' ),
 					'description' => 'Get the numerology Number of the Day, one of 1 to 9, 11, 22 or 33, with its full interpretation',
 					'domain' => 'Numerology',
 					'order' => 181,
@@ -21040,7 +21040,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_dual',
-					'title' => 'Dual Numerology',
+					'title' => __( 'Dual Numerology', 'roxyapi' ),
 					'description' => 'Pythagorean and Chaldean name number',
 					'domain' => 'Numerology',
 					'order' => 182,
@@ -21116,7 +21116,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_expression',
-					'title' => 'Expression Number',
+					'title' => __( 'Expression Number', 'roxyapi' ),
 					'description' => 'Calculate the Expression number, also called the Destiny number, from a full birth name with Pythagorean numerology',
 					'domain' => 'Numerology',
 					'order' => 183,
@@ -21192,7 +21192,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_check_karmic_debt',
-					'title' => 'Karmic Debt Numbers',
+					'title' => __( 'Karmic Debt Numbers', 'roxyapi' ),
 					'description' => 'Karmic debt 13, 14, 16, 19',
 					'domain' => 'Numerology',
 					'order' => 184,
@@ -21294,7 +21294,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_analyze_karmic_lessons',
-					'title' => 'Karmic Lessons',
+					'title' => __( 'Karmic Lessons', 'roxyapi' ),
 					'description' => 'Missing numbers numerology',
 					'domain' => 'Numerology',
 					'order' => 185,
@@ -21370,7 +21370,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_maturity',
-					'title' => 'Maturity Number',
+					'title' => __( 'Maturity Number', 'roxyapi' ),
 					'description' => 'Realization number numerology',
 					'domain' => 'Numerology',
 					'order' => 186,
@@ -21502,7 +21502,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_number_meaning',
-					'title' => 'Number Meaning',
+					'title' => __( 'Number Meaning', 'roxyapi' ),
 					'description' => 'Numerology number meanings',
 					'domain' => 'Numerology',
 					'order' => 187,
@@ -21558,7 +21558,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_num_compatibility',
-					'title' => 'Numerology Compatibility',
+					'title' => __( 'Numerology Compatibility', 'roxyapi' ),
 					'description' => 'Calculate numerology compatibility between two people from their Life Path, Expression and Soul Urge numbers',
 					'domain' => 'Numerology',
 					'order' => 188,
@@ -21572,7 +21572,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_personal_day',
-					'title' => 'Personal Day',
+					'title' => __( 'Personal Day', 'roxyapi' ),
 					'description' => 'Daily numerology forecast',
 					'domain' => 'Numerology',
 					'order' => 189,
@@ -21678,7 +21678,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_personal_month',
-					'title' => 'Personal Month',
+					'title' => __( 'Personal Month', 'roxyapi' ),
 					'description' => 'Monthly numerology forecast',
 					'domain' => 'Numerology',
 					'order' => 190,
@@ -21799,7 +21799,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_personal_year',
-					'title' => 'Personal Year',
+					'title' => __( 'Personal Year', 'roxyapi' ),
 					'description' => 'Personal Year number forecast',
 					'domain' => 'Numerology',
 					'order' => 191,
@@ -21905,7 +21905,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_personality',
-					'title' => 'Personality Number',
+					'title' => __( 'Personality Number', 'roxyapi' ),
 					'description' => 'Outer personality numerology',
 					'domain' => 'Numerology',
 					'order' => 192,
@@ -21981,7 +21981,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_soul_urge',
-					'title' => 'Soul Urge Number',
+					'title' => __( 'Soul Urge Number', 'roxyapi' ),
 					'description' => 'Calculate the Soul Urge number, also called the Heart Desire number, from the vowels of a full birth name with Pythagorean numerology',
 					'domain' => 'Numerology',
 					'order' => 193,
@@ -22057,7 +22057,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_birth_profile',
-					'title' => 'Birth Profile',
+					'title' => __( 'Birth Profile', 'roxyapi' ),
 					'description' => 'Hebrew birthday and birth angel',
 					'domain' => 'Kabbalah',
 					'order' => 194,
@@ -22232,7 +22232,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_name_compatibility',
-					'title' => 'Compare Two Names',
+					'title' => __( 'Compare Two Names', 'roxyapi' ),
 					'description' => 'Gematria name compatibility with every component published',
 					'domain' => 'Kabbalah',
 					'order' => 195,
@@ -22370,7 +22370,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_gematria',
-					'title' => 'Gematria',
+					'title' => __( 'Gematria', 'roxyapi' ),
 					'description' => 'Hebrew gematria with every spelling shown',
 					'domain' => 'Kabbalah',
 					'order' => 196,
@@ -22545,7 +22545,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_gematria_ciphers',
-					'title' => 'Gematria Ciphers',
+					'title' => __( 'Gematria Ciphers', 'roxyapi' ),
 					'description' => 'Gematria methods with provenance on every row',
 					'domain' => 'Kabbalah',
 					'order' => 197,
@@ -22587,7 +22587,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_hebrew_letter',
-					'title' => 'Hebrew Letter',
+					'title' => __( 'Hebrew Letter', 'roxyapi' ),
 					'description' => 'Return one Hebrew letter in full: its glyph and final form, its value under the standard and the finals reading, its Sefer Yetzirah class and what that class means, the element or planet or sign it carries under the requested reading, the tarot trump on its path, and the path number',
 					'domain' => 'Kabbalah',
 					'order' => 198,
@@ -22706,7 +22706,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_hebrew_letters',
-					'title' => 'Hebrew Letters',
+					'title' => __( 'Hebrew Letters', 'roxyapi' ),
 					'description' => 'Hebrew alphabet with the Sefer Yetzirah attributions',
 					'domain' => 'Kabbalah',
 					'order' => 199,
@@ -22768,7 +22768,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_generate_name_profile',
-					'title' => 'Name Profile',
+					'title' => __( 'Name Profile', 'roxyapi' ),
 					'description' => 'Kabbalah name numerology with the spelling shown',
 					'domain' => 'Kabbalah',
 					'order' => 200,
@@ -22876,7 +22876,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_shem_names',
-					'title' => 'Names',
+					'title' => __( 'Names', 'roxyapi' ),
 					'description' => 'Shem HaMephorash derived from the verses',
 					'domain' => 'Kabbalah',
 					'order' => 201,
@@ -22963,7 +22963,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_shem_name',
-					'title' => 'Of the 72 Names',
+					'title' => __( 'Of the 72 Names', 'roxyapi' ),
 					'description' => '72 names of God by index',
 					'domain' => 'Kabbalah',
 					'order' => 202,
@@ -23039,7 +23039,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_sephirah',
-					'title' => 'Sephirah',
+					'title' => __( 'Sephirah', 'roxyapi' ),
 					'description' => 'Sefirot meaning with the paths that touch it',
 					'domain' => 'Kabbalah',
 					'order' => 203,
@@ -23165,7 +23165,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_daily_sephirah',
-					'title' => 'Sephirah of the Day',
+					'title' => __( 'Sephirah of the Day', 'roxyapi' ),
 					'description' => 'Omer count with the sephirot pairing',
 					'domain' => 'Kabbalah',
 					'order' => 204,
@@ -23252,7 +23252,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_tree_of_life',
-					'title' => 'Tree of Life',
+					'title' => __( 'Tree of Life', 'roxyapi' ),
 					'description' => 'Sephirot and 22 paths with typed school variants',
 					'domain' => 'Kabbalah',
 					'order' => 205,
@@ -23349,7 +23349,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_tarot_yes_no',
-					'title' => 'Tarot yes or no',
+					'title' => __( 'Tarot yes or no', 'roxyapi' ),
 					'description' => 'Single-card Yes / No / Maybe answer with strength rating and interpretation.',
 					'domain' => 'Tarot',
 					'order' => 206,
@@ -23400,7 +23400,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_tarot_card',
-					'title' => 'Tarot card',
+					'title' => __( 'Tarot card', 'roxyapi' ),
 					'description' => 'Single card, three card, or Celtic Cross spreads.',
 					'domain' => 'Tarot',
 					'order' => 207,
@@ -23470,7 +23470,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_cast_career_spread',
-					'title' => 'Career Spread, 7 Cards',
+					'title' => __( 'Career Spread, 7 Cards', 'roxyapi' ),
 					'description' => 'Perform a comprehensive 7-card career tarot spread using SWOT analysis framework (Strengths, Weaknesses, Opportunities, Threats) for professional guidance, business decisions, and vocational clarity',
 					'domain' => 'Tarot',
 					'order' => 208,
@@ -23542,7 +23542,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_cast_celtic_cross',
-					'title' => 'Celtic Cross Spread, 10 Cards',
+					'title' => __( 'Celtic Cross Spread, 10 Cards', 'roxyapi' ),
 					'description' => 'Perform the legendary Celtic Cross spread, the most comprehensive and detailed tarot reading available, used by professional tarot readers worldwide for over a century',
 					'domain' => 'Tarot',
 					'order' => 209,
@@ -23614,7 +23614,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_cast_custom_spread',
-					'title' => 'Custom Spread Builder',
+					'title' => __( 'Custom Spread Builder', 'roxyapi' ),
 					'description' => 'Configurable tarot spread',
 					'domain' => 'Tarot',
 					'order' => 210,
@@ -23628,7 +23628,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_draw_cards',
-					'title' => 'Draw Tarot Cards',
+					'title' => __( 'Draw Tarot Cards', 'roxyapi' ),
 					'description' => 'Draw 1-78 tarot cards from the complete Rider-Waite-Smith deck with seeded reproducibility for consistent personalized readings',
 					'domain' => 'Tarot',
 					'order' => 211,
@@ -23749,7 +23749,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_cast_love_spread',
-					'title' => 'Love Spread, 5 Cards',
+					'title' => __( 'Love Spread, 5 Cards', 'roxyapi' ),
 					'description' => 'Relationship tarot reading',
 					'domain' => 'Tarot',
 					'order' => 212,
@@ -23821,7 +23821,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_card',
-					'title' => 'Tarot Card by ID',
+					'title' => __( 'Tarot Card by ID', 'roxyapi' ),
 					'description' => 'Retrieve comprehensive details for a specific tarot card from the traditional Rider-Waite-Smith deck including complete upright meanings (card drawn normally) and reversed meanings (inverted/upside down interpretations for nuanced guidance)',
 					'domain' => 'Tarot',
 					'order' => 213,
@@ -23877,7 +23877,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_cards',
-					'title' => 'Tarot Cards',
+					'title' => __( 'Tarot Cards', 'roxyapi' ),
 					'description' => 'Retrieve the complete Rider-Waite-Smith tarot deck of 78 cards',
 					'domain' => 'Tarot',
 					'order' => 214,
@@ -24002,7 +24002,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_cast_three_card',
-					'title' => 'Three Card Spread',
+					'title' => __( 'Three Card Spread', 'roxyapi' ),
 					'description' => 'Perform the classic three-card tarot spread revealing Past, Present, and Future',
 					'domain' => 'Tarot',
 					'order' => 215,
@@ -24074,7 +24074,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_biorhythm',
-					'title' => 'Biorhythm',
+					'title' => __( 'Biorhythm', 'roxyapi' ),
 					'description' => 'Physical, emotional, and intellectual cycle values.',
 					'domain' => 'Biorhythm',
 					'order' => 216,
@@ -24139,7 +24139,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_forecast',
-					'title' => 'Biorhythm Forecast',
+					'title' => __( 'Biorhythm Forecast', 'roxyapi' ),
 					'description' => 'Multi-day cycle predictions with best and worst days',
 					'domain' => 'Biorhythm',
 					'order' => 217,
@@ -24245,7 +24245,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_bio_compatibility',
-					'title' => 'Compatibility',
+					'title' => __( 'Compatibility', 'roxyapi' ),
 					'description' => 'Biorhythm alignment between two people',
 					'domain' => 'Biorhythm',
 					'order' => 218,
@@ -24259,7 +24259,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_critical_days',
-					'title' => 'Critical Days',
+					'title' => __( 'Critical Days', 'roxyapi' ),
 					'description' => 'Zero crossing detection for any date range',
 					'domain' => 'Biorhythm',
 					'order' => 219,
@@ -24365,7 +24365,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_daily_biorhythm',
-					'title' => 'Daily Biorhythm',
+					'title' => __( 'Daily Biorhythm', 'roxyapi' ),
 					'description' => 'Seeded reading for daily check-in features',
 					'domain' => 'Biorhythm',
 					'order' => 220,
@@ -24437,7 +24437,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_phases',
-					'title' => 'Phase Info',
+					'title' => __( 'Phase Info', 'roxyapi' ),
 					'description' => 'Lightweight cycle status for dashboards and widgets',
 					'domain' => 'Biorhythm',
 					'order' => 221,
@@ -24528,7 +24528,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_ritucharya',
-					'title' => 'Ayurveda Seasonal Regimen',
+					'title' => __( 'Ayurveda Seasonal Regimen', 'roxyapi' ),
 					'description' => 'Ritucharya and ritu resolution',
 					'domain' => 'Ayurveda',
 					'order' => 222,
@@ -24658,7 +24658,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_calculate_ayurvedic_constitution',
-					'title' => 'Ayurvedic Constitution',
+					'title' => __( 'Ayurvedic Constitution', 'roxyapi' ),
 					'description' => 'Read the Ayurvedic constitution from a sidereal birth chart and return the vata, pitta and kapha shares with a verse behind every factor',
 					'domain' => 'Ayurveda',
 					'order' => 223,
@@ -24857,7 +24857,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_daily_ayurveda_reading',
-					'title' => 'Daily Ayurveda Reading',
+					'title' => __( 'Daily Ayurveda Reading', 'roxyapi' ),
 					'description' => 'Dosha clock and brahma muhurta by location',
 					'domain' => 'Ayurveda',
 					'order' => 224,
@@ -24987,7 +24987,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_dinacharya_schedule',
-					'title' => 'Dinacharya Daily Routine',
+					'title' => __( 'Dinacharya Daily Routine', 'roxyapi' ),
 					'description' => 'Brahma muhurta and dosha clock',
 					'domain' => 'Ayurveda',
 					'order' => 225,
@@ -25135,7 +25135,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_dosha',
-					'title' => 'Dosha',
+					'title' => __( 'Dosha', 'roxyapi' ),
 					'description' => 'Vata pitta kapha profile',
 					'domain' => 'Ayurveda',
 					'order' => 226,
@@ -25215,7 +25215,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_doshas',
-					'title' => 'Doshas',
+					'title' => __( 'Doshas', 'roxyapi' ),
 					'description' => 'Return vata, pitta and kapha with the qualities, seats and five sub-doshas each carries, and the three states the seasonal cycle moves them through',
 					'domain' => 'Ayurveda',
 					'order' => 227,
@@ -25287,7 +25287,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_rasas',
-					'title' => 'Tastes',
+					'title' => __( 'Tastes', 'roxyapi' ),
 					'description' => 'Ayurveda rasa and dosha matrix',
 					'domain' => 'Ayurveda',
 					'order' => 228,
@@ -25359,7 +25359,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_gunas',
-					'title' => 'Twenty Qualities',
+					'title' => __( 'Twenty Qualities', 'roxyapi' ),
 					'description' => 'Return the twenty gunas, the qualities of Ayurveda, as the ten opposed pairs the commentaries spell out, each member with the single action word attached to it, and the half-verse that states the like-increases-like rule the whole domain runs on',
 					'domain' => 'Ayurveda',
 					'order' => 229,
@@ -25431,7 +25431,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_cast_reading',
-					'title' => 'Cast an I-Ching Reading',
+					'title' => __( 'Cast an I-Ching Reading', 'roxyapi' ),
 					'description' => 'Generate an authentic I-Ching reading using the traditional three-coin casting method',
 					'domain' => 'I-Ching',
 					'order' => 230,
@@ -25488,7 +25488,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_cast_daily_reading',
-					'title' => 'Cast Daily Reading',
+					'title' => __( 'Cast Daily Reading', 'roxyapi' ),
 					'description' => 'Cast a complete daily I-Ching reading using the traditional three-coin method with seeded randomness',
 					'domain' => 'I-Ching',
 					'order' => 231,
@@ -25560,7 +25560,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_daily_hexagram',
-					'title' => 'Daily Hexagram',
+					'title' => __( 'Daily Hexagram', 'roxyapi' ),
 					'description' => 'Receive a daily I-Ching hexagram for guidance and reflection',
 					'domain' => 'I-Ching',
 					'order' => 232,
@@ -25632,7 +25632,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_lookup_hexagram',
-					'title' => 'Hexagram by Line Pattern',
+					'title' => __( 'Hexagram by Line Pattern', 'roxyapi' ),
 					'description' => 'Find an I-Ching hexagram by its binary line pattern',
 					'domain' => 'I-Ching',
 					'order' => 233,
@@ -25708,7 +25708,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_hexagram',
-					'title' => 'Hexagram by Number',
+					'title' => __( 'Hexagram by Number', 'roxyapi' ),
 					'description' => 'Retrieve complete I-Ching hexagram details by King Wen sequence number (1-64)',
 					'domain' => 'I-Ching',
 					'order' => 234,
@@ -25784,7 +25784,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_hexagrams',
-					'title' => 'Hexagrams',
+					'title' => __( 'Hexagrams', 'roxyapi' ),
 					'description' => 'I-Ching hexagram catalog',
 					'domain' => 'I-Ching',
 					'order' => 235,
@@ -25856,7 +25856,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_random_hexagram',
-					'title' => 'Random Hexagram',
+					'title' => __( 'Random Hexagram', 'roxyapi' ),
 					'description' => 'Receive a random I-Ching hexagram with full interpretation',
 					'domain' => 'I-Ching',
 					'order' => 236,
@@ -25898,7 +25898,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_trigram',
-					'title' => 'Trigram by Number or Name',
+					'title' => __( 'Trigram by Number or Name', 'roxyapi' ),
 					'description' => 'Retrieve a specific I-Ching trigram by its number (1-8) or English name (Heaven, Earth, Thunder, Wind, Water, Fire, Mountain, Lake)',
 					'domain' => 'I-Ching',
 					'order' => 237,
@@ -25954,7 +25954,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_trigrams',
-					'title' => 'Trigrams',
+					'title' => __( 'Trigrams', 'roxyapi' ),
 					'description' => 'Retrieve all 8 I-Ching trigrams (bagua), the fundamental building blocks of hexagrams',
 					'domain' => 'I-Ching',
 					'order' => 238,
@@ -25996,7 +25996,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_crystals_by_zodiac',
-					'title' => 'Crystals by zodiac',
+					'title' => __( 'Crystals by zodiac', 'roxyapi' ),
 					'description' => 'Crystals and stones associated with any zodiac sign, with properties, color, and chakra.',
 					'domain' => 'Crystals and Healing Stones',
 					'order' => 239,
@@ -26059,7 +26059,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_birthstones',
-					'title' => 'Birthstones by Month',
+					'title' => __( 'Birthstones by Month', 'roxyapi' ),
 					'description' => 'Get the traditional birthstone crystals for a given birth month',
 					'domain' => 'Crystals and Healing Stones',
 					'order' => 240,
@@ -26135,7 +26135,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_crystal',
-					'title' => 'Crystal by ID',
+					'title' => __( 'Crystal by ID', 'roxyapi' ),
 					'description' => 'Crystal healing properties',
 					'domain' => 'Crystals and Healing Stones',
 					'order' => 241,
@@ -26191,7 +26191,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_crystal_colors',
-					'title' => 'Crystal Colors',
+					'title' => __( 'Crystal Colors', 'roxyapi' ),
 					'description' => 'List all unique crystal colors available in the database',
 					'domain' => 'Crystals and Healing Stones',
 					'order' => 242,
@@ -26233,7 +26233,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_crystal_pairings',
-					'title' => 'Crystal Pairings',
+					'title' => __( 'Crystal Pairings', 'roxyapi' ),
 					'description' => 'Get crystals that pair well with a given crystal for enhanced healing combinations',
 					'domain' => 'Crystals and Healing Stones',
 					'order' => 243,
@@ -26289,7 +26289,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_crystal_planets',
-					'title' => 'Crystal Planets',
+					'title' => __( 'Crystal Planets', 'roxyapi' ),
 					'description' => 'List all unique planetary associations available in the database',
 					'domain' => 'Crystals and Healing Stones',
 					'order' => 244,
@@ -26331,7 +26331,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_crystals',
-					'title' => 'Crystals',
+					'title' => __( 'Crystals', 'roxyapi' ),
 					'description' => 'Crystal healing database',
 					'domain' => 'Crystals and Healing Stones',
 					'order' => 245,
@@ -26505,7 +26505,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_crystals_by_chakra',
-					'title' => 'Crystals by Chakra',
+					'title' => __( 'Crystals by Chakra', 'roxyapi' ),
 					'description' => 'Get healing crystals and gemstones that resonate with a specific chakra energy center',
 					'domain' => 'Crystals and Healing Stones',
 					'order' => 246,
@@ -26619,7 +26619,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_crystals_by_element',
-					'title' => 'Crystals by Element',
+					'title' => __( 'Crystals by Element', 'roxyapi' ),
 					'description' => 'Elemental crystal lookup',
 					'domain' => 'Crystals and Healing Stones',
 					'order' => 247,
@@ -26731,7 +26731,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_daily_crystal',
-					'title' => 'Daily Crystal',
+					'title' => __( 'Daily Crystal', 'roxyapi' ),
 					'description' => 'Get the crystal of the day as a discovery teaser',
 					'domain' => 'Crystals and Healing Stones',
 					'order' => 248,
@@ -26803,7 +26803,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_random_crystal',
-					'title' => 'Random Crystal',
+					'title' => __( 'Random Crystal', 'roxyapi' ),
 					'description' => 'Get a randomly selected healing crystal as a discovery teaser',
 					'domain' => 'Crystals and Healing Stones',
 					'order' => 249,
@@ -26845,7 +26845,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_search_crystals',
-					'title' => 'Search Crystals',
+					'title' => __( 'Search Crystals', 'roxyapi' ),
 					'description' => 'Search for healing crystals by keyword or name',
 					'domain' => 'Crystals and Healing Stones',
 					'order' => 250,
@@ -26951,7 +26951,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_daily_dream_symbol',
-					'title' => 'Daily Dream Symbol',
+					'title' => __( 'Daily Dream Symbol', 'roxyapi' ),
 					'description' => 'Receive a single dream symbol for daily reflection and subconscious exploration',
 					'domain' => 'Dreams',
 					'order' => 251,
@@ -26997,7 +26997,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_dream_symbol',
-					'title' => 'Dream Symbol by ID',
+					'title' => __( 'Dream Symbol by ID', 'roxyapi' ),
 					'description' => 'Get the complete dream interpretation for a specific symbol',
 					'domain' => 'Dreams',
 					'order' => 252,
@@ -27027,7 +27027,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_random_symbols',
-					'title' => 'Random Dream Symbols',
+					'title' => __( 'Random Dream Symbols', 'roxyapi' ),
 					'description' => 'Discover random dream symbols and their interpretations for daily dream insights and exploration',
 					'domain' => 'Dreams',
 					'order' => 253,
@@ -27058,7 +27058,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_search_dream_symbols',
-					'title' => 'Search Dream Symbols',
+					'title' => __( 'Search Dream Symbols', 'roxyapi' ),
 					'description' => 'Browse and search our complete dream interpretation dictionary containing 2,200+ dream symbols with psychological meanings',
 					'domain' => 'Dreams',
 					'order' => 254,
@@ -27134,7 +27134,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_symbol_letter_counts',
-					'title' => 'Symbol Counts by Letter',
+					'title' => __( 'Symbol Counts by Letter', 'roxyapi' ),
 					'description' => 'Get the count of dream symbols available for each letter A-Z',
 					'domain' => 'Dreams',
 					'order' => 255,
@@ -27148,7 +27148,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_angel_number',
-					'title' => 'Angel number',
+					'title' => __( 'Angel number', 'roxyapi' ),
 					'description' => 'Meaning and pattern analysis for any number sequence.',
 					'domain' => 'Angel Numbers',
 					'order' => 256,
@@ -27198,7 +27198,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_angel_numbers',
-					'title' => 'Angel Numbers',
+					'title' => __( 'Angel Numbers', 'roxyapi' ),
 					'description' => 'Retrieve the angel number catalog with summary information',
 					'domain' => 'Angel Numbers',
 					'order' => 257,
@@ -27292,7 +27292,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_daily_angel_number',
-					'title' => 'Daily Angel Number',
+					'title' => __( 'Daily Angel Number', 'roxyapi' ),
 					'description' => 'Get the angel number of the day with full meaning and interpretation',
 					'domain' => 'Angel Numbers',
 					'order' => 258,
@@ -27364,7 +27364,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_analyze_number_sequence',
-					'title' => 'Number Sequence',
+					'title' => __( 'Number Sequence', 'roxyapi' ),
 					'description' => 'Smart angel number analysis that works for ANY number sequence, not just known angel numbers',
 					'domain' => 'Angel Numbers',
 					'order' => 259,
@@ -27462,7 +27462,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_cities_by_country',
-					'title' => 'Cities in a Country',
+					'title' => __( 'Cities in a Country', 'roxyapi' ),
 					'description' => 'Geocoding directory sorted by population',
 					'domain' => 'Location and Timezone',
 					'order' => 260,
@@ -27522,7 +27522,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_countries',
-					'title' => 'Countries',
+					'title' => __( 'Countries', 'roxyapi' ),
 					'description' => 'ISO codes and city coverage',
 					'domain' => 'Location and Timezone',
 					'order' => 261,
@@ -27568,7 +27568,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_search_cities',
-					'title' => 'Search Cities Worldwide',
+					'title' => __( 'Search Cities Worldwide', 'roxyapi' ),
 					'description' => 'Geocoding autocomplete with coordinates and timezone',
 					'domain' => 'Location and Timezone',
 					'order' => 262,
@@ -27628,7 +27628,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_usage_stats',
-					'title' => 'Usage Statistics',
+					'title' => __( 'Usage Statistics', 'roxyapi' ),
 					'description' => 'Returns the live quota position for the key on the request: plan name, billable requests used in the current UTC calendar month, the monthly allowance, and how many requests remain',
 					'domain' => 'Usage',
 					'order' => 263,
@@ -27642,7 +27642,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_get_field_labels',
-					'title' => 'Field Labels for a Language',
+					'title' => __( 'Field Labels for a Language', 'roxyapi' ),
 					'description' => 'Returns the display label for every request field name and every selectable option across the , in the requested language',
 					'domain' => 'Languages',
 					'order' => 264,
@@ -27684,7 +27684,7 @@ class Manifest {
 				),
 				array(
 					'tag' => 'roxy_list_languages',
-					'title' => 'Supported Response Languages',
+					'title' => __( 'Supported Response Languages', 'roxyapi' ),
 					'description' => 'Returns the language codes accepted by the `lang` query parameter on every i18n-aware endpoint',
 					'domain' => 'Languages',
 					'order' => 265,

@@ -4159,7 +4159,16 @@ function builderValuePhp( value, indent = '\t\t' ) {
 	const list = Array.isArray( value );
 	const rows = Object.entries( value ).map( ( [ key, item ] ) => {
 		let php = builderValuePhp( item, indent + '\t' );
-		if ( key === 'label' && value.label_key !== undefined ) {
+		if ( key === 'title' ) {
+			php = translatablePhp( item );
+		} else if (
+			key === 'label' &&
+			value.slug !== undefined &&
+			// These domain labels already have gettext entries in the hero catalogue.
+			[ 'Numerology', 'Biorhythm' ].includes( item )
+		) {
+			php = translatablePhp( item );
+		} else if ( key === 'label' && value.label_key !== undefined ) {
 			php = uiLabelPhp( 'fields', value.label_key, item );
 		} else if ( key === 'enum_labels' ) {
 			php = generatedFieldEntryPhp( key, item, value );

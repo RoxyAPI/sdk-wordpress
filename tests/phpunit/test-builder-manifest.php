@@ -9,6 +9,7 @@ namespace RoxyAPI\Tests;
 
 use RoxyAPI\Generated\Builder\Manifest;
 use RoxyAPI\Generated\FormLabels;
+use RoxyAPI\Plugin;
 use RoxyAPI\Shortcodes\Registrar;
 use RoxyAPI\Support\ComponentRenderer;
 use RoxyAPI\Support\Language;
@@ -94,6 +95,24 @@ class Test_Builder_Manifest extends \WP_UnitTestCase {
 			$this->assertSame( $json, Manifest::all() );
 		} finally {
 			remove_filter( 'determine_locale', $locale_filter );
+		}
+	}
+
+	public function test_spanish_locale_translates_reading_titles_and_existing_domain_labels(): void {
+		$locale_filter = static fn() => 'es_ES';
+		add_filter( 'pre_determine_locale', $locale_filter );
+		unload_textdomain( 'roxyapi' );
+		try {
+			Plugin::load_textdomain();
+			$this->assertTrue( is_textdomain_loaded( 'roxyapi' ) );
+			$manifest = Manifest::all();
+			$entries  = array_column( $manifest['entries'], null, 'tag' );
+			$this->assertSame( 'Horóscopo diario', $entries['roxy_horoscope']['title'] );
+			$this->assertSame( 'Numerología', $manifest['domains']['Numerology']['label'] );
+			$this->assertSame( 'Biorritmo', $manifest['domains']['Biorhythm']['label'] );
+		} finally {
+			remove_filter( 'pre_determine_locale', $locale_filter );
+			unload_textdomain( 'roxyapi' );
 		}
 	}
 
