@@ -112,8 +112,8 @@ async function resolveVersion() {
 }
 
 /**
- * The `part` names the pinned build publishes, across every component, as one
- * sorted list.
+ * The `part` names the pinned build publishes, as per-component lists and one
+ * sorted global vocabulary from the same catalogue read.
  *
  * This is the vocabulary the `hide_sections` setting and its shortcode
  * attribute both accept, and it belongs to the BUNDLE rather than to the API
@@ -126,7 +126,7 @@ async function resolveVersion() {
  * rather than offered to a site owner as a name that cannot work.
  *
  * @param {string} version The resolved version.
- * @return {Promise<string[]>} Sorted, unique part names.
+ * @return {Promise<{parts: string[], componentParts: Object}>} Global and per-component parts.
  */
 async function fetchPublishedParts( version ) {
 	const url = cdnUrl( version, 'components-catalog.json' );
@@ -143,12 +143,19 @@ async function fetchPublishedParts( version ) {
 		? catalog
 		: catalog.components || [];
 	const parts = new Set();
+	const componentParts = {};
 	for ( const component of components ) {
+		if ( ! /^roxy-[a-z-]+$/.test( component.tag || '' ) ) {
+			throw new Error( 'Component catalogue contains an invalid tag.' );
+		}
+		const names = new Set();
 		for ( const part of component.parts || [] ) {
 			if ( /^[a-z][a-z0-9-]*$/.test( part ) ) {
 				parts.add( part );
+				names.add( part );
 			}
 		}
+		componentParts[ component.tag ] = [ ...names ].sort();
 	}
 	if ( parts.size === 0 ) {
 		console.error(
@@ -156,7 +163,14 @@ async function fetchPublishedParts( version ) {
 		);
 		process.exit( 1 );
 	}
-	return [ ...parts ].sort();
+	return {
+		parts: [ ...parts ].sort(),
+		componentParts: Object.fromEntries(
+			Object.entries( componentParts ).sort( ( [ a ], [ b ] ) =>
+				a.localeCompare( b, 'en' )
+			)
+		),
+	};
 }
 
 /**
@@ -164,11 +178,12 @@ async function fetchPublishedParts( version ) {
  * manifest the component-map check validates against, and the vendored bytes can
  * never disagree.
  *
- * @param {string}   version The resolved version.
- * @param {string[]} parts   Part names the pinned build publishes.
+ * @param {string}   version        The resolved version.
+ * @param {string[]} parts          Part names the pinned build publishes.
+ * @param {Object}   componentParts Part names keyed by component tag, from the same catalogue.
  * @return {void}
  */
-function writeBackPins( version, parts ) {
+function writeBackPins( version, parts, componentParts ) {
 	const php = fs.readFileSync( PLUGIN_FILE, 'utf8' );
 	const phpPinned = php.replace(
 		/(const\s+ROXYAPI_UI_VERSION\s*=\s*')[^']+(')/,
@@ -200,18 +215,36 @@ function writeBackPins( version, parts ) {
 			.map( ( part ) => `\t\t\t${ JSON.stringify( part ) }` )
 			.join( ',\n' ) +
 		'\n\t\t]';
-	const mapPinned = raw
+	let mapPinned = raw
 		.replace( /("ui_version_pinned"\s*:\s*")[^"]+(")/, `$1${ version }$2` )
 		.replace(
 			/("ui_manifest_url"\s*:\s*")[^"]+(")/,
 			`$1${ cdnUrl( version, 'dist/manifest.json' ) }$2`
 		)
 		.replace( /("published_parts"\s*:\s*)\[[^\]]*\]/, `$1${ partsJson }` );
+	const componentPartsJson = JSON.stringify(
+		componentParts,
+		null,
+		'\t'
+	).replace( /\n/g, '\n\t\t' );
+	if ( /"component_parts"\s*:/.test( mapPinned ) ) {
+		mapPinned = mapPinned.replace(
+			/("component_parts"\s*:\s*)\{[\s\S]*?\n\t\t\}/,
+			`$1${ componentPartsJson }`
+		);
+	} else {
+		mapPinned = mapPinned.replace(
+			/("published_parts"\s*:\s*\[[^\]]*\])/,
+			`$1,\n\t\t"component_parts": ${ componentPartsJson }`
+		);
+	}
 	const meta = JSON.parse( mapPinned )._meta;
 	if (
 		meta?.ui_version_pinned !== version ||
 		! String( meta?.ui_manifest_url ).includes( `@${ version }/` ) ||
-		meta?.published_parts?.join( ',' ) !== parts.join( ',' )
+		meta?.published_parts?.join( ',' ) !== parts.join( ',' ) ||
+		JSON.stringify( meta?.component_parts ) !==
+			JSON.stringify( componentParts )
 	) {
 		console.error(
 			'[fetch-ui-bundle] failed to rewrite the component-map pins; refusing to write'
@@ -460,4 +493,5 @@ await vendorLocales( version, locales );
 
 // Last, so a failed or rejected download can never leave the pins advertising a
 // version that is not the one sitting in assets/.
-writeBackPins( version, await fetchPublishedParts( version ) );
+const { parts, componentParts } = await fetchPublishedParts( version );
+writeBackPins( version, parts, componentParts );

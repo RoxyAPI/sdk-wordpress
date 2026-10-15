@@ -4071,6 +4071,37 @@ function builderModeAttribute() {
 	} );
 }
 
+/**
+ * Parts of exactly the mapped components, using the vendored catalogue.
+ * @param operationIds
+ */
+function builderParts( operationIds ) {
+	const parts = new Set();
+	for ( const operationId of operationIds ) {
+		for ( const row of componentMap.operations[ operationId ] || [] ) {
+			const names = componentMap._meta.component_parts?.[ row.component ];
+			if ( ! Array.isArray( names ) ) {
+				throw new Error(
+					`Missing parts for ${ row.component }. Run npm run fetch:ui with the pinned version.`
+				);
+			}
+			for ( const part of names ) {
+				parts.add( part );
+			}
+		}
+	}
+	return [ ...parts ].sort();
+}
+
+/**
+ * Normalise builder descriptions without changing other generated copy.
+ * @param text
+ */
+function builderDescription( text ) {
+	const description = text.replace( /\s+/g, ' ' ).trim();
+	return description.charAt( 0 ).toUpperCase() + description.slice( 1 );
+}
+
 /** Build every registered tag, with heroes winning any tag collision. */
 function buildBuilderManifest() {
 	const parts = componentMap._meta.published_parts;
@@ -4108,10 +4139,16 @@ function buildBuilderManifest() {
 		entries.set( tag, {
 			tag,
 			title: cfg.title,
-			description: cfg.description.replace( /\s+/g, ' ' ).trim(),
+			description: builderDescription( cfg.description ),
 			domain: cfg.domain,
 			order: 0,
 			operationId: cfg.hand_written ? null : opId,
+			parts: builderParts( [
+				opId,
+				...( cfg.dispatch || [] ).map(
+					( branch ) => branch.operationId
+				),
+			] ),
 			hero: true,
 			modes: [
 				...( visitor ? [ 'visitor' ] : [] ),
@@ -4158,12 +4195,11 @@ function buildBuilderManifest() {
 		entries.set( tag, {
 			tag,
 			title: displayNames[ op.operationId ],
-			description: blockDescriptionFor( op )
-				.replace( /\s+/g, ' ' )
-				.trim(),
+			description: builderDescription( blockDescriptionFor( op ) ),
 			domain: op.tag,
 			order: 0,
 			operationId: op.operationId,
+			parts: builderParts( [ op.operationId ] ),
 			hero: false,
 			modes: [
 				...( visitor ? [ 'visitor' ] : [] ),

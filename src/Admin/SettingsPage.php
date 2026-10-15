@@ -105,6 +105,15 @@ class SettingsPage {
 			array( ShortcodesPage::class, 'render' )
 		);
 
+		add_submenu_page(
+			self::PAGE_SLUG,
+			esc_html__( 'Create a reading', 'roxyapi' ),
+			esc_html__( 'Create a reading', 'roxyapi' ),
+			'manage_options',
+			BuilderPage::PAGE_SLUG,
+			array( BuilderPage::class, 'render' )
+		);
+
 		// The Demo page renders live shortcode output for QA. It only ships in
 		// non-production environments because (a) it burns API quota when run
 		// across every endpoint in the spec, (b) it exposes the full surface to anyone

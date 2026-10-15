@@ -6,6 +6,8 @@
  * `data-roxyapi-geocode-fields` maps latitude, longitude and timezone to their
  * exact posted names. Selecting a city fills only those controls; they remain
  * visible so the visitor can enter or edit coordinates without JavaScript.
+ * `data-roxyapi-geocode-quiet` keeps the status as descriptive text instead of
+ * a live region on screens such as the builder that own one shared announcement.
  *
  * Implements the WAI-ARIA APG combobox-autocomplete-list pattern:
  *   role="combobox", aria-autocomplete="list", aria-expanded, aria-controls,
@@ -132,8 +134,12 @@
 		const status = document.createElement( 'span' );
 		status.id = statusId;
 		status.className = 'roxyapi-geocode-status';
-		status.setAttribute( 'role', 'status' );
-		status.setAttribute( 'aria-live', 'polite' );
+		if ( input.hasAttribute( 'data-roxyapi-geocode-quiet' ) ) {
+			input.setAttribute( 'aria-describedby', statusId );
+		} else {
+			status.setAttribute( 'role', 'status' );
+			status.setAttribute( 'aria-live', 'polite' );
+		}
 		input.parentNode.insertBefore( status, listbox.nextSibling );
 
 		input.setAttribute( 'role', 'combobox' );

@@ -99,11 +99,18 @@ $try_base_url = $can_try ? admin_url( 'admin.php?page=' . \RoxyAPI\Admin\DemoPag
 			<div class="roxyapi-library-grid">
 				<?php foreach ( $items as $item ) : ?>
 					<?php
-					$haystack = strtolower(
+					$haystack      = strtolower(
 						$item['title'] . ' '
 						. $item['description'] . ' '
 						. $item['tag'] . ' '
 						. $item['domain']
+					);
+					$customize_url = add_query_arg(
+						array(
+							'page'    => \RoxyAPI\Admin\BuilderPage::PAGE_SLUG,
+							'reading' => $item['tag'],
+						),
+						admin_url( 'admin.php' )
 					);
 					?>
 					<article
@@ -144,6 +151,9 @@ $try_base_url = $can_try ? admin_url( 'admin.php?page=' . \RoxyAPI\Admin\DemoPag
 									<?php echo esc_html__( 'Try it', 'roxyapi' ); ?>
 								</a>
 							<?php endif; ?>
+							<a class="button button-small" href="<?php echo esc_url( $customize_url ); ?>">
+								<?php echo esc_html__( 'Customize', 'roxyapi' ); ?>
+							</a>
 						</div>
 					</article>
 				<?php endforeach; ?>

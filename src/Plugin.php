@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use RoxyAPI\Admin\ActionLinks;
+use RoxyAPI\Admin\BuilderPage;
 use RoxyAPI\Admin\DashboardWidget;
 use RoxyAPI\Admin\DemoPage;
 use RoxyAPI\Admin\Notice;
@@ -95,6 +96,7 @@ class Plugin {
 	public static function boot(): void {
 		SettingsPage::register();
 		ShortcodesPage::register();
+		BuilderPage::register();
 		DemoPage::register();
 		Notice::register();
 		PrivacyPolicy::register();
