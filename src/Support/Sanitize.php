@@ -115,12 +115,8 @@ class Sanitize {
 	/**
 	 * Sanitize a value to a 24-hour HH:MM:SS time string.
 	 *
-	 * Accepts either HH:MM or HH:MM:SS on input (humans type "14:30"; the SaaS
-	 * spec requires the seconds component) and always returns HH:MM:SS on
-	 * output. The RoxyAPI natal chart endpoint validates `time` against
-	 * `^\d{2}:\d{2}:\d{2}$`; handing it bare HH:MM yields HTTP 400. Returning
-	 * normalised HH:MM:SS from this helper means every hero downstream is
-	 * wire-compliant without each one having to remember.
+	 * Accepts either HH:MM or HH:MM:SS on input and always returns HH:MM:SS,
+	 * so every hero sends one time shape and caches one entry per moment.
 	 *
 	 * @param mixed  $value    Raw input value (HH:MM or HH:MM:SS).
 	 * @param string $fallback Fallback if input is unparseable. Same shape rules.

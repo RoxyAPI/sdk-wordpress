@@ -98,20 +98,20 @@ class SettingsPage {
 
 		add_submenu_page(
 			self::PAGE_SLUG,
-			esc_html__( 'Shortcodes', 'roxyapi' ),
-			esc_html__( 'Shortcodes', 'roxyapi' ),
-			'manage_options',
-			ShortcodesPage::PAGE_SLUG,
-			array( ShortcodesPage::class, 'render' )
-		);
-
-		add_submenu_page(
-			self::PAGE_SLUG,
 			esc_html__( 'Create a reading', 'roxyapi' ),
 			esc_html__( 'Create a reading', 'roxyapi' ),
 			'manage_options',
 			BuilderPage::PAGE_SLUG,
 			array( BuilderPage::class, 'render' )
+		);
+
+		add_submenu_page(
+			self::PAGE_SLUG,
+			esc_html__( 'Shortcodes', 'roxyapi' ),
+			esc_html__( 'Shortcodes', 'roxyapi' ),
+			'manage_options',
+			ShortcodesPage::PAGE_SLUG,
+			array( ShortcodesPage::class, 'render' )
 		);
 
 		// The Demo page renders live shortcode output for QA. It only ships in
@@ -219,6 +219,7 @@ class SettingsPage {
 			array(
 				'signup_url'     => Onboarding::signup_url(),
 				'playground_url' => Onboarding::playground_url(),
+				'builder_url'    => admin_url( 'admin.php?page=' . BuilderPage::PAGE_SLUG ),
 				'shortcodes_url' => admin_url( 'admin.php?page=' . ShortcodesPage::PAGE_SLUG ),
 				'samples'        => Onboarding::quickstart_samples(),
 				'key_input'      => SettingsFields::api_key_input_html(),
@@ -251,6 +252,7 @@ class SettingsPage {
 				'form_submit_input'      => SettingsFields::form_submit_input_html(),
 				'cache_preset_input'     => SettingsFields::cache_preset_input_html(),
 				'privacy_policy_url'     => admin_url( 'options-privacy.php' ),
+				'builder_url'            => admin_url( 'admin.php?page=' . BuilderPage::PAGE_SLUG ),
 				'shortcodes_url'         => admin_url( 'admin.php?page=' . ShortcodesPage::PAGE_SLUG ),
 				'samples'                => Onboarding::quickstart_samples(),
 				'key_input'              => SettingsFields::api_key_input_html(),

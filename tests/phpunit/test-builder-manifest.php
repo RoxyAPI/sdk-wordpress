@@ -1,13 +1,16 @@
 <?php
 /**
- * The builder describes every registered shortcode without inventing attributes.
+ * The builder describes library readings without inventing attributes.
  *
  * @package RoxyAPI
  */
 
 namespace RoxyAPI\Tests;
 
+use RoxyAPI\Admin\Catalog;
 use RoxyAPI\Generated\Builder\Manifest;
+use RoxyAPI\Generated\Domains;
+use RoxyAPI\Generated\Endpoints;
 use RoxyAPI\Generated\FormLabels;
 use RoxyAPI\Plugin;
 use RoxyAPI\Shortcodes\Registrar;
@@ -27,15 +30,80 @@ class Test_Builder_Manifest extends \WP_UnitTestCase {
 		return array_column( Manifest::all()['entries'], null, 'tag' );
 	}
 
-	public function test_every_registered_tag_and_defaults_key_is_described(): void {
+	/**
+	 * Utilities remain registered for existing placements but are not readings.
+	 * Follow Catalog::grouped() and the generated bin/domains.json flags.
+	 *
+	 * @return array<string, string> Shortcode tags mapped to operation IDs.
+	 */
+	private function utility_tags(): array {
+		$domains = Domains::all();
+		$tags    = array();
+		foreach ( Endpoints::all() as $operation => $endpoint ) {
+			if ( isset( $domains[ $endpoint['tag'] ] ) && empty( $domains[ $endpoint['tag'] ]['library'] ) ) {
+				$tags[ $endpoint['shortcode_tag'] ] = $operation;
+			}
+		}
+		return $tags;
+	}
+
+	public function test_builder_and_library_offer_the_same_readings(): void {
+		$utilities = array_values( $this->utility_tags() );
+		sort( $utilities );
+		$this->assertSame(
+			array( 'getFieldLabels', 'getUsageStats', 'listLanguages' ),
+			$utilities,
+			'Only account usage and developer language/field-label utilities are exempt from the registered-shortcode sweep.'
+		);
+		$library_tags = array();
+		foreach ( Catalog::grouped() as $group ) {
+			$library_tags = array_merge( $library_tags, array_column( $group, 'tag' ) );
+		}
+		$builder_tags = array_keys( $this->entries() );
+		sort( $library_tags );
+		sort( $builder_tags );
+		$expected = array();
+		$domains  = Domains::all();
+		foreach ( \RoxyAPI\Generated\Heroes\Manifest::all() as $tag => $hero ) {
+			if ( ! empty( $domains[ $hero['domain'] ]['library'] ) ) {
+				$expected[] = $tag;
+			}
+		}
+		foreach ( Endpoints::all() as $endpoint ) {
+			if ( empty( $endpoint['hero'] ) && ! empty( $domains[ $endpoint['tag'] ]['library'] ) ) {
+				$expected[] = $endpoint['shortcode_tag'];
+			}
+		}
+		$expected = array_values( array_unique( $expected ) );
+		sort( $expected );
+		$this->assertSame( $expected, $library_tags, 'The library must contain the complete canonical reading tag set.' );
+		$this->assertSame( $expected, $builder_tags, 'The builder must contain the complete canonical reading tag set.' );
+	}
+
+	public function test_shortcode_attribute_quoting_matches_the_shared_contract(): void {
+		$fixtures = json_decode( file_get_contents( dirname( __DIR__ ) . '/fixtures/shortcode-attributes.json' ), true );
+		$this->assertNotEmpty( $fixtures );
+		foreach ( $fixtures as $fixture ) {
+			$quoted = Catalog::quote_attribute( $fixture['input'] );
+			$this->assertSame( $fixture['expected'], $quoted, $fixture['input'] );
+			$this->assertSame( array( 'value' => $fixture['parsed'] ), shortcode_parse_atts( 'value=' . $quoted ) );
+		}
+	}
+
+	public function test_every_registered_reading_tag_and_defaults_key_is_described(): void {
 		global $shortcode_tags;
 
 		// Language belongs to site/Branding settings; mode belongs to builder step 2.
-		$excluded = array( 'lang', 'mode' );
-		$entries  = $this->entries();
-		$tags     = array();
+		$excluded  = array( 'lang', 'mode' );
+		$entries   = $this->entries();
+		$utilities = $this->utility_tags();
+		$tags      = array();
 		foreach ( $shortcode_tags as $tag => $callback ) {
 			if ( strpos( $tag, 'roxy_' ) !== 0 ) {
+				continue;
+			}
+			if ( isset( $utilities[ $tag ] ) ) {
+				$this->assertArrayNotHasKey( $tag, $entries, $utilities[ $tag ] . ' is an account or language utility, not a reading.' );
 				continue;
 			}
 			$tags[] = $tag;
@@ -78,11 +146,19 @@ class Test_Builder_Manifest extends \WP_UnitTestCase {
 
 	public function test_display_and_builder_owned_attributes_are_not_reading_inputs(): void {
 		$manifest = Manifest::all();
+		$this->assertArrayNotHasKey( 'version', $manifest );
+		foreach ( $manifest['domains'] as $domain ) {
+			$this->assertSame( array( 'label' ), array_keys( $domain ) );
+		}
 		$this->assertArrayNotHasKey( 'reservedAttributes', $manifest );
 		$this->assertArrayNotHasKey( 'parts', $manifest );
 		foreach ( $manifest['entries'] as $order => $entry ) {
 			$this->assertSame( $order, $entry['order'] );
 			$this->assertArrayNotHasKey( 'parts', $entry, $entry['tag'] );
+			foreach ( $entry['attributes'] as $attribute ) {
+				$this->assertArrayNotHasKey( 'label_key', $attribute );
+				$this->assertArrayNotHasKey( 'enum_key', $attribute );
+			}
 			$this->assertArrayHasKey( $entry['domain'], $manifest['domains'] );
 			$this->assertNotContains( 'lang', array_column( $entry['attributes'], 'att' ), $entry['tag'] );
 			$this->assertNotContains( 'mode', array_column( $entry['attributes'], 'att' ), $entry['tag'] );

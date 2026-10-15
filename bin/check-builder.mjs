@@ -49,8 +49,50 @@ assert.ok(
 	'Display metadata belongs to the builder UI'
 );
 
-// The renderer contracts are independent of the builder's generated metadata.
+// The library and builder share the domain registry's utility exclusion.
+const domains = JSON.parse( read( 'bin/domains.json' ) );
+const spec = JSON.parse( read( 'specs/openapi.json' ) );
 const heroes = JSON.parse( read( 'bin/hero-config.json' ) );
+const heroOperations = new Set(
+	JSON.parse( read( 'bin/hero-endpoints.json' ) )
+);
+const expectedTags = new Set(
+	Object.entries( heroes )
+		.filter( ( [ , hero ] ) => domains[ hero.domain ]?.library !== false )
+		.map( ( [ suffix, hero ] ) => hero.tag || `roxy_${ suffix }` )
+);
+const excludedTags = new Set();
+for ( const operations of Object.values( spec.paths ) ) {
+	for ( const operation of Object.values( operations ) ) {
+		if ( ! operation.operationId ) {
+			continue;
+		}
+		const tag =
+			'roxy_' +
+			operation.operationId
+				.replace( /([a-z])([A-Z])/g, '$1_$2' )
+				.replace( /[^a-zA-Z0-9]/g, '_' )
+				.toLowerCase();
+		if ( domains[ operation.tags?.[ 0 ] ]?.library === false ) {
+			excludedTags.add( tag );
+		} else if ( ! heroOperations.has( operation.operationId ) ) {
+			expectedTags.add( tag );
+		}
+	}
+}
+assert.deepEqual(
+	[ ...entries.keys() ].sort(),
+	[ ...expectedTags ].sort(),
+	'Builder must offer the complete canonical reading tag set'
+);
+for ( const tag of excludedTags ) {
+	assert.ok(
+		! entries.has( tag ),
+		`${ tag }: utility endpoint must stay out of the builder`
+	);
+}
+
+// The renderer contracts are independent of the builder's generated metadata.
 for ( const [ suffix, hero ] of Object.entries( heroes ) ) {
 	const tag = hero.tag || `roxy_${ suffix }`;
 	const entry = entries.get( tag );
@@ -82,6 +124,11 @@ for ( const file of readdirSync(
 	const source = read( `src/Generated/Shortcodes/${ file }` );
 	const tag = source.match( /public const TAG = '([^']+)'/ )?.[ 1 ];
 	assert.ok( tag, `${ file }: shortcode TAG contract not found` );
+	// These account/language utilities stay registered for existing placements;
+	// the reading library excludes their domains via library: false.
+	if ( excludedTags.has( tag ) ) {
+		continue;
+	}
 	const entry = entries.get( tag );
 	assert.ok( entry, `${ tag }: shortcode missing from manifest` );
 	if ( entry.hero || entry.formOnly ) {
@@ -114,9 +161,11 @@ const settings = {
 	timezones: [ 'UTC', 'America/New_York', 'Asia/Kolkata' ],
 	today: '2026-10-15',
 };
-const css = read( 'assets/css/builder.css' );
+const adminCss = read( 'assets/css/admin.css' );
+const builderCss = read( 'assets/css/builder.css' );
+const css = adminCss + builderCss;
 const js = read( 'assets/js/builder.js' );
-const fixture = `<!doctype html><html lang="en"><head><meta charset="utf-8"><style>${ css }</style></head><body><div class="wrap roxyapi-builder"><h1 data-roxyapi-builder-title></h1><div id="roxyapi-builder"></div></div></body></html>`;
+const fixture = `<!doctype html><html lang="en"><head><meta charset="utf-8"><style>${ css }</style></head><body><div class="wrap roxyapi-builder"><h1 class="roxyapi-heading" data-roxyapi-builder-title></h1><div id="roxyapi-builder"></div></div></body></html>`;
 let i18n;
 const cases = [
 	{ tag: 'roxy_synastry', mode: 'visitor', expected: '[roxy_synastry]' },
@@ -192,6 +241,7 @@ try {
 				'Groups must contain each hero once, then the remaining readings in domain order'
 			);
 			await checkLayout( page, `${ width }px step 1` );
+			await checkPicker( page, width );
 			const failures = await page.evaluate( () => {
 				const issues = [];
 				const data = window.RoxyAPIBuilder;
@@ -201,6 +251,9 @@ try {
 							'input[name="roxyapi-builder-reading"]'
 						),
 					].filter( ( input ) => input.value === entry.tag );
+					if ( choices.length === 1 ) {
+						choices[ 0 ].closest( 'details' ).open = true;
+					}
 					if (
 						choices.length !== 1 ||
 						! choices[ 0 ].getClientRects().length
@@ -245,11 +298,13 @@ try {
 					entries.get( test.tag )?.modes.includes( test.mode ),
 					`${ at }: mode missing from manifest`
 				);
-				await page
-					.locator(
-						`input[name="roxyapi-builder-reading"][value="${ test.tag }"]`
-					)
-					.check();
+				const choice = page.locator(
+					`input[name="roxyapi-builder-reading"][value="${ test.tag }"]`
+				);
+				await choice.evaluate( ( node ) => {
+					node.closest( 'details' ).open = true;
+				} );
+				await choice.check();
 				await advance( page, 'who', at );
 				if ( test.mode === 'set' ) {
 					await page
@@ -298,6 +353,17 @@ try {
 							await control.fill( value );
 						}
 					}
+					// The picker shows the browser's date order, so the
+					// builder restates the value in words.
+					assert.deepEqual(
+						(
+							await panel
+								.locator( '[id$="-said"]' )
+								.allTextContents()
+						).map( ( text ) => text.replace( /\s/g, ' ' ) ),
+						[ 'May 15, 1990', '2:30 PM' ],
+						`${ at }: date and time are not spelled out`
+					);
 					await checkLayout( page, `${ at } filled details` );
 				}
 				await advance( page, 'display', at );
@@ -321,6 +387,14 @@ try {
 				await page
 					.getByRole( 'button', { name: i18n.back, exact: true } )
 					.click();
+				assert.equal( await choice.isChecked(), true );
+				assert.equal(
+					await choice.evaluate(
+						( node ) => node.closest( 'details' ).open
+					),
+					true,
+					`${ at }: Back must open the selected group`
+				);
 			}
 			assert.deepEqual(
 				errors,
@@ -336,9 +410,244 @@ try {
 			await page.close();
 		}
 	}
+	await checkAttributeQuoting( browser );
 	await checkStandalone( browser );
 } finally {
 	await browser.close();
+}
+
+/** @param browser Browser instance. */
+async function checkAttributeQuoting( browser ) {
+	const page = await browser.newPage();
+	page.setDefaultTimeout( 5000 );
+	try {
+		await page.setContent( fixture );
+		await page.evaluate(
+			( localized ) => {
+				window.RoxyAPIBuilder = localized;
+			},
+			{ ...settings, reading: 'roxy_tarot_yes_no' }
+		);
+		await page.addScriptTag( { content: shim } );
+		await page.addScriptTag( { content: js } );
+		await page
+			.locator( 'input[name="roxyapi-builder-mode"][value="set"]' )
+			.check();
+		await advance( page, 'details', 'Quoting contract' );
+		await page
+			.locator( '.roxyapi-builder-step:not([hidden]) details' )
+			.evaluateAll( ( nodes ) =>
+				nodes.forEach( ( node ) => {
+					node.open = true;
+				} )
+			);
+		const control = page.locator( '[name="question"]' );
+		for ( const example of JSON.parse(
+			read( 'tests/fixtures/shortcode-attributes.json' )
+		) ) {
+			await control.fill( example.input );
+			await advance( page, 'display', 'Quoting contract' );
+			await advance( page, 'finish', 'Quoting contract' );
+			assert.equal(
+				await page.locator( 'textarea' ).inputValue(),
+				`[roxy_tarot_yes_no question=${ example.expected }]`,
+				example.input
+			);
+			await page
+				.getByRole( 'button', { name: i18n.back, exact: true } )
+				.click();
+			await page
+				.getByRole( 'button', { name: i18n.back, exact: true } )
+				.click();
+		}
+		console.log(
+			'Shared shortcode attribute quoting fixtures OK through the real builder.'
+		);
+	} finally {
+		await page.close();
+	}
+}
+
+/**
+ * Check the compact accordion and the flat search without losing coverage.
+ *
+ * @param page  Browser page.
+ * @param width Viewport width.
+ */
+async function checkPicker( page, width ) {
+	const groups = page.locator( '.roxyapi-builder-group' );
+	assert.equal(
+		await groups.locator( 'summary' ).count(),
+		await groups.count()
+	);
+	assert.equal(
+		await page.locator( '.roxyapi-builder-group[open]' ).count(),
+		0
+	);
+	assert.match(
+		await groups.first().locator( 'summary' ).textContent(),
+		/^Most loved \(\d+\)$/
+	);
+	assert.equal(
+		await groups.first().evaluate( ( node ) => node.open ),
+		false
+	);
+	const closedHeight = await page.evaluate(
+		() => document.documentElement.scrollHeight
+	);
+	const viewport = page.viewportSize().height;
+	assert.ok(
+		// A phone stacks the 21 closed groups in one column, so it gets two
+		// screens; the guard is against an expanded catalogue (44 screens).
+		closedHeight < viewport * ( width === 1280 ? 1.5 : 2 ),
+		`${ width }px: closed picker height ${ closedHeight } is too tall`
+	);
+	console.log(
+		`Step 1 at ${ width }px, all closed: ${ closedHeight }px / ${ viewport }px viewport.`
+	);
+	await assertPickerGap( page, page.locator( '.roxyapi-builder-groups' ) );
+	await groups.first().locator( 'summary' ).click();
+	await checkExpandedGroup( page, width, groups.first() );
+	const vedic = groups.filter( { hasText: /^Vedic Astrology/ } );
+	await vedic.locator( 'summary' ).click();
+	await checkExpandedGroup( page, width, vedic );
+	for ( const index of [ 1, 2 ] ) {
+		await groups.nth( index ).locator( 'summary' ).click();
+		assert.equal(
+			await page.locator( '.roxyapi-builder-group[open]' ).count(),
+			1
+		);
+		assert.equal(
+			await groups.nth( index ).evaluate( ( node ) => node.open ),
+			true
+		);
+	}
+	const summaries = await groups
+		.locator( 'summary' )
+		.evaluateAll( ( nodes ) =>
+			nodes.every( ( node ) => node.getBoundingClientRect().height >= 44 )
+		);
+	assert.equal( summaries, true, 'Summaries must be at least 44px tall' );
+	// Keyboard activation uses the native summary behavior.
+	await groups.nth( 1 ).locator( 'summary' ).focus();
+	await page.keyboard.press( 'Enter' );
+	assert.equal(
+		await groups.nth( 1 ).evaluate( ( node ) => node.open ),
+		true
+	);
+	assert.equal(
+		await page.locator( '.roxyapi-builder-group[open]' ).count(),
+		1
+	);
+	const search = page.locator( '#roxyapi-builder-search' );
+	const results = page.locator(
+		'.roxyapi-builder-step:has(> #roxyapi-builder-step-pick) > .roxyapi-builder-grid'
+	);
+	for ( const query of [ 'chart', 'BIRTH', 'zzzz-no-reading' ] ) {
+		const expected = await groups
+			.locator( '[data-search]' )
+			.evaluateAll(
+				( nodes, text ) =>
+					nodes
+						.filter( ( node ) =>
+							node.textContent
+								.toLowerCase()
+								.includes( text.toLowerCase() )
+						)
+						.map( ( node ) => node.querySelector( 'input' ).value ),
+				query
+			);
+		await search.fill( query );
+		assert.equal(
+			await page.locator( '.roxyapi-builder-groups' ).isVisible(),
+			false
+		);
+		await assertPickerGap( page, results );
+		const matches = await results
+			.locator( 'input' )
+			.evaluateAll( ( nodes ) => nodes.map( ( node ) => node.value ) );
+		assert.deepEqual( matches.sort(), expected.sort() );
+		if ( query === 'chart' ) {
+			assert.ok(
+				new Set( matches.map( ( tag ) => entries.get( tag ).domain ) )
+					.size > 1,
+				'Search must include multiple domains'
+			);
+		}
+		assert.equal(
+			await page
+				.locator(
+					'.roxyapi-builder-step:has(> #roxyapi-builder-step-pick) > [role="status"]'
+				)
+				.isVisible(),
+			! expected.length
+		);
+		await search.fill( '' );
+		assert.equal(
+			await groups.nth( 1 ).evaluate( ( node ) => node.open ),
+			true,
+			'Clearing search must preserve the open group'
+		);
+		assert.equal( await results.locator( 'input' ).count(), 0 );
+	}
+}
+
+/**
+ * Keep visible choices separated from the search input by one rem.
+ *
+ * @param page Browser page.
+ * @param list Visible group or search result list.
+ */
+async function assertPickerGap( page, list ) {
+	const input = await page.locator( '#roxyapi-builder-search' ).boundingBox();
+	const bounds = await list.boundingBox();
+	assert.ok(
+		input && bounds && bounds.y - input.y - input.height >= 16,
+		'Picker choices need a 1rem gap below search'
+	);
+}
+
+/**
+ * Bound the accordion chrome while allowing the open reading list to grow.
+ *
+ * @param page  Browser page.
+ * @param width Viewport width.
+ * @param group Open reading group.
+ */
+async function checkExpandedGroup( page, width, group ) {
+	const sizes = await group.evaluate( ( node ) => {
+		const grid = node.querySelector( '.roxyapi-builder-grid' );
+		const bounds = grid.getBoundingClientRect();
+		return {
+			label: node.querySelector( 'summary' ).textContent,
+			height: document.documentElement.scrollHeight,
+			gridHeight: bounds.height,
+			unclipped:
+				grid.scrollHeight <= grid.clientHeight + 1 &&
+				[ ...grid.children ].every( ( card ) => {
+					const rect = card.getBoundingClientRect();
+					return (
+						rect.top >= bounds.top && rect.bottom <= bounds.bottom
+					);
+				} ),
+			maxHeight: window.getComputedStyle( grid ).maxHeight,
+		};
+	} );
+	assert.equal( sizes.maxHeight, 'none', 'Open groups must expand fully' );
+	assert.equal(
+		sizes.unclipped,
+		true,
+		`${ sizes.label }: all cards must fit without inner scrolling`
+	);
+	const viewport = page.viewportSize().height;
+	assert.ok(
+		sizes.height - sizes.gridHeight <
+			viewport * ( width === 1280 ? 1.5 : 3 ),
+		`${ width }px: accordion chrome exceeds the height limit excluding the fully expanded reading list`
+	);
+	console.log(
+		`Step 1 at ${ width }px, ${ sizes.label } open: ${ sizes.height }px / ${ viewport }px viewport.`
+	);
 }
 
 /**
@@ -414,8 +723,12 @@ async function checkStandalone( browser ) {
 			},
 		],
 		[
+			'/sdk-wordpress/assets/css/admin.css',
+			{ contentType: 'text/css', body: adminCss },
+		],
+		[
 			'/sdk-wordpress/assets/css/builder.css',
-			{ contentType: 'text/css', body: css },
+			{ contentType: 'text/css', body: builderCss },
 		],
 	] );
 	let geocodeQueries = 0;
@@ -468,6 +781,33 @@ async function checkStandalone( browser ) {
 		} );
 	} );
 	try {
+		for ( const width of [ 1280, 390 ] ) {
+			await page.setViewportSize( { width, height: 900 } );
+			await page.goto( base );
+			await page.locator( '.roxyapi-builder-group' ).first().waitFor();
+			console.log( 'Standalone picker:' );
+			await checkPicker( page, width );
+		}
+		const longTail = manifest.entries.find( ( entry ) => ! entry.hero );
+		await page.goto( base + '?reading=' + longTail.tag );
+		await page
+			.locator( '#roxyapi-builder-step-who' )
+			.waitFor( { state: 'visible' } );
+		const preselected = page.locator(
+			`input[name="roxyapi-builder-reading"][value="${ longTail.tag }"]`
+		);
+		assert.equal( await preselected.isChecked(), true );
+		assert.equal(
+			await preselected.evaluate(
+				( node ) => node.closest( 'details' ).open
+			),
+			true
+		);
+		await page
+			.getByRole( 'button', { name: i18n.back, exact: true } )
+			.click();
+		assert.equal( await preselected.isVisible(), true );
+		assert.equal( await preselected.isChecked(), true );
 		await page.goto( base + '?reading=roxy_natal_chart' );
 		await page
 			.locator( '#roxyapi-builder-step-who' )

@@ -1,0 +1,47 @@
+[
+	{
+		"input": "Ada Lovelace",
+		"expected": "\"Ada Lovelace\"",
+		"parsed": "Ada Lovelace"
+	},
+	{
+		"input": "A & B",
+		"expected": "\"A &amp; B\"",
+		"parsed": "A &amp; B"
+	},
+	{
+		"input": "&quot; &#91; &amp;",
+		"expected": "\"&amp;quot; &amp;#91; &amp;amp;\"",
+		"parsed": "&amp;quot; &amp;#91; &amp;amp;"
+	},
+	{
+		"input": "He said \"it's fine\"",
+		"expected": "\"He said &quot;it&#039;s fine&quot;\"",
+		"parsed": "He said &quot;it&#039;s fine&quot;"
+	},
+	{
+		"input": "[roxy_other] [/roxy_other]",
+		"expected": "\"&#91;roxy_other&#93; &#91;/roxy_other&#93;\"",
+		"parsed": "&#91;roxy_other&#93; &#91;/roxy_other&#93;"
+	},
+	{
+		"input": "C:\\new\\test\\",
+		"expected": "\"C:\\\\new\\\\test\\\\\"",
+		"parsed": "C:\\new\\test\\"
+	},
+	{
+		"input": "<unclosed & >",
+		"expected": "\"&lt;unclosed &amp; &gt;\"",
+		"parsed": "&lt;unclosed &amp; &gt;"
+	},
+	{
+		"input": "{\"cusps\":30,\"name\":\"O'Brien\"}",
+		"expected": "\"{&quot;cusps&quot;:30,&quot;name&quot;:&quot;O&#039;Brien&quot;}\"",
+		"parsed": "{&quot;cusps&quot;:30,&quot;name&quot;:&quot;O&#039;Brien&quot;}"
+	},
+	{
+		"input": "मुंबई 星座 café 😀  two spaces",
+		"expected": "\"मुंबई 星座 café 😀  two spaces\"",
+		"parsed": "मुंबई 星座 café 😀  two spaces"
+	}
+]

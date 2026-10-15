@@ -95,10 +95,9 @@ class Test_Settings_Screen extends Mock_Http_TestCase {
 			}
 			$this->assertSame( array( 'Connect', 'Branding', 'Display', 'Sell readings', 'Privacy', 'Advanced' ), $labels );
 			foreach ( array(
-				'Many practitioners keep one reading free and charge for the deeper ones. Here is the simplest way to do it.',
 				'Give something free',
 				'A daily horoscope or a one card tarot draw brings visitors back every day. Place it on your home page.',
-				'Charge for the reading that matters',
+				'Charge for deeper readings',
 				'Birth charts, compatibility and yearly forecasts are worth paying for. Give each its own page.',
 				'Ask for payment before the page opens',
 				'Install a membership or shop plugin you trust and limit that page to paying members. The reading shows only to them.',
@@ -114,9 +113,10 @@ class Test_Settings_Screen extends Mock_Http_TestCase {
 	public function test_help_renders_every_answer_and_link(): void {
 		ob_start();
 		SettingsPage::render_help();
-		$document = $this->document( (string) ob_get_clean() );
-		$this->assertSame( 'Help', $document->getElementsByTagName( 'h1' )->item( 0 )->textContent );
-		$this->assertStringContainsString( 'Short answers to the questions practitioners ask most.', $document->textContent );
+		$html     = (string) ob_get_clean();
+		$document = $this->document( $html );
+		$this->assertSame( 'Help. Quick answers.', preg_replace( '/\s+/', ' ', trim( $document->getElementsByTagName( 'h1' )->item( 0 )->textContent ) ) );
+		$this->assertStringNotContainsString( 'roxyapi-page-intro', $html, 'The Help page opens on its questions, with no intro line.' );
 		$items = $document->getElementsByTagName( 'details' );
 		$this->assertCount( 8, $items );
 		$expected = array(
@@ -163,7 +163,7 @@ class Test_Settings_Screen extends Mock_Http_TestCase {
 			),
 			array(
 				'I still need help.',
-				'Write to us and a real person replies.',
+				'Send us a message and we will reply by email.',
 				array( 'https://roxyapi.com/contact' => 'Contact us' ),
 			),
 		);
@@ -198,6 +198,26 @@ class Test_Settings_Screen extends Mock_Http_TestCase {
 			\RoxyAPI\Admin\SettingsFields::sanitize( array( 'api_key' => self::VALID_KEY ) )
 		);
 		$this->assertTrue( ApiKey::is_configured(), 'Fixture failed: the key did not store.' );
+	}
+
+	public function test_connect_tab_leads_to_the_builder_with_and_without_a_key(): void {
+		$builder = admin_url( 'admin.php?page=' . BuilderPage::PAGE_SLUG );
+		foreach ( array( false, true ) as $connected ) {
+			if ( $connected ) {
+				$this->connect();
+			}
+			foreach ( array_keys( SettingsPage::tabs() ) as $tab ) {
+				$xpath = new \DOMXPath( $this->document( $this->render( $tab ) ) );
+				$links = $xpath->query( '//a[@href="' . $builder . '"]' );
+				if ( 'connect' !== $tab ) {
+					$this->assertSame( 0, $links->length, $tab . ' keeps to its own settings.' );
+					continue;
+				}
+				$this->assertSame( 1, $links->length, 'Connect offers the builder exactly once.' );
+				$this->assertSame( 'Create a reading', trim( preg_replace( '/\s+/', ' ', str_replace( "\u{2192}", '', $links->item( 0 )->textContent ) ) ) );
+				$this->assertSame( 'roxyapi-cta', $links->item( 0 )->getAttribute( 'class' ) );
+			}
+		}
 	}
 
 	public function test_tab_bar_renders_without_a_key(): void {

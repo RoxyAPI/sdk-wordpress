@@ -80,7 +80,7 @@ Add `mode="form"` to keep the form even when details are set, or `mode="static"`
 
 **Readings that need nothing.** Some readings take no details and show straight away, such as `[roxy_moon_phase]`, `[roxy_get_daily_hexagram]` and `[roxy_cast_celtic_cross]`.
 
-Every shortcode, with the details it takes and a sample to copy, is listed in your dashboard under RoxyAPI, Shortcodes.
+Every shortcode, with the details it takes and a sample to copy, is listed in your dashboard under RoxyAPI, Shortcodes. Rather not type one? Open RoxyAPI, Create a reading, answer a few questions and copy the finished shortcode, or try the same builder online first: https://roxyapi.github.io/sdk-wordpress/
 
 **Hero shortcodes**
 
@@ -265,6 +265,13 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.21.1 =
+* Improved: Create a reading opens on a short list of reading groups. Open one at a time, or search to see every match at once.
+* Improved: when you set a date or time, Create a reading spells it out in words beneath the field, so the order of day and month is never in doubt.
+* Improved: the Connect screen starts with Create a reading, with ready shortcodes beneath it, and Create a reading sits right under Settings in the menu.
+* Improved: Create a reading and Help match the rest of the plugin, and the Connect screen and Shortcodes library fit a phone screen.
+* Improved: the new screens and the plugin description read in German, Spanish, French, Hindi, Portuguese, Russian and Turkish.
+
 = 1.21.0 =
 * New: Create a reading. Answer a few questions, one per screen, and copy a finished shortcode: pick a reading, choose whether your visitor fills in the details or you set them once, and paste. Every reading in the Shortcodes library has a Customize link that opens it there, and new installs start on it.
 * New: a Sell readings tab shows how to keep one reading free and charge for the deeper ones, and a Help screen answers the questions site owners ask most.
@@ -293,6 +300,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.21.1 =
+Polishes Create a reading: grouped readings, dates spelled out in words, and a clearer first step on the Connect screen.
 
 = 1.21.0 =
 Worth updating if you would rather answer a few questions than write shortcodes: Create a reading builds them for you, and new Sell readings and Help screens show how to charge for readings.

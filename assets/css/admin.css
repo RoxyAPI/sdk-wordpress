@@ -14,7 +14,7 @@
 	max-width: 960px;
 }
 
-.roxyapi-settings .roxyapi-page-intro {
+.wrap .roxyapi-page-intro {
 	max-width: 640px;
 	margin: 0.75rem 0 1rem;
 	color: #50575e;
@@ -85,7 +85,7 @@
 
 .roxyapi-steps {
 	display: grid;
-	grid-template-columns: 1fr;
+	grid-template-columns: minmax(0, 1fr);
 	gap: 1.25rem;
 	margin: 0 0 2.5rem;
 }
@@ -294,7 +294,7 @@
 
 .roxyapi-shortcode-list {
 	display: grid;
-	grid-template-columns: 1fr;
+	grid-template-columns: minmax(0, 1fr);
 	gap: 0.75rem;
 	margin: 0;
 	padding: 0;
@@ -447,11 +447,7 @@
 }
 
 .roxyapi-shortcodes .roxyapi-page-intro {
-	max-width: 640px;
-	margin: 0.75rem 0 1.75rem;
-	color: #50575e;
-	font-size: 0.95rem;
-	line-height: 1.55;
+	margin-bottom: 1.75rem;
 }
 
 .roxyapi-library-controls {
@@ -468,6 +464,7 @@
 
 	.roxyapi-library-controls {
 		top: 46px;
+		margin-inline: 0;
 	}
 }
 
@@ -1013,6 +1010,10 @@
 	border-radius: 8px;
 }
 
+.roxyapi-heading + .roxyapi-faq {
+	margin-top: 1.5rem;
+}
+
 .wrap .roxyapi-faq summary {
 	padding: 1rem 1.25rem;
 	font-size: 1rem;
@@ -1035,4 +1036,8 @@
 
 .wrap .roxyapi-faq a + a {
 	margin-inline-start: 1.25rem;
+}
+
+.roxyapi-quick-start-or {
+	margin-top: 1.25rem;
 }

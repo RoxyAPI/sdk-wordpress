@@ -1,20 +1,11 @@
 <?php
 /**
- * Catalog: single source of truth for the Shortcodes Library admin page.
+ * Catalog: library presentation of the generated reading manifest.
  *
- * Combines the hand-crafted hero shortcodes from
- * {@see Onboarding::hero_shortcodes()} (count and membership driven entirely
- * by `bin/hero-config.json`, never hardcoded here) with the long-tail
- * generated entries from {@see \RoxyAPI\Generated\Endpoints::all()} into one
- * normalised list.
- *
- * Domain ordering follows the brand book: Western Astrology, Vedic
- * Astrology, Forecast, Human Design, Chinese Astrology, Feng Shui,
- * Mesoamerican Astrology, Vastu, Numerology, Kabbalah, Tarot, Biorhythm,
- * Ayurveda, I Ching, Crystals, Dreams, Angel Numbers, Location. Languages
- * and Usage sit at the end. Anything unrecognised falls to "Other" at the
- * very end. Order is pulled from `bin/domains.json` key order, never
- * hardcoded here.
+ * Projects the generated builder manifest into the library's existing row
+ * shape. The manifest owns membership, hero collisions and reading order;
+ * endpoint and hero registries retain their original library copy and samples.
+ * Domain presentation comes from the generated Domains registry.
  *
  * @package RoxyAPI
  */
@@ -40,26 +31,6 @@ class Catalog {
 			return array();
 		}
 		return \RoxyAPI\Generated\Domains::all();
-	}
-
-	/**
-	 * Map a hero shortcode tag to the OpenAPI tag (domain) that owns it.
-	 *
-	 * Sourced from the auto-generated hero manifest so a new entry in
-	 * bin/hero-config.json shows up here automatically. The map is built once
-	 * per request via {@see self::hero_tag_to_domain()}.
-	 *
-	 * @return array<string, string>
-	 */
-	private static function hero_tag_to_domain(): array {
-		if ( ! class_exists( '\\RoxyAPI\\Generated\\Heroes\\Manifest' ) ) {
-			return array();
-		}
-		$out = array();
-		foreach ( \RoxyAPI\Generated\Heroes\Manifest::all() as $tag => $entry ) {
-			$out[ (string) $tag ] = (string) $entry['domain'];
-		}
-		return $out;
 	}
 
 	/**
@@ -120,81 +91,35 @@ class Catalog {
 	 * }>
 	 */
 	public static function all(): array {
-		$endpoints = self::endpoints_index();
+		$manifest  = \RoxyAPI\Generated\Builder\Manifest::all();
+		$heroes    = \RoxyAPI\Generated\Heroes\Manifest::all();
+		$endpoints = \RoxyAPI\Generated\Endpoints::all();
+		$domains   = self::domain_map();
 		$rows      = array();
-		$seen_tags = array();
-
-		// Hero entries first so they own their tag.
-		$hero_tag_to_domain = self::hero_tag_to_domain();
-		foreach ( Onboarding::hero_shortcodes() as $hero ) {
-			$tag = self::extract_tag_from_sample( $hero['code'] );
-			if ( $tag === '' ) {
-				continue;
-			}
-			$op_tag      = $hero_tag_to_domain[ $tag ] ?? '';
-			$domain_info = self::domain_map()[ $op_tag ] ?? array(
+		foreach ( $manifest['entries'] as $entry ) {
+			$hero        = $entry['hero'] ? $heroes[ $entry['tag'] ] : null;
+			$op_id       = $hero ? $hero['operation_id'] : $entry['operationId'];
+			$endpoint    = $endpoints[ $op_id ] ?? array();
+			$domain_info = $domains[ $entry['domain'] ] ?? array(
 				'label'  => 'Other',
 				'slug'   => 'other',
 				'accent' => 'neutral',
 			);
-			$op_id       = self::find_hero_op_id( $tag );
-			$ttl         = ( $op_id !== '' && isset( $endpoints[ $op_id ] ) ) ? (int) $endpoints[ $op_id ]['ttl'] : 0;
-
-			$rows[]            = array(
+			$examples    = $hero ? array() : ( $endpoint['attributes'] ?? array() );
+			$rows[]      = array(
 				'operationId' => $op_id,
-				'tag'         => $tag,
-				'title'       => (string) $hero['title'],
-				'description' => (string) $hero['description'],
+				'tag'         => $entry['tag'],
+				'title'       => $hero ? $hero['title'] : ( $endpoint['display_name'] ?? $op_id ),
+				'description' => $hero ? $hero['description'] : ( $endpoint['summary'] ?? '' ),
 				'domain'      => $domain_info['label'],
 				'domain_slug' => $domain_info['slug'],
 				'accent'      => $domain_info['accent'],
-				'sample'      => (string) $hero['code'],
-				'attributes'  => array(),
-				'hero'        => true,
-				'form_only'   => false,
-				'ttl'         => $ttl,
+				'sample'      => $hero ? $hero['code'] : self::build_sample( $entry['tag'], $examples ),
+				'attributes'  => $examples,
+				'hero'        => $entry['hero'],
+				'form_only'   => $hero ? false : $entry['formOnly'],
+				'ttl'         => (int) ( $endpoint['ttl'] ?? 0 ),
 			);
-			$seen_tags[ $tag ] = true;
-		}
-
-		// Generated entries, skipping any whose tag was already taken by a hero.
-		foreach ( $endpoints as $op_id => $ep ) {
-			if ( ! empty( $ep['hero'] ) ) {
-				// Hero ops are surfaced via Onboarding::hero_shortcodes() above.
-				continue;
-			}
-			$shortcode_tag = (string) ( $ep['shortcode_tag'] ?? '' );
-			if ( $shortcode_tag === '' ) {
-				continue;
-			}
-			if ( isset( $seen_tags[ $shortcode_tag ] ) ) {
-				continue;
-			}
-			$op_tag      = (string) $ep['tag'];
-			$domain_info = self::domain_map()[ $op_tag ] ?? array(
-				'label'  => 'Other',
-				'slug'   => 'other',
-				'accent' => 'neutral',
-			);
-
-			$attr_examples = isset( $ep['attributes'] ) && is_array( $ep['attributes'] ) ? $ep['attributes'] : array();
-			$sample        = self::build_sample( $shortcode_tag, $attr_examples );
-
-			$rows[]                      = array(
-				'operationId' => (string) $op_id,
-				'tag'         => $shortcode_tag,
-				'title'       => (string) ( $ep['display_name'] ?? $op_id ),
-				'description' => (string) $ep['summary'],
-				'domain'      => $domain_info['label'],
-				'domain_slug' => $domain_info['slug'],
-				'accent'      => $domain_info['accent'],
-				'sample'      => $sample,
-				'attributes'  => $attr_examples,
-				'hero'        => false,
-				'form_only'   => ! empty( $ep['form_only'] ),
-				'ttl'         => (int) $ep['ttl'],
-			);
-			$seen_tags[ $shortcode_tag ] = true;
 		}
 
 		return $rows;
@@ -219,59 +144,9 @@ class Catalog {
 	 * }>>
 	 */
 	public static function grouped(): array {
-		// Pre-seed the result with the brand domain order so iteration in the
-		// template renders sections in the right order even if a domain has
-		// only a hero or only generated entries.
 		$ordered = array();
-		$hidden  = array();
-		foreach ( self::domain_map() as $info ) {
-			if ( empty( $info['library'] ) ) {
-				// Developer endpoints (usage, languages) carry `library: false`
-				// in bin/domains.json and stay out of a list built for readings.
-				$hidden[ $info['slug'] ] = true;
-				continue;
-			}
-			$ordered[ $info['slug'] ] = array();
-		}
-
 		foreach ( self::all() as $row ) {
-			$slug = $row['domain_slug'];
-			if ( isset( $hidden[ $slug ] ) ) {
-				continue;
-			}
-			if ( ! isset( $ordered[ $slug ] ) ) {
-				$ordered[ $slug ] = array();
-			}
-			$ordered[ $slug ][] = $row;
-		}
-
-		// Drop empty domains so the template only renders sections with cards.
-		$ordered = array_filter(
-			$ordered,
-			static function ( $items ) {
-				return count( $items ) > 0;
-			}
-		);
-
-		// Sort each group: heroes first in their catalogue order, then the rest alphabetised by title.
-		foreach ( $ordered as $slug => $items ) {
-			$rank = array();
-			foreach ( $items as $position => $row ) {
-				$rank[ $row['tag'] ] = $position;
-			}
-			usort(
-				$items,
-				static function ( $a, $b ) use ( $rank ) {
-					if ( $a['hero'] !== $b['hero'] ) {
-						return $a['hero'] ? -1 : 1;
-					}
-					if ( $a['hero'] ) {
-						return $rank[ $a['tag'] ] <=> $rank[ $b['tag'] ];
-					}
-					return strcasecmp( $a['title'], $b['title'] );
-				}
-			);
-			$ordered[ $slug ] = $items;
+			$ordered[ $row['domain_slug'] ][] = $row;
 		}
 
 		return $ordered;
@@ -294,53 +169,38 @@ class Catalog {
 			if ( ! is_scalar( $value ) || (string) $value === '' ) {
 				continue;
 			}
-			$parts[] = $name . '="' . str_replace( '"', '&quot;', (string) $value ) . '"';
+			$parts[] = $name . '=' . self::quote_attribute( (string) $value );
 		}
 		return '[' . implode( ' ', $parts ) . ']';
 	}
 
 	/**
-	 * Endpoints index. Wraps the generated registry in a defensive callable
-	 * lookup so PHPStan stays happy if generation has not run.
+	 * Quote one shortcode attribute value. Shared contract and edge cases live
+	 * in tests/fixtures/shortcode-attributes.json (also read by check-builder).
 	 *
-	 * @return array<string, array{path: string, method: string, tag: string, summary: string, display_name: string, ttl: int, hero: bool, form_only: bool, attributes: array<string, string>}>
-	 */
-	private static function endpoints_index(): array {
-		if ( ! class_exists( '\\RoxyAPI\\Generated\\Endpoints' ) ) {
-			return array();
-		}
-		return \RoxyAPI\Generated\Endpoints::all();
-	}
-
-	/**
-	 * Extract the bare shortcode tag from a sample like
-	 * `[roxy_horoscope sign="aries"]`.
+	 * Always use double quotes: WordPress does not support backslash-escaped
+	 * quote delimiters. Encode markup delimiters and ampersands as entities,
+	 * and double backslashes because shortcode_parse_atts() strips C escapes.
+	 * Entities remain literal entities in parsed values; this is shortcode
+	 * text escaping, not a lossless transport for arbitrary JSON or HTML.
+	 * Values may contain Unicode text and whitespace; callers omit empty values.
 	 *
-	 * @param string $sample The full shortcode markup.
-	 * @return string The tag (e.g. "roxy_horoscope") or '' if unrecognised.
+	 * @param string $value Attribute value.
+	 * @return string Quoted attribute text.
 	 */
-	private static function extract_tag_from_sample( string $sample ): string {
-		if ( preg_match( '/^\[\s*([a-z0-9_]+)/i', $sample, $matches ) === 1 ) {
-			return strtolower( $matches[1] );
-		}
-		return '';
-	}
-
-	/**
-	 * Find the operationId (if any) that matches a given hero shortcode tag.
-	 *
-	 * @param string $tag Hero shortcode tag (e.g. "roxy_horoscope").
-	 * @return string The operationId or '' if not in the hero map.
-	 */
-	private static function find_hero_op_id( string $tag ): string {
-		if ( ! class_exists( '\\RoxyAPI\\Generated\\Heroes\\Manifest' ) ) {
-			return '';
-		}
-		$entries = \RoxyAPI\Generated\Heroes\Manifest::all();
-		$entry   = $entries[ $tag ] ?? null;
-		if ( ! is_array( $entry ) ) {
-			return '';
-		}
-		return (string) ( $entry['operation_id'] ?? '' );
+	public static function quote_attribute( string $value ): string {
+		return '"' . strtr(
+			$value,
+			array(
+				'&'  => '&amp;',
+				'"'  => '&quot;',
+				"'"  => '&#039;',
+				'['  => '&#91;',
+				']'  => '&#93;',
+				'<'  => '&lt;',
+				'>'  => '&gt;',
+				'\\' => '\\\\',
+			)
+		) . '"';
 	}
 }

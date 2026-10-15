@@ -15,8 +15,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="wrap roxyapi-settings">
-	<h1><?php echo esc_html__( 'Help', 'roxyapi' ); ?></h1>
-	<p class="roxyapi-page-intro"><?php echo esc_html__( 'Short answers to the questions practitioners ask most.', 'roxyapi' ); ?></p>
+	<h1 class="roxyapi-heading">
+		<span class="roxyapi-setup"><?php echo esc_html__( 'Help.', 'roxyapi' ); ?></span>
+		<span class="roxyapi-punchline"><?php echo esc_html__( 'Quick answers.', 'roxyapi' ); ?></span>
+	</h1>
 	<details class="roxyapi-faq">
 		<summary><?php echo esc_html__( 'How do I add a reading to a page?', 'roxyapi' ); ?></summary>
 		<p><?php echo esc_html__( 'Open Create a reading, answer a few questions and copy the shortcode. In the block editor, add a Shortcode block and paste it there.', 'roxyapi' ); ?></p>
@@ -60,7 +62,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</details>
 	<details class="roxyapi-faq">
 		<summary><?php echo esc_html__( 'I still need help.', 'roxyapi' ); ?></summary>
-		<p><?php echo esc_html__( 'Write to us and a real person replies.', 'roxyapi' ); ?></p>
+		<p><?php echo esc_html__( 'Send us a message and we will reply by email.', 'roxyapi' ); ?></p>
 		<p><a href="<?php echo esc_url( Onboarding::support_url() ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html__( 'Contact us', 'roxyapi' ); ?></a></p>
 	</details>
 </div>

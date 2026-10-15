@@ -1051,64 +1051,114 @@ function formLabel( entry ) {
 	return entry.label ?? formLabels.fields[ name ] ?? name;
 }
 
+/** Catalogue keys the label writers read; never emitted as runtime metadata. */
+const GENERATOR_ONLY_KEYS = [ 'label_key', 'enum_key' ];
+
 /**
- * Adapt a UI field to the controls FormRenderer already supports. Timezones
- * retain their no-JavaScript dropdown. Datetime retains the legacy time control
- * until PHP supports a dedicated datetime input; toggles use the text fallback.
- * @param op
- * @param modelField
+ * Adapt field types and catalogue labels once for both input surfaces.
+ * @param modelField UI field, if the operation publishes one.
+ * @param schema     Resolved wire schema.
+ * @param options    Surface-specific inputs and fallbacks.
  */
-function buildFormFieldSpec( op, modelField ) {
-	const schema = formFieldSchema( op, modelField );
+function adaptField( modelField, schema, options = {} ) {
+	const {
+		surface = 'form',
+		name = modelField.name,
+		kind = modelField.kind,
+		choices = modelField.enum,
+		fallbackLabel = name,
+	} = options;
+	const builder = surface === 'builder';
+	const labelKey = modelField.label
+		? ''
+		: modelField.name || lowerCamelCase( name );
 	const types = {
 		tiles: 'enum',
 		select: 'enum',
 		date: 'date',
 		time: 'time',
-		datetime: 'time',
+		// Visitor forms retain their legacy time control; static attributes
+		// accept datetime text. Lists, objects and toggles are builder-only.
+		datetime: builder ? 'text' : 'time',
+		array: builder ? 'list' : 'text',
+		object: builder ? 'json' : 'text',
+		toggle: builder ? 'boolean' : 'text',
 	};
-	let type = types[ modelField.kind ] || 'text';
-	if ( modelField.kind === 'number' ) {
-		const variants = schema.anyOf || schema.oneOf || [];
+	let type = types[ kind ] || ( builder ? kind : 'text' );
+	if ( kind === 'string' ) {
+		type = 'text';
+	}
+	if ( kind === 'number' ) {
 		type = schema.type === 'integer' ? 'integer' : 'number';
-		if ( variants.some( ( v ) => resolveRef( v ).type === 'string' ) ) {
+		// Forms allow strings for number/string unions (e.g. a date keyword).
+		// The builder preserves the shortcode's numeric control contract.
+		const variants = schema.anyOf || schema.oneOf || [];
+		if (
+			! builder &&
+			variants.some( ( v ) => resolveRef( v ).type === 'string' )
+		) {
 			type = 'text';
 		}
 	}
+	if ( builder && choices ) {
+		type = 'enum';
+	}
+	// Forms' city flag also requests the no-JavaScript timezone dropdown.
+	// Builder location roles are bound separately to the shared city picker.
 	if (
-		[ 'timezone', 'tz' ].includes( modelField.name.toLowerCase() ) ||
-		modelField.city === true
+		[ 'timezone', 'tz' ].includes( name.toLowerCase() ) ||
+		( ! builder && modelField.city === true )
 	) {
 		type = 'timezone';
 	}
+	const enumKey = modelField.name || labelKey;
+	return {
+		label:
+			modelField.label ?? formLabels.fields[ labelKey ] ?? fallbackLabel,
+		label_key: labelKey,
+		type,
+		enum: choices,
+		enum_key: enumKey,
+		enum_labels: choices?.map(
+			( value ) =>
+				formLabels.enums[ `${ enumKey }.${ value }` ] ||
+				( builder ? String( value ) : value )
+		),
+	};
+}
+
+/**
+ * Adapt a UI field to the controls FormRenderer already supports.
+ * @param op
+ * @param modelField
+ */
+function buildFormFieldSpec( op, modelField ) {
+	const adapted = adaptField( modelField, formFieldSchema( op, modelField ) );
 	// Inline model labels retain gettext ownership, including labels on
 	// prefixed wire names such as birthLatitude. Shared labels use fields[name].
 	const field = {
 		name: modelField.name,
-		label: formLabel( modelField ),
-		label_key: modelField.label ? '' : modelField.name,
+		label: adapted.label,
+		label_key: adapted.label_key,
 		required: modelField.required,
 	};
 	// Spec descriptions are written for developers (wire formats, endpoint
 	// notes), so a visitor form carries its labels and only the timezone
 	// dropdown's own line.
-	if ( type === 'timezone' ) {
+	if ( adapted.type === 'timezone' ) {
 		field.help = 'Select the timezone of the location.';
 	}
-	field.type = type;
+	field.type = adapted.type;
 	for ( const key of [ 'enum', 'min', 'max', 'default' ] ) {
 		if ( modelField[ key ] !== undefined ) {
 			field[ key ] = modelField[ key ];
 		}
 	}
 	if ( modelField.enum ) {
-		field.enum_key = modelField.name;
-		field.enum_labels = modelField.enum.map(
-			( value ) =>
-				formLabels.enums[ `${ modelField.name }.${ value }` ] || value
-		);
+		field.enum_key = adapted.enum_key;
+		field.enum_labels = adapted.enum_labels;
 	}
-	if ( type === 'number' ) {
+	if ( adapted.type === 'number' ) {
 		field.step = 'any';
 	}
 	// Curated heroes do not inherit the model's folds.
@@ -1369,8 +1419,7 @@ function emitFormPhp( op ) {
 				.map( ( f ) => {
 					const parts = Object.entries( f )
 						.filter(
-							( [ k ] ) =>
-								! [ 'label_key', 'enum_key' ].includes( k )
+							( [ k ] ) => ! GENERATOR_ONLY_KEYS.includes( k )
 						)
 						.map(
 							( [ k, v ] ) =>
@@ -1398,9 +1447,7 @@ ${ fieldsPhp }
 	const flatPhp = ( formSpec.flatFields || [] )
 		.map( ( f ) => {
 			const parts = Object.entries( f )
-				.filter(
-					( [ k ] ) => ! [ 'label_key', 'enum_key' ].includes( k )
-				)
+				.filter( ( [ k ] ) => ! GENERATOR_ONLY_KEYS.includes( k ) )
 				.map(
 					( [ k, v ] ) =>
 						`\t\t\t\t\t'${ k }' => ${ generatedFieldEntryPhp(
@@ -3905,8 +3952,9 @@ ${ lines.join( '\n' ) }
 // ---------------------------------------------------------------------------
 
 /**
- * Describe one accepted attribute, retaining catalogue keys for screen-locale
- * labels. Defaults here are shortcode defaults, never upstream API defaults.
+ * Describe one accepted attribute. Catalogue keys are generator-only inputs
+ * to the PHP label writer, never part of the emitted runtime metadata.
+ * Defaults here are shortcode defaults, never upstream API defaults.
  * @param op
  * @param att
  * @param info
@@ -3916,28 +3964,15 @@ function builderAttribute( op, att, info = {}, curated = {} ) {
 	const wireName = info.spec_field || info.name || att;
 	const model = op && formInputs( op ).find( ( f ) => f.key === wireName );
 	const schema = op ? formFieldSchema( op, { key: wireName } ) : {};
-	const labelKey = model?.label ? '' : model?.name || lowerCamelCase( att );
-	const choices = info.enum || curated.enum || model?.enum || schema.enum;
-	const types = {
-		string: 'text',
-		array: 'list',
-		object: 'json',
-		toggle: 'boolean',
-	};
-	let type =
-		curated.type || model?.kind || schema.type || info.type || 'text';
-	if ( [ 'tiles', 'select' ].includes( type ) || choices ) {
-		type = 'enum';
-	} else if ( type === 'number' && schema.type === 'integer' ) {
-		type = 'integer';
-	}
-	type = types[ type ] || type;
-	if ( [ 'timezone', 'tz' ].includes( wireName.toLowerCase() ) ) {
-		type = 'timezone';
-	}
-	if ( type === 'datetime' ) {
-		type = 'text';
-	}
+	const adapted = adaptField( model || {}, schema, {
+		surface: 'builder',
+		name: wireName,
+		kind: curated.type || model?.kind || schema.type || info.type || 'text',
+		choices: info.enum || curated.enum || model?.enum || schema.enum,
+		// Curated labels are a fallback only on the static builder. Forms
+		// apply their curated hero overrides after adapting the UI model.
+		fallbackLabel: curated.label || humanLabel( att ),
+	} );
 	const locationGroup = op
 		? uiForms[ op.operationId ].groups.findIndex( ( group ) =>
 				group.location?.fields.includes( wireName )
@@ -3951,20 +3986,9 @@ function builderAttribute( op, att, info = {}, curated = {} ) {
 			: null;
 	return {
 		att,
-		label:
-			formLabels.fields[ labelKey ] ||
-			model?.label ||
-			curated.label ||
-			humanLabel( att ),
-		label_key: labelKey,
-		type,
-		enum: choices || [],
-		enum_key: model?.name || labelKey,
-		enum_labels: ( choices || [] ).map(
-			( value ) =>
-				formLabels.enums[ `${ model?.name || labelKey }.${ value }` ] ||
-				String( value )
-		),
+		...adapted,
+		enum: adapted.enum || [],
+		enum_labels: adapted.enum_labels || [],
 		required: !! info.required,
 		default: info.default ?? '',
 		example:
@@ -4004,12 +4028,15 @@ function builderDescription( text ) {
 	return description.charAt( 0 ).toUpperCase() + description.slice( 1 );
 }
 
-/** Build every registered tag, with heroes winning any tag collision. */
+/** Build library readings, with heroes winning any tag collision. */
 function buildBuilderManifest() {
 	const domains = Object.fromEntries(
-		Object.entries( domainRegistry ).filter(
-			( [ key ] ) => ! key.startsWith( '_' )
-		)
+		Object.entries( domainRegistry )
+			.filter(
+				( [ key, info ] ) =>
+					! key.startsWith( '_' ) && info.library !== false
+			)
+			.map( ( [ key, info ] ) => [ key, { label: info.label } ] )
 	);
 	const entries = new Map();
 	for ( const [ suffix, cfg ] of Object.entries( heroConfig ) ) {
@@ -4109,25 +4136,30 @@ function buildBuilderManifest() {
 		} );
 	}
 	const domainOrder = Object.keys( domains );
+	// This selection and order also drive Catalog::grouped(). Keep utility
+	// shortcodes registered, but out of both reading pickers.
 	const readings = [ ...entries.values() ]
+		.filter(
+			( entry ) => domainRegistry[ entry.domain ]?.library !== false
+		)
 		.sort( ( a, b ) => {
 			const rank = ( domain ) =>
 				domainOrder.includes( domain )
 					? domainOrder.indexOf( domain )
 					: domainOrder.length;
-			return (
+			const groupOrder =
 				rank( a.domain ) - rank( b.domain ) ||
-				Number( b.hero ) - Number( a.hero ) ||
-				( a.hero
-					? 0
-					: a.title
-							.toLowerCase()
-							.localeCompare( b.title.toLowerCase(), 'en' ) )
-			);
+				Number( b.hero ) - Number( a.hero );
+			if ( groupOrder || a.hero ) {
+				return groupOrder;
+			}
+			// Match the library's former strcasecmp ordering, including punctuation.
+			const left = a.title.toLowerCase();
+			const right = b.title.toLowerCase();
+			return left < right ? -1 : Number( left > right );
 		} )
 		.map( ( entry, order ) => ( { ...entry, order } ) );
 	return {
-		version: 1,
 		domains,
 		entries: readings,
 	};
@@ -4147,26 +4179,28 @@ function builderValuePhp( value, indent = '\t\t' ) {
 		return phpLiteral( value );
 	}
 	const list = Array.isArray( value );
-	const rows = Object.entries( value ).map( ( [ key, item ] ) => {
-		let php = builderValuePhp( item, indent + '\t' );
-		if ( key === 'title' ) {
-			php = translatablePhp( item );
-		} else if (
-			key === 'label' &&
-			value.slug !== undefined &&
-			// These domain labels already have gettext entries in the hero catalogue.
-			[ 'Numerology', 'Biorhythm' ].includes( item )
-		) {
-			php = translatablePhp( item );
-		} else if ( key === 'label' && value.label_key !== undefined ) {
-			php = uiLabelPhp( 'fields', value.label_key, item );
-		} else if ( key === 'enum_labels' ) {
-			php = generatedFieldEntryPhp( key, item, value );
-		}
-		return `${ indent }\t${
-			list ? '' : phpLiteral( key ) + ' => '
-		}${ php },`;
-	} );
+	const rows = Object.entries( value )
+		.filter( ( [ key ] ) => ! GENERATOR_ONLY_KEYS.includes( key ) )
+		.map( ( [ key, item ] ) => {
+			let php = builderValuePhp( item, indent + '\t' );
+			if ( key === 'title' ) {
+				php = translatablePhp( item );
+			} else if (
+				key === 'label' &&
+				value.type === undefined &&
+				// These domain labels already have gettext entries in the hero catalogue.
+				[ 'Numerology', 'Biorhythm' ].includes( item )
+			) {
+				php = translatablePhp( item );
+			} else if ( key === 'label' && value.label_key !== undefined ) {
+				php = uiLabelPhp( 'fields', value.label_key, item );
+			} else if ( key === 'enum_labels' ) {
+				php = generatedFieldEntryPhp( key, item, value );
+			}
+			return `${ indent }\t${
+				list ? '' : phpLiteral( key ) + ' => '
+			}${ php },`;
+		} );
 	return rows.length
 		? `array(\n${ rows.join( '\n' ) }\n${ indent })`
 		: 'array()';
@@ -4494,7 +4528,9 @@ await fs.writeFile(
 );
 await fs.writeFile(
 	path.join( ROOT, 'builder', 'manifest.json' ),
-	JSON.stringify( builderManifest ) + '\n',
+	JSON.stringify( builderManifest, ( key, value ) =>
+		GENERATOR_ONLY_KEYS.includes( key ) ? undefined : value
+	) + '\n',
 	'utf8'
 );
 console.log(

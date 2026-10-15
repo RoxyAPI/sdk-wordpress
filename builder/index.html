@@ -10,6 +10,7 @@
 			href="https://roxyapi.com/docs/integrations/wordpress"
 		/>
 		<title>RoxyAPI</title>
+		<link rel="stylesheet" href="./assets/css/admin.css" />
 		<link rel="stylesheet" href="./assets/css/builder.css" />
 		<style>
 			:root {
@@ -169,8 +170,12 @@
 		</script>
 	</head>
 	<body>
-		<header><h1 data-roxyapi-builder-title></h1></header>
-		<main class="roxyapi-builder"><div id="roxyapi-builder"></div></main>
+		<header>
+			<h1 class="roxyapi-heading" data-roxyapi-builder-title></h1>
+		</header>
+		<main class="wrap roxyapi-builder">
+			<div id="roxyapi-builder"></div>
+		</main>
 		<footer>
 			<a
 				data-roxyapi-builder-documentation
@@ -232,6 +237,16 @@
 				} catch ( error ) {
 					// The shared builder owns the visible loading error too.
 				}
+				// The shared combobox reads the same settings object in wp-admin.
+				window.RoxyAPIGeocode = {
+					i18n: {
+						searching: 'Searching cities…',
+						noResults:
+							'No matching cities. Try a different spelling.',
+						selected: 'City selected.',
+						error: 'Search is unavailable. Enter coordinates manually.',
+					},
+				};
 				window.RoxyAPIBuilder = {
 					manifest,
 					standalone: true,

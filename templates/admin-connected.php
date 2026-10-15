@@ -34,6 +34,7 @@
  *   string $key_help
  *   bool   $key_disabled
  *   array  $samples
+ *   string $builder_url / $shortcodes_url
  *   string $option_group / $docs_url / $support_url / $dashboard_url
  *   string $privacy_policy_url
  *   string $active_tab
@@ -70,6 +71,7 @@ $form_title_input       = isset( $form_title_input ) ? (string) $form_title_inpu
 $form_submit_input      = isset( $form_submit_input ) ? (string) $form_submit_input : '';
 $cache_preset_input     = isset( $cache_preset_input ) ? (string) $cache_preset_input : '';
 $privacy_policy_url     = isset( $privacy_policy_url ) ? (string) $privacy_policy_url : '';
+$builder_url            = isset( $builder_url ) ? (string) $builder_url : '';
 $shortcodes_url         = isset( $shortcodes_url ) ? (string) $shortcodes_url : '';
 $samples                = isset( $samples ) && is_array( $samples ) ? $samples : array();
 $key_input              = isset( $key_input ) ? (string) $key_input : '';
@@ -177,29 +179,9 @@ if ( $active_tab !== 'connect' ) {
 		<section class="roxyapi-section" id="roxyapi-shortcode-section">
 			<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Quick start', 'roxyapi' ); ?></h2>
 			<p class="roxyapi-section-lede">
-				<?php echo esc_html__( 'Three working shortcodes. Copy. Paste. Publish.', 'roxyapi' ); ?>
+				<?php echo esc_html__( 'Answer a few questions and copy a finished shortcode. Paste it into any page and the reading is there.', 'roxyapi' ); ?>
 			</p>
-			<ul class="roxyapi-shortcode-list">
-				<?php foreach ( $samples as $sample ) : ?>
-					<li class="roxyapi-shortcode">
-						<code class="roxyapi-shortcode-code"><?php echo esc_html( $sample['code'] ); ?></code>
-						<button
-							type="button"
-							class="roxyapi-copy"
-							data-roxyapi-copy="<?php echo esc_attr( $sample['code'] ); ?>"
-							aria-label="<?php echo esc_attr( sprintf( /* translators: %s: shortcode label */ __( 'Copy %s shortcode', 'roxyapi' ), $sample['label'] ) ); ?>"
-						>
-							<?php echo esc_html__( 'Copy', 'roxyapi' ); ?>
-						</button>
-					</li>
-				<?php endforeach; ?>
-			</ul>
-			<?php if ( '' !== $shortcodes_url ) : ?>
-				<a class="roxyapi-cta roxyapi-cta--secondary" href="<?php echo esc_url( $shortcodes_url ); ?>">
-					<?php echo esc_html__( 'Browse all shortcodes', 'roxyapi' ); ?>
-					<span class="roxyapi-cta-arrow" aria-hidden="true">&rarr;</span>
-				</a>
-			<?php endif; ?>
+			<?php require __DIR__ . '/admin-quick-start.php'; ?>
 		</section>
 
 		<section class="roxyapi-section">
@@ -352,14 +334,13 @@ if ( $active_tab !== 'connect' ) {
 
 <?php elseif ( $active_tab === 'sell-readings' ) : ?>
 	<section class="roxyapi-tab-panel">
-		<p class="roxyapi-page-intro"><?php echo esc_html__( 'Many practitioners keep one reading free and charge for the deeper ones. Here is the simplest way to do it.', 'roxyapi' ); ?></p>
 		<div class="roxyapi-steps">
 			<section class="roxyapi-step-card">
 				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Give something free', 'roxyapi' ); ?></h2>
 				<p><?php echo esc_html__( 'A daily horoscope or a one card tarot draw brings visitors back every day. Place it on your home page.', 'roxyapi' ); ?></p>
 			</section>
 			<section class="roxyapi-step-card">
-				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Charge for the reading that matters', 'roxyapi' ); ?></h2>
+				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Charge for deeper readings', 'roxyapi' ); ?></h2>
 				<p><?php echo esc_html__( 'Birth charts, compatibility and yearly forecasts are worth paying for. Give each its own page.', 'roxyapi' ); ?></p>
 			</section>
 			<section class="roxyapi-step-card">

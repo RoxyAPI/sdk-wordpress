@@ -9,6 +9,7 @@
 [![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/roxyapi.svg)](https://wordpress.org/plugins/roxyapi/)
 [![WordPress Tested](https://img.shields.io/wordpress/plugin/tested/roxyapi.svg)](https://wordpress.org/plugins/roxyapi/)
 [![License](https://img.shields.io/badge/license-GPL--2.0--or--later-blue)](LICENSE)
+[![Shortcode builder](https://img.shields.io/badge/shortcode%20builder-try%20it%20online-2271b1)](https://roxyapi.github.io/sdk-wordpress/)
 
 ## Ship a complete Astrology, Vedic, or Human Design site this weekend. Not this quarter.
 
@@ -165,7 +166,7 @@ Every endpoint is cached with a per endpoint TTL so cached responses do not cost
 
 ## Create a reading without writing attributes
 
-RoxyAPI > Create a reading asks one question per screen (which reading, who fills in the details, the details themselves, how it looks) and writes the shortcode to copy. Every reading in the Shortcodes library has a Customize link that opens it there, and RoxyAPI > Help answers the questions site owners ask most.
+RoxyAPI > Create a reading ([try it online](https://roxyapi.github.io/sdk-wordpress/)) asks one question per screen (which reading, who fills in the details, the details themselves, how it looks) and writes the shortcode to copy. Every reading in the Shortcodes library has a Customize link that opens it there, and RoxyAPI > Help answers the questions site owners ask most.
 
 ## Settings and privacy
 

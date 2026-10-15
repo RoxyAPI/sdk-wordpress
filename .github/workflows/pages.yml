@@ -5,6 +5,7 @@ on:
         paths:
             - 'builder/**'
             - 'assets/js/builder.js'
+            - 'assets/css/admin.css'
             - 'assets/css/builder.css'
             - 'assets/js/geocode-combobox.js'
             - '.github/workflows/pages.yml'
@@ -29,7 +30,7 @@ jobs:
                   mkdir -p _site/assets/js _site/assets/css
                   cp -R builder/. _site/
                   cp assets/js/builder.js assets/js/geocode-combobox.js _site/assets/js/
-                  cp assets/css/builder.css _site/assets/css/
+                  cp assets/css/admin.css assets/css/builder.css _site/assets/css/
             - uses: actions/upload-pages-artifact@v4
               with:
                   path: _site

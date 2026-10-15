@@ -111,6 +111,11 @@ class Test_Builder_Page extends \WP_UnitTestCase {
 	public function test_help_is_the_last_admin_only_submenu(): void {
 		SettingsPage::add_menu();
 		$items = $GLOBALS['submenu'][ SettingsPage::PAGE_SLUG ];
+		$this->assertSame(
+			array( SettingsPage::PAGE_SLUG, BuilderPage::PAGE_SLUG, ShortcodesPage::PAGE_SLUG ),
+			array_slice( array_column( $items, 2 ), 0, 3 ),
+			'Create a reading sits right under Settings, ahead of the full library.'
+		);
 		$help  = end( $items );
 		$this->assertSame( 'Help', $help[0] );
 		$this->assertSame( 'manage_options', $help[1] );

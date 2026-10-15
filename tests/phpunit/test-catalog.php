@@ -53,28 +53,13 @@ class Test_Catalog extends \WP_UnitTestCase {
 		);
 	}
 
-	public function test_all_returns_hero_rows_plus_long_tail_endpoints(): void {
-		// Catalog composition = one row per hero shortcode (Manifest) +
-		// one row per non-hero endpoint (Endpoints). Heroes that have an
-		// operationId already in the hero-flag set still contribute one
-		// hero row, NOT a long-tail row, because Endpoints filters those
-		// out via the `hero` flag and Catalog adds them via Manifest. Shape
-		// the assertion against the live counts so the test stays valid as
-		// the spec evolves.
-		$hero_rows           = count( \RoxyAPI\Generated\Heroes\Manifest::all() );
-		$non_hero_endpoints  = count(
-			array_filter(
-				\RoxyAPI\Generated\Endpoints::all(),
-				static function ( $ep ) {
-					return empty( $ep['hero'] );
-				}
-			)
-		);
-		$entries = Catalog::all();
+	public function test_all_returns_manifest_readings_in_manifest_order(): void {
+		// The reading set itself is pinned against the registries in
+		// Test_Builder_Manifest::test_builder_and_library_offer_the_same_readings.
 		$this->assertSame(
-			$hero_rows + $non_hero_endpoints,
-			count( $entries ),
-			'Catalog rows must equal Manifest hero count plus non-hero endpoint count.'
+			array_column( \RoxyAPI\Generated\Builder\Manifest::all()['entries'], 'tag' ),
+			array_column( Catalog::all(), 'tag' ),
+			'Catalog must project every manifest reading in its canonical order.'
 		);
 	}
 

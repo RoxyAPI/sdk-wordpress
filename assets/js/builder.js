@@ -11,14 +11,16 @@
 	}
 	const { __, sprintf } = window.wp.i18n;
 	const strings = {
-		title: __( 'Create a reading', 'roxyapi' ),
+		titleSetup: __( 'Create a reading.', 'roxyapi' ),
+		titlePunch: __( 'No code needed.', 'roxyapi' ),
 		mostLoved: __( 'Most loved', 'roxyapi' ),
 		intro: __(
-			'Answer a few questions and we write the shortcode for you. Then paste it into any page.',
+			'Answer a few questions and copy a finished shortcode.',
 			'roxyapi'
 		),
 		pick: __( 'Pick a reading', 'roxyapi' ),
 		find: __( 'Find a reading', 'roxyapi' ),
+		noMatches: __( 'No matching readings.', 'roxyapi' ),
 		searchHint: __( 'Try tarot, horoscope or birth chart', 'roxyapi' ),
 		who: __( 'Who fills in the details?', 'roxyapi' ),
 		details: __( 'Set the details', 'roxyapi' ),
@@ -72,22 +74,16 @@
 			'The reading library could not load. Please reload the page.',
 			'roxyapi'
 		),
-		searching: __( 'Searching cities…', 'roxyapi' ),
-		noResults: __(
-			'No matching cities. Try a different spelling.',
-			'roxyapi'
-		),
-		selected: __( 'City selected.', 'roxyapi' ),
-		error: __(
-			'Search is unavailable. Enter coordinates manually.',
-			'roxyapi'
-		),
 	};
 	const { manifest } = settings;
 	document
 		.querySelectorAll( '[data-roxyapi-builder-title]' )
 		.forEach( ( node ) => {
-			node.textContent = strings.title;
+			node.replaceChildren(
+				element( 'span', strings.titleSetup, 'roxyapi-setup' ),
+				document.createTextNode( ' ' ),
+				element( 'span', strings.titlePunch, 'roxyapi-punchline' )
+			);
 		} );
 	document
 		.querySelectorAll( '[data-roxyapi-builder-documentation]' )
@@ -95,8 +91,7 @@
 			node.textContent = strings.documentation;
 		} );
 	if ( settings.standalone ) {
-		document.title = strings.title + ' | RoxyAPI';
-		window.RoxyAPIGeocode = { i18n: strings };
+		document.title = strings.titleSetup + ' ' + strings.titlePunch;
 	}
 	if ( ! manifest ) {
 		root.textContent = strings.loadFailed;
@@ -144,12 +139,16 @@
 		);
 		root.appendChild( zones );
 	}
-	root.appendChild( element( 'p', strings.intro ) );
+	root.appendChild( element( 'p', strings.intro, 'roxyapi-page-intro' ) );
 	const progress = element( 'p', '', 'roxyapi-builder-progress' );
 	root.appendChild( progress );
 	const steps = {};
 	[ 'pick', 'who', 'details', 'display', 'finish' ].forEach( ( name ) => {
-		const panel = element( 'section', '', 'card roxyapi-builder-step' );
+		const panel = element(
+			'section',
+			'',
+			'roxyapi-step-card roxyapi-builder-step'
+		);
 		panel.hidden = true;
 		const heading = element( 'h2', strings[ name ] );
 		heading.id = 'roxyapi-builder-step-' + name;
@@ -166,8 +165,13 @@
 	search.placeholder = strings.searchHint;
 	search.id = searchLabel.htmlFor;
 	steps.pick.append( searchLabel, search );
-	const groups = element( 'div' );
-	steps.pick.appendChild( groups );
+	const results = element( 'div', '', 'roxyapi-builder-grid' );
+	results.hidden = true;
+	const noMatches = element( 'p', strings.noMatches );
+	noMatches.setAttribute( 'role', 'status' );
+	noMatches.hidden = true;
+	const groups = element( 'div', '', 'roxyapi-builder-groups' );
+	steps.pick.append( results, noMatches, groups );
 
 	const modeChoices = element( 'fieldset', '', 'roxyapi-builder-choices' );
 	modeChoices.setAttribute(
@@ -287,8 +291,11 @@
 		if ( ! items.length ) {
 			return;
 		}
-		const group = element( 'section', '', 'roxyapi-builder-group' );
-		group.appendChild( element( 'h3', title ) );
+		const group = element( 'details', '', 'roxyapi-builder-group' );
+		group.name = 'roxyapi-builder-groups';
+		group.appendChild(
+			element( 'summary', title + ' (' + items.length + ')' )
+		);
 		const grid = element( 'div', '', 'roxyapi-builder-grid' );
 		items.forEach( ( entry ) => {
 			const description = entry.description.replace(
@@ -313,10 +320,11 @@
 			label.dataset.search = (
 				entry.title +
 				' ' +
-				description +
-				' ' +
-				manifest.domains[ entry.domain ].label
+				description
 			).toLowerCase();
+			readings.get( entry.tag ).choice = label;
+			readings.get( entry.tag ).grid = grid;
+			readings.get( entry.tag ).group = group;
 			grid.appendChild( label );
 		} );
 		group.appendChild( grid );
@@ -324,16 +332,19 @@
 	} );
 	search.addEventListener( 'input', () => {
 		const query = search.value.trim().toLowerCase();
-		groups.querySelectorAll( 'section' ).forEach( ( group ) => {
-			let count = 0;
-			group.querySelectorAll( '[data-search]' ).forEach( ( card ) => {
-				card.hidden = ! card.dataset.search.includes( query );
-				if ( ! card.hidden ) {
-					count++;
-				}
-			} );
-			group.hidden = count === 0;
+		let count = 0;
+		readings.forEach( ( { choice, grid } ) => {
+			const matches = choice.dataset.search.includes( query );
+			if ( query && matches ) {
+				results.appendChild( choice );
+				count++;
+			} else {
+				grid.appendChild( choice );
+			}
 		} );
+		results.hidden = ! query;
+		groups.hidden = !! query;
+		noMatches.hidden = ! query || count > 0;
 	} );
 
 	const writtenLabel = element( 'label', strings.written );
@@ -502,9 +513,6 @@
 						input.max = String( attribute.max );
 					}
 				}
-				if ( input.type === 'time' ) {
-					input.step = '1';
-				}
 				if ( attribute.example !== null && attribute.type !== 'json' ) {
 					input.placeholder = Array.isArray( attribute.example )
 						? attribute.example.join( ', ' )
@@ -526,13 +534,24 @@
 			);
 			error.id = input.id + '-error';
 			error.hidden = true;
-			input.setAttribute( 'aria-describedby', error.id );
-			wrapper.append( label, input, error );
+			// A native picker draws the browser's own date order, so the
+			// chosen value is restated in words beside it.
+			const said = [ 'date', 'time' ].includes( input.type )
+				? element( 'p', '', 'description' )
+				: null;
+			if ( said ) {
+				said.id = input.id + '-said';
+			}
+			input.setAttribute(
+				'aria-describedby',
+				said ? said.id + ' ' + error.id : error.id
+			);
+			wrapper.append( label, input, ...( said ? [ said ] : [] ), error );
 			( attribute.required
 				? reading.required
 				: reading.optional
 			).appendChild( wrapper );
-			reading.controls.push( { input, error } );
+			reading.controls.push( { input, error, said } );
 			input.addEventListener( 'input', updateNavigation );
 			input.addEventListener( 'change', updateNavigation );
 		} );
@@ -543,6 +562,8 @@
 	function selectReading( tag ) {
 		attemptedDetails = false;
 		selected = readings.get( tag );
+		selected.choice.querySelector( 'input' ).checked = true;
+		selected.group.open = true;
 		initializeControls( selected );
 		readings.forEach( ( reading ) => {
 			reading.panel.hidden = reading !== selected;
@@ -595,7 +616,11 @@
 
 	function updateNavigation() {
 		if ( selected ) {
-			selected.controls.forEach( ( { input, error } ) => {
+			selected.controls.forEach( ( { input, error, said } ) => {
+				// Writing only on change keeps the details observer from looping.
+				if ( said && said.textContent !== spelled( input ) ) {
+					said.textContent = spelled( input );
+				}
 				const empty = input.required && ! input.value.trim();
 				error.hidden = ! attemptedDetails || ! empty;
 				input.setAttribute(
@@ -630,14 +655,40 @@
 		switcher.textContent = mode === 'set' ? strings.visitor : strings.set;
 	}
 
+	// Same contract as Catalog::quote_attribute(), pinned by the shared fixture.
+	// WordPress strips C escapes but leaves HTML entities as literal text.
 	function quote( value ) {
-		return String( value )
-			.replace( /&/g, '&amp;' )
-			.replace( /"/g, '&quot;' )
-			.replace( /'/g, '&#039;' )
-			.replace( /\[/g, '&#91;' )
-			.replace( /\]/g, '&#93;' )
-			.replace( /\\/g, '\\\\' );
+		return (
+			'"' +
+			String( value )
+				.replace( /&/g, '&amp;' )
+				.replace( /"/g, '&quot;' )
+				.replace( /'/g, '&#039;' )
+				.replace( /\[/g, '&#91;' )
+				.replace( /\]/g, '&#93;' )
+				.replace( /</g, '&lt;' )
+				.replace( />/g, '&gt;' )
+				.replace( /\\/g, '\\\\' ) +
+			'"'
+		);
+	}
+
+	function spelled( input ) {
+		if ( ! input.value || ! input.validity.valid ) {
+			return '';
+		}
+		const [ a, b, c ] = input.value.split( /[-:]/ ).map( Number );
+		const locale = document.documentElement.lang || undefined;
+		return input.type === 'date'
+			? new Date( a, b - 1, c ).toLocaleDateString( locale, {
+					day: 'numeric',
+					month: 'long',
+					year: 'numeric',
+			  } )
+			: new Date( 2000, 0, 1, a, b ).toLocaleTimeString( locale, {
+					hour: 'numeric',
+					minute: '2-digit',
+			  } );
 	}
 
 	function shortcode() {
@@ -646,7 +697,7 @@
 			selected.controls.forEach( ( { input } ) => {
 				if ( input.value.trim() ) {
 					attributes.push(
-						input.name + '="' + quote( input.value.trim() ) + '"'
+						input.name + '=' + quote( input.value.trim() )
 					);
 				}
 			} );
@@ -668,6 +719,11 @@
 			panel.hidden = key !== step;
 		} );
 		status.textContent = '';
+		if ( step === 'pick' && selected ) {
+			search.value = '';
+			search.dispatchEvent( new window.Event( 'input' ) );
+			selected.group.open = true;
+		}
 		if ( step === 'finish' ) {
 			output.value = shortcode();
 		}
@@ -684,9 +740,6 @@
 	} );
 	if ( readings.has( settings.reading ) ) {
 		selectReading( settings.reading );
-		groups.querySelectorAll( 'input' ).forEach( ( input ) => {
-			input.checked = input.value === settings.reading;
-		} );
 		showStep( 'who' );
 	} else {
 		showStep( 'pick' );

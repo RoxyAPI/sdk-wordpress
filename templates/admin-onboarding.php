@@ -3,12 +3,13 @@
  * Template: 3-step setup, the Connect tab body until a key is saved.
  *
  * Embedded into `admin-connected.php`, which supplies the page heading and the
- * tab bar, so this partial starts at the page intro. The Branding, Display,
- * Privacy and Advanced tabs render alongside it.
+ * tab bar, so this partial starts at the page intro. The other tabs render
+ * alongside it.
  *
  * Variables in scope (extracted from the render call):
  *   string $signup_url     Pricing page link with onboarding UTM params.
  *   string $playground_url Free Playground link (call every endpoint live, no signup).
+ *   string $builder_url    Admin link to Create a reading.
  *   string $shortcodes_url Admin link to the full Shortcodes library page.
  *   array  $samples        Quick-start shortcode samples (label + code).
  *   string $key_input      Pre-escaped HTML for the API key input control.
@@ -36,6 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $signup_url     = isset( $signup_url ) ? (string) $signup_url : '';
 $playground_url = isset( $playground_url ) ? (string) $playground_url : '';
 $samples        = isset( $samples ) && is_array( $samples ) ? $samples : array();
+$builder_url    = isset( $builder_url ) ? (string) $builder_url : '';
 $shortcodes_url = isset( $shortcodes_url ) ? (string) $shortcodes_url : '';
 $key_input      = isset( $key_input ) ? (string) $key_input : '';
 $key_help       = isset( $key_help ) ? (string) $key_help : '';
@@ -60,32 +62,12 @@ $option_group   = isset( $option_group ) ? (string) $option_group : 'roxyapi';
 		<section class="roxyapi-step-card" id="roxyapi-shortcode-section" role="listitem">
 			<h2 class="roxyapi-step-title">
 				<span class="roxyapi-setup"><?php echo esc_html__( 'Step 1.', 'roxyapi' ); ?></span>
-				<span class="roxyapi-punchline"><?php echo esc_html__( 'Drop a shortcode on a page.', 'roxyapi' ); ?></span>
+				<span class="roxyapi-punchline"><?php echo esc_html__( 'Create your first reading.', 'roxyapi' ); ?></span>
 			</h2>
 			<p class="roxyapi-step-body">
-				<?php echo esc_html__( 'Copy a shortcode below, paste it into any post, page, or widget, and open the page: the reading is already there, rendered server side with no JavaScript required. No key needed to start.', 'roxyapi' ); ?>
+				<?php echo esc_html__( 'Answer a few questions and copy a finished shortcode. Paste it into any page and the reading is there, no key needed to start.', 'roxyapi' ); ?>
 			</p>
-			<ul class="roxyapi-shortcode-list">
-				<?php foreach ( $samples as $sample ) : ?>
-					<li class="roxyapi-shortcode">
-						<code class="roxyapi-shortcode-code"><?php echo esc_html( $sample['code'] ); ?></code>
-						<button
-							type="button"
-							class="roxyapi-copy"
-							data-roxyapi-copy="<?php echo esc_attr( $sample['code'] ); ?>"
-							aria-label="<?php echo esc_attr( sprintf( /* translators: %s: shortcode label */ __( 'Copy %s shortcode', 'roxyapi' ), $sample['label'] ) ); ?>"
-						>
-							<?php echo esc_html__( 'Copy', 'roxyapi' ); ?>
-						</button>
-					</li>
-				<?php endforeach; ?>
-			</ul>
-			<?php if ( '' !== $shortcodes_url ) : ?>
-				<a class="roxyapi-cta roxyapi-cta--secondary" href="<?php echo esc_url( $shortcodes_url ); ?>">
-					<?php echo esc_html__( 'Browse all shortcodes', 'roxyapi' ); ?>
-					<span class="roxyapi-cta-arrow" aria-hidden="true">&rarr;</span>
-				</a>
-			<?php endif; ?>
+			<?php require __DIR__ . '/admin-quick-start.php'; ?>
 		</section>
 		<section class="roxyapi-step-card" role="listitem">
 			<h2 class="roxyapi-step-title">

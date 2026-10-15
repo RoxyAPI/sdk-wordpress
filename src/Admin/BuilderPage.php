@@ -26,7 +26,7 @@ class BuilderPage {
 			return;
 		}
 
-		echo '<div class="wrap roxyapi-builder"><h1 data-roxyapi-builder-title></h1><div id="roxyapi-builder"></div></div>';
+		echo '<div class="wrap roxyapi-builder"><h1 class="roxyapi-heading" data-roxyapi-builder-title></h1><div id="roxyapi-builder"></div></div>';
 	}
 
 	/**

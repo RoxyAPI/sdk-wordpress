@@ -13,11 +13,8 @@
 	font-weight: 600;
 }
 
-.roxyapi-builder-step.card {
-	max-width: none;
+.roxyapi-builder-step {
 	margin-top: 0;
-	padding: 1.5rem;
-	border-top: 4px solid #2271b1;
 }
 
 .roxyapi-builder-step h2 {
@@ -59,8 +56,21 @@
 	font-size: 1rem;
 }
 
-.roxyapi-builder-group {
-	margin-top: 2rem;
+.roxyapi-builder-groups {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	column-gap: 1rem;
+	margin-top: 1rem;
+}
+
+.roxyapi-builder .roxyapi-builder-group {
+	min-width: 0;
+	margin-top: 0;
+	border-bottom: 1px solid #c3c4c7;
+}
+
+.roxyapi-builder-group[open] {
+	grid-column: 1 / -1;
 }
 
 .roxyapi-builder-grid,
@@ -68,6 +78,10 @@
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 1rem;
+}
+
+.roxyapi-builder-step > .roxyapi-builder-grid {
+	margin-top: 1rem;
 }
 
 .roxyapi-builder-choice {
@@ -121,6 +135,23 @@
 	margin-bottom: 1rem;
 	cursor: pointer;
 	font-weight: 600;
+}
+
+.roxyapi-builder-group > summary {
+	box-sizing: border-box;
+	min-height: 44px;
+	margin-bottom: 0;
+	padding: 10px 0;
+}
+
+.roxyapi-builder-group > .roxyapi-builder-grid {
+	padding: 4px;
+	margin-bottom: 1rem;
+}
+
+.roxyapi-builder-group > summary:focus-visible {
+	outline: 2px solid #2271b1;
+	outline-offset: 2px;
 }
 
 .roxyapi-builder textarea {
@@ -178,10 +209,31 @@
 
 @media (max-width: 600px) {
 
-	.roxyapi-builder-step.card {
-		padding: 1rem;
+	[data-roxyapi-builder-title] {
+		margin: 0.5rem 0;
 	}
 
+	.roxyapi-builder .roxyapi-page-intro {
+		margin: 0.5rem 0;
+	}
+
+	.roxyapi-builder-progress {
+		margin-top: 0.5rem;
+	}
+
+	.roxyapi-builder .roxyapi-builder-step {
+		padding: 0.75rem;
+	}
+
+	.roxyapi-builder-step h2 {
+		margin-bottom: 0.5rem;
+	}
+
+	.roxyapi-builder-navigation {
+		margin: 0.5rem 0;
+	}
+
+	.roxyapi-builder-groups,
 	.roxyapi-builder-grid,
 	.roxyapi-builder-choices {
 		grid-template-columns: minmax(0, 1fr);
