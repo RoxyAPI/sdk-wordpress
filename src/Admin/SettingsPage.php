@@ -164,6 +164,22 @@ class SettingsPage {
 		);
 	}
 
+	/**
+	 * Settings tabs in display order, shared with the settings template.
+	 *
+	 * @return array<string, string> Tab labels keyed by slug.
+	 */
+	public static function tabs(): array {
+		return array(
+			'connect'       => __( 'Connect', 'roxyapi' ),
+			'branding'      => __( 'Branding', 'roxyapi' ),
+			'display'       => __( 'Display', 'roxyapi' ),
+			'sell-readings' => __( 'Sell readings', 'roxyapi' ),
+			'privacy'       => __( 'Privacy', 'roxyapi' ),
+			'advanced'      => __( 'Advanced', 'roxyapi' ),
+		);
+	}
+
 	public static function render(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
@@ -189,7 +205,7 @@ class SettingsPage {
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only tab selector on a manage_options page.
 		$active_tab = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : 'connect';
-		if ( ! in_array( $active_tab, array( 'connect', 'branding', 'display', 'sell-readings', 'privacy', 'advanced' ), true ) ) {
+		if ( ! isset( self::tabs()[ $active_tab ] ) ) {
 			$active_tab = 'connect';
 		}
 

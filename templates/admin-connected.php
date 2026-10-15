@@ -83,14 +83,7 @@ $active_tab             = isset( $active_tab ) ? (string) $active_tab : 'connect
 $is_configured          = ! empty( $is_configured );
 $onboarding             = isset( $onboarding ) ? (string) $onboarding : '';
 
-$roxy_tabs = array(
-	'connect'       => __( 'Connect', 'roxyapi' ),
-	'branding'      => __( 'Branding', 'roxyapi' ),
-	'display'       => __( 'Display', 'roxyapi' ),
-	'sell-readings' => __( 'Sell readings', 'roxyapi' ),
-	'privacy'       => __( 'Privacy', 'roxyapi' ),
-	'advanced'      => __( 'Advanced', 'roxyapi' ),
-);
+$roxy_tabs = \RoxyAPI\Admin\SettingsPage::tabs();
 if ( ! isset( $roxy_tabs[ $active_tab ] ) ) {
 	$active_tab = 'connect';
 }

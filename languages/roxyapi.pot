@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-15T15:15:52+00:00\n"
+"POT-Creation-Date: 2026-10-15T15:30:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: roxyapi\n"
@@ -35,7 +35,7 @@ msgstr ""
 #: src/Admin/SettingsPage.php:79
 #: src/Admin/SettingsPage.php:80
 #: src/Blocks/Category.php:33
-#: templates/admin-connected.php:125
+#: templates/admin-connected.php:118
 msgid "RoxyAPI"
 msgstr ""
 
@@ -91,7 +91,7 @@ msgid "Documentation"
 msgstr ""
 
 #: src/Admin/ActionLinks.php:69
-#: templates/admin-connected.php:442
+#: templates/admin-connected.php:435
 msgid "Support"
 msgstr ""
 
@@ -133,7 +133,7 @@ msgstr ""
 #: src/Admin/Assets.php:64
 #: src/Admin/DashboardWidget.php:132
 #: src/Admin/ShortcodesPage.php:116
-#: templates/admin-connected.php:199
+#: templates/admin-connected.php:192
 #: templates/admin-onboarding.php:78
 #: templates/admin-shortcodes.php:143
 msgid "Copy"
@@ -176,7 +176,7 @@ msgid "Set the details"
 msgstr ""
 
 #: src/Admin/BuilderPage.php:101
-#: templates/admin-connected.php:89
+#: src/Admin/SettingsPage.php:176
 msgid "Display"
 msgstr ""
 
@@ -315,7 +315,7 @@ msgstr ""
 #. translators: %s: shortcode label
 #. translators: %s: shortcode title
 #: src/Admin/DashboardWidget.php:130
-#: templates/admin-connected.php:197
+#: templates/admin-connected.php:190
 #: templates/admin-onboarding.php:76
 #: templates/admin-shortcodes.php:141
 #, php-format
@@ -900,7 +900,30 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:185
+#: src/Admin/SettingsPage.php:174
+msgid "Connect"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:175
+#: templates/admin-help.php:51
+msgid "Branding"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:177
+#: templates/admin-help.php:34
+msgid "Sell readings"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:178
+msgid "Privacy"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:179
+#: src/Support/FormRenderer.php:194
+msgid "Advanced"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:201
 msgid "Settings saved."
 msgstr ""
 
@@ -11866,11 +11889,6 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-#: src/Support/FormRenderer.php:194
-#: templates/admin-connected.php:92
-msgid "Advanced"
-msgstr ""
-
 #: src/Support/FormRenderer.php:328
 msgid "Find by city"
 msgstr ""
@@ -11917,255 +11935,237 @@ msgstr ""
 msgid "Did you mean: %1$s%2$s"
 msgstr ""
 
-#: templates/admin-connected.php:87
-msgid "Connect"
-msgstr ""
-
-#: templates/admin-connected.php:88
-#: templates/admin-help.php:51
-msgid "Branding"
-msgstr ""
-
-#: templates/admin-connected.php:90
-#: templates/admin-help.php:34
-msgid "Sell readings"
-msgstr ""
-
-#: templates/admin-connected.php:91
-msgid "Privacy"
-msgstr ""
-
-#: templates/admin-connected.php:128
+#: templates/admin-connected.php:121
 msgid "RoxyAPI is"
 msgstr ""
 
-#: templates/admin-connected.php:129
+#: templates/admin-connected.php:122
 msgid "connected."
 msgstr ""
 
-#: templates/admin-connected.php:131
+#: templates/admin-connected.php:124
 msgid "Your first reading in"
 msgstr ""
 
-#: templates/admin-connected.php:132
+#: templates/admin-connected.php:125
 msgid "30 seconds."
 msgstr ""
 
-#: templates/admin-connected.php:142
+#: templates/admin-connected.php:135
 msgid "RoxyAPI settings"
 msgstr ""
 
-#: templates/admin-connected.php:179
+#: templates/admin-connected.php:172
 msgid "Connected to RoxyAPI."
 msgstr ""
 
-#: templates/admin-connected.php:180
+#: templates/admin-connected.php:173
 msgid "Drop a shortcode on any page to render a reading."
 msgstr ""
 
-#: templates/admin-connected.php:185
+#: templates/admin-connected.php:178
 msgid "Quick start"
 msgstr ""
 
-#: templates/admin-connected.php:187
+#: templates/admin-connected.php:180
 msgid "Three working shortcodes. Copy. Paste. Publish."
 msgstr ""
 
-#: templates/admin-connected.php:206
+#: templates/admin-connected.php:199
 #: templates/admin-onboarding.php:85
 msgid "Browse all shortcodes"
 msgstr ""
 
-#: templates/admin-connected.php:213
+#: templates/admin-connected.php:206
 msgid "Manage your key"
 msgstr ""
 
-#: templates/admin-connected.php:215
+#: templates/admin-connected.php:208
 msgid "Replace key"
 msgstr ""
 
-#: templates/admin-connected.php:221
+#: templates/admin-connected.php:214
 #: templates/admin-onboarding.php:128
 msgid "Save key"
 msgstr ""
 
-#: templates/admin-connected.php:224
+#: templates/admin-connected.php:217
 #: templates/admin-onboarding.php:131
 msgid "Test Connection"
 msgstr ""
 
-#: templates/admin-connected.php:241
+#: templates/admin-connected.php:234
 msgid "Palette"
 msgstr ""
 
-#: templates/admin-connected.php:243
+#: templates/admin-connected.php:236
 msgid "Colours for every reading on your site. Pick a palette, or choose Custom and set the seven colours yourself. Readings use your theme font either way."
 msgstr ""
 
-#: templates/admin-connected.php:248
+#: templates/admin-connected.php:241
 msgid "Set colours yourself"
 msgstr ""
 
-#: templates/admin-connected.php:250
+#: templates/admin-connected.php:243
 msgid "Two values per colour, one for light readings and one for dark, so a brand colour stays readable in both. Leave a field blank to keep the default."
 msgstr ""
 
-#: templates/admin-connected.php:257
+#: templates/admin-connected.php:250
 msgid "Theme"
 msgstr ""
 
-#: templates/admin-connected.php:259
+#: templates/admin-connected.php:252
 msgid "Light, dark, or auto for chart readings. Auto follows the visitor device setting."
 msgstr ""
 
-#: templates/admin-connected.php:267
+#: templates/admin-connected.php:260
 msgid "Reading language"
 msgstr ""
 
-#: templates/admin-connected.php:269
+#: templates/admin-connected.php:262
 msgid "Language for visitor-facing reading text. Default follows the site language."
 msgstr ""
 
-#: templates/admin-connected.php:278
+#: templates/admin-connected.php:271
 msgid "Save branding"
 msgstr ""
 
-#: templates/admin-connected.php:291
+#: templates/admin-connected.php:284
 msgid "Written readings"
 msgstr ""
 
-#: templates/admin-connected.php:296
+#: templates/admin-connected.php:289
 msgid "Turn this on to show the chart on its own, without the written report. It applies to every reading on the site. To set it for one placement instead, add hide_readings=\"1\" or hide_readings=\"0\" to that shortcode."
 msgstr ""
 
-#: templates/admin-connected.php:301
+#: templates/admin-connected.php:294
 msgid "Hide sections"
 msgstr ""
 
-#: templates/admin-connected.php:303
+#: templates/admin-connected.php:296
 msgid "Take whole sections off every reading. Type one or more section names separated by commas, and spaces around them are fine. The common one is patterns, which removes the chart patterns block from a natal chart. These are internal names and stay the same whatever language your site is in, so the title printed on the page will not work. Click the field to see every name this version supports. Leave it blank to show everything."
 msgstr ""
 
-#: templates/admin-connected.php:311
+#: templates/admin-connected.php:304
 msgid "Show source"
 msgstr ""
 
-#: templates/admin-connected.php:316
+#: templates/admin-connected.php:309
 msgid "A small line at the bottom of each card showing where the data comes from. Off by default."
 msgstr ""
 
-#: templates/admin-connected.php:321
+#: templates/admin-connected.php:314
 msgid "Disclaimer"
 msgstr ""
 
-#: templates/admin-connected.php:326
+#: templates/admin-connected.php:319
 msgid "Append a disclaimer to every reading. Useful for jurisdictions that require an \"entertainment only\" line. Empty text falls back to the localised default."
 msgstr ""
 
-#: templates/admin-connected.php:334
+#: templates/admin-connected.php:327
 msgid "Visitor form copy"
 msgstr ""
 
-#: templates/admin-connected.php:336
+#: templates/admin-connected.php:329
 msgid "Override the title and submit button shown above visitor forms. Leave blank to use the localised default."
 msgstr ""
 
-#: templates/admin-connected.php:340
+#: templates/admin-connected.php:333
 msgid "Form title"
 msgstr ""
 
-#: templates/admin-connected.php:346
+#: templates/admin-connected.php:339
 msgid "Submit button text"
 msgstr ""
 
-#: templates/admin-connected.php:354
+#: templates/admin-connected.php:347
 msgid "Save display"
 msgstr ""
 
-#: templates/admin-connected.php:362
+#: templates/admin-connected.php:355
 msgid "Many practitioners keep one reading free and charge for the deeper ones. Here is the simplest way to do it."
 msgstr ""
 
-#: templates/admin-connected.php:365
+#: templates/admin-connected.php:358
 msgid "Give something free"
 msgstr ""
 
-#: templates/admin-connected.php:366
+#: templates/admin-connected.php:359
 msgid "A daily horoscope or a one card tarot draw brings visitors back every day. Place it on your home page."
 msgstr ""
 
-#: templates/admin-connected.php:369
+#: templates/admin-connected.php:362
 msgid "Charge for the reading that matters"
 msgstr ""
 
-#: templates/admin-connected.php:370
+#: templates/admin-connected.php:363
 msgid "Birth charts, compatibility and yearly forecasts are worth paying for. Give each its own page."
 msgstr ""
 
-#: templates/admin-connected.php:373
+#: templates/admin-connected.php:366
 msgid "Ask for payment before the page opens"
 msgstr ""
 
-#: templates/admin-connected.php:374
+#: templates/admin-connected.php:367
 msgid "Install a membership or shop plugin you trust and limit that page to paying members. The reading shows only to them."
 msgstr ""
 
-#: templates/admin-connected.php:378
+#: templates/admin-connected.php:371
 #: templates/admin-help.php:35
 msgid "Read the full guide"
 msgstr ""
 
-#: templates/admin-connected.php:379
+#: templates/admin-connected.php:372
 msgid "See how it works on WordPress"
 msgstr ""
 
-#: templates/admin-connected.php:386
+#: templates/admin-connected.php:379
 msgid "Visitor privacy"
 msgstr ""
 
-#: templates/admin-connected.php:388
+#: templates/admin-connected.php:381
 msgid "Visitor forms collect birth date, time, and location to compute readings. Visitors must confirm consent before each submission. Edit the consent text below; leave blank for the localised default."
 msgstr ""
 
-#: templates/admin-connected.php:394
+#: templates/admin-connected.php:387
 msgid "Consent label shown next to the form checkbox"
 msgstr ""
 
 #. translators: %s: link to WordPress Privacy Policy editor
-#: templates/admin-connected.php:404
+#: templates/admin-connected.php:397
 #, php-format
 msgid "The plugin auto-injects suggested privacy text into the WordPress Privacy Policy editor. Review or accept it at %s."
 msgstr ""
 
-#: templates/admin-connected.php:405
+#: templates/admin-connected.php:398
 msgid "Settings &rarr; Privacy"
 msgstr ""
 
-#: templates/admin-connected.php:411
+#: templates/admin-connected.php:404
 msgid "Save privacy"
 msgstr ""
 
-#: templates/admin-connected.php:421
+#: templates/admin-connected.php:414
 msgid "Cache"
 msgstr ""
 
-#: templates/admin-connected.php:423
+#: templates/admin-connected.php:416
 msgid "How long RoxyAPI caches each reading on this site. Lower = fresher. Higher = saves API quota."
 msgstr ""
 
-#: templates/admin-connected.php:432
+#: templates/admin-connected.php:425
 msgid "Save advanced"
 msgstr ""
 
-#: templates/admin-connected.php:440
+#: templates/admin-connected.php:433
 msgid "RoxyAPI resources"
 msgstr ""
 
-#: templates/admin-connected.php:441
+#: templates/admin-connected.php:434
 msgid "Docs"
 msgstr ""
 
-#: templates/admin-connected.php:443
+#: templates/admin-connected.php:436
 msgid "Open dashboard at roxyapi.com"
 msgstr ""
 

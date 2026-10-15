@@ -163,13 +163,18 @@ Every endpoint is cached with a per endpoint TTL so cached responses do not cost
 -   **Interface translation, not only the readings.** Text domain `roxyapi`. Ships built in catalogues for German, Spanish, Hindi, Turkish, Portuguese, French and Russian, covering the settings screens, the birth details form, and every message a visitor reads.
 -   **WCAG 2.1 AA.** Proper heading order, labeled inputs, keyboard navigation, color contrast.
 
+## Create a reading without writing attributes
+
+RoxyAPI > Create a reading asks one question per screen (which reading, who fills in the details, the details themselves, how it looks) and writes the shortcode to copy. Every reading in the Shortcodes library has a Customize link that opens it there, and RoxyAPI > Help answers the questions site owners ask most.
+
 ## Settings and privacy
 
-The RoxyAPI admin page is split into five tabs:
+The RoxyAPI admin page is split into six tabs:
 
 -   **Connect.** Paste the API key, test the connection.
 -   **Branding.** Four ready-made palettes, or seven colors set by hand with a light and a dark value each, plus a light, dark, or auto theme and the reading language.
 -   **Display.** Written readings on or off, hidden sections, the source credit, an optional disclaimer line, and the visitor form copy.
+-   **Sell readings.** How to keep one reading free and put the deeper ones on a page only paying members open, with links to the full guide.
 -   **Privacy.** Visitor consent label. Birth date and time are special category data under GDPR Article 9; submission is gated on an explicit opt in checkbox and the plugin registers privacy policy content via `wp_add_privacy_policy_content`.
 -   **Advanced.** Cache preset (fresh / balanced / quota saver) and a connection status panel.
 

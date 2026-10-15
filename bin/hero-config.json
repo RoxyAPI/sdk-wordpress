@@ -30,8 +30,6 @@
 			}
 		},
 		"form_mode": {
-			"title": "Horoscope",
-			"submit_label": "Read my horoscope",
 			"fields": [
 				{ "attr": "sign", "label": "Your zodiac sign", "type": "enum", "required": true, "enum": [ "aries", "taurus", "gemini", "cancer", "leo", "virgo", "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces" ] }
 			]

@@ -204,12 +204,6 @@
 	margin: 0 0 1.5rem;
 }
 
-.roxyapi-start-free-note {
-	margin: 0.6rem 0 0;
-	color: #646970;
-	font-size: 0.875rem;
-}
-
 .roxyapi-cta-arrow {
 	font-size: 1.05em;
 	line-height: 1;
@@ -388,49 +382,6 @@
 	color: #50575e;
 	font-size: 0.9375rem;
 	line-height: 1.55;
-}
-
-/* ---------- Hero shortcode list (connected state) ---------- */
-
-.roxyapi-hero-list {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 0.625rem;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-@media (min-width: 720px) {
-
-	.roxyapi-hero-list {
-		grid-template-columns: 1fr 1fr;
-	}
-}
-
-.roxyapi-hero-item {
-	padding: 0.75rem 0.875rem;
-	background: #fff;
-	border: 1px solid #e2e4e7;
-	border-radius: 0.5rem;
-	font-size: 0.875rem;
-	line-height: 1.5;
-}
-
-.roxyapi-hero-item strong {
-	display: block;
-	color: #1d2327;
-	font-weight: 600;
-}
-
-.roxyapi-hero-item code {
-	display: inline-block;
-	margin-top: 0.125rem;
-	background: #f4f4f6;
-	padding: 0.05rem 0.3rem;
-	border-radius: 0.25rem;
-	font-size: 0.8125rem;
-	color: #50575e;
 }
 
 /* ---------- Manage key disclosure ---------- */
