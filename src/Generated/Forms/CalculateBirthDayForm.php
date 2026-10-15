@@ -35,6 +35,8 @@ class CalculateBirthDayForm {
 					'type' => 'integer',
 					'min' => 1,
 					'max' => 31,
+					'placeholder' => __( '23', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

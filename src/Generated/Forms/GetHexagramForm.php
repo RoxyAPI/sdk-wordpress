@@ -35,6 +35,8 @@ class GetHexagramForm {
 					'type' => 'integer',
 					'min' => 1,
 					'max' => 64,
+					'placeholder' => __( '1', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

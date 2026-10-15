@@ -33,6 +33,8 @@ class CalculateAspectsForm {
 					'required' => true,
 					'help' => __( 'Date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '1990-07-15', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'time',
@@ -40,6 +42,8 @@ class CalculateAspectsForm {
 					'required' => true,
 					'help' => __( 'Time in HH:MM:SS format (24-hour)', 'roxyapi' ),
 					'type' => 'time',
+					'placeholder' => __( '14:30:00', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'timezone',
@@ -47,6 +51,10 @@ class CalculateAspectsForm {
 					'required' => true,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
+					'min' => -14,
+					'max' => 14,
+					'placeholder' => __( 'America/New_York', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

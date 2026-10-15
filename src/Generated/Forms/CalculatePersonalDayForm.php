@@ -35,6 +35,8 @@ class CalculatePersonalDayForm {
 					'type' => 'integer',
 					'min' => 1,
 					'max' => 12,
+					'placeholder' => __( '7', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'day',
@@ -44,6 +46,8 @@ class CalculatePersonalDayForm {
 					'type' => 'integer',
 					'min' => 1,
 					'max' => 31,
+					'placeholder' => __( '18', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'targetDate',
@@ -51,6 +55,8 @@ class CalculatePersonalDayForm {
 					'required' => false,
 					'help' => __( 'Target date in YYYY-MM-DD format, in the years 100 to 2100', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '2026-04-04', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);

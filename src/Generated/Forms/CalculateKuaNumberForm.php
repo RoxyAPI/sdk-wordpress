@@ -33,6 +33,8 @@ class CalculateKuaNumberForm {
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '1985-07-15', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'gender',
@@ -41,6 +43,9 @@ class CalculateKuaNumberForm {
 					'help' => __( 'Selects the Kua formula variant', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'male', 'female' ),
+					'enum_labels' => array( __( 'Male', 'roxyapi' ), __( 'Female', 'roxyapi' ) ),
+					'placeholder' => __( 'male', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'yearBoundary',
@@ -49,6 +54,10 @@ class CalculateKuaNumberForm {
 					'help' => __( 'Which boundary starts the Chinese year', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'li-chun', 'lunar-new-year' ),
+					'default' => 'li-chun',
+					'enum_labels' => array( __( 'Li chun', 'roxyapi' ), __( 'Lunar new year', 'roxyapi' ) ),
+					'placeholder' => __( 'li-chun', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);

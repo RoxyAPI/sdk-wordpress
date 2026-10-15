@@ -33,6 +33,8 @@ class CalculateZodiacAnimalForm {
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '1990-06-15', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'yearBoundary',
@@ -41,6 +43,10 @@ class CalculateZodiacAnimalForm {
 					'help' => __( 'Which instant starts the zodiac year', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'lunar-new-year', 'li-chun' ),
+					'default' => 'lunar-new-year',
+					'enum_labels' => array( __( 'Lunar new year', 'roxyapi' ), __( 'Li chun', 'roxyapi' ) ),
+					'placeholder' => __( 'lunar-new-year', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);

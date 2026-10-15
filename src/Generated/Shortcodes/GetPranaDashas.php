@@ -65,7 +65,7 @@ class GetPranaDashas {
 
 		wp_enqueue_style( 'roxyapi-frontend' );
 
-		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['mahadasha'] === '' || $atts['antardasha'] === '' || $atts['pratyantardasha'] === '' || $atts['sookshma'] === '' || $atts['date'] === '' || $atts['time'] === '' || $atts['latitude'] === '' || $atts['longitude'] === '' ) ) ) {
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['date'] === '' || $atts['time'] === '' || $atts['latitude'] === '' || $atts['longitude'] === '' || $atts['mahadasha'] === '' || $atts['antardasha'] === '' || $atts['pratyantardasha'] === '' || $atts['sookshma'] === '' ) ) ) {
 			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetPranaDashasForm::class, $atts );
 		}
 

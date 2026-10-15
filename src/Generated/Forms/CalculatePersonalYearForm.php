@@ -35,6 +35,8 @@ class CalculatePersonalYearForm {
 					'type' => 'integer',
 					'min' => 1,
 					'max' => 12,
+					'placeholder' => __( '7', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'day',
@@ -44,6 +46,8 @@ class CalculatePersonalYearForm {
 					'type' => 'integer',
 					'min' => 1,
 					'max' => 31,
+					'placeholder' => __( '15', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'year',
@@ -53,6 +57,8 @@ class CalculatePersonalYearForm {
 					'type' => 'integer',
 					'min' => 100,
 					'max' => 2100,
+					'placeholder' => __( '2025', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);

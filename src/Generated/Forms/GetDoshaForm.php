@@ -31,8 +31,12 @@ class GetDoshaForm {
 					'name' => 'id',
 					'label' => __( 'Dosha', 'roxyapi' ),
 					'required' => true,
+					'help' => __( 'Dosha identifier, case-insensitive', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'vata', 'pitta', 'kapha' ),
+					'enum_labels' => array( __( 'Vata', 'roxyapi' ), __( 'Pitta', 'roxyapi' ), __( 'Kapha', 'roxyapi' ) ),
+					'placeholder' => __( 'vata', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

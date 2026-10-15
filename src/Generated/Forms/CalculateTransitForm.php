@@ -33,6 +33,8 @@ class CalculateTransitForm {
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '1990-07-04', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'birthTime',
@@ -40,6 +42,8 @@ class CalculateTransitForm {
 					'required' => true,
 					'help' => __( 'Birth time in HH:MM:SS format (24-hour)', 'roxyapi' ),
 					'type' => 'time',
+					'placeholder' => __( '10:12:00', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'transitDate',
@@ -47,6 +51,8 @@ class CalculateTransitForm {
 					'required' => true,
 					'help' => __( 'Transit date to analyze in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '2026-02-03', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'transitTime',
@@ -54,6 +60,8 @@ class CalculateTransitForm {
 					'required' => false,
 					'help' => __( 'Transit time in HH:MM:SS format (24-hour)', 'roxyapi' ),
 					'type' => 'time',
+					'placeholder' => __( '12:00:00', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'latitude',
@@ -63,7 +71,9 @@ class CalculateTransitForm {
 					'type' => 'number',
 					'min' => -90,
 					'max' => 90,
+					'placeholder' => __( '17.385044', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'longitude',
@@ -73,7 +83,9 @@ class CalculateTransitForm {
 					'type' => 'number',
 					'min' => -180,
 					'max' => 180,
+					'placeholder' => __( '78.486671', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'timezone',
@@ -81,6 +93,11 @@ class CalculateTransitForm {
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
+					'min' => -14,
+					'max' => 14,
+					'default' => 5.5,
+					'placeholder' => __( '5.5', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'coordinateSystem',
@@ -89,6 +106,10 @@ class CalculateTransitForm {
 					'help' => __( 'Coordinate system for longitude output', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'sidereal', 'tropical' ),
+					'default' => 'sidereal',
+					'enum_labels' => array( __( 'Sidereal', 'roxyapi' ), __( 'Tropical', 'roxyapi' ) ),
+					'placeholder' => __( 'sidereal', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);

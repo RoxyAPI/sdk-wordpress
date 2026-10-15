@@ -31,8 +31,12 @@ class GetHaabMonthForm {
 					'name' => 'id',
 					'label' => __( 'Haab period', 'roxyapi' ),
 					'required' => true,
+					'help' => __( 'Haab period id, case-insensitive and punctuation-insensitive', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'pop', 'wo', 'sip', 'sotz', 'sek', 'xul', 'yaxkin', 'mol', 'chen', 'yax', 'sak', 'keh', 'mak', 'kankin', 'muwan', 'pax', 'kayab', 'kumku', 'wayeb' ),
+					'enum_labels' => array( __( 'Pop', 'roxyapi' ), __( 'Wo', 'roxyapi' ), __( 'Sip', 'roxyapi' ), __( 'Sotz', 'roxyapi' ), __( 'Sek', 'roxyapi' ), __( 'Xul', 'roxyapi' ), __( 'Yaxkin', 'roxyapi' ), __( 'Mol', 'roxyapi' ), __( 'Chen', 'roxyapi' ), __( 'Yax', 'roxyapi' ), __( 'Sak', 'roxyapi' ), __( 'Keh', 'roxyapi' ), __( 'Mak', 'roxyapi' ), __( 'Kankin', 'roxyapi' ), __( 'Muwan', 'roxyapi' ), __( 'Pax', 'roxyapi' ), __( 'Kayab', 'roxyapi' ), __( 'Kumku', 'roxyapi' ), __( 'Wayeb', 'roxyapi' ) ),
+					'placeholder' => __( 'pop', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

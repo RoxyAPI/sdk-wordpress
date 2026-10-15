@@ -33,6 +33,8 @@ class GetDailyAyurvedaReadingForm {
 					'required' => false,
 					'help' => __( 'Reading date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '2026-06-21', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'latitude',
@@ -42,7 +44,9 @@ class GetDailyAyurvedaReadingForm {
 					'type' => 'number',
 					'min' => -90,
 					'max' => 90,
+					'placeholder' => __( '51.5074', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'longitude',
@@ -52,7 +56,9 @@ class GetDailyAyurvedaReadingForm {
 					'type' => 'number',
 					'min' => -180,
 					'max' => 180,
+					'placeholder' => __( '-0.1278', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'timezone',
@@ -60,6 +66,8 @@ class GetDailyAyurvedaReadingForm {
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
+					'placeholder' => __( 'Europe/London', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

@@ -29,11 +29,14 @@ class GetYearlyHoroscopeForm {
 			'flat_fields'  => array(
 				array(
 					'name' => 'sign',
-					'label' => __( 'Sign', 'roxyapi' ),
+					'label' => __( 'Zodiac sign', 'roxyapi' ),
 					'required' => true,
 					'help' => __( 'Zodiac sign, case-insensitive (e.g., aries, Aries, ARIES all work).', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces' ),
+					'enum_labels' => array( __( 'Aries', 'roxyapi' ), __( 'Taurus', 'roxyapi' ), __( 'Gemini', 'roxyapi' ), __( 'Cancer', 'roxyapi' ), __( 'Leo', 'roxyapi' ), __( 'Virgo', 'roxyapi' ), __( 'Libra', 'roxyapi' ), __( 'Scorpio', 'roxyapi' ), __( 'Sagittarius', 'roxyapi' ), __( 'Capricorn', 'roxyapi' ), __( 'Aquarius', 'roxyapi' ), __( 'Pisces', 'roxyapi' ) ),
+					'placeholder' => __( 'aries', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'year',
@@ -43,6 +46,8 @@ class GetYearlyHoroscopeForm {
 					'type' => 'integer',
 					'min' => 1900,
 					'max' => 2100,
+					'placeholder' => __( '2026', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'timezone',
@@ -50,6 +55,8 @@ class GetYearlyHoroscopeForm {
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
+					'placeholder' => __( 'America/New_York', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);

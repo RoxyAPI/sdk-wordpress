@@ -40,6 +40,7 @@ class CrystalsByZodiacForm {
 				'required' => true,
 				'type' => 'enum',
 				'help' => __( 'Pick your Sun sign', 'roxyapi' ),
+				'placeholder' => __( 'pisces', 'roxyapi' ),
 				'enum' => array( 'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces' ),
 			),
 			),

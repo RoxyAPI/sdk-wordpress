@@ -35,6 +35,8 @@ class GetAnnualFlyingStarsForm {
 					'type' => 'integer',
 					'min' => 1900,
 					'max' => 2100,
+					'placeholder' => __( '2026', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

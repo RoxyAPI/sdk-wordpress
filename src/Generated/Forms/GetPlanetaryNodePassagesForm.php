@@ -35,6 +35,8 @@ class GetPlanetaryNodePassagesForm {
 					'type' => 'integer',
 					'min' => 1551,
 					'max' => 2649,
+					'placeholder' => __( '2026', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'timezone',
@@ -42,6 +44,11 @@ class GetPlanetaryNodePassagesForm {
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
+					'min' => -14,
+					'max' => 14,
+					'default' => 0,
+					'placeholder' => __( 'America/New_York', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);

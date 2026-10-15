@@ -35,6 +35,8 @@ class CalculatePersonalMonthForm {
 					'type' => 'integer',
 					'min' => 1,
 					'max' => 12,
+					'placeholder' => __( '7', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'day',
@@ -44,6 +46,8 @@ class CalculatePersonalMonthForm {
 					'type' => 'integer',
 					'min' => 1,
 					'max' => 31,
+					'placeholder' => __( '18', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'year',
@@ -53,6 +57,8 @@ class CalculatePersonalMonthForm {
 					'type' => 'integer',
 					'min' => 100,
 					'max' => 2100,
+					'placeholder' => __( '2026', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'targetMonth',
@@ -62,6 +68,8 @@ class CalculatePersonalMonthForm {
 					'type' => 'integer',
 					'min' => 1,
 					'max' => 12,
+					'placeholder' => __( '4', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);

@@ -33,6 +33,8 @@ class CalculateBusinessNameForm {
 					'required' => true,
 					'help' => __( 'The business or brand name to evaluate', 'roxyapi' ),
 					'type' => 'text',
+					'placeholder' => __( 'Ford', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

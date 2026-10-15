@@ -33,6 +33,8 @@ class CalculateBridgeNumbersForm {
 					'required' => true,
 					'help' => __( 'Full birth name as it appears on the birth certificate, first, middle and last names separated by spaces', 'roxyapi' ),
 					'type' => 'text',
+					'placeholder' => __( 'John William Smith', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'year',
@@ -42,6 +44,8 @@ class CalculateBridgeNumbersForm {
 					'type' => 'integer',
 					'min' => 100,
 					'max' => 2100,
+					'placeholder' => __( '1990', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'month',
@@ -51,6 +55,8 @@ class CalculateBridgeNumbersForm {
 					'type' => 'integer',
 					'min' => 1,
 					'max' => 12,
+					'placeholder' => __( '7', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'day',
@@ -60,6 +66,8 @@ class CalculateBridgeNumbersForm {
 					'type' => 'integer',
 					'min' => 1,
 					'max' => 31,
+					'placeholder' => __( '15', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

@@ -31,8 +31,12 @@ class GetAztecDaySignForm {
 					'name' => 'id',
 					'label' => __( 'Day sign', 'roxyapi' ),
 					'required' => true,
+					'help' => __( 'Day sign id, case-insensitive and punctuation-insensitive', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'cipactli', 'ehecatl', 'calli', 'cuetzpalin', 'coatl', 'miquiztli', 'mazatl', 'tochtli', 'atl', 'itzcuintli', 'ozomahtli', 'malinalli', 'acatl', 'ocelotl', 'cuauhtli', 'cozcacuauhtli', 'ollin', 'tecpatl', 'quiahuitl', 'xochitl' ),
+					'enum_labels' => array( __( 'Cipactli', 'roxyapi' ), __( 'Ehecatl', 'roxyapi' ), __( 'Calli', 'roxyapi' ), __( 'Cuetzpalin', 'roxyapi' ), __( 'Coatl', 'roxyapi' ), __( 'Miquiztli', 'roxyapi' ), __( 'Mazatl', 'roxyapi' ), __( 'Tochtli', 'roxyapi' ), __( 'Atl', 'roxyapi' ), __( 'Itzcuintli', 'roxyapi' ), __( 'Ozomahtli', 'roxyapi' ), __( 'Malinalli', 'roxyapi' ), __( 'Acatl', 'roxyapi' ), __( 'Ocelotl', 'roxyapi' ), __( 'Cuauhtli', 'roxyapi' ), __( 'Cozcacuauhtli', 'roxyapi' ), __( 'Ollin', 'roxyapi' ), __( 'Tecpatl', 'roxyapi' ), __( 'Quiahuitl', 'roxyapi' ), __( 'Xochitl', 'roxyapi' ) ),
+					'placeholder' => __( 'cipactli', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

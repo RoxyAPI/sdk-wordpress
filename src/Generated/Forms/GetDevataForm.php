@@ -31,8 +31,12 @@ class GetDevataForm {
 					'name' => 'id',
 					'label' => __( 'Devata', 'roxyapi' ),
 					'required' => true,
+					'help' => __( 'Devata id, lower case transliteration', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'agni', 'parjanya', 'jayanta', 'indra-outer', 'surya', 'satya', 'bhrisa', 'antariksha', 'vayu', 'pusha', 'vitatha', 'brihatkshata', 'yama', 'gandharva', 'bhringaraja', 'mriga', 'pitri', 'dauvarika', 'sugriva', 'kusumadanta', 'varuna', 'asura', 'sosha', 'papayakshma', 'roga', 'ahi', 'mukhya', 'bhallata', 'soma', 'bhujaga', 'aditi', 'diti', 'aryaman', 'savita', 'vivasvan', 'indra-inner', 'mitra', 'rajayakshma', 'prthvidhara', 'apavatsa', 'apa', 'savitra', 'jaya', 'rudra', 'brahma' ),
+					'enum_labels' => array( __( 'Agni', 'roxyapi' ), __( 'Parjanya', 'roxyapi' ), __( 'Jayanta', 'roxyapi' ), __( 'Indra outer', 'roxyapi' ), __( 'Surya', 'roxyapi' ), __( 'Satya', 'roxyapi' ), __( 'Bhrisa', 'roxyapi' ), __( 'Antariksha', 'roxyapi' ), __( 'Vayu', 'roxyapi' ), __( 'Pusha', 'roxyapi' ), __( 'Vitatha', 'roxyapi' ), __( 'Brihatkshata', 'roxyapi' ), __( 'Yama', 'roxyapi' ), __( 'Gandharva', 'roxyapi' ), __( 'Bhringaraja', 'roxyapi' ), __( 'Mriga', 'roxyapi' ), __( 'Pitri', 'roxyapi' ), __( 'Dauvarika', 'roxyapi' ), __( 'Sugriva', 'roxyapi' ), __( 'Kusumadanta', 'roxyapi' ), __( 'Varuna', 'roxyapi' ), __( 'Asura', 'roxyapi' ), __( 'Sosha', 'roxyapi' ), __( 'Papayakshma', 'roxyapi' ), __( 'Roga', 'roxyapi' ), __( 'Ahi', 'roxyapi' ), __( 'Mukhya', 'roxyapi' ), __( 'Bhallata', 'roxyapi' ), __( 'Soma', 'roxyapi' ), __( 'Bhujaga', 'roxyapi' ), __( 'Aditi', 'roxyapi' ), __( 'Diti', 'roxyapi' ), __( 'Aryaman', 'roxyapi' ), __( 'Savita', 'roxyapi' ), __( 'Vivasvan', 'roxyapi' ), __( 'Indra inner', 'roxyapi' ), __( 'Mitra', 'roxyapi' ), __( 'Rajayakshma', 'roxyapi' ), __( 'Prthvidhara', 'roxyapi' ), __( 'Apavatsa', 'roxyapi' ), __( 'Apa', 'roxyapi' ), __( 'Savitra', 'roxyapi' ), __( 'Jaya', 'roxyapi' ), __( 'Rudra', 'roxyapi' ), __( 'Brahma', 'roxyapi' ) ),
+					'placeholder' => __( 'jayanta', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

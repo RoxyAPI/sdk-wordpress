@@ -33,6 +33,8 @@ class GetAlmanacDayForm {
 					'required' => true,
 					'help' => __( 'Gregorian date in YYYY-MM-DD format, evaluated at the reference meridian', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '1990-06-15', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

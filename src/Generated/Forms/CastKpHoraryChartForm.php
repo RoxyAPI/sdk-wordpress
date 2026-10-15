@@ -35,6 +35,8 @@ class CastKpHoraryChartForm {
 					'type' => 'integer',
 					'min' => 1,
 					'max' => 249,
+					'placeholder' => __( '108', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'date',
@@ -42,6 +44,8 @@ class CastKpHoraryChartForm {
 					'required' => true,
 					'help' => __( 'Date the question was taken up for judgment, YYYY-MM-DD', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '2026-03-08', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'time',
@@ -49,6 +53,8 @@ class CastKpHoraryChartForm {
 					'required' => true,
 					'help' => __( 'Time the question was taken up for judgment, 24-hour HH:MM:SS', 'roxyapi' ),
 					'type' => 'time',
+					'placeholder' => __( '14:30:00', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'latitude',
@@ -58,7 +64,9 @@ class CastKpHoraryChartForm {
 					'type' => 'number',
 					'min' => -90,
 					'max' => 90,
+					'placeholder' => __( '19.076', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'longitude',
@@ -68,7 +76,9 @@ class CastKpHoraryChartForm {
 					'type' => 'number',
 					'min' => -180,
 					'max' => 180,
+					'placeholder' => __( '72.8777', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'timezone',
@@ -76,6 +86,11 @@ class CastKpHoraryChartForm {
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
+					'min' => -14,
+					'max' => 14,
+					'default' => 5.5,
+					'placeholder' => __( '5.5', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'ayanamsa',
@@ -84,22 +99,44 @@ class CastKpHoraryChartForm {
 					'help' => __( 'Ayanamsa system for sidereal conversion', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'kp-newcomb', 'kp-old', 'lahiri', 'raman', 'custom' ),
+					'default' => 'kp-newcomb',
+					'enum_labels' => array( __( 'Kp newcomb', 'roxyapi' ), __( 'Kp old', 'roxyapi' ), __( 'Lahiri', 'roxyapi' ), __( 'Raman', 'roxyapi' ), __( 'Custom', 'roxyapi' ) ),
+					'placeholder' => __( 'kp-newcomb', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'ayanamsaValue',
-					'label' => __( 'Ayanamsa value', 'roxyapi' ),
+					'label' => __( 'Custom ayanamsa value', 'roxyapi' ),
 					'required' => false,
 					'help' => __( 'Custom ayanamsa value in degrees', 'roxyapi' ),
 					'type' => 'number',
+					'placeholder' => __( '24', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => true,
 				),
 				array(
 					'name' => 'nodeType',
-					'label' => __( 'Node type', 'roxyapi' ),
+					'label' => __( 'Lunar node type', 'roxyapi' ),
 					'required' => false,
 					'help' => __( 'Lunar node convention', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'mean', 'true' ),
+					'default' => 'mean',
+					'enum_labels' => array( __( 'Mean', 'roxyapi' ), __( 'True', 'roxyapi' ) ),
+					'placeholder' => __( 'mean', 'roxyapi' ),
+					'fold' => true,
+				),
+				array(
+					'name' => 'focus',
+					'label' => __( 'Focus', 'roxyapi' ),
+					'required' => false,
+					'help' => __( 'Which signification vocabulary the houseThemes map returns', 'roxyapi' ),
+					'type' => 'enum',
+					'enum' => array( 'general', 'finance' ),
+					'default' => 'general',
+					'enum_labels' => array( __( 'General', 'roxyapi' ), __( 'Finance', 'roxyapi' ) ),
+					'placeholder' => __( 'general', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);
@@ -110,6 +147,6 @@ class CastKpHoraryChartForm {
 	 * @return array<string, mixed>|\WP_Error
 	 */
 	public static function call( array $body ) {
-		return \RoxyAPI\Generated\Client::castKpHoraryChart( $body );
+		return \RoxyAPI\Generated\Client::castKpHoraryChart( array_diff_key( $body, array_flip( array( 'focus' ) ) ), array_intersect_key( $body, array_flip( array( 'focus' ) ) ) );
 	}
 }

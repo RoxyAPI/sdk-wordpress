@@ -58,6 +58,20 @@ const componentMap = JSON.parse(
 	await fs.readFile( path.join( __dirname, 'component-map.json' ), 'utf8' )
 );
 
+// The vendored UI model owns visitor-field classification and English labels.
+const { forms: uiForms } = JSON.parse(
+	await fs.readFile(
+		path.join( __dirname, 'ui-forms', 'forms.json' ),
+		'utf8'
+	)
+);
+const formLabels = JSON.parse(
+	await fs.readFile(
+		path.join( __dirname, 'ui-forms', 'labels', 'en.json' ),
+		'utf8'
+	)
+);
+
 /**
  * Apply per-field overrides over a raw spec example. Used when the OpenAPI spec
  * ships a stale or invalid example value (e.g. timezone="-5" that the live
@@ -550,27 +564,24 @@ function isFormParam( op, param ) {
 }
 
 /**
- * The flat inputs a visitor form collects, in the order the form shows them:
- * path parameters, then the body of a POST or the query of a GET.
+ * Visitor inputs in the UI model's order. `key` is the wire path; `group`
+ * can also describe a visual grouping of otherwise flat wire fields.
  * @param op
  */
 function formInputs( op ) {
-	return [
-		...extractParams( op ).filter( ( p ) => isFormParam( op, p ) ),
-		...( op.method === 'POST' ? extractBodyFields( op ) : [] ).filter(
-			( f ) => ! isSiteResolved( f )
-		),
-	];
+	const model = uiForms[ op.operationId ];
+	if ( ! model ) {
+		throw new Error(
+			`[generate] missing UI form model: ${ op.operationId }`
+		);
+	}
+	return model.fields;
 }
 
 /**
- * Whether a flat shortcode renders a visitor form when its required inputs are
- * missing, or always under `mode="form"`. Every required input must be one the
- * form has a control for: never a list, and never a path parameter the form
- * could only offer as a free text box, which names an entry of the API
- * vocabulary a visitor cannot know. An `id` with a closed list of values is a
- * picker, labelled with what it names. Catalogue and account readings stay
- * placed by the site owner.
+ * Every required input must be enterable by a visitor: no lists, objects or
+ * free-text vocabulary identifiers. Catalogue and account readings remain
+ * placed by the site owner. Closed path pickers still offer forms.
  * @param op
  */
 function offersVisitorForm( op ) {
@@ -581,24 +592,24 @@ function offersVisitorForm( op ) {
 	) {
 		return false;
 	}
+	const model = uiForms[ op.operationId ];
 	const required = formInputs( op ).filter( ( f ) => f.required );
 	return (
 		required.length > 0 &&
+		! model.repeats?.length &&
 		required.every(
 			( f ) =>
-				f.type !== 'array' &&
-				f.type !== 'object' &&
-				! (
-					f.in === 'path' &&
-					( buildFormFieldSpec( f.name, f, true ).type === 'text' ||
-						( f.name === 'id' && ! idNoun( f.name, f ) ) )
-				)
+				! f.key.includes( '.' ) &&
+				f.kind !== 'array' &&
+				f.kind !== 'object' &&
+				! f.source &&
+				! ( model.path.includes( `{${ f.key }}` ) && f.kind === 'text' )
 		)
 	);
 }
 
 /**
- * Humanise a property name for use as a form label.
+ * Humanise a property name for an editor sidebar label.
  * `birthDate` -> `Birth date`, `house_system` -> `House system`.
  * @param name
  */
@@ -609,23 +620,6 @@ function humanLabel( name ) {
 		.replace( /[_-]+/g, ' ' )
 		.trim();
 	return spaced.charAt( 0 ).toUpperCase() + spaced.slice( 1 ).toLowerCase();
-}
-
-/**
- * What an `id` parameter names, read from the description it opens with
- * ("Animal id, ...", "Rashi ID slug"), or null when the description names
- * nothing. A form labels the control with it, never with a bare "Id".
- * @param name   Parameter name.
- * @param schema Parameter or schema carrying the description.
- */
-function idNoun( name, schema ) {
-	if ( name !== 'id' ) {
-		return null;
-	}
-	const noun = /^(.+?)\s+(?:id|identifier|slug)\b/i.exec(
-		String( schema.description || '' )
-	)?.[ 1 ];
-	return noun ? noun.charAt( 0 ).toUpperCase() + noun.slice( 1 ) : null;
 }
 
 /**
@@ -1011,139 +1005,137 @@ function blockDescriptionFor( op ) {
 }
 
 /**
- * Map an OpenAPI property schema + name to a FormRenderer field spec.
- * Heuristics catch lat/lon/timezone by name when the spec lacks min/max.
- * @param name
- * @param schema
- * @param required
+ * Read only the wire type from OpenAPI, to distinguish integer controls and
+ * number/string unions. All field classification and constraints come from
+ * the UI model.
+ * @param op
+ * @param field
  */
-function buildFormFieldSpec( name, schema, required ) {
-	const lower = name.toLowerCase();
-	const noun = idNoun( name, schema );
-	// `q` is the search parameter by convention, and "Q" names nothing.
-	const field = {
-		name,
-		label: noun || ( name === 'q' ? 'Search' : humanLabel( name ) ),
-		required,
-	};
-	// An id description restates the noun the label already shows.
-	if ( schema.description && ! noun ) {
-		field.help = firstSentence( String( schema.description ) );
+function formFieldSchema( op, field ) {
+	const param = ( op.parameters || [] ).find( ( p ) => p.name === field.key );
+	if ( param ) {
+		return resolveRef( param.schema );
 	}
-	// The timezone field renders as a wp_timezone_choice() dropdown, so the
-	// spec's "decimal hours OR IANA name" help would mislead; use copy that
-	// matches the actual control.
-	if ( lower === 'tz' || lower === 'timezone' ) {
-		field.help = 'Select the timezone of the location.';
+	let schema = resolveRef(
+		op.requestBody?.content?.[ 'application/json' ]?.schema || {}
+	);
+	for ( const key of field.key.split( '.' ) ) {
+		schema = resolveRef( schema.properties?.[ key ] || {} );
 	}
+	return schema;
+}
 
-	if ( schema.type === 'string' && schema.format === 'date' ) {
-		field.type = 'date';
-	} else if ( schema.type === 'string' && schema.format === 'time' ) {
-		field.type = 'time';
-	} else if (
-		schema.type === 'string' &&
-		( lower === 'time' ||
-			lower.endsWith( '_time' ) ||
-			lower.endsWith( 'time' ) )
-	) {
-		// Spec often describes time fields as plain string with help text
-		// "HH:MM:SS"; coerce to a time picker so users get the native UX.
-		field.type = 'time';
-	} else if (
-		schema.type === 'string' &&
-		( lower === 'date' ||
-			lower.endsWith( '_date' ) ||
-			lower.endsWith( 'date' ) )
-	) {
-		// Same for plain-string date fields like `birthDate` / `transitDate`.
-		field.type = 'date';
-	} else if ( schema.type === 'string' && Array.isArray( schema.enum ) ) {
-		field.type = 'enum';
-		field.enum = schema.enum;
-	} else if ( lower === 'tz' || lower === 'timezone' ) {
-		field.type = 'timezone';
-	} else if ( schema.type === 'number' || schema.type === 'integer' ) {
-		field.type = schema.type === 'integer' ? 'integer' : 'number';
-		if ( lower === 'lat' || lower === 'latitude' ) {
-			field.min = -90;
-			field.max = 90;
-		} else if ( lower === 'lon' || lower === 'longitude' ) {
-			field.min = -180;
-			field.max = 180;
-		} else {
-			if ( schema.minimum !== undefined ) {
-				field.min = schema.minimum;
-			}
-			if ( schema.maximum !== undefined ) {
-				field.max = schema.maximum;
-			}
+/**
+ * One label lookup for model fields and groups, including inline labels from
+ * newer UI manifests. Curated hero copy remains an explicit override.
+ * @param entry
+ */
+function formLabel( entry ) {
+	const name = entry.name || entry.key;
+	return entry.label ?? formLabels.fields[ name ] ?? name;
+}
+
+/**
+ * Adapt a UI field to the controls FormRenderer already supports. Timezones
+ * retain their no-JavaScript dropdown. Datetime retains the legacy time control
+ * until PHP supports a dedicated datetime input; toggles use the text fallback.
+ * @param op
+ * @param modelField
+ */
+function buildFormFieldSpec( op, modelField ) {
+	const schema = formFieldSchema( op, modelField );
+	const types = {
+		tiles: 'enum',
+		select: 'enum',
+		date: 'date',
+		time: 'time',
+		datetime: 'time',
+	};
+	let type = types[ modelField.kind ] || 'text';
+	if ( modelField.kind === 'number' ) {
+		const variants = schema.anyOf || schema.oneOf || [];
+		type = schema.type === 'integer' ? 'integer' : 'number';
+		if ( variants.some( ( v ) => resolveRef( v ).type === 'string' ) ) {
+			type = 'text';
 		}
-		if ( schema.type === 'number' ) {
-			field.step = 'any';
-		}
-	} else {
-		field.type = 'text';
 	}
+	if (
+		[ 'timezone', 'tz' ].includes( modelField.name.toLowerCase() ) ||
+		modelField.city === true
+	) {
+		type = 'timezone';
+	}
+	const field = {
+		name: modelField.name,
+		label: formLabel( modelField ),
+		required: modelField.required,
+	};
+	// The timezone dropdown explains itself; the spec describes the wire
+	// format, which a visitor never types.
+	if ( type === 'timezone' ) {
+		field.help = 'Select the timezone of the location.';
+	} else if ( modelField.description ) {
+		field.help = firstSentence( modelField.description );
+	}
+	field.type = type;
+	for ( const key of [ 'enum', 'min', 'max', 'default' ] ) {
+		if ( modelField[ key ] !== undefined ) {
+			field[ key ] = modelField[ key ];
+		}
+	}
+	if ( modelField.enum ) {
+		field.enum_labels = modelField.enum.map(
+			( value ) =>
+				formLabels.enums[ `${ modelField.name }.${ value }` ] || value
+		);
+	}
+	if ( modelField.example !== undefined ) {
+		field.placeholder = String( modelField.example );
+	}
+	if ( type === 'number' ) {
+		field.step = 'any';
+	}
+	// Carried for the next renderer update; curated heroes retain their layout.
+	field.fold = !! modelField.fold;
 	return field;
 }
 
 /**
- * Produce a FormRenderer-shaped spec from an operation's form inputs:
- * `sections` for nested body objects, `flat_fields` for the path and GET query
- * parameters followed by the top-level body scalars.
+ * Translate the model's wire paths to the renderer's one-level sections and
+ * flat fields. Repeated/deeper objects and list controls remain unsupported.
  * @param op
  */
 function extractFormSpec( op ) {
-	const sections = [];
-	const flatFields = ( op.parameters || [] )
-		.filter( ( p ) => isFormParam( op, p ) )
-		.map( ( p ) => {
-			const schema = resolveRef( p.schema );
-			return buildFormFieldSpec(
-				p.name,
-				{ ...schema, description: p.description || schema.description },
-				p.in === 'path' || !! p.required
-			);
-		} );
-	const content = op.requestBody?.content?.[ 'application/json' ];
-	const schema = resolveRef( content?.schema || {} );
-	const required = new Set( schema.required || [] );
-	for ( const [ name, prop ] of Object.entries( schema.properties || {} ) ) {
-		if ( isSiteResolved( { name } ) ) {
+	const model = uiForms[ op.operationId ];
+	const sections = model.groups
+		.filter( ( g ) => g.key && ! g.key.includes( '.' ) )
+		.filter( ( g ) =>
+			model.fields.some( ( f ) => f.key.startsWith( `${ g.key }.` ) )
+		)
+		.map( ( g ) => ( {
+			name: g.key,
+			label: formLabel( g ),
+			fold: !! g.fold,
+			fields: [],
+		} ) );
+	const flatFields = [];
+	for ( const modelField of formInputs( op ) ) {
+		const pathParts = modelField.key.split( '.' );
+		if (
+			pathParts.length > 2 ||
+			[ 'array', 'object' ].includes( modelField.kind )
+		) {
 			continue;
 		}
-		const resolved = resolveRef( prop );
-		if ( resolved.type === 'object' ) {
-			const subRequired = new Set( resolved.required || [] );
-			const fields = [];
-			for ( const [ subName, subProp ] of Object.entries(
-				resolved.properties || {}
-			) ) {
-				const subResolved = resolveRef( subProp );
-				if (
-					subResolved.type === 'object' ||
-					subResolved.type === 'array'
-				) {
-					// v1.0: do not emit deeper-than-one nesting controls.
-					continue;
-				}
-				fields.push(
-					buildFormFieldSpec(
-						subName,
-						subResolved,
-						subRequired.has( subName )
-					)
-				);
-			}
-			sections.push( { name, label: humanLabel( name ), fields } );
-		} else if ( resolved.type === 'array' ) {
-			// Array-of-object body fields are deferred to v1.1.
-			continue;
+		const field = buildFormFieldSpec( op, modelField );
+		if ( pathParts.length === 2 ) {
+			sections
+				.find( ( s ) => s.name === pathParts[ 0 ] )
+				.fields.push( field );
 		} else {
-			flatFields.push(
-				buildFormFieldSpec( name, resolved, required.has( name ) )
-			);
+			// A visual group must never turn a flat wire name into a nested POST.
+			field.name = modelField.key;
+			flatFields.push( field );
 		}
 	}
 	return { sections, flatFields };
@@ -1153,14 +1145,19 @@ function extractFormSpec( op ) {
  * Form-spec keys whose value is prose a VISITOR reads, so it has to reach the
  * translators. Everything else in a field spec is machinery: `name` is the
  * request key, `type` picks the control, and `enum` values are the API's own
- * strings submitted verbatim (FormRenderer derives their display text with
- * ucwords(), so translating them here would post a translated value).
+ * strings submitted verbatim. `enum_labels` carries their translated UI display
+ * text separately, ready for the renderer to consume without changing values.
  *
  * ONE list, consumed by BOTH form emitters. The long-tail forms and the hero
  * forms build their spec arrays in separate functions, so this must stay a
  * single shared list or a change applies to only half the forms.
  */
-const TRANSLATABLE_SPEC_KEYS = new Set( [ 'label', 'help', 'placeholder' ] );
+const TRANSLATABLE_SPEC_KEYS = new Set( [
+	'label',
+	'help',
+	'placeholder',
+	'enum_labels',
+] );
 
 /**
  * A PHP string literal wrapped in `__()` so `wp i18n make-pot` and
@@ -1185,9 +1182,12 @@ function translatablePhp( v ) {
  * @param value
  */
 function specEntryPhp( key, value ) {
-	return TRANSLATABLE_SPEC_KEYS.has( key )
-		? translatablePhp( value )
-		: phpLiteral( value );
+	if ( TRANSLATABLE_SPEC_KEYS.has( key ) ) {
+		return Array.isArray( value )
+			? 'array( ' + value.map( translatablePhp ).join( ', ' ) + ' )'
+			: translatablePhp( value );
+	}
+	return phpLiteral( value );
 }
 
 /**
@@ -1223,15 +1223,29 @@ function emitFormPhp( op ) {
 	// FormRouter hands call() one flat array keyed by input name, so the client
 	// call takes the path parameters back out of it in signature order.
 	const pathParams = extractPathParams( op.path );
+	const queryNames =
+		op.method === 'POST'
+			? formInputs( op )
+					.filter( ( f ) => f.inQuery )
+					.map( ( f ) => f.key )
+			: [];
+	const nonBodyNames = [ ...pathParams, ...queryNames ];
 	const clientArgs = [
 		...pathParams.map( ( p ) => `(string) ( $body['${ p }'] ?? '' )` ),
 		...( op.method === 'POST'
 			? [
-					pathParams.length
+					nonBodyNames.length
 						? `array_diff_key( $body, array_flip( ${ phpLiteral(
-								pathParams
+								nonBodyNames
 						  ) } ) )`
 						: '$body',
+					...( queryNames.length
+						? [
+								`array_intersect_key( $body, array_flip( ${ phpLiteral(
+									queryNames
+								) } ) )`,
+						  ]
+						: [] ),
 			  ]
 			: extractParams( op )
 					.filter( ( p ) => p.in === 'query' )
@@ -1273,6 +1287,7 @@ function emitFormPhp( op ) {
 			return `\t\t\t\tarray(
 					'name'   => ${ phpLiteral( s.name ) },
 					'label'  => ${ translatablePhp( s.label ) },
+					'fold'   => ${ phpLiteral( s.fold ) },
 					'fields' => array(
 ${ fieldsPhp }
 					),
@@ -1975,7 +1990,7 @@ ${ withReservedAtts( [], '\t\t' ).join( '\n' ) }
 			op
 		)
 			.filter( ( f ) => f.required )
-			.map( ( f ) => `$atts['${ toSnakeAttr( f.name ) }'] === ''` )
+			.map( ( f ) => `$atts['${ toSnakeAttr( f.key ) }'] === ''` )
 			.join( ' || ' ) } ) ) ) {
 			return \\RoxyAPI\\Support\\FormRenderer::render( \\RoxyAPI\\Generated\\Forms\\${ formClass }::class, $atts );
 		}
@@ -3499,8 +3514,8 @@ ${ sections.join( '\n\n' ) }
 /**
  * Convert a hero-config form_mode field declaration to a PHP form-field
  * literal string (one entry in the spec sections/flat_fields array).
- * Only emits keys the FormRenderer recognises so a typo in the config
- * surfaces at PHP rendering rather than silently passing through.
+ * Emits curated control keys and inherited shape metadata. Curated copy and
+ * layout remain independent of the long-tail display intent.
  * @param field
  * @param indent
  */
@@ -3516,6 +3531,7 @@ function heroFormFieldToPhp( field, indent ) {
 		'max',
 		'step',
 		'enum',
+		'default',
 	];
 	const lines = [];
 	for ( const key of allowed ) {
@@ -3554,17 +3570,45 @@ function emitHeroFormPhp( tagSuffix, cfg ) {
 	// Build PHP fragments for fields. A single-section spec keeps the
 	// FormRenderer geo autocomplete heuristic working (lat / lon / tz in
 	// the same fieldset). Without a section, all fields go into flat_fields.
-	const fields = ( fm.fields || [] ).map( ( f ) => ( {
-		...f,
-		name: f.attr || f.name,
-	} ) );
+	const op = operations.find(
+		( entry ) => entry.operationId === cfg.operationId
+	);
+	const fields = ( fm.fields || [] ).map( ( f ) => {
+		const name = f.attr || f.name;
+		const wireName = cfg.attributes?.[ name ]?.spec_field || name;
+		const modelField =
+			op && formInputs( op ).find( ( entry ) => entry.key === wireName );
+		const shape = modelField ? buildFormFieldSpec( op, modelField ) : {};
+		// Only shapes inherit: the curated copy, order and grouping stay intact.
+		const defaults = Object.fromEntries(
+			[
+				'type',
+				'required',
+				'enum',
+				'min',
+				'max',
+				'step',
+				'default',
+				'placeholder',
+			]
+				.filter( ( key ) => shape[ key ] !== undefined )
+				.map( ( key ) => [ key, shape[ key ] ] )
+		);
+		return { ...defaults, ...f, name };
+	} );
 
 	let sectionsPhp = '';
 	let flatPhp = '';
 	let callBodyMap = '$body';
 	if ( fm.section ) {
 		const sectionName = fm.section.name;
-		const sectionLabel = fm.section.label || humanLabel( sectionName );
+		const modelGroup =
+			op &&
+			uiForms[ op.operationId ].groups.find(
+				( g ) => g.key === sectionName
+			);
+		const sectionLabel =
+			fm.section.label ?? formLabel( modelGroup || fm.section );
 		const fieldEntries = fields
 			.map( ( f ) => heroFormFieldToPhp( f, '\t\t\t\t\t' ) )
 			.join( '\n' );

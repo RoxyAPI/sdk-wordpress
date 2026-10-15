@@ -33,6 +33,8 @@ class GenerateLocalSpaceForm {
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '1990-07-15', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'time',
@@ -40,6 +42,8 @@ class GenerateLocalSpaceForm {
 					'required' => true,
 					'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 					'type' => 'time',
+					'placeholder' => __( '14:30:00', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'latitude',
@@ -49,7 +53,9 @@ class GenerateLocalSpaceForm {
 					'type' => 'number',
 					'min' => -90,
 					'max' => 90,
+					'placeholder' => __( '40.7128', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'longitude',
@@ -59,7 +65,9 @@ class GenerateLocalSpaceForm {
 					'type' => 'number',
 					'min' => -180,
 					'max' => 180,
+					'placeholder' => __( '-74.006', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'timezone',
@@ -67,6 +75,19 @@ class GenerateLocalSpaceForm {
 					'required' => true,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
+					'min' => -14,
+					'max' => 14,
+					'placeholder' => __( 'America/New_York', 'roxyapi' ),
+					'fold' => false,
+				),
+				array(
+					'name' => 'include',
+					'label' => __( 'Additional bodies', 'roxyapi' ),
+					'required' => false,
+					'help' => __( 'Optional comma-separated extra bodies to add beyond the 10 classical planets', 'roxyapi' ),
+					'type' => 'text',
+					'placeholder' => __( 'chiron,lilith', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);
@@ -77,6 +98,6 @@ class GenerateLocalSpaceForm {
 	 * @return array<string, mixed>|\WP_Error
 	 */
 	public static function call( array $body ) {
-		return \RoxyAPI\Generated\Client::generateLocalSpace( $body );
+		return \RoxyAPI\Generated\Client::generateLocalSpace( array_diff_key( $body, array_flip( array( 'include' ) ) ), array_intersect_key( $body, array_flip( array( 'include' ) ) ) );
 	}
 }

@@ -27,22 +27,29 @@ class CalculateRoomComplianceForm {
 				array(
 					'name'   => 'plot',
 					'label'  => __( 'Plot', 'roxyapi' ),
+					'fold'   => true,
 					'fields' => array(
 					array(
 						'name' => 'width',
-						'label' => __( 'Width', 'roxyapi' ),
+						'label' => __( 'Width, east to west', 'roxyapi' ),
 						'required' => false,
 						'help' => __( 'East-west extent of a rectangular plot, in the unit given', 'roxyapi' ),
 						'type' => 'number',
+						'min' => 0,
+						'placeholder' => __( '30', 'roxyapi' ),
 						'step' => 'any',
+						'fold' => true,
 					),
 					array(
 						'name' => 'depth',
-						'label' => __( 'Depth', 'roxyapi' ),
+						'label' => __( 'Depth, north to south', 'roxyapi' ),
 						'required' => false,
 						'help' => __( 'North-south extent of a rectangular plot, in the unit given', 'roxyapi' ),
 						'type' => 'number',
+						'min' => 0,
+						'placeholder' => __( '40', 'roxyapi' ),
 						'step' => 'any',
+						'fold' => true,
 					),
 					array(
 						'name' => 'unit',
@@ -51,6 +58,10 @@ class CalculateRoomComplianceForm {
 						'help' => __( 'Unit the plot dimensions are given in', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'feet', 'metres' ),
+						'default' => 'feet',
+						'enum_labels' => array( __( 'Feet', 'roxyapi' ), __( 'Metres', 'roxyapi' ) ),
+						'placeholder' => __( 'feet', 'roxyapi' ),
+						'fold' => true,
 					),
 					),
 				),
@@ -58,11 +69,14 @@ class CalculateRoomComplianceForm {
 			'flat_fields'  => array(
 				array(
 					'name' => 'facing',
-					'label' => __( 'Facing', 'roxyapi' ),
+					'label' => __( 'Facing direction', 'roxyapi' ),
 					'required' => false,
 					'help' => __( 'Direction the front of the house looks out toward, one of the eight compass sectors', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'North', 'Northeast', 'East', 'Southeast', 'South', 'Southwest', 'West', 'Northwest' ),
+					'enum_labels' => array( __( 'North', 'roxyapi' ), __( 'Northeast', 'roxyapi' ), __( 'East', 'roxyapi' ), __( 'Southeast', 'roxyapi' ), __( 'South', 'roxyapi' ), __( 'Southwest', 'roxyapi' ), __( 'West', 'roxyapi' ), __( 'Northwest', 'roxyapi' ) ),
+					'placeholder' => __( 'North', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'facingDegrees',
@@ -72,7 +86,9 @@ class CalculateRoomComplianceForm {
 					'type' => 'number',
 					'min' => 0,
 					'max' => 360,
+					'placeholder' => __( '15', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => true,
 				),
 			),
 		);

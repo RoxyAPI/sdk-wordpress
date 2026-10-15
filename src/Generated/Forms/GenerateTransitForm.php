@@ -26,7 +26,8 @@ class GenerateTransitForm {
 			'sections'     => array(
 				array(
 					'name'   => 'birthData',
-					'label'  => __( 'Birth data', 'roxyapi' ),
+					'label'  => __( 'Birth Data', 'roxyapi' ),
+					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'date',
@@ -34,6 +35,8 @@ class GenerateTransitForm {
 						'required' => true,
 						'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 						'type' => 'date',
+						'placeholder' => __( '1990-07-15', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'time',
@@ -41,6 +44,8 @@ class GenerateTransitForm {
 						'required' => true,
 						'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 						'type' => 'time',
+						'placeholder' => __( '13:00:00', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'timezone',
@@ -48,6 +53,10 @@ class GenerateTransitForm {
 						'required' => true,
 						'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 						'type' => 'timezone',
+						'min' => -14,
+						'max' => 14,
+						'placeholder' => __( 'America/New_York', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'latitude',
@@ -57,7 +66,10 @@ class GenerateTransitForm {
 						'type' => 'number',
 						'min' => -90,
 						'max' => 90,
+						'default' => 0,
+						'placeholder' => __( '0', 'roxyapi' ),
 						'step' => 'any',
+						'fold' => false,
 					),
 					array(
 						'name' => 'longitude',
@@ -67,15 +79,22 @@ class GenerateTransitForm {
 						'type' => 'number',
 						'min' => -180,
 						'max' => 180,
+						'default' => 0,
+						'placeholder' => __( '0', 'roxyapi' ),
 						'step' => 'any',
+						'fold' => false,
 					),
 					array(
 						'name' => 'nodeType',
-						'label' => __( 'Node type', 'roxyapi' ),
+						'label' => __( 'Lunar node type', 'roxyapi' ),
 						'required' => false,
 						'help' => __( 'Lunar node convention', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'mean', 'true' ),
+						'default' => 'true',
+						'enum_labels' => array( __( 'Mean', 'roxyapi' ), __( 'True', 'roxyapi' ) ),
+						'placeholder' => __( 'true', 'roxyapi' ),
+						'fold' => false,
 					),
 					),
 				),
@@ -87,6 +106,8 @@ class GenerateTransitForm {
 					'required' => false,
 					'help' => __( 'Transit date in YYYY-MM-DD UTC', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '2026-05-23', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'time',
@@ -94,6 +115,8 @@ class GenerateTransitForm {
 					'required' => false,
 					'help' => __( 'Transit time in HH:MM:SS UTC', 'roxyapi' ),
 					'type' => 'time',
+					'placeholder' => __( '12:00:00', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);

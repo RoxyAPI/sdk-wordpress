@@ -31,8 +31,12 @@ class GetRashiForm {
 					'name' => 'id',
 					'label' => __( 'Rashi', 'roxyapi' ),
 					'required' => true,
+					'help' => __( 'Rashi ID slug', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'mesha', 'vrishabha', 'mithun', 'karka', 'simha', 'kanya', 'tula', 'vrischika', 'dhanu', 'makar', 'kumbha', 'meen' ),
+					'enum_labels' => array( __( 'Mesha', 'roxyapi' ), __( 'Vrishabha', 'roxyapi' ), __( 'Mithun', 'roxyapi' ), __( 'Karka', 'roxyapi' ), __( 'Simha', 'roxyapi' ), __( 'Kanya', 'roxyapi' ), __( 'Tula', 'roxyapi' ), __( 'Vrischika', 'roxyapi' ), __( 'Dhanu', 'roxyapi' ), __( 'Makar', 'roxyapi' ), __( 'Kumbha', 'roxyapi' ), __( 'Meen', 'roxyapi' ) ),
+					'placeholder' => __( 'mesha', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

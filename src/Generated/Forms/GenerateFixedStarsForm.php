@@ -33,6 +33,8 @@ class GenerateFixedStarsForm {
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '1990-07-15', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'time',
@@ -40,6 +42,8 @@ class GenerateFixedStarsForm {
 					'required' => true,
 					'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 					'type' => 'time',
+					'placeholder' => __( '14:30:00', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'latitude',
@@ -49,7 +53,9 @@ class GenerateFixedStarsForm {
 					'type' => 'number',
 					'min' => -90,
 					'max' => 90,
+					'placeholder' => __( '40.7128', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'longitude',
@@ -59,7 +65,9 @@ class GenerateFixedStarsForm {
 					'type' => 'number',
 					'min' => -180,
 					'max' => 180,
+					'placeholder' => __( '-74.006', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'timezone',
@@ -67,14 +75,35 @@ class GenerateFixedStarsForm {
 					'required' => true,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
+					'min' => -14,
+					'max' => 14,
+					'placeholder' => __( 'America/New_York', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'nodeType',
-					'label' => __( 'Node type', 'roxyapi' ),
+					'label' => __( 'Lunar node type', 'roxyapi' ),
 					'required' => false,
 					'help' => __( 'Lunar node convention', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'mean', 'true' ),
+					'default' => 'true',
+					'enum_labels' => array( __( 'Mean', 'roxyapi' ), __( 'True', 'roxyapi' ) ),
+					'placeholder' => __( 'true', 'roxyapi' ),
+					'fold' => true,
+				),
+				array(
+					'name' => 'orb',
+					'label' => __( 'Orb', 'roxyapi' ),
+					'required' => false,
+					'help' => __( 'Conjunction orb in degrees, the maximum separation for a star to count as conjunct a chart point', 'roxyapi' ),
+					'type' => 'number',
+					'min' => 0,
+					'max' => 3,
+					'default' => 1,
+					'placeholder' => __( '1', 'roxyapi' ),
+					'step' => 'any',
+					'fold' => true,
 				),
 			),
 		);
@@ -85,6 +114,6 @@ class GenerateFixedStarsForm {
 	 * @return array<string, mixed>|\WP_Error
 	 */
 	public static function call( array $body ) {
-		return \RoxyAPI\Generated\Client::generateFixedStars( $body );
+		return \RoxyAPI\Generated\Client::generateFixedStars( array_diff_key( $body, array_flip( array( 'orb' ) ) ), array_intersect_key( $body, array_flip( array( 'orb' ) ) ) );
 	}
 }

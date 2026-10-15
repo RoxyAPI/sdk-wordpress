@@ -33,6 +33,8 @@ class GetVedicDailyReadingForm {
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '1984-11-03', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'birthTime',
@@ -40,6 +42,8 @@ class GetVedicDailyReadingForm {
 					'required' => true,
 					'help' => __( 'Birth time in HH:MM:SS format (24-hour)', 'roxyapi' ),
 					'type' => 'time',
+					'placeholder' => __( '01:35:00', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'latitude',
@@ -49,7 +53,9 @@ class GetVedicDailyReadingForm {
 					'type' => 'number',
 					'min' => -90,
 					'max' => 90,
+					'placeholder' => __( '28.8944', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'longitude',
@@ -59,7 +65,9 @@ class GetVedicDailyReadingForm {
 					'type' => 'number',
 					'min' => -180,
 					'max' => 180,
+					'placeholder' => __( '76.5894', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'timezone',
@@ -67,6 +75,11 @@ class GetVedicDailyReadingForm {
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
+					'min' => -14,
+					'max' => 14,
+					'default' => 5.5,
+					'placeholder' => __( '5.5', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'date',
@@ -74,14 +87,32 @@ class GetVedicDailyReadingForm {
 					'required' => false,
 					'help' => __( 'Civil date to read, in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '2026-06-21', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'nodeType',
-					'label' => __( 'Node type', 'roxyapi' ),
+					'label' => __( 'Lunar node type', 'roxyapi' ),
 					'required' => false,
 					'help' => __( 'Lunar node type for Rahu and Ketu', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'mean', 'true' ),
+					'default' => 'mean',
+					'enum_labels' => array( __( 'Mean', 'roxyapi' ), __( 'True', 'roxyapi' ) ),
+					'placeholder' => __( 'mean', 'roxyapi' ),
+					'fold' => true,
+				),
+				array(
+					'name' => 'focus',
+					'label' => __( 'Focus', 'roxyapi' ),
+					'required' => false,
+					'help' => __( 'Which signification vocabulary the houseThemes map returns', 'roxyapi' ),
+					'type' => 'enum',
+					'enum' => array( 'general', 'finance' ),
+					'default' => 'general',
+					'enum_labels' => array( __( 'General', 'roxyapi' ), __( 'Finance', 'roxyapi' ) ),
+					'placeholder' => __( 'general', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);
@@ -92,6 +123,6 @@ class GetVedicDailyReadingForm {
 	 * @return array<string, mixed>|\WP_Error
 	 */
 	public static function call( array $body ) {
-		return \RoxyAPI\Generated\Client::getVedicDailyReading( $body );
+		return \RoxyAPI\Generated\Client::getVedicDailyReading( array_diff_key( $body, array_flip( array( 'focus' ) ) ), array_intersect_key( $body, array_flip( array( 'focus' ) ) ) );
 	}
 }

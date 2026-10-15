@@ -33,6 +33,8 @@ class CalculateParallelsForm {
 					'required' => true,
 					'help' => __( 'Date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '2026-02-03', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'time',
@@ -40,6 +42,8 @@ class CalculateParallelsForm {
 					'required' => true,
 					'help' => __( 'Time in HH:MM:SS format (24-hour)', 'roxyapi' ),
 					'type' => 'time',
+					'placeholder' => __( '12:00:00', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'latitude',
@@ -49,7 +53,9 @@ class CalculateParallelsForm {
 					'type' => 'number',
 					'min' => -90,
 					'max' => 90,
+					'placeholder' => __( '17.385044', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'longitude',
@@ -59,7 +65,9 @@ class CalculateParallelsForm {
 					'type' => 'number',
 					'min' => -180,
 					'max' => 180,
+					'placeholder' => __( '78.486671', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'timezone',
@@ -67,6 +75,11 @@ class CalculateParallelsForm {
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
+					'min' => -14,
+					'max' => 14,
+					'default' => 5.5,
+					'placeholder' => __( '5.5', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'orb',
@@ -76,7 +89,10 @@ class CalculateParallelsForm {
 					'type' => 'number',
 					'min' => 0.5,
 					'max' => 3,
+					'default' => 1.5,
+					'placeholder' => __( '1.5', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => true,
 				),
 			),
 		);

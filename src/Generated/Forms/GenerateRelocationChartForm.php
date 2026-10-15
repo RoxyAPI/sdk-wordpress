@@ -33,6 +33,8 @@ class GenerateRelocationChartForm {
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '1961-08-04', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'time',
@@ -40,6 +42,8 @@ class GenerateRelocationChartForm {
 					'required' => true,
 					'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 					'type' => 'time',
+					'placeholder' => __( '19:24:00', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'timezone',
@@ -47,6 +51,10 @@ class GenerateRelocationChartForm {
 					'required' => true,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
+					'min' => -14,
+					'max' => 14,
+					'placeholder' => __( '-10', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'birthLatitude',
@@ -56,7 +64,9 @@ class GenerateRelocationChartForm {
 					'type' => 'number',
 					'min' => -90,
 					'max' => 90,
+					'placeholder' => __( '21.3069', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'birthLongitude',
@@ -66,7 +76,9 @@ class GenerateRelocationChartForm {
 					'type' => 'number',
 					'min' => -180,
 					'max' => 180,
+					'placeholder' => __( '-157.8583', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'relocationLatitude',
@@ -76,7 +88,9 @@ class GenerateRelocationChartForm {
 					'type' => 'number',
 					'min' => -90,
 					'max' => 90,
+					'placeholder' => __( '40.7167', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'relocationLongitude',
@@ -86,7 +100,9 @@ class GenerateRelocationChartForm {
 					'type' => 'number',
 					'min' => -180,
 					'max' => 180,
+					'placeholder' => __( '-74.006', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'houseSystem',
@@ -95,6 +111,10 @@ class GenerateRelocationChartForm {
 					'help' => __( 'House system for dividing the relocated chart into 12 houses', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'placidus', 'whole-sign', 'equal', 'koch' ),
+					'default' => 'placidus',
+					'enum_labels' => array( __( 'Placidus', 'roxyapi' ), __( 'Whole sign', 'roxyapi' ), __( 'Equal', 'roxyapi' ), __( 'Koch', 'roxyapi' ) ),
+					'placeholder' => __( 'placidus', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);

@@ -33,6 +33,8 @@ class CalculateDualForm {
 					'required' => true,
 					'help' => __( 'The name to analyze in both systems', 'roxyapi' ),
 					'type' => 'text',
+					'placeholder' => __( 'David', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

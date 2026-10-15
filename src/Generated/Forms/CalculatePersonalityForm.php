@@ -33,6 +33,8 @@ class CalculatePersonalityForm {
 					'required' => true,
 					'help' => __( 'Full birth name', 'roxyapi' ),
 					'type' => 'text',
+					'placeholder' => __( 'John William Smith', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

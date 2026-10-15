@@ -29,19 +29,25 @@ class GetZodiacCompatibilityForm {
 			'flat_fields'  => array(
 				array(
 					'name' => 'sign1',
-					'label' => __( 'Sign 1', 'roxyapi' ),
+					'label' => __( 'First animal sign', 'roxyapi' ),
 					'required' => true,
 					'help' => __( 'First animal id, case-insensitive', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'rat', 'ox', 'tiger', 'rabbit', 'dragon', 'snake', 'horse', 'goat', 'monkey', 'rooster', 'dog', 'pig' ),
+					'enum_labels' => array( __( 'Rat', 'roxyapi' ), __( 'Ox', 'roxyapi' ), __( 'Tiger', 'roxyapi' ), __( 'Rabbit', 'roxyapi' ), __( 'Dragon', 'roxyapi' ), __( 'Snake', 'roxyapi' ), __( 'Horse', 'roxyapi' ), __( 'Goat', 'roxyapi' ), __( 'Monkey', 'roxyapi' ), __( 'Rooster', 'roxyapi' ), __( 'Dog', 'roxyapi' ), __( 'Pig', 'roxyapi' ) ),
+					'placeholder' => __( 'rat', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'sign2',
-					'label' => __( 'Sign 2', 'roxyapi' ),
+					'label' => __( 'Second animal sign', 'roxyapi' ),
 					'required' => true,
 					'help' => __( 'Second animal id, case-insensitive', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'rat', 'ox', 'tiger', 'rabbit', 'dragon', 'snake', 'horse', 'goat', 'monkey', 'rooster', 'dog', 'pig' ),
+					'enum_labels' => array( __( 'Rat', 'roxyapi' ), __( 'Ox', 'roxyapi' ), __( 'Tiger', 'roxyapi' ), __( 'Rabbit', 'roxyapi' ), __( 'Dragon', 'roxyapi' ), __( 'Snake', 'roxyapi' ), __( 'Horse', 'roxyapi' ), __( 'Goat', 'roxyapi' ), __( 'Monkey', 'roxyapi' ), __( 'Rooster', 'roxyapi' ), __( 'Dog', 'roxyapi' ), __( 'Pig', 'roxyapi' ) ),
+					'placeholder' => __( 'dragon', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

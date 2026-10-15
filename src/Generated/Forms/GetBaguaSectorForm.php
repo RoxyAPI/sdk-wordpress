@@ -31,8 +31,12 @@ class GetBaguaSectorForm {
 					'name' => 'id',
 					'label' => __( 'Life area', 'roxyapi' ),
 					'required' => true,
+					'help' => __( 'Life area id', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'career', 'knowledge', 'family', 'wealth', 'fame', 'love', 'children', 'helpful-people', 'health' ),
+					'enum_labels' => array( __( 'Career', 'roxyapi' ), __( 'Knowledge', 'roxyapi' ), __( 'Family', 'roxyapi' ), __( 'Wealth', 'roxyapi' ), __( 'Fame', 'roxyapi' ), __( 'Love', 'roxyapi' ), __( 'Children', 'roxyapi' ), __( 'Helpful people', 'roxyapi' ), __( 'Health', 'roxyapi' ) ),
+					'placeholder' => __( 'wealth', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

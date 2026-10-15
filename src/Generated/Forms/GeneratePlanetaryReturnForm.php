@@ -33,6 +33,8 @@ class GeneratePlanetaryReturnForm {
 					'required' => true,
 					'help' => __( 'Original birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '1990-07-15', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'birthTime',
@@ -40,6 +42,8 @@ class GeneratePlanetaryReturnForm {
 					'required' => true,
 					'help' => __( 'Original birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 					'type' => 'time',
+					'placeholder' => __( '14:30:00', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'planet',
@@ -48,6 +52,9 @@ class GeneratePlanetaryReturnForm {
 					'help' => __( 'Planet for the return calculation', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn' ),
+					'enum_labels' => array( __( 'Mercury', 'roxyapi' ), __( 'Venus', 'roxyapi' ), __( 'Mars', 'roxyapi' ), __( 'Jupiter', 'roxyapi' ), __( 'Saturn', 'roxyapi' ) ),
+					'placeholder' => __( 'Jupiter', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'approximateDate',
@@ -55,6 +62,8 @@ class GeneratePlanetaryReturnForm {
 					'required' => true,
 					'help' => __( 'Approximate date near the expected planetary return (YYYY-MM-DD)', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '2026-08-15', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'latitude',
@@ -64,7 +73,9 @@ class GeneratePlanetaryReturnForm {
 					'type' => 'number',
 					'min' => -90,
 					'max' => 90,
+					'placeholder' => __( '40.7128', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'longitude',
@@ -74,7 +85,9 @@ class GeneratePlanetaryReturnForm {
 					'type' => 'number',
 					'min' => -180,
 					'max' => 180,
+					'placeholder' => __( '-74.006', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'timezone',
@@ -82,6 +95,10 @@ class GeneratePlanetaryReturnForm {
 					'required' => true,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
+					'min' => -14,
+					'max' => 14,
+					'placeholder' => __( 'America/New_York', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'houseSystem',
@@ -90,6 +107,10 @@ class GeneratePlanetaryReturnForm {
 					'help' => __( 'House system for the return chart', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'placidus', 'whole-sign', 'equal', 'koch' ),
+					'default' => 'placidus',
+					'enum_labels' => array( __( 'Placidus', 'roxyapi' ), __( 'Whole sign', 'roxyapi' ), __( 'Equal', 'roxyapi' ), __( 'Koch', 'roxyapi' ) ),
+					'placeholder' => __( 'placidus', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);

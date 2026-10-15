@@ -33,6 +33,8 @@ class FindGrihaPraveshDatesForm {
 					'required' => true,
 					'help' => __( 'First day of the search window, in YYYY-MM-DD', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '2027-01-20', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'endDate',
@@ -40,6 +42,8 @@ class FindGrihaPraveshDatesForm {
 					'required' => true,
 					'help' => __( 'Last day of the search window, in YYYY-MM-DD, inclusive', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '2027-03-20', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'latitude',
@@ -49,7 +53,9 @@ class FindGrihaPraveshDatesForm {
 					'type' => 'number',
 					'min' => -90,
 					'max' => 90,
+					'placeholder' => __( '28.6139', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'longitude',
@@ -59,7 +65,9 @@ class FindGrihaPraveshDatesForm {
 					'type' => 'number',
 					'min' => -180,
 					'max' => 180,
+					'placeholder' => __( '77.209', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'timezone',
@@ -67,6 +75,10 @@ class FindGrihaPraveshDatesForm {
 					'required' => true,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
+					'min' => -14,
+					'max' => 14,
+					'placeholder' => __( 'America/New_York', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'muhurtaText',
@@ -75,6 +87,10 @@ class FindGrihaPraveshDatesForm {
 					'help' => __( 'Which Muhurta text supplies the admissible nakshatras for entering a new house', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'muhurta-chintamani', 'kalaprakasika' ),
+					'default' => 'muhurta-chintamani',
+					'enum_labels' => array( __( 'Muhurta chintamani', 'roxyapi' ), __( 'Kalaprakasika', 'roxyapi' ) ),
+					'placeholder' => __( 'muhurta-chintamani', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);

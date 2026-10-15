@@ -33,6 +33,8 @@ class CalculateExpressionForm {
 					'required' => true,
 					'help' => __( 'Full birth name (first, middle, last)', 'roxyapi' ),
 					'type' => 'text',
+					'placeholder' => __( 'John William Smith', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

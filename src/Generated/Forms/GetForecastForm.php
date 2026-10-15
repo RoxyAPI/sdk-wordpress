@@ -33,6 +33,8 @@ class GetForecastForm {
 					'required' => true,
 					'help' => __( 'Birth date of the person in YYYY-MM-DD format.', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '1990-07-15', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'startDate',
@@ -40,6 +42,8 @@ class GetForecastForm {
 					'required' => false,
 					'help' => __( 'Start date of the forecast range in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '2026-04-01', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'endDate',
@@ -47,6 +51,8 @@ class GetForecastForm {
 					'required' => false,
 					'help' => __( 'End date of the forecast range in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '2026-04-30', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);

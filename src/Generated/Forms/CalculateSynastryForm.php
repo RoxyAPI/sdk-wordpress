@@ -27,6 +27,7 @@ class CalculateSynastryForm {
 				array(
 					'name'   => 'person1',
 					'label'  => __( 'Person 1', 'roxyapi' ),
+					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'date',
@@ -34,6 +35,8 @@ class CalculateSynastryForm {
 						'required' => true,
 						'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 						'type' => 'date',
+						'placeholder' => __( '1990-07-15', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'time',
@@ -41,6 +44,8 @@ class CalculateSynastryForm {
 						'required' => true,
 						'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 						'type' => 'time',
+						'placeholder' => __( '14:30:00', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'latitude',
@@ -50,7 +55,9 @@ class CalculateSynastryForm {
 						'type' => 'number',
 						'min' => -90,
 						'max' => 90,
+						'placeholder' => __( '40.7128', 'roxyapi' ),
 						'step' => 'any',
+						'fold' => false,
 					),
 					array(
 						'name' => 'longitude',
@@ -60,7 +67,9 @@ class CalculateSynastryForm {
 						'type' => 'number',
 						'min' => -180,
 						'max' => 180,
+						'placeholder' => __( '-74.006', 'roxyapi' ),
 						'step' => 'any',
+						'fold' => false,
 					),
 					array(
 						'name' => 'timezone',
@@ -68,14 +77,22 @@ class CalculateSynastryForm {
 						'required' => true,
 						'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 						'type' => 'timezone',
+						'min' => -14,
+						'max' => 14,
+						'placeholder' => __( 'America/New_York', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'nodeType',
-						'label' => __( 'Node type', 'roxyapi' ),
+						'label' => __( 'Lunar node type', 'roxyapi' ),
 						'required' => false,
 						'help' => __( 'Lunar node convention', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'mean', 'true' ),
+						'default' => 'true',
+						'enum_labels' => array( __( 'Mean', 'roxyapi' ), __( 'True', 'roxyapi' ) ),
+						'placeholder' => __( 'true', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'name',
@@ -83,12 +100,15 @@ class CalculateSynastryForm {
 						'required' => false,
 						'help' => __( 'Optional display name for this person', 'roxyapi' ),
 						'type' => 'text',
+						'placeholder' => __( 'Alex', 'roxyapi' ),
+						'fold' => false,
 					),
 					),
 				),
 				array(
 					'name'   => 'person2',
 					'label'  => __( 'Person 2', 'roxyapi' ),
+					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'date',
@@ -96,6 +116,8 @@ class CalculateSynastryForm {
 						'required' => true,
 						'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 						'type' => 'date',
+						'placeholder' => __( '1990-07-15', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'time',
@@ -103,6 +125,8 @@ class CalculateSynastryForm {
 						'required' => true,
 						'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 						'type' => 'time',
+						'placeholder' => __( '14:30:00', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'latitude',
@@ -112,7 +136,9 @@ class CalculateSynastryForm {
 						'type' => 'number',
 						'min' => -90,
 						'max' => 90,
+						'placeholder' => __( '40.7128', 'roxyapi' ),
 						'step' => 'any',
+						'fold' => false,
 					),
 					array(
 						'name' => 'longitude',
@@ -122,7 +148,9 @@ class CalculateSynastryForm {
 						'type' => 'number',
 						'min' => -180,
 						'max' => 180,
+						'placeholder' => __( '-74.006', 'roxyapi' ),
 						'step' => 'any',
+						'fold' => false,
 					),
 					array(
 						'name' => 'timezone',
@@ -130,14 +158,22 @@ class CalculateSynastryForm {
 						'required' => true,
 						'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 						'type' => 'timezone',
+						'min' => -14,
+						'max' => 14,
+						'placeholder' => __( 'America/New_York', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'nodeType',
-						'label' => __( 'Node type', 'roxyapi' ),
+						'label' => __( 'Lunar node type', 'roxyapi' ),
 						'required' => false,
 						'help' => __( 'Lunar node convention', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'mean', 'true' ),
+						'default' => 'true',
+						'enum_labels' => array( __( 'Mean', 'roxyapi' ), __( 'True', 'roxyapi' ) ),
+						'placeholder' => __( 'true', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'name',
@@ -145,6 +181,8 @@ class CalculateSynastryForm {
 						'required' => false,
 						'help' => __( 'Optional display name for this person', 'roxyapi' ),
 						'type' => 'text',
+						'placeholder' => __( 'Alex', 'roxyapi' ),
+						'fold' => false,
 					),
 					),
 				),
@@ -157,6 +195,10 @@ class CalculateSynastryForm {
 					'help' => __( 'House system for both natal charts', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'placidus', 'whole-sign', 'equal', 'koch' ),
+					'default' => 'placidus',
+					'enum_labels' => array( __( 'Placidus', 'roxyapi' ), __( 'Whole sign', 'roxyapi' ), __( 'Equal', 'roxyapi' ), __( 'Koch', 'roxyapi' ) ),
+					'placeholder' => __( 'placidus', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);

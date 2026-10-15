@@ -35,6 +35,8 @@ class GetShemNameForm {
 					'type' => 'integer',
 					'min' => 1,
 					'max' => 72,
+					'placeholder' => __( '27', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

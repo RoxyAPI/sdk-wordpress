@@ -27,6 +27,7 @@ class CalculatePapasamyamForm {
 				array(
 					'name'   => 'person1',
 					'label'  => __( 'Person 1', 'roxyapi' ),
+					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'date',
@@ -34,6 +35,8 @@ class CalculatePapasamyamForm {
 						'required' => true,
 						'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 						'type' => 'date',
+						'placeholder' => __( '1990-07-04', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'time',
@@ -41,6 +44,8 @@ class CalculatePapasamyamForm {
 						'required' => true,
 						'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 						'type' => 'time',
+						'placeholder' => __( '10:12:00', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'latitude',
@@ -50,7 +55,9 @@ class CalculatePapasamyamForm {
 						'type' => 'number',
 						'min' => -90,
 						'max' => 90,
+						'placeholder' => __( '28.6139', 'roxyapi' ),
 						'step' => 'any',
+						'fold' => false,
 					),
 					array(
 						'name' => 'longitude',
@@ -60,7 +67,9 @@ class CalculatePapasamyamForm {
 						'type' => 'number',
 						'min' => -180,
 						'max' => 180,
+						'placeholder' => __( '77.209', 'roxyapi' ),
 						'step' => 'any',
+						'fold' => false,
 					),
 					array(
 						'name' => 'timezone',
@@ -68,12 +77,18 @@ class CalculatePapasamyamForm {
 						'required' => false,
 						'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 						'type' => 'timezone',
+						'min' => -14,
+						'max' => 14,
+						'default' => 5.5,
+						'placeholder' => __( '5.5', 'roxyapi' ),
+						'fold' => false,
 					),
 					),
 				),
 				array(
 					'name'   => 'person2',
 					'label'  => __( 'Person 2', 'roxyapi' ),
+					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'date',
@@ -81,6 +96,8 @@ class CalculatePapasamyamForm {
 						'required' => true,
 						'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 						'type' => 'date',
+						'placeholder' => __( '1990-07-04', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'time',
@@ -88,6 +105,8 @@ class CalculatePapasamyamForm {
 						'required' => true,
 						'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 						'type' => 'time',
+						'placeholder' => __( '10:12:00', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'latitude',
@@ -97,7 +116,9 @@ class CalculatePapasamyamForm {
 						'type' => 'number',
 						'min' => -90,
 						'max' => 90,
+						'placeholder' => __( '28.6139', 'roxyapi' ),
 						'step' => 'any',
+						'fold' => false,
 					),
 					array(
 						'name' => 'longitude',
@@ -107,7 +128,9 @@ class CalculatePapasamyamForm {
 						'type' => 'number',
 						'min' => -180,
 						'max' => 180,
+						'placeholder' => __( '77.209', 'roxyapi' ),
 						'step' => 'any',
+						'fold' => false,
 					),
 					array(
 						'name' => 'timezone',
@@ -115,6 +138,11 @@ class CalculatePapasamyamForm {
 						'required' => false,
 						'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 						'type' => 'timezone',
+						'min' => -14,
+						'max' => 14,
+						'default' => 5.5,
+						'placeholder' => __( '5.5', 'roxyapi' ),
+						'fold' => false,
 					),
 					),
 				),
@@ -127,14 +155,20 @@ class CalculatePapasamyamForm {
 					'help' => __( 'Sidereal frame (ayanamsa) the chart is cast in', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'kp-newcomb', 'kp-old', 'lahiri', 'raman', 'custom' ),
+					'default' => 'lahiri',
+					'enum_labels' => array( __( 'Kp newcomb', 'roxyapi' ), __( 'Kp old', 'roxyapi' ), __( 'Lahiri', 'roxyapi' ), __( 'Raman', 'roxyapi' ), __( 'Custom', 'roxyapi' ) ),
+					'placeholder' => __( 'lahiri', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'ayanamsaValue',
-					'label' => __( 'Ayanamsa value', 'roxyapi' ),
+					'label' => __( 'Custom ayanamsa value', 'roxyapi' ),
 					'required' => false,
 					'help' => __( 'Custom ayanamsa value in degrees', 'roxyapi' ),
 					'type' => 'number',
+					'placeholder' => __( '24', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => true,
 				),
 			),
 		);

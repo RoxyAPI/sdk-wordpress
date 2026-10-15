@@ -31,8 +31,12 @@ class GetAvasthaForm {
 					'name' => 'id',
 					'label' => __( 'Avastha', 'roxyapi' ),
 					'required' => true,
+					'help' => __( 'Avastha slug', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'bala', 'kumara', 'yuva', 'vriddha', 'mrita', 'jagrat', 'swapna', 'sushupti', 'dipta', 'svastha', 'pramudita', 'shanta', 'dina', 'duhkhita', 'vikala', 'khala', 'kopa' ),
+					'enum_labels' => array( __( 'Bala', 'roxyapi' ), __( 'Kumara', 'roxyapi' ), __( 'Yuva', 'roxyapi' ), __( 'Vriddha', 'roxyapi' ), __( 'Mrita', 'roxyapi' ), __( 'Jagrat', 'roxyapi' ), __( 'Swapna', 'roxyapi' ), __( 'Sushupti', 'roxyapi' ), __( 'Dipta', 'roxyapi' ), __( 'Svastha', 'roxyapi' ), __( 'Pramudita', 'roxyapi' ), __( 'Shanta', 'roxyapi' ), __( 'Dina', 'roxyapi' ), __( 'Duhkhita', 'roxyapi' ), __( 'Vikala', 'roxyapi' ), __( 'Khala', 'roxyapi' ), __( 'Kopa', 'roxyapi' ) ),
+					'placeholder' => __( 'dipta', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

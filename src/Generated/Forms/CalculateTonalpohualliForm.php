@@ -33,6 +33,8 @@ class CalculateTonalpohualliForm {
 					'required' => true,
 					'help' => __( 'Date in YYYY-MM-DD format, in the PROLEPTIC GREGORIAN calendar, extended backwards unchanged through the 1582 reform', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '2012-12-21', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

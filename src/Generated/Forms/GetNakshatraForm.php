@@ -31,8 +31,12 @@ class GetNakshatraForm {
 					'name' => 'id',
 					'label' => __( 'Nakshatra', 'roxyapi' ),
 					'required' => true,
+					'help' => __( 'Nakshatra ID slug', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'ashwini', 'bharani', 'krittika', 'rohini', 'mrigashira', 'ardra', 'punarvasu', 'pushya', 'ashlesha', 'magha', 'purva-phalguni', 'uttara-phalguni', 'hasta', 'chitra', 'swati', 'vishakha', 'anuradha', 'jyeshtha', 'moola', 'purva-ashadha', 'uttara-ashadha', 'shravana', 'dhanishta', 'shatabhisha', 'purva-bhadrapada', 'uttara-bhadrapada', 'revati' ),
+					'enum_labels' => array( __( 'Ashwini', 'roxyapi' ), __( 'Bharani', 'roxyapi' ), __( 'Krittika', 'roxyapi' ), __( 'Rohini', 'roxyapi' ), __( 'Mrigashira', 'roxyapi' ), __( 'Ardra', 'roxyapi' ), __( 'Punarvasu', 'roxyapi' ), __( 'Pushya', 'roxyapi' ), __( 'Ashlesha', 'roxyapi' ), __( 'Magha', 'roxyapi' ), __( 'Purva phalguni', 'roxyapi' ), __( 'Uttara phalguni', 'roxyapi' ), __( 'Hasta', 'roxyapi' ), __( 'Chitra', 'roxyapi' ), __( 'Swati', 'roxyapi' ), __( 'Vishakha', 'roxyapi' ), __( 'Anuradha', 'roxyapi' ), __( 'Jyeshtha', 'roxyapi' ), __( 'Moola', 'roxyapi' ), __( 'Purva ashadha', 'roxyapi' ), __( 'Uttara ashadha', 'roxyapi' ), __( 'Shravana', 'roxyapi' ), __( 'Dhanishta', 'roxyapi' ), __( 'Shatabhisha', 'roxyapi' ), __( 'Purva bhadrapada', 'roxyapi' ), __( 'Uttara bhadrapada', 'roxyapi' ), __( 'Revati', 'roxyapi' ) ),
+					'placeholder' => __( 'ashwini', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

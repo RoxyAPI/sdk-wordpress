@@ -35,7 +35,9 @@ class GetKpRulingPlanetsForm {
 					'type' => 'number',
 					'min' => -90,
 					'max' => 90,
+					'placeholder' => __( '28.6139', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'longitude',
@@ -45,7 +47,9 @@ class GetKpRulingPlanetsForm {
 					'type' => 'number',
 					'min' => -180,
 					'max' => 180,
+					'placeholder' => __( '77.209', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'timezone',
@@ -53,13 +57,20 @@ class GetKpRulingPlanetsForm {
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
+					'min' => -14,
+					'max' => 14,
+					'default' => 5.5,
+					'placeholder' => __( '5.5', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'datetime',
-					'label' => __( 'Datetime', 'roxyapi' ),
+					'label' => __( 'Date and time', 'roxyapi' ),
 					'required' => false,
 					'help' => __( 'ISO 8601 datetime (YYYY-MM-DDTHH:MM:SS) for ruling planets', 'roxyapi' ),
 					'type' => 'time',
+					'placeholder' => __( '2025-01-15T10:30:00Z', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'birthDate',
@@ -67,6 +78,8 @@ class GetKpRulingPlanetsForm {
 					'required' => false,
 					'help' => __( 'Birth date (YYYY-MM-DD) to calculate significators', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '1990-07-04', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'birthTime',
@@ -74,14 +87,32 @@ class GetKpRulingPlanetsForm {
 					'required' => false,
 					'help' => __( 'Birth time (HH:MM:SS) for significator calculation', 'roxyapi' ),
 					'type' => 'time',
+					'placeholder' => __( '10:12:00', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'nodeType',
-					'label' => __( 'Node type', 'roxyapi' ),
+					'label' => __( 'Lunar node type', 'roxyapi' ),
 					'required' => false,
 					'help' => __( 'Lunar node convention', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'mean', 'true' ),
+					'default' => 'mean',
+					'enum_labels' => array( __( 'Mean', 'roxyapi' ), __( 'True', 'roxyapi' ) ),
+					'placeholder' => __( 'mean', 'roxyapi' ),
+					'fold' => true,
+				),
+				array(
+					'name' => 'focus',
+					'label' => __( 'Focus', 'roxyapi' ),
+					'required' => false,
+					'help' => __( 'Which signification vocabulary the houseThemes map returns', 'roxyapi' ),
+					'type' => 'enum',
+					'enum' => array( 'general', 'finance' ),
+					'default' => 'general',
+					'enum_labels' => array( __( 'General', 'roxyapi' ), __( 'Finance', 'roxyapi' ) ),
+					'placeholder' => __( 'general', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);
@@ -92,6 +123,6 @@ class GetKpRulingPlanetsForm {
 	 * @return array<string, mixed>|\WP_Error
 	 */
 	public static function call( array $body ) {
-		return \RoxyAPI\Generated\Client::getKpRulingPlanets( $body );
+		return \RoxyAPI\Generated\Client::getKpRulingPlanets( array_diff_key( $body, array_flip( array( 'focus' ) ) ), array_intersect_key( $body, array_flip( array( 'focus' ) ) ) );
 	}
 }

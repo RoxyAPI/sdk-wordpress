@@ -33,6 +33,8 @@ class CalculateAnnualForecastForm {
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '1990-06-15', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'time',
@@ -40,6 +42,8 @@ class CalculateAnnualForecastForm {
 					'required' => true,
 					'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 					'type' => 'time',
+					'placeholder' => __( '14:30:00', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'timezone',
@@ -47,6 +51,10 @@ class CalculateAnnualForecastForm {
 					'required' => true,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
+					'min' => -14,
+					'max' => 14,
+					'placeholder' => __( 'America/New_York', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'latitude',
@@ -56,7 +64,10 @@ class CalculateAnnualForecastForm {
 					'type' => 'number',
 					'min' => -90,
 					'max' => 90,
+					'default' => 0,
+					'placeholder' => __( '0', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'longitude',
@@ -66,7 +77,9 @@ class CalculateAnnualForecastForm {
 					'type' => 'number',
 					'min' => -180,
 					'max' => 180,
+					'placeholder' => __( '116.4', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'dayBoundary',
@@ -75,6 +88,10 @@ class CalculateAnnualForecastForm {
 					'help' => __( 'Which instant starts the sexagenary DAY, which only matters for a birth between 23:00 and 23:59', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'split-zi', 'midnight', 'early-zi' ),
+					'default' => 'split-zi',
+					'enum_labels' => array( __( 'Split zi', 'roxyapi' ), __( 'Midnight', 'roxyapi' ), __( 'Early zi', 'roxyapi' ) ),
+					'placeholder' => __( 'split-zi', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'yearBoundary',
@@ -83,6 +100,10 @@ class CalculateAnnualForecastForm {
 					'help' => __( 'Which instant starts the sexagenary YEAR', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'li-chun', 'lunar-new-year' ),
+					'default' => 'li-chun',
+					'enum_labels' => array( __( 'Li chun', 'roxyapi' ), __( 'Lunar new year', 'roxyapi' ) ),
+					'placeholder' => __( 'li-chun', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'hourClock',
@@ -91,6 +112,10 @@ class CalculateAnnualForecastForm {
 					'help' => __( 'Which clock the day boundary and the hour branch are read from, so a correction that carries a birth across midnight moves the day pillar with the hour', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'clock', 'local-mean', 'solar' ),
+					'default' => 'clock',
+					'enum_labels' => array( __( 'Clock', 'roxyapi' ), __( 'Local mean', 'roxyapi' ), __( 'Solar', 'roxyapi' ) ),
+					'placeholder' => __( 'clock', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'year',
@@ -100,6 +125,8 @@ class CalculateAnnualForecastForm {
 					'type' => 'integer',
 					'min' => 1551,
 					'max' => 2649,
+					'placeholder' => __( '2026', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

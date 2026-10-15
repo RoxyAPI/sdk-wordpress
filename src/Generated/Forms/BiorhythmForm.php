@@ -40,6 +40,7 @@ class BiorhythmForm {
 				'required' => true,
 				'type' => 'date',
 				'help' => __( 'Year, month, and day of birth', 'roxyapi' ),
+				'placeholder' => __( '1990-07-15', 'roxyapi' ),
 			),
 			array(
 				'name' => 'target_date',
@@ -47,6 +48,7 @@ class BiorhythmForm {
 				'required' => false,
 				'type' => 'date',
 				'help' => __( 'Defaults to today if left blank', 'roxyapi' ),
+				'placeholder' => __( '2026-04-10', 'roxyapi' ),
 			),
 			),
 		);

@@ -29,10 +29,12 @@ class LookupHexagramForm {
 			'flat_fields'  => array(
 				array(
 					'name' => 'lines',
-					'label' => __( 'Lines', 'roxyapi' ),
+					'label' => __( 'Line pattern', 'roxyapi' ),
 					'required' => true,
 					'help' => __( 'Six-digit binary pattern (0=yin/broken, 1=yang/solid) from bottom to top.', 'roxyapi' ),
 					'type' => 'text',
+					'placeholder' => __( '111111', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

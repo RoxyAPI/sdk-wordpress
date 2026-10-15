@@ -33,13 +33,17 @@ class CastCustomSpreadForm {
 					'required' => false,
 					'help' => __( 'Optional name for your custom tarot spread layout', 'roxyapi' ),
 					'type' => 'text',
+					'placeholder' => __( 'My Custom Spread', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'question',
-					'label' => __( 'Question', 'roxyapi' ),
+					'label' => __( 'Your question', 'roxyapi' ),
 					'required' => false,
 					'help' => __( 'Optional querent question to focus the custom tarot reading', 'roxyapi' ),
 					'type' => 'text',
+					'placeholder' => __( 'How do I move forward with this project?', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'seed',
@@ -47,6 +51,8 @@ class CastCustomSpreadForm {
 					'required' => false,
 					'help' => __( 'Optional seed for reproducible results', 'roxyapi' ),
 					'type' => 'text',
+					'placeholder' => __( 'reading-2f9c1a', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

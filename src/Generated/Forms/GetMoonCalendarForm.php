@@ -35,6 +35,8 @@ class GetMoonCalendarForm {
 					'type' => 'integer',
 					'min' => 1551,
 					'max' => 2649,
+					'placeholder' => __( '2026', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'month',
@@ -44,6 +46,8 @@ class GetMoonCalendarForm {
 					'type' => 'integer',
 					'min' => 1,
 					'max' => 12,
+					'placeholder' => __( '3', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

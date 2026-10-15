@@ -31,8 +31,12 @@ class GetDailyZodiacReadingForm {
 					'name' => 'id',
 					'label' => __( 'Animal', 'roxyapi' ),
 					'required' => true,
+					'help' => __( 'Animal id, case-insensitive', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'rat', 'ox', 'tiger', 'rabbit', 'dragon', 'snake', 'horse', 'goat', 'monkey', 'rooster', 'dog', 'pig' ),
+					'enum_labels' => array( __( 'Rat', 'roxyapi' ), __( 'Ox', 'roxyapi' ), __( 'Tiger', 'roxyapi' ), __( 'Rabbit', 'roxyapi' ), __( 'Dragon', 'roxyapi' ), __( 'Snake', 'roxyapi' ), __( 'Horse', 'roxyapi' ), __( 'Goat', 'roxyapi' ), __( 'Monkey', 'roxyapi' ), __( 'Rooster', 'roxyapi' ), __( 'Dog', 'roxyapi' ), __( 'Pig', 'roxyapi' ) ),
+					'placeholder' => __( 'rat', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'date',
@@ -40,6 +44,8 @@ class GetDailyZodiacReadingForm {
 					'required' => false,
 					'help' => __( 'Reading date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '2026-04-03', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'timezone',
@@ -47,6 +53,8 @@ class GetDailyZodiacReadingForm {
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
+					'placeholder' => __( 'America/New_York', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);

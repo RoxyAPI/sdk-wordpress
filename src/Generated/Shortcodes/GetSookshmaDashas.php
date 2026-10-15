@@ -64,7 +64,7 @@ class GetSookshmaDashas {
 
 		wp_enqueue_style( 'roxyapi-frontend' );
 
-		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['mahadasha'] === '' || $atts['antardasha'] === '' || $atts['pratyantardasha'] === '' || $atts['date'] === '' || $atts['time'] === '' || $atts['latitude'] === '' || $atts['longitude'] === '' ) ) ) {
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['date'] === '' || $atts['time'] === '' || $atts['latitude'] === '' || $atts['longitude'] === '' || $atts['mahadasha'] === '' || $atts['antardasha'] === '' || $atts['pratyantardasha'] === '' ) ) ) {
 			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetSookshmaDashasForm::class, $atts );
 		}
 

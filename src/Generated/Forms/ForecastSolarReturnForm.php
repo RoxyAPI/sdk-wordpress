@@ -33,6 +33,8 @@ class ForecastSolarReturnForm {
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '1990-07-15', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'time',
@@ -40,6 +42,8 @@ class ForecastSolarReturnForm {
 					'required' => true,
 					'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 					'type' => 'time',
+					'placeholder' => __( '14:30:00', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'year',
@@ -49,6 +53,8 @@ class ForecastSolarReturnForm {
 					'type' => 'integer',
 					'min' => 1551,
 					'max' => 2649,
+					'placeholder' => __( '2026', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'latitude',
@@ -58,7 +64,9 @@ class ForecastSolarReturnForm {
 					'type' => 'number',
 					'min' => -90,
 					'max' => 90,
+					'placeholder' => __( '40.7128', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'longitude',
@@ -68,7 +76,9 @@ class ForecastSolarReturnForm {
 					'type' => 'number',
 					'min' => -180,
 					'max' => 180,
+					'placeholder' => __( '-74.006', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'timezone',
@@ -76,6 +86,10 @@ class ForecastSolarReturnForm {
 					'required' => true,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
+					'min' => -14,
+					'max' => 14,
+					'placeholder' => __( 'America/New_York', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'houseSystem',
@@ -84,6 +98,10 @@ class ForecastSolarReturnForm {
 					'help' => __( 'House system for the return chart', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'placidus', 'whole-sign', 'equal', 'koch' ),
+					'default' => 'placidus',
+					'enum_labels' => array( __( 'Placidus', 'roxyapi' ), __( 'Whole sign', 'roxyapi' ), __( 'Equal', 'roxyapi' ), __( 'Koch', 'roxyapi' ) ),
+					'placeholder' => __( 'placidus', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);

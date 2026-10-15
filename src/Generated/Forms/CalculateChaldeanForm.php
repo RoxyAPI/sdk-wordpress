@@ -33,6 +33,8 @@ class CalculateChaldeanForm {
 					'required' => true,
 					'help' => __( 'The name to analyze', 'roxyapi' ),
 					'type' => 'text',
+					'placeholder' => __( 'Helen', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

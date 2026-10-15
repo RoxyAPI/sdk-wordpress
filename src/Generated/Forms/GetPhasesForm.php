@@ -33,6 +33,8 @@ class GetPhasesForm {
 					'required' => true,
 					'help' => __( 'Birth date of the person in YYYY-MM-DD format.', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '1990-07-15', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'targetDate',
@@ -40,6 +42,8 @@ class GetPhasesForm {
 					'required' => false,
 					'help' => __( 'Date to get phase information for in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '2026-04-10', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);

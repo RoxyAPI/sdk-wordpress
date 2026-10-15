@@ -35,6 +35,8 @@ class GetGateForm {
 					'type' => 'integer',
 					'min' => 1,
 					'max' => 64,
+					'placeholder' => __( '34', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

@@ -35,6 +35,8 @@ class GetBirthstonesForm {
 					'type' => 'integer',
 					'min' => 1,
 					'max' => 12,
+					'placeholder' => __( '2', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

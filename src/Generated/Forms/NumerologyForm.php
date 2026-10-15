@@ -40,6 +40,7 @@ class NumerologyForm {
 				'required' => true,
 				'type' => 'text',
 				'help' => __( 'First and last name as recorded at birth', 'roxyapi' ),
+				'placeholder' => __( 'John William Smith', 'roxyapi' ),
 			),
 			array(
 				'name' => 'birth_date',

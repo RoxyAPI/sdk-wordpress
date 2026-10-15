@@ -27,6 +27,7 @@ class CalculateBioCompatibilityForm {
 				array(
 					'name'   => 'person1',
 					'label'  => __( 'Person 1', 'roxyapi' ),
+					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'birthDate',
@@ -34,12 +35,15 @@ class CalculateBioCompatibilityForm {
 						'required' => true,
 						'help' => __( 'Birth date of person 1 in YYYY-MM-DD format.', 'roxyapi' ),
 						'type' => 'date',
+						'placeholder' => __( '1990-07-15', 'roxyapi' ),
+						'fold' => false,
 					),
 					),
 				),
 				array(
 					'name'   => 'person2',
 					'label'  => __( 'Person 2', 'roxyapi' ),
+					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'birthDate',
@@ -47,6 +51,8 @@ class CalculateBioCompatibilityForm {
 						'required' => true,
 						'help' => __( 'Birth date of person 2 in YYYY-MM-DD format.', 'roxyapi' ),
 						'type' => 'date',
+						'placeholder' => __( '1992-03-22', 'roxyapi' ),
+						'fold' => false,
 					),
 					),
 				),
@@ -58,6 +64,8 @@ class CalculateBioCompatibilityForm {
 					'required' => false,
 					'help' => __( 'Date to evaluate compatibility on in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '2026-04-10', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);

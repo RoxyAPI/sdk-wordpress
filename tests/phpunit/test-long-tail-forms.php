@@ -121,8 +121,13 @@ class Test_Long_Tail_Forms extends \WP_UnitTestCase {
 		$this->assertStringContainsString( '<option value="dragon"', $html );
 		foreach ( $this->form_capable() as $op_id => $class ) {
 			$form = '\\RoxyAPI\\Generated\\Forms\\' . ucfirst( $op_id ) . 'Form';
-			foreach ( $form::spec()['flat_fields'] as $field ) {
-				$this->assertNotSame( 'Id', $field['label'], $op_id );
+			$spec = $form::spec();
+			$fields = $spec['flat_fields'];
+			foreach ( $spec['sections'] as $section ) {
+				$fields = array_merge( $fields, $section['fields'] );
+			}
+			foreach ( $fields as $field ) {
+				$this->assertNotSame( 'id', strtolower( trim( $field['label'] ) ), $op_id );
 			}
 		}
 	}

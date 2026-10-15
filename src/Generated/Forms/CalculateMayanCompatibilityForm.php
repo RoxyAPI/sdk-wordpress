@@ -26,7 +26,8 @@ class CalculateMayanCompatibilityForm {
 			'sections'     => array(
 				array(
 					'name'   => 'personA',
-					'label'  => __( 'Person a', 'roxyapi' ),
+					'label'  => __( 'Person A', 'roxyapi' ),
+					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'date',
@@ -34,12 +35,15 @@ class CalculateMayanCompatibilityForm {
 						'required' => true,
 						'help' => __( 'Date in YYYY-MM-DD format, in the PROLEPTIC GREGORIAN calendar, extended backwards unchanged through the 1582 reform', 'roxyapi' ),
 						'type' => 'date',
+						'placeholder' => __( '2012-12-21', 'roxyapi' ),
+						'fold' => false,
 					),
 					),
 				),
 				array(
 					'name'   => 'personB',
-					'label'  => __( 'Person b', 'roxyapi' ),
+					'label'  => __( 'Person B', 'roxyapi' ),
+					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'date',
@@ -47,6 +51,8 @@ class CalculateMayanCompatibilityForm {
 						'required' => true,
 						'help' => __( 'Date in YYYY-MM-DD format, in the PROLEPTIC GREGORIAN calendar, extended backwards unchanged through the 1582 reform', 'roxyapi' ),
 						'type' => 'date',
+						'placeholder' => __( '2012-12-21', 'roxyapi' ),
+						'fold' => false,
 					),
 					),
 				),
@@ -54,19 +60,27 @@ class CalculateMayanCompatibilityForm {
 			'flat_fields'  => array(
 				array(
 					'name' => 'correlation',
-					'label' => __( 'Correlation', 'roxyapi' ),
+					'label' => __( 'Correlation constant', 'roxyapi' ),
 					'required' => false,
 					'help' => __( 'Which correlation constant ties the day count to a civil date', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'gmt-584283', 'martinez-hernandez-584281', 'astronomical-584285', 'martin-skidmore-584286' ),
+					'default' => 'gmt-584283',
+					'enum_labels' => array( __( 'Gmt 584283', 'roxyapi' ), __( 'Martinez hernandez 584281', 'roxyapi' ), __( 'Astronomical 584285', 'roxyapi' ), __( 'Martin skidmore 584286', 'roxyapi' ) ),
+					'placeholder' => __( 'gmt-584283', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'directionScheme',
-					'label' => __( 'Direction scheme', 'roxyapi' ),
+					'label' => __( 'Direction reading', 'roxyapi' ),
 					'required' => false,
 					'help' => __( 'Which reading of the world direction and colour to serve for a day sign', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'madrid-codex', 'landa' ),
+					'default' => 'madrid-codex',
+					'enum_labels' => array( __( 'Madrid codex', 'roxyapi' ), __( 'Landa', 'roxyapi' ) ),
+					'placeholder' => __( 'madrid-codex', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);

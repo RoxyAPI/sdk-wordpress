@@ -26,7 +26,8 @@ class ForecastTransitsForm {
 			'sections'     => array(
 				array(
 					'name'   => 'birthData',
-					'label'  => __( 'Birth data', 'roxyapi' ),
+					'label'  => __( 'Birth Data', 'roxyapi' ),
+					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'date',
@@ -34,6 +35,8 @@ class ForecastTransitsForm {
 						'required' => true,
 						'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 						'type' => 'date',
+						'placeholder' => __( '1990-07-15', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'time',
@@ -41,6 +44,8 @@ class ForecastTransitsForm {
 						'required' => true,
 						'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 						'type' => 'time',
+						'placeholder' => __( '13:30:00', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'timezone',
@@ -48,6 +53,10 @@ class ForecastTransitsForm {
 						'required' => true,
 						'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 						'type' => 'timezone',
+						'min' => -14,
+						'max' => 14,
+						'placeholder' => __( 'America/New_York', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'latitude',
@@ -57,7 +66,10 @@ class ForecastTransitsForm {
 						'type' => 'number',
 						'min' => -90,
 						'max' => 90,
+						'default' => 0,
+						'placeholder' => __( '0', 'roxyapi' ),
 						'step' => 'any',
+						'fold' => false,
 					),
 					array(
 						'name' => 'longitude',
@@ -67,7 +79,10 @@ class ForecastTransitsForm {
 						'type' => 'number',
 						'min' => -180,
 						'max' => 180,
+						'default' => 0,
+						'placeholder' => __( '0', 'roxyapi' ),
 						'step' => 'any',
+						'fold' => false,
 					),
 					),
 				),
@@ -79,6 +94,8 @@ class ForecastTransitsForm {
 					'required' => false,
 					'help' => __( 'First day of the transit window in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '2026-06-01', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'endDate',
@@ -86,16 +103,20 @@ class ForecastTransitsForm {
 					'required' => false,
 					'help' => __( 'Last day of the transit window in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '2026-08-30', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'minSignificance',
-					'label' => __( 'Min significance', 'roxyapi' ),
+					'label' => __( 'Minimum significance', 'roxyapi' ),
 					'required' => false,
 					'help' => __( 'Drop transit events scoring below this significance threshold from 0 to 100', 'roxyapi' ),
 					'type' => 'number',
 					'min' => 0,
 					'max' => 100,
+					'placeholder' => __( '0', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => true,
 				),
 			),
 		);

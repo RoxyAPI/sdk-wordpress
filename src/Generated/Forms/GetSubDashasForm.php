@@ -28,19 +28,13 @@ class GetSubDashasForm {
 			),
 			'flat_fields'  => array(
 				array(
-					'name' => 'mahadasha',
-					'label' => __( 'Mahadasha', 'roxyapi' ),
-					'required' => true,
-					'help' => __( 'Mahadasha planet name, case-insensitive (e.g., jupiter, Jupiter, JUPITER all work)', 'roxyapi' ),
-					'type' => 'enum',
-					'enum' => array( 'Ketu', 'Venus', 'Sun', 'Moon', 'Mars', 'Rahu', 'Jupiter', 'Saturn', 'Mercury' ),
-				),
-				array(
 					'name' => 'date',
 					'label' => __( 'Date', 'roxyapi' ),
 					'required' => true,
 					'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 					'type' => 'date',
+					'placeholder' => __( '1990-07-04', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'time',
@@ -48,6 +42,8 @@ class GetSubDashasForm {
 					'required' => true,
 					'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 					'type' => 'time',
+					'placeholder' => __( '10:12:00', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'latitude',
@@ -57,7 +53,9 @@ class GetSubDashasForm {
 					'type' => 'number',
 					'min' => -90,
 					'max' => 90,
+					'placeholder' => __( '28.6139', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'longitude',
@@ -67,7 +65,9 @@ class GetSubDashasForm {
 					'type' => 'number',
 					'min' => -180,
 					'max' => 180,
+					'placeholder' => __( '77.209', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => false,
 				),
 				array(
 					'name' => 'timezone',
@@ -75,6 +75,11 @@ class GetSubDashasForm {
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
+					'min' => -14,
+					'max' => 14,
+					'default' => 5.5,
+					'placeholder' => __( '5.5', 'roxyapi' ),
+					'fold' => false,
 				),
 				array(
 					'name' => 'ayanamsa',
@@ -83,29 +88,65 @@ class GetSubDashasForm {
 					'help' => __( 'Ayanamsa system used to place the birth Moon in its nakshatra, which sets every dasha start and end date', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'kp-newcomb', 'kp-old', 'lahiri', 'raman', 'custom' ),
+					'default' => 'lahiri',
+					'enum_labels' => array( __( 'Kp newcomb', 'roxyapi' ), __( 'Kp old', 'roxyapi' ), __( 'Lahiri', 'roxyapi' ), __( 'Raman', 'roxyapi' ), __( 'Custom', 'roxyapi' ) ),
+					'placeholder' => __( 'lahiri', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'ayanamsaValue',
-					'label' => __( 'Ayanamsa value', 'roxyapi' ),
+					'label' => __( 'Custom ayanamsa value', 'roxyapi' ),
 					'required' => false,
 					'help' => __( 'Custom ayanamsa value in degrees', 'roxyapi' ),
 					'type' => 'number',
+					'placeholder' => __( '24', 'roxyapi' ),
 					'step' => 'any',
+					'fold' => true,
 				),
 				array(
 					'name' => 'significators',
-					'label' => __( 'Significators', 'roxyapi' ),
+					'label' => __( 'Include KP significators', 'roxyapi' ),
 					'required' => false,
 					'help' => __( 'Set true to attach the KP significators of each period lord: its star lord, sub lord, occupied house, the houses it signifies at levels L1 to L4, and a strength grade', 'roxyapi' ),
 					'type' => 'text',
+					'default' => false,
+					'placeholder' => __( 'false', 'roxyapi' ),
+					'fold' => true,
 				),
 				array(
 					'name' => 'nodeType',
-					'label' => __( 'Node type', 'roxyapi' ),
+					'label' => __( 'Lunar node type', 'roxyapi' ),
 					'required' => false,
 					'help' => __( 'Lunar node type for Rahu and Ketu, used ONLY when "significators" is true', 'roxyapi' ),
 					'type' => 'enum',
 					'enum' => array( 'mean', 'true' ),
+					'default' => 'mean',
+					'enum_labels' => array( __( 'Mean', 'roxyapi' ), __( 'True', 'roxyapi' ) ),
+					'placeholder' => __( 'mean', 'roxyapi' ),
+					'fold' => true,
+				),
+				array(
+					'name' => 'mahadasha',
+					'label' => __( 'Mahadasha', 'roxyapi' ),
+					'required' => true,
+					'help' => __( 'Mahadasha planet name, case-insensitive (e.g., jupiter, Jupiter, JUPITER all work)', 'roxyapi' ),
+					'type' => 'enum',
+					'enum' => array( 'Ketu', 'Venus', 'Sun', 'Moon', 'Mars', 'Rahu', 'Jupiter', 'Saturn', 'Mercury' ),
+					'enum_labels' => array( __( 'Ketu', 'roxyapi' ), __( 'Venus', 'roxyapi' ), __( 'Sun', 'roxyapi' ), __( 'Moon', 'roxyapi' ), __( 'Mars', 'roxyapi' ), __( 'Rahu', 'roxyapi' ), __( 'Jupiter', 'roxyapi' ), __( 'Saturn', 'roxyapi' ), __( 'Mercury', 'roxyapi' ) ),
+					'placeholder' => __( 'Jupiter', 'roxyapi' ),
+					'fold' => false,
+				),
+				array(
+					'name' => 'focus',
+					'label' => __( 'Focus', 'roxyapi' ),
+					'required' => false,
+					'help' => __( 'Which signification vocabulary the houseThemes map returns', 'roxyapi' ),
+					'type' => 'enum',
+					'enum' => array( 'general', 'finance' ),
+					'default' => 'general',
+					'enum_labels' => array( __( 'General', 'roxyapi' ), __( 'Finance', 'roxyapi' ) ),
+					'placeholder' => __( 'general', 'roxyapi' ),
+					'fold' => true,
 				),
 			),
 		);
@@ -116,6 +157,6 @@ class GetSubDashasForm {
 	 * @return array<string, mixed>|\WP_Error
 	 */
 	public static function call( array $body ) {
-		return \RoxyAPI\Generated\Client::getSubDashas( (string) ( $body['mahadasha'] ?? '' ), array_diff_key( $body, array_flip( array( 'mahadasha' ) ) ) );
+		return \RoxyAPI\Generated\Client::getSubDashas( (string) ( $body['mahadasha'] ?? '' ), array_diff_key( $body, array_flip( array( 'mahadasha', 'focus' ) ) ), array_intersect_key( $body, array_flip( array( 'focus' ) ) ) );
 	}
 }

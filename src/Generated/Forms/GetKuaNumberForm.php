@@ -35,6 +35,8 @@ class GetKuaNumberForm {
 					'type' => 'integer',
 					'min' => 1,
 					'max' => 9,
+					'placeholder' => __( '8', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

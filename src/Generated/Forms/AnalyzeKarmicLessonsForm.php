@@ -33,6 +33,8 @@ class AnalyzeKarmicLessonsForm {
 					'required' => true,
 					'help' => __( 'Full birth name to analyze for missing numbers', 'roxyapi' ),
 					'type' => 'text',
+					'placeholder' => __( 'John William Smith', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);

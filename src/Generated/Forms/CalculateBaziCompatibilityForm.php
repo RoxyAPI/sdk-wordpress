@@ -26,7 +26,8 @@ class CalculateBaziCompatibilityForm {
 			'sections'     => array(
 				array(
 					'name'   => 'personA',
-					'label'  => __( 'Person a', 'roxyapi' ),
+					'label'  => __( 'Person A', 'roxyapi' ),
+					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'date',
@@ -34,6 +35,8 @@ class CalculateBaziCompatibilityForm {
 						'required' => true,
 						'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 						'type' => 'date',
+						'placeholder' => __( '1990-06-15', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'time',
@@ -41,6 +44,8 @@ class CalculateBaziCompatibilityForm {
 						'required' => true,
 						'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 						'type' => 'time',
+						'placeholder' => __( '14:30:00', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'timezone',
@@ -48,6 +53,10 @@ class CalculateBaziCompatibilityForm {
 						'required' => true,
 						'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 						'type' => 'timezone',
+						'min' => -14,
+						'max' => 14,
+						'placeholder' => __( 'America/New_York', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'latitude',
@@ -57,7 +66,10 @@ class CalculateBaziCompatibilityForm {
 						'type' => 'number',
 						'min' => -90,
 						'max' => 90,
+						'default' => 0,
+						'placeholder' => __( '0', 'roxyapi' ),
 						'step' => 'any',
+						'fold' => false,
 					),
 					array(
 						'name' => 'longitude',
@@ -67,7 +79,9 @@ class CalculateBaziCompatibilityForm {
 						'type' => 'number',
 						'min' => -180,
 						'max' => 180,
+						'placeholder' => __( '116.4', 'roxyapi' ),
 						'step' => 'any',
+						'fold' => false,
 					),
 					array(
 						'name' => 'dayBoundary',
@@ -76,6 +90,10 @@ class CalculateBaziCompatibilityForm {
 						'help' => __( 'Which instant starts the sexagenary DAY, which only matters for a birth between 23:00 and 23:59', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'split-zi', 'midnight', 'early-zi' ),
+						'default' => 'split-zi',
+						'enum_labels' => array( __( 'Split zi', 'roxyapi' ), __( 'Midnight', 'roxyapi' ), __( 'Early zi', 'roxyapi' ) ),
+						'placeholder' => __( 'split-zi', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'yearBoundary',
@@ -84,6 +102,10 @@ class CalculateBaziCompatibilityForm {
 						'help' => __( 'Which instant starts the sexagenary YEAR', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'li-chun', 'lunar-new-year' ),
+						'default' => 'li-chun',
+						'enum_labels' => array( __( 'Li chun', 'roxyapi' ), __( 'Lunar new year', 'roxyapi' ) ),
+						'placeholder' => __( 'li-chun', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'hourClock',
@@ -92,12 +114,17 @@ class CalculateBaziCompatibilityForm {
 						'help' => __( 'Which clock the day boundary and the hour branch are read from, so a correction that carries a birth across midnight moves the day pillar with the hour', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'clock', 'local-mean', 'solar' ),
+						'default' => 'clock',
+						'enum_labels' => array( __( 'Clock', 'roxyapi' ), __( 'Local mean', 'roxyapi' ), __( 'Solar', 'roxyapi' ) ),
+						'placeholder' => __( 'clock', 'roxyapi' ),
+						'fold' => false,
 					),
 					),
 				),
 				array(
 					'name'   => 'personB',
-					'label'  => __( 'Person b', 'roxyapi' ),
+					'label'  => __( 'Person B', 'roxyapi' ),
+					'fold'   => false,
 					'fields' => array(
 					array(
 						'name' => 'date',
@@ -105,6 +132,8 @@ class CalculateBaziCompatibilityForm {
 						'required' => true,
 						'help' => __( 'Birth date in YYYY-MM-DD format', 'roxyapi' ),
 						'type' => 'date',
+						'placeholder' => __( '1990-06-15', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'time',
@@ -112,6 +141,8 @@ class CalculateBaziCompatibilityForm {
 						'required' => true,
 						'help' => __( 'Birth time in 24-hour HH:MM:SS format', 'roxyapi' ),
 						'type' => 'time',
+						'placeholder' => __( '14:30:00', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'timezone',
@@ -119,6 +150,10 @@ class CalculateBaziCompatibilityForm {
 						'required' => true,
 						'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 						'type' => 'timezone',
+						'min' => -14,
+						'max' => 14,
+						'placeholder' => __( 'America/New_York', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'latitude',
@@ -128,7 +163,10 @@ class CalculateBaziCompatibilityForm {
 						'type' => 'number',
 						'min' => -90,
 						'max' => 90,
+						'default' => 0,
+						'placeholder' => __( '0', 'roxyapi' ),
 						'step' => 'any',
+						'fold' => false,
 					),
 					array(
 						'name' => 'longitude',
@@ -138,7 +176,9 @@ class CalculateBaziCompatibilityForm {
 						'type' => 'number',
 						'min' => -180,
 						'max' => 180,
+						'placeholder' => __( '116.4', 'roxyapi' ),
 						'step' => 'any',
+						'fold' => false,
 					),
 					array(
 						'name' => 'dayBoundary',
@@ -147,6 +187,10 @@ class CalculateBaziCompatibilityForm {
 						'help' => __( 'Which instant starts the sexagenary DAY, which only matters for a birth between 23:00 and 23:59', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'split-zi', 'midnight', 'early-zi' ),
+						'default' => 'split-zi',
+						'enum_labels' => array( __( 'Split zi', 'roxyapi' ), __( 'Midnight', 'roxyapi' ), __( 'Early zi', 'roxyapi' ) ),
+						'placeholder' => __( 'split-zi', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'yearBoundary',
@@ -155,6 +199,10 @@ class CalculateBaziCompatibilityForm {
 						'help' => __( 'Which instant starts the sexagenary YEAR', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'li-chun', 'lunar-new-year' ),
+						'default' => 'li-chun',
+						'enum_labels' => array( __( 'Li chun', 'roxyapi' ), __( 'Lunar new year', 'roxyapi' ) ),
+						'placeholder' => __( 'li-chun', 'roxyapi' ),
+						'fold' => false,
 					),
 					array(
 						'name' => 'hourClock',
@@ -163,6 +211,10 @@ class CalculateBaziCompatibilityForm {
 						'help' => __( 'Which clock the day boundary and the hour branch are read from, so a correction that carries a birth across midnight moves the day pillar with the hour', 'roxyapi' ),
 						'type' => 'enum',
 						'enum' => array( 'clock', 'local-mean', 'solar' ),
+						'default' => 'clock',
+						'enum_labels' => array( __( 'Clock', 'roxyapi' ), __( 'Local mean', 'roxyapi' ), __( 'Solar', 'roxyapi' ) ),
+						'placeholder' => __( 'clock', 'roxyapi' ),
+						'fold' => false,
 					),
 					),
 				),

@@ -33,6 +33,8 @@ class GetTrecenaForm {
 					'required' => true,
 					'help' => __( 'Trecena number, 1 to 20', 'roxyapi' ),
 					'type' => 'integer',
+					'placeholder' => __( '1', 'roxyapi' ),
+					'fold' => false,
 				),
 			),
 		);
