@@ -1,0 +1,45 @@
+name: Shortcode builder Pages
+on:
+    push:
+        branches: [main]
+        paths:
+            - 'builder/**'
+            - 'assets/js/builder.js'
+            - 'assets/css/builder.css'
+            - 'assets/js/geocode-combobox.js'
+            - '.github/workflows/pages.yml'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+    pages: write
+    id-token: write
+
+concurrency:
+    group: pages
+    cancel-in-progress: false
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v7
+            - name: Assemble standalone builder
+              run: |
+                  mkdir -p _site/assets/js _site/assets/css
+                  cp -R builder/. _site/
+                  cp assets/js/builder.js assets/js/geocode-combobox.js _site/assets/js/
+                  cp assets/css/builder.css _site/assets/css/
+            - uses: actions/upload-pages-artifact@v4
+              with:
+                  path: _site
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        steps:
+            - name: Deploy builder
+              id: deployment
+              uses: actions/deploy-pages@v4

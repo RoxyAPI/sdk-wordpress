@@ -9,7 +9,99 @@
 	if ( ! root || ! settings ) {
 		return;
 	}
-	const { manifest, i18n: strings } = settings;
+	const { __, sprintf } = window.wp.i18n;
+	const strings = {
+		title: __( 'Create a reading', 'roxyapi' ),
+		mostLoved: __( 'Most loved', 'roxyapi' ),
+		intro: __(
+			'Answer a few questions and we write the shortcode for you. Then paste it into any page.',
+			'roxyapi'
+		),
+		pick: __( 'Pick a reading', 'roxyapi' ),
+		find: __( 'Find a reading', 'roxyapi' ),
+		searchHint: __( 'Try tarot, horoscope or birth chart', 'roxyapi' ),
+		who: __( 'Who fills in the details?', 'roxyapi' ),
+		details: __( 'Set the details', 'roxyapi' ),
+		display: __( 'Display', 'roxyapi' ),
+		finish: __( 'Copy your shortcode', 'roxyapi' ),
+		back: __( 'Back', 'roxyapi' ),
+		continue: __( 'Continue', 'roxyapi' ),
+		visitor: __( 'Ask my visitor instead', 'roxyapi' ),
+		set: __( 'Show a set reading instead', 'roxyapi' ),
+		visitorChoice: __( 'Ask my visitor', 'roxyapi' ),
+		visitorHelp: __(
+			'Shows a form. Each visitor enters their own details.',
+			'roxyapi'
+		),
+		setChoice: __( 'Show a set reading', 'roxyapi' ),
+		setHelp: __(
+			'You enter the details once. Every visitor sees the same reading.',
+			'roxyapi'
+		),
+		formOnly: __( 'This reading always asks the visitor.', 'roxyapi' ),
+		noDetails: __(
+			'This reading needs no details. It shows straight away.',
+			'roxyapi'
+		),
+		more: __( 'More options', 'roxyapi' ),
+		needed: __( 'Needed before the shortcode works.', 'roxyapi' ),
+		written: __( 'Written interpretation', 'roxyapi' ),
+		show: __( 'Show', 'roxyapi' ),
+		hide: __( 'Hide', 'roxyapi' ),
+		inherit: __( 'Follow my site setting', 'roxyapi' ),
+		copy: __( 'Copy shortcode', 'roxyapi' ),
+		copied: __( 'Copied. Paste it into any page.', 'roxyapi' ),
+		copyFailed: __(
+			'Copy failed. Select the text and copy it.',
+			'roxyapi'
+		),
+		paste: __(
+			'In the block editor, add a Shortcode block and paste it there.',
+			'roxyapi'
+		),
+		newPage: __( 'Create a new page', 'roxyapi' ),
+		city: __( 'City', 'roxyapi' ),
+		cityHelp: __(
+			'Start typing. We fill in the timezone for you.',
+			'roxyapi'
+		),
+		yes: __( 'Yes', 'roxyapi' ),
+		no: __( 'No', 'roxyapi' ),
+		documentation: __( 'WordPress integration guide', 'roxyapi' ),
+		loadFailed: __(
+			'The reading library could not load. Please reload the page.',
+			'roxyapi'
+		),
+		searching: __( 'Searching cities…', 'roxyapi' ),
+		noResults: __(
+			'No matching cities. Try a different spelling.',
+			'roxyapi'
+		),
+		selected: __( 'City selected.', 'roxyapi' ),
+		error: __(
+			'Search is unavailable. Enter coordinates manually.',
+			'roxyapi'
+		),
+	};
+	const { manifest } = settings;
+	document
+		.querySelectorAll( '[data-roxyapi-builder-title]' )
+		.forEach( ( node ) => {
+			node.textContent = strings.title;
+		} );
+	document
+		.querySelectorAll( '[data-roxyapi-builder-documentation]' )
+		.forEach( ( node ) => {
+			node.textContent = strings.documentation;
+		} );
+	if ( settings.standalone ) {
+		document.title = strings.title + ' | RoxyAPI';
+		window.RoxyAPIGeocode = { i18n: strings };
+	}
+	if ( ! manifest ) {
+		root.textContent = strings.loadFailed;
+		return;
+	}
 	const reserved = new Set( [
 		'mode',
 		...manifest.reservedAttributes.map( ( attribute ) => attribute.att ),
@@ -47,6 +139,15 @@
 		return node;
 	}
 
+	if ( settings.standalone ) {
+		// Intl lists canonical zones; city results can use valid IANA aliases.
+		const zones = element( 'datalist' );
+		zones.id = 'roxyapi-builder-timezones';
+		settings.timezones.forEach( ( zone ) =>
+			addOption( zones, zone, zone.replace( /_/g, ' ' ) )
+		);
+		root.appendChild( zones );
+	}
 	root.appendChild( element( 'p', strings.intro ) );
 	const progress = element( 'p', '', 'roxyapi-builder-progress' );
 	root.appendChild( progress );
@@ -139,6 +240,18 @@
 			label.htmlFor = input.id;
 			input.setAttribute( 'data-roxyapi-geocode', '#' + panel.id );
 			input.setAttribute( 'data-roxyapi-geocode-quiet', '' );
+			if ( settings.restUrl ) {
+				input.setAttribute(
+					'data-roxyapi-geocode-url',
+					settings.restUrl
+				);
+			}
+			if ( settings.geocodeResponse ) {
+				input.setAttribute(
+					'data-roxyapi-geocode-response',
+					JSON.stringify( settings.geocodeResponse )
+				);
+			}
 			input.setAttribute(
 				'data-roxyapi-geocode-fields',
 				JSON.stringify( location.fields )
@@ -160,7 +273,22 @@
 		} );
 	} );
 
-	settings.groups.forEach( ( { label: title, tags } ) => {
+	// Group heroes first, then the remaining readings in domain order.
+	const readingGroups = [
+		{
+			label: strings.mostLoved,
+			tags: entries
+				.filter( ( entry ) => entry.hero )
+				.map( ( entry ) => entry.tag ),
+		},
+		...Object.entries( manifest.domains ).map( ( [ domain, info ] ) => ( {
+			label: info.label,
+			tags: entries
+				.filter( ( entry ) => ! entry.hero && entry.domain === domain )
+				.map( ( entry ) => entry.tag ),
+		} ) ),
+	];
+	readingGroups.forEach( ( { label: title, tags } ) => {
 		const items = tags.map( ( tag ) => readings.get( tag ).entry );
 		if ( ! items.length ) {
 			return;
@@ -235,9 +363,16 @@
 	const copy = button( strings.copy, 'button button-primary', async () => {
 		status.textContent = '';
 		try {
+			let copied = false;
 			if ( window.navigator.clipboard?.writeText ) {
-				await window.navigator.clipboard.writeText( output.value );
-			} else {
+				try {
+					await window.navigator.clipboard.writeText( output.value );
+					copied = true;
+				} catch ( error ) {
+					// Cross-origin embeds may deny the Clipboard API.
+				}
+			}
+			if ( ! copied ) {
 				output.focus();
 				output.select();
 				if ( ! document.execCommand( 'copy' ) ) {
@@ -245,6 +380,11 @@
 				}
 			}
 			status.textContent = strings.copied;
+			root.dispatchEvent(
+				new window.CustomEvent( 'roxy-builder:copied', {
+					detail: { tag: selected.entry.tag },
+				} )
+			);
 		} catch ( error ) {
 			output.focus();
 			output.select();
@@ -252,9 +392,15 @@
 		}
 	} );
 	steps.finish.append( output, copy, status, element( 'p', strings.paste ) );
-	const newPage = element( 'a', strings.newPage, 'button button-secondary' );
-	newPage.href = settings.newPage;
-	steps.finish.appendChild( newPage );
+	if ( settings.newPage ) {
+		const newPage = element(
+			'a',
+			strings.newPage,
+			'button button-secondary'
+		);
+		newPage.href = settings.newPage;
+		steps.finish.appendChild( newPage );
+	}
 
 	const switcher = button( '', 'button-link roxyapi-builder-switch', () => {
 		setMode( mode === 'set' ? 'visitor' : 'set' );
@@ -312,9 +458,9 @@
 		reading.attributes.forEach( ( attribute, index ) => {
 			const wrapper = element( 'div', '', 'roxyapi-builder-field' );
 			const label = element( 'label', attribute.label );
-			const isSelect = [ 'enum', 'timezone', 'boolean' ].includes(
-				attribute.type
-			);
+			const isSelect =
+				[ 'enum', 'boolean' ].includes( attribute.type ) ||
+				( attribute.type === 'timezone' && ! settings.standalone );
 			const input = element( isSelect ? 'select' : 'input' );
 			input.name = attribute.att;
 			input.id = reading.panel.id + '-field-' + index;
@@ -345,6 +491,9 @@
 				}
 			} else {
 				input.type = 'text';
+				if ( attribute.type === 'timezone' ) {
+					input.setAttribute( 'list', 'roxyapi-builder-timezones' );
+				}
 				if ( [ 'date', 'time', 'number' ].includes( attribute.type ) ) {
 					input.type = attribute.type;
 				} else if ( attribute.type === 'integer' ) {
@@ -467,9 +616,12 @@
 		next.hidden = step === 'finish';
 		back.hidden = step === 'pick';
 		const route = itinerary();
-		progress.textContent = strings.progress
-			.replace( '%1$d', String( route.indexOf( step ) + 1 ) )
-			.replace( '%2$d', String( route.length ) );
+		progress.textContent = sprintf(
+			/* translators: 1: current step number, 2: total number of steps. */
+			__( 'Step %1$d of %2$d', 'roxyapi' ),
+			route.indexOf( step ) + 1,
+			route.length
+		);
 		Object.entries( modeInputs ).forEach( ( [ value, input ] ) => {
 			input.checked = value === mode;
 		} );

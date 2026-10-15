@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-15T15:34:49+00:00\n"
+"POT-Creation-Date: 2026-10-15T17:40:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: roxyapi\n"
@@ -137,163 +137,6 @@ msgstr ""
 #: templates/admin-onboarding.php:78
 #: templates/admin-shortcodes.php:143
 msgid "Copy"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:29
-#: src/Admin/SettingsPage.php:110
-#: src/Admin/SettingsPage.php:111
-#: templates/admin-help.php:23
-#: templates/admin-help.php:58
-msgid "Create a reading"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:50
-msgid "Most loved"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:95
-msgid "Answer a few questions and we write the shortcode for you. Then paste it into any page."
-msgstr ""
-
-#: src/Admin/BuilderPage.php:96
-msgid "Pick a reading"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:97
-msgid "Find a reading"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:98
-msgid "Try tarot, horoscope or birth chart"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:99
-msgid "Who fills in the details?"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:100
-msgid "Set the details"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:101
-#: src/Admin/SettingsPage.php:176
-msgid "Display"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:102
-msgid "Copy your shortcode"
-msgstr ""
-
-#. translators: 1: current step number, 2: total number of steps.
-#: src/Admin/BuilderPage.php:104
-#, php-format
-msgid "Step %1$d of %2$d"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:105
-msgid "Back"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:106
-msgid "Continue"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:107
-msgid "Ask my visitor instead"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:108
-msgid "Show a set reading instead"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:109
-msgid "Ask my visitor"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:110
-msgid "Shows a form. Each visitor enters their own details."
-msgstr ""
-
-#: src/Admin/BuilderPage.php:111
-msgid "Show a set reading"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:112
-msgid "You enter the details once. Every visitor sees the same reading."
-msgstr ""
-
-#: src/Admin/BuilderPage.php:113
-msgid "This reading always asks the visitor."
-msgstr ""
-
-#: src/Admin/BuilderPage.php:114
-msgid "This reading needs no details. It shows straight away."
-msgstr ""
-
-#: src/Admin/BuilderPage.php:115
-msgid "More options"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:116
-msgid "Needed before the shortcode works."
-msgstr ""
-
-#: src/Admin/BuilderPage.php:117
-msgid "Written interpretation"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:118
-msgid "Show"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:119
-msgid "Hide"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:120
-msgid "Follow my site setting"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:121
-msgid "Copy shortcode"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:122
-msgid "Copied. Paste it into any page."
-msgstr ""
-
-#: src/Admin/BuilderPage.php:123
-msgid "Copy failed. Select the text and copy it."
-msgstr ""
-
-#: src/Admin/BuilderPage.php:124
-msgid "In the block editor, add a Shortcode block and paste it there."
-msgstr ""
-
-#: src/Admin/BuilderPage.php:125
-msgid "Create a new page"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:126
-msgid "City"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:127
-msgid "Start typing. We fill in the timezone for you."
-msgstr ""
-
-#: src/Admin/BuilderPage.php:128
-#: src/Admin/SiteHealth.php:77
-#: src/Admin/SiteHealth.php:119
-#: src/Support/GenericRenderer.php:836
-#: src/Support/GenericRenderer.php:839
-msgid "Yes"
-msgstr ""
-
-#: src/Admin/BuilderPage.php:129
-#: src/Admin/SiteHealth.php:77
-#: src/Support/GenericRenderer.php:839
-msgid "No"
 msgstr ""
 
 #: src/Admin/DashboardWidget.php:43
@@ -889,6 +732,14 @@ msgstr ""
 msgid "Shortcodes"
 msgstr ""
 
+#: src/Admin/SettingsPage.php:110
+#: src/Admin/SettingsPage.php:111
+#: templates/admin-help.php:23
+#: templates/admin-help.php:58
+#: assets/js/builder.js:14
+msgid "Create a reading"
+msgstr ""
+
 #: src/Admin/SettingsPage.php:125
 #: src/Admin/SettingsPage.php:126
 msgid "Demo"
@@ -907,6 +758,11 @@ msgstr ""
 #: src/Admin/SettingsPage.php:175
 #: templates/admin-help.php:51
 msgid "Branding"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:176
+#: assets/js/builder.js:25
+msgid "Display"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:177
@@ -962,6 +818,20 @@ msgstr ""
 
 #: src/Admin/SiteHealth.php:76
 msgid "Translation file loaded"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:77
+#: src/Admin/SiteHealth.php:119
+#: src/Support/GenericRenderer.php:836
+#: src/Support/GenericRenderer.php:839
+#: assets/js/builder.js:68
+msgid "Yes"
+msgstr ""
+
+#: src/Admin/SiteHealth.php:77
+#: src/Support/GenericRenderer.php:839
+#: assets/js/builder.js:69
+msgid "No"
 msgstr ""
 
 #: src/Admin/SiteHealth.php:80
@@ -8434,18 +8304,22 @@ msgid "The date, lat, and lon attributes are required (tz defaults to 5.5 IST). 
 msgstr ""
 
 #: src/Plugin.php:227
+#: assets/js/builder.js:75
 msgid "Searching cities…"
 msgstr ""
 
 #: src/Plugin.php:228
+#: assets/js/builder.js:76
 msgid "No matching cities. Try a different spelling."
 msgstr ""
 
 #: src/Plugin.php:229
+#: assets/js/builder.js:80
 msgid "City selected."
 msgstr ""
 
 #: src/Plugin.php:230
+#: assets/js/builder.js:81
 msgid "Search is unavailable. Enter coordinates manually."
 msgstr ""
 
@@ -9029,6 +8903,144 @@ msgstr ""
 
 #: templates/horoscope-form.php:61
 msgid "Read my horoscope"
+msgstr ""
+
+#: assets/js/builder.js:15
+msgid "Most loved"
+msgstr ""
+
+#: assets/js/builder.js:16
+msgid "Answer a few questions and we write the shortcode for you. Then paste it into any page."
+msgstr ""
+
+#: assets/js/builder.js:20
+msgid "Pick a reading"
+msgstr ""
+
+#: assets/js/builder.js:21
+msgid "Find a reading"
+msgstr ""
+
+#: assets/js/builder.js:22
+msgid "Try tarot, horoscope or birth chart"
+msgstr ""
+
+#: assets/js/builder.js:23
+msgid "Who fills in the details?"
+msgstr ""
+
+#: assets/js/builder.js:24
+msgid "Set the details"
+msgstr ""
+
+#: assets/js/builder.js:26
+msgid "Copy your shortcode"
+msgstr ""
+
+#: assets/js/builder.js:27
+msgid "Back"
+msgstr ""
+
+#: assets/js/builder.js:28
+msgid "Continue"
+msgstr ""
+
+#: assets/js/builder.js:29
+msgid "Ask my visitor instead"
+msgstr ""
+
+#: assets/js/builder.js:30
+msgid "Show a set reading instead"
+msgstr ""
+
+#: assets/js/builder.js:31
+msgid "Ask my visitor"
+msgstr ""
+
+#: assets/js/builder.js:32
+msgid "Shows a form. Each visitor enters their own details."
+msgstr ""
+
+#: assets/js/builder.js:36
+msgid "Show a set reading"
+msgstr ""
+
+#: assets/js/builder.js:37
+msgid "You enter the details once. Every visitor sees the same reading."
+msgstr ""
+
+#: assets/js/builder.js:41
+msgid "This reading always asks the visitor."
+msgstr ""
+
+#: assets/js/builder.js:42
+msgid "This reading needs no details. It shows straight away."
+msgstr ""
+
+#: assets/js/builder.js:46
+msgid "More options"
+msgstr ""
+
+#: assets/js/builder.js:47
+msgid "Needed before the shortcode works."
+msgstr ""
+
+#: assets/js/builder.js:48
+msgid "Written interpretation"
+msgstr ""
+
+#: assets/js/builder.js:49
+msgid "Show"
+msgstr ""
+
+#: assets/js/builder.js:50
+msgid "Hide"
+msgstr ""
+
+#: assets/js/builder.js:51
+msgid "Follow my site setting"
+msgstr ""
+
+#: assets/js/builder.js:52
+msgid "Copy shortcode"
+msgstr ""
+
+#: assets/js/builder.js:53
+msgid "Copied. Paste it into any page."
+msgstr ""
+
+#: assets/js/builder.js:54
+msgid "Copy failed. Select the text and copy it."
+msgstr ""
+
+#: assets/js/builder.js:58
+msgid "In the block editor, add a Shortcode block and paste it there."
+msgstr ""
+
+#: assets/js/builder.js:62
+msgid "Create a new page"
+msgstr ""
+
+#: assets/js/builder.js:63
+msgid "City"
+msgstr ""
+
+#: assets/js/builder.js:64
+msgid "Start typing. We fill in the timezone for you."
+msgstr ""
+
+#: assets/js/builder.js:70
+msgid "WordPress integration guide"
+msgstr ""
+
+#: assets/js/builder.js:71
+msgid "The reading library could not load. Please reload the page."
+msgstr ""
+
+#. translators: 1: current step number, 2: total number of steps.
+#: assets/js/builder.js:621
+#, js-format
+msgid "Step %1$d of %2$d"
 msgstr ""
 
 #: blocks/astrology-wrapper/edit.js:11

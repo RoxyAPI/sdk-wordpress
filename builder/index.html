@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="robots" content="noindex" />
+		<meta name="color-scheme" content="light dark" />
+		<link
+			rel="canonical"
+			href="https://roxyapi.com/docs/integrations/wordpress"
+		/>
+		<title>RoxyAPI</title>
+		<link rel="stylesheet" href="./assets/css/builder.css" />
+		<style>
+			:root {
+				color-scheme: light dark;
+				font:
+					16px/1.5 system-ui,
+					sans-serif;
+				background: #f6f7f7;
+				color: #1d2327;
+			}
+			body {
+				margin: 0;
+				padding: 24px;
+				display: flow-root;
+			}
+			header,
+			main,
+			footer {
+				max-width: 960px;
+				margin-inline: auto;
+			}
+			footer {
+				margin-top: 24px;
+			}
+			.embed header,
+			.embed footer {
+				display: none;
+			}
+			.card {
+				background: #fff;
+				border: 1px solid #c3c4c7;
+			}
+			fieldset {
+				min-width: 0;
+				margin: 0;
+				padding: 0;
+				border: 0;
+			}
+			input,
+			select,
+			textarea,
+			button {
+				font: inherit;
+			}
+			input:not( [type='radio'] ),
+			select,
+			textarea {
+				padding: 8px;
+				border: 1px solid #8c8f94;
+				border-radius: 4px;
+				background: #fff;
+				color: inherit;
+			}
+			button,
+			a {
+				color: #135e96;
+			}
+			.button {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				box-sizing: border-box;
+				border: 1px solid #2271b1;
+				border-radius: 4px;
+				background: #f6f7f7;
+				cursor: pointer;
+				text-decoration: none;
+			}
+			.button-primary {
+				background: #2271b1;
+				color: #fff;
+			}
+			button:disabled {
+				opacity: 0.6;
+				cursor: default;
+			}
+			.button-link {
+				padding: 0;
+				border: 0;
+				background: transparent;
+				text-decoration: underline;
+				cursor: pointer;
+			}
+			@media ( prefers-color-scheme: dark ) {
+				:root {
+					background: #171b20;
+					color: #f0f2f5;
+				}
+				.roxyapi-builder {
+					color: inherit;
+				}
+				.card,
+				input:not( [type='radio'] ),
+				select,
+				textarea,
+				.roxyapi-builder .roxyapi-geocode-listbox {
+					background: #232a32;
+					color: inherit;
+					border-color: #687583;
+				}
+				.roxyapi-builder-choice,
+				.roxyapi-builder-step.card {
+					border-color: #687583;
+				}
+				.roxyapi-builder-progress,
+				.roxyapi-builder-description,
+				.roxyapi-builder .roxyapi-geocode-status {
+					color: #bdc7d2;
+				}
+				.roxyapi-builder-choice:has( input:checked ),
+				.roxyapi-builder .roxyapi-geocode-option:hover,
+				.roxyapi-builder .roxyapi-geocode-option[aria-selected='true'] {
+					background: #253f56;
+				}
+				.roxyapi-builder-error {
+					color: #ffaaa8;
+				}
+				a,
+				.button-link {
+					color: #91caff;
+				}
+			}
+		</style>
+		<script id="roxyapi-builder-i18n">
+			window.wp = {
+				i18n: {
+					__: ( text ) => text,
+					sprintf: ( format, ...values ) => {
+						let next = 0;
+						return format.replace(
+							/%%|%(?:(\d+)\$)?([sd])/g,
+							( match, position, type ) => {
+								if ( match === '%%' ) {
+									return '%';
+								}
+								const value =
+									values[
+										position
+											? Number( position ) - 1
+											: next++
+									];
+								return type === 'd'
+									? String( parseInt( value, 10 ) )
+									: String( value );
+							}
+						);
+					},
+				},
+			};
+		</script>
+		<script>
+			if (
+				new URLSearchParams( location.search ).get( 'embed' ) === '1'
+			) {
+				document.documentElement.classList.add( 'embed' );
+			}
+		</script>
+	</head>
+	<body>
+		<header><h1 data-roxyapi-builder-title></h1></header>
+		<main class="roxyapi-builder"><div id="roxyapi-builder"></div></main>
+		<footer>
+			<a
+				data-roxyapi-builder-documentation
+				href="https://roxyapi.com/docs/integrations/wordpress"
+			></a>
+		</footer>
+		<script>
+			( async function () {
+				const parentOrigin = 'https://roxyapi.com';
+				const embed =
+					document.documentElement.classList.contains( 'embed' );
+				let trustedParent = false;
+				try {
+					trustedParent =
+						embed &&
+						window.parent !== window &&
+						new URL( document.referrer ).origin === parentOrigin;
+				} catch ( error ) {
+					// No referrer means there is no verified parent to notify.
+				}
+				function notifyParent( message ) {
+					if ( trustedParent ) {
+						window.parent.postMessage( message, parentOrigin );
+					}
+				}
+				if ( embed ) {
+					let previousHeight = 0;
+					new ResizeObserver( () => {
+						const height = Math.ceil(
+							Math.max(
+								document.body.scrollHeight,
+								document.body.getBoundingClientRect().height
+							)
+						);
+						if ( height !== previousHeight ) {
+							previousHeight = height;
+							notifyParent( {
+								type: 'roxy-builder:height',
+								height,
+							} );
+						}
+					} ).observe( document.body );
+					document
+						.getElementById( 'roxyapi-builder' )
+						.addEventListener( 'roxy-builder:copied', ( event ) => {
+							notifyParent( {
+								type: 'roxy-builder:copied',
+								tag: event.detail.tag,
+							} );
+						} );
+				}
+				let manifest = null;
+				try {
+					const response = await fetch( './manifest.json' );
+					if ( ! response.ok ) {
+						throw new Error();
+					}
+					manifest = await response.json();
+				} catch ( error ) {
+					// The shared builder owns the visible loading error too.
+				}
+				window.RoxyAPIBuilder = {
+					manifest,
+					standalone: true,
+					reading:
+						new URLSearchParams( location.search ).get(
+							'reading'
+						) || '',
+					restUrl: 'https://roxyapi.com/tools/location-search',
+					geocodeResponse: {
+						results: 'results',
+						lat: 'latitude',
+						lon: 'longitude',
+						tz: 'timezone',
+					},
+					timezones: [
+						'UTC',
+						...( Intl.supportedValuesOf
+							? Intl.supportedValuesOf( 'timeZone' )
+							: [
+									Intl.DateTimeFormat().resolvedOptions()
+										.timeZone,
+							  ] ),
+					],
+					today: new Date().toLocaleDateString( 'en-CA' ),
+				};
+				// Load in this order: the builder creates the persistent city inputs
+				// before the shared combobox scans the already loaded document.
+				for ( const src of [
+					'./assets/js/builder.js',
+					'./assets/js/geocode-combobox.js',
+				] ) {
+					await new Promise( ( resolve, reject ) => {
+						const script = document.createElement( 'script' );
+						script.src = src;
+						script.onload = resolve;
+						script.onerror = reject;
+						document.body.appendChild( script );
+					} );
+				}
+			} )();
+		</script>
+	</body>
+</html>

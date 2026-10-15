@@ -97,5 +97,7 @@ if ( bundles === 0 ) {
 	process.exit( 1 );
 }
 
+// The shortcode builder ships unbuilt, so its translations key on its own path.
+map[ 'assets/js/builder.js' ] = 'assets/js/builder.js';
 await fs.writeFile( OUT, JSON.stringify( map, null, '\t' ) + '\n', 'utf8' );
 console.log( `[i18n-map] wrote build/i18n-map.json (${ bundles } bundles)` );

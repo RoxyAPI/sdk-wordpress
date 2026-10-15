@@ -407,6 +407,7 @@ msgid "Check Mangal Dosha (manglik) status for matrimonial compatibility, with s
 msgstr "विवाह अनुकूलता के लिए मंगल दोष (मांगलिक) की स्थिति, उसकी तीव्रता, उपाय और अपवाद स्थितियों सहित।"
 
 #: src/Plugin.php:229
+#: assets/js/builder.js:80
 msgid "City selected."
 msgstr "शहर चुना गया।"
 
@@ -1137,6 +1138,7 @@ msgid "Natal chart"
 msgstr "जन्म कुंडली"
 
 #: src/Plugin.php:228
+#: assets/js/builder.js:76
 msgid "No matching cities. Try a different spelling."
 msgstr "कोई मिलता शहर नहीं मिला। वर्तनी बदलकर पुनः प्रयास करें।"
 
@@ -1231,10 +1233,12 @@ msgid "Question"
 msgstr "प्रश्न"
 
 #: src/Plugin.php:230
+#: assets/js/builder.js:81
 msgid "Search is unavailable. Enter coordinates manually."
 msgstr "खोज उपलब्ध नहीं है। निर्देशांक मैन्युअल रूप से दर्ज करें।"
 
 #: src/Plugin.php:227
+#: assets/js/builder.js:75
 msgid "Searching cities…"
 msgstr "शहर खोजे जा रहे हैं…"
 
@@ -2296,17 +2300,17 @@ msgstr "कोई नहीं। यह प्लगइन उस भाषा 
 msgid "Translation file loaded"
 msgstr "अनुवाद फ़ाइल लोड हुई"
 
-#: src/Admin/BuilderPage.php:128
 #: src/Admin/SiteHealth.php:77
 #: src/Admin/SiteHealth.php:119
 #: src/Support/GenericRenderer.php:836
 #: src/Support/GenericRenderer.php:839
+#: assets/js/builder.js:68
 msgid "Yes"
 msgstr "हाँ"
 
-#: src/Admin/BuilderPage.php:129
 #: src/Admin/SiteHealth.php:77
 #: src/Support/GenericRenderer.php:839
+#: assets/js/builder.js:69
 msgid "No"
 msgstr "नहीं"
 
@@ -2500,8 +2504,8 @@ msgstr "कनेक्ट करें"
 msgid "Branding"
 msgstr "ब्रांडिंग"
 
-#: src/Admin/BuilderPage.php:101
 #: src/Admin/SettingsPage.php:176
+#: assets/js/builder.js:25
 msgid "Display"
 msgstr "डिस्प्ले"
 
@@ -9991,133 +9995,133 @@ msgstr "ह्यूमन डिज़ाइन केंद्र"
 msgid "Yoga Details"
 msgstr "योग विवरण"
 
-#: src/Admin/BuilderPage.php:29
 #: src/Admin/SettingsPage.php:110
 #: src/Admin/SettingsPage.php:111
 #: templates/admin-help.php:23
 #: templates/admin-help.php:58
+#: assets/js/builder.js:14
 msgid "Create a reading"
 msgstr "रीडिंग बनाएं"
 
-#: src/Admin/BuilderPage.php:95
+#: assets/js/builder.js:16
 msgid "Answer a few questions and we write the shortcode for you. Then paste it into any page."
 msgstr "कुछ सवालों के जवाब दें। हम आपके लिए शॉर्टकोड बना देंगे। फिर इसे किसी भी पेज पर पेस्ट करें।"
 
-#: src/Admin/BuilderPage.php:96
+#: assets/js/builder.js:20
 msgid "Pick a reading"
 msgstr "रीडिंग चुनें"
 
-#: src/Admin/BuilderPage.php:97
+#: assets/js/builder.js:21
 msgid "Find a reading"
 msgstr "रीडिंग खोजें"
 
-#: src/Admin/BuilderPage.php:98
+#: assets/js/builder.js:22
 msgid "Try tarot, horoscope or birth chart"
 msgstr "टैरो, राशिफल या जन्म कुंडली खोजें"
 
-#: src/Admin/BuilderPage.php:99
+#: assets/js/builder.js:23
 msgid "Who fills in the details?"
 msgstr "जानकारी कौन भरेगा?"
 
-#: src/Admin/BuilderPage.php:100
+#: assets/js/builder.js:24
 msgid "Set the details"
 msgstr "जानकारी भरें"
 
-#: src/Admin/BuilderPage.php:102
+#: assets/js/builder.js:26
 msgid "Copy your shortcode"
 msgstr "अपना शॉर्टकोड कॉपी करें"
 
 #. translators: 1: current step number, 2: total number of steps.
-#: src/Admin/BuilderPage.php:104
-#, php-format
+#: assets/js/builder.js:621
+#, php-format,js-format
 msgid "Step %1$d of %2$d"
 msgstr "कुल %2$d चरणों में से चरण %1$d"
 
-#: src/Admin/BuilderPage.php:105
+#: assets/js/builder.js:27
 msgid "Back"
 msgstr "पीछे"
 
-#: src/Admin/BuilderPage.php:106
+#: assets/js/builder.js:28
 msgid "Continue"
 msgstr "आगे बढ़ें"
 
-#: src/Admin/BuilderPage.php:107
+#: assets/js/builder.js:29
 msgid "Ask my visitor instead"
 msgstr "इसके बजाय मेरे आगंतुकों से पूछें"
 
-#: src/Admin/BuilderPage.php:108
+#: assets/js/builder.js:30
 msgid "Show a set reading instead"
 msgstr "इसके बजाय तय रीडिंग दिखाएं"
 
-#: src/Admin/BuilderPage.php:109
+#: assets/js/builder.js:31
 msgid "Ask my visitor"
 msgstr "मेरे आगंतुकों से पूछें"
 
-#: src/Admin/BuilderPage.php:110
+#: assets/js/builder.js:32
 msgid "Shows a form. Each visitor enters their own details."
 msgstr "एक फ़ॉर्म दिखाता है। हर आगंतुक अपनी जानकारी भरता है।"
 
-#: src/Admin/BuilderPage.php:111
+#: assets/js/builder.js:36
 msgid "Show a set reading"
 msgstr "तय रीडिंग दिखाएं"
 
-#: src/Admin/BuilderPage.php:112
+#: assets/js/builder.js:37
 msgid "You enter the details once. Every visitor sees the same reading."
 msgstr "आप एक बार जानकारी भरते हैं। हर आगंतुक को वही रीडिंग दिखती है।"
 
-#: src/Admin/BuilderPage.php:113
+#: assets/js/builder.js:41
 msgid "This reading always asks the visitor."
 msgstr "यह रीडिंग हमेशा आगंतुक से जानकारी मांगती है।"
 
-#: src/Admin/BuilderPage.php:114
+#: assets/js/builder.js:42
 msgid "This reading needs no details. It shows straight away."
 msgstr "इस रीडिंग के लिए जानकारी की ज़रूरत नहीं है। यह तुरंत दिखती है।"
 
-#: src/Admin/BuilderPage.php:115
+#: assets/js/builder.js:46
 msgid "More options"
 msgstr "और विकल्प"
 
-#: src/Admin/BuilderPage.php:116
+#: assets/js/builder.js:47
 msgid "Needed before the shortcode works."
 msgstr "शॉर्टकोड के काम करने के लिए ज़रूरी है।"
 
-#: src/Admin/BuilderPage.php:117
+#: assets/js/builder.js:48
 msgid "Written interpretation"
 msgstr "लिखित व्याख्या"
 
-#: src/Admin/BuilderPage.php:118
+#: assets/js/builder.js:49
 msgid "Show"
 msgstr "दिखाएं"
 
-#: src/Admin/BuilderPage.php:119
+#: assets/js/builder.js:50
 msgid "Hide"
 msgstr "छिपाएं"
 
-#: src/Admin/BuilderPage.php:120
+#: assets/js/builder.js:51
 msgid "Follow my site setting"
 msgstr "मेरी साइट की सेटिंग अपनाएं"
 
-#: src/Admin/BuilderPage.php:121
+#: assets/js/builder.js:52
 msgid "Copy shortcode"
 msgstr "शॉर्टकोड कॉपी करें"
 
-#: src/Admin/BuilderPage.php:122
+#: assets/js/builder.js:53
 msgid "Copied. Paste it into any page."
 msgstr "कॉपी हो गया। इसे किसी भी पेज पर पेस्ट करें।"
 
-#: src/Admin/BuilderPage.php:123
+#: assets/js/builder.js:54
 msgid "Copy failed. Select the text and copy it."
 msgstr "कॉपी नहीं हो सका। टेक्स्ट चुनें और कॉपी करें।"
 
-#: src/Admin/BuilderPage.php:124
+#: assets/js/builder.js:58
 msgid "In the block editor, add a Shortcode block and paste it there."
 msgstr "ब्लॉक एडिटर में शॉर्टकोड ब्लॉक जोड़ें और इसमें पेस्ट करें।"
 
-#: src/Admin/BuilderPage.php:126
+#: assets/js/builder.js:63
 msgid "City"
 msgstr "शहर"
 
-#: src/Admin/BuilderPage.php:127
+#: assets/js/builder.js:64
 msgid "Start typing. We fill in the timezone for you."
 msgstr "टाइप करना शुरू करें। हम समय क्षेत्र भर देंगे।"
 
@@ -15688,11 +15692,11 @@ msgstr ""
 msgid "Customize"
 msgstr "अपनी पसंद से बदलें"
 
-#: src/Admin/BuilderPage.php:50
+#: assets/js/builder.js:15
 msgid "Most loved"
 msgstr "सबसे पसंदीदा"
 
-#: src/Admin/BuilderPage.php:125
+#: assets/js/builder.js:62
 msgid "Create a new page"
 msgstr "नया पेज बनाएं"
 
@@ -15901,4 +15905,12 @@ msgstr ""
 
 #: src/Generated/Forms/PanchangForm.php:46
 msgid "2026-02-03"
+msgstr ""
+
+#: assets/js/builder.js:70
+msgid "WordPress integration guide"
+msgstr ""
+
+#: assets/js/builder.js:71
+msgid "The reading library could not load. Please reload the page."
 msgstr ""

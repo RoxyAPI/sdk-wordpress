@@ -407,6 +407,7 @@ msgid "Check Mangal Dosha (manglik) status for matrimonial compatibility, with s
 msgstr "Vérifie le statut Mangal Dosha (manglik) pour la compatibilité matrimoniale, avec gravité, remèdes et conditions d'exception."
 
 #: src/Plugin.php:229
+#: assets/js/builder.js:80
 msgid "City selected."
 msgstr "Ville sélectionnée."
 
@@ -1137,6 +1138,7 @@ msgid "Natal chart"
 msgstr "Thème natal"
 
 #: src/Plugin.php:228
+#: assets/js/builder.js:76
 msgid "No matching cities. Try a different spelling."
 msgstr "Aucune ville trouvée. Essayez une autre orthographe."
 
@@ -1231,10 +1233,12 @@ msgid "Question"
 msgstr "Question"
 
 #: src/Plugin.php:230
+#: assets/js/builder.js:81
 msgid "Search is unavailable. Enter coordinates manually."
 msgstr "La recherche est indisponible. Saisissez les coordonnées manuellement."
 
 #: src/Plugin.php:227
+#: assets/js/builder.js:75
 msgid "Searching cities…"
 msgstr "Recherche de villes en cours…"
 
@@ -2296,17 +2300,17 @@ msgstr "Aucun. Cette extension ne fournit pas de traduction pour cette langue."
 msgid "Translation file loaded"
 msgstr "Fichier de traduction chargé"
 
-#: src/Admin/BuilderPage.php:128
 #: src/Admin/SiteHealth.php:77
 #: src/Admin/SiteHealth.php:119
 #: src/Support/GenericRenderer.php:836
 #: src/Support/GenericRenderer.php:839
+#: assets/js/builder.js:68
 msgid "Yes"
 msgstr "Oui"
 
-#: src/Admin/BuilderPage.php:129
 #: src/Admin/SiteHealth.php:77
 #: src/Support/GenericRenderer.php:839
+#: assets/js/builder.js:69
 msgid "No"
 msgstr "Non"
 
@@ -2500,8 +2504,8 @@ msgstr "Connexion"
 msgid "Branding"
 msgstr "Marque"
 
-#: src/Admin/BuilderPage.php:101
 #: src/Admin/SettingsPage.php:176
+#: assets/js/builder.js:25
 msgid "Display"
 msgstr "Affichage"
 
@@ -9991,133 +9995,133 @@ msgstr "Centre du Design Humain"
 msgid "Yoga Details"
 msgstr "Détails du Yoga"
 
-#: src/Admin/BuilderPage.php:29
 #: src/Admin/SettingsPage.php:110
 #: src/Admin/SettingsPage.php:111
 #: templates/admin-help.php:23
 #: templates/admin-help.php:58
+#: assets/js/builder.js:14
 msgid "Create a reading"
 msgstr "Créer une lecture"
 
-#: src/Admin/BuilderPage.php:95
+#: assets/js/builder.js:16
 msgid "Answer a few questions and we write the shortcode for you. Then paste it into any page."
 msgstr "Répondez à quelques questions et nous créons le shortcode pour vous. Collez-le ensuite sur la page de votre choix."
 
-#: src/Admin/BuilderPage.php:96
+#: assets/js/builder.js:20
 msgid "Pick a reading"
 msgstr "Choisir une lecture"
 
-#: src/Admin/BuilderPage.php:97
+#: assets/js/builder.js:21
 msgid "Find a reading"
 msgstr "Rechercher une lecture"
 
-#: src/Admin/BuilderPage.php:98
+#: assets/js/builder.js:22
 msgid "Try tarot, horoscope or birth chart"
 msgstr "Essayez tarot, horoscope ou thème natal"
 
-#: src/Admin/BuilderPage.php:99
+#: assets/js/builder.js:23
 msgid "Who fills in the details?"
 msgstr "Qui renseigne les informations ?"
 
-#: src/Admin/BuilderPage.php:100
+#: assets/js/builder.js:24
 msgid "Set the details"
 msgstr "Renseigner les détails"
 
-#: src/Admin/BuilderPage.php:102
+#: assets/js/builder.js:26
 msgid "Copy your shortcode"
 msgstr "Copier votre shortcode"
 
 #. translators: 1: current step number, 2: total number of steps.
-#: src/Admin/BuilderPage.php:104
-#, php-format
+#: assets/js/builder.js:621
+#, php-format,js-format
 msgid "Step %1$d of %2$d"
 msgstr "Étape %1$d sur %2$d"
 
-#: src/Admin/BuilderPage.php:105
+#: assets/js/builder.js:27
 msgid "Back"
 msgstr "Retour"
 
-#: src/Admin/BuilderPage.php:106
+#: assets/js/builder.js:28
 msgid "Continue"
 msgstr "Continuer"
 
-#: src/Admin/BuilderPage.php:107
+#: assets/js/builder.js:29
 msgid "Ask my visitor instead"
 msgstr "Demander plutôt à mes visiteurs"
 
-#: src/Admin/BuilderPage.php:108
+#: assets/js/builder.js:30
 msgid "Show a set reading instead"
 msgstr "Afficher plutôt une lecture fixe"
 
-#: src/Admin/BuilderPage.php:109
+#: assets/js/builder.js:31
 msgid "Ask my visitor"
 msgstr "Demander à mes visiteurs"
 
-#: src/Admin/BuilderPage.php:110
+#: assets/js/builder.js:32
 msgid "Shows a form. Each visitor enters their own details."
 msgstr "Affiche un formulaire. Chaque visiteur renseigne ses propres informations."
 
-#: src/Admin/BuilderPage.php:111
+#: assets/js/builder.js:36
 msgid "Show a set reading"
 msgstr "Afficher une lecture fixe"
 
-#: src/Admin/BuilderPage.php:112
+#: assets/js/builder.js:37
 msgid "You enter the details once. Every visitor sees the same reading."
 msgstr "Vous renseignez les informations une seule fois. Tous les visiteurs voient la même lecture."
 
-#: src/Admin/BuilderPage.php:113
+#: assets/js/builder.js:41
 msgid "This reading always asks the visitor."
 msgstr "Cette lecture demande toujours les informations au visiteur."
 
-#: src/Admin/BuilderPage.php:114
+#: assets/js/builder.js:42
 msgid "This reading needs no details. It shows straight away."
 msgstr "Cette lecture ne demande aucune information. Elle s’affiche tout de suite."
 
-#: src/Admin/BuilderPage.php:115
+#: assets/js/builder.js:46
 msgid "More options"
 msgstr "Plus d’options"
 
-#: src/Admin/BuilderPage.php:116
+#: assets/js/builder.js:47
 msgid "Needed before the shortcode works."
 msgstr "Nécessaire pour que le shortcode fonctionne."
 
-#: src/Admin/BuilderPage.php:117
+#: assets/js/builder.js:48
 msgid "Written interpretation"
 msgstr "Interprétation écrite"
 
-#: src/Admin/BuilderPage.php:118
+#: assets/js/builder.js:49
 msgid "Show"
 msgstr "Afficher"
 
-#: src/Admin/BuilderPage.php:119
+#: assets/js/builder.js:50
 msgid "Hide"
 msgstr "Masquer"
 
-#: src/Admin/BuilderPage.php:120
+#: assets/js/builder.js:51
 msgid "Follow my site setting"
 msgstr "Suivre le réglage de mon site"
 
-#: src/Admin/BuilderPage.php:121
+#: assets/js/builder.js:52
 msgid "Copy shortcode"
 msgstr "Copier le shortcode"
 
-#: src/Admin/BuilderPage.php:122
+#: assets/js/builder.js:53
 msgid "Copied. Paste it into any page."
 msgstr "Copié. Collez-le sur la page de votre choix."
 
-#: src/Admin/BuilderPage.php:123
+#: assets/js/builder.js:54
 msgid "Copy failed. Select the text and copy it."
 msgstr "La copie a échoué. Sélectionnez le texte et copiez-le."
 
-#: src/Admin/BuilderPage.php:124
+#: assets/js/builder.js:58
 msgid "In the block editor, add a Shortcode block and paste it there."
 msgstr "Dans l’éditeur de blocs, ajoutez un bloc shortcode et collez-le dedans."
 
-#: src/Admin/BuilderPage.php:126
+#: assets/js/builder.js:63
 msgid "City"
 msgstr "Ville"
 
-#: src/Admin/BuilderPage.php:127
+#: assets/js/builder.js:64
 msgid "Start typing. We fill in the timezone for you."
 msgstr "Commencez à saisir. Nous complétons le fuseau horaire pour vous."
 
@@ -15688,11 +15692,11 @@ msgstr ""
 msgid "Customize"
 msgstr "Personnaliser"
 
-#: src/Admin/BuilderPage.php:50
+#: assets/js/builder.js:15
 msgid "Most loved"
 msgstr "Les plus appréciées"
 
-#: src/Admin/BuilderPage.php:125
+#: assets/js/builder.js:62
 msgid "Create a new page"
 msgstr "Créer une nouvelle page"
 
@@ -15901,4 +15905,12 @@ msgstr ""
 
 #: src/Generated/Forms/PanchangForm.php:46
 msgid "2026-02-03"
+msgstr ""
+
+#: assets/js/builder.js:70
+msgid "WordPress integration guide"
+msgstr ""
+
+#: assets/js/builder.js:71
+msgid "The reading library could not load. Please reload the page."
 msgstr ""

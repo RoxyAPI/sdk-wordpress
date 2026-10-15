@@ -26,40 +26,7 @@ class BuilderPage {
 			return;
 		}
 
-		echo '<div class="wrap roxyapi-builder"><h1>' . esc_html__( 'Create a reading', 'roxyapi' ) . '</h1><div id="roxyapi-builder"></div></div>';
-	}
-
-	/**
-	 * Group heroes first, then the remaining readings in domain order.
-	 *
-	 * @param array<string, mixed> $manifest Bundled builder manifest.
-	 * @return array<int, array{label: string, tags: array<int, string>}>
-	 */
-	public static function reading_groups( array $manifest ): array {
-		$heroes  = array();
-		$domains = array();
-		foreach ( $manifest['entries'] as $entry ) {
-			if ( $entry['hero'] ) {
-				$heroes[] = $entry['tag'];
-			} else {
-				$domains[ $entry['domain'] ][] = $entry['tag'];
-			}
-		}
-		$groups = array(
-			array(
-				'label' => __( 'Most loved', 'roxyapi' ),
-				'tags'  => $heroes,
-			),
-		);
-		foreach ( $manifest['domains'] as $domain => $info ) {
-			if ( ! empty( $domains[ $domain ] ) ) {
-				$groups[] = array(
-					'label' => $info['label'],
-					'tags'  => $domains[ $domain ],
-				);
-			}
-		}
-		return $groups;
+		echo '<div class="wrap roxyapi-builder"><h1 data-roxyapi-builder-title></h1><div id="roxyapi-builder"></div></div>';
 	}
 
 	/**
@@ -76,7 +43,8 @@ class BuilderPage {
 		wp_enqueue_style( 'roxyapi-builder', plugins_url( 'assets/css/builder.css', ROXYAPI_PLUGIN_FILE ), array( 'roxyapi-admin' ), ROXYAPI_VERSION );
 		// Build the persistent city inputs before the shared combobox scans the DOM.
 		\RoxyAPI\Plugin::register_geocode_script();
-		wp_enqueue_script( 'roxyapi-builder', plugins_url( 'assets/js/builder.js', ROXYAPI_PLUGIN_FILE ), array( 'roxyapi-geocode' ), ROXYAPI_VERSION, true );
+		wp_enqueue_script( 'roxyapi-builder', plugins_url( 'assets/js/builder.js', ROXYAPI_PLUGIN_FILE ), array( 'roxyapi-geocode', 'wp-i18n' ), ROXYAPI_VERSION, true );
+		wp_set_script_translations( 'roxyapi-builder', 'roxyapi', plugin_dir_path( ROXYAPI_PLUGIN_FILE ) . 'languages' );
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only selection on a capability-checked page.
 		$reading  = isset( $_GET['reading'] ) && is_string( $_GET['reading'] ) ? sanitize_key( wp_unslash( $_GET['reading'] ) ) : '';
@@ -86,48 +54,11 @@ class BuilderPage {
 			'RoxyAPIBuilder',
 			array(
 				'manifest'  => $manifest,
-				'groups'    => self::reading_groups( $manifest ),
+				'restUrl'   => esc_url_raw( rest_url( 'roxyapi/v1/geocode' ) ),
 				'newPage'   => admin_url( 'post-new.php?post_type=page' ),
 				'reading'   => $reading,
 				'timezones' => timezone_identifiers_list( \DateTimeZone::ALL_WITH_BC ),
 				'today'     => current_time( 'Y-m-d' ),
-				'i18n'      => array(
-					'intro'         => __( 'Answer a few questions and we write the shortcode for you. Then paste it into any page.', 'roxyapi' ),
-					'pick'          => __( 'Pick a reading', 'roxyapi' ),
-					'find'          => __( 'Find a reading', 'roxyapi' ),
-					'searchHint'    => __( 'Try tarot, horoscope or birth chart', 'roxyapi' ),
-					'who'           => __( 'Who fills in the details?', 'roxyapi' ),
-					'details'       => __( 'Set the details', 'roxyapi' ),
-					'display'       => __( 'Display', 'roxyapi' ),
-					'finish'        => __( 'Copy your shortcode', 'roxyapi' ),
-					/* translators: 1: current step number, 2: total number of steps. */
-					'progress'      => __( 'Step %1$d of %2$d', 'roxyapi' ),
-					'back'          => __( 'Back', 'roxyapi' ),
-					'continue'      => __( 'Continue', 'roxyapi' ),
-					'visitor'       => __( 'Ask my visitor instead', 'roxyapi' ),
-					'set'           => __( 'Show a set reading instead', 'roxyapi' ),
-					'visitorChoice' => __( 'Ask my visitor', 'roxyapi' ),
-					'visitorHelp'   => __( 'Shows a form. Each visitor enters their own details.', 'roxyapi' ),
-					'setChoice'     => __( 'Show a set reading', 'roxyapi' ),
-					'setHelp'       => __( 'You enter the details once. Every visitor sees the same reading.', 'roxyapi' ),
-					'formOnly'      => __( 'This reading always asks the visitor.', 'roxyapi' ),
-					'noDetails'     => __( 'This reading needs no details. It shows straight away.', 'roxyapi' ),
-					'more'          => __( 'More options', 'roxyapi' ),
-					'needed'        => __( 'Needed before the shortcode works.', 'roxyapi' ),
-					'written'       => __( 'Written interpretation', 'roxyapi' ),
-					'show'          => __( 'Show', 'roxyapi' ),
-					'hide'          => __( 'Hide', 'roxyapi' ),
-					'inherit'       => __( 'Follow my site setting', 'roxyapi' ),
-					'copy'          => __( 'Copy shortcode', 'roxyapi' ),
-					'copied'        => __( 'Copied. Paste it into any page.', 'roxyapi' ),
-					'copyFailed'    => __( 'Copy failed. Select the text and copy it.', 'roxyapi' ),
-					'paste'         => __( 'In the block editor, add a Shortcode block and paste it there.', 'roxyapi' ),
-					'newPage'       => __( 'Create a new page', 'roxyapi' ),
-					'city'          => __( 'City', 'roxyapi' ),
-					'cityHelp'      => __( 'Start typing. We fill in the timezone for you.', 'roxyapi' ),
-					'yes'           => __( 'Yes', 'roxyapi' ),
-					'no'            => __( 'No', 'roxyapi' ),
-				),
 			)
 		);
 	}

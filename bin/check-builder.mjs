@@ -81,50 +81,22 @@ for ( const file of readdirSync(
 	}
 }
 
-// Use BuilderPage's actual English strings and the same localization keys.
-const php = read( 'src/Admin/BuilderPage.php' );
-assert.ok(
-	php.includes( "'RoxyAPIBuilder'" ),
-	'BuilderPage localization global changed'
-);
-const i18nSource = php.slice( php.indexOf( "'i18n'" ) );
-const i18n = Object.fromEntries(
-	[
-		...i18nSource.matchAll(
-			/'([A-Za-z]+)'\s*=> __\( '([^']*)', 'roxyapi' \)/g
-		),
-	].map( ( match ) => [ match[ 1 ], match[ 2 ] ] )
-);
-assert.ok(
-	i18n.continue && i18n.finish,
-	'BuilderPage localized strings not found'
-);
-const groups = [
-	{
-		label: 'Most loved',
-		tags: manifest.entries
-			.filter( ( entry ) => entry.hero )
-			.map( ( entry ) => entry.tag ),
-	},
-	...Object.entries( manifest.domains ).map( ( [ domain, info ] ) => ( {
-		label: info.label,
-		tags: manifest.entries
-			.filter( ( entry ) => ! entry.hero && entry.domain === domain )
-			.map( ( entry ) => entry.tag ),
-	} ) ),
-];
+// Use the standalone host's English shim and the builder's actual translations.
+const html = read( 'builder/index.html' );
+const shim = html.match(
+	/<script id="roxyapi-builder-i18n">([\s\S]*?)<\/script>/
+)[ 1 ];
 const settings = {
 	manifest,
-	groups,
 	newPage: 'https://example.test/wp-admin/post-new.php?post_type=page',
 	reading: '',
 	timezones: [ 'UTC', 'America/New_York', 'Asia/Kolkata' ],
 	today: '2026-10-15',
-	i18n,
 };
 const css = read( 'assets/css/builder.css' );
 const js = read( 'assets/js/builder.js' );
-const fixture = `<!doctype html><html lang="en"><head><meta charset="utf-8"><style>${ css }</style></head><body><div class="wrap roxyapi-builder"><h1>Create a reading</h1><div id="roxyapi-builder"></div></div></body></html>`;
+const fixture = `<!doctype html><html lang="en"><head><meta charset="utf-8"><style>${ css }</style></head><body><div class="wrap roxyapi-builder"><h1 data-roxyapi-builder-title></h1><div id="roxyapi-builder"></div></div></body></html>`;
+let i18n;
 const cases = [
 	{ tag: 'roxy_synastry', mode: 'visitor', expected: '[roxy_synastry]' },
 	{
@@ -163,7 +135,41 @@ try {
 			await page.evaluate( ( localized ) => {
 				window.RoxyAPIBuilder = localized;
 			}, settings );
+			await page.addScriptTag( { content: shim } );
 			await page.addScriptTag( { content: js } );
+			i18n = await page.evaluate( () => ( {
+				back: document.querySelector(
+					'.roxyapi-builder-navigation button'
+				).textContent,
+				continue: document.querySelector(
+					'.roxyapi-builder-navigation button:last-child'
+				).textContent,
+			} ) );
+			const groupedTags = await page
+				.locator( 'input[name="roxyapi-builder-reading"]' )
+				.evaluateAll( ( nodes ) =>
+					nodes.map( ( node ) => node.value )
+				);
+			const orderedEntries = manifest.entries
+				.slice()
+				.sort( ( a, b ) => a.order - b.order );
+			assert.deepEqual(
+				groupedTags,
+				[
+					...orderedEntries
+						.filter( ( entry ) => entry.hero )
+						.map( ( entry ) => entry.tag ),
+					...Object.keys( manifest.domains ).flatMap( ( domain ) =>
+						orderedEntries
+							.filter(
+								( entry ) =>
+									! entry.hero && entry.domain === domain
+							)
+							.map( ( entry ) => entry.tag )
+					),
+				],
+				'Groups must contain each hero once, then the remaining readings in domain order'
+			);
 			await checkLayout( page, `${ width }px step 1` );
 			const failures = await page.evaluate( () => {
 				const issues = [];
@@ -318,6 +324,7 @@ try {
 			await page.close();
 		}
 	}
+	await checkStandalone( browser );
 } finally {
 	await browser.close();
 }
@@ -358,4 +365,255 @@ async function advance( page, step, at ) {
 		`${ at }: did not reach ${ step }`
 	);
 	await checkLayout( page, `${ at } ${ step }` );
+}
+
+/**
+ * Serve the published file layout entirely through browser interception. No
+ * request reaches the public site, including the parent and geocode fixtures.
+ *
+ * @param browser Browser instance.
+ */
+async function checkStandalone( browser ) {
+	const base = 'https://builder.example.test/sdk-wordpress/';
+	const page = await browser.newPage( {
+		viewport: { width: 390, height: 900 },
+	} );
+	page.setDefaultTimeout( 5000 );
+	const errors = [];
+	page.on( 'pageerror', ( error ) => errors.push( error.message ) );
+	const files = new Map( [
+		[ '/sdk-wordpress/', { contentType: 'text/html', body: html } ],
+		[
+			'/sdk-wordpress/manifest.json',
+			{
+				contentType: 'application/json',
+				body: JSON.stringify( manifest ),
+			},
+		],
+		[
+			'/sdk-wordpress/assets/js/builder.js',
+			{ contentType: 'application/javascript', body: js },
+		],
+		[
+			'/sdk-wordpress/assets/js/geocode-combobox.js',
+			{
+				contentType: 'application/javascript',
+				body: read( 'assets/js/geocode-combobox.js' ),
+			},
+		],
+		[
+			'/sdk-wordpress/assets/css/builder.css',
+			{ contentType: 'text/css', body: css },
+		],
+	] );
+	let geocodeQueries = 0;
+	await page.route( '**/*', ( route ) => {
+		const url = new URL( route.request().url() );
+		if (
+			url.origin === 'https://builder.example.test' &&
+			files.has( url.pathname )
+		) {
+			return route.fulfill( files.get( url.pathname ) );
+		}
+		if (
+			url.origin === 'https://roxyapi.com' &&
+			url.pathname === '/tools/location-search'
+		) {
+			assert.equal( url.searchParams.get( 'q' ), 'Mumbai' );
+			geocodeQueries++;
+			return route.fulfill( {
+				json: {
+					results: [
+						{
+							label: 'Mumbai, Maharashtra, India',
+							latitude: 19.076,
+							longitude: 72.8777,
+							timezone: 'Asia/Kolkata',
+						},
+					],
+				},
+				headers: { 'Access-Control-Allow-Origin': '*' },
+			} );
+		}
+		if ( url.pathname === '/builder-test' ) {
+			return route.fulfill( {
+				contentType: 'text/html',
+				body: `<!doctype html><script>window.messages = []; window.addEventListener('message', event => window.messages.push(event.data));</script><iframe style="width:100%;border:0" src="${ base }?embed=1&reading=roxy_moon_phase"></iframe>`,
+			} );
+		}
+		return route.fulfill( { status: 404, body: '' } );
+	} );
+	await page.addInitScript( () => {
+		Object.defineProperty( window.navigator, 'clipboard', {
+			value: {
+				writeText: async ( value ) => {
+					if ( window.blockClipboard ) {
+						throw new Error( 'Clipboard permission denied' );
+					}
+					window.copiedShortcode = value;
+				},
+			},
+		} );
+	} );
+	try {
+		await page.goto( base + '?reading=roxy_natal_chart' );
+		await page
+			.locator( '#roxyapi-builder-step-who' )
+			.waitFor( { state: 'visible' } );
+		assert.equal( await page.locator( 'header' ).isVisible(), true );
+		assert.equal( await page.locator( 'footer' ).isVisible(), true );
+		assert.equal(
+			await page.locator( 'a[href*="post-new.php"]' ).count(),
+			0
+		);
+		assert.equal(
+			await page
+				.locator( 'meta[name="robots"]' )
+				.getAttribute( 'content' ),
+			'noindex'
+		);
+		assert.equal(
+			await page
+				.locator( 'link[rel="canonical"]' )
+				.getAttribute( 'href' ),
+			'https://roxyapi.com/docs/integrations/wordpress'
+		);
+		assert.equal(
+			await page.evaluate( () =>
+				window.wp.i18n.sprintf( '%2$s: %1$d %%', 3, 'Step' )
+			),
+			'Step: 3 %'
+		);
+		await page
+			.locator( 'input[name="roxyapi-builder-mode"][value="set"]' )
+			.check();
+		await advance( page, 'details', 'Standalone' );
+		const panel = page.locator(
+			'.roxyapi-builder-step:not([hidden]) > div:not([hidden])'
+		);
+		await panel.locator( '[data-roxyapi-geocode]' ).fill( 'Mumbai' );
+		await panel
+			.getByRole( 'option', { name: 'Mumbai, Maharashtra, India' } )
+			.click();
+		assert.equal( geocodeQueries, 1 );
+		assert.equal(
+			await panel.locator( '[name="lat"]' ).inputValue(),
+			'19.076'
+		);
+		assert.equal(
+			await panel.locator( '[name="lon"]' ).inputValue(),
+			'72.8777'
+		);
+		assert.equal(
+			await panel.locator( '[name="tz"]' ).inputValue(),
+			'Asia/Kolkata'
+		);
+		await checkLayout( page, 'Standalone city selection' );
+		await page.emulateMedia( { colorScheme: 'dark' } );
+		assert.equal(
+			await page
+				.locator( '.roxyapi-builder' )
+				.evaluate( ( node ) => window.getComputedStyle( node ).color ),
+			'rgb(240, 242, 245)'
+		);
+
+		// Trust the exact parent origin, rejecting a matching hostname prefix.
+		for ( const origin of [
+			'https://roxyapi.com',
+			'https://roxyapi.com.example.test',
+		] ) {
+			await page.goto( origin + '/builder-test' );
+			const frame = page.frameLocator( 'iframe' );
+			await frame
+				.locator( '#roxyapi-builder-step-who' )
+				.waitFor( { state: 'visible' } );
+			assert.equal( await frame.locator( 'header' ).isVisible(), false );
+			assert.equal( await frame.locator( 'footer' ).isVisible(), false );
+			const before = await page.evaluate( () => window.messages.length );
+			await frame
+				.locator( '.roxyapi-builder-navigation button:last-child' )
+				.click();
+			await frame
+				.locator( '.roxyapi-builder-navigation button:last-child' )
+				.click();
+			await frame
+				.locator( '.roxyapi-builder-step:not([hidden]) button' )
+				.click();
+			await frame
+				.getByRole( 'status' )
+				.filter( { hasText: /./ } )
+				.waitFor();
+			assert.equal(
+				await frame.locator( 'textarea' ).inputValue(),
+				'[roxy_moon_phase]'
+			);
+			assert.equal(
+				await frame
+					.locator( 'body' )
+					.evaluate( () => window.copiedShortcode ),
+				'[roxy_moon_phase]'
+			);
+			if ( origin === 'https://roxyapi.com' ) {
+				await page.waitForFunction( () =>
+					window.messages.some(
+						( message ) => message.type === 'roxy-builder:copied'
+					)
+				);
+				const messages = await page.evaluate( () => window.messages );
+				assert.ok(
+					messages.some(
+						( message ) =>
+							message.type === 'roxy-builder:height' &&
+							message.height > 0
+					)
+				);
+				assert.deepEqual(
+					messages.find(
+						( message ) => message.type === 'roxy-builder:copied'
+					),
+					{ type: 'roxy-builder:copied', tag: 'roxy_moon_phase' }
+				);
+				const copies = messages.filter(
+					( message ) => message.type === 'roxy-builder:copied'
+				).length;
+				await frame.locator( 'body' ).evaluate( () => {
+					window.blockClipboard = true;
+				} );
+				await frame
+					.locator( '.roxyapi-builder-step:not([hidden]) button' )
+					.click();
+				await page.waitForFunction(
+					( count ) =>
+						window.messages.filter(
+							( message ) =>
+								message.type === 'roxy-builder:copied'
+						).length > count,
+					copies
+				);
+			} else {
+				// Round-trip with the iframe to allow queued postMessages to arrive.
+				await frame
+					.locator( 'body' )
+					.evaluate(
+						() =>
+							new Promise( ( resolve ) =>
+								window.requestAnimationFrame( () =>
+									window.requestAnimationFrame( resolve )
+								)
+							)
+					);
+				assert.equal( before, 0 );
+				assert.deepEqual(
+					await page.evaluate( () => window.messages ),
+					[]
+				);
+			}
+		}
+		assert.deepEqual( errors, [] );
+		console.log(
+			'Standalone OK: published paths, preselection, city mapping, dark theme, trusted embed height/copy messages and rejected lookalike origin (all requests intercepted).'
+		);
+	} finally {
+		await page.close();
+	}
 }

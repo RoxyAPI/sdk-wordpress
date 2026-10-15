@@ -9,6 +9,10 @@
  * `data-roxyapi-geocode-quiet` keeps the status as descriptive text instead of
  * a live region on screens such as the builder that own one shared announcement.
  *
+ * `data-roxyapi-geocode-url` overrides the WordPress endpoint.
+ * `data-roxyapi-geocode-response` maps results, label, lat, lon and tz keys
+ * in the response; defaults are cities, label, lat, lon and tz.
+ *
  * Implements the WAI-ARIA APG combobox-autocomplete-list pattern:
  *   role="combobox", aria-autocomplete="list", aria-expanded, aria-controls,
  *   aria-activedescendant + a sibling listbox of options.
@@ -109,8 +113,15 @@
 			return;
 		}
 
+		const restUrl =
+			input.getAttribute( 'data-roxyapi-geocode-url' ) || REST_URL;
+		let response = {};
 		let fields;
 		try {
+			response =
+				JSON.parse(
+					input.getAttribute( 'data-roxyapi-geocode-response' )
+				) || {};
 			fields = JSON.parse(
 				input.getAttribute( 'data-roxyapi-geocode-fields' )
 			);
@@ -216,13 +227,13 @@
 		}
 
 		const fetchResults = debounce( function ( q ) {
-			if ( ! REST_URL ) {
+			if ( ! restUrl ) {
 				return;
 			}
 			setStatus( status, I18N.searching || '' );
 			const url =
-				REST_URL +
-				( REST_URL.indexOf( '?' ) === -1 ? '?' : '&' ) +
+				restUrl +
+				( restUrl.indexOf( '?' ) === -1 ? '?' : '&' ) +
 				'q=' +
 				encodeURIComponent( q );
 			window
@@ -246,7 +257,15 @@
 						setStatus( status, refusal || I18N.error || '' );
 						return;
 					}
-					current = Array.isArray( data.cities ) ? data.cities : [];
+					const results = data[ response.results || 'cities' ];
+					current = Array.isArray( results )
+						? results.map( ( city ) => ( {
+								label: city[ response.label || 'label' ],
+								lat: city[ response.lat || 'lat' ],
+								lon: city[ response.lon || 'lon' ],
+								tz: city[ response.tz || 'tz' ],
+						  } ) )
+						: [];
 					renderResults( listbox, current, pick );
 					if ( current.length === 0 ) {
 						close();
