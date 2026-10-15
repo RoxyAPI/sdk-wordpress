@@ -234,7 +234,7 @@ class Plugin {
 	}
 
 	/**
-	 * One-shot redirect to the Settings page right after activation.
+	 * One-shot redirect to Create a reading right after activation.
 	 *
 	 * Set by Activation::activate(). Skipped when WordPress just activated
 	 * multiple plugins at once, when the request is an AJAX, REST, cron, or
@@ -250,7 +250,7 @@ class Plugin {
 		// Check every guard BEFORE consuming the transient so that an AJAX/REST
 		// request landing on admin_init doesn't eat the redirect intended for
 		// the next real admin page load.
-		if ( wp_doing_ajax() || wp_doing_cron() ) {
+		if ( wp_doing_ajax() || wp_doing_cron() || is_network_admin() ) {
 			return;
 		}
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {
@@ -268,11 +268,8 @@ class Plugin {
 		}
 
 		delete_transient( 'roxyapi_activated' );
-		// Land new installs on the Shortcodes library, not Settings. The plugin
-		// renders on a free daily allowance with no key, so the fastest path to
-		// a working reading is the copy-paste catalog, not a key-entry form. The
-		// key field stays one click away under the RoxyAPI menu for more headroom.
-		wp_safe_redirect( admin_url( 'admin.php?page=' . ShortcodesPage::PAGE_SLUG ) );
+		// The builder guides site owners to a working reading on the free allowance.
+		wp_safe_redirect( admin_url( 'admin.php?page=' . BuilderPage::PAGE_SLUG ) );
 		exit;
 	}
 }

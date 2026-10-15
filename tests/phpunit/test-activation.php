@@ -8,8 +8,8 @@
 namespace RoxyAPI\Tests;
 
 use RoxyAPI\Activation;
+use RoxyAPI\Admin\BuilderPage;
 use RoxyAPI\Admin\SettingsPage;
-use RoxyAPI\Admin\ShortcodesPage;
 use RoxyAPI\Api\Cache;
 use RoxyAPI\Plugin;
 use RoxyAPI\Support\Encryption;
@@ -107,7 +107,7 @@ class Test_Activation extends \WP_UnitTestCase {
 		}
 
 		$this->assertNotNull( $this->captured_redirect );
-		$this->assertStringContainsString( 'admin.php?page=' . ShortcodesPage::PAGE_SLUG, (string) $this->captured_redirect );
+		$this->assertSame( admin_url( 'admin.php?page=' . BuilderPage::PAGE_SLUG ), $this->captured_redirect );
 
 		// The transient must have been consumed even though redirect was
 		// intercepted; the source deletes it before the redirect call.
@@ -169,6 +169,22 @@ class Test_Activation extends \WP_UnitTestCase {
 		$source = file_get_contents( dirname( __DIR__, 2 ) . '/src/Plugin.php' );
 		$this->assertIsString( $source );
 		$this->assertStringContainsString( "defined( 'REST_REQUEST' ) && REST_REQUEST", $source );
+	}
+
+	public function test_no_redirect_in_network_admin(): void {
+		set_transient( 'roxyapi_activated', '1', 30 );
+		wp_set_current_user( self::factory()->user->create( array( 'role' => 'administrator' ) ) );
+		$previous_screen = get_current_screen();
+		set_current_screen( 'dashboard-network' );
+		$this->capture_redirect();
+		try {
+			$this->assertTrue( is_network_admin() );
+			Plugin::maybe_redirect_after_activation();
+			$this->assertNull( $this->captured_redirect );
+			$this->assertSame( '1', get_transient( 'roxyapi_activated' ) );
+		} finally {
+			$GLOBALS['current_screen'] = $previous_screen;
+		}
 	}
 
 	public function test_no_redirect_with_wp_cli_constant(): void {

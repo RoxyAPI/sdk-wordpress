@@ -17,7 +17,9 @@
 
 namespace RoxyAPI\Tests;
 
+use RoxyAPI\Admin\BuilderPage;
 use RoxyAPI\Admin\SettingsPage;
+use RoxyAPI\Admin\ShortcodesPage;
 use RoxyAPI\Support\ApiKey;
 
 class Test_Settings_Screen extends Mock_Http_TestCase {
@@ -47,6 +49,143 @@ class Test_Settings_Screen extends Mock_Http_TestCase {
 		ob_start();
 		SettingsPage::render();
 		return (string) ob_get_clean();
+	}
+
+	/** Parse rendered markup to check links and native disclosures. */
+	private function document( string $html ): \DOMDocument {
+		$document = new \DOMDocument();
+		$previous = libxml_use_internal_errors( true );
+		try {
+			$document->loadHTML( $html );
+		} finally {
+			libxml_clear_errors();
+			libxml_use_internal_errors( $previous );
+		}
+		return $document;
+	}
+
+	/** Check the destination, copy and new tab attributes of a resource link. */
+	private function assert_resource_link( \DOMNode $node, string $url, string $label ): void {
+		foreach ( $node->getElementsByTagName( 'a' ) as $link ) {
+			if ( trim( $link->getAttribute( 'href' ) ) !== $url ) {
+				continue;
+			}
+			$this->assertSame( $label, trim( $link->textContent ) );
+			if ( strpos( $url, 'https://roxyapi.com/' ) === 0 ) {
+				$this->assertSame( '_blank', $link->getAttribute( 'target' ) );
+				$this->assertContains( 'noopener', explode( ' ', $link->getAttribute( 'rel' ) ) );
+			}
+			return;
+		}
+		$this->fail( 'Missing link: ' . $url );
+	}
+
+	public function test_sell_readings_renders_copy_and_links_with_and_without_a_key(): void {
+		foreach ( array( false, true ) as $connected ) {
+			if ( $connected ) {
+				$this->connect();
+			}
+			$html     = $this->render( 'sell-readings' );
+			$document = $this->document( $html );
+			$xpath    = new \DOMXPath( $document );
+			$tabs     = $xpath->query( '//nav[@role="tablist"]/a' );
+			$labels   = array();
+			foreach ( $tabs as $tab ) {
+				$labels[] = trim( $tab->textContent );
+			}
+			$this->assertSame( array( 'Connect', 'Branding', 'Display', 'Sell readings', 'Privacy', 'Advanced' ), $labels );
+			foreach ( array(
+				'Many practitioners keep one reading free and charge for the deeper ones. Here is the simplest way to do it.',
+				'Give something free',
+				'A daily horoscope or a one card tarot draw brings visitors back every day. Place it on your home page.',
+				'Charge for the reading that matters',
+				'Birth charts, compatibility and yearly forecasts are worth paying for. Give each its own page.',
+				'Ask for payment before the page opens',
+				'Install a membership or shop plugin you trust and limit that page to paying members. The reading shows only to them.',
+			) as $copy ) {
+				$this->assertStringContainsString( $copy, $html );
+			}
+			$this->assert_resource_link( $document, 'https://roxyapi.com/docs/monetization', 'Read the full guide' );
+			$this->assert_resource_link( $document, 'https://roxyapi.com/docs/integrations/wordpress#sell-readings-and-charts', 'See how it works on WordPress' );
+			$this->assertSame( 0, $xpath->query( '//form' )->length );
+		}
+	}
+
+	public function test_help_renders_every_answer_and_link(): void {
+		ob_start();
+		SettingsPage::render_help();
+		$document = $this->document( (string) ob_get_clean() );
+		$this->assertSame( 'Help', $document->getElementsByTagName( 'h1' )->item( 0 )->textContent );
+		$this->assertStringContainsString( 'Short answers to the questions practitioners ask most.', $document->textContent );
+		$items = $document->getElementsByTagName( 'details' );
+		$this->assertCount( 8, $items );
+		$expected = array(
+			array(
+				'How do I add a reading to a page?',
+				'Open Create a reading, answer a few questions and copy the shortcode. In the block editor, add a Shortcode block and paste it there.',
+				array( admin_url( 'admin.php?page=' . BuilderPage::PAGE_SLUG ) => 'Create a reading' ),
+			),
+			array(
+				'Can my visitors enter their own birth details?',
+				'Yes. Choose Ask my visitor and the reading shows a form. Each visitor sees a reading made for their own details.',
+				array( 'https://roxyapi.com/docs/integrations/wordpress#ask-your-visitor-or-show-a-set-reading' => 'Learn more' ),
+			),
+			array(
+				'Can I charge for readings?',
+				'Yes. Keep one reading free and put the deeper ones on a page only paying members can open.',
+				array(
+					admin_url( 'admin.php?page=' . SettingsPage::PAGE_SLUG . '&tab=sell-readings' ) => 'Sell readings',
+					'https://roxyapi.com/docs/monetization' => 'Read the full guide',
+				),
+			),
+			array(
+				'Is client data safe?',
+				'Birth details are used only to calculate the reading. Your key stays on your server and never reaches the browser.',
+				array( 'https://roxyapi.com/docs/data-protection' => 'Learn more' ),
+			),
+			array(
+				'Which language do readings use?',
+				'Readings follow your site language. To choose another, open Settings and pick a reading language on the Branding tab.',
+				array( 'https://roxyapi.com/docs/integrations/wordpress#language-and-appearance' => 'Learn more' ),
+			),
+			array(
+				'Will readings match my theme?',
+				'Yes. Readings follow your light or dark theme, and you can set the chart style on the Branding tab.',
+				array( admin_url( 'admin.php?page=' . SettingsPage::PAGE_SLUG . '&tab=branding' ) => 'Branding' ),
+			),
+			array(
+				'Where can I see every reading?',
+				'Open Shortcodes for the full list, or Create a reading to search by name.',
+				array(
+					admin_url( 'admin.php?page=' . ShortcodesPage::PAGE_SLUG ) => 'Shortcodes',
+					admin_url( 'admin.php?page=' . BuilderPage::PAGE_SLUG ) => 'Create a reading',
+				),
+			),
+			array(
+				'I still need help.',
+				'Write to us and a real person replies.',
+				array( 'https://roxyapi.com/contact' => 'Contact us' ),
+			),
+		);
+		foreach ( $expected as $index => list( $question, $answer, $links ) ) {
+			$item = $items->item( $index );
+			$this->assertSame( $question, $item->getElementsByTagName( 'summary' )->item( 0 )->textContent );
+			$this->assertSame( $answer, $item->getElementsByTagName( 'p' )->item( 0 )->textContent );
+			$this->assertCount( count( $links ), $item->getElementsByTagName( 'a' ) );
+			foreach ( $links as $url => $label ) {
+				$this->assert_resource_link( $item, $url, $label );
+			}
+		}
+	}
+
+	public function test_sell_readings_and_help_do_not_render_for_non_admins(): void {
+		foreach ( array( 'editor', 'subscriber', null ) as $role ) {
+			wp_set_current_user( $role ? self::factory()->user->create( array( 'role' => $role ) ) : 0 );
+			$this->assertSame( '', $this->render( 'sell-readings' ) );
+			ob_start();
+			SettingsPage::render_help();
+			$this->assertSame( '', ob_get_clean() );
+		}
 	}
 
 	/** A syntactically valid key, matching the shapes test-settings-fields-sanitize.php pins. */

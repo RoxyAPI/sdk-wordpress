@@ -160,13 +160,13 @@
 		} );
 	} );
 
-	Object.entries( manifest.domains ).forEach( ( [ domain, info ] ) => {
-		const items = entries.filter( ( entry ) => entry.domain === domain );
+	settings.groups.forEach( ( { label: title, tags } ) => {
+		const items = tags.map( ( tag ) => readings.get( tag ).entry );
 		if ( ! items.length ) {
 			return;
 		}
 		const group = element( 'section', '', 'roxyapi-builder-group' );
-		group.appendChild( element( 'h3', info.label ) );
+		group.appendChild( element( 'h3', title ) );
 		const grid = element( 'div', '', 'roxyapi-builder-grid' );
 		items.forEach( ( entry ) => {
 			const description = entry.description.replace(
@@ -193,7 +193,7 @@
 				' ' +
 				description +
 				' ' +
-				info.label
+				manifest.domains[ entry.domain ].label
 			).toLowerCase();
 			grid.appendChild( label );
 		} );
@@ -252,6 +252,9 @@
 		}
 	} );
 	steps.finish.append( output, copy, status, element( 'p', strings.paste ) );
+	const newPage = element( 'a', strings.newPage, 'button button-secondary' );
+	newPage.href = settings.newPage;
+	steps.finish.appendChild( newPage );
 
 	const switcher = button( '', 'button-link roxyapi-builder-switch', () => {
 		setMode( mode === 'set' ? 'visitor' : 'set' );

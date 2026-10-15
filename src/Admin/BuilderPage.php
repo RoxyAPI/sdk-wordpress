@@ -30,6 +30,39 @@ class BuilderPage {
 	}
 
 	/**
+	 * Group heroes first, then the remaining readings in domain order.
+	 *
+	 * @param array<string, mixed> $manifest Bundled builder manifest.
+	 * @return array<int, array{label: string, tags: array<int, string>}>
+	 */
+	public static function reading_groups( array $manifest ): array {
+		$heroes  = array();
+		$domains = array();
+		foreach ( $manifest['entries'] as $entry ) {
+			if ( $entry['hero'] ) {
+				$heroes[] = $entry['tag'];
+			} else {
+				$domains[ $entry['domain'] ][] = $entry['tag'];
+			}
+		}
+		$groups = array(
+			array(
+				'label' => __( 'Most loved', 'roxyapi' ),
+				'tags'  => $heroes,
+			),
+		);
+		foreach ( $manifest['domains'] as $domain => $info ) {
+			if ( ! empty( $domains[ $domain ] ) ) {
+				$groups[] = array(
+					'label' => $info['label'],
+					'tags'  => $domains[ $domain ],
+				);
+			}
+		}
+		return $groups;
+	}
+
+	/**
 	 * Load only bundled assets and metadata on the builder screen.
 	 *
 	 * @param string $hook Current admin page hook.
@@ -46,12 +79,15 @@ class BuilderPage {
 		wp_enqueue_script( 'roxyapi-builder', plugins_url( 'assets/js/builder.js', ROXYAPI_PLUGIN_FILE ), array( 'roxyapi-geocode' ), ROXYAPI_VERSION, true );
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only selection on a capability-checked page.
-		$reading = isset( $_GET['reading'] ) && is_string( $_GET['reading'] ) ? sanitize_key( wp_unslash( $_GET['reading'] ) ) : '';
+		$reading  = isset( $_GET['reading'] ) && is_string( $_GET['reading'] ) ? sanitize_key( wp_unslash( $_GET['reading'] ) ) : '';
+		$manifest = Manifest::all();
 		wp_localize_script(
 			'roxyapi-builder',
 			'RoxyAPIBuilder',
 			array(
-				'manifest'  => Manifest::all(),
+				'manifest'  => $manifest,
+				'groups'    => self::reading_groups( $manifest ),
+				'newPage'   => admin_url( 'post-new.php?post_type=page' ),
 				'reading'   => $reading,
 				'timezones' => timezone_identifiers_list( \DateTimeZone::ALL_WITH_BC ),
 				'today'     => current_time( 'Y-m-d' ),
@@ -86,6 +122,7 @@ class BuilderPage {
 					'copied'        => __( 'Copied. Paste it into any page.', 'roxyapi' ),
 					'copyFailed'    => __( 'Copy failed. Select the text and copy it.', 'roxyapi' ),
 					'paste'         => __( 'In the block editor, add a Shortcode block and paste it there.', 'roxyapi' ),
+					'newPage'       => __( 'Create a new page', 'roxyapi' ),
 					'city'          => __( 'City', 'roxyapi' ),
 					'cityHelp'      => __( 'Start typing. We fill in the timezone for you.', 'roxyapi' ),
 					'yes'           => __( 'Yes', 'roxyapi' ),

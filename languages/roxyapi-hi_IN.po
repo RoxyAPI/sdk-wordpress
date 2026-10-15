@@ -777,7 +777,7 @@ msgstr "अपना स्प्रेड बनाएँ"
 msgid "Custom ayanamsa value in degrees"
 msgstr "अंशों में अपना अयनांश मान"
 
-#: src/Admin/Onboarding.php:74
+#: src/Admin/Onboarding.php:75
 #: src/Generated/Heroes/Manifest.php:32
 msgid "Daily horoscope"
 msgstr "दैनिक राशिफल"
@@ -2264,10 +2264,10 @@ msgstr ""
 #. Author of the plugin
 #: roxyapi.php
 #: src/Admin/Notice.php:106
-#: src/Admin/SettingsPage.php:78
 #: src/Admin/SettingsPage.php:79
+#: src/Admin/SettingsPage.php:80
 #: src/Blocks/Category.php:33
-#: templates/admin-connected.php:124
+#: templates/admin-connected.php:125
 msgid "RoxyAPI"
 msgstr "RoxyAPI"
 
@@ -2315,7 +2315,7 @@ msgid "Documentation"
 msgstr "प्रलेखन"
 
 #: src/Admin/ActionLinks.php:69
-#: templates/admin-connected.php:418
+#: templates/admin-connected.php:442
 msgid "Support"
 msgstr "सहायता"
 
@@ -2357,7 +2357,7 @@ msgstr "कॉपी विफल रही"
 #: src/Admin/Assets.php:64
 #: src/Admin/DashboardWidget.php:132
 #: src/Admin/ShortcodesPage.php:116
-#: templates/admin-connected.php:198
+#: templates/admin-connected.php:199
 #: templates/admin-onboarding.php:78
 #: templates/admin-shortcodes.php:143
 msgid "Copy"
@@ -2382,7 +2382,7 @@ msgstr "RoxyAPI से कनेक्ट हो गया"
 #. translators: %s: shortcode label
 #. translators: %s: shortcode title
 #: src/Admin/DashboardWidget.php:130
-#: templates/admin-connected.php:196
+#: templates/admin-connected.php:197
 #: templates/admin-onboarding.php:76
 #: templates/admin-shortcodes.php:141
 #, php-format
@@ -2716,6 +2716,7 @@ msgstr "API कुंजी एन्क्रिप्ट नहीं हो �
 
 #: src/Admin/SettingsPage.php:101
 #: src/Admin/SettingsPage.php:102
+#: templates/admin-help.php:57
 msgid "Shortcodes"
 msgstr "शॉर्टकोड"
 
@@ -2761,7 +2762,7 @@ msgstr "कोई नहीं। यह प्लगइन उस भाषा 
 msgid "Translation file loaded"
 msgstr "अनुवाद फ़ाइल लोड हुई"
 
-#: src/Admin/BuilderPage.php:91
+#: src/Admin/BuilderPage.php:128
 #: src/Admin/SiteHealth.php:77
 #: src/Admin/SiteHealth.php:119
 #: src/Support/GenericRenderer.php:836
@@ -2769,7 +2770,7 @@ msgstr "अनुवाद फ़ाइल लोड हुई"
 msgid "Yes"
 msgstr "हाँ"
 
-#: src/Admin/BuilderPage.php:92
+#: src/Admin/BuilderPage.php:129
 #: src/Admin/SiteHealth.php:77
 #: src/Support/GenericRenderer.php:839
 msgid "No"
@@ -2965,189 +2966,190 @@ msgid "Connect"
 msgstr "कनेक्ट करें"
 
 #: templates/admin-connected.php:88
+#: templates/admin-help.php:51
 msgid "Branding"
 msgstr "ब्रांडिंग"
 
-#: src/Admin/BuilderPage.php:65
+#: src/Admin/BuilderPage.php:101
 #: templates/admin-connected.php:89
 msgid "Display"
 msgstr "डिस्प्ले"
 
-#: templates/admin-connected.php:90
+#: templates/admin-connected.php:91
 msgid "Privacy"
 msgstr "गोपनीयता"
 
 #: src/Support/FormRenderer.php:194
-#: templates/admin-connected.php:91
+#: templates/admin-connected.php:92
 msgid "Advanced"
 msgstr "उन्नत"
 
-#: templates/admin-connected.php:127
+#: templates/admin-connected.php:128
 msgid "RoxyAPI is"
 msgstr "RoxyAPI"
 
-#: templates/admin-connected.php:128
+#: templates/admin-connected.php:129
 msgid "connected."
 msgstr "कनेक्ट हो गया।"
 
-#: templates/admin-connected.php:141
+#: templates/admin-connected.php:142
 msgid "RoxyAPI settings"
 msgstr "RoxyAPI सेटिंग्स"
 
-#: templates/admin-connected.php:178
+#: templates/admin-connected.php:179
 msgid "Connected to RoxyAPI."
 msgstr "RoxyAPI से कनेक्ट हो गया।"
 
-#: templates/admin-connected.php:179
+#: templates/admin-connected.php:180
 msgid "Drop a shortcode on any page to render a reading."
 msgstr "किसी भी पेज पर विश्लेषण दिखाने के लिए एक शॉर्टकोड डालें।"
 
-#: templates/admin-connected.php:184
+#: templates/admin-connected.php:185
 msgid "Quick start"
 msgstr "क्विक स्टार्ट"
 
-#: templates/admin-connected.php:186
+#: templates/admin-connected.php:187
 msgid "Three working shortcodes. Copy. Paste. Publish."
 msgstr "तीन तैयार शॉर्टकोड। कॉपी करें। पेस्ट करें। पब्लिश करें।"
 
-#: templates/admin-connected.php:205
+#: templates/admin-connected.php:206
 #: templates/admin-onboarding.php:85
 msgid "Browse all shortcodes"
 msgstr "सभी शॉर्टकोड ब्राउज़ करें"
 
-#: templates/admin-connected.php:212
+#: templates/admin-connected.php:213
 msgid "Manage your key"
 msgstr "अपनी कुंजी प्रबंधित करें"
 
-#: templates/admin-connected.php:214
+#: templates/admin-connected.php:215
 msgid "Replace key"
 msgstr "कुंजी बदलें"
 
-#: templates/admin-connected.php:220
+#: templates/admin-connected.php:221
 #: templates/admin-onboarding.php:128
 msgid "Save key"
 msgstr "कुंजी सहेजें"
 
-#: templates/admin-connected.php:223
+#: templates/admin-connected.php:224
 #: templates/admin-onboarding.php:131
 msgid "Test Connection"
 msgstr "कनेक्शन जांचें"
 
-#: templates/admin-connected.php:256
+#: templates/admin-connected.php:257
 msgid "Theme"
 msgstr "थीम"
 
-#: templates/admin-connected.php:258
+#: templates/admin-connected.php:259
 msgid "Light, dark, or auto for chart readings. Auto follows the visitor device setting."
 msgstr "चार्ट विश्लेषण के लिए लाइट, डार्क, या ऑटो। ऑटो आगंतुक की डिवाइस सेटिंग का पालन करता है।"
 
-#: templates/admin-connected.php:266
+#: templates/admin-connected.php:267
 msgid "Reading language"
 msgstr "विश्लेषण की भाषा"
 
-#: templates/admin-connected.php:268
+#: templates/admin-connected.php:269
 msgid "Language for visitor-facing reading text. Default follows the site language."
 msgstr "आगंतुकों को दिखने वाले विश्लेषण टेक्स्ट की भाषा। डिफ़ॉल्ट रूप से यह साइट की भाषा का पालन करती है।"
 
-#: templates/admin-connected.php:277
+#: templates/admin-connected.php:278
 msgid "Save branding"
 msgstr "ब्रांडिंग सहेजें"
 
-#: templates/admin-connected.php:290
+#: templates/admin-connected.php:291
 msgid "Written readings"
 msgstr "लिखित विश्लेषण"
 
-#: templates/admin-connected.php:295
+#: templates/admin-connected.php:296
 msgid "Turn this on to show the chart on its own, without the written report. It applies to every reading on the site. To set it for one placement instead, add hide_readings=\"1\" or hide_readings=\"0\" to that shortcode."
 msgstr "लिखित रिपोर्ट के बिना सिर्फ़ चार्ट दिखाने के लिए इसे चालू करें। यह साइट के हर विश्लेषण पर लागू होता है। इसके बजाय किसी एक जगह के लिए सेट करने के लिए, उस शॉर्टकोड में hide_readings=\"1\" या hide_readings=\"0\" जोड़ें।"
 
-#: templates/admin-connected.php:310
+#: templates/admin-connected.php:311
 msgid "Show source"
 msgstr "स्रोत दिखाएँ"
 
-#: templates/admin-connected.php:315
+#: templates/admin-connected.php:316
 msgid "A small line at the bottom of each card showing where the data comes from. Off by default."
 msgstr "हर कार्ड के नीचे एक छोटी पंक्ति, जो बताती है कि डेटा कहाँ से आया है। डिफ़ॉल्ट रूप से बंद।"
 
-#: templates/admin-connected.php:320
+#: templates/admin-connected.php:321
 msgid "Disclaimer"
 msgstr "अस्वीकरण"
 
-#: templates/admin-connected.php:325
+#: templates/admin-connected.php:326
 msgid "Append a disclaimer to every reading. Useful for jurisdictions that require an \"entertainment only\" line. Empty text falls back to the localised default."
 msgstr "हर विश्लेषण में एक अस्वीकरण जोड़ें। उन क्षेत्रों के लिए उपयोगी जहाँ \"केवल मनोरंजन के लिए\" जैसी पंक्ति ज़रूरी है। खाली टेक्स्ट होने पर स्थानीयकृत डिफ़ॉल्ट इस्तेमाल होता है।"
 
-#: templates/admin-connected.php:333
+#: templates/admin-connected.php:334
 msgid "Visitor form copy"
 msgstr "आगंतुक फ़ॉर्म टेक्स्ट"
 
-#: templates/admin-connected.php:335
+#: templates/admin-connected.php:336
 msgid "Override the title and submit button shown above visitor forms. Leave blank to use the localised default."
 msgstr "आगंतुक फ़ॉर्म के ऊपर दिखने वाला शीर्षक और 'भेजें' बटन बदलें। स्थानीयकृत डिफ़ॉल्ट इस्तेमाल करने के लिए खाली छोड़ें।"
 
-#: templates/admin-connected.php:339
+#: templates/admin-connected.php:340
 msgid "Form title"
 msgstr "फ़ॉर्म शीर्षक"
 
-#: templates/admin-connected.php:345
+#: templates/admin-connected.php:346
 msgid "Submit button text"
 msgstr "'भेजें' बटन का टेक्स्ट"
 
-#: templates/admin-connected.php:353
+#: templates/admin-connected.php:354
 msgid "Save display"
 msgstr "डिस्प्ले सहेजें"
 
-#: templates/admin-connected.php:362
+#: templates/admin-connected.php:386
 msgid "Visitor privacy"
 msgstr "आगंतुक गोपनीयता"
 
-#: templates/admin-connected.php:364
+#: templates/admin-connected.php:388
 msgid "Visitor forms collect birth date, time, and location to compute readings. Visitors must confirm consent before each submission. Edit the consent text below; leave blank for the localised default."
 msgstr "आगंतुक फ़ॉर्म विश्लेषण तैयार करने के लिए जन्म तिथि, समय और स्थान लेते हैं। हर सबमिशन से पहले आगंतुकों को सहमति देनी होगी। नीचे सहमति टेक्स्ट बदलें; स्थानीयकृत डिफ़ॉल्ट के लिए खाली छोड़ें।"
 
-#: templates/admin-connected.php:370
+#: templates/admin-connected.php:394
 msgid "Consent label shown next to the form checkbox"
 msgstr "फ़ॉर्म चेकबॉक्स के बगल में दिखने वाला सहमति लेबल"
 
 #. translators: %s: link to WordPress Privacy Policy editor
-#: templates/admin-connected.php:380
+#: templates/admin-connected.php:404
 #, php-format
 msgid "The plugin auto-injects suggested privacy text into the WordPress Privacy Policy editor. Review or accept it at %s."
 msgstr "यह प्लगइन सुझाया गया गोपनीयता टेक्स्ट अपने आप WordPress गोपनीयता नीति एडिटर में जोड़ देता है। इसे %s पर जाकर जांचें या स्वीकार करें।"
 
-#: templates/admin-connected.php:381
+#: templates/admin-connected.php:405
 msgid "Settings &rarr; Privacy"
 msgstr "सेटिंग्स &rarr; गोपनीयता"
 
-#: templates/admin-connected.php:387
+#: templates/admin-connected.php:411
 msgid "Save privacy"
 msgstr "गोपनीयता सहेजें"
 
-#: templates/admin-connected.php:397
+#: templates/admin-connected.php:421
 msgid "Cache"
 msgstr "कैश"
 
-#: templates/admin-connected.php:399
+#: templates/admin-connected.php:423
 msgid "How long RoxyAPI caches each reading on this site. Lower = fresher. Higher = saves API quota."
 msgstr "RoxyAPI इस साइट पर हर विश्लेषण को कितनी देर तक कैश करता है। कम = ज़्यादा ताज़ा। ज़्यादा = API कोटा की बचत।"
 
-#: templates/admin-connected.php:408
+#: templates/admin-connected.php:432
 msgid "Save advanced"
 msgstr "उन्नत सहेजें"
 
-#: templates/admin-connected.php:416
+#: templates/admin-connected.php:440
 msgid "RoxyAPI resources"
 msgstr "RoxyAPI संसाधन"
 
-#: templates/admin-connected.php:417
+#: templates/admin-connected.php:441
 msgid "Docs"
 msgstr "दस्तावेज़"
 
-#: templates/admin-connected.php:419
+#: templates/admin-connected.php:443
 msgid "Open dashboard at roxyapi.com"
 msgstr "roxyapi.com पर डैशबोर्ड खोलें"
 
-#: templates/admin-connected.php:131
+#: templates/admin-connected.php:132
 msgid "30 seconds."
 msgstr "बस 30 सेकंड में।"
 
@@ -6143,27 +6145,27 @@ msgstr "बॉर्डर"
 msgid "Warnings"
 msgstr "चेतावनी"
 
-#: src/Admin/SettingsPage.php:176
+#: src/Admin/SettingsPage.php:185
 msgid "Settings saved."
 msgstr "सेटिंग्स सहेज ली गईं।"
 
-#: templates/admin-connected.php:240
+#: templates/admin-connected.php:241
 msgid "Palette"
 msgstr "पैलेट"
 
-#: templates/admin-connected.php:242
+#: templates/admin-connected.php:243
 msgid "Colours for every reading on your site. Pick a palette, or choose Custom and set the seven colours yourself. Readings use your theme font either way."
 msgstr "आपकी साइट पर हर विश्लेषण के लिए रंग। कोई पैलेट चुनें, या कस्टम चुनकर सातों रंग खुद सेट करें। दोनों ही स्थिति में विश्लेषण आपकी थीम का फ़ॉन्ट इस्तेमाल करते हैं।"
 
-#: templates/admin-connected.php:247
+#: templates/admin-connected.php:248
 msgid "Set colours yourself"
 msgstr "रंग खुद सेट करें"
 
-#: templates/admin-connected.php:249
+#: templates/admin-connected.php:250
 msgid "Two values per colour, one for light readings and one for dark, so a brand colour stays readable in both. Leave a field blank to keep the default."
 msgstr "हर रंग के लिए दो वैल्यू होती हैं, एक लाइट विश्लेषण के लिए और एक डार्क के लिए, ताकि ब्रांड रंग दोनों में पढ़ने लायक बना रहे। डिफ़ॉल्ट बनाए रखने के लिए किसी फ़ील्ड को खाली छोड़ें।"
 
-#: templates/admin-connected.php:300
+#: templates/admin-connected.php:301
 msgid "Hide sections"
 msgstr "अनुभाग छिपाएँ"
 
@@ -7471,7 +7473,7 @@ msgstr ""
 msgid "Hide sections does not recognise %s, so nothing is hidden for it. These are internal names and stay the same whatever language your site is in. Click the field to see every name this version supports."
 msgstr "अनुभाग छिपाएँ, %s को नहीं पहचानता, इसलिए इसके लिए कुछ भी नहीं छिपाया जाता। ये आंतरिक नाम हैं और आपकी साइट किसी भी भाषा में हो, ये वैसे ही रहते हैं। यह वर्शन जिन नामों को सपोर्ट करता है, वे देखने के लिए फ़ील्ड पर क्लिक करें।"
 
-#: templates/admin-connected.php:302
+#: templates/admin-connected.php:303
 msgid "Take whole sections off every reading. Type one or more section names separated by commas, and spaces around them are fine. The common one is patterns, which removes the chart patterns block from a natal chart. These are internal names and stay the same whatever language your site is in, so the title printed on the page will not work. Click the field to see every name this version supports. Leave it blank to show everything."
 msgstr "हर विश्लेषण से पूरे अनुभाग हटाएँ। एक या ज़्यादा अनुभाग नाम कॉमा से अलग करके लिखें, नामों के आसपास स्पेस होने पर भी कोई दिक्कत नहीं। सबसे आम नाम patterns है, जो नेटल चार्ट में से chart patterns ब्लॉक हटा देता है। ये आंतरिक नाम हैं और आपकी साइट किसी भी भाषा में हो, ये वैसे ही रहते हैं, इसलिए पेज पर छपा शीर्षक इस्तेमाल नहीं होगा। यह वर्शन जिन नामों को सपोर्ट करता है, वे सभी देखने के लिए फ़ील्ड पर क्लिक करें। सब कुछ दिखाने के लिए इसे खाली छोड़ें।"
 
@@ -9788,11 +9790,11 @@ msgstr ""
 msgid "Add Astrology, Vedic, Forecast, Human Design, Chinese Astrology and Feng Shui readings to any WordPress post, page or widget, as Gutenberg blocks and shortcodes. 18 or more domains on one key, readings in your site language, and charts verified against the NASA JPL Horizons ephemeris."
 msgstr ""
 
-#: src/Admin/Onboarding.php:78
+#: src/Admin/Onboarding.php:79
 msgid "Natal chart with a visitor form"
 msgstr "आगंतुक फ़ॉर्म के साथ जन्म कुंडली"
 
-#: src/Admin/Onboarding.php:82
+#: src/Admin/Onboarding.php:83
 msgid "Human Design bodygraph with a visitor form"
 msgstr "आगंतुक फ़ॉर्म के साथ ह्यूमन डिज़ाइन बॉडीग्राफ"
 
@@ -9960,7 +9962,7 @@ msgctxt "block keyword"
 msgid "yes or no"
 msgstr ""
 
-#: templates/admin-connected.php:130
+#: templates/admin-connected.php:131
 msgid "Your first reading in"
 msgstr "आपकी पहली रीडिंग"
 
@@ -10911,128 +10913,130 @@ msgstr "योग विवरण"
 #: src/Admin/BuilderPage.php:29
 #: src/Admin/SettingsPage.php:110
 #: src/Admin/SettingsPage.php:111
+#: templates/admin-help.php:23
+#: templates/admin-help.php:58
 msgid "Create a reading"
 msgstr "रीडिंग बनाएं"
 
-#: src/Admin/BuilderPage.php:59
+#: src/Admin/BuilderPage.php:95
 msgid "Answer a few questions and we write the shortcode for you. Then paste it into any page."
 msgstr "कुछ सवालों के जवाब दें। हम आपके लिए शॉर्टकोड बना देंगे। फिर इसे किसी भी पेज पर पेस्ट करें।"
 
-#: src/Admin/BuilderPage.php:60
+#: src/Admin/BuilderPage.php:96
 msgid "Pick a reading"
 msgstr "रीडिंग चुनें"
 
-#: src/Admin/BuilderPage.php:61
+#: src/Admin/BuilderPage.php:97
 msgid "Find a reading"
 msgstr "रीडिंग खोजें"
 
-#: src/Admin/BuilderPage.php:62
+#: src/Admin/BuilderPage.php:98
 msgid "Try tarot, horoscope or birth chart"
 msgstr "टैरो, राशिफल या जन्म कुंडली खोजें"
 
-#: src/Admin/BuilderPage.php:63
+#: src/Admin/BuilderPage.php:99
 msgid "Who fills in the details?"
 msgstr "जानकारी कौन भरेगा?"
 
-#: src/Admin/BuilderPage.php:64
+#: src/Admin/BuilderPage.php:100
 msgid "Set the details"
 msgstr "जानकारी भरें"
 
-#: src/Admin/BuilderPage.php:66
+#: src/Admin/BuilderPage.php:102
 msgid "Copy your shortcode"
 msgstr "अपना शॉर्टकोड कॉपी करें"
 
 #. translators: 1: current step number, 2: total number of steps.
-#: src/Admin/BuilderPage.php:68
+#: src/Admin/BuilderPage.php:104
 #, php-format
 msgid "Step %1$d of %2$d"
 msgstr "कुल %2$d चरणों में से चरण %1$d"
 
-#: src/Admin/BuilderPage.php:69
+#: src/Admin/BuilderPage.php:105
 msgid "Back"
 msgstr "पीछे"
 
-#: src/Admin/BuilderPage.php:70
+#: src/Admin/BuilderPage.php:106
 msgid "Continue"
 msgstr "आगे बढ़ें"
 
-#: src/Admin/BuilderPage.php:71
+#: src/Admin/BuilderPage.php:107
 msgid "Ask my visitor instead"
 msgstr "इसके बजाय मेरे आगंतुकों से पूछें"
 
-#: src/Admin/BuilderPage.php:72
+#: src/Admin/BuilderPage.php:108
 msgid "Show a set reading instead"
 msgstr "इसके बजाय तय रीडिंग दिखाएं"
 
-#: src/Admin/BuilderPage.php:73
+#: src/Admin/BuilderPage.php:109
 msgid "Ask my visitor"
 msgstr "मेरे आगंतुकों से पूछें"
 
-#: src/Admin/BuilderPage.php:74
+#: src/Admin/BuilderPage.php:110
 msgid "Shows a form. Each visitor enters their own details."
 msgstr "एक फ़ॉर्म दिखाता है। हर आगंतुक अपनी जानकारी भरता है।"
 
-#: src/Admin/BuilderPage.php:75
+#: src/Admin/BuilderPage.php:111
 msgid "Show a set reading"
 msgstr "तय रीडिंग दिखाएं"
 
-#: src/Admin/BuilderPage.php:76
+#: src/Admin/BuilderPage.php:112
 msgid "You enter the details once. Every visitor sees the same reading."
 msgstr "आप एक बार जानकारी भरते हैं। हर आगंतुक को वही रीडिंग दिखती है।"
 
-#: src/Admin/BuilderPage.php:77
+#: src/Admin/BuilderPage.php:113
 msgid "This reading always asks the visitor."
 msgstr "यह रीडिंग हमेशा आगंतुक से जानकारी मांगती है।"
 
-#: src/Admin/BuilderPage.php:78
+#: src/Admin/BuilderPage.php:114
 msgid "This reading needs no details. It shows straight away."
 msgstr "इस रीडिंग के लिए जानकारी की ज़रूरत नहीं है। यह तुरंत दिखती है।"
 
-#: src/Admin/BuilderPage.php:79
+#: src/Admin/BuilderPage.php:115
 msgid "More options"
 msgstr "और विकल्प"
 
-#: src/Admin/BuilderPage.php:80
+#: src/Admin/BuilderPage.php:116
 msgid "Needed before the shortcode works."
 msgstr "शॉर्टकोड के काम करने के लिए ज़रूरी है।"
 
-#: src/Admin/BuilderPage.php:81
+#: src/Admin/BuilderPage.php:117
 msgid "Written interpretation"
 msgstr "लिखित व्याख्या"
 
-#: src/Admin/BuilderPage.php:82
+#: src/Admin/BuilderPage.php:118
 msgid "Show"
 msgstr "दिखाएं"
 
-#: src/Admin/BuilderPage.php:83
+#: src/Admin/BuilderPage.php:119
 msgid "Hide"
 msgstr "छिपाएं"
 
-#: src/Admin/BuilderPage.php:84
+#: src/Admin/BuilderPage.php:120
 msgid "Follow my site setting"
 msgstr "मेरी साइट की सेटिंग अपनाएं"
 
-#: src/Admin/BuilderPage.php:85
+#: src/Admin/BuilderPage.php:121
 msgid "Copy shortcode"
 msgstr "शॉर्टकोड कॉपी करें"
 
-#: src/Admin/BuilderPage.php:86
+#: src/Admin/BuilderPage.php:122
 msgid "Copied. Paste it into any page."
 msgstr "कॉपी हो गया। इसे किसी भी पेज पर पेस्ट करें।"
 
-#: src/Admin/BuilderPage.php:87
+#: src/Admin/BuilderPage.php:123
 msgid "Copy failed. Select the text and copy it."
 msgstr "कॉपी नहीं हो सका। टेक्स्ट चुनें और कॉपी करें।"
 
-#: src/Admin/BuilderPage.php:88
+#: src/Admin/BuilderPage.php:124
 msgid "In the block editor, add a Shortcode block and paste it there."
 msgstr "ब्लॉक एडिटर में शॉर्टकोड ब्लॉक जोड़ें और इसमें पेस्ट करें।"
 
-#: src/Admin/BuilderPage.php:89
+#: src/Admin/BuilderPage.php:126
 msgid "City"
 msgstr "शहर"
 
-#: src/Admin/BuilderPage.php:90
+#: src/Admin/BuilderPage.php:127
 msgid "Start typing. We fill in the timezone for you."
 msgstr "टाइप करना शुरू करें। हम समय क्षेत्र भर देंगे।"
 
@@ -18031,3 +18035,137 @@ msgstr ""
 #: templates/admin-shortcodes.php:155
 msgid "Customize"
 msgstr "अपनी पसंद से बदलें"
+
+#: src/Admin/BuilderPage.php:50
+msgid "Most loved"
+msgstr "सबसे पसंदीदा"
+
+#: src/Admin/BuilderPage.php:125
+msgid "Create a new page"
+msgstr "नया पेज बनाएं"
+
+#: src/Admin/SettingsPage.php:135
+#: src/Admin/SettingsPage.php:136
+#: templates/admin-help.php:18
+msgid "Help"
+msgstr "सहायता"
+
+#: templates/admin-connected.php:90
+#: templates/admin-help.php:34
+msgid "Sell readings"
+msgstr "रीडिंग बेचें"
+
+#: templates/admin-connected.php:362
+msgid "Many practitioners keep one reading free and charge for the deeper ones. Here is the simplest way to do it."
+msgstr "कई सलाहकार एक रीडिंग मुफ़्त रखते हैं। वे विस्तृत रीडिंग के लिए शुल्क लेते हैं। इसे करने का आसान तरीका यहां है।"
+
+#: templates/admin-connected.php:365
+msgid "Give something free"
+msgstr "कुछ मुफ़्त दें"
+
+#: templates/admin-connected.php:366
+msgid "A daily horoscope or a one card tarot draw brings visitors back every day. Place it on your home page."
+msgstr "रोज़ का राशिफल या एक कार्ड की टैरो रीडिंग आगंतुकों को हर दिन वापस लाती है। इसे अपने होम पेज पर रखें।"
+
+#: templates/admin-connected.php:369
+msgid "Charge for the reading that matters"
+msgstr "विस्तृत रीडिंग के लिए शुल्क लें"
+
+#: templates/admin-connected.php:370
+msgid "Birth charts, compatibility and yearly forecasts are worth paying for. Give each its own page."
+msgstr "जन्म कुंडली, अनुकूलता और सालाना पूर्वानुमान के लिए शुल्क लिया जा सकता है। हर रीडिंग के लिए अलग पेज बनाएं।"
+
+#: templates/admin-connected.php:373
+msgid "Ask for payment before the page opens"
+msgstr "पेज खोलने से पहले भुगतान मांगें"
+
+#: templates/admin-connected.php:374
+msgid "Install a membership or shop plugin you trust and limit that page to paying members. The reading shows only to them."
+msgstr "सदस्यता या दुकान का कोई भरोसेमंद प्लगइन इंस्टॉल करें। उस पेज को सिर्फ़ भुगतान करने वाले सदस्यों के लिए खोलें। रीडिंग सिर्फ़ उन्हें दिखेगी।"
+
+#: templates/admin-connected.php:378
+#: templates/admin-help.php:35
+msgid "Read the full guide"
+msgstr "पूरी गाइड पढ़ें"
+
+#: templates/admin-connected.php:379
+msgid "See how it works on WordPress"
+msgstr "देखें कि यह WordPress पर कैसे काम करता है"
+
+#: templates/admin-help.php:19
+msgid "Short answers to the questions practitioners ask most."
+msgstr "सलाहकारों के आम सवालों के छोटे जवाब।"
+
+#: templates/admin-help.php:21
+msgid "How do I add a reading to a page?"
+msgstr "पेज पर रीडिंग कैसे जोड़ूं?"
+
+#: templates/admin-help.php:22
+msgid "Open Create a reading, answer a few questions and copy the shortcode. In the block editor, add a Shortcode block and paste it there."
+msgstr "«रीडिंग बनाएं» खोलें। कुछ सवालों के जवाब दें और शॉर्टकोड कॉपी करें। ब्लॉक एडिटर में शॉर्टकोड ब्लॉक जोड़ें। उसमें शॉर्टकोड पेस्ट करें।"
+
+#: templates/admin-help.php:26
+msgid "Can my visitors enter their own birth details?"
+msgstr "क्या मेरे आगंतुक अपने जन्म की जानकारी भर सकते हैं?"
+
+#: templates/admin-help.php:27
+msgid "Yes. Choose Ask my visitor and the reading shows a form. Each visitor sees a reading made for their own details."
+msgstr "हाँ। «मेरे आगंतुकों से पूछें» चुनें। रीडिंग में एक फ़ॉर्म दिखेगा। हर आगंतुक को अपनी जानकारी के अनुसार बनी रीडिंग दिखेगी।"
+
+#: templates/admin-help.php:28
+#: templates/admin-help.php:41
+#: templates/admin-help.php:46
+msgid "Learn more"
+msgstr "और जानें"
+
+#: templates/admin-help.php:31
+msgid "Can I charge for readings?"
+msgstr "क्या मैं रीडिंग के लिए शुल्क ले सकती हूँ?"
+
+#: templates/admin-help.php:32
+msgid "Yes. Keep one reading free and put the deeper ones on a page only paying members can open."
+msgstr "हाँ। एक रीडिंग मुफ़्त रखें। विस्तृत रीडिंग ऐसे पेज पर रखें जिसे सिर्फ़ भुगतान करने वाले सदस्य खोल सकें।"
+
+#: templates/admin-help.php:39
+msgid "Is client data safe?"
+msgstr "क्या मेरे ग्राहकों की जानकारी सुरक्षित है?"
+
+#: templates/admin-help.php:40
+msgid "Birth details are used only to calculate the reading. Your key stays on your server and never reaches the browser."
+msgstr "जन्म की जानकारी सिर्फ़ रीडिंग की गणना के लिए इस्तेमाल होती है। आपकी कुंजी आपके सर्वर पर रहती है। यह कभी ब्राउज़र तक नहीं पहुंचती।"
+
+#: templates/admin-help.php:44
+msgid "Which language do readings use?"
+msgstr "रीडिंग किस भाषा में होती हैं?"
+
+#: templates/admin-help.php:45
+msgid "Readings follow your site language. To choose another, open Settings and pick a reading language on the Branding tab."
+msgstr "रीडिंग आपकी साइट की भाषा में होती हैं। दूसरी भाषा चुनने के लिए «सेटिंग्स» खोलें। «ब्रांडिंग» टैब में रीडिंग की भाषा चुनें।"
+
+#: templates/admin-help.php:49
+msgid "Will readings match my theme?"
+msgstr "क्या रीडिंग मेरी थीम से मेल खाएंगी?"
+
+#: templates/admin-help.php:50
+msgid "Yes. Readings follow your light or dark theme, and you can set the chart style on the Branding tab."
+msgstr "हाँ। रीडिंग आपकी लाइट या डार्क थीम के अनुसार दिखती हैं। «ब्रांडिंग» टैब में आप चार्ट की शैली चुन सकते हैं।"
+
+#: templates/admin-help.php:54
+msgid "Where can I see every reading?"
+msgstr "मुझे सारी रीडिंग कहां मिलेंगी?"
+
+#: templates/admin-help.php:55
+msgid "Open Shortcodes for the full list, or Create a reading to search by name."
+msgstr "पूरी सूची के लिए «शॉर्टकोड» खोलें। नाम से खोजने के लिए «रीडिंग बनाएं» खोलें।"
+
+#: templates/admin-help.php:62
+msgid "I still need help."
+msgstr "मुझे अभी और मदद चाहिए।"
+
+#: templates/admin-help.php:63
+msgid "Write to us and a real person replies."
+msgstr "हमें लिखें। हमारी टीम का कोई व्यक्ति जवाब देगा।"
+
+#: templates/admin-help.php:64
+msgid "Contact us"
+msgstr "हमसे संपर्क करें"

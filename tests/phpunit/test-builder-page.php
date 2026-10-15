@@ -92,6 +92,9 @@ class Test_Builder_Page extends \WP_UnitTestCase {
 		$this->assertSame( 1, preg_match( '/var RoxyAPIBuilder = (.*);/', $inline, $matches ) );
 		$data = json_decode( $matches[1], true );
 		$this->assertSame( Manifest::all(), $data['manifest'] );
+		$this->assertSame( BuilderPage::reading_groups( $data['manifest'] ), $data['groups'] );
+		$this->assertSame( admin_url( 'post-new.php?post_type=page' ), $data['newPage'] );
+		$this->assertSame( 'Create a new page', $data['i18n']['newPage'] );
 		$this->assertArrayNotHasKey( 'parts', $data['manifest'] );
 		foreach ( $data['manifest']['entries'] as $entry ) {
 			$this->assertArrayNotHasKey( 'parts', $entry, $entry['tag'] );
@@ -99,6 +102,46 @@ class Test_Builder_Page extends \WP_UnitTestCase {
 		$this->assertSame( 'roxy_natal_chart', $data['reading'] );
 		$this->assertContains( 'America/New_York', $data['timezones'] );
 		$this->assertSame( 'Needed before the shortcode works.', $data['i18n']['needed'] );
+	}
+
+	public function test_most_loved_contains_exactly_manifest_heroes_without_duplicates(): void {
+		$manifest = Manifest::all();
+		$groups   = BuilderPage::reading_groups( $manifest );
+		$heroes   = array_values( array_filter( $manifest['entries'], static fn( $entry ) => $entry['hero'] ) );
+		$this->assertNotEmpty( $heroes );
+		$this->assertSame( 'Most loved', $groups[0]['label'] );
+		$this->assertSame( array_column( $heroes, 'tag' ), $groups[0]['tags'] );
+
+		$all_tags = array_merge( ...array_column( $groups, 'tags' ) );
+		$this->assertCount( count( array_unique( $all_tags ) ), $all_tags );
+		$expected_tags = array_column( $manifest['entries'], 'tag' );
+		sort( $all_tags );
+		sort( $expected_tags );
+		$this->assertSame( $expected_tags, $all_tags );
+
+		$index = 1;
+		foreach ( $manifest['domains'] as $domain => $info ) {
+			$remaining = array_values( array_filter( $manifest['entries'], static fn( $entry ) => ! $entry['hero'] && $entry['domain'] === $domain ) );
+			if ( ! $remaining ) {
+				continue;
+			}
+			$this->assertSame( $info['label'], $groups[ $index ]['label'] );
+			$this->assertSame( array_column( $remaining, 'tag' ), $groups[ $index ]['tags'] );
+			++$index;
+		}
+		$this->assertCount( $index, $groups );
+	}
+
+	public function test_help_is_the_last_admin_only_submenu(): void {
+		SettingsPage::add_menu();
+		$items = $GLOBALS['submenu'][ SettingsPage::PAGE_SLUG ];
+		$help  = end( $items );
+		$this->assertSame( 'Help', $help[0] );
+		$this->assertSame( 'manage_options', $help[1] );
+		$this->assertSame( SettingsPage::HELP_SLUG, $help[2] );
+		$this->assertTrue( current_user_can( $help[1] ) );
+		wp_set_current_user( self::factory()->user->create( array( 'role' => 'editor' ) ) );
+		$this->assertFalse( current_user_can( $help[1] ) );
 	}
 
 	public function test_assets_stay_off_other_screens(): void {

@@ -2,7 +2,7 @@
 /**
  * Template: the RoxyAPI settings screen.
  *
- * Five tabs, deep-linkable via `?tab=connect|branding|display|privacy|advanced`.
+ * Six tabs, deep-linkable via `?tab=connect|branding|display|sell-readings|privacy|advanced`.
  * Each tab is a server-rendered fragment; the active one is selected with
  * the `is-active` class. No JS reload — just a normal page load when the
  * site owner clicks a tab. Mobile collapses to one column via WP admin CSS.
@@ -84,11 +84,12 @@ $is_configured          = ! empty( $is_configured );
 $onboarding             = isset( $onboarding ) ? (string) $onboarding : '';
 
 $roxy_tabs = array(
-	'connect'  => __( 'Connect', 'roxyapi' ),
-	'branding' => __( 'Branding', 'roxyapi' ),
-	'display'  => __( 'Display', 'roxyapi' ),
-	'privacy'  => __( 'Privacy', 'roxyapi' ),
-	'advanced' => __( 'Advanced', 'roxyapi' ),
+	'connect'       => __( 'Connect', 'roxyapi' ),
+	'branding'      => __( 'Branding', 'roxyapi' ),
+	'display'       => __( 'Display', 'roxyapi' ),
+	'sell-readings' => __( 'Sell readings', 'roxyapi' ),
+	'privacy'       => __( 'Privacy', 'roxyapi' ),
+	'advanced'      => __( 'Advanced', 'roxyapi' ),
 );
 if ( ! isset( $roxy_tabs[ $active_tab ] ) ) {
 	$active_tab = 'connect';
@@ -354,6 +355,29 @@ if ( $active_tab !== 'connect' ) {
 				</button>
 			</p>
 		</form>
+	</section>
+
+<?php elseif ( $active_tab === 'sell-readings' ) : ?>
+	<section class="roxyapi-tab-panel">
+		<p class="roxyapi-page-intro"><?php echo esc_html__( 'Many practitioners keep one reading free and charge for the deeper ones. Here is the simplest way to do it.', 'roxyapi' ); ?></p>
+		<div class="roxyapi-steps">
+			<section class="roxyapi-step-card">
+				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Give something free', 'roxyapi' ); ?></h2>
+				<p><?php echo esc_html__( 'A daily horoscope or a one card tarot draw brings visitors back every day. Place it on your home page.', 'roxyapi' ); ?></p>
+			</section>
+			<section class="roxyapi-step-card">
+				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Charge for the reading that matters', 'roxyapi' ); ?></h2>
+				<p><?php echo esc_html__( 'Birth charts, compatibility and yearly forecasts are worth paying for. Give each its own page.', 'roxyapi' ); ?></p>
+			</section>
+			<section class="roxyapi-step-card">
+				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Ask for payment before the page opens', 'roxyapi' ); ?></h2>
+				<p><?php echo esc_html__( 'Install a membership or shop plugin you trust and limit that page to paying members. The reading shows only to them.', 'roxyapi' ); ?></p>
+			</section>
+		</div>
+		<p>
+			<a class="button button-primary" href="<?php echo esc_url( \RoxyAPI\Admin\Onboarding::docs_url( 'monetization' ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html__( 'Read the full guide', 'roxyapi' ); ?></a>
+			<a class="button button-secondary" href="<?php echo esc_url( $docs_url . '#sell-readings-and-charts' ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html__( 'See how it works on WordPress', 'roxyapi' ); ?></a>
+		</p>
 	</section>
 
 <?php elseif ( $active_tab === 'privacy' ) : ?>

@@ -777,7 +777,7 @@ msgstr "Creador de tiradas personalizadas"
 msgid "Custom ayanamsa value in degrees"
 msgstr "Valor de ayanamsa personalizado en grados"
 
-#: src/Admin/Onboarding.php:74
+#: src/Admin/Onboarding.php:75
 #: src/Generated/Heroes/Manifest.php:32
 msgid "Daily horoscope"
 msgstr "Horóscopo diario"
@@ -2264,10 +2264,10 @@ msgstr ""
 #. Author of the plugin
 #: roxyapi.php
 #: src/Admin/Notice.php:106
-#: src/Admin/SettingsPage.php:78
 #: src/Admin/SettingsPage.php:79
+#: src/Admin/SettingsPage.php:80
 #: src/Blocks/Category.php:33
-#: templates/admin-connected.php:124
+#: templates/admin-connected.php:125
 msgid "RoxyAPI"
 msgstr "RoxyAPI"
 
@@ -2315,7 +2315,7 @@ msgid "Documentation"
 msgstr "Documentación"
 
 #: src/Admin/ActionLinks.php:69
-#: templates/admin-connected.php:418
+#: templates/admin-connected.php:442
 msgid "Support"
 msgstr "Soporte"
 
@@ -2357,7 +2357,7 @@ msgstr "Error al copiar"
 #: src/Admin/Assets.php:64
 #: src/Admin/DashboardWidget.php:132
 #: src/Admin/ShortcodesPage.php:116
-#: templates/admin-connected.php:198
+#: templates/admin-connected.php:199
 #: templates/admin-onboarding.php:78
 #: templates/admin-shortcodes.php:143
 msgid "Copy"
@@ -2382,7 +2382,7 @@ msgstr "Conectado a RoxyAPI"
 #. translators: %s: shortcode label
 #. translators: %s: shortcode title
 #: src/Admin/DashboardWidget.php:130
-#: templates/admin-connected.php:196
+#: templates/admin-connected.php:197
 #: templates/admin-onboarding.php:76
 #: templates/admin-shortcodes.php:141
 #, php-format
@@ -2716,6 +2716,7 @@ msgstr "No se ha podido cifrar la clave de API. Comprueba que la extensión open
 
 #: src/Admin/SettingsPage.php:101
 #: src/Admin/SettingsPage.php:102
+#: templates/admin-help.php:57
 msgid "Shortcodes"
 msgstr "Shortcodes"
 
@@ -2761,7 +2762,7 @@ msgstr "Ninguno. Este plugin no incluye traducción para ese idioma."
 msgid "Translation file loaded"
 msgstr "Archivo de traducción cargado"
 
-#: src/Admin/BuilderPage.php:91
+#: src/Admin/BuilderPage.php:128
 #: src/Admin/SiteHealth.php:77
 #: src/Admin/SiteHealth.php:119
 #: src/Support/GenericRenderer.php:836
@@ -2769,7 +2770,7 @@ msgstr "Archivo de traducción cargado"
 msgid "Yes"
 msgstr "Sí"
 
-#: src/Admin/BuilderPage.php:92
+#: src/Admin/BuilderPage.php:129
 #: src/Admin/SiteHealth.php:77
 #: src/Support/GenericRenderer.php:839
 msgid "No"
@@ -2965,189 +2966,190 @@ msgid "Connect"
 msgstr "Conectar"
 
 #: templates/admin-connected.php:88
+#: templates/admin-help.php:51
 msgid "Branding"
 msgstr "Marca"
 
-#: src/Admin/BuilderPage.php:65
+#: src/Admin/BuilderPage.php:101
 #: templates/admin-connected.php:89
 msgid "Display"
 msgstr "Visualización"
 
-#: templates/admin-connected.php:90
+#: templates/admin-connected.php:91
 msgid "Privacy"
 msgstr "Privacidad"
 
 #: src/Support/FormRenderer.php:194
-#: templates/admin-connected.php:91
+#: templates/admin-connected.php:92
 msgid "Advanced"
 msgstr "Avanzado"
 
-#: templates/admin-connected.php:127
+#: templates/admin-connected.php:128
 msgid "RoxyAPI is"
 msgstr "RoxyAPI está"
 
-#: templates/admin-connected.php:128
+#: templates/admin-connected.php:129
 msgid "connected."
 msgstr "conectado."
 
-#: templates/admin-connected.php:141
+#: templates/admin-connected.php:142
 msgid "RoxyAPI settings"
 msgstr "Ajustes de RoxyAPI"
 
-#: templates/admin-connected.php:178
+#: templates/admin-connected.php:179
 msgid "Connected to RoxyAPI."
 msgstr "Conectado a RoxyAPI."
 
-#: templates/admin-connected.php:179
+#: templates/admin-connected.php:180
 msgid "Drop a shortcode on any page to render a reading."
 msgstr "Coloca un shortcode en cualquier página para mostrar una lectura."
 
-#: templates/admin-connected.php:184
+#: templates/admin-connected.php:185
 msgid "Quick start"
 msgstr "Inicio rápido"
 
-#: templates/admin-connected.php:186
+#: templates/admin-connected.php:187
 msgid "Three working shortcodes. Copy. Paste. Publish."
 msgstr "Tres shortcodes listos para usar. Copiar. Pegar. Publicar."
 
-#: templates/admin-connected.php:205
+#: templates/admin-connected.php:206
 #: templates/admin-onboarding.php:85
 msgid "Browse all shortcodes"
 msgstr "Ver todos los shortcodes"
 
-#: templates/admin-connected.php:212
+#: templates/admin-connected.php:213
 msgid "Manage your key"
 msgstr "Gestionar tu clave"
 
-#: templates/admin-connected.php:214
+#: templates/admin-connected.php:215
 msgid "Replace key"
 msgstr "Reemplazar clave"
 
-#: templates/admin-connected.php:220
+#: templates/admin-connected.php:221
 #: templates/admin-onboarding.php:128
 msgid "Save key"
 msgstr "Guardar clave"
 
-#: templates/admin-connected.php:223
+#: templates/admin-connected.php:224
 #: templates/admin-onboarding.php:131
 msgid "Test Connection"
 msgstr "Probar conexión"
 
-#: templates/admin-connected.php:256
+#: templates/admin-connected.php:257
 msgid "Theme"
 msgstr "Tema"
 
-#: templates/admin-connected.php:258
+#: templates/admin-connected.php:259
 msgid "Light, dark, or auto for chart readings. Auto follows the visitor device setting."
 msgstr "Claro, oscuro o automático para las lecturas con carta. La opción automática sigue la configuración del dispositivo del visitante."
 
-#: templates/admin-connected.php:266
+#: templates/admin-connected.php:267
 msgid "Reading language"
 msgstr "Idioma de la lectura"
 
-#: templates/admin-connected.php:268
+#: templates/admin-connected.php:269
 msgid "Language for visitor-facing reading text. Default follows the site language."
 msgstr "Idioma del texto de la lectura mostrado a los visitantes. Por defecto, sigue el idioma del sitio."
 
-#: templates/admin-connected.php:277
+#: templates/admin-connected.php:278
 msgid "Save branding"
 msgstr "Guardar marca"
 
-#: templates/admin-connected.php:290
+#: templates/admin-connected.php:291
 msgid "Written readings"
 msgstr "Lecturas escritas"
 
-#: templates/admin-connected.php:295
+#: templates/admin-connected.php:296
 msgid "Turn this on to show the chart on its own, without the written report. It applies to every reading on the site. To set it for one placement instead, add hide_readings=\"1\" or hide_readings=\"0\" to that shortcode."
 msgstr "Actívalo para mostrar solo la carta, sin el informe escrito. Se aplica a todas las lecturas del sitio. Para definirlo en una sola ubicación, añade hide_readings=\"1\" o hide_readings=\"0\" a ese shortcode."
 
-#: templates/admin-connected.php:310
+#: templates/admin-connected.php:311
 msgid "Show source"
 msgstr "Mostrar origen"
 
-#: templates/admin-connected.php:315
+#: templates/admin-connected.php:316
 msgid "A small line at the bottom of each card showing where the data comes from. Off by default."
 msgstr "Una pequeña línea al final de cada tarjeta que indica de dónde proceden los datos. Desactivado por defecto."
 
-#: templates/admin-connected.php:320
+#: templates/admin-connected.php:321
 msgid "Disclaimer"
 msgstr "Aviso legal"
 
-#: templates/admin-connected.php:325
+#: templates/admin-connected.php:326
 msgid "Append a disclaimer to every reading. Useful for jurisdictions that require an \"entertainment only\" line. Empty text falls back to the localised default."
 msgstr "Añade un aviso legal a cada lectura. Útil en jurisdicciones que exigen una línea de «solo con fines de entretenimiento». Si el texto está vacío, se usa el valor por defecto según el idioma."
 
-#: templates/admin-connected.php:333
+#: templates/admin-connected.php:334
 msgid "Visitor form copy"
 msgstr "Texto del formulario para visitantes"
 
-#: templates/admin-connected.php:335
+#: templates/admin-connected.php:336
 msgid "Override the title and submit button shown above visitor forms. Leave blank to use the localised default."
 msgstr "Sustituye el título y el texto del botón de envío que se muestran encima de los formularios para visitantes. Déjalo en blanco para usar el valor por defecto según el idioma."
 
-#: templates/admin-connected.php:339
+#: templates/admin-connected.php:340
 msgid "Form title"
 msgstr "Título del formulario"
 
-#: templates/admin-connected.php:345
+#: templates/admin-connected.php:346
 msgid "Submit button text"
 msgstr "Texto del botón de envío"
 
-#: templates/admin-connected.php:353
+#: templates/admin-connected.php:354
 msgid "Save display"
 msgstr "Guardar visualización"
 
-#: templates/admin-connected.php:362
+#: templates/admin-connected.php:386
 msgid "Visitor privacy"
 msgstr "Privacidad del visitante"
 
-#: templates/admin-connected.php:364
+#: templates/admin-connected.php:388
 msgid "Visitor forms collect birth date, time, and location to compute readings. Visitors must confirm consent before each submission. Edit the consent text below; leave blank for the localised default."
 msgstr "Los formularios para visitantes recogen la fecha, la hora y el lugar de nacimiento para calcular las lecturas. Los visitantes deben confirmar su consentimiento antes de cada envío. Edita el texto de consentimiento a continuación; déjalo en blanco para usar el valor por defecto según el idioma."
 
-#: templates/admin-connected.php:370
+#: templates/admin-connected.php:394
 msgid "Consent label shown next to the form checkbox"
 msgstr "Etiqueta de consentimiento mostrada junto a la casilla del formulario"
 
 #. translators: %s: link to WordPress Privacy Policy editor
-#: templates/admin-connected.php:380
+#: templates/admin-connected.php:404
 #, php-format
 msgid "The plugin auto-injects suggested privacy text into the WordPress Privacy Policy editor. Review or accept it at %s."
 msgstr "El plugin inserta automáticamente un texto de privacidad sugerido en el editor de la Política de privacidad de WordPress. Revísalo o acéptalo en %s."
 
-#: templates/admin-connected.php:381
+#: templates/admin-connected.php:405
 msgid "Settings &rarr; Privacy"
 msgstr "Ajustes &rarr; Privacidad"
 
-#: templates/admin-connected.php:387
+#: templates/admin-connected.php:411
 msgid "Save privacy"
 msgstr "Guardar privacidad"
 
-#: templates/admin-connected.php:397
+#: templates/admin-connected.php:421
 msgid "Cache"
 msgstr "Caché"
 
-#: templates/admin-connected.php:399
+#: templates/admin-connected.php:423
 msgid "How long RoxyAPI caches each reading on this site. Lower = fresher. Higher = saves API quota."
 msgstr "Cuánto tiempo almacena RoxyAPI en caché cada lectura de este sitio. Menos tiempo = más actualizado. Más tiempo = ahorra cuota de la API."
 
-#: templates/admin-connected.php:408
+#: templates/admin-connected.php:432
 msgid "Save advanced"
 msgstr "Guardar avanzado"
 
-#: templates/admin-connected.php:416
+#: templates/admin-connected.php:440
 msgid "RoxyAPI resources"
 msgstr "Recursos de RoxyAPI"
 
-#: templates/admin-connected.php:417
+#: templates/admin-connected.php:441
 msgid "Docs"
 msgstr "Documentación"
 
-#: templates/admin-connected.php:419
+#: templates/admin-connected.php:443
 msgid "Open dashboard at roxyapi.com"
 msgstr "Abrir el escritorio en roxyapi.com"
 
-#: templates/admin-connected.php:131
+#: templates/admin-connected.php:132
 msgid "30 seconds."
 msgstr "30 segundos."
 
@@ -6143,27 +6145,27 @@ msgstr "Bordes"
 msgid "Warnings"
 msgstr "Advertencias"
 
-#: src/Admin/SettingsPage.php:176
+#: src/Admin/SettingsPage.php:185
 msgid "Settings saved."
 msgstr "Ajustes guardados."
 
-#: templates/admin-connected.php:240
+#: templates/admin-connected.php:241
 msgid "Palette"
 msgstr "Paleta"
 
-#: templates/admin-connected.php:242
+#: templates/admin-connected.php:243
 msgid "Colours for every reading on your site. Pick a palette, or choose Custom and set the seven colours yourself. Readings use your theme font either way."
 msgstr "Colores para todas las lecturas de tu sitio. Elige una paleta o selecciona Personalizado y define los siete colores. En cualquier caso, las lecturas usan la fuente de tu tema."
 
-#: templates/admin-connected.php:247
+#: templates/admin-connected.php:248
 msgid "Set colours yourself"
 msgstr "Definir los colores manualmente"
 
-#: templates/admin-connected.php:249
+#: templates/admin-connected.php:250
 msgid "Two values per colour, one for light readings and one for dark, so a brand colour stays readable in both. Leave a field blank to keep the default."
 msgstr "Dos valores por color, uno para las lecturas en modo claro y otro para el modo oscuro, de forma que un color de marca se mantenga legible en ambos. Deja un campo en blanco para conservar el valor por defecto."
 
-#: templates/admin-connected.php:300
+#: templates/admin-connected.php:301
 msgid "Hide sections"
 msgstr "Ocultar secciones"
 
@@ -7471,7 +7473,7 @@ msgstr ""
 msgid "Hide sections does not recognise %s, so nothing is hidden for it. These are internal names and stay the same whatever language your site is in. Click the field to see every name this version supports."
 msgstr "«Ocultar secciones» no reconoce %s, así que no se oculta nada para ese valor. Son nombres internos y no cambian sea cual sea el idioma de tu sitio. Haz clic en el campo para ver todos los nombres que admite esta versión."
 
-#: templates/admin-connected.php:302
+#: templates/admin-connected.php:303
 msgid "Take whole sections off every reading. Type one or more section names separated by commas, and spaces around them are fine. The common one is patterns, which removes the chart patterns block from a natal chart. These are internal names and stay the same whatever language your site is in, so the title printed on the page will not work. Click the field to see every name this version supports. Leave it blank to show everything."
 msgstr "Elimina secciones completas de cada lectura. Escribe uno o varios nombres de sección separados por comas; los espacios alrededor no son ningún problema. El más habitual es patterns, que elimina el bloque de patrones de una carta natal. Son nombres internos y no cambian sea cual sea el idioma de tu sitio, así que el título que aparece en la página no te servirá de guía. Haz clic en el campo para ver todos los nombres que admite esta versión. Déjalo en blanco para mostrarlo todo."
 
@@ -9788,11 +9790,11 @@ msgstr ""
 msgid "Add Astrology, Vedic, Forecast, Human Design, Chinese Astrology and Feng Shui readings to any WordPress post, page or widget, as Gutenberg blocks and shortcodes. 18 or more domains on one key, readings in your site language, and charts verified against the NASA JPL Horizons ephemeris."
 msgstr ""
 
-#: src/Admin/Onboarding.php:78
+#: src/Admin/Onboarding.php:79
 msgid "Natal chart with a visitor form"
 msgstr "Carta natal con formulario para visitantes"
 
-#: src/Admin/Onboarding.php:82
+#: src/Admin/Onboarding.php:83
 msgid "Human Design bodygraph with a visitor form"
 msgstr "Bodygraph de Diseño Humano con formulario para visitantes"
 
@@ -9960,7 +9962,7 @@ msgctxt "block keyword"
 msgid "yes or no"
 msgstr ""
 
-#: templates/admin-connected.php:130
+#: templates/admin-connected.php:131
 msgid "Your first reading in"
 msgstr "Tu primera lectura en"
 
@@ -10911,128 +10913,130 @@ msgstr "Detalles del yoga"
 #: src/Admin/BuilderPage.php:29
 #: src/Admin/SettingsPage.php:110
 #: src/Admin/SettingsPage.php:111
+#: templates/admin-help.php:23
+#: templates/admin-help.php:58
 msgid "Create a reading"
 msgstr "Crear una lectura"
 
-#: src/Admin/BuilderPage.php:59
+#: src/Admin/BuilderPage.php:95
 msgid "Answer a few questions and we write the shortcode for you. Then paste it into any page."
 msgstr "Responde a unas preguntas y creamos el shortcode por ti. Luego pégalo en cualquier página."
 
-#: src/Admin/BuilderPage.php:60
+#: src/Admin/BuilderPage.php:96
 msgid "Pick a reading"
 msgstr "Elegir una lectura"
 
-#: src/Admin/BuilderPage.php:61
+#: src/Admin/BuilderPage.php:97
 msgid "Find a reading"
 msgstr "Buscar una lectura"
 
-#: src/Admin/BuilderPage.php:62
+#: src/Admin/BuilderPage.php:98
 msgid "Try tarot, horoscope or birth chart"
 msgstr "Prueba con tarot, horóscopo o carta natal"
 
-#: src/Admin/BuilderPage.php:63
+#: src/Admin/BuilderPage.php:99
 msgid "Who fills in the details?"
 msgstr "¿Quién introduce los datos?"
 
-#: src/Admin/BuilderPage.php:64
+#: src/Admin/BuilderPage.php:100
 msgid "Set the details"
 msgstr "Indicar los datos"
 
-#: src/Admin/BuilderPage.php:66
+#: src/Admin/BuilderPage.php:102
 msgid "Copy your shortcode"
 msgstr "Copiar tu shortcode"
 
 #. translators: 1: current step number, 2: total number of steps.
-#: src/Admin/BuilderPage.php:68
+#: src/Admin/BuilderPage.php:104
 #, php-format
 msgid "Step %1$d of %2$d"
 msgstr "Paso %1$d de %2$d"
 
-#: src/Admin/BuilderPage.php:69
+#: src/Admin/BuilderPage.php:105
 msgid "Back"
 msgstr "Atrás"
 
-#: src/Admin/BuilderPage.php:70
+#: src/Admin/BuilderPage.php:106
 msgid "Continue"
 msgstr "Continuar"
 
-#: src/Admin/BuilderPage.php:71
+#: src/Admin/BuilderPage.php:107
 msgid "Ask my visitor instead"
 msgstr "Preguntar a mis visitantes en su lugar"
 
-#: src/Admin/BuilderPage.php:72
+#: src/Admin/BuilderPage.php:108
 msgid "Show a set reading instead"
 msgstr "Mostrar una lectura fija en su lugar"
 
-#: src/Admin/BuilderPage.php:73
+#: src/Admin/BuilderPage.php:109
 msgid "Ask my visitor"
 msgstr "Preguntar a mis visitantes"
 
-#: src/Admin/BuilderPage.php:74
+#: src/Admin/BuilderPage.php:110
 msgid "Shows a form. Each visitor enters their own details."
 msgstr "Muestra un formulario. Cada visitante introduce sus propios datos."
 
-#: src/Admin/BuilderPage.php:75
+#: src/Admin/BuilderPage.php:111
 msgid "Show a set reading"
 msgstr "Mostrar una lectura fija"
 
-#: src/Admin/BuilderPage.php:76
+#: src/Admin/BuilderPage.php:112
 msgid "You enter the details once. Every visitor sees the same reading."
 msgstr "Introduces los datos una vez. Todos los visitantes ven la misma lectura."
 
-#: src/Admin/BuilderPage.php:77
+#: src/Admin/BuilderPage.php:113
 msgid "This reading always asks the visitor."
 msgstr "Esta lectura siempre pide los datos al visitante."
 
-#: src/Admin/BuilderPage.php:78
+#: src/Admin/BuilderPage.php:114
 msgid "This reading needs no details. It shows straight away."
 msgstr "Esta lectura no necesita datos. Se muestra al instante."
 
-#: src/Admin/BuilderPage.php:79
+#: src/Admin/BuilderPage.php:115
 msgid "More options"
 msgstr "Más opciones"
 
-#: src/Admin/BuilderPage.php:80
+#: src/Admin/BuilderPage.php:116
 msgid "Needed before the shortcode works."
 msgstr "Necesario para que funcione el shortcode."
 
-#: src/Admin/BuilderPage.php:81
+#: src/Admin/BuilderPage.php:117
 msgid "Written interpretation"
 msgstr "Interpretación escrita"
 
-#: src/Admin/BuilderPage.php:82
+#: src/Admin/BuilderPage.php:118
 msgid "Show"
 msgstr "Mostrar"
 
-#: src/Admin/BuilderPage.php:83
+#: src/Admin/BuilderPage.php:119
 msgid "Hide"
 msgstr "Ocultar"
 
-#: src/Admin/BuilderPage.php:84
+#: src/Admin/BuilderPage.php:120
 msgid "Follow my site setting"
 msgstr "Usar el ajuste de mi sitio"
 
-#: src/Admin/BuilderPage.php:85
+#: src/Admin/BuilderPage.php:121
 msgid "Copy shortcode"
 msgstr "Copiar shortcode"
 
-#: src/Admin/BuilderPage.php:86
+#: src/Admin/BuilderPage.php:122
 msgid "Copied. Paste it into any page."
 msgstr "Copiado. Pégalo en cualquier página."
 
-#: src/Admin/BuilderPage.php:87
+#: src/Admin/BuilderPage.php:123
 msgid "Copy failed. Select the text and copy it."
 msgstr "No se ha podido copiar. Selecciona el texto y cópialo."
 
-#: src/Admin/BuilderPage.php:88
+#: src/Admin/BuilderPage.php:124
 msgid "In the block editor, add a Shortcode block and paste it there."
 msgstr "En el editor de bloques, añade un bloque de shortcode y pégalo ahí."
 
-#: src/Admin/BuilderPage.php:89
+#: src/Admin/BuilderPage.php:126
 msgid "City"
 msgstr "Ciudad"
 
-#: src/Admin/BuilderPage.php:90
+#: src/Admin/BuilderPage.php:127
 msgid "Start typing. We fill in the timezone for you."
 msgstr "Empieza a escribir. Completamos la zona horaria por ti."
 
@@ -18031,3 +18035,137 @@ msgstr ""
 #: templates/admin-shortcodes.php:155
 msgid "Customize"
 msgstr "Personalizar"
+
+#: src/Admin/BuilderPage.php:50
+msgid "Most loved"
+msgstr "Las favoritas"
+
+#: src/Admin/BuilderPage.php:125
+msgid "Create a new page"
+msgstr "Crear una página nueva"
+
+#: src/Admin/SettingsPage.php:135
+#: src/Admin/SettingsPage.php:136
+#: templates/admin-help.php:18
+msgid "Help"
+msgstr "Ayuda"
+
+#: templates/admin-connected.php:90
+#: templates/admin-help.php:34
+msgid "Sell readings"
+msgstr "Vender lecturas"
+
+#: templates/admin-connected.php:362
+msgid "Many practitioners keep one reading free and charge for the deeper ones. Here is the simplest way to do it."
+msgstr "Muchos profesionales ofrecen una lectura gratis y cobran por las más completas. Así puedes hacerlo de forma sencilla."
+
+#: templates/admin-connected.php:365
+msgid "Give something free"
+msgstr "Ofrecer algo gratis"
+
+#: templates/admin-connected.php:366
+msgid "A daily horoscope or a one card tarot draw brings visitors back every day. Place it on your home page."
+msgstr "Un horóscopo diario o una tirada de tarot de una carta anima a volver cada día. Colócalo en tu página de inicio."
+
+#: templates/admin-connected.php:369
+msgid "Charge for the reading that matters"
+msgstr "Cobrar por la lectura más completa"
+
+#: templates/admin-connected.php:370
+msgid "Birth charts, compatibility and yearly forecasts are worth paying for. Give each its own page."
+msgstr "Las cartas natales, la compatibilidad y las previsiones anuales merecen ser de pago. Dedica una página a cada lectura."
+
+#: templates/admin-connected.php:373
+msgid "Ask for payment before the page opens"
+msgstr "Pedir el pago antes de abrir la página"
+
+#: templates/admin-connected.php:374
+msgid "Install a membership or shop plugin you trust and limit that page to paying members. The reading shows only to them."
+msgstr "Instala un plugin de membresías o de tienda en el que confíes. Limita el acceso a esa página a los miembros de pago. Solo ellos verán la lectura."
+
+#: templates/admin-connected.php:378
+#: templates/admin-help.php:35
+msgid "Read the full guide"
+msgstr "Leer la guía completa"
+
+#: templates/admin-connected.php:379
+msgid "See how it works on WordPress"
+msgstr "Ver cómo funciona en WordPress"
+
+#: templates/admin-help.php:19
+msgid "Short answers to the questions practitioners ask most."
+msgstr "Respuestas breves a las preguntas más frecuentes de los profesionales."
+
+#: templates/admin-help.php:21
+msgid "How do I add a reading to a page?"
+msgstr "¿Cómo añado una lectura a una página?"
+
+#: templates/admin-help.php:22
+msgid "Open Create a reading, answer a few questions and copy the shortcode. In the block editor, add a Shortcode block and paste it there."
+msgstr "Abre «Crear una lectura». Responde a unas preguntas y copia el shortcode. En el editor de bloques, añade un bloque de shortcode. Pega el shortcode ahí."
+
+#: templates/admin-help.php:26
+msgid "Can my visitors enter their own birth details?"
+msgstr "¿Pueden mis visitantes introducir sus propios datos de nacimiento?"
+
+#: templates/admin-help.php:27
+msgid "Yes. Choose Ask my visitor and the reading shows a form. Each visitor sees a reading made for their own details."
+msgstr "Sí. Elige «Preguntar a mis visitantes». La lectura mostrará un formulario. Cada visitante verá una lectura basada en sus propios datos."
+
+#: templates/admin-help.php:28
+#: templates/admin-help.php:41
+#: templates/admin-help.php:46
+msgid "Learn more"
+msgstr "Más información"
+
+#: templates/admin-help.php:31
+msgid "Can I charge for readings?"
+msgstr "¿Puedo cobrar por las lecturas?"
+
+#: templates/admin-help.php:32
+msgid "Yes. Keep one reading free and put the deeper ones on a page only paying members can open."
+msgstr "Sí. Ofrece una lectura gratis. Pon las más completas en una página que solo puedan abrir los miembros de pago."
+
+#: templates/admin-help.php:39
+msgid "Is client data safe?"
+msgstr "¿Están seguros los datos de mis clientes?"
+
+#: templates/admin-help.php:40
+msgid "Birth details are used only to calculate the reading. Your key stays on your server and never reaches the browser."
+msgstr "Los datos de nacimiento solo se usan para calcular la lectura. Tu clave se queda en tu servidor. Nunca llega al navegador."
+
+#: templates/admin-help.php:44
+msgid "Which language do readings use?"
+msgstr "¿Qué idioma usan las lecturas?"
+
+#: templates/admin-help.php:45
+msgid "Readings follow your site language. To choose another, open Settings and pick a reading language on the Branding tab."
+msgstr "Las lecturas usan el idioma de tu sitio. Para elegir otro, abre «Ajustes». Elige el idioma de las lecturas en la pestaña «Marca»."
+
+#: templates/admin-help.php:49
+msgid "Will readings match my theme?"
+msgstr "¿Encajarán las lecturas con mi tema?"
+
+#: templates/admin-help.php:50
+msgid "Yes. Readings follow your light or dark theme, and you can set the chart style on the Branding tab."
+msgstr "Sí. Las lecturas se adaptan a tu tema claro u oscuro. Puedes elegir el estilo de los gráficos en la pestaña «Marca»."
+
+#: templates/admin-help.php:54
+msgid "Where can I see every reading?"
+msgstr "¿Dónde puedo ver todas las lecturas?"
+
+#: templates/admin-help.php:55
+msgid "Open Shortcodes for the full list, or Create a reading to search by name."
+msgstr "Abre «Shortcodes» para ver la lista completa. O abre «Crear una lectura» para buscar por nombre."
+
+#: templates/admin-help.php:62
+msgid "I still need help."
+msgstr "Aún necesito ayuda."
+
+#: templates/admin-help.php:63
+msgid "Write to us and a real person replies."
+msgstr "Escríbenos. Te responderá una persona."
+
+#: templates/admin-help.php:64
+msgid "Contact us"
+msgstr "Contacta con nosotros"

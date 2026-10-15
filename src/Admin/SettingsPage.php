@@ -20,6 +20,7 @@ class SettingsPage {
 	public const PAGE_SLUG    = 'roxyapi';
 	public const OPTION_NAME  = 'roxyapi_settings';
 	public const OPTION_GROUP = 'roxyapi';
+	public const HELP_SLUG    = 'roxyapi-help';
 
 	public static function register(): void {
 		add_action( 'admin_menu', array( self::class, 'add_menu' ) );
@@ -85,8 +86,7 @@ class SettingsPage {
 		);
 
 		// Register the first submenu explicitly to rename the auto-generated
-		// duplicate to "Settings" (a tabbed screen) while keeping the default
-		// landing slug used by the post-activation redirect.
+		// duplicate to "Settings" (a tabbed screen).
 		add_submenu_page(
 			self::PAGE_SLUG,
 			esc_html__( 'Settings', 'roxyapi' ),
@@ -129,6 +129,15 @@ class SettingsPage {
 				array( DemoPage::class, 'render' )
 			);
 		}
+
+		add_submenu_page(
+			self::PAGE_SLUG,
+			esc_html__( 'Help', 'roxyapi' ),
+			esc_html__( 'Help', 'roxyapi' ),
+			'manage_options',
+			self::HELP_SLUG,
+			array( self::class, 'render_help' )
+		);
 	}
 
 	/**
@@ -180,7 +189,7 @@ class SettingsPage {
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only tab selector on a manage_options page.
 		$active_tab = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : 'connect';
-		if ( ! in_array( $active_tab, array( 'connect', 'branding', 'display', 'privacy', 'advanced' ), true ) ) {
+		if ( ! in_array( $active_tab, array( 'connect', 'branding', 'display', 'sell-readings', 'privacy', 'advanced' ), true ) ) {
 			$active_tab = 'connect';
 		}
 
@@ -252,7 +261,20 @@ class SettingsPage {
 		echo '</div>';
 	}
 
+	public static function render_help(): void {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		// The template escapes every label and URL at the source.
+		echo Templates::render( 'admin-help', array() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Template escape contract.
+	}
+
 	public static function enqueue( string $hook ): void {
+		if ( $hook === get_plugin_page_hookname( self::HELP_SLUG, self::PAGE_SLUG ) && current_user_can( 'manage_options' ) ) {
+			Assets::enqueue_admin_css();
+			return;
+		}
 		if ( $hook !== 'toplevel_page_' . self::PAGE_SLUG ) {
 			return;
 		}

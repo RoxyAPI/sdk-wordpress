@@ -46,12 +46,13 @@ class Onboarding {
 	}
 
 	/**
-	 * URL to the WordPress plugin documentation on roxyapi.com.
+	 * Documentation URL, defaulting to the WordPress plugin guide.
 	 *
+	 * @param string $path Documentation path relative to /docs/.
 	 * @return string
 	 */
-	public static function docs_url(): string {
-		return 'https://roxyapi.com/docs/integrations/wordpress';
+	public static function docs_url( string $path = 'integrations/wordpress' ): string {
+		return 'https://roxyapi.com/docs/' . $path;
 	}
 
 	/**
