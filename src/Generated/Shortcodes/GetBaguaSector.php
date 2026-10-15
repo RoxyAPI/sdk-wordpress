@@ -31,6 +31,7 @@ class GetBaguaSector {
 	public const DEFAULTS = array(
 		'id' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -50,6 +51,10 @@ class GetBaguaSector {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['id'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetBaguaSectorForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getBaguaSector( $atts['id'], $atts['lang'] );
 

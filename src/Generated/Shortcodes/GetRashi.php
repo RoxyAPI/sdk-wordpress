@@ -31,6 +31,7 @@ class GetRashi {
 	public const DEFAULTS = array(
 		'id' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -50,6 +51,10 @@ class GetRashi {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['id'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetRashiForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getRashi( $atts['id'], $atts['lang'] );
 

@@ -32,6 +32,7 @@ class GetHebrewLetter {
 		'id' => '',
 		'lang' => '',
 		'letter_attribution' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -51,6 +52,10 @@ class GetHebrewLetter {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['id'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetHebrewLetterForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getHebrewLetter( $atts['id'], $atts['lang'], $atts['letter_attribution'] );
 

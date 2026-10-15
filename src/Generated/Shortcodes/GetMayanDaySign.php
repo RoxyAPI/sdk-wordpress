@@ -32,6 +32,7 @@ class GetMayanDaySign {
 		'id' => '',
 		'lang' => '',
 		'direction_scheme' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -51,6 +52,10 @@ class GetMayanDaySign {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['id'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetMayanDaySignForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getMayanDaySign( $atts['id'], $atts['lang'], $atts['direction_scheme'] );
 

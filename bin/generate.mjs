@@ -566,10 +566,11 @@ function formInputs( op ) {
 /**
  * Whether a flat shortcode renders a visitor form when its required inputs are
  * missing, or always under `mode="form"`. Every required input must be one the
- * form has a control for: never a list, and never an identifier path parameter
- * (`id`, or a value the form could only offer as a free text box), which names
- * an entry of the API vocabulary a visitor cannot know. Catalogue and account
- * readings stay placed by the site owner.
+ * form has a control for: never a list, and never a path parameter the form
+ * could only offer as a free text box, which names an entry of the API
+ * vocabulary a visitor cannot know. An `id` with a closed list of values is a
+ * picker, labelled with what it names. Catalogue and account readings stay
+ * placed by the site owner.
  * @param op
  */
 function offersVisitorForm( op ) {
@@ -589,8 +590,8 @@ function offersVisitorForm( op ) {
 				f.type !== 'object' &&
 				! (
 					f.in === 'path' &&
-					( f.name === 'id' ||
-						buildFormFieldSpec( f.name, f, true ).type === 'text' )
+					( buildFormFieldSpec( f.name, f, true ).type === 'text' ||
+						( f.name === 'id' && ! idNoun( f.name, f ) ) )
 				)
 		)
 	);
@@ -608,6 +609,23 @@ function humanLabel( name ) {
 		.replace( /[_-]+/g, ' ' )
 		.trim();
 	return spaced.charAt( 0 ).toUpperCase() + spaced.slice( 1 ).toLowerCase();
+}
+
+/**
+ * What an `id` parameter names, read from the description it opens with
+ * ("Animal id, ...", "Rashi ID slug"), or null when the description names
+ * nothing. A form labels the control with it, never with a bare "Id".
+ * @param name   Parameter name.
+ * @param schema Parameter or schema carrying the description.
+ */
+function idNoun( name, schema ) {
+	if ( name !== 'id' ) {
+		return null;
+	}
+	const noun = /^(.+?)\s+(?:id|identifier|slug)\b/i.exec(
+		String( schema.description || '' )
+	)?.[ 1 ];
+	return noun ? noun.charAt( 0 ).toUpperCase() + noun.slice( 1 ) : null;
 }
 
 /**
@@ -1001,8 +1019,15 @@ function blockDescriptionFor( op ) {
  */
 function buildFormFieldSpec( name, schema, required ) {
 	const lower = name.toLowerCase();
-	const field = { name, label: humanLabel( name ), required };
-	if ( schema.description ) {
+	const noun = idNoun( name, schema );
+	// `q` is the search parameter by convention, and "Q" names nothing.
+	const field = {
+		name,
+		label: noun || ( name === 'q' ? 'Search' : humanLabel( name ) ),
+		required,
+	};
+	// An id description restates the noun the label already shows.
+	if ( schema.description && ! noun ) {
 		field.help = firstSentence( String( schema.description ) );
 	}
 	// The timezone field renders as a wp_timezone_choice() dropdown, so the
@@ -1218,9 +1243,14 @@ function emitFormPhp( op ) {
 	].join( ', ' );
 	// The heading a VISITOR reads above the form, so it is the reading's name.
 	// The raw summary put "Transit Aspects - Detailed transit-to-natal aspect
-	// analysis with interpretations" across three lines at phone width.
+	// analysis with interpretations" across three lines at phone width. A
+	// visitor picks the entry in the form, so "by ID" names nothing they see;
+	// the owner-facing name keeps it to tell a lookup from its featured twin.
 	const title = assertNoApiWording(
-		displayNames[ op.operationId ] || op.operationId,
+		( displayNames[ op.operationId ] || op.operationId ).replace(
+			/\s+by\s+id$/i,
+			''
+		),
 		`${ op.operationId } form heading`
 	);
 

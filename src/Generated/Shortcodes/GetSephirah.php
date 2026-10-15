@@ -33,6 +33,7 @@ class GetSephirah {
 		'lang' => '',
 		'sephirot_system' => '',
 		'letter_attribution' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -52,6 +53,10 @@ class GetSephirah {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['id'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetSephirahForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getSephirah( $atts['id'], $atts['lang'], $atts['sephirot_system'], $atts['letter_attribution'] );
 

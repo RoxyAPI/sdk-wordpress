@@ -31,6 +31,7 @@ class GetAvastha {
 	public const DEFAULTS = array(
 		'id' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -50,6 +51,10 @@ class GetAvastha {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['id'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetAvasthaForm::class, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getAvastha( $atts['id'], $atts['lang'] );
 

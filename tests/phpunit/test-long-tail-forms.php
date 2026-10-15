@@ -88,7 +88,7 @@ class Test_Long_Tail_Forms extends \WP_UnitTestCase {
 	public function test_the_sweep_is_not_vacuous(): void {
 		$this->assertArrayHasKey( 'calculateLuckPillars', $this->form_capable() );
 		$this->assertArrayHasKey( 'getAnnualFlyingStars', $this->form_capable(), 'A GET keyed by a year takes a form too.' );
-		$this->assertArrayNotHasKey( 'getRashi', $this->form_capable(), 'An `id` lookup stays placed by the site owner.' );
+		$this->assertArrayHasKey( 'getDailyZodiacReading', $this->form_capable(), 'An `id` with a closed list of values is a picker.' );
 		$this->assertArrayNotHasKey( 'getCard', $this->form_capable(), 'A free-string identifier stays placed by the site owner.' );
 	}
 
@@ -110,6 +110,19 @@ class Test_Long_Tail_Forms extends \WP_UnitTestCase {
 			foreach ( $required as $field ) {
 				$attr = strtolower( (string) preg_replace( '/([a-z0-9])([A-Z])/', '$1_$2', (string) $field['name'] ) );
 				$this->assertArrayHasKey( $attr, $class::DEFAULTS, $op_id . ' ' . $field['name'] );
+			}
+		}
+	}
+
+	public function test_an_id_picker_is_labelled_with_what_it_names(): void {
+		$html = \RoxyAPI\Generated\Shortcodes\GetDailyZodiacReading::render( array() );
+
+		$this->assertMatchesRegularExpression( '#<label[^>]*>\s*Animal#', $html );
+		$this->assertStringContainsString( '<option value="dragon"', $html );
+		foreach ( $this->form_capable() as $op_id => $class ) {
+			$form = '\\RoxyAPI\\Generated\\Forms\\' . ucfirst( $op_id ) . 'Form';
+			foreach ( $form::spec()['flat_fields'] as $field ) {
+				$this->assertNotSame( 'Id', $field['label'], $op_id );
 			}
 		}
 	}
@@ -172,6 +185,12 @@ class Test_Long_Tail_Forms extends \WP_UnitTestCase {
 		$this->submit( 'getAnnualFlyingStars', array( 'year' => '2026' ) );
 
 		$this->assertStringContainsString( 'feng-shui/flying-stars/annual/2026', $this->requested[0] );
+	}
+
+	public function test_a_submitted_id_picker_fills_the_path(): void {
+		$this->submit( 'getRashi', array( 'id' => 'simha' ) );
+
+		$this->assertStringContainsString( 'vedic-astrology/rashis/simha', $this->requested[0] );
 	}
 
 	/**

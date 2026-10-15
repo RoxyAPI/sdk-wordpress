@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology 1.18.0\n"
+"Project-Id-Version: RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology 1.19.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/roxyapi\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-15T06:18:46+00:00\n"
+"POT-Creation-Date: 2026-10-15T07:52:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: roxyapi\n"
@@ -479,18 +479,28 @@ msgstr ""
 #: src/Generated/Forms/GetAlmanacDayForm.php:24
 #: src/Generated/Forms/GetAnnualAfflictionsForm.php:24
 #: src/Generated/Forms/GetAnnualFlyingStarsForm.php:24
+#: src/Generated/Forms/GetAvasthaForm.php:24
+#: src/Generated/Forms/GetAztecDaySignForm.php:24
 #: src/Generated/Forms/GetAztecTrecenaForm.php:24
+#: src/Generated/Forms/GetBaguaSectorForm.php:24
 #: src/Generated/Forms/GetBasicPanchangForm.php:24
 #: src/Generated/Forms/GetBirthstonesForm.php:24
+#: src/Generated/Forms/GetCenterForm.php:24
 #: src/Generated/Forms/GetChoghadiyaForm.php:24
 #: src/Generated/Forms/GetCriticalDaysForm.php:24
 #: src/Generated/Forms/GetCrystalsByChakraForm.php:24
 #: src/Generated/Forms/GetCrystalsByElementForm.php:24
 #: src/Generated/Forms/GetCurrentDashaForm.php:24
 #: src/Generated/Forms/GetDailyAyurvedaReadingForm.php:24
+#: src/Generated/Forms/GetDailyZodiacReadingForm.php:24
+#: src/Generated/Forms/GetDevataForm.php:24
+#: src/Generated/Forms/GetDikpalaDirectionForm.php:24
 #: src/Generated/Forms/GetDinacharyaScheduleForm.php:24
+#: src/Generated/Forms/GetDoshaForm.php:24
 #: src/Generated/Forms/GetForecastForm.php:24
 #: src/Generated/Forms/GetGateForm.php:24
+#: src/Generated/Forms/GetHaabMonthForm.php:24
+#: src/Generated/Forms/GetHebrewLetterForm.php:24
 #: src/Generated/Forms/GetHeliacalVisibilityForm.php:24
 #: src/Generated/Forms/GetHexagramForm.php:24
 #: src/Generated/Forms/GetHoraForm.php:24
@@ -500,15 +510,19 @@ msgstr ""
 #: src/Generated/Forms/GetKpRulingPlanetsForm.php:24
 #: src/Generated/Forms/GetKuaNumberForm.php:24
 #: src/Generated/Forms/GetMajorDashasForm.php:24
+#: src/Generated/Forms/GetMayanDaySignForm.php:24
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:24
 #: src/Generated/Forms/GetMoonCalendarForm.php:24
+#: src/Generated/Forms/GetNakshatraForm.php:24
 #: src/Generated/Forms/GetPhasesForm.php:24
 #: src/Generated/Forms/GetPlanetaryNodePassagesForm.php:24
 #: src/Generated/Forms/GetPlanetaryPositionsForm.php:24
 #: src/Generated/Forms/GetPlanetPositionsForm.php:24
 #: src/Generated/Forms/GetPranaDashasForm.php:24
 #: src/Generated/Forms/GetPratyantardashasForm.php:24
+#: src/Generated/Forms/GetRashiForm.php:24
 #: src/Generated/Forms/GetRitucharyaForm.php:24
+#: src/Generated/Forms/GetSephirahForm.php:24
 #: src/Generated/Forms/GetShemNameForm.php:24
 #: src/Generated/Forms/GetSookshmaDashasForm.php:24
 #: src/Generated/Forms/GetSubDashasForm.php:24
@@ -517,6 +531,8 @@ msgstr ""
 #: src/Generated/Forms/GetVedicDailyReadingForm.php:24
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:24
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:24
+#: src/Generated/Forms/GetYogaForm.php:24
+#: src/Generated/Forms/GetZodiacAnimalForm.php:24
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:24
 #: src/Generated/Forms/ListSolarTermsForm.php:24
 #: src/Generated/Forms/LookupAuspiciousDaysForm.php:24
@@ -1452,6 +1468,7 @@ msgstr ""
 #: src/Generated/Forms/GetChoghadiyaForm.php:59
 #: src/Generated/Forms/GetCurrentDashaForm.php:66
 #: src/Generated/Forms/GetDailyAyurvedaReadingForm.php:59
+#: src/Generated/Forms/GetDailyZodiacReadingForm.php:46
 #: src/Generated/Forms/GetDinacharyaScheduleForm.php:59
 #: src/Generated/Forms/GetHeliacalVisibilityForm.php:59
 #: src/Generated/Forms/GetHoraForm.php:59
@@ -1659,6 +1676,7 @@ msgstr ""
 #: src/Generated/Forms/GetChoghadiyaForm.php:32
 #: src/Generated/Forms/GetCurrentDashaForm.php:32
 #: src/Generated/Forms/GetDailyAyurvedaReadingForm.php:32
+#: src/Generated/Forms/GetDailyZodiacReadingForm.php:39
 #: src/Generated/Forms/GetDinacharyaScheduleForm.php:32
 #: src/Generated/Forms/GetHeliacalVisibilityForm.php:32
 #: src/Generated/Forms/GetHoraForm.php:32
@@ -2218,6 +2236,7 @@ msgstr ""
 #: src/Generated/Forms/GetChoghadiyaForm.php:61
 #: src/Generated/Forms/GetCurrentDashaForm.php:68
 #: src/Generated/Forms/GetDailyAyurvedaReadingForm.php:61
+#: src/Generated/Forms/GetDailyZodiacReadingForm.php:48
 #: src/Generated/Forms/GetDinacharyaScheduleForm.php:61
 #: src/Generated/Forms/GetHeliacalVisibilityForm.php:61
 #: src/Generated/Forms/GetHoraForm.php:61
@@ -3653,12 +3672,14 @@ msgid "Which correlation constant ties the day count to a civil date"
 msgstr ""
 
 #: src/Generated/Forms/CalculateMayanCompatibilityForm.php:65
+#: src/Generated/Forms/GetMayanDaySignForm.php:39
 #: blocks/generated/get-mayan-day-sign/index.js:25
 #: blocks/generated/list-mayan-day-signs/index.js:19
 msgid "Direction scheme"
 msgstr ""
 
 #: src/Generated/Forms/CalculateMayanCompatibilityForm.php:67
+#: src/Generated/Forms/GetMayanDaySignForm.php:41
 #: blocks/generated/get-mayan-day-sign/index.js:27
 #: blocks/generated/list-mayan-day-signs/index.js:21
 msgid "Which reading of the world direction and colour to serve for a day sign"
@@ -4723,6 +4744,20 @@ msgstr ""
 msgid "Annual Flying Stars"
 msgstr ""
 
+#: src/Generated/Forms/GetAvasthaForm.php:23
+#: src/Generated/Forms/GetAvasthaForm.php:32
+msgid "Avastha"
+msgstr ""
+
+#: src/Generated/Forms/GetAztecDaySignForm.php:23
+msgid "Aztec Day Sign"
+msgstr ""
+
+#: src/Generated/Forms/GetAztecDaySignForm.php:32
+#: src/Generated/Forms/GetMayanDaySignForm.php:32
+msgid "Day sign"
+msgstr ""
+
 #: src/Generated/Forms/GetAztecTrecenaForm.php:23
 msgid "Aztec Trecena"
 msgstr ""
@@ -4730,6 +4765,14 @@ msgstr ""
 #: src/Generated/Forms/GetAztecTrecenaForm.php:34
 #: src/Generated/Forms/GetTrecenaForm.php:34
 msgid "Trecena number, 1 to 20"
+msgstr ""
+
+#: src/Generated/Forms/GetBaguaSectorForm.php:23
+msgid "Bagua Sector"
+msgstr ""
+
+#: src/Generated/Forms/GetBaguaSectorForm.php:32
+msgid "Life area"
 msgstr ""
 
 #: src/Generated/Forms/GetBasicPanchangForm.php:23
@@ -4742,6 +4785,14 @@ msgstr ""
 
 #: src/Generated/Forms/GetBirthstonesForm.php:34
 msgid "Birth month as a number from 1 (January) to 12 (December)."
+msgstr ""
+
+#: src/Generated/Forms/GetCenterForm.php:23
+msgid "Human Design Center"
+msgstr ""
+
+#: src/Generated/Forms/GetCenterForm.php:32
+msgid "Center"
 msgstr ""
 
 #: src/Generated/Forms/GetChoghadiyaForm.php:23
@@ -5008,6 +5059,7 @@ msgid "Daily Ayurveda Reading"
 msgstr ""
 
 #: src/Generated/Forms/GetDailyAyurvedaReadingForm.php:34
+#: src/Generated/Forms/GetDailyZodiacReadingForm.php:41
 #: blocks/generated/get-daily-ayurveda-reading/index.js:21
 #: blocks/generated/get-daily-zodiac-reading/index.js:27
 msgid "Reading date in YYYY-MM-DD format"
@@ -5027,6 +5079,25 @@ msgstr ""
 msgid "Longitude in decimal degrees"
 msgstr ""
 
+#: src/Generated/Forms/GetDailyZodiacReadingForm.php:23
+msgid "Daily Chinese Zodiac Reading"
+msgstr ""
+
+#: src/Generated/Forms/GetDailyZodiacReadingForm.php:32
+#: src/Generated/Forms/GetZodiacAnimalForm.php:32
+msgid "Animal"
+msgstr ""
+
+#: src/Generated/Forms/GetDevataForm.php:23
+#: src/Generated/Forms/GetDevataForm.php:32
+msgid "Devata"
+msgstr ""
+
+#: src/Generated/Forms/GetDikpalaDirectionForm.php:23
+#: src/Generated/Forms/GetDikpalaDirectionForm.php:32
+msgid "Direction"
+msgstr ""
+
 #: src/Generated/Forms/GetDinacharyaScheduleForm.php:23
 msgid "Dinacharya Daily Routine"
 msgstr ""
@@ -5044,6 +5115,11 @@ msgstr ""
 #: src/Generated/Forms/GetDinacharyaScheduleForm.php:68
 #: blocks/generated/get-dinacharya-schedule/index.js:41
 msgid "How the six dosha periods are cut"
+msgstr ""
+
+#: src/Generated/Forms/GetDoshaForm.php:23
+#: src/Generated/Forms/GetDoshaForm.php:32
+msgid "Dosha"
 msgstr ""
 
 #: src/Generated/Forms/GetForecastForm.php:23
@@ -5066,6 +5142,41 @@ msgstr ""
 
 #: src/Generated/Forms/GetGateForm.php:34
 msgid "Gate number from 1 to 64."
+msgstr ""
+
+#: src/Generated/Forms/GetHaabMonthForm.php:23
+msgid "Haab Period"
+msgstr ""
+
+#: src/Generated/Forms/GetHaabMonthForm.php:32
+msgid "Haab period"
+msgstr ""
+
+#: src/Generated/Forms/GetHebrewLetterForm.php:23
+msgid "Hebrew Letter"
+msgstr ""
+
+#: src/Generated/Forms/GetHebrewLetterForm.php:32
+#: blocks/generated/search-dream-symbols/index.js:18
+msgid "Letter"
+msgstr ""
+
+#: src/Generated/Forms/GetHebrewLetterForm.php:39
+#: src/Generated/Forms/GetSephirahForm.php:47
+#: blocks/generated/get-hebrew-letter/index.js:25
+#: blocks/generated/get-sephirah/index.js:33
+#: blocks/generated/get-tree-of-life/index.js:35
+#: blocks/generated/list-hebrew-letters/index.js:19
+msgid "Letter attribution"
+msgstr ""
+
+#: src/Generated/Forms/GetHebrewLetterForm.php:41
+#: src/Generated/Forms/GetSephirahForm.php:49
+#: blocks/generated/get-hebrew-letter/index.js:27
+#: blocks/generated/get-sephirah/index.js:35
+#: blocks/generated/get-tree-of-life/index.js:37
+#: blocks/generated/list-hebrew-letters/index.js:21
+msgid "Which reading assigns the element, planet or sign to each letter"
 msgstr ""
 
 #: src/Generated/Forms/GetHeliacalVisibilityForm.php:23
@@ -5199,6 +5310,10 @@ msgstr ""
 msgid "Mahadasha Periods"
 msgstr ""
 
+#: src/Generated/Forms/GetMayanDaySignForm.php:23
+msgid "Mayan Day Sign"
+msgstr ""
+
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:23
 msgid "Monthly Horoscope by Zodiac Sign"
 msgstr ""
@@ -5233,6 +5348,11 @@ msgstr ""
 
 #: src/Generated/Forms/GetMoonCalendarForm.php:43
 msgid "Calendar month (1-12)"
+msgstr ""
+
+#: src/Generated/Forms/GetNakshatraForm.php:23
+#: src/Generated/Forms/GetNakshatraForm.php:32
+msgid "Nakshatra"
 msgstr ""
 
 #: src/Generated/Forms/GetPhasesForm.php:23
@@ -5335,6 +5455,11 @@ msgstr ""
 msgid "Antardasha (bhukti) planet name inside that Mahadasha, case-insensitive"
 msgstr ""
 
+#: src/Generated/Forms/GetRashiForm.php:23
+#: src/Generated/Forms/GetRashiForm.php:32
+msgid "Rashi"
+msgstr ""
+
 #: src/Generated/Forms/GetRitucharyaForm.php:23
 msgid "Ayurveda Seasonal Regimen"
 msgstr ""
@@ -5372,6 +5497,23 @@ msgstr ""
 #: src/Generated/Forms/GetRitucharyaForm.php:57
 #: blocks/generated/get-ritucharya/index.js:36
 msgid "Which half of the world the season names are stated for"
+msgstr ""
+
+#: src/Generated/Forms/GetSephirahForm.php:23
+#: src/Generated/Forms/GetSephirahForm.php:32
+msgid "Sephirah"
+msgstr ""
+
+#: src/Generated/Forms/GetSephirahForm.php:39
+#: blocks/generated/get-sephirah/index.js:25
+#: blocks/generated/get-tree-of-life/index.js:27
+msgid "Sephirot system"
+msgstr ""
+
+#: src/Generated/Forms/GetSephirahForm.php:41
+#: blocks/generated/get-sephirah/index.js:27
+#: blocks/generated/get-tree-of-life/index.js:29
+msgid "Which reading assigns a sphere to each sephirah"
 msgstr ""
 
 #: src/Generated/Forms/GetShemNameForm.php:23
@@ -5432,6 +5574,18 @@ msgstr ""
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:42
 #: blocks/generated/get-yearly-horoscope/index.js:27
 msgid "Calendar year to forecast, 1900 to 2100"
+msgstr ""
+
+#: src/Generated/Forms/GetYogaForm.php:23
+msgid "Yoga Details"
+msgstr ""
+
+#: src/Generated/Forms/GetYogaForm.php:32
+msgid "Yoga"
+msgstr ""
+
+#: src/Generated/Forms/GetZodiacAnimalForm.php:23
+msgid "Chinese Zodiac Animal"
 msgstr ""
 
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:23
@@ -5593,10 +5747,7 @@ msgid "Search Crystals"
 msgstr ""
 
 #: src/Generated/Forms/SearchCrystalsForm.php:32
-#: blocks/generated/search-cities/index.js:11
-#: blocks/generated/search-crystals/index.js:19
-#: blocks/generated/search-dream-symbols/index.js:11
-msgid "Q"
+msgid "Search"
 msgstr ""
 
 #: src/Generated/Forms/SearchCrystalsForm.php:34
@@ -6958,20 +7109,6 @@ msgstr ""
 msgid "Year to scan for ecliptic crossings (1551 to 2649)."
 msgstr ""
 
-#: blocks/generated/get-hebrew-letter/index.js:25
-#: blocks/generated/get-sephirah/index.js:33
-#: blocks/generated/get-tree-of-life/index.js:35
-#: blocks/generated/list-hebrew-letters/index.js:19
-msgid "Letter attribution"
-msgstr ""
-
-#: blocks/generated/get-hebrew-letter/index.js:27
-#: blocks/generated/get-sephirah/index.js:35
-#: blocks/generated/get-tree-of-life/index.js:37
-#: blocks/generated/list-hebrew-letters/index.js:21
-msgid "Which reading assigns the element, planet or sign to each letter"
-msgstr ""
-
 #: blocks/generated/get-heliacal-visibility/index.js:34
 msgid "Timezone: IANA name (e.g. \"Asia/Kolkata\", \"Europe/London\") OR decimal hours from UTC"
 msgstr ""
@@ -7181,16 +7318,6 @@ msgstr ""
 msgid "Number of random symbols to return (1-10)"
 msgstr ""
 
-#: blocks/generated/get-sephirah/index.js:25
-#: blocks/generated/get-tree-of-life/index.js:27
-msgid "Sephirot system"
-msgstr ""
-
-#: blocks/generated/get-sephirah/index.js:27
-#: blocks/generated/get-tree-of-life/index.js:29
-msgid "Which reading assigns a sphere to each sephirah"
-msgstr ""
-
 #: blocks/generated/get-tree-of-life/index.js:19
 msgid "Tree variant"
 msgstr ""
@@ -7301,16 +7428,18 @@ msgstr ""
 msgid "Choose the options in the sidebar to preview this reading here."
 msgstr ""
 
+#: blocks/generated/search-cities/index.js:11
+#: blocks/generated/search-crystals/index.js:19
+#: blocks/generated/search-dream-symbols/index.js:11
+msgid "Q"
+msgstr ""
+
 #: blocks/generated/search-cities/index.js:13
 msgid "Place to search for, written the way a person would"
 msgstr ""
 
 #: blocks/generated/search-dream-symbols/index.js:13
 msgid "Search query to match against symbol names and meanings"
-msgstr ""
-
-#: blocks/generated/search-dream-symbols/index.js:18
-msgid "Letter"
 msgstr ""
 
 #: blocks/generated/search-dream-symbols/index.js:20

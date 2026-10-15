@@ -29,7 +29,7 @@ class SearchCrystalsForm {
 			'flat_fields'  => array(
 				array(
 					'name' => 'q',
-					'label' => __( 'Q', 'roxyapi' ),
+					'label' => __( 'Search', 'roxyapi' ),
 					'required' => true,
 					'help' => __( 'Search query (2-50 characters)', 'roxyapi' ),
 					'type' => 'text',

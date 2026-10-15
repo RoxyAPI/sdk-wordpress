@@ -62,7 +62,24 @@ The plugin itself is GPLv2 or later and the source is available at https://githu
 
 == Shortcode examples ==
 
-Every reading is a shortcode. Pass attributes for a fixed reading the site owner controls, or drop the shortcode with no attributes to render an accessible visitor form. Heroes that take two charts or nested birth details are form mode only.
+Every reading is a shortcode, and what you put inside the brackets decides what your visitors see.
+
+**Ask your visitor.** Leave the details out and the reading shows a form. Visitors enter their own birth date, sign, name or year, and their reading appears on the same page.
+
+`[roxy_natal_chart]` asks for a birth date, time and city
+`[roxy_calculate_luck_pillars]` asks for a birth date, time, timezone and gender
+`[roxy_get_annual_flying_stars]` asks for a year
+
+**Show a set reading.** Put every detail in the shortcode and every visitor sees the same reading, with no form.
+
+`[roxy_calculate_luck_pillars date="1990-06-15" time="14:30" timezone="Asia/Shanghai" gender="male"]`
+`[roxy_get_annual_flying_stars year="2026"]`
+
+Add `mode="form"` to keep the form even when details are set, or `mode="static"` so a placement never shows a form.
+
+**Readings that need nothing.** Some readings take no details and show straight away, such as `[roxy_moon_phase]`, `[roxy_get_daily_hexagram]` and `[roxy_cast_celtic_cross]`.
+
+Every shortcode, with the details it takes and a sample to copy, is listed in your dashboard under RoxyAPI, Shortcodes.
 
 **Hero shortcodes**
 
@@ -90,8 +107,6 @@ Four heroes take no attributes: the three two-person compatibility readings rend
 `[roxy_gun_milan]`
 `[roxy_compatibility]`
 `[roxy_forecast]`
-
-Leave the attributes off any reading that takes details to render a form instead. For example `[roxy_horoscope]` shows a zodiac sign picker and `[roxy_natal_chart]` shows a birth date, time, and city picker.
 
 **Long-tail shortcodes**
 
@@ -249,6 +264,11 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.20.0 =
+* New: sixteen more readings take a visitor form, among them the daily Chinese zodiac reading, rashis, nakshatras, Mayan and Aztec day signs, bagua life areas and doshas. Visitors pick from a list and their reading appears on the same page.
+* Improved: visitor form labels and headings read in German, Spanish, French, Hindi, Portuguese, Russian and Turkish on every reading.
+* Improved: the shortcode examples show which readings ask your visitor, which show a set reading, and which show straight away.
+
 = 1.19.0 =
 * New: visitor forms on over a hundred more readings. Place a reading such as [roxy_calculate_luck_pillars] or [roxy_get_annual_flying_stars] with no attributes and visitors fill in their own details; pass every attribute for a fixed reading, or add mode="static" to keep it fixed. Optional inputs fold under Advanced, and a city search fills in the place and timezone.
 * Improved: the compound number reading has its own card with the root number, its fortune and the meaning, and the daily angel number uses the angel number card.
@@ -277,6 +297,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.20.0 =
+Worth updating if visitors should pick their own sign or entry: sixteen more readings, the daily Chinese zodiac among them, show a visitor form when placed without attributes.
 
 = 1.19.0 =
 Worth updating if visitors should enter their own details: over a hundred more readings, luck pillars among them, show a visitor form when placed without attributes.

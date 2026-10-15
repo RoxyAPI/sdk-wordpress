@@ -3,6 +3,11 @@
 The full release history for the RoxyAPI plugin. The most recent releases are
 also listed in readme.txt, which wordpress.org displays on the plugin page.
 
+= 1.20.0 =
+* New: sixteen more readings take a visitor form, among them the daily Chinese zodiac reading, rashis, nakshatras, Mayan and Aztec day signs, bagua life areas and doshas. Visitors pick from a list and their reading appears on the same page.
+* Improved: visitor form labels and headings read in German, Spanish, French, Hindi, Portuguese, Russian and Turkish on every reading.
+* Improved: the shortcode examples show which readings ask your visitor, which show a set reading, and which show straight away.
+
 = 1.19.0 =
 * New: visitor forms on over a hundred more readings. Place a reading such as [roxy_calculate_luck_pillars] or [roxy_get_annual_flying_stars] with no attributes and visitors fill in their own details; pass every attribute for a fixed reading, or add mode="static" to keep it fixed. Optional inputs fold under Advanced, and a city search fills in the place and timezone.
 * Improved: the compound number reading has its own card with the root number, its fortune and the meaning, and the daily angel number uses the angel number card.
