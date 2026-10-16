@@ -15,11 +15,24 @@
 		<style>
 			:root {
 				color-scheme: light dark;
+				--page: light-dark( #f6f7f7, #171b20 );
+				--surface: light-dark( #fff, #232a32 );
+				--ink: light-dark( #1d2327, #f0f2f5 );
+				--muted: light-dark( #50575e, #bdc7d2 );
+				--rule: light-dark( #c3c4c7, #687583 );
+				--selected: light-dark( #f0f6fc, #253f56 );
+				--link: light-dark( #135e96, #91caff );
 				font:
 					16px/1.5 system-ui,
 					sans-serif;
-				background: #f6f7f7;
-				color: #1d2327;
+				background: var( --page );
+				color: var( --ink );
+			}
+			:root[data-theme='light'] {
+				color-scheme: light;
+			}
+			:root[data-theme='dark'] {
+				color-scheme: dark;
 			}
 			body {
 				margin: 0;
@@ -39,10 +52,6 @@
 			.embed footer {
 				display: none;
 			}
-			.card {
-				background: #fff;
-				border: 1px solid #c3c4c7;
-			}
 			fieldset {
 				min-width: 0;
 				margin: 0;
@@ -59,14 +68,14 @@
 			select,
 			textarea {
 				padding: 8px;
-				border: 1px solid #8c8f94;
+				border: 1px solid light-dark( #8c8f94, #687583 );
 				border-radius: 4px;
-				background: #fff;
+				background: var( --surface );
 				color: inherit;
 			}
 			button,
 			a {
-				color: #135e96;
+				color: var( --link );
 			}
 			.button {
 				display: inline-flex;
@@ -75,7 +84,7 @@
 				box-sizing: border-box;
 				border: 1px solid #2271b1;
 				border-radius: 4px;
-				background: #f6f7f7;
+				background: var( --page );
 				cursor: pointer;
 				text-decoration: none;
 			}
@@ -94,44 +103,38 @@
 				text-decoration: underline;
 				cursor: pointer;
 			}
-			@media ( prefers-color-scheme: dark ) {
-				:root {
-					background: #171b20;
-					color: #f0f2f5;
-				}
-				.roxyapi-builder {
-					color: inherit;
-				}
-				.card,
-				input:not( [type='radio'] ),
-				select,
-				textarea,
-				.roxyapi-builder .roxyapi-geocode-listbox {
-					background: #232a32;
-					color: inherit;
-					border-color: #687583;
-				}
-				.roxyapi-builder-choice,
-				.roxyapi-builder-step.card {
-					border-color: #687583;
-				}
-				.roxyapi-builder-progress,
-				.roxyapi-builder-description,
-				.roxyapi-builder .roxyapi-geocode-status {
-					color: #bdc7d2;
-				}
-				.roxyapi-builder-choice:has( input:checked ),
-				.roxyapi-builder .roxyapi-geocode-option:hover,
-				.roxyapi-builder .roxyapi-geocode-option[aria-selected='true'] {
-					background: #253f56;
-				}
-				.roxyapi-builder-error {
-					color: #ffaaa8;
-				}
-				a,
-				.button-link {
-					color: #91caff;
-				}
+			/* The plugin stylesheets are light only (wp-admin has no dark mode), so
+			   this page repaints their colours from the tokens above. */
+			.roxyapi-builder,
+			.roxyapi-heading .roxyapi-punchline {
+				color: var( --ink );
+			}
+			.wrap .roxyapi-page-intro,
+			.roxyapi-heading .roxyapi-setup,
+			.roxyapi-builder-progress,
+			.roxyapi-builder-description,
+			.roxyapi-builder .roxyapi-geocode-status {
+				color: var( --muted );
+			}
+			.roxyapi-step-card {
+				border-color: light-dark( #e2e4e7, #3c4651 );
+				background: var( --surface );
+			}
+			.roxyapi-builder .roxyapi-geocode-listbox {
+				border-color: var( --rule );
+				background: var( --surface );
+			}
+			.roxyapi-builder-choice,
+			.roxyapi-builder .roxyapi-builder-group {
+				border-color: var( --rule );
+			}
+			.roxyapi-builder-choice:has( input:checked ),
+			.roxyapi-builder .roxyapi-geocode-option:hover,
+			.roxyapi-builder .roxyapi-geocode-option[aria-selected='true'] {
+				background: var( --selected );
+			}
+			.roxyapi-builder-error {
+				color: light-dark( #b32d2e, #ffaaa8 );
 			}
 		</style>
 		<script id="roxyapi-builder-i18n">
@@ -162,10 +165,28 @@
 			};
 		</script>
 		<script>
-			if (
-				new URLSearchParams( location.search ).get( 'embed' ) === '1'
-			) {
+			// Shared with the body script: the one page allowed to embed this one.
+			const parentOrigin = 'https://roxyapi.com';
+			const params = new URLSearchParams( location.search );
+			// The embedding page passes its own theme, so the builder matches the
+			// site rather than the operating system.
+			function applyTheme( theme ) {
+				if ( theme === 'light' || theme === 'dark' ) {
+					document.documentElement.dataset.theme = theme;
+				}
+			}
+			applyTheme( params.get( 'theme' ) );
+			if ( params.get( 'embed' ) === '1' ) {
 				document.documentElement.classList.add( 'embed' );
+				window.addEventListener( 'message', ( event ) => {
+					if (
+						event.origin === parentOrigin &&
+						event.source === window.parent &&
+						event.data?.type === 'roxy-builder:theme'
+					) {
+						applyTheme( event.data.theme );
+					}
+				} );
 			}
 		</script>
 	</head>
@@ -184,7 +205,6 @@
 		</footer>
 		<script>
 			( async function () {
-				const parentOrigin = 'https://roxyapi.com';
 				const embed =
 					document.documentElement.classList.contains( 'embed' );
 				let trustedParent = false;
@@ -250,10 +270,7 @@
 				window.RoxyAPIBuilder = {
 					manifest,
 					standalone: true,
-					reading:
-						new URLSearchParams( location.search ).get(
-							'reading'
-						) || '',
+					reading: params.get( 'reading' ) || '',
 					restUrl: 'https://roxyapi.com/tools/location-search',
 					geocodeResponse: {
 						results: 'results',
@@ -268,7 +285,7 @@
 							: [
 									Intl.DateTimeFormat().resolvedOptions()
 										.timeZone,
-							  ] ),
+								] ),
 					],
 					today: new Date().toLocaleDateString( 'en-CA' ),
 				};

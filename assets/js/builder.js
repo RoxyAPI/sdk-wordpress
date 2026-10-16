@@ -684,11 +684,11 @@
 					day: 'numeric',
 					month: 'long',
 					year: 'numeric',
-			  } )
+				} )
 			: new Date( 2000, 0, 1, a, b ).toLocaleTimeString( locale, {
 					hour: 'numeric',
 					minute: '2-digit',
-			  } );
+				} );
 	}
 
 	function shortcode() {

@@ -264,7 +264,7 @@
 								lat: city[ response.lat || 'lat' ],
 								lon: city[ response.lon || 'lon' ],
 								tz: city[ response.tz || 'tz' ],
-						  } ) )
+							} ) )
 						: [];
 					renderResults( listbox, current, pick );
 					if ( current.length === 0 ) {

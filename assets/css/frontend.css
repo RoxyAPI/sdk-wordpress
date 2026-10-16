@@ -242,7 +242,7 @@
 	text-decoration: underline;
 	text-decoration-color: color-mix(in srgb, currentcolor 40%, transparent);
 	text-underline-offset: 2px;
-	word-break: break-word;
+	overflow-wrap: anywhere;
 }
 
 :where(.roxyapi-link:hover) {

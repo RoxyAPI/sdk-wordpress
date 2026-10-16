@@ -354,7 +354,7 @@ const measure = () => {
 					hit: hit
 						? `${ hit.tagName.toLowerCase() }.${
 								hit.className
-						  }`.slice( 0, 50 )
+							}`.slice( 0, 50 )
 						: 'none',
 				} );
 			}

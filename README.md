@@ -17,18 +17,18 @@ The only multi domain spiritual intelligence plugin for WordPress. Drop natal ch
 
 Interactive forms for your visitors. Gutenberg blocks for your editor. Shortcodes for anywhere else. Server side rendering keeps your API key out of the browser. Transient caching keeps your quota intact.
 
--   **19 hero shortcodes** covering Western astrology, Vedic astrology (kundli, panchang, mangal dosha, KP chart, gun milan), Forecast (the cross-domain timeline), Human Design (the bodygraph), Numerology, Tarot (daily, three card, yes or no), biorhythm, angel numbers, crystals by zodiac, current moon phase, and two-chart compatibility (synastry, gun milan, Western compatibility). Every reading ships a matching Gutenberg block generated from the same spec, with sidebar controls for its inputs and a live preview in the editor. The Horoscope block adds a variation picker.
--   **Auto generated shortcodes** for the long tail. Every endpoint in the RoxyAPI OpenAPI spec is reachable from a shortcode.
--   **Form mode on every reading a visitor can fill in.** Let visitors submit their own sign, name, birth date, or question and render a personalized reading. No JavaScript required.
--   **Zero client side secrets.** All calls run in PHP. The API key never reaches the browser.
+- **19 hero shortcodes** covering Western astrology, Vedic astrology (kundli, panchang, mangal dosha, KP chart, gun milan), Forecast (the cross-domain timeline), Human Design (the bodygraph), Numerology, Tarot (daily, three card, yes or no), biorhythm, angel numbers, crystals by zodiac, current moon phase, and two-chart compatibility (synastry, gun milan, Western compatibility). Every reading ships a matching Gutenberg block generated from the same spec, with sidebar controls for its inputs and a live preview in the editor. The Horoscope block adds a variation picker.
+- **Auto generated shortcodes** for the long tail. Every endpoint in the RoxyAPI OpenAPI spec is reachable from a shortcode.
+- **Form mode on every reading a visitor can fill in.** Let visitors submit their own sign, name, birth date, or question and render a personalized reading. No JavaScript required.
+- **Zero client side secrets.** All calls run in PHP. The API key never reaches the browser.
 
 ## Ship this weekend
 
 Three pages any spiritual practitioner can launch in an afternoon:
 
--   **Daily horoscope page.** One shortcode, twelve sign picker, cached for one hour per sign. `[roxy_horoscope]`
--   **Numerology reading page.** A form that asks for name and birth date, returns Life Path, Expression, Soul Urge, Personality numbers, and a narrative interpretation. `[roxy_numerology]`
--   **Tarot reader page.** A form that takes a question and draws a three card spread with interpretation. `[roxy_tarot_card spread="three"]`
+- **Daily horoscope page.** One shortcode, twelve sign picker, cached for one hour per sign. `[roxy_horoscope]`
+- **Numerology reading page.** A form that asks for name and birth date, returns Life Path, Expression, Soul Urge, Personality numbers, and a narrative interpretation. `[roxy_numerology]`
+- **Tarot reader page.** A form that takes a question and draws a three card spread with interpretation. `[roxy_tarot_card spread="three"]`
 
 All three pages monetize the same way: drop an email opt in, a Stripe buy button, or a Patreon link below the shortcode. The plugin handles the reading, you keep the audience.
 
@@ -91,15 +91,15 @@ Form submissions post back to the same page over HTTPS. The plugin validates the
 
 In the block editor, open the inserter and pick a block from the **RoxyAPI** category. The headline readings, of which Horoscope adds a variation picker:
 
--   **Horoscope** (daily, weekly, monthly, yearly)
--   **Natal Chart** and **Moon Phase**
--   **Vedic Kundli**, **Panchang**, **Mangal Dosha** and **KP Chart**
--   **Bodygraph** (Human Design)
--   **Tarot** (daily, three card, Celtic Cross) and **Tarot Yes or No**
--   **Numerology** (life path, expression, soul urge, full chart) and **Life Path**
--   **Biorhythm**
--   **Angel Number**
--   **Crystals by Zodiac**
+- **Horoscope** (daily, weekly, monthly, yearly)
+- **Natal Chart** and **Moon Phase**
+- **Vedic Kundli**, **Panchang**, **Mangal Dosha** and **KP Chart**
+- **Bodygraph** (Human Design)
+- **Tarot** (daily, three card, Celtic Cross) and **Tarot Yes or No**
+- **Numerology** (life path, expression, soul urge, full chart) and **Life Path**
+- **Biorhythm**
+- **Angel Number**
+- **Crystals by Zodiac**
 
 Beyond these, every long-tail endpoint (Chinese astrology, feng shui, Human Design, forecasts, I Ching, dream symbols, crystals, and more) generates a matching block from the OpenAPI spec, listed under its own **RoxyAPI: every reading** category so the headline readings stay one short list. Every block, headline readings included, is generated the same way and gets sidebar controls for its inputs derived from the spec params (a date picker for dates, a dropdown for enums, text and number fields for the rest), with a live server-rendered preview. Only readings that need two charts or nested birth details (such as synastry or gun milan) stay shortcode and visitor-form only, because the block editor cannot collect their nested input.
 
@@ -157,12 +157,12 @@ Every endpoint is cached with a per endpoint TTL so cached responses do not cost
 
 ## Architecture
 
--   **Server side rendering.** The plugin makes every API call in PHP. The key never reaches the browser.
--   **Encrypted at rest storage.** AES 256 CTR with a key derived from `ROXYAPI_ENCRYPTION_KEY` constant or `LOGGED_IN_KEY` fallback. Ported from the Google Site Kit `Data_Encryption` pattern.
--   **Rate limiting.** Visitor submitted forms are rate limited per IP per shortcode via WordPress transients to prevent abuse.
--   **Theme aware.** Every class is prefixed `.roxyapi-*` and uses `var(--wp--preset--color--*)` tokens from the active theme `theme.json`. Override from your child theme or just override the class.
--   **Interface translation, not only the readings.** Text domain `roxyapi`. Ships built in catalogues for German, Spanish, Hindi, Turkish, Portuguese, French and Russian, covering the settings screens, the birth details form, and every message a visitor reads.
--   **WCAG 2.1 AA.** Proper heading order, labeled inputs, keyboard navigation, color contrast.
+- **Server side rendering.** The plugin makes every API call in PHP. The key never reaches the browser.
+- **Encrypted at rest storage.** AES 256 CTR with a key derived from `ROXYAPI_ENCRYPTION_KEY` constant or `LOGGED_IN_KEY` fallback. Ported from the Google Site Kit `Data_Encryption` pattern.
+- **Rate limiting.** Visitor submitted forms are rate limited per IP per shortcode via WordPress transients to prevent abuse.
+- **Theme aware.** Every class is prefixed `.roxyapi-*` and uses `var(--wp--preset--color--*)` tokens from the active theme `theme.json`. Override from your child theme or just override the class.
+- **Interface translation, not only the readings.** Text domain `roxyapi`. Ships built in catalogues for German, Spanish, Hindi, Turkish, Portuguese, French and Russian, covering the settings screens, the birth details form, and every message a visitor reads.
+- **WCAG 2.1 AA.** Proper heading order, labeled inputs, keyboard navigation, color contrast.
 
 ## Create a reading without writing attributes
 
@@ -172,12 +172,12 @@ RoxyAPI > Create a reading ([try it online](https://roxyapi.github.io/sdk-wordpr
 
 The RoxyAPI admin page is split into six tabs:
 
--   **Connect.** Paste the API key, test the connection.
--   **Branding.** Four ready-made palettes, or seven colors set by hand with a light and a dark value each, plus a light, dark, or auto theme and the reading language.
--   **Display.** Written readings on or off, hidden sections, the source credit, an optional disclaimer line, and the visitor form copy.
--   **Sell readings.** How to keep one reading free and put the deeper ones on a page only paying members open, with links to the full guide.
--   **Privacy.** Visitor consent label. Birth date and time are special category data under GDPR Article 9; submission is gated on an explicit opt in checkbox and the plugin registers privacy policy content via `wp_add_privacy_policy_content`.
--   **Advanced.** Cache preset (fresh / balanced / quota saver) and a connection status panel.
+- **Connect.** Paste the API key, test the connection.
+- **Branding.** Four ready-made palettes, or seven colors set by hand with a light and a dark value each, plus a light, dark, or auto theme and the reading language.
+- **Display.** Written readings on or off, hidden sections, the source credit, an optional disclaimer line, and the visitor form copy.
+- **Sell readings.** How to keep one reading free and put the deeper ones on a page only paying members open, with links to the full guide.
+- **Privacy.** Visitor consent label. Birth date and time are special category data under GDPR Article 9; submission is gated on an explicit opt in checkbox and the plugin registers privacy policy content via `wp_add_privacy_policy_content`.
+- **Advanced.** Cache preset (fresh / balanced / quota saver) and a connection status panel.
 
 Form mode shortcodes also surface a city autocomplete (RoxyAPI geocoder, ARIA 1.2 combobox) so visitors can pick a city instead of typing latitude, longitude, and timezone by hand. The plugin proxies queries through `/wp-json/roxyapi/v1/geocode` so the API key never reaches the browser.
 
@@ -200,18 +200,18 @@ add_filter(
 
 RoxyAPI ships four official clients. Same data, different stacks:
 
--   **WordPress plugin** (this repo): [wordpress.org/plugins/roxyapi](https://wordpress.org/plugins/roxyapi/)
--   **TypeScript SDK:** [github.com/RoxyAPI/sdk-typescript](https://github.com/RoxyAPI/sdk-typescript)
--   **Python SDK:** [github.com/RoxyAPI/sdk-python](https://github.com/RoxyAPI/sdk-python)
--   **MCP server for AI agents:** [roxyapi.com/docs/mcp](https://roxyapi.com/docs/mcp)
+- **WordPress plugin** (this repo): [wordpress.org/plugins/roxyapi](https://wordpress.org/plugins/roxyapi/)
+- **TypeScript SDK:** [github.com/RoxyAPI/sdk-typescript](https://github.com/RoxyAPI/sdk-typescript)
+- **Python SDK:** [github.com/RoxyAPI/sdk-python](https://github.com/RoxyAPI/sdk-python)
+- **MCP server for AI agents:** [roxyapi.com/docs/mcp](https://roxyapi.com/docs/mcp)
 
 ## Links
 
--   [Documentation](https://roxyapi.com/docs)
--   [Interactive API reference](https://roxyapi.com/api-reference)
--   [Pricing and API keys](https://roxyapi.com/pricing)
--   [WordPress.org listing](https://wordpress.org/plugins/roxyapi/)
--   [Issues](https://github.com/RoxyAPI/sdk-wordpress/issues)
+- [Documentation](https://roxyapi.com/docs)
+- [Interactive API reference](https://roxyapi.com/api-reference)
+- [Pricing and API keys](https://roxyapi.com/pricing)
+- [WordPress.org listing](https://wordpress.org/plugins/roxyapi/)
+- [Issues](https://github.com/RoxyAPI/sdk-wordpress/issues)
 
 ## Development
 

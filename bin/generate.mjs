@@ -1382,16 +1382,16 @@ function emitFormPhp( op ) {
 					nonBodyNames.length
 						? `array_diff_key( $body, array_flip( ${ phpLiteral(
 								nonBodyNames
-						  ) } ) )`
+							) } ) )`
 						: '$body',
 					...( queryNames.length
 						? [
 								`array_intersect_key( $body, array_flip( ${ phpLiteral(
 									queryNames
 								) } ) )`,
-						  ]
+							]
 						: [] ),
-			  ]
+				]
 			: extractParams( op )
 					.filter( ( p ) => p.in === 'query' )
 					.map( ( p ) =>
@@ -1603,7 +1603,7 @@ ${ queryArray.join( '\n' ) }
 			const bodyGuard = requiredBody.length
 				? `\t\tif ( ! \\RoxyAPI\\Api\\Client::body_has_all( $body, array( ${ requiredBody.join(
 						', '
-				  ) } ) ) ) {\n\t\t\treturn \\RoxyAPI\\Api\\Client::not_configured();\n\t\t}`
+					) } ) ) ) {\n\t\t\treturn \\RoxyAPI\\Api\\Client::not_configured();\n\t\t}`
 				: '';
 			// A POST operation can still declare QUERY parameters, and many do:
 			// the response language on most, plus focus / include / orb /
@@ -1754,7 +1754,7 @@ function emitEndpointsPhp() {
 			attrEntries.length > 0
 				? `\n\t\t\t'attributes' => array(\n${ attrEntries.join(
 						'\n'
-				  ) }\n\t\t\t),`
+					) }\n\t\t\t),`
 				: `\n\t\t\t'attributes' => array(),`;
 
 		const formOnly = hasRequiredObjectBody( op );
@@ -1973,7 +1973,7 @@ function emitComponentMapPhp() {
 					}
 					const attrPhp = attrKeys.length
 						? `\t\t\t\t\t'attrs'     => array(\n` +
-						  attrKeys
+							attrKeys
 								.map(
 									( key ) =>
 										`\t\t\t\t\t\t${ sq( key ) } => ${ sq(
@@ -1981,7 +1981,7 @@ function emitComponentMapPhp() {
 										) },`
 								)
 								.join( '\n' ) +
-						  `\n\t\t\t\t\t),\n`
+							`\n\t\t\t\t\t),\n`
 						: '';
 					return (
 						`\t\t\t\tarray(\n` +
@@ -2750,7 +2750,7 @@ function emitBlockIndexJs( block ) {
 	const options = block.instructions
 		? `, {\n\t\tinstructions: ${ translatableJs(
 				block.instructions
-		  ) },\n\t}`
+			) },\n\t}`
 		: '';
 	return `import { registerBlockType } from '@wordpress/blocks';
 ${ i18nImport }import metadata from './block.json';
@@ -3050,10 +3050,10 @@ function renderTransformErrorBlocksFetch( transformedFields, cfg ) {
 		const errMessage = cfg.transform_error_message
 			? `sprintf( ${ translatorComment } __( ${ JSON.stringify(
 					cfg.transform_error_message
-			  ) }, 'roxyapi' ), ${ JSON.stringify( cfg.example ) } )`
+				) }, 'roxyapi' ), ${ JSON.stringify( cfg.example ) } )`
 			: `__( ${ JSON.stringify(
 					`The ${ name } attribute must be in YYYY-MM-DD format.`
-			  ) }, 'roxyapi' )`;
+				) }, 'roxyapi' )`;
 		blocks.push(
 			`\t\tif ( $${ name }_parts === null ) {
 			return new \\WP_Error( 'roxyapi_invalid_format', ${ errMessage } );
@@ -3498,10 +3498,10 @@ ${ withReservedAtts( [], '\t\t' ).join( '\n' ) }
 		const errMessage = cfg.transform_error_message
 			? `sprintf( ${ translatorComment } __( ${ JSON.stringify(
 					cfg.transform_error_message
-			  ) }, 'roxyapi' ), ${ JSON.stringify( cfg.example ) } )`
+				) }, 'roxyapi' ), ${ JSON.stringify( cfg.example ) } )`
 			: `__( ${ JSON.stringify(
 					`The ${ name } attribute must be in YYYY-MM-DD format.`
-			  ) }, 'roxyapi' )`;
+				) }, 'roxyapi' )`;
 		transformErrorBlocks.push(
 			`\t\tif ( $${ name }_parts === null ) {
 			return \\RoxyAPI\\Support\\Templates::error( ${ errMessage } );
@@ -3719,7 +3719,7 @@ function emitHeroFormPhp( tagSuffix, cfg ) {
 					...( modelField.example !== undefined && {
 						placeholder: String( modelField.example ),
 					} ),
-			  }
+				}
 			: {};
 		// Only shapes inherit: the curated copy, order and grouping stay intact.
 		const defaults = Object.fromEntries(
@@ -3766,7 +3766,7 @@ function emitHeroFormPhp( tagSuffix, cfg ) {
 							] )
 						),
 					},
-			  ]
+				]
 			: [];
 
 	let sectionsPhp = '';
@@ -3976,7 +3976,7 @@ function builderAttribute( op, att, info = {}, curated = {} ) {
 	const locationGroup = op
 		? uiForms[ op.operationId ].groups.findIndex( ( group ) =>
 				group.location?.fields.includes( wireName )
-		  )
+			)
 		: -1;
 	const locationRole =
 		model?.role === 'location'
@@ -4009,7 +4009,7 @@ function builderAttribute( op, att, info = {}, curated = {} ) {
 							uiForms[ op.operationId ].groups[ locationGroup ]
 								.key || 'location',
 						role: locationRole,
-				  }
+					}
 				: null,
 	};
 }
@@ -4047,7 +4047,7 @@ function buildBuilderManifest() {
 				: (
 						cfg.dispatch?.find( ( branch ) => branch.default ) ||
 						cfg.dispatch?.[ 0 ]
-				  )?.operationId );
+					)?.operationId );
 		const op = opsByIdMap[ opId ];
 		const attributes = Object.entries( cfg.attributes || {} )
 			.filter( ( [ att ] ) => ! BUILDER_EXCLUDED_ATTRIBUTES.has( att ) )
@@ -4099,7 +4099,7 @@ function buildBuilderManifest() {
 					} ) ),
 					...( op.method === 'POST' ? extractBodyFields( op ) : [] ),
 					...params.filter( ( p ) => p.in === 'query' ),
-			  ];
+				];
 		const attributes = [
 			...new Map(
 				inputs

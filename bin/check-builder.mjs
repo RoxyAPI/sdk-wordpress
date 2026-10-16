@@ -416,6 +416,43 @@ try {
 	await browser.close();
 }
 
+/**
+ * Round-trip with the iframe so queued postMessages have arrived.
+ *
+ * @param frame Builder iframe.
+ */
+function settle( frame ) {
+	return frame
+		.locator( 'body' )
+		.evaluate(
+			() =>
+				new Promise( ( resolve ) =>
+					window.requestAnimationFrame( () =>
+						window.requestAnimationFrame( resolve )
+					)
+				)
+		);
+}
+
+/**
+ * Visible elements of the builder painted with a light background.
+ *
+ * @param page Page showing the builder in dark mode.
+ */
+function lightSurfaces( page ) {
+	return page.locator( 'main' ).evaluate( ( main ) =>
+		[ main, ...main.querySelectorAll( '*' ) ]
+			.filter( ( node ) => {
+				const [ r, g, b, a = 1 ] = window
+					.getComputedStyle( node )
+					.backgroundColor.match( /[\d.]+/g )
+					.map( Number );
+				return node.checkVisibility() && a > 0 && r + g + b > 600;
+			} )
+			.map( ( node ) => `${ node.tagName }.${ node.className }` )
+	);
+}
+
 /** @param browser Browser instance. */
 async function checkAttributeQuoting( browser ) {
 	const page = await browser.newPage();
@@ -861,13 +898,22 @@ async function checkStandalone( browser ) {
 			'Asia/Kolkata'
 		);
 		await checkLayout( page, 'Standalone city selection' );
+		// Dark follows the OS until the embedding page passes a theme, and
+		// every painted surface follows it, open city list included.
 		await page.emulateMedia( { colorScheme: 'dark' } );
+		await panel.locator( '[data-roxyapi-geocode]' ).fill( 'Mumbai' );
+		await panel.getByRole( 'option' ).first().waitFor();
+		assert.deepEqual( await lightSurfaces( page ), [] );
+		await page.evaluate( () => {
+			document.documentElement.dataset.theme = 'light';
+		} );
 		assert.equal(
 			await page
 				.locator( '.roxyapi-builder' )
 				.evaluate( ( node ) => window.getComputedStyle( node ).color ),
-			'rgb(240, 242, 245)'
+			'rgb(29, 35, 39)'
 		);
+		await page.emulateMedia( { colorScheme: 'light' } );
 
 		// Trust the exact parent origin, rejecting a matching hostname prefix.
 		for ( const origin of [
@@ -904,6 +950,22 @@ async function checkStandalone( browser ) {
 					.locator( 'body' )
 					.evaluate( () => window.copiedShortcode ),
 				'[roxy_moon_phase]'
+			);
+			await page.evaluate( () =>
+				document
+					.querySelector( 'iframe' )
+					.contentWindow.postMessage(
+						{ type: 'roxy-builder:theme', theme: 'dark' },
+						'*'
+					)
+			);
+			await settle( frame );
+			assert.equal(
+				await frame
+					.locator( 'html' )
+					.evaluate( ( node ) => node.dataset.theme ?? null ),
+				origin === 'https://roxyapi.com' ? 'dark' : null,
+				`${ origin }: only the trusted parent sets the theme`
 			);
 			if ( origin === 'https://roxyapi.com' ) {
 				await page.waitForFunction( () =>
@@ -943,17 +1005,7 @@ async function checkStandalone( browser ) {
 					copies
 				);
 			} else {
-				// Round-trip with the iframe to allow queued postMessages to arrive.
-				await frame
-					.locator( 'body' )
-					.evaluate(
-						() =>
-							new Promise( ( resolve ) =>
-								window.requestAnimationFrame( () =>
-									window.requestAnimationFrame( resolve )
-								)
-							)
-					);
+				await settle( frame );
 				assert.equal( before, 0 );
 				assert.deepEqual(
 					await page.evaluate( () => window.messages ),

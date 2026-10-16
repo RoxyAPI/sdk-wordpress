@@ -77,7 +77,7 @@
 		const result = button.parentNode
 			? button.parentNode.querySelector(
 					'.roxyapi-test-connection-result'
-			  )
+				)
 			: null;
 		const banner = document.getElementById( 'roxyapi-test-banner' );
 		setResult( result, strings.testing, '' );
