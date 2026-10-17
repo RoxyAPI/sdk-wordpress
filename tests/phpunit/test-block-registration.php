@@ -56,6 +56,23 @@ class Test_Block_Registration extends \WP_UnitTestCase {
 		);
 	}
 
+	/** Read through `variation_callback`, which every supported version honours. */
+	public function test_the_horoscope_block_offers_one_variation_per_period(): void {
+		$type = \WP_Block_Type_Registry::get_instance()->get_registered( 'roxyapi/horoscope' );
+
+		$this->assertSame( array( 'daily', 'weekly', 'monthly', 'yearly' ), array_column( $type->get_variations(), 'name' ) );
+	}
+
+	/** Block scripts depend only on handles core registers on the 6.5 floor; `react-jsx-runtime` arrived in 6.6. */
+	public function test_no_block_script_depends_on_the_jsx_runtime(): void {
+		$assets = glob( self::blocks_dir() . '/*/index.asset.php' );
+
+		$this->assertNotEmpty( $assets );
+		foreach ( $assets as $asset ) {
+			$this->assertNotContains( 'react-jsx-runtime', ( require $asset )['dependencies'], $asset );
+		}
+	}
+
 	public function test_generated_long_tail_blocks_carry_an_editor_script(): void {
 		$block = \WP_Block_Type_Registry::get_instance()->get_registered( 'roxyapi/calculate-expression' );
 		$this->assertNotNull( $block, 'The generated block must be registered.' );

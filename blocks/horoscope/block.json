@@ -23,7 +23,6 @@
 	},
 	"usesContext": [ "roxyapi/sign", "roxyapi/birthDate" ],
 	"render": "file:./render.php",
-	"variations": "file:./variations.php",
 	"editorScript": "file:./index.js",
 	"viewStyle": "file:./style.css",
 	"editorStyle": "file:./editor.css"

@@ -265,6 +265,13 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.22.0 =
+* New: planet meanings, zodiac signs, tarot cards, crystals and I Ching trigrams take a visitor form. Place [roxy_get_planet_meaning] or [roxy_get_zodiac_sign] with nothing inside the brackets and visitors pick from a list, then their reading appears on the same page. Create a reading offers Ask my visitor for all five.
+* Fixed: a reading placed without the details it needs no longer shows visitors an error. Visitors see nothing, and while you are logged in you see a short note on what to fill in.
+* Fixed: on a page with several visitor forms, sending one no longer marks the others as already shown.
+* Fixed: on WordPress 6.5 every RoxyAPI block is back in the block inserter, and the Horoscope block offers exactly its Daily, Weekly, Monthly and Yearly versions on every supported WordPress version.
+* Improved: every settings tab fits a phone screen. Branding shows each colour name above its Light and Dark pickers, and an open picker no longer pushes the page sideways.
+
 = 1.21.1 =
 * Improved: Create a reading opens on a short list of reading groups. Open one at a time, or search to see every match at once.
 * Improved: when you set a date or time, Create a reading spells it out in words beneath the field, so the order of day and month is never in doubt.
@@ -290,16 +297,12 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Improved: the moon phase prints the published illumination, wheel labels clear their planet glyphs, crowded North Indian kundli cells keep the house number clear, and biorhythm cycle names translate.
 * Improved: fields inside a folded form section line up in columns and stay inside the card on a phone.
 
-= 1.18.0 =
-* Improved: the block inserter lists the featured readings under RoxyAPI and every other reading under a second category, RoxyAPI: every reading, so the headline blocks are one short list to browse. Search still finds every block.
-* New: a city search in the block editor sidebar for every reading that takes a place. Pick a city and the latitude, longitude and timezone fill in, the same search the visitor form already has.
-* Improved: a visitor form folds a section nobody has to fill in, such as the domain weights on the forecast timeline, behind its heading until it is opened, and opens it on its own when it holds a value or an error.
-* Improved: the Connect screen leads with the shortcode that already works, then the key. The Shortcodes library lists readings only; the usage and language lookups are gone from it.
-* Improved: on the Branding tab a palette no longer overwrites the colours you set by hand, so you can try a palette and come back to your own; the colour fields fold away the moment a palette is picked, and the reset link says what it does.
-
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.22.0 =
+Worth updating if visitors should pick their own planet, sign, tarot card, crystal or trigram, if a page holds several visitor forms, or if your site runs WordPress 6.5.
 
 = 1.21.1 =
 Polishes Create a reading: grouped readings, dates spelled out in words, and a clearer first step on the Connect screen.
@@ -313,5 +316,3 @@ Worth updating if visitors should pick their own sign or entry: sixteen more rea
 = 1.19.0 =
 Worth updating if visitors should enter their own details: over a hundred more readings, luck pillars among them, show a visitor form when placed without attributes.
 
-= 1.18.0 =
-Worth updating if you build pages in the block editor: a city search fills coordinates in every block sidebar, the featured readings are one short RoxyAPI list in the inserter, and visitor forms fold their optional sections away.

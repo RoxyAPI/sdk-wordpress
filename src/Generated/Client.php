@@ -70,8 +70,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getZodiacSign( $id, $lang = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -121,8 +121,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getPlanetMeaning( $id, $lang = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -261,11 +261,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getMoonCalendar( $year, $month, $lang = null ) {
-		if ( $year === '' || $year === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'year' ) );
-		}
-		if ( $month === '' || $month === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'month' ) );
+		if ( in_array( '', array( (string) $year, (string) $month ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -573,8 +570,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getDailyHoroscope( $sign, $lang = null, $date = null, $timezone = null ) {
-		if ( $sign === '' || $sign === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'sign' ) );
+		if ( in_array( '', array( (string) $sign ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -602,8 +599,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getWeeklyHoroscope( $sign, $lang = null, $date = null, $timezone = null ) {
-		if ( $sign === '' || $sign === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'sign' ) );
+		if ( in_array( '', array( (string) $sign ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -631,8 +628,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getMonthlyHoroscope( $sign, $lang = null, $date = null, $timezone = null ) {
-		if ( $sign === '' || $sign === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'sign' ) );
+		if ( in_array( '', array( (string) $sign ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -660,8 +657,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getYearlyHoroscope( $sign, $lang = null, $year = null, $timezone = null ) {
-		if ( $sign === '' || $sign === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'sign' ) );
+		if ( in_array( '', array( (string) $sign ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -1129,8 +1126,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getSubDashas( $mahadasha, $body = array(), $query = array() ) {
-		if ( $mahadasha === '' || $mahadasha === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'mahadasha' ) );
+		if ( in_array( '', array( (string) $mahadasha ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
@@ -1153,11 +1150,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getPratyantardashas( $mahadasha, $antardasha, $body = array(), $query = array() ) {
-		if ( $mahadasha === '' || $mahadasha === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'mahadasha' ) );
-		}
-		if ( $antardasha === '' || $antardasha === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'antardasha' ) );
+		if ( in_array( '', array( (string) $mahadasha, (string) $antardasha ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
@@ -1180,14 +1174,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getSookshmaDashas( $mahadasha, $antardasha, $pratyantardasha, $body = array(), $query = array() ) {
-		if ( $mahadasha === '' || $mahadasha === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'mahadasha' ) );
-		}
-		if ( $antardasha === '' || $antardasha === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'antardasha' ) );
-		}
-		if ( $pratyantardasha === '' || $pratyantardasha === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'pratyantardasha' ) );
+		if ( in_array( '', array( (string) $mahadasha, (string) $antardasha, (string) $pratyantardasha ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
@@ -1210,17 +1198,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getPranaDashas( $mahadasha, $antardasha, $pratyantardasha, $sookshma, $body = array(), $query = array() ) {
-		if ( $mahadasha === '' || $mahadasha === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'mahadasha' ) );
-		}
-		if ( $antardasha === '' || $antardasha === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'antardasha' ) );
-		}
-		if ( $pratyantardasha === '' || $pratyantardasha === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'pratyantardasha' ) );
-		}
-		if ( $sookshma === '' || $sookshma === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'sookshma' ) );
+		if ( in_array( '', array( (string) $mahadasha, (string) $antardasha, (string) $pratyantardasha, (string) $sookshma ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
@@ -1432,8 +1411,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getYoga( $id, $lang = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -1888,8 +1867,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getRashi( $id, $lang = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -1939,8 +1918,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getNakshatra( $id, $lang = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -2052,8 +2031,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getAvastha( $id, $lang = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -2414,8 +2393,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getGate( $number, $lang = null ) {
-		if ( $number === '' || $number === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'number' ) );
+		if ( in_array( '', array( (string) $number ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -2483,8 +2462,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getCenter( $id, $lang = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -2683,8 +2662,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getZodiacAnimal( $id, $lang = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -2731,11 +2710,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getZodiacCompatibility( $sign1, $sign2, $lang = null ) {
-		if ( $sign1 === '' || $sign1 === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'sign1' ) );
-		}
-		if ( $sign2 === '' || $sign2 === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'sign2' ) );
+		if ( in_array( '', array( (string) $sign1, (string) $sign2 ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -2761,8 +2737,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getDailyZodiacReading( $id, $lang = null, $date = null, $timezone = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -2790,8 +2766,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function listSolarTerms( $year, $lang = null ) {
-		if ( $year === '' || $year === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'year' ) );
+		if ( in_array( '', array( (string) $year ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -2835,8 +2811,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getAlmanacDay( $date, $lang = null ) {
-		if ( $date === '' || $date === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'date' ) );
+		if ( in_array( '', array( (string) $date ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -2956,8 +2932,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getKuaNumber( $number, $lang = null ) {
-		if ( $number === '' || $number === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'number' ) );
+		if ( in_array( '', array( (string) $number ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -3019,8 +2995,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getAnnualFlyingStars( $year, $lang = null ) {
-		if ( $year === '' || $year === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'year' ) );
+		if ( in_array( '', array( (string) $year ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -3098,8 +3074,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getAnnualAfflictions( $year, $lang = null ) {
-		if ( $year === '' || $year === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'year' ) );
+		if ( in_array( '', array( (string) $year ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -3151,8 +3127,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getBaguaSector( $id, $lang = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -3364,8 +3340,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getMayanDaySign( $id, $lang = null, $directionScheme = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -3418,8 +3394,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getTrecena( $number, $lang = null ) {
-		if ( $number === '' || $number === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'number' ) );
+		if ( in_array( '', array( (string) $number ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -3471,8 +3447,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getHaabMonth( $id, $lang = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -3570,8 +3546,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getAztecDaySign( $id, $lang = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -3623,8 +3599,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getAztecTrecena( $number, $lang = null ) {
-		if ( $number === '' || $number === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'number' ) );
+		if ( in_array( '', array( (string) $number ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -3802,8 +3778,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getDikpalaDirection( $id, $lang = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -3855,8 +3831,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getDevata( $id, $lang = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -4170,8 +4146,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getNumberMeaning( $number, $lang = null ) {
-		if ( $number === '' || $number === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'number' ) );
+		if ( in_array( '', array( (string) $number ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -4236,8 +4212,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getCompoundNumber( $number, $lang = null ) {
-		if ( $number === '' || $number === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'number' ) );
+		if ( in_array( '', array( (string) $number ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -4413,8 +4389,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getShemName( $number, $lang = null ) {
-		if ( $number === '' || $number === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'number' ) );
+		if ( in_array( '', array( (string) $number ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -4467,8 +4443,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getSephirah( $id, $lang = null, $sephirotSystem = null, $letterAttribution = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -4521,8 +4497,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getHebrewLetter( $id, $lang = null, $letterAttribution = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -4623,8 +4599,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getCard( $id, $lang = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -5040,8 +5016,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getDosha( $id, $lang = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -5230,8 +5206,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getHexagram( $number, $lang = null ) {
-		if ( $number === '' || $number === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'number' ) );
+		if ( in_array( '', array( (string) $number ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -5306,8 +5282,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getTrigram( $id, $lang = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -5333,8 +5309,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getCrystalsByZodiac( $sign, $lang = null, $limit = null, $offset = null ) {
-		if ( $sign === '' || $sign === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'sign' ) );
+		if ( in_array( '', array( (string) $sign ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -5362,8 +5338,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getCrystalsByChakra( $chakra, $lang = null, $limit = null, $offset = null ) {
-		if ( $chakra === '' || $chakra === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'chakra' ) );
+		if ( in_array( '', array( (string) $chakra ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -5391,8 +5367,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getCrystalsByElement( $element, $lang = null, $limit = null, $offset = null ) {
-		if ( $element === '' || $element === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'element' ) );
+		if ( in_array( '', array( (string) $element ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -5420,8 +5396,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getBirthstones( $month, $lang = null ) {
-		if ( $month === '' || $month === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'month' ) );
+		if ( in_array( '', array( (string) $month ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -5474,8 +5450,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getCrystalPairings( $id, $lang = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -5622,8 +5598,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getCrystal( $id, $lang = null ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -5724,8 +5700,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getDreamSymbol( $id ) {
-		if ( $id === '' || $id === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'id' ) );
+		if ( in_array( '', array( (string) $id ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -5795,8 +5771,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getAngelNumber( $number, $lang = null ) {
-		if ( $number === '' || $number === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'number' ) );
+		if ( in_array( '', array( (string) $number ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(
@@ -5917,8 +5893,8 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getCitiesByCountry( $iso2, $limit = null, $offset = null ) {
-		if ( $iso2 === '' || $iso2 === null ) {
-			return new \WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), 'iso2' ) );
+		if ( in_array( '', array( (string) $iso2 ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
 		}
 		$query = array_filter(
 			array(

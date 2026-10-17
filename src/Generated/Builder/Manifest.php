@@ -1949,6 +1949,7 @@ class Manifest {
 					'operationId' => 'getPlanetMeaning',
 					'hero' => false,
 					'modes' => array(
+						'visitor',
 						'set',
 					),
 					'formOnly' => false,
@@ -3118,6 +3119,7 @@ class Manifest {
 					'operationId' => 'getZodiacSign',
 					'hero' => false,
 					'modes' => array(
+						'visitor',
 						'set',
 					),
 					'formOnly' => false,
@@ -15662,6 +15664,7 @@ class Manifest {
 					'operationId' => 'getCard',
 					'hero' => false,
 					'modes' => array(
+						'visitor',
 						'set',
 					),
 					'formOnly' => false,
@@ -16842,6 +16845,7 @@ class Manifest {
 					'operationId' => 'getTrigram',
 					'hero' => false,
 					'modes' => array(
+						'visitor',
 						'set',
 					),
 					'formOnly' => false,
@@ -16955,6 +16959,7 @@ class Manifest {
 					'operationId' => 'getCrystal',
 					'hero' => false,
 					'modes' => array(
+						'visitor',
 						'set',
 					),
 					'formOnly' => false,

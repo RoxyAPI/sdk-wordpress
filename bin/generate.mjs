@@ -596,8 +596,9 @@ function formInputs( op ) {
 
 /**
  * Every required input must be enterable by a visitor: no lists, objects or
- * free-text vocabulary identifiers. Catalogue and account readings remain
- * placed by the site owner. Closed path pickers still offer forms.
+ * free-text vocabulary identifiers. An identifier whose collection the API
+ * lists becomes a dropdown (`OptionSource`); one that is only searchable (the
+ * dream dictionary) stays placed by the site owner, as do account readings.
  * @param op
  */
 function offersVisitorForm( op ) {
@@ -618,8 +619,12 @@ function offersVisitorForm( op ) {
 				! f.key.includes( '.' ) &&
 				f.kind !== 'array' &&
 				f.kind !== 'object' &&
-				! f.source &&
-				! ( model.path.includes( `{${ f.key }}` ) && f.kind === 'text' )
+				! f.source?.search &&
+				( f.source ||
+					! (
+						model.path.includes( `{${ f.key }}` ) &&
+						f.kind === 'text'
+					) )
 		)
 	);
 }
@@ -1128,6 +1133,26 @@ function adaptField( modelField, schema, options = {} ) {
 }
 
 /**
+ * The collection a dropdown is filled from at run time, cached for as long as
+ * the reading that lists it.
+ * @param source UI model `source`.
+ */
+function sourceSpec( source ) {
+	const list = operations.find(
+		( o ) => o.method === 'GET' && o.path === source.path
+	);
+	if ( ! list ) {
+		throw new Error( `[generate] no GET operation lists ${ source.path }` );
+	}
+	return {
+		path: source.path,
+		...( source.limit && { limit: source.limit } ),
+		...( source.lang && { lang: true } ),
+		ttl: getTtl( list.operationId ),
+	};
+}
+
+/**
  * Adapt a UI field to the controls FormRenderer already supports.
  * @param op
  * @param modelField
@@ -1160,6 +1185,9 @@ function buildFormFieldSpec( op, modelField ) {
 	}
 	if ( adapted.type === 'number' ) {
 		field.step = 'any';
+	}
+	if ( modelField.source && ! modelField.source.search ) {
+		field.source = sourceSpec( modelField.source );
 	}
 	// Curated heroes do not inherit the model's folds.
 	field.fold = !! modelField.fold;
@@ -1461,6 +1489,11 @@ ${ fieldsPhp }
 		} )
 		.join( '\n' );
 
+	const sourced = [
+		...( formSpec.flatFields || [] ),
+		...( formSpec.sections || [] ).flatMap( ( sec ) => sec.fields ),
+	].some( ( f ) => f.source );
+
 	// Form labels are page chrome: they follow the screen locale like gettext and
 	// the component catalogues, while the reading follows the reading language.
 	return `<?php
@@ -1484,7 +1517,7 @@ class ${ className } {
 
 	public static function spec(): array {
 		$labels = \\RoxyAPI\\Generated\\FormLabels::for_language( \\RoxyAPI\\Support\\Language::from_locale( determine_locale() ) );
-		return array(
+		return ${ sourced ? '\\RoxyAPI\\Support\\OptionSource::resolve( ' : '' }array(
 			'operation_id' => ${ phpLiteral( op.operationId ) },
 			'title'        => ${ translatablePhp( title ) },
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
@@ -1495,7 +1528,7 @@ ${ sectionsPhp }
 			'flat_fields'  => array(
 ${ flatPhp }
 			),
-		);
+		)${ sourced ? ' )' : '' };
 	}
 
 	/**
@@ -1523,19 +1556,17 @@ function emitClientPhp() {
 		const pathParams = extractPathParams( op.path );
 		const phpPath = buildPhpPath( op.path );
 
-		// Build a guard block that fails fast (with a friendly WP_Error) if any
-		// required path param arrived empty. Without this, an unset shortcode
-		// attr produces requests like `/horoscope//monthly` that the SaaS 404s
-		// or that emit `rawurlencode(null)` deprecation warnings.
-		const pathGuard =
-			pathParams.length > 0
-				? pathParams
-						.map( ( p ) => {
-							const v = toPhpVar( p );
-							return `\t\tif ( $${ v } === '' || $${ v } === null ) {\n\t\t\treturn new \\WP_Error( 'roxyapi_missing_param', sprintf( /* translators: %s: shortcode attribute name. */ __( 'Missing required attribute "%s" for this shortcode.', 'roxyapi' ), '${ p }' ) );\n\t\t}`;
-						} )
-						.join( '\n' )
-				: '';
+		// An empty path param is the same authoring state as an empty required
+		// body field, so it returns the same owner-only notice: never a request
+		// like `/horoscope//monthly`, and never an attribute name on a page a
+		// visitor reads.
+		const pathGuard = pathParams.length
+			? `\t\tif ( in_array( '', array( ${ pathParams
+					.map( ( p ) => `(string) $${ toPhpVar( p ) }` )
+					.join(
+						', '
+					) } ), true ) ) {\n\t\t\treturn \\RoxyAPI\\Api\\Client::not_configured();\n\t\t}`
+			: '';
 
 		if ( op.method === 'GET' ) {
 			const params = extractParams( op );

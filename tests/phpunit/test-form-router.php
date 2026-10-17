@@ -97,9 +97,8 @@ class Test_Form_Router extends \WP_UnitTestCase {
 	}
 
 	/**
-	 * Pull the transient that the most-recent redirect points at. The URL
-	 * carries an opaque token; the actual transient key is derived server-side
-	 * via SHA-256 over `form_id|token` (see FormRouter::transient_key()).
+	 * Read the result the most-recent redirect points at, through the router's
+	 * own GET side, so the token format and key derivation are tested, not copied.
 	 */
 	private function consume_transient_for_url( ?string $url, string $form_id = 'calculateSynastry' ): ?array {
 		if ( $url === null ) {
@@ -114,9 +113,10 @@ class Test_Form_Router extends \WP_UnitTestCase {
 		if ( ! is_string( $token ) || $token === '' ) {
 			return null;
 		}
-		$transient_key = 'roxyapi_r_' . hash( 'sha256', $form_id . '|' . $token );
-		$data          = get_transient( $transient_key );
-		return is_array( $data ) ? $data : null;
+		$_GET['roxyapi_r'] = $token;
+		$data              = FormRouter::consume_result( $form_id );
+		unset( $_GET['roxyapi_r'] );
+		return is_array( $data ) && empty( $data['expired'] ) ? $data : null;
 	}
 
 	public function test_missing_form_id_is_a_noop(): void {

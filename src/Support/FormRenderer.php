@@ -8,7 +8,7 @@
  * `roxyapi_form` dispatch hidden input, and a control per field whose type
  * comes from the vendored UI model. Submission is handled by FormRouter.
  *
- * If the request follows a PRG redirect carrying `?roxyapi_r=<key>`, the
+ * If the request follows a PRG redirect carrying `?roxyapi_r=<form id>.<key>`, the
  * stored result (success, validation errors, or upstream WP_Error) renders
  * above the form. Submitted values flow back into the form so the visitor
  * does not retype on a validation miss.

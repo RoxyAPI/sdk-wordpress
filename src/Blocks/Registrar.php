@@ -33,7 +33,15 @@ class Registrar {
 		$block_files = glob( $blocks_dir . '/*/block.json' );
 		if ( $block_files ) {
 			foreach ( $block_files as $block_json ) {
-				$block_type = register_block_type( dirname( $block_json ) );
+				$block_dir  = dirname( $block_json );
+				$variations = $block_dir . '/variations.php';
+				// block.json `"variations": "file:..."` is read from 6.7 only; a callback works from 6.5.
+				$block_type = register_block_type(
+					$block_dir,
+					is_file( $variations )
+						? array( 'variation_callback' => static fn() => require $variations )
+						: array()
+				);
 				/**
 				 * Editor-side strings are translated by `@wordpress/i18n` in JavaScript, and those
 				 * only resolve once the script HANDLE is bound to the text domain. `wp-i18n` being

@@ -3,6 +3,13 @@
 The full release history for the RoxyAPI plugin. The most recent releases are
 also listed in readme.txt, which wordpress.org displays on the plugin page.
 
+= 1.22.0 =
+* New: planet meanings, zodiac signs, tarot cards, crystals and I Ching trigrams take a visitor form. Place [roxy_get_planet_meaning] or [roxy_get_zodiac_sign] with nothing inside the brackets and visitors pick from a list, then their reading appears on the same page. Create a reading offers Ask my visitor for all five.
+* Fixed: a reading placed without the details it needs no longer shows visitors an error. Visitors see nothing, and while you are logged in you see a short note on what to fill in.
+* Fixed: on a page with several visitor forms, sending one no longer marks the others as already shown.
+* Fixed: on WordPress 6.5 every RoxyAPI block is back in the block inserter, and the Horoscope block offers exactly its Daily, Weekly, Monthly and Yearly versions on every supported WordPress version.
+* Improved: every settings tab fits a phone screen. Branding shows each colour name above its Light and Dark pickers, and an open picker no longer pushes the page sideways.
+
 = 1.21.1 =
 * Improved: Create a reading opens on a short list of reading groups. Open one at a time, or search to see every match at once.
 * Improved: when you set a date or time, Create a reading spells it out in words beneath the field, so the order of day and month is never in doubt.

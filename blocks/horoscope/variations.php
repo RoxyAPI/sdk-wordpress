@@ -8,8 +8,8 @@
  * which the shortcode dispatches on at render time.
  *
  * Each variation is a preset that changes attributes. Users pick one
- * from the block inserter or transform menu. PHP file variations
- * supported since WP 6.7.
+ * from the block inserter or transform menu. Loaded through the
+ * registrar's `variation_callback`, which every supported version reads.
  *
  * @package RoxyAPI
  */

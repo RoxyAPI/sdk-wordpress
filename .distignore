@@ -39,6 +39,7 @@
 /CLAUDE.md
 /MAINTAINER.md
 /CITATION.cff
+/babel.config.js
 /eslint.config.cjs
 /patterns
 /todo.md

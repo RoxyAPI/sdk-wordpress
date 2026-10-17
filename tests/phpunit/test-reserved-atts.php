@@ -283,7 +283,7 @@ class Test_Reserved_Atts extends Mock_Http_TestCase {
 		$key = new \ReflectionMethod( FormRouter::class, 'transient_key' );
 		$key->setAccessible( true );
 		set_transient( (string) $key->invoke( null, $form_id, self::FORM_TOKEN ), array( 'result' => $result ), 300 );
-		$_GET['roxyapi_r'] = self::FORM_TOKEN;
+		$_GET['roxyapi_r'] = $form_id . '.' . self::FORM_TOKEN;
 	}
 
 	/** Response shaped like a natal chart, with a readings block and a named section. */

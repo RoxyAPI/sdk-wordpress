@@ -22,7 +22,7 @@ msgstr "1111"
 msgid "Admin only:"
 msgstr "Только для администраторов:"
 
-#: src/Generated/Builder/Manifest.php:17585
+#: src/Generated/Builder/Manifest.php:17590
 #: src/Generated/Heroes/Manifest.php:202
 msgid "Angel number"
 msgstr "Ангельское число"
@@ -94,7 +94,7 @@ msgid "Ayanamsa value"
 msgstr "Значение айанамсы"
 
 #: src/Generated/Builder/Manifest.php:57
-#: src/Generated/Builder/Manifest.php:15817
+#: src/Generated/Builder/Manifest.php:15820
 #: src/Generated/Heroes/Manifest.php:192
 msgid "Biorhythm"
 msgstr "Биоритм"
@@ -422,7 +422,7 @@ msgstr "Балл совместимости"
 msgid "Crystals and stones associated with any zodiac sign, with properties, color, and chakra."
 msgstr "Кристаллы и камни, связанные с каждым знаком зодиака, с их свойствами, цветом и чакрой."
 
-#: src/Generated/Builder/Manifest.php:16880
+#: src/Generated/Builder/Manifest.php:16884
 #: src/Generated/Heroes/Manifest.php:212
 msgid "Crystals by zodiac"
 msgstr "Кристаллы по знаку зодиака"
@@ -435,7 +435,7 @@ msgstr "Кристаллы для вашего знака"
 msgid "Current moon phase, illumination, sign, degree, and meaning."
 msgstr "Текущая фаза Луны, освещённость, знак, градус и значение."
 
-#: src/Generated/Builder/Manifest.php:15534
+#: src/Generated/Builder/Manifest.php:15536
 #: src/Generated/Forms/CastCustomSpreadForm.php:24
 msgid "Custom Spread Builder"
 msgstr "Конструктор своего расклада"
@@ -787,9 +787,11 @@ msgstr "Получить ответ"
 #: src/Generated/Forms/GetBaguaSectorForm.php:25
 #: src/Generated/Forms/GetBasicPanchangForm.php:25
 #: src/Generated/Forms/GetBirthstonesForm.php:25
+#: src/Generated/Forms/GetCardForm.php:25
 #: src/Generated/Forms/GetCenterForm.php:25
 #: src/Generated/Forms/GetChoghadiyaForm.php:25
 #: src/Generated/Forms/GetCriticalDaysForm.php:25
+#: src/Generated/Forms/GetCrystalForm.php:25
 #: src/Generated/Forms/GetCrystalsByChakraForm.php:25
 #: src/Generated/Forms/GetCrystalsByElementForm.php:25
 #: src/Generated/Forms/GetCurrentDashaForm.php:25
@@ -819,6 +821,7 @@ msgstr "Получить ответ"
 #: src/Generated/Forms/GetPhasesForm.php:25
 #: src/Generated/Forms/GetPlanetaryNodePassagesForm.php:25
 #: src/Generated/Forms/GetPlanetaryPositionsForm.php:25
+#: src/Generated/Forms/GetPlanetMeaningForm.php:25
 #: src/Generated/Forms/GetPlanetPositionsForm.php:25
 #: src/Generated/Forms/GetPranaDashasForm.php:25
 #: src/Generated/Forms/GetPratyantardashasForm.php:25
@@ -829,6 +832,7 @@ msgstr "Получить ответ"
 #: src/Generated/Forms/GetSookshmaDashasForm.php:25
 #: src/Generated/Forms/GetSubDashasForm.php:25
 #: src/Generated/Forms/GetTrecenaForm.php:25
+#: src/Generated/Forms/GetTrigramForm.php:25
 #: src/Generated/Forms/GetUpagrahaPositionsForm.php:25
 #: src/Generated/Forms/GetVedicDailyReadingForm.php:25
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:25
@@ -836,6 +840,7 @@ msgstr "Получить ответ"
 #: src/Generated/Forms/GetYogaForm.php:25
 #: src/Generated/Forms/GetZodiacAnimalForm.php:25
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:25
+#: src/Generated/Forms/GetZodiacSignForm.php:25
 #: src/Generated/Forms/ListSolarTermsForm.php:25
 #: src/Generated/Forms/LookupAuspiciousDaysForm.php:25
 #: src/Generated/Forms/LookupHexagramForm.php:25
@@ -843,7 +848,7 @@ msgstr "Получить ответ"
 msgid "Get reading"
 msgstr "Получить расчёт"
 
-#: src/Generated/Builder/Manifest.php:3503
+#: src/Generated/Builder/Manifest.php:3505
 #: src/Generated/Heroes/Manifest.php:102
 msgid "Gun Milan"
 msgstr "Гун Милан"
@@ -883,7 +888,7 @@ msgstr "Название IANA, например America/New_York"
 msgid "IANA name like Asia/Kolkata"
 msgstr "Название IANA, например Asia/Kolkata"
 
-#: src/Generated/Builder/Manifest.php:3413
+#: src/Generated/Builder/Manifest.php:3415
 #: src/Generated/Forms/KpChartForm.php:31
 #: src/Generated/Heroes/Manifest.php:82
 msgid "KP chart"
@@ -973,7 +978,7 @@ msgstr "Карта Кришнамурти Паддхати с куспидами
 msgid "Latitude"
 msgstr "Широта"
 
-#: src/Generated/Builder/Manifest.php:13772
+#: src/Generated/Builder/Manifest.php:13774
 #: src/Generated/Heroes/Manifest.php:182
 #: blocks/generated/calculate-maturity/index.js:11
 msgid "Life path"
@@ -1093,7 +1098,7 @@ msgstr "Узнать значение"
 msgid "Look up panchang"
 msgstr "Посмотреть панчанг"
 
-#: src/Generated/Builder/Manifest.php:3323
+#: src/Generated/Builder/Manifest.php:3325
 #: src/Generated/Heroes/Manifest.php:72
 msgid "Mangal Dosha"
 msgstr "Мангал доша"
@@ -1198,7 +1203,7 @@ msgid "Number sequence"
 msgstr "Последовательность чисел"
 
 #: src/Generated/Builder/Manifest.php:48
-#: src/Generated/Builder/Manifest.php:13730
+#: src/Generated/Builder/Manifest.php:13732
 #: src/Generated/Heroes/Manifest.php:172
 msgid "Numerology"
 msgstr "Нумерология"
@@ -1225,7 +1230,7 @@ msgstr "Необязательно. Карта отвечает на то, с ч
 msgid "Optional. The cards reflect on whatever you bring to them."
 msgstr "Необязательно. Карты отражают то, с чем вы к ним приходите."
 
-#: src/Generated/Builder/Manifest.php:3246
+#: src/Generated/Builder/Manifest.php:3248
 #: src/Generated/Heroes/Manifest.php:62
 msgid "Panchang"
 msgstr "Панчанг"
@@ -1407,7 +1412,7 @@ msgstr "Расклады на одну карту, три карты или Ке
 msgid "Single-card Yes / No / Maybe answer with strength rating and interpretation."
 msgstr "Ответ по одной карте: Да / Нет / Возможно, с оценкой силы и толкованием."
 
-#: src/Generated/Builder/Manifest.php:15418
+#: src/Generated/Builder/Manifest.php:15420
 #: src/Generated/Forms/TarotCardForm.php:48
 #: blocks/generated/tarot/index.js:19
 msgid "Spread"
@@ -1433,7 +1438,7 @@ msgid "Submit"
 msgstr "Отправить"
 
 #: src/Generated/Builder/Manifest.php:244
-#: src/Generated/Builder/Manifest.php:2908
+#: src/Generated/Builder/Manifest.php:2909
 #: src/Generated/Forms/CalculateSynastryForm.php:24
 #: src/Generated/Heroes/Manifest.php:92
 msgid "Synastry"
@@ -1449,7 +1454,7 @@ msgstr "Синастрия"
 msgid "Target date"
 msgstr "Целевая дата"
 
-#: src/Generated/Builder/Manifest.php:15403
+#: src/Generated/Builder/Manifest.php:15405
 #: src/Generated/Heroes/Manifest.php:162
 msgid "Tarot card"
 msgstr "Карта таро"
@@ -1458,7 +1463,7 @@ msgstr "Карта таро"
 msgid "Tarot reading"
 msgstr "Расклад таро"
 
-#: src/Generated/Builder/Manifest.php:15373
+#: src/Generated/Builder/Manifest.php:15375
 #: src/Generated/Forms/TarotYesNoForm.php:31
 #: src/Generated/Heroes/Manifest.php:152
 msgid "Tarot yes or no"
@@ -1719,7 +1724,7 @@ msgstr "Ведическая карта рождения"
 msgid "Vedic birth chart with twelve rashis, planetary positions, nakshatra, and per-house interpretations."
 msgstr "Ведическая карта рождения с двенадцатью раши, положениями планет, накшатрой и толкованиями по домам."
 
-#: src/Generated/Builder/Manifest.php:3156
+#: src/Generated/Builder/Manifest.php:3158
 #: src/Generated/Heroes/Manifest.php:52
 msgid "Vedic kundli"
 msgstr "Ведическая кундли"
@@ -2126,8 +2131,8 @@ msgstr "Неверный формат API-ключа. Получите ключ 
 msgid "Could not encrypt API key. Check that PHP openssl is installed."
 msgstr "Не удалось зашифровать API-ключ. Убедитесь, что установлен модуль PHP openssl."
 
-#: src/Admin/SettingsPage.php:101
-#: src/Admin/SettingsPage.php:102
+#: src/Admin/SettingsPage.php:110
+#: src/Admin/SettingsPage.php:111
 #: templates/admin-help.php:59
 msgid "Shortcodes"
 msgstr "Шорткоды"
@@ -2272,70 +2277,6 @@ msgstr "Слишком много проверок подключения. По�
 msgid "RoxyAPI Daily Horoscope"
 msgstr "Гороскоп на день RoxyAPI"
 
-#. translators: %s: shortcode attribute name.
-#: src/Generated/Client.php:74
-#: src/Generated/Client.php:125
-#: src/Generated/Client.php:265
-#: src/Generated/Client.php:268
-#: src/Generated/Client.php:577
-#: src/Generated/Client.php:606
-#: src/Generated/Client.php:635
-#: src/Generated/Client.php:664
-#: src/Generated/Client.php:1133
-#: src/Generated/Client.php:1157
-#: src/Generated/Client.php:1160
-#: src/Generated/Client.php:1184
-#: src/Generated/Client.php:1187
-#: src/Generated/Client.php:1190
-#: src/Generated/Client.php:1214
-#: src/Generated/Client.php:1217
-#: src/Generated/Client.php:1220
-#: src/Generated/Client.php:1223
-#: src/Generated/Client.php:1436
-#: src/Generated/Client.php:1892
-#: src/Generated/Client.php:1943
-#: src/Generated/Client.php:2056
-#: src/Generated/Client.php:2418
-#: src/Generated/Client.php:2487
-#: src/Generated/Client.php:2687
-#: src/Generated/Client.php:2735
-#: src/Generated/Client.php:2738
-#: src/Generated/Client.php:2765
-#: src/Generated/Client.php:2794
-#: src/Generated/Client.php:2839
-#: src/Generated/Client.php:2960
-#: src/Generated/Client.php:3023
-#: src/Generated/Client.php:3102
-#: src/Generated/Client.php:3155
-#: src/Generated/Client.php:3368
-#: src/Generated/Client.php:3422
-#: src/Generated/Client.php:3475
-#: src/Generated/Client.php:3574
-#: src/Generated/Client.php:3627
-#: src/Generated/Client.php:3806
-#: src/Generated/Client.php:3859
-#: src/Generated/Client.php:4174
-#: src/Generated/Client.php:4240
-#: src/Generated/Client.php:4417
-#: src/Generated/Client.php:4471
-#: src/Generated/Client.php:4525
-#: src/Generated/Client.php:4627
-#: src/Generated/Client.php:5044
-#: src/Generated/Client.php:5234
-#: src/Generated/Client.php:5310
-#: src/Generated/Client.php:5337
-#: src/Generated/Client.php:5366
-#: src/Generated/Client.php:5395
-#: src/Generated/Client.php:5424
-#: src/Generated/Client.php:5478
-#: src/Generated/Client.php:5626
-#: src/Generated/Client.php:5728
-#: src/Generated/Client.php:5799
-#: src/Generated/Client.php:5921
-#, php-format
-msgid "Missing required attribute \"%s\" for this shortcode."
-msgstr ""
-
 #: src/Support/Attribution.php:209
 msgid "Spiritual data by RoxyAPI"
 msgstr "Духовные данные от RoxyAPI"
@@ -2363,8 +2304,8 @@ msgid "Please confirm consent before submitting."
 msgstr "Подтвердите согласие перед отправкой."
 
 #. translators: %s: field label
-#: src/Support/FormRouter.php:328
-#: src/Support/FormRouter.php:342
+#: src/Support/FormRouter.php:330
+#: src/Support/FormRouter.php:344
 #, php-format
 msgid "%s is required."
 msgstr "%s: обязательное поле."
@@ -3237,19 +3178,19 @@ msgstr ""
 msgid "Birth timezone: decimal hours from UTC (e.g. -5 for EST, 5.5 for IST) OR IANA name (e.g. \"America/New_York\")"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:2465
+#: src/Generated/Builder/Manifest.php:2466
 #: src/Generated/Forms/GenerateRelocationChartForm.php:57
 #: blocks/generated/generate-relocation-chart/index.js:32
 msgid "Birth latitude"
 msgstr "Широта рождения"
 
-#: src/Generated/Builder/Manifest.php:2481
+#: src/Generated/Builder/Manifest.php:2482
 #: src/Generated/Forms/GenerateRelocationChartForm.php:67
 #: blocks/generated/generate-relocation-chart/index.js:39
 msgid "Birth longitude"
 msgstr "Долгота рождения"
 
-#: src/Generated/Builder/Manifest.php:2497
+#: src/Generated/Builder/Manifest.php:2498
 #: src/Generated/Forms/GenerateRelocationChartForm.php:77
 #: blocks/generated/generate-relocation-chart/index.js:46
 msgid "Relocation latitude"
@@ -3259,7 +3200,7 @@ msgstr "Широта релокации"
 msgid "New location latitude in decimal degrees (-90 to 90)"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:2513
+#: src/Generated/Builder/Manifest.php:2514
 #: src/Generated/Forms/GenerateRelocationChartForm.php:87
 #: blocks/generated/generate-relocation-chart/index.js:53
 msgid "Relocation longitude"
@@ -3785,7 +3726,7 @@ msgstr ""
 msgid "Search query to match against symbol names and meanings"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14930
+#: src/Generated/Builder/Manifest.php:14932
 #: src/Generated/Forms/GetHebrewLetterForm.php:33
 #: blocks/generated/search-dream-symbols/index.js:18
 msgid "Letter"
@@ -5226,13 +5167,13 @@ msgctxt "block keyword"
 msgid "spread"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15914
+#: src/Generated/Builder/Manifest.php:15917
 #: src/Generated/Forms/CalculateBioCompatibilityForm.php:24
 msgid "Compatibility"
 msgstr "Совместимость"
 
 #: src/Generated/Builder/Manifest.php:1046
-#: src/Generated/Builder/Manifest.php:4915
+#: src/Generated/Builder/Manifest.php:4917
 #: src/Generated/Forms/CalculateCompatibilityForm.php:24
 #: src/Generated/Forms/CalculateGunMilanForm.php:24
 msgid "Compatibility Score"
@@ -5243,7 +5184,7 @@ msgstr "Оценка совместимости"
 msgid "Composite Chart"
 msgstr "Композитная карта"
 
-#: src/Generated/Builder/Manifest.php:9558
+#: src/Generated/Builder/Manifest.php:9560
 #: src/Generated/Forms/GenerateTimelineForm.php:24
 msgid "Cross-domain Forecast Timeline"
 msgstr "Межтематическая шкала прогноза"
@@ -5252,22 +5193,22 @@ msgstr "Межтематическая шкала прогноза"
 msgid "Ephemeris month"
 msgstr "Месяц эфемерид"
 
-#: src/Generated/Builder/Manifest.php:9572
+#: src/Generated/Builder/Manifest.php:9574
 #: src/Generated/Forms/GenerateDigestForm.php:24
 msgid "Forecast Digest"
 msgstr "Сводка прогноза"
 
-#: src/Generated/Builder/Manifest.php:10182
+#: src/Generated/Builder/Manifest.php:10184
 #: src/Generated/Forms/CalculateConnectionForm.php:24
 msgid "Human Design Connection Chart"
 msgstr "Карта связи Дизайна человека"
 
-#: src/Generated/Builder/Manifest.php:10331
+#: src/Generated/Builder/Manifest.php:10333
 #: src/Generated/Forms/CalculatePentaForm.php:24
 msgid "Human Design Penta"
 msgstr "Пента Дизайна человека"
 
-#: src/Generated/Builder/Manifest.php:10451
+#: src/Generated/Builder/Manifest.php:10453
 #: src/Generated/Forms/GenerateTransitForm.php:24
 msgid "Human Design Transit Overlay"
 msgstr "Наложение транзитов Дизайна человека"
@@ -5316,7 +5257,7 @@ msgstr "Предыдущий месяц"
 msgid "Show month"
 msgstr "Показать месяц"
 
-#: src/Generated/Builder/Manifest.php:9586
+#: src/Generated/Builder/Manifest.php:9588
 #: src/Generated/Forms/FindSignificantDatesForm.php:24
 msgid "Significant Dates"
 msgstr "Значимые даты"
@@ -5325,12 +5266,12 @@ msgstr "Значимые даты"
 msgid "That reading has already been shown. Enter the details below to run it again."
 msgstr "Этот расчёт уже был показан. Введите данные ниже, чтобы получить его снова."
 
-#: src/Generated/Builder/Manifest.php:2922
+#: src/Generated/Builder/Manifest.php:2923
 #: src/Generated/Forms/CalculateTransitAspectsForm.php:24
 msgid "Transit Aspects"
 msgstr "Аспекты транзитов"
 
-#: src/Generated/Builder/Manifest.php:9721
+#: src/Generated/Builder/Manifest.php:9723
 #: src/Generated/Forms/ForecastTransitsForm.php:24
 msgid "Western Astrology Forecast"
 msgstr "Прогноз западной астрологии"
@@ -6771,7 +6712,7 @@ msgctxt "block keyword"
 msgid "vedic"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11091
+#: src/Generated/Builder/Manifest.php:11093
 #: src/Generated/Forms/CalculateBaziCompatibilityForm.php:24
 msgid "BaZi Compatibility"
 msgstr "Совместимость по Бацзы"
@@ -7510,17 +7451,17 @@ msgstr "Бодиграф Дизайна Человека"
 msgid "Generate bodygraph"
 msgstr "Построить бодиграф"
 
-#: src/Generated/Builder/Manifest.php:7937
+#: src/Generated/Builder/Manifest.php:7939
 #: src/Generated/Forms/CalculateDashakootForm.php:24
 msgid "Porutham Match"
 msgstr "Совпадение по порутхам"
 
-#: src/Generated/Builder/Manifest.php:13568
+#: src/Generated/Builder/Manifest.php:13570
 #: src/Generated/Forms/CalculateEntrancePadaForm.php:24
 msgid "Entrance Pada"
 msgstr "Пада входа"
 
-#: src/Generated/Builder/Manifest.php:13688
+#: src/Generated/Builder/Manifest.php:13690
 #: src/Generated/Forms/CalculatePlotAnalysisForm.php:24
 msgid "Plot"
 msgstr "Участок"
@@ -7529,7 +7470,7 @@ msgstr "Участок"
 msgid "Unit"
 msgstr "Единица"
 
-#: src/Generated/Builder/Manifest.php:13095
+#: src/Generated/Builder/Manifest.php:13097
 #: src/Generated/Forms/CalculateMayanCompatibilityForm.php:24
 msgid "Mayan Nawal Compatibility"
 msgstr "Совместимость наваль майя"
@@ -7568,22 +7509,22 @@ msgstr "Схема направлений"
 msgid "Which reading of the world direction and colour to serve for a day sign"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:4901
+#: src/Generated/Builder/Manifest.php:4903
 #: src/Generated/Forms/CalculatePapasamyamForm.php:24
 msgid "Compare Malefic Affliction"
 msgstr "Сравнить влияние неблагоприятных планет"
 
-#: src/Generated/Builder/Manifest.php:13702
+#: src/Generated/Builder/Manifest.php:13704
 #: src/Generated/Forms/CalculateRoomComplianceForm.php:24
 msgid "Room Placement"
 msgstr "Расположение комнат"
 
-#: src/Generated/Builder/Manifest.php:13716
+#: src/Generated/Builder/Manifest.php:13718
 #: src/Generated/Forms/GenerateMandalaForm.php:24
 msgid "Vastu Purusha Mandala"
 msgstr "Васту-пуруша-мандала"
 
-#: src/Generated/Builder/Manifest.php:9544
+#: src/Generated/Builder/Manifest.php:9546
 #: src/Generated/Heroes/Manifest.php:132
 msgid "Forecast timeline"
 msgstr "Хронология прогноза"
@@ -7592,7 +7533,7 @@ msgstr "Хронология прогноза"
 msgid "Cross-domain forecast for one birth chart: transits, ingresses, stations, dasha changes, and biorhythm critical days over a window of up to 90 days."
 msgstr "Междоменный прогноз для одной натальной карты: транзиты, ингрессии, стационарности, смены даш и критические дни биоритмов в окне до 90 дней."
 
-#: src/Generated/Builder/Manifest.php:9735
+#: src/Generated/Builder/Manifest.php:9737
 #: src/Generated/Heroes/Manifest.php:142
 msgid "Bodygraph"
 msgstr "Бодиграф"
@@ -9077,17 +9018,17 @@ msgstr ""
 msgid "Clear every colour and use the defaults"
 msgstr "Очистить все цвета и вернуть значения по умолчанию"
 
-#: src/Generated/Builder/Manifest.php:14152
+#: src/Generated/Builder/Manifest.php:14154
 #: src/Generated/Forms/AnalyzeKarmicLessonsForm.php:24
 msgid "Karmic Lessons"
 msgstr "Кармические уроки"
 
-#: src/Generated/Builder/Manifest.php:17718
+#: src/Generated/Builder/Manifest.php:17723
 #: src/Generated/Forms/AnalyzeNumberSequenceForm.php:24
 msgid "Number Sequence"
 msgstr "Последовательность чисел"
 
-#: src/Generated/Builder/Manifest.php:10798
+#: src/Generated/Builder/Manifest.php:10800
 #: src/Generated/Forms/CalculateAnnualForecastForm.php:24
 msgid "BaZi Annual Forecast"
 msgstr "Годовой прогноз Бацзы"
@@ -9104,47 +9045,47 @@ msgstr ""
 msgid "Arabic Lots"
 msgstr "Арабские части"
 
-#: src/Generated/Builder/Manifest.php:3707
+#: src/Generated/Builder/Manifest.php:3709
 #: src/Generated/Forms/CalculateArudhaPadasForm.php:24
 msgid "Arudha Padas"
 msgstr "Аруддха-пады"
 
-#: src/Generated/Builder/Manifest.php:3829
+#: src/Generated/Builder/Manifest.php:3831
 #: src/Generated/Forms/CalculateAshtakavargaForm.php:24
 msgid "Ashtakavarga"
 msgstr "Аштакаварга"
 
-#: src/Generated/Builder/Manifest.php:1987
+#: src/Generated/Builder/Manifest.php:1988
 #: src/Generated/Forms/CalculateAspectsForm.php:24
 msgid "Planetary Aspects"
 msgstr "Аспекты планет"
 
-#: src/Generated/Builder/Manifest.php:13240
+#: src/Generated/Builder/Manifest.php:13242
 #: src/Generated/Forms/CalculateAyadiForm.php:24
 msgid "Ayadi Shadvarga"
 msgstr "Аяди шадварга"
 
-#: src/Generated/Builder/Manifest.php:16144
+#: src/Generated/Builder/Manifest.php:16147
 #: src/Generated/Forms/CalculateAyurvedicConstitutionForm.php:24
 msgid "Ayurvedic Constitution"
 msgstr "Аюрведическая конституция"
 
-#: src/Generated/Builder/Manifest.php:4259
+#: src/Generated/Builder/Manifest.php:4261
 #: src/Generated/Forms/CalculateBhavaBalaForm.php:24
 msgid "Bhava Bala"
 msgstr "Бхава бала"
 
-#: src/Generated/Builder/Manifest.php:4121
+#: src/Generated/Builder/Manifest.php:4123
 #: src/Generated/Forms/CalculateBhavChalitForm.php:24
 msgid "Bhav Chalit"
 msgstr "Бхав чалит"
 
-#: src/Generated/Builder/Manifest.php:13801
+#: src/Generated/Builder/Manifest.php:13803
 #: src/Generated/Forms/CalculateBirthDayForm.php:24
 msgid "Birth Day Number"
 msgstr "Число дня рождения"
 
-#: src/Generated/Builder/Manifest.php:13830
+#: src/Generated/Builder/Manifest.php:13832
 #: src/Generated/Forms/CalculateBridgeNumbersForm.php:24
 msgid "Bridge Numbers"
 msgstr "Числа-мосты"
@@ -9153,7 +9094,7 @@ msgstr "Числа-мосты"
 msgid "Full birth name as it appears on the birth certificate, first, middle and last names separated by spaces"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:13898
+#: src/Generated/Builder/Manifest.php:13900
 #: src/Generated/Forms/CalculateBusinessNameForm.php:24
 msgid "Business Name Numerology"
 msgstr "Нумерология названия бизнеса"
@@ -9162,37 +9103,37 @@ msgstr "Нумерология названия бизнеса"
 msgid "The business or brand name to evaluate"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:10076
+#: src/Generated/Builder/Manifest.php:10078
 #: src/Generated/Forms/CalculateCentersForm.php:24
 msgid "Human Design Centers"
 msgstr "Центры Дизайна человека"
 
-#: src/Generated/Builder/Manifest.php:13927
+#: src/Generated/Builder/Manifest.php:13929
 #: src/Generated/Forms/CalculateChaldeanForm.php:24
 msgid "Chaldean Numerology"
 msgstr "Халдейская нумерология"
 
-#: src/Generated/Builder/Manifest.php:9825
+#: src/Generated/Builder/Manifest.php:9827
 #: src/Generated/Forms/CalculateChannelsForm.php:24
 msgid "Defined Human Design Channels"
 msgstr "Определённые каналы Дизайна человека"
 
-#: src/Generated/Builder/Manifest.php:4564
+#: src/Generated/Builder/Manifest.php:4566
 #: src/Generated/Forms/CalculateCharaKarakasForm.php:24
 msgid "Chara Karakas"
 msgstr "Чара-каракас"
 
-#: src/Generated/Builder/Manifest.php:11451
+#: src/Generated/Builder/Manifest.php:11453
 #: src/Generated/Forms/CalculateDayMasterStrengthForm.php:24
 msgid "Day Master Strength"
 msgstr "Сила Мастера дня"
 
-#: src/Generated/Builder/Manifest.php:7674
+#: src/Generated/Builder/Manifest.php:7676
 #: src/Generated/Forms/CalculateDrishtiForm.php:24
 msgid "Planetary Aspects (Drishti)"
 msgstr "Аспекты планет (дришти)"
 
-#: src/Generated/Builder/Manifest.php:14026
+#: src/Generated/Builder/Manifest.php:14028
 #: src/Generated/Forms/CalculateDualForm.php:24
 msgid "Dual Numerology"
 msgstr "Двойная нумерология"
@@ -9201,12 +9142,12 @@ msgstr "Двойная нумерология"
 msgid "The name to analyze in both systems"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14055
+#: src/Generated/Builder/Manifest.php:14057
 #: src/Generated/Forms/CalculateExpressionForm.php:24
 msgid "Expression Number"
 msgstr "Число выражения"
 
-#: src/Generated/Builder/Manifest.php:10196
+#: src/Generated/Builder/Manifest.php:10198
 #: src/Generated/Forms/CalculateGatesForm.php:24
 msgid "Human Design Gate Activations"
 msgstr "Активации ворот Дизайна человека"
@@ -9216,22 +9157,22 @@ msgstr "Активации ворот Дизайна человека"
 msgid "House Cusps"
 msgstr "Куспиды домов"
 
-#: src/Generated/Builder/Manifest.php:12038
+#: src/Generated/Builder/Manifest.php:12040
 #: src/Generated/Forms/CalculateKuaNumberForm.php:24
 msgid "Calculate Kua Number"
 msgstr "Рассчитать число Куа"
 
-#: src/Generated/Builder/Manifest.php:11633
+#: src/Generated/Builder/Manifest.php:11635
 #: src/Generated/Forms/CalculateLuckPillarsForm.php:24
 msgid "Luck Pillars"
 msgstr "Столпы удачи"
 
-#: src/Generated/Builder/Manifest.php:14303
+#: src/Generated/Builder/Manifest.php:14305
 #: src/Generated/Forms/CalculateNumCompatibilityForm.php:24
 msgid "Numerology Compatibility"
 msgstr "Нумерологическая совместимость"
 
-#: src/Generated/Builder/Manifest.php:5445
+#: src/Generated/Builder/Manifest.php:5447
 #: src/Generated/Forms/CalculateParallelsForm.php:24
 msgid "Declination Parallels"
 msgstr "Параллели склонения"
@@ -9244,7 +9185,7 @@ msgstr ""
 msgid "Birth longitude in decimal degrees, part of the birth record"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14317
+#: src/Generated/Builder/Manifest.php:14319
 #: src/Generated/Forms/CalculatePersonalDayForm.php:24
 msgid "Personal Day"
 msgstr "Личный день"
@@ -9253,7 +9194,7 @@ msgstr "Личный день"
 msgid "Target date in YYYY-MM-DD format, in the years 100 to 2100"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14495
+#: src/Generated/Builder/Manifest.php:14497
 #: src/Generated/Forms/CalculatePersonalityForm.php:24
 msgid "Personality Number"
 msgstr "Число личности"
@@ -9263,7 +9204,7 @@ msgstr "Число личности"
 msgid "Full birth name"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14372
+#: src/Generated/Builder/Manifest.php:14374
 #: src/Generated/Forms/CalculatePersonalMonthForm.php:24
 msgid "Personal Month"
 msgstr "Личный месяц"
@@ -9276,7 +9217,7 @@ msgstr ""
 msgid "Target calendar month to forecast (1 to 12)"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14440
+#: src/Generated/Builder/Manifest.php:14442
 #: src/Generated/Forms/CalculatePersonalYearForm.php:24
 msgid "Personal Year"
 msgstr "Личный год"
@@ -9285,62 +9226,62 @@ msgstr "Личный год"
 msgid "Year to forecast"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:10345
+#: src/Generated/Builder/Manifest.php:10347
 #: src/Generated/Forms/CalculateProfileForm.php:24
 msgid "Human Design Profile and Line Keynotes"
 msgstr "Профиль Дизайна человека и ключевые линии"
 
-#: src/Generated/Builder/Manifest.php:8601
+#: src/Generated/Builder/Manifest.php:8603
 #: src/Generated/Forms/CalculateShadbalaForm.php:24
 msgid "Shadbala"
 msgstr "Шадбала"
 
-#: src/Generated/Builder/Manifest.php:14524
+#: src/Generated/Builder/Manifest.php:14526
 #: src/Generated/Forms/CalculateSoulUrgeForm.php:24
 msgid "Soul Urge Number"
 msgstr "Число стремления души"
 
-#: src/Generated/Builder/Manifest.php:12491
+#: src/Generated/Builder/Manifest.php:12493
 #: src/Generated/Forms/CalculateTonalpohualliForm.php:24
 msgid "Aztec Day Sign for a Date"
 msgstr "Ацтекский знак дня на дату"
 
-#: src/Generated/Builder/Manifest.php:8959
+#: src/Generated/Builder/Manifest.php:8961
 #: src/Generated/Forms/CalculateTransitForm.php:24
 msgid "Transit Analysis"
 msgstr "Анализ транзитов"
 
-#: src/Generated/Builder/Manifest.php:10465
+#: src/Generated/Builder/Manifest.php:10467
 #: src/Generated/Forms/CalculateTypeForm.php:24
 msgid "Human Design Type"
 msgstr "Тип Дизайна человека"
 
-#: src/Generated/Builder/Manifest.php:12990
+#: src/Generated/Builder/Manifest.php:12992
 #: src/Generated/Forms/CalculateTzolkinForm.php:24
 msgid "Mayan Day Sign for a Date"
 msgstr "Знак дня майя на дату"
 
-#: src/Generated/Builder/Manifest.php:10571
+#: src/Generated/Builder/Manifest.php:10573
 #: src/Generated/Forms/CalculateVariablesForm.php:24
 msgid "Human Design Variables"
 msgstr "Переменные Дизайна человека"
 
-#: src/Generated/Builder/Manifest.php:11147
+#: src/Generated/Builder/Manifest.php:11149
 #: src/Generated/Forms/CalculateZodiacAnimalForm.php:24
 msgid "Chinese Zodiac Animal for a Birth Date"
 msgstr "Животное китайского зодиака по дате рождения"
 
-#: src/Generated/Builder/Manifest.php:4397
+#: src/Generated/Builder/Manifest.php:4399
 #: src/Generated/Forms/CastKpHoraryChartForm.php:24
 msgid "Cast a KP Horary"
 msgstr "Составить хорарную карту КП"
 
-#: src/Generated/Builder/Manifest.php:5894
+#: src/Generated/Builder/Manifest.php:5896
 #: src/Generated/Forms/CheckKalsarpaDoshaForm.php:24
 msgid "Kalsarpa Dosha"
 msgstr "Калсарпа доша"
 
-#: src/Generated/Builder/Manifest.php:8479
+#: src/Generated/Builder/Manifest.php:8481
 #: src/Generated/Forms/CheckSadhesatiForm.php:24
 msgid "Sadhesati"
 msgstr "Садхесати"
@@ -9350,23 +9291,23 @@ msgstr "Садхесати"
 msgid "Aspect Patterns"
 msgstr "Конфигурации аспектов"
 
-#: src/Generated/Builder/Manifest.php:4779
+#: src/Generated/Builder/Manifest.php:4781
 #: src/Generated/Forms/DetectYogasForm.php:24
 msgid "Classical Vedic Yogas in a Birth Chart"
 msgstr "Классические ведические йоги в карте рождения"
 
-#: src/Generated/Builder/Manifest.php:15548
+#: src/Generated/Builder/Manifest.php:15550
 #: src/Generated/Forms/DrawCardsForm.php:24
 msgid "Draw Tarot Cards"
 msgstr "Вытянуть карты таро"
 
-#: src/Generated/Builder/Manifest.php:13582
+#: src/Generated/Builder/Manifest.php:13584
 #: src/Generated/Forms/FindGrihaPraveshDatesForm.php:24
 msgid "Griha Pravesh Dates"
 msgstr "Даты гриха правеша"
 
-#: src/Generated/Builder/Manifest.php:2787
-#: src/Generated/Builder/Manifest.php:9600
+#: src/Generated/Builder/Manifest.php:2788
+#: src/Generated/Builder/Manifest.php:9602
 #: src/Generated/Forms/ForecastSolarReturnForm.php:24
 #: src/Generated/Forms/GenerateSolarReturnForm.php:24
 msgid "Solar Return Chart"
@@ -9382,22 +9323,22 @@ msgstr "Богини-астероиды"
 msgid "Astrocartography Map"
 msgstr "Карта астрокартографии"
 
-#: src/Generated/Builder/Manifest.php:10951
+#: src/Generated/Builder/Manifest.php:10953
 #: src/Generated/Forms/GenerateBaziChartForm.php:24
 msgid "BaZi Chart"
 msgstr "Карта Бацзы"
 
-#: src/Generated/Builder/Manifest.php:14553
+#: src/Generated/Builder/Manifest.php:14555
 #: src/Generated/Forms/GenerateBirthProfileForm.php:24
 msgid "Birth Profile"
 msgstr "Профиль рождения"
 
-#: src/Generated/Builder/Manifest.php:9931
+#: src/Generated/Builder/Manifest.php:9933
 #: src/Generated/Forms/GenerateBodygraphForm.php:24
 msgid "Human Design Bodygraph"
 msgstr "Бодиграф Дизайна человека"
 
-#: src/Generated/Builder/Manifest.php:5548
+#: src/Generated/Builder/Manifest.php:5550
 #: src/Generated/Forms/GenerateDivisionalChartForm.php:24
 msgid "Divisional Chart (Varga)"
 msgstr "Дивизионная карта (варга)"
@@ -9422,17 +9363,17 @@ msgstr "Карта астрологии местного пространств�
 msgid "Lunar Return Chart"
 msgstr "Карта лунного возвращения"
 
-#: src/Generated/Builder/Manifest.php:12860
+#: src/Generated/Builder/Manifest.php:12862
 #: src/Generated/Forms/GenerateMayanChartForm.php:24
 msgid "Mayan Chart"
 msgstr "Карта майя"
 
-#: src/Generated/Builder/Manifest.php:7552
+#: src/Generated/Builder/Manifest.php:7554
 #: src/Generated/Forms/GenerateNavamsaForm.php:24
 msgid "Navamsa Chart (D9)"
 msgstr "Карта навамша (D9)"
 
-#: src/Generated/Builder/Manifest.php:2185
+#: src/Generated/Builder/Manifest.php:2186
 #: src/Generated/Forms/GeneratePlanetaryReturnForm.php:24
 msgid "Planetary Return Chart"
 msgstr "Карта планетного возвращения"
@@ -9442,223 +9383,223 @@ msgstr "Карта планетного возвращения"
 msgid "Annual Profections"
 msgstr "Годовые профекции"
 
-#: src/Generated/Builder/Manifest.php:2549
+#: src/Generated/Builder/Manifest.php:2550
 #: src/Generated/Forms/GenerateProgressionsForm.php:24
 msgid "Secondary Progressions"
 msgstr "Вторичные прогрессии"
 
-#: src/Generated/Builder/Manifest.php:2409
+#: src/Generated/Builder/Manifest.php:2410
 #: src/Generated/Forms/GenerateRelocationChartForm.php:24
 msgid "Relocation Chart"
 msgstr "Карта релокации"
 
-#: src/Generated/Builder/Manifest.php:2668
+#: src/Generated/Builder/Manifest.php:2669
 #: src/Generated/Forms/GenerateSolarArcForm.php:24
 msgid "Solar Arc Directions"
 msgstr "Солнечные дуговые дирекции"
 
-#: src/Generated/Builder/Manifest.php:10677
+#: src/Generated/Builder/Manifest.php:10679
 #: src/Generated/Forms/GetAlmanacDayForm.php:24
 msgid "Almanac for a Day"
 msgstr "Альманах на день"
 
-#: src/Generated/Builder/Manifest.php:11899
+#: src/Generated/Builder/Manifest.php:11901
 #: src/Generated/Forms/GetAnnualAfflictionsForm.php:24
 msgid "Annual Afflictions"
 msgstr "Годовые неблагоприятные влияния"
 
-#: src/Generated/Builder/Manifest.php:11928
+#: src/Generated/Builder/Manifest.php:11930
 #: src/Generated/Forms/GetAnnualFlyingStarsForm.php:24
 msgid "Annual Flying Stars"
 msgstr "Годовые летящие звёзды"
 
-#: src/Generated/Builder/Manifest.php:3965
+#: src/Generated/Builder/Manifest.php:3967
 #: src/Generated/Forms/GetAvasthaForm.php:24
 #: src/Generated/Forms/GetAvasthaForm.php:33
 msgid "Avastha"
 msgstr "Авастха"
 
-#: src/Generated/Builder/Manifest.php:12441
+#: src/Generated/Builder/Manifest.php:12443
 #: src/Generated/Forms/GetAztecDaySignForm.php:24
 msgid "Aztec Day Sign"
 msgstr "Ацтекский знак дня"
 
-#: src/Generated/Builder/Manifest.php:12455
-#: src/Generated/Builder/Manifest.php:12938
+#: src/Generated/Builder/Manifest.php:12457
+#: src/Generated/Builder/Manifest.php:12940
 #: src/Generated/Forms/GetAztecDaySignForm.php:33
 #: src/Generated/Forms/GetMayanDaySignForm.php:33
 msgid "Day sign"
 msgstr "Знак дня"
 
-#: src/Generated/Builder/Manifest.php:12562
+#: src/Generated/Builder/Manifest.php:12564
 #: src/Generated/Forms/GetAztecTrecenaForm.php:24
 msgid "Aztec Trecena"
 msgstr "Ацтекская тресена"
 
-#: src/Generated/Builder/Manifest.php:11957
+#: src/Generated/Builder/Manifest.php:11959
 #: src/Generated/Forms/GetBaguaSectorForm.php:24
 msgid "Bagua Sector"
 msgstr "Сектор багуа"
 
-#: src/Generated/Builder/Manifest.php:11971
+#: src/Generated/Builder/Manifest.php:11973
 #: src/Generated/Forms/GetBaguaSectorForm.php:33
 msgid "Life area"
 msgstr "Сфера жизни"
 
-#: src/Generated/Builder/Manifest.php:4031
+#: src/Generated/Builder/Manifest.php:4033
 #: src/Generated/Forms/GetBasicPanchangForm.php:24
 msgid "Basic Panchang"
 msgstr "Базовый панчанг"
 
-#: src/Generated/Builder/Manifest.php:16922
+#: src/Generated/Builder/Manifest.php:16926
 #: src/Generated/Forms/GetBirthstonesForm.php:24
 msgid "Birthstones by Month"
 msgstr "Камни по месяцу рождения"
 
-#: src/Generated/Builder/Manifest.php:10051
+#: src/Generated/Builder/Manifest.php:10053
 #: src/Generated/Forms/GetCenterForm.php:33
 msgid "Center"
 msgstr "Центр"
 
-#: src/Generated/Builder/Manifest.php:4702
+#: src/Generated/Builder/Manifest.php:4704
 #: src/Generated/Forms/GetChoghadiyaForm.php:24
 msgid "Choghadiya"
 msgstr "Чогадия"
 
-#: src/Generated/Builder/Manifest.php:15928
+#: src/Generated/Builder/Manifest.php:15931
 #: src/Generated/Forms/GetCriticalDaysForm.php:24
 msgid "Critical Days"
 msgstr "Критические дни"
 
-#: src/Generated/Builder/Manifest.php:17169
+#: src/Generated/Builder/Manifest.php:17174
 #: src/Generated/Forms/GetCrystalsByChakraForm.php:24
 msgid "Crystals by Chakra"
 msgstr "Кристаллы по чакре"
 
-#: src/Generated/Builder/Manifest.php:17232
+#: src/Generated/Builder/Manifest.php:17237
 #: src/Generated/Forms/GetCrystalsByElementForm.php:24
 msgid "Crystals by Element"
 msgstr "Кристаллы по стихии"
 
-#: src/Generated/Builder/Manifest.php:4929
+#: src/Generated/Builder/Manifest.php:4931
 #: src/Generated/Forms/GetCurrentDashaForm.php:24
 msgid "Current Mahadasha"
 msgstr "Текущая махадаша"
 
-#: src/Generated/Builder/Manifest.php:16282
+#: src/Generated/Builder/Manifest.php:16285
 #: src/Generated/Forms/GetDailyAyurvedaReadingForm.php:24
 msgid "Daily Ayurveda Reading"
 msgstr "Ежедневный расчёт аюрведы"
 
-#: src/Generated/Builder/Manifest.php:11383
+#: src/Generated/Builder/Manifest.php:11385
 #: src/Generated/Forms/GetDailyZodiacReadingForm.php:24
 msgid "Daily Chinese Zodiac Reading"
 msgstr "Ежедневный расчёт китайского зодиака"
 
-#: src/Generated/Builder/Manifest.php:11119
-#: src/Generated/Builder/Manifest.php:11397
+#: src/Generated/Builder/Manifest.php:11121
+#: src/Generated/Builder/Manifest.php:11399
 #: src/Generated/Forms/GetDailyZodiacReadingForm.php:33
 #: src/Generated/Forms/GetZodiacAnimalForm.php:33
 msgid "Animal"
 msgstr "Животное"
 
-#: src/Generated/Builder/Manifest.php:13371
-#: src/Generated/Builder/Manifest.php:13385
+#: src/Generated/Builder/Manifest.php:13373
+#: src/Generated/Builder/Manifest.php:13387
 #: src/Generated/Forms/GetDevataForm.php:24
 #: src/Generated/Forms/GetDevataForm.php:33
 msgid "Devata"
 msgstr "Девата"
 
-#: src/Generated/Builder/Manifest.php:13488
-#: src/Generated/Builder/Manifest.php:13502
+#: src/Generated/Builder/Manifest.php:13490
+#: src/Generated/Builder/Manifest.php:13504
 #: src/Generated/Forms/GetDikpalaDirectionForm.php:24
 #: src/Generated/Forms/GetDikpalaDirectionForm.php:33
 msgid "Direction"
 msgstr "Направление"
 
-#: src/Generated/Builder/Manifest.php:16359
+#: src/Generated/Builder/Manifest.php:16362
 #: src/Generated/Forms/GetDinacharyaScheduleForm.php:24
 msgid "Dinacharya Daily Routine"
 msgstr "Диначарья: распорядок дня"
 
-#: src/Generated/Builder/Manifest.php:16452
-#: src/Generated/Builder/Manifest.php:16466
+#: src/Generated/Builder/Manifest.php:16455
+#: src/Generated/Builder/Manifest.php:16469
 #: src/Generated/Forms/GetDoshaForm.php:24
 #: src/Generated/Forms/GetDoshaForm.php:33
 msgid "Dosha"
 msgstr "Доша"
 
-#: src/Generated/Builder/Manifest.php:15859
+#: src/Generated/Builder/Manifest.php:15862
 #: src/Generated/Forms/GetForecastForm.php:24
 msgid "Biorhythm Forecast"
 msgstr "Прогноз биоритмов"
 
-#: src/Generated/Builder/Manifest.php:10302
+#: src/Generated/Builder/Manifest.php:10304
 #: src/Generated/Forms/GetGateForm.php:24
 msgid "Human Design Gate by Number"
 msgstr "Ворота Дизайна человека по номеру"
 
-#: src/Generated/Builder/Manifest.php:12769
+#: src/Generated/Builder/Manifest.php:12771
 #: src/Generated/Forms/GetHaabMonthForm.php:24
 msgid "Haab Period"
 msgstr "Период хааб"
 
-#: src/Generated/Builder/Manifest.php:12783
+#: src/Generated/Builder/Manifest.php:12785
 #: src/Generated/Forms/GetHaabMonthForm.php:33
 msgid "Haab period"
 msgstr "Период хааб"
 
-#: src/Generated/Builder/Manifest.php:14916
+#: src/Generated/Builder/Manifest.php:14918
 #: src/Generated/Forms/GetHebrewLetterForm.php:24
 msgid "Hebrew Letter"
 msgstr "Буква иврита"
 
-#: src/Generated/Builder/Manifest.php:5740
+#: src/Generated/Builder/Manifest.php:5742
 #: src/Generated/Forms/GetHeliacalVisibilityForm.php:24
 msgid "Heliacal Rising and Setting"
 msgstr "Гелиакические восход и заход"
 
-#: src/Generated/Builder/Manifest.php:16753
+#: src/Generated/Builder/Manifest.php:16756
 #: src/Generated/Forms/GetHexagramForm.php:24
 msgid "Hexagram by Number"
 msgstr "Гексаграмма по номеру"
 
-#: src/Generated/Builder/Manifest.php:5817
+#: src/Generated/Builder/Manifest.php:5819
 #: src/Generated/Forms/GetHoraForm.php:24
 msgid "Hora"
 msgstr "Хора"
 
-#: src/Generated/Builder/Manifest.php:6016
+#: src/Generated/Builder/Manifest.php:6018
 #: src/Generated/Forms/GetKpCuspsForm.php:24
 msgid "KP Placidus House Cusps"
 msgstr "Куспиды домов Плацидус (КП)"
 
-#: src/Generated/Builder/Manifest.php:5109
+#: src/Generated/Builder/Manifest.php:5111
 #: src/Generated/Forms/GetKpDailyFinanceForm.php:24
 msgid "Daily Finance Score"
 msgstr "Ежедневная финансовая оценка"
 
-#: src/Generated/Builder/Manifest.php:6154
+#: src/Generated/Builder/Manifest.php:6156
 #: src/Generated/Forms/GetKpPlanetsForm.php:24
 msgid "KP Planetary Positions"
 msgstr "Положения планет (КП)"
 
-#: src/Generated/Builder/Manifest.php:6537
+#: src/Generated/Builder/Manifest.php:6539
 #: src/Generated/Forms/GetKpRulingPlanetsForm.php:24
 msgid "KP Ruling Planets with Optional Significators"
 msgstr "Управляющие планеты КП с сигнификаторами"
 
-#: src/Generated/Builder/Manifest.php:12341
+#: src/Generated/Builder/Manifest.php:12343
 #: src/Generated/Forms/GetKuaNumberForm.php:24
 msgid "Kua Number"
 msgstr "Число Куа"
 
-#: src/Generated/Builder/Manifest.php:6988
+#: src/Generated/Builder/Manifest.php:6990
 #: src/Generated/Forms/GetMajorDashasForm.php:24
 msgid "Mahadasha Periods"
 msgstr "Периоды махадаши"
 
-#: src/Generated/Builder/Manifest.php:12924
+#: src/Generated/Builder/Manifest.php:12926
 #: src/Generated/Forms/GetMayanDaySignForm.php:24
 msgid "Mayan Day Sign"
 msgstr "Знак дня майя"
@@ -9673,19 +9614,19 @@ msgstr "Гороскоп на месяц по знаку зодиака"
 msgid "Lunar Calendar"
 msgstr "Лунный календарь"
 
-#: src/Generated/Builder/Manifest.php:7495
+#: src/Generated/Builder/Manifest.php:7497
 #: src/Generated/Forms/GetNakshatraForm.php:24
 #: src/Generated/Forms/GetNakshatraForm.php:33
 msgid "Nakshatra"
 msgstr "Накшатра"
 
-#: src/Generated/Builder/Manifest.php:16025
+#: src/Generated/Builder/Manifest.php:16028
 #: src/Generated/Forms/GetPhasesForm.php:24
 msgid "Phase Info"
 msgstr "Сведения о фазе"
 
 #: src/Generated/Builder/Manifest.php:1074
-#: src/Generated/Builder/Manifest.php:5683
+#: src/Generated/Builder/Manifest.php:5685
 #: src/Generated/Forms/GetPlanetaryNodePassagesForm.php:24
 msgid "Ecliptic Crossings"
 msgstr "Пересечения эклиптики"
@@ -9694,112 +9635,112 @@ msgstr "Пересечения эклиптики"
 msgid "Year to scan for node passages (1551 to 2649)."
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:2079
-#: src/Generated/Builder/Manifest.php:7780
+#: src/Generated/Builder/Manifest.php:2080
+#: src/Generated/Builder/Manifest.php:7782
 #: src/Generated/Forms/GetPlanetaryPositionsForm.php:24
 #: src/Generated/Forms/GetPlanetPositionsForm.php:24
 msgid "Planetary Positions"
 msgstr "Положения планет"
 
-#: src/Generated/Builder/Manifest.php:7951
+#: src/Generated/Builder/Manifest.php:7953
 #: src/Generated/Forms/GetPranaDashasForm.php:24
 msgid "Prana Dashas"
 msgstr "Прана-даши"
 
-#: src/Generated/Builder/Manifest.php:8210
+#: src/Generated/Builder/Manifest.php:8212
 #: src/Generated/Forms/GetPratyantardashasForm.php:24
 msgid "Pratyantardashas"
 msgstr "Пратьянтардаши"
 
-#: src/Generated/Builder/Manifest.php:8437
+#: src/Generated/Builder/Manifest.php:8439
 #: src/Generated/Forms/GetRashiForm.php:24
 #: src/Generated/Forms/GetRashiForm.php:33
 msgid "Rashi"
 msgstr "Раши"
 
-#: src/Generated/Builder/Manifest.php:16067
+#: src/Generated/Builder/Manifest.php:16070
 #: src/Generated/Forms/GetRitucharyaForm.php:24
 msgid "Ayurveda Seasonal Regimen"
 msgstr "Сезонный режим аюрведы"
 
-#: src/Generated/Builder/Manifest.php:15178
-#: src/Generated/Builder/Manifest.php:15192
+#: src/Generated/Builder/Manifest.php:15180
+#: src/Generated/Builder/Manifest.php:15194
 #: src/Generated/Forms/GetSephirahForm.php:24
 #: src/Generated/Forms/GetSephirahForm.php:33
 msgid "Sephirah"
 msgstr "Сфира"
 
-#: src/Generated/Builder/Manifest.php:15149
+#: src/Generated/Builder/Manifest.php:15151
 #: src/Generated/Forms/GetShemNameForm.php:24
 msgid "Of the 72 Names"
 msgstr "Из 72 имён"
 
-#: src/Generated/Builder/Manifest.php:8723
+#: src/Generated/Builder/Manifest.php:8725
 #: src/Generated/Forms/GetSookshmaDashasForm.php:24
 msgid "Sookshma Dashas"
 msgstr "Сукшма-даши"
 
-#: src/Generated/Builder/Manifest.php:3517
+#: src/Generated/Builder/Manifest.php:3519
 #: src/Generated/Forms/GetSubDashasForm.php:24
 msgid "Antardashas"
 msgstr "Антардаши"
 
-#: src/Generated/Builder/Manifest.php:13109
+#: src/Generated/Builder/Manifest.php:13111
 #: src/Generated/Forms/GetTrecenaForm.php:24
 msgid "Mayan Trecena"
 msgstr "Тресена майя"
 
-#: src/Generated/Builder/Manifest.php:9091
+#: src/Generated/Builder/Manifest.php:9093
 #: src/Generated/Forms/GetUpagrahaPositionsForm.php:24
 msgid "Upagraha (Sub-planet) Positions"
 msgstr "Положения упаграх (подпланет)"
 
-#: src/Generated/Builder/Manifest.php:5310
+#: src/Generated/Builder/Manifest.php:5312
 #: src/Generated/Forms/GetVedicDailyReadingForm.php:24
 msgid "Daily Reading"
 msgstr "Ежедневный расчёт"
 
-#: src/Generated/Builder/Manifest.php:2978
+#: src/Generated/Builder/Manifest.php:2979
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:24
 msgid "Weekly Horoscope by Zodiac Sign"
 msgstr "Гороскоп на неделю по знаку зодиака"
 
-#: src/Generated/Builder/Manifest.php:3046
+#: src/Generated/Builder/Manifest.php:3047
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:24
 msgid "Yearly Horoscope by Zodiac Sign"
 msgstr "Гороскоп на год по знаку зодиака"
 
-#: src/Generated/Builder/Manifest.php:9227
+#: src/Generated/Builder/Manifest.php:9229
 #: src/Generated/Forms/GetYogaForm.php:33
 msgid "Yoga"
 msgstr "Йога"
 
-#: src/Generated/Builder/Manifest.php:11105
+#: src/Generated/Builder/Manifest.php:11107
 #: src/Generated/Forms/GetZodiacAnimalForm.php:24
 msgid "Chinese Zodiac Animal"
 msgstr "Животное китайского зодиака"
 
-#: src/Generated/Builder/Manifest.php:11234
+#: src/Generated/Builder/Manifest.php:11236
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:24
 msgid "Chinese Zodiac Compatibility"
 msgstr "Совместимость по китайскому зодиаку"
 
-#: src/Generated/Builder/Manifest.php:11870
+#: src/Generated/Builder/Manifest.php:11872
 #: src/Generated/Forms/ListSolarTermsForm.php:24
 msgid "Solar Terms"
 msgstr "Солнечные термины"
 
-#: src/Generated/Builder/Manifest.php:10706
+#: src/Generated/Builder/Manifest.php:10708
 #: src/Generated/Forms/LookupAuspiciousDaysForm.php:24
 msgid "Auspicious Days"
 msgstr "Благоприятные дни"
 
-#: src/Generated/Builder/Manifest.php:16724
+#: src/Generated/Builder/Manifest.php:16727
 #: src/Generated/Forms/LookupHexagramForm.php:24
 msgid "Hexagram by Line Pattern"
 msgstr "Гексаграмма по рисунку линий"
 
-#: src/Generated/Builder/Manifest.php:17349
+#: src/Generated/Builder/Manifest.php:17354
 #: src/Generated/Forms/SearchCrystalsForm.php:24
 msgid "Search Crystals"
 msgstr "Поиск кристаллов"
@@ -10002,8 +9943,8 @@ msgstr "Центр Дизайна человека"
 msgid "Yoga Details"
 msgstr "Сведения о йоге"
 
-#: src/Admin/SettingsPage.php:110
-#: src/Admin/SettingsPage.php:111
+#: src/Admin/SettingsPage.php:101
+#: src/Admin/SettingsPage.php:102
 #: templates/admin-help.php:25
 #: templates/admin-help.php:60
 #: templates/admin-quick-start.php:23
@@ -10035,7 +9976,7 @@ msgid "Copy your shortcode"
 msgstr "Скопировать ваш шорткод"
 
 #. translators: 1: current step number, 2: total number of steps.
-#: assets/js/builder.js:628
+#: assets/js/builder.js:640
 #, php-format,js-format
 msgid "Step %1$d of %2$d"
 msgstr "Шаг %1$d из %2$d"
@@ -10130,9 +10071,9 @@ msgstr "Начните вводить. Мы заполним часовой по
 
 #: src/Generated/Builder/Manifest.php:111
 #: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3008
-#: src/Generated/Builder/Manifest.php:3076
-#: src/Generated/Builder/Manifest.php:16910
+#: src/Generated/Builder/Manifest.php:3009
+#: src/Generated/Builder/Manifest.php:3077
+#: src/Generated/Builder/Manifest.php:16914
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10141,9 +10082,9 @@ msgstr ""
 
 #: src/Generated/Builder/Manifest.php:111
 #: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3008
-#: src/Generated/Builder/Manifest.php:3076
-#: src/Generated/Builder/Manifest.php:16910
+#: src/Generated/Builder/Manifest.php:3009
+#: src/Generated/Builder/Manifest.php:3077
+#: src/Generated/Builder/Manifest.php:16914
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10152,9 +10093,9 @@ msgstr ""
 
 #: src/Generated/Builder/Manifest.php:111
 #: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3008
-#: src/Generated/Builder/Manifest.php:3076
-#: src/Generated/Builder/Manifest.php:16910
+#: src/Generated/Builder/Manifest.php:3009
+#: src/Generated/Builder/Manifest.php:3077
+#: src/Generated/Builder/Manifest.php:16914
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10163,9 +10104,9 @@ msgstr ""
 
 #: src/Generated/Builder/Manifest.php:111
 #: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3008
-#: src/Generated/Builder/Manifest.php:3076
-#: src/Generated/Builder/Manifest.php:16910
+#: src/Generated/Builder/Manifest.php:3009
+#: src/Generated/Builder/Manifest.php:3077
+#: src/Generated/Builder/Manifest.php:16914
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10174,9 +10115,9 @@ msgstr ""
 
 #: src/Generated/Builder/Manifest.php:111
 #: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3008
-#: src/Generated/Builder/Manifest.php:3076
-#: src/Generated/Builder/Manifest.php:16910
+#: src/Generated/Builder/Manifest.php:3009
+#: src/Generated/Builder/Manifest.php:3077
+#: src/Generated/Builder/Manifest.php:16914
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10185,9 +10126,9 @@ msgstr ""
 
 #: src/Generated/Builder/Manifest.php:111
 #: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3008
-#: src/Generated/Builder/Manifest.php:3076
-#: src/Generated/Builder/Manifest.php:16910
+#: src/Generated/Builder/Manifest.php:3009
+#: src/Generated/Builder/Manifest.php:3077
+#: src/Generated/Builder/Manifest.php:16914
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10196,9 +10137,9 @@ msgstr ""
 
 #: src/Generated/Builder/Manifest.php:111
 #: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3008
-#: src/Generated/Builder/Manifest.php:3076
-#: src/Generated/Builder/Manifest.php:16910
+#: src/Generated/Builder/Manifest.php:3009
+#: src/Generated/Builder/Manifest.php:3077
+#: src/Generated/Builder/Manifest.php:16914
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10207,9 +10148,9 @@ msgstr ""
 
 #: src/Generated/Builder/Manifest.php:111
 #: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3008
-#: src/Generated/Builder/Manifest.php:3076
-#: src/Generated/Builder/Manifest.php:16910
+#: src/Generated/Builder/Manifest.php:3009
+#: src/Generated/Builder/Manifest.php:3077
+#: src/Generated/Builder/Manifest.php:16914
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10218,9 +10159,9 @@ msgstr ""
 
 #: src/Generated/Builder/Manifest.php:111
 #: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3008
-#: src/Generated/Builder/Manifest.php:3076
-#: src/Generated/Builder/Manifest.php:16910
+#: src/Generated/Builder/Manifest.php:3009
+#: src/Generated/Builder/Manifest.php:3077
+#: src/Generated/Builder/Manifest.php:16914
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10229,9 +10170,9 @@ msgstr ""
 
 #: src/Generated/Builder/Manifest.php:111
 #: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3008
-#: src/Generated/Builder/Manifest.php:3076
-#: src/Generated/Builder/Manifest.php:16910
+#: src/Generated/Builder/Manifest.php:3009
+#: src/Generated/Builder/Manifest.php:3077
+#: src/Generated/Builder/Manifest.php:16914
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10240,9 +10181,9 @@ msgstr ""
 
 #: src/Generated/Builder/Manifest.php:111
 #: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3008
-#: src/Generated/Builder/Manifest.php:3076
-#: src/Generated/Builder/Manifest.php:16910
+#: src/Generated/Builder/Manifest.php:3009
+#: src/Generated/Builder/Manifest.php:3077
+#: src/Generated/Builder/Manifest.php:16914
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10251,9 +10192,9 @@ msgstr ""
 
 #: src/Generated/Builder/Manifest.php:111
 #: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3008
-#: src/Generated/Builder/Manifest.php:3076
-#: src/Generated/Builder/Manifest.php:16910
+#: src/Generated/Builder/Manifest.php:3009
+#: src/Generated/Builder/Manifest.php:3077
+#: src/Generated/Builder/Manifest.php:16914
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10261,7 +10202,7 @@ msgid "Pisces"
 msgstr ""
 
 #: src/Generated/Builder/Manifest.php:142
-#: src/Generated/Builder/Manifest.php:15425
+#: src/Generated/Builder/Manifest.php:15427
 msgid "daily"
 msgstr ""
 
@@ -10277,16 +10218,16 @@ msgstr ""
 msgid "yearly"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:3544
-#: src/Generated/Builder/Manifest.php:7978
-#: src/Generated/Builder/Manifest.php:8001
-#: src/Generated/Builder/Manifest.php:8024
-#: src/Generated/Builder/Manifest.php:8047
-#: src/Generated/Builder/Manifest.php:8237
-#: src/Generated/Builder/Manifest.php:8260
-#: src/Generated/Builder/Manifest.php:8750
-#: src/Generated/Builder/Manifest.php:8773
-#: src/Generated/Builder/Manifest.php:8796
+#: src/Generated/Builder/Manifest.php:3546
+#: src/Generated/Builder/Manifest.php:7980
+#: src/Generated/Builder/Manifest.php:8003
+#: src/Generated/Builder/Manifest.php:8026
+#: src/Generated/Builder/Manifest.php:8049
+#: src/Generated/Builder/Manifest.php:8239
+#: src/Generated/Builder/Manifest.php:8262
+#: src/Generated/Builder/Manifest.php:8752
+#: src/Generated/Builder/Manifest.php:8775
+#: src/Generated/Builder/Manifest.php:8798
 #: src/Generated/Forms/GetPranaDashasForm.php:118
 #: src/Generated/Forms/GetPranaDashasForm.php:127
 #: src/Generated/Forms/GetPranaDashasForm.php:136
@@ -10300,16 +10241,16 @@ msgstr ""
 msgid "Ketu"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:3544
-#: src/Generated/Builder/Manifest.php:7978
-#: src/Generated/Builder/Manifest.php:8001
-#: src/Generated/Builder/Manifest.php:8024
-#: src/Generated/Builder/Manifest.php:8047
-#: src/Generated/Builder/Manifest.php:8237
-#: src/Generated/Builder/Manifest.php:8260
-#: src/Generated/Builder/Manifest.php:8750
-#: src/Generated/Builder/Manifest.php:8773
-#: src/Generated/Builder/Manifest.php:8796
+#: src/Generated/Builder/Manifest.php:3546
+#: src/Generated/Builder/Manifest.php:7980
+#: src/Generated/Builder/Manifest.php:8003
+#: src/Generated/Builder/Manifest.php:8026
+#: src/Generated/Builder/Manifest.php:8049
+#: src/Generated/Builder/Manifest.php:8239
+#: src/Generated/Builder/Manifest.php:8262
+#: src/Generated/Builder/Manifest.php:8752
+#: src/Generated/Builder/Manifest.php:8775
+#: src/Generated/Builder/Manifest.php:8798
 #: src/Generated/Forms/GetPranaDashasForm.php:118
 #: src/Generated/Forms/GetPranaDashasForm.php:127
 #: src/Generated/Forms/GetPranaDashasForm.php:136
@@ -10323,16 +10264,16 @@ msgstr ""
 msgid "Venus"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:3544
-#: src/Generated/Builder/Manifest.php:7978
-#: src/Generated/Builder/Manifest.php:8001
-#: src/Generated/Builder/Manifest.php:8024
-#: src/Generated/Builder/Manifest.php:8047
-#: src/Generated/Builder/Manifest.php:8237
-#: src/Generated/Builder/Manifest.php:8260
-#: src/Generated/Builder/Manifest.php:8750
-#: src/Generated/Builder/Manifest.php:8773
-#: src/Generated/Builder/Manifest.php:8796
+#: src/Generated/Builder/Manifest.php:3546
+#: src/Generated/Builder/Manifest.php:7980
+#: src/Generated/Builder/Manifest.php:8003
+#: src/Generated/Builder/Manifest.php:8026
+#: src/Generated/Builder/Manifest.php:8049
+#: src/Generated/Builder/Manifest.php:8239
+#: src/Generated/Builder/Manifest.php:8262
+#: src/Generated/Builder/Manifest.php:8752
+#: src/Generated/Builder/Manifest.php:8775
+#: src/Generated/Builder/Manifest.php:8798
 #: src/Generated/Forms/GetPranaDashasForm.php:118
 #: src/Generated/Forms/GetPranaDashasForm.php:127
 #: src/Generated/Forms/GetPranaDashasForm.php:136
@@ -10346,16 +10287,16 @@ msgstr ""
 msgid "Sun"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:3544
-#: src/Generated/Builder/Manifest.php:7978
-#: src/Generated/Builder/Manifest.php:8001
-#: src/Generated/Builder/Manifest.php:8024
-#: src/Generated/Builder/Manifest.php:8047
-#: src/Generated/Builder/Manifest.php:8237
-#: src/Generated/Builder/Manifest.php:8260
-#: src/Generated/Builder/Manifest.php:8750
-#: src/Generated/Builder/Manifest.php:8773
-#: src/Generated/Builder/Manifest.php:8796
+#: src/Generated/Builder/Manifest.php:3546
+#: src/Generated/Builder/Manifest.php:7980
+#: src/Generated/Builder/Manifest.php:8003
+#: src/Generated/Builder/Manifest.php:8026
+#: src/Generated/Builder/Manifest.php:8049
+#: src/Generated/Builder/Manifest.php:8239
+#: src/Generated/Builder/Manifest.php:8262
+#: src/Generated/Builder/Manifest.php:8752
+#: src/Generated/Builder/Manifest.php:8775
+#: src/Generated/Builder/Manifest.php:8798
 #: src/Generated/Forms/GetPranaDashasForm.php:118
 #: src/Generated/Forms/GetPranaDashasForm.php:127
 #: src/Generated/Forms/GetPranaDashasForm.php:136
@@ -10369,16 +10310,16 @@ msgstr ""
 msgid "Moon"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:3544
-#: src/Generated/Builder/Manifest.php:7978
-#: src/Generated/Builder/Manifest.php:8001
-#: src/Generated/Builder/Manifest.php:8024
-#: src/Generated/Builder/Manifest.php:8047
-#: src/Generated/Builder/Manifest.php:8237
-#: src/Generated/Builder/Manifest.php:8260
-#: src/Generated/Builder/Manifest.php:8750
-#: src/Generated/Builder/Manifest.php:8773
-#: src/Generated/Builder/Manifest.php:8796
+#: src/Generated/Builder/Manifest.php:3546
+#: src/Generated/Builder/Manifest.php:7980
+#: src/Generated/Builder/Manifest.php:8003
+#: src/Generated/Builder/Manifest.php:8026
+#: src/Generated/Builder/Manifest.php:8049
+#: src/Generated/Builder/Manifest.php:8239
+#: src/Generated/Builder/Manifest.php:8262
+#: src/Generated/Builder/Manifest.php:8752
+#: src/Generated/Builder/Manifest.php:8775
+#: src/Generated/Builder/Manifest.php:8798
 #: src/Generated/Forms/GetPranaDashasForm.php:118
 #: src/Generated/Forms/GetPranaDashasForm.php:127
 #: src/Generated/Forms/GetPranaDashasForm.php:136
@@ -10392,16 +10333,16 @@ msgstr ""
 msgid "Mars"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:3544
-#: src/Generated/Builder/Manifest.php:7978
-#: src/Generated/Builder/Manifest.php:8001
-#: src/Generated/Builder/Manifest.php:8024
-#: src/Generated/Builder/Manifest.php:8047
-#: src/Generated/Builder/Manifest.php:8237
-#: src/Generated/Builder/Manifest.php:8260
-#: src/Generated/Builder/Manifest.php:8750
-#: src/Generated/Builder/Manifest.php:8773
-#: src/Generated/Builder/Manifest.php:8796
+#: src/Generated/Builder/Manifest.php:3546
+#: src/Generated/Builder/Manifest.php:7980
+#: src/Generated/Builder/Manifest.php:8003
+#: src/Generated/Builder/Manifest.php:8026
+#: src/Generated/Builder/Manifest.php:8049
+#: src/Generated/Builder/Manifest.php:8239
+#: src/Generated/Builder/Manifest.php:8262
+#: src/Generated/Builder/Manifest.php:8752
+#: src/Generated/Builder/Manifest.php:8775
+#: src/Generated/Builder/Manifest.php:8798
 #: src/Generated/Forms/GetPranaDashasForm.php:118
 #: src/Generated/Forms/GetPranaDashasForm.php:127
 #: src/Generated/Forms/GetPranaDashasForm.php:136
@@ -10415,16 +10356,16 @@ msgstr ""
 msgid "Rahu"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:3544
-#: src/Generated/Builder/Manifest.php:7978
-#: src/Generated/Builder/Manifest.php:8001
-#: src/Generated/Builder/Manifest.php:8024
-#: src/Generated/Builder/Manifest.php:8047
-#: src/Generated/Builder/Manifest.php:8237
-#: src/Generated/Builder/Manifest.php:8260
-#: src/Generated/Builder/Manifest.php:8750
-#: src/Generated/Builder/Manifest.php:8773
-#: src/Generated/Builder/Manifest.php:8796
+#: src/Generated/Builder/Manifest.php:3546
+#: src/Generated/Builder/Manifest.php:7980
+#: src/Generated/Builder/Manifest.php:8003
+#: src/Generated/Builder/Manifest.php:8026
+#: src/Generated/Builder/Manifest.php:8049
+#: src/Generated/Builder/Manifest.php:8239
+#: src/Generated/Builder/Manifest.php:8262
+#: src/Generated/Builder/Manifest.php:8752
+#: src/Generated/Builder/Manifest.php:8775
+#: src/Generated/Builder/Manifest.php:8798
 #: src/Generated/Forms/GetPranaDashasForm.php:118
 #: src/Generated/Forms/GetPranaDashasForm.php:127
 #: src/Generated/Forms/GetPranaDashasForm.php:136
@@ -10438,16 +10379,16 @@ msgstr ""
 msgid "Jupiter"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:3544
-#: src/Generated/Builder/Manifest.php:7978
-#: src/Generated/Builder/Manifest.php:8001
-#: src/Generated/Builder/Manifest.php:8024
-#: src/Generated/Builder/Manifest.php:8047
-#: src/Generated/Builder/Manifest.php:8237
-#: src/Generated/Builder/Manifest.php:8260
-#: src/Generated/Builder/Manifest.php:8750
-#: src/Generated/Builder/Manifest.php:8773
-#: src/Generated/Builder/Manifest.php:8796
+#: src/Generated/Builder/Manifest.php:3546
+#: src/Generated/Builder/Manifest.php:7980
+#: src/Generated/Builder/Manifest.php:8003
+#: src/Generated/Builder/Manifest.php:8026
+#: src/Generated/Builder/Manifest.php:8049
+#: src/Generated/Builder/Manifest.php:8239
+#: src/Generated/Builder/Manifest.php:8262
+#: src/Generated/Builder/Manifest.php:8752
+#: src/Generated/Builder/Manifest.php:8775
+#: src/Generated/Builder/Manifest.php:8798
 #: src/Generated/Forms/GetPranaDashasForm.php:118
 #: src/Generated/Forms/GetPranaDashasForm.php:127
 #: src/Generated/Forms/GetPranaDashasForm.php:136
@@ -10461,16 +10402,16 @@ msgstr ""
 msgid "Saturn"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:3544
-#: src/Generated/Builder/Manifest.php:7978
-#: src/Generated/Builder/Manifest.php:8001
-#: src/Generated/Builder/Manifest.php:8024
-#: src/Generated/Builder/Manifest.php:8047
-#: src/Generated/Builder/Manifest.php:8237
-#: src/Generated/Builder/Manifest.php:8260
-#: src/Generated/Builder/Manifest.php:8750
-#: src/Generated/Builder/Manifest.php:8773
-#: src/Generated/Builder/Manifest.php:8796
+#: src/Generated/Builder/Manifest.php:3546
+#: src/Generated/Builder/Manifest.php:7980
+#: src/Generated/Builder/Manifest.php:8003
+#: src/Generated/Builder/Manifest.php:8026
+#: src/Generated/Builder/Manifest.php:8049
+#: src/Generated/Builder/Manifest.php:8239
+#: src/Generated/Builder/Manifest.php:8262
+#: src/Generated/Builder/Manifest.php:8752
+#: src/Generated/Builder/Manifest.php:8775
+#: src/Generated/Builder/Manifest.php:8798
 #: src/Generated/Forms/GetPranaDashasForm.php:118
 #: src/Generated/Forms/GetPranaDashasForm.php:127
 #: src/Generated/Forms/GetPranaDashasForm.php:136
@@ -10484,116 +10425,116 @@ msgstr ""
 msgid "Mercury"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:9532
-#: src/Generated/Builder/Manifest.php:13434
+#: src/Generated/Builder/Manifest.php:9534
+#: src/Generated/Builder/Manifest.php:13436
 #: src/Generated/Forms/GetDevataForm.php:37
 #: src/Generated/Forms/GetYogaForm.php:37
 msgid "Jaya"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:9532
-#: src/Generated/Builder/Manifest.php:13434
+#: src/Generated/Builder/Manifest.php:9534
+#: src/Generated/Builder/Manifest.php:13436
 #: src/Generated/Forms/GetDevataForm.php:37
 #: src/Generated/Forms/GetYogaForm.php:37
 msgid "Gandharva"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:9532
-#: src/Generated/Builder/Manifest.php:13434
+#: src/Generated/Builder/Manifest.php:9534
+#: src/Generated/Builder/Manifest.php:13436
 #: src/Generated/Forms/GetDevataForm.php:37
 #: src/Generated/Forms/GetYogaForm.php:37
 msgid "Brahma"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11264
-#: src/Generated/Builder/Manifest.php:11290
+#: src/Generated/Builder/Manifest.php:11266
+#: src/Generated/Builder/Manifest.php:11292
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Rat"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11264
-#: src/Generated/Builder/Manifest.php:11290
+#: src/Generated/Builder/Manifest.php:11266
+#: src/Generated/Builder/Manifest.php:11292
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Ox"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11264
-#: src/Generated/Builder/Manifest.php:11290
+#: src/Generated/Builder/Manifest.php:11266
+#: src/Generated/Builder/Manifest.php:11292
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Tiger"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11264
-#: src/Generated/Builder/Manifest.php:11290
+#: src/Generated/Builder/Manifest.php:11266
+#: src/Generated/Builder/Manifest.php:11292
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Rabbit"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11264
-#: src/Generated/Builder/Manifest.php:11290
+#: src/Generated/Builder/Manifest.php:11266
+#: src/Generated/Builder/Manifest.php:11292
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Dragon"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11264
-#: src/Generated/Builder/Manifest.php:11290
+#: src/Generated/Builder/Manifest.php:11266
+#: src/Generated/Builder/Manifest.php:11292
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Snake"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11264
-#: src/Generated/Builder/Manifest.php:11290
+#: src/Generated/Builder/Manifest.php:11266
+#: src/Generated/Builder/Manifest.php:11292
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Horse"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11264
-#: src/Generated/Builder/Manifest.php:11290
+#: src/Generated/Builder/Manifest.php:11266
+#: src/Generated/Builder/Manifest.php:11292
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Goat"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11264
-#: src/Generated/Builder/Manifest.php:11290
+#: src/Generated/Builder/Manifest.php:11266
+#: src/Generated/Builder/Manifest.php:11292
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Monkey"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11264
-#: src/Generated/Builder/Manifest.php:11290
+#: src/Generated/Builder/Manifest.php:11266
+#: src/Generated/Builder/Manifest.php:11292
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Rooster"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11264
-#: src/Generated/Builder/Manifest.php:11290
+#: src/Generated/Builder/Manifest.php:11266
+#: src/Generated/Builder/Manifest.php:11292
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Dog"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11264
-#: src/Generated/Builder/Manifest.php:11290
+#: src/Generated/Builder/Manifest.php:11266
+#: src/Generated/Builder/Manifest.php:11292
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Pig"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15425
+#: src/Generated/Builder/Manifest.php:15427
 msgid "three"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15425
+#: src/Generated/Builder/Manifest.php:15427
 msgid "celtic"
 msgstr ""
 
@@ -10812,7 +10753,7 @@ msgid "Monthly Aspects"
 msgstr "Аспекты за месяц"
 
 #: src/Generated/Builder/Manifest.php:1680
-#: src/Generated/Builder/Manifest.php:7210
+#: src/Generated/Builder/Manifest.php:7212
 msgid "Monthly Ephemeris"
 msgstr "Эфемериды за месяц"
 
@@ -10825,370 +10766,373 @@ msgid "Monthly Transits"
 msgstr "Транзиты за месяц"
 
 #: src/Generated/Builder/Manifest.php:1945
+#: src/Generated/Forms/GetPlanetMeaningForm.php:24
 msgid "Planet Meaning Details"
 msgstr "Подробное значение планеты"
 
-#: src/Generated/Builder/Manifest.php:1973
+#: src/Generated/Builder/Manifest.php:1974
 msgid "Planet Meanings"
 msgstr "Значения планет"
 
-#: src/Generated/Builder/Manifest.php:2325
+#: src/Generated/Builder/Manifest.php:2326
 msgid "Planetary Transits"
 msgstr "Планетарные транзиты"
 
-#: src/Generated/Builder/Manifest.php:2936
+#: src/Generated/Builder/Manifest.php:2937
 msgid "Upcoming Moon Phases"
 msgstr "Ближайшие фазы Луны"
 
-#: src/Generated/Builder/Manifest.php:3114
+#: src/Generated/Builder/Manifest.php:3115
+#: src/Generated/Forms/GetZodiacSignForm.php:24
 msgid "Zodiac Sign Details"
 msgstr "Подробности о знаке зодиака"
 
-#: src/Generated/Builder/Manifest.php:3142
+#: src/Generated/Builder/Manifest.php:3144
 msgid "Zodiac Signs"
 msgstr "Знаки зодиака"
 
-#: src/Generated/Builder/Manifest.php:3951
+#: src/Generated/Builder/Manifest.php:3953
 msgid "Avastha by ID"
 msgstr "Авастха по названию"
 
-#: src/Generated/Builder/Manifest.php:3998
+#: src/Generated/Builder/Manifest.php:4000
 msgid "Avastha States"
 msgstr "Состояния авастхи"
 
-#: src/Generated/Builder/Manifest.php:6292
+#: src/Generated/Builder/Manifest.php:6294
 msgid "KP Planets at Time Intervals"
 msgstr "Планеты KP через интервалы времени"
 
-#: src/Generated/Builder/Manifest.php:6428
+#: src/Generated/Builder/Manifest.php:6430
 msgid "KP Rasi Ingress Times"
 msgstr "Время входа в раши по KP"
 
-#: src/Generated/Builder/Manifest.php:6672
+#: src/Generated/Builder/Manifest.php:6674
 msgid "KP Ruling Planets with Significators"
 msgstr "Управляющие планеты KP с сигнификаторами"
 
-#: src/Generated/Builder/Manifest.php:6824
+#: src/Generated/Builder/Manifest.php:6826
 msgid "KP Sublord Changes"
 msgstr "Смены сублорда KP"
 
-#: src/Generated/Builder/Manifest.php:6933
+#: src/Generated/Builder/Manifest.php:6935
 msgid "KP-Newcomb Ayanamsa"
 msgstr "Айанамса KP-Newcomb"
 
-#: src/Generated/Builder/Manifest.php:7155
+#: src/Generated/Builder/Manifest.php:7157
 msgid "Monthly Declination Parallels"
 msgstr "Параллели склонения за месяц"
 
-#: src/Generated/Builder/Manifest.php:7268
+#: src/Generated/Builder/Manifest.php:7270
 msgid "Monthly Lunar Aspects"
 msgstr "Лунные аспекты за месяц"
 
-#: src/Generated/Builder/Manifest.php:7339
+#: src/Generated/Builder/Manifest.php:7341
 msgid "Monthly Planetary Aspects"
 msgstr "Планетарные аспекты за месяц"
 
-#: src/Generated/Builder/Manifest.php:7410
+#: src/Generated/Builder/Manifest.php:7412
 msgid "Monthly Transit"
 msgstr "Транзит за месяц"
 
-#: src/Generated/Builder/Manifest.php:7481
+#: src/Generated/Builder/Manifest.php:7483
 msgid "Nakshatra by ID"
 msgstr "Накшатра по названию"
 
-#: src/Generated/Builder/Manifest.php:7538
+#: src/Generated/Builder/Manifest.php:7540
 msgid "Nakshatras"
 msgstr "Накшатры"
 
-#: src/Generated/Builder/Manifest.php:7902
+#: src/Generated/Builder/Manifest.php:7904
 msgid "Planetary Yogas"
 msgstr "Планетарные йоги"
 
-#: src/Generated/Builder/Manifest.php:8423
+#: src/Generated/Builder/Manifest.php:8425
 msgid "Rashi by ID"
 msgstr "Раши по названию"
 
-#: src/Generated/Builder/Manifest.php:8465
+#: src/Generated/Builder/Manifest.php:8467
 msgid "Rashis"
 msgstr "Раши"
 
-#: src/Generated/Builder/Manifest.php:9213
+#: src/Generated/Builder/Manifest.php:9215
 msgid "Yoga Details by ID"
 msgstr "Подробности йоги по названию"
 
-#: src/Generated/Builder/Manifest.php:10037
+#: src/Generated/Builder/Manifest.php:10039
 msgid "Human Design Center by ID"
 msgstr "Центр Дизайна человека по названию"
 
-#: src/Generated/Builder/Manifest.php:11192
+#: src/Generated/Builder/Manifest.php:11194
 msgid "Chinese Zodiac Animals"
 msgstr "Животные китайского зодиака"
 
-#: src/Generated/Builder/Manifest.php:11302
+#: src/Generated/Builder/Manifest.php:11304
 msgid "Convert Lunar and Gregorian Dates"
 msgstr "Перевод лунных и григорианских дат"
 
-#: src/Generated/Builder/Manifest.php:11591
+#: src/Generated/Builder/Manifest.php:11593
 msgid "Elements"
 msgstr "Стихии"
 
-#: src/Generated/Builder/Manifest.php:11828
+#: src/Generated/Builder/Manifest.php:11830
 msgid "Month of Almanac Days"
 msgstr "Дни альманаха за месяц"
 
-#: src/Generated/Builder/Manifest.php:11996
+#: src/Generated/Builder/Manifest.php:11998
 msgid "Bagua Sectors"
 msgstr "Секторы багуа"
 
-#: src/Generated/Builder/Manifest.php:12099
+#: src/Generated/Builder/Manifest.php:12101
 msgid "Eight Mansions Map"
 msgstr "Карта восьми дворцов"
 
-#: src/Generated/Builder/Manifest.php:12195
+#: src/Generated/Builder/Manifest.php:12197
 msgid "Flying Star Natal Chart"
 msgstr "Натальная карта летящих звёзд"
 
-#: src/Generated/Builder/Manifest.php:12299
+#: src/Generated/Builder/Manifest.php:12301
 msgid "Flying Stars"
 msgstr "Летящие звёзды"
 
-#: src/Generated/Builder/Manifest.php:12370
+#: src/Generated/Builder/Manifest.php:12372
 msgid "Monthly Flying Stars"
 msgstr "Летящие звёзды месяца"
 
-#: src/Generated/Builder/Manifest.php:12412
+#: src/Generated/Builder/Manifest.php:12414
 msgid "Periods"
 msgstr "Периоды"
 
-#: src/Generated/Builder/Manifest.php:12520
+#: src/Generated/Builder/Manifest.php:12522
 msgid "Aztec Day Signs"
 msgstr "Ацтекские знаки дня"
 
-#: src/Generated/Builder/Manifest.php:12591
+#: src/Generated/Builder/Manifest.php:12593
 msgid "Aztec Trecenas"
 msgstr "Ацтекские тресены"
 
-#: src/Generated/Builder/Manifest.php:12633
+#: src/Generated/Builder/Manifest.php:12635
 msgid "Convert a Maya Long Count"
 msgstr "Перевод длинного счёта майя"
 
-#: src/Generated/Builder/Manifest.php:12693
+#: src/Generated/Builder/Manifest.php:12695
 msgid "Daily Aztec Energy Reading"
 msgstr "Ацтекское чтение энергии дня"
 
-#: src/Generated/Builder/Manifest.php:12722
+#: src/Generated/Builder/Manifest.php:12724
 msgid "Daily Mayan Energy Reading"
 msgstr "Чтение энергии дня майя"
 
-#: src/Generated/Builder/Manifest.php:12818
+#: src/Generated/Builder/Manifest.php:12820
 msgid "Haab Periods"
 msgstr "Периоды хааб"
 
-#: src/Generated/Builder/Manifest.php:13037
+#: src/Generated/Builder/Manifest.php:13039
 msgid "Mayan Day Signs"
 msgstr "Знаки дня майя"
 
-#: src/Generated/Builder/Manifest.php:13138
+#: src/Generated/Builder/Manifest.php:13140
 msgid "Mayan Trecenas"
 msgstr "Тресены майя"
 
-#: src/Generated/Builder/Manifest.php:13180
+#: src/Generated/Builder/Manifest.php:13182
 msgid "Monthly Tzolkin Calendar Grid"
 msgstr "Сетка календаря цолькин на месяц"
 
-#: src/Generated/Builder/Manifest.php:13446
+#: src/Generated/Builder/Manifest.php:13448
 msgid "Devatas"
 msgstr "Деваты"
 
-#: src/Generated/Builder/Manifest.php:13526
+#: src/Generated/Builder/Manifest.php:13528
 msgid "Directions"
 msgstr "Направления"
 
-#: src/Generated/Builder/Manifest.php:13956
+#: src/Generated/Builder/Manifest.php:13958
 msgid "Compound Number Meaning"
 msgstr "Значение составного числа"
 
-#: src/Generated/Builder/Manifest.php:13984
+#: src/Generated/Builder/Manifest.php:13986
 msgid "Daily Numerology Number"
 msgstr "Нумерологическое число дня"
 
-#: src/Generated/Builder/Manifest.php:14084
+#: src/Generated/Builder/Manifest.php:14086
 msgid "Karmic Debt Numbers"
 msgstr "Числа кармического долга"
 
-#: src/Generated/Builder/Manifest.php:14181
+#: src/Generated/Builder/Manifest.php:14183
 msgid "Maturity Number"
 msgstr "Число зрелости"
 
-#: src/Generated/Builder/Manifest.php:14275
+#: src/Generated/Builder/Manifest.php:14277
 msgid "Number Meaning"
 msgstr "Значение числа"
 
-#: src/Generated/Builder/Manifest.php:14669
+#: src/Generated/Builder/Manifest.php:14671
 msgid "Compare Two Names"
 msgstr "Сравнить два имени"
 
-#: src/Generated/Builder/Manifest.php:14769
+#: src/Generated/Builder/Manifest.php:14771
 msgid "Gematria"
 msgstr "Гематрия"
 
-#: src/Generated/Builder/Manifest.php:14902
+#: src/Generated/Builder/Manifest.php:14904
 msgid "Gematria Ciphers"
 msgstr "Системы гематрии"
 
-#: src/Generated/Builder/Manifest.php:14986
+#: src/Generated/Builder/Manifest.php:14988
 msgid "Hebrew Letters"
 msgstr "Буквы иврита"
 
-#: src/Generated/Builder/Manifest.php:15020
+#: src/Generated/Builder/Manifest.php:15022
 msgid "Name Profile"
 msgstr "Профиль имени"
 
-#: src/Generated/Builder/Manifest.php:15094
+#: src/Generated/Builder/Manifest.php:15096
 msgid "Names"
 msgstr "Имена"
 
-#: src/Generated/Builder/Manifest.php:15253
+#: src/Generated/Builder/Manifest.php:15255
 msgid "Sephirah of the Day"
 msgstr "Сфира дня"
 
-#: src/Generated/Builder/Manifest.php:15308
+#: src/Generated/Builder/Manifest.php:15310
 msgid "Tree of Life"
 msgstr "Древо жизни"
 
-#: src/Generated/Builder/Manifest.php:15450
+#: src/Generated/Builder/Manifest.php:15452
 msgid "Career Spread, 7 Cards"
 msgstr "Расклад на карьеру, 7 карт"
 
-#: src/Generated/Builder/Manifest.php:15492
+#: src/Generated/Builder/Manifest.php:15494
 msgid "Celtic Cross Spread, 10 Cards"
 msgstr "Кельтский крест, 10 карт"
 
-#: src/Generated/Builder/Manifest.php:15616
+#: src/Generated/Builder/Manifest.php:15618
 msgid "Love Spread, 5 Cards"
 msgstr "Расклад на любовь, 5 карт"
 
-#: src/Generated/Builder/Manifest.php:15658
+#: src/Generated/Builder/Manifest.php:15660
 msgid "Tarot Card by ID"
 msgstr "Карта таро по названию"
 
-#: src/Generated/Builder/Manifest.php:15686
+#: src/Generated/Builder/Manifest.php:15689
 msgid "Tarot Cards"
 msgstr "Карты таро"
 
-#: src/Generated/Builder/Manifest.php:15775
+#: src/Generated/Builder/Manifest.php:15778
 msgid "Three Card Spread"
 msgstr "Расклад на три карты"
 
-#: src/Generated/Builder/Manifest.php:15983
+#: src/Generated/Builder/Manifest.php:15986
 msgid "Daily Biorhythm"
 msgstr "Биоритм дня"
 
-#: src/Generated/Builder/Manifest.php:16485
+#: src/Generated/Builder/Manifest.php:16488
 msgid "Doshas"
 msgstr "Доши"
 
-#: src/Generated/Builder/Manifest.php:16527
+#: src/Generated/Builder/Manifest.php:16530
 msgid "Tastes"
 msgstr "Вкусы"
 
-#: src/Generated/Builder/Manifest.php:16569
+#: src/Generated/Builder/Manifest.php:16572
 msgid "Twenty Qualities"
 msgstr "Двадцать качеств"
 
-#: src/Generated/Builder/Manifest.php:16611
+#: src/Generated/Builder/Manifest.php:16614
 msgid "Cast an I-Ching Reading"
 msgstr "Расклад И Цзин"
 
-#: src/Generated/Builder/Manifest.php:16640
+#: src/Generated/Builder/Manifest.php:16643
 msgid "Cast Daily Reading"
 msgstr "Расклад дня"
 
-#: src/Generated/Builder/Manifest.php:16682
+#: src/Generated/Builder/Manifest.php:16685
 msgid "Daily Hexagram"
 msgstr "Гексаграмма дня"
 
-#: src/Generated/Builder/Manifest.php:16782
+#: src/Generated/Builder/Manifest.php:16785
 msgid "Hexagrams"
 msgstr "Гексаграммы"
 
-#: src/Generated/Builder/Manifest.php:16824
+#: src/Generated/Builder/Manifest.php:16827
 msgid "Random Hexagram"
 msgstr "Случайная гексаграмма"
 
-#: src/Generated/Builder/Manifest.php:16838
+#: src/Generated/Builder/Manifest.php:16841
+#: src/Generated/Forms/GetTrigramForm.php:24
 msgid "Trigram by Number or Name"
 msgstr "Триграмма по номеру или названию"
 
-#: src/Generated/Builder/Manifest.php:16866
+#: src/Generated/Builder/Manifest.php:16870
 msgid "Trigrams"
 msgstr "Триграммы"
 
-#: src/Generated/Builder/Manifest.php:16951
+#: src/Generated/Builder/Manifest.php:16955
 msgid "Crystal by ID"
 msgstr "Кристалл по названию"
 
-#: src/Generated/Builder/Manifest.php:16979
+#: src/Generated/Builder/Manifest.php:16984
 msgid "Crystal Colors"
 msgstr "Цвета кристаллов"
 
-#: src/Generated/Builder/Manifest.php:16993
+#: src/Generated/Builder/Manifest.php:16998
 msgid "Crystal Pairings"
 msgstr "Сочетания кристаллов"
 
-#: src/Generated/Builder/Manifest.php:17021
+#: src/Generated/Builder/Manifest.php:17026
 msgid "Crystal Planets"
 msgstr "Планеты кристаллов"
 
-#: src/Generated/Builder/Manifest.php:17035
+#: src/Generated/Builder/Manifest.php:17040
 msgid "Crystals"
 msgstr "Кристаллы"
 
-#: src/Generated/Builder/Manifest.php:17293
+#: src/Generated/Builder/Manifest.php:17298
 msgid "Daily Crystal"
 msgstr "Кристалл дня"
 
-#: src/Generated/Builder/Manifest.php:17335
+#: src/Generated/Builder/Manifest.php:17340
 msgid "Random Crystal"
 msgstr "Случайный кристалл"
 
-#: src/Generated/Builder/Manifest.php:17404
+#: src/Generated/Builder/Manifest.php:17409
 msgid "Daily Dream Symbol"
 msgstr "Символ сна дня"
 
-#: src/Generated/Builder/Manifest.php:17446
+#: src/Generated/Builder/Manifest.php:17451
 msgid "Dream Symbol by ID"
 msgstr "Символ сна по названию"
 
-#: src/Generated/Builder/Manifest.php:17474
+#: src/Generated/Builder/Manifest.php:17479
 msgid "Random Dream Symbols"
 msgstr "Случайные символы снов"
 
-#: src/Generated/Builder/Manifest.php:17503
+#: src/Generated/Builder/Manifest.php:17508
 msgid "Search Dream Symbols"
 msgstr "Поиск символов снов"
 
-#: src/Generated/Builder/Manifest.php:17571
+#: src/Generated/Builder/Manifest.php:17576
 msgid "Symbol Counts by Letter"
 msgstr "Количество символов по буквам"
 
-#: src/Generated/Builder/Manifest.php:17614
+#: src/Generated/Builder/Manifest.php:17619
 msgid "Angel Numbers"
 msgstr "Ангельские числа"
 
-#: src/Generated/Builder/Manifest.php:17676
+#: src/Generated/Builder/Manifest.php:17681
 msgid "Daily Angel Number"
 msgstr "Ангельское число дня"
 
-#: src/Generated/Builder/Manifest.php:17767
+#: src/Generated/Builder/Manifest.php:17772
 msgid "Cities in a Country"
 msgstr "Города страны"
 
-#: src/Generated/Builder/Manifest.php:17821
+#: src/Generated/Builder/Manifest.php:17826
 msgid "Countries"
 msgstr "Страны"
 
-#: src/Generated/Builder/Manifest.php:17863
+#: src/Generated/Builder/Manifest.php:17868
 msgid "Search Cities Worldwide"
 msgstr "Поиск городов по всему миру"
 
@@ -11239,3 +11183,11 @@ msgstr "Ответьте на несколько вопросов и скопи�
 #: assets/js/builder.js:23
 msgid "No matching readings."
 msgstr "Подходящих чтений нет."
+
+#: src/Generated/Forms/GetCardForm.php:24
+msgid "Tarot Card"
+msgstr "Карта таро"
+
+#: src/Generated/Forms/GetCrystalForm.php:24
+msgid "Crystal"
+msgstr "Кристалл"

@@ -39,7 +39,7 @@ class Test_Form_Result_Expiry extends \WP_UnitTestCase {
 
 	public function test_a_stored_result_is_returned_once(): void {
 		$this->store( array( 'result' => array( 'sign' => 'Aries' ) ) );
-		$_GET['roxyapi_r'] = self::TOKEN;
+		$_GET['roxyapi_r'] = self::FORM_ID . '.' . self::TOKEN;
 
 		$first = FormRouter::consume_result( self::FORM_ID );
 
@@ -51,7 +51,7 @@ class Test_Form_Result_Expiry extends \WP_UnitTestCase {
 	/** The privacy property: the payload does not survive its own delivery. */
 	public function test_the_stored_payload_is_deleted_after_it_is_read(): void {
 		$this->store( array( 'result' => array( 'sign' => 'Aries' ) ) );
-		$_GET['roxyapi_r'] = self::TOKEN;
+		$_GET['roxyapi_r'] = self::FORM_ID . '.' . self::TOKEN;
 
 		FormRouter::consume_result( self::FORM_ID );
 		$second = FormRouter::consume_result( self::FORM_ID );
@@ -62,7 +62,7 @@ class Test_Form_Result_Expiry extends \WP_UnitTestCase {
 	/** The fix: a second read is reported as expired, not as silence. */
 	public function test_a_second_read_reports_expiry_rather_than_nothing(): void {
 		$this->store( array( 'result' => array( 'sign' => 'Aries' ) ) );
-		$_GET['roxyapi_r'] = self::TOKEN;
+		$_GET['roxyapi_r'] = self::FORM_ID . '.' . self::TOKEN;
 
 		FormRouter::consume_result( self::FORM_ID );
 		$second = FormRouter::consume_result( self::FORM_ID );
@@ -73,7 +73,7 @@ class Test_Form_Result_Expiry extends \WP_UnitTestCase {
 
 	/** A token that was never valid is expiry too: it cannot produce a reading either. */
 	public function test_an_unknown_token_reports_expiry(): void {
-		$_GET['roxyapi_r'] = self::TOKEN;
+		$_GET['roxyapi_r'] = self::FORM_ID . '.' . self::TOKEN;
 
 		$result = FormRouter::consume_result( self::FORM_ID );
 
@@ -96,13 +96,23 @@ class Test_Form_Result_Expiry extends \WP_UnitTestCase {
 		$this->assertNull( FormRouter::consume_result( self::FORM_ID ) );
 	}
 
-	/** One visitor's token must never resolve against another form. */
+	/**
+	 * One form's token neither delivers to another form on the same page nor
+	 * marks it expired: that form was never submitted, so it renders plain.
+	 */
 	public function test_a_token_does_not_cross_forms(): void {
+		$this->store( array( 'result' => array( 'sign' => 'Aries' ) ) );
+		$_GET['roxyapi_r'] = self::FORM_ID . '.' . self::TOKEN;
+
+		$this->assertNull( FormRouter::consume_result( 'calculateLifePath' ) );
+		$this->assertSame( array( 'sign' => 'Aries' ), FormRouter::consume_result( self::FORM_ID )['result'] ?? null );
+	}
+
+	/** A token that does not name its form renders a plain form. */
+	public function test_a_token_without_its_form_reports_nothing(): void {
 		$this->store( array( 'result' => array( 'sign' => 'Aries' ) ) );
 		$_GET['roxyapi_r'] = self::TOKEN;
 
-		$other = FormRouter::consume_result( 'calculateLifePath' );
-
-		$this->assertTrue( $other['expired'] ?? false, 'A token from one form must not deliver another form\'s reading.' );
+		$this->assertNull( FormRouter::consume_result( self::FORM_ID ) );
 	}
 }

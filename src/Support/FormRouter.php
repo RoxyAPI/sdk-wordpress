@@ -174,11 +174,13 @@ class FormRouter {
 			return null;
 		}
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Opaque token; transient key is server-derived.
-		$token = sanitize_text_field( wp_unslash( $_GET['roxyapi_r'] ) );
-		if ( preg_match( '/^[A-Za-z0-9]{32}$/', $token ) !== 1 ) {
+		$value = sanitize_text_field( wp_unslash( $_GET['roxyapi_r'] ) );
+		// The token names the form it was issued to, so every other form on the
+		// page renders as a plain form rather than as an expired reading.
+		if ( preg_match( '/^([A-Za-z][A-Za-z0-9]+)\.([A-Za-z0-9]{32})$/', $value, $match ) !== 1 || $match[1] !== $form_id ) {
 			return null;
 		}
-		$transient_key = self::transient_key( $form_id, $token );
+		$transient_key = self::transient_key( $form_id, $match[2] );
 		$data          = get_transient( $transient_key );
 		delete_transient( $transient_key );
 		if ( is_array( $data ) ) {
@@ -382,7 +384,7 @@ class FormRouter {
 	}
 
 	/**
-	 * Store a transient and redirect (PRG) with `?roxyapi_r=<key>`. Append to
+	 * Store a transient and redirect (PRG) with `?roxyapi_r=<form id>.<key>`. Append to
 	 * the page the visitor came from so a post-cache page reload still picks
 	 * the right URL.
 	 *
@@ -403,6 +405,7 @@ class FormRouter {
 		$target  = is_string( $referer ) && $referer !== ''
 			? wp_validate_redirect( $referer, home_url( '/' ) )
 			: home_url( '/' );
+		$token   = $form_id . '.' . $token;
 		// Strip any prior result token so refreshes do not stack.
 		$target = remove_query_arg( 'roxyapi_r', $target );
 		$target = add_query_arg( 'roxyapi_r', $token, $target );
