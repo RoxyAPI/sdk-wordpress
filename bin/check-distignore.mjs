@@ -1,22 +1,7 @@
 #!/usr/bin/env node
 /**
- * Distribution drift guard.
- *
- * Two release paths produce the published zip and they use opposite rules:
- *
- *   - Local: `npm run plugin-zip` (wp-scripts plugin-zip → npm-packlist) ships
- *     only entries listed in package.json `files`. Include-list semantics.
- *   - CI: 10up/action-wordpress-plugin-deploy ships every top-level entry
- *     except those matched by .distignore. Exclude-list semantics.
- *
- * Any top-level repo entry that is in neither list ships via 10up but is
- * absent from the local zip — silent drift that only surfaces after SVN
- * deploy. v1.0.3 leaked CITATION.cff, eslint.config.cjs, and patterns/
- * exactly this way.
- *
- * This script fails (exit 1) if any tracked top-level entry is neither
- * a member of the package.json `files` include-list nor matched by a
- * .distignore rule. Run before push via lefthook.
+ * Match tracked top-level entries across local ZIP and SVN distributions.
+ * Keep the generated plugin archive out of both packages.
  */
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
@@ -44,6 +29,9 @@ for ( const f of tracked ) {
 const pkg = JSON.parse(
 	readFileSync( path.join( root, 'package.json' ), 'utf8' )
 );
+const archive = `${ pkg.name }.zip`;
+topLevel.add( archive );
+
 const filesField = new Set(
 	( pkg.files || [] ).map( ( e ) => e.replace( /\/$/, '' ) )
 );
@@ -81,7 +69,7 @@ for ( const entry of topLevel ) {
 		( f ) => f === entry || f.startsWith( entry + '/' )
 	);
 	const inIgnore = matchedByDistignore( entry );
-	if ( ! inFiles && ! inIgnore ) {
+	if ( ( ! inFiles && ! inIgnore ) || ( entry === archive && inFiles ) ) {
 		drift.push( entry );
 	}
 }
@@ -89,27 +77,13 @@ for ( const entry of topLevel ) {
 if ( drift.length ) {
 	console.error( '✗ Distribution drift detected.' );
 	console.error( '' );
-	console.error(
-		'The following top-level entries are tracked in git but are:'
-	);
-	console.error(
-		'  - NOT listed in package.json `files` (so npm-packlist excludes them locally)'
-	);
-	console.error(
-		'  - NOT matched by any .distignore rule (so 10up rsync ships them to SVN)'
-	);
-	console.error( '' );
-	console.error(
-		'This produces a silent drift between `npm run plugin-zip` and the SVN deploy.'
-	);
-	console.error( '' );
 	for ( const entry of drift.sort() ) {
-		console.error( `  - ${ entry }` );
+		console.error(
+			entry === archive
+				? `  - ${ entry }: exclude in .distignore and keep out of package.json files.`
+				: `  - ${ entry }: include in package.json files or exclude in .distignore.`
+		);
 	}
-	console.error( '' );
-	console.error(
-		'Fix by adding each to .distignore (if dev-only) or to package.json `files` (if shippable).'
-	);
 	process.exit( 1 );
 }
 

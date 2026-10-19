@@ -3,6 +3,9 @@
 The full release history for the RoxyAPI plugin. The most recent releases are
 also listed in readme.txt, which wordpress.org displays on the plugin page.
 
+= 1.22.2 =
+* Plugin downloads contain only the files needed for installation.
+
 = 1.22.1 =
 * Reading lists show names and full details.
 * Long reading tables keep all rows in a scrollable panel.

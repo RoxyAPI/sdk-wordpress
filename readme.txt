@@ -265,6 +265,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.22.2 =
+* Plugin downloads contain only the files needed for installation.
+
 = 1.22.1 =
 * Reading lists show names and full details.
 * Long reading tables keep all rows in a scrollable panel.
@@ -307,6 +310,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.22.2 =
+Keeps plugin downloads lean with only installation files.
 
 = 1.22.1 =
 Visitors can enter the details for ecliptic crossings and KP interval readings, including both date and time.
