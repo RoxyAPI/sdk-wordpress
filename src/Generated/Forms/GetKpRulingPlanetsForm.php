@@ -63,7 +63,7 @@ class GetKpRulingPlanetsForm {
 					'name' => 'datetime',
 					'label' => $labels['fields']['datetime'] ?? 'Date and time',
 					'required' => false,
-					'type' => 'time',
+					'type' => 'datetime',
 					'fold' => true,
 				),
 				array(

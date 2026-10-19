@@ -12,7 +12,8 @@
  *   .roxyapi-card-meta / .roxyapi-card-lede
  *   .roxyapi-section / .roxyapi-section-title
  *   .roxyapi-fields / .roxyapi-field
- *   .roxyapi-table / .roxyapi-list / .roxyapi-details
+ *   .roxyapi-table / .roxyapi-data-scroll / .roxyapi-list / .roxyapi-details
+ *   .roxyapi-records / .roxyapi-record
  *
  * @package RoxyAPI
  */
@@ -135,48 +136,59 @@ class GenericRenderer {
 	/** Sections with more than this many keys collapse into <details>. */
 	private const DETAILS_THRESHOLD = 8;
 
-	/** Tables with more than this many rows collapse into <details>. */
-	private const TABLE_DETAILS_THRESHOLD = 12;
+	/** Long collections show a count; compact tables also bound their height. */
+	private const COLLECTION_SCROLL_THRESHOLD = 12;
+
+	/** Paragraphs and complex cells use records when a table has more columns. */
+	private const MAX_COMPACT_CELL_LENGTH  = 80;
+	private const MAX_RECORD_TABLE_COLUMNS = 3;
 
 	/**
 	 * Render an API response as a RoxyAPI card.
 	 *
-	 * @param string               $operation_id The OpenAPI operation ID.
-	 * @param array<string, mixed> $data         API response data.
-	 * @param bool                 $include_meta Whether to append the optional
-	 *                                           disclaimer line and attribution
-	 *                                           (credit link + JSON-LD). Pass
-	 *                                           false when the caller renders
-	 *                                           those itself, so a web-component
-	 *                                           fallback does not hide them once
-	 *                                           the element upgrades. See
-	 *                                           {@link ComponentRenderer}.
-	 * @param bool                 $hide_readings Whether to drop written
-	 *                                           interpretations, leaving the
-	 *                                           positions, values and tables.
-	 *                                           Resolved by {@link ComponentRenderer}
-	 *                                           so this card and the component it
-	 *                                           backs never disagree.
-	 * @param array<int, string>   $hide_sections Part names to drop, resolved by
-	 *                                           {@link ComponentRenderer} from the
-	 *                                           placement attribute over the site
-	 *                                           setting. Passed in rather than read
-	 *                                           here, because a per-placement answer
-	 *                                           cannot be recovered from a global.
+	 * @param string             $operation_id The OpenAPI operation ID.
+	 * @param array<mixed>       $data         API response object or list.
+	 * @param bool               $include_meta Whether to append the optional
+	 *                                         disclaimer line and attribution
+	 *                                         (credit link + JSON-LD). Pass
+	 *                                         false when the caller renders
+	 *                                         those itself, so a web-component
+	 *                                         fallback does not hide them once
+	 *                                         the element upgrades. See
+	 *                                         {@link ComponentRenderer}.
+	 * @param bool               $hide_readings Whether to drop written
+	 *                                         interpretations, leaving the
+	 *                                         positions, values and tables.
+	 *                                         Resolved by {@link ComponentRenderer}
+	 *                                         so this card and the component it
+	 *                                         backs never disagree.
+	 * @param array<int, string> $hide_sections Part names to drop, resolved by
+	 *                                         {@link ComponentRenderer} from the
+	 *                                         placement attribute over the site
+	 *                                         setting. Passed in rather than read
+	 *                                         here, because a per-placement answer
+	 *                                         cannot be recovered from a global.
 	 * @return string
 	 */
 	public static function render( string $operation_id, array $data, bool $include_meta = true, bool $hide_readings = false, array $hide_sections = array() ): string {
-		$data = self::strip_hidden_sections( $data, $hide_sections );
+		$is_list = self::is_list( $data );
+		$data    = self::strip_hidden_sections( $data, $hide_sections );
 		if ( $hide_readings ) {
 			$data = self::strip_readings( $data );
 		}
 		if ( empty( $data ) ) {
 			return '';
 		}
+		if ( $is_list ) {
+			$items = array_values( $data );
+			$body  = self::is_uniform_object_list( $items ) ? self::render_object_collection( '', $items, 0 ) : self::render_collection_list( $items, 0 );
+		} else {
+			$body = self::render_object( $data, 0 );
+		}
 		$class = trim( 'roxyapi-card roxyapi-' . sanitize_html_class( $operation_id ) );
 		$meta  = $include_meta ? Meta::block( $operation_id, $data ) : '';
 		return '<div class="' . esc_attr( $class ) . '">'
-			. self::render_object( $data, 0 )
+			. $body
 			. $meta
 			. '</div>';
 	}
@@ -232,7 +244,7 @@ class GenericRenderer {
 		foreach ( self::META_KEYS as $meta_key ) {
 			list( $val, $data ) = self::pluck( $data, $meta_key );
 			if ( is_scalar( $val ) && (string) $val !== '' ) {
-				$meta_parts[] = esc_html( self::humanize( $meta_key ) ) . ': ' . esc_html( (string) $val );
+				$meta_parts[] = esc_html( self::humanize( $meta_key ) ) . ': ' . esc_html( self::format_datetime( (string) $val ) );
 			}
 		}
 
@@ -305,7 +317,7 @@ class GenericRenderer {
 		}
 
 		foreach ( $tables as $k => $rows ) {
-			$out .= self::render_table( (string) $k, $rows );
+			$out .= self::render_object_collection( (string) $k, $rows, $depth + 1 );
 		}
 
 		foreach ( $sections as $k => $value ) {
@@ -343,7 +355,7 @@ class GenericRenderer {
 			return '';
 		}
 
-		if ( $count > self::DETAILS_THRESHOLD ) {
+		if ( $count > self::DETAILS_THRESHOLD || $depth > 1 ) {
 			return '<details class="roxyapi-details"><summary>' . esc_html( $title ) . '</summary>' . $body . '</details>';
 		}
 
@@ -359,9 +371,10 @@ class GenericRenderer {
 	 *
 	 * @param array<int, mixed> $items Indexed list.
 	 * @param int               $depth Recursion depth.
+	 * @param bool              $records Whether entries are full records.
 	 * @return string
 	 */
-	private static function render_list( array $items, int $depth ): string {
+	private static function render_list( array $items, int $depth, bool $records = false ): string {
 		$rendered = array();
 		foreach ( $items as $item ) {
 			if ( is_scalar( $item ) ) {
@@ -386,45 +399,32 @@ class GenericRenderer {
 			}
 			$nested = self::render_object( $item, $depth + 1 );
 			if ( $nested !== '' ) {
-				$rendered[] = '<li>' . $nested . '</li>';
+				$rendered[] = $records ? '<div class="roxyapi-record" role="listitem">' . $nested . '</div>' : '<li>' . $nested . '</li>';
 			}
 		}
 		if ( empty( $rendered ) ) {
 			return '';
 		}
-		return '<ul class="roxyapi-list">' . implode( '', $rendered ) . '</ul>';
+		$body = implode( '', $rendered );
+		return $records ? '<div class="roxyapi-records" role="list">' . $body . '</div>' : '<ul class="roxyapi-list">' . $body . '</ul>';
 	}
 
 	/**
-	 * Render a list of uniform objects as an HTML table. Wraps in <details>
-	 * when the row count crosses TABLE_DETAILS_THRESHOLD.
+	 * Render object lists as compact tables or natural-height records. Only
+	 * long compact tables use a bounded scroll region.
 	 *
 	 * @param string                           $key  Field name.
 	 * @param array<int, array<string, mixed>> $rows Row data.
+	 * @param int                              $depth Recursion depth.
 	 * @return string
 	 */
-	private static function render_table( string $key, array $rows ): string {
-		// Columns come from `array_keys()` on each row below, so a table is
-		// exactly where an unfolded `nameLocalized` sibling shows up as its
-		// own "Name Localized" column. Fold before that happens; this function
-		// is the row-level entry point and never routes through suppress().
-		$rows = array_map( array( self::class, 'fold_localized' ), $rows );
+	private static function render_object_collection( string $key, array $rows, int $depth ): string {
+		// Records and tables share visible fields, including localized-value folding.
+		$rows = array_map( array( self::class, 'suppress' ), $rows );
 		$cols = array();
 		foreach ( $rows as $row ) {
 			foreach ( array_keys( $row ) as $col ) {
-				$col_str   = (string) $col;
-				$col_lc    = strtolower( $col_str );
-				$collapsed = str_replace( array( '_', '-' ), '', $col_lc );
-				if ( in_array( $col_lc, self::SUPPRESS_ALWAYS, true ) || in_array( $collapsed, self::SUPPRESS_ALWAYS, true ) ) {
-					continue;
-				}
-				// Tables share the noise filter with the field grid: a
-				// `position` column matches the row order, `type` discriminates
-				// a polymorphic schema, `calculation` leaks internal math.
-				// None belong in a consumer-facing card.
-				if ( in_array( $col_lc, self::SUPPRESS_NOISE, true ) || in_array( $collapsed, self::SUPPRESS_NOISE, true ) ) {
-					continue;
-				}
+				$col_str = (string) $col;
 				if ( ! in_array( $col_str, $cols, true ) ) {
 					$cols[] = $col_str;
 				}
@@ -434,7 +434,22 @@ class GenericRenderer {
 			return '';
 		}
 
-		$out = '<table class="roxyapi-table"><thead><tr>';
+		$title = self::humanize( $key );
+		if ( count( $cols ) > self::MAX_RECORD_TABLE_COLUMNS ) {
+			foreach ( $rows as $row ) {
+				foreach ( $row as $value ) {
+					if ( self::is_complex( $value ) || ( is_string( $value ) && mb_strlen( $value, 'UTF-8' ) > self::MAX_COMPACT_CELL_LENGTH ) ) {
+						return self::render_named_collection( $title, count( $rows ), self::render_collection_list( $rows, $depth ), $depth );
+					}
+				}
+			}
+		}
+		$long = count( $rows ) > self::COLLECTION_SCROLL_THRESHOLD;
+		$out  = '<table class="roxyapi-table">';
+		if ( $long ) {
+			$out .= '<caption>' . esc_html( self::row_count( count( $rows ) ) ) . '</caption>';
+		}
+		$out .= '<thead><tr>';
 		foreach ( $cols as $col ) {
 			$out .= '<th>' . esc_html( self::humanize( $col ) ) . '</th>';
 		}
@@ -445,24 +460,16 @@ class GenericRenderer {
 				$val = isset( $row[ $col ] ) ? $row[ $col ] : '';
 				if ( is_scalar( $val ) ) {
 					$out .= '<td>' . self::render_scalar( $col, $val ) . '</td>';
+				} elseif ( self::is_complex( $val ) ) {
+					$out .= '<td>' . ( self::is_list( $val ) ? self::render_list( $val, $depth + 1 ) : self::render_object( $val, $depth + 1, $col ) ) . '</td>';
 				} elseif ( is_array( $val ) && ! empty( $val ) ) {
-					if ( self::is_list( $val ) ) {
-						$items = array();
-						foreach ( $val as $vv ) {
-							if ( is_scalar( $vv ) && (string) $vv !== '' ) {
-								$items[] = esc_html( (string) $vv );
-							}
+					$items = array();
+					foreach ( $val as $item ) {
+						if ( is_scalar( $item ) && (string) $item !== '' ) {
+							$items[] = esc_html( (string) $item );
 						}
-						$out .= '<td>' . implode( ', ', $items ) . '</td>';
-					} else {
-						$flat = array();
-						foreach ( $val as $vk => $vv ) {
-							if ( is_scalar( $vv ) ) {
-								$flat[] = esc_html( self::humanize( (string) $vk ) ) . ': ' . esc_html( (string) $vv );
-							}
-						}
-						$out .= '<td>' . implode( ', ', $flat ) . '</td>';
 					}
+					$out .= '<td>' . implode( ', ', $items ) . '</td>';
 				} else {
 					$out .= '<td></td>';
 				}
@@ -471,17 +478,77 @@ class GenericRenderer {
 		}
 		$out .= '</tbody></table>';
 
-		$wrap_open  = '<section class="roxyapi-section">'
-			. '<h4 class="roxyapi-section-title">' . esc_html( self::humanize( $key ) ) . ' (' . count( $rows ) . ')</h4>';
-		$wrap_close = '</section>';
+		return self::render_named_collection( $title, count( $rows ), self::render_scroll_region( $out, $title, $long ), $depth );
+	}
 
-		if ( count( $rows ) > self::TABLE_DETAILS_THRESHOLD ) {
-			return '<details class="roxyapi-details"><summary>'
-				. esc_html( self::humanize( $key ) ) . ' (' . count( $rows ) . ')'
-				. '</summary>' . $out . '</details>';
+	/**
+	 * Name a collection once, folding deeper content closed.
+	 *
+	 * @param string $title Collection heading.
+	 * @param int    $count Number of entries.
+	 * @param string $body Escaped collection content.
+	 * @param int    $depth Array depth.
+	 * @return string
+	 */
+	private static function render_named_collection( string $title, int $count, string $body, int $depth ): string {
+		if ( $title === '' ) {
+			return $body;
 		}
+		if ( $count > self::DETAILS_THRESHOLD || $depth > 1 ) {
+			return '<details class="roxyapi-details"' . ( $depth > 1 ? '' : ' open' ) . '><summary>' . esc_html( $title ) . '</summary>' . $body . '</details>';
+		}
+		return '<section class="roxyapi-section"><h4 class="roxyapi-section-title">' . esc_html( $title ) . ' (' . $count . ')</h4>' . $body . '</section>';
+	}
 
-		return $wrap_open . $out . $wrap_close;
+	/**
+	 * Render records at natural height, with a count for long collections.
+	 *
+	 * @param array<int, mixed> $items Collection values.
+	 * @param int               $depth Recursion depth.
+	 * @return string
+	 */
+	private static function render_collection_list( array $items, int $depth ): string {
+		$records = array_filter( $items, static fn( $item ) => ! is_array( $item ) || self::is_list( $item ) ) === array();
+		$body    = self::render_list( $items, $depth, $records );
+		if ( count( $items ) > self::COLLECTION_SCROLL_THRESHOLD ) {
+			$body = '<p class="roxyapi-card-meta">' . esc_html( self::row_count( count( $items ) ) ) . '</p>' . $body;
+		}
+		return $body;
+	}
+
+	/**
+	 * Format the count shared by list paragraphs and table captions.
+	 *
+	 * @param int $count Number of entries.
+	 * @return string
+	 */
+	private static function row_count( int $count ): string {
+		/* translators: %s: number of table rows. */
+		return sprintf( __( '%s rows', 'roxyapi' ), number_format_i18n( $count ) );
+	}
+
+	/**
+	 * Identify objects and lists containing structured values.
+	 *
+	 * @param mixed $value Cell value.
+	 * @return bool
+	 */
+	private static function is_complex( $value ): bool {
+		return is_array( $value ) && $value !== array() && ( ! self::is_list( $value ) || array_filter( $value, 'is_array' ) !== array() );
+	}
+
+	/**
+	 * Contain a compact table, bounding its height only when long.
+	 *
+	 * @param string $body  Escaped rendered collection.
+	 * @param string $label Existing collection heading, when available.
+	 * @param bool   $long Whether to bound the collection height.
+	 * @return string
+	 */
+	private static function render_scroll_region( string $body, string $label, bool $long ): string {
+		$role  = $label === '' ? 'group' : 'region';
+		$named = $label === '' ? '' : ' aria-label="' . esc_attr( $label ) . '"';
+		return '<div class="roxyapi-data-scroll' . ( $long ? ' long' : '' ) . '" tabindex="0" role="' . $role . '"' . $named . '>' . $body . '</div>';
 	}
 
 	/**
@@ -845,7 +912,7 @@ class GenericRenderer {
 		if ( is_float( $value ) ) {
 			$value = self::format_float( $value );
 		}
-		$value_str = (string) $value;
+		$value_str = self::format_datetime( (string) $value );
 		if ( $value_str === '' ) {
 			return '';
 		}
@@ -861,6 +928,44 @@ class GenericRenderer {
 			return '<p>' . implode( '</p><p>', array_map( 'esc_html', $paragraphs ) ) . '</p>';
 		}
 		return esc_html( $value_str );
+	}
+
+	/**
+	 * Localize ISO dates, preserving naive clocks and using the site zone for instants.
+	 *
+	 * @param string $value Scalar display value.
+	 * @return string
+	 */
+	private static function format_datetime( string $value ): string {
+		if ( preg_match( '/^(\d{4}-\d{2}-\d{2})(?:T(\d{2}:\d{2})(?::(\d{2})(?:\.\d+)?)?(Z|[+-](?:[01]\d|2[0-3]):[0-5]\d)?)?$/D', $value, $parts ) !== 1 ) {
+			return $value;
+		}
+		$has_time = isset( $parts[2] ) && $parts[2] !== '';
+		$clock    = $has_time ? $parts[2] . ':' . ( ( $parts[3] ?? '' ) !== '' ? $parts[3] : '00' ) : '00:00:00';
+		$offset   = $parts[4] ?? '';
+		$local    = $parts[1] . 'T' . $clock;
+		$date     = \DateTimeImmutable::createFromFormat( '!Y-m-d\TH:i:sP', $local . ( $offset === '' || $offset === 'Z' ? '+00:00' : $offset ) );
+		if ( ! $date || $date->format( 'Y-m-d\TH:i:s' ) !== $local ) {
+			return $value;
+		}
+		$zone = $offset === '' ? new \DateTimeZone( 'UTC' ) : wp_timezone();
+		$date = $date->setTimezone( $zone );
+		if ( class_exists( \IntlDateFormatter::class ) ) {
+			$locale    = determine_locale();
+			$formatter = new \IntlDateFormatter( $locale, \IntlDateFormatter::MEDIUM, $has_time ? \IntlDateFormatter::SHORT : \IntlDateFormatter::NONE, $zone );
+			if ( \Locale::getPrimaryLanguage( (string) $formatter->getLocale() ) === \Locale::getPrimaryLanguage( $locale ) ) {
+				$formatted = $formatter->format( $date->getTimestamp() );
+				if ( is_string( $formatted ) ) {
+					return $formatted;
+				}
+			}
+		}
+		$format = (string) get_option( 'date_format' );
+		if ( $has_time ) {
+			$format .= ' ' . (string) get_option( 'time_format' );
+		}
+		$formatted = wp_date( $format, $date->getTimestamp(), $zone );
+		return is_string( $formatted ) ? $formatted : $value;
 	}
 
 	/**

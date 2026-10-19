@@ -265,6 +265,13 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.22.1 =
+* Reading lists show names and full details.
+* Long reading tables keep all rows in a scrollable panel.
+* Fixed: ecliptic crossings and KP interval readings take visitor forms when placed without details.
+* Fixed: date and time fields let visitors choose both the day and the time.
+* Fixed: an untouched timezone keeps the reading default instead of choosing UTC.
+
 = 1.22.0 =
 * New: planet meanings, zodiac signs, tarot cards, crystals and I Ching trigrams take a visitor form. Place [roxy_get_planet_meaning] or [roxy_get_zodiac_sign] with nothing inside the brackets and visitors pick from a list, then their reading appears on the same page. Create a reading offers Ask my visitor for all five.
 * Fixed: a reading placed without the details it needs no longer shows visitors an error. Visitors see nothing, and while you are logged in you see a short note on what to fill in.
@@ -300,6 +307,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.22.1 =
+Visitors can enter the details for ecliptic crossings and KP interval readings, including both date and time.
 
 = 1.22.0 =
 Worth updating if visitors should pick their own planet, sign, tarot card, crystal or trigram, if a page holds several visitor forms, or if your site runs WordPress 6.5.

@@ -35,6 +35,7 @@ class GetKpSublordChanges {
 		'timezone' => '',
 		'ayanamsa' => '',
 		'node_type' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -54,6 +55,10 @@ class GetKpSublordChanges {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['planet'] === '' || $atts['start_date'] === '' || $atts['end_date'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetKpSublordChangesForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

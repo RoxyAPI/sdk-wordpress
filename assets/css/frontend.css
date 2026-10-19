@@ -63,6 +63,7 @@
 .roxyapi-meta,
 .roxyapi-section-title,
 .roxyapi-fields dd,
+.roxyapi-record .roxyapi-card-title,
 .roxyapi-error,
 .roxyapi-notice {
 	color: var(--roxyapi-fg);
@@ -279,7 +280,7 @@
  */
 :where(.roxyapi-fields) {
 	display: grid;
-	grid-template-columns: minmax(8rem, max-content) 1fr;
+	grid-template-columns: minmax(8rem, max-content) minmax(0, 1fr);
 	gap: 0.6rem 1.5rem;
 	margin: 0;
 	padding: 0;
@@ -311,6 +312,7 @@
 }
 
 :where(.roxyapi-fields dd) {
+	min-inline-size: 0;
 	margin: 0;
 }
 
@@ -323,14 +325,27 @@
 	margin-block-end: 0;
 }
 
-/*
- * Tables get rounded corners + soft zebra stripes + sticky header. A
- * horizontal scroll wrapper kicks in below ~480px so wide tables stay
- * readable on phones without breaking the card layout.
- */
-:where(.roxyapi-section:has(> .roxyapi-table)) {
-	overflow-x: auto;
-	-webkit-overflow-scrolling: touch;
+/* Nested content can shrink before its own table wrapper handles overflow. */
+:where(
+	.roxyapi-card,
+	.roxyapi-section,
+	.roxyapi-details,
+	.roxyapi-record,
+	.roxyapi-records,
+	.roxyapi-fields
+) {
+	min-inline-size: 0;
+}
+
+/* Tables scroll within the card; long compact tables also cap their height. */
+:where(.roxyapi-data-scroll) {
+	min-inline-size: 0;
+	max-inline-size: 100%;
+	overflow: auto;
+}
+
+:where(.roxyapi-data-scroll.long) {
+	max-block-size: 32rem;
 }
 
 :where(.roxyapi-table) {
@@ -344,6 +359,10 @@
 		var(--roxyapi-border, color-mix(in srgb, currentColor 10%, transparent));
 	border-radius: var(--roxyapi-radius, 8px);
 	overflow: hidden;
+}
+
+:where(.roxyapi-table caption) {
+	text-align: start;
 }
 
 :where(.roxyapi-table th),
@@ -402,6 +421,12 @@
 
 :where(.roxyapi-list li + li) {
 	margin-block-start: 0.25rem;
+}
+
+:where(.roxyapi-records > .roxyapi-record + .roxyapi-record) {
+	margin-block-start: 1rem;
+	padding-block-start: 1rem;
+	border-block-start: 1px solid var(--roxyapi-border);
 }
 
 :where(.roxyapi-details) {

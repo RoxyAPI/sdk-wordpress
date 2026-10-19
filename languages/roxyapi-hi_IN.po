@@ -22,14 +22,10 @@ msgstr "1111"
 msgid "Admin only:"
 msgstr "केवल व्यवस्थापक के लिए:"
 
-#: src/Generated/Builder/Manifest.php:17590
+#: src/Generated/Builder/Manifest.php:17595
 #: src/Generated/Heroes/Manifest.php:202
 msgid "Angel number"
 msgstr "एंजल नंबर"
-
-#: src/Generated/Forms/AngelNumberForm.php:31
-msgid "Angel number lookup"
-msgstr "एंजल नंबर खोजें"
 
 #: src/Generated/Forms/AngelNumberForm.php:43
 #: blocks/generated/angel-number/index.js:13
@@ -94,14 +90,10 @@ msgid "Ayanamsa value"
 msgstr "अयनांश मान"
 
 #: src/Generated/Builder/Manifest.php:57
-#: src/Generated/Builder/Manifest.php:15820
+#: src/Generated/Builder/Manifest.php:15825
 #: src/Generated/Heroes/Manifest.php:192
 msgid "Biorhythm"
 msgstr "बायोरिदम"
-
-#: src/Generated/Forms/BiorhythmForm.php:31
-msgid "Biorhythm reading"
-msgstr "बायोरिदम विश्लेषण"
 
 #: src/Admin/SiteHealth.php:118
 #: src/Generated/Forms/BiorhythmForm.php:40
@@ -192,14 +184,6 @@ msgstr "YYYY-MM-DD प्रारूप में जन्म तिथि"
 #: blocks/generated/calculate-personal-year/index.js:20
 msgid "Birth day (1-31)"
 msgstr "जन्म का दिन (1-31)"
-
-#: src/Generated/Forms/BodygraphForm.php:37
-#: src/Generated/Forms/KpChartForm.php:37
-#: src/Generated/Forms/KundliForm.php:37
-#: src/Generated/Forms/MangalDoshaForm.php:37
-#: src/Generated/Forms/NatalChartForm.php:37
-msgid "Birth details"
-msgstr "जन्म विवरण"
 
 #: blocks/generated/calculate-annual-forecast/index.js:34
 #: blocks/generated/calculate-ayurvedic-constitution/index.js:27
@@ -388,27 +372,6 @@ msgstr "24 घंटे के HH:MM:SS प्रारूप में जन�
 msgid "Birth year to calculate Life Path automatically"
 msgstr "मूलांक स्वतः निकालने के लिए जन्म वर्ष"
 
-#: src/Generated/Forms/LifePathForm.php:32
-msgid "Calculate"
-msgstr "गणना करें"
-
-#: src/Generated/Forms/NatalChartForm.php:32
-#: src/Generated/Forms/NumerologyForm.php:32
-msgid "Calculate chart"
-msgstr "कुंडली बनाएँ"
-
-#: src/Generated/Forms/BiorhythmForm.php:32
-msgid "Calculate cycles"
-msgstr "चक्रों की गणना करें"
-
-#: src/Generated/Forms/MangalDoshaForm.php:32
-msgid "Check Mangal Dosha"
-msgstr "मंगल दोष देखें"
-
-#: src/Generated/Heroes/Manifest.php:73
-msgid "Check Mangal Dosha (manglik) status for matrimonial compatibility, with severity, remedies, and exception conditions."
-msgstr "विवाह अनुकूलता के लिए मंगल दोष (मांगलिक) की स्थिति, उसकी तीव्रता, उपाय और अपवाद स्थितियों सहित।"
-
 #: src/Plugin.php:229
 msgid "City selected."
 msgstr "शहर चुना गया।"
@@ -418,24 +381,12 @@ msgstr "शहर चुना गया।"
 msgid "Compatibility score"
 msgstr "अनुकूलता अंक"
 
-#: src/Generated/Heroes/Manifest.php:213
-msgid "Crystals and stones associated with any zodiac sign, with properties, color, and chakra."
-msgstr "हर राशि से जुड़े रत्न और पत्थर, उनके गुण, रंग और चक्र सहित।"
-
-#: src/Generated/Builder/Manifest.php:16884
+#: src/Generated/Builder/Manifest.php:16889
 #: src/Generated/Heroes/Manifest.php:212
 msgid "Crystals by zodiac"
 msgstr "राशि अनुसार रत्न"
 
-#: src/Generated/Forms/CrystalsByZodiacForm.php:31
-msgid "Crystals for your sign"
-msgstr "आपकी राशि के रत्न"
-
-#: src/Generated/Heroes/Manifest.php:123
-msgid "Current moon phase, illumination, sign, degree, and meaning."
-msgstr "वर्तमान चंद्र कला, प्रकाश मात्रा, राशि, अंश और अर्थ।"
-
-#: src/Generated/Builder/Manifest.php:15536
+#: src/Generated/Builder/Manifest.php:15541
 #: src/Generated/Forms/CastCustomSpreadForm.php:24
 msgid "Custom Spread Builder"
 msgstr "अपना स्प्रेड बनाएँ"
@@ -567,10 +518,6 @@ msgstr "दैनिक में एक कार्ड होता है। 
 msgid "Date"
 msgstr "तिथि"
 
-#: src/Generated/Forms/PanchangForm.php:37
-msgid "Date and location"
-msgstr "तिथि और स्थान"
-
 #: src/Generated/Forms/PanchangForm.php:45
 #: blocks/generated/panchang/index.js:13
 msgid "Date for the panchang reading"
@@ -621,23 +568,11 @@ msgstr "दशमलव अंश, पश्चिम के लिए ऋणा
 msgid "Defaults to today if left blank"
 msgstr "खाली छोड़ने पर आज की तिथि ली जाएगी"
 
-#: src/Generated/Heroes/Manifest.php:63
-msgid "Detailed Hindu calendar for any date and location: tithi, nakshatra, yoga, karana, rahu kaal, abhijit muhurta, brahma muhurta, and more."
-msgstr "किसी भी तिथि और स्थान के लिए विस्तृत पंचांग: तिथि, नक्षत्र, योग, करण, राहु काल, अभिजित मुहूर्त, ब्रह्म मुहूर्त और अधिक।"
-
-#: src/Generated/Forms/PanchangForm.php:31
-msgid "Detailed panchang"
-msgstr "विस्तृत पंचांग"
-
 #. translators: 1: suggested HTTP method + path, 2: optional endpoint hint
 #: src/Support/Templates.php:100
 #, php-format
 msgid "Did you mean: %1$s%2$s"
 msgstr "क्या आपका मतलब था: %1$s%2$s"
-
-#: src/Generated/Forms/TarotCardForm.php:32
-msgid "Draw cards"
-msgstr "कार्ड निकालें"
 
 #: blocks/generated/find-griha-pravesh-dates/index.js:18
 #: blocks/generated/get-critical-days/index.js:25
@@ -652,7 +587,7 @@ msgstr "अंतिम तिथि"
 msgid "Expression"
 msgstr "नामांक"
 
-#: src/Support/FormRenderer.php:328
+#: src/Support/FormRenderer.php:332
 msgid "Find by city"
 msgstr "शहर से खोजें"
 
@@ -675,18 +610,6 @@ msgstr "पूरा नाम"
 #: blocks/generated/numerology/index.js:11
 msgid "Full name at birth"
 msgstr "जन्म के समय का पूरा नाम"
-
-#: src/Generated/Forms/KpChartForm.php:32
-msgid "Generate KP chart"
-msgstr "केपी कुंडली बनाएँ"
-
-#: src/Generated/Forms/KundliForm.php:32
-msgid "Generate kundli"
-msgstr "कुंडली बनाएँ"
-
-#: src/Generated/Forms/TarotYesNoForm.php:32
-msgid "Get answer"
-msgstr "उत्तर पाएँ"
 
 #: src/Admin/SettingsFields.php:408
 #: src/Generated/Forms/AnalyzeKarmicLessonsForm.php:25
@@ -801,6 +724,7 @@ msgstr "उत्तर पाएँ"
 #: src/Generated/Forms/GetDikpalaDirectionForm.php:25
 #: src/Generated/Forms/GetDinacharyaScheduleForm.php:25
 #: src/Generated/Forms/GetDoshaForm.php:25
+#: src/Generated/Forms/GetEclipticCrossingsForm.php:25
 #: src/Generated/Forms/GetForecastForm.php:25
 #: src/Generated/Forms/GetGateForm.php:25
 #: src/Generated/Forms/GetHaabMonthForm.php:25
@@ -811,7 +735,11 @@ msgstr "उत्तर पाएँ"
 #: src/Generated/Forms/GetKpCuspsForm.php:25
 #: src/Generated/Forms/GetKpDailyFinanceForm.php:25
 #: src/Generated/Forms/GetKpPlanetsForm.php:25
+#: src/Generated/Forms/GetKpPlanetsIntervalForm.php:25
+#: src/Generated/Forms/GetKpRasiChangesForm.php:25
+#: src/Generated/Forms/GetKpRulingIntervalForm.php:25
 #: src/Generated/Forms/GetKpRulingPlanetsForm.php:25
+#: src/Generated/Forms/GetKpSublordChangesForm.php:25
 #: src/Generated/Forms/GetKuaNumberForm.php:25
 #: src/Generated/Forms/GetMajorDashasForm.php:25
 #: src/Generated/Forms/GetMayanDaySignForm.php:25
@@ -866,7 +794,7 @@ msgstr "गुण मिलान"
 msgid "House system"
 msgstr "भाव पद्धति"
 
-#: src/Support/FormRenderer.php:351
+#: src/Support/FormRenderer.php:355
 msgid "I consent to sending my inputs to generate this reading. See the Privacy Policy for details."
 msgstr "मैं यह विश्लेषण तैयार करने के लिए अपनी जानकारी भेजने की सहमति देता हूँ। विवरण के लिए गोपनीयता नीति देखें।"
 
@@ -893,10 +821,6 @@ msgstr "IANA नाम, जैसे Asia/Kolkata"
 #: src/Generated/Heroes/Manifest.php:82
 msgid "KP chart"
 msgstr "केपी कुंडली"
-
-#: src/Generated/Heroes/Manifest.php:83
-msgid "Krishnamurti Paddhati chart with cusps, planets, sub-lords, and significators."
-msgstr "कृष्णमूर्ति पद्धति कुंडली, भाव संधि, ग्रह, उप-स्वामी और कारक सहित।"
 
 #: src/Generated/Forms/BodygraphForm.php:58
 #: src/Generated/Forms/KpChartForm.php:58
@@ -978,23 +902,11 @@ msgstr "कृष्णमूर्ति पद्धति कुंडली,
 msgid "Latitude"
 msgstr "अक्षांश"
 
-#: src/Generated/Builder/Manifest.php:13774
+#: src/Generated/Builder/Manifest.php:13779
 #: src/Generated/Heroes/Manifest.php:182
 #: blocks/generated/calculate-maturity/index.js:11
 msgid "Life path"
 msgstr "मूलांक"
-
-#: src/Generated/Forms/LifePathForm.php:31
-msgid "Life path number"
-msgstr "मूलांक"
-
-#: src/Generated/Heroes/Manifest.php:183
-msgid "Life path number and core meaning from a birth date."
-msgstr "जन्म तिथि से मूलांक और उसका मूल अर्थ।"
-
-#: src/Generated/Heroes/Manifest.php:173
-msgid "Life path, expression, and soul urge from a name and date."
-msgstr "नाम और तिथि से मूलांक, नामांक और अंतरांक।"
 
 #: src/Generated/Forms/BodygraphForm.php:53
 #: src/Generated/Forms/KpChartForm.php:53
@@ -1090,26 +1002,10 @@ msgstr "24 घंटे के प्रारूप में जन्म क�
 msgid "Longitude"
 msgstr "देशांतर"
 
-#: src/Generated/Forms/AngelNumberForm.php:32
-msgid "Look up meaning"
-msgstr "अर्थ देखें"
-
-#: src/Generated/Forms/PanchangForm.php:32
-msgid "Look up panchang"
-msgstr "पंचांग देखें"
-
 #: src/Generated/Builder/Manifest.php:3325
 #: src/Generated/Heroes/Manifest.php:72
 msgid "Mangal Dosha"
 msgstr "मंगल दोष"
-
-#: src/Generated/Forms/MangalDoshaForm.php:31
-msgid "Mangal Dosha check"
-msgstr "मंगल दोष जाँच"
-
-#: src/Generated/Heroes/Manifest.php:203
-msgid "Meaning and pattern analysis for any number sequence."
-msgstr "किसी भी अंक क्रम का अर्थ और पैटर्न विश्लेषण।"
 
 #: src/Support/EphemerisNav.php:292
 #: blocks/generated/calculate-bridge-numbers/index.js:25
@@ -1203,14 +1099,10 @@ msgid "Number sequence"
 msgstr "अंक क्रम"
 
 #: src/Generated/Builder/Manifest.php:48
-#: src/Generated/Builder/Manifest.php:13732
+#: src/Generated/Builder/Manifest.php:13737
 #: src/Generated/Heroes/Manifest.php:172
 msgid "Numerology"
 msgstr "अंक ज्योतिष"
-
-#: src/Generated/Forms/NumerologyForm.php:31
-msgid "Numerology chart"
-msgstr "अंक ज्योतिष चार्ट"
 
 #: blocks/generated/cast-career-spread/index.js:20
 #: blocks/generated/cast-celtic-cross/index.js:20
@@ -1234,10 +1126,6 @@ msgstr "वैकल्पिक। कार्ड उसी को प्र�
 #: src/Generated/Heroes/Manifest.php:62
 msgid "Panchang"
 msgstr "पंचांग"
-
-#: src/Generated/Heroes/Manifest.php:193
-msgid "Physical, emotional, and intellectual cycle values."
-msgstr "शारीरिक, भावनात्मक और बौद्धिक चक्रों के मान।"
 
 #: src/Generated/Forms/CrystalsByZodiacForm.php:43
 #: blocks/generated/crystals-by-zodiac/index.js:13
@@ -1353,12 +1241,17 @@ msgstr "सीड"
 #: src/Generated/Forms/GetDailyAyurvedaReadingForm.php:62
 #: src/Generated/Forms/GetDailyZodiacReadingForm.php:51
 #: src/Generated/Forms/GetDinacharyaScheduleForm.php:62
+#: src/Generated/Forms/GetEclipticCrossingsForm.php:44
 #: src/Generated/Forms/GetHeliacalVisibilityForm.php:62
 #: src/Generated/Forms/GetHoraForm.php:62
 #: src/Generated/Forms/GetKpCuspsForm.php:69
 #: src/Generated/Forms/GetKpDailyFinanceForm.php:115
 #: src/Generated/Forms/GetKpPlanetsForm.php:69
+#: src/Generated/Forms/GetKpPlanetsIntervalForm.php:79
+#: src/Generated/Forms/GetKpRasiChangesForm.php:58
+#: src/Generated/Forms/GetKpRulingIntervalForm.php:78
 #: src/Generated/Forms/GetKpRulingPlanetsForm.php:55
+#: src/Generated/Forms/GetKpSublordChangesForm.php:58
 #: src/Generated/Forms/GetMajorDashasForm.php:69
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:51
 #: src/Generated/Forms/GetPlanetaryNodePassagesForm.php:44
@@ -1375,7 +1268,7 @@ msgstr "सीड"
 msgid "Select the timezone of the location."
 msgstr "स्थान का समय क्षेत्र चुनें।"
 
-#: src/Support/FormRenderer.php:335
+#: src/Support/FormRenderer.php:339
 msgid "Selecting a city auto-fills latitude, longitude, and timezone."
 msgstr "शहर चुनने पर अक्षांश, देशांतर और समय क्षेत्र स्वतः भर जाते हैं।"
 
@@ -1383,10 +1276,6 @@ msgstr "शहर चुनने पर अक्षांश, देशां�
 #: blocks/generated/tarot-yes-no/index.js:14
 msgid "Should I take the new job"
 msgstr "क्या मुझे नई नौकरी लेनी चाहिए"
-
-#: src/Generated/Forms/CrystalsByZodiacForm.php:32
-msgid "Show crystals"
-msgstr "रत्न दिखाएँ"
 
 #: blocks/generated/calculate-arudha-padas/index.js:48
 #: blocks/generated/calculate-ashtakavarga/index.js:48
@@ -1404,15 +1293,7 @@ msgstr "रत्न दिखाएँ"
 msgid "Sidereal frame (ayanamsa) the chart is cast in"
 msgstr "वह निरयन पद्धति (अयनांश) जिसमें कुंडली बनाई गई है"
 
-#: src/Generated/Heroes/Manifest.php:163
-msgid "Single card, three card, or Celtic Cross spreads."
-msgstr "एक कार्ड, तीन कार्ड या सेल्टिक क्रॉस स्प्रेड।"
-
-#: src/Generated/Heroes/Manifest.php:153
-msgid "Single-card Yes / No / Maybe answer with strength rating and interpretation."
-msgstr "एक कार्ड से हाँ / नहीं / शायद उत्तर, बल स्तर और व्याख्या सहित।"
-
-#: src/Generated/Builder/Manifest.php:15420
+#: src/Generated/Builder/Manifest.php:15425
 #: src/Generated/Forms/TarotCardForm.php:48
 #: blocks/generated/tarot/index.js:19
 msgid "Spread"
@@ -1428,7 +1309,7 @@ msgstr "स्प्रेड"
 msgid "Start date"
 msgstr "आरंभ तिथि"
 
-#: src/Support/FormRenderer.php:331
+#: src/Support/FormRenderer.php:335
 #: blocks/_shared/generated-edit.js:111
 msgid "Start typing a city name"
 msgstr "शहर का नाम लिखना शुरू करें"
@@ -1454,91 +1335,16 @@ msgstr "सिनैस्ट्री"
 msgid "Target date"
 msgstr "लक्ष्य तिथि"
 
-#: src/Generated/Builder/Manifest.php:15405
+#: src/Generated/Builder/Manifest.php:15410
 #: src/Generated/Heroes/Manifest.php:162
 msgid "Tarot card"
 msgstr "टैरो कार्ड"
 
-#: src/Generated/Forms/TarotCardForm.php:31
-msgid "Tarot reading"
-msgstr "टैरो विश्लेषण"
-
-#: src/Generated/Builder/Manifest.php:15375
+#: src/Generated/Builder/Manifest.php:15380
 #: src/Generated/Forms/TarotYesNoForm.php:31
 #: src/Generated/Heroes/Manifest.php:152
 msgid "Tarot yes or no"
 msgstr "टैरो हाँ या नहीं"
-
-#. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/Biorhythm.php:62
-#: src/Generated/Heroes/Biorhythm.php:97
-#: src/Generated/Heroes/LifePath.php:61
-#: src/Generated/Heroes/LifePath.php:96
-#, php-format
-msgid "The birth_date attribute is required. Example: %s"
-msgstr "birth_date विशेषता आवश्यक है। उदाहरण: %s"
-
-#. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/LifePath.php:67
-#: src/Generated/Heroes/LifePath.php:102
-#: src/Generated/Heroes/Numerology.php:69
-#: src/Generated/Heroes/Numerology.php:106
-#, php-format
-msgid "The birth_date attribute must be in YYYY-MM-DD format. Example: %s"
-msgstr "birth_date विशेषता YYYY-MM-DD प्रारूप में होनी चाहिए। उदाहरण: %s"
-
-#. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/KpChart.php:65
-#: src/Generated/Heroes/KpChart.php:102
-#: src/Generated/Heroes/MangalDosha.php:65
-#: src/Generated/Heroes/MangalDosha.php:102
-#, php-format
-msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s"
-msgstr "birth_date, birth_time, lat और lon विशेषताएँ आवश्यक हैं (tz का डिफ़ॉल्ट 5.5 IST है)। उदाहरण: %s"
-
-#. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/Kundli.php:65
-#: src/Generated/Heroes/Kundli.php:102
-#, php-format
-msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to 5.5 IST; pass an IANA name like Asia/Kolkata for DST-correct results). Example: %s"
-msgstr "birth_date, birth_time, lat और lon विशेषताएँ आवश्यक हैं (tz का डिफ़ॉल्ट 5.5 IST है; डेलाइट सेविंग के अनुसार सही परिणामों के लिए Asia/Kolkata जैसा IANA नाम दें)। उदाहरण: %s"
-
-#. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/Bodygraph.php:65
-#: src/Generated/Heroes/Bodygraph.php:102
-#: src/Generated/Heroes/NatalChart.php:65
-#: src/Generated/Heroes/NatalChart.php:102
-#, php-format
-msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to UTC; pass an IANA name or decimal hours for accuracy). Example: %s"
-msgstr "birth_date, birth_time, lat और lon विशेषताएँ आवश्यक हैं (tz का डिफ़ॉल्ट UTC है; सटीकता के लिए IANA नाम या दशमलव घंटे दें)। उदाहरण: %s"
-
-#. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/Panchang.php:64
-#: src/Generated/Heroes/Panchang.php:99
-#, php-format
-msgid "The date, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s"
-msgstr "date, lat और lon विशेषताएँ आवश्यक हैं (tz का डिफ़ॉल्ट 5.5 IST है)। उदाहरण: %s"
-
-#. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/Numerology.php:62
-#: src/Generated/Heroes/Numerology.php:99
-#, php-format
-msgid "The name and birth_date attributes are required. Example: %s"
-msgstr "name और birth_date विशेषताएँ आवश्यक हैं। उदाहरण: %s"
-
-#. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/AngelNumber.php:61
-#: src/Generated/Heroes/AngelNumber.php:88
-#, php-format
-msgid "The number attribute is required. Example: %s"
-msgstr "number विशेषता आवश्यक है। उदाहरण: %s"
-
-#. translators: %s is the canonical example shortcode.
-#: src/Generated/Heroes/CrystalsByZodiac.php:61
-#: src/Generated/Heroes/CrystalsByZodiac.php:88
-#, php-format
-msgid "The sign attribute is required. Example: %s"
-msgstr "sign विशेषता आवश्यक है। उदाहरण: %s"
 
 #: blocks/generated/calculate-annual-forecast/index.js:18
 #: blocks/generated/calculate-arabic-lots/index.js:18
@@ -1712,38 +1518,10 @@ msgstr "गोचर तिथि"
 msgid "Transit time"
 msgstr "गोचर समय"
 
-#: src/Generated/Heroes/Manifest.php:103
-msgid "Vedic 36-point Ashtakoota matrimonial compatibility with dosha cancellations and per-koot breakdown."
-msgstr "36 अंकों का वैदिक अष्टकूट विवाह मिलान, दोष निवारण और कूटवार विवरण सहित।"
-
-#: src/Generated/Forms/KundliForm.php:31
-msgid "Vedic birth chart"
-msgstr "वैदिक जन्म कुंडली"
-
-#: src/Generated/Heroes/Manifest.php:53
-msgid "Vedic birth chart with twelve rashis, planetary positions, nakshatra, and per-house interpretations."
-msgstr "बारह राशियों, ग्रह स्थितियों, नक्षत्र और भावानुसार व्याख्या सहित वैदिक जन्म कुंडली।"
-
 #: src/Generated/Builder/Manifest.php:3158
 #: src/Generated/Heroes/Manifest.php:52
 msgid "Vedic kundli"
 msgstr "वैदिक कुंडली"
-
-#: src/Generated/Heroes/Manifest.php:43
-msgid "Western birth chart with planets, houses, and aspects."
-msgstr "ग्रहों, भावों और दृष्टियों सहित पाश्चात्य जन्म कुंडली।"
-
-#: src/Generated/Heroes/Manifest.php:113
-msgid "Western compatibility percentage between two charts with sign, element, and aspect breakdown."
-msgstr "राशि, तत्व और दृष्टि के विवरण सहित दो कुंडलियों के बीच पाश्चात्य अनुकूलता प्रतिशत।"
-
-#: src/Generated/Heroes/Manifest.php:33
-msgid "Western daily reading for any zodiac sign."
-msgstr "किसी भी राशि के लिए पाश्चात्य दैनिक राशिफल।"
-
-#: src/Generated/Heroes/Manifest.php:93
-msgid "Western synastry chart between two birth charts with compatibility score and inter-aspects."
-msgstr "अनुकूलता अंक और परस्पर दृष्टियों सहित दो जन्म कुंडलियों के बीच पाश्चात्य सिनैस्ट्री चार्ट।"
 
 #: src/Generated/Forms/TarotCardForm.php:44
 #: blocks/generated/tarot/index.js:14
@@ -2181,14 +1959,14 @@ msgstr "अनुवाद फ़ाइल लोड हुई"
 
 #: src/Admin/SiteHealth.php:77
 #: src/Admin/SiteHealth.php:119
-#: src/Support/GenericRenderer.php:836
-#: src/Support/GenericRenderer.php:839
+#: src/Support/GenericRenderer.php:903
+#: src/Support/GenericRenderer.php:906
 #: assets/js/builder.js:70
 msgid "Yes"
 msgstr "हाँ"
 
 #: src/Admin/SiteHealth.php:77
-#: src/Support/GenericRenderer.php:839
+#: src/Support/GenericRenderer.php:906
 #: assets/js/builder.js:71
 msgid "No"
 msgstr "नहीं"
@@ -2304,8 +2082,8 @@ msgid "Please confirm consent before submitting."
 msgstr "भेजने से पहले कृपया सहमति की पुष्टि करें।"
 
 #. translators: %s: field label
-#: src/Support/FormRouter.php:330
-#: src/Support/FormRouter.php:344
+#: src/Support/FormRouter.php:339
+#: src/Support/FormRouter.php:353
 #, php-format
 msgid "%s is required."
 msgstr "%s आवश्यक है।"
@@ -3725,7 +3503,7 @@ msgstr ""
 msgid "Search query to match against symbol names and meanings"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14932
+#: src/Generated/Builder/Manifest.php:14937
 #: src/Generated/Forms/GetHebrewLetterForm.php:33
 #: blocks/generated/search-dream-symbols/index.js:18
 msgid "Letter"
@@ -5166,7 +4944,7 @@ msgctxt "block keyword"
 msgid "spread"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15917
+#: src/Generated/Builder/Manifest.php:15922
 #: src/Generated/Forms/CalculateBioCompatibilityForm.php:24
 msgid "Compatibility"
 msgstr "अनुकूलता"
@@ -5183,7 +4961,7 @@ msgstr "अनुकूलता स्कोर"
 msgid "Composite Chart"
 msgstr "संयुक्त कुंडली"
 
-#: src/Generated/Builder/Manifest.php:9560
+#: src/Generated/Builder/Manifest.php:9565
 #: src/Generated/Forms/GenerateTimelineForm.php:24
 msgid "Cross-domain Forecast Timeline"
 msgstr "बहु-क्षेत्रीय पूर्वानुमान समयरेखा"
@@ -5192,22 +4970,22 @@ msgstr "बहु-क्षेत्रीय पूर्वानुमान 
 msgid "Ephemeris month"
 msgstr "एफ़ेमेरिस माह"
 
-#: src/Generated/Builder/Manifest.php:9574
+#: src/Generated/Builder/Manifest.php:9579
 #: src/Generated/Forms/GenerateDigestForm.php:24
 msgid "Forecast Digest"
 msgstr "पूर्वानुमान सारांश"
 
-#: src/Generated/Builder/Manifest.php:10184
+#: src/Generated/Builder/Manifest.php:10189
 #: src/Generated/Forms/CalculateConnectionForm.php:24
 msgid "Human Design Connection Chart"
 msgstr "ह्यूमन डिज़ाइन कनेक्शन चार्ट"
 
-#: src/Generated/Builder/Manifest.php:10333
+#: src/Generated/Builder/Manifest.php:10338
 #: src/Generated/Forms/CalculatePentaForm.php:24
 msgid "Human Design Penta"
 msgstr "ह्यूमन डिज़ाइन पेंटा"
 
-#: src/Generated/Builder/Manifest.php:10453
+#: src/Generated/Builder/Manifest.php:10458
 #: src/Generated/Forms/GenerateTransitForm.php:24
 msgid "Human Design Transit Overlay"
 msgstr "ह्यूमन डिज़ाइन गोचर ओवरले"
@@ -5256,7 +5034,7 @@ msgstr "पिछला माह"
 msgid "Show month"
 msgstr "माह दिखाएँ"
 
-#: src/Generated/Builder/Manifest.php:9588
+#: src/Generated/Builder/Manifest.php:9593
 #: src/Generated/Forms/FindSignificantDatesForm.php:24
 msgid "Significant Dates"
 msgstr "महत्वपूर्ण तिथियाँ"
@@ -5270,7 +5048,7 @@ msgstr "यह विश्लेषण पहले ही दिखाया �
 msgid "Transit Aspects"
 msgstr "गोचर दृष्टियाँ"
 
-#: src/Generated/Builder/Manifest.php:9723
+#: src/Generated/Builder/Manifest.php:9728
 #: src/Generated/Forms/ForecastTransitsForm.php:24
 msgid "Western Astrology Forecast"
 msgstr "पाश्चात्य ज्योतिष पूर्वानुमान"
@@ -6711,7 +6489,7 @@ msgctxt "block keyword"
 msgid "vedic"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11093
+#: src/Generated/Builder/Manifest.php:11098
 #: src/Generated/Forms/CalculateBaziCompatibilityForm.php:24
 msgid "BaZi Compatibility"
 msgstr "BaZi अनुकूलता"
@@ -7442,25 +7220,17 @@ msgstr ""
 msgid "The year ahead for a zodiac sign."
 msgstr ""
 
-#: src/Generated/Forms/BodygraphForm.php:31
-msgid "Human Design bodygraph"
-msgstr "ह्यूमन डिज़ाइन बॉडीग्राफ"
-
-#: src/Generated/Forms/BodygraphForm.php:32
-msgid "Generate bodygraph"
-msgstr "बॉडीग्राफ बनाएँ"
-
-#: src/Generated/Builder/Manifest.php:7939
+#: src/Generated/Builder/Manifest.php:7944
 #: src/Generated/Forms/CalculateDashakootForm.php:24
 msgid "Porutham Match"
 msgstr "पोरुथम मिलान"
 
-#: src/Generated/Builder/Manifest.php:13570
+#: src/Generated/Builder/Manifest.php:13575
 #: src/Generated/Forms/CalculateEntrancePadaForm.php:24
 msgid "Entrance Pada"
 msgstr "प्रवेश पद"
 
-#: src/Generated/Builder/Manifest.php:13690
+#: src/Generated/Builder/Manifest.php:13695
 #: src/Generated/Forms/CalculatePlotAnalysisForm.php:24
 msgid "Plot"
 msgstr "प्लॉट"
@@ -7469,7 +7239,7 @@ msgstr "प्लॉट"
 msgid "Unit"
 msgstr "इकाई"
 
-#: src/Generated/Builder/Manifest.php:13097
+#: src/Generated/Builder/Manifest.php:13102
 #: src/Generated/Forms/CalculateMayanCompatibilityForm.php:24
 msgid "Mayan Nawal Compatibility"
 msgstr "माया नवाल अनुकूलता"
@@ -7513,33 +7283,25 @@ msgstr ""
 msgid "Compare Malefic Affliction"
 msgstr "अशुभ पीड़ा की तुलना करें"
 
-#: src/Generated/Builder/Manifest.php:13704
+#: src/Generated/Builder/Manifest.php:13709
 #: src/Generated/Forms/CalculateRoomComplianceForm.php:24
 msgid "Room Placement"
 msgstr "कक्ष स्थान"
 
-#: src/Generated/Builder/Manifest.php:13718
+#: src/Generated/Builder/Manifest.php:13723
 #: src/Generated/Forms/GenerateMandalaForm.php:24
 msgid "Vastu Purusha Mandala"
 msgstr "वास्तु पुरुष मंडल"
 
-#: src/Generated/Builder/Manifest.php:9546
+#: src/Generated/Builder/Manifest.php:9551
 #: src/Generated/Heroes/Manifest.php:132
 msgid "Forecast timeline"
 msgstr "पूर्वानुमान समयरेखा"
 
-#: src/Generated/Heroes/Manifest.php:133
-msgid "Cross-domain forecast for one birth chart: transits, ingresses, stations, dasha changes, and biorhythm critical days over a window of up to 90 days."
-msgstr "एक जन्म कुंडली के लिए बहु-क्षेत्रीय पूर्वानुमान: गोचर, राशि प्रवेश, स्थिरता, दशा परिवर्तन और बायोरिदम के महत्वपूर्ण दिन, 90 दिनों तक की अवधि में।"
-
-#: src/Generated/Builder/Manifest.php:9737
+#: src/Generated/Builder/Manifest.php:9742
 #: src/Generated/Heroes/Manifest.php:142
 msgid "Bodygraph"
 msgstr "बॉडीग्राफ"
-
-#: src/Generated/Heroes/Manifest.php:143
-msgid "Human Design bodygraph with type, strategy, authority, profile, the nine centers, channels, and gates."
-msgstr "प्रकार, रणनीति, प्राधिकार, प्रोफ़ाइल, नौ केंद्रों, चैनलों और द्वारों के साथ ह्यूमन डिज़ाइन बॉडीग्राफ।"
 
 #: blocks/generated/calculate-ayadi/index.js:11
 msgid "Length"
@@ -9017,17 +8779,17 @@ msgstr ""
 msgid "Clear every colour and use the defaults"
 msgstr "सभी रंग हटाएँ और डिफ़ॉल्ट का उपयोग करें"
 
-#: src/Generated/Builder/Manifest.php:14154
+#: src/Generated/Builder/Manifest.php:14159
 #: src/Generated/Forms/AnalyzeKarmicLessonsForm.php:24
 msgid "Karmic Lessons"
 msgstr "कर्म पाठ"
 
-#: src/Generated/Builder/Manifest.php:17723
+#: src/Generated/Builder/Manifest.php:17728
 #: src/Generated/Forms/AnalyzeNumberSequenceForm.php:24
 msgid "Number Sequence"
 msgstr "अंक क्रम"
 
-#: src/Generated/Builder/Manifest.php:10800
+#: src/Generated/Builder/Manifest.php:10805
 #: src/Generated/Forms/CalculateAnnualForecastForm.php:24
 msgid "BaZi Annual Forecast"
 msgstr "BaZi वार्षिक पूर्वानुमान"
@@ -9059,12 +8821,12 @@ msgstr "अष्टकवर्ग"
 msgid "Planetary Aspects"
 msgstr "ग्रह दृष्टियाँ"
 
-#: src/Generated/Builder/Manifest.php:13242
+#: src/Generated/Builder/Manifest.php:13247
 #: src/Generated/Forms/CalculateAyadiForm.php:24
 msgid "Ayadi Shadvarga"
 msgstr "आयादि षड्वर्ग"
 
-#: src/Generated/Builder/Manifest.php:16147
+#: src/Generated/Builder/Manifest.php:16152
 #: src/Generated/Forms/CalculateAyurvedicConstitutionForm.php:24
 msgid "Ayurvedic Constitution"
 msgstr "आयुर्वेदिक प्रकृति"
@@ -9079,12 +8841,12 @@ msgstr "भाव बल"
 msgid "Bhav Chalit"
 msgstr "भाव चलित"
 
-#: src/Generated/Builder/Manifest.php:13803
+#: src/Generated/Builder/Manifest.php:13808
 #: src/Generated/Forms/CalculateBirthDayForm.php:24
 msgid "Birth Day Number"
 msgstr "जन्म दिन अंक"
 
-#: src/Generated/Builder/Manifest.php:13832
+#: src/Generated/Builder/Manifest.php:13837
 #: src/Generated/Forms/CalculateBridgeNumbersForm.php:24
 msgid "Bridge Numbers"
 msgstr "सेतु अंक"
@@ -9093,7 +8855,7 @@ msgstr "सेतु अंक"
 msgid "Full birth name as it appears on the birth certificate, first, middle and last names separated by spaces"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:13900
+#: src/Generated/Builder/Manifest.php:13905
 #: src/Generated/Forms/CalculateBusinessNameForm.php:24
 msgid "Business Name Numerology"
 msgstr "व्यवसाय नाम अंक ज्योतिष"
@@ -9102,17 +8864,17 @@ msgstr "व्यवसाय नाम अंक ज्योतिष"
 msgid "The business or brand name to evaluate"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:10078
+#: src/Generated/Builder/Manifest.php:10083
 #: src/Generated/Forms/CalculateCentersForm.php:24
 msgid "Human Design Centers"
 msgstr "ह्यूमन डिज़ाइन केंद्र"
 
-#: src/Generated/Builder/Manifest.php:13929
+#: src/Generated/Builder/Manifest.php:13934
 #: src/Generated/Forms/CalculateChaldeanForm.php:24
 msgid "Chaldean Numerology"
 msgstr "कैल्डियन अंक ज्योतिष"
 
-#: src/Generated/Builder/Manifest.php:9827
+#: src/Generated/Builder/Manifest.php:9832
 #: src/Generated/Forms/CalculateChannelsForm.php:24
 msgid "Defined Human Design Channels"
 msgstr "परिभाषित ह्यूमन डिज़ाइन चैनल"
@@ -9122,17 +8884,17 @@ msgstr "परिभाषित ह्यूमन डिज़ाइन चै
 msgid "Chara Karakas"
 msgstr "चर कारक"
 
-#: src/Generated/Builder/Manifest.php:11453
+#: src/Generated/Builder/Manifest.php:11458
 #: src/Generated/Forms/CalculateDayMasterStrengthForm.php:24
 msgid "Day Master Strength"
 msgstr "डे मास्टर बल"
 
-#: src/Generated/Builder/Manifest.php:7676
+#: src/Generated/Builder/Manifest.php:7681
 #: src/Generated/Forms/CalculateDrishtiForm.php:24
 msgid "Planetary Aspects (Drishti)"
 msgstr "ग्रह दृष्टियाँ (दृष्टि)"
 
-#: src/Generated/Builder/Manifest.php:14028
+#: src/Generated/Builder/Manifest.php:14033
 #: src/Generated/Forms/CalculateDualForm.php:24
 msgid "Dual Numerology"
 msgstr "द्वि अंक ज्योतिष"
@@ -9141,12 +8903,12 @@ msgstr "द्वि अंक ज्योतिष"
 msgid "The name to analyze in both systems"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14057
+#: src/Generated/Builder/Manifest.php:14062
 #: src/Generated/Forms/CalculateExpressionForm.php:24
 msgid "Expression Number"
 msgstr "नामांक"
 
-#: src/Generated/Builder/Manifest.php:10198
+#: src/Generated/Builder/Manifest.php:10203
 #: src/Generated/Forms/CalculateGatesForm.php:24
 msgid "Human Design Gate Activations"
 msgstr "ह्यूमन डिज़ाइन गेट सक्रियण"
@@ -9156,17 +8918,17 @@ msgstr "ह्यूमन डिज़ाइन गेट सक्रियण
 msgid "House Cusps"
 msgstr "भाव संधि"
 
-#: src/Generated/Builder/Manifest.php:12040
+#: src/Generated/Builder/Manifest.php:12045
 #: src/Generated/Forms/CalculateKuaNumberForm.php:24
 msgid "Calculate Kua Number"
 msgstr "कुआ अंक की गणना करें"
 
-#: src/Generated/Builder/Manifest.php:11635
+#: src/Generated/Builder/Manifest.php:11640
 #: src/Generated/Forms/CalculateLuckPillarsForm.php:24
 msgid "Luck Pillars"
 msgstr "भाग्य स्तंभ"
 
-#: src/Generated/Builder/Manifest.php:14305
+#: src/Generated/Builder/Manifest.php:14310
 #: src/Generated/Forms/CalculateNumCompatibilityForm.php:24
 msgid "Numerology Compatibility"
 msgstr "अंक ज्योतिष अनुकूलता"
@@ -9184,7 +8946,7 @@ msgstr ""
 msgid "Birth longitude in decimal degrees, part of the birth record"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14319
+#: src/Generated/Builder/Manifest.php:14324
 #: src/Generated/Forms/CalculatePersonalDayForm.php:24
 msgid "Personal Day"
 msgstr "व्यक्तिगत दिन"
@@ -9193,7 +8955,7 @@ msgstr "व्यक्तिगत दिन"
 msgid "Target date in YYYY-MM-DD format, in the years 100 to 2100"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14497
+#: src/Generated/Builder/Manifest.php:14502
 #: src/Generated/Forms/CalculatePersonalityForm.php:24
 msgid "Personality Number"
 msgstr "व्यक्तित्व अंक"
@@ -9203,7 +8965,7 @@ msgstr "व्यक्तित्व अंक"
 msgid "Full birth name"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14374
+#: src/Generated/Builder/Manifest.php:14379
 #: src/Generated/Forms/CalculatePersonalMonthForm.php:24
 msgid "Personal Month"
 msgstr "व्यक्तिगत माह"
@@ -9216,7 +8978,7 @@ msgstr ""
 msgid "Target calendar month to forecast (1 to 12)"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14442
+#: src/Generated/Builder/Manifest.php:14447
 #: src/Generated/Forms/CalculatePersonalYearForm.php:24
 msgid "Personal Year"
 msgstr "व्यक्तिगत वर्ष"
@@ -9225,47 +8987,47 @@ msgstr "व्यक्तिगत वर्ष"
 msgid "Year to forecast"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:10347
+#: src/Generated/Builder/Manifest.php:10352
 #: src/Generated/Forms/CalculateProfileForm.php:24
 msgid "Human Design Profile and Line Keynotes"
 msgstr "ह्यूमन डिज़ाइन प्रोफ़ाइल और रेखा मुख्य बिंदु"
 
-#: src/Generated/Builder/Manifest.php:8603
+#: src/Generated/Builder/Manifest.php:8608
 #: src/Generated/Forms/CalculateShadbalaForm.php:24
 msgid "Shadbala"
 msgstr "षड्बल"
 
-#: src/Generated/Builder/Manifest.php:14526
+#: src/Generated/Builder/Manifest.php:14531
 #: src/Generated/Forms/CalculateSoulUrgeForm.php:24
 msgid "Soul Urge Number"
 msgstr "अंतरांक"
 
-#: src/Generated/Builder/Manifest.php:12493
+#: src/Generated/Builder/Manifest.php:12498
 #: src/Generated/Forms/CalculateTonalpohualliForm.php:24
 msgid "Aztec Day Sign for a Date"
 msgstr "किसी तिथि का एज़्टेक दिन चिह्न"
 
-#: src/Generated/Builder/Manifest.php:8961
+#: src/Generated/Builder/Manifest.php:8966
 #: src/Generated/Forms/CalculateTransitForm.php:24
 msgid "Transit Analysis"
 msgstr "गोचर विश्लेषण"
 
-#: src/Generated/Builder/Manifest.php:10467
+#: src/Generated/Builder/Manifest.php:10472
 #: src/Generated/Forms/CalculateTypeForm.php:24
 msgid "Human Design Type"
 msgstr "ह्यूमन डिज़ाइन प्रकार"
 
-#: src/Generated/Builder/Manifest.php:12992
+#: src/Generated/Builder/Manifest.php:12997
 #: src/Generated/Forms/CalculateTzolkinForm.php:24
 msgid "Mayan Day Sign for a Date"
 msgstr "किसी तिथि का माया दिन चिह्न"
 
-#: src/Generated/Builder/Manifest.php:10573
+#: src/Generated/Builder/Manifest.php:10578
 #: src/Generated/Forms/CalculateVariablesForm.php:24
 msgid "Human Design Variables"
 msgstr "ह्यूमन डिज़ाइन वेरिएबल"
 
-#: src/Generated/Builder/Manifest.php:11149
+#: src/Generated/Builder/Manifest.php:11154
 #: src/Generated/Forms/CalculateZodiacAnimalForm.php:24
 msgid "Chinese Zodiac Animal for a Birth Date"
 msgstr "जन्म तिथि का चीनी राशि पशु"
@@ -9275,12 +9037,12 @@ msgstr "जन्म तिथि का चीनी राशि पशु"
 msgid "Cast a KP Horary"
 msgstr "केपी प्रश्न कुंडली बनाएँ"
 
-#: src/Generated/Builder/Manifest.php:5896
+#: src/Generated/Builder/Manifest.php:5897
 #: src/Generated/Forms/CheckKalsarpaDoshaForm.php:24
 msgid "Kalsarpa Dosha"
 msgstr "कालसर्प दोष"
 
-#: src/Generated/Builder/Manifest.php:8481
+#: src/Generated/Builder/Manifest.php:8486
 #: src/Generated/Forms/CheckSadhesatiForm.php:24
 msgid "Sadhesati"
 msgstr "साढ़ेसाती"
@@ -9295,18 +9057,18 @@ msgstr "दृष्टि पैटर्न"
 msgid "Classical Vedic Yogas in a Birth Chart"
 msgstr "जन्म कुंडली में शास्त्रीय वैदिक योग"
 
-#: src/Generated/Builder/Manifest.php:15550
+#: src/Generated/Builder/Manifest.php:15555
 #: src/Generated/Forms/DrawCardsForm.php:24
 msgid "Draw Tarot Cards"
 msgstr "टैरो कार्ड निकालें"
 
-#: src/Generated/Builder/Manifest.php:13584
+#: src/Generated/Builder/Manifest.php:13589
 #: src/Generated/Forms/FindGrihaPraveshDatesForm.php:24
 msgid "Griha Pravesh Dates"
 msgstr "गृह प्रवेश तिथियाँ"
 
 #: src/Generated/Builder/Manifest.php:2788
-#: src/Generated/Builder/Manifest.php:9602
+#: src/Generated/Builder/Manifest.php:9607
 #: src/Generated/Forms/ForecastSolarReturnForm.php:24
 #: src/Generated/Forms/GenerateSolarReturnForm.php:24
 msgid "Solar Return Chart"
@@ -9322,17 +9084,17 @@ msgstr "क्षुद्रग्रह देवियाँ"
 msgid "Astrocartography Map"
 msgstr "एस्ट्रोकार्टोग्राफी मानचित्र"
 
-#: src/Generated/Builder/Manifest.php:10953
+#: src/Generated/Builder/Manifest.php:10958
 #: src/Generated/Forms/GenerateBaziChartForm.php:24
 msgid "BaZi Chart"
 msgstr "BaZi चार्ट"
 
-#: src/Generated/Builder/Manifest.php:14555
+#: src/Generated/Builder/Manifest.php:14560
 #: src/Generated/Forms/GenerateBirthProfileForm.php:24
 msgid "Birth Profile"
 msgstr "जन्म प्रोफ़ाइल"
 
-#: src/Generated/Builder/Manifest.php:9933
+#: src/Generated/Builder/Manifest.php:9938
 #: src/Generated/Forms/GenerateBodygraphForm.php:24
 msgid "Human Design Bodygraph"
 msgstr "ह्यूमन डिज़ाइन बॉडीग्राफ"
@@ -9362,12 +9124,12 @@ msgstr "लोकल स्पेस ज्योतिष मानचित्
 msgid "Lunar Return Chart"
 msgstr "चंद्र वापसी कुंडली"
 
-#: src/Generated/Builder/Manifest.php:12862
+#: src/Generated/Builder/Manifest.php:12867
 #: src/Generated/Forms/GenerateMayanChartForm.php:24
 msgid "Mayan Chart"
 msgstr "माया चार्ट"
 
-#: src/Generated/Builder/Manifest.php:7554
+#: src/Generated/Builder/Manifest.php:7559
 #: src/Generated/Forms/GenerateNavamsaForm.php:24
 msgid "Navamsa Chart (D9)"
 msgstr "नवांश कुंडली (D9)"
@@ -9397,17 +9159,17 @@ msgstr "स्थान परिवर्तन कुंडली"
 msgid "Solar Arc Directions"
 msgstr "सौर चाप दिशाएँ"
 
-#: src/Generated/Builder/Manifest.php:10679
+#: src/Generated/Builder/Manifest.php:10684
 #: src/Generated/Forms/GetAlmanacDayForm.php:24
 msgid "Almanac for a Day"
 msgstr "एक दिन का पंचांग"
 
-#: src/Generated/Builder/Manifest.php:11901
+#: src/Generated/Builder/Manifest.php:11906
 #: src/Generated/Forms/GetAnnualAfflictionsForm.php:24
 msgid "Annual Afflictions"
 msgstr "वार्षिक पीड़ाएँ"
 
-#: src/Generated/Builder/Manifest.php:11930
+#: src/Generated/Builder/Manifest.php:11935
 #: src/Generated/Forms/GetAnnualFlyingStarsForm.php:24
 msgid "Annual Flying Stars"
 msgstr "वार्षिक फ्लाइंग स्टार"
@@ -9418,29 +9180,29 @@ msgstr "वार्षिक फ्लाइंग स्टार"
 msgid "Avastha"
 msgstr "अवस्था"
 
-#: src/Generated/Builder/Manifest.php:12443
+#: src/Generated/Builder/Manifest.php:12448
 #: src/Generated/Forms/GetAztecDaySignForm.php:24
 msgid "Aztec Day Sign"
 msgstr "एज़्टेक दिन चिह्न"
 
-#: src/Generated/Builder/Manifest.php:12457
-#: src/Generated/Builder/Manifest.php:12940
+#: src/Generated/Builder/Manifest.php:12462
+#: src/Generated/Builder/Manifest.php:12945
 #: src/Generated/Forms/GetAztecDaySignForm.php:33
 #: src/Generated/Forms/GetMayanDaySignForm.php:33
 msgid "Day sign"
 msgstr "दिन चिह्न"
 
-#: src/Generated/Builder/Manifest.php:12564
+#: src/Generated/Builder/Manifest.php:12569
 #: src/Generated/Forms/GetAztecTrecenaForm.php:24
 msgid "Aztec Trecena"
 msgstr "एज़्टेक ट्रेसेना"
 
-#: src/Generated/Builder/Manifest.php:11959
+#: src/Generated/Builder/Manifest.php:11964
 #: src/Generated/Forms/GetBaguaSectorForm.php:24
 msgid "Bagua Sector"
 msgstr "बागुआ क्षेत्र"
 
-#: src/Generated/Builder/Manifest.php:11973
+#: src/Generated/Builder/Manifest.php:11978
 #: src/Generated/Forms/GetBaguaSectorForm.php:33
 msgid "Life area"
 msgstr "जीवन क्षेत्र"
@@ -9450,12 +9212,12 @@ msgstr "जीवन क्षेत्र"
 msgid "Basic Panchang"
 msgstr "मूल पंचांग"
 
-#: src/Generated/Builder/Manifest.php:16926
+#: src/Generated/Builder/Manifest.php:16931
 #: src/Generated/Forms/GetBirthstonesForm.php:24
 msgid "Birthstones by Month"
 msgstr "महीने के अनुसार जन्म रत्न"
 
-#: src/Generated/Builder/Manifest.php:10053
+#: src/Generated/Builder/Manifest.php:10058
 #: src/Generated/Forms/GetCenterForm.php:33
 msgid "Center"
 msgstr "केंद्र"
@@ -9465,17 +9227,17 @@ msgstr "केंद्र"
 msgid "Choghadiya"
 msgstr "चौघड़िया"
 
-#: src/Generated/Builder/Manifest.php:15931
+#: src/Generated/Builder/Manifest.php:15936
 #: src/Generated/Forms/GetCriticalDaysForm.php:24
 msgid "Critical Days"
 msgstr "क्रांतिक दिन"
 
-#: src/Generated/Builder/Manifest.php:17174
+#: src/Generated/Builder/Manifest.php:17179
 #: src/Generated/Forms/GetCrystalsByChakraForm.php:24
 msgid "Crystals by Chakra"
 msgstr "चक्र के अनुसार रत्न"
 
-#: src/Generated/Builder/Manifest.php:17237
+#: src/Generated/Builder/Manifest.php:17242
 #: src/Generated/Forms/GetCrystalsByElementForm.php:24
 msgid "Crystals by Element"
 msgstr "तत्व के अनुसार रत्न"
@@ -9485,90 +9247,90 @@ msgstr "तत्व के अनुसार रत्न"
 msgid "Current Mahadasha"
 msgstr "वर्तमान महादशा"
 
-#: src/Generated/Builder/Manifest.php:16285
+#: src/Generated/Builder/Manifest.php:16290
 #: src/Generated/Forms/GetDailyAyurvedaReadingForm.php:24
 msgid "Daily Ayurveda Reading"
 msgstr "दैनिक आयुर्वेद विश्लेषण"
 
-#: src/Generated/Builder/Manifest.php:11385
+#: src/Generated/Builder/Manifest.php:11390
 #: src/Generated/Forms/GetDailyZodiacReadingForm.php:24
 msgid "Daily Chinese Zodiac Reading"
 msgstr "दैनिक चीनी राशि विश्लेषण"
 
-#: src/Generated/Builder/Manifest.php:11121
-#: src/Generated/Builder/Manifest.php:11399
+#: src/Generated/Builder/Manifest.php:11126
+#: src/Generated/Builder/Manifest.php:11404
 #: src/Generated/Forms/GetDailyZodiacReadingForm.php:33
 #: src/Generated/Forms/GetZodiacAnimalForm.php:33
 msgid "Animal"
 msgstr "पशु"
 
-#: src/Generated/Builder/Manifest.php:13373
-#: src/Generated/Builder/Manifest.php:13387
+#: src/Generated/Builder/Manifest.php:13378
+#: src/Generated/Builder/Manifest.php:13392
 #: src/Generated/Forms/GetDevataForm.php:24
 #: src/Generated/Forms/GetDevataForm.php:33
 msgid "Devata"
 msgstr "देवता"
 
-#: src/Generated/Builder/Manifest.php:13490
-#: src/Generated/Builder/Manifest.php:13504
+#: src/Generated/Builder/Manifest.php:13495
+#: src/Generated/Builder/Manifest.php:13509
 #: src/Generated/Forms/GetDikpalaDirectionForm.php:24
 #: src/Generated/Forms/GetDikpalaDirectionForm.php:33
 msgid "Direction"
 msgstr "दिशा"
 
-#: src/Generated/Builder/Manifest.php:16362
+#: src/Generated/Builder/Manifest.php:16367
 #: src/Generated/Forms/GetDinacharyaScheduleForm.php:24
 msgid "Dinacharya Daily Routine"
 msgstr "दिनचर्या"
 
-#: src/Generated/Builder/Manifest.php:16455
-#: src/Generated/Builder/Manifest.php:16469
+#: src/Generated/Builder/Manifest.php:16460
+#: src/Generated/Builder/Manifest.php:16474
 #: src/Generated/Forms/GetDoshaForm.php:24
 #: src/Generated/Forms/GetDoshaForm.php:33
 msgid "Dosha"
 msgstr "दोष"
 
-#: src/Generated/Builder/Manifest.php:15862
+#: src/Generated/Builder/Manifest.php:15867
 #: src/Generated/Forms/GetForecastForm.php:24
 msgid "Biorhythm Forecast"
 msgstr "बायोरिदम पूर्वानुमान"
 
-#: src/Generated/Builder/Manifest.php:10304
+#: src/Generated/Builder/Manifest.php:10309
 #: src/Generated/Forms/GetGateForm.php:24
 msgid "Human Design Gate by Number"
 msgstr "संख्या से ह्यूमन डिज़ाइन गेट"
 
-#: src/Generated/Builder/Manifest.php:12771
+#: src/Generated/Builder/Manifest.php:12776
 #: src/Generated/Forms/GetHaabMonthForm.php:24
 msgid "Haab Period"
 msgstr "हाब अवधि"
 
-#: src/Generated/Builder/Manifest.php:12785
+#: src/Generated/Builder/Manifest.php:12790
 #: src/Generated/Forms/GetHaabMonthForm.php:33
 msgid "Haab period"
 msgstr "हाब अवधि"
 
-#: src/Generated/Builder/Manifest.php:14918
+#: src/Generated/Builder/Manifest.php:14923
 #: src/Generated/Forms/GetHebrewLetterForm.php:24
 msgid "Hebrew Letter"
 msgstr "हिब्रू अक्षर"
 
-#: src/Generated/Builder/Manifest.php:5742
+#: src/Generated/Builder/Manifest.php:5743
 #: src/Generated/Forms/GetHeliacalVisibilityForm.php:24
 msgid "Heliacal Rising and Setting"
 msgstr "हीलियाकल उदय और अस्त"
 
-#: src/Generated/Builder/Manifest.php:16756
+#: src/Generated/Builder/Manifest.php:16761
 #: src/Generated/Forms/GetHexagramForm.php:24
 msgid "Hexagram by Number"
 msgstr "संख्या से हेक्साग्राम"
 
-#: src/Generated/Builder/Manifest.php:5819
+#: src/Generated/Builder/Manifest.php:5820
 #: src/Generated/Forms/GetHoraForm.php:24
 msgid "Hora"
 msgstr "होरा"
 
-#: src/Generated/Builder/Manifest.php:6018
+#: src/Generated/Builder/Manifest.php:6019
 #: src/Generated/Forms/GetKpCuspsForm.php:24
 msgid "KP Placidus House Cusps"
 msgstr "केपी प्लासिडस भाव संधि"
@@ -9578,27 +9340,27 @@ msgstr "केपी प्लासिडस भाव संधि"
 msgid "Daily Finance Score"
 msgstr "दैनिक वित्त स्कोर"
 
-#: src/Generated/Builder/Manifest.php:6156
+#: src/Generated/Builder/Manifest.php:6157
 #: src/Generated/Forms/GetKpPlanetsForm.php:24
 msgid "KP Planetary Positions"
 msgstr "केपी ग्रह स्थितियाँ"
 
-#: src/Generated/Builder/Manifest.php:6539
+#: src/Generated/Builder/Manifest.php:6542
 #: src/Generated/Forms/GetKpRulingPlanetsForm.php:24
 msgid "KP Ruling Planets with Optional Significators"
 msgstr "वैकल्पिक कारकों सहित केपी शासक ग्रह"
 
-#: src/Generated/Builder/Manifest.php:12343
+#: src/Generated/Builder/Manifest.php:12348
 #: src/Generated/Forms/GetKuaNumberForm.php:24
 msgid "Kua Number"
 msgstr "कुआ अंक"
 
-#: src/Generated/Builder/Manifest.php:6990
+#: src/Generated/Builder/Manifest.php:6995
 #: src/Generated/Forms/GetMajorDashasForm.php:24
 msgid "Mahadasha Periods"
 msgstr "महादशा अवधि"
 
-#: src/Generated/Builder/Manifest.php:12926
+#: src/Generated/Builder/Manifest.php:12931
 #: src/Generated/Forms/GetMayanDaySignForm.php:24
 msgid "Mayan Day Sign"
 msgstr "माया दिन चिह्न"
@@ -9613,19 +9375,20 @@ msgstr "राशि अनुसार मासिक राशिफल"
 msgid "Lunar Calendar"
 msgstr "चंद्र पंचांग"
 
-#: src/Generated/Builder/Manifest.php:7497
+#: src/Generated/Builder/Manifest.php:7502
 #: src/Generated/Forms/GetNakshatraForm.php:24
 #: src/Generated/Forms/GetNakshatraForm.php:33
 msgid "Nakshatra"
 msgstr "नक्षत्र"
 
-#: src/Generated/Builder/Manifest.php:16028
+#: src/Generated/Builder/Manifest.php:16033
 #: src/Generated/Forms/GetPhasesForm.php:24
 msgid "Phase Info"
 msgstr "कला विवरण"
 
 #: src/Generated/Builder/Manifest.php:1074
 #: src/Generated/Builder/Manifest.php:5685
+#: src/Generated/Forms/GetEclipticCrossingsForm.php:24
 #: src/Generated/Forms/GetPlanetaryNodePassagesForm.php:24
 msgid "Ecliptic Crossings"
 msgstr "क्रांतिवृत्त पार करना"
@@ -9635,46 +9398,46 @@ msgid "Year to scan for node passages (1551 to 2649)."
 msgstr ""
 
 #: src/Generated/Builder/Manifest.php:2080
-#: src/Generated/Builder/Manifest.php:7782
+#: src/Generated/Builder/Manifest.php:7787
 #: src/Generated/Forms/GetPlanetaryPositionsForm.php:24
 #: src/Generated/Forms/GetPlanetPositionsForm.php:24
 msgid "Planetary Positions"
 msgstr "ग्रह स्थितियाँ"
 
-#: src/Generated/Builder/Manifest.php:7953
+#: src/Generated/Builder/Manifest.php:7958
 #: src/Generated/Forms/GetPranaDashasForm.php:24
 msgid "Prana Dashas"
 msgstr "प्राण दशाएँ"
 
-#: src/Generated/Builder/Manifest.php:8212
+#: src/Generated/Builder/Manifest.php:8217
 #: src/Generated/Forms/GetPratyantardashasForm.php:24
 msgid "Pratyantardashas"
 msgstr "प्रत्यंतर दशाएँ"
 
-#: src/Generated/Builder/Manifest.php:8439
+#: src/Generated/Builder/Manifest.php:8444
 #: src/Generated/Forms/GetRashiForm.php:24
 #: src/Generated/Forms/GetRashiForm.php:33
 msgid "Rashi"
 msgstr "राशि"
 
-#: src/Generated/Builder/Manifest.php:16070
+#: src/Generated/Builder/Manifest.php:16075
 #: src/Generated/Forms/GetRitucharyaForm.php:24
 msgid "Ayurveda Seasonal Regimen"
 msgstr "आयुर्वेद ऋतुचर्या"
 
-#: src/Generated/Builder/Manifest.php:15180
-#: src/Generated/Builder/Manifest.php:15194
+#: src/Generated/Builder/Manifest.php:15185
+#: src/Generated/Builder/Manifest.php:15199
 #: src/Generated/Forms/GetSephirahForm.php:24
 #: src/Generated/Forms/GetSephirahForm.php:33
 msgid "Sephirah"
 msgstr "सेफिरा"
 
-#: src/Generated/Builder/Manifest.php:15151
+#: src/Generated/Builder/Manifest.php:15156
 #: src/Generated/Forms/GetShemNameForm.php:24
 msgid "Of the 72 Names"
 msgstr "72 नामों में से"
 
-#: src/Generated/Builder/Manifest.php:8725
+#: src/Generated/Builder/Manifest.php:8730
 #: src/Generated/Forms/GetSookshmaDashasForm.php:24
 msgid "Sookshma Dashas"
 msgstr "सूक्ष्म दशाएँ"
@@ -9684,12 +9447,12 @@ msgstr "सूक्ष्म दशाएँ"
 msgid "Antardashas"
 msgstr "अंतर्दशाएँ"
 
-#: src/Generated/Builder/Manifest.php:13111
+#: src/Generated/Builder/Manifest.php:13116
 #: src/Generated/Forms/GetTrecenaForm.php:24
 msgid "Mayan Trecena"
 msgstr "माया ट्रेसेना"
 
-#: src/Generated/Builder/Manifest.php:9093
+#: src/Generated/Builder/Manifest.php:9098
 #: src/Generated/Forms/GetUpagrahaPositionsForm.php:24
 msgid "Upagraha (Sub-planet) Positions"
 msgstr "उपग्रह (उप-ग्रह) स्थितियाँ"
@@ -9709,37 +9472,37 @@ msgstr "राशि अनुसार साप्ताहिक राशि
 msgid "Yearly Horoscope by Zodiac Sign"
 msgstr "राशि अनुसार वार्षिक राशिफल"
 
-#: src/Generated/Builder/Manifest.php:9229
+#: src/Generated/Builder/Manifest.php:9234
 #: src/Generated/Forms/GetYogaForm.php:33
 msgid "Yoga"
 msgstr "योग"
 
-#: src/Generated/Builder/Manifest.php:11107
+#: src/Generated/Builder/Manifest.php:11112
 #: src/Generated/Forms/GetZodiacAnimalForm.php:24
 msgid "Chinese Zodiac Animal"
 msgstr "चीनी राशि पशु"
 
-#: src/Generated/Builder/Manifest.php:11236
+#: src/Generated/Builder/Manifest.php:11241
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:24
 msgid "Chinese Zodiac Compatibility"
 msgstr "चीनी राशि अनुकूलता"
 
-#: src/Generated/Builder/Manifest.php:11872
+#: src/Generated/Builder/Manifest.php:11877
 #: src/Generated/Forms/ListSolarTermsForm.php:24
 msgid "Solar Terms"
 msgstr "सौर पर्व"
 
-#: src/Generated/Builder/Manifest.php:10708
+#: src/Generated/Builder/Manifest.php:10713
 #: src/Generated/Forms/LookupAuspiciousDaysForm.php:24
 msgid "Auspicious Days"
 msgstr "शुभ दिन"
 
-#: src/Generated/Builder/Manifest.php:16727
+#: src/Generated/Builder/Manifest.php:16732
 #: src/Generated/Forms/LookupHexagramForm.php:24
 msgid "Hexagram by Line Pattern"
 msgstr "रेखा पैटर्न से हेक्साग्राम"
 
-#: src/Generated/Builder/Manifest.php:17354
+#: src/Generated/Builder/Manifest.php:17359
 #: src/Generated/Forms/SearchCrystalsForm.php:24
 msgid "Search Crystals"
 msgstr "रत्न खोजें"
@@ -10072,7 +9835,7 @@ msgstr "टाइप करना शुरू करें। हम समय 
 #: src/Generated/Builder/Manifest.php:1752
 #: src/Generated/Builder/Manifest.php:3009
 #: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16914
+#: src/Generated/Builder/Manifest.php:16919
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10083,7 +9846,7 @@ msgstr ""
 #: src/Generated/Builder/Manifest.php:1752
 #: src/Generated/Builder/Manifest.php:3009
 #: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16914
+#: src/Generated/Builder/Manifest.php:16919
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10094,7 +9857,7 @@ msgstr ""
 #: src/Generated/Builder/Manifest.php:1752
 #: src/Generated/Builder/Manifest.php:3009
 #: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16914
+#: src/Generated/Builder/Manifest.php:16919
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10105,7 +9868,7 @@ msgstr ""
 #: src/Generated/Builder/Manifest.php:1752
 #: src/Generated/Builder/Manifest.php:3009
 #: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16914
+#: src/Generated/Builder/Manifest.php:16919
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10116,7 +9879,7 @@ msgstr ""
 #: src/Generated/Builder/Manifest.php:1752
 #: src/Generated/Builder/Manifest.php:3009
 #: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16914
+#: src/Generated/Builder/Manifest.php:16919
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10127,7 +9890,7 @@ msgstr ""
 #: src/Generated/Builder/Manifest.php:1752
 #: src/Generated/Builder/Manifest.php:3009
 #: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16914
+#: src/Generated/Builder/Manifest.php:16919
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10138,7 +9901,7 @@ msgstr ""
 #: src/Generated/Builder/Manifest.php:1752
 #: src/Generated/Builder/Manifest.php:3009
 #: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16914
+#: src/Generated/Builder/Manifest.php:16919
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10149,7 +9912,7 @@ msgstr ""
 #: src/Generated/Builder/Manifest.php:1752
 #: src/Generated/Builder/Manifest.php:3009
 #: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16914
+#: src/Generated/Builder/Manifest.php:16919
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10160,7 +9923,7 @@ msgstr ""
 #: src/Generated/Builder/Manifest.php:1752
 #: src/Generated/Builder/Manifest.php:3009
 #: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16914
+#: src/Generated/Builder/Manifest.php:16919
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10171,7 +9934,7 @@ msgstr ""
 #: src/Generated/Builder/Manifest.php:1752
 #: src/Generated/Builder/Manifest.php:3009
 #: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16914
+#: src/Generated/Builder/Manifest.php:16919
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10182,7 +9945,7 @@ msgstr ""
 #: src/Generated/Builder/Manifest.php:1752
 #: src/Generated/Builder/Manifest.php:3009
 #: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16914
+#: src/Generated/Builder/Manifest.php:16919
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10193,7 +9956,7 @@ msgstr ""
 #: src/Generated/Builder/Manifest.php:1752
 #: src/Generated/Builder/Manifest.php:3009
 #: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16914
+#: src/Generated/Builder/Manifest.php:16919
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
@@ -10201,7 +9964,7 @@ msgid "Pisces"
 msgstr ""
 
 #: src/Generated/Builder/Manifest.php:142
-#: src/Generated/Builder/Manifest.php:15427
+#: src/Generated/Builder/Manifest.php:15432
 msgid "daily"
 msgstr ""
 
@@ -10218,15 +9981,15 @@ msgid "yearly"
 msgstr ""
 
 #: src/Generated/Builder/Manifest.php:3546
-#: src/Generated/Builder/Manifest.php:7980
-#: src/Generated/Builder/Manifest.php:8003
-#: src/Generated/Builder/Manifest.php:8026
-#: src/Generated/Builder/Manifest.php:8049
-#: src/Generated/Builder/Manifest.php:8239
-#: src/Generated/Builder/Manifest.php:8262
-#: src/Generated/Builder/Manifest.php:8752
-#: src/Generated/Builder/Manifest.php:8775
-#: src/Generated/Builder/Manifest.php:8798
+#: src/Generated/Builder/Manifest.php:7985
+#: src/Generated/Builder/Manifest.php:8008
+#: src/Generated/Builder/Manifest.php:8031
+#: src/Generated/Builder/Manifest.php:8054
+#: src/Generated/Builder/Manifest.php:8244
+#: src/Generated/Builder/Manifest.php:8267
+#: src/Generated/Builder/Manifest.php:8757
+#: src/Generated/Builder/Manifest.php:8780
+#: src/Generated/Builder/Manifest.php:8803
 #: src/Generated/Forms/GetPranaDashasForm.php:118
 #: src/Generated/Forms/GetPranaDashasForm.php:127
 #: src/Generated/Forms/GetPranaDashasForm.php:136
@@ -10241,15 +10004,15 @@ msgid "Ketu"
 msgstr ""
 
 #: src/Generated/Builder/Manifest.php:3546
-#: src/Generated/Builder/Manifest.php:7980
-#: src/Generated/Builder/Manifest.php:8003
-#: src/Generated/Builder/Manifest.php:8026
-#: src/Generated/Builder/Manifest.php:8049
-#: src/Generated/Builder/Manifest.php:8239
-#: src/Generated/Builder/Manifest.php:8262
-#: src/Generated/Builder/Manifest.php:8752
-#: src/Generated/Builder/Manifest.php:8775
-#: src/Generated/Builder/Manifest.php:8798
+#: src/Generated/Builder/Manifest.php:7985
+#: src/Generated/Builder/Manifest.php:8008
+#: src/Generated/Builder/Manifest.php:8031
+#: src/Generated/Builder/Manifest.php:8054
+#: src/Generated/Builder/Manifest.php:8244
+#: src/Generated/Builder/Manifest.php:8267
+#: src/Generated/Builder/Manifest.php:8757
+#: src/Generated/Builder/Manifest.php:8780
+#: src/Generated/Builder/Manifest.php:8803
 #: src/Generated/Forms/GetPranaDashasForm.php:118
 #: src/Generated/Forms/GetPranaDashasForm.php:127
 #: src/Generated/Forms/GetPranaDashasForm.php:136
@@ -10264,15 +10027,15 @@ msgid "Venus"
 msgstr ""
 
 #: src/Generated/Builder/Manifest.php:3546
-#: src/Generated/Builder/Manifest.php:7980
-#: src/Generated/Builder/Manifest.php:8003
-#: src/Generated/Builder/Manifest.php:8026
-#: src/Generated/Builder/Manifest.php:8049
-#: src/Generated/Builder/Manifest.php:8239
-#: src/Generated/Builder/Manifest.php:8262
-#: src/Generated/Builder/Manifest.php:8752
-#: src/Generated/Builder/Manifest.php:8775
-#: src/Generated/Builder/Manifest.php:8798
+#: src/Generated/Builder/Manifest.php:7985
+#: src/Generated/Builder/Manifest.php:8008
+#: src/Generated/Builder/Manifest.php:8031
+#: src/Generated/Builder/Manifest.php:8054
+#: src/Generated/Builder/Manifest.php:8244
+#: src/Generated/Builder/Manifest.php:8267
+#: src/Generated/Builder/Manifest.php:8757
+#: src/Generated/Builder/Manifest.php:8780
+#: src/Generated/Builder/Manifest.php:8803
 #: src/Generated/Forms/GetPranaDashasForm.php:118
 #: src/Generated/Forms/GetPranaDashasForm.php:127
 #: src/Generated/Forms/GetPranaDashasForm.php:136
@@ -10287,15 +10050,15 @@ msgid "Sun"
 msgstr ""
 
 #: src/Generated/Builder/Manifest.php:3546
-#: src/Generated/Builder/Manifest.php:7980
-#: src/Generated/Builder/Manifest.php:8003
-#: src/Generated/Builder/Manifest.php:8026
-#: src/Generated/Builder/Manifest.php:8049
-#: src/Generated/Builder/Manifest.php:8239
-#: src/Generated/Builder/Manifest.php:8262
-#: src/Generated/Builder/Manifest.php:8752
-#: src/Generated/Builder/Manifest.php:8775
-#: src/Generated/Builder/Manifest.php:8798
+#: src/Generated/Builder/Manifest.php:7985
+#: src/Generated/Builder/Manifest.php:8008
+#: src/Generated/Builder/Manifest.php:8031
+#: src/Generated/Builder/Manifest.php:8054
+#: src/Generated/Builder/Manifest.php:8244
+#: src/Generated/Builder/Manifest.php:8267
+#: src/Generated/Builder/Manifest.php:8757
+#: src/Generated/Builder/Manifest.php:8780
+#: src/Generated/Builder/Manifest.php:8803
 #: src/Generated/Forms/GetPranaDashasForm.php:118
 #: src/Generated/Forms/GetPranaDashasForm.php:127
 #: src/Generated/Forms/GetPranaDashasForm.php:136
@@ -10310,15 +10073,15 @@ msgid "Moon"
 msgstr ""
 
 #: src/Generated/Builder/Manifest.php:3546
-#: src/Generated/Builder/Manifest.php:7980
-#: src/Generated/Builder/Manifest.php:8003
-#: src/Generated/Builder/Manifest.php:8026
-#: src/Generated/Builder/Manifest.php:8049
-#: src/Generated/Builder/Manifest.php:8239
-#: src/Generated/Builder/Manifest.php:8262
-#: src/Generated/Builder/Manifest.php:8752
-#: src/Generated/Builder/Manifest.php:8775
-#: src/Generated/Builder/Manifest.php:8798
+#: src/Generated/Builder/Manifest.php:7985
+#: src/Generated/Builder/Manifest.php:8008
+#: src/Generated/Builder/Manifest.php:8031
+#: src/Generated/Builder/Manifest.php:8054
+#: src/Generated/Builder/Manifest.php:8244
+#: src/Generated/Builder/Manifest.php:8267
+#: src/Generated/Builder/Manifest.php:8757
+#: src/Generated/Builder/Manifest.php:8780
+#: src/Generated/Builder/Manifest.php:8803
 #: src/Generated/Forms/GetPranaDashasForm.php:118
 #: src/Generated/Forms/GetPranaDashasForm.php:127
 #: src/Generated/Forms/GetPranaDashasForm.php:136
@@ -10333,15 +10096,15 @@ msgid "Mars"
 msgstr ""
 
 #: src/Generated/Builder/Manifest.php:3546
-#: src/Generated/Builder/Manifest.php:7980
-#: src/Generated/Builder/Manifest.php:8003
-#: src/Generated/Builder/Manifest.php:8026
-#: src/Generated/Builder/Manifest.php:8049
-#: src/Generated/Builder/Manifest.php:8239
-#: src/Generated/Builder/Manifest.php:8262
-#: src/Generated/Builder/Manifest.php:8752
-#: src/Generated/Builder/Manifest.php:8775
-#: src/Generated/Builder/Manifest.php:8798
+#: src/Generated/Builder/Manifest.php:7985
+#: src/Generated/Builder/Manifest.php:8008
+#: src/Generated/Builder/Manifest.php:8031
+#: src/Generated/Builder/Manifest.php:8054
+#: src/Generated/Builder/Manifest.php:8244
+#: src/Generated/Builder/Manifest.php:8267
+#: src/Generated/Builder/Manifest.php:8757
+#: src/Generated/Builder/Manifest.php:8780
+#: src/Generated/Builder/Manifest.php:8803
 #: src/Generated/Forms/GetPranaDashasForm.php:118
 #: src/Generated/Forms/GetPranaDashasForm.php:127
 #: src/Generated/Forms/GetPranaDashasForm.php:136
@@ -10356,15 +10119,15 @@ msgid "Rahu"
 msgstr ""
 
 #: src/Generated/Builder/Manifest.php:3546
-#: src/Generated/Builder/Manifest.php:7980
-#: src/Generated/Builder/Manifest.php:8003
-#: src/Generated/Builder/Manifest.php:8026
-#: src/Generated/Builder/Manifest.php:8049
-#: src/Generated/Builder/Manifest.php:8239
-#: src/Generated/Builder/Manifest.php:8262
-#: src/Generated/Builder/Manifest.php:8752
-#: src/Generated/Builder/Manifest.php:8775
-#: src/Generated/Builder/Manifest.php:8798
+#: src/Generated/Builder/Manifest.php:7985
+#: src/Generated/Builder/Manifest.php:8008
+#: src/Generated/Builder/Manifest.php:8031
+#: src/Generated/Builder/Manifest.php:8054
+#: src/Generated/Builder/Manifest.php:8244
+#: src/Generated/Builder/Manifest.php:8267
+#: src/Generated/Builder/Manifest.php:8757
+#: src/Generated/Builder/Manifest.php:8780
+#: src/Generated/Builder/Manifest.php:8803
 #: src/Generated/Forms/GetPranaDashasForm.php:118
 #: src/Generated/Forms/GetPranaDashasForm.php:127
 #: src/Generated/Forms/GetPranaDashasForm.php:136
@@ -10379,15 +10142,15 @@ msgid "Jupiter"
 msgstr ""
 
 #: src/Generated/Builder/Manifest.php:3546
-#: src/Generated/Builder/Manifest.php:7980
-#: src/Generated/Builder/Manifest.php:8003
-#: src/Generated/Builder/Manifest.php:8026
-#: src/Generated/Builder/Manifest.php:8049
-#: src/Generated/Builder/Manifest.php:8239
-#: src/Generated/Builder/Manifest.php:8262
-#: src/Generated/Builder/Manifest.php:8752
-#: src/Generated/Builder/Manifest.php:8775
-#: src/Generated/Builder/Manifest.php:8798
+#: src/Generated/Builder/Manifest.php:7985
+#: src/Generated/Builder/Manifest.php:8008
+#: src/Generated/Builder/Manifest.php:8031
+#: src/Generated/Builder/Manifest.php:8054
+#: src/Generated/Builder/Manifest.php:8244
+#: src/Generated/Builder/Manifest.php:8267
+#: src/Generated/Builder/Manifest.php:8757
+#: src/Generated/Builder/Manifest.php:8780
+#: src/Generated/Builder/Manifest.php:8803
 #: src/Generated/Forms/GetPranaDashasForm.php:118
 #: src/Generated/Forms/GetPranaDashasForm.php:127
 #: src/Generated/Forms/GetPranaDashasForm.php:136
@@ -10402,15 +10165,15 @@ msgid "Saturn"
 msgstr ""
 
 #: src/Generated/Builder/Manifest.php:3546
-#: src/Generated/Builder/Manifest.php:7980
-#: src/Generated/Builder/Manifest.php:8003
-#: src/Generated/Builder/Manifest.php:8026
-#: src/Generated/Builder/Manifest.php:8049
-#: src/Generated/Builder/Manifest.php:8239
-#: src/Generated/Builder/Manifest.php:8262
-#: src/Generated/Builder/Manifest.php:8752
-#: src/Generated/Builder/Manifest.php:8775
-#: src/Generated/Builder/Manifest.php:8798
+#: src/Generated/Builder/Manifest.php:7985
+#: src/Generated/Builder/Manifest.php:8008
+#: src/Generated/Builder/Manifest.php:8031
+#: src/Generated/Builder/Manifest.php:8054
+#: src/Generated/Builder/Manifest.php:8244
+#: src/Generated/Builder/Manifest.php:8267
+#: src/Generated/Builder/Manifest.php:8757
+#: src/Generated/Builder/Manifest.php:8780
+#: src/Generated/Builder/Manifest.php:8803
 #: src/Generated/Forms/GetPranaDashasForm.php:118
 #: src/Generated/Forms/GetPranaDashasForm.php:127
 #: src/Generated/Forms/GetPranaDashasForm.php:136
@@ -10424,116 +10187,116 @@ msgstr ""
 msgid "Mercury"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:9534
-#: src/Generated/Builder/Manifest.php:13436
+#: src/Generated/Builder/Manifest.php:9539
+#: src/Generated/Builder/Manifest.php:13441
 #: src/Generated/Forms/GetDevataForm.php:37
 #: src/Generated/Forms/GetYogaForm.php:37
 msgid "Jaya"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:9534
-#: src/Generated/Builder/Manifest.php:13436
+#: src/Generated/Builder/Manifest.php:9539
+#: src/Generated/Builder/Manifest.php:13441
 #: src/Generated/Forms/GetDevataForm.php:37
 #: src/Generated/Forms/GetYogaForm.php:37
 msgid "Gandharva"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:9534
-#: src/Generated/Builder/Manifest.php:13436
+#: src/Generated/Builder/Manifest.php:9539
+#: src/Generated/Builder/Manifest.php:13441
 #: src/Generated/Forms/GetDevataForm.php:37
 #: src/Generated/Forms/GetYogaForm.php:37
 msgid "Brahma"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11266
-#: src/Generated/Builder/Manifest.php:11292
+#: src/Generated/Builder/Manifest.php:11271
+#: src/Generated/Builder/Manifest.php:11297
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Rat"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11266
-#: src/Generated/Builder/Manifest.php:11292
+#: src/Generated/Builder/Manifest.php:11271
+#: src/Generated/Builder/Manifest.php:11297
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Ox"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11266
-#: src/Generated/Builder/Manifest.php:11292
+#: src/Generated/Builder/Manifest.php:11271
+#: src/Generated/Builder/Manifest.php:11297
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Tiger"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11266
-#: src/Generated/Builder/Manifest.php:11292
+#: src/Generated/Builder/Manifest.php:11271
+#: src/Generated/Builder/Manifest.php:11297
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Rabbit"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11266
-#: src/Generated/Builder/Manifest.php:11292
+#: src/Generated/Builder/Manifest.php:11271
+#: src/Generated/Builder/Manifest.php:11297
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Dragon"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11266
-#: src/Generated/Builder/Manifest.php:11292
+#: src/Generated/Builder/Manifest.php:11271
+#: src/Generated/Builder/Manifest.php:11297
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Snake"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11266
-#: src/Generated/Builder/Manifest.php:11292
+#: src/Generated/Builder/Manifest.php:11271
+#: src/Generated/Builder/Manifest.php:11297
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Horse"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11266
-#: src/Generated/Builder/Manifest.php:11292
+#: src/Generated/Builder/Manifest.php:11271
+#: src/Generated/Builder/Manifest.php:11297
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Goat"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11266
-#: src/Generated/Builder/Manifest.php:11292
+#: src/Generated/Builder/Manifest.php:11271
+#: src/Generated/Builder/Manifest.php:11297
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Monkey"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11266
-#: src/Generated/Builder/Manifest.php:11292
+#: src/Generated/Builder/Manifest.php:11271
+#: src/Generated/Builder/Manifest.php:11297
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Rooster"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11266
-#: src/Generated/Builder/Manifest.php:11292
+#: src/Generated/Builder/Manifest.php:11271
+#: src/Generated/Builder/Manifest.php:11297
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Dog"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11266
-#: src/Generated/Builder/Manifest.php:11292
+#: src/Generated/Builder/Manifest.php:11271
+#: src/Generated/Builder/Manifest.php:11297
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
 msgid "Pig"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15427
+#: src/Generated/Builder/Manifest.php:15432
 msgid "three"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15427
+#: src/Generated/Builder/Manifest.php:15432
 msgid "celtic"
 msgstr ""
 
@@ -10658,87 +10421,6 @@ msgstr "मुझे अभी और मदद चाहिए।"
 msgid "Contact us"
 msgstr "हमसे संपर्क करें"
 
-#: src/Generated/Forms/BiorhythmForm.php:44
-#: src/Generated/Forms/BodygraphForm.php:46
-#: src/Generated/Forms/NatalChartForm.php:46
-msgid "1990-07-15"
-msgstr ""
-
-#: src/Generated/Forms/BiorhythmForm.php:52
-msgid "2026-04-10"
-msgstr ""
-
-#: src/Generated/Forms/BodygraphForm.php:54
-msgid "13:00:00"
-msgstr ""
-
-#: src/Generated/Forms/BodygraphForm.php:62
-#: src/Generated/Forms/BodygraphForm.php:74
-msgid "0"
-msgstr ""
-
-#: src/Generated/Forms/BodygraphForm.php:86
-#: src/Generated/Forms/NatalChartForm.php:84
-msgid "America/New_York"
-msgstr ""
-
-#: src/Generated/Forms/CrystalsByZodiacForm.php:44
-msgid "pisces"
-msgstr ""
-
-#: src/Generated/Forms/KpChartForm.php:46
-#: src/Generated/Forms/KundliForm.php:46
-#: src/Generated/Forms/MangalDoshaForm.php:46
-msgid "1990-07-04"
-msgstr ""
-
-#: src/Generated/Forms/KpChartForm.php:54
-#: src/Generated/Forms/KundliForm.php:54
-#: src/Generated/Forms/MangalDoshaForm.php:54
-msgid "10:12:00"
-msgstr ""
-
-#: src/Generated/Forms/KpChartForm.php:62
-#: src/Generated/Forms/KundliForm.php:62
-#: src/Generated/Forms/MangalDoshaForm.php:62
-#: src/Generated/Forms/PanchangForm.php:54
-msgid "28.6139"
-msgstr ""
-
-#: src/Generated/Forms/KpChartForm.php:73
-#: src/Generated/Forms/KundliForm.php:73
-#: src/Generated/Forms/MangalDoshaForm.php:73
-#: src/Generated/Forms/PanchangForm.php:65
-msgid "77.209"
-msgstr ""
-
-#: src/Generated/Forms/KpChartForm.php:84
-#: src/Generated/Forms/KundliForm.php:84
-#: src/Generated/Forms/MangalDoshaForm.php:84
-#: src/Generated/Forms/PanchangForm.php:76
-msgid "5.5"
-msgstr ""
-
-#: src/Generated/Forms/NatalChartForm.php:54
-msgid "14:30:00"
-msgstr ""
-
-#: src/Generated/Forms/NatalChartForm.php:62
-msgid "40.7128"
-msgstr ""
-
-#: src/Generated/Forms/NatalChartForm.php:73
-msgid "-74.006"
-msgstr ""
-
-#: src/Generated/Forms/NumerologyForm.php:44
-msgid "John William Smith"
-msgstr ""
-
-#: src/Generated/Forms/PanchangForm.php:46
-msgid "2026-02-03"
-msgstr ""
-
 #: assets/js/builder.js:72
 msgid "WordPress integration guide"
 msgstr "WordPress इंटीग्रेशन गाइड"
@@ -10752,7 +10434,7 @@ msgid "Monthly Aspects"
 msgstr "मासिक दृष्टियां"
 
 #: src/Generated/Builder/Manifest.php:1680
-#: src/Generated/Builder/Manifest.php:7212
+#: src/Generated/Builder/Manifest.php:7217
 msgid "Monthly Ephemeris"
 msgstr "मासिक ग्रह सारणी"
 
@@ -10798,340 +10480,344 @@ msgstr "नाम से अवस्था"
 msgid "Avastha States"
 msgstr "ग्रहों की अवस्थाएं"
 
-#: src/Generated/Builder/Manifest.php:6294
+#: src/Generated/Builder/Manifest.php:6295
+#: src/Generated/Forms/GetKpPlanetsIntervalForm.php:24
 msgid "KP Planets at Time Intervals"
 msgstr "समय अंतराल पर KP ग्रह"
 
-#: src/Generated/Builder/Manifest.php:6430
+#: src/Generated/Builder/Manifest.php:6432
+#: src/Generated/Forms/GetKpRasiChangesForm.php:24
 msgid "KP Rasi Ingress Times"
 msgstr "KP राशि प्रवेश समय"
 
-#: src/Generated/Builder/Manifest.php:6674
+#: src/Generated/Builder/Manifest.php:6677
+#: src/Generated/Forms/GetKpRulingIntervalForm.php:24
 msgid "KP Ruling Planets with Significators"
 msgstr "कारक ग्रहों सहित KP शासक ग्रह"
 
-#: src/Generated/Builder/Manifest.php:6826
+#: src/Generated/Builder/Manifest.php:6830
+#: src/Generated/Forms/GetKpSublordChangesForm.php:24
 msgid "KP Sublord Changes"
 msgstr "KP उपस्वामी परिवर्तन"
 
-#: src/Generated/Builder/Manifest.php:6935
+#: src/Generated/Builder/Manifest.php:6940
 msgid "KP-Newcomb Ayanamsa"
 msgstr "KP-Newcomb अयनांश"
 
-#: src/Generated/Builder/Manifest.php:7157
+#: src/Generated/Builder/Manifest.php:7162
 msgid "Monthly Declination Parallels"
 msgstr "मासिक क्रांति समानांतर"
 
-#: src/Generated/Builder/Manifest.php:7270
+#: src/Generated/Builder/Manifest.php:7275
 msgid "Monthly Lunar Aspects"
 msgstr "मासिक चंद्र दृष्टियां"
 
-#: src/Generated/Builder/Manifest.php:7341
+#: src/Generated/Builder/Manifest.php:7346
 msgid "Monthly Planetary Aspects"
 msgstr "मासिक ग्रह दृष्टियां"
 
-#: src/Generated/Builder/Manifest.php:7412
+#: src/Generated/Builder/Manifest.php:7417
 msgid "Monthly Transit"
 msgstr "मासिक गोचर"
 
-#: src/Generated/Builder/Manifest.php:7483
+#: src/Generated/Builder/Manifest.php:7488
 msgid "Nakshatra by ID"
 msgstr "नाम से नक्षत्र"
 
-#: src/Generated/Builder/Manifest.php:7540
+#: src/Generated/Builder/Manifest.php:7545
 msgid "Nakshatras"
 msgstr "नक्षत्र"
 
-#: src/Generated/Builder/Manifest.php:7904
+#: src/Generated/Builder/Manifest.php:7909
 msgid "Planetary Yogas"
 msgstr "ग्रह योग"
 
-#: src/Generated/Builder/Manifest.php:8425
+#: src/Generated/Builder/Manifest.php:8430
 msgid "Rashi by ID"
 msgstr "नाम से राशि"
 
-#: src/Generated/Builder/Manifest.php:8467
+#: src/Generated/Builder/Manifest.php:8472
 msgid "Rashis"
 msgstr "राशियां"
 
-#: src/Generated/Builder/Manifest.php:9215
+#: src/Generated/Builder/Manifest.php:9220
 msgid "Yoga Details by ID"
 msgstr "नाम से योग का विवरण"
 
-#: src/Generated/Builder/Manifest.php:10039
+#: src/Generated/Builder/Manifest.php:10044
 msgid "Human Design Center by ID"
 msgstr "नाम से ह्यूमन डिज़ाइन केंद्र"
 
-#: src/Generated/Builder/Manifest.php:11194
+#: src/Generated/Builder/Manifest.php:11199
 msgid "Chinese Zodiac Animals"
 msgstr "चीनी राशि पशु"
 
-#: src/Generated/Builder/Manifest.php:11304
+#: src/Generated/Builder/Manifest.php:11309
 msgid "Convert Lunar and Gregorian Dates"
 msgstr "चंद्र और ग्रेगोरियन तिथियों का रूपांतरण"
 
-#: src/Generated/Builder/Manifest.php:11593
+#: src/Generated/Builder/Manifest.php:11598
 msgid "Elements"
 msgstr "तत्व"
 
-#: src/Generated/Builder/Manifest.php:11830
+#: src/Generated/Builder/Manifest.php:11835
 msgid "Month of Almanac Days"
 msgstr "एक महीने के पंचांग दिवस"
 
-#: src/Generated/Builder/Manifest.php:11998
+#: src/Generated/Builder/Manifest.php:12003
 msgid "Bagua Sectors"
 msgstr "बागुआ क्षेत्र"
 
-#: src/Generated/Builder/Manifest.php:12101
+#: src/Generated/Builder/Manifest.php:12106
 msgid "Eight Mansions Map"
 msgstr "आठ भवनों का मानचित्र"
 
-#: src/Generated/Builder/Manifest.php:12197
+#: src/Generated/Builder/Manifest.php:12202
 msgid "Flying Star Natal Chart"
 msgstr "फ्लाइंग स्टार जन्म चार्ट"
 
-#: src/Generated/Builder/Manifest.php:12301
+#: src/Generated/Builder/Manifest.php:12306
 msgid "Flying Stars"
 msgstr "फ्लाइंग स्टार"
 
-#: src/Generated/Builder/Manifest.php:12372
+#: src/Generated/Builder/Manifest.php:12377
 msgid "Monthly Flying Stars"
 msgstr "मासिक फ्लाइंग स्टार"
 
-#: src/Generated/Builder/Manifest.php:12414
+#: src/Generated/Builder/Manifest.php:12419
 msgid "Periods"
 msgstr "अवधियां"
 
-#: src/Generated/Builder/Manifest.php:12522
+#: src/Generated/Builder/Manifest.php:12527
 msgid "Aztec Day Signs"
 msgstr "एज़्टेक दिन चिह्न"
 
-#: src/Generated/Builder/Manifest.php:12593
+#: src/Generated/Builder/Manifest.php:12598
 msgid "Aztec Trecenas"
 msgstr "एज़्टेक ट्रेसेना"
 
-#: src/Generated/Builder/Manifest.php:12635
+#: src/Generated/Builder/Manifest.php:12640
 msgid "Convert a Maya Long Count"
 msgstr "माया लॉन्ग काउंट का रूपांतरण"
 
-#: src/Generated/Builder/Manifest.php:12695
+#: src/Generated/Builder/Manifest.php:12700
 msgid "Daily Aztec Energy Reading"
 msgstr "दिन की एज़्टेक ऊर्जा रीडिंग"
 
-#: src/Generated/Builder/Manifest.php:12724
+#: src/Generated/Builder/Manifest.php:12729
 msgid "Daily Mayan Energy Reading"
 msgstr "दिन की माया ऊर्जा रीडिंग"
 
-#: src/Generated/Builder/Manifest.php:12820
+#: src/Generated/Builder/Manifest.php:12825
 msgid "Haab Periods"
 msgstr "हाब अवधियां"
 
-#: src/Generated/Builder/Manifest.php:13039
+#: src/Generated/Builder/Manifest.php:13044
 msgid "Mayan Day Signs"
 msgstr "माया दिन चिह्न"
 
-#: src/Generated/Builder/Manifest.php:13140
+#: src/Generated/Builder/Manifest.php:13145
 msgid "Mayan Trecenas"
 msgstr "माया ट्रेसेना"
 
-#: src/Generated/Builder/Manifest.php:13182
+#: src/Generated/Builder/Manifest.php:13187
 msgid "Monthly Tzolkin Calendar Grid"
 msgstr "मासिक त्ज़ोल्किन कैलेंडर ग्रिड"
 
-#: src/Generated/Builder/Manifest.php:13448
+#: src/Generated/Builder/Manifest.php:13453
 msgid "Devatas"
 msgstr "देवता"
 
-#: src/Generated/Builder/Manifest.php:13528
+#: src/Generated/Builder/Manifest.php:13533
 msgid "Directions"
 msgstr "दिशाएं"
 
-#: src/Generated/Builder/Manifest.php:13958
+#: src/Generated/Builder/Manifest.php:13963
 msgid "Compound Number Meaning"
 msgstr "संयुक्त अंक का अर्थ"
 
-#: src/Generated/Builder/Manifest.php:13986
+#: src/Generated/Builder/Manifest.php:13991
 msgid "Daily Numerology Number"
 msgstr "दिन का अंक ज्योतिष अंक"
 
-#: src/Generated/Builder/Manifest.php:14086
+#: src/Generated/Builder/Manifest.php:14091
 msgid "Karmic Debt Numbers"
 msgstr "कर्म ऋण अंक"
 
-#: src/Generated/Builder/Manifest.php:14183
+#: src/Generated/Builder/Manifest.php:14188
 msgid "Maturity Number"
 msgstr "परिपक्वता अंक"
 
-#: src/Generated/Builder/Manifest.php:14277
+#: src/Generated/Builder/Manifest.php:14282
 msgid "Number Meaning"
 msgstr "अंक का अर्थ"
 
-#: src/Generated/Builder/Manifest.php:14671
+#: src/Generated/Builder/Manifest.php:14676
 msgid "Compare Two Names"
 msgstr "दो नामों की तुलना"
 
-#: src/Generated/Builder/Manifest.php:14771
+#: src/Generated/Builder/Manifest.php:14776
 msgid "Gematria"
 msgstr "जेमाट्रिया"
 
-#: src/Generated/Builder/Manifest.php:14904
+#: src/Generated/Builder/Manifest.php:14909
 msgid "Gematria Ciphers"
 msgstr "जेमाट्रिया गणना पद्धतियां"
 
-#: src/Generated/Builder/Manifest.php:14988
+#: src/Generated/Builder/Manifest.php:14993
 msgid "Hebrew Letters"
 msgstr "हिब्रू अक्षर"
 
-#: src/Generated/Builder/Manifest.php:15022
+#: src/Generated/Builder/Manifest.php:15027
 msgid "Name Profile"
 msgstr "नाम की प्रोफ़ाइल"
 
-#: src/Generated/Builder/Manifest.php:15096
+#: src/Generated/Builder/Manifest.php:15101
 msgid "Names"
 msgstr "नाम"
 
-#: src/Generated/Builder/Manifest.php:15255
+#: src/Generated/Builder/Manifest.php:15260
 msgid "Sephirah of the Day"
 msgstr "दिन की सेफिरा"
 
-#: src/Generated/Builder/Manifest.php:15310
+#: src/Generated/Builder/Manifest.php:15315
 msgid "Tree of Life"
 msgstr "जीवन वृक्ष"
 
-#: src/Generated/Builder/Manifest.php:15452
+#: src/Generated/Builder/Manifest.php:15457
 msgid "Career Spread, 7 Cards"
 msgstr "करियर स्प्रेड, 7 कार्ड"
 
-#: src/Generated/Builder/Manifest.php:15494
+#: src/Generated/Builder/Manifest.php:15499
 msgid "Celtic Cross Spread, 10 Cards"
 msgstr "सेल्टिक क्रॉस स्प्रेड, 10 कार्ड"
 
-#: src/Generated/Builder/Manifest.php:15618
+#: src/Generated/Builder/Manifest.php:15623
 msgid "Love Spread, 5 Cards"
 msgstr "प्रेम स्प्रेड, 5 कार्ड"
 
-#: src/Generated/Builder/Manifest.php:15660
+#: src/Generated/Builder/Manifest.php:15665
 msgid "Tarot Card by ID"
 msgstr "नाम से टैरो कार्ड"
 
-#: src/Generated/Builder/Manifest.php:15689
+#: src/Generated/Builder/Manifest.php:15694
 msgid "Tarot Cards"
 msgstr "टैरो कार्ड"
 
-#: src/Generated/Builder/Manifest.php:15778
+#: src/Generated/Builder/Manifest.php:15783
 msgid "Three Card Spread"
 msgstr "तीन कार्ड स्प्रेड"
 
-#: src/Generated/Builder/Manifest.php:15986
+#: src/Generated/Builder/Manifest.php:15991
 msgid "Daily Biorhythm"
 msgstr "दैनिक बायोरिदम"
 
-#: src/Generated/Builder/Manifest.php:16488
+#: src/Generated/Builder/Manifest.php:16493
 msgid "Doshas"
 msgstr "दोष"
 
-#: src/Generated/Builder/Manifest.php:16530
+#: src/Generated/Builder/Manifest.php:16535
 msgid "Tastes"
 msgstr "स्वाद"
 
-#: src/Generated/Builder/Manifest.php:16572
+#: src/Generated/Builder/Manifest.php:16577
 msgid "Twenty Qualities"
 msgstr "बीस गुण"
 
-#: src/Generated/Builder/Manifest.php:16614
+#: src/Generated/Builder/Manifest.php:16619
 msgid "Cast an I-Ching Reading"
 msgstr "आई चिंग रीडिंग"
 
-#: src/Generated/Builder/Manifest.php:16643
+#: src/Generated/Builder/Manifest.php:16648
 msgid "Cast Daily Reading"
 msgstr "दिन की रीडिंग"
 
-#: src/Generated/Builder/Manifest.php:16685
+#: src/Generated/Builder/Manifest.php:16690
 msgid "Daily Hexagram"
 msgstr "दिन का हेक्साग्राम"
 
-#: src/Generated/Builder/Manifest.php:16785
+#: src/Generated/Builder/Manifest.php:16790
 msgid "Hexagrams"
 msgstr "हेक्साग्राम"
 
-#: src/Generated/Builder/Manifest.php:16827
+#: src/Generated/Builder/Manifest.php:16832
 msgid "Random Hexagram"
 msgstr "कोई भी हेक्साग्राम"
 
-#: src/Generated/Builder/Manifest.php:16841
+#: src/Generated/Builder/Manifest.php:16846
 #: src/Generated/Forms/GetTrigramForm.php:24
 msgid "Trigram by Number or Name"
 msgstr "संख्या या नाम से ट्राइग्राम"
 
-#: src/Generated/Builder/Manifest.php:16870
+#: src/Generated/Builder/Manifest.php:16875
 msgid "Trigrams"
 msgstr "ट्राइग्राम"
 
-#: src/Generated/Builder/Manifest.php:16955
+#: src/Generated/Builder/Manifest.php:16960
 msgid "Crystal by ID"
 msgstr "नाम से क्रिस्टल"
 
-#: src/Generated/Builder/Manifest.php:16984
+#: src/Generated/Builder/Manifest.php:16989
 msgid "Crystal Colors"
 msgstr "क्रिस्टल के रंग"
 
-#: src/Generated/Builder/Manifest.php:16998
+#: src/Generated/Builder/Manifest.php:17003
 msgid "Crystal Pairings"
 msgstr "क्रिस्टल के मेल"
 
-#: src/Generated/Builder/Manifest.php:17026
+#: src/Generated/Builder/Manifest.php:17031
 msgid "Crystal Planets"
 msgstr "क्रिस्टल के ग्रह"
 
-#: src/Generated/Builder/Manifest.php:17040
+#: src/Generated/Builder/Manifest.php:17045
 msgid "Crystals"
 msgstr "क्रिस्टल"
 
-#: src/Generated/Builder/Manifest.php:17298
+#: src/Generated/Builder/Manifest.php:17303
 msgid "Daily Crystal"
 msgstr "दिन का क्रिस्टल"
 
-#: src/Generated/Builder/Manifest.php:17340
+#: src/Generated/Builder/Manifest.php:17345
 msgid "Random Crystal"
 msgstr "कोई भी क्रिस्टल"
 
-#: src/Generated/Builder/Manifest.php:17409
+#: src/Generated/Builder/Manifest.php:17414
 msgid "Daily Dream Symbol"
 msgstr "दिन का स्वप्न प्रतीक"
 
-#: src/Generated/Builder/Manifest.php:17451
+#: src/Generated/Builder/Manifest.php:17456
 msgid "Dream Symbol by ID"
 msgstr "नाम से स्वप्न प्रतीक"
 
-#: src/Generated/Builder/Manifest.php:17479
+#: src/Generated/Builder/Manifest.php:17484
 msgid "Random Dream Symbols"
 msgstr "कोई भी स्वप्न प्रतीक"
 
-#: src/Generated/Builder/Manifest.php:17508
+#: src/Generated/Builder/Manifest.php:17513
 msgid "Search Dream Symbols"
 msgstr "स्वप्न प्रतीक खोजें"
 
-#: src/Generated/Builder/Manifest.php:17576
+#: src/Generated/Builder/Manifest.php:17581
 msgid "Symbol Counts by Letter"
 msgstr "अक्षर के अनुसार प्रतीकों की संख्या"
 
-#: src/Generated/Builder/Manifest.php:17619
+#: src/Generated/Builder/Manifest.php:17624
 msgid "Angel Numbers"
 msgstr "एंजेल नंबर"
 
-#: src/Generated/Builder/Manifest.php:17681
+#: src/Generated/Builder/Manifest.php:17686
 msgid "Daily Angel Number"
 msgstr "दिन का एंजेल नंबर"
 
-#: src/Generated/Builder/Manifest.php:17772
+#: src/Generated/Builder/Manifest.php:17777
 msgid "Cities in a Country"
 msgstr "किसी देश के शहर"
 
-#: src/Generated/Builder/Manifest.php:17826
+#: src/Generated/Builder/Manifest.php:17831
 msgid "Countries"
 msgstr "देश"
 
-#: src/Generated/Builder/Manifest.php:17868
+#: src/Generated/Builder/Manifest.php:17873
 msgid "Search Cities Worldwide"
 msgstr "दुनिया भर में शहर खोजें"
 
@@ -11190,3 +10876,338 @@ msgstr "टैरो कार्ड"
 #: src/Generated/Forms/GetCrystalForm.php:24
 msgid "Crystal"
 msgstr "रत्न"
+
+#. translators: %s: number of table rows.
+#: src/Support/GenericRenderer.php:527
+#, php-format
+msgid "%s rows"
+msgstr "पंक्तियाँ: %s"
+
+#: src/Generated/Forms/AngelNumberForm.php:31
+msgid "Angel number lookup"
+msgstr "एंजल नंबर खोजें"
+
+#: src/Generated/Forms/AngelNumberForm.php:32
+msgid "Look up meaning"
+msgstr "अर्थ देखें"
+
+#: src/Generated/Forms/BiorhythmForm.php:31
+msgid "Biorhythm reading"
+msgstr "बायोरिदम विश्लेषण"
+
+#: src/Generated/Forms/BiorhythmForm.php:32
+msgid "Calculate cycles"
+msgstr "चक्रों की गणना करें"
+
+#: src/Generated/Forms/BiorhythmForm.php:44
+#: src/Generated/Forms/BodygraphForm.php:46
+#: src/Generated/Forms/NatalChartForm.php:46
+msgid "1990-07-15"
+msgstr ""
+
+#: src/Generated/Forms/BiorhythmForm.php:52
+msgid "2026-04-10"
+msgstr ""
+
+#: src/Generated/Forms/BodygraphForm.php:31
+msgid "Human Design bodygraph"
+msgstr "ह्यूमन डिज़ाइन बॉडीग्राफ"
+
+#: src/Generated/Forms/BodygraphForm.php:32
+msgid "Generate bodygraph"
+msgstr "बॉडीग्राफ बनाएँ"
+
+#: src/Generated/Forms/BodygraphForm.php:37
+#: src/Generated/Forms/KpChartForm.php:37
+#: src/Generated/Forms/KundliForm.php:37
+#: src/Generated/Forms/MangalDoshaForm.php:37
+#: src/Generated/Forms/NatalChartForm.php:37
+msgid "Birth details"
+msgstr "जन्म विवरण"
+
+#: src/Generated/Forms/BodygraphForm.php:54
+msgid "13:00:00"
+msgstr ""
+
+#: src/Generated/Forms/BodygraphForm.php:62
+#: src/Generated/Forms/BodygraphForm.php:74
+msgid "0"
+msgstr ""
+
+#: src/Generated/Forms/BodygraphForm.php:86
+#: src/Generated/Forms/NatalChartForm.php:84
+msgid "America/New_York"
+msgstr ""
+
+#: src/Generated/Forms/CrystalsByZodiacForm.php:31
+msgid "Crystals for your sign"
+msgstr "आपकी राशि के रत्न"
+
+#: src/Generated/Forms/CrystalsByZodiacForm.php:32
+msgid "Show crystals"
+msgstr "रत्न दिखाएँ"
+
+#: src/Generated/Forms/CrystalsByZodiacForm.php:44
+msgid "pisces"
+msgstr ""
+
+#: src/Generated/Forms/KpChartForm.php:32
+msgid "Generate KP chart"
+msgstr "केपी कुंडली बनाएँ"
+
+#: src/Generated/Forms/KpChartForm.php:46
+#: src/Generated/Forms/KundliForm.php:46
+#: src/Generated/Forms/MangalDoshaForm.php:46
+msgid "1990-07-04"
+msgstr ""
+
+#: src/Generated/Forms/KpChartForm.php:54
+#: src/Generated/Forms/KundliForm.php:54
+#: src/Generated/Forms/MangalDoshaForm.php:54
+msgid "10:12:00"
+msgstr ""
+
+#: src/Generated/Forms/KpChartForm.php:62
+#: src/Generated/Forms/KundliForm.php:62
+#: src/Generated/Forms/MangalDoshaForm.php:62
+#: src/Generated/Forms/PanchangForm.php:54
+msgid "28.6139"
+msgstr ""
+
+#: src/Generated/Forms/KpChartForm.php:73
+#: src/Generated/Forms/KundliForm.php:73
+#: src/Generated/Forms/MangalDoshaForm.php:73
+#: src/Generated/Forms/PanchangForm.php:65
+msgid "77.209"
+msgstr ""
+
+#: src/Generated/Forms/KpChartForm.php:84
+#: src/Generated/Forms/KundliForm.php:84
+#: src/Generated/Forms/MangalDoshaForm.php:84
+#: src/Generated/Forms/PanchangForm.php:76
+msgid "5.5"
+msgstr ""
+
+#: src/Generated/Forms/KundliForm.php:31
+msgid "Vedic birth chart"
+msgstr "वैदिक जन्म कुंडली"
+
+#: src/Generated/Forms/KundliForm.php:32
+msgid "Generate kundli"
+msgstr "कुंडली बनाएँ"
+
+#: src/Generated/Forms/LifePathForm.php:31
+msgid "Life path number"
+msgstr "मूलांक"
+
+#: src/Generated/Forms/LifePathForm.php:32
+msgid "Calculate"
+msgstr "गणना करें"
+
+#: src/Generated/Forms/MangalDoshaForm.php:31
+msgid "Mangal Dosha check"
+msgstr "मंगल दोष जाँच"
+
+#: src/Generated/Forms/MangalDoshaForm.php:32
+msgid "Check Mangal Dosha"
+msgstr "मंगल दोष देखें"
+
+#: src/Generated/Forms/NatalChartForm.php:32
+#: src/Generated/Forms/NumerologyForm.php:32
+msgid "Calculate chart"
+msgstr "कुंडली बनाएँ"
+
+#: src/Generated/Forms/NatalChartForm.php:54
+msgid "14:30:00"
+msgstr ""
+
+#: src/Generated/Forms/NatalChartForm.php:62
+msgid "40.7128"
+msgstr ""
+
+#: src/Generated/Forms/NatalChartForm.php:73
+msgid "-74.006"
+msgstr ""
+
+#: src/Generated/Forms/NumerologyForm.php:31
+msgid "Numerology chart"
+msgstr "अंक ज्योतिष चार्ट"
+
+#: src/Generated/Forms/NumerologyForm.php:44
+msgid "John William Smith"
+msgstr ""
+
+#: src/Generated/Forms/PanchangForm.php:31
+msgid "Detailed panchang"
+msgstr "विस्तृत पंचांग"
+
+#: src/Generated/Forms/PanchangForm.php:32
+msgid "Look up panchang"
+msgstr "पंचांग देखें"
+
+#: src/Generated/Forms/PanchangForm.php:37
+msgid "Date and location"
+msgstr "तिथि और स्थान"
+
+#: src/Generated/Forms/PanchangForm.php:46
+msgid "2026-02-03"
+msgstr ""
+
+#: src/Generated/Forms/TarotCardForm.php:31
+msgid "Tarot reading"
+msgstr "टैरो विश्लेषण"
+
+#: src/Generated/Forms/TarotCardForm.php:32
+msgid "Draw cards"
+msgstr "कार्ड निकालें"
+
+#: src/Generated/Forms/TarotYesNoForm.php:32
+msgid "Get answer"
+msgstr "उत्तर पाएँ"
+
+#. translators: %s is the canonical example shortcode.
+#: src/Generated/Heroes/AngelNumber.php:61
+#: src/Generated/Heroes/AngelNumber.php:88
+#, php-format
+msgid "The number attribute is required. Example: %s"
+msgstr "number विशेषता आवश्यक है। उदाहरण: %s"
+
+#. translators: %s is the canonical example shortcode.
+#: src/Generated/Heroes/Biorhythm.php:62
+#: src/Generated/Heroes/Biorhythm.php:97
+#: src/Generated/Heroes/LifePath.php:61
+#: src/Generated/Heroes/LifePath.php:96
+#, php-format
+msgid "The birth_date attribute is required. Example: %s"
+msgstr "birth_date विशेषता आवश्यक है। उदाहरण: %s"
+
+#. translators: %s is the canonical example shortcode.
+#: src/Generated/Heroes/Bodygraph.php:65
+#: src/Generated/Heroes/Bodygraph.php:102
+#: src/Generated/Heroes/NatalChart.php:65
+#: src/Generated/Heroes/NatalChart.php:102
+#, php-format
+msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to UTC; pass an IANA name or decimal hours for accuracy). Example: %s"
+msgstr "birth_date, birth_time, lat और lon विशेषताएँ आवश्यक हैं (tz का डिफ़ॉल्ट UTC है; सटीकता के लिए IANA नाम या दशमलव घंटे दें)। उदाहरण: %s"
+
+#. translators: %s is the canonical example shortcode.
+#: src/Generated/Heroes/CrystalsByZodiac.php:61
+#: src/Generated/Heroes/CrystalsByZodiac.php:88
+#, php-format
+msgid "The sign attribute is required. Example: %s"
+msgstr "sign विशेषता आवश्यक है। उदाहरण: %s"
+
+#. translators: %s is the canonical example shortcode.
+#: src/Generated/Heroes/KpChart.php:65
+#: src/Generated/Heroes/KpChart.php:102
+#: src/Generated/Heroes/MangalDosha.php:65
+#: src/Generated/Heroes/MangalDosha.php:102
+#, php-format
+msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s"
+msgstr "birth_date, birth_time, lat और lon विशेषताएँ आवश्यक हैं (tz का डिफ़ॉल्ट 5.5 IST है)। उदाहरण: %s"
+
+#. translators: %s is the canonical example shortcode.
+#: src/Generated/Heroes/Kundli.php:65
+#: src/Generated/Heroes/Kundli.php:102
+#, php-format
+msgid "The birth_date, birth_time, lat, and lon attributes are required (tz defaults to 5.5 IST; pass an IANA name like Asia/Kolkata for DST-correct results). Example: %s"
+msgstr "birth_date, birth_time, lat और lon विशेषताएँ आवश्यक हैं (tz का डिफ़ॉल्ट 5.5 IST है; डेलाइट सेविंग के अनुसार सही परिणामों के लिए Asia/Kolkata जैसा IANA नाम दें)। उदाहरण: %s"
+
+#. translators: %s is the canonical example shortcode.
+#: src/Generated/Heroes/LifePath.php:67
+#: src/Generated/Heroes/LifePath.php:102
+#: src/Generated/Heroes/Numerology.php:69
+#: src/Generated/Heroes/Numerology.php:106
+#, php-format
+msgid "The birth_date attribute must be in YYYY-MM-DD format. Example: %s"
+msgstr "birth_date विशेषता YYYY-MM-DD प्रारूप में होनी चाहिए। उदाहरण: %s"
+
+#: src/Generated/Heroes/Manifest.php:33
+msgid "Western daily reading for any zodiac sign."
+msgstr "किसी भी राशि के लिए पाश्चात्य दैनिक राशिफल।"
+
+#: src/Generated/Heroes/Manifest.php:43
+msgid "Western birth chart with planets, houses, and aspects."
+msgstr "ग्रहों, भावों और दृष्टियों सहित पाश्चात्य जन्म कुंडली।"
+
+#: src/Generated/Heroes/Manifest.php:53
+msgid "Vedic birth chart with twelve rashis, planetary positions, nakshatra, and per-house interpretations."
+msgstr "बारह राशियों, ग्रह स्थितियों, नक्षत्र और भावानुसार व्याख्या सहित वैदिक जन्म कुंडली।"
+
+#: src/Generated/Heroes/Manifest.php:63
+msgid "Detailed Hindu calendar for any date and location: tithi, nakshatra, yoga, karana, rahu kaal, abhijit muhurta, brahma muhurta, and more."
+msgstr "किसी भी तिथि और स्थान के लिए विस्तृत पंचांग: तिथि, नक्षत्र, योग, करण, राहु काल, अभिजित मुहूर्त, ब्रह्म मुहूर्त और अधिक।"
+
+#: src/Generated/Heroes/Manifest.php:73
+msgid "Check Mangal Dosha (manglik) status for matrimonial compatibility, with severity, remedies, and exception conditions."
+msgstr "विवाह अनुकूलता के लिए मंगल दोष (मांगलिक) की स्थिति, उसकी तीव्रता, उपाय और अपवाद स्थितियों सहित।"
+
+#: src/Generated/Heroes/Manifest.php:83
+msgid "Krishnamurti Paddhati chart with cusps, planets, sub-lords, and significators."
+msgstr "कृष्णमूर्ति पद्धति कुंडली, भाव संधि, ग्रह, उप-स्वामी और कारक सहित।"
+
+#: src/Generated/Heroes/Manifest.php:93
+msgid "Western synastry chart between two birth charts with compatibility score and inter-aspects."
+msgstr "अनुकूलता अंक और परस्पर दृष्टियों सहित दो जन्म कुंडलियों के बीच पाश्चात्य सिनैस्ट्री चार्ट।"
+
+#: src/Generated/Heroes/Manifest.php:103
+msgid "Vedic 36-point Ashtakoota matrimonial compatibility with dosha cancellations and per-koot breakdown."
+msgstr "36 अंकों का वैदिक अष्टकूट विवाह मिलान, दोष निवारण और कूटवार विवरण सहित।"
+
+#: src/Generated/Heroes/Manifest.php:113
+msgid "Western compatibility percentage between two charts with sign, element, and aspect breakdown."
+msgstr "राशि, तत्व और दृष्टि के विवरण सहित दो कुंडलियों के बीच पाश्चात्य अनुकूलता प्रतिशत।"
+
+#: src/Generated/Heroes/Manifest.php:123
+msgid "Current moon phase, illumination, sign, degree, and meaning."
+msgstr "वर्तमान चंद्र कला, प्रकाश मात्रा, राशि, अंश और अर्थ।"
+
+#: src/Generated/Heroes/Manifest.php:133
+msgid "Cross-domain forecast for one birth chart: transits, ingresses, stations, dasha changes, and biorhythm critical days over a window of up to 90 days."
+msgstr "एक जन्म कुंडली के लिए बहु-क्षेत्रीय पूर्वानुमान: गोचर, राशि प्रवेश, स्थिरता, दशा परिवर्तन और बायोरिदम के महत्वपूर्ण दिन, 90 दिनों तक की अवधि में।"
+
+#: src/Generated/Heroes/Manifest.php:143
+msgid "Human Design bodygraph with type, strategy, authority, profile, the nine centers, channels, and gates."
+msgstr "प्रकार, रणनीति, प्राधिकार, प्रोफ़ाइल, नौ केंद्रों, चैनलों और द्वारों के साथ ह्यूमन डिज़ाइन बॉडीग्राफ।"
+
+#: src/Generated/Heroes/Manifest.php:153
+msgid "Single-card Yes / No / Maybe answer with strength rating and interpretation."
+msgstr "एक कार्ड से हाँ / नहीं / शायद उत्तर, बल स्तर और व्याख्या सहित।"
+
+#: src/Generated/Heroes/Manifest.php:163
+msgid "Single card, three card, or Celtic Cross spreads."
+msgstr "एक कार्ड, तीन कार्ड या सेल्टिक क्रॉस स्प्रेड।"
+
+#: src/Generated/Heroes/Manifest.php:173
+msgid "Life path, expression, and soul urge from a name and date."
+msgstr "नाम और तिथि से मूलांक, नामांक और अंतरांक।"
+
+#: src/Generated/Heroes/Manifest.php:183
+msgid "Life path number and core meaning from a birth date."
+msgstr "जन्म तिथि से मूलांक और उसका मूल अर्थ।"
+
+#: src/Generated/Heroes/Manifest.php:193
+msgid "Physical, emotional, and intellectual cycle values."
+msgstr "शारीरिक, भावनात्मक और बौद्धिक चक्रों के मान।"
+
+#: src/Generated/Heroes/Manifest.php:203
+msgid "Meaning and pattern analysis for any number sequence."
+msgstr "किसी भी अंक क्रम का अर्थ और पैटर्न विश्लेषण।"
+
+#: src/Generated/Heroes/Manifest.php:213
+msgid "Crystals and stones associated with any zodiac sign, with properties, color, and chakra."
+msgstr "हर राशि से जुड़े रत्न और पत्थर, उनके गुण, रंग और चक्र सहित।"
+
+#. translators: %s is the canonical example shortcode.
+#: src/Generated/Heroes/Numerology.php:62
+#: src/Generated/Heroes/Numerology.php:99
+#, php-format
+msgid "The name and birth_date attributes are required. Example: %s"
+msgstr "name और birth_date विशेषताएँ आवश्यक हैं। उदाहरण: %s"
+
+#. translators: %s is the canonical example shortcode.
+#: src/Generated/Heroes/Panchang.php:64
+#: src/Generated/Heroes/Panchang.php:99
+#, php-format
+msgid "The date, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s"
+msgstr "date, lat और lon विशेषताएँ आवश्यक हैं (tz का डिफ़ॉल्ट 5.5 IST है)। उदाहरण: %s"

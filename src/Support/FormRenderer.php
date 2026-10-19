@@ -230,6 +230,9 @@ class FormRenderer {
 				$max  = isset( $field['max'] ) ? ' max="' . esc_attr( (string) $field['max'] ) . '"' : '';
 				$out .= '<input type="date" id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '" value="' . esc_attr( $value_str ) . '"' . $min . $max . $req_attr . $err_attr . '>';
 				break;
+			case 'datetime':
+				$out .= '<input type="datetime-local" id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '" value="' . esc_attr( $value_str ) . '" step="1"' . $req_attr . $err_attr . '>';
+				break;
 			case 'time':
 				$out .= '<input type="time" id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '" value="' . esc_attr( $value_str ) . '" step="60"' . $req_attr . $err_attr . '>';
 				break;
@@ -246,8 +249,9 @@ class FormRenderer {
 				break;
 			case 'timezone':
 				$out .= '<select id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '"' . $req_attr . $err_attr . '>';
+				$out .= '<option value=""' . ( $value_str === '' ? ' selected' : '' ) . '></option>';
 				$out .= wp_kses(
-					wp_timezone_choice( $value_str !== '' ? $value_str : 'UTC' ),
+					wp_timezone_choice( $value_str ),
 					array(
 						'optgroup' => array( 'label' => true ),
 						'option'   => array(

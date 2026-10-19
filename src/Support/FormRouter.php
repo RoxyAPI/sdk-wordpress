@@ -18,7 +18,7 @@
  *
  * Form classes carry only metadata (`spec()`) and the API call (`call()`).
  * Sanitisation, validation, body building, transient storage, and PRG
- * redirection all live here so 8 generated forms stay tiny and identical.
+ * redirection live here; generated forms declare only metadata and calls.
  *
  * @package RoxyAPI
  */
@@ -275,6 +275,15 @@ class FormRouter {
 			case 'date':
 				$value = sanitize_text_field( $raw );
 				return preg_match( '/^\d{4}-\d{2}-\d{2}$/', $value ) === 1 ? $value : '';
+			case 'datetime':
+				$value = sanitize_text_field( $raw );
+				foreach ( array( 'Y-m-d\TH:i', 'Y-m-d\TH:i:s' ) as $format ) {
+					$date = \DateTimeImmutable::createFromFormat( '!' . $format, $value );
+					if ( $date && $date->format( $format ) === $value ) {
+						return $value;
+					}
+				}
+				return '';
 			case 'time':
 				$value = sanitize_text_field( $raw );
 				return preg_match( '/^\d{2}:\d{2}(:\d{2})?$/', $value ) === 1 ? $value : '';

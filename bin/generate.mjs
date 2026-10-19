@@ -598,19 +598,23 @@ function formInputs( op ) {
  * Every required input must be enterable by a visitor: no lists, objects or
  * free-text vocabulary identifiers. An identifier whose collection the API
  * lists becomes a dropdown (`OptionSource`); one that is only searchable (the
- * dream dictionary) stays placed by the site owner, as do account readings.
+ * dream dictionary) stays placed by the site owner, as do account readings
+ * and non-reading lookups that need a text query.
  * @param op
  */
 function offersVisitorForm( op ) {
+	const model = uiForms[ op.operationId ];
+	const required = formInputs( op ).filter( ( f ) => f.required );
 	if (
 		hasRequiredObjectBody( op ) ||
-		NON_READING_OPERATIONS.has( op.operationId ) ||
-		ACCOUNT_SCOPED_OPERATIONS.has( op.operationId )
+		ACCOUNT_SCOPED_OPERATIONS.has( op.operationId ) ||
+		( NON_READING_OPERATIONS.has( op.operationId ) &&
+			required.some(
+				( f ) => f.inQuery && f.kind === 'text' && ! f.source
+			) )
 	) {
 		return false;
 	}
-	const model = uiForms[ op.operationId ];
-	const required = formInputs( op ).filter( ( f ) => f.required );
 	return (
 		required.length > 0 &&
 		! model.repeats?.length &&
@@ -1082,9 +1086,7 @@ function adaptField( modelField, schema, options = {} ) {
 		select: 'enum',
 		date: 'date',
 		time: 'time',
-		// Visitor forms retain their legacy time control; static attributes
-		// accept datetime text. Lists, objects and toggles are builder-only.
-		datetime: builder ? 'text' : 'time',
+		datetime: builder ? 'text' : 'datetime',
 		array: builder ? 'list' : 'text',
 		object: builder ? 'json' : 'text',
 		toggle: builder ? 'boolean' : 'text',

@@ -5689,6 +5689,7 @@ class Manifest {
 					'operationId' => 'getEclipticCrossings',
 					'hero' => false,
 					'modes' => array(
+						'visitor',
 						'set',
 					),
 					'formOnly' => false,
@@ -6298,6 +6299,7 @@ class Manifest {
 					'operationId' => 'getKpPlanetsInterval',
 					'hero' => false,
 					'modes' => array(
+						'visitor',
 						'set',
 					),
 					'formOnly' => false,
@@ -6434,6 +6436,7 @@ class Manifest {
 					'operationId' => 'getKpRasiChanges',
 					'hero' => false,
 					'modes' => array(
+						'visitor',
 						'set',
 					),
 					'formOnly' => false,
@@ -6678,6 +6681,7 @@ class Manifest {
 					'operationId' => 'getKpRulingInterval',
 					'hero' => false,
 					'modes' => array(
+						'visitor',
 						'set',
 					),
 					'formOnly' => false,
@@ -6830,6 +6834,7 @@ class Manifest {
 					'operationId' => 'getKpSublordChanges',
 					'hero' => false,
 					'modes' => array(
+						'visitor',
 						'set',
 					),
 					'formOnly' => false,

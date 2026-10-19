@@ -93,6 +93,101 @@ class Test_Long_Tail_Forms extends \WP_UnitTestCase {
 		$this->assertArrayNotHasKey( 'getDreamSymbol', $this->form_capable(), 'An identifier the API only searches stays placed by the site owner.' );
 	}
 
+	public function test_interval_readings_offer_forms_independently_of_inserter_visibility(): void {
+		foreach ( array( 'getEclipticCrossings', 'getKpPlanetsInterval', 'getKpRasiChanges', 'getKpRulingInterval', 'getKpSublordChanges' ) as $op_id ) {
+			$this->assertArrayHasKey( $op_id, $this->form_capable() );
+		}
+	}
+
+	public function test_non_reading_text_search_stays_static_only(): void {
+		$this->assertArrayNotHasKey( 'searchCities', $this->form_capable() );
+		$this->assertFalse( class_exists( '\RoxyAPI\Generated\Forms\SearchCitiesForm' ) );
+		$out = \RoxyAPI\Generated\Shortcodes\SearchCities::render( array() );
+		$this->assertStringNotContainsString( '<form', $out );
+		$manifest = json_decode( file_get_contents( dirname( __DIR__, 2 ) . '/builder/manifest.json' ), true );
+		$entries = array_column( $manifest['entries'], null, 'operationId' );
+		$this->assertSame( array( 'set' ), $entries['searchCities']['modes'] );
+	}
+
+	public function test_datetime_fields_render_a_date_and_time_control(): void {
+		$models = json_decode( file_get_contents( dirname( __DIR__, 2 ) . '/bin/ui-forms/forms.json' ), true )['forms'];
+		$checked = 0;
+		foreach ( $this->form_capable() as $op_id => $class ) {
+			foreach ( $models[ $op_id ]['fields'] as $field ) {
+				if ( $field['kind'] === 'datetime' ) {
+					$html = $class::render( array(), '', $class::TAG );
+					$this->assertMatchesRegularExpression( '/<input type="datetime-local"[^>]+name="' . preg_quote( $field['key'], '/' ) . '"/', $html, $op_id );
+					++$checked;
+				}
+			}
+		}
+		$this->assertGreaterThan( 0, $checked );
+	}
+
+	public function test_invalid_local_datetimes_never_request_a_reading(): void {
+		foreach ( array( '00:00', '2026-02-30T00:00', '2026-02-03T24:00', '2026-02-03T00:00Z' ) as $value ) {
+			$this->redirect = null;
+			$_POST = array(
+				'roxyapi_form' => 'getKpRulingInterval',
+				'_wpnonce' => wp_create_nonce( 'roxyapi_form_getKpRulingInterval' ),
+				'roxyapi_consent' => '1',
+				'startDatetime' => $value,
+				'endDatetime' => '2026-02-03T01:00',
+				'intervalMinutes' => '5',
+				'latitude' => '17.385044',
+				'longitude' => '78.486671',
+			);
+			$_SERVER['REQUEST_METHOD'] = 'POST';
+			try {
+				FormRouter::maybe_handle();
+				$this->assertNotNull( $this->redirect, $value );
+				$this->assertSame( array(), $this->requested, $value );
+			} finally {
+				$_POST = array();
+				unset( $_SERVER['REQUEST_METHOD'] );
+			}
+		}
+	}
+
+	public function test_untouched_timezone_preserves_the_reading_default(): void {
+		$html = \RoxyAPI\Generated\Shortcodes\GetKpRulingInterval::render( array() );
+		$this->assertMatchesRegularExpression( '/<select[^>]+name="timezone"[^>]*>\s*<option value="" selected>/', $html );
+		$this->assertStringNotContainsString( 'value="UTC" selected', $html );
+
+		$this->submit(
+			'getKpRulingInterval',
+			array(
+				'startDatetime' => '2026-02-03T00:00',
+				'endDatetime' => '2026-02-03T01:00',
+				'intervalMinutes' => '5',
+				'latitude' => '17.385044',
+				'longitude' => '78.486671',
+				'timezone' => '',
+			)
+		);
+		$this->assertArrayNotHasKey( 'timezone', $this->body );
+	}
+
+	public function test_interval_form_preserves_local_datetimes_and_query_options(): void {
+		$this->submit(
+			'getKpRulingInterval',
+			array(
+				'startDatetime' => '2026-02-03T00:00',
+				'endDatetime' => '2026-02-03T01:00:30',
+				'intervalMinutes' => '5',
+				'latitude' => '17.385044',
+				'longitude' => '78.486671',
+				'timezone' => 'Asia/Kolkata',
+				'focus' => 'finance',
+			)
+		);
+
+		$this->assertSame( '2026-02-03T00:00', $this->body['startDatetime'] );
+		$this->assertSame( '2026-02-03T01:00:30', $this->body['endDatetime'] );
+		$this->assertSame( 'Asia/Kolkata', $this->body['timezone'] );
+		$this->assertStringContainsString( 'focus=finance', $this->requested[0] );
+	}
+
 	public function test_every_bare_form_capable_shortcode_renders_its_form_and_requests_no_reading(): void {
 		$collections = array();
 		foreach ( $this->form_capable() as $op_id => $class ) {

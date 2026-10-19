@@ -61,7 +61,8 @@ class Test_Generic_Renderer extends \WP_UnitTestCase {
 			)
 		);
 		$this->assertStringContainsString( 'class="roxyapi-card-meta"', $out );
-		$this->assertStringContainsString( 'Date: 2026-04-26', $out );
+		$this->assertStringContainsString( 'Date: ', $out );
+		$this->assertStringNotContainsString( 'Date: 2026-04-26', $out );
 		// Date should NOT also appear in the fields grid.
 		$this->assertStringNotContainsString( '<dt>Date</dt>', $out );
 	}
@@ -173,7 +174,7 @@ class Test_Generic_Renderer extends \WP_UnitTestCase {
 		$this->assertStringContainsString( '<summary>Planet</summary>', $out );
 	}
 
-	public function test_long_table_collapses_into_details(): void {
+	public function test_long_table_stays_visible_in_a_named_scroll_region(): void {
 		$rows = array();
 		for ( $i = 0; $i < 13; $i++ ) {
 			$rows[] = array(
@@ -181,9 +182,245 @@ class Test_Generic_Renderer extends \WP_UnitTestCase {
 				'value' => $i,
 			);
 		}
-		$out = GenericRenderer::render( 'getX', array( 'rows' => $rows ) );
-		$this->assertStringContainsString( '<details class="roxyapi-details">', $out );
+		$out = GenericRenderer::render( 'getX', array( 'events' => $rows ) );
+		$this->assertStringContainsString( '<details class="roxyapi-details" open><summary>Events</summary>', $out );
+		$this->assertStringContainsString( 'class="roxyapi-data-scroll long" tabindex="0" role="region" aria-label="Events"', $out );
+		$this->assertSame( 1, substr_count( $out, '<details' ) );
+		$this->assertStringContainsString( '<caption>13 rows</caption>', $out );
+		$this->assertSame( 13, substr_count( $out, '<td>Item ' ) );
+
+		array_pop( $rows );
+		$short = GenericRenderer::render( 'getX', array( 'events' => $rows ) );
+		$this->assertStringContainsString( '<details class="roxyapi-details" open><summary>Events</summary>', $short );
+		$this->assertStringContainsString( 'class="roxyapi-data-scroll" tabindex="0"', $short );
+		$this->assertStringNotContainsString( 'roxyapi-data-scroll long', $short );
+		$this->assertStringNotContainsString( '<caption>', $short );
+	}
+
+	public function test_long_table_escapes_its_heading_label_and_cells(): void {
+		$rows = array_fill( 0, 13, array( 'name' => '<script>alert(1)</script>' ) );
+		$out  = GenericRenderer::render( 'getX', array( 'events"<img src=x>' => $rows ) );
+		$this->assertStringNotContainsString( '<img', $out );
+		$this->assertStringNotContainsString( '<script', $out );
+		$this->assertStringContainsString( '&quot;', $out );
+		$this->assertStringContainsString( '&lt;img', $out );
+		$this->assertSame( 13, substr_count( $out, '&lt;script&gt;alert(1)&lt;/script&gt;' ) );
+	}
+
+	public function test_compact_root_records_share_the_table_policy(): void {
+		$out = GenericRenderer::render(
+			'getX',
+			array(
+				array( 'name' => 'First item', 'description' => 'First reading', 'element' => 'fire' ),
+				array( 'name' => 'Second item', 'description' => 'Second reading', 'element' => 'water' ),
+			)
+		);
 		$this->assertStringContainsString( '<table class="roxyapi-table">', $out );
+		$this->assertStringContainsString( '<td>First item</td>', $out );
+		$this->assertStringContainsString( '<td>Second reading</td>', $out );
+		$this->assertStringNotContainsString( 'roxyapi-section-title', $out );
+		$this->assertStringNotContainsString( '<details', $out );
+		$this->assertStringContainsString( 'class="roxyapi-data-scroll" tabindex="0"', $out );
+	}
+
+	public function test_root_scalar_list_uses_the_existing_escaped_list_render(): void {
+		$out = GenericRenderer::render( 'getX', array( 'Fire', '<img src=x>', 7 ) );
+		$this->assertStringContainsString( '<ul class="roxyapi-list"><li>Fire</li><li>&lt;img src=x&gt;</li><li>7</li></ul>', $out );
+		$this->assertStringNotContainsString( '<dl', $out );
+	}
+
+	public function test_filtering_root_list_entries_preserves_list_identity(): void {
+		$out = GenericRenderer::render(
+			'getX',
+			array(
+				array( 'description' => 'Only prose' ),
+				array( 'name' => 'Kept item', 'description' => 'Hidden prose' ),
+			),
+			false,
+			true
+		);
+		$this->assertStringContainsString( '<div class="roxyapi-records" role="list"><div class="roxyapi-record" role="listitem"><header', $out );
+		$this->assertStringContainsString( '>Kept item</h4>', $out );
+		$this->assertStringNotContainsString( 'prose', $out );
+		$this->assertStringNotContainsString( 'roxyapi-section-title', $out );
+	}
+
+	public function test_long_root_list_stays_visible_and_retains_every_record(): void {
+		$items = array();
+		for ( $i = 0; $i < 13; $i++ ) {
+			$items[] = array( 'name' => 'Item ' . $i, 'description' => 'Reading ' . $i, 'element' => 'fire', 'remedies' => array( 'mantra' => 'Chant' ) );
+		}
+		$out = GenericRenderer::render( 'getX', $items );
+		$this->assertStringContainsString( '<p class="roxyapi-card-meta">13 rows</p><div class="roxyapi-records" role="list">', $out );
+		$this->assertSame( 13, substr_count( $out, 'class="roxyapi-card-title"' ) );
+		$this->assertStringContainsString( 'Reading 12', $out );
+		$this->assertStringNotContainsString( 'roxyapi-data-scroll', $out );
+		$this->assertSame( 13, substr_count( $out, 'role="listitem"' ) );
+		$this->assertStringNotContainsString( '<details class="roxyapi-details" open>', $out );
+
+		array_pop( $items );
+		$short = GenericRenderer::render( 'getX', $items );
+		$this->assertStringNotContainsString( 'roxyapi-data-scroll', $short );
+	}
+
+	public function test_compact_table_preserves_nested_planet_positions_and_house_lists(): void {
+		$row = array(
+			'datetime' => '2025-01-15T00:00:00',
+			'planets' => array( 'Sun' => array( 'longitude' => 270.7362, 'sign' => 'Capricorn' ) ),
+			'significators' => array( array( 'planet' => 'Jupiter', 'signifies' => array( 3, 1 ) ) ),
+		);
+		$out = GenericRenderer::render( 'getX', array( 'intervals' => array( $row, $row ) ) );
+		$this->assertStringContainsString( '<table class="roxyapi-table">', $out );
+		$this->assertStringContainsString( '<summary>Sun</summary>', $out );
+		$this->assertStringContainsString( '<dt>Longitude</dt><dd>270.74</dd>', $out );
+		$this->assertStringContainsString( 'Capricorn', $out );
+		$this->assertStringContainsString( 'Jupiter', $out );
+		$this->assertStringContainsString( '<li>3</li><li>1</li>', $out );
+	}
+
+	public function test_compact_table_preserves_array_valued_house_levels(): void {
+		$row = array(
+			'datetime' => '2026-02-03T00:00:00',
+			'moonSignLordSignifies' => array( 'L1' => array( 11, 6 ), 'L4' => array( 5, 6 ) ),
+		);
+		$out = GenericRenderer::render( 'getX', array( 'intervals' => array( $row, $row ) ) );
+		$this->assertStringContainsString( '<table class="roxyapi-table">', $out );
+		$this->assertStringContainsString( '<li>11</li><li>6</li>', $out );
+		$this->assertStringContainsString( '<li>5</li><li>6</li>', $out );
+	}
+
+	public function test_wide_named_records_retain_short_prose_and_nested_details(): void {
+		$rows = array();
+		for ( $i = 0; $i < 13; $i++ ) {
+			$rows[] = array(
+				'name' => 'Item ' . $i,
+				'deity' => 'Agni',
+				'characteristics' => 'Short prose',
+				'remedies' => array( 'mantra' => 'Chant', 'color' => 'Red' ),
+			);
+		}
+		$out = GenericRenderer::render( 'getX', array( 'items' => $rows ) );
+		$this->assertStringNotContainsString( '<table', $out );
+		$this->assertStringContainsString( '<details class="roxyapi-details" open><summary>Items</summary>', $out );
+		$this->assertSame( 13, substr_count( $out, 'class="roxyapi-card-title"' ) );
+		$this->assertStringContainsString( '<p class="roxyapi-card-meta">13 rows</p>', $out );
+		$this->assertStringContainsString( '<details class="roxyapi-details"><summary>Remedies</summary>', $out );
+		$this->assertStringContainsString( 'Chant', $out );
+		$this->assertStringContainsString( 'Item 12', $out );
+	}
+
+	public function test_wide_paragraph_records_retain_all_visible_fields(): void {
+		$row = array( 'name' => 'First', 'deity' => 'Agni', 'symbol' => 'Fire', 'characteristics' => str_repeat( 'Long prose. ', 9 ) );
+		$out = GenericRenderer::render( 'getX', array( 'items' => array( $row, $row ) ) );
+		$this->assertStringNotContainsString( '<table', $out );
+		$this->assertStringContainsString( str_repeat( 'Long prose. ', 8 ), $out );
+		$this->assertStringContainsString( '<dt>Symbol</dt><dd>Fire</dd>', $out );
+	}
+
+	public function test_deep_named_tables_start_closed_with_every_row_retained(): void {
+		foreach ( array( 2, 39 ) as $count ) {
+			$rows = array();
+			for ( $i = 0; $i < $count; $i++ ) {
+				$rows[] = array( 'planet' => 'Sun', 'longitude' => $i );
+			}
+			$out = GenericRenderer::render( 'getX', array( 'chart' => array( 'events' => $rows ) ) );
+			$this->assertStringContainsString( '<details class="roxyapi-details"><summary>Events</summary>', $out );
+			$this->assertStringNotContainsString( '<details class="roxyapi-details" open>', $out );
+			$this->assertSame( $count, substr_count( $out, '<td>Sun</td>' ) );
+			if ( $count > 12 ) {
+				$this->assertStringContainsString( '<caption>39 rows</caption>', $out );
+				$this->assertStringContainsString( 'roxyapi-data-scroll', $out );
+			}
+		}
+	}
+
+	public function test_paragraph_boundary_counts_unicode_characters(): void {
+		foreach ( array( 80, 81 ) as $length ) {
+			$row = array( 'name' => 'First', 'deity' => 'Agni', 'symbol' => 'Fire', 'characteristics' => str_repeat( '🌟', $length ) );
+			$out = GenericRenderer::render( 'getX', array( 'items' => array( $row, $row ) ) );
+			if ( $length === 80 ) {
+				$this->assertStringContainsString( '<table', $out );
+			} else {
+				$this->assertStringNotContainsString( '<table', $out );
+			}
+		}
+	}
+
+	public function test_long_compact_root_records_have_one_scroll_frame_and_caption(): void {
+		$rows = array();
+		for ( $i = 0; $i < 27; $i++ ) {
+			$rows[] = array( 'name' => 'Item ' . $i, 'value' => $i );
+		}
+		$out = GenericRenderer::render( 'getX', $rows );
+		$this->assertSame( 1, substr_count( $out, '<table' ) );
+		$this->assertSame( 1, substr_count( $out, 'roxyapi-data-scroll long' ) );
+		$this->assertStringContainsString( '<caption>27 rows</caption>', $out );
+		$this->assertStringContainsString( '<td>Item 26</td>', $out );
+		$this->assertStringNotContainsString( '<details', $out );
+		$this->assertStringNotContainsString( 'roxyapi-section-title', $out );
+	}
+
+	public function test_date_display_uses_the_locale_without_shifting_naive_clocks(): void {
+		$previous_zone = get_option( 'timezone_string' );
+		$previous_date = get_option( 'date_format' );
+		$previous_time = get_option( 'time_format' );
+		$locale = 'en_US';
+		$filter = static function () use ( &$locale ) { return $locale; };
+		add_filter( 'determine_locale', $filter );
+		update_option( 'timezone_string', 'America/New_York' );
+		update_option( 'date_format', 'Y-m-d' );
+		update_option( 'time_format', 'H:i' );
+		try {
+			$cases = array(
+				array( 'en_US', '2026-03-08T02:30:00', 'Mar 8, 2026, 2:30 AM', '2026-03-08 02:30' ),
+				array( 'de_DE', '2026-02-03T14:30:00', '03.02.2026, 14:30', '2026-02-03 14:30' ),
+				array( 'en_US', '2026-02-03', 'Feb 3, 2026', '2026-02-03' ),
+				array( 'en_US', '2026-02-03T00:00:00Z', 'Feb 2, 2026, 7:00 PM', '2026-02-02 19:00' ),
+				array( 'en_US', '2026-02-30T00:00:00', '2026-02-30T00:00:00', '2026-02-30T00:00:00' ),
+			);
+			foreach ( $cases as $case ) {
+				$locale = $case[0];
+				$html = GenericRenderer::render( 'getX', array( 'datetime' => $case[1], 'startDatetime' => $case[1] ) );
+				$text = preg_replace( '/\s+/u', ' ', wp_strip_all_tags( $html ) );
+				$supported = class_exists( \IntlDateFormatter::class ) && \Locale::getPrimaryLanguage( (string) ( new \IntlDateFormatter( $locale, \IntlDateFormatter::MEDIUM, \IntlDateFormatter::SHORT ) )->getLocale() ) === \Locale::getPrimaryLanguage( $locale );
+				$expected = $supported ? $case[2] : $case[3];
+				$this->assertSame( 2, substr_count( $text, $expected ), $case[0] . ' ' . $case[1] . ': ' . $text );
+			}
+			$this->assertStringContainsString( 'Time: 14:30', GenericRenderer::render( 'getX', array( 'time' => '14:30' ) ) );
+		} finally {
+			remove_filter( 'determine_locale', $filter );
+			update_option( 'timezone_string', $previous_zone );
+			update_option( 'date_format', $previous_date );
+			update_option( 'time_format', $previous_time );
+		}
+	}
+
+	public function test_offset_instants_use_numeric_site_timezones(): void {
+		$previous = array();
+		foreach ( array( 'timezone_string', 'gmt_offset', 'date_format', 'time_format' ) as $option ) {
+			$previous[ $option ] = get_option( $option );
+		}
+		$filter = static fn() => 'en_US';
+		add_filter( 'determine_locale', $filter );
+		update_option( 'timezone_string', '' );
+		update_option( 'date_format', 'Y-m-d' );
+		update_option( 'time_format', 'H:i' );
+		try {
+			foreach ( array( array( 5.5, 'Feb 3, 2026, 5:30 AM', '2026-02-03 05:30' ), array( -4, 'Feb 2, 2026, 8:00 PM', '2026-02-02 20:00' ) ) as $case ) {
+				update_option( 'gmt_offset', $case[0] );
+				foreach ( array( '2026-02-03T00:00:00Z', '2026-02-03T05:30:00+05:30' ) as $instant ) {
+					$html = GenericRenderer::render( 'getX', array( 'datetime' => $instant, 'startDatetime' => $instant ) );
+					$text = preg_replace( '/\s+/u', ' ', wp_strip_all_tags( $html ) );
+					$expected = class_exists( \IntlDateFormatter::class ) ? $case[1] : $case[2];
+					$this->assertSame( 2, substr_count( $text, $expected ), (string) $case[0] . ': ' . $text );
+				}
+			}
+		} finally {
+			remove_filter( 'determine_locale', $filter );
+			foreach ( $previous as $option => $value ) {
+				update_option( $option, $value );
+			}
+		}
 	}
 
 	public function test_scalar_value_is_escaped(): void {
@@ -327,7 +564,7 @@ class Test_Generic_Renderer extends \WP_UnitTestCase {
 		// The seed never surfaces.
 		$this->assertStringNotContainsString( 'Seed', $out );
 		// Date appears once, in the meta strip.
-		$this->assertSame( 1, substr_count( $out, 'Date: 2026-04-26' ) );
+		$this->assertSame( 1, substr_count( $out, 'Date: ' ) );
 		// Daily message becomes the lede.
 		$this->assertStringContainsString( '<p class="roxyapi-card-lede">Your dream symbol for 2026-04-26', $out );
 		// Symbol renders as a section with its own h4 heading.
@@ -433,8 +670,7 @@ class Test_Generic_Renderer extends \WP_UnitTestCase {
 	}
 
 	public function test_table_row_localized_field_without_partner_still_renders(): void {
-		// Same "no canonical partner" rule, at the table funnel: render_table()
-		// never calls suppress(), so it needs its own fold, not just render_object's.
+		// Collections share suppression while keeping translations with no canonical partner.
 		$data = array(
 			'items' => array(
 				array(

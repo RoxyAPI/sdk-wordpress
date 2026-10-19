@@ -33,6 +33,7 @@ class GetEclipticCrossings {
 		'timezone' => '',
 		'coordinate_system' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -52,6 +53,10 @@ class GetEclipticCrossings {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['year'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetEclipticCrossingsForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(
