@@ -187,7 +187,7 @@ class Notice {
 		$message      = sprintf(
 			'%s <a href="%s">%s</a>.',
 			esc_html__(
-				'RoxyAPI has used up its free daily allowance. It resets each day, so readings return on their own. To remove the daily limit and keep every reading live now,',
+				'RoxyAPI has used up its free daily allowance for now, so readings will return shortly. To keep every reading live without interruption,',
 				'roxyapi'
 			),
 			esc_url( $settings_url ),

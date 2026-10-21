@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology 1.22.1\n"
+"Project-Id-Version: RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology 1.22.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/roxyapi\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-19T06:24:35+00:00\n"
+"POT-Creation-Date: 2026-10-21T12:27:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: roxyapi\n"
@@ -212,7 +212,7 @@ msgid "Add your API key"
 msgstr ""
 
 #: src/Admin/Notice.php:189
-msgid "RoxyAPI has used up its free daily allowance. It resets each day, so readings return on their own. To remove the daily limit and keep every reading live now,"
+msgid "RoxyAPI has used up its free daily allowance for now, so readings will return shortly. To keep every reading live without interruption,"
 msgstr ""
 
 #: src/Admin/Notice.php:194

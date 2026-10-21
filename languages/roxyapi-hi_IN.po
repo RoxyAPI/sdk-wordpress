@@ -1769,10 +1769,6 @@ msgstr "स्थापित है, लेकिन अभी कनेक्�
 msgid "Add your API key"
 msgstr "अपनी API कुंजी जोड़ें"
 
-#: src/Admin/Notice.php:189
-msgid "RoxyAPI has used up its free daily allowance. It resets each day, so readings return on their own. To remove the daily limit and keep every reading live now,"
-msgstr "RoxyAPI ने अपना मुफ़्त दैनिक कोटा खत्म कर दिया है। यह हर दिन रीसेट होता है, इसलिए विश्लेषण अपने आप फिर से दिखने लगेंगे। दैनिक सीमा हटाने और अभी हर विश्लेषण को लाइव रखने के लिए,"
-
 #: src/Admin/Notice.php:194
 msgid "add your API key"
 msgstr "अपनी API कुंजी जोड़ें"
@@ -11211,3 +11207,7 @@ msgstr "name और birth_date विशेषताएँ आवश्यक �
 #, php-format
 msgid "The date, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s"
 msgstr "date, lat और lon विशेषताएँ आवश्यक हैं (tz का डिफ़ॉल्ट 5.5 IST है)। उदाहरण: %s"
+
+#: src/Admin/Notice.php:189
+msgid "RoxyAPI has used up its free daily allowance for now, so readings will return shortly. To keep every reading live without interruption,"
+msgstr "RoxyAPI का निःशुल्क दैनिक कोटा फिलहाल समाप्त हो गया है, इसलिए रीडिंग जल्द ही वापस आ जाएँगी। हर रीडिंग को बिना रुकावट लाइव रखने के लिए,"

@@ -1769,10 +1769,6 @@ msgstr "kuruldu ama henüz bağlanmadı."
 msgid "Add your API key"
 msgstr "API anahtarınızı ekleyin"
 
-#: src/Admin/Notice.php:189
-msgid "RoxyAPI has used up its free daily allowance. It resets each day, so readings return on their own. To remove the daily limit and keep every reading live now,"
-msgstr "RoxyAPI ücretsiz günlük kullanım hakkını tüketti. Bu hak her gün sıfırlanır, bu nedenle okumalar kendiliğinden geri döner. Günlük sınırı kaldırıp her okumayı hemen etkin tutmak için,"
-
 #: src/Admin/Notice.php:194
 msgid "add your API key"
 msgstr "API anahtarınızı ekleyin"
@@ -11211,3 +11207,7 @@ msgstr "name ve birth_date öznitelikleri zorunludur. Örnek: %s"
 #, php-format
 msgid "The date, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s"
 msgstr "date, lat ve lon öznitelikleri zorunludur (tz varsayılanı 5.5 IST). Örnek: %s"
+
+#: src/Admin/Notice.php:189
+msgid "RoxyAPI has used up its free daily allowance for now, so readings will return shortly. To keep every reading live without interruption,"
+msgstr "RoxyAPI ücretsiz günlük hakkını şimdilik doldurdu, bu yüzden yorumlar kısa süre içinde geri gelecek. Tüm yorumları kesintisiz canlı tutmak için,"

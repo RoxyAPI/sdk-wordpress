@@ -1769,10 +1769,6 @@ msgstr "установлен, но пока не подключён."
 msgid "Add your API key"
 msgstr "Добавьте свой API-ключ"
 
-#: src/Admin/Notice.php:189
-msgid "RoxyAPI has used up its free daily allowance. It resets each day, so readings return on their own. To remove the daily limit and keep every reading live now,"
-msgstr "У RoxyAPI закончился бесплатный дневной лимит. Он обновляется каждый день, поэтому расчёты возобновятся сами. Чтобы снять дневной лимит и сразу получать все расчёты,"
-
 #: src/Admin/Notice.php:194
 msgid "add your API key"
 msgstr "добавьте свой API-ключ"
@@ -11212,3 +11208,7 @@ msgstr "Атрибуты name и birth_date обязательны. Пример
 #, php-format
 msgid "The date, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s"
 msgstr "Атрибуты date, lat и lon обязательны (tz по умолчанию 5.5 IST). Пример: %s"
+
+#: src/Admin/Notice.php:189
+msgid "RoxyAPI has used up its free daily allowance for now, so readings will return shortly. To keep every reading live without interruption,"
+msgstr "RoxyAPI пока исчерпал бесплатный дневной лимит, поэтому расклады скоро вернутся. Чтобы все расклады работали без перерывов,"

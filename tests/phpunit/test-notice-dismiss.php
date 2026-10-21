@@ -172,7 +172,7 @@ class Test_Notice_Dismiss extends \WP_Ajax_UnitTestCase {
 		$this->assertNotEmpty( $out, 'Notice must render when all gates pass.' );
 		$this->assertStringContainsString( 'roxyapi-free-tier-exhausted', $out );
 		$this->assertStringContainsString( 'free daily allowance', $out );
-		$this->assertStringContainsString( 'resets each day', $out );
+		$this->assertStringContainsString( 'readings will return shortly', $out );
 		$this->assertStringContainsString( 'page=' . \RoxyAPI\Admin\SettingsPage::PAGE_SLUG, $out );
 		$this->assertStringContainsString( 'add your API key', $out );
 

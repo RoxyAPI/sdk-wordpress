@@ -43,7 +43,7 @@ Every chart is calculated by Roxy Ephemeris and verified against NASA JPL Horizo
 
 **Free to start. Add a key when you go live.**
 
-Every reading works the moment you activate the plugin, with no account. A free daily allowance, shared across your site, covers casual traffic so you can build and preview complete pages at no cost. When you are ready for production, add a RoxyAPI API key and the daily limit is removed. There is no separate paid plugin and no locked reading types: the same blocks and shortcodes cover every domain whether or not a key is set. A key simply lifts the daily cap, covers production traffic, and keeps all 18+ domains live under one key. Pick a plan at https://roxyapi.com/pricing.
+Every reading works the moment you activate the plugin, with no account. A free daily allowance covers casual traffic so you can build and preview complete pages at no cost. When you are ready for production, add a RoxyAPI API key and the daily limit is removed. There is no separate paid plugin and no locked reading types: the same blocks and shortcodes cover every domain whether or not a key is set. A key simply lifts the daily cap, covers production traffic, and keeps all 18+ domains live under one key. Pick a plan at https://roxyapi.com/pricing.
 
 **Also built in:**
 
@@ -158,7 +158,7 @@ Without these, the plugin falls back to your WordPress LOGGED_IN_KEY and LOGGED_
 
 = Do I need a RoxyAPI account? =
 
-Not to get started. A limited number of free readings per day are allowed right after install, with no account, so you can try the plugin. The allowance is shared across your site and resets each day. For production use, add an API key from a RoxyAPI plan: one key covers every reading and removes the daily limit. Pick a plan at https://roxyapi.com/pricing.
+Not to get started. A free daily allowance, no account needed, lets you try the plugin right after install. For production use, add an API key from a RoxyAPI plan: one key covers every reading and removes the daily limit. Pick a plan at https://roxyapi.com/pricing.
 
 = What readings can I add to my site? =
 
@@ -173,7 +173,7 @@ Yes. Readings follow your WordPress site language on their own, so a Spanish sit
 The plugin contacts roxyapi.com only when you take a clear action that requires it:
 
 1. You click the Test Connection button on the settings page.
-2. A page on your site that contains a RoxyAPI block or shortcode is rendered (cached for one hour by default to keep your API quota low). Readings render with or without an API key, so these requests also happen before you connect one.
+2. A page on your site that contains a RoxyAPI block or shortcode is rendered (cached for one hour by default to keep your API quota low). These requests also happen before you add a RoxyAPI plan, on the free daily allowance.
 
 The plugin never contacts RoxyAPI on plugin activation, on plugin update, on any admin page that does not display a reading, or in the background. Placing a RoxyAPI block or shortcode on a page is the explicit action that authorizes the render-time calls described above.
 
@@ -246,7 +246,7 @@ Add the Astrology Section wrapper block, set the sign in its Inspector, then dro
 
 = Can I try it for free before subscribing? =
 
-Yes. The plugin works the moment you activate it. Add a shortcode or block and it renders on a free daily allowance, no API key required. When you need more headroom, add a key from your RoxyAPI account; see https://roxyapi.com/pricing for current plans. You can also call every endpoint live in your browser at https://roxyapi.com/api-reference, no signup needed.
+Yes. The plugin works the moment you activate it. Add a shortcode or block and it renders on a free daily allowance, no account needed. When you need more headroom, add a key from your RoxyAPI account; see https://roxyapi.com/pricing for current plans. You can also call every endpoint live in your browser at https://roxyapi.com/api-reference, no signup needed.
 
 = Does this work with Elementor, Divi, or other page builders? =
 
