@@ -617,7 +617,6 @@ function offersVisitorForm( op ) {
 	}
 	return (
 		required.length > 0 &&
-		! model.repeats?.length &&
 		required.every(
 			( f ) =>
 				! f.key.includes( '.' ) &&
@@ -634,25 +633,50 @@ function offersVisitorForm( op ) {
 }
 
 /**
+ * Body fields a sample request carries, each with its example. An object-level
+ * body example is the API's own sendable request (an either-or body shows one
+ * branch), so when there is one only its fields are sampled.
+ * @param op
+ */
+function sampleBodyFields( op ) {
+	const schema = resolveRef(
+		op.requestBody?.content?.[ 'application/json' ]?.schema || {}
+	);
+	const sendable =
+		schema.example && typeof schema.example === 'object'
+			? schema.example
+			: null;
+	return extractBodyFields( op )
+		.filter( ( f ) => ! sendable || f.name in sendable )
+		.map( ( f ) =>
+			sendable ? { ...f, example: sendable[ f.name ] } : f
+		);
+}
+
+/**
  * PHP condition that is true while a visitor form is still owed: a required
  * attribute is empty, or, for an either-or body, no input set is complete.
  * @param op
  */
 function missingInputPhp( op ) {
+	const anyOf = uiForms[ op.operationId ].requiredAnyOf || [];
+	const inSets = new Set( anyOf.flat() );
 	const filled = ( keys ) =>
 		keys
 			.map( ( k ) => `$atts['${ toSnakeAttr( k ) }'] !== ''` )
 			.join( ' && ' );
-	const anyOf = uiForms[ op.operationId ].requiredAnyOf;
-	if ( anyOf ) {
-		return `! ( ${ anyOf
-			.map( ( set ) => `( ${ filled( set ) } )` )
-			.join( ' || ' ) } )`;
-	}
-	return formInputs( op )
-		.filter( ( f ) => f.required )
-		.map( ( f ) => `$atts['${ toSnakeAttr( f.key ) }'] === ''` )
-		.join( ' || ' );
+	return [
+		...formInputs( op )
+			.filter( ( f ) => f.required && ! inSets.has( f.key ) )
+			.map( ( f ) => `$atts['${ toSnakeAttr( f.key ) }'] === ''` ),
+		...( anyOf.length
+			? [
+					`! ( ${ anyOf
+						.map( ( set ) => `( ${ filled( set ) } )` )
+						.join( ' || ' ) } )`,
+				]
+			: [] ),
+	].join( ' || ' );
 }
 
 /**
@@ -1219,14 +1243,21 @@ function buildFormFieldSpec( op, modelField ) {
 }
 
 /**
- * Translate the model's wire paths to the renderer's one-level sections and
- * flat fields. Repeated/deeper objects and list controls remain unsupported.
+ * Translate the model's wire paths to the renderer's sections and flat fields.
+ * A section name is a wire path: a named object (`person1`) or one record of a
+ * repeating list (`members.0`), which the model expands to its minimum count.
+ * Deeper objects and list controls remain unsupported.
  * @param op
  */
 function extractFormSpec( op ) {
 	const model = uiForms[ op.operationId ];
+	const isSection = ( key ) =>
+		! key.includes( '.' ) ||
+		( model.repeats || [] ).some( ( r ) =>
+			new RegExp( `^${ r.key }\\.\\d+$` ).test( key )
+		);
 	const sections = model.groups
-		.filter( ( g ) => g.key && ! g.key.includes( '.' ) )
+		.filter( ( g ) => g.key && isSection( g.key ) )
 		.filter( ( g ) =>
 			model.fields.some( ( f ) => f.key.startsWith( `${ g.key }.` ) )
 		)
@@ -1238,18 +1269,20 @@ function extractFormSpec( op ) {
 		} ) );
 	const flatFields = [];
 	for ( const modelField of formInputs( op ) ) {
-		const pathParts = modelField.key.split( '.' );
+		const sectionName = modelField.key.slice(
+			0,
+			Math.max( 0, modelField.key.lastIndexOf( '.' ) )
+		);
+		const section = sections.find( ( s ) => s.name === sectionName );
 		if (
-			pathParts.length > 2 ||
+			( sectionName && ! section ) ||
 			[ 'array', 'object' ].includes( modelField.kind )
 		) {
 			continue;
 		}
 		const field = buildFormFieldSpec( op, modelField );
-		if ( pathParts.length === 2 ) {
-			sections
-				.find( ( s ) => s.name === pathParts[ 0 ] )
-				.fields.push( field );
+		if ( section ) {
+			section.fields.push( field );
 		} else {
 			// A visual group must never turn a flat wire name into a nested POST.
 			field.name = modelField.key;
@@ -1261,7 +1294,11 @@ function extractFormSpec( op ) {
 			( g ) =>
 				g.location &&
 				g.location.fields.every(
-					( key ) => key.split( '.' ).length <= 2
+					( key ) =>
+						! key.includes( '.' ) ||
+						sections.some( ( entry ) =>
+							key.startsWith( `${ entry.name }.` )
+						)
 				)
 		)
 		.map( ( g ) => {
@@ -1284,12 +1321,13 @@ function extractFormSpec( op ) {
 }
 
 /**
- * Preserve the existing flat and one-level nested POST names.
+ * POST name of a wire path, the same rule as `FormRouter::posted_name()`:
+ * `person1.date` -> `person1[date]`, `members.0.date` -> `members[0][date]`.
  * @param key
  */
 function postedFormName( key ) {
-	const [ section, name ] = key.split( '.' );
-	return name ? `${ section }[${ name }]` : key;
+	const [ head, ...rest ] = key.split( '.' );
+	return head + rest.map( ( part ) => `[${ part }]` ).join( '' );
 }
 
 /** Gettext owns help, placeholders and labels without complete UI catalogues. */
@@ -1666,16 +1704,26 @@ ${ queryArray.join( '\n' ) }
 				.filter( ( f ) => f.required )
 				.map( ( f ) => `'${ f.name }'` );
 			const anyOf = uiForms[ op.operationId ]?.requiredAnyOf;
-			let bodyCheck = '';
-			if ( anyOf ) {
-				bodyCheck = `body_has_any( $body, ${ phpLiteral( anyOf ) } )`;
-			} else if ( requiredBody.length ) {
-				bodyCheck = `body_has_all( $body, array( ${ requiredBody.join(
-					', '
-				) } ) )`;
-			}
-			const bodyGuard = bodyCheck
-				? `\t\tif ( ! \\RoxyAPI\\Api\\Client::${ bodyCheck } ) {\n\t\t\treturn \\RoxyAPI\\Api\\Client::not_configured();\n\t\t}`
+			const missing = [
+				...( requiredBody.length
+					? [
+							`! \\RoxyAPI\\Api\\Client::body_has_all( $body, array( ${ requiredBody.join(
+								', '
+							) } ) )`,
+						]
+					: [] ),
+				...( anyOf
+					? [
+							`! \\RoxyAPI\\Api\\Client::body_has_any( $body, ${ phpLiteral(
+								anyOf
+							) } )`,
+						]
+					: [] ),
+			];
+			const bodyGuard = missing.length
+				? `\t\tif ( ${ missing.join(
+						' || '
+					) } ) {\n\t\t\treturn \\RoxyAPI\\Api\\Client::not_configured();\n\t\t}`
 				: '';
 			// A POST operation can still declare QUERY parameters, and many do:
 			// the response language on most, plus focus / include / orb /
@@ -1786,7 +1834,7 @@ function emitEndpointsPhp() {
 				}
 			}
 			if ( op.method === 'POST' ) {
-				for ( const f of extractBodyFields( op ) ) {
+				for ( const f of sampleBodyFields( op ) ) {
 					if ( isCurrentDefaulting( f ) ) {
 						continue;
 					}
@@ -4657,7 +4705,7 @@ for ( const op of operations ) {
 	// Build the body the generated shortcode would build, using the (possibly
 	// overridden) spec examples and the same numeric coercion rules.
 	const body = {};
-	for ( const f of extractBodyFields( op ) ) {
+	for ( const f of sampleBodyFields( op ) ) {
 		const ex = applyExampleOverride( op.operationId, f.name, f.example );
 		if ( ex === undefined || ex === null || ex === '' ) {
 			continue;

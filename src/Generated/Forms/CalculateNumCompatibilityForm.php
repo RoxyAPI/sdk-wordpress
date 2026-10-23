@@ -33,14 +33,14 @@ class CalculateNumCompatibilityForm {
 					array(
 						'name' => 'fullName',
 						'label' => $labels['fields']['fullName'] ?? 'Full name',
-						'required' => false,
+						'required' => true,
 						'type' => 'text',
 						'fold' => false,
 					),
 					array(
 						'name' => 'year',
 						'label' => $labels['fields']['year'] ?? 'Year',
-						'required' => false,
+						'required' => true,
 						'type' => 'integer',
 						'min' => 100,
 						'max' => 2100,
@@ -49,7 +49,7 @@ class CalculateNumCompatibilityForm {
 					array(
 						'name' => 'month',
 						'label' => $labels['fields']['month'] ?? 'Month',
-						'required' => false,
+						'required' => true,
 						'type' => 'integer',
 						'min' => 1,
 						'max' => 12,
@@ -58,7 +58,7 @@ class CalculateNumCompatibilityForm {
 					array(
 						'name' => 'day',
 						'label' => $labels['fields']['day'] ?? 'Day',
-						'required' => false,
+						'required' => true,
 						'type' => 'integer',
 						'min' => 1,
 						'max' => 31,
@@ -101,14 +101,14 @@ class CalculateNumCompatibilityForm {
 					array(
 						'name' => 'fullName',
 						'label' => $labels['fields']['fullName'] ?? 'Full name',
-						'required' => false,
+						'required' => true,
 						'type' => 'text',
 						'fold' => false,
 					),
 					array(
 						'name' => 'year',
 						'label' => $labels['fields']['year'] ?? 'Year',
-						'required' => false,
+						'required' => true,
 						'type' => 'integer',
 						'min' => 100,
 						'max' => 2100,
@@ -117,7 +117,7 @@ class CalculateNumCompatibilityForm {
 					array(
 						'name' => 'month',
 						'label' => $labels['fields']['month'] ?? 'Month',
-						'required' => false,
+						'required' => true,
 						'type' => 'integer',
 						'min' => 1,
 						'max' => 12,
@@ -126,7 +126,7 @@ class CalculateNumCompatibilityForm {
 					array(
 						'name' => 'day',
 						'label' => $labels['fields']['day'] ?? 'Day',
-						'required' => false,
+						'required' => true,
 						'type' => 'integer',
 						'min' => 1,
 						'max' => 31,

@@ -229,6 +229,33 @@ class Test_Form_Router extends \WP_UnitTestCase {
 		$this->assertArrayHasKey( 'result', $payload );
 	}
 
+	/** One record of a repeating list posts as `members[0][date]` and reaches the API as one entry of a JSON list. */
+	public function test_repeating_records_post_by_index_and_send_a_list(): void {
+		$html = \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CalculatePentaForm::class );
+		$this->assertStringContainsString( 'name="members[2][date]"', $html );
+
+		$member = array(
+			'date'      => '1990-05-15',
+			'time'      => '14:30',
+			'timezone'  => 'America/New_York',
+			'latitude'  => '40.7128',
+			'longitude' => '-74.006',
+		);
+		$this->dispatch(
+			array(
+				'roxyapi_form'    => 'calculatePenta',
+				'_wpnonce'        => wp_create_nonce( 'roxyapi_form_calculatePenta' ),
+				'roxyapi_consent' => '1',
+				'members'         => array( $member, $member, $member ),
+			)
+		);
+
+		$this->assertNotNull( $this->captured_body, 'API was never called' );
+		$this->assertSame( array( 0, 1, 2 ), array_keys( $this->captured_body['members'] ), 'members must encode as a JSON list' );
+		$this->assertCount( 3, $this->captured_body['members'] );
+		$this->assertSame( 40.7128, $this->captured_body['members'][2]['latitude'] );
+	}
+
 	public function test_invalid_timezone_string_is_rejected_at_sanitize_step(): void {
 		$nonce = wp_create_nonce( 'roxyapi_form_calculateSynastry' );
 		$this->dispatch(

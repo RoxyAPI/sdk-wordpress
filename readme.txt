@@ -265,6 +265,11 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.23.1 =
+* New: Human Design Penta, custom tarot spreads and Vastu room placement take a visitor form, one card per person, position or room.
+* Fixed: numerology compatibility and the Vastu plot, entrance and mandala readings ask for the details each reading needs.
+* Fixed: shortcode library samples for gematria, name profile, name compatibility, Long Count and lunar dates show a reading when pasted.
+
 = 1.23.0 =
 * New: Eight Mansions, Flying Star chart, Long Count conversion, gematria, name profile, name compatibility and Maturity number take a visitor form. Place the shortcode with nothing inside the brackets and visitors enter their own details.
 * Fixed: a reading placed without the details it needs never shows visitors an error, including city search.
@@ -308,6 +313,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.23.1 =
+Group, spread and room readings take a visitor form, and every library sample shows a reading.
 
 = 1.23.0 =
 Seven more readings take a visitor form, and charts enlarge for closer reading.

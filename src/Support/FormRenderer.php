@@ -179,7 +179,7 @@ class FormRenderer {
 		$folded_open = false;
 		foreach ( $fields as $field ) {
 			$key   = (string) $field['name'];
-			$name  = $section === '' ? $key : $section . '[' . $key . ']';
+			$name  = FormRouter::posted_name( $section, $key );
 			$value = $previous[ $key ] ?? '';
 			$error = is_string( $errors[ $key ] ?? null ) ? $errors[ $key ] : '';
 			$html  = ( $city_searches[ $name ] ?? '' ) . self::render_field( $name, $field, $value, $error );

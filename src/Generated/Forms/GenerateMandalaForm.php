@@ -33,7 +33,7 @@ class GenerateMandalaForm {
 					array(
 						'name' => 'width',
 						'label' => $labels['fields']['width'] ?? 'Width, east to west',
-						'required' => false,
+						'required' => true,
 						'type' => 'number',
 						'min' => 0,
 						'step' => 'any',
@@ -42,7 +42,7 @@ class GenerateMandalaForm {
 					array(
 						'name' => 'depth',
 						'label' => $labels['fields']['depth'] ?? 'Depth, north to south',
-						'required' => false,
+						'required' => true,
 						'type' => 'number',
 						'min' => 0,
 						'step' => 'any',

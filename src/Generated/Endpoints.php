@@ -257,12 +257,11 @@ class Endpoints {
 			'attributes' => array(
 				'strict_orbs' => 'false',
 				'include' => '',
-				'date' => '1990-07-15',
-				'time' => '14:30:00',
-				'latitude' => '40.7128',
-				'longitude' => '-74.006',
+				'date' => '1955-02-24',
+				'time' => '19:15:00',
+				'latitude' => '37.77',
+				'longitude' => '-122.42',
 				'timezone' => 'UTC',
-				'node_type' => 'true',
 			),
 		),
 		'calculateTransits' => array(
@@ -2227,10 +2226,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_calculate_lunar_date',
 			'attributes' => array(
 				'date' => '1990-06-15',
-				'lunar_year' => '1990',
-				'lunar_month' => '5',
-				'lunar_day' => '23',
-				'is_leap_month' => '',
 			),
 		),
 		'getAlmanacDay' => array(
@@ -2497,8 +2492,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_convert_long_count',
 			'attributes' => array(
 				'date' => '2012-12-21',
-				'long_count' => '13.0.0.0.0',
-				'correlation' => 'gmt-584283',
 			),
 		),
 		'getDailyMayanReading' => array(
@@ -3169,12 +3162,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_calculate_gematria',
 			'attributes' => array(
 				'text' => 'Sarah',
-				'text_hebrew' => 'שלום',
-				'transliteration' => 'letter-map-mathers',
-				'mispar_gadol' => 'finals-500-900',
-				'atbash_output' => 'both',
-				'include_matches' => '1',
-				'latin_ciphers' => '',
 			),
 		),
 		'listGematriaCiphers' => array(
@@ -3201,9 +3188,6 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_generate_name_profile',
 			'attributes' => array(
 				'name' => 'Sarah',
-				'name_hebrew' => 'שרה',
-				'transliteration' => 'letter-map-mathers',
-				'mispar_gadol' => 'finals-500-900',
 			),
 		),
 		'generateBirthProfile' => array(
@@ -3329,11 +3313,7 @@ class Endpoints {
 			'shortcode_tag' => 'roxy_calculate_name_compatibility',
 			'attributes' => array(
 				'first_name' => 'Sarah',
-				'first_name_hebrew' => 'שרה',
 				'second_name' => 'David',
-				'second_name_hebrew' => 'דוד',
-				'transliteration' => 'letter-map-mathers',
-				'mispar_gadol' => 'finals-500-900',
 			),
 		),
 		'getDailySephirah' => array(

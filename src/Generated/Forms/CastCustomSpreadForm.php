@@ -25,7 +25,27 @@ class CastCustomSpreadForm {
 			'submit_label' => __( 'Get reading', 'roxyapi' ),
 			'locations'    => array(  ),
 			'sections'     => array(
-
+				array(
+					'name'   => 'positions.0',
+					'label'  => $labels['groups']['positions.0'] ?? 'Spread positions 1',
+					'fold'   => false,
+					'fields' => array(
+					array(
+						'name' => 'name',
+						'label' => $labels['fields']['name'] ?? 'Name',
+						'required' => true,
+						'type' => 'text',
+						'fold' => false,
+					),
+					array(
+						'name' => 'interpretation',
+						'label' => $labels['fields']['interpretation'] ?? 'Position meaning',
+						'required' => true,
+						'type' => 'text',
+						'fold' => false,
+					),
+					),
+				),
 			),
 			'flat_fields'  => array(
 				array(

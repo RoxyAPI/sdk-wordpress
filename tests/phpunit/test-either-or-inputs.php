@@ -40,19 +40,31 @@ class Test_Either_Or_Inputs extends Mock_Http_TestCase {
 	}
 
 	/**
-	 * Operation id to its input sets, read from the vendored form model.
+	 * Operation id to its input sets and the body keys it requires besides
+	 * them, read from the vendored form model.
 	 *
-	 * @return array<string, string[][]>
+	 * @return array<string, array{sets: string[][], required: string[]}>
 	 */
 	private static function either_or_operations(): array {
-		$manifest = json_decode( (string) file_get_contents( dirname( __DIR__, 2 ) . '/bin/ui-forms/forms.json' ), true );
-		$sets     = array();
+		$manifest   = json_decode( (string) file_get_contents( dirname( __DIR__, 2 ) . '/bin/ui-forms/forms.json' ), true );
+		$operations = array();
 		foreach ( $manifest['forms'] as $operation_id => $model ) {
-			if ( ! empty( $model['requiredAnyOf'] ) ) {
-				$sets[ $operation_id ] = $model['requiredAnyOf'];
+			if ( empty( $model['requiredAnyOf'] ) ) {
+				continue;
 			}
+			$in_sets  = array_merge( ...$model['requiredAnyOf'] );
+			$required = array();
+			foreach ( $model['fields'] as $field ) {
+				if ( ! empty( $field['required'] ) && ! in_array( $field['key'], $in_sets, true ) ) {
+					$required[] = explode( '.', $field['key'] )[0];
+				}
+			}
+			$operations[ $operation_id ] = array(
+				'sets'     => $model['requiredAnyOf'],
+				'required' => array_values( array_unique( $required ) ),
+			);
 		}
-		return $sets;
+		return $operations;
 	}
 
 	public function test_bare_placement_shows_visitors_a_form_without_a_request(): void {
@@ -70,16 +82,27 @@ class Test_Either_Or_Inputs extends Mock_Http_TestCase {
 	}
 
 	public function test_any_complete_set_reaches_the_api_and_a_partial_one_does_not(): void {
-		foreach ( self::either_or_operations() as $operation_id => $sets ) {
-			foreach ( $sets as $set ) {
+		foreach ( self::either_or_operations() as $operation_id => $inputs ) {
+			$required = array_fill_keys( $inputs['required'], '1' );
+			foreach ( $inputs['sets'] as $set ) {
 				$this->requested = array();
-				Generated::$operation_id( array_fill_keys( $set, '1' ) );
+				Generated::$operation_id( $required + array_fill_keys( $set, '1' ) );
 				$this->assertCount( 1, $this->requested, "$operation_id with [" . implode( ', ', $set ) . '] must be requested.' );
 			}
-			$this->requested = array();
-			$result          = Generated::$operation_id( array_fill_keys( array_slice( $sets[0], 0, count( $sets[0] ) - 1 ), '1' ) );
-			$this->assertSame( 'roxyapi_not_configured', $result->get_error_code(), "$operation_id with an incomplete set is not set up." );
-			$this->assertSame( array(), $this->requested );
+			$first    = $inputs['sets'][0];
+			$partials = array( $required + array_fill_keys( array_slice( $first, 0, count( $first ) - 1 ), '1' ) );
+			if ( $inputs['required'] ) {
+				// A complete set without the keys the body also requires.
+				$partials[] = array_fill_keys( $first, '1' );
+			}
+			foreach ( $partials as $body ) {
+				$this->requested = array();
+				$result          = Generated::$operation_id( $body );
+				$label           = "$operation_id with [" . implode( ', ', array_keys( $body ) ) . ']';
+				$this->assertInstanceOf( \WP_Error::class, $result, "$label must not be requested." );
+				$this->assertSame( 'roxyapi_not_configured', $result->get_error_code(), "$label is not set up." );
+				$this->assertSame( array(), $this->requested );
+			}
 		}
 	}
 }

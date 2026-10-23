@@ -3637,7 +3637,7 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function calculateEntrancePada( $body = array(), $query = array() ) {
-		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'plot' ) ) ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'plot' ) ) || ! \RoxyAPI\Api\Client::body_has_any( $body, array( array( 'facing', 'doorPosition' ), array( 'facing', 'door' ), array( 'facingDegrees', 'doorPosition' ), array( 'facingDegrees', 'door' ) ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
@@ -3679,7 +3679,7 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function calculatePlotAnalysis( $body = array(), $query = array() ) {
-		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'plot' ) ) ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'plot' ) ) || ! \RoxyAPI\Api\Client::body_has_any( $body, array( array( 'facing' ), array( 'facingDegrees' ) ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(
@@ -3721,7 +3721,7 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function calculateRoomCompliance( $body = array(), $query = array() ) {
-		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'plot', 'rooms' ) ) ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'plot', 'rooms' ) ) || ! \RoxyAPI\Api\Client::body_has_any( $body, array( array( 'facing' ), array( 'facingDegrees' ) ) ) ) {
 			return \RoxyAPI\Api\Client::not_configured();
 		}
 		return \RoxyAPI\Api\Cache::remember(

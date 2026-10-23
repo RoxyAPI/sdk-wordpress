@@ -33,7 +33,7 @@ class CalculatePlotAnalysisForm {
 					array(
 						'name' => 'width',
 						'label' => $labels['fields']['width'] ?? 'Width, east to west',
-						'required' => false,
+						'required' => true,
 						'type' => 'number',
 						'min' => 0,
 						'step' => 'any',
@@ -42,7 +42,7 @@ class CalculatePlotAnalysisForm {
 					array(
 						'name' => 'depth',
 						'label' => $labels['fields']['depth'] ?? 'Depth, north to south',
-						'required' => false,
+						'required' => true,
 						'type' => 'number',
 						'min' => 0,
 						'step' => 'any',
@@ -65,7 +65,7 @@ class CalculatePlotAnalysisForm {
 				array(
 					'name' => 'facing',
 					'label' => $labels['fields']['facing'] ?? 'Facing direction',
-					'required' => false,
+					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'North', 'Northeast', 'East', 'Southeast', 'South', 'Southwest', 'West', 'Northwest' ),
 					'enum_labels' => array( $labels['enums']['facing.North'] ?? 'North', $labels['enums']['facing.Northeast'] ?? 'Northeast', $labels['enums']['facing.East'] ?? 'East', $labels['enums']['facing.Southeast'] ?? 'Southeast', $labels['enums']['facing.South'] ?? 'South', $labels['enums']['facing.Southwest'] ?? 'Southwest', $labels['enums']['facing.West'] ?? 'West', $labels['enums']['facing.Northwest'] ?? 'Northwest' ),
@@ -79,7 +79,7 @@ class CalculatePlotAnalysisForm {
 					'min' => 0,
 					'max' => 360,
 					'step' => 'any',
-					'fold' => false,
+					'fold' => true,
 				),
 				array(
 					'name' => 'slopeLowDirection',
@@ -88,7 +88,7 @@ class CalculatePlotAnalysisForm {
 					'type' => 'enum',
 					'enum' => array( 'North', 'Northeast', 'East', 'Southeast', 'South', 'Southwest', 'West', 'Northwest' ),
 					'enum_labels' => array( $labels['enums']['slopeLowDirection.North'] ?? 'North', $labels['enums']['slopeLowDirection.Northeast'] ?? 'Northeast', $labels['enums']['slopeLowDirection.East'] ?? 'East', $labels['enums']['slopeLowDirection.Southeast'] ?? 'Southeast', $labels['enums']['slopeLowDirection.South'] ?? 'South', $labels['enums']['slopeLowDirection.Southwest'] ?? 'Southwest', $labels['enums']['slopeLowDirection.West'] ?? 'West', $labels['enums']['slopeLowDirection.Northwest'] ?? 'Northwest' ),
-					'fold' => false,
+					'fold' => true,
 				),
 				array(
 					'name' => 'road',
@@ -97,7 +97,7 @@ class CalculatePlotAnalysisForm {
 					'type' => 'enum',
 					'enum' => array( 'North', 'Northeast', 'East', 'Southeast', 'South', 'Southwest', 'West', 'Northwest' ),
 					'enum_labels' => array( $labels['enums']['road.North'] ?? 'North', $labels['enums']['road.Northeast'] ?? 'Northeast', $labels['enums']['road.East'] ?? 'East', $labels['enums']['road.Southeast'] ?? 'Southeast', $labels['enums']['road.South'] ?? 'South', $labels['enums']['road.Southwest'] ?? 'Southwest', $labels['enums']['road.West'] ?? 'West', $labels['enums']['road.Northwest'] ?? 'Northwest' ),
-					'fold' => false,
+					'fold' => true,
 				),
 				array(
 					'name' => 'water',
@@ -106,7 +106,7 @@ class CalculatePlotAnalysisForm {
 					'type' => 'enum',
 					'enum' => array( 'North', 'Northeast', 'East', 'Southeast', 'South', 'Southwest', 'West', 'Northwest' ),
 					'enum_labels' => array( $labels['enums']['water.North'] ?? 'North', $labels['enums']['water.Northeast'] ?? 'Northeast', $labels['enums']['water.East'] ?? 'East', $labels['enums']['water.Southeast'] ?? 'Southeast', $labels['enums']['water.South'] ?? 'South', $labels['enums']['water.Southwest'] ?? 'Southwest', $labels['enums']['water.West'] ?? 'West', $labels['enums']['water.Northwest'] ?? 'Northwest' ),
-					'fold' => false,
+					'fold' => true,
 				),
 				array(
 					'name' => 'slopeSchool',

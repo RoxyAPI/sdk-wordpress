@@ -100,46 +100,47 @@ class FormRouter {
 			return;
 		}
 
+		$post = wp_unslash( $_POST );
+		self::redirect_with( $form_id, self::submit( $form_class, is_array( $post ) ? $post : array() ) );
+	}
+
+	/**
+	 * Run one submission through its form spec: sanitise, validate, call the API.
+	 *
+	 * Everything a visitor POST does after the nonce, rate limit and consent
+	 * gate, so a maintainer check submits every form through the same path.
+	 *
+	 * @param class-string        $form_class Generated form class.
+	 * @param array<string,mixed> $post       Posted values, already unslashed.
+	 * @return array<string,mixed> The payload `redirect_with()` stores: `validation_errors`, `wp_error` or `result`, plus `previous_input`.
+	 */
+	public static function submit( string $form_class, array $post ): array {
 		$spec      = $form_class::spec();
-		$post      = wp_unslash( $_POST );
-		$sanitized = self::sanitize_against_spec( is_array( $post ) ? $post : array(), $spec );
+		$sanitized = self::sanitize_against_spec( $post, $spec );
 
 		$validation_errors = self::validate( $sanitized, $spec );
 		if ( ! empty( $validation_errors ) ) {
-			self::redirect_with(
-				$form_id,
-				array(
-					'validation_errors' => $validation_errors,
-					'previous_input'    => $sanitized,
-				)
+			return array(
+				'validation_errors' => $validation_errors,
+				'previous_input'    => $sanitized,
 			);
-			return;
 		}
 
-		$body   = self::build_body( $sanitized, $spec );
-		$result = $form_class::call( $body );
-
+		$result = $form_class::call( self::build_body( $sanitized, $spec ) );
 		if ( is_wp_error( $result ) ) {
-			self::redirect_with(
-				$form_id,
-				array(
-					'wp_error'       => array(
-						'code'    => $result->get_error_code(),
-						'message' => $result->get_error_message(),
-						'data'    => $result->get_error_data(),
-					),
-					'previous_input' => $sanitized,
-				)
+			return array(
+				'wp_error'       => array(
+					'code'    => $result->get_error_code(),
+					'message' => $result->get_error_message(),
+					'data'    => $result->get_error_data(),
+				),
+				'previous_input' => $sanitized,
 			);
-			return;
 		}
 
-		self::redirect_with(
-			$form_id,
-			array(
-				'result'         => $result,
-				'previous_input' => $sanitized,
-			)
+		return array(
+			'result'         => $result,
+			'previous_input' => $sanitized,
 		);
 	}
 
@@ -236,6 +237,56 @@ class FormRouter {
 	}
 
 	/**
+	 * POST name of a field. A section name is a wire path whose dots separate
+	 * levels, so `person1` posts `person1[date]` and one record of a repeating
+	 * list, `members.0`, posts `members[0][date]`.
+	 *
+	 * @param string $section Section name, or empty for a flat field.
+	 * @param string $field   Field name.
+	 * @return string
+	 */
+	public static function posted_name( string $section, string $field ): string {
+		if ( $section === '' ) {
+			return $field;
+		}
+		$parts = explode( '.', $section . '.' . $field );
+		return array_shift( $parts ) . '[' . implode( '][', $parts ) . ']';
+	}
+
+	/**
+	 * The posted values of one section, read along its wire path.
+	 *
+	 * @param array<string,mixed> $post    Posted values.
+	 * @param string              $section Section name.
+	 * @return array<string,mixed>
+	 */
+	private static function posted_section( array $post, string $section ): array {
+		$node = $post;
+		foreach ( explode( '.', $section ) as $part ) {
+			$node = is_array( $node ) && isset( $node[ $part ] ) ? $node[ $part ] : array();
+		}
+		return is_array( $node ) ? $node : array();
+	}
+
+	/**
+	 * Write one section's values along its wire path, so records `members.0`
+	 * and `members.1` become the list `members`. The same nesting a browser
+	 * posts, so a maintainer check builds its submission with it too.
+	 *
+	 * @param array<string,mixed> $data    Request body or posted values, written in place.
+	 * @param string              $section Section name.
+	 * @param array<string,mixed> $values  The section's values.
+	 * @return void
+	 */
+	public static function put_section( array &$data, string $section, array $values ): void {
+		$node = &$data;
+		foreach ( explode( '.', $section ) as $part ) {
+			$node = &$node[ $part ];
+		}
+		$node = $values;
+	}
+
+	/**
 	 * Sanitise a $_POST array against the form spec.
 	 *
 	 * @param array<string,mixed> $post Raw POST array (already unslashed).
@@ -246,7 +297,7 @@ class FormRouter {
 		$out = array();
 		foreach ( ( $spec['sections'] ?? array() ) as $section ) {
 			$section_name         = (string) $section['name'];
-			$section_post         = isset( $post[ $section_name ] ) && is_array( $post[ $section_name ] ) ? $post[ $section_name ] : array();
+			$section_post         = self::posted_section( $post, $section_name );
 			$out[ $section_name ] = array();
 			foreach ( ( $section['fields'] ?? array() ) as $field ) {
 				$out[ $section_name ][ $field['name'] ] = self::sanitize_field( $section_post[ $field['name'] ] ?? '', $field );
@@ -379,7 +430,7 @@ class FormRouter {
 				$section_data[ $field['name'] ] = $value;
 			}
 			if ( ! empty( $section_data ) ) {
-				$body[ $section_name ] = $section_data;
+				self::put_section( $body, $section_name, $section_data );
 			}
 		}
 		foreach ( ( $spec['flat_fields'] ?? array() ) as $field ) {

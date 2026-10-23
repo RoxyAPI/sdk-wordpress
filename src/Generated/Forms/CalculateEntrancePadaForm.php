@@ -33,7 +33,7 @@ class CalculateEntrancePadaForm {
 					array(
 						'name' => 'width',
 						'label' => $labels['fields']['width'] ?? 'Width, east to west',
-						'required' => false,
+						'required' => true,
 						'type' => 'number',
 						'min' => 0,
 						'step' => 'any',
@@ -42,7 +42,7 @@ class CalculateEntrancePadaForm {
 					array(
 						'name' => 'depth',
 						'label' => $labels['fields']['depth'] ?? 'Depth, north to south',
-						'required' => false,
+						'required' => true,
 						'type' => 'number',
 						'min' => 0,
 						'step' => 'any',
@@ -63,7 +63,7 @@ class CalculateEntrancePadaForm {
 				array(
 					'name'   => 'door',
 					'label'  => $labels['groups']['door'] ?? 'Door',
-					'fold'   => false,
+					'fold'   => true,
 					'fields' => array(
 					array(
 						'name' => 'x',
@@ -71,7 +71,7 @@ class CalculateEntrancePadaForm {
 						'required' => false,
 						'type' => 'number',
 						'step' => 'any',
-						'fold' => false,
+						'fold' => true,
 					),
 					array(
 						'name' => 'y',
@@ -79,7 +79,7 @@ class CalculateEntrancePadaForm {
 						'required' => false,
 						'type' => 'number',
 						'step' => 'any',
-						'fold' => false,
+						'fold' => true,
 					),
 					),
 				),
@@ -88,7 +88,7 @@ class CalculateEntrancePadaForm {
 				array(
 					'name' => 'facing',
 					'label' => $labels['fields']['facing'] ?? 'Facing direction',
-					'required' => false,
+					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'North', 'Northeast', 'East', 'Southeast', 'South', 'Southwest', 'West', 'Northwest' ),
 					'enum_labels' => array( $labels['enums']['facing.North'] ?? 'North', $labels['enums']['facing.Northeast'] ?? 'Northeast', $labels['enums']['facing.East'] ?? 'East', $labels['enums']['facing.Southeast'] ?? 'Southeast', $labels['enums']['facing.South'] ?? 'South', $labels['enums']['facing.Southwest'] ?? 'Southwest', $labels['enums']['facing.West'] ?? 'West', $labels['enums']['facing.Northwest'] ?? 'Northwest' ),
@@ -102,12 +102,12 @@ class CalculateEntrancePadaForm {
 					'min' => 0,
 					'max' => 360,
 					'step' => 'any',
-					'fold' => false,
+					'fold' => true,
 				),
 				array(
 					'name' => 'doorPosition',
 					'label' => $labels['fields']['doorPosition'] ?? 'Door position along the side',
-					'required' => false,
+					'required' => true,
 					'type' => 'number',
 					'min' => 0,
 					'max' => 1,
