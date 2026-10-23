@@ -36,6 +36,7 @@ class CalculateNameCompatibility {
 		'transliteration' => '',
 		'mispar_gadol' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -55,6 +56,10 @@ class CalculateNameCompatibility {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( ! ( ( $atts['first_name'] !== '' && $atts['second_name'] !== '' ) || ( $atts['first_name'] !== '' && $atts['second_name_hebrew'] !== '' ) || ( $atts['first_name_hebrew'] !== '' && $atts['second_name'] !== '' ) || ( $atts['first_name_hebrew'] !== '' && $atts['second_name_hebrew'] !== '' ) ) ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CalculateNameCompatibilityForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

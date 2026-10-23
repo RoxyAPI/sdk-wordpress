@@ -265,6 +265,11 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.23.0 =
+* New: Eight Mansions, Flying Star chart, Long Count conversion, gematria, name profile, name compatibility and Maturity number take a visitor form. Place the shortcode with nothing inside the brackets and visitors enter their own details.
+* Fixed: a reading placed without the details it needs never shows visitors an error, including city search.
+* Improved: charts enlarge for closer reading, comparison wheels separate both charts clearly, relationship readings and Human Design connections show every activation, and divisional chart reference values are labelled.
+
 = 1.22.2 =
 * Plugin downloads contain only the files needed for installation.
 
@@ -300,16 +305,12 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Improved: visitor form labels and headings read in German, Spanish, French, Hindi, Portuguese, Russian and Turkish on every reading.
 * Improved: the shortcode examples show which readings ask your visitor, which show a set reading, and which show straight away.
 
-= 1.19.0 =
-* New: visitor forms on over a hundred more readings. Place a reading such as [roxy_calculate_luck_pillars] or [roxy_get_annual_flying_stars] with no attributes and visitors fill in their own details; pass every attribute for a fixed reading, or add mode="static" to keep it fixed. Optional inputs fold under Advanced, and a city search fills in the place and timezone.
-* Improved: the compound number reading has its own card with the root number, its fortune and the meaning, and the daily angel number uses the angel number card.
-* Improved: years print as years, Year 2026 rather than 2,026, on feng shui and Chinese astrology readings.
-* Improved: the moon phase prints the published illumination, wheel labels clear their planet glyphs, crowded North Indian kundli cells keep the house number clear, and biorhythm cycle names translate.
-* Improved: fields inside a folded form section line up in columns and stay inside the card on a phone.
-
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.23.0 =
+Seven more readings take a visitor form, and charts enlarge for closer reading.
 
 = 1.22.2 =
 Keeps plugin downloads lean with only installation files.

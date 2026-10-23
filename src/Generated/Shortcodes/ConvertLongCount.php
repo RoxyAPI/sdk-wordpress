@@ -33,6 +33,7 @@ class ConvertLongCount {
 		'long_count' => '',
 		'correlation' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -52,6 +53,10 @@ class ConvertLongCount {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( ! ( ( $atts['date'] !== '' ) || ( $atts['long_count'] !== '' ) ) ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\ConvertLongCountForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

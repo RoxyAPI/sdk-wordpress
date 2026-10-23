@@ -38,6 +38,7 @@ class CalculateGematria {
 		'include_matches' => '',
 		'latin_ciphers' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -57,6 +58,10 @@ class CalculateGematria {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( ! ( ( $atts['text'] !== '' ) || ( $atts['text_hebrew'] !== '' ) ) ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CalculateGematriaForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

@@ -166,6 +166,22 @@ class Client {
 	}
 
 	/**
+	 * Whether a request body completes at least one input set of an either-or reading.
+	 *
+	 * @param array<string, mixed> $body Request body assembled from block or shortcode attributes.
+	 * @param string[][]           $sets Input sets the API accepts, any one of them complete.
+	 * @return bool
+	 */
+	public static function body_has_any( array $body, array $sets ): bool {
+		foreach ( $sets as $keys ) {
+			if ( self::body_has_all( $body, $keys ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
 	 * The "this reading has not been set up yet" result.
 	 *
 	 * @remarks An authoring state rather than a fault, so no request is sent and nothing is cached: the moment an attribute is filled in, the next render calls through. {@link \RoxyAPI\Support\Templates::api_error} shows the message only to users who can edit posts.

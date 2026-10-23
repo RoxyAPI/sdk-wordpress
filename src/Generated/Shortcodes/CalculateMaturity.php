@@ -36,6 +36,7 @@ class CalculateMaturity {
 		'month' => '',
 		'day' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -55,6 +56,10 @@ class CalculateMaturity {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( ! ( ( $atts['full_name'] !== '' && $atts['year'] !== '' && $atts['month'] !== '' && $atts['day'] !== '' ) || ( $atts['life_path'] !== '' && $atts['expression'] !== '' ) || ( $atts['life_path'] !== '' && $atts['full_name'] !== '' ) || ( $atts['expression'] !== '' && $atts['year'] !== '' && $atts['month'] !== '' && $atts['day'] !== '' ) ) ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CalculateMaturityForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

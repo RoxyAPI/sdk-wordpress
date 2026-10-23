@@ -634,6 +634,28 @@ function offersVisitorForm( op ) {
 }
 
 /**
+ * PHP condition that is true while a visitor form is still owed: a required
+ * attribute is empty, or, for an either-or body, no input set is complete.
+ * @param op
+ */
+function missingInputPhp( op ) {
+	const filled = ( keys ) =>
+		keys
+			.map( ( k ) => `$atts['${ toSnakeAttr( k ) }'] !== ''` )
+			.join( ' && ' );
+	const anyOf = uiForms[ op.operationId ].requiredAnyOf;
+	if ( anyOf ) {
+		return `! ( ${ anyOf
+			.map( ( set ) => `( ${ filled( set ) } )` )
+			.join( ' || ' ) } )`;
+	}
+	return formInputs( op )
+		.filter( ( f ) => f.required )
+		.map( ( f ) => `$atts['${ toSnakeAttr( f.key ) }'] === ''` )
+		.join( ' || ' );
+}
+
+/**
  * Humanise a property name for an editor sidebar label.
  * `birthDate` -> `Birth date`, `house_system` -> `House system`.
  * @param name
@@ -1558,12 +1580,20 @@ function emitClientPhp() {
 		const pathParams = extractPathParams( op.path );
 		const phpPath = buildPhpPath( op.path );
 
-		// An empty path param is the same authoring state as an empty required
-		// body field, so it returns the same owner-only notice: never a request
-		// like `/horoscope//monthly`, and never an attribute name on a page a
-		// visitor reads.
-		const pathGuard = pathParams.length
-			? `\t\tif ( in_array( '', array( ${ pathParams
+		// An empty path param, or an empty required query param on a GET, is the
+		// same authoring state as an empty required body field, so it returns the
+		// same owner-only notice: never a request like `/horoscope//monthly`, and
+		// never an attribute name on a page a visitor reads.
+		const guardedParams = [
+			...pathParams,
+			...( op.method === 'GET'
+				? extractParams( op )
+						.filter( ( p ) => p.in === 'query' && p.required )
+						.map( ( p ) => p.name )
+				: [] ),
+		];
+		const inputGuard = guardedParams.length
+			? `\t\tif ( in_array( '', array( ${ guardedParams
 					.map( ( p ) => `(string) $${ toPhpVar( p ) }` )
 					.join(
 						', '
@@ -1599,7 +1629,7 @@ function emitClientPhp() {
 	 * @return array|\\WP_Error
 	 */
 	public static function ${ phpMethod }( ${ allParams.join( ', ' ) } ) {
-${ pathGuard ? pathGuard + '\n' : '' }		$query = array_filter(
+${ inputGuard ? inputGuard + '\n' : '' }		$query = array_filter(
 			array(
 ${ queryArray.join( '\n' ) }
 			),
@@ -1618,7 +1648,7 @@ ${ queryArray.join( '\n' ) }
 	}` );
 		} else {
 			const bodyFields = extractBodyFields( op );
-			// Same idea as pathGuard, for the request body. A block starts life
+			// Same idea as inputGuard, for the request body. A block starts life
 			// with every attribute empty, and the shortcodes drop empty
 			// attributes while building the body, so an unconfigured reading
 			// used to POST `{}` and be rejected. A block editor re-renders on
@@ -1630,13 +1660,22 @@ ${ queryArray.join( '\n' ) }
 			// today's hexagram) declare none and are left alone, and a reading
 			// that later gains a required field starts being guarded on the
 			// next generate with no edit here.
+			// An either-or body marks nothing required and publishes its input
+			// sets instead, so any one complete set lets the request through.
 			const requiredBody = bodyFields
 				.filter( ( f ) => f.required )
 				.map( ( f ) => `'${ f.name }'` );
-			const bodyGuard = requiredBody.length
-				? `\t\tif ( ! \\RoxyAPI\\Api\\Client::body_has_all( $body, array( ${ requiredBody.join(
-						', '
-					) } ) ) ) {\n\t\t\treturn \\RoxyAPI\\Api\\Client::not_configured();\n\t\t}`
+			const anyOf = uiForms[ op.operationId ]?.requiredAnyOf;
+			let bodyCheck = '';
+			if ( anyOf ) {
+				bodyCheck = `body_has_any( $body, ${ phpLiteral( anyOf ) } )`;
+			} else if ( requiredBody.length ) {
+				bodyCheck = `body_has_all( $body, array( ${ requiredBody.join(
+					', '
+				) } ) )`;
+			}
+			const bodyGuard = bodyCheck
+				? `\t\tif ( ! \\RoxyAPI\\Api\\Client::${ bodyCheck } ) {\n\t\t\treturn \\RoxyAPI\\Api\\Client::not_configured();\n\t\t}`
 				: '';
 			// A POST operation can still declare QUERY parameters, and many do:
 			// the response language on most, plus focus / include / orb /
@@ -1672,7 +1711,7 @@ ${ queryArray.join( '\n' ) }
 	 * @return array|\\WP_Error
 	 */
 	public static function ${ phpMethod }( ${ allParams.join( ', ' ) } ) {
-${ pathGuard ? pathGuard + '\n' : '' }${
+${ inputGuard ? inputGuard + '\n' : '' }${
 				bodyGuard ? bodyGuard + '\n' : ''
 			}		return \\RoxyAPI\\Api\\Cache::remember(
 			${ phpPath },
@@ -2176,12 +2215,9 @@ ${ withReservedAtts( [], '\t\t' ).join( '\n' ) }
 	const modeAtt = formClass ? [ `\t\t'mode' => 'auto',` ] : [];
 	const formGate = formClass
 		? `
-		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( ${ formInputs(
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( ${ missingInputPhp(
 			op
-		)
-			.filter( ( f ) => f.required )
-			.map( ( f ) => `$atts['${ toSnakeAttr( f.key ) }'] === ''` )
-			.join( ' || ' ) } ) ) ) {
+		) } ) ) ) {
 			return \\RoxyAPI\\Support\\FormRenderer::render( \\RoxyAPI\\Generated\\Forms\\${ formClass }::class, $atts );
 		}
 `

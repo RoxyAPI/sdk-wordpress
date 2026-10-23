@@ -12110,6 +12110,7 @@ class Manifest {
 					'operationId' => 'generateEightMansions',
 					'hero' => false,
 					'modes' => array(
+						'visitor',
 						'set',
 						'none',
 					),
@@ -12206,6 +12207,7 @@ class Manifest {
 					'operationId' => 'generateFlyingStarChart',
 					'hero' => false,
 					'modes' => array(
+						'visitor',
 						'set',
 						'none',
 					),
@@ -12644,6 +12646,7 @@ class Manifest {
 					'operationId' => 'convertLongCount',
 					'hero' => false,
 					'modes' => array(
+						'visitor',
 						'set',
 						'none',
 					),
@@ -14192,6 +14195,7 @@ class Manifest {
 					'operationId' => 'calculateMaturity',
 					'hero' => false,
 					'modes' => array(
+						'visitor',
 						'set',
 						'none',
 					),
@@ -14680,6 +14684,7 @@ class Manifest {
 					'operationId' => 'calculateNameCompatibility',
 					'hero' => false,
 					'modes' => array(
+						'visitor',
 						'set',
 						'none',
 					),
@@ -14780,6 +14785,7 @@ class Manifest {
 					'operationId' => 'calculateGematria',
 					'hero' => false,
 					'modes' => array(
+						'visitor',
 						'set',
 						'none',
 					),
@@ -15031,6 +15037,7 @@ class Manifest {
 					'operationId' => 'generateNameProfile',
 					'hero' => false,
 					'modes' => array(
+						'visitor',
 						'set',
 						'none',
 					),

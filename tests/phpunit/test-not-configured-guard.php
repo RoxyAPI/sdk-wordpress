@@ -69,6 +69,17 @@ class Test_Not_Configured_Guard extends Mock_Http_TestCase {
 		$this->assertCount( 1, $this->requested, 'An input-free reading must still be requested.' );
 	}
 
+	/** A required query param on a GET is guarded the same way as a path param. */
+	public function test_a_required_query_is_guarded_like_a_path_param(): void {
+		$result = Generated::searchCities( '' );
+		$this->assertSame( 'roxyapi_not_configured', $result->get_error_code() );
+		$this->assertSame( array(), $this->requested );
+
+		$this->mock_responses = array( 'location/search' => array( 'cities' => array() ) );
+		Generated::searchCities( 'Paris' );
+		$this->assertCount( 1, $this->requested );
+	}
+
 	/** Nothing is cached, so filling the setting in renders immediately rather than after a wait. */
 	public function test_guard_result_is_not_cached(): void {
 		Generated::calculateProfile( array() );

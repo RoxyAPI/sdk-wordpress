@@ -3,6 +3,11 @@
 The full release history for the RoxyAPI plugin. The most recent releases are
 also listed in readme.txt, which wordpress.org displays on the plugin page.
 
+= 1.23.0 =
+* New: Eight Mansions, Flying Star chart, Long Count conversion, gematria, name profile, name compatibility and Maturity number take a visitor form. Place the shortcode with nothing inside the brackets and visitors enter their own details.
+* Fixed: a reading placed without the details it needs never shows visitors an error, including city search.
+* Improved: charts enlarge for closer reading, comparison wheels separate both charts clearly, relationship readings and Human Design connections show every activation, and divisional chart reference values are labelled.
+
 = 1.22.2 =
 * Plugin downloads contain only the files needed for installation.
 

@@ -2961,6 +2961,9 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function generateEightMansions( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_any( $body, array( array( 'date', 'gender' ), array( 'kua' ) ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
 		return \RoxyAPI\Api\Cache::remember(
 			'feng-shui/eight-mansions',
 			array_merge( $body, $query ),
@@ -2979,6 +2982,9 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function generateFlyingStarChart( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_any( $body, array( array( 'facingDegrees' ), array( 'facing' ) ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
 		return \RoxyAPI\Api\Cache::remember(
 			'feng-shui/flying-stars/natal',
 			array_merge( $body, $query ),
@@ -3223,6 +3229,9 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function convertLongCount( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_any( $body, array( array( 'date' ), array( 'longCount' ) ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
 		return \RoxyAPI\Api\Cache::remember(
 			'mesoamerican-astrology/mayan/long-count/convert',
 			array_merge( $body, $query ),
@@ -3986,6 +3995,9 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function calculateMaturity( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_any( $body, array( array( 'fullName', 'year', 'month', 'day' ), array( 'lifePath', 'expression' ), array( 'lifePath', 'fullName' ), array( 'expression', 'year', 'month', 'day' ) ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/maturity',
 			array_merge( $body, $query ),
@@ -4283,6 +4295,9 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function calculateGematria( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_any( $body, array( array( 'text' ), array( 'textHebrew' ) ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
 		return \RoxyAPI\Api\Cache::remember(
 			'kabbalah/gematria',
 			array_merge( $body, $query ),
@@ -4325,6 +4340,9 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function generateNameProfile( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_any( $body, array( array( 'name' ), array( 'nameHebrew' ) ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
 		return \RoxyAPI\Api\Cache::remember(
 			'kabbalah/name-profile',
 			array_merge( $body, $query ),
@@ -4527,6 +4545,9 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function calculateNameCompatibility( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_any( $body, array( array( 'firstName', 'secondName' ), array( 'firstName', 'secondNameHebrew' ), array( 'firstNameHebrew', 'secondName' ), array( 'firstNameHebrew', 'secondNameHebrew' ) ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
 		return \RoxyAPI\Api\Cache::remember(
 			'kabbalah/compatibility',
 			array_merge( $body, $query ),
@@ -4962,6 +4983,9 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function getDailyAyurvedaReading( $lang = null, $date = null, $latitude = null, $longitude = null, $timezone = null ) {
+		if ( in_array( '', array( (string) $latitude, (string) $longitude ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
 		$query = array_filter(
 			array(
 			'lang' => $lang,
@@ -5181,6 +5205,9 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function lookupHexagram( $lang = null, $lines = null ) {
+		if ( in_array( '', array( (string) $lines ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
 		$query = array_filter(
 			array(
 			'lang' => $lang,
@@ -5423,6 +5450,9 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function searchCrystals( $lang = null, $q = null, $limit = null, $offset = null ) {
+		if ( in_array( '', array( (string) $q ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
 		$query = array_filter(
 			array(
 			'lang' => $lang,
@@ -5798,6 +5828,9 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function analyzeNumberSequence( $lang = null, $number = null, $context = null ) {
+		if ( in_array( '', array( (string) $number ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
 		$query = array_filter(
 			array(
 			'lang' => $lang,
@@ -5842,6 +5875,9 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function searchCities( $q = null, $limit = null, $offset = null ) {
+		if ( in_array( '', array( (string) $q ), true ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
 		$query = array_filter(
 			array(
 			'q' => $q,

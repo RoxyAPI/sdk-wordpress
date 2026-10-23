@@ -34,6 +34,7 @@ class GenerateNameProfile {
 		'transliteration' => '',
 		'mispar_gadol' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -53,6 +54,10 @@ class GenerateNameProfile {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( ! ( ( $atts['name'] !== '' ) || ( $atts['name_hebrew'] !== '' ) ) ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GenerateNameProfileForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

@@ -33,6 +33,7 @@ class GenerateFlyingStarChart {
 		'facing' => '',
 		'facing_degrees' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -52,6 +53,10 @@ class GenerateFlyingStarChart {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( ! ( ( $atts['facing_degrees'] !== '' ) || ( $atts['facing'] !== '' ) ) ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GenerateFlyingStarChartForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

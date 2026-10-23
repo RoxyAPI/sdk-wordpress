@@ -54,6 +54,7 @@
 		"check:geocode": "node bin/check-geocode-armour.mjs",
 		"check:contrast": "node bin/check-frontend-contrast.mjs",
 		"check:builder": "node bin/check-builder.mjs",
+		"check:bare": "wp-env run cli --env-cwd=wp-content/plugins/$(basename \"$PWD\") -- env ROXYAPI_TEST_KEY=\"$ROXYAPI_TEST_KEY\" wp eval-file bin/check-bare-shortcodes.php",
 		"upgrade": "npx npm-check-updates --target minor --upgrade",
 		"check-outdated": "npx npm-check-updates",
 		"i18n:pot": "docker run --rm -v \"$PWD\":/plugin -w /plugin -u \"$(id -u):$(id -g)\" wordpress:cli wp i18n make-pot . languages/roxyapi.pot --slug=roxyapi --skip-audit --exclude=build,builder,assets/js/roxy-ui.js,assets/js/locales",
