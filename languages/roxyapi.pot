@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology 1.23.0\n"
+"Project-Id-Version: RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology 1.23.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/roxyapi\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-23T12:05:50+00:00\n"
+"POT-Creation-Date: 2026-10-24T19:38:45+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: roxyapi\n"
@@ -447,6 +447,7 @@ msgstr ""
 #: src/Generated/Forms/CastCustomSpreadForm.php:25
 #: src/Generated/Forms/CastKpHoraryChartForm.php:25
 #: src/Generated/Forms/CheckKalsarpaDoshaForm.php:25
+#: src/Generated/Forms/CheckKarmicDebtForm.php:25
 #: src/Generated/Forms/CheckSadhesatiForm.php:25
 #: src/Generated/Forms/ConvertLongCountForm.php:25
 #: src/Generated/Forms/DetectAspectPatternsForm.php:25
@@ -833,145 +834,13 @@ msgid "Numerology"
 msgstr ""
 
 #: src/Generated/Builder/Manifest.php:57
-#: src/Generated/Builder/Manifest.php:15832
+#: src/Generated/Builder/Manifest.php:15833
 #: src/Generated/Heroes/Manifest.php:192
 msgid "Biorhythm"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:111
-#: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3009
-#: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16926
-#: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
-#: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
-#: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
-msgid "Aries"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:111
-#: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3009
-#: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16926
-#: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
-#: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
-#: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
-msgid "Taurus"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:111
-#: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3009
-#: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16926
-#: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
-#: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
-#: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
-msgid "Gemini"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:111
-#: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3009
-#: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16926
-#: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
-#: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
-#: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
-msgid "Cancer"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:111
-#: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3009
-#: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16926
-#: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
-#: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
-#: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
-msgid "Leo"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:111
-#: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3009
-#: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16926
-#: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
-#: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
-#: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
-msgid "Virgo"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:111
-#: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3009
-#: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16926
-#: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
-#: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
-#: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
-msgid "Libra"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:111
-#: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3009
-#: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16926
-#: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
-#: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
-#: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
-msgid "Scorpio"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:111
-#: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3009
-#: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16926
-#: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
-#: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
-#: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
-msgid "Sagittarius"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:111
-#: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3009
-#: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16926
-#: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
-#: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
-#: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
-msgid "Capricorn"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:111
-#: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3009
-#: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16926
-#: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
-#: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
-#: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
-msgid "Aquarius"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:111
-#: src/Generated/Builder/Manifest.php:1752
-#: src/Generated/Builder/Manifest.php:3009
-#: src/Generated/Builder/Manifest.php:3077
-#: src/Generated/Builder/Manifest.php:16926
-#: src/Generated/Forms/GetMonthlyHoroscopeForm.php:37
-#: src/Generated/Forms/GetWeeklyHoroscopeForm.php:37
-#: src/Generated/Forms/GetYearlyHoroscopeForm.php:37
-msgid "Pisces"
-msgstr ""
-
 #: src/Generated/Builder/Manifest.php:142
-#: src/Generated/Builder/Manifest.php:15439
+#: src/Generated/Builder/Manifest.php:15440
 msgid "daily"
 msgstr ""
 
@@ -1137,6 +1006,18 @@ msgstr ""
 msgid "Planetary Transits"
 msgstr ""
 
+#: src/Generated/Builder/Manifest.php:2340
+#: src/Generated/Forms/GenerateTransitForm.php:95
+#: blocks/generated/calculate-transit/index.js:25
+msgid "Transit date"
+msgstr ""
+
+#: src/Generated/Builder/Manifest.php:2353
+#: src/Generated/Forms/GenerateTransitForm.php:102
+#: blocks/generated/calculate-transit/index.js:32
+msgid "Transit time"
+msgstr ""
+
 #: src/Generated/Builder/Manifest.php:2410
 #: src/Generated/Forms/GenerateRelocationChartForm.php:24
 msgid "Relocation Chart"
@@ -1240,213 +1121,6 @@ msgstr ""
 #: src/Generated/Builder/Manifest.php:3519
 #: src/Generated/Forms/GetSubDashasForm.php:24
 msgid "Antardashas"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:3546
-#: src/Generated/Builder/Manifest.php:7985
-#: src/Generated/Builder/Manifest.php:8008
-#: src/Generated/Builder/Manifest.php:8031
-#: src/Generated/Builder/Manifest.php:8054
-#: src/Generated/Builder/Manifest.php:8244
-#: src/Generated/Builder/Manifest.php:8267
-#: src/Generated/Builder/Manifest.php:8757
-#: src/Generated/Builder/Manifest.php:8780
-#: src/Generated/Builder/Manifest.php:8803
-#: src/Generated/Forms/GetPranaDashasForm.php:118
-#: src/Generated/Forms/GetPranaDashasForm.php:127
-#: src/Generated/Forms/GetPranaDashasForm.php:136
-#: src/Generated/Forms/GetPranaDashasForm.php:145
-#: src/Generated/Forms/GetPratyantardashasForm.php:118
-#: src/Generated/Forms/GetPratyantardashasForm.php:127
-#: src/Generated/Forms/GetSookshmaDashasForm.php:118
-#: src/Generated/Forms/GetSookshmaDashasForm.php:127
-#: src/Generated/Forms/GetSookshmaDashasForm.php:136
-#: src/Generated/Forms/GetSubDashasForm.php:118
-msgid "Ketu"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:3546
-#: src/Generated/Builder/Manifest.php:7985
-#: src/Generated/Builder/Manifest.php:8008
-#: src/Generated/Builder/Manifest.php:8031
-#: src/Generated/Builder/Manifest.php:8054
-#: src/Generated/Builder/Manifest.php:8244
-#: src/Generated/Builder/Manifest.php:8267
-#: src/Generated/Builder/Manifest.php:8757
-#: src/Generated/Builder/Manifest.php:8780
-#: src/Generated/Builder/Manifest.php:8803
-#: src/Generated/Forms/GetPranaDashasForm.php:118
-#: src/Generated/Forms/GetPranaDashasForm.php:127
-#: src/Generated/Forms/GetPranaDashasForm.php:136
-#: src/Generated/Forms/GetPranaDashasForm.php:145
-#: src/Generated/Forms/GetPratyantardashasForm.php:118
-#: src/Generated/Forms/GetPratyantardashasForm.php:127
-#: src/Generated/Forms/GetSookshmaDashasForm.php:118
-#: src/Generated/Forms/GetSookshmaDashasForm.php:127
-#: src/Generated/Forms/GetSookshmaDashasForm.php:136
-#: src/Generated/Forms/GetSubDashasForm.php:118
-msgid "Venus"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:3546
-#: src/Generated/Builder/Manifest.php:7985
-#: src/Generated/Builder/Manifest.php:8008
-#: src/Generated/Builder/Manifest.php:8031
-#: src/Generated/Builder/Manifest.php:8054
-#: src/Generated/Builder/Manifest.php:8244
-#: src/Generated/Builder/Manifest.php:8267
-#: src/Generated/Builder/Manifest.php:8757
-#: src/Generated/Builder/Manifest.php:8780
-#: src/Generated/Builder/Manifest.php:8803
-#: src/Generated/Forms/GetPranaDashasForm.php:118
-#: src/Generated/Forms/GetPranaDashasForm.php:127
-#: src/Generated/Forms/GetPranaDashasForm.php:136
-#: src/Generated/Forms/GetPranaDashasForm.php:145
-#: src/Generated/Forms/GetPratyantardashasForm.php:118
-#: src/Generated/Forms/GetPratyantardashasForm.php:127
-#: src/Generated/Forms/GetSookshmaDashasForm.php:118
-#: src/Generated/Forms/GetSookshmaDashasForm.php:127
-#: src/Generated/Forms/GetSookshmaDashasForm.php:136
-#: src/Generated/Forms/GetSubDashasForm.php:118
-msgid "Sun"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:3546
-#: src/Generated/Builder/Manifest.php:7985
-#: src/Generated/Builder/Manifest.php:8008
-#: src/Generated/Builder/Manifest.php:8031
-#: src/Generated/Builder/Manifest.php:8054
-#: src/Generated/Builder/Manifest.php:8244
-#: src/Generated/Builder/Manifest.php:8267
-#: src/Generated/Builder/Manifest.php:8757
-#: src/Generated/Builder/Manifest.php:8780
-#: src/Generated/Builder/Manifest.php:8803
-#: src/Generated/Forms/GetPranaDashasForm.php:118
-#: src/Generated/Forms/GetPranaDashasForm.php:127
-#: src/Generated/Forms/GetPranaDashasForm.php:136
-#: src/Generated/Forms/GetPranaDashasForm.php:145
-#: src/Generated/Forms/GetPratyantardashasForm.php:118
-#: src/Generated/Forms/GetPratyantardashasForm.php:127
-#: src/Generated/Forms/GetSookshmaDashasForm.php:118
-#: src/Generated/Forms/GetSookshmaDashasForm.php:127
-#: src/Generated/Forms/GetSookshmaDashasForm.php:136
-#: src/Generated/Forms/GetSubDashasForm.php:118
-msgid "Moon"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:3546
-#: src/Generated/Builder/Manifest.php:7985
-#: src/Generated/Builder/Manifest.php:8008
-#: src/Generated/Builder/Manifest.php:8031
-#: src/Generated/Builder/Manifest.php:8054
-#: src/Generated/Builder/Manifest.php:8244
-#: src/Generated/Builder/Manifest.php:8267
-#: src/Generated/Builder/Manifest.php:8757
-#: src/Generated/Builder/Manifest.php:8780
-#: src/Generated/Builder/Manifest.php:8803
-#: src/Generated/Forms/GetPranaDashasForm.php:118
-#: src/Generated/Forms/GetPranaDashasForm.php:127
-#: src/Generated/Forms/GetPranaDashasForm.php:136
-#: src/Generated/Forms/GetPranaDashasForm.php:145
-#: src/Generated/Forms/GetPratyantardashasForm.php:118
-#: src/Generated/Forms/GetPratyantardashasForm.php:127
-#: src/Generated/Forms/GetSookshmaDashasForm.php:118
-#: src/Generated/Forms/GetSookshmaDashasForm.php:127
-#: src/Generated/Forms/GetSookshmaDashasForm.php:136
-#: src/Generated/Forms/GetSubDashasForm.php:118
-msgid "Mars"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:3546
-#: src/Generated/Builder/Manifest.php:7985
-#: src/Generated/Builder/Manifest.php:8008
-#: src/Generated/Builder/Manifest.php:8031
-#: src/Generated/Builder/Manifest.php:8054
-#: src/Generated/Builder/Manifest.php:8244
-#: src/Generated/Builder/Manifest.php:8267
-#: src/Generated/Builder/Manifest.php:8757
-#: src/Generated/Builder/Manifest.php:8780
-#: src/Generated/Builder/Manifest.php:8803
-#: src/Generated/Forms/GetPranaDashasForm.php:118
-#: src/Generated/Forms/GetPranaDashasForm.php:127
-#: src/Generated/Forms/GetPranaDashasForm.php:136
-#: src/Generated/Forms/GetPranaDashasForm.php:145
-#: src/Generated/Forms/GetPratyantardashasForm.php:118
-#: src/Generated/Forms/GetPratyantardashasForm.php:127
-#: src/Generated/Forms/GetSookshmaDashasForm.php:118
-#: src/Generated/Forms/GetSookshmaDashasForm.php:127
-#: src/Generated/Forms/GetSookshmaDashasForm.php:136
-#: src/Generated/Forms/GetSubDashasForm.php:118
-msgid "Rahu"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:3546
-#: src/Generated/Builder/Manifest.php:7985
-#: src/Generated/Builder/Manifest.php:8008
-#: src/Generated/Builder/Manifest.php:8031
-#: src/Generated/Builder/Manifest.php:8054
-#: src/Generated/Builder/Manifest.php:8244
-#: src/Generated/Builder/Manifest.php:8267
-#: src/Generated/Builder/Manifest.php:8757
-#: src/Generated/Builder/Manifest.php:8780
-#: src/Generated/Builder/Manifest.php:8803
-#: src/Generated/Forms/GetPranaDashasForm.php:118
-#: src/Generated/Forms/GetPranaDashasForm.php:127
-#: src/Generated/Forms/GetPranaDashasForm.php:136
-#: src/Generated/Forms/GetPranaDashasForm.php:145
-#: src/Generated/Forms/GetPratyantardashasForm.php:118
-#: src/Generated/Forms/GetPratyantardashasForm.php:127
-#: src/Generated/Forms/GetSookshmaDashasForm.php:118
-#: src/Generated/Forms/GetSookshmaDashasForm.php:127
-#: src/Generated/Forms/GetSookshmaDashasForm.php:136
-#: src/Generated/Forms/GetSubDashasForm.php:118
-msgid "Jupiter"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:3546
-#: src/Generated/Builder/Manifest.php:7985
-#: src/Generated/Builder/Manifest.php:8008
-#: src/Generated/Builder/Manifest.php:8031
-#: src/Generated/Builder/Manifest.php:8054
-#: src/Generated/Builder/Manifest.php:8244
-#: src/Generated/Builder/Manifest.php:8267
-#: src/Generated/Builder/Manifest.php:8757
-#: src/Generated/Builder/Manifest.php:8780
-#: src/Generated/Builder/Manifest.php:8803
-#: src/Generated/Forms/GetPranaDashasForm.php:118
-#: src/Generated/Forms/GetPranaDashasForm.php:127
-#: src/Generated/Forms/GetPranaDashasForm.php:136
-#: src/Generated/Forms/GetPranaDashasForm.php:145
-#: src/Generated/Forms/GetPratyantardashasForm.php:118
-#: src/Generated/Forms/GetPratyantardashasForm.php:127
-#: src/Generated/Forms/GetSookshmaDashasForm.php:118
-#: src/Generated/Forms/GetSookshmaDashasForm.php:127
-#: src/Generated/Forms/GetSookshmaDashasForm.php:136
-#: src/Generated/Forms/GetSubDashasForm.php:118
-msgid "Saturn"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:3546
-#: src/Generated/Builder/Manifest.php:7985
-#: src/Generated/Builder/Manifest.php:8008
-#: src/Generated/Builder/Manifest.php:8031
-#: src/Generated/Builder/Manifest.php:8054
-#: src/Generated/Builder/Manifest.php:8244
-#: src/Generated/Builder/Manifest.php:8267
-#: src/Generated/Builder/Manifest.php:8757
-#: src/Generated/Builder/Manifest.php:8780
-#: src/Generated/Builder/Manifest.php:8803
-#: src/Generated/Forms/GetPranaDashasForm.php:118
-#: src/Generated/Forms/GetPranaDashasForm.php:127
-#: src/Generated/Forms/GetPranaDashasForm.php:136
-#: src/Generated/Forms/GetPranaDashasForm.php:145
-#: src/Generated/Forms/GetPratyantardashasForm.php:118
-#: src/Generated/Forms/GetPratyantardashasForm.php:127
-#: src/Generated/Forms/GetSookshmaDashasForm.php:118
-#: src/Generated/Forms/GetSookshmaDashasForm.php:127
-#: src/Generated/Forms/GetSookshmaDashasForm.php:136
-#: src/Generated/Forms/GetSubDashasForm.php:118
-msgid "Mercury"
 msgstr ""
 
 #: src/Generated/Builder/Manifest.php:3709
@@ -1870,90 +1544,6 @@ msgstr ""
 msgid "Chinese Zodiac Compatibility"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11271
-#: src/Generated/Builder/Manifest.php:11297
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
-msgid "Rat"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:11271
-#: src/Generated/Builder/Manifest.php:11297
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
-msgid "Ox"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:11271
-#: src/Generated/Builder/Manifest.php:11297
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
-msgid "Tiger"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:11271
-#: src/Generated/Builder/Manifest.php:11297
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
-msgid "Rabbit"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:11271
-#: src/Generated/Builder/Manifest.php:11297
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
-msgid "Dragon"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:11271
-#: src/Generated/Builder/Manifest.php:11297
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
-msgid "Snake"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:11271
-#: src/Generated/Builder/Manifest.php:11297
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
-msgid "Horse"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:11271
-#: src/Generated/Builder/Manifest.php:11297
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
-msgid "Goat"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:11271
-#: src/Generated/Builder/Manifest.php:11297
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
-msgid "Monkey"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:11271
-#: src/Generated/Builder/Manifest.php:11297
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
-msgid "Rooster"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:11271
-#: src/Generated/Builder/Manifest.php:11297
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
-msgid "Dog"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:11271
-#: src/Generated/Builder/Manifest.php:11297
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:37
-#: src/Generated/Forms/GetZodiacCompatibilityForm.php:46
-msgid "Pig"
-msgstr ""
-
 #: src/Generated/Builder/Manifest.php:11309
 msgid "Convert Lunar and Gregorian Dates"
 msgstr ""
@@ -2233,377 +1823,378 @@ msgid "Expression Number"
 msgstr ""
 
 #: src/Generated/Builder/Manifest.php:14094
+#: src/Generated/Forms/CheckKarmicDebtForm.php:24
 msgid "Karmic Debt Numbers"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14162
+#: src/Generated/Builder/Manifest.php:14163
 #: src/Generated/Forms/AnalyzeKarmicLessonsForm.php:24
 msgid "Karmic Lessons"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14191
+#: src/Generated/Builder/Manifest.php:14192
 #: src/Generated/Forms/CalculateMaturityForm.php:24
 msgid "Maturity Number"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14286
+#: src/Generated/Builder/Manifest.php:14287
 msgid "Number Meaning"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14314
+#: src/Generated/Builder/Manifest.php:14315
 #: src/Generated/Forms/CalculateNumCompatibilityForm.php:24
 msgid "Numerology Compatibility"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14328
+#: src/Generated/Builder/Manifest.php:14329
 #: src/Generated/Forms/CalculatePersonalDayForm.php:24
 msgid "Personal Day"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14383
+#: src/Generated/Builder/Manifest.php:14384
 #: src/Generated/Forms/CalculatePersonalMonthForm.php:24
 msgid "Personal Month"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14451
+#: src/Generated/Builder/Manifest.php:14452
 #: src/Generated/Forms/CalculatePersonalYearForm.php:24
 msgid "Personal Year"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14506
+#: src/Generated/Builder/Manifest.php:14507
 #: src/Generated/Forms/CalculatePersonalityForm.php:24
 msgid "Personality Number"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14535
+#: src/Generated/Builder/Manifest.php:14536
 #: src/Generated/Forms/CalculateSoulUrgeForm.php:24
 msgid "Soul Urge Number"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14564
+#: src/Generated/Builder/Manifest.php:14565
 #: src/Generated/Forms/GenerateBirthProfileForm.php:24
 msgid "Birth Profile"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14680
+#: src/Generated/Builder/Manifest.php:14681
 #: src/Generated/Forms/CalculateNameCompatibilityForm.php:24
 msgid "Compare Two Names"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14781
+#: src/Generated/Builder/Manifest.php:14782
 #: src/Generated/Forms/CalculateGematriaForm.php:24
 msgid "Gematria"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14915
+#: src/Generated/Builder/Manifest.php:14916
 msgid "Gematria Ciphers"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14929
+#: src/Generated/Builder/Manifest.php:14930
 #: src/Generated/Forms/GetHebrewLetterForm.php:24
 msgid "Hebrew Letter"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14943
+#: src/Generated/Builder/Manifest.php:14944
 #: src/Generated/Forms/GetHebrewLetterForm.php:33
 #: blocks/generated/search-dream-symbols/index.js:18
 msgid "Letter"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14999
+#: src/Generated/Builder/Manifest.php:15000
 msgid "Hebrew Letters"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15033
+#: src/Generated/Builder/Manifest.php:15034
 #: src/Generated/Forms/GenerateNameProfileForm.php:24
 msgid "Name Profile"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15108
+#: src/Generated/Builder/Manifest.php:15109
 msgid "Names"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15163
+#: src/Generated/Builder/Manifest.php:15164
 #: src/Generated/Forms/GetShemNameForm.php:24
 msgid "Of the 72 Names"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15192
-#: src/Generated/Builder/Manifest.php:15206
+#: src/Generated/Builder/Manifest.php:15193
+#: src/Generated/Builder/Manifest.php:15207
 #: src/Generated/Forms/GetSephirahForm.php:24
 #: src/Generated/Forms/GetSephirahForm.php:33
 msgid "Sephirah"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15267
+#: src/Generated/Builder/Manifest.php:15268
 msgid "Sephirah of the Day"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15322
+#: src/Generated/Builder/Manifest.php:15323
 msgid "Tree of Life"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15387
+#: src/Generated/Builder/Manifest.php:15388
 #: src/Generated/Forms/TarotYesNoForm.php:31
 #: src/Generated/Heroes/Manifest.php:152
 msgid "Tarot yes or no"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15417
+#: src/Generated/Builder/Manifest.php:15418
 #: src/Generated/Heroes/Manifest.php:162
 msgid "Tarot card"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15432
+#: src/Generated/Builder/Manifest.php:15433
 #: src/Generated/Forms/TarotCardForm.php:48
 #: blocks/generated/tarot/index.js:19
 msgid "Spread"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15439
+#: src/Generated/Builder/Manifest.php:15440
 msgid "three"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15439
+#: src/Generated/Builder/Manifest.php:15440
 msgid "celtic"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15464
+#: src/Generated/Builder/Manifest.php:15465
 msgid "Career Spread, 7 Cards"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15506
+#: src/Generated/Builder/Manifest.php:15507
 msgid "Celtic Cross Spread, 10 Cards"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15548
+#: src/Generated/Builder/Manifest.php:15549
 #: src/Generated/Forms/CastCustomSpreadForm.php:24
 msgid "Custom Spread Builder"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15562
+#: src/Generated/Builder/Manifest.php:15563
 #: src/Generated/Forms/DrawCardsForm.php:24
 msgid "Draw Tarot Cards"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15630
+#: src/Generated/Builder/Manifest.php:15631
 msgid "Love Spread, 5 Cards"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15672
+#: src/Generated/Builder/Manifest.php:15673
 msgid "Tarot Card by ID"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15701
+#: src/Generated/Builder/Manifest.php:15702
 msgid "Tarot Cards"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15790
+#: src/Generated/Builder/Manifest.php:15791
 msgid "Three Card Spread"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15874
+#: src/Generated/Builder/Manifest.php:15875
 #: src/Generated/Forms/GetForecastForm.php:24
 msgid "Biorhythm Forecast"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15929
+#: src/Generated/Builder/Manifest.php:15930
 #: src/Generated/Forms/CalculateBioCompatibilityForm.php:24
 msgid "Compatibility"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15943
+#: src/Generated/Builder/Manifest.php:15944
 #: src/Generated/Forms/GetCriticalDaysForm.php:24
 msgid "Critical Days"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15998
+#: src/Generated/Builder/Manifest.php:15999
 msgid "Daily Biorhythm"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16040
+#: src/Generated/Builder/Manifest.php:16041
 #: src/Generated/Forms/GetPhasesForm.php:24
 msgid "Phase Info"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16082
+#: src/Generated/Builder/Manifest.php:16083
 #: src/Generated/Forms/GetRitucharyaForm.php:24
 msgid "Ayurveda Seasonal Regimen"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16159
+#: src/Generated/Builder/Manifest.php:16160
 #: src/Generated/Forms/CalculateAyurvedicConstitutionForm.php:24
 msgid "Ayurvedic Constitution"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16297
+#: src/Generated/Builder/Manifest.php:16298
 #: src/Generated/Forms/GetDailyAyurvedaReadingForm.php:24
 msgid "Daily Ayurveda Reading"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16374
+#: src/Generated/Builder/Manifest.php:16375
 #: src/Generated/Forms/GetDinacharyaScheduleForm.php:24
 msgid "Dinacharya Daily Routine"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16467
-#: src/Generated/Builder/Manifest.php:16481
+#: src/Generated/Builder/Manifest.php:16468
+#: src/Generated/Builder/Manifest.php:16482
 #: src/Generated/Forms/GetDoshaForm.php:24
 #: src/Generated/Forms/GetDoshaForm.php:33
 msgid "Dosha"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16500
+#: src/Generated/Builder/Manifest.php:16501
 msgid "Doshas"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16542
+#: src/Generated/Builder/Manifest.php:16543
 msgid "Tastes"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16584
+#: src/Generated/Builder/Manifest.php:16585
 msgid "Twenty Qualities"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16626
+#: src/Generated/Builder/Manifest.php:16627
 msgid "Cast an I-Ching Reading"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16655
+#: src/Generated/Builder/Manifest.php:16656
 msgid "Cast Daily Reading"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16697
+#: src/Generated/Builder/Manifest.php:16698
 msgid "Daily Hexagram"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16739
+#: src/Generated/Builder/Manifest.php:16740
 #: src/Generated/Forms/LookupHexagramForm.php:24
 msgid "Hexagram by Line Pattern"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16768
+#: src/Generated/Builder/Manifest.php:16769
 #: src/Generated/Forms/GetHexagramForm.php:24
 msgid "Hexagram by Number"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16797
+#: src/Generated/Builder/Manifest.php:16798
 msgid "Hexagrams"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16839
+#: src/Generated/Builder/Manifest.php:16840
 msgid "Random Hexagram"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16853
+#: src/Generated/Builder/Manifest.php:16854
 #: src/Generated/Forms/GetTrigramForm.php:24
 msgid "Trigram by Number or Name"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16882
+#: src/Generated/Builder/Manifest.php:16883
 msgid "Trigrams"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16896
+#: src/Generated/Builder/Manifest.php:16897
 #: src/Generated/Heroes/Manifest.php:212
 msgid "Crystals by zodiac"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16938
+#: src/Generated/Builder/Manifest.php:16939
 #: src/Generated/Forms/GetBirthstonesForm.php:24
 msgid "Birthstones by Month"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16967
+#: src/Generated/Builder/Manifest.php:16968
 msgid "Crystal by ID"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:16996
+#: src/Generated/Builder/Manifest.php:16997
 msgid "Crystal Colors"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17010
+#: src/Generated/Builder/Manifest.php:17011
 msgid "Crystal Pairings"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17038
+#: src/Generated/Builder/Manifest.php:17039
 msgid "Crystal Planets"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17052
+#: src/Generated/Builder/Manifest.php:17053
 msgid "Crystals"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17186
+#: src/Generated/Builder/Manifest.php:17187
 #: src/Generated/Forms/GetCrystalsByChakraForm.php:24
 msgid "Crystals by Chakra"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17249
+#: src/Generated/Builder/Manifest.php:17250
 #: src/Generated/Forms/GetCrystalsByElementForm.php:24
 msgid "Crystals by Element"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17310
+#: src/Generated/Builder/Manifest.php:17311
 msgid "Daily Crystal"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17352
+#: src/Generated/Builder/Manifest.php:17353
 msgid "Random Crystal"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17366
+#: src/Generated/Builder/Manifest.php:17367
 #: src/Generated/Forms/SearchCrystalsForm.php:24
 msgid "Search Crystals"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17421
+#: src/Generated/Builder/Manifest.php:17422
 msgid "Daily Dream Symbol"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17463
+#: src/Generated/Builder/Manifest.php:17464
 msgid "Dream Symbol by ID"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17491
+#: src/Generated/Builder/Manifest.php:17492
 msgid "Random Dream Symbols"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17520
+#: src/Generated/Builder/Manifest.php:17521
 msgid "Search Dream Symbols"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17588
+#: src/Generated/Builder/Manifest.php:17589
 msgid "Symbol Counts by Letter"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17602
+#: src/Generated/Builder/Manifest.php:17603
 #: src/Generated/Heroes/Manifest.php:202
 msgid "Angel number"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17631
+#: src/Generated/Builder/Manifest.php:17632
 msgid "Angel Numbers"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17693
+#: src/Generated/Builder/Manifest.php:17694
 msgid "Daily Angel Number"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17735
+#: src/Generated/Builder/Manifest.php:17736
 #: src/Generated/Forms/AnalyzeNumberSequenceForm.php:24
 msgid "Number Sequence"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17784
+#: src/Generated/Builder/Manifest.php:17785
 msgid "Cities in a Country"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17838
+#: src/Generated/Builder/Manifest.php:17839
 msgid "Countries"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17880
+#: src/Generated/Builder/Manifest.php:17881
 msgid "Search Cities Worldwide"
 msgstr ""
 
@@ -5678,16 +5269,8 @@ msgstr ""
 msgid "Birth time in HH:MM:SS format (24-hour)"
 msgstr ""
 
-#: blocks/generated/calculate-transit/index.js:25
-msgid "Transit date"
-msgstr ""
-
 #: blocks/generated/calculate-transit/index.js:27
 msgid "Transit date to analyze in YYYY-MM-DD format"
-msgstr ""
-
-#: blocks/generated/calculate-transit/index.js:32
-msgid "Transit time"
 msgstr ""
 
 #: blocks/generated/calculate-transit/index.js:34
