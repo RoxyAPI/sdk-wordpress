@@ -92,17 +92,17 @@ class GenerateTransitForm {
 			'flat_fields'  => array(
 				array(
 					'name' => 'date',
-					'label' => $labels['fields']['date'] ?? 'Date',
+					'label' => __( 'Transit date', 'roxyapi' ),
 					'required' => false,
 					'type' => 'date',
-					'fold' => true,
+					'fold' => false,
 				),
 				array(
 					'name' => 'time',
-					'label' => $labels['fields']['time'] ?? 'Time',
+					'label' => __( 'Transit time', 'roxyapi' ),
 					'required' => false,
 					'type' => 'time',
-					'fold' => true,
+					'fold' => false,
 				),
 			),
 		);

@@ -34,7 +34,7 @@ class GetZodiacCompatibilityForm {
 					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'rat', 'ox', 'tiger', 'rabbit', 'dragon', 'snake', 'horse', 'goat', 'monkey', 'rooster', 'dog', 'pig' ),
-					'enum_labels' => array( __( 'Rat', 'roxyapi' ), __( 'Ox', 'roxyapi' ), __( 'Tiger', 'roxyapi' ), __( 'Rabbit', 'roxyapi' ), __( 'Dragon', 'roxyapi' ), __( 'Snake', 'roxyapi' ), __( 'Horse', 'roxyapi' ), __( 'Goat', 'roxyapi' ), __( 'Monkey', 'roxyapi' ), __( 'Rooster', 'roxyapi' ), __( 'Dog', 'roxyapi' ), __( 'Pig', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['sign1.rat'] ?? 'Rat', $labels['enums']['sign1.ox'] ?? 'Ox', $labels['enums']['sign1.tiger'] ?? 'Tiger', $labels['enums']['sign1.rabbit'] ?? 'Rabbit', $labels['enums']['sign1.dragon'] ?? 'Dragon', $labels['enums']['sign1.snake'] ?? 'Snake', $labels['enums']['sign1.horse'] ?? 'Horse', $labels['enums']['sign1.goat'] ?? 'Goat', $labels['enums']['sign1.monkey'] ?? 'Monkey', $labels['enums']['sign1.rooster'] ?? 'Rooster', $labels['enums']['sign1.dog'] ?? 'Dog', $labels['enums']['sign1.pig'] ?? 'Pig' ),
 					'fold' => false,
 				),
 				array(
@@ -43,7 +43,7 @@ class GetZodiacCompatibilityForm {
 					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'rat', 'ox', 'tiger', 'rabbit', 'dragon', 'snake', 'horse', 'goat', 'monkey', 'rooster', 'dog', 'pig' ),
-					'enum_labels' => array( __( 'Rat', 'roxyapi' ), __( 'Ox', 'roxyapi' ), __( 'Tiger', 'roxyapi' ), __( 'Rabbit', 'roxyapi' ), __( 'Dragon', 'roxyapi' ), __( 'Snake', 'roxyapi' ), __( 'Horse', 'roxyapi' ), __( 'Goat', 'roxyapi' ), __( 'Monkey', 'roxyapi' ), __( 'Rooster', 'roxyapi' ), __( 'Dog', 'roxyapi' ), __( 'Pig', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['sign2.rat'] ?? 'Rat', $labels['enums']['sign2.ox'] ?? 'Ox', $labels['enums']['sign2.tiger'] ?? 'Tiger', $labels['enums']['sign2.rabbit'] ?? 'Rabbit', $labels['enums']['sign2.dragon'] ?? 'Dragon', $labels['enums']['sign2.snake'] ?? 'Snake', $labels['enums']['sign2.horse'] ?? 'Horse', $labels['enums']['sign2.goat'] ?? 'Goat', $labels['enums']['sign2.monkey'] ?? 'Monkey', $labels['enums']['sign2.rooster'] ?? 'Rooster', $labels['enums']['sign2.dog'] ?? 'Dog', $labels['enums']['sign2.pig'] ?? 'Pig' ),
 					'fold' => false,
 				),
 			),

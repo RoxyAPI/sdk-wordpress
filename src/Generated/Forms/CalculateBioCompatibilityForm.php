@@ -60,7 +60,7 @@ class CalculateBioCompatibilityForm {
 					'label' => $labels['fields']['targetDate'] ?? 'Target date',
 					'required' => false,
 					'type' => 'date',
-					'fold' => true,
+					'fold' => false,
 				),
 			),
 		);

@@ -3,8 +3,9 @@
  * Renders every RoxyAPI reading the three ways a site uses it, as a logged-out
  * visitor against the live API, and fails if any of them shows an error.
  *
- * 1. Bare: every shortcode with no attributes must show a visitor form, a
- *    reading that needs no input, or nothing (an owner-only setup note).
+ * 1. Bare: every shortcode with no attributes must show a visitor form or a
+ *    reading that needs no input. Only the owner-placed list below may show
+ *    nothing (an owner-only setup note), and an entry that renders is stale.
  * 2. Placed: every generated shortcode with its library sample attributes must
  *    render a reading or its form.
  * 3. Submitted: every visitor form, with each field a visitor must fill given
@@ -155,11 +156,28 @@ foreach ( glob( dirname( __DIR__ ) . '/src/Generated/Forms/*Form.php' ) as $roxy
 	};
 }
 
+// Bare shortcodes that stay placed by the site owner, each for a reason no visitor form meets.
+$roxyapi_owner_placed           = array(
+	'[roxy_get_usage_stats]',       // The site owner's own account.
+	'[roxy_search_cities]',         // A place lookup, not a reading.
+	'[roxy_get_cities_by_country]', // A place lookup, not a reading.
+	'[roxy_get_dream_symbol]',      // A searched dictionary, too large for a list.
+	'[roxy_get_crystal_pairings]',  // No collection names the crystal to pick.
+	'[roxy_get_number_meaning]',    // One number per placement, chosen by the site owner.
+	'[roxy_get_compound_number]',   // One number per placement, chosen by the site owner.
+);
+$roxyapi_probes['owner placed'] = array_intersect_key( $roxyapi_probes['bare'], array_flip( $roxyapi_owner_placed ) );
+$roxyapi_probes['bare']         = array_diff_key( $roxyapi_probes['bare'], $roxyapi_probes['owner placed'] );
+if ( count( $roxyapi_probes['owner placed'] ) !== count( $roxyapi_owner_placed ) ) {
+	WP_CLI::error( 'An owner-placed shortcode is no longer registered: ' . implode( ', ', array_diff( $roxyapi_owner_placed, array_keys( $roxyapi_probes['owner placed'] ) ) ) );
+}
+
 // What each pass accepts: placed samples must render, submissions must return a reading.
 $roxyapi_passes = array(
-	'bare'      => array( 'form', 'nothing', 'reading' ),
-	'placed'    => array( 'form', 'reading' ),
-	'submitted' => array( 'reading' ),
+	'bare'         => array( 'form', 'reading' ),
+	'owner placed' => array( 'nothing' ),
+	'placed'       => array( 'form', 'reading' ),
+	'submitted'    => array( 'reading' ),
 );
 
 $roxyapi_failures = array();

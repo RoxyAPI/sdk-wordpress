@@ -3,6 +3,11 @@
 The full release history for the RoxyAPI plugin. The most recent releases are
 also listed in readme.txt, which wordpress.org displays on the plugin page.
 
+= 1.23.2 =
+* New: karmic debt takes a visitor form. Place [roxy_check_karmic_debt] with nothing inside the brackets and visitors enter their birth date and name.
+* Fixed: transit and forecast forms show the transit date up front, labelled Transit date.
+* Improved: on a translated site, zodiac sign, Chinese zodiac and dasha choices read in the site language.
+
 = 1.23.1 =
 * New: Human Design Penta, custom tarot spreads and Vastu room placement take a visitor form, one card per person, position or room.
 * Fixed: numerology compatibility and the Vastu plot, entrance and mandala readings ask for the details each reading needs.

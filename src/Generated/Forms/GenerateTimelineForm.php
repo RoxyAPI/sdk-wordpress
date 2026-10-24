@@ -122,14 +122,14 @@ class GenerateTimelineForm {
 					'label' => $labels['fields']['startDate'] ?? 'Start date',
 					'required' => false,
 					'type' => 'date',
-					'fold' => true,
+					'fold' => false,
 				),
 				array(
 					'name' => 'endDate',
 					'label' => $labels['fields']['endDate'] ?? 'End date',
 					'required' => false,
 					'type' => 'date',
-					'fold' => true,
+					'fold' => false,
 				),
 				array(
 					'name' => 'minSignificance',

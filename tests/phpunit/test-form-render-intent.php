@@ -39,7 +39,7 @@ class Test_Form_Render_Intent extends \WP_UnitTestCase {
 		$class = \RoxyAPI\Generated\FormLabels::class;
 		$this->assertSame( $class::for_language( 'en' ), $class::for_language( '' ) );
 		$this->assertSame( $class::for_language( 'en' ), $class::for_language( 'unsupported' ) );
-		$this->assertSame( 'Jupiter', $class::for_language( 'es' )['enums']['antardasha.Jupiter'] );
+		$this->assertSame( 'Brahma', $class::for_language( 'es' )['enums']['id.brahma'] );
 	}
 
 	public function test_relocation_searches_target_separate_exact_posted_names(): void {

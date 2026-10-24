@@ -115,7 +115,7 @@ class GetSubDashasForm {
 					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'Ketu', 'Venus', 'Sun', 'Moon', 'Mars', 'Rahu', 'Jupiter', 'Saturn', 'Mercury' ),
-					'enum_labels' => array( __( 'Ketu', 'roxyapi' ), __( 'Venus', 'roxyapi' ), __( 'Sun', 'roxyapi' ), __( 'Moon', 'roxyapi' ), __( 'Mars', 'roxyapi' ), __( 'Rahu', 'roxyapi' ), __( 'Jupiter', 'roxyapi' ), __( 'Saturn', 'roxyapi' ), __( 'Mercury', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['mahadasha.Ketu'] ?? 'Ketu', $labels['enums']['mahadasha.Venus'] ?? 'Venus', $labels['enums']['mahadasha.Sun'] ?? 'Sun', $labels['enums']['mahadasha.Moon'] ?? 'Moon', $labels['enums']['mahadasha.Mars'] ?? 'Mars', $labels['enums']['mahadasha.Rahu'] ?? 'Rahu', $labels['enums']['mahadasha.Jupiter'] ?? 'Jupiter', $labels['enums']['mahadasha.Saturn'] ?? 'Saturn', $labels['enums']['mahadasha.Mercury'] ?? 'Mercury' ),
 					'fold' => false,
 				),
 				array(

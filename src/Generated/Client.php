@@ -4037,6 +4037,9 @@ class Client {
 	 * @return array|\WP_Error
 	 */
 	public static function checkKarmicDebt( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_any( $body, array( array( 'fullName', 'year', 'month', 'day' ), array( 'day' ), array( 'fullName' ) ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
 		return \RoxyAPI\Api\Cache::remember(
 			'numerology/karmic-debt',
 			array_merge( $body, $query ),

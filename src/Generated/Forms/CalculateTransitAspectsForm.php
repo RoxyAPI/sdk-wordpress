@@ -93,14 +93,14 @@ class CalculateTransitAspectsForm {
 					'label' => $labels['fields']['transitDate'] ?? 'Transit date',
 					'required' => false,
 					'type' => 'date',
-					'fold' => true,
+					'fold' => false,
 				),
 				array(
 					'name' => 'transitTime',
 					'label' => $labels['fields']['transitTime'] ?? 'Transit time',
 					'required' => false,
 					'type' => 'time',
-					'fold' => true,
+					'fold' => false,
 				),
 				array(
 					'name' => 'minStrength',

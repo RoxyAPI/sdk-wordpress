@@ -34,6 +34,7 @@ class CheckKarmicDebt {
 		'day' => '',
 		'full_name' => '',
 		'lang' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -53,6 +54,10 @@ class CheckKarmicDebt {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( ! ( ( $atts['full_name'] !== '' && $atts['year'] !== '' && $atts['month'] !== '' && $atts['day'] !== '' ) || ( $atts['day'] !== '' ) || ( $atts['full_name'] !== '' ) ) ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CheckKarmicDebtForm::class, $atts );
+		}
 
 				$body = array_filter(
 			array(

@@ -265,6 +265,11 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.23.2 =
+* New: karmic debt takes a visitor form. Place [roxy_check_karmic_debt] with nothing inside the brackets and visitors enter their birth date and name.
+* Fixed: transit and forecast forms show the transit date up front, labelled Transit date.
+* Improved: on a translated site, zodiac sign, Chinese zodiac and dasha choices read in the site language.
+
 = 1.23.1 =
 * New: Human Design Penta, custom tarot spreads and Vastu room placement take a visitor form, one card per person, position or room.
 * Fixed: numerology compatibility and the Vastu plot, entrance and mandala readings ask for the details each reading needs.
@@ -314,6 +319,9 @@ Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blo
 
 == Upgrade Notice ==
 
+= 1.23.2 =
+Karmic debt takes a visitor form, transit forms show the transit date up front, and more choices read in your site language.
+
 = 1.23.1 =
 Group, spread and room readings take a visitor form, and every library sample shows a reading.
 
@@ -337,7 +345,3 @@ Worth updating if you would rather answer a few questions than write shortcodes:
 
 = 1.20.0 =
 Worth updating if visitors should pick their own sign or entry: sixteen more readings, the daily Chinese zodiac among them, show a visitor form when placed without attributes.
-
-= 1.19.0 =
-Worth updating if visitors should enter their own details: over a hundred more readings, luck pillars among them, show a visitor form when placed without attributes.
-

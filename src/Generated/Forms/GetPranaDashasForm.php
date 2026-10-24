@@ -115,7 +115,7 @@ class GetPranaDashasForm {
 					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'Ketu', 'Venus', 'Sun', 'Moon', 'Mars', 'Rahu', 'Jupiter', 'Saturn', 'Mercury' ),
-					'enum_labels' => array( __( 'Ketu', 'roxyapi' ), __( 'Venus', 'roxyapi' ), __( 'Sun', 'roxyapi' ), __( 'Moon', 'roxyapi' ), __( 'Mars', 'roxyapi' ), __( 'Rahu', 'roxyapi' ), __( 'Jupiter', 'roxyapi' ), __( 'Saturn', 'roxyapi' ), __( 'Mercury', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['mahadasha.Ketu'] ?? 'Ketu', $labels['enums']['mahadasha.Venus'] ?? 'Venus', $labels['enums']['mahadasha.Sun'] ?? 'Sun', $labels['enums']['mahadasha.Moon'] ?? 'Moon', $labels['enums']['mahadasha.Mars'] ?? 'Mars', $labels['enums']['mahadasha.Rahu'] ?? 'Rahu', $labels['enums']['mahadasha.Jupiter'] ?? 'Jupiter', $labels['enums']['mahadasha.Saturn'] ?? 'Saturn', $labels['enums']['mahadasha.Mercury'] ?? 'Mercury' ),
 					'fold' => false,
 				),
 				array(
@@ -124,7 +124,7 @@ class GetPranaDashasForm {
 					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'Ketu', 'Venus', 'Sun', 'Moon', 'Mars', 'Rahu', 'Jupiter', 'Saturn', 'Mercury' ),
-					'enum_labels' => array( __( 'Ketu', 'roxyapi' ), __( 'Venus', 'roxyapi' ), __( 'Sun', 'roxyapi' ), __( 'Moon', 'roxyapi' ), __( 'Mars', 'roxyapi' ), __( 'Rahu', 'roxyapi' ), __( 'Jupiter', 'roxyapi' ), __( 'Saturn', 'roxyapi' ), __( 'Mercury', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['antardasha.Ketu'] ?? 'Ketu', $labels['enums']['antardasha.Venus'] ?? 'Venus', $labels['enums']['antardasha.Sun'] ?? 'Sun', $labels['enums']['antardasha.Moon'] ?? 'Moon', $labels['enums']['antardasha.Mars'] ?? 'Mars', $labels['enums']['antardasha.Rahu'] ?? 'Rahu', $labels['enums']['antardasha.Jupiter'] ?? 'Jupiter', $labels['enums']['antardasha.Saturn'] ?? 'Saturn', $labels['enums']['antardasha.Mercury'] ?? 'Mercury' ),
 					'fold' => false,
 				),
 				array(
@@ -133,7 +133,7 @@ class GetPranaDashasForm {
 					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'Ketu', 'Venus', 'Sun', 'Moon', 'Mars', 'Rahu', 'Jupiter', 'Saturn', 'Mercury' ),
-					'enum_labels' => array( __( 'Ketu', 'roxyapi' ), __( 'Venus', 'roxyapi' ), __( 'Sun', 'roxyapi' ), __( 'Moon', 'roxyapi' ), __( 'Mars', 'roxyapi' ), __( 'Rahu', 'roxyapi' ), __( 'Jupiter', 'roxyapi' ), __( 'Saturn', 'roxyapi' ), __( 'Mercury', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['pratyantardasha.Ketu'] ?? 'Ketu', $labels['enums']['pratyantardasha.Venus'] ?? 'Venus', $labels['enums']['pratyantardasha.Sun'] ?? 'Sun', $labels['enums']['pratyantardasha.Moon'] ?? 'Moon', $labels['enums']['pratyantardasha.Mars'] ?? 'Mars', $labels['enums']['pratyantardasha.Rahu'] ?? 'Rahu', $labels['enums']['pratyantardasha.Jupiter'] ?? 'Jupiter', $labels['enums']['pratyantardasha.Saturn'] ?? 'Saturn', $labels['enums']['pratyantardasha.Mercury'] ?? 'Mercury' ),
 					'fold' => false,
 				),
 				array(
@@ -142,7 +142,7 @@ class GetPranaDashasForm {
 					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'Ketu', 'Venus', 'Sun', 'Moon', 'Mars', 'Rahu', 'Jupiter', 'Saturn', 'Mercury' ),
-					'enum_labels' => array( __( 'Ketu', 'roxyapi' ), __( 'Venus', 'roxyapi' ), __( 'Sun', 'roxyapi' ), __( 'Moon', 'roxyapi' ), __( 'Mars', 'roxyapi' ), __( 'Rahu', 'roxyapi' ), __( 'Jupiter', 'roxyapi' ), __( 'Saturn', 'roxyapi' ), __( 'Mercury', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['sookshma.Ketu'] ?? 'Ketu', $labels['enums']['sookshma.Venus'] ?? 'Venus', $labels['enums']['sookshma.Sun'] ?? 'Sun', $labels['enums']['sookshma.Moon'] ?? 'Moon', $labels['enums']['sookshma.Mars'] ?? 'Mars', $labels['enums']['sookshma.Rahu'] ?? 'Rahu', $labels['enums']['sookshma.Jupiter'] ?? 'Jupiter', $labels['enums']['sookshma.Saturn'] ?? 'Saturn', $labels['enums']['sookshma.Mercury'] ?? 'Mercury' ),
 					'fold' => false,
 				),
 				array(

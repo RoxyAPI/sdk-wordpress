@@ -90,7 +90,7 @@ class Test_Either_Or_Inputs extends Mock_Http_TestCase {
 				$this->assertCount( 1, $this->requested, "$operation_id with [" . implode( ', ', $set ) . '] must be requested.' );
 			}
 			$first    = $inputs['sets'][0];
-			$partials = array( $required + array_fill_keys( array_slice( $first, 0, count( $first ) - 1 ), '1' ) );
+			$partials = array( $required + array_fill_keys( self::incomplete( array_slice( $first, 0, count( $first ) - 1 ), $inputs['sets'] ), '1' ) );
 			if ( $inputs['required'] ) {
 				// A complete set without the keys the body also requires.
 				$partials[] = array_fill_keys( $first, '1' );
@@ -104,5 +104,21 @@ class Test_Either_Or_Inputs extends Mock_Http_TestCase {
 				$this->assertSame( array(), $this->requested );
 			}
 		}
+	}
+
+	/**
+	 * Drops from a partial set every key that completes another set on its own (`fullName` beside a birth date), so the body stays short of every set.
+	 *
+	 * @param string[]   $keys Keys of a partial first set.
+	 * @param string[][] $sets Every input set of the body.
+	 * @return string[]
+	 */
+	private static function incomplete( array $keys, array $sets ): array {
+		foreach ( $sets as $set ) {
+			if ( ! array_diff( $set, $keys ) ) {
+				$keys = array_values( array_diff( $keys, array( end( $set ) ) ) );
+			}
+		}
+		return $keys;
 	}
 }

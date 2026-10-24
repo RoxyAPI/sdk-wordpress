@@ -34,7 +34,7 @@ class GetYearlyHoroscopeForm {
 					'required' => true,
 					'type' => 'enum',
 					'enum' => array( 'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces' ),
-					'enum_labels' => array( __( 'Aries', 'roxyapi' ), __( 'Taurus', 'roxyapi' ), __( 'Gemini', 'roxyapi' ), __( 'Cancer', 'roxyapi' ), __( 'Leo', 'roxyapi' ), __( 'Virgo', 'roxyapi' ), __( 'Libra', 'roxyapi' ), __( 'Scorpio', 'roxyapi' ), __( 'Sagittarius', 'roxyapi' ), __( 'Capricorn', 'roxyapi' ), __( 'Aquarius', 'roxyapi' ), __( 'Pisces', 'roxyapi' ) ),
+					'enum_labels' => array( $labels['enums']['sign.aries'] ?? 'Aries', $labels['enums']['sign.taurus'] ?? 'Taurus', $labels['enums']['sign.gemini'] ?? 'Gemini', $labels['enums']['sign.cancer'] ?? 'Cancer', $labels['enums']['sign.leo'] ?? 'Leo', $labels['enums']['sign.virgo'] ?? 'Virgo', $labels['enums']['sign.libra'] ?? 'Libra', $labels['enums']['sign.scorpio'] ?? 'Scorpio', $labels['enums']['sign.sagittarius'] ?? 'Sagittarius', $labels['enums']['sign.capricorn'] ?? 'Capricorn', $labels['enums']['sign.aquarius'] ?? 'Aquarius', $labels['enums']['sign.pisces'] ?? 'Pisces' ),
 					'fold' => false,
 				),
 				array(
