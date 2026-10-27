@@ -125,6 +125,8 @@ class Plugin {
 
 		add_action( 'wp_enqueue_scripts', array( self::class, 'register_geocode_script' ), 5 );
 		add_action( 'admin_enqueue_scripts', array( self::class, 'register_geocode_script' ), 5 );
+		add_action( 'wp_enqueue_scripts', array( self::class, 'register_viewer_zone_script' ), 5 );
+		add_action( 'admin_enqueue_scripts', array( self::class, 'register_viewer_zone_script' ), 5 );
 
 		add_action( 'admin_init', array( self::class, 'maybe_redirect_after_activation' ) );
 	}
@@ -230,6 +232,22 @@ class Plugin {
 					'error'     => __( 'Search is unavailable. Enter coordinates manually.', 'roxyapi' ),
 				),
 			)
+		);
+	}
+
+	/**
+	 * Register the script that preselects the visitor timezone on forms whose
+	 * reading follows the clock. FormRenderer enqueues it per field.
+	 *
+	 * @return void
+	 */
+	public static function register_viewer_zone_script(): void {
+		wp_register_script(
+			'roxyapi-viewer-zone',
+			plugins_url( 'assets/js/viewer-zone.js', self::$plugin_file ),
+			array(),
+			ROXYAPI_VERSION,
+			true
 		);
 	}
 

@@ -248,7 +248,11 @@ class FormRenderer {
 				$out .= '<input type="number" id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '" value="' . esc_attr( $value_str ) . '"' . $min . $max . ' step="1" inputmode="numeric"' . $req_attr . $err_attr . '>';
 				break;
 			case 'timezone':
-				$out .= '<select id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '"' . $req_attr . $err_attr . '>';
+				$viewer_zone = ! empty( $field['site_zone'] );
+				if ( $viewer_zone ) {
+					wp_enqueue_script( 'roxyapi-viewer-zone' );
+				}
+				$out .= '<select id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '"' . ( $viewer_zone ? ' data-roxyapi-viewer-zone' : '' ) . $req_attr . $err_attr . '>';
 				$out .= '<option value=""' . ( $value_str === '' ? ' selected' : '' ) . '></option>';
 				$out .= wp_kses(
 					wp_timezone_choice( $value_str ),

@@ -265,6 +265,11 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.23.3 =
+* Improved: horoscope, ecliptic crossing, node passage and KP change forms preselect the timezone of the visitor, so the current day, week, month and year follow their own clock. Left empty, they follow the site timezone instead of UTC.
+* Improved: on a translated site, planet and sign names in the positions and transits tables, the astrocartography map, the local space compass, fixed stars, Human Design variables and the Kua card read in the site language.
+* Fixed: long planet names in the transits table wrap on a phone instead of running off the card.
+
 = 1.23.2 =
 * New: karmic debt takes a visitor form. Place [roxy_check_karmic_debt] with nothing inside the brackets and visitors enter their birth date and name.
 * Fixed: transit and forecast forms show the transit date up front, labelled Transit date.
@@ -310,14 +315,12 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Improved: visitor forms place a city search for every place a reading asks for, so a relocation chart finds both cities, and option names read in the site language.
 * Improved: visitor forms show plain labels without technical hints, and the whole form follows the site language while the reading keeps its reading language.
 
-= 1.20.0 =
-* New: sixteen more readings take a visitor form, among them the daily Chinese zodiac reading, rashis, nakshatras, Mayan and Aztec day signs, bagua life areas and doshas. Visitors pick from a list and their reading appears on the same page.
-* Improved: visitor form labels and headings read in German, Spanish, French, Hindi, Portuguese, Russian and Turkish on every reading.
-* Improved: the shortcode examples show which readings ask your visitor, which show a set reading, and which show straight away.
-
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.23.3 =
+Forms follow the clock of each visitor, and seven more charts show planet names in your site language.
 
 = 1.23.2 =
 Karmic debt takes a visitor form, transit forms show the transit date up front, and more choices read in your site language.
@@ -342,6 +345,3 @@ Polishes Create a reading: grouped readings, dates spelled out in words, and a c
 
 = 1.21.0 =
 Worth updating if you would rather answer a few questions than write shortcodes: Create a reading builds them for you, and new Sell readings and Help screens show how to charge for readings.
-
-= 1.20.0 =
-Worth updating if visitors should pick their own sign or entry: sixteen more readings, the daily Chinese zodiac among them, show a visitor form when placed without attributes.

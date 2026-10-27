@@ -52,6 +52,7 @@ class GetYearlyHoroscopeForm {
 					'required' => false,
 					'help' => __( 'Select the timezone of the location.', 'roxyapi' ),
 					'type' => 'timezone',
+					'site_zone' => true,
 					'fold' => true,
 				),
 			),

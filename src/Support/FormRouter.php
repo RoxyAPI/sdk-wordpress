@@ -310,6 +310,18 @@ class FormRouter {
 	}
 
 	/**
+	 * The site timezone as an IANA name, for a reading whose empty timezone
+	 * would otherwise roll over at 00:00 UTC. A site set to a manual offset
+	 * has no IANA name, so the field stays empty.
+	 *
+	 * @return string
+	 */
+	private static function site_zone(): string {
+		$zone = wp_timezone_string();
+		return in_array( $zone, \DateTimeZone::listIdentifiers(), true ) ? $zone : '';
+	}
+
+	/**
 	 * Sanitise one field by its declared type.
 	 *
 	 * @param mixed               $raw   Raw value from POST.
@@ -357,7 +369,10 @@ class FormRouter {
 				return (int) $raw;
 			case 'timezone':
 				$value = sanitize_text_field( $raw );
-				return in_array( $value, \DateTimeZone::listIdentifiers(), true ) ? $value : '';
+				if ( in_array( $value, \DateTimeZone::listIdentifiers(), true ) ) {
+					return $value;
+				}
+				return empty( $field['site_zone'] ) ? '' : self::site_zone();
 			case 'enum':
 				$value = sanitize_text_field( $raw );
 				$enum  = isset( $field['enum'] ) && is_array( $field['enum'] ) ? $field['enum'] : array();

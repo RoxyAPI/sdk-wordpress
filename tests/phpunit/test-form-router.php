@@ -286,6 +286,44 @@ class Test_Form_Router extends \WP_UnitTestCase {
 		$this->assertArrayHasKey( 'timezone', $payload['validation_errors']['person1'] );
 	}
 
+	/**
+	 * Post the ecliptic crossings form, whose optional timezone the reading
+	 * would otherwise take as UTC.
+	 *
+	 * @param string $timezone Posted timezone, empty when the visitor left it.
+	 */
+	private function post_site_zone_form( string $timezone ): void {
+		$this->dispatch(
+			array(
+				'roxyapi_form'    => 'getEclipticCrossings',
+				'_wpnonce'        => wp_create_nonce( 'roxyapi_form_getEclipticCrossings' ),
+				'roxyapi_consent' => '1',
+				'year'            => '2026',
+				'timezone'        => $timezone,
+			)
+		);
+	}
+
+	public function test_empty_timezone_follows_the_site_clock(): void {
+		update_option( 'timezone_string', 'Europe/Copenhagen' );
+		$this->post_site_zone_form( '' );
+		$this->assertSame( 'Europe/Copenhagen', $this->captured_body['timezone'] ?? null );
+	}
+
+	public function test_visitor_timezone_wins_over_the_site_clock(): void {
+		update_option( 'timezone_string', 'Europe/Copenhagen' );
+		$this->post_site_zone_form( 'America/Regina' );
+		$this->assertSame( 'America/Regina', $this->captured_body['timezone'] ?? null );
+	}
+
+	public function test_manual_offset_site_sends_no_timezone(): void {
+		update_option( 'timezone_string', '' );
+		update_option( 'gmt_offset', 5.5 );
+		$this->post_site_zone_form( '' );
+		$this->assertIsArray( $this->captured_body );
+		$this->assertArrayNotHasKey( 'timezone', $this->captured_body );
+	}
+
 	public function test_out_of_range_latitude_rejected(): void {
 		$nonce = wp_create_nonce( 'roxyapi_form_calculateSynastry' );
 		$this->dispatch(

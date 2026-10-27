@@ -1237,6 +1237,10 @@ function buildFormFieldSpec( op, modelField ) {
 	if ( modelField.source && ! modelField.source.search ) {
 		field.source = sourceSpec( modelField.source );
 	}
+	// The form preselects the visitor zone; left empty, the site zone is sent, never the API UTC default.
+	if ( modelField.viewerZone ) {
+		field.site_zone = true;
+	}
 	// Curated heroes do not inherit the model's folds.
 	field.fold = !! modelField.fold;
 	return field;

@@ -83,6 +83,16 @@ class Test_Form_Render_Intent extends \WP_UnitTestCase {
 		}
 	}
 
+	public function test_a_clock_timezone_preselects_the_visitor_zone_and_a_birth_timezone_does_not(): void {
+		\RoxyAPI\Plugin::register_viewer_zone_script();
+		$xp     = new \DOMXPath( $this->document( FormRenderer::render( \RoxyAPI\Generated\Forms\GetEclipticCrossingsForm::class ) ) );
+		$marked = $xp->query( '//select[@name="timezone"][@data-roxyapi-viewer-zone]' );
+		$this->assertSame( 1, $marked->length );
+		$this->assertTrue( wp_script_is( 'roxyapi-viewer-zone', 'enqueued' ) );
+		$xp = new \DOMXPath( $this->document( FormRenderer::render( \RoxyAPI\Generated\Forms\GenerateRelocationChartForm::class ) ) );
+		$this->assertSame( 0, $xp->query( '//select[@data-roxyapi-viewer-zone]' )->length );
+	}
+
 	public function test_sections_fold_only_when_the_model_marks_them(): void {
 		$xp = new \DOMXPath( $this->document( FormRenderer::render( \RoxyAPI\Generated\Forms\CalculateEntrancePadaForm::class ) ) );
 		$this->assertCount( 1, $xp->query( '//fieldset[@id="roxyapi-section-calculateEntrancePada-plot"]' ), 'An optional section without fold remains visible.' );

@@ -60,6 +60,7 @@ class GetKpRasiChangesForm {
 					'min' => -14,
 					'max' => 14,
 					'default' => 0,
+					'site_zone' => true,
 					'fold' => true,
 				),
 				array(
