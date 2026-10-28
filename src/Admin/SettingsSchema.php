@@ -104,7 +104,7 @@ class SettingsSchema {
 		);
 
 		// One colour field per token per mode, appended from the palette itself so
-		// adding a token is one entry in Theming rather than fourteen here. The
+		// adding a token is one entry in Theming rather than one per mode here. The
 		// pre-existing single accent setting keeps its key, `accent_color`, and
 		// becomes the light accent, so a site that already set one loses nothing.
 		foreach ( Theming::option_keys() as $key ) {

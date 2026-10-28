@@ -173,7 +173,7 @@ RoxyAPI > Create a reading ([try it online](https://roxyapi.github.io/sdk-wordpr
 The RoxyAPI admin page is split into six tabs:
 
 - **Connect.** Paste the API key, test the connection.
-- **Branding.** Four ready-made palettes, or seven colors set by hand with a light and a dark value each, plus a light, dark, or auto theme and the reading language.
+- **Branding.** Four ready-made palettes, or colors set by hand with a light and a dark value each, plus a light, dark, or auto theme and the reading language.
 - **Display.** Written readings on or off, hidden sections, the source credit, an optional disclaimer line, and the visitor form copy.
 - **Sell readings.** How to keep one reading free and put the deeper ones on a page only paying members open, with links to the full guide.
 - **Privacy.** Visitor consent label. Birth date and time are special category data under GDPR Article 9; submission is gated on an explicit opt in checkbox and the plugin registers privacy policy content via `wp_add_privacy_policy_content`.

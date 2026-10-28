@@ -5090,6 +5090,10 @@ msgstr "Arrière-plan de la carte"
 msgid "Text"
 msgstr "Texte"
 
+#: src/Admin/SettingsFields.php:243
+msgid "Labels"
+msgstr "Libellés"
+
 #: src/Admin/SettingsFields.php:245
 msgid "Secondary text"
 msgstr "Texte secondaire"
@@ -5111,8 +5115,8 @@ msgid "Palette"
 msgstr "Palette"
 
 #: templates/admin-connected.php:218
-msgid "Colours for every reading on your site. Pick a palette, or choose Custom and set the seven colours yourself. Readings use your theme font either way."
-msgstr "Couleurs pour chaque lecture de votre site. Choisissez une palette, ou sélectionnez Personnalisé pour définir vous-même les sept couleurs. Dans tous les cas, les lectures utilisent la police de votre thème."
+msgid "Colours for every reading on your site. Pick a palette, or choose Custom and set the colours yourself. Readings use your theme font either way."
+msgstr "Couleurs pour chaque lecture de votre site. Choisissez une palette, ou sélectionnez Personnalisé pour définir vous-même les couleurs. Dans tous les cas, les lectures utilisent la police de votre thème."
 
 #: templates/admin-connected.php:223
 msgid "Set colours yourself"

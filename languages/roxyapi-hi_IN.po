@@ -5090,6 +5090,10 @@ msgstr "कार्ड बैकग्राउंड"
 msgid "Text"
 msgstr "टेक्स्ट"
 
+#: src/Admin/SettingsFields.php:243
+msgid "Labels"
+msgstr "लेबल"
+
 #: src/Admin/SettingsFields.php:245
 msgid "Secondary text"
 msgstr "द्वितीयक टेक्स्ट"
@@ -5111,8 +5115,8 @@ msgid "Palette"
 msgstr "पैलेट"
 
 #: templates/admin-connected.php:218
-msgid "Colours for every reading on your site. Pick a palette, or choose Custom and set the seven colours yourself. Readings use your theme font either way."
-msgstr "आपकी साइट पर हर विश्लेषण के लिए रंग। कोई पैलेट चुनें, या कस्टम चुनकर सातों रंग खुद सेट करें। दोनों ही स्थिति में विश्लेषण आपकी थीम का फ़ॉन्ट इस्तेमाल करते हैं।"
+msgid "Colours for every reading on your site. Pick a palette, or choose Custom and set the colours yourself. Readings use your theme font either way."
+msgstr "आपकी साइट पर हर विश्लेषण के लिए रंग। कोई पैलेट चुनें, या कस्टम चुनकर रंग खुद सेट करें। दोनों ही स्थिति में विश्लेषण आपकी थीम का फ़ॉन्ट इस्तेमाल करते हैं।"
 
 #: templates/admin-connected.php:223
 msgid "Set colours yourself"

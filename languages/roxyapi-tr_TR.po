@@ -5090,6 +5090,10 @@ msgstr "Kart arka planı"
 msgid "Text"
 msgstr "Metin"
 
+#: src/Admin/SettingsFields.php:243
+msgid "Labels"
+msgstr "Etiketler"
+
 #: src/Admin/SettingsFields.php:245
 msgid "Secondary text"
 msgstr "İkincil metin"
@@ -5111,8 +5115,8 @@ msgid "Palette"
 msgstr "Palet"
 
 #: templates/admin-connected.php:218
-msgid "Colours for every reading on your site. Pick a palette, or choose Custom and set the seven colours yourself. Readings use your theme font either way."
-msgstr "Sitenizdeki her okuma için renkler. Bir palet seçin veya Özel'i seçip yedi rengi kendiniz belirleyin. Okumalar her durumda temanızın yazı tipini kullanır."
+msgid "Colours for every reading on your site. Pick a palette, or choose Custom and set the colours yourself. Readings use your theme font either way."
+msgstr "Sitenizdeki her okuma için renkler. Bir palet seçin veya Özel'i seçip renkleri kendiniz belirleyin. Okumalar her durumda temanızın yazı tipini kullanır."
 
 #: templates/admin-connected.php:223
 msgid "Set colours yourself"

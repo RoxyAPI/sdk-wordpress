@@ -194,6 +194,36 @@ class Test_Theming extends \WP_UnitTestCase {
 		$this->assertStringNotContainsString( '#8B5CF6', $css );
 	}
 
+	/** Form labels and chart strokes read `--roxy-secondary`, so every preset must set it in both modes. */
+	public function test_a_preset_emits_the_labels_colour_in_both_modes(): void {
+		$this->save( array( 'palette_preset' => 'moonlit' ) );
+
+		$css = Theming::inline_css();
+		$this->assertStringContainsString( '--roxy-secondary:#2d3c47;', $css, 'Moonlit light labels.' );
+		$this->assertStringContainsString( '--roxy-secondary:#ced0c7;', $css, 'Moonlit dark labels.' );
+	}
+
+	/** A preset that skipped a token would leave that token on the stock slate. */
+	public function test_every_preset_sets_every_token_in_both_modes(): void {
+		foreach ( Theming::preset_names() as $name ) {
+			foreach ( array( 'light', 'dark' ) as $mode ) {
+				$colors = Theming::preset( $name )[ $mode ];
+				$this->assertSame( Theming::tokens(), array_keys( $colors ), "{$name} {$mode} token set." );
+				foreach ( $colors as $token => $hex ) {
+					$this->assertSame( $hex, sanitize_hex_color( $hex ), "{$name} {$mode} {$token} must be a HEX colour." );
+				}
+			}
+		}
+	}
+
+	/** The labels colour is a settings field like the rest. */
+	public function test_a_custom_labels_colour_is_saved_and_emitted(): void {
+		$stored = $this->save( array( 'secondary_color_dark' => '#E0CECB' ) );
+
+		$this->assertSame( '#E0CECB', $stored['secondary_color_dark'] );
+		$this->assertStringContainsString( '--roxy-secondary:#E0CECB;', Theming::inline_css() );
+	}
+
 	/** Choosing a preset never writes into the colour fields; they stay the site owner's own. */
 	public function test_choosing_a_preset_leaves_the_colour_fields_alone(): void {
 		$stored = $this->save( array( 'palette_preset' => 'kiln' ) );

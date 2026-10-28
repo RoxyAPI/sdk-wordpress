@@ -216,7 +216,7 @@ Yes. The plugin uses WordPress transients, which automatically use Redis or Memc
 
 = Can I customize the styling? =
 
-Yes. Readings pick up your theme font, and the RoxyAPI menu under Branding gives you four ready-made palettes plus seven colors you can set yourself: accent, page background, card background, text, secondary text, borders and warnings. Each takes a light value and a dark value, so a dark brand color stays readable for a visitor in dark mode. Charts follow your light or dark mode automatically and read the --roxy-* CSS custom properties, so you can also override any token in your theme stylesheet. Every output element has a .roxyapi-* class you can target.
+Yes. Readings pick up your theme font, and the RoxyAPI menu under Branding gives you four ready-made palettes plus the colors you can set yourself: accent, labels, page background, card background, text, secondary text, borders and warnings. Each takes a light value and a dark value, so a dark brand color stays readable for a visitor in dark mode. Charts follow your light or dark mode automatically and read the --roxy-* CSS custom properties, so you can also override any token in your theme stylesheet. Every output element has a .roxyapi-* class you can target.
 
 = Can I hide part of a reading, such as the chart patterns? =
 

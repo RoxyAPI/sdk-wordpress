@@ -5090,6 +5090,10 @@ msgstr "Fondo de la tarjeta"
 msgid "Text"
 msgstr "Texto"
 
+#: src/Admin/SettingsFields.php:243
+msgid "Labels"
+msgstr "Etiquetas"
+
 #: src/Admin/SettingsFields.php:245
 msgid "Secondary text"
 msgstr "Texto secundario"
@@ -5111,8 +5115,8 @@ msgid "Palette"
 msgstr "Paleta"
 
 #: templates/admin-connected.php:218
-msgid "Colours for every reading on your site. Pick a palette, or choose Custom and set the seven colours yourself. Readings use your theme font either way."
-msgstr "Colores para todas las lecturas de tu sitio. Elige una paleta o selecciona Personalizado y define los siete colores. En cualquier caso, las lecturas usan la fuente de tu tema."
+msgid "Colours for every reading on your site. Pick a palette, or choose Custom and set the colours yourself. Readings use your theme font either way."
+msgstr "Colores para todas las lecturas de tu sitio. Elige una paleta o selecciona Personalizado y define los colores. En cualquier caso, las lecturas usan la fuente de tu tema."
 
 #: templates/admin-connected.php:223
 msgid "Set colours yourself"

@@ -247,7 +247,7 @@
 
 	/**
 	 * Enable the colour fields only while Custom is chosen, and fold them away
-	 * the moment a preset is picked. A preset supplies all fourteen values
+	 * the moment a preset is picked. A preset supplies every value
 	 * itself, so leaving the fields live would offer an edit that the next save
 	 * silently discards. Mirrors the server, which disables them for the same
 	 * reason on a page load with a preset already selected.

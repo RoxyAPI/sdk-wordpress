@@ -5091,6 +5091,10 @@ msgstr "Фон карточки"
 msgid "Text"
 msgstr "Текст"
 
+#: src/Admin/SettingsFields.php:243
+msgid "Labels"
+msgstr "Подписи"
+
 #: src/Admin/SettingsFields.php:245
 msgid "Secondary text"
 msgstr "Дополнительный текст"
@@ -5112,8 +5116,8 @@ msgid "Palette"
 msgstr "Палитра"
 
 #: templates/admin-connected.php:218
-msgid "Colours for every reading on your site. Pick a palette, or choose Custom and set the seven colours yourself. Readings use your theme font either way."
-msgstr "Цвета для всех расчётов на вашем сайте. Выберите палитру или укажите «Пользовательская» и задайте семь цветов самостоятельно. В любом случае расчёты используют шрифт вашей темы."
+msgid "Colours for every reading on your site. Pick a palette, or choose Custom and set the colours yourself. Readings use your theme font either way."
+msgstr "Цвета для всех расчётов на вашем сайте. Выберите палитру или укажите «Пользовательская» и задайте цвета самостоятельно. В любом случае расчёты используют шрифт вашей темы."
 
 #: templates/admin-connected.php:223
 msgid "Set colours yourself"

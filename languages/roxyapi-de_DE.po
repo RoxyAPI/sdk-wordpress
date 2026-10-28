@@ -5090,6 +5090,10 @@ msgstr "Kartenhintergrund"
 msgid "Text"
 msgstr "Text"
 
+#: src/Admin/SettingsFields.php:243
+msgid "Labels"
+msgstr "Beschriftungen"
+
 #: src/Admin/SettingsFields.php:245
 msgid "Secondary text"
 msgstr "Sekundärer Text"
@@ -5111,8 +5115,8 @@ msgid "Palette"
 msgstr "Palette"
 
 #: templates/admin-connected.php:218
-msgid "Colours for every reading on your site. Pick a palette, or choose Custom and set the seven colours yourself. Readings use your theme font either way."
-msgstr "Farben für jede Auswertung auf Ihrer Website. Wählen Sie eine Palette oder entscheiden Sie sich für Benutzerdefiniert und legen Sie die sieben Farben selbst fest. Auswertungen verwenden in jedem Fall die Schriftart Ihres Designs."
+msgid "Colours for every reading on your site. Pick a palette, or choose Custom and set the colours yourself. Readings use your theme font either way."
+msgstr "Farben für jede Auswertung auf Ihrer Website. Wählen Sie eine Palette oder entscheiden Sie sich für Benutzerdefiniert und legen Sie die Farben selbst fest. Auswertungen verwenden in jedem Fall die Schriftart Ihres Designs."
 
 #: templates/admin-connected.php:223
 msgid "Set colours yourself"

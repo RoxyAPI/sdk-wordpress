@@ -215,7 +215,7 @@ if ( $active_tab !== 'connect' ) {
 			<section class="roxyapi-section">
 				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Palette', 'roxyapi' ); ?></h2>
 				<p class="description">
-					<?php echo esc_html__( 'Colours for every reading on your site. Pick a palette, or choose Custom and set the seven colours yourself. Readings use your theme font either way.', 'roxyapi' ); ?>
+					<?php echo esc_html__( 'Colours for every reading on your site. Pick a palette, or choose Custom and set the colours yourself. Readings use your theme font either way.', 'roxyapi' ); ?>
 				</p>
 				<?php echo wp_kses( $palette_preset_input, $kses_input ); ?>
 

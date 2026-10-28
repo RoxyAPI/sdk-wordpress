@@ -165,7 +165,7 @@ class SettingsFields {
 	}
 
 	/**
-	 * Pre-escaped HTML for the seven colour pickers, light and dark side by side.
+	 * Pre-escaped HTML for the colour pickers, light and dark side by side.
 	 *
 	 * Every field is a plain text input at server level so the page still works
 	 * with no JavaScript; `wp-color-picker` upgrades them in place. Disabled
@@ -204,7 +204,7 @@ class SettingsFields {
 	/**
 	 * Pre-escaped submit button that clears the palette back to the shipped
 	 * defaults. A real control rather than "empty every field yourself":
-	 * fourteen fields and a preset is not something to undo by hand.
+	 * every colour field and a preset is not something to undo by hand.
 	 *
 	 * @return string
 	 */
@@ -232,19 +232,20 @@ class SettingsFields {
 	}
 
 	/**
-	 * Display names for the seven colours, in the words a site owner uses.
+	 * Display names for the colours, in the words a site owner uses.
 	 *
 	 * @return array<string, string>
 	 */
 	private static function token_labels(): array {
 		return array(
-			'accent'  => __( 'Accent', 'roxyapi' ),
-			'bg'      => __( 'Page background', 'roxyapi' ),
-			'surface' => __( 'Card background', 'roxyapi' ),
-			'fg'      => __( 'Text', 'roxyapi' ),
-			'muted'   => __( 'Secondary text', 'roxyapi' ),
-			'border'  => __( 'Borders', 'roxyapi' ),
-			'danger'  => __( 'Warnings', 'roxyapi' ),
+			'accent'    => __( 'Accent', 'roxyapi' ),
+			'secondary' => __( 'Labels', 'roxyapi' ),
+			'bg'        => __( 'Page background', 'roxyapi' ),
+			'surface'   => __( 'Card background', 'roxyapi' ),
+			'fg'        => __( 'Text', 'roxyapi' ),
+			'muted'     => __( 'Secondary text', 'roxyapi' ),
+			'border'    => __( 'Borders', 'roxyapi' ),
+			'danger'    => __( 'Warnings', 'roxyapi' ),
 		);
 	}
 
@@ -620,7 +621,7 @@ class SettingsFields {
 
 	/**
 	 * Resolve the reset control the Branding tab posts beside the fields: it
-	 * clears the preset plus all fourteen colours. A preset never writes into
+	 * clears the preset plus every colour. A preset never writes into
 	 * the colour fields, so a site owner can try one and come back to the
 	 * colours they set by hand.
 	 *
