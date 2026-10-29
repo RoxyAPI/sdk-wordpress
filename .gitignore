@@ -19,6 +19,9 @@ phpstan.cache
 .cursor/
 roxyapi.zip
 
+# Machine-local wp-env settings (the dev site address on this network)
+.wp-env.override.json
+
 # Maintainer-only docs, never published or committed
 CLAUDE.md
 MAINTAINER.md
