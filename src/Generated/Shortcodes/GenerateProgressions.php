@@ -36,6 +36,7 @@ class GenerateProgressions {
 		'timezone' => '',
 		'node_type' => '',
 		'target_date' => '',
+		'house_system' => '',
 		'lang' => '',
 		'mode' => 'auto',
 		'hide_readings' => 'inherit',
@@ -71,6 +72,7 @@ class GenerateProgressions {
 				'timezone' => $atts['timezone'] !== '' ? ( is_numeric( $atts['timezone'] ) ? (float) $atts['timezone'] : $atts['timezone'] ) : '',
 				'nodeType' => $atts['node_type'],
 				'targetDate' => $atts['target_date'],
+				'houseSystem' => $atts['house_system'],
 			),
 			static function ( $v ) {
 				return $v !== '';

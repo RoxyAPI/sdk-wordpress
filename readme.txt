@@ -265,6 +265,11 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.24.0 =
+* New: a refreshed look for every reading, with clearer type, spacing and dark mode. A site that never set its own colours takes the new default accent.
+* New: a fifth palette, Celeste. Practitioner is now named Rosewater, with the same colours, and every palette also sets the colour of form labels.
+* Improved: reading pages download a smaller chart bundle.
+
 = 1.23.3 =
 * Improved: horoscope, ecliptic crossing, node passage and KP change forms preselect the timezone of the visitor, so the current day, week, month and year follow their own clock. Left empty, they follow the site timezone instead of UTC.
 * Improved: on a translated site, planet and sign names in the positions and transits tables, the astrocartography map, the local space compass, fixed stars, Human Design variables and the Kua card read in the site language.
@@ -309,15 +314,12 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Improved: Create a reading and Help match the rest of the plugin, and the Connect screen and Shortcodes library fit a phone screen.
 * Improved: the new screens and the plugin description read in German, Spanish, French, Hindi, Portuguese, Russian and Turkish.
 
-= 1.21.0 =
-* New: Create a reading. Answer a few questions, one per screen, and copy a finished shortcode: pick a reading, choose whether your visitor fills in the details or you set them once, and paste. Every reading in the Shortcodes library has a Customize link that opens it there, and new installs start on it.
-* New: a Sell readings tab shows how to keep one reading free and charge for the deeper ones, and a Help screen answers the questions site owners ask most.
-* Improved: visitor forms place a city search for every place a reading asks for, so a relocation chart finds both cities, and option names read in the site language.
-* Improved: visitor forms show plain labels without technical hints, and the whole form follows the site language while the reading keeps its reading language.
-
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.24.0 =
+A refreshed look for every reading, a fifth palette named Celeste, and a smaller chart bundle.
 
 = 1.23.3 =
 Forms follow the clock of each visitor, and seven more charts show planet names in your site language.
@@ -342,6 +344,3 @@ Worth updating if visitors should pick their own planet, sign, tarot card, cryst
 
 = 1.21.1 =
 Polishes Create a reading: grouped readings, dates spelled out in words, and a clearer first step on the Connect screen.
-
-= 1.21.0 =
-Worth updating if you would rather answer a few questions than write shortcodes: Create a reading builds them for you, and new Sell readings and Help screens show how to charge for readings.

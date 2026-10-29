@@ -57,6 +57,10 @@
 		"afterSunset": {
 			"type": "string",
 			"default": ""
+		},
+		"targetDate": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"render": "file:./render.php",

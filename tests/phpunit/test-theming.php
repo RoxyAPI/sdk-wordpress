@@ -20,6 +20,7 @@
 namespace RoxyAPI\Tests;
 
 use RoxyAPI\Admin\SettingsPage;
+use RoxyAPI\Generated\Palettes;
 use RoxyAPI\Support\Theming;
 
 class Test_Theming extends \WP_UnitTestCase {
@@ -189,8 +190,9 @@ class Test_Theming extends \WP_UnitTestCase {
 		);
 
 		$css = Theming::inline_css();
-		$this->assertStringContainsString( '--roxy-accent:#254b5a;', $css, 'Moonlit light accent.' );
-		$this->assertStringContainsString( '--roxy-accent:#c9a96b;', $css, 'Moonlit dark accent.' );
+		$moonlit = Palettes::all()['moonlit'];
+		$this->assertStringContainsString( '--roxy-accent:' . $moonlit['light']['accent'] . ';', $css, 'Moonlit light accent.' );
+		$this->assertStringContainsString( '--roxy-accent:' . $moonlit['dark']['accent'] . ';', $css, 'Moonlit dark accent.' );
 		$this->assertStringNotContainsString( '#8B5CF6', $css );
 	}
 

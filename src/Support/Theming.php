@@ -30,6 +30,7 @@
 namespace RoxyAPI\Support;
 
 use RoxyAPI\Admin\SettingsSchema;
+use RoxyAPI\Generated\Palettes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -57,112 +58,6 @@ class Theming {
 	);
 
 	/**
-	 * The four shipped palettes, HEX values only.
-	 *
-	 * Vendored as data rather than as the upstream theme stylesheets on purpose:
-	 * each of those files opens with an `@import` of a Google Fonts URL, which
-	 * would make every front-end page request a third-party server on the site
-	 * owner's behalf. That is a consent problem under the GDPR and a WordPress.org
-	 * guideline 7 problem, and neither is worth a typeface.
-	 *
-	 * Light and dark are tuned as a pair, not derived from one another: each dark
-	 * surface sits far enough above its background, and each foreground far
-	 * enough above its surface, to stay legible.
-	 *
-	 * @var array<string, array<string, array<string, string>>>
-	 */
-	private const PRESETS = array(
-		'practitioner' => array(
-			'light' => array(
-				'accent'    => '#914955',
-				'secondary' => '#503a3a',
-				'bg'        => '#fbf6f3',
-				'surface'   => '#f5e8e0',
-				'fg'        => '#3e2a2c',
-				'muted'     => '#7e625f',
-				'border'    => '#ead9d2',
-				'danger'    => '#b23a38',
-			),
-			'dark'  => array(
-				'accent'    => '#d9a2a6',
-				'secondary' => '#e0cecb',
-				'bg'        => '#231619',
-				'surface'   => '#37272b',
-				'fg'        => '#f2e4df',
-				'muted'     => '#b39698',
-				'border'    => '#49353a',
-				'danger'    => '#e4736b',
-			),
-		),
-		'eucalyptus'   => array(
-			'light' => array(
-				'accent'    => '#4c7060',
-				'secondary' => '#3a4037',
-				'bg'        => '#f8f7f2',
-				'surface'   => '#edefe6',
-				'fg'        => '#22281f',
-				'muted'     => '#666d63',
-				'border'    => '#dce0d3',
-				'danger'    => '#b23a38',
-			),
-			'dark'  => array(
-				'accent'    => '#9cc0ac',
-				'secondary' => '#cfd5ca',
-				'bg'        => '#191e19',
-				'surface'   => '#2a312a',
-				'fg'        => '#e9ede3',
-				'muted'     => '#9fa89b',
-				'border'    => '#384138',
-				'danger'    => '#e4736b',
-			),
-		),
-		'kiln'         => array(
-			'light' => array(
-				'accent'    => '#a44a24',
-				'secondary' => '#493d30',
-				'bg'        => '#faf4ea',
-				'surface'   => '#efe6d6',
-				'fg'        => '#322820',
-				'muted'     => '#74634f',
-				'border'    => '#e6d8c2',
-				'danger'    => '#b23a38',
-			),
-			'dark'  => array(
-				'accent'    => '#d98d5f',
-				'secondary' => '#dccdbc',
-				'bg'        => '#211710',
-				'surface'   => '#35281e',
-				'fg'        => '#f2e7d9',
-				'muted'     => '#b49d87',
-				'border'    => '#463729',
-				'danger'    => '#e4736b',
-			),
-		),
-		'moonlit'      => array(
-			'light' => array(
-				'accent'    => '#254b5a',
-				'secondary' => '#2d3c47',
-				'bg'        => '#faf6ec',
-				'surface'   => '#f1eadb',
-				'fg'        => '#14232e',
-				'muted'     => '#5c6a76',
-				'border'    => '#e4dbc6',
-				'danger'    => '#b23a38',
-			),
-			'dark'  => array(
-				'accent'    => '#c9a96b',
-				'secondary' => '#ced0c7',
-				'bg'        => '#0b1826',
-				'surface'   => '#1b2a39',
-				'fg'        => '#efe7d3',
-				'muted'     => '#92a4b2',
-				'border'    => '#263a4c',
-				'danger'    => '#e4736b',
-			),
-		),
-	);
-
-	/**
 	 * Hook the `<html>` filter.
 	 *
 	 * @return void
@@ -186,18 +81,36 @@ class Theming {
 	 * @return array<int, string>
 	 */
 	public static function preset_names(): array {
-		return array_keys( self::PRESETS );
+		return array_keys( Palettes::all() );
+	}
+
+	/**
+	 * The display name of one preset, as the component library names it.
+	 *
+	 * @param string $name Preset name.
+	 * @return string
+	 */
+	public static function preset_label( string $name ): string {
+		return Palettes::all()[ $name ]['name'] ?? '';
 	}
 
 	/**
 	 * The light and dark colours of one preset, or an empty array when the name
 	 * is not one we ship. Callers may pass unvalidated input.
 	 *
+	 * Presets arrive as colours, never as the upstream theme stylesheets: each
+	 * of those opens with an `@import` of a Google Fonts URL, which would make
+	 * every page request a third-party server on the site owner's behalf.
+	 *
 	 * @param string $name Preset name.
 	 * @return array<string, array<string, string>>
 	 */
 	public static function preset( string $name ): array {
-		return self::PRESETS[ $name ] ?? array();
+		$preset = Palettes::all()[ $name ] ?? null;
+		return $preset === null ? array() : array(
+			'light' => $preset['light'],
+			'dark'  => $preset['dark'],
+		);
 	}
 
 	/**
@@ -230,7 +143,7 @@ class Theming {
 	 * The colours in force on this site, as `mode => token => hex`.
 	 *
 	 * A chosen preset answers on its own and the stored colours are not read:
-	 * the values then come from a constant in this file rather than from the
+	 * the values then come from the generated presets rather than from the
 	 * database, so a preset can never carry anything into a stylesheet. Custom
 	 * colours are re-validated here even though the sanitiser already ran,
 	 * because an option can be written by anything holding `update_option`, and

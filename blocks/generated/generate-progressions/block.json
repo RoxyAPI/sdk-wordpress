@@ -57,6 +57,10 @@
 		"targetDate": {
 			"type": "string",
 			"default": ""
+		},
+		"houseSystem": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"render": "file:./render.php",

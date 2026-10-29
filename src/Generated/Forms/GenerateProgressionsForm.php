@@ -89,6 +89,16 @@ class GenerateProgressionsForm {
 					'type' => 'date',
 					'fold' => false,
 				),
+				array(
+					'name' => 'houseSystem',
+					'label' => $labels['fields']['houseSystem'] ?? 'House system',
+					'required' => false,
+					'type' => 'enum',
+					'enum' => array( 'placidus', 'whole-sign', 'equal', 'koch' ),
+					'default' => 'placidus',
+					'enum_labels' => array( $labels['enums']['houseSystem.placidus'] ?? 'Placidus', $labels['enums']['houseSystem.whole-sign'] ?? 'Whole sign', $labels['enums']['houseSystem.equal'] ?? 'Equal', $labels['enums']['houseSystem.koch'] ?? 'Koch' ),
+					'fold' => true,
+				),
 			),
 		);
 	}

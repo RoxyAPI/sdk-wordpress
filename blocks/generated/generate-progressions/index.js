@@ -55,6 +55,14 @@ const fields = [
 		required: true,
 		help: __( 'Date to progress the chart to, in YYYY-MM-DD format', 'roxyapi' ),
 	},
+	{
+		name: 'houseSystem',
+		control: 'select',
+		label: __( 'House system', 'roxyapi' ),
+		required: false,
+		help: __( 'House system of the natal chart that every progressed body is placed in', 'roxyapi' ),
+		options: [ 'placidus', 'whole-sign', 'equal', 'koch' ],
+	},
 ];
 
 registerBlockType( metadata.name, {

@@ -90,6 +90,13 @@ class GenerateBirthProfileForm {
 					'default' => false,
 					'fold' => true,
 				),
+				array(
+					'name' => 'targetDate',
+					'label' => $labels['fields']['targetDate'] ?? 'Target date',
+					'required' => false,
+					'type' => 'date',
+					'fold' => true,
+				),
 			),
 		);
 	}

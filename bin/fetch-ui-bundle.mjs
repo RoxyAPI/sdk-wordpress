@@ -14,6 +14,8 @@
  *     which is what puts the labels around a chart into the site language
  *   - the forms manifest and its label catalogues to bin/ui-forms/, for the
  *     generator only; bin/ is excluded from the shipped plugin
+ *   - the theme presets (name plus light and dark colours) to bin/ui-themes.json,
+ *     which the generator emits as the palette picker
  *
  * The catalogues are separate payloads rather than part of the bundle, so which
  * languages exist is a property of the version being vendored. The manifest
@@ -54,6 +56,7 @@ const JS_OUT_FILE = path.join( ROOT, 'assets', 'js', 'roxy-ui.js' );
 const CSS_OUT_FILE = path.join( ROOT, 'assets', 'css', 'roxy-ui-tokens.css' );
 const LOCALES_OUT_DIR = path.join( ROOT, 'assets', 'js', 'locales' );
 const FORMS_OUT_DIR = path.join( ROOT, 'bin', 'ui-forms' );
+const THEMES_OUT_FILE = path.join( ROOT, 'bin', 'ui-themes.json' );
 
 const PACKAGE = '@roxyapi/ui';
 const SEMVER = /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/;
@@ -125,20 +128,10 @@ async function resolveVersion() {
  * plugin applies before it reaches a selector, so anything else is dropped here
  * rather than offered to a site owner as a name that cannot work.
  *
- * @param {string} version The resolved version.
- * @return {Promise<string[]>} Sorted, unique part names.
+ * @param {Object} catalog The pinned catalogue.
+ * @return {string[]} Sorted, unique part names.
  */
-async function fetchPublishedParts( version ) {
-	const url = cdnUrl( version, 'components-catalog.json' );
-	console.log( `[fetch-ui-bundle] fetching ${ url }` );
-	const response = await fetch( url );
-	if ( ! response.ok ) {
-		console.error(
-			`[fetch-ui-bundle] could not read the component catalogue: ${ response.status } ${ response.statusText }; refusing to write`
-		);
-		process.exit( 1 );
-	}
-	const catalog = await response.json();
+function publishedParts( catalog ) {
 	const components = Array.isArray( catalog )
 		? catalog
 		: catalog.components || [];
@@ -152,11 +145,75 @@ async function fetchPublishedParts( version ) {
 	}
 	if ( parts.size === 0 ) {
 		console.error(
-			`[fetch-ui-bundle] ${ PACKAGE }@${ version } publishes no part names, so the Hide sections setting would have nothing to validate against; refusing to write`
+			`[fetch-ui-bundle] the pinned catalogue publishes no part names, so the Hide sections setting would have nothing to validate against; refusing to write`
 		);
 		process.exit( 1 );
 	}
 	return [ ...parts ].sort();
+}
+
+/**
+ * The component catalogue of the pinned build: the part vocabulary and the
+ * theme presets both come from it, so it is read once.
+ *
+ * @param {string} version The resolved version.
+ * @return {Promise<Object>} The parsed catalogue.
+ */
+async function fetchCatalog( version ) {
+	const url = cdnUrl( version, 'components-catalog.json' );
+	console.log( `[fetch-ui-bundle] fetching ${ url }` );
+	const response = await fetch( url );
+	if ( ! response.ok ) {
+		console.error(
+			`[fetch-ui-bundle] could not read the component catalogue: ${ response.status } ${ response.statusText }; refusing to write`
+		);
+		process.exit( 1 );
+	}
+	return response.json();
+}
+
+/**
+ * Write the theme presets the pinned build publishes to bin/ui-themes.json, so
+ * the palette picker offers exactly the presets, names and colours of the
+ * vendored bundle and is never a hand-kept copy.
+ *
+ * @param {Object} catalog The pinned catalogue.
+ * @return {void}
+ */
+function writeThemes( catalog ) {
+	const hex = /^#[0-9a-f]{6}$/i;
+	const themes = ( catalog.themes || [] ).map( ( theme ) => ( {
+		key: theme.key,
+		name: theme.name,
+		light: theme.light,
+		dark: theme.dark,
+	} ) );
+	const valid =
+		themes.length > 0 &&
+		themes.every(
+			( theme ) =>
+				/^[a-z][a-z0-9-]*$/.test( theme.key ?? '' ) &&
+				typeof theme.name === 'string' &&
+				[ theme.light, theme.dark ].every(
+					( colors ) =>
+						colors &&
+						Object.keys( colors ).length > 0 &&
+						Object.values( colors ).every( ( v ) => hex.test( v ) )
+				)
+		);
+	if ( ! valid ) {
+		console.error(
+			'[fetch-ui-bundle] the pinned catalogue publishes no theme presets with light and dark colours; refusing to write'
+		);
+		process.exit( 1 );
+	}
+	fs.writeFileSync(
+		THEMES_OUT_FILE,
+		`${ JSON.stringify( themes, null, '\t' ) }\n`
+	);
+	console.log(
+		`[fetch-ui-bundle] wrote ${ themes.length } theme presets to bin/ui-themes.json`
+	);
 }
 
 /**
@@ -460,4 +517,6 @@ await vendorLocales( version, locales );
 
 // Last, so a failed or rejected download can never leave the pins advertising a
 // version that is not the one sitting in assets/.
-writeBackPins( version, await fetchPublishedParts( version ) );
+const catalog = await fetchCatalog( version );
+writeThemes( catalog );
+writeBackPins( version, publishedParts( catalog ) );

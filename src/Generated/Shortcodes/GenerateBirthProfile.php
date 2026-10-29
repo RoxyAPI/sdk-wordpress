@@ -36,6 +36,7 @@ class GenerateBirthProfile {
 		'year_start' => '',
 		'leap_day_policy' => '',
 		'after_sunset' => '',
+		'target_date' => '',
 		'lang' => '',
 		'mode' => 'auto',
 		'hide_readings' => 'inherit',
@@ -71,6 +72,7 @@ class GenerateBirthProfile {
 				'yearStart' => $atts['year_start'],
 				'leapDayPolicy' => $atts['leap_day_policy'],
 				'afterSunset' => $atts['after_sunset'] !== '' ? filter_var( $atts['after_sunset'], FILTER_VALIDATE_BOOLEAN ) : '',
+				'targetDate' => $atts['target_date'],
 			),
 			static function ( $v ) {
 				return $v !== '';

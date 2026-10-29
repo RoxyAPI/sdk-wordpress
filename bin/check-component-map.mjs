@@ -426,6 +426,35 @@ if ( catalog ) {
 			`documented parts OK: all ${ documented.length } name(s) in the readme FAQ are published by the pinned build`
 		);
 	}
+
+	// The palette picker is generated from bin/ui-themes.json, so it must be the
+	// pinned build's presets exactly, names and colours alike.
+	const themesFile = path.join(
+		path.dirname( fileURLToPath( import.meta.url ) ),
+		'ui-themes.json'
+	);
+	const recordedThemes = JSON.stringify(
+		JSON.parse( readFileSync( themesFile, 'utf8' ) )
+	);
+	const publishedThemes = JSON.stringify(
+		( catalog.themes || [] ).map( ( { key, name, light, dark } ) => ( {
+			key,
+			name,
+			light,
+			dark,
+		} ) )
+	);
+	if ( recordedThemes !== publishedThemes ) {
+		console.error(
+			`bin/ui-themes.json disagrees with the theme presets ${ catalogUrl } publishes. Run \`npm run fetch:ui\`, then \`npm run generate\`.`
+		);
+		process.exit( 1 );
+	}
+	console.log(
+		`theme presets OK: bin/ui-themes.json matches the ${
+			( catalog.themes || [] ).length
+		} preset(s) the pinned build publishes`
+	);
 }
 
 console.log(

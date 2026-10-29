@@ -57,6 +57,13 @@ const fields = [
 		required: false,
 		help: __( 'Set true when the moment falls after nightfall, which advances the Hebrew date by one day because the Hebrew day begins in the evening', 'roxyapi' ),
 	},
+	{
+		name: 'targetDate',
+		control: 'date',
+		label: __( 'Target date', 'roxyapi' ),
+		required: false,
+		help: __( 'Date to count the next Hebrew birthday from, in YYYY-MM-DD format', 'roxyapi' ),
+	},
 ];
 
 registerBlockType( metadata.name, {

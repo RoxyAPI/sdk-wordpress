@@ -216,19 +216,17 @@ class SettingsFields {
 	}
 
 	/**
-	 * Display names for the shipped palettes. Kept beside the picker rather than
-	 * in Theming so the renderer stays free of translated strings.
+	 * Display names for the palette cards: Custom, then each shipped preset by
+	 * the proper name the component library gives it.
 	 *
 	 * @return array<string, string>
 	 */
 	private static function preset_labels(): array {
-		return array(
-			''             => __( 'Custom', 'roxyapi' ),
-			'practitioner' => __( 'Practitioner', 'roxyapi' ),
-			'eucalyptus'   => __( 'Eucalyptus', 'roxyapi' ),
-			'kiln'         => __( 'Kiln', 'roxyapi' ),
-			'moonlit'      => __( 'Moonlit', 'roxyapi' ),
-		);
+		$labels = array( '' => __( 'Custom', 'roxyapi' ) );
+		foreach ( Theming::preset_names() as $name ) {
+			$labels[ $name ] = Theming::preset_label( $name );
+		}
+		return $labels;
 	}
 
 	/**

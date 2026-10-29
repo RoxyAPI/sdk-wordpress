@@ -3,6 +3,11 @@
 The full release history for the RoxyAPI plugin. The most recent releases are
 also listed in readme.txt, which wordpress.org displays on the plugin page.
 
+= 1.24.0 =
+* New: a refreshed look for every reading, with clearer type, spacing and dark mode. A site that never set its own colours takes the new default accent.
+* New: a fifth palette, Celeste. Practitioner is now named Rosewater, with the same colours, and every palette also sets the colour of form labels.
+* Improved: reading pages download a smaller chart bundle.
+
 = 1.23.3 =
 * Improved: horoscope, ecliptic crossing, node passage and KP change forms preselect the timezone of the visitor, so the current day, week, month and year follow their own clock. Left empty, they follow the site timezone instead of UTC.
 * Improved: on a translated site, planet and sign names in the positions and transits tables, the astrocartography map, the local space compass, fixed stars, Human Design variables and the Kua card read in the site language.

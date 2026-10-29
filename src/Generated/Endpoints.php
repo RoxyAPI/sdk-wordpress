@@ -640,6 +640,7 @@ class Endpoints {
 				'timezone' => 'UTC',
 				'node_type' => 'true',
 				'target_date' => '2025-07-15',
+				'house_system' => 'placidus',
 			),
 		),
 		'generateSolarArc' => array(
@@ -3064,6 +3065,7 @@ class Endpoints {
 				'year' => '1990',
 				'month' => '7',
 				'day' => '15',
+				'current_year' => '2025',
 			),
 		),
 		'getNumberMeaning' => array(
