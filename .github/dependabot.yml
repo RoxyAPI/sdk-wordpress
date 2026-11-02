@@ -26,6 +26,13 @@ updates:
     groups:
       dev-dependencies:
         dependency-type: development
+    # The 7.x stubs type wp_register_script() $src as non-empty-string while
+    # plugins_url() stays string, so PHPStan fails on every script registration.
+    # Revisit when the stubs type the two consistently.
+    ignore:
+      - dependency-name: 'php-stubs/wordpress-stubs'
+        update-types:
+          - version-update:semver-major
 
   - package-ecosystem: github-actions
     directory: /

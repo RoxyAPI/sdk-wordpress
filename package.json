@@ -65,13 +65,18 @@
 		"@wordpress/api-fetch": "^7.57.0",
 		"@wordpress/babel-plugin-import-jsx-pragma": "^5.57.0",
 		"@wordpress/element": "^9.0.0",
-		"@wordpress/env": "11.12.0",
+		"@wordpress/env": "11.17.0",
 		"@wordpress/scripts": "^36.1.0",
 		"@wordpress/server-side-render": "^6.33.0",
 		"ajv": "^8.20.0",
 		"ajv-formats": "^3.0.1",
-		"lefthook": "^2.2.1",
-		"playwright": "1.64.0"
+		"lefthook": "^2.2.2",
+		"playwright": "1.64.1"
+	},
+	"overrides": {
+		"copy-webpack-plugin": {
+			"serialize-javascript": "^7.1.4"
+		}
 	},
 	"prettier": "@wordpress/prettier-config",
 	"files": [
