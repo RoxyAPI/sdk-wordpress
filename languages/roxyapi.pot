@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-04T15:58:49+00:00\n"
+"POT-Creation-Date: 2026-11-04T23:30:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: roxyapi\n"
@@ -821,7 +821,7 @@ msgid "The reading service is temporarily unavailable. Please try again in a few
 msgstr ""
 
 #: src/Api/Client.php:268
-#: src/Api/ReportRoute.php:215
+#: src/Api/ReportRoute.php:217
 msgid "This reading could not be loaded right now. Please try again."
 msgstr ""
 
@@ -841,17 +841,17 @@ msgstr ""
 msgid "Search is temporarily unavailable."
 msgstr ""
 
-#: src/Api/ReportRoute.php:171
+#: src/Api/ReportRoute.php:173
 #: src/Support/FormRouter.php:74
 msgid "Could not verify the form. Reload the page and try again."
 msgstr ""
 
-#: src/Api/ReportRoute.php:174
+#: src/Api/ReportRoute.php:176
 #: src/Support/FormRouter.php:82
 msgid "Too many submissions. Please wait a minute and try again."
 msgstr ""
 
-#: src/Api/ReportRoute.php:177
+#: src/Api/ReportRoute.php:179
 #: src/Support/FormRouter.php:96
 msgid "Please confirm consent before submitting."
 msgstr ""
@@ -1941,15 +1941,6 @@ msgid "Hebrew Letter"
 msgstr ""
 
 #: src/Generated/Builder/Manifest.php:14978
-#: src/Generated/Forms/GenerateBaziReportForm.php:40
-#: src/Generated/Forms/GenerateHumanDesignReportForm.php:40
-#: src/Generated/Forms/GenerateKundliReportForm.php:40
-#: src/Generated/Forms/GenerateMatchmakingReportForm.php:144
-#: src/Generated/Forms/GenerateNatalReportForm.php:40
-#: src/Generated/Forms/GenerateNumerologyReportForm.php:40
-#: src/Generated/Forms/GenerateSynastryReportForm.php:176
-#: src/Generated/Forms/GenerateTarotReportForm.php:40
-#: src/Generated/Forms/GenerateYearlyForecastReportForm.php:40
 #: src/Generated/Forms/GetHebrewLetterForm.php:33
 #: blocks/generated/search-dream-symbols/index.js:18
 msgid "Letter"
@@ -1997,13 +1988,6 @@ msgstr ""
 #: src/Generated/Builder/Manifest.php:15452
 #: src/Generated/Heroes/Manifest.php:162
 msgid "Tarot card"
-msgstr ""
-
-#: src/Generated/Builder/Manifest.php:15467
-#: src/Generated/Forms/GenerateTarotReportForm.php:49
-#: src/Generated/Forms/TarotCardForm.php:48
-#: blocks/generated/tarot/index.js:19
-msgid "Spread"
 msgstr ""
 
 #: src/Generated/Builder/Manifest.php:15474
@@ -2926,46 +2910,6 @@ msgstr ""
 msgid "Create my report"
 msgstr ""
 
-#: src/Generated/Forms/GenerateBaziReportForm.php:35
-#: src/Generated/Forms/GenerateHumanDesignReportForm.php:35
-#: src/Generated/Forms/GenerateKundliReportForm.php:35
-#: src/Generated/Forms/GenerateMatchmakingReportForm.php:139
-#: src/Generated/Forms/GenerateNatalReportForm.php:35
-#: src/Generated/Forms/GenerateNumerologyReportForm.php:35
-#: src/Generated/Forms/GenerateSynastryReportForm.php:171
-#: src/Generated/Forms/GenerateTarotReportForm.php:35
-#: src/Generated/Forms/GenerateYearlyForecastReportForm.php:35
-msgid "Size"
-msgstr ""
-
-#: src/Generated/Forms/GenerateBaziReportForm.php:40
-#: src/Generated/Forms/GenerateHumanDesignReportForm.php:40
-#: src/Generated/Forms/GenerateKundliReportForm.php:40
-#: src/Generated/Forms/GenerateMatchmakingReportForm.php:144
-#: src/Generated/Forms/GenerateNatalReportForm.php:40
-#: src/Generated/Forms/GenerateNumerologyReportForm.php:40
-#: src/Generated/Forms/GenerateSynastryReportForm.php:176
-#: src/Generated/Forms/GenerateTarotReportForm.php:40
-#: src/Generated/Forms/GenerateYearlyForecastReportForm.php:40
-msgid "A4"
-msgstr ""
-
-#: src/Generated/Forms/GenerateTarotReportForm.php:54
-msgid "Celtic cross"
-msgstr ""
-
-#: src/Generated/Forms/GenerateTarotReportForm.php:54
-msgid "Three card"
-msgstr ""
-
-#: src/Generated/Forms/GenerateTarotReportForm.php:54
-msgid "Love"
-msgstr ""
-
-#: src/Generated/Forms/GenerateTarotReportForm.php:54
-msgid "Career"
-msgstr ""
-
 #: src/Generated/Forms/GetCardForm.php:24
 msgid "Tarot Card"
 msgstr ""
@@ -3224,6 +3168,11 @@ msgstr ""
 #: src/Generated/Forms/TarotCardForm.php:44
 #: blocks/generated/tarot/index.js:14
 msgid "What should I focus on this week"
+msgstr ""
+
+#: src/Generated/Forms/TarotCardForm.php:48
+#: blocks/generated/tarot/index.js:19
+msgid "Spread"
 msgstr ""
 
 #: src/Generated/Forms/TarotCardForm.php:51
