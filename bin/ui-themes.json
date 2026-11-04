@@ -21,7 +21,8 @@
 			"muted": "#b39698",
 			"border": "#49353a",
 			"danger": "#e4736b"
-		}
+		},
+		"font": "fraunces-jost"
 	},
 	{
 		"key": "eucalyptus",
@@ -45,7 +46,8 @@
 			"muted": "#9fa89b",
 			"border": "#384138",
 			"danger": "#e4736b"
-		}
+		},
+		"font": "fraunces-jost"
 	},
 	{
 		"key": "kiln",
@@ -69,7 +71,8 @@
 			"muted": "#b49d87",
 			"border": "#463729",
 			"danger": "#e4736b"
-		}
+		},
+		"font": "fraunces-jost"
 	},
 	{
 		"key": "moonlit",
@@ -93,7 +96,8 @@
 			"muted": "#92a4b2",
 			"border": "#263a4c",
 			"danger": "#e4736b"
-		}
+		},
+		"font": "fraunces-jost"
 	},
 	{
 		"key": "celeste",
@@ -117,6 +121,7 @@
 			"muted": "#a0a5ab",
 			"border": "#282f35",
 			"danger": "#e4736b"
-		}
+		},
+		"font": "system"
 	}
 ]

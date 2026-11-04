@@ -651,5 +651,21 @@
 				{ "attr": "sign", "label": "Zodiac sign", "type": "enum", "required": true, "enum": [ "aries", "taurus", "gemini", "cancer", "leo", "virgo", "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces" ], "help": "Pick your Sun sign" }
 			]
 		}
+	},
+	"report": {
+		"block": {
+			"name": "roxyapi/report",
+			"icon": "media-document",
+			"keywords": [ "report", "pdf", "branded report", "birth chart", "roxyapi" ]
+		},
+		"title": "Branded report",
+		"description": "A finished report under your own brand. Your visitor fills in their details and downloads it as a PDF.",
+		"domain": "Reports",
+		"example": "[roxy_report report=\"natal\"]",
+		"dispatch_by": "report",
+		"attributes": {
+			"report": { "default": "natal", "sanitize": "key" },
+			"format": { "default": "pdf", "sanitize": "key" }
+		}
 	}
 }

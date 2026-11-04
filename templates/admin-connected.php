@@ -2,7 +2,7 @@
 /**
  * Template: the RoxyAPI settings screen.
  *
- * Six tabs, deep-linkable via `?tab=connect|branding|display|sell-readings|privacy|advanced`.
+ * Seven tabs, deep-linkable via `?tab=connect|branding|display|reports|sell-readings|privacy|advanced`.
  * Each tab is a server-rendered fragment; the active one is selected with
  * the `is-active` class. No JS reload — just a normal page load when the
  * site owner clicks a tab. Mobile collapses to one column via WP admin CSS.
@@ -20,6 +20,7 @@
  *   string $palette_preset_input
  *   string $palette_colors_input
  *   string $palette_reset_input
+ *   string $font_input
  *   bool   $palette_is_custom
  *   string $theme_mode_input
  *   string $display_language_input
@@ -30,6 +31,8 @@
  *   string $form_title_input
  *   string $form_submit_input
  *   string $cache_preset_input
+ *   string $report_name_input / $report_logo_input / $report_footer_input
+ *   string $report_page_size_input / $report_language_input
  *   string $key_input
  *   string $key_help
  *   bool   $key_disabled
@@ -60,6 +63,7 @@ $consent_label_input    = isset( $consent_label_input ) ? (string) $consent_labe
 $palette_preset_input   = isset( $palette_preset_input ) ? (string) $palette_preset_input : '';
 $palette_colors_input   = isset( $palette_colors_input ) ? (string) $palette_colors_input : '';
 $palette_reset_input    = isset( $palette_reset_input ) ? (string) $palette_reset_input : '';
+$font_input             = isset( $font_input ) ? (string) $font_input : '';
 $palette_is_custom      = ! empty( $palette_is_custom );
 $theme_mode_input       = isset( $theme_mode_input ) ? (string) $theme_mode_input : '';
 $display_language_input = isset( $display_language_input ) ? (string) $display_language_input : '';
@@ -70,6 +74,11 @@ $disclaimer_text_input  = isset( $disclaimer_text_input ) ? (string) $disclaimer
 $form_title_input       = isset( $form_title_input ) ? (string) $form_title_input : '';
 $form_submit_input      = isset( $form_submit_input ) ? (string) $form_submit_input : '';
 $cache_preset_input     = isset( $cache_preset_input ) ? (string) $cache_preset_input : '';
+$report_name_input      = isset( $report_name_input ) ? (string) $report_name_input : '';
+$report_logo_input      = isset( $report_logo_input ) ? (string) $report_logo_input : '';
+$report_footer_input    = isset( $report_footer_input ) ? (string) $report_footer_input : '';
+$report_page_size_input = isset( $report_page_size_input ) ? (string) $report_page_size_input : '';
+$report_language_input  = isset( $report_language_input ) ? (string) $report_language_input : '';
 $privacy_policy_url     = isset( $privacy_policy_url ) ? (string) $privacy_policy_url : '';
 $builder_url            = isset( $builder_url ) ? (string) $builder_url : '';
 $shortcodes_url         = isset( $shortcodes_url ) ? (string) $shortcodes_url : '';
@@ -215,7 +224,7 @@ if ( $active_tab !== 'connect' ) {
 			<section class="roxyapi-section">
 				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Palette', 'roxyapi' ); ?></h2>
 				<p class="description">
-					<?php echo esc_html__( 'Colours for every reading on your site. Pick a palette, or choose Custom and set the colours yourself. Readings use your theme font either way.', 'roxyapi' ); ?>
+					<?php echo esc_html__( 'Colours for every reading and report on your site. Pick a palette, or choose Custom and set the colours yourself.', 'roxyapi' ); ?>
 				</p>
 				<?php echo wp_kses( $palette_preset_input, $kses_input ); ?>
 
@@ -226,6 +235,16 @@ if ( $active_tab !== 'connect' ) {
 					</p>
 					<?php echo wp_kses( $palette_colors_input, $kses_input ); ?>
 				</details>
+			</section>
+
+			<section class="roxyapi-section">
+				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Font', 'roxyapi' ); ?></h2>
+				<p class="description">
+					<?php echo esc_html__( 'The typeface for every reading and report.', 'roxyapi' ); ?>
+				</p>
+				<p>
+					<?php echo wp_kses( $font_input, $kses_select ); ?>
+				</p>
 			</section>
 
 			<section class="roxyapi-section">
@@ -332,6 +351,50 @@ if ( $active_tab !== 'connect' ) {
 		</form>
 	</section>
 
+<?php elseif ( $active_tab === 'reports' ) : ?>
+	<section class="roxyapi-tab-panel">
+		<form method="post" action="options.php" class="roxyapi-form">
+			<?php settings_fields( $option_group ); ?>
+			<section class="roxyapi-section">
+				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Your brand', 'roxyapi' ); ?></h2>
+				<p class="description">
+					<?php echo esc_html__( 'Every report your visitors receive carries your name, logo and footer.', 'roxyapi' ); ?>
+					<?php echo esc_html__( 'Reports use the palette and font from the Branding tab.', 'roxyapi' ); ?>
+				</p>
+				<p>
+					<label for="roxyapi_report_name"><strong><?php echo esc_html__( 'Brand name', 'roxyapi' ); ?></strong></label><br>
+					<?php echo wp_kses( $report_name_input, $kses_input ); ?>
+				</p>
+				<div class="roxyapi-report-field">
+					<strong><?php echo esc_html__( 'Logo', 'roxyapi' ); ?></strong>
+					<?php echo wp_kses( $report_logo_input, $kses_input ); ?>
+				</div>
+				<p>
+					<label for="roxyapi_report_footer"><strong><?php echo esc_html__( 'Footer', 'roxyapi' ); ?></strong></label><br>
+					<?php echo wp_kses( $report_footer_input, $kses_input ); ?>
+				</p>
+			</section>
+
+			<section class="roxyapi-section">
+				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Paper and language', 'roxyapi' ); ?></h2>
+				<p>
+					<label for="roxyapi_report_page_size"><strong><?php echo esc_html__( 'Page size', 'roxyapi' ); ?></strong></label><br>
+					<?php echo wp_kses( $report_page_size_input, $kses_select ); ?>
+				</p>
+				<p>
+					<label for="roxyapi_report_language"><strong><?php echo esc_html__( 'Report language', 'roxyapi' ); ?></strong></label><br>
+					<?php echo wp_kses( $report_language_input, $kses_select ); ?>
+				</p>
+			</section>
+
+			<p>
+				<button type="submit" name="submit" class="button button-primary">
+					<?php echo esc_html__( 'Save reports', 'roxyapi' ); ?>
+				</button>
+			</p>
+		</form>
+	</section>
+
 <?php elseif ( $active_tab === 'sell-readings' ) : ?>
 	<section class="roxyapi-tab-panel">
 		<div class="roxyapi-steps">
@@ -346,6 +409,14 @@ if ( $active_tab !== 'connect' ) {
 			<section class="roxyapi-step-card">
 				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Ask for payment before the page opens', 'roxyapi' ); ?></h2>
 				<p><?php echo esc_html__( 'Install a membership or shop plugin you trust and limit that page to paying members. The reading shows only to them.', 'roxyapi' ); ?></p>
+			</section>
+			<section class="roxyapi-step-card">
+				<h2 class="roxyapi-section-title"><?php echo esc_html__( 'Sell a branded report', 'roxyapi' ); ?></h2>
+				<p><?php echo esc_html__( 'Your visitor fills in their details and downloads a finished PDF under your name. Add your brand on the Reports tab, then create the report page.', 'roxyapi' ); ?></p>
+				<p>
+					<a class="button button-secondary" href="<?php echo esc_url( add_query_arg( 'reading', 'roxy_report', $builder_url ) ); ?>"><?php echo esc_html__( 'Create a report page', 'roxyapi' ); ?></a>
+					<a class="button button-link" href="<?php echo esc_url( \RoxyAPI\Admin\Onboarding::docs_url( 'tutorials/sell-astrology-reports' ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html__( 'Read the report guide', 'roxyapi' ); ?></a>
+				</p>
 			</section>
 		</div>
 		<p>

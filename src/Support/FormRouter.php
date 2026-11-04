@@ -61,7 +61,7 @@ class FormRouter {
 		if ( $form_id === '' || preg_match( '/^[A-Za-z][A-Za-z0-9]+$/', $form_id ) !== 1 ) {
 			return;
 		}
-		$form_class = self::resolve_class( $form_id );
+		$form_class = self::form_class( $form_id );
 		if ( $form_class === null ) {
 			return;
 		}
@@ -115,6 +115,35 @@ class FormRouter {
 	 * @return array<string,mixed> The payload `redirect_with()` stores: `validation_errors`, `wp_error` or `result`, plus `previous_input`.
 	 */
 	public static function submit( string $form_class, array $post ): array {
+		$prepared = self::prepare( $form_class, $post );
+		if ( ! isset( $prepared['body'] ) ) {
+			return $prepared;
+		}
+
+		$result = $form_class::call( $prepared['body'] );
+		if ( is_wp_error( $result ) ) {
+			return array(
+				'wp_error'       => self::error_payload( $result ),
+				'previous_input' => $prepared['previous_input'],
+			);
+		}
+
+		return array(
+			'result'         => $result,
+			'previous_input' => $prepared['previous_input'],
+		);
+	}
+
+	/**
+	 * Sanitise and validate one submission against its form spec, stopping short
+	 * of the API call, so a caller that adds to the request body (a report adds
+	 * the site branding) validates exactly as every visitor form does.
+	 *
+	 * @param class-string        $form_class Generated form class.
+	 * @param array<string,mixed> $post       Posted values, already unslashed.
+	 * @return array<string,mixed> `body` and `previous_input`, or `validation_errors` and `previous_input`.
+	 */
+	public static function prepare( string $form_class, array $post ): array {
 		$spec      = $form_class::spec();
 		$sanitized = self::sanitize_against_spec( $post, $spec );
 
@@ -125,22 +154,23 @@ class FormRouter {
 				'previous_input'    => $sanitized,
 			);
 		}
-
-		$result = $form_class::call( self::build_body( $sanitized, $spec ) );
-		if ( is_wp_error( $result ) ) {
-			return array(
-				'wp_error'       => array(
-					'code'    => $result->get_error_code(),
-					'message' => $result->get_error_message(),
-					'data'    => $result->get_error_data(),
-				),
-				'previous_input' => $sanitized,
-			);
-		}
-
 		return array(
-			'result'         => $result,
+			'body'           => self::build_body( $sanitized, $spec ),
 			'previous_input' => $sanitized,
+		);
+	}
+
+	/**
+	 * The storable shape of a failed call, which the form renders above itself.
+	 *
+	 * @param WP_Error $error Failed API call.
+	 * @return array{code: string|int, message: string, data: mixed}
+	 */
+	public static function error_payload( WP_Error $error ): array {
+		return array(
+			'code'    => $error->get_error_code(),
+			'message' => $error->get_error_message(),
+			'data'    => $error->get_error_data(),
 		);
 	}
 
@@ -214,7 +244,7 @@ class FormRouter {
 	 * @param string $form_id Form id.
 	 * @return class-string|null
 	 */
-	private static function resolve_class( string $form_id ): ?string {
+	public static function form_class( string $form_id ): ?string {
 		// Form ids are operationIds (camelCase). Generator emits PascalCase
 		// classes under \RoxyAPI\Generated\Forms\.
 		$pascal = preg_replace_callback(
@@ -468,22 +498,8 @@ class FormRouter {
 	 * @return void
 	 */
 	private static function redirect_with( string $form_id, array $payload ): void {
-		$token         = wp_generate_password( 32, false, false );
-		$transient_key = self::transient_key( $form_id, $token );
-		set_transient( $transient_key, $payload, self::TTL );
-		// wp_get_referer() returns false when the referer equals the current
-		// request URI, which is exactly the same-page POST every visitor form
-		// makes, so it would send every submission to the site home. Use the
-		// raw referer (the form's own _wp_http_referer field, the page the
-		// visitor submitted from) and validate it to a local URL.
-		$referer = wp_get_raw_referer();
-		$target  = is_string( $referer ) && $referer !== ''
-			? wp_validate_redirect( $referer, home_url( '/' ) )
-			: home_url( '/' );
-		$token   = $form_id . '.' . $token;
-		// Strip any prior result token so refreshes do not stack.
-		$target = remove_query_arg( 'roxyapi_r', $target );
-		$target = add_query_arg( 'roxyapi_r', $token, $target );
+		$token  = self::store( $form_id, $payload );
+		$target = self::return_url( $token );
 
 		/**
 		 * Filter the PRG redirect target. Returning a non-null value short-
@@ -502,5 +518,51 @@ class FormRouter {
 
 		wp_safe_redirect( $target );
 		exit;
+	}
+
+	/**
+	 * Store a submission outcome for its form and return the URL of the page the
+	 * visitor submitted from, carrying `?roxyapi_r=<form id>.<key>`: the GET half
+	 * of a Post-Redirect-Get, for a caller that answers the form post itself.
+	 *
+	 * @param string               $form_id Form id (used to namespace the transient key).
+	 * @param array<string, mixed> $payload Result, error, or validation_errors map.
+	 * @return string
+	 */
+	public static function result_url( string $form_id, array $payload ): string {
+		return self::return_url( self::store( $form_id, $payload ) );
+	}
+
+	/**
+	 * Store a payload under a fresh opaque key.
+	 *
+	 * @param string               $form_id Form id (used to namespace the transient key).
+	 * @param array<string, mixed> $payload Result, error, or validation_errors map.
+	 * @return string The `<form id>.<key>` token the GET carries.
+	 */
+	private static function store( string $form_id, array $payload ): string {
+		$token = wp_generate_password( 32, false, false );
+		set_transient( self::transient_key( $form_id, $token ), $payload, self::TTL );
+		return $form_id . '.' . $token;
+	}
+
+	/**
+	 * The page the visitor submitted from, carrying the result token.
+	 *
+	 * @param string $token `<form id>.<key>` token.
+	 * @return string
+	 */
+	private static function return_url( string $token ): string {
+		// wp_get_referer() returns false when the referer equals the current
+		// request URI, which is exactly the same-page POST every visitor form
+		// makes, so it would send every submission to the site home. Use the
+		// raw referer (the form's own _wp_http_referer field, the page the
+		// visitor submitted from) and validate it to a local URL.
+		$referer = wp_get_raw_referer();
+		$target  = is_string( $referer ) && $referer !== ''
+			? wp_validate_redirect( $referer, home_url( '/' ) )
+			: home_url( '/' );
+		// Strip any prior result token so refreshes do not stack.
+		return add_query_arg( 'roxyapi_r', $token, remove_query_arg( 'roxyapi_r', $target ) );
 	}
 }

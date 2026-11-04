@@ -20,7 +20,7 @@ define( 'ROXYAPI_KEY', getenv( 'ROXYAPI_KEY' ) );
 
 ## Use a shortcode
 
-Browse the full library at RoxyAPI > Shortcodes in the WordPress admin sidebar, or open RoxyAPI > Create a reading to answer a few questions and copy a finished shortcode. 19 hand-curated hero shortcodes cover the highest-demand readings; every other endpoint is reachable via auto-generated long-tail shortcodes.
+Browse the full library at RoxyAPI > Shortcodes in the WordPress admin sidebar, or open RoxyAPI > Create a reading to answer a few questions and copy a finished shortcode. Hand-curated hero shortcodes cover the highest-demand readings; every other endpoint is reachable via auto-generated long-tail shortcodes.
 
 Every hero shortcode, and every other reading whose inputs a visitor can enter, has two modes, auto detected.
 
@@ -58,6 +58,12 @@ Removing a whole block is the other control, because `hide_readings` deliberatel
 
 Browsing months: the two monthly ephemeris readings render Previous and Next links plus a month and year picker. The selected month travels in the page address, so the view can be linked and shared, and it resolves server side with no JavaScript and no key in the browser. Leave the year and month off the shortcode and it opens on the current month.
 
+### Branded reports
+
+`[roxy_report report="natal"]` (block: Branded report) renders the visitor form of a report template. The visitor fills in their details, the plugin builds the report server side, and the browser receives it as a PDF download, or as a page with `format="html"`. `report` is the last segment of the template's path in the Reports section of the API reference (`natal`, `kundli`, `synastry`, `yearly-forecast` and the rest); a new template is picked up on regeneration with no plugin change. The form posts to `/wp-json/roxyapi/v1/report/{report}` with the REST nonce, the same consent checkbox and rate limit as every visitor form. A refused post returns to the form with a message. Neither the visitor input nor the document is stored.
+
+The brand name, logo, footer, page size and report language come from the Reports tab; the palette, colours and font come from the Branding tab, so a report wears the look of the readings. The fonts offered are the ones the pinned `@roxyapi/ui` catalogue publishes. `hide_readings="1"` (or the Display tab setting) delivers a chart-only report without the written readings.
+
 ### Form mode: visitors pick their own values
 
 Leave the required attributes off and the shortcode renders an HTML form. Visitors submit it, the plugin validates the nonce, rate limits per IP, calls the API server side, and renders the result above the form on the next page load:
@@ -81,6 +87,7 @@ Leave the required attributes off and the shortcode renders an HTML form. Visito
 [roxy_biorhythm]            -> birth date input
 [roxy_angel_number]         -> number input
 [roxy_crystals_by_zodiac]   -> zodiac sign picker
+[roxy_report]               -> the chosen report's details, delivered as a branded document
 ```
 
 Readings outside this list work the same way whenever every input they need is one a visitor can enter: `[roxy_calculate_luck_pillars]` asks for a birth date, time, timezone, and gender, and `[roxy_get_annual_flying_stars]` for a year. Optional inputs fold under Advanced. Add `mode="form"` to show the form even when attributes are set, or `mode="static"` to keep a placement fixed.
@@ -93,7 +100,7 @@ Override the form or result template from your theme by copying the matching fil
 
 ## Use a Gutenberg block
 
-In the editor, open the inserter and search for "Horoscope", "Natal Chart", "Kundli", "Panchang", "Bodygraph", "Tarot", "Numerology" or "Moon Phase". Horoscope opens a variation picker (Daily, Weekly, Monthly, Yearly); every other hero block takes its inputs in the sidebar and previews the reading in place.
+In the editor, open the inserter and search for "Horoscope", "Natal Chart", "Kundli", "Panchang", "Bodygraph", "Tarot", "Numerology", "Moon Phase" or "Report". Horoscope opens a variation picker (Daily, Weekly, Monthly, Yearly); every other hero block takes its inputs in the sidebar and previews the reading in place.
 
 Every other reading is a block too, under the **RoxyAPI: every reading** inserter category. Insert any long-tail reading and its inputs (birth date, name, zodiac sign, and so on) show as sidebar controls generated from the API spec: a date picker for dates, a dropdown for fixed choices, text and number fields for the rest, with a live preview that updates as you type.
 
@@ -136,16 +143,17 @@ define( 'ROXYAPI_ENCRYPTION_SALT', getenv( 'ROXYAPI_ENCRYPTION_SALT' ) );
 
 ## Settings tabs
 
-The Roxy admin page is split into six tabs:
+The Roxy admin page is split into seven tabs:
 
-| Tab           | What it covers                                                                                                                                                                                                                                                                                                                                                                                                         |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Connect       | API key field (constant override), Test Connection button.                                                                                                                                                                                                                                                                                                                                                             |
-| Branding      | Four ready-made palettes or the colors set by hand (accent, labels, page background, card background, text, secondary text, borders, warnings), each with a light and a dark value, plus a light, dark, or auto theme. All of it drives the `--roxy-*` tokens the chart components read. Also the reading language sent on every API call (defaults to the site locale).                                               |
-| Display       | The two display controls, both site-wide here and both overridable per placement: Written readings toggle (off by default; hides the written text and leaves the charts, tables, and values) and Hide sections list (comma-separated section names, each block removed wherever it appears). Both reach the no-JavaScript render too. Also the opt in source line, an optional disclaimer line, and visitor form copy. |
-| Sell readings | How to keep one reading free and charge for the deeper ones behind a membership or shop plugin, with links to the monetization guide.                                                                                                                                                                                                                                                                                  |
-| Privacy       | Consent label shown next to the form opt in checkbox. Privacy policy content is registered for the WP Privacy tool.                                                                                                                                                                                                                                                                                                    |
-| Advanced      | Cache preset (fresh divides TTLs by 4, balanced uses spec defaults, quota saver multiplies TTLs by 24), connection status panel.                                                                                                                                                                                                                                                                                       |
+| Tab           | What it covers                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Connect       | API key field (constant override), Test Connection button.                                                                                                                                                                                                                                                                                                                                                                          |
+| Branding      | Ready-made palettes or the colors set by hand (accent, labels, page background, card background, text, secondary text, borders, warnings), each with a light and a dark value, a font (each palette brings its own), plus a light, dark, or auto theme. All of it drives the `--roxy-*` tokens the chart components read, and every branded report. Also the reading language sent on every API call (defaults to the site locale). |
+| Display       | The two display controls, both site-wide here and both overridable per placement: Written readings toggle (off by default; hides the written text and leaves the charts, tables, and values) and Hide sections list (comma-separated section names, each block removed wherever it appears). Both reach the no-JavaScript render too. Also the opt in source line, an optional disclaimer line, and visitor form copy.              |
+| Reports       | Brand name, logo from the media library, footer, page size and report language for every branded report.                                                                                                                                                                                                                                                                                                                            |
+| Sell readings | How to keep one reading free and charge for the deeper ones behind a membership or shop plugin, and a link that opens the builder on a report page, with links to the monetization guide.                                                                                                                                                                                                                                           |
+| Privacy       | Consent label shown next to the form opt in checkbox. Privacy policy content is registered for the WP Privacy tool.                                                                                                                                                                                                                                                                                                                 |
+| Advanced      | Cache preset (fresh divides TTLs by 4, balanced uses spec defaults, quota saver multiplies TTLs by 24), connection status panel.                                                                                                                                                                                                                                                                                                    |
 
 The settings registry is filterable. Sites that need an extra option can hook `roxyapi_settings_schema` and add a field; the Settings API page picks it up automatically.
 

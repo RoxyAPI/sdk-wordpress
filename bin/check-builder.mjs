@@ -73,7 +73,12 @@ for ( const operations of Object.values( spec.paths ) ) {
 				.replace( /([a-z])([A-Z])/g, '$1_$2' )
 				.replace( /[^a-zA-Z0-9]/g, '_' )
 				.toLowerCase();
-		if ( domains[ operation.tags?.[ 0 ] ]?.library === false ) {
+		// A report renders through [roxy_report], never a tag of its own; the
+		// same spec rule the generator applies.
+		const isReport =
+			operation.tags?.includes( 'Reports' ) ||
+			( operation[ 'x-request-cost' ] ?? 1 ) > 1;
+		if ( domains[ operation.tags?.[ 0 ] ]?.library === false || isReport ) {
 			excludedTags.add( tag );
 		} else if ( ! heroOperations.has( operation.operationId ) ) {
 			expectedTags.add( tag );
@@ -183,6 +188,12 @@ const cases = [
 			'[roxy_natal_chart birth_date="1990-05-15" birth_time="14:30" lat="40.7128" lon="-74.006" tz="UTC"]',
 	},
 	{ tag: 'roxy_moon_phase', mode: 'none', expected: '[roxy_moon_phase]' },
+	{
+		tag: 'roxy_report',
+		mode: 'report',
+		values: { report: 'tarot', format: 'html' },
+		expected: '[roxy_report report="tarot" format="html"]',
+	},
 ];
 
 // Missing Playwright or Chromium is a failed gate, never a successful skip.
@@ -305,13 +316,26 @@ try {
 					node.closest( 'details' ).open = true;
 				} );
 				await choice.check();
-				await advance( page, 'who', at );
+				const route =
+					test.mode === 'report'
+						? [ 'details', 'finish' ]
+						: [
+								'who',
+								...( test.mode === 'set' ? [ 'details' ] : [] ),
+								'display',
+								'finish',
+							];
+				if ( test.mode !== 'report' ) {
+					await advance( page, 'who', at );
+				}
 				if ( test.mode === 'set' ) {
 					await page
 						.locator(
 							'input[name="roxyapi-builder-mode"][value="set"]'
 						)
 						.check();
+				}
+				if ( route.includes( 'details' ) ) {
 					await advance( page, 'details', at );
 					const panel = page.locator(
 						'.roxyapi-builder-step:not([hidden]) > div[id^="roxyapi-builder-reading-"]:not([hidden])'
@@ -361,32 +385,38 @@ try {
 								.locator( '[id$="-said"]' )
 								.allTextContents()
 						).map( ( text ) => text.replace( /\s/g, ' ' ) ),
-						[ 'May 15, 1990', '2:30 PM' ],
+						test.mode === 'set'
+							? [ 'May 15, 1990', '2:30 PM' ]
+							: [],
 						`${ at }: date and time are not spelled out`
+					);
+					// A report's details step is where the report is chosen.
+					assert.equal(
+						await page
+							.locator( '#roxyapi-builder-step-details' )
+							.textContent(),
+						test.mode === 'report'
+							? 'Choose the report'
+							: 'Set the details',
+						`${ at }: details step heading`
 					);
 					await checkLayout( page, `${ at } filled details` );
 				}
-				await advance( page, 'display', at );
-				await advance( page, 'finish', at );
+				for ( const step of route.slice(
+					route.indexOf( 'details' ) + 1 || 1
+				) ) {
+					await advance( page, step, at );
+				}
 				assert.equal(
 					await page.locator( 'textarea' ).inputValue(),
 					test.expected,
 					`${ at }: incorrect shortcode`
 				);
-				await page
-					.getByRole( 'button', { name: i18n.back, exact: true } )
-					.click();
-				await page
-					.getByRole( 'button', { name: i18n.back, exact: true } )
-					.click();
-				if ( test.mode === 'set' ) {
+				for ( let back = 0; back < route.length; back++ ) {
 					await page
 						.getByRole( 'button', { name: i18n.back, exact: true } )
 						.click();
 				}
-				await page
-					.getByRole( 'button', { name: i18n.back, exact: true } )
-					.click();
 				assert.equal( await choice.isChecked(), true );
 				assert.equal(
 					await choice.evaluate(
@@ -404,7 +434,7 @@ try {
 				) }`
 			);
 			console.log(
-				`Builder OK at ${ width }px: ${ entries.size } choices, every attribute control, three shortcodes, no overflow or console errors.`
+				`Builder OK at ${ width }px: ${ entries.size } choices, every attribute control, ${ cases.length } shortcodes, no overflow or console errors.`
 			);
 		} finally {
 			await page.close();

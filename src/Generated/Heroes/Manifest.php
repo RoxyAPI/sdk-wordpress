@@ -216,6 +216,16 @@ class Manifest {
 				'class'         => '\\RoxyAPI\\Generated\\Heroes\\CrystalsByZodiac',
 				'hand_written'  => false,
 			),
+			'roxy_report' => array(
+				'tag'           => 'roxy_report',
+				'operation_id'  => "generateNatalReport",
+				'title'         => __( "Branded report", 'roxyapi' ),
+				'description'   => __( "A finished report under your own brand. Your visitor fills in their details and downloads it as a PDF.", 'roxyapi' ),
+				'code'          => "[roxy_report report=\"natal\"]",
+				'domain'        => "Reports",
+				'class'         => '\\RoxyAPI\\Generated\\Heroes\\Report',
+				'hand_written'  => false,
+			),
 		);
 	}
 }

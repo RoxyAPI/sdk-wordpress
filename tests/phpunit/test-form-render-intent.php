@@ -18,7 +18,7 @@ class Test_Form_Render_Intent extends \WP_UnitTestCase {
 		add_filter( 'locale', $locale );
 		try {
 			$html = FormRenderer::render( \RoxyAPI\Generated\Forms\CalculateLuckPillarsForm::class );
-			$this->assertStringContainsString( '>Zona horaria ', $html );
+			$this->assertStringContainsString( '>Fecha ', $html );
 			$this->assertStringContainsString( '<option value="male">Masculino</option>', $html );
 			$this->assertStringContainsString( '<option value="midnight">Medianoche</option>', $html );
 			$this->assertStringNotContainsString( '>Male</option>', $html );
@@ -60,7 +60,7 @@ class Test_Form_Render_Intent extends \WP_UnitTestCase {
 			foreach ( $expected[ $index ] as $name ) {
 				$control = $xp->query( '//*[@name="' . $name . '"]' );
 				$this->assertCount( 1, $control, $name );
-				$this->assertNotSame( 'hidden', $control->item( 0 )->getAttribute( 'type' ), 'Manual location entry must work without JavaScript.' );
+				$this->assertSame( 'hidden', $control->item( 0 )->getAttribute( 'type' ), 'The city search fills it; a visitor never types it.' );
 			}
 		}
 		$this->assertNotSame( $city->item( 0 )->getAttribute( 'id' ), $city->item( 1 )->getAttribute( 'id' ) );
@@ -101,17 +101,119 @@ class Test_Form_Render_Intent extends \WP_UnitTestCase {
 		$this->assertCount( 0, $xp->query( '//details[@id="roxyapi-section-generateTimeline-domainWeights"]//details' ), 'A folded group already folds its marked fields.' );
 	}
 
+	/**
+	 * Every visitor form, generated or curated: each field of a location group
+	 * is a hidden field the city search writes, posted under its unchanged
+	 * name, and none is ever a visible coordinate or timezone input.
+	 */
+	public function test_no_visitor_form_shows_a_typed_coordinate_or_timezone(): void {
+		$checked = 0;
+		foreach ( (array) glob( dirname( __DIR__, 2 ) . '/src/Generated/Forms/*Form.php' ) as $file ) {
+			$class = '\\RoxyAPI\\Generated\\Forms\\' . basename( (string) $file, '.php' );
+			$spec  = $class::spec();
+			if ( empty( $spec['locations'] ) ) {
+				continue;
+			}
+			$xp = new \DOMXPath( $this->document( FormRenderer::render( $class ) ) );
+			foreach ( $spec['locations'] as $location ) {
+				foreach ( $location['fields'] as $role => $name ) {
+					$controls = $xp->query( '//*[@name="' . $name . '"]' );
+					$this->assertCount( 1, $controls, "{$class} {$name}" );
+					$this->assertSame( 'input', $controls->item( 0 )->nodeName, "{$class} {$name}" );
+					$this->assertSame( 'hidden', $controls->item( 0 )->getAttribute( 'type' ), "{$class} {$role} is filled by the city search." );
+				}
+			}
+			$this->assertSame( 0, $xp->query( '//label[@for][contains(@for, "atitude") or contains(@for, "ongitude")]' )->length, $class );
+			++$checked;
+		}
+		$this->assertGreaterThan( 10, $checked );
+	}
+
+	/**
+	 * The natal chart form as it renders after a visitor post of `$birth`.
+	 *
+	 * @param array<string, string> $birth Posted birth section.
+	 * @return string HTML.
+	 */
+	private function render_after_post( array $birth ): string {
+		$redirect = '';
+		$capture  = static function ( $skip, $token, $url ) use ( &$redirect ) {
+			$redirect = (string) $url;
+			return $url;
+		};
+		add_filter( 'roxyapi_form_router_skip_redirect', $capture, 10, 3 );
+		$_POST                     = array(
+			'roxyapi_form'    => 'natalChart',
+			'_wpnonce'        => wp_create_nonce( 'roxyapi_form_natalChart' ),
+			'roxyapi_consent' => '1',
+			'birth'           => $birth,
+		);
+		$_SERVER['REQUEST_METHOD'] = 'POST';
+		try {
+			\RoxyAPI\Support\FormRouter::maybe_handle();
+			parse_str( (string) wp_parse_url( $redirect, PHP_URL_QUERY ), $query );
+			$_GET['roxyapi_r'] = (string) ( $query['roxyapi_r'] ?? '' );
+			return FormRenderer::render( \RoxyAPI\Generated\Forms\NatalChartForm::class );
+		} finally {
+			$_POST = array();
+			unset( $_SERVER['REQUEST_METHOD'], $_GET['roxyapi_r'] );
+			remove_filter( 'roxyapi_form_router_skip_redirect', $capture );
+		}
+	}
+
+	public function test_a_post_with_no_city_shows_the_missing_input_notice_on_the_city_search(): void {
+		$html = $this->render_after_post(
+			array(
+				'birth_date' => '1990-05-15',
+				'birth_time' => '14:30',
+				'lat'        => '',
+				'lon'        => '',
+				'tz'         => '',
+			)
+		);
+
+		$xp     = new \DOMXPath( $this->document( $html ) );
+		$search = $xp->query( '//p[contains(@class, "roxyapi-form-geocode")][contains(@class, "has-error")]' );
+		$this->assertCount( 1, $search, 'The missing place is reported on the city search.' );
+		$this->assertSame( 'City is required.', trim( $xp->query( './/span[@class="roxyapi-form-error"]', $search->item( 0 ) )->item( 0 )->textContent ) );
+		$this->assertSame( 0, $xp->query( '//input[@type="hidden"][@aria-describedby]' )->length, 'A hidden field never carries an error of its own.' );
+	}
+
+	/**
+	 * The city search text is not posted, so a place restored after a refused
+	 * post would go out again under an empty search. The form keeps what the
+	 * visitor typed and asks for the city again.
+	 */
+	public function test_a_refused_post_never_restores_a_place_the_city_search_no_longer_shows(): void {
+		$html = $this->render_after_post(
+			array(
+				'birth_date' => '',
+				'birth_time' => '14:30',
+				'lat'        => '19.076',
+				'lon'        => '72.8777',
+				'tz'         => 'Asia/Kolkata',
+			)
+		);
+
+		$xp = new \DOMXPath( $this->document( $html ) );
+		foreach ( array( 'birth[lat]', 'birth[lon]', 'birth[tz]' ) as $name ) {
+			$this->assertSame( '', $xp->query( '//input[@name="' . $name . '"]' )->item( 0 )->getAttribute( 'value' ), $name );
+		}
+		$this->assertSame( '14:30', $xp->query( '//input[@name="birth[birth_time]"]' )->item( 0 )->getAttribute( 'value' ), 'Every typed field comes back.' );
+	}
+
 	public function test_curated_hero_html_matches_the_pre_model_renderer(): void {
-		// Frozen from all 13 curated forms rendered before the renderer change.
-		// Normalise only request-specific markup, timezone option lists and the
-		// new target metadata; labels, field order and layout remain covered.
+		// Frozen from all 13 curated forms, re-frozen when location fields moved
+		// behind the city search as hidden fields (2026-11-04). Normalise only
+		// request-specific markup, timezone option lists and the target
+		// metadata; labels, field order and layout remain covered.
 		$hashes = array(
-			'NatalChartForm'       => 'f2fb57cf681750aa2d0b7682ec3ee3bc40d5cff0e319e9e6fe92e73a3ef7c900',
-			'KundliForm'           => 'b021c8b85364477756a9a256b5cb91af58106c7aa9760813629673394b0d7241',
-			'PanchangForm'         => '48a1a001d19b683477652d76dc02a5f0fc5c98bb29811ffc4aeb665ef7aa30f0',
-			'MangalDoshaForm'      => '96194b0280b53488827de4d9c0331f6db99398cd8c620d3070ae5b19b624d535',
-			'KpChartForm'          => 'd32c49b0740316a1bdc4fcc03ffeb5f20d33fd0269c1c25c4d6479bcef3d6ed0',
-			'BodygraphForm'        => '215ccf1fe1f9327a4be89fb35d44070b1fd50a0c8a24275c8ddc13f0ccf44acb',
+			'NatalChartForm'       => '5d9de0d8bfede51074da81c66f4988f48a0406ee83add24cf5ba8036ffd85948',
+			'KundliForm'           => '7eafd7dedb4c48dbb5c651a06e7280a1b5e5fc1e2435b08c6e47f6a4af0d0f4f',
+			'PanchangForm'         => '290e00b59d08a92dc1dcc3e9edbc863326dead4993d1f4143fac10e1bd190f43',
+			'MangalDoshaForm'      => 'd25a33de6e3b2ab2455ed26f8373029b4890352ee4db57ea82d9a7fc61b93c40',
+			'KpChartForm'          => 'baf8042ebc90e57908b0e190fac4bc50694eab3ee5889ec65242ab840d252c03',
+			'BodygraphForm'        => '4b955cf0a4184fd22c46c56d04a17612e6a3ce0e0d9478a49207d55382e1b69c',
 			'TarotYesNoForm'       => '972b01bb89f56897bd5c5aac8782aed21f1fb74495cf45d0d514b19dbae0d1bf',
 			'TarotCardForm'        => '4db9c5cabc80160f0e182c0f1e24a402218583ac9b34b134c76823cac141b987',
 			'NumerologyForm'       => '48e146257180f736f356e4b80428e595c73e48cb3d2986c02f8ba4c281965353',

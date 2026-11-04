@@ -4,8 +4,9 @@
  * Selector: any element with `data-roxyapi-geocode` whose value is a CSS
  * selector pointing at the section or form holding the location controls.
  * `data-roxyapi-geocode-fields` maps latitude, longitude and timezone to their
- * exact posted names. Selecting a city fills only those controls; they remain
- * visible so the visitor can enter or edit coordinates without JavaScript.
+ * exact posted names. Selecting a city fills only those controls, and editing
+ * the search after a pick empties them again, so a form never posts a place
+ * its search no longer shows.
  * `data-roxyapi-geocode-quiet` keeps the status as descriptive text instead of
  * a live region on screens such as the builder that own one shared announcement.
  *
@@ -23,8 +24,7 @@
  * win over the plugin stylesheet and leave the dropdown bulleted, mispadded and
  * transparent over the fields below it.
  *
- * Vanilla, ~3 KB, no dependencies. Fail-soft: if the script never loads or
- * the network is down, the manual lat/lon/tz inputs remain fully usable.
+ * Vanilla, ~3 KB, no dependencies.
  */
 ( function () {
 	'use strict';
@@ -88,19 +88,21 @@
 		);
 	}
 
+	// A null city empties the controls.
 	function applyCity( section, fields, city ) {
-		const lat = findField( section, fields.latitude );
-		const lon = findField( section, fields.longitude );
-		const tz = findField( section, fields.timezone );
-		if ( lat ) {
-			lat.value = String( city.lat );
-		}
-		if ( lon ) {
-			lon.value = String( city.lon );
-		}
-		if ( tz ) {
-			tz.value = city.tz;
-		}
+		const values = city
+			? {
+					latitude: String( city.lat ),
+					longitude: String( city.lon ),
+					timezone: city.tz,
+				}
+			: { latitude: '', longitude: '', timezone: '' };
+		Object.keys( values ).forEach( function ( role ) {
+			const field = findField( section, fields[ role ] );
+			if ( field ) {
+				field.value = values[ role ];
+			}
+		} );
 	}
 
 	function attach( input ) {
@@ -165,6 +167,7 @@
 
 		let activeIndex = -1;
 		let current = [];
+		let picked = false;
 
 		function open() {
 			if ( current.length === 0 ) {
@@ -222,6 +225,7 @@
 		function pick( city ) {
 			input.value = city.label;
 			applyCity( section, fields, city );
+			picked = true;
 			close();
 			setStatus( status, I18N.selected || '' );
 		}
@@ -285,6 +289,10 @@
 		}, DEBOUNCE_MS );
 
 		input.addEventListener( 'input', function () {
+			if ( picked ) {
+				picked = false;
+				applyCity( section, fields, null );
+			}
 			const q = input.value.trim();
 			if ( q.length < MIN_QUERY_LEN ) {
 				reset();

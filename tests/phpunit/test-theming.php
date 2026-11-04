@@ -19,8 +19,11 @@
 
 namespace RoxyAPI\Tests;
 
+use RoxyAPI\Activation;
+use RoxyAPI\Admin\SettingsFields;
 use RoxyAPI\Admin\SettingsPage;
 use RoxyAPI\Generated\Palettes;
+use RoxyAPI\Plugin;
 use RoxyAPI\Support\Theming;
 
 class Test_Theming extends \WP_UnitTestCase {
@@ -322,5 +325,190 @@ class Test_Theming extends \WP_UnitTestCase {
 
 		set_current_screen( 'dashboard' );
 		$this->assertStringContainsString( 'data-theme="dark"', Theming::html_theme_attr( 'lang="en-US"' ) );
+	}
+
+	/**
+	 * The stylesheet a 1.x install emitted, recorded from the released Theming
+	 * against each saved option below. Neither option holds a `font` key, which
+	 * is what an install upgrading from 1.x has.
+	 *
+	 * @return array<string, array{0: array<string, string>, 1: string, 2: string}>
+	 */
+	public function saved_installs(): array {
+		$preset = ':root,:root[data-theme="light"]{--roxy-font-sans:inherit;--roxy-accent:#914955;--roxy-secondary:#503a3a;--roxy-bg:#fbf6f3;--roxy-surface:#f5e8e0;--roxy-fg:#3e2a2c;--roxy-muted:#7e625f;--roxy-border:#ead9d2;--roxy-danger:#b23a38;}:root[data-theme="dark"]{--roxy-accent:#d9a2a6;--roxy-secondary:#e0cecb;--roxy-bg:#231619;--roxy-surface:#37272b;--roxy-fg:#f2e4df;--roxy-muted:#b39698;--roxy-border:#49353a;--roxy-danger:#e4736b;}@media (prefers-color-scheme:dark){:root{--roxy-accent:#d9a2a6;--roxy-secondary:#e0cecb;--roxy-bg:#231619;--roxy-surface:#37272b;--roxy-fg:#f2e4df;--roxy-muted:#b39698;--roxy-border:#49353a;--roxy-danger:#e4736b;}}';
+		$custom = ':root,:root[data-theme="light"]{--roxy-font-sans:inherit;--roxy-accent:#8B5CF6;--roxy-bg:#ffffff;--roxy-fg:#1e293b;}:root[data-theme="dark"]{--roxy-accent:#C4B5FD;}@media (prefers-color-scheme:dark){:root{--roxy-accent:#C4B5FD;}}';
+		return array(
+			'custom colours' => array(
+				array(
+					'accent_color'      => '#8B5CF6',
+					'accent_color_dark' => '#C4B5FD',
+					'fg_color'          => '#1e293b',
+					'bg_color'          => '#ffffff',
+					'theme_mode'        => 'auto',
+				),
+				$custom,
+				$custom,
+			),
+			'preset over custom colours' => array(
+				array(
+					'palette_preset' => 'practitioner',
+					'accent_color'   => '#8B5CF6',
+					'theme_mode'     => 'light',
+				),
+				$preset,
+				':root{--roxy-font-sans:inherit;--roxy-accent:#914955;--roxy-secondary:#503a3a;--roxy-bg:#fbf6f3;--roxy-surface:#f5e8e0;--roxy-fg:#3e2a2c;--roxy-muted:#7e625f;--roxy-border:#ead9d2;--roxy-danger:#b23a38;}',
+			),
+		);
+	}
+
+	/**
+	 * An install upgraded from 1.x renders its widgets byte-identical, in both
+	 * modes and in the editor: the one-time upgrade step keeps a preset site on
+	 * its own font, and loads no font file.
+	 *
+	 * @dataProvider saved_installs
+	 *
+	 * @param array<string, string> $saved  A 1.x option.
+	 * @param string                $page   What 1.x emitted on the page.
+	 * @param string                $editor What 1.x emitted in the editor.
+	 */
+	public function test_a_1x_install_renders_its_widgets_byte_identical_after_the_upgrade( array $saved, string $page, string $editor ): void {
+		// Written as the 1.x row sits in the database, past today's sanitiser.
+		remove_all_filters( 'sanitize_option_' . SettingsPage::OPTION_NAME );
+		update_option( SettingsPage::OPTION_NAME, $saved );
+		Activation::upgrade();
+
+		$this->assertSame( $page, Theming::inline_css() );
+		$this->assertSame( $editor, Theming::inline_css( true ) );
+		$this->assertSame( '', Theming::font_stylesheet() );
+		$upgraded = get_option( SettingsPage::OPTION_NAME );
+		$this->assertSame( $saved + array( 'font' => isset( $saved['palette_preset'] ) ? Theming::SITE_FONT : '' ), $upgraded, 'Every saved key is kept; only the font is added.' );
+
+		Activation::upgrade();
+		$this->assertSame( $upgraded, get_option( SettingsPage::OPTION_NAME ), 'The step runs once.' );
+	}
+
+	public function test_a_fresh_install_takes_the_palette_font_and_the_upgrade_leaves_it_alone(): void {
+		global $wpdb;
+		Activation::upgrade();
+		$this->assertNull( $wpdb->get_var( $wpdb->prepare( "SELECT option_id FROM {$wpdb->options} WHERE option_name = %s", SettingsPage::OPTION_NAME ) ), 'Nothing saved, nothing written.' );
+
+		$this->save( array( 'palette_preset' => 'practitioner' ) );
+		Activation::upgrade();
+		$this->assertSame( 'fraunces-jost', Theming::font() );
+		$this->assertStringContainsString( '--roxy-font:fraunces-jost;', Theming::inline_css() );
+	}
+
+	public function test_the_site_font_loads_nothing_whatever_the_palette(): void {
+		$this->save(
+			array(
+				'palette_preset' => 'practitioner',
+				'font'           => Theming::SITE_FONT,
+			)
+		);
+		$this->assertSame( '', Theming::font() );
+		$this->assertStringNotContainsString( '--roxy-font:', Theming::inline_css() );
+		$this->assertSame( '', Theming::font_stylesheet() );
+		$this->assertStringContainsString( '<option value="site" selected>Your site font</option>', SettingsFields::font_input_html() );
+	}
+
+	public function test_a_save_from_another_tab_keeps_the_site_font(): void {
+		$this->save(
+			array(
+				'palette_preset' => 'practitioner',
+				'font'           => Theming::SITE_FONT,
+			)
+		);
+		$this->assertSame( Theming::SITE_FONT, $this->save( array( 'report_name' => 'Luna' ) )['font'] );
+	}
+
+	public function test_the_font_picker_defaults_to_the_font_of_the_chosen_palette(): void {
+		foreach ( Theming::preset_names() as $name ) {
+			$this->save( array( 'palette_preset' => $name ) );
+			$font = Palettes::all()[ $name ]['font'];
+			$this->assertSame( $font, Theming::font(), $name );
+			$this->assertStringContainsString( '<option value="" selected>' . esc_html( sprintf( 'Palette default: %s', Palettes::FONTS[ $font ] ) ) . '</option>', SettingsFields::font_input_html(), $name );
+			$this->assertStringContainsString( 'value="' . $name . '" data-font="' . esc_attr( sprintf( 'Palette default: %s', Palettes::FONTS[ $font ] ) ) . '"', SettingsFields::palette_preset_input_html(), "{$name} card names its font for the picker." );
+		}
+
+		$this->save( array( 'palette_preset' => '' ) );
+		$this->assertSame( '', Theming::font() );
+		$this->assertStringContainsString( '<option value="" selected>Palette default: Your site font</option>', SettingsFields::font_input_html() );
+		$this->assertStringNotContainsString( '--roxy-font:', Theming::inline_css() );
+	}
+
+	public function test_a_chosen_font_wins_over_the_palette_default(): void {
+		$this->save(
+			array(
+				'palette_preset' => 'practitioner',
+				'font'           => 'geist',
+			)
+		);
+		$this->assertSame( 'geist', Theming::font() );
+		$this->assertStringContainsString( '--roxy-font:geist;', Theming::inline_css() );
+		$this->assertStringContainsString( '<option value="geist" selected>Geist</option>', SettingsFields::font_input_html() );
+		$this->assertSame( 'assets/css/fonts/geist.css', Theming::font_stylesheet() );
+	}
+
+	public function test_a_font_drawn_from_system_fonts_loads_no_stylesheet(): void {
+		$this->save( array( 'font' => 'system' ) );
+		$this->assertStringContainsString( '--roxy-font:system;', Theming::inline_css() );
+		$this->assertSame( '', Theming::font_stylesheet() );
+	}
+
+	public function test_a_font_the_catalogue_does_not_publish_is_refused(): void {
+		$this->assertSame( '', $this->save( array( 'font' => 'comic-sans;}body{x:url(https://evil.test)' ) )['font'] );
+		update_option( SettingsPage::OPTION_NAME, array( 'font' => 'comic-sans' ) );
+		$this->assertSame( '', Theming::font(), 'A value written past the sanitiser never reaches the page.' );
+	}
+
+	/** Every published pair but the system one ships its stylesheet with the plugin. */
+	public function test_every_font_pair_but_the_system_one_is_vendored(): void {
+		foreach ( array_keys( Palettes::FONTS ) as $font ) {
+			$this->save( array( 'font' => $font ) );
+			$this->assertSame( $font === 'system' ? '' : 'assets/css/fonts/' . $font . '.css', Theming::font_stylesheet(), $font );
+		}
+	}
+
+	/**
+	 * A font never loads from a host the site owner did not choose: every
+	 * stylesheet the plugin prints for a reading is its own, and every vendored
+	 * stylesheet points only at files beside it.
+	 */
+	public function test_no_remote_font_url_anywhere_the_plugin_emits(): void {
+		$this->save(
+			array(
+				'palette_preset' => 'practitioner',
+				'font'           => 'fraunces-jost',
+			)
+		);
+		$saved_styles          = $GLOBALS['wp_styles'] ?? null;
+		$GLOBALS['wp_styles'] = new \WP_Styles();
+		Plugin::register_frontend_style();
+		ob_start();
+		wp_styles()->do_items( array( 'roxyapi-frontend' ) );
+		$html                 = (string) ob_get_clean();
+		$GLOBALS['wp_styles'] = $saved_styles;
+
+		$this->assertStringContainsString( 'assets/css/fonts/fraunces-jost.css', $html );
+		$this->assertStringContainsString( '--roxy-font:fraunces-jost;', $html );
+		preg_match_all( '#(?:href=[\'"]|url\(\s*[\'"]?)([^\'")\s]+)#', $html, $urls );
+		$this->assertNotEmpty( $urls[1] );
+		foreach ( $urls[1] as $url ) {
+			$this->assertStringStartsWith( plugins_url( '/', ROXYAPI_PLUGIN_FILE ), $url, 'Printed for a reading.' );
+		}
+
+		$root = plugin_dir_path( ROXYAPI_PLUGIN_FILE );
+		$css  = array_merge( array( $root . 'assets/css/roxy-ui-tokens.css' ), (array) glob( $root . 'assets/css/fonts/*.css' ) );
+		$this->assertGreaterThan( 1, count( $css ) );
+		foreach ( $css as $file ) {
+			$body = (string) file_get_contents( (string) $file );
+			$this->assertStringNotContainsString( '@import', $body, $file );
+			preg_match_all( '#url\(\s*[\'"]?([^\'")\s]+)#', $body, $refs );
+			foreach ( $refs[1] as $ref ) {
+				$this->assertStringStartsWith( './', $ref, $file );
+				$this->assertFileExists( dirname( (string) $file ) . '/' . $ref, $file );
+			}
+		}
 	}
 }

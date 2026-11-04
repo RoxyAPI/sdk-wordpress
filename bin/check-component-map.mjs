@@ -185,10 +185,19 @@ try {
 }
 
 const specOps = new Set();
+// A report is delivered server side by [roxy_report], never drawn by a
+// component, so its upstream binding needs no row: the generator's rule.
+const reportOps = new Set();
 for ( const methods of Object.values( spec.paths || {} ) ) {
 	for ( const op of Object.values( methods ) ) {
 		if ( op && typeof op === 'object' && op.operationId ) {
 			specOps.add( op.operationId );
+			if (
+				op.tags?.includes( 'Reports' ) ||
+				( op[ 'x-request-cost' ] ?? 1 ) > 1
+			) {
+				reportOps.add( op.operationId );
+			}
 		}
 	}
 }
@@ -260,7 +269,7 @@ if ( catalog ) {
 
 	const mapped = map.operations || {};
 	const unboundOps = [ ...upstream.keys() ]
-		.filter( ( op ) => ! mapped[ op ] )
+		.filter( ( op ) => ! mapped[ op ] && ! reportOps.has( op ) )
 		.sort();
 	if ( unboundOps.length > 0 ) {
 		console.error(
@@ -428,7 +437,7 @@ if ( catalog ) {
 	}
 
 	// The palette picker is generated from bin/ui-themes.json, so it must be the
-	// pinned build's presets exactly, names and colours alike.
+	// pinned build's presets exactly, names, colours and default fonts alike.
 	const themesFile = path.join(
 		path.dirname( fileURLToPath( import.meta.url ) ),
 		'ui-themes.json'
@@ -437,12 +446,15 @@ if ( catalog ) {
 		JSON.parse( readFileSync( themesFile, 'utf8' ) )
 	);
 	const publishedThemes = JSON.stringify(
-		( catalog.themes || [] ).map( ( { key, name, light, dark } ) => ( {
-			key,
-			name,
-			light,
-			dark,
-		} ) )
+		( catalog.themes || [] ).map(
+			( { key, name, light, dark, font } ) => ( {
+				key,
+				name,
+				light,
+				dark,
+				font,
+			} )
+		)
 	);
 	if ( recordedThemes !== publishedThemes ) {
 		console.error(
@@ -454,6 +466,28 @@ if ( catalog ) {
 		`theme presets OK: bin/ui-themes.json matches the ${
 			( catalog.themes || [] ).length
 		} preset(s) the pinned build publishes`
+	);
+
+	// The font picker is generated from bin/ui-fonts.json the same way.
+	const recordedFonts = readFileSync(
+		path.join( root, 'bin', 'ui-fonts.json' ),
+		'utf8'
+	);
+	const publishedFonts = ( catalog.fonts || [] ).map( ( { key, name } ) => ( {
+		key,
+		name,
+	} ) );
+	if (
+		JSON.stringify( JSON.parse( recordedFonts ) ) !==
+		JSON.stringify( publishedFonts )
+	) {
+		console.error(
+			`bin/ui-fonts.json disagrees with the fonts ${ catalogUrl } publishes. Run \`npm run fetch:ui\`, then \`npm run generate\`.`
+		);
+		process.exit( 1 );
+	}
+	console.log(
+		`fonts OK: bin/ui-fonts.json matches the ${ publishedFonts.length } font(s) the pinned build publishes`
 	);
 }
 

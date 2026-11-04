@@ -74,6 +74,9 @@ class Manifest {
 				'Location and Timezone' => array(
 					'label' => 'Location',
 				),
+				'Reports' => array(
+					'label' => 'Reports',
+				),
 			),
 			'entries' => array(
 				array(
@@ -15461,7 +15464,7 @@ class Manifest {
 					'attributes' => array(
 						array(
 							'att' => 'spread',
-							'label' => __( 'Spread', 'roxyapi' ),
+							'label' => $labels['fields']['spread'] ?? 'Spread',
 							'type' => 'enum',
 							'enum' => array(
 								'daily',
@@ -17956,6 +17959,60 @@ class Manifest {
 							'default' => '',
 							'example' => 0,
 							'min' => 0,
+							'max' => null,
+							'location' => null,
+						),
+					),
+				),
+				array(
+					'tag' => 'roxy_report',
+					'title' => __( 'Branded report', 'roxyapi' ),
+					'description' => 'A finished report under your own brand. Your visitor fills in their details and downloads it as a PDF.',
+					'domain' => 'Reports',
+					'order' => 263,
+					'operationId' => null,
+					'hero' => true,
+					'modes' => array(
+						'report',
+					),
+					'formOnly' => false,
+					'attributes' => array(
+						array(
+							'att' => 'report',
+							'label' => __( 'Report', 'roxyapi' ),
+							'type' => 'enum',
+							'enum' => array(
+								'natal',
+								'synastry',
+								'kundli',
+								'matchmaking',
+								'yearly-forecast',
+								'human-design',
+								'bazi',
+								'numerology',
+								'tarot',
+							),
+							'enum_labels' => array( __( 'Natal Chart Report', 'roxyapi' ), __( 'Synastry Report', 'roxyapi' ), __( 'Kundli Report', 'roxyapi' ), __( 'Kundli Matching Report', 'roxyapi' ), __( 'Yearly Forecast Report', 'roxyapi' ), __( 'Human Design Report', 'roxyapi' ), __( 'BaZi Report', 'roxyapi' ), __( 'Numerology Report', 'roxyapi' ), __( 'Tarot Reading Report', 'roxyapi' ) ),
+							'required' => false,
+							'default' => 'natal',
+							'example' => null,
+							'min' => null,
+							'max' => null,
+							'location' => null,
+						),
+						array(
+							'att' => 'format',
+							'label' => __( 'Delivery', 'roxyapi' ),
+							'type' => 'enum',
+							'enum' => array(
+								'pdf',
+								'html',
+							),
+							'enum_labels' => array( __( 'PDF download', 'roxyapi' ), __( 'Page in the browser', 'roxyapi' ) ),
+							'required' => false,
+							'default' => 'pdf',
+							'example' => null,
+							'min' => null,
 							'max' => null,
 							'location' => null,
 						),

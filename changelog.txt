@@ -3,6 +3,11 @@
 The full release history for the RoxyAPI plugin. The most recent releases are
 also listed in readme.txt, which wordpress.org displays on the plugin page.
 
+= 1.25.0 =
+* New: branded reports. Place [roxy_report report="natal"] or the Branded report block, and visitors fill in their details and download a finished PDF under your name, logo and footer. Natal chart, synastry, yearly forecast, kundli, matchmaking, Human Design, BaZi, numerology and tarot, in the language of your site.
+* New: a font picker on the Branding tab. Each palette brings its own font pair, or keep Your site font. Sites that already use a palette keep their current font.
+* Improved: visitors set a place by city search alone, on every form.
+
 = 1.24.0 =
 * New: a refreshed look for every reading, with clearer type, spacing and dark mode. A site that never set its own colours takes the new default accent.
 * New: a fifth palette, Celeste. Practitioner is now named Rosewater, with the same colours, and every palette also sets the colour of form labels.

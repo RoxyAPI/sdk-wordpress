@@ -24,6 +24,7 @@
 		searchHint: __( 'Try tarot, horoscope or birth chart', 'roxyapi' ),
 		who: __( 'Who fills in the details?', 'roxyapi' ),
 		details: __( 'Set the details', 'roxyapi' ),
+		report: __( 'Choose the report', 'roxyapi' ),
 		display: __( 'Display', 'roxyapi' ),
 		finish: __( 'Copy your shortcode', 'roxyapi' ),
 		back: __( 'Back', 'roxyapi' ),
@@ -547,7 +548,8 @@
 				said ? said.id + ' ' + error.id : error.id
 			);
 			wrapper.append( label, input, ...( said ? [ said ] : [] ), error );
-			( attribute.required
+			// A report step holds only placement choices, so none is folded.
+			( attribute.required || reading.entry.modes.includes( 'report' )
 				? reading.required
 				: reading.optional
 			).appendChild( wrapper );
@@ -569,11 +571,16 @@
 			reading.panel.hidden = reading !== selected;
 		} );
 		mode = 'set';
-		if ( selected.entry.modes.includes( 'visitor' ) ) {
+		if ( selected.entry.modes.includes( 'report' ) ) {
+			mode = 'report';
+		} else if ( selected.entry.modes.includes( 'visitor' ) ) {
 			mode = 'visitor';
 		} else if ( selected.entry.modes.includes( 'none' ) ) {
 			mode = 'none';
 		}
+		// A report is placed, not filled in: its details step picks the report.
+		steps.details.querySelector( 'h2' ).textContent =
+			strings[ mode === 'report' ? 'report' : 'details' ];
 		modeChoices.hidden = ! (
 			selected.entry.modes.includes( 'visitor' ) &&
 			selected.entry.modes.includes( 'set' )
@@ -609,6 +616,9 @@
 	}
 
 	function itinerary() {
+		if ( mode === 'report' ) {
+			return [ 'pick', 'details', 'finish' ];
+		}
 		return mode === 'set'
 			? [ 'pick', 'who', 'details', 'display', 'finish' ]
 			: [ 'pick', 'who', 'display', 'finish' ];
@@ -693,7 +703,7 @@
 
 	function shortcode() {
 		const attributes = [];
-		if ( mode === 'set' ) {
+		if ( mode === 'set' || mode === 'report' ) {
 			selected.controls.forEach( ( { input } ) => {
 				if ( input.value.trim() ) {
 					attributes.push(
@@ -702,7 +712,7 @@
 				}
 			} );
 		}
-		if ( written.value !== '' ) {
+		if ( mode !== 'report' && written.value !== '' ) {
 			attributes.push( 'hide_readings="' + written.value + '"' );
 		}
 		return (
@@ -740,7 +750,7 @@
 	} );
 	if ( readings.has( settings.reading ) ) {
 		selectReading( settings.reading );
-		showStep( 'who' );
+		showStep( itinerary()[ 1 ] );
 	} else {
 		showStep( 'pick' );
 	}

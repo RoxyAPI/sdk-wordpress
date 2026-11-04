@@ -986,6 +986,8 @@ class ComponentMap {
 			'digit-root',
 			'disclaimer',
 			'distribution',
+			'document',
+			'download',
 			'eclipses',
 			'edit-bar',
 			'effects',

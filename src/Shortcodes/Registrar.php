@@ -45,6 +45,7 @@ class Registrar {
 		'roxy_biorhythm'          => \RoxyAPI\Generated\Heroes\Biorhythm::class,
 		'roxy_angel_number'       => \RoxyAPI\Generated\Heroes\AngelNumber::class,
 		'roxy_crystals_by_zodiac' => \RoxyAPI\Generated\Heroes\CrystalsByZodiac::class,
+		'roxy_report'             => \RoxyAPI\Generated\Heroes\Report::class,
 	);
 
 	public static function register(): void {

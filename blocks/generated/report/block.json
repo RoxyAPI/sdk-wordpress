@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "roxyapi/report",
+	"title": "Branded Report",
+	"category": "roxyapi",
+	"icon": "media-document",
+	"description": "A finished report under your own brand. Your visitor fills in their details and downloads it as a PDF.",
+	"keywords": [
+		"report",
+		"pdf",
+		"branded report",
+		"birth chart",
+		"roxyapi"
+	],
+	"version": "1.0.0",
+	"textdomain": "roxyapi",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
+	},
+	"attributes": {
+		"report": {
+			"type": "string",
+			"default": ""
+		},
+		"format": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php",
+	"editorScript": "file:./index.js"
+}

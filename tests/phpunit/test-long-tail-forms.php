@@ -151,7 +151,7 @@ class Test_Long_Tail_Forms extends \WP_UnitTestCase {
 
 	public function test_untouched_timezone_preserves_the_reading_default(): void {
 		$html = \RoxyAPI\Generated\Shortcodes\GetKpRulingInterval::render( array() );
-		$this->assertMatchesRegularExpression( '/<select[^>]+name="timezone"[^>]*>\s*<option value="" selected>/', $html );
+		$this->assertStringContainsString( '<input type="hidden" name="timezone" value="">', $html );
 		$this->assertStringNotContainsString( 'value="UTC" selected', $html );
 
 		$this->submit(
@@ -166,6 +166,25 @@ class Test_Long_Tail_Forms extends \WP_UnitTestCase {
 			)
 		);
 		$this->assertArrayNotHasKey( 'timezone', $this->body );
+	}
+
+	/** What the city search writes into the hidden fields reaches the API, all three. */
+	public function test_a_post_after_a_city_pick_sends_all_three(): void {
+		$this->submit(
+			'natalChart',
+			array(
+				'birth' => array(
+					'birth_date' => '1990-05-15',
+					'birth_time' => '14:30',
+					'lat'        => '40.7128',
+					'lon'        => '-74.006',
+					'tz'         => 'America/New_York',
+				),
+			)
+		);
+		$this->assertEquals( 40.7128, $this->body['latitude'] );
+		$this->assertEquals( -74.006, $this->body['longitude'] );
+		$this->assertSame( 'America/New_York', $this->body['timezone'] );
 	}
 
 	public function test_interval_form_preserves_local_datetimes_and_query_options(): void {

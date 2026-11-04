@@ -1,4 +1,5 @@
-# Vendored @roxyapi/ui design tokens: third-party authored CSS fetched by
+# Vendored @roxyapi/ui design tokens and font stylesheets: third-party authored CSS fetched by
 # bin/fetch-ui-bundle.mjs, not ours to lint. Mirrors the eslint global-ignore
 # of assets/js/roxy-ui.js.
 assets/css/roxy-ui-tokens.css
+assets/css/fonts/

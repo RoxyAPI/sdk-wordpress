@@ -14,6 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use RoxyAPI\Generated\ComponentMap;
+use RoxyAPI\Generated\Palettes;
+use RoxyAPI\Generated\Reports;
 use RoxyAPI\Support\ApiKey;
 use RoxyAPI\Support\Encryption;
 use RoxyAPI\Support\Theming;
@@ -49,6 +51,8 @@ class SettingsFields {
 				'step'         => true,
 				'required'     => true,
 				'list'         => true,
+				'maxlength'    => true,
+				'data-font'    => true,
 			),
 			// A `<datalist>` left out of this map is stripped without a word, and
 			// the field it belongs to still renders, so the suggestions simply
@@ -67,10 +71,17 @@ class SettingsFields {
 			),
 			'div'      => array( 'class' => true ),
 			'button'   => array(
-				'type'  => true,
-				'name'  => true,
-				'value' => true,
-				'class' => true,
+				'type'   => true,
+				'name'   => true,
+				'value'  => true,
+				'class'  => true,
+				'hidden' => true,
+			),
+			'img'      => array(
+				'class'  => true,
+				'src'    => true,
+				'alt'    => true,
+				'hidden' => true,
 			),
 		);
 	}
@@ -131,9 +142,10 @@ class SettingsFields {
 		foreach ( array_merge( array( '' ), Theming::preset_names() ) as $name ) {
 			$palette = Theming::preset( $name );
 			$out    .= sprintf(
-				'<label class="roxyapi-palette%s"><input type="radio" name="roxyapi_settings[palette_preset]" value="%s"%s /><span class="roxyapi-palette-swatches" aria-hidden="true">%s</span><span class="roxyapi-palette-name">%s</span></label>',
+				'<label class="roxyapi-palette%s"><input type="radio" name="roxyapi_settings[palette_preset]" value="%s" data-font="%s"%s /><span class="roxyapi-palette-swatches" aria-hidden="true">%s</span><span class="roxyapi-palette-name">%s</span></label>',
 				$name === $current ? ' is-active' : '',
 				esc_attr( $name ),
+				esc_attr( self::font_default_label( $name ) ),
 				$name === $current ? ' checked' : '',
 				self::palette_swatches( $palette ),
 				esc_html( $labels[ $name ] ?? $name )
@@ -216,6 +228,39 @@ class SettingsFields {
 	}
 
 	/**
+	 * Pre-escaped `<select>` for the font pair of every reading and report: the
+	 * palette's own pair first, the site font, then every pair the pinned
+	 * catalogue publishes.
+	 *
+	 * @return string
+	 */
+	public static function font_input_html(): string {
+		$opts = SettingsSchema::get_option();
+		return self::select_html(
+			'font',
+			array(
+				''                 => self::font_default_label( (string) ( $opts['palette_preset'] ?? '' ) ),
+				Theming::SITE_FONT => __( 'Your site font', 'roxyapi' ),
+			) + Palettes::FONTS,
+			(string) ( $opts['font'] ?? '' )
+		);
+	}
+
+	/**
+	 * The label of the font picker's first choice under one palette: the pair
+	 * the palette was designed with, which for Custom is the site font. The
+	 * palette cards carry it so the label follows a palette picked before saving.
+	 *
+	 * @param string $preset Preset name, '' for Custom.
+	 * @return string
+	 */
+	private static function font_default_label( string $preset ): string {
+		$font = Theming::preset_font( $preset );
+		/* translators: %s: name of the font pair the chosen palette was designed with, such as Fraunces with Jost. */
+		return sprintf( __( 'Palette default: %s', 'roxyapi' ), $font === '' ? __( 'Your site font', 'roxyapi' ) : ( Palettes::FONTS[ $font ] ?? $font ) );
+	}
+
+	/**
 	 * Display names for the palette cards: Custom, then each shipped preset by
 	 * the proper name the component library gives it.
 	 *
@@ -262,13 +307,7 @@ class SettingsFields {
 			'light' => __( 'Light', 'roxyapi' ),
 			'dark'  => __( 'Dark', 'roxyapi' ),
 		);
-		$out     = '<select id="roxyapi_theme_mode" name="roxyapi_settings[theme_mode]" class="roxyapi-select">';
-		foreach ( $choices as $value => $label ) {
-			$selected = $value === $current ? ' selected' : '';
-			$out     .= '<option value="' . esc_attr( $value ) . '"' . $selected . '>' . esc_html( $label ) . '</option>';
-		}
-		$out .= '</select>';
-		return $out;
+		return self::select_html( 'theme_mode', $choices, $current );
 	}
 
 	/**
@@ -278,26 +317,32 @@ class SettingsFields {
 	 * @return string
 	 */
 	public static function display_language_input_html(): string {
-		$opts    = SettingsSchema::get_option();
-		$current = (string) ( $opts['display_language'] ?? '' );
-		$choices = array(
-			''   => __( 'Match site language', 'roxyapi' ),
-			'en' => __( 'English', 'roxyapi' ),
-			'de' => __( 'German', 'roxyapi' ),
-			'hi' => __( 'Hindi', 'roxyapi' ),
-			'es' => __( 'Spanish', 'roxyapi' ),
-			'tr' => __( 'Turkish', 'roxyapi' ),
-			'pt' => __( 'Portuguese', 'roxyapi' ),
-			'fr' => __( 'French', 'roxyapi' ),
-			'ru' => __( 'Russian', 'roxyapi' ),
+		$opts = SettingsSchema::get_option();
+		return self::select_html(
+			'display_language',
+			array( '' => __( 'Match site language', 'roxyapi' ) ) + array_intersect_key( self::language_names(), array_flip( \RoxyAPI\Support\Language::SUPPORTED ) ),
+			(string) ( $opts['display_language'] ?? '' )
 		);
-		$out     = '<select id="roxyapi_display_language" name="roxyapi_settings[display_language]" class="roxyapi-select">';
-		foreach ( $choices as $value => $label ) {
-			$selected = $value === $current ? ' selected' : '';
-			$out     .= '<option value="' . esc_attr( $value ) . '"' . $selected . '>' . esc_html( $label ) . '</option>';
-		}
-		$out .= '</select>';
-		return $out;
+	}
+
+	/**
+	 * Every language a reading or a report is written in, by its `lang` code.
+	 *
+	 * @return array<string, string>
+	 */
+	private static function language_names(): array {
+		return array(
+			'en'      => __( 'English', 'roxyapi' ),
+			'de'      => __( 'German', 'roxyapi' ),
+			'hi'      => __( 'Hindi', 'roxyapi' ),
+			'es'      => __( 'Spanish', 'roxyapi' ),
+			'tr'      => __( 'Turkish', 'roxyapi' ),
+			'pt'      => __( 'Portuguese', 'roxyapi' ),
+			'fr'      => __( 'French', 'roxyapi' ),
+			'ru'      => __( 'Russian', 'roxyapi' ),
+			'zh-Hans' => __( 'Chinese (Simplified)', 'roxyapi' ),
+			'zh-Hant' => __( 'Chinese (Traditional)', 'roxyapi' ),
+		);
 	}
 
 	/**
@@ -422,13 +467,76 @@ class SettingsFields {
 			'balanced'    => __( 'Balanced: 1 hour (recommended)', 'roxyapi' ),
 			'quota_saver' => __( 'Quota saver: 24 hours (fewer API calls, less fresh)', 'roxyapi' ),
 		);
-		$out     = '<select id="roxyapi_cache_preset" name="roxyapi_settings[cache_preset]" class="roxyapi-select">';
+		return self::select_html( 'cache_preset', $choices, $current );
+	}
+
+	/**
+	 * Pre-escaped text input for one report branding line, held to the length a
+	 * report prints.
+	 *
+	 * @param string $key Option key: `report_name` or `report_footer`.
+	 * @return string
+	 */
+	public static function report_text_html( string $key ): string {
+		$opts = SettingsSchema::get_option();
+		return sprintf(
+			'<input type="text" id="roxyapi_%1$s" name="roxyapi_settings[%1$s]" value="%2$s" maxlength="%3$d" class="regular-text" />',
+			esc_attr( $key ),
+			esc_attr( (string) ( $opts[ $key ] ?? '' ) ),
+			(int) ( SettingsSchema::fields()[ $key ]['max_length'] ?? 0 )
+		);
+	}
+
+	/**
+	 * Pre-escaped logo picker: the media library chooses an image, the hidden
+	 * field stores its attachment id. Needs JavaScript, as the library does.
+	 *
+	 * @return string
+	 */
+	public static function report_logo_html(): string {
+		$opts = SettingsSchema::get_option();
+		$id   = (int) ( $opts['report_logo'] ?? 0 );
+		$url  = $id > 0 ? wp_get_attachment_image_url( $id, 'medium' ) : false;
+		return sprintf(
+			'<div class="roxyapi-logo"><input type="hidden" id="roxyapi_report_logo" name="roxyapi_settings[report_logo]" value="%1$s" /><img class="roxyapi-logo-preview" src="%2$s" alt=""%3$s /><button type="button" class="button roxyapi-logo-choose">%4$s</button> <button type="button" class="button-link roxyapi-logo-remove"%3$s>%5$s</button></div>',
+			esc_attr( $id > 0 ? (string) $id : '' ),
+			esc_url( is_string( $url ) ? $url : '' ),
+			is_string( $url ) ? '' : ' hidden',
+			esc_html__( 'Choose logo', 'roxyapi' ),
+			esc_html__( 'Remove logo', 'roxyapi' )
+		);
+	}
+
+	/**
+	 * Pre-escaped `<select>` for one report choice: the page size or the
+	 * language, each offering exactly what a report request accepts.
+	 *
+	 * @param string $key Option key: `report_page_size` or `report_language`.
+	 * @return string
+	 */
+	public static function report_select_html( string $key ): string {
+		$names   = array(
+			'report_page_size' => array_combine( Reports::PAGE_SIZES, Reports::PAGE_SIZES ),
+			'report_language'  => array_intersect_key( self::language_names(), array_flip( Reports::LANGUAGES ) ),
+		);
+		$default = $key === 'report_language' ? __( 'Same as your readings', 'roxyapi' ) : __( 'Default', 'roxyapi' );
+		return self::select_html( $key, array( '' => $default ) + ( $names[ $key ] ?? array() ), (string) ( SettingsSchema::get_option()[ $key ] ?? '' ) );
+	}
+
+	/**
+	 * Pre-escaped `<select>` for one setting.
+	 *
+	 * @param string                $key     Option key.
+	 * @param array<string, string> $choices Labels by stored value.
+	 * @param string                $current Stored value.
+	 * @return string
+	 */
+	private static function select_html( string $key, array $choices, string $current ): string {
+		$out = '<select id="roxyapi_' . esc_attr( $key ) . '" name="roxyapi_settings[' . esc_attr( $key ) . ']" class="roxyapi-select">';
 		foreach ( $choices as $value => $label ) {
-			$selected = $value === $current ? ' selected' : '';
-			$out     .= '<option value="' . esc_attr( $value ) . '"' . $selected . '>' . esc_html( $label ) . '</option>';
+			$out .= '<option value="' . esc_attr( (string) $value ) . '"' . ( (string) $value === $current ? ' selected' : '' ) . '>' . esc_html( $label ) . '</option>';
 		}
-		$out .= '</select>';
-		return $out;
+		return $out . '</select>';
 	}
 
 	/**
@@ -606,7 +714,8 @@ class SettingsFields {
 				case 'string':
 				default:
 					if ( isset( $input[ $input_key ] ) ) {
-						$out[ $option_key ] = sanitize_text_field( wp_unslash( $input[ $input_key ] ) );
+						$value              = sanitize_text_field( wp_unslash( $input[ $input_key ] ) );
+						$out[ $option_key ] = isset( $field['max_length'] ) ? mb_substr( $value, 0, (int) $field['max_length'] ) : $value;
 					} else {
 						$out[ $option_key ] = (string) ( $existing[ $option_key ] ?? $field['default'] ?? '' );
 					}
@@ -614,7 +723,27 @@ class SettingsFields {
 			}
 		}
 
+		self::report_insecure_logo( (int) ( $out['report_logo'] ?? 0 ) );
 		return self::apply_palette( $input, $out );
+	}
+
+	/**
+	 * Tell the site owner when the chosen logo cannot reach a report: a report
+	 * is drawn on our servers, which load the logo from its address over https
+	 * only, so on a site without https it is left off every report.
+	 *
+	 * @param int $logo Attachment id of the logo, 0 for none.
+	 * @return void
+	 */
+	private static function report_insecure_logo( int $logo ): void {
+		$url = $logo > 0 ? wp_get_attachment_image_url( $logo, 'full' ) : false;
+		if ( is_string( $url ) && wp_parse_url( $url, PHP_URL_SCHEME ) !== 'https' ) {
+			self::add_settings_error_once(
+				'report_logo_https',
+				esc_html__( 'Your logo shows on reports once your site runs on https.', 'roxyapi' ),
+				'warning'
+			);
+		}
 	}
 
 	/**

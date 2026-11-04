@@ -18,6 +18,7 @@
  *                             `api_key`, we store `api_key_encrypted`).
  *     'min'        => int     Optional, integer fields only.
  *     'max'        => int     Optional, integer fields only.
+ *     'max_length' => int     Optional, string fields only: longer input is cut.
  *   )
  *
  * @package RoxyAPI
@@ -29,6 +30,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use RoxyAPI\Generated\Palettes;
+use RoxyAPI\Generated\Reports;
 use RoxyAPI\Support\Theming;
 
 class SettingsSchema {
@@ -67,6 +70,12 @@ class SettingsSchema {
 				'default' => '',
 				'enum'    => array_merge( array( '' ), Theming::preset_names() ),
 			),
+			// Empty follows the preset's own font pair; `site` keeps the site font.
+			'font'              => array(
+				'type'    => 'enum',
+				'default' => '',
+				'enum'    => array_merge( array( '', Theming::SITE_FONT ), array_keys( Palettes::FONTS ) ),
+			),
 			'theme_mode'        => array(
 				'type'    => 'enum',
 				'default' => 'light',
@@ -100,6 +109,32 @@ class SettingsSchema {
 			'form_submit_label' => array(
 				'type'    => 'string',
 				'default' => '',
+			),
+			// The branding a report carries, each choice read from the report
+			// contract so the tab offers exactly what a request accepts.
+			'report_name'       => array(
+				'type'       => 'string',
+				'default'    => '',
+				'max_length' => Reports::NAME_MAX_LENGTH,
+			),
+			'report_logo'       => array(
+				'type'    => 'int',
+				'default' => 0,
+			),
+			'report_footer'     => array(
+				'type'       => 'string',
+				'default'    => '',
+				'max_length' => Reports::FOOTER_MAX_LENGTH,
+			),
+			'report_page_size'  => array(
+				'type'    => 'enum',
+				'default' => '',
+				'enum'    => array_merge( array( '' ), Reports::PAGE_SIZES ),
+			),
+			'report_language'   => array(
+				'type'    => 'enum',
+				'default' => '',
+				'enum'    => array_merge( array( '' ), Reports::LANGUAGES ),
 			),
 		);
 

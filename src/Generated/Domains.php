@@ -132,6 +132,12 @@ class Domains {
 				'accent' => "blue",
 				'library' => true,
 			),
+			"Reports" => array(
+				'label'  => "Reports",
+				'slug'   => "reports",
+				'accent' => "pink",
+				'library' => true,
+			),
 			"Usage" => array(
 				'label'  => "Usage",
 				'slug'   => "usage",

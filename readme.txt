@@ -48,6 +48,7 @@ Every reading works the moment you activate the plugin, with no account. A free 
 **Also built in:**
 
 * Gutenberg blocks and shortcodes for every reading, plus a visitor form mode for interactive inputs like birth details
+* Branded reports: a visitor fills in their details and downloads a finished PDF under your name, logo, colours and typeface
 * Pythagorean numerology, full 78 card tarot, and a 2,000+ entry dream symbol dictionary
 * Interactive SVG charts and cards that follow your light or dark theme automatically
 * Readings in English, German, Hindi, Spanish, Turkish, Portuguese, French, and Russian, following the site language or one setting
@@ -108,6 +109,10 @@ Four heroes take no attributes: the three two-person compatibility readings rend
 `[roxy_gun_milan]`
 `[roxy_compatibility]`
 `[roxy_forecast]`
+
+**Branded reports**
+
+`[roxy_report report="natal"]` shows the report form. Your visitor fills in their details and downloads the finished report as a PDF under your brand. Add `format="html"` to open it as a page instead. Other reports include `kundli`, `synastry`, `yearly-forecast` and `tarot`.
 
 **Long-tail shortcodes**
 
@@ -183,6 +188,7 @@ When the plugin contacts roxyapi.com, the request includes:
 
 * The reading parameters you supply via the block or shortcode (zodiac sign, birth date, name, location coordinates, question text).
 * Your site URL, so RoxyAPI can attribute requests to your site for support.
+* For a branded report, the brand name, logo address and footer you set on the Reports tab, and the palette and font you set on the Branding tab.
 * The plugin name and version, so RoxyAPI can spot compatibility problems with a particular release.
 * Your server outbound IP address (incidentally captured by the receiving server, like any HTTP request).
 
@@ -206,6 +212,10 @@ Register it with `10, 2` instead and the callback also receives the connecting a
 
 Yes, and you do not need a separate integration. Place any RoxyAPI shortcode or block on a page, then gate that page with a membership or paywall plugin such as Paid Memberships Pro, Restrict Content, or WP-Members, or sell access as a WooCommerce product through a memberships add-on. Members and buyers who reach the page see the reading; everyone else sees your paywall. Because the chart renders exactly where you place the shortcode, you decide what stays free, like a teaser daily horoscope, and what is paid, like a full natal chart, a compatibility score, or a Vedic kundli. RoxyAPI keeps no birth data, so your client list and their details stay entirely yours.
 
+= Can visitors download a branded report? =
+
+Yes. Place `[roxy_report report="natal"]` or the Branded report block on a page. Your visitor fills in their details and downloads a finished PDF with your brand name, logo and footer, set once under RoxyAPI, Reports, in the palette and font of your readings. Pair it with a membership or shop plugin to sell it. The report is built when the visitor asks for it, and your site keeps neither their details nor the document.
+
 = Is the API key safe? =
 
 Yes. The plugin makes API calls server side in PHP. The key is never sent to the browser. You can also store the key in wp-config.php with define('ROXYAPI_KEY', '...') if you do not want it in the database. Stored keys are encrypted at rest via AES-256-CTR.
@@ -216,7 +226,7 @@ Yes. The plugin uses WordPress transients, which automatically use Redis or Memc
 
 = Can I customize the styling? =
 
-Yes. Readings pick up your theme font, and the RoxyAPI menu under Branding gives you four ready-made palettes plus the colors you can set yourself: accent, labels, page background, card background, text, secondary text, borders and warnings. Each takes a light value and a dark value, so a dark brand color stays readable for a visitor in dark mode. Charts follow your light or dark mode automatically and read the --roxy-* CSS custom properties, so you can also override any token in your theme stylesheet. Every output element has a .roxyapi-* class you can target.
+Yes. The RoxyAPI menu under Branding gives you ready-made palettes, each with its own font, plus a font picker and the colors you can set yourself: accent, labels, page background, card background, text, secondary text, borders and warnings. Custom colors keep your theme font unless you pick one. Each color takes a light value and a dark value, so a dark brand color stays readable for a visitor in dark mode. Charts follow your light or dark mode automatically and read the --roxy-* CSS custom properties, so you can also override any token in your theme stylesheet. Every output element has a .roxyapi-* class you can target.
 
 = Can I hide part of a reading, such as the chart patterns? =
 
@@ -265,6 +275,11 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.25.0 =
+* New: branded reports. Place [roxy_report report="natal"] or the Branded report block, and visitors fill in their details and download a finished PDF under your name, logo and footer. Natal chart, synastry, yearly forecast, kundli, matchmaking, Human Design, BaZi, numerology and tarot, in the language of your site.
+* New: a font picker on the Branding tab. Each palette brings its own font pair, or keep Your site font. Sites that already use a palette keep their current font.
+* Improved: visitors set a place by city search alone, on every form.
+
 = 1.24.0 =
 * New: a refreshed look for every reading, with clearer type, spacing and dark mode. A site that never set its own colours takes the new default accent.
 * New: a fifth palette, Celeste. Practitioner is now named Rosewater, with the same colours, and every palette also sets the colour of form labels.
@@ -307,16 +322,12 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Fixed: on WordPress 6.5 every RoxyAPI block is back in the block inserter, and the Horoscope block offers exactly its Daily, Weekly, Monthly and Yearly versions on every supported WordPress version.
 * Improved: every settings tab fits a phone screen. Branding shows each colour name above its Light and Dark pickers, and an open picker no longer pushes the page sideways.
 
-= 1.21.1 =
-* Improved: Create a reading opens on a short list of reading groups. Open one at a time, or search to see every match at once.
-* Improved: when you set a date or time, Create a reading spells it out in words beneath the field, so the order of day and month is never in doubt.
-* Improved: the Connect screen starts with Create a reading, with ready shortcodes beneath it, and Create a reading sits right under Settings in the menu.
-* Improved: Create a reading and Help match the rest of the plugin, and the Connect screen and Shortcodes library fit a phone screen.
-* Improved: the new screens and the plugin description read in German, Spanish, French, Hindi, Portuguese, Russian and Turkish.
-
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.25.0 =
+Branded PDF reports your visitors download under your name, a font picker on the Branding tab, and city search for every place.
 
 = 1.24.0 =
 A refreshed look for every reading, a fifth palette named Celeste, and a smaller chart bundle.
@@ -342,5 +353,3 @@ Visitors can enter the details for ecliptic crossings and KP interval readings, 
 = 1.22.0 =
 Worth updating if visitors should pick their own planet, sign, tarot card, crystal or trigram, if a page holds several visitor forms, or if your site runs WordPress 6.5.
 
-= 1.21.1 =
-Polishes Create a reading: grouped readings, dates spelled out in words, and a clearer first step on the Connect screen.

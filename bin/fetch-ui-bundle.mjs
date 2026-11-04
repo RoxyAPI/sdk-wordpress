@@ -14,8 +14,12 @@
  *     which is what puts the labels around a chart into the site language
  *   - the forms manifest and its label catalogues to bin/ui-forms/, for the
  *     generator only; bin/ is excluded from the shipped plugin
- *   - the theme presets (name plus light and dark colours) to bin/ui-themes.json,
- *     which the generator emits as the palette picker
+ *   - the theme presets (name, light and dark colours, default font) to
+ *     bin/ui-themes.json, which the generator emits as the palette picker
+ *   - the typefaces (key and name) to bin/ui-fonts.json, which the generator
+ *     emits as the font picker
+ *   - each typeface's self-hosted stylesheet and font files to
+ *     assets/css/fonts/, so a chosen font loads from the site itself
  *
  * The catalogues are separate payloads rather than part of the bundle, so which
  * languages exist is a property of the version being vendored. The manifest
@@ -30,6 +34,14 @@
  * So bumping the pin is not a step anyone can forget: running this script IS the
  * bump. Pass an explicit version to vendor an older one deliberately.
  *
+ * `--from=<dir>` vendors an unreleased build from a local `@roxyapi/ui` package
+ * directory instead (the same file layout the package publishes), at the
+ * version its package.json carries, so a plugin change can be proven against a
+ * UI change before either is released. The pins still name the published
+ * package, so `npm run check:component-map` compares the vendored catalogue
+ * with the published one and fails until the build is released and vendored
+ * from npm: a local vendor cannot ship by accident.
+ *
  * The resolved version is written back as a concrete semver rather than left as
  * the literal string `latest`, because it is also the `$ver` cache-buster passed
  * to wp_register_script/wp_register_style. A constant `?ver=latest` never
@@ -40,6 +52,7 @@
  * ```sh
  * npm run fetch:ui              # vendor whatever npm tags latest
  * npm run fetch:ui -- 0.14.0    # vendor an older version on purpose
+ * npm run fetch:ui -- --from=../ui/packages/ui  # vendor a local build
  * ```
  */
 import fs from 'node:fs';
@@ -57,6 +70,10 @@ const CSS_OUT_FILE = path.join( ROOT, 'assets', 'css', 'roxy-ui-tokens.css' );
 const LOCALES_OUT_DIR = path.join( ROOT, 'assets', 'js', 'locales' );
 const FORMS_OUT_DIR = path.join( ROOT, 'bin', 'ui-forms' );
 const THEMES_OUT_FILE = path.join( ROOT, 'bin', 'ui-themes.json' );
+const FONTS_OUT_FILE = path.join( ROOT, 'bin', 'ui-fonts.json' );
+const FONT_FILES_OUT_DIR = path.join( ROOT, 'assets', 'css', 'fonts' );
+/** Where the package keeps the font stylesheets; their `url()`s are relative to it. */
+const FONT_DIST_DIR = 'dist/styles/fonts/';
 
 const PACKAGE = '@roxyapi/ui';
 const SEMVER = /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/;
@@ -66,6 +83,14 @@ const SEMVER = /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/;
  * separates a real catalogue from an error page served with a 200.
  */
 const LOCALE_REGISTRY = '__ROXY_UI_I18N__';
+
+/** A local package directory to vendor from, or null to vendor from npm. */
+const LOCAL_SOURCE = ( () => {
+	const flag = process.argv
+		.slice( 2 )
+		.find( ( arg ) => arg.startsWith( '--from=' ) );
+	return flag ? path.resolve( flag.slice( '--from='.length ) ) : null;
+} )();
 
 /**
  * Base URL for one file inside the pinned package.
@@ -79,11 +104,46 @@ function cdnUrl( version, file ) {
 }
 
 /**
+ * Read one file of the package being vendored: from the local directory when
+ * `--from` names one, else from jsDelivr at the pinned version. A missing local
+ * file answers 404, so every caller refuses it exactly as it refuses a failed
+ * download.
+ *
+ * @param {string} version The resolved version.
+ * @param {string} file    Path inside the package, without a leading slash.
+ * @return {Promise<Response>} The file.
+ */
+async function read( version, file ) {
+	if ( ! LOCAL_SOURCE ) {
+		const url = cdnUrl( version, file );
+		console.log( `[fetch-ui-bundle] fetching ${ url }` );
+		return fetch( url );
+	}
+	const local = path.join( LOCAL_SOURCE, file );
+	console.log( `[fetch-ui-bundle] reading ${ local }` );
+	return fs.existsSync( local )
+		? new Response( fs.readFileSync( local ) )
+		: new Response( null, { status: 404, statusText: 'Not Found' } );
+}
+
+/**
  * Resolve the version to vendor: the CLI argument, else npm's `latest` tag.
  *
  * @return {Promise<string>} A concrete semver, never the literal 'latest'.
  */
 async function resolveVersion() {
+	if ( LOCAL_SOURCE ) {
+		const pkg = JSON.parse(
+			fs.readFileSync( path.join( LOCAL_SOURCE, 'package.json' ), 'utf8' )
+		);
+		if ( pkg.name !== PACKAGE || ! SEMVER.test( pkg.version ?? '' ) ) {
+			console.error(
+				`[fetch-ui-bundle] ${ LOCAL_SOURCE } is not a ${ PACKAGE } package with a semver version; refusing to vendor`
+			);
+			process.exit( 1 );
+		}
+		return pkg.version;
+	}
 	const requested = process.argv[ 2 ];
 	if ( requested && requested !== 'latest' ) {
 		if ( ! SEMVER.test( requested ) ) {
@@ -160,9 +220,7 @@ function publishedParts( catalog ) {
  * @return {Promise<Object>} The parsed catalogue.
  */
 async function fetchCatalog( version ) {
-	const url = cdnUrl( version, 'components-catalog.json' );
-	console.log( `[fetch-ui-bundle] fetching ${ url }` );
-	const response = await fetch( url );
+	const response = await read( version, 'components-catalog.json' );
 	if ( ! response.ok ) {
 		console.error(
 			`[fetch-ui-bundle] could not read the component catalogue: ${ response.status } ${ response.statusText }; refusing to write`
@@ -187,13 +245,16 @@ function writeThemes( catalog ) {
 		name: theme.name,
 		light: theme.light,
 		dark: theme.dark,
+		font: theme.font,
 	} ) );
+	const fontKeys = ( catalog.fonts || [] ).map( ( font ) => font.key );
 	const valid =
 		themes.length > 0 &&
 		themes.every(
 			( theme ) =>
 				/^[a-z][a-z0-9-]*$/.test( theme.key ?? '' ) &&
 				typeof theme.name === 'string' &&
+				fontKeys.includes( theme.font ) &&
 				[ theme.light, theme.dark ].every(
 					( colors ) =>
 						colors &&
@@ -203,7 +264,7 @@ function writeThemes( catalog ) {
 		);
 	if ( ! valid ) {
 		console.error(
-			'[fetch-ui-bundle] the pinned catalogue publishes no theme presets with light and dark colours; refusing to write'
+			'[fetch-ui-bundle] the pinned catalogue publishes no theme presets with light and dark colours and a published default font; refusing to write'
 		);
 		process.exit( 1 );
 	}
@@ -213,6 +274,122 @@ function writeThemes( catalog ) {
 	);
 	console.log(
 		`[fetch-ui-bundle] wrote ${ themes.length } theme presets to bin/ui-themes.json`
+	);
+}
+
+/**
+ * Write the typefaces the pinned build publishes to bin/ui-fonts.json, so the
+ * font picker offers the catalogue's own font list and never a hand-kept copy.
+ *
+ * @param {Object} catalog The pinned catalogue.
+ * @return {void}
+ */
+function writeFonts( catalog ) {
+	const fonts = ( catalog.fonts || [] ).map( ( { key, name } ) => ( {
+		key,
+		name,
+	} ) );
+	if (
+		fonts.length === 0 ||
+		! fonts.every(
+			( font ) =>
+				/^[a-z][a-z0-9-]*$/.test( font.key ?? '' ) &&
+				typeof font.name === 'string'
+		)
+	) {
+		console.error(
+			'[fetch-ui-bundle] the pinned catalogue publishes no fonts with a key and a name; refusing to write'
+		);
+		process.exit( 1 );
+	}
+	fs.writeFileSync(
+		FONTS_OUT_FILE,
+		`${ JSON.stringify( fonts, null, '\t' ) }\n`
+	);
+	console.log(
+		`[fetch-ui-bundle] wrote ${ fonts.length } fonts to bin/ui-fonts.json`
+	);
+}
+
+/**
+ * Vendor every typeface's stylesheet and font files to assets/css/fonts/, in
+ * the layout the package publishes, so each stylesheet's relative `url()`s
+ * resolve beside it and a font loads from the site, never a third-party host.
+ * A typeface with no files (the system stack) has no stylesheet. Files the
+ * pinned build no longer publishes are removed, so the plugin can never offer a
+ * font the vendored bundle does not know.
+ *
+ * @param {string} version The resolved version.
+ * @param {Object} catalog The pinned catalogue.
+ * @return {Promise<void>}
+ */
+async function vendorFonts( version, catalog ) {
+	const wanted = new Map();
+	for ( const font of catalog.fonts || [] ) {
+		if ( ! font.stylesheet ) {
+			continue;
+		}
+		const files = ( font.files || [] ).map( ( { file } ) => file );
+		const licences = new Set(
+			files.map( ( file ) => `${ path.posix.dirname( file ) }/OFL.txt` )
+		);
+		for ( const file of [ font.stylesheet, ...files, ...licences ] ) {
+			if ( ! file.startsWith( FONT_DIST_DIR ) ) {
+				console.error(
+					`[fetch-ui-bundle] font file ${ file } is outside ${ FONT_DIST_DIR }; refusing to write`
+				);
+				process.exit( 1 );
+			}
+			wanted.set( file.slice( FONT_DIST_DIR.length ), file );
+		}
+	}
+
+	const bodies = new Map();
+	for ( const [ rel, file ] of wanted ) {
+		const response = await read( version, file );
+		if ( ! response.ok ) {
+			console.error(
+				`[fetch-ui-bundle] could not read ${ file }: ${ response.status } ${ response.statusText }; refusing to write`
+			);
+			process.exit( 1 );
+		}
+		bodies.set( rel, Buffer.from( await response.arrayBuffer() ) );
+	}
+	for ( const [ rel, body ] of bodies ) {
+		if ( ! rel.endsWith( '.css' ) ) {
+			continue;
+		}
+		const css = body.toString( 'utf8' );
+		const urls = [ ...css.matchAll( /url\(([^)]*)\)/g ) ].map( ( match ) =>
+			match[ 1 ].replace( /^["']|["']$/g, '' )
+		);
+		const stray = urls.filter(
+			( url ) =>
+				! url.startsWith( './' ) ||
+				! bodies.has( path.posix.normalize( url ) )
+		);
+		if (
+			urls.length === 0 ||
+			stray.length > 0 ||
+			css.includes( '@import' )
+		) {
+			console.error(
+				`[fetch-ui-bundle] ${ rel } must load only its own vendored files (found ${
+					stray.join( ', ' ) || 'none'
+				}); refusing to write`
+			);
+			process.exit( 1 );
+		}
+	}
+
+	fs.rmSync( FONT_FILES_OUT_DIR, { recursive: true, force: true } );
+	for ( const [ rel, body ] of bodies ) {
+		const out = path.join( FONT_FILES_OUT_DIR, rel );
+		fs.mkdirSync( path.dirname( out ), { recursive: true } );
+		fs.writeFileSync( out, body );
+	}
+	console.log(
+		`[fetch-ui-bundle] wrote ${ bodies.size } font files to assets/css/fonts/`
 	);
 }
 
@@ -283,7 +460,11 @@ function writeBackPins( version, parts ) {
 }
 
 const version = await resolveVersion();
-console.log( `[fetch-ui-bundle] vendoring ${ PACKAGE }@${ version }` );
+console.log(
+	`[fetch-ui-bundle] vendoring ${ PACKAGE }@${ version }${
+		LOCAL_SOURCE ? ` from ${ LOCAL_SOURCE }` : ''
+	}`
+);
 
 /**
  * Strip a trailing sourcemap reference.
@@ -312,7 +493,8 @@ function stripSourcemapRef( body ) {
 /**
  * Download a single file for the pinned version, validate it, and write it.
  *
- * @param {string}                        url         jsDelivr URL to fetch.
+ * @param {string}                        version     The resolved version.
+ * @param {string}                        file        Path inside the package.
  * @param {string}                        outFile     Absolute destination path.
  * @param {(body: string) => string|null} validate    Returns an error message if
  *                                                    the payload is not what we expect,
@@ -320,9 +502,14 @@ function stripSourcemapRef( body ) {
  * @param {(body: string) => string}      [transform] Applied after validation.
  * @return {Promise<void>}
  */
-async function vendor( url, outFile, validate, transform = ( body ) => body ) {
-	console.log( `[fetch-ui-bundle] fetching ${ url }` );
-	const response = await fetch( url );
+async function vendor(
+	version,
+	file,
+	outFile,
+	validate,
+	transform = ( body ) => body
+) {
+	const response = await read( version, file );
 	if ( ! response.ok ) {
 		console.error(
 			`[fetch-ui-bundle] download failed: ${ response.status } ${ response.statusText }`
@@ -352,9 +539,7 @@ async function vendor( url, outFile, validate, transform = ( body ) => body ) {
  * @return {Promise<string[]>} Published translated languages.
  */
 async function fetchPublishedLocales( version ) {
-	const manifestUrl = cdnUrl( version, 'dist/manifest.json' );
-	console.log( `[fetch-ui-bundle] fetching ${ manifestUrl }` );
-	const response = await fetch( manifestUrl );
+	const response = await read( version, 'dist/manifest.json' );
 	if ( ! response.ok ) {
 		console.error(
 			`[fetch-ui-bundle] could not read the manifest: ${ response.status } ${ response.statusText }; refusing to write`
@@ -413,7 +598,8 @@ async function vendorLocales( version, wanted ) {
 
 	for ( const lang of wanted ) {
 		await vendor(
-			cdnUrl( version, `dist/cdn/locales/${ lang }.js` ),
+			version,
+			`dist/cdn/locales/${ lang }.js`,
 			path.join( LOCALES_OUT_DIR, `${ lang }.js` ),
 			( body ) =>
 				body.includes( LOCALE_REGISTRY )
@@ -434,9 +620,7 @@ async function vendorLocales( version, wanted ) {
  * @return {Promise<void>}
  */
 async function vendorForms( version, locales ) {
-	const url = cdnUrl( version, 'dist/forms.json' );
-	console.log( `[fetch-ui-bundle] fetching ${ url }` );
-	const response = await fetch( url );
+	const response = await read( version, 'dist/forms.json' );
 	if ( ! response.ok ) {
 		console.error(
 			`[fetch-ui-bundle] could not read dist/forms.json for ${ PACKAGE }@${ version }: ${ response.status } ${ response.statusText }; a published forms manifest is required; refusing to write`
@@ -458,7 +642,8 @@ async function vendorForms( version, locales ) {
 	fs.writeFileSync( path.join( FORMS_OUT_DIR, 'forms.json' ), body );
 	for ( const lang of wanted ) {
 		await vendor(
-			cdnUrl( version, `dist/forms/labels/${ lang }.json` ),
+			version,
+			`dist/forms/labels/${ lang }.json`,
 			path.join( labelsDir, `${ lang }.json` ),
 			( text ) => {
 				try {
@@ -487,7 +672,8 @@ const locales = await fetchPublishedLocales( version );
 await vendorForms( version, locales );
 
 await vendor(
-	cdnUrl( version, 'dist/cdn/roxy-ui.js' ),
+	version,
+	'dist/cdn/roxy-ui.js',
 	JS_OUT_FILE,
 	( body ) =>
 		body.includes( 'customElements' )
@@ -496,27 +682,25 @@ await vendor(
 	stripSourcemapRef
 );
 
-await vendor(
-	cdnUrl( version, 'dist/styles/tokens.css' ),
-	CSS_OUT_FILE,
-	( body ) => {
-		if ( ! body.includes( '--roxy-' ) ) {
-			return 'downloaded tokens stylesheet has no --roxy-* custom properties';
-		}
-		if (
-			! body.includes( 'prefers-color-scheme' ) &&
-			! body.includes( '[data-theme' )
-		) {
-			return 'downloaded tokens stylesheet has no dark-mode block (prefers-color-scheme or [data-theme)';
-		}
-		return null;
+await vendor( version, 'dist/styles/tokens.css', CSS_OUT_FILE, ( body ) => {
+	if ( ! body.includes( '--roxy-' ) ) {
+		return 'downloaded tokens stylesheet has no --roxy-* custom properties';
 	}
-);
+	if (
+		! body.includes( 'prefers-color-scheme' ) &&
+		! body.includes( '[data-theme' )
+	) {
+		return 'downloaded tokens stylesheet has no dark-mode block (prefers-color-scheme or [data-theme)';
+	}
+	return null;
+} );
 
 await vendorLocales( version, locales );
 
 // Last, so a failed or rejected download can never leave the pins advertising a
 // version that is not the one sitting in assets/.
 const catalog = await fetchCatalog( version );
+await vendorFonts( version, catalog );
 writeThemes( catalog );
+writeFonts( catalog );
 writeBackPins( version, publishedParts( catalog ) );

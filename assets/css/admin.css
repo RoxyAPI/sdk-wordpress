@@ -1047,6 +1047,21 @@
 	color: #8a2424;
 }
 
+/* ---------- Reports tab: the logo picker ---------- */
+
+.wrap .roxyapi-logo {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.75rem;
+	margin: 0.25rem 0 1rem;
+}
+
+.wrap .roxyapi-logo-preview {
+	max-width: 240px;
+	max-height: 80px;
+}
+
 /* ---------- Help: one question per card ---------- */
 
 .roxyapi-faq {

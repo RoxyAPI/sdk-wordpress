@@ -1,11 +1,13 @@
 <?php
 /**
- * Brand palette, forced light/dark theme, and hidden sections for the RoxyAPI
- * readings.
+ * Brand palette, font pair, forced light/dark theme, and hidden sections for
+ * the RoxyAPI readings.
  *
- * Three jobs, one file, because they answer the same question: what does a
- * reading look like on this site. All three leave through one stylesheet,
- * {@link Theming::inline_css}, which the plugin attaches to the frontend handle.
+ * One file because they answer the same question: what does a reading look
+ * like on this site. The colours and the font leave through one stylesheet,
+ * {@link Theming::inline_css}, which the plugin attaches to the frontend handle;
+ * the font files through {@link Theming::font_stylesheet}. Reports read the
+ * same answers, so a report looks like the readings beside it.
  *
  * The components read every colour from the vendored token stylesheet as a
  * `--roxy-*` custom property. Custom properties inherit downward and cross the
@@ -46,6 +48,12 @@ class Theming {
 	 *
 	 * @var array<string, string>
 	 */
+	/**
+	 * The font setting that keeps readings in the site's own font whatever the
+	 * palette brings: no pair, nothing loaded.
+	 */
+	public const SITE_FONT = 'site';
+
 	private const TOKENS = array(
 		'accent'    => '--roxy-accent',
 		'secondary' => '--roxy-secondary',
@@ -98,9 +106,9 @@ class Theming {
 	 * The light and dark colours of one preset, or an empty array when the name
 	 * is not one we ship. Callers may pass unvalidated input.
 	 *
-	 * Presets arrive as colours, never as the upstream theme stylesheets: each
-	 * of those opens with an `@import` of a Google Fonts URL, which would make
-	 * every page request a third-party server on the site owner's behalf.
+	 * Presets arrive as colours, never as the upstream theme stylesheets, so
+	 * the font travels on its own ({@link Theming::font}) and the colours stay
+	 * the ones this file validates.
 	 *
 	 * @param string $name Preset name.
 	 * @return array<string, array<string, string>>
@@ -184,6 +192,53 @@ class Theming {
 	}
 
 	/**
+	 * The font pair in force: the one the site owner chose, else the default of
+	 * the preset in force, else none, which leaves readings in the site font.
+	 * {@link Theming::SITE_FONT} chooses none on purpose.
+	 *
+	 * @return string A key of `Palettes::FONTS`, or ''.
+	 */
+	public static function font(): string {
+		$opts   = SettingsSchema::get_option();
+		$chosen = (string) ( $opts['font'] ?? '' );
+		if ( $chosen === self::SITE_FONT ) {
+			return '';
+		}
+		if ( isset( Palettes::FONTS[ $chosen ] ) ) {
+			return $chosen;
+		}
+		return self::preset_font( (string) ( $opts['palette_preset'] ?? '' ) );
+	}
+
+	/**
+	 * The default font pair of one preset, or '' for Custom or an unknown name.
+	 *
+	 * @param string $name Preset name.
+	 * @return string
+	 */
+	public static function preset_font( string $name ): string {
+		return Palettes::all()[ $name ]['font'] ?? '';
+	}
+
+	/**
+	 * Plugin-relative path of the vendored stylesheet of the font pair in
+	 * force, or '' when there is none to load: no pair, or a pair drawn from
+	 * the visitor's own system fonts. Decided from the file itself, like the
+	 * label catalogues, so a pair is never offered a stylesheet it lacks.
+	 *
+	 * The components only load a font from beside a CDN script, never from the
+	 * vendored bundle, so this stylesheet is the one font request a reading
+	 * adds, and it goes to the site itself.
+	 *
+	 * @return string
+	 */
+	public static function font_stylesheet(): string {
+		$font = self::font();
+		$file = 'assets/css/fonts/' . $font . '.css';
+		return $font !== '' && is_readable( plugin_dir_path( ROXYAPI_PLUGIN_FILE ) . $file ) ? $file : '';
+	}
+
+	/**
 	 * The stylesheet that carries the palette onto the page.
 	 *
 	 * Three blocks on the front end, in an order the cascade depends on. The
@@ -212,8 +267,10 @@ class Theming {
 		// the token: the shipped default names a font that is not on the page,
 		// which made every reading fall back to a stack that matched nothing
 		// around it. `inherit` at the root leaves `font-family` to resolve from
-		// the element the component sits in.
-		$base = '--roxy-font-sans:inherit;';
+		// the element the component sits in. A font pair in force is named in
+		// `--roxy-font`, which every component reads to set both stacks.
+		$font = self::font();
+		$base = '--roxy-font-sans:inherit;' . ( $font !== '' ? '--roxy-font:' . $font . ';' : '' );
 
 		if ( $resolve_forced_mode && $mode !== 'auto' ) {
 			return ':root{' . $base . self::declarations( $palette[ $mode ] ) . '}';

@@ -14,7 +14,8 @@
  *   src/Generated/Endpoints.php        - endpoint registry with TTLs
  *   src/Generated/Builder/Manifest.php - shortcode builder metadata for wp-admin
  *   builder/manifest.json              - the same metadata for the web page
- *   src/Generated/Shortcodes/*.php     - one shortcode class per non-hero endpoint
+ *   src/Generated/Reports.php          - report templates and branding choices for [roxy_report]
+ *   src/Generated/Shortcodes/*.php     - one shortcode class per non-hero, non-report endpoint
  *   blocks/generated/{slug}/block.json - one generated block.json per non-hero endpoint
  *
  * Usage:
@@ -63,6 +64,11 @@ const componentMap = JSON.parse(
 // The theme presets of the pinned UI build, vendored by bin/fetch-ui-bundle.mjs.
 const uiThemes = JSON.parse(
 	await fs.readFile( path.join( __dirname, 'ui-themes.json' ), 'utf8' )
+);
+
+// The typefaces of the pinned UI build, vendored by bin/fetch-ui-bundle.mjs.
+const uiFonts = JSON.parse(
+	await fs.readFile( path.join( __dirname, 'ui-fonts.json' ), 'utf8' )
 );
 
 // The vendored UI model owns visitor-field classification and render intent.
@@ -221,6 +227,8 @@ for ( const [ apiPath, methods ] of Object.entries( spec.paths || {} ) ) {
 			method: method.toUpperCase(),
 			path: apiPath,
 			tag: ( op.tags || [] )[ 0 ] || 'Other',
+			tags: op.tags || [],
+			requestCost: op[ 'x-request-cost' ] ?? 1,
 			summary: op.summary || '',
 			description: op.description || '',
 			parameters: op.parameters || [],
@@ -229,17 +237,38 @@ for ( const [ apiPath, methods ] of Object.entries( spec.paths || {} ) ) {
 	}
 }
 
+/**
+ * A report renders a whole branded document and is priced above one request,
+ * so it never becomes a long-tail reading: its base64 PDF would print as text.
+ * Read from the spec (the Reports tag, or a declared request cost above one),
+ * never listed, so a new template joins `[roxy_report]` on regeneration.
+ * @param op
+ */
+function isReportOperation( op ) {
+	return op.tags.includes( 'Reports' ) || op.requestCost > 1;
+}
+const reportOps = operations.filter( isReportOperation );
+const reportIds = new Set( reportOps.map( ( op ) => op.operationId ) );
+
+/**
+ * What each report format means to a visitor, and so the formats the plugin
+ * delivers: a PDF download, or the document opened in the browser. The spec's
+ * other formats are for developers and are left out.
+ */
+const REPORT_FORMAT_LABELS = {
+	pdf: 'PDF download',
+	html: 'Page in the browser',
+};
+
+// Split hero vs generated
+const generated = operations.filter(
+	( o ) => ! heroSet.has( o.operationId ) && ! reportIds.has( o.operationId )
+);
 console.log(
 	`[generate] found ${ operations.length } operations (${
 		heroSet.size
-	} hero, ${
-		operations.length -
-		operations.filter( ( o ) => heroSet.has( o.operationId ) ).length
-	} generated)`
+	} hero, ${ reportOps.length } report, ${ generated.length } generated)`
 );
-
-// Split hero vs generated
-const generated = operations.filter( ( o ) => ! heroSet.has( o.operationId ) );
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -355,6 +384,16 @@ function tagToIcon( tag ) {
  * @param operationId
  */
 function getTtl( operationId ) {
+	// A report is a named document carrying a visitor's birth data, so it is
+	// never cached: derived here rather than written into the map per template.
+	if ( reportIds.has( operationId ) ) {
+		if ( operationId in ttlMap ) {
+			throw new Error(
+				`[generate] bin/ttl-map.json lists the report ${ operationId }; a report is never cached, remove the line`
+			);
+		}
+		return 0;
+	}
 	return ttlMap[ operationId ] ?? 0;
 }
 
@@ -1046,6 +1085,67 @@ function assertNoApiWording( label, where ) {
 const displayNames = buildDisplayNames( operations );
 
 /**
+ * One property of every report request, read from each template's schema. The
+ * templates share one branding and page contract, so a template that drifts
+ * from the others fails the run instead of offering a choice one of them
+ * refuses.
+ * @param {...string} names Property path below the request body.
+ */
+function reportRequestProperty( ...names ) {
+	const found = reportOps.map( ( op ) =>
+		names.reduce(
+			( node, name ) => resolveRef( node.properties?.[ name ] || {} ),
+			resolveRef(
+				op.requestBody?.content?.[ 'application/json' ]?.schema || {}
+			)
+		)
+	);
+	if (
+		found.some(
+			( node ) => JSON.stringify( node ) !== JSON.stringify( found[ 0 ] )
+		)
+	) {
+		throw new Error(
+			`[generate] the report templates disagree on ${ names.join(
+				'.'
+			) }; every template must take the same branding and page options`
+		);
+	}
+	return found[ 0 ] || {};
+}
+
+/**
+ * Every report template, keyed by the id `[roxy_report report]` takes: the
+ * last segment of its path, the id `<roxy-report report>` reads too.
+ */
+const reportTemplates = reportOps.map( ( op ) => {
+	const key = op.path.split( '/' ).pop();
+	if ( ! /^[a-z][a-z0-9-]*$/.test( key ) ) {
+		throw new Error(
+			`[generate] report ${ op.operationId } ends its path in "${ key }", which is not a usable report id`
+		);
+	}
+	return {
+		key,
+		operationId: op.operationId,
+		title: assertNoApiWording(
+			displayNames[ op.operationId ],
+			`${ op.operationId } report title`
+		),
+	};
+} );
+if (
+	new Set( reportTemplates.map( ( t ) => t.key ) ).size !==
+	reportTemplates.length
+) {
+	throw new Error( '[generate] two report templates share one report id' );
+}
+
+const reportFormats = ( reportRequestProperty( 'format' ).enum || [] ).filter(
+	( format ) => format in REPORT_FORMAT_LABELS
+);
+
+/**
  * A one-line description for the inserter, from the summary's own descriptive
  * tail, falling back to the first sentence of the spec description.
  * @param op
@@ -1598,7 +1698,11 @@ class ${ className } {
 		return ${ sourced ? '\\RoxyAPI\\Support\\OptionSource::resolve( ' : '' }array(
 			'operation_id' => ${ phpLiteral( op.operationId ) },
 			'title'        => ${ translatablePhp( title ) },
-			'submit_label' => __( 'Get reading', 'roxyapi' ),
+			'submit_label' => ${
+				reportIds.has( op.operationId )
+					? "__( 'Create my report', 'roxyapi' )"
+					: "__( 'Get reading', 'roxyapi' )"
+			},
 			'locations'    => ${ phpLiteral( formSpec.locations ) },
 			'sections'     => array(
 ${ sectionsPhp }
@@ -1820,7 +1924,9 @@ ${ methods.join( '\n' ) }
 function emitEndpointsPhp() {
 	const entries = operations.map( ( op ) => {
 		const ttl = getTtl( op.operationId );
-		const isHero = heroSet.has( op.operationId );
+		// A report operation is owned by the [roxy_report] hero, never a tag of its own.
+		const isHero =
+			heroSet.has( op.operationId ) || reportIds.has( op.operationId );
 
 		// Pluck OpenAPI examples for every parameter/body field so the library
 		// and Demo pages can offer a copy-paste sample with sensible inputs.
@@ -2197,6 +2303,101 @@ ${ partsPhp }
 `;
 }
 
+/**
+ * Emit src/Generated/Reports.php: every report template and every branding
+ * choice a report request accepts, read from the spec, so the shortcode, the
+ * block, the builder and the Reports tab offer exactly what the API takes.
+ */
+function emitReportsPhp() {
+	if ( reportTemplates.length === 0 ) {
+		throw new Error(
+			'[generate] the spec publishes no report operation, so [roxy_report] would offer nothing'
+		);
+	}
+	const langs = [
+		...new Set(
+			reportOps.map( ( op ) =>
+				JSON.stringify(
+					resolveRef(
+						op.parameters.find( ( p ) => p.name === 'lang' )
+							?.schema || {}
+					).enum || []
+				)
+			)
+		),
+	];
+	if ( langs.length !== 1 ) {
+		throw new Error(
+			'[generate] the report templates disagree on the languages they write in'
+		);
+	}
+	const templatesPhp = reportTemplates
+		.map(
+			( t ) => `			${ sq( t.key ) } => array(
+				'operation_id' => ${ sq( t.operationId ) },
+				'title'        => ${ translatablePhp( t.title ) },
+			),`
+		)
+		.join( '\n' );
+	return `<?php
+/**
+ * Auto-generated report contract: the templates [roxy_report] dispatches to and
+ * the branding a report request accepts.
+ *
+ * DO NOT EDIT. Generated by bin/generate.mjs from the OpenAPI spec and the
+ * pinned UI catalogue.
+ *
+ * @package RoxyAPI
+ */
+
+namespace RoxyAPI\\Generated;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+class Reports {
+
+	/** Formats delivered to a visitor: a PDF download, or the document in the browser. */
+	public const FORMATS = ${ phpLiteral( reportFormats ) };
+
+	/** Paper sizes a PDF report lays out on. */
+	public const PAGE_SIZES = ${ phpLiteral(
+		reportRequestProperty( 'page', 'size' ).enum || []
+	) };
+
+	/** Languages a report is written in. */
+	public const LANGUAGES = ${ phpLiteral( JSON.parse( langs[ 0 ] ) ) };
+
+	/** Theme presets a report accepts. */
+	public const THEMES = ${ phpLiteral(
+		reportRequestProperty( 'branding', 'theme' ).enum || []
+	) };
+
+	/** Longest brand name a report prints. */
+	public const NAME_MAX_LENGTH = ${
+		reportRequestProperty( 'branding', 'name' ).maxLength ?? 0
+	};
+
+	/** Longest footer a report prints. */
+	public const FOOTER_MAX_LENGTH = ${
+		reportRequestProperty( 'branding', 'footer' ).maxLength ?? 0
+	};
+
+	/**
+	 * Every template keyed by its report id, the last segment of its path.
+	 *
+	 * @return array<string, array{operation_id: string, title: string}>
+	 */
+	public static function templates(): array {
+		return array(
+${ templatesPhp }
+		);
+	}
+}
+`;
+}
+
 function emitPalettesPhp() {
 	const modePhp = ( colors ) => {
 		const width = Math.max(
@@ -2223,6 +2424,15 @@ function emitPalettesPhp() {
 			'[generate] ui-themes.json is empty. Run `npm run fetch:ui` to read it from the pinned bundle.'
 		);
 	}
+	const fontKeys = uiFonts.map( ( font ) => font.key );
+	if (
+		fontKeys.length === 0 ||
+		! fontKeys.every( ( key ) => /^[a-z][a-z0-9-]*$/.test( key ) )
+	) {
+		throw new Error(
+			'[generate] ui-fonts.json is empty or holds an invalid key. Run `npm run fetch:ui` to read it from the pinned bundle.'
+		);
+	}
 	const entries = uiThemes
 		.map( ( theme ) => {
 			if ( ! /^[a-z][a-z0-9-]*$/.test( theme.key ) ) {
@@ -2230,9 +2440,15 @@ function emitPalettesPhp() {
 					`[generate] ui-themes.json: invalid preset key "${ theme.key }"`
 				);
 			}
+			if ( ! fontKeys.includes( theme.font ) ) {
+				throw new Error(
+					`[generate] ui-themes.json: preset "${ theme.key }" names a font the catalogue does not publish`
+				);
+			}
 			return (
 				`\t\t\t${ sq( theme.key ) } => array(\n` +
 				`\t\t\t\t'name'  => ${ sq( theme.name ) },\n` +
+				`\t\t\t\t'font'  => ${ sq( theme.font ) },\n` +
 				`\t\t\t\t'light' => array(\n${ modePhp( theme.light ) }\n\t\t\t\t),\n` +
 				`\t\t\t\t'dark'  => array(\n${ modePhp( theme.dark ) }\n\t\t\t\t),\n` +
 				`\t\t\t),`
@@ -2241,10 +2457,11 @@ function emitPalettesPhp() {
 		.join( '\n' );
 	return `<?php
 /**
- * Auto-generated theme presets of the pinned @roxyapi/ui build.
+ * Auto-generated theme presets and font pairs of the pinned @roxyapi/ui build.
  *
- * DO NOT EDIT. Generated by bin/generate.mjs from bin/ui-themes.json, which
- * npm run fetch:ui writes from the pinned components catalogue.
+ * DO NOT EDIT. Generated by bin/generate.mjs from bin/ui-themes.json and
+ * bin/ui-fonts.json, which npm run fetch:ui writes from the pinned components
+ * catalogue.
  *
  * @package RoxyAPI
  */
@@ -2257,11 +2474,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Palettes {
 
+	/** Font pairs in menu order, display name (a proper name, never translated) by key. */
+	public const FONTS = ${ phpLiteral(
+		Object.fromEntries( uiFonts.map( ( font ) => [ font.key, font.name ] ) )
+	) };
+
 	/**
 	 * Every preset in menu order: its display name (a proper name, never
-	 * translated) and its light and dark colours by token.
+	 * translated), its default font pair and its light and dark colours by token.
 	 *
-	 * @return array<string, array{name: string, light: array<string, string>, dark: array<string, string>}>
+	 * @return array<string, array{name: string, font: string, light: array<string, string>, dark: array<string, string>}>
 	 */
 	public static function all(): array {
 		return array(
@@ -2700,6 +2922,34 @@ function heroBlockFields( tagSuffix, cfg ) {
 }
 
 /**
+ * The two placement choices of the report hero, the one place the block
+ * sidebar and the builder read them from: which template, and how a visitor
+ * receives it.
+ */
+function reportPlacementFields() {
+	return [
+		{
+			name: 'report',
+			control: 'select',
+			label: 'Report',
+			required: false,
+			options: reportTemplates.map( ( t ) => t.key ),
+			optionLabels: reportTemplates.map( ( t ) => t.title ),
+		},
+		{
+			name: 'format',
+			control: 'select',
+			label: 'Delivery',
+			required: false,
+			options: reportFormats,
+			optionLabels: reportFormats.map(
+				( format ) => REPORT_FORMAT_LABELS[ format ]
+			),
+		},
+	];
+}
+
+/**
  * Describe the block for one hero, from its `block` entry in hero-config.
  *
  * `block.name` is the full registered name and is written out rather than
@@ -2730,6 +2980,15 @@ function blockFromHero( tagSuffix, cfg ) {
 	const takesInput = Object.values( cfg.attributes || {} ).some(
 		( info ) => info.required
 	);
+	let instructions =
+		'Choose the options in the sidebar to preview this reading here.';
+	if ( cfg.dispatch_by ) {
+		instructions =
+			'Choose the report. Your visitors fill in their own details and receive it under your brand.';
+	} else if ( cfg.form_mode && takesInput ) {
+		instructions =
+			'Fill these in to publish a fixed reading, or leave them blank to publish a form your visitors fill in.';
+	}
 
 	return {
 		slug: name.slice( 'roxyapi/'.length ),
@@ -2745,16 +3004,15 @@ function blockFromHero( tagSuffix, cfg ) {
 		icon: cfg.block.icon,
 		keywords: cfg.block.keywords,
 		attributes,
-		fields: heroBlockFields( tagSuffix, cfg ),
+		fields: cfg.dispatch_by
+			? reportPlacementFields()
+			: heroBlockFields( tagSuffix, cfg ),
 		phpClass: `\\RoxyAPI\\Generated\\Heroes\\${ toPascalCase(
 			tagSuffix
 		) }`,
 		hidden: false,
 		category: 'roxyapi',
-		instructions:
-			cfg.form_mode && takesInput
-				? 'Fill these in to publish a fixed reading, or leave them blank to publish a form your visitors fill in.'
-				: 'Choose the options in the sidebar to preview this reading here.',
+		instructions,
 		sourceLabel: `hero ${ tagSuffix }`,
 	};
 }
@@ -2924,6 +3182,13 @@ function fieldsToJsSource( fields ) {
 				lines.push(
 					`\t\toptions: [ ${ field.options
 						.map( ( option ) => js( option ) )
+						.join( ', ' ) } ],`
+				);
+			}
+			if ( field.optionLabels ) {
+				lines.push(
+					`\t\toptionLabels: [ ${ field.optionLabels
+						.map( ( label ) => t( label ) )
 						.join( ', ' ) } ],`
 				);
 			}
@@ -3615,6 +3880,76 @@ function emitHeroPhp( tagSuffix, cfg ) {
 	const className = toPascalCase( tagSuffix );
 	const shortcodeTag = 'roxy_' + tagSuffix;
 
+	// The report hero dispatches by its `report` attribute to one of the report
+	// templates the spec publishes. Every input flows through the template's
+	// visitor form, so the class only declares its placement attributes.
+	if ( cfg.dispatch_by ) {
+		const keys = reportTemplates.map( ( t ) => t.key );
+		const { report, format } = cfg.attributes;
+		if (
+			cfg.dispatch_by !== 'report' ||
+			! keys.includes( report?.default ) ||
+			! reportFormats.includes( format?.default )
+		) {
+			throw new Error(
+				`[generate] hero ${ tagSuffix } must dispatch by "report", default to one of ${ keys.join(
+					', '
+				) } and to one of the formats ${ reportFormats.join( ', ' ) }`
+			);
+		}
+		return `<?php
+/**
+ * Auto-generated hero shortcode: [${ shortcodeTag }]
+ *
+ * ${ cfg.description }
+ *
+ * Example: ${ cfg.example }
+ *
+ * DO NOT EDIT. Generated by bin/generate.mjs from bin/hero-config.json.
+ *
+ * @package RoxyAPI
+ */
+
+namespace RoxyAPI\\Generated\\Heroes;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+class ${ className } {
+
+	/**
+	 * Placement attributes: which report, and how the visitor receives it.
+	 *
+	 * @var array<string, string>
+	 */
+	public const DEFAULTS = array(
+${ withReservedAtts(
+	[
+		`\t\t'report' => ${ sq( report.default ) },`,
+		`\t\t'format' => ${ sq( format.default ) },`,
+	],
+	'\t\t'
+).join( '\n' ) }
+	);
+
+	/**
+	 * Render the report form of the chosen template.
+	 *
+	 * @param array<string, string>|string $atts    Shortcode attributes.
+	 * @param string                       $content Inner content (ignored).
+	 * @param string                       $tag     Shortcode tag.
+	 * @return string
+	 */
+	public static function render( $atts, $content = '', $tag = '' ): string {
+		$atts = shortcode_atts( self::DEFAULTS, is_array( $atts ) ? $atts : array(), (string) $tag );
+		wp_enqueue_style( 'roxyapi-frontend' );
+		return \\RoxyAPI\\Api\\ReportRoute::form( $atts );
+	}
+}
+`;
+	}
+
 	// Heroes that delegate to an existing long-tail Form (synastry, gun_milan,
 	// compatibility, forecast) are a clean alias for the form-mode shortcode.
 	// Their input nests below the flat attributes a shortcode can carry, so the
@@ -4099,6 +4434,11 @@ function emitHeroManifest( heroConfig ) {
 			const formBase = cfg.delegate_to_form.replace( /Form$/, '' );
 			opId = formBase.charAt( 0 ).toLowerCase() + formBase.slice( 1 );
 		}
+		if ( ! opId && cfg.dispatch_by ) {
+			opId = reportTemplates.find(
+				( t ) => t.key === cfg.attributes.report.default
+			).operationId;
+		}
 		if ( ! opId && Array.isArray( cfg.dispatch ) ) {
 			const def =
 				cfg.dispatch.find( ( d ) => d.default ) || cfg.dispatch[ 0 ];
@@ -4246,6 +4586,35 @@ function buildBuilderManifest() {
 	);
 	const entries = new Map();
 	for ( const [ suffix, cfg ] of Object.entries( heroConfig ) ) {
+		const tag = cfg.tag || `roxy_${ suffix }`;
+		// A report is placed, never filled in by the owner: its one step picks
+		// the template and the delivery, the visitor brings the details.
+		if ( cfg.dispatch_by ) {
+			entries.set( tag, {
+				tag,
+				title: cfg.title,
+				description: builderDescription( cfg.description ),
+				domain: cfg.domain,
+				order: 0,
+				operationId: null,
+				hero: true,
+				modes: [ 'report' ],
+				formOnly: false,
+				attributes: reportPlacementFields().map( ( field ) => ( {
+					...builderAttribute(
+						null,
+						field.name,
+						{
+							enum: field.options,
+							default: cfg.attributes[ field.name ].default,
+						},
+						{ label: field.label }
+					),
+					enum_labels: field.optionLabels,
+				} ) ),
+			} );
+			continue;
+		}
 		const opId =
 			cfg.operationId ||
 			( cfg.delegate_to_form
@@ -4266,7 +4635,6 @@ function buildBuilderManifest() {
 			} );
 		const formOnly = !! cfg.delegate_to_form;
 		const visitor = formOnly || !! cfg.form_mode;
-		const tag = cfg.tag || `roxy_${ suffix }`;
 		entries.set( tag, {
 			tag,
 			title: cfg.title,
@@ -4485,6 +4853,16 @@ console.log(
 	`[generate] wrote src/Generated/Palettes.php (${ uiThemes.length } presets)`
 );
 
+// 2d. Reports.php
+await fs.writeFile(
+	path.join( OUT_PHP, 'Reports.php' ),
+	emitReportsPhp(),
+	'utf8'
+);
+console.log(
+	`[generate] wrote src/Generated/Reports.php (${ reportTemplates.length } templates)`
+);
+
 // 3. Generated shortcodes
 for ( const op of generated ) {
 	const className = toPascalCase( op.operationId );
@@ -4531,8 +4909,12 @@ class FormLabels {
 );
 
 let formCount = 0;
-for ( const op of generated ) {
-	if ( ! hasRequiredObjectBody( op ) && ! offersVisitorForm( op ) ) {
+for ( const op of [ ...generated, ...reportOps ] ) {
+	if (
+		! reportIds.has( op.operationId ) &&
+		! hasRequiredObjectBody( op ) &&
+		! offersVisitorForm( op )
+	) {
 		continue;
 	}
 	const className = toPascalCase( op.operationId ) + 'Form';

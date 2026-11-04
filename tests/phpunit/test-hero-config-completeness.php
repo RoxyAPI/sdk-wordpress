@@ -156,6 +156,10 @@ class Test_Hero_Config_Completeness extends \WP_UnitTestCase {
 					}
 				}
 			}
+			// The report hero dispatches to every report template the spec publishes.
+			if ( ! empty( $entry['dispatch_by'] ) ) {
+				$op_ids = array_merge( $op_ids, array_column( \RoxyAPI\Generated\Reports::templates(), 'operation_id' ) );
+			}
 
 			$this->assertNotEmpty(
 				$op_ids,

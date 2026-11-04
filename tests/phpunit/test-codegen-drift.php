@@ -118,8 +118,9 @@ class Test_Codegen_Drift extends \WP_UnitTestCase {
 	 * broken. Failing here forces an explicit decision per endpoint.
 	 */
 	public function test_ttl_map_covers_every_operation(): void {
-		$ttl      = $this->load_json( 'bin/ttl-map.json' );
-		$unlisted = array_diff( self::$live_ops, array_keys( $ttl ) );
+		$ttl = $this->load_json( 'bin/ttl-map.json' );
+		// A report is never cached, by rule rather than by a line per template.
+		$unlisted = array_diff( self::$live_ops, array_keys( $ttl ), array_column( \RoxyAPI\Generated\Reports::templates(), 'operation_id' ) );
 		$this->assertEmpty(
 			$unlisted,
 			'Every operation needs an explicit bin/ttl-map.json entry (the _comment in that file explains how to choose a value). Missing: '

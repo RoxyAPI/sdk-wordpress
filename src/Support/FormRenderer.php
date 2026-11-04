@@ -35,9 +35,12 @@ class FormRenderer {
 	 *                                         survive the PRG round trip and a submitted
 	 *                                         reading matches what the same placement
 	 *                                         renders statically.
+	 * @param string               $rest_url   A REST route that answers the post instead of
+	 *                                         the page; it carries the REST nonce, which core
+	 *                                         checks before the route sees the request.
 	 * @return string HTML.
 	 */
-	public static function render( string $form_class, array $atts = array() ): string {
+	public static function render( string $form_class, array $atts = array(), string $rest_url = '' ): string {
 		if ( ! class_exists( $form_class ) || ! method_exists( $form_class, 'spec' ) ) {
 			return '';
 		}
@@ -93,11 +96,14 @@ class FormRenderer {
 		$out  = '<div class="roxyapi-form-wrap">';
 		$out .= $result_html;
 
-		$action      = self::current_url();
+		$action      = $rest_url !== '' ? $rest_url : self::current_url();
 		$form_dom_id = 'roxyapi-form-' . sanitize_html_class( $form_id );
 		$out        .= '<form class="roxyapi-form" id="' . esc_attr( $form_dom_id ) . '" method="post" action="' . esc_url( $action ) . '" novalidate>';
-		$out        .= '<input type="hidden" name="roxyapi_form" value="' . esc_attr( $form_id ) . '">';
-		$out        .= wp_nonce_field( 'roxyapi_form_' . $form_id, '_wpnonce', true, false );
+		// The page post names its form for FormRouter; a REST route already
+		// knows its form from its own path.
+		$out .= $rest_url !== ''
+			? wp_nonce_field( 'wp_rest', '_wpnonce', true, false )
+			: '<input type="hidden" name="roxyapi_form" value="' . esc_attr( $form_id ) . '">' . wp_nonce_field( 'roxyapi_form_' . $form_id, '_wpnonce', true, false );
 
 		// Site-owner override of form title takes priority over the spec
 		// default. Empty setting means use the operation's spec title.
@@ -112,13 +118,17 @@ class FormRenderer {
 			$out .= '<p class="roxyapi-form-lede">' . esc_html( $lede ) . '</p>';
 		}
 
+		// One city search per location group, drawn where its anchor field sits;
+		// the group's coordinates and timezone are the hidden fields it fills.
 		$city_searches = array();
 		foreach ( $spec['locations'] ?? array() as $location ) {
-			$scope_id = empty( $location['section'] )
-				? $form_dom_id
-				: 'roxyapi-section-' . sanitize_html_class( $form_id . '-' . $location['section'] );
-
-			$city_searches[ $location['anchor'] ] = self::render_city_search( $scope_id, $location['fields'], (string) ( $location['id'] ?? '' ) );
+			$city_searches[ $location['anchor'] ] = array(
+				'scope'  => empty( $location['section'] )
+					? $form_dom_id
+					: 'roxyapi-section-' . sanitize_html_class( $form_id . '-' . $location['section'] ),
+				'fields' => $location['fields'],
+				'id'     => (string) ( $location['id'] ?? '' ),
+			);
 		}
 		foreach ( ( $spec['sections'] ?? array() ) as $section ) {
 			$section_name = (string) $section['name'];
@@ -163,26 +173,56 @@ class FormRenderer {
 	/**
 	 * Render controls in model order, folding only fields marked by the model.
 	 * Values and validation errors open their containing fold without JavaScript.
+	 * A field of a location group is never typed: the group's city search
+	 * fills it, so it renders as the hidden field the search writes, under the
+	 * same posted name, and a missing city shows on the search itself.
 	 *
-	 * @param array<int, array<string, mixed>> $fields        Field specs.
-	 * @param string                           $section       Posted section name, or empty for flat fields.
-	 * @param string                           $group_id      DOM id of the containing group.
-	 * @param array<string, mixed>             $previous      Submitted values.
-	 * @param array<string, mixed>             $errors        Validation errors.
-	 * @param array<string, string>            $city_searches City controls keyed by exact posted anchor name.
-	 * @param bool                             $group_folded Whether the containing section already folds.
+	 * @param array<int, array<string, mixed>>    $fields        Field specs.
+	 * @param string                              $section       Posted section name, or empty for flat fields.
+	 * @param string                              $group_id      DOM id of the containing group.
+	 * @param array<string, mixed>                $previous      Submitted values.
+	 * @param array<string, mixed>                $errors        Validation errors.
+	 * @param array<string, array<string, mixed>> $city_searches Location groups (scope, fields, id) keyed by exact posted anchor name.
+	 * @param bool                                $group_folded  Whether the containing section already folds.
 	 * @return string
 	 */
 	private static function render_fields( array $fields, string $section, string $group_id, array $previous, array $errors, array $city_searches, bool $group_folded = false ): string {
+		$located = array();
+		foreach ( $city_searches as $search ) {
+			$located += array_flip( array_values( $search['fields'] ) );
+		}
+		$missing  = array();
+		$required = array();
+		foreach ( $fields as $field ) {
+			$name = FormRouter::posted_name( $section, (string) $field['name'] );
+			if ( ! isset( $located[ $name ] ) ) {
+				continue;
+			}
+			if ( is_string( $errors[ (string) $field['name'] ] ?? null ) ) {
+				$missing[ $name ] = true;
+			}
+			if ( ! empty( $field['required'] ) ) {
+				$required[ $name ] = true;
+			}
+		}
+
 		$shown_html  = '';
 		$folded_html = '';
 		$folded_open = false;
 		foreach ( $fields as $field ) {
-			$key   = (string) $field['name'];
-			$name  = FormRouter::posted_name( $section, $key );
-			$value = $previous[ $key ] ?? '';
-			$error = is_string( $errors[ $key ] ?? null ) ? $errors[ $key ] : '';
-			$html  = ( $city_searches[ $name ] ?? '' ) . self::render_field( $name, $field, $value, $error );
+			// A located field starts empty even after a post: the city search
+			// text is not posted, so a restored place would go out again under
+			// an empty search. The visitor picks the city again.
+			$key    = (string) $field['name'];
+			$name   = FormRouter::posted_name( $section, $key );
+			$value  = isset( $located[ $name ] ) ? '' : ( $previous[ $key ] ?? '' );
+			$error  = is_string( $errors[ $key ] ?? null ) ? $errors[ $key ] : '';
+			$search = $city_searches[ $name ] ?? null;
+			$group  = $search !== null ? array_flip( array_values( $search['fields'] ) ) : array();
+			$html   = ( $search !== null ? self::render_city_search( $search['scope'], $search['fields'], $search['id'], (bool) array_intersect_key( $required, $group ), (bool) array_intersect_key( $missing, $group ) ) : '' )
+				. ( isset( $located[ $name ] )
+					? '<input type="hidden" name="' . esc_attr( $name ) . '" value="">'
+					: self::render_field( $name, $field, $value, $error ) );
 			if ( $group_folded || empty( $field['fold'] ) ) {
 				$shown_html .= $html;
 				continue;
@@ -320,28 +360,36 @@ class FormRenderer {
 	}
 
 	/**
-	 * Render the visible city-search combobox. The matching JS attaches
-	 * autocomplete behaviour and writes to the exact posted names inside
-	 * the scope on selection. Without JS the field is a labelled hint and the
-	 * coordinate inputs remain fully usable.
+	 * Render the city-search combobox of one location group. The matching JS
+	 * attaches autocomplete behaviour and writes the picked city's latitude,
+	 * longitude and timezone into the group's hidden fields, under their exact
+	 * posted names.
 	 *
 	 * @param string                $scope_id DOM id of the element holding the location fields.
 	 * @param array<string, string> $fields   Exact posted names keyed by latitude, longitude and timezone.
 	 * @param string                $group_id Distinguishes multiple location groups sharing a scope.
+	 * @param bool                  $required Whether the reading needs the place.
+	 * @param bool                  $missing  Whether the last post arrived without a city.
 	 * @return string
 	 */
-	private static function render_city_search( string $scope_id, array $fields, string $group_id = '' ): string {
+	private static function render_city_search( string $scope_id, array $fields, string $group_id, bool $required, bool $missing ): string {
 		$input_id = 'roxyapi-geocode-' . sanitize_html_class( $scope_id . ( $group_id !== '' ? '-' . $group_id : '' ) );
-		$out      = '<p class="roxyapi-form-field roxyapi-form-geocode">';
-		$out     .= '<label for="' . esc_attr( $input_id ) . '">' . esc_html__( 'Find by city', 'roxyapi' ) . '</label>';
+		$err_id   = $input_id . '-err';
+		$out      = '<p class="roxyapi-form-field roxyapi-form-geocode' . ( $missing ? ' has-error' : '' ) . '">';
+		$out     .= '<label for="' . esc_attr( $input_id ) . '">' . esc_html__( 'Find by city', 'roxyapi' ) . ( $required ? ' <span class="roxyapi-form-required" aria-hidden="true">*</span>' : '' ) . '</label>';
 		$out     .= '<input type="text" id="' . esc_attr( $input_id ) . '"'
 			. ' class="roxyapi-form-geocode-input"'
 			. ' placeholder="' . esc_attr__( 'Start typing a city name', 'roxyapi' ) . '"'
 			. ' data-roxyapi-geocode="' . esc_attr( '#' . $scope_id ) . '"'
 			. ' data-roxyapi-geocode-fields="' . esc_attr( (string) wp_json_encode( $fields ) ) . '"'
+			. ( $missing ? ' aria-describedby="' . esc_attr( $err_id ) . '"' : '' )
 			. ' autocomplete="off">';
-		$out     .= '<span class="roxyapi-form-help">' . esc_html__( 'Selecting a city auto-fills latitude, longitude, and timezone.', 'roxyapi' ) . '</span>';
-		$out     .= '</p>';
+		if ( $missing ) {
+			/* translators: %s: field label */
+			$message = sprintf( __( '%s is required.', 'roxyapi' ), __( 'City', 'roxyapi' ) );
+			$out    .= '<span class="roxyapi-form-error" id="' . esc_attr( $err_id ) . '" aria-live="polite">' . esc_html( $message ) . '</span>';
+		}
+		$out .= '</p>';
 		return $out;
 	}
 

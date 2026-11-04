@@ -174,6 +174,7 @@ class SettingsPage {
 			'connect'       => __( 'Connect', 'roxyapi' ),
 			'branding'      => __( 'Branding', 'roxyapi' ),
 			'display'       => __( 'Display', 'roxyapi' ),
+			'reports'       => __( 'Reports', 'roxyapi' ),
 			'sell-readings' => __( 'Sell readings', 'roxyapi' ),
 			'privacy'       => __( 'Privacy', 'roxyapi' ),
 			'advanced'      => __( 'Advanced', 'roxyapi' ),
@@ -241,6 +242,7 @@ class SettingsPage {
 				'palette_preset_input'   => SettingsFields::palette_preset_input_html(),
 				'palette_colors_input'   => SettingsFields::palette_colors_html(),
 				'palette_reset_input'    => SettingsFields::palette_reset_html(),
+				'font_input'             => SettingsFields::font_input_html(),
 				'palette_is_custom'      => (string) ( SettingsSchema::get_option()['palette_preset'] ?? '' ) === '',
 				'theme_mode_input'       => SettingsFields::theme_mode_input_html(),
 				'display_language_input' => SettingsFields::display_language_input_html(),
@@ -251,6 +253,11 @@ class SettingsPage {
 				'form_title_input'       => SettingsFields::form_title_input_html(),
 				'form_submit_input'      => SettingsFields::form_submit_input_html(),
 				'cache_preset_input'     => SettingsFields::cache_preset_input_html(),
+				'report_name_input'      => SettingsFields::report_text_html( 'report_name' ),
+				'report_logo_input'      => SettingsFields::report_logo_html(),
+				'report_footer_input'    => SettingsFields::report_text_html( 'report_footer' ),
+				'report_page_size_input' => SettingsFields::report_select_html( 'report_page_size' ),
+				'report_language_input'  => SettingsFields::report_select_html( 'report_language' ),
 				'privacy_policy_url'     => admin_url( 'options-privacy.php' ),
 				'builder_url'            => admin_url( 'admin.php?page=' . BuilderPage::PAGE_SLUG ),
 				'shortcodes_url'         => admin_url( 'admin.php?page=' . ShortcodesPage::PAGE_SLUG ),
@@ -298,5 +305,10 @@ class SettingsPage {
 		}
 		Assets::enqueue_admin_css();
 		Assets::enqueue_admin_script();
+		// The report logo is picked from the media library, on its tab only.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only tab selector on a manage_options page.
+		if ( isset( $_GET['tab'] ) && sanitize_key( wp_unslash( $_GET['tab'] ) ) === 'reports' ) {
+			wp_enqueue_media();
+		}
 	}
 }

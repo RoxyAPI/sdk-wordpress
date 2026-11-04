@@ -157,8 +157,9 @@ function FieldControl( { field, value, setAttributes } ) {
 					: __( 'Default', 'roxyapi' ),
 				value: '',
 			},
-			...field.options.map( ( option ) => ( {
-				label: humanizeOption( option ),
+			...field.options.map( ( option, index ) => ( {
+				label:
+					field.optionLabels?.[ index ] ?? humanizeOption( option ),
 				value: option,
 			} ) ),
 		];

@@ -11,6 +11,8 @@
  * 3. Submitted: every visitor form, with each field a visitor must fill given
  *    the sample its input offers, goes through the submission path a visitor
  *    POST takes and must return a reading.
+ * 4. Reports: every report template, posted the same way, branded from the
+ *    Reports tab and delivered as the visitor receives it, must be a PDF.
  *
  * A failure is retried once and the retries are listed, so a dropped
  * connection is told apart from a reading that fails every time.
@@ -138,11 +140,27 @@ foreach ( \RoxyAPI\Generated\Endpoints::all() as $roxyapi_endpoint ) {
 }
 
 // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- a local vendored file, not a remote request.
-$roxyapi_models = json_decode( (string) file_get_contents( __DIR__ . '/ui-forms/forms.json' ), true )['forms'];
+$roxyapi_models  = json_decode( (string) file_get_contents( __DIR__ . '/ui-forms/forms.json' ), true )['forms'];
+$roxyapi_reports = array_map( static fn( $template ) => $template['operation_id'], \RoxyAPI\Generated\Reports::templates() );
 foreach ( glob( dirname( __DIR__ ) . '/src/Generated/Forms/*Form.php' ) as $roxyapi_file ) {
 	$roxyapi_class = '\\RoxyAPI\\Generated\\Forms\\' . basename( $roxyapi_file, '.php' );
 	$roxyapi_spec  = $roxyapi_class::spec();
 	$roxyapi_post  = roxyapi_check_post( $roxyapi_spec, array_column( $roxyapi_models[ $roxyapi_spec['operation_id'] ]['fields'] ?? array(), null, 'key' ) );
+	$roxyapi_key   = array_search( $roxyapi_spec['operation_id'], $roxyapi_reports, true );
+
+	if ( $roxyapi_key !== false ) {
+		$roxyapi_probes['reports'][ "[roxy_report report=\"$roxyapi_key\"]" ] = static function () use ( $roxyapi_key, $roxyapi_post ): array {
+			$outcome = \RoxyAPI\Api\ReportRoute::deliver( (string) $roxyapi_key, 'pdf', $roxyapi_post );
+			if ( isset( $outcome['document'] ) ) {
+				return array( strncmp( $outcome['document']['bytes'], '%PDF-', 5 ) === 0 ? 'pdf' : 'not a pdf', '' );
+			}
+			if ( isset( $outcome['wp_error'] ) ) {
+				return array( 'api error', (string) ( $outcome['wp_error']['data']['saas_msg'] ?? $outcome['wp_error']['message'] ) );
+			}
+			return array( 'rejected', (string) wp_json_encode( $outcome['validation_errors'] ?? array() ) );
+		};
+		continue;
+	}
 
 	$roxyapi_probes['submitted'][ (string) $roxyapi_spec['operation_id'] ] = static function () use ( $roxyapi_class, $roxyapi_post ): array {
 		$outcome = \RoxyAPI\Support\FormRouter::submit( $roxyapi_class, $roxyapi_post );
@@ -178,6 +196,7 @@ $roxyapi_passes = array(
 	'owner placed' => array( 'nothing' ),
 	'placed'       => array( 'form', 'reading' ),
 	'submitted'    => array( 'reading' ),
+	'reports'      => array( 'pdf' ),
 );
 
 $roxyapi_failures = array();
@@ -206,4 +225,4 @@ if ( $roxyapi_retried ) {
 if ( $roxyapi_failures ) {
 	WP_CLI::error( "Readings that fail a visitor:\n" . implode( "\n", $roxyapi_failures ) );
 }
-WP_CLI::success( 'Every reading renders for a visitor bare, placed and submitted.' );
+WP_CLI::success( 'Every reading renders for a visitor bare, placed and submitted, and every report downloads as a PDF.' );

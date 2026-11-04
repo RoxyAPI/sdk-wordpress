@@ -93,7 +93,7 @@ class Test_Settings_Screen extends Mock_Http_TestCase {
 			foreach ( $tabs as $tab ) {
 				$labels[] = trim( $tab->textContent );
 			}
-			$this->assertSame( array( 'Connect', 'Branding', 'Display', 'Sell readings', 'Privacy', 'Advanced' ), $labels );
+			$this->assertSame( array( 'Connect', 'Branding', 'Display', 'Reports', 'Sell readings', 'Privacy', 'Advanced' ), $labels );
 			foreach ( array(
 				'Give something free',
 				'A daily horoscope or a one card tarot draw brings visitors back every day. Place it on your home page.',
@@ -101,11 +101,14 @@ class Test_Settings_Screen extends Mock_Http_TestCase {
 				'Birth charts, compatibility and yearly forecasts are worth paying for. Give each its own page.',
 				'Ask for payment before the page opens',
 				'Install a membership or shop plugin you trust and limit that page to paying members. The reading shows only to them.',
+				'Sell a branded report',
+				'Your visitor fills in their details and downloads a finished PDF under your name. Add your brand on the Reports tab, then create the report page.',
 			) as $copy ) {
 				$this->assertStringContainsString( $copy, $html );
 			}
 			$this->assert_resource_link( $document, 'https://roxyapi.com/docs/monetization', 'Read the full guide' );
 			$this->assert_resource_link( $document, 'https://roxyapi.com/docs/integrations/wordpress#sell-readings-and-charts', 'See how it works on WordPress' );
+			$this->assert_resource_link( $document, admin_url( 'admin.php?page=' . BuilderPage::PAGE_SLUG . '&reading=roxy_report' ), 'Create a report page' );
 			$this->assertSame( 0, $xpath->query( '//form' )->length );
 		}
 	}

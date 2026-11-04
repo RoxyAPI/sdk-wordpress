@@ -5979,6 +5979,192 @@ class Client {
 	}
 
 	/**
+	 * Natal chart report - Branded PDF report API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function generateNatalReport( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude', 'timezone' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'reports/natal',
+			array_merge( $body, $query ),
+			0,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'reports/natal', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Synastry report - Branded PDF report API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function generateSynastryReport( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'person1', 'person2' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'reports/synastry',
+			array_merge( $body, $query ),
+			0,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'reports/synastry', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Kundli report - Branded PDF report API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function generateKundliReport( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'latitude', 'longitude' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'reports/kundli',
+			array_merge( $body, $query ),
+			0,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'reports/kundli', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Kundli matching report - Branded PDF report API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function generateMatchmakingReport( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'person1', 'person2' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'reports/matchmaking',
+			array_merge( $body, $query ),
+			0,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'reports/matchmaking', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Yearly forecast report - Branded PDF report API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function generateYearlyForecastReport( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'year', 'latitude', 'longitude', 'timezone' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'reports/yearly-forecast',
+			array_merge( $body, $query ),
+			0,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'reports/yearly-forecast', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Human Design report - Branded PDF report API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function generateHumanDesignReport( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'timezone' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'reports/human-design',
+			array_merge( $body, $query ),
+			0,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'reports/human-design', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * BaZi report - Branded PDF report API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function generateBaziReport( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'date', 'time', 'timezone', 'gender', 'year' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'reports/bazi',
+			array_merge( $body, $query ),
+			0,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'reports/bazi', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Numerology report - Branded PDF report API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function generateNumerologyReport( $body = array(), $query = array() ) {
+		if ( ! \RoxyAPI\Api\Client::body_has_all( $body, array( 'fullName', 'year', 'month', 'day' ) ) ) {
+			return \RoxyAPI\Api\Client::not_configured();
+		}
+		return \RoxyAPI\Api\Cache::remember(
+			'reports/numerology',
+			array_merge( $body, $query ),
+			0,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'reports/numerology', $body, $query );
+			}
+		);
+	}
+
+	/**
+	 * Tarot reading report - Branded PDF report API
+	 *
+	 * @param array $body Request body.
+	 * @param array $query Query parameters.
+	 * @return array|\WP_Error
+	 */
+	public static function generateTarotReport( $body = array(), $query = array() ) {
+		return \RoxyAPI\Api\Cache::remember(
+			'reports/tarot',
+			array_merge( $body, $query ),
+			0,
+			static function () use ( $body, $query ) {
+				return \RoxyAPI\Api\Client::post( 'reports/tarot', $body, $query );
+			}
+		);
+	}
+
+	/**
 	 * List supported response languages
 	 *
 	 * @return array|\WP_Error

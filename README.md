@@ -17,9 +17,10 @@ The only multi domain spiritual intelligence plugin for WordPress. Drop natal ch
 
 Interactive forms for your visitors. Gutenberg blocks for your editor. Shortcodes for anywhere else. Server side rendering keeps your API key out of the browser. Transient caching keeps your quota intact.
 
-- **19 hero shortcodes** covering Western astrology, Vedic astrology (kundli, panchang, mangal dosha, KP chart, gun milan), Forecast (the cross-domain timeline), Human Design (the bodygraph), Numerology, Tarot (daily, three card, yes or no), biorhythm, angel numbers, crystals by zodiac, current moon phase, and two-chart compatibility (synastry, gun milan, Western compatibility). Every reading ships a matching Gutenberg block generated from the same spec, with sidebar controls for its inputs and a live preview in the editor. The Horoscope block adds a variation picker.
+- **Hero shortcodes** covering Western astrology, Vedic astrology (kundli, panchang, mangal dosha, KP chart, gun milan), Forecast (the cross-domain timeline), Human Design (the bodygraph), Numerology, Tarot (daily, three card, yes or no), biorhythm, angel numbers, crystals by zodiac, current moon phase, and two-chart compatibility (synastry, gun milan, Western compatibility). Every reading ships a matching Gutenberg block generated from the same spec, with sidebar controls for its inputs and a live preview in the editor. The Horoscope block adds a variation picker.
 - **Auto generated shortcodes** for the long tail. Every endpoint in the RoxyAPI OpenAPI spec is reachable from a shortcode.
 - **Form mode on every reading a visitor can fill in.** Let visitors submit their own sign, name, birth date, or question and render a personalized reading. No JavaScript required.
+- **Branded reports.** `[roxy_report report="natal"]` lets a visitor download a finished PDF under your name and logo, in the palette and font of your readings.
 - **Zero client side secrets.** All calls run in PHP. The API key never reaches the browser.
 
 ## Ship this weekend
@@ -170,12 +171,13 @@ RoxyAPI > Create a reading ([try it online](https://roxyapi.github.io/sdk-wordpr
 
 ## Settings and privacy
 
-The RoxyAPI admin page is split into six tabs:
+The RoxyAPI admin page is split into seven tabs:
 
 - **Connect.** Paste the API key, test the connection.
-- **Branding.** Four ready-made palettes, or colors set by hand with a light and a dark value each, plus a light, dark, or auto theme and the reading language.
+- **Branding.** Ready-made palettes, or colors set by hand with a light and a dark value each, a font, a light, dark, or auto theme and the reading language. Readings and reports share it.
 - **Display.** Written readings on or off, hidden sections, the source credit, an optional disclaimer line, and the visitor form copy.
-- **Sell readings.** How to keep one reading free and put the deeper ones on a page only paying members open, with links to the full guide.
+- **Reports.** The brand name, logo, footer, page size, and language every branded report carries.
+- **Sell readings.** How to keep one reading free and put the deeper ones on a page only paying members open, and how to sell a branded report, with links to the full guide.
 - **Privacy.** Visitor consent label. Birth date and time are special category data under GDPR Article 9; submission is gated on an explicit opt in checkbox and the plugin registers privacy policy content via `wp_add_privacy_policy_content`.
 - **Advanced.** Cache preset (fresh / balanced / quota saver) and a connection status panel.
 

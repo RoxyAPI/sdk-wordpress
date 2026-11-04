@@ -22,7 +22,7 @@ msgstr "1111"
 msgid "Admin only:"
 msgstr "Yalnızca yöneticiler:"
 
-#: src/Generated/Builder/Manifest.php:17634
+#: src/Generated/Builder/Manifest.php:17637
 #: src/Generated/Heroes/Manifest.php:202
 msgid "Angel number"
 msgstr "Melek sayısı"
@@ -90,7 +90,7 @@ msgid "Ayanamsa value"
 msgstr "Ayanamsa değeri"
 
 #: src/Generated/Builder/Manifest.php:57
-#: src/Generated/Builder/Manifest.php:15864
+#: src/Generated/Builder/Manifest.php:15867
 #: src/Generated/Heroes/Manifest.php:192
 msgid "Biorhythm"
 msgstr "Biyoritim"
@@ -372,21 +372,21 @@ msgstr "24 saat biçiminde doğum saati (SS:DD:SS)"
 msgid "Birth year to calculate Life Path automatically"
 msgstr "Yaşam Yolu sayısını otomatik hesaplamak için doğum yılı"
 
-#: src/Plugin.php:231
+#: src/Plugin.php:245
 msgid "City selected."
 msgstr "Şehir seçildi."
 
-#: src/Generated/Builder/Manifest.php:258
+#: src/Generated/Builder/Manifest.php:261
 #: src/Generated/Heroes/Manifest.php:112
 msgid "Compatibility score"
 msgstr "Uyum puanı"
 
-#: src/Generated/Builder/Manifest.php:16928
+#: src/Generated/Builder/Manifest.php:16931
 #: src/Generated/Heroes/Manifest.php:212
 msgid "Crystals by zodiac"
 msgstr "Burca göre kristaller"
 
-#: src/Generated/Builder/Manifest.php:15580
+#: src/Generated/Builder/Manifest.php:15583
 #: src/Generated/Forms/CastCustomSpreadForm.php:24
 msgid "Custom Spread Builder"
 msgstr "Özel açılım oluşturucu"
@@ -417,7 +417,7 @@ msgid "Custom ayanamsa value in degrees"
 msgstr "Derece cinsinden özel ayanamsa değeri"
 
 #: src/Admin/Onboarding.php:75
-#: src/Generated/Builder/Manifest.php:81
+#: src/Generated/Builder/Manifest.php:84
 #: src/Generated/Heroes/Manifest.php:32
 msgid "Daily horoscope"
 msgstr "Günlük burç yorumu"
@@ -587,7 +587,7 @@ msgstr "Bitiş tarihi"
 msgid "Expression"
 msgstr "İfade sayısı"
 
-#: src/Support/FormRenderer.php:336
+#: src/Support/FormRenderer.php:379
 msgid "Find by city"
 msgstr "Şehre göre ara"
 
@@ -611,7 +611,7 @@ msgstr "Tam ad"
 msgid "Full name at birth"
 msgstr "Doğumdaki tam ad"
 
-#: src/Admin/SettingsFields.php:407
+#: src/Admin/SettingsFields.php:452
 #: src/Generated/Forms/AnalyzeKarmicLessonsForm.php:25
 #: src/Generated/Forms/AnalyzeNumberSequenceForm.php:25
 #: src/Generated/Forms/CalculateAnnualForecastForm.php:25
@@ -784,7 +784,7 @@ msgstr "Doğumdaki tam ad"
 msgid "Get reading"
 msgstr "Okumayı al"
 
-#: src/Generated/Builder/Manifest.php:3523
+#: src/Generated/Builder/Manifest.php:3526
 #: src/Generated/Heroes/Manifest.php:102
 msgid "Gun Milan"
 msgstr "Gun Milan"
@@ -803,7 +803,7 @@ msgstr "Gun Milan"
 msgid "House system"
 msgstr "Ev sistemi"
 
-#: src/Support/FormRenderer.php:359
+#: src/Support/FormRenderer.php:407
 msgid "I consent to sending my inputs to generate this reading. See the Privacy Policy for details."
 msgstr "Bu okumanın oluşturulması için bilgilerimin gönderilmesini onaylıyorum. Ayrıntılar için Gizlilik Politikasına bakın."
 
@@ -825,7 +825,7 @@ msgstr "America/New_York gibi bir IANA adı"
 msgid "IANA name like Asia/Kolkata"
 msgstr "Asia/Kolkata gibi bir IANA adı"
 
-#: src/Generated/Builder/Manifest.php:3433
+#: src/Generated/Builder/Manifest.php:3436
 #: src/Generated/Forms/KpChartForm.php:31
 #: src/Generated/Heroes/Manifest.php:82
 msgid "KP chart"
@@ -911,7 +911,7 @@ msgstr "KP haritası"
 msgid "Latitude"
 msgstr "Enlem"
 
-#: src/Generated/Builder/Manifest.php:13800
+#: src/Generated/Builder/Manifest.php:13803
 #: src/Generated/Heroes/Manifest.php:182
 #: blocks/generated/calculate-maturity/index.js:11
 msgid "Life path"
@@ -1011,7 +1011,7 @@ msgstr "24 saat biçiminde yerel doğum saati"
 msgid "Longitude"
 msgstr "Boylam"
 
-#: src/Generated/Builder/Manifest.php:3343
+#: src/Generated/Builder/Manifest.php:3346
 #: src/Generated/Heroes/Manifest.php:72
 msgid "Mangal Dosha"
 msgstr "Mangal Dosha"
@@ -1040,7 +1040,7 @@ msgstr "Mangal Dosha"
 msgid "Month"
 msgstr "Ay"
 
-#: src/Generated/Builder/Manifest.php:272
+#: src/Generated/Builder/Manifest.php:275
 #: src/Generated/Heroes/Manifest.php:122
 msgid "Moon phase"
 msgstr "Ay evresi"
@@ -1052,14 +1052,14 @@ msgstr "Ay evresi"
 msgid "Name"
 msgstr "Ad"
 
-#: src/Generated/Builder/Manifest.php:154
+#: src/Generated/Builder/Manifest.php:157
 #: src/Generated/Forms/NatalChartForm.php:31
 #: src/Generated/Heroes/Manifest.php:42
 #: blocks/generated/calculate-transits/index.js:40
 msgid "Natal chart"
 msgstr "Doğum haritası"
 
-#: src/Plugin.php:230
+#: src/Plugin.php:244
 msgid "No matching cities. Try a different spelling."
 msgstr "Eşleşen şehir bulunamadı. Farklı bir yazım deneyin."
 
@@ -1108,7 +1108,7 @@ msgid "Number sequence"
 msgstr "Sayı dizisi"
 
 #: src/Generated/Builder/Manifest.php:48
-#: src/Generated/Builder/Manifest.php:13758
+#: src/Generated/Builder/Manifest.php:13761
 #: src/Generated/Heroes/Manifest.php:172
 msgid "Numerology"
 msgstr "Numeroloji"
@@ -1131,7 +1131,7 @@ msgstr "İsteğe bağlı. Kart, ona getirdiğiniz her şeye yanıt verir."
 msgid "Optional. The cards reflect on whatever you bring to them."
 msgstr "İsteğe bağlı. Kartlar, onlara getirdiğiniz her şeyi yansıtır."
 
-#: src/Generated/Builder/Manifest.php:3266
+#: src/Generated/Builder/Manifest.php:3269
 #: src/Generated/Heroes/Manifest.php:62
 msgid "Panchang"
 msgstr "Panchang"
@@ -1148,11 +1148,11 @@ msgstr "Güneş burcunuzu seçin"
 msgid "Question"
 msgstr "Soru"
 
-#: src/Plugin.php:232
-msgid "Search is unavailable. Enter coordinates manually."
-msgstr "Arama kullanılamıyor. Koordinatları elle girin."
+#: src/Plugin.php:246
+msgid "City search is unavailable right now. Please try again in a moment."
+msgstr "Şehir araması şu anda kullanılamıyor. Lütfen birazdan tekrar deneyin."
 
-#: src/Plugin.php:229
+#: src/Plugin.php:243
 msgid "Searching cities…"
 msgstr "Şehirler aranıyor…"
 
@@ -1228,6 +1228,7 @@ msgstr "Başlangıç değeri"
 #: src/Generated/Forms/GenerateAsteroidsForm.php:69
 #: src/Generated/Forms/GenerateAstrocartographyForm.php:69
 #: src/Generated/Forms/GenerateBaziChartForm.php:49
+#: src/Generated/Forms/GenerateBaziReportForm.php:65
 #: src/Generated/Forms/GenerateBirthProfileForm.php:49
 #: src/Generated/Forms/GenerateBodygraphForm.php:49
 #: src/Generated/Forms/GenerateCompositeChartForm.php:71
@@ -1235,9 +1236,14 @@ msgstr "Başlangıç değeri"
 #: src/Generated/Forms/GenerateDigestForm.php:51
 #: src/Generated/Forms/GenerateDivisionalChartForm.php:69
 #: src/Generated/Forms/GenerateFixedStarsForm.php:69
+#: src/Generated/Forms/GenerateHumanDesignReportForm.php:65
+#: src/Generated/Forms/GenerateKundliReportForm.php:85
 #: src/Generated/Forms/GenerateLilithForm.php:69
 #: src/Generated/Forms/GenerateLocalSpaceForm.php:69
 #: src/Generated/Forms/GenerateLunarReturnForm.php:76
+#: src/Generated/Forms/GenerateMatchmakingReportForm.php:71
+#: src/Generated/Forms/GenerateMatchmakingReportForm.php:123
+#: src/Generated/Forms/GenerateNatalReportForm.php:85
 #: src/Generated/Forms/GenerateNavamsaForm.php:69
 #: src/Generated/Forms/GeneratePlanetaryReturnForm.php:85
 #: src/Generated/Forms/GenerateProfectionsForm.php:69
@@ -1245,8 +1251,11 @@ msgstr "Başlangıç değeri"
 #: src/Generated/Forms/GenerateRelocationChartForm.php:49
 #: src/Generated/Forms/GenerateSolarArcForm.php:69
 #: src/Generated/Forms/GenerateSolarReturnForm.php:76
+#: src/Generated/Forms/GenerateSynastryReportForm.php:71
+#: src/Generated/Forms/GenerateSynastryReportForm.php:139
 #: src/Generated/Forms/GenerateTimelineForm.php:51
 #: src/Generated/Forms/GenerateTransitForm.php:51
+#: src/Generated/Forms/GenerateYearlyForecastReportForm.php:94
 #: src/Generated/Forms/GetBasicPanchangForm.php:69
 #: src/Generated/Forms/GetChoghadiyaForm.php:62
 #: src/Generated/Forms/GetCurrentDashaForm.php:69
@@ -1280,10 +1289,6 @@ msgstr "Başlangıç değeri"
 msgid "Select the timezone of the location."
 msgstr "Konumun saat dilimini seçin."
 
-#: src/Support/FormRenderer.php:343
-msgid "Selecting a city auto-fills latitude, longitude, and timezone."
-msgstr "Bir şehir seçtiğinizde enlem, boylam ve saat dilimi otomatik doldurulur."
-
 #: src/Generated/Forms/TarotYesNoForm.php:44
 #: blocks/generated/tarot-yes-no/index.js:14
 msgid "Should I take the new job"
@@ -1305,7 +1310,8 @@ msgstr "Yeni işi kabul etmeli miyim"
 msgid "Sidereal frame (ayanamsa) the chart is cast in"
 msgstr "Haritanın hesaplandığı yıldızsal referans (ayanamsa)"
 
-#: src/Generated/Builder/Manifest.php:15464
+#: src/Generated/Builder/Manifest.php:15467
+#: src/Generated/Forms/GenerateTarotReportForm.php:49
 #: src/Generated/Forms/TarotCardForm.php:48
 #: blocks/generated/tarot/index.js:19
 msgid "Spread"
@@ -1321,17 +1327,17 @@ msgstr "Açılım"
 msgid "Start date"
 msgstr "Başlangıç tarihi"
 
-#: src/Support/FormRenderer.php:339
+#: src/Support/FormRenderer.php:382
 #: blocks/_shared/generated-edit.js:111
 msgid "Start typing a city name"
 msgstr "Bir şehir adı yazmaya başlayın"
 
-#: src/Support/FormRenderer.php:154
+#: src/Support/FormRenderer.php:164
 msgid "Submit"
 msgstr "Gönder"
 
-#: src/Generated/Builder/Manifest.php:244
-#: src/Generated/Builder/Manifest.php:2927
+#: src/Generated/Builder/Manifest.php:247
+#: src/Generated/Builder/Manifest.php:2930
 #: src/Generated/Forms/CalculateSynastryForm.php:24
 #: src/Generated/Heroes/Manifest.php:92
 msgid "Synastry"
@@ -1348,12 +1354,12 @@ msgstr "Sinastri"
 msgid "Target date"
 msgstr "Hedef tarih"
 
-#: src/Generated/Builder/Manifest.php:15449
+#: src/Generated/Builder/Manifest.php:15452
 #: src/Generated/Heroes/Manifest.php:162
 msgid "Tarot card"
 msgstr "Tarot kartı"
 
-#: src/Generated/Builder/Manifest.php:15419
+#: src/Generated/Builder/Manifest.php:15422
 #: src/Generated/Forms/TarotYesNoForm.php:31
 #: src/Generated/Heroes/Manifest.php:152
 msgid "Tarot yes or no"
@@ -1523,19 +1529,19 @@ msgstr "Saat dilimi"
 msgid "Too many requests. Please try again in an hour."
 msgstr "Çok fazla istek gönderildi. Lütfen bir saat sonra tekrar deneyin."
 
-#: src/Generated/Builder/Manifest.php:2340
+#: src/Generated/Builder/Manifest.php:2343
 #: src/Generated/Forms/GenerateTransitForm.php:95
 #: blocks/generated/calculate-transit/index.js:25
 msgid "Transit date"
 msgstr "Transit tarihi"
 
-#: src/Generated/Builder/Manifest.php:2353
+#: src/Generated/Builder/Manifest.php:2356
 #: src/Generated/Forms/GenerateTransitForm.php:102
 #: blocks/generated/calculate-transit/index.js:32
 msgid "Transit time"
 msgstr "Transit saati"
 
-#: src/Generated/Builder/Manifest.php:3176
+#: src/Generated/Builder/Manifest.php:3179
 #: src/Generated/Heroes/Manifest.php:52
 msgid "Vedic kundli"
 msgstr "Vedik kundli"
@@ -1622,7 +1628,7 @@ msgstr ""
 #: src/Admin/SettingsPage.php:79
 #: src/Admin/SettingsPage.php:80
 #: src/Blocks/Category.php:33
-#: templates/admin-connected.php:120
+#: templates/admin-connected.php:129
 msgid "RoxyAPI"
 msgstr "RoxyAPI"
 
@@ -1670,7 +1676,7 @@ msgid "Documentation"
 msgstr "Belgeler"
 
 #: src/Admin/ActionLinks.php:69
-#: templates/admin-connected.php:416
+#: templates/admin-connected.php:487
 msgid "Support"
 msgstr "Destek"
 
@@ -1810,115 +1816,115 @@ msgstr "RoxyAPI verilerinizi ne kadar süre sakladığı: https://roxyapi.com/po
 msgid "No visitor data is sent to RoxyAPI when a page renders a static-attribute shortcode (the data is supplied by the site owner). Form-mode shortcodes are the only case where visitor input crosses to the third party."
 msgstr "Bir sayfa, sabit özellikli (static-attribute) bir kısa kodu görüntülediğinde RoxyAPI'ye hiçbir ziyaretçi verisi gönderilmez (veriler site sahibi tarafından sağlanır). Ziyaretçi girdisinin üçüncü tarafa geçtiği tek durum, form modundaki kısa kodlardır."
 
-#: src/Admin/SettingsFields.php:88
+#: src/Admin/SettingsFields.php:99
 msgid "Paste your RoxyAPI key"
 msgstr "RoxyAPI anahtarınızı yapıştırın"
 
-#: src/Admin/SettingsFields.php:106
+#: src/Admin/SettingsFields.php:117
 msgid "Leave blank to use the localised default."
 msgstr "Yerelleştirilmiş varsayılanı kullanmak için boş bırakın."
 
-#: src/Admin/SettingsFields.php:261
+#: src/Admin/SettingsFields.php:306
 msgid "Auto: follow the visitor device setting"
 msgstr "Otomatik: ziyaretçinin cihaz ayarını izler"
 
-#: src/Admin/SettingsFields.php:185
-#: src/Admin/SettingsFields.php:262
+#: src/Admin/SettingsFields.php:197
+#: src/Admin/SettingsFields.php:307
 msgid "Light"
 msgstr "Açık"
 
-#: src/Admin/SettingsFields.php:186
-#: src/Admin/SettingsFields.php:263
+#: src/Admin/SettingsFields.php:198
+#: src/Admin/SettingsFields.php:308
 msgid "Dark"
 msgstr "Koyu"
 
-#: src/Admin/SettingsFields.php:284
+#: src/Admin/SettingsFields.php:323
 msgid "Match site language"
 msgstr "Site diliyle eşleştir"
 
-#: src/Admin/SettingsFields.php:285
+#: src/Admin/SettingsFields.php:335
 msgid "English"
 msgstr "İngilizce"
 
-#: src/Admin/SettingsFields.php:286
+#: src/Admin/SettingsFields.php:336
 msgid "German"
 msgstr "Almanca"
 
-#: src/Admin/SettingsFields.php:287
+#: src/Admin/SettingsFields.php:337
 msgid "Hindi"
 msgstr "Hintçe"
 
-#: src/Admin/SettingsFields.php:288
+#: src/Admin/SettingsFields.php:338
 msgid "Spanish"
 msgstr "İspanyolca"
 
-#: src/Admin/SettingsFields.php:289
+#: src/Admin/SettingsFields.php:339
 msgid "Turkish"
 msgstr "Türkçe"
 
-#: src/Admin/SettingsFields.php:290
+#: src/Admin/SettingsFields.php:340
 msgid "Portuguese"
 msgstr "Portekizce"
 
-#: src/Admin/SettingsFields.php:291
+#: src/Admin/SettingsFields.php:341
 msgid "French"
 msgstr "Fransızca"
 
-#: src/Admin/SettingsFields.php:292
+#: src/Admin/SettingsFields.php:342
 msgid "Russian"
 msgstr "Rusça"
 
-#: src/Admin/SettingsFields.php:315
+#: src/Admin/SettingsFields.php:360
 msgid "Hide the written text on every reading. Charts, tables, and values still show."
 msgstr "Her okumadaki yazılı metni gizler. Grafikler, tablolar ve değerler yine de gösterilir."
 
-#: src/Admin/SettingsFields.php:361
+#: src/Admin/SettingsFields.php:406
 msgid "Show a disclaimer line at the bottom of every reading."
 msgstr "Her okumanın altında bir feragatname satırı gösterir."
 
-#: src/Admin/SettingsFields.php:373
+#: src/Admin/SettingsFields.php:418
 msgid "Leave blank to use the localised default (\"For entertainment purposes only…\")."
 msgstr "Yerelleştirilmiş varsayılanı kullanmak için boş bırakın (\"Yalnızca eğlence amaçlıdır…\")."
 
-#: src/Admin/SettingsFields.php:392
+#: src/Admin/SettingsFields.php:437
 msgid "Your reading"
 msgstr "Okumanız"
 
-#: src/Admin/SettingsFields.php:421
+#: src/Admin/SettingsFields.php:466
 msgid "Fresh: 15 minutes (most up-to-date, more API calls)"
 msgstr "Taze: 15 dakika (en güncel, daha fazla API çağrısı)"
 
-#: src/Admin/SettingsFields.php:422
+#: src/Admin/SettingsFields.php:467
 msgid "Balanced: 1 hour (recommended)"
 msgstr "Dengeli: 1 saat (önerilen)"
 
-#: src/Admin/SettingsFields.php:423
+#: src/Admin/SettingsFields.php:468
 msgid "Quota saver: 24 hours (fewer API calls, less fresh)"
 msgstr "Kota tasarrufu: 24 saat (daha az API çağrısı, daha az güncel)"
 
-#: src/Admin/SettingsFields.php:451
+#: src/Admin/SettingsFields.php:559
 msgid "Show source line on each reading."
 msgstr "Her okumada kaynak satırını gösterir."
 
-#: src/Admin/SettingsFields.php:486
+#: src/Admin/SettingsFields.php:594
 msgid "Defined via ROXYAPI_KEY constant in wp-config.php. The settings field is locked."
 msgstr "wp-config.php dosyasındaki ROXYAPI_KEY sabiti üzerinden tanımlanmıştır. Ayarlar alanı kilitlidir."
 
-#: src/Admin/SettingsFields.php:489
+#: src/Admin/SettingsFields.php:597
 msgid "A key is saved. Paste a new one to replace it. Leave blank to keep the current key."
 msgstr "Bir anahtar kayıtlı. Değiştirmek için yeni bir anahtar yapıştırın. Mevcut anahtarı korumak için boş bırakın."
 
 #. translators: %s URL to RoxyAPI pricing page
-#: src/Admin/SettingsFields.php:493
+#: src/Admin/SettingsFields.php:601
 #, php-format
 msgid "No key yet? Get one at %s."
 msgstr "Henüz anahtarınız yok mu? %s üzerinden edinin."
 
-#: src/Admin/SettingsFields.php:673
+#: src/Admin/SettingsFields.php:802
 msgid "API key format is invalid. Get a key at roxyapi.com."
 msgstr "API anahtarı biçimi geçersiz. roxyapi.com adresinden bir anahtar edinin."
 
-#: src/Admin/SettingsFields.php:682
+#: src/Admin/SettingsFields.php:811
 msgid "Could not encrypt API key. Check that PHP openssl is installed."
 msgstr "API anahtarı şifrelenemedi. PHP openssl uzantısının kurulu olduğunu kontrol edin."
 
@@ -1974,13 +1980,13 @@ msgstr "Yüklenen çeviri dosyası"
 #: src/Admin/SiteHealth.php:119
 #: src/Support/GenericRenderer.php:903
 #: src/Support/GenericRenderer.php:906
-#: assets/js/builder.js:70
+#: assets/js/builder.js:71
 msgid "Yes"
 msgstr "Evet"
 
 #: src/Admin/SiteHealth.php:77
 #: src/Support/GenericRenderer.php:906
-#: assets/js/builder.js:71
+#: assets/js/builder.js:72
 msgid "No"
 msgstr "Hayır"
 
@@ -2037,6 +2043,7 @@ msgid "The reading service is temporarily unavailable. Please try again in a few
 msgstr "Okuma hizmeti geçici olarak kullanılamıyor. Lütfen birkaç dakika sonra tekrar deneyin."
 
 #: src/Api/Client.php:268
+#: src/Api/ReportRoute.php:215
 msgid "This reading could not be loaded right now. Please try again."
 msgstr "Bu okuma şu anda yüklenemedi. Lütfen tekrar deneyin."
 
@@ -2082,21 +2089,25 @@ msgstr "RoxyAPI tarafından %s verileri"
 msgid "For entertainment purposes only. Not a substitute for medical, legal, or financial advice."
 msgstr "Yalnızca eğlence amaçlıdır. Tıbbi, hukuki veya finansal tavsiye yerine geçmez."
 
+#: src/Api/ReportRoute.php:171
 #: src/Support/FormRouter.php:74
 msgid "Could not verify the form. Reload the page and try again."
 msgstr "Form doğrulanamadı. Sayfayı yenileyin ve tekrar deneyin."
 
+#: src/Api/ReportRoute.php:174
 #: src/Support/FormRouter.php:82
 msgid "Too many submissions. Please wait a minute and try again."
 msgstr "Çok fazla gönderim. Lütfen bir dakika bekleyip tekrar deneyin."
 
+#: src/Api/ReportRoute.php:177
 #: src/Support/FormRouter.php:96
 msgid "Please confirm consent before submitting."
 msgstr "Göndermeden önce lütfen onayı işaretleyin."
 
 #. translators: %s: field label
-#: src/Support/FormRouter.php:405
-#: src/Support/FormRouter.php:419
+#: src/Support/FormRenderer.php:389
+#: src/Support/FormRouter.php:435
+#: src/Support/FormRouter.php:449
 #, php-format
 msgid "%s is required."
 msgstr "%s zorunludur."
@@ -2111,40 +2122,40 @@ msgid "Branding"
 msgstr "Marka"
 
 #: src/Admin/SettingsPage.php:176
-#: assets/js/builder.js:27
+#: assets/js/builder.js:28
 msgid "Display"
 msgstr "Görünüm"
 
-#: src/Admin/SettingsPage.php:178
+#: src/Admin/SettingsPage.php:179
 msgid "Privacy"
 msgstr "Gizlilik"
 
-#: src/Admin/SettingsPage.php:179
-#: src/Support/FormRenderer.php:194
+#: src/Admin/SettingsPage.php:180
+#: src/Support/FormRenderer.php:234
 msgid "Advanced"
 msgstr "Gelişmiş"
 
-#: templates/admin-connected.php:123
+#: templates/admin-connected.php:132
 msgid "RoxyAPI is"
 msgstr "RoxyAPI"
 
-#: templates/admin-connected.php:124
+#: templates/admin-connected.php:133
 msgid "connected."
 msgstr "bağlandı."
 
-#: templates/admin-connected.php:137
+#: templates/admin-connected.php:146
 msgid "RoxyAPI settings"
 msgstr "RoxyAPI ayarları"
 
-#: templates/admin-connected.php:174
+#: templates/admin-connected.php:183
 msgid "Connected to RoxyAPI."
 msgstr "RoxyAPI bağlantısı kuruldu."
 
-#: templates/admin-connected.php:175
+#: templates/admin-connected.php:184
 msgid "Drop a shortcode on any page to render a reading."
 msgstr "Bir okuma görüntülemek için herhangi bir sayfaya kısa kod ekleyin."
 
-#: templates/admin-connected.php:180
+#: templates/admin-connected.php:189
 msgid "Quick start"
 msgstr "Hızlı başlangıç"
 
@@ -2152,139 +2163,139 @@ msgstr "Hızlı başlangıç"
 msgid "Browse all shortcodes"
 msgstr "Tüm kısa kodlara göz at"
 
-#: templates/admin-connected.php:188
+#: templates/admin-connected.php:197
 msgid "Manage your key"
 msgstr "Anahtar yönetimi"
 
-#: templates/admin-connected.php:190
+#: templates/admin-connected.php:199
 msgid "Replace key"
 msgstr "Anahtarı değiştir"
 
-#: templates/admin-connected.php:196
+#: templates/admin-connected.php:205
 #: templates/admin-onboarding.php:110
 msgid "Save key"
 msgstr "Anahtarı kaydet"
 
-#: templates/admin-connected.php:199
+#: templates/admin-connected.php:208
 #: templates/admin-onboarding.php:113
 msgid "Test Connection"
 msgstr "Bağlantıyı test et"
 
-#: templates/admin-connected.php:232
+#: templates/admin-connected.php:251
 msgid "Theme"
 msgstr "Tema"
 
-#: templates/admin-connected.php:234
+#: templates/admin-connected.php:253
 msgid "Light, dark, or auto for chart readings. Auto follows the visitor device setting."
 msgstr "Grafik okumalar için açık, koyu veya otomatik. Otomatik, ziyaretçinin cihaz ayarını izler."
 
-#: templates/admin-connected.php:242
+#: templates/admin-connected.php:261
 msgid "Reading language"
 msgstr "Okuma dili"
 
-#: templates/admin-connected.php:244
+#: templates/admin-connected.php:263
 msgid "Language for visitor-facing reading text. Default follows the site language."
 msgstr "Ziyaretçiye gösterilen okuma metninin dili. Varsayılan, site dilini izler."
 
-#: templates/admin-connected.php:253
+#: templates/admin-connected.php:272
 msgid "Save branding"
 msgstr "Markayı kaydet"
 
-#: templates/admin-connected.php:266
+#: templates/admin-connected.php:285
 msgid "Written readings"
 msgstr "Yazılı okumalar"
 
-#: templates/admin-connected.php:271
+#: templates/admin-connected.php:290
 msgid "Turn this on to show the chart on its own, without the written report. It applies to every reading on the site. To set it for one placement instead, add hide_readings=\"1\" or hide_readings=\"0\" to that shortcode."
 msgstr "Yazılı raporu göstermeden yalnızca grafiği görüntülemek için bunu açın. Bu ayar sitedeki her okumaya uygulanır. Bunun yerine yalnızca tek bir yerleşim için ayarlamak isterseniz, o kısa koda hide_readings=\"1\" veya hide_readings=\"0\" ekleyin."
 
-#: templates/admin-connected.php:286
+#: templates/admin-connected.php:305
 msgid "Show source"
 msgstr "Kaynağı göster"
 
-#: templates/admin-connected.php:291
+#: templates/admin-connected.php:310
 msgid "A small line at the bottom of each card showing where the data comes from. Off by default."
 msgstr "Verilerin nereden geldiğini gösteren, her kartın altında küçük bir satır. Varsayılan olarak kapalıdır."
 
-#: templates/admin-connected.php:296
+#: templates/admin-connected.php:315
 msgid "Disclaimer"
 msgstr "Feragatname"
 
-#: templates/admin-connected.php:301
+#: templates/admin-connected.php:320
 msgid "Append a disclaimer to every reading. Useful for jurisdictions that require an \"entertainment only\" line. Empty text falls back to the localised default."
 msgstr "Her okumanın sonuna bir feragatname ekler. \"entertainment only\" (yalnızca eğlence amaçlıdır) ifadesini zorunlu kılan bölgeler için kullanışlıdır. Metin boş bırakılırsa yerelleştirilmiş varsayılana dönülür."
 
-#: templates/admin-connected.php:309
+#: templates/admin-connected.php:328
 msgid "Visitor form copy"
 msgstr "Ziyaretçi formu metni"
 
-#: templates/admin-connected.php:311
+#: templates/admin-connected.php:330
 msgid "Override the title and submit button shown above visitor forms. Leave blank to use the localised default."
 msgstr "Ziyaretçi formlarının üzerinde gösterilen başlığı ve gönder düğmesini geçersiz kılın. Yerelleştirilmiş varsayılanı kullanmak için boş bırakın."
 
-#: templates/admin-connected.php:315
+#: templates/admin-connected.php:334
 msgid "Form title"
 msgstr "Form başlığı"
 
-#: templates/admin-connected.php:321
+#: templates/admin-connected.php:340
 msgid "Submit button text"
 msgstr "Gönder düğmesi metni"
 
-#: templates/admin-connected.php:329
+#: templates/admin-connected.php:348
 msgid "Save display"
 msgstr "Görünümü kaydet"
 
-#: templates/admin-connected.php:360
+#: templates/admin-connected.php:431
 msgid "Visitor privacy"
 msgstr "Ziyaretçi gizliliği"
 
-#: templates/admin-connected.php:362
+#: templates/admin-connected.php:433
 msgid "Visitor forms collect birth date, time, and location to compute readings. Visitors must confirm consent before each submission. Edit the consent text below; leave blank for the localised default."
 msgstr "Ziyaretçi formları, okumaları hesaplamak için doğum tarihi, saati ve konumunu toplar. Ziyaretçiler her gönderimden önce onay vermelidir. Aşağıdaki onay metnini düzenleyin; yerelleştirilmiş varsayılan için boş bırakın."
 
-#: templates/admin-connected.php:368
+#: templates/admin-connected.php:439
 msgid "Consent label shown next to the form checkbox"
 msgstr "Form onay kutusunun yanında gösterilen onay metni"
 
 #. translators: %s: link to WordPress Privacy Policy editor
-#: templates/admin-connected.php:378
+#: templates/admin-connected.php:449
 #, php-format
 msgid "The plugin auto-injects suggested privacy text into the WordPress Privacy Policy editor. Review or accept it at %s."
 msgstr "Eklenti, önerilen gizlilik metnini WordPress Gizlilik Politikası düzenleyicisine otomatik olarak ekler. Bunu %s üzerinden inceleyebilir veya kabul edebilirsiniz."
 
-#: templates/admin-connected.php:379
+#: templates/admin-connected.php:450
 msgid "Settings &rarr; Privacy"
 msgstr "Ayarlar &rarr; Gizlilik"
 
-#: templates/admin-connected.php:385
+#: templates/admin-connected.php:456
 msgid "Save privacy"
 msgstr "Gizliliği kaydet"
 
-#: templates/admin-connected.php:395
+#: templates/admin-connected.php:466
 msgid "Cache"
 msgstr "Önbellek"
 
-#: templates/admin-connected.php:397
+#: templates/admin-connected.php:468
 msgid "How long RoxyAPI caches each reading on this site. Lower = fresher. Higher = saves API quota."
 msgstr "RoxyAPI, her okumayı bu sitede ne kadar süre önbellekte tutar. Düşük = daha taze. Yüksek = API kotasından tasarruf sağlar."
 
-#: templates/admin-connected.php:406
+#: templates/admin-connected.php:477
 msgid "Save advanced"
 msgstr "Gelişmiş ayarları kaydet"
 
-#: templates/admin-connected.php:414
+#: templates/admin-connected.php:485
 msgid "RoxyAPI resources"
 msgstr "RoxyAPI kaynakları"
 
-#: templates/admin-connected.php:415
+#: templates/admin-connected.php:486
 msgid "Docs"
 msgstr "Belgeler"
 
-#: templates/admin-connected.php:417
+#: templates/admin-connected.php:488
 msgid "Open dashboard at roxyapi.com"
 msgstr "roxyapi.com adresindeki paneli aç"
 
-#: templates/admin-connected.php:127
+#: templates/admin-connected.php:136
 msgid "30 seconds."
 msgstr "30 saniyede bağlayın."
 
@@ -2968,19 +2979,19 @@ msgstr ""
 msgid "Birth timezone: decimal hours from UTC (e.g. -5 for EST, 5.5 for IST) OR IANA name (e.g. \"America/New_York\")"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:2466
+#: src/Generated/Builder/Manifest.php:2469
 #: src/Generated/Forms/GenerateRelocationChartForm.php:57
 #: blocks/generated/generate-relocation-chart/index.js:32
 msgid "Birth latitude"
 msgstr "Doğum enlemi"
 
-#: src/Generated/Builder/Manifest.php:2482
+#: src/Generated/Builder/Manifest.php:2485
 #: src/Generated/Forms/GenerateRelocationChartForm.php:67
 #: blocks/generated/generate-relocation-chart/index.js:39
 msgid "Birth longitude"
 msgstr "Doğum boylamı"
 
-#: src/Generated/Builder/Manifest.php:2498
+#: src/Generated/Builder/Manifest.php:2501
 #: src/Generated/Forms/GenerateRelocationChartForm.php:77
 #: blocks/generated/generate-relocation-chart/index.js:46
 msgid "Relocation latitude"
@@ -2990,7 +3001,7 @@ msgstr "Yer değiştirme enlemi"
 msgid "New location latitude in decimal degrees (-90 to 90)"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:2514
+#: src/Generated/Builder/Manifest.php:2517
 #: src/Generated/Forms/GenerateRelocationChartForm.php:87
 #: blocks/generated/generate-relocation-chart/index.js:53
 msgid "Relocation longitude"
@@ -3516,7 +3527,16 @@ msgstr ""
 msgid "Search query to match against symbol names and meanings"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14975
+#: src/Generated/Builder/Manifest.php:14978
+#: src/Generated/Forms/GenerateBaziReportForm.php:40
+#: src/Generated/Forms/GenerateHumanDesignReportForm.php:40
+#: src/Generated/Forms/GenerateKundliReportForm.php:40
+#: src/Generated/Forms/GenerateMatchmakingReportForm.php:144
+#: src/Generated/Forms/GenerateNatalReportForm.php:40
+#: src/Generated/Forms/GenerateNumerologyReportForm.php:40
+#: src/Generated/Forms/GenerateSynastryReportForm.php:176
+#: src/Generated/Forms/GenerateTarotReportForm.php:40
+#: src/Generated/Forms/GenerateYearlyForecastReportForm.php:40
 #: src/Generated/Forms/GetHebrewLetterForm.php:33
 #: blocks/generated/search-dream-symbols/index.js:18
 msgid "Letter"
@@ -3559,20 +3579,21 @@ msgstr ""
 msgid "Select an option"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:196
+#: src/Admin/SettingsFields.php:208
+#: src/Admin/SettingsFields.php:522
 #: blocks/_shared/generated-edit.js:157
 msgid "Default"
 msgstr "Varsayılan"
 
-#: blocks/_shared/generated-edit.js:232
+#: blocks/_shared/generated-edit.js:233
 msgid "Reading Settings"
 msgstr ""
 
-#: blocks/_shared/generated-edit.js:272
+#: blocks/_shared/generated-edit.js:273
 msgid "Reading inputs needed"
 msgstr ""
 
-#: blocks/_shared/generated-edit.js:275
+#: blocks/_shared/generated-edit.js:276
 msgid "Fill in the required fields in the sidebar to preview and publish this reading."
 msgstr ""
 
@@ -3830,6 +3851,7 @@ msgstr ""
 #: blocks/generated/natal-chart/block.json
 #: blocks/generated/numerology/block.json
 #: blocks/generated/panchang/block.json
+#: blocks/generated/report/block.json
 #: blocks/generated/search-cities/block.json
 #: blocks/generated/search-crystals/block.json
 #: blocks/generated/search-dream-symbols/block.json
@@ -4922,6 +4944,7 @@ msgstr ""
 
 #: blocks/generated/kundli/block.json
 #: blocks/generated/natal-chart/block.json
+#: blocks/generated/report/block.json
 msgctxt "block keyword"
 msgid "birth chart"
 msgstr ""
@@ -4957,24 +4980,24 @@ msgctxt "block keyword"
 msgid "spread"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15961
+#: src/Generated/Builder/Manifest.php:15964
 #: src/Generated/Forms/CalculateBioCompatibilityForm.php:24
 msgid "Compatibility"
 msgstr "Uyum"
 
-#: src/Generated/Builder/Manifest.php:1046
-#: src/Generated/Builder/Manifest.php:4935
+#: src/Generated/Builder/Manifest.php:1049
+#: src/Generated/Builder/Manifest.php:4938
 #: src/Generated/Forms/CalculateCompatibilityForm.php:24
 #: src/Generated/Forms/CalculateGunMilanForm.php:24
 msgid "Compatibility Score"
 msgstr "Uyum puanı"
 
-#: src/Generated/Builder/Manifest.php:1060
+#: src/Generated/Builder/Manifest.php:1063
 #: src/Generated/Forms/GenerateCompositeChartForm.php:24
 msgid "Composite Chart"
 msgstr "Kompozit harita"
 
-#: src/Generated/Builder/Manifest.php:9583
+#: src/Generated/Builder/Manifest.php:9586
 #: src/Generated/Forms/GenerateTimelineForm.php:24
 msgid "Cross-domain Forecast Timeline"
 msgstr "Alanlar arası tahmin zaman çizelgesi"
@@ -4983,22 +5006,22 @@ msgstr "Alanlar arası tahmin zaman çizelgesi"
 msgid "Ephemeris month"
 msgstr "Efemeris ayı"
 
-#: src/Generated/Builder/Manifest.php:9597
+#: src/Generated/Builder/Manifest.php:9600
 #: src/Generated/Forms/GenerateDigestForm.php:24
 msgid "Forecast Digest"
 msgstr "Tahmin özeti"
 
-#: src/Generated/Builder/Manifest.php:10207
+#: src/Generated/Builder/Manifest.php:10210
 #: src/Generated/Forms/CalculateConnectionForm.php:24
 msgid "Human Design Connection Chart"
 msgstr "Human Design bağlantı haritası"
 
-#: src/Generated/Builder/Manifest.php:10356
+#: src/Generated/Builder/Manifest.php:10359
 #: src/Generated/Forms/CalculatePentaForm.php:24
 msgid "Human Design Penta"
 msgstr "Human Design Penta"
 
-#: src/Generated/Builder/Manifest.php:10476
+#: src/Generated/Builder/Manifest.php:10479
 #: src/Generated/Forms/GenerateTransitForm.php:24
 msgid "Human Design Transit Overlay"
 msgstr "Human Design transit katmanı"
@@ -5047,21 +5070,21 @@ msgstr "Önceki ay"
 msgid "Show month"
 msgstr "Ayı göster"
 
-#: src/Generated/Builder/Manifest.php:9611
+#: src/Generated/Builder/Manifest.php:9614
 #: src/Generated/Forms/FindSignificantDatesForm.php:24
 msgid "Significant Dates"
 msgstr "Önemli tarihler"
 
-#: src/Support/FormRenderer.php:65
+#: src/Support/FormRenderer.php:68
 msgid "That reading has already been shown. Enter the details below to run it again."
 msgstr "Bu okuma zaten gösterildi. Yeniden oluşturmak için aşağıya bilgileri girin."
 
-#: src/Generated/Builder/Manifest.php:2941
+#: src/Generated/Builder/Manifest.php:2944
 #: src/Generated/Forms/CalculateTransitAspectsForm.php:24
 msgid "Transit Aspects"
 msgstr "Transit açıları"
 
-#: src/Generated/Builder/Manifest.php:9746
+#: src/Generated/Builder/Manifest.php:9749
 #: src/Generated/Forms/ForecastTransitsForm.php:24
 msgid "Western Astrology Forecast"
 msgstr "Batı astrolojisi tahmini"
@@ -5070,64 +5093,60 @@ msgstr "Batı astrolojisi tahmini"
 msgid "Live preview of every shortcode the plugin ships. Click \"Run\" on a row to render that one reading. Each run is a live call against your plan, so rows render one at a time and never in bulk. Results are cached server-side for an hour by default."
 msgstr "Eklentinin sunduğu her kısa kodun canlı önizlemesi. Bir satırdaki \"Çalıştır\" düğmesine tıklayarak yalnızca o okumayı görüntüleyin. Her çalıştırma planınıza karşı yapılan canlı bir çağrıdır, bu nedenle satırlar teker teker işlenir, asla toplu şekilde değil. Sonuçlar varsayılan olarak sunucu tarafında bir saat boyunca önbelleğe alınır."
 
-#: src/Admin/SettingsFields.php:225
+#: src/Admin/SettingsFields.php:270
 msgid "Custom"
 msgstr "Özel"
 
-#: src/Admin/SettingsFields.php:239
+#: src/Admin/SettingsFields.php:284
 msgid "Accent"
 msgstr "Vurgu"
 
-#: src/Admin/SettingsFields.php:241
+#: src/Admin/SettingsFields.php:286
 msgid "Page background"
 msgstr "Sayfa arka planı"
 
-#: src/Admin/SettingsFields.php:242
+#: src/Admin/SettingsFields.php:287
 msgid "Card background"
 msgstr "Kart arka planı"
 
-#: src/Admin/SettingsFields.php:243
+#: src/Admin/SettingsFields.php:288
 #: blocks/generated/calculate-gematria/index.js:11
 msgid "Text"
 msgstr "Metin"
 
-#: src/Admin/SettingsFields.php:240
+#: src/Admin/SettingsFields.php:285
 msgid "Labels"
 msgstr "Etiketler"
 
-#: src/Admin/SettingsFields.php:244
+#: src/Admin/SettingsFields.php:289
 msgid "Secondary text"
 msgstr "İkincil metin"
 
-#: src/Admin/SettingsFields.php:245
+#: src/Admin/SettingsFields.php:290
 msgid "Borders"
 msgstr "Kenarlıklar"
 
-#: src/Admin/SettingsFields.php:246
+#: src/Admin/SettingsFields.php:291
 msgid "Warnings"
 msgstr "Uyarılar"
 
-#: src/Admin/SettingsPage.php:201
+#: src/Admin/SettingsPage.php:202
 msgid "Settings saved."
 msgstr "Ayarlar kaydedildi."
 
-#: templates/admin-connected.php:216
+#: templates/admin-connected.php:225
 msgid "Palette"
 msgstr "Palet"
 
-#: templates/admin-connected.php:218
-msgid "Colours for every reading on your site. Pick a palette, or choose Custom and set the colours yourself. Readings use your theme font either way."
-msgstr "Sitenizdeki her okuma için renkler. Bir palet seçin veya Özel'i seçip renkleri kendiniz belirleyin. Okumalar her durumda temanızın yazı tipini kullanır."
-
-#: templates/admin-connected.php:223
+#: templates/admin-connected.php:232
 msgid "Set colours yourself"
 msgstr "Renkleri özelleştir"
 
-#: templates/admin-connected.php:225
+#: templates/admin-connected.php:234
 msgid "Two values per colour, one for light readings and one for dark, so a brand colour stays readable in both. Leave a field blank to keep the default."
 msgstr "Her renk için iki değer: biri açık okumalar, diğeri koyu okumalar için. Böylece bir marka rengi her ikisinde de okunaklı kalır. Varsayılanı korumak için bir alanı boş bırakın."
 
-#: templates/admin-connected.php:276
+#: templates/admin-connected.php:295
 msgid "Hide sections"
 msgstr "Bölümleri gizle"
 
@@ -6430,12 +6449,12 @@ msgid "Single card, three card, or Celtic Cross spreads."
 msgstr ""
 
 #. translators: %s: comma-separated list of section names that matched no block.
-#: src/Admin/SettingsFields.php:730
+#: src/Admin/SettingsFields.php:859
 #, php-format
 msgid "Hide sections does not recognise %s, so nothing is hidden for it. These are internal names and stay the same whatever language your site is in. Click the field to see every name this version supports."
 msgstr "Bölümleri gizle, %s değerini tanımıyor, bu nedenle onun için hiçbir şey gizlenmiyor. Bunlar dahili adlardır ve sitenizin dili ne olursa olsun aynı kalır. Bu sürümün desteklediği tüm adları görmek için alana tıklayın."
 
-#: templates/admin-connected.php:278
+#: templates/admin-connected.php:297
 msgid "Take whole sections off every reading. Type one or more section names separated by commas, and spaces around them are fine. The common one is patterns, which removes the chart patterns block from a natal chart. These are internal names and stay the same whatever language your site is in, so the title printed on the page will not work. Click the field to see every name this version supports. Leave it blank to show everything."
 msgstr "Her okumadan bütün bölümleri kaldırın. Virgülle ayırarak bir veya daha fazla bölüm adı yazın; aralarında boşluk olması sorun değildir. En yaygın olanı patterns'tir, bu da natal haritadan grafik desenleri (chart patterns) bloğunu kaldırır. Bunlar dahili adlardır ve sitenizin dili ne olursa olsun aynı kalır, bu yüzden sayfada yazan başlığı kullanmak işe yaramaz. Bu sürümün desteklediği tüm adları görmek için alana tıklayın. Her şeyi göstermek için boş bırakın."
 
@@ -6490,7 +6509,7 @@ msgctxt "block keyword"
 msgid "vedic"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:11116
+#: src/Generated/Builder/Manifest.php:11119
 #: src/Generated/Forms/CalculateBaziCompatibilityForm.php:24
 msgid "BaZi Compatibility"
 msgstr "BaZi Uyumu"
@@ -7221,17 +7240,17 @@ msgstr ""
 msgid "The year ahead for a zodiac sign."
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:7962
+#: src/Generated/Builder/Manifest.php:7965
 #: src/Generated/Forms/CalculateDashakootForm.php:24
 msgid "Porutham Match"
 msgstr "Porutham Eşleşmesi"
 
-#: src/Generated/Builder/Manifest.php:13596
+#: src/Generated/Builder/Manifest.php:13599
 #: src/Generated/Forms/CalculateEntrancePadaForm.php:24
 msgid "Entrance Pada"
 msgstr "Giriş Padası"
 
-#: src/Generated/Builder/Manifest.php:13716
+#: src/Generated/Builder/Manifest.php:13719
 #: src/Generated/Forms/CalculatePlotAnalysisForm.php:24
 msgid "Plot"
 msgstr "Parsel"
@@ -7240,7 +7259,7 @@ msgstr "Parsel"
 msgid "Unit"
 msgstr "Birim"
 
-#: src/Generated/Builder/Manifest.php:13123
+#: src/Generated/Builder/Manifest.php:13126
 #: src/Generated/Forms/CalculateMayanCompatibilityForm.php:24
 msgid "Mayan Nawal Compatibility"
 msgstr "Maya Nawal Uyumu"
@@ -7279,27 +7298,27 @@ msgstr "Yön şeması"
 msgid "Which reading of the world direction and colour to serve for a day sign"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:4921
+#: src/Generated/Builder/Manifest.php:4924
 #: src/Generated/Forms/CalculatePapasamyamForm.php:24
 msgid "Compare Malefic Affliction"
 msgstr "Zararlı Sıkıntıyı Karşılaştır"
 
-#: src/Generated/Builder/Manifest.php:13730
+#: src/Generated/Builder/Manifest.php:13733
 #: src/Generated/Forms/CalculateRoomComplianceForm.php:24
 msgid "Room Placement"
 msgstr "Oda Yerleşimi"
 
-#: src/Generated/Builder/Manifest.php:13744
+#: src/Generated/Builder/Manifest.php:13747
 #: src/Generated/Forms/GenerateMandalaForm.php:24
 msgid "Vastu Purusha Mandala"
 msgstr "Vastu Purusha Mandala"
 
-#: src/Generated/Builder/Manifest.php:9569
+#: src/Generated/Builder/Manifest.php:9572
 #: src/Generated/Heroes/Manifest.php:132
 msgid "Forecast timeline"
 msgstr "Tahmin zaman çizelgesi"
 
-#: src/Generated/Builder/Manifest.php:9760
+#: src/Generated/Builder/Manifest.php:9763
 #: src/Generated/Heroes/Manifest.php:142
 msgid "Bodygraph"
 msgstr "Bodygraph"
@@ -8764,7 +8783,7 @@ msgctxt "block keyword"
 msgid "yes or no"
 msgstr ""
 
-#: templates/admin-connected.php:126
+#: templates/admin-connected.php:135
 msgid "Your first reading in"
 msgstr "İlk okumanız"
 
@@ -8776,21 +8795,21 @@ msgstr ""
 msgid "Picking a city fills the coordinates and timezone below."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:214
+#: src/Admin/SettingsFields.php:226
 msgid "Clear every colour and use the defaults"
 msgstr "Tüm renkleri temizle ve varsayılanları kullan"
 
-#: src/Generated/Builder/Manifest.php:14181
+#: src/Generated/Builder/Manifest.php:14184
 #: src/Generated/Forms/AnalyzeKarmicLessonsForm.php:24
 msgid "Karmic Lessons"
 msgstr "Karmik Dersler"
 
-#: src/Generated/Builder/Manifest.php:17767
+#: src/Generated/Builder/Manifest.php:17770
 #: src/Generated/Forms/AnalyzeNumberSequenceForm.php:24
 msgid "Number Sequence"
 msgstr "Sayı Dizisi"
 
-#: src/Generated/Builder/Manifest.php:10823
+#: src/Generated/Builder/Manifest.php:10826
 #: src/Generated/Forms/CalculateAnnualForecastForm.php:24
 msgid "BaZi Annual Forecast"
 msgstr "BaZi Yıllık Tahmin"
@@ -8802,52 +8821,52 @@ msgstr "BaZi Yıllık Tahmin"
 msgid "Which clock the day boundary and the hour branch are read from, so a correction that carries a birth across midnight moves the day pillar with the hour"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:423
+#: src/Generated/Builder/Manifest.php:426
 #: src/Generated/Forms/CalculateArabicLotsForm.php:24
 msgid "Arabic Lots"
 msgstr "Arap Noktaları"
 
-#: src/Generated/Builder/Manifest.php:3727
+#: src/Generated/Builder/Manifest.php:3730
 #: src/Generated/Forms/CalculateArudhaPadasForm.php:24
 msgid "Arudha Padas"
 msgstr "Arudha Padalar"
 
-#: src/Generated/Builder/Manifest.php:3849
+#: src/Generated/Builder/Manifest.php:3852
 #: src/Generated/Forms/CalculateAshtakavargaForm.php:24
 msgid "Ashtakavarga"
 msgstr "Ashtakavarga"
 
-#: src/Generated/Builder/Manifest.php:1988
+#: src/Generated/Builder/Manifest.php:1991
 #: src/Generated/Forms/CalculateAspectsForm.php:24
 msgid "Planetary Aspects"
 msgstr "Gezegen Açıları"
 
-#: src/Generated/Builder/Manifest.php:13268
+#: src/Generated/Builder/Manifest.php:13271
 #: src/Generated/Forms/CalculateAyadiForm.php:24
 msgid "Ayadi Shadvarga"
 msgstr "Ayadi Shadvarga"
 
-#: src/Generated/Builder/Manifest.php:16191
+#: src/Generated/Builder/Manifest.php:16194
 #: src/Generated/Forms/CalculateAyurvedicConstitutionForm.php:24
 msgid "Ayurvedic Constitution"
 msgstr "Ayurvedik Yapı"
 
-#: src/Generated/Builder/Manifest.php:4279
+#: src/Generated/Builder/Manifest.php:4282
 #: src/Generated/Forms/CalculateBhavaBalaForm.php:24
 msgid "Bhava Bala"
 msgstr "Bhava Bala"
 
-#: src/Generated/Builder/Manifest.php:4141
+#: src/Generated/Builder/Manifest.php:4144
 #: src/Generated/Forms/CalculateBhavChalitForm.php:24
 msgid "Bhav Chalit"
 msgstr "Bhav Chalit"
 
-#: src/Generated/Builder/Manifest.php:13829
+#: src/Generated/Builder/Manifest.php:13832
 #: src/Generated/Forms/CalculateBirthDayForm.php:24
 msgid "Birth Day Number"
 msgstr "Doğum Günü Sayısı"
 
-#: src/Generated/Builder/Manifest.php:13858
+#: src/Generated/Builder/Manifest.php:13861
 #: src/Generated/Forms/CalculateBridgeNumbersForm.php:24
 msgid "Bridge Numbers"
 msgstr "Köprü Sayıları"
@@ -8856,7 +8875,7 @@ msgstr "Köprü Sayıları"
 msgid "Full birth name as it appears on the birth certificate, first, middle and last names separated by spaces"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:13926
+#: src/Generated/Builder/Manifest.php:13929
 #: src/Generated/Forms/CalculateBusinessNameForm.php:24
 msgid "Business Name Numerology"
 msgstr "İş Adı Numerolojisi"
@@ -8865,37 +8884,37 @@ msgstr "İş Adı Numerolojisi"
 msgid "The business or brand name to evaluate"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:10101
+#: src/Generated/Builder/Manifest.php:10104
 #: src/Generated/Forms/CalculateCentersForm.php:24
 msgid "Human Design Centers"
 msgstr "Human Design Merkezleri"
 
-#: src/Generated/Builder/Manifest.php:13955
+#: src/Generated/Builder/Manifest.php:13958
 #: src/Generated/Forms/CalculateChaldeanForm.php:24
 msgid "Chaldean Numerology"
 msgstr "Kildani Numeroloji"
 
-#: src/Generated/Builder/Manifest.php:9850
+#: src/Generated/Builder/Manifest.php:9853
 #: src/Generated/Forms/CalculateChannelsForm.php:24
 msgid "Defined Human Design Channels"
 msgstr "Tanımlı Human Design Kanalları"
 
-#: src/Generated/Builder/Manifest.php:4584
+#: src/Generated/Builder/Manifest.php:4587
 #: src/Generated/Forms/CalculateCharaKarakasForm.php:24
 msgid "Chara Karakas"
 msgstr "Chara Karakalar"
 
-#: src/Generated/Builder/Manifest.php:11476
+#: src/Generated/Builder/Manifest.php:11479
 #: src/Generated/Forms/CalculateDayMasterStrengthForm.php:24
 msgid "Day Master Strength"
 msgstr "Gün Ustası Gücü"
 
-#: src/Generated/Builder/Manifest.php:7699
+#: src/Generated/Builder/Manifest.php:7702
 #: src/Generated/Forms/CalculateDrishtiForm.php:24
 msgid "Planetary Aspects (Drishti)"
 msgstr "Gezegen Açıları (Drishti)"
 
-#: src/Generated/Builder/Manifest.php:14054
+#: src/Generated/Builder/Manifest.php:14057
 #: src/Generated/Forms/CalculateDualForm.php:24
 msgid "Dual Numerology"
 msgstr "İkili Numeroloji"
@@ -8904,37 +8923,37 @@ msgstr "İkili Numeroloji"
 msgid "The name to analyze in both systems"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14083
+#: src/Generated/Builder/Manifest.php:14086
 #: src/Generated/Forms/CalculateExpressionForm.php:24
 msgid "Expression Number"
 msgstr "İfade Sayısı"
 
-#: src/Generated/Builder/Manifest.php:10221
+#: src/Generated/Builder/Manifest.php:10224
 #: src/Generated/Forms/CalculateGatesForm.php:24
 msgid "Human Design Gate Activations"
 msgstr "Human Design Kapı Aktivasyonları"
 
-#: src/Generated/Builder/Manifest.php:1235
+#: src/Generated/Builder/Manifest.php:1238
 #: src/Generated/Forms/CalculateHousesForm.php:24
 msgid "House Cusps"
 msgstr "Ev Başlangıçları"
 
-#: src/Generated/Builder/Manifest.php:12063
+#: src/Generated/Builder/Manifest.php:12066
 #: src/Generated/Forms/CalculateKuaNumberForm.php:24
 msgid "Calculate Kua Number"
 msgstr "Kua Sayısını Hesapla"
 
-#: src/Generated/Builder/Manifest.php:11658
+#: src/Generated/Builder/Manifest.php:11661
 #: src/Generated/Forms/CalculateLuckPillarsForm.php:24
 msgid "Luck Pillars"
 msgstr "Şans Sütunları"
 
-#: src/Generated/Builder/Manifest.php:14333
+#: src/Generated/Builder/Manifest.php:14336
 #: src/Generated/Forms/CalculateNumCompatibilityForm.php:24
 msgid "Numerology Compatibility"
 msgstr "Numeroloji Uyumu"
 
-#: src/Generated/Builder/Manifest.php:5465
+#: src/Generated/Builder/Manifest.php:5468
 #: src/Generated/Forms/CalculateParallelsForm.php:24
 msgid "Declination Parallels"
 msgstr "Sapma Paralelleri"
@@ -8947,7 +8966,7 @@ msgstr ""
 msgid "Birth longitude in decimal degrees, part of the birth record"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14347
+#: src/Generated/Builder/Manifest.php:14350
 #: src/Generated/Forms/CalculatePersonalDayForm.php:24
 msgid "Personal Day"
 msgstr "Kişisel Gün"
@@ -8956,7 +8975,7 @@ msgstr "Kişisel Gün"
 msgid "Target date in YYYY-MM-DD format, in the years 100 to 2100"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14525
+#: src/Generated/Builder/Manifest.php:14528
 #: src/Generated/Forms/CalculatePersonalityForm.php:24
 msgid "Personality Number"
 msgstr "Kişilik Sayısı"
@@ -8966,7 +8985,7 @@ msgstr "Kişilik Sayısı"
 msgid "Full birth name"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14402
+#: src/Generated/Builder/Manifest.php:14405
 #: src/Generated/Forms/CalculatePersonalMonthForm.php:24
 msgid "Personal Month"
 msgstr "Kişisel Ay"
@@ -8979,7 +8998,7 @@ msgstr ""
 msgid "Target calendar month to forecast (1 to 12)"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:14470
+#: src/Generated/Builder/Manifest.php:14473
 #: src/Generated/Forms/CalculatePersonalYearForm.php:24
 msgid "Personal Year"
 msgstr "Kişisel Yıl"
@@ -8988,407 +9007,407 @@ msgstr "Kişisel Yıl"
 msgid "Year to forecast"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:10370
+#: src/Generated/Builder/Manifest.php:10373
 #: src/Generated/Forms/CalculateProfileForm.php:24
 msgid "Human Design Profile and Line Keynotes"
 msgstr "Human Design Profili ve Çizgi Anahtar Notları"
 
-#: src/Generated/Builder/Manifest.php:8626
+#: src/Generated/Builder/Manifest.php:8629
 #: src/Generated/Forms/CalculateShadbalaForm.php:24
 msgid "Shadbala"
 msgstr "Shadbala"
 
-#: src/Generated/Builder/Manifest.php:14554
+#: src/Generated/Builder/Manifest.php:14557
 #: src/Generated/Forms/CalculateSoulUrgeForm.php:24
 msgid "Soul Urge Number"
 msgstr "Ruh Arzusu Sayısı"
 
-#: src/Generated/Builder/Manifest.php:12518
+#: src/Generated/Builder/Manifest.php:12521
 #: src/Generated/Forms/CalculateTonalpohualliForm.php:24
 msgid "Aztec Day Sign for a Date"
 msgstr "Bir Tarih İçin Aztek Gün İşareti"
 
-#: src/Generated/Builder/Manifest.php:8984
+#: src/Generated/Builder/Manifest.php:8987
 #: src/Generated/Forms/CalculateTransitForm.php:24
 msgid "Transit Analysis"
 msgstr "Transit Analizi"
 
-#: src/Generated/Builder/Manifest.php:10490
+#: src/Generated/Builder/Manifest.php:10493
 #: src/Generated/Forms/CalculateTypeForm.php:24
 msgid "Human Design Type"
 msgstr "Human Design Tipi"
 
-#: src/Generated/Builder/Manifest.php:13018
+#: src/Generated/Builder/Manifest.php:13021
 #: src/Generated/Forms/CalculateTzolkinForm.php:24
 msgid "Mayan Day Sign for a Date"
 msgstr "Bir Tarih İçin Maya Gün İşareti"
 
-#: src/Generated/Builder/Manifest.php:10596
+#: src/Generated/Builder/Manifest.php:10599
 #: src/Generated/Forms/CalculateVariablesForm.php:24
 msgid "Human Design Variables"
 msgstr "Human Design Değişkenleri"
 
-#: src/Generated/Builder/Manifest.php:11172
+#: src/Generated/Builder/Manifest.php:11175
 #: src/Generated/Forms/CalculateZodiacAnimalForm.php:24
 msgid "Chinese Zodiac Animal for a Birth Date"
 msgstr "Bir Doğum Tarihi İçin Çin Burcu Hayvanı"
 
-#: src/Generated/Builder/Manifest.php:4417
+#: src/Generated/Builder/Manifest.php:4420
 #: src/Generated/Forms/CastKpHoraryChartForm.php:24
 msgid "Cast a KP Horary"
 msgstr "KP Horary Kur"
 
-#: src/Generated/Builder/Manifest.php:5915
+#: src/Generated/Builder/Manifest.php:5918
 #: src/Generated/Forms/CheckKalsarpaDoshaForm.php:24
 msgid "Kalsarpa Dosha"
 msgstr "Kalsarpa Dosha"
 
-#: src/Generated/Builder/Manifest.php:8504
+#: src/Generated/Builder/Manifest.php:8507
 #: src/Generated/Forms/CheckSadhesatiForm.php:24
 msgid "Sadhesati"
 msgstr "Sadhesati"
 
-#: src/Generated/Builder/Manifest.php:547
+#: src/Generated/Builder/Manifest.php:550
 #: src/Generated/Forms/DetectAspectPatternsForm.php:24
 msgid "Aspect Patterns"
 msgstr "Açı Desenleri"
 
-#: src/Generated/Builder/Manifest.php:4799
+#: src/Generated/Builder/Manifest.php:4802
 #: src/Generated/Forms/DetectYogasForm.php:24
 msgid "Classical Vedic Yogas in a Birth Chart"
 msgstr "Doğum Haritasındaki Klasik Vedik Yogalar"
 
-#: src/Generated/Builder/Manifest.php:15594
+#: src/Generated/Builder/Manifest.php:15597
 #: src/Generated/Forms/DrawCardsForm.php:24
 msgid "Draw Tarot Cards"
 msgstr "Tarot Kartı Çek"
 
-#: src/Generated/Builder/Manifest.php:13610
+#: src/Generated/Builder/Manifest.php:13613
 #: src/Generated/Forms/FindGrihaPraveshDatesForm.php:24
 msgid "Griha Pravesh Dates"
 msgstr "Griha Pravesh Tarihleri"
 
-#: src/Generated/Builder/Manifest.php:2806
-#: src/Generated/Builder/Manifest.php:9625
+#: src/Generated/Builder/Manifest.php:2809
+#: src/Generated/Builder/Manifest.php:9628
 #: src/Generated/Forms/ForecastSolarReturnForm.php:24
 #: src/Generated/Forms/GenerateSolarReturnForm.php:24
 msgid "Solar Return Chart"
 msgstr "Güneş Dönüşü Haritası"
 
-#: src/Generated/Builder/Manifest.php:679
+#: src/Generated/Builder/Manifest.php:682
 #: src/Generated/Forms/GenerateAsteroidsForm.php:24
 msgid "Asteroid Goddesses"
 msgstr "Asteroit Tanrıçaları"
 
-#: src/Generated/Builder/Manifest.php:803
+#: src/Generated/Builder/Manifest.php:806
 #: src/Generated/Forms/GenerateAstrocartographyForm.php:24
 msgid "Astrocartography Map"
 msgstr "Astrokartografi Haritası"
 
-#: src/Generated/Builder/Manifest.php:10976
+#: src/Generated/Builder/Manifest.php:10979
 #: src/Generated/Forms/GenerateBaziChartForm.php:24
 msgid "BaZi Chart"
 msgstr "BaZi Haritası"
 
-#: src/Generated/Builder/Manifest.php:14583
+#: src/Generated/Builder/Manifest.php:14586
 #: src/Generated/Forms/GenerateBirthProfileForm.php:24
 msgid "Birth Profile"
 msgstr "Doğum Profili"
 
-#: src/Generated/Builder/Manifest.php:9956
+#: src/Generated/Builder/Manifest.php:9959
 #: src/Generated/Forms/GenerateBodygraphForm.php:24
 msgid "Human Design Bodygraph"
 msgstr "Human Design Bodygraph"
 
-#: src/Generated/Builder/Manifest.php:5568
+#: src/Generated/Builder/Manifest.php:5571
 #: src/Generated/Forms/GenerateDivisionalChartForm.php:24
 msgid "Divisional Chart (Varga)"
 msgstr "Bölüm Haritası (Varga)"
 
-#: src/Generated/Builder/Manifest.php:1116
+#: src/Generated/Builder/Manifest.php:1119
 #: src/Generated/Forms/GenerateFixedStarsForm.php:24
 msgid "Fixed Stars and Star Conjunctions"
 msgstr "Sabit Yıldızlar ve Yıldız Kavuşumları"
 
-#: src/Generated/Builder/Manifest.php:922
+#: src/Generated/Builder/Manifest.php:925
 #: src/Generated/Forms/GenerateLilithForm.php:24
 msgid "Black Moon Lilith"
 msgstr "Kara Ay Lilith"
 
-#: src/Generated/Builder/Manifest.php:1343
+#: src/Generated/Builder/Manifest.php:1346
 #: src/Generated/Forms/GenerateLocalSpaceForm.php:24
 msgid "Local Space Astrology Map"
 msgstr "Yerel Uzay Astroloji Haritası"
 
-#: src/Generated/Builder/Manifest.php:1488
+#: src/Generated/Builder/Manifest.php:1491
 #: src/Generated/Forms/GenerateLunarReturnForm.php:24
 msgid "Lunar Return Chart"
 msgstr "Ay Dönüşü Haritası"
 
-#: src/Generated/Builder/Manifest.php:12888
+#: src/Generated/Builder/Manifest.php:12891
 #: src/Generated/Forms/GenerateMayanChartForm.php:24
 msgid "Mayan Chart"
 msgstr "Maya Haritası"
 
-#: src/Generated/Builder/Manifest.php:7577
+#: src/Generated/Builder/Manifest.php:7580
 #: src/Generated/Forms/GenerateNavamsaForm.php:24
 msgid "Navamsa Chart (D9)"
 msgstr "Navamsa Haritası (D9)"
 
-#: src/Generated/Builder/Manifest.php:2186
+#: src/Generated/Builder/Manifest.php:2189
 #: src/Generated/Forms/GeneratePlanetaryReturnForm.php:24
 msgid "Planetary Return Chart"
 msgstr "Gezegen Dönüşü Haritası"
 
-#: src/Generated/Builder/Manifest.php:286
+#: src/Generated/Builder/Manifest.php:289
 #: src/Generated/Forms/GenerateProfectionsForm.php:24
 msgid "Annual Profections"
 msgstr "Yıllık Profeksiyonlar"
 
-#: src/Generated/Builder/Manifest.php:2550
+#: src/Generated/Builder/Manifest.php:2553
 #: src/Generated/Forms/GenerateProgressionsForm.php:24
 msgid "Secondary Progressions"
 msgstr "İkincil İlerletmeler"
 
-#: src/Generated/Builder/Manifest.php:2410
+#: src/Generated/Builder/Manifest.php:2413
 #: src/Generated/Forms/GenerateRelocationChartForm.php:24
 msgid "Relocation Chart"
 msgstr "Yer Değiştirme Haritası"
 
-#: src/Generated/Builder/Manifest.php:2687
+#: src/Generated/Builder/Manifest.php:2690
 #: src/Generated/Forms/GenerateSolarArcForm.php:24
 msgid "Solar Arc Directions"
 msgstr "Güneş Yayı Yönelimleri"
 
-#: src/Generated/Builder/Manifest.php:10702
+#: src/Generated/Builder/Manifest.php:10705
 #: src/Generated/Forms/GetAlmanacDayForm.php:24
 msgid "Almanac for a Day"
 msgstr "Bir Günün Almanağı"
 
-#: src/Generated/Builder/Manifest.php:11924
+#: src/Generated/Builder/Manifest.php:11927
 #: src/Generated/Forms/GetAnnualAfflictionsForm.php:24
 msgid "Annual Afflictions"
 msgstr "Yıllık Sıkıntılar"
 
-#: src/Generated/Builder/Manifest.php:11953
+#: src/Generated/Builder/Manifest.php:11956
 #: src/Generated/Forms/GetAnnualFlyingStarsForm.php:24
 msgid "Annual Flying Stars"
 msgstr "Yıllık Uçan Yıldızlar"
 
-#: src/Generated/Builder/Manifest.php:3985
+#: src/Generated/Builder/Manifest.php:3988
 #: src/Generated/Forms/GetAvasthaForm.php:24
 #: src/Generated/Forms/GetAvasthaForm.php:33
 msgid "Avastha"
 msgstr "Avastha"
 
-#: src/Generated/Builder/Manifest.php:12468
+#: src/Generated/Builder/Manifest.php:12471
 #: src/Generated/Forms/GetAztecDaySignForm.php:24
 msgid "Aztec Day Sign"
 msgstr "Aztek Gün İşareti"
 
-#: src/Generated/Builder/Manifest.php:12482
-#: src/Generated/Builder/Manifest.php:12966
+#: src/Generated/Builder/Manifest.php:12485
+#: src/Generated/Builder/Manifest.php:12969
 #: src/Generated/Forms/GetAztecDaySignForm.php:33
 #: src/Generated/Forms/GetMayanDaySignForm.php:33
 msgid "Day sign"
 msgstr "Gün işareti"
 
-#: src/Generated/Builder/Manifest.php:12589
+#: src/Generated/Builder/Manifest.php:12592
 #: src/Generated/Forms/GetAztecTrecenaForm.php:24
 msgid "Aztec Trecena"
 msgstr "Aztek Trecena"
 
-#: src/Generated/Builder/Manifest.php:11982
+#: src/Generated/Builder/Manifest.php:11985
 #: src/Generated/Forms/GetBaguaSectorForm.php:24
 msgid "Bagua Sector"
 msgstr "Bagua Bölgesi"
 
-#: src/Generated/Builder/Manifest.php:11996
+#: src/Generated/Builder/Manifest.php:11999
 #: src/Generated/Forms/GetBaguaSectorForm.php:33
 msgid "Life area"
 msgstr "Yaşam alanı"
 
-#: src/Generated/Builder/Manifest.php:4051
+#: src/Generated/Builder/Manifest.php:4054
 #: src/Generated/Forms/GetBasicPanchangForm.php:24
 msgid "Basic Panchang"
 msgstr "Temel Panchang"
 
-#: src/Generated/Builder/Manifest.php:16970
+#: src/Generated/Builder/Manifest.php:16973
 #: src/Generated/Forms/GetBirthstonesForm.php:24
 msgid "Birthstones by Month"
 msgstr "Aya Göre Doğum Taşları"
 
-#: src/Generated/Builder/Manifest.php:10076
+#: src/Generated/Builder/Manifest.php:10079
 #: src/Generated/Forms/GetCenterForm.php:33
 msgid "Center"
 msgstr "Merkez"
 
-#: src/Generated/Builder/Manifest.php:4722
+#: src/Generated/Builder/Manifest.php:4725
 #: src/Generated/Forms/GetChoghadiyaForm.php:24
 msgid "Choghadiya"
 msgstr "Choghadiya"
 
-#: src/Generated/Builder/Manifest.php:15975
+#: src/Generated/Builder/Manifest.php:15978
 #: src/Generated/Forms/GetCriticalDaysForm.php:24
 msgid "Critical Days"
 msgstr "Kritik Günler"
 
-#: src/Generated/Builder/Manifest.php:17218
+#: src/Generated/Builder/Manifest.php:17221
 #: src/Generated/Forms/GetCrystalsByChakraForm.php:24
 msgid "Crystals by Chakra"
 msgstr "Çakraya Göre Kristaller"
 
-#: src/Generated/Builder/Manifest.php:17281
+#: src/Generated/Builder/Manifest.php:17284
 #: src/Generated/Forms/GetCrystalsByElementForm.php:24
 msgid "Crystals by Element"
 msgstr "Elemente Göre Kristaller"
 
-#: src/Generated/Builder/Manifest.php:4949
+#: src/Generated/Builder/Manifest.php:4952
 #: src/Generated/Forms/GetCurrentDashaForm.php:24
 msgid "Current Mahadasha"
 msgstr "Güncel Mahadasha"
 
-#: src/Generated/Builder/Manifest.php:16329
+#: src/Generated/Builder/Manifest.php:16332
 #: src/Generated/Forms/GetDailyAyurvedaReadingForm.php:24
 msgid "Daily Ayurveda Reading"
 msgstr "Günlük Ayurveda Okuması"
 
-#: src/Generated/Builder/Manifest.php:11408
+#: src/Generated/Builder/Manifest.php:11411
 #: src/Generated/Forms/GetDailyZodiacReadingForm.php:24
 msgid "Daily Chinese Zodiac Reading"
 msgstr "Günlük Çin Burcu Okuması"
 
-#: src/Generated/Builder/Manifest.php:11144
-#: src/Generated/Builder/Manifest.php:11422
+#: src/Generated/Builder/Manifest.php:11147
+#: src/Generated/Builder/Manifest.php:11425
 #: src/Generated/Forms/GetDailyZodiacReadingForm.php:33
 #: src/Generated/Forms/GetZodiacAnimalForm.php:33
 msgid "Animal"
 msgstr "Hayvan"
 
-#: src/Generated/Builder/Manifest.php:13399
-#: src/Generated/Builder/Manifest.php:13413
+#: src/Generated/Builder/Manifest.php:13402
+#: src/Generated/Builder/Manifest.php:13416
 #: src/Generated/Forms/GetDevataForm.php:24
 #: src/Generated/Forms/GetDevataForm.php:33
 msgid "Devata"
 msgstr "Devata"
 
-#: src/Generated/Builder/Manifest.php:13516
-#: src/Generated/Builder/Manifest.php:13530
+#: src/Generated/Builder/Manifest.php:13519
+#: src/Generated/Builder/Manifest.php:13533
 #: src/Generated/Forms/GetDikpalaDirectionForm.php:24
 #: src/Generated/Forms/GetDikpalaDirectionForm.php:33
 msgid "Direction"
 msgstr "Yön"
 
-#: src/Generated/Builder/Manifest.php:16406
+#: src/Generated/Builder/Manifest.php:16409
 #: src/Generated/Forms/GetDinacharyaScheduleForm.php:24
 msgid "Dinacharya Daily Routine"
 msgstr "Dinacharya Günlük Rutin"
 
-#: src/Generated/Builder/Manifest.php:16499
-#: src/Generated/Builder/Manifest.php:16513
+#: src/Generated/Builder/Manifest.php:16502
+#: src/Generated/Builder/Manifest.php:16516
 #: src/Generated/Forms/GetDoshaForm.php:24
 #: src/Generated/Forms/GetDoshaForm.php:33
 msgid "Dosha"
 msgstr "Dosha"
 
-#: src/Generated/Builder/Manifest.php:15906
+#: src/Generated/Builder/Manifest.php:15909
 #: src/Generated/Forms/GetForecastForm.php:24
 msgid "Biorhythm Forecast"
 msgstr "Biyoritim Tahmini"
 
-#: src/Generated/Builder/Manifest.php:10327
+#: src/Generated/Builder/Manifest.php:10330
 #: src/Generated/Forms/GetGateForm.php:24
 msgid "Human Design Gate by Number"
 msgstr "Numaraya Göre Human Design Kapısı"
 
-#: src/Generated/Builder/Manifest.php:12797
+#: src/Generated/Builder/Manifest.php:12800
 #: src/Generated/Forms/GetHaabMonthForm.php:24
 msgid "Haab Period"
 msgstr "Haab Dönemi"
 
-#: src/Generated/Builder/Manifest.php:12811
+#: src/Generated/Builder/Manifest.php:12814
 #: src/Generated/Forms/GetHaabMonthForm.php:33
 msgid "Haab period"
 msgstr "Haab dönemi"
 
-#: src/Generated/Builder/Manifest.php:14961
+#: src/Generated/Builder/Manifest.php:14964
 #: src/Generated/Forms/GetHebrewLetterForm.php:24
 msgid "Hebrew Letter"
 msgstr "İbrani Harfi"
 
-#: src/Generated/Builder/Manifest.php:5761
+#: src/Generated/Builder/Manifest.php:5764
 #: src/Generated/Forms/GetHeliacalVisibilityForm.php:24
 msgid "Heliacal Rising and Setting"
 msgstr "Heliakal Doğuş ve Batış"
 
-#: src/Generated/Builder/Manifest.php:16800
+#: src/Generated/Builder/Manifest.php:16803
 #: src/Generated/Forms/GetHexagramForm.php:24
 msgid "Hexagram by Number"
 msgstr "Numaraya Göre Heksagram"
 
-#: src/Generated/Builder/Manifest.php:5838
+#: src/Generated/Builder/Manifest.php:5841
 #: src/Generated/Forms/GetHoraForm.php:24
 msgid "Hora"
 msgstr "Hora"
 
-#: src/Generated/Builder/Manifest.php:6037
+#: src/Generated/Builder/Manifest.php:6040
 #: src/Generated/Forms/GetKpCuspsForm.php:24
 msgid "KP Placidus House Cusps"
 msgstr "KP Placidus Ev Başlangıçları"
 
-#: src/Generated/Builder/Manifest.php:5129
+#: src/Generated/Builder/Manifest.php:5132
 #: src/Generated/Forms/GetKpDailyFinanceForm.php:24
 msgid "Daily Finance Score"
 msgstr "Günlük Finans Puanı"
 
-#: src/Generated/Builder/Manifest.php:6175
+#: src/Generated/Builder/Manifest.php:6178
 #: src/Generated/Forms/GetKpPlanetsForm.php:24
 msgid "KP Planetary Positions"
 msgstr "KP Gezegen Konumları"
 
-#: src/Generated/Builder/Manifest.php:6560
+#: src/Generated/Builder/Manifest.php:6563
 #: src/Generated/Forms/GetKpRulingPlanetsForm.php:24
 msgid "KP Ruling Planets with Optional Significators"
 msgstr "KP Yönetici Gezegenler ve İsteğe Bağlı Göstergeler"
 
-#: src/Generated/Builder/Manifest.php:12368
+#: src/Generated/Builder/Manifest.php:12371
 #: src/Generated/Forms/GetKuaNumberForm.php:24
 msgid "Kua Number"
 msgstr "Kua Sayısı"
 
-#: src/Generated/Builder/Manifest.php:7013
+#: src/Generated/Builder/Manifest.php:7016
 #: src/Generated/Forms/GetMajorDashasForm.php:24
 msgid "Mahadasha Periods"
 msgstr "Mahadasha Dönemleri"
 
-#: src/Generated/Builder/Manifest.php:12952
+#: src/Generated/Builder/Manifest.php:12955
 #: src/Generated/Forms/GetMayanDaySignForm.php:24
 msgid "Mayan Day Sign"
 msgstr "Maya Gün İşareti"
 
-#: src/Generated/Builder/Manifest.php:1722
+#: src/Generated/Builder/Manifest.php:1725
 #: src/Generated/Forms/GetMonthlyHoroscopeForm.php:24
 msgid "Monthly Horoscope by Zodiac Sign"
 msgstr "Burca Göre Aylık Burç Yorumu"
 
-#: src/Generated/Builder/Manifest.php:1446
+#: src/Generated/Builder/Manifest.php:1449
 #: src/Generated/Forms/GetMoonCalendarForm.php:24
 msgid "Lunar Calendar"
 msgstr "Ay Takvimi"
 
-#: src/Generated/Builder/Manifest.php:7520
+#: src/Generated/Builder/Manifest.php:7523
 #: src/Generated/Forms/GetNakshatraForm.php:24
 #: src/Generated/Forms/GetNakshatraForm.php:33
 msgid "Nakshatra"
 msgstr "Nakshatra"
 
-#: src/Generated/Builder/Manifest.php:16072
+#: src/Generated/Builder/Manifest.php:16075
 #: src/Generated/Forms/GetPhasesForm.php:24
 msgid "Phase Info"
 msgstr "Evre Bilgisi"
 
-#: src/Generated/Builder/Manifest.php:1074
-#: src/Generated/Builder/Manifest.php:5703
+#: src/Generated/Builder/Manifest.php:1077
+#: src/Generated/Builder/Manifest.php:5706
 #: src/Generated/Forms/GetEclipticCrossingsForm.php:24
 #: src/Generated/Forms/GetPlanetaryNodePassagesForm.php:24
 msgid "Ecliptic Crossings"
@@ -9398,112 +9417,112 @@ msgstr "Ekliptik Geçişleri"
 msgid "Year to scan for node passages (1551 to 2649)."
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:2080
-#: src/Generated/Builder/Manifest.php:7805
+#: src/Generated/Builder/Manifest.php:2083
+#: src/Generated/Builder/Manifest.php:7808
 #: src/Generated/Forms/GetPlanetaryPositionsForm.php:24
 #: src/Generated/Forms/GetPlanetPositionsForm.php:24
 msgid "Planetary Positions"
 msgstr "Gezegen Konumları"
 
-#: src/Generated/Builder/Manifest.php:7976
+#: src/Generated/Builder/Manifest.php:7979
 #: src/Generated/Forms/GetPranaDashasForm.php:24
 msgid "Prana Dashas"
 msgstr "Prana Dashalar"
 
-#: src/Generated/Builder/Manifest.php:8235
+#: src/Generated/Builder/Manifest.php:8238
 #: src/Generated/Forms/GetPratyantardashasForm.php:24
 msgid "Pratyantardashas"
 msgstr "Pratyantardashalar"
 
-#: src/Generated/Builder/Manifest.php:8462
+#: src/Generated/Builder/Manifest.php:8465
 #: src/Generated/Forms/GetRashiForm.php:24
 #: src/Generated/Forms/GetRashiForm.php:33
 msgid "Rashi"
 msgstr "Rashi"
 
-#: src/Generated/Builder/Manifest.php:16114
+#: src/Generated/Builder/Manifest.php:16117
 #: src/Generated/Forms/GetRitucharyaForm.php:24
 msgid "Ayurveda Seasonal Regimen"
 msgstr "Ayurveda Mevsimsel Rejim"
 
-#: src/Generated/Builder/Manifest.php:15224
-#: src/Generated/Builder/Manifest.php:15238
+#: src/Generated/Builder/Manifest.php:15227
+#: src/Generated/Builder/Manifest.php:15241
 #: src/Generated/Forms/GetSephirahForm.php:24
 #: src/Generated/Forms/GetSephirahForm.php:33
 msgid "Sephirah"
 msgstr "Sephirah"
 
-#: src/Generated/Builder/Manifest.php:15195
+#: src/Generated/Builder/Manifest.php:15198
 #: src/Generated/Forms/GetShemNameForm.php:24
 msgid "Of the 72 Names"
 msgstr "72 İsimden"
 
-#: src/Generated/Builder/Manifest.php:8748
+#: src/Generated/Builder/Manifest.php:8751
 #: src/Generated/Forms/GetSookshmaDashasForm.php:24
 msgid "Sookshma Dashas"
 msgstr "Sookshma Dashalar"
 
-#: src/Generated/Builder/Manifest.php:3537
+#: src/Generated/Builder/Manifest.php:3540
 #: src/Generated/Forms/GetSubDashasForm.php:24
 msgid "Antardashas"
 msgstr "Antardashalar"
 
-#: src/Generated/Builder/Manifest.php:13137
+#: src/Generated/Builder/Manifest.php:13140
 #: src/Generated/Forms/GetTrecenaForm.php:24
 msgid "Mayan Trecena"
 msgstr "Maya Trecena"
 
-#: src/Generated/Builder/Manifest.php:9116
+#: src/Generated/Builder/Manifest.php:9119
 #: src/Generated/Forms/GetUpagrahaPositionsForm.php:24
 msgid "Upagraha (Sub-planet) Positions"
 msgstr "Upagraha (Alt Gezegen) Konumları"
 
-#: src/Generated/Builder/Manifest.php:5330
+#: src/Generated/Builder/Manifest.php:5333
 #: src/Generated/Forms/GetVedicDailyReadingForm.php:24
 msgid "Daily Reading"
 msgstr "Günlük Okuma"
 
-#: src/Generated/Builder/Manifest.php:2997
+#: src/Generated/Builder/Manifest.php:3000
 #: src/Generated/Forms/GetWeeklyHoroscopeForm.php:24
 msgid "Weekly Horoscope by Zodiac Sign"
 msgstr "Burca Göre Haftalık Burç Yorumu"
 
-#: src/Generated/Builder/Manifest.php:3065
+#: src/Generated/Builder/Manifest.php:3068
 #: src/Generated/Forms/GetYearlyHoroscopeForm.php:24
 msgid "Yearly Horoscope by Zodiac Sign"
 msgstr "Burca Göre Yıllık Burç Yorumu"
 
-#: src/Generated/Builder/Manifest.php:9252
+#: src/Generated/Builder/Manifest.php:9255
 #: src/Generated/Forms/GetYogaForm.php:33
 msgid "Yoga"
 msgstr "Yoga"
 
-#: src/Generated/Builder/Manifest.php:11130
+#: src/Generated/Builder/Manifest.php:11133
 #: src/Generated/Forms/GetZodiacAnimalForm.php:24
 msgid "Chinese Zodiac Animal"
 msgstr "Çin Burcu Hayvanı"
 
-#: src/Generated/Builder/Manifest.php:11259
+#: src/Generated/Builder/Manifest.php:11262
 #: src/Generated/Forms/GetZodiacCompatibilityForm.php:24
 msgid "Chinese Zodiac Compatibility"
 msgstr "Çin Burcu Uyumu"
 
-#: src/Generated/Builder/Manifest.php:11895
+#: src/Generated/Builder/Manifest.php:11898
 #: src/Generated/Forms/ListSolarTermsForm.php:24
 msgid "Solar Terms"
 msgstr "Güneş Terimleri"
 
-#: src/Generated/Builder/Manifest.php:10731
+#: src/Generated/Builder/Manifest.php:10734
 #: src/Generated/Forms/LookupAuspiciousDaysForm.php:24
 msgid "Auspicious Days"
 msgstr "Uğurlu Günler"
 
-#: src/Generated/Builder/Manifest.php:16771
+#: src/Generated/Builder/Manifest.php:16774
 #: src/Generated/Forms/LookupHexagramForm.php:24
 msgid "Hexagram by Line Pattern"
 msgstr "Çizgi Desenine Göre Heksagram"
 
-#: src/Generated/Builder/Manifest.php:17398
+#: src/Generated/Builder/Manifest.php:17401
 #: src/Generated/Forms/SearchCrystalsForm.php:24
 msgid "Search Crystals"
 msgstr "Kristal Ara"
@@ -9734,147 +9753,149 @@ msgstr "Bilgileri kim girecek?"
 msgid "Set the details"
 msgstr "Bilgileri gir"
 
-#: assets/js/builder.js:28
+#: assets/js/builder.js:29
 msgid "Copy your shortcode"
 msgstr "Kısa kodunuzu kopyalayın"
 
 #. translators: 1: current step number, 2: total number of steps.
-#: assets/js/builder.js:640
+#: assets/js/builder.js:650
 #, php-format,js-format
 msgid "Step %1$d of %2$d"
 msgstr "Adım %1$d / %2$d"
 
-#: assets/js/builder.js:29
+#: assets/js/builder.js:30
 msgid "Back"
 msgstr "Geri"
 
-#: assets/js/builder.js:30
+#: assets/js/builder.js:31
 msgid "Continue"
 msgstr "Devam et"
 
-#: assets/js/builder.js:31
+#: assets/js/builder.js:32
 msgid "Ask my visitor instead"
 msgstr "Bunun yerine ziyaretçilerime sor"
 
-#: assets/js/builder.js:32
+#: assets/js/builder.js:33
 msgid "Show a set reading instead"
 msgstr "Bunun yerine sabit bir okuma göster"
 
-#: assets/js/builder.js:33
+#: assets/js/builder.js:34
 msgid "Ask my visitor"
 msgstr "Ziyaretçilerime sor"
 
-#: assets/js/builder.js:34
+#: assets/js/builder.js:35
 msgid "Shows a form. Each visitor enters their own details."
 msgstr "Bir form gösterir. Her ziyaretçi kendi bilgilerini girer."
 
-#: assets/js/builder.js:38
+#: assets/js/builder.js:39
 msgid "Show a set reading"
 msgstr "Sabit bir okuma göster"
 
-#: assets/js/builder.js:39
+#: assets/js/builder.js:40
 msgid "You enter the details once. Every visitor sees the same reading."
 msgstr "Bilgileri bir kez girersiniz. Her ziyaretçi aynı okumayı görür."
 
-#: assets/js/builder.js:43
+#: assets/js/builder.js:44
 msgid "This reading always asks the visitor."
 msgstr "Bu okuma her zaman ziyaretçiden bilgi ister."
 
-#: assets/js/builder.js:44
+#: assets/js/builder.js:45
 msgid "This reading needs no details. It shows straight away."
 msgstr "Bu okuma için bilgi gerekmez. Hemen görünür."
 
-#: assets/js/builder.js:48
+#: assets/js/builder.js:49
 msgid "More options"
 msgstr "Diğer seçenekler"
 
-#: assets/js/builder.js:49
+#: assets/js/builder.js:50
 msgid "Needed before the shortcode works."
 msgstr "Kısa kodun çalışması için gereklidir."
 
-#: assets/js/builder.js:50
+#: assets/js/builder.js:51
 msgid "Written interpretation"
 msgstr "Yazılı yorum"
 
-#: assets/js/builder.js:51
+#: assets/js/builder.js:52
 msgid "Show"
 msgstr "Göster"
 
-#: assets/js/builder.js:52
+#: assets/js/builder.js:53
 msgid "Hide"
 msgstr "Gizle"
 
-#: assets/js/builder.js:53
+#: assets/js/builder.js:54
 msgid "Follow my site setting"
 msgstr "Sitemin ayarını kullan"
 
-#: assets/js/builder.js:54
+#: assets/js/builder.js:55
 msgid "Copy shortcode"
 msgstr "Kısa kodu kopyala"
 
-#: assets/js/builder.js:55
+#: assets/js/builder.js:56
 msgid "Copied. Paste it into any page."
 msgstr "Kopyalandı. İstediğiniz sayfaya yapıştırın."
 
-#: assets/js/builder.js:56
+#: assets/js/builder.js:57
 msgid "Copy failed. Select the text and copy it."
 msgstr "Kopyalanamadı. Metni seçip kopyalayın."
 
-#: assets/js/builder.js:60
+#: assets/js/builder.js:61
 msgid "In the block editor, add a Shortcode block and paste it there."
 msgstr "Blok düzenleyicide bir Kısa Kod bloğu ekleyin ve kısa kodu içine yapıştırın."
 
-#: assets/js/builder.js:65
+#. translators: %s: field label
+#: src/Support/FormRenderer.php:389
+#: assets/js/builder.js:66
 msgid "City"
 msgstr "Şehir"
 
-#: assets/js/builder.js:66
+#: assets/js/builder.js:67
 msgid "Start typing. We fill in the timezone for you."
 msgstr "Yazmaya başlayın. Saat dilimini sizin için doldururuz."
 
-#: src/Generated/Builder/Manifest.php:142
-#: src/Generated/Builder/Manifest.php:15471
+#: src/Generated/Builder/Manifest.php:145
+#: src/Generated/Builder/Manifest.php:15474
 msgid "daily"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:142
+#: src/Generated/Builder/Manifest.php:145
 msgid "weekly"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:142
+#: src/Generated/Builder/Manifest.php:145
 msgid "monthly"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:142
+#: src/Generated/Builder/Manifest.php:145
 msgid "yearly"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:9557
-#: src/Generated/Builder/Manifest.php:13462
+#: src/Generated/Builder/Manifest.php:9560
+#: src/Generated/Builder/Manifest.php:13465
 #: src/Generated/Forms/GetDevataForm.php:37
 #: src/Generated/Forms/GetYogaForm.php:37
 msgid "Jaya"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:9557
-#: src/Generated/Builder/Manifest.php:13462
+#: src/Generated/Builder/Manifest.php:9560
+#: src/Generated/Builder/Manifest.php:13465
 #: src/Generated/Forms/GetDevataForm.php:37
 #: src/Generated/Forms/GetYogaForm.php:37
 msgid "Gandharva"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:9557
-#: src/Generated/Builder/Manifest.php:13462
+#: src/Generated/Builder/Manifest.php:9560
+#: src/Generated/Builder/Manifest.php:13465
 #: src/Generated/Forms/GetDevataForm.php:37
 #: src/Generated/Forms/GetYogaForm.php:37
 msgid "Brahma"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15471
+#: src/Generated/Builder/Manifest.php:15474
 msgid "three"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:15471
+#: src/Generated/Builder/Manifest.php:15474
 msgid "celtic"
 msgstr ""
 
@@ -9886,7 +9907,7 @@ msgstr "Özelleştir"
 msgid "Most loved"
 msgstr "En sevilenler"
 
-#: assets/js/builder.js:64
+#: assets/js/builder.js:65
 msgid "Create a new page"
 msgstr "Yeni sayfa oluştur"
 
@@ -9895,37 +9916,37 @@ msgstr "Yeni sayfa oluştur"
 msgid "Help"
 msgstr "Yardım"
 
-#: src/Admin/SettingsPage.php:177
+#: src/Admin/SettingsPage.php:178
 #: templates/admin-help.php:36
 msgid "Sell readings"
 msgstr "Okuma sat"
 
-#: templates/admin-connected.php:339
+#: templates/admin-connected.php:402
 msgid "Give something free"
 msgstr "Ücretsiz bir şey sun"
 
-#: templates/admin-connected.php:340
+#: templates/admin-connected.php:403
 msgid "A daily horoscope or a one card tarot draw brings visitors back every day. Place it on your home page."
 msgstr "Günlük burç yorumu veya tek kartlık tarot açılımı ziyaretçileri her gün geri getirir. Ana sayfanıza ekleyin."
 
-#: templates/admin-connected.php:344
+#: templates/admin-connected.php:407
 msgid "Birth charts, compatibility and yearly forecasts are worth paying for. Give each its own page."
 msgstr "Doğum haritaları, uyum ve yıllık öngörüler ücretli sunulmaya değer. Her biri için ayrı bir sayfa oluşturun."
 
-#: templates/admin-connected.php:347
+#: templates/admin-connected.php:410
 msgid "Ask for payment before the page opens"
 msgstr "Sayfa açılmadan önce ödeme iste"
 
-#: templates/admin-connected.php:348
+#: templates/admin-connected.php:411
 msgid "Install a membership or shop plugin you trust and limit that page to paying members. The reading shows only to them."
 msgstr "Güvendiğiniz bir üyelik veya mağaza eklentisi kurun. O sayfayı yalnızca ücretli üyelere açın. Okumayı yalnızca onlar görür."
 
-#: templates/admin-connected.php:352
+#: templates/admin-connected.php:423
 #: templates/admin-help.php:37
 msgid "Read the full guide"
 msgstr "Kılavuzun tamamını okuyun"
 
-#: templates/admin-connected.php:353
+#: templates/admin-connected.php:424
 msgid "See how it works on WordPress"
 msgstr "WordPress üzerinde nasıl çalıştığını görün"
 
@@ -9999,419 +10020,419 @@ msgstr "Hâlâ yardıma ihtiyacım var."
 msgid "Contact us"
 msgstr "Bize ulaşın"
 
-#: assets/js/builder.js:72
+#: assets/js/builder.js:73
 msgid "WordPress integration guide"
 msgstr "WordPress entegrasyon rehberi"
 
-#: assets/js/builder.js:73
+#: assets/js/builder.js:74
 msgid "The reading library could not load. Please reload the page."
 msgstr "Okuma kitaplığı yüklenemedi. Lütfen sayfayı yeniden yükleyin."
 
-#: src/Generated/Builder/Manifest.php:1609
+#: src/Generated/Builder/Manifest.php:1612
 msgid "Monthly Aspects"
 msgstr "Aylık Açılar"
 
-#: src/Generated/Builder/Manifest.php:1680
-#: src/Generated/Builder/Manifest.php:7235
+#: src/Generated/Builder/Manifest.php:1683
+#: src/Generated/Builder/Manifest.php:7238
 msgid "Monthly Ephemeris"
 msgstr "Aylık Efemeris"
 
-#: src/Generated/Builder/Manifest.php:1790
+#: src/Generated/Builder/Manifest.php:1793
 msgid "Monthly Parallels"
 msgstr "Aylık Paraleller"
 
-#: src/Generated/Builder/Manifest.php:1874
+#: src/Generated/Builder/Manifest.php:1877
 msgid "Monthly Transits"
 msgstr "Aylık Transitler"
 
-#: src/Generated/Builder/Manifest.php:1945
+#: src/Generated/Builder/Manifest.php:1948
 #: src/Generated/Forms/GetPlanetMeaningForm.php:24
 msgid "Planet Meaning Details"
 msgstr "Gezegen Anlamının Ayrıntıları"
 
-#: src/Generated/Builder/Manifest.php:1974
+#: src/Generated/Builder/Manifest.php:1977
 msgid "Planet Meanings"
 msgstr "Gezegen Anlamları"
 
-#: src/Generated/Builder/Manifest.php:2326
+#: src/Generated/Builder/Manifest.php:2329
 msgid "Planetary Transits"
 msgstr "Gezegen Transitleri"
 
-#: src/Generated/Builder/Manifest.php:2955
+#: src/Generated/Builder/Manifest.php:2958
 msgid "Upcoming Moon Phases"
 msgstr "Yaklaşan Ay Evreleri"
 
-#: src/Generated/Builder/Manifest.php:3133
+#: src/Generated/Builder/Manifest.php:3136
 #: src/Generated/Forms/GetZodiacSignForm.php:24
 msgid "Zodiac Sign Details"
 msgstr "Burç Ayrıntıları"
 
-#: src/Generated/Builder/Manifest.php:3162
+#: src/Generated/Builder/Manifest.php:3165
 msgid "Zodiac Signs"
 msgstr "Burçlar"
 
-#: src/Generated/Builder/Manifest.php:3971
+#: src/Generated/Builder/Manifest.php:3974
 msgid "Avastha by ID"
 msgstr "Ada Göre Avastha"
 
-#: src/Generated/Builder/Manifest.php:4018
+#: src/Generated/Builder/Manifest.php:4021
 msgid "Avastha States"
 msgstr "Avastha Durumları"
 
-#: src/Generated/Builder/Manifest.php:6313
+#: src/Generated/Builder/Manifest.php:6316
 #: src/Generated/Forms/GetKpPlanetsIntervalForm.php:24
 msgid "KP Planets at Time Intervals"
 msgstr "Zaman Aralıklarında KP Gezegenleri"
 
-#: src/Generated/Builder/Manifest.php:6450
+#: src/Generated/Builder/Manifest.php:6453
 #: src/Generated/Forms/GetKpRasiChangesForm.php:24
 msgid "KP Rasi Ingress Times"
 msgstr "KP Rashi Giriş Zamanları"
 
-#: src/Generated/Builder/Manifest.php:6695
+#: src/Generated/Builder/Manifest.php:6698
 #: src/Generated/Forms/GetKpRulingIntervalForm.php:24
 msgid "KP Ruling Planets with Significators"
 msgstr "Göstergelerle KP Yönetici Gezegenleri"
 
-#: src/Generated/Builder/Manifest.php:6848
+#: src/Generated/Builder/Manifest.php:6851
 #: src/Generated/Forms/GetKpSublordChangesForm.php:24
 msgid "KP Sublord Changes"
 msgstr "KP Alt Yönetici Değişimleri"
 
-#: src/Generated/Builder/Manifest.php:6958
+#: src/Generated/Builder/Manifest.php:6961
 msgid "KP-Newcomb Ayanamsa"
 msgstr "KP-Newcomb Ayanamsa"
 
-#: src/Generated/Builder/Manifest.php:7180
+#: src/Generated/Builder/Manifest.php:7183
 msgid "Monthly Declination Parallels"
 msgstr "Aylık Deklinasyon Paralelleri"
 
-#: src/Generated/Builder/Manifest.php:7293
+#: src/Generated/Builder/Manifest.php:7296
 msgid "Monthly Lunar Aspects"
 msgstr "Aylık Ay Açıları"
 
-#: src/Generated/Builder/Manifest.php:7364
+#: src/Generated/Builder/Manifest.php:7367
 msgid "Monthly Planetary Aspects"
 msgstr "Aylık Gezegen Açıları"
 
-#: src/Generated/Builder/Manifest.php:7435
+#: src/Generated/Builder/Manifest.php:7438
 msgid "Monthly Transit"
 msgstr "Aylık Transit"
 
-#: src/Generated/Builder/Manifest.php:7506
+#: src/Generated/Builder/Manifest.php:7509
 msgid "Nakshatra by ID"
 msgstr "Ada Göre Nakshatra"
 
-#: src/Generated/Builder/Manifest.php:7563
+#: src/Generated/Builder/Manifest.php:7566
 msgid "Nakshatras"
 msgstr "Nakshatralar"
 
-#: src/Generated/Builder/Manifest.php:7927
+#: src/Generated/Builder/Manifest.php:7930
 msgid "Planetary Yogas"
 msgstr "Gezegen Yogaları"
 
-#: src/Generated/Builder/Manifest.php:8448
+#: src/Generated/Builder/Manifest.php:8451
 msgid "Rashi by ID"
 msgstr "Ada Göre Rashi"
 
-#: src/Generated/Builder/Manifest.php:8490
+#: src/Generated/Builder/Manifest.php:8493
 msgid "Rashis"
 msgstr "Rashiler"
 
-#: src/Generated/Builder/Manifest.php:9238
+#: src/Generated/Builder/Manifest.php:9241
 msgid "Yoga Details by ID"
 msgstr "Ada Göre Yoga Ayrıntıları"
 
-#: src/Generated/Builder/Manifest.php:10062
+#: src/Generated/Builder/Manifest.php:10065
 msgid "Human Design Center by ID"
 msgstr "Ada Göre Human Design Merkezi"
 
-#: src/Generated/Builder/Manifest.php:11217
+#: src/Generated/Builder/Manifest.php:11220
 msgid "Chinese Zodiac Animals"
 msgstr "Çin Burcu Hayvanları"
 
-#: src/Generated/Builder/Manifest.php:11327
+#: src/Generated/Builder/Manifest.php:11330
 msgid "Convert Lunar and Gregorian Dates"
 msgstr "Ay ve Gregoryen Takvim Tarihlerini Dönüştür"
 
-#: src/Generated/Builder/Manifest.php:11616
+#: src/Generated/Builder/Manifest.php:11619
 msgid "Elements"
 msgstr "Elementler"
 
-#: src/Generated/Builder/Manifest.php:11853
+#: src/Generated/Builder/Manifest.php:11856
 msgid "Month of Almanac Days"
 msgstr "Bir Aylık Almanak Günleri"
 
-#: src/Generated/Builder/Manifest.php:12021
+#: src/Generated/Builder/Manifest.php:12024
 msgid "Bagua Sectors"
 msgstr "Bagua Bölgeleri"
 
-#: src/Generated/Builder/Manifest.php:12124
+#: src/Generated/Builder/Manifest.php:12127
 #: src/Generated/Forms/GenerateEightMansionsForm.php:24
 msgid "Eight Mansions Map"
 msgstr "Sekiz Konak Haritası"
 
-#: src/Generated/Builder/Manifest.php:12221
+#: src/Generated/Builder/Manifest.php:12224
 #: src/Generated/Forms/GenerateFlyingStarChartForm.php:24
 msgid "Flying Star Natal Chart"
 msgstr "Uçan Yıldızlar Doğum Haritası"
 
-#: src/Generated/Builder/Manifest.php:12326
+#: src/Generated/Builder/Manifest.php:12329
 msgid "Flying Stars"
 msgstr "Uçan Yıldızlar"
 
-#: src/Generated/Builder/Manifest.php:12397
+#: src/Generated/Builder/Manifest.php:12400
 msgid "Monthly Flying Stars"
 msgstr "Aylık Uçan Yıldızlar"
 
-#: src/Generated/Builder/Manifest.php:12439
+#: src/Generated/Builder/Manifest.php:12442
 msgid "Periods"
 msgstr "Dönemler"
 
-#: src/Generated/Builder/Manifest.php:12547
+#: src/Generated/Builder/Manifest.php:12550
 msgid "Aztec Day Signs"
 msgstr "Aztek Gün İşaretleri"
 
-#: src/Generated/Builder/Manifest.php:12618
+#: src/Generated/Builder/Manifest.php:12621
 msgid "Aztec Trecenas"
 msgstr "Aztek Trecenaları"
 
-#: src/Generated/Builder/Manifest.php:12660
+#: src/Generated/Builder/Manifest.php:12663
 #: src/Generated/Forms/ConvertLongCountForm.php:24
 msgid "Convert a Maya Long Count"
 msgstr "Maya Uzun Sayımını Dönüştür"
 
-#: src/Generated/Builder/Manifest.php:12721
+#: src/Generated/Builder/Manifest.php:12724
 msgid "Daily Aztec Energy Reading"
 msgstr "Günlük Aztek Enerji Okuması"
 
-#: src/Generated/Builder/Manifest.php:12750
+#: src/Generated/Builder/Manifest.php:12753
 msgid "Daily Mayan Energy Reading"
 msgstr "Günlük Maya Enerji Okuması"
 
-#: src/Generated/Builder/Manifest.php:12846
+#: src/Generated/Builder/Manifest.php:12849
 msgid "Haab Periods"
 msgstr "Haab Dönemleri"
 
-#: src/Generated/Builder/Manifest.php:13065
+#: src/Generated/Builder/Manifest.php:13068
 msgid "Mayan Day Signs"
 msgstr "Maya Gün İşaretleri"
 
-#: src/Generated/Builder/Manifest.php:13166
+#: src/Generated/Builder/Manifest.php:13169
 msgid "Mayan Trecenas"
 msgstr "Maya Trecenaları"
 
-#: src/Generated/Builder/Manifest.php:13208
+#: src/Generated/Builder/Manifest.php:13211
 msgid "Monthly Tzolkin Calendar Grid"
 msgstr "Aylık Tzolkin Takvim Tablosu"
 
-#: src/Generated/Builder/Manifest.php:13474
+#: src/Generated/Builder/Manifest.php:13477
 msgid "Devatas"
 msgstr "Devatalar"
 
-#: src/Generated/Builder/Manifest.php:13554
+#: src/Generated/Builder/Manifest.php:13557
 msgid "Directions"
 msgstr "Yönler"
 
-#: src/Generated/Builder/Manifest.php:13984
+#: src/Generated/Builder/Manifest.php:13987
 msgid "Compound Number Meaning"
 msgstr "Bileşik Sayının Anlamı"
 
-#: src/Generated/Builder/Manifest.php:14012
+#: src/Generated/Builder/Manifest.php:14015
 msgid "Daily Numerology Number"
 msgstr "Günün Numeroloji Sayısı"
 
-#: src/Generated/Builder/Manifest.php:14112
+#: src/Generated/Builder/Manifest.php:14115
 #: src/Generated/Forms/CheckKarmicDebtForm.php:24
 msgid "Karmic Debt Numbers"
 msgstr "Karmik Borç Sayıları"
 
-#: src/Generated/Builder/Manifest.php:14210
+#: src/Generated/Builder/Manifest.php:14213
 #: src/Generated/Forms/CalculateMaturityForm.php:24
 msgid "Maturity Number"
 msgstr "Olgunluk Sayısı"
 
-#: src/Generated/Builder/Manifest.php:14305
+#: src/Generated/Builder/Manifest.php:14308
 msgid "Number Meaning"
 msgstr "Sayının Anlamı"
 
-#: src/Generated/Builder/Manifest.php:14712
+#: src/Generated/Builder/Manifest.php:14715
 #: src/Generated/Forms/CalculateNameCompatibilityForm.php:24
 msgid "Compare Two Names"
 msgstr "İki İsmi Karşılaştır"
 
-#: src/Generated/Builder/Manifest.php:14813
+#: src/Generated/Builder/Manifest.php:14816
 #: src/Generated/Forms/CalculateGematriaForm.php:24
 msgid "Gematria"
 msgstr "Gematria"
 
-#: src/Generated/Builder/Manifest.php:14947
+#: src/Generated/Builder/Manifest.php:14950
 msgid "Gematria Ciphers"
 msgstr "Gematria Hesaplama Sistemleri"
 
-#: src/Generated/Builder/Manifest.php:15031
+#: src/Generated/Builder/Manifest.php:15034
 msgid "Hebrew Letters"
 msgstr "İbrani Harfleri"
 
-#: src/Generated/Builder/Manifest.php:15065
+#: src/Generated/Builder/Manifest.php:15068
 #: src/Generated/Forms/GenerateNameProfileForm.php:24
 msgid "Name Profile"
 msgstr "İsim Profili"
 
-#: src/Generated/Builder/Manifest.php:15140
+#: src/Generated/Builder/Manifest.php:15143
 msgid "Names"
 msgstr "İsimler"
 
-#: src/Generated/Builder/Manifest.php:15299
+#: src/Generated/Builder/Manifest.php:15302
 msgid "Sephirah of the Day"
 msgstr "Günün Sephirahı"
 
-#: src/Generated/Builder/Manifest.php:15354
+#: src/Generated/Builder/Manifest.php:15357
 msgid "Tree of Life"
 msgstr "Hayat Ağacı"
 
-#: src/Generated/Builder/Manifest.php:15496
+#: src/Generated/Builder/Manifest.php:15499
 msgid "Career Spread, 7 Cards"
 msgstr "Kariyer Açılımı, 7 Kart"
 
-#: src/Generated/Builder/Manifest.php:15538
+#: src/Generated/Builder/Manifest.php:15541
 msgid "Celtic Cross Spread, 10 Cards"
 msgstr "Kelt Haçı Açılımı, 10 Kart"
 
-#: src/Generated/Builder/Manifest.php:15662
+#: src/Generated/Builder/Manifest.php:15665
 msgid "Love Spread, 5 Cards"
 msgstr "Aşk Açılımı, 5 Kart"
 
-#: src/Generated/Builder/Manifest.php:15704
+#: src/Generated/Builder/Manifest.php:15707
 msgid "Tarot Card by ID"
 msgstr "Ada Göre Tarot Kartı"
 
-#: src/Generated/Builder/Manifest.php:15733
+#: src/Generated/Builder/Manifest.php:15736
 msgid "Tarot Cards"
 msgstr "Tarot Kartları"
 
-#: src/Generated/Builder/Manifest.php:15822
+#: src/Generated/Builder/Manifest.php:15825
 msgid "Three Card Spread"
 msgstr "Üç Kart Açılımı"
 
-#: src/Generated/Builder/Manifest.php:16030
+#: src/Generated/Builder/Manifest.php:16033
 msgid "Daily Biorhythm"
 msgstr "Günlük Biyoritim"
 
-#: src/Generated/Builder/Manifest.php:16532
+#: src/Generated/Builder/Manifest.php:16535
 msgid "Doshas"
 msgstr "Doshalar"
 
-#: src/Generated/Builder/Manifest.php:16574
+#: src/Generated/Builder/Manifest.php:16577
 msgid "Tastes"
 msgstr "Tatlar"
 
-#: src/Generated/Builder/Manifest.php:16616
+#: src/Generated/Builder/Manifest.php:16619
 msgid "Twenty Qualities"
 msgstr "Yirmi Nitelik"
 
-#: src/Generated/Builder/Manifest.php:16658
+#: src/Generated/Builder/Manifest.php:16661
 msgid "Cast an I-Ching Reading"
 msgstr "I Ching Açılımı"
 
-#: src/Generated/Builder/Manifest.php:16687
+#: src/Generated/Builder/Manifest.php:16690
 msgid "Cast Daily Reading"
 msgstr "Günlük Açılım"
 
-#: src/Generated/Builder/Manifest.php:16729
+#: src/Generated/Builder/Manifest.php:16732
 msgid "Daily Hexagram"
 msgstr "Günün Heksagramı"
 
-#: src/Generated/Builder/Manifest.php:16829
+#: src/Generated/Builder/Manifest.php:16832
 msgid "Hexagrams"
 msgstr "Heksagramlar"
 
-#: src/Generated/Builder/Manifest.php:16871
+#: src/Generated/Builder/Manifest.php:16874
 msgid "Random Hexagram"
 msgstr "Rastgele Heksagram"
 
-#: src/Generated/Builder/Manifest.php:16885
+#: src/Generated/Builder/Manifest.php:16888
 #: src/Generated/Forms/GetTrigramForm.php:24
 msgid "Trigram by Number or Name"
 msgstr "Numaraya veya Ada Göre Trigram"
 
-#: src/Generated/Builder/Manifest.php:16914
+#: src/Generated/Builder/Manifest.php:16917
 msgid "Trigrams"
 msgstr "Trigramlar"
 
-#: src/Generated/Builder/Manifest.php:16999
+#: src/Generated/Builder/Manifest.php:17002
 msgid "Crystal by ID"
 msgstr "Ada Göre Kristal"
 
-#: src/Generated/Builder/Manifest.php:17028
+#: src/Generated/Builder/Manifest.php:17031
 msgid "Crystal Colors"
 msgstr "Kristal Renkleri"
 
-#: src/Generated/Builder/Manifest.php:17042
+#: src/Generated/Builder/Manifest.php:17045
 msgid "Crystal Pairings"
 msgstr "Kristal Eşleşmeleri"
 
-#: src/Generated/Builder/Manifest.php:17070
+#: src/Generated/Builder/Manifest.php:17073
 msgid "Crystal Planets"
 msgstr "Kristal Gezegenleri"
 
-#: src/Generated/Builder/Manifest.php:17084
+#: src/Generated/Builder/Manifest.php:17087
 msgid "Crystals"
 msgstr "Kristaller"
 
-#: src/Generated/Builder/Manifest.php:17342
+#: src/Generated/Builder/Manifest.php:17345
 msgid "Daily Crystal"
 msgstr "Günün Kristali"
 
-#: src/Generated/Builder/Manifest.php:17384
+#: src/Generated/Builder/Manifest.php:17387
 msgid "Random Crystal"
 msgstr "Rastgele Kristal"
 
-#: src/Generated/Builder/Manifest.php:17453
+#: src/Generated/Builder/Manifest.php:17456
 msgid "Daily Dream Symbol"
 msgstr "Günün Rüya Sembolü"
 
-#: src/Generated/Builder/Manifest.php:17495
+#: src/Generated/Builder/Manifest.php:17498
 msgid "Dream Symbol by ID"
 msgstr "Ada Göre Rüya Sembolü"
 
-#: src/Generated/Builder/Manifest.php:17523
+#: src/Generated/Builder/Manifest.php:17526
 msgid "Random Dream Symbols"
 msgstr "Rastgele Rüya Sembolleri"
 
-#: src/Generated/Builder/Manifest.php:17552
+#: src/Generated/Builder/Manifest.php:17555
 msgid "Search Dream Symbols"
 msgstr "Rüya Sembolü Ara"
 
-#: src/Generated/Builder/Manifest.php:17620
+#: src/Generated/Builder/Manifest.php:17623
 msgid "Symbol Counts by Letter"
 msgstr "Harfe Göre Sembol Sayıları"
 
-#: src/Generated/Builder/Manifest.php:17663
+#: src/Generated/Builder/Manifest.php:17666
 msgid "Angel Numbers"
 msgstr "Melek Sayıları"
 
-#: src/Generated/Builder/Manifest.php:17725
+#: src/Generated/Builder/Manifest.php:17728
 msgid "Daily Angel Number"
 msgstr "Günün Melek Sayısı"
 
-#: src/Generated/Builder/Manifest.php:17816
+#: src/Generated/Builder/Manifest.php:17819
 msgid "Cities in a Country"
 msgstr "Bir Ülkedeki Şehirler"
 
-#: src/Generated/Builder/Manifest.php:17870
+#: src/Generated/Builder/Manifest.php:17873
 msgid "Countries"
 msgstr "Ülkeler"
 
-#: src/Generated/Builder/Manifest.php:17912
+#: src/Generated/Builder/Manifest.php:17915
 msgid "Search Cities Worldwide"
 msgstr "Dünya Genelinde Şehir Ara"
 
-#: templates/admin-connected.php:182
+#: templates/admin-connected.php:191
 msgid "Answer a few questions and copy a finished shortcode. Paste it into any page and the reading is there."
 msgstr "Birkaç soruyu yanıtlayın ve hazır bir kısa kodu kopyalayın. Herhangi bir sayfaya yapıştırın, okuma orada olur."
 
-#: templates/admin-connected.php:343
+#: templates/admin-connected.php:406
 msgid "Charge for deeper readings"
 msgstr "Daha derin okumalar için ücret alın"
 
@@ -10809,3 +10830,288 @@ msgstr ""
 #: blocks/generated/generate-progressions/index.js:63
 msgid "House system of the natal chart that every progressed body is placed in"
 msgstr ""
+
+#: src/Admin/SettingsFields.php:343
+msgid "Chinese (Simplified)"
+msgstr "Çince (Basitleştirilmiş)"
+
+#: src/Admin/SettingsFields.php:344
+msgid "Chinese (Traditional)"
+msgstr "Çince (Geleneksel)"
+
+#: src/Admin/SettingsFields.php:505
+msgid "Choose logo"
+msgstr "Logo seç"
+
+#: src/Admin/SettingsFields.php:506
+msgid "Remove logo"
+msgstr "Logoyu kaldır"
+
+#: src/Admin/SettingsFields.php:522
+msgid "Same as your readings"
+msgstr "Yorumlarınızla aynı"
+
+#: src/Admin/SettingsFields.php:743
+msgid "Your logo shows on reports once your site runs on https."
+msgstr "Siteniz https üzerinden çalıştığında logonuz raporlarda görünür."
+
+#: src/Admin/SettingsPage.php:177
+msgid "Reports"
+msgstr "Raporlar"
+
+#: src/Generated/Builder/Manifest.php:17969
+#: src/Generated/Heroes/Manifest.php:222
+msgid "Branded report"
+msgstr "Markalı rapor"
+
+#: src/Generated/Builder/Manifest.php:17982
+#: blocks/generated/report/index.js:11
+msgid "Report"
+msgstr "Rapor"
+
+#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Forms/GenerateNatalReportForm.php:24
+#: src/Generated/Reports.php:47
+#: blocks/generated/report/index.js:14
+msgid "Natal Chart Report"
+msgstr "Doğum haritası raporu"
+
+#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Forms/GenerateSynastryReportForm.php:24
+#: src/Generated/Reports.php:51
+#: blocks/generated/report/index.js:14
+msgid "Synastry Report"
+msgstr "Sinastri raporu"
+
+#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Forms/GenerateKundliReportForm.php:24
+#: src/Generated/Reports.php:55
+#: blocks/generated/report/index.js:14
+msgid "Kundli Report"
+msgstr "Kundli raporu"
+
+#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Forms/GenerateMatchmakingReportForm.php:24
+#: src/Generated/Reports.php:59
+#: blocks/generated/report/index.js:14
+msgid "Kundli Matching Report"
+msgstr "Kundli uyum raporu"
+
+#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Forms/GenerateTarotReportForm.php:24
+#: src/Generated/Reports.php:79
+#: blocks/generated/report/index.js:14
+msgid "Tarot Reading Report"
+msgstr "Tarot okuma raporu"
+
+#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Forms/GenerateNumerologyReportForm.php:24
+#: src/Generated/Reports.php:75
+#: blocks/generated/report/index.js:14
+msgid "Numerology Report"
+msgstr "Numeroloji raporu"
+
+#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Forms/GenerateHumanDesignReportForm.php:24
+#: src/Generated/Reports.php:67
+#: blocks/generated/report/index.js:14
+msgid "Human Design Report"
+msgstr "Human Design raporu"
+
+#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Forms/GenerateYearlyForecastReportForm.php:24
+#: src/Generated/Reports.php:63
+#: blocks/generated/report/index.js:14
+msgid "Yearly Forecast Report"
+msgstr "Yıllık öngörü raporu"
+
+#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Forms/GenerateBaziReportForm.php:24
+#: src/Generated/Reports.php:71
+#: blocks/generated/report/index.js:14
+msgid "BaZi Report"
+msgstr "BaZi raporu"
+
+#: src/Generated/Builder/Manifest.php:18005
+#: blocks/generated/report/index.js:19
+msgid "Delivery"
+msgstr "Teslim"
+
+#: src/Generated/Builder/Manifest.php:18011
+#: blocks/generated/report/index.js:22
+msgid "PDF download"
+msgstr "PDF indirme"
+
+#: src/Generated/Builder/Manifest.php:18011
+#: blocks/generated/report/index.js:22
+msgid "Page in the browser"
+msgstr "Tarayıcıda sayfa"
+
+#: src/Generated/Forms/GenerateBaziReportForm.php:25
+#: src/Generated/Forms/GenerateHumanDesignReportForm.php:25
+#: src/Generated/Forms/GenerateKundliReportForm.php:25
+#: src/Generated/Forms/GenerateMatchmakingReportForm.php:25
+#: src/Generated/Forms/GenerateNatalReportForm.php:25
+#: src/Generated/Forms/GenerateNumerologyReportForm.php:25
+#: src/Generated/Forms/GenerateSynastryReportForm.php:25
+#: src/Generated/Forms/GenerateTarotReportForm.php:25
+#: src/Generated/Forms/GenerateYearlyForecastReportForm.php:25
+msgid "Create my report"
+msgstr "Raporumu oluştur"
+
+#: src/Generated/Forms/GenerateBaziReportForm.php:35
+#: src/Generated/Forms/GenerateHumanDesignReportForm.php:35
+#: src/Generated/Forms/GenerateKundliReportForm.php:35
+#: src/Generated/Forms/GenerateMatchmakingReportForm.php:139
+#: src/Generated/Forms/GenerateNatalReportForm.php:35
+#: src/Generated/Forms/GenerateNumerologyReportForm.php:35
+#: src/Generated/Forms/GenerateSynastryReportForm.php:171
+#: src/Generated/Forms/GenerateTarotReportForm.php:35
+#: src/Generated/Forms/GenerateYearlyForecastReportForm.php:35
+msgid "Size"
+msgstr "Boyut"
+
+#: src/Generated/Forms/GenerateBaziReportForm.php:40
+#: src/Generated/Forms/GenerateHumanDesignReportForm.php:40
+#: src/Generated/Forms/GenerateKundliReportForm.php:40
+#: src/Generated/Forms/GenerateMatchmakingReportForm.php:144
+#: src/Generated/Forms/GenerateNatalReportForm.php:40
+#: src/Generated/Forms/GenerateNumerologyReportForm.php:40
+#: src/Generated/Forms/GenerateSynastryReportForm.php:176
+#: src/Generated/Forms/GenerateTarotReportForm.php:40
+#: src/Generated/Forms/GenerateYearlyForecastReportForm.php:40
+msgid "A4"
+msgstr ""
+
+#: src/Generated/Forms/GenerateTarotReportForm.php:54
+msgid "Celtic cross"
+msgstr ""
+
+#: src/Generated/Forms/GenerateTarotReportForm.php:54
+msgid "Three card"
+msgstr ""
+
+#: src/Generated/Forms/GenerateTarotReportForm.php:54
+msgid "Love"
+msgstr ""
+
+#: src/Generated/Forms/GenerateTarotReportForm.php:54
+msgid "Career"
+msgstr ""
+
+#: src/Generated/Heroes/Manifest.php:223
+msgid "A finished report under your own brand. Your visitor fills in their details and downloads it as a PDF."
+msgstr "Kendi markanızla hazır bir rapor. Ziyaretçiniz bilgilerini girer ve PDF olarak indirir."
+
+#: templates/admin-connected.php:359
+msgid "Your brand"
+msgstr "Markanız"
+
+#: templates/admin-connected.php:361
+msgid "Every report your visitors receive carries your name, logo and footer."
+msgstr "Ziyaretçilerinizin aldığı her rapor adınızı, logonuzu ve alt bilginizi taşır."
+
+#: templates/admin-connected.php:365
+msgid "Brand name"
+msgstr "Marka adı"
+
+#: templates/admin-connected.php:369
+msgid "Logo"
+msgstr "Logo"
+
+#: templates/admin-connected.php:373
+msgid "Footer"
+msgstr "Alt bilgi"
+
+#: templates/admin-connected.php:379
+msgid "Paper and language"
+msgstr "Kâğıt ve dil"
+
+#: templates/admin-connected.php:381
+msgid "Page size"
+msgstr "Sayfa boyutu"
+
+#: templates/admin-connected.php:385
+msgid "Report language"
+msgstr "Rapor dili"
+
+#: templates/admin-connected.php:392
+msgid "Save reports"
+msgstr "Raporları kaydet"
+
+#: templates/admin-connected.php:414
+msgid "Sell a branded report"
+msgstr "Kendi markanızla rapor satın"
+
+#: templates/admin-connected.php:415
+msgid "Your visitor fills in their details and downloads a finished PDF under your name. Add your brand on the Reports tab, then create the report page."
+msgstr "Ziyaretçiniz bilgilerini girer ve adınızı taşıyan hazır bir PDF indirir. Markanızı Raporlar sekmesinde ekleyin, ardından rapor sayfasını oluşturun."
+
+#: templates/admin-connected.php:417
+msgid "Create a report page"
+msgstr "Rapor sayfası oluştur"
+
+#: assets/js/builder.js:27
+msgid "Choose the report"
+msgstr "Raporu seçin"
+
+#: blocks/generated/report/index.js:28
+msgid "Choose the report. Your visitors fill in their own details and receive it under your brand."
+msgstr "Raporu seçin. Ziyaretçileriniz kendi bilgilerini girer ve raporu markanızla alır."
+
+#: blocks/generated/report/block.json
+msgctxt "block title"
+msgid "Branded Report"
+msgstr ""
+
+#: blocks/generated/report/block.json
+msgctxt "block description"
+msgid "A finished report under your own brand. Your visitor fills in their details and downloads it as a PDF."
+msgstr "Kendi markanızla hazır bir rapor. Ziyaretçiniz bilgilerini girer ve PDF olarak indirir."
+
+#: blocks/generated/report/block.json
+msgctxt "block keyword"
+msgid "report"
+msgstr ""
+
+#: blocks/generated/report/block.json
+msgctxt "block keyword"
+msgid "pdf"
+msgstr ""
+
+#: blocks/generated/report/block.json
+msgctxt "block keyword"
+msgid "branded report"
+msgstr ""
+
+#. translators: %s: name of the font pair the chosen palette was designed with, such as Fraunces with Jost.
+#: src/Admin/SettingsFields.php:243
+#: src/Admin/SettingsFields.php:260
+msgid "Your site font"
+msgstr "Sitenizin yazı tipi"
+
+#. translators: %s: name of the font pair the chosen palette was designed with, such as Fraunces with Jost.
+#: src/Admin/SettingsFields.php:260
+#, php-format
+msgid "Palette default: %s"
+msgstr "Paletin varsayılanı: %s"
+
+#: templates/admin-connected.php:227
+msgid "Colours for every reading and report on your site. Pick a palette, or choose Custom and set the colours yourself."
+msgstr "Sitenizdeki her okuma ve rapor için renkler. Bir palet seçin veya Özel'i seçip renkleri kendiniz belirleyin."
+
+#: templates/admin-connected.php:241
+msgid "Font"
+msgstr "Yazı tipi"
+
+#: templates/admin-connected.php:243
+msgid "The typeface for every reading and report."
+msgstr "Her okuma ve rapor için yazı tipi."
+
+#: templates/admin-connected.php:362
+msgid "Reports use the palette and font from the Branding tab."
+msgstr "Raporlar Marka sekmesindeki paleti ve yazı tipini kullanır."
+
+#: templates/admin-connected.php:418
+msgid "Read the report guide"
+msgstr "Rapor kılavuzunu okuyun"

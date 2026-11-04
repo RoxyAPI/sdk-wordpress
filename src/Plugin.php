@@ -21,6 +21,7 @@ use RoxyAPI\Admin\SettingsPage;
 use RoxyAPI\Admin\ShortcodesPage;
 use RoxyAPI\Admin\SiteHealth;
 use RoxyAPI\Api\GeocodeRoute;
+use RoxyAPI\Api\ReportRoute;
 use RoxyAPI\Api\TestKeyRoute;
 use RoxyAPI\Blocks\Bindings;
 use RoxyAPI\Blocks\Category;
@@ -41,6 +42,9 @@ class Plugin {
 
 		register_activation_hook( $file, array( Activation::class, 'activate' ) );
 		register_deactivation_hook( $file, array( Activation::class, 'deactivate' ) );
+		// Before anything reads the settings, so the first page after an update
+		// already renders as the site did before it.
+		add_action( 'init', array( Activation::class, 'upgrade' ), 0 );
 
 		// Registered here rather than in boot(): a just-in-time textdomain load can fire
 		// before plugins_loaded, and the filter has to already be in place when it does.
@@ -105,6 +109,7 @@ class Plugin {
 		DashboardWidget::register();
 		TestKeyRoute::register();
 		GeocodeRoute::register();
+		ReportRoute::register();
 		Category::register();
 		BlocksRegistrar::register();
 		ShortcodesRegistrar::register();
@@ -161,10 +166,19 @@ class Plugin {
 			);
 		}
 
+		// The font pair in force, from its vendored stylesheet, so the only font
+		// request a reading makes goes to the site itself.
+		$deps = array( 'roxyapi-ui-tokens' );
+		$font = Theming::font_stylesheet();
+		if ( $font !== '' ) {
+			wp_register_style( 'roxyapi-ui-font', plugins_url( $font, self::$plugin_file ), array(), ROXYAPI_UI_VERSION );
+			$deps[] = 'roxyapi-ui-font';
+		}
+
 		wp_register_style(
 			'roxyapi-frontend',
 			plugins_url( 'assets/css/frontend.css', self::$plugin_file ),
-			array( 'roxyapi-ui-tokens' ),
+			$deps,
 			ROXYAPI_VERSION
 		);
 
@@ -229,7 +243,7 @@ class Plugin {
 					'searching' => __( 'Searching cities…', 'roxyapi' ),
 					'noResults' => __( 'No matching cities. Try a different spelling.', 'roxyapi' ),
 					'selected'  => __( 'City selected.', 'roxyapi' ),
-					'error'     => __( 'Search is unavailable. Enter coordinates manually.', 'roxyapi' ),
+					'error'     => __( 'City search is unavailable right now. Please try again in a moment.', 'roxyapi' ),
 				),
 			)
 		);

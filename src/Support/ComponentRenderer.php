@@ -245,7 +245,7 @@ class ComponentRenderer {
 	 * @param bool|string|null $override Raw per-placement value.
 	 * @return bool
 	 */
-	private static function hide_readings( $override ): bool {
+	public static function hide_readings( $override ): bool {
 		if ( is_bool( $override ) ) {
 			return $override;
 		}

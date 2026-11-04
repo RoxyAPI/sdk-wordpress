@@ -10,8 +10,9 @@
  *      clipboard via navigator.clipboard.writeText and flashes "Copied" on
  *      the button for two seconds.
  *   3. Palette controls on the Branding tab: upgrades the colour fields to the
- *      core wp-color-picker and enables or disables them as the palette choice
- *      changes.
+ *      core wp-color-picker, enables or disables them as the palette choice
+ *      changes, and names the chosen palette's font in the font picker.
+ *   4. The report logo on the Reports tab: picked from the media library.
  *
  * No inline scripts. Strings come from wp_localize_script via the RoxyAPIAdmin
  * global so they can be translated server side. jQuery is touched in exactly one
@@ -27,6 +28,7 @@
 		wireCopyButtons();
 		wireColorPickers();
 		wirePaletteChoice();
+		wireLogoPicker();
 	} );
 
 	function getStrings() {
@@ -246,8 +248,8 @@
 	}
 
 	/**
-	 * Enable the colour fields only while Custom is chosen, and fold them away
-	 * the moment a preset is picked. A preset supplies every value
+	 * Enable the colour fields only while Custom is chosen, fold them away the
+	 * moment a preset is picked, and name that palette's font in the picker. A preset supplies every value
 	 * itself, so leaving the fields live would offer an edit that the next save
 	 * silently discards. Mirrors the server, which disables them for the same
 	 * reason on a page load with a preset already selected.
@@ -272,6 +274,13 @@
 				if ( custom ) {
 					custom.open = isCustom;
 				}
+				// The font picker's first choice names the palette's own font.
+				const paletteFont = document.querySelector(
+					'#roxyapi_font option[value=""]'
+				);
+				if ( paletteFont && radio.dataset.font ) {
+					paletteFont.textContent = radio.dataset.font;
+				}
 			} );
 		} );
 	}
@@ -293,6 +302,50 @@
 						} );
 				}
 			} );
+	}
+
+	/**
+	 * The media library picks the report logo; the hidden field keeps its
+	 * attachment id, which is what the setting stores.
+	 */
+	function wireLogoPicker() {
+		const field = document.querySelector( '.roxyapi-logo' );
+		if ( ! field || ! window.wp || ! window.wp.media ) {
+			return;
+		}
+		const input = field.querySelector( 'input[type="hidden"]' );
+		const preview = field.querySelector( '.roxyapi-logo-preview' );
+		const choose = field.querySelector( '.roxyapi-logo-choose' );
+		const remove = field.querySelector( '.roxyapi-logo-remove' );
+		let frame = null;
+		choose.addEventListener( 'click', function () {
+			if ( ! frame ) {
+				frame = window.wp.media( {
+					title: choose.textContent,
+					button: { text: choose.textContent },
+					library: { type: 'image' },
+					multiple: false,
+				} );
+				frame.on( 'select', function () {
+					const image = frame
+						.state()
+						.get( 'selection' )
+						.first()
+						.toJSON();
+					input.value = String( image.id );
+					preview.src = ( image.sizes?.medium || image ).url;
+					preview.hidden = false;
+					remove.hidden = false;
+				} );
+			}
+			frame.open();
+		} );
+		remove.addEventListener( 'click', function () {
+			input.value = '';
+			preview.removeAttribute( 'src' );
+			preview.hidden = true;
+			remove.hidden = true;
+		} );
 	}
 
 	function flashButton( button, activeLabel, restoreLabel, activeClass ) {
