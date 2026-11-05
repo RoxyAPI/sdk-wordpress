@@ -275,6 +275,10 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.26.0 =
+* Improved: every zodiac, planet and I Ching symbol in a reading draws in one dedicated symbol font, loaded from your own site, so a chart looks the same on every device.
+* New: the moon calendar shows the Moon sign of every day.
+
 = 1.25.0 =
 * New: branded reports. Place [roxy_report report="natal"] or the Branded report block, and visitors fill in their details and download a finished PDF under your name, logo and footer. Natal chart, synastry, yearly forecast, kundli, matchmaking, Human Design, BaZi, numerology and tarot, in the language of your site.
 * New: a font picker on the Branding tab. Each palette brings its own font pair, or keep Your site font. Sites that already use a palette keep their current font.
@@ -325,6 +329,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.26.0 =
+One symbol font for every chart, served from your own site, and the Moon sign on every day of the moon calendar.
 
 = 1.25.0 =
 Branded PDF reports your visitors download under your name, a font picker on the Branding tab, and city search for every place.

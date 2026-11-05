@@ -18,8 +18,8 @@
  *     bin/ui-themes.json, which the generator emits as the palette picker
  *   - the typefaces (key and name) to bin/ui-fonts.json, which the generator
  *     emits as the font picker
- *   - each typeface's self-hosted stylesheet and font files to
- *     assets/css/fonts/, so a chosen font loads from the site itself
+ *   - each typeface's self-hosted stylesheet and font files, and the glyph
+ *     face's, to assets/css/fonts/, so a font loads from the site itself
  *
  * The catalogues are separate payloads rather than part of the bundle, so which
  * languages exist is a property of the version being vendored. The manifest
@@ -312,20 +312,27 @@ function writeFonts( catalog ) {
 }
 
 /**
- * Vendor every typeface's stylesheet and font files to assets/css/fonts/, in
- * the layout the package publishes, so each stylesheet's relative `url()`s
- * resolve beside it and a font loads from the site, never a third-party host.
- * A typeface with no files (the system stack) has no stylesheet. Files the
- * pinned build no longer publishes are removed, so the plugin can never offer a
- * font the vendored bundle does not know.
+ * Vendor every typeface's stylesheet and font files, and the glyph face every
+ * chart and card draws its symbols in, to assets/css/fonts/, in the layout the
+ * package publishes, so each stylesheet's relative `url()`s resolve beside it
+ * and a font loads from the site, never a third-party host. A typeface with no
+ * files (the system stack) has no stylesheet. Files the pinned build no longer
+ * publishes are removed, so the plugin can never offer a font the vendored
+ * bundle does not know.
  *
  * @param {string} version The resolved version.
  * @param {Object} catalog The pinned catalogue.
  * @return {Promise<void>}
  */
 async function vendorFonts( version, catalog ) {
+	if ( ! catalog.symbolFont?.stylesheet ) {
+		console.error(
+			'[fetch-ui-bundle] the pinned catalogue publishes no glyph face; refusing to write'
+		);
+		process.exit( 1 );
+	}
 	const wanted = new Map();
-	for ( const font of catalog.fonts || [] ) {
+	for ( const font of [ ...( catalog.fonts || [] ), catalog.symbolFont ] ) {
 		if ( ! font.stylesheet ) {
 			continue;
 		}

@@ -166,9 +166,21 @@ class Plugin {
 			);
 		}
 
+		// The glyph face every chart and card draws its symbols in, vendored
+		// beside the font pairs; a browser fetches a file of it only for a
+		// glyph the page shows.
+		if ( ! wp_style_is( 'roxyapi-ui-symbols', 'registered' ) ) {
+			wp_register_style(
+				'roxyapi-ui-symbols',
+				plugins_url( 'assets/css/fonts/symbols.css', self::$plugin_file ),
+				array(),
+				ROXYAPI_UI_VERSION
+			);
+		}
+
 		// The font pair in force, from its vendored stylesheet, so the only font
 		// request a reading makes goes to the site itself.
-		$deps = array( 'roxyapi-ui-tokens' );
+		$deps = array( 'roxyapi-ui-tokens', 'roxyapi-ui-symbols' );
 		$font = Theming::font_stylesheet();
 		if ( $font !== '' ) {
 			wp_register_style( 'roxyapi-ui-font', plugins_url( $font, self::$plugin_file ), array(), ROXYAPI_UI_VERSION );

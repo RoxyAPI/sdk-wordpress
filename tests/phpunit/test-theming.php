@@ -50,6 +50,18 @@ class Test_Theming extends \WP_UnitTestCase {
 		return is_array( $stored ) ? $stored : array();
 	}
 
+	/** The style tags a page with a reading prints, from a fresh registry. */
+	private function frontend_styles(): string {
+		$saved_styles         = $GLOBALS['wp_styles'] ?? null;
+		$GLOBALS['wp_styles'] = new \WP_Styles();
+		Plugin::register_frontend_style();
+		ob_start();
+		wp_styles()->do_items( array( 'roxyapi-frontend' ) );
+		$html                 = (string) ob_get_clean();
+		$GLOBALS['wp_styles'] = $saved_styles;
+		return $html;
+	}
+
 	/**
 	 * Every shape someone would try if they wanted to close our declaration and
 	 * open one of their own, or reach the network from a stylesheet.
@@ -482,13 +494,7 @@ class Test_Theming extends \WP_UnitTestCase {
 				'font'           => 'fraunces-jost',
 			)
 		);
-		$saved_styles          = $GLOBALS['wp_styles'] ?? null;
-		$GLOBALS['wp_styles'] = new \WP_Styles();
-		Plugin::register_frontend_style();
-		ob_start();
-		wp_styles()->do_items( array( 'roxyapi-frontend' ) );
-		$html                 = (string) ob_get_clean();
-		$GLOBALS['wp_styles'] = $saved_styles;
+		$html = $this->frontend_styles();
 
 		$this->assertStringContainsString( 'assets/css/fonts/fraunces-jost.css', $html );
 		$this->assertStringContainsString( '--roxy-font:fraunces-jost;', $html );
@@ -510,5 +516,16 @@ class Test_Theming extends \WP_UnitTestCase {
 				$this->assertFileExists( dirname( (string) $file ) . '/' . $ref, $file );
 			}
 		}
+	}
+
+	/** Every reading loads the glyph face from the site, under the family the tokens draw symbols in. */
+	public function test_the_glyph_face_loads_under_the_family_the_tokens_name(): void {
+		$this->assertStringContainsString( 'assets/css/fonts/symbols.css', $this->frontend_styles() );
+
+		$root = plugin_dir_path( ROXYAPI_PLUGIN_FILE ) . 'assets/css/';
+		preg_match( '#--roxy-font-symbol:\s*["\']([^"\']+)#', (string) file_get_contents( $root . 'roxy-ui-tokens.css' ), $token );
+		preg_match_all( '#font-family:\s*["\']([^"\']+)#', (string) file_get_contents( $root . 'fonts/symbols.css' ), $faces );
+		$this->assertNotEmpty( $token, 'The tokens name a glyph family.' );
+		$this->assertSame( array( $token[1] ), array_values( array_unique( $faces[1] ) ) );
 	}
 }

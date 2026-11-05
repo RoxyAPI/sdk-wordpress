@@ -54,7 +54,9 @@ pre-commit:
             glob: '{blocks,assets/css}/**/*.{css,scss}'
             exclude: 'build/**'
             # Vendored stylesheets are in .stylelintignore, so a re-vendor alone stages nothing to lint.
-            run: npx wp-scripts lint-style --allow-empty-input {staged_files}
+            # Files before the flag: wp-scripts reads the word after a flag as its value, drops that
+            # file and then lints the whole tree (vendor/ included) when no file is left.
+            run: npx wp-scripts lint-style {staged_files} --allow-empty-input
 
         phpstan:
             glob: 'src/**/*.php'
