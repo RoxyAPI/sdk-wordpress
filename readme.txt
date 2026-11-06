@@ -188,7 +188,7 @@ When the plugin contacts roxyapi.com, the request includes:
 
 * The reading parameters you supply via the block or shortcode (zodiac sign, birth date, name, location coordinates, question text).
 * Your site URL, so RoxyAPI can attribute requests to your site for support.
-* For a branded report, the brand name, logo address and footer you set on the Reports tab, and the palette and font you set on the Branding tab.
+* For a branded report, the brand name, logo address and footer you set on the Reports tab (your site title and site logo when you set none), your site address, and the palette and font you set on the Branding tab.
 * The plugin name and version, so RoxyAPI can spot compatibility problems with a particular release.
 * Your server outbound IP address (incidentally captured by the receiving server, like any HTTP request).
 
@@ -214,7 +214,7 @@ Yes, and you do not need a separate integration. Place any RoxyAPI shortcode or 
 
 = Can visitors download a branded report? =
 
-Yes. Place `[roxy_report report="natal"]` or the Branded report block on a page. Your visitor fills in their details and downloads a finished PDF with your brand name, logo and footer, set once under RoxyAPI, Reports, in the palette and font of your readings. Pair it with a membership or shop plugin to sell it. The report is built when the visitor asks for it, and your site keeps neither their details nor the document.
+Yes. Place `[roxy_report report="natal"]` or the Branded report block on a page. Your visitor fills in their details and downloads a finished PDF with your brand name, logo and footer, set once under RoxyAPI, Reports, in the palette and font of your readings. Until you set them, a report carries your site title, site logo and site address. Pair it with a membership or shop plugin to sell it. The report is built when the visitor asks for it, and your site keeps neither their details nor the document.
 
 = Is the API key safe? =
 
@@ -276,7 +276,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 == Changelog ==
 
 = 1.27.0 =
+* New: a report carries your site title, site logo and site address until you set your own brand on the Reports tab.
 * Improved: Pluto draws in the orb form astrologers use, on every chart.
+* Fixed: charts keep their own letter spacing and focus outline on any theme, so labels such as the Vastu mandala names stay readable.
 * Improved: cleaner text for every reading without a chart.
 
 = 1.26.0 =
@@ -335,7 +337,7 @@ Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blo
 == Upgrade Notice ==
 
 = 1.27.0 =
-Pluto in its astrological orb form, and cleaner readings without a chart.
+Reports carry your site name and logo from the start, Pluto in its astrological orb form, and cleaner readings without a chart.
 
 = 1.26.0 =
 One symbol font for every chart, served from your own site, and the Moon sign on every day of the moon calendar.

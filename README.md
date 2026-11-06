@@ -176,7 +176,7 @@ The RoxyAPI admin page is split into seven tabs:
 - **Connect.** Paste the API key, test the connection.
 - **Branding.** Ready-made palettes, or colors set by hand with a light and a dark value each, a font, a light, dark, or auto theme and the reading language. Readings and reports share it.
 - **Display.** Written readings on or off, hidden sections, the source credit, an optional disclaimer line, and the visitor form copy.
-- **Reports.** The brand name, logo, footer, page size, and language every branded report carries.
+- **Reports.** The brand name, logo, footer, page size, and language every branded report carries; left empty, the site title and site logo.
 - **Sell readings.** How to keep one reading free and put the deeper ones on a page only paying members open, and how to sell a branded report, with links to the full guide.
 - **Privacy.** Visitor consent label. Birth date and time are special category data under GDPR Article 9; submission is gated on an explicit opt in checkbox and the plugin registers privacy policy content via `wp_add_privacy_policy_content`.
 - **Advanced.** Cache preset (fresh / balanced / quota saver) and a connection status panel.

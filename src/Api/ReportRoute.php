@@ -228,12 +228,24 @@ class ReportRoute {
 	}
 
 	/**
+	 * The brand name a report carries while the Reports tab leaves it empty: the
+	 * site title, held to the length a report prints.
+	 *
+	 * @return string
+	 */
+	public static function site_name(): string {
+		return mb_substr( wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES ), 0, Reports::NAME_MAX_LENGTH );
+	}
+
+	/**
 	 * The parts of a report request no visitor fills in: the format the
 	 * placement asks for and whether it keeps the written readings, the name,
-	 * logo, footer, page size and language the Reports tab holds, and the look
-	 * of the Branding tab, so a report wears the same preset, colours and font
-	 * as the readings on the site. A report is a printed page, so it takes the
-	 * light colours: the accent as its accent, the text colour as its heading ink.
+	 * logo, footer, page size and language the Reports tab holds (an empty name
+	 * takes the site title and an empty logo the site logo; the site address is
+	 * the website on the cover), and the look of the Branding tab, so a report
+	 * wears the same preset, colours and font as the readings on the site. A
+	 * report is a printed page, so it takes the light colours: the accent as its
+	 * accent, the text colour as its heading ink.
 	 *
 	 * @param string $format   One of `Reports::FORMATS`.
 	 * @param bool   $readings Whether the report carries its written readings; the API default is yes.
@@ -241,7 +253,7 @@ class ReportRoute {
 	 */
 	public static function request( string $format, bool $readings = true ): array {
 		$opts   = SettingsSchema::get_option();
-		$logo   = wp_get_attachment_image_url( (int) $opts['report_logo'], 'full' );
+		$logo   = wp_get_attachment_image_url( (int) $opts['report_logo'] > 0 ? (int) $opts['report_logo'] : (int) get_theme_mod( 'custom_logo' ), 'full' );
 		$light  = Theming::palette()['light'];
 		$colors = array_map(
 			// The API takes six digits; the colour fields also accept three.
@@ -255,13 +267,14 @@ class ReportRoute {
 		);
 		$branding = array_filter(
 			array(
-				'name'   => (string) $opts['report_name'],
+				'name'    => '' !== (string) $opts['report_name'] ? (string) $opts['report_name'] : self::site_name(),
 				// The API fetches the logo itself, over https only.
-				'logo'   => is_string( $logo ) && wp_parse_url( $logo, PHP_URL_SCHEME ) === 'https' ? $logo : '',
-				'footer' => (string) $opts['report_footer'],
-				'colors' => $colors,
-				'font'   => Theming::font(),
-				'theme'  => in_array( $opts['palette_preset'], Reports::THEMES, true ) ? (string) $opts['palette_preset'] : '',
+				'logo'    => is_string( $logo ) && wp_parse_url( $logo, PHP_URL_SCHEME ) === 'https' ? $logo : '',
+				'footer'  => (string) $opts['report_footer'],
+				'website' => home_url( '/' ),
+				'colors'  => $colors,
+				'font'    => Theming::font(),
+				'theme'   => in_array( $opts['palette_preset'], Reports::THEMES, true ) ? (string) $opts['palette_preset'] : '',
 			)
 		);
 		return array_filter(

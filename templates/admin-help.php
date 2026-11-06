@@ -38,6 +38,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</p>
 	</details>
 	<details class="roxyapi-faq">
+		<summary><?php echo esc_html__( 'Can I sell branded reports?', 'roxyapi' ); ?></summary>
+		<p><?php echo esc_html__( 'Your visitor fills in their details and downloads a finished PDF under your name. Add your brand on the Reports tab, then create the report page.', 'roxyapi' ); ?></p>
+		<p>
+			<a href="<?php echo esc_url( add_query_arg( 'reading', 'roxy_report', admin_url( 'admin.php?page=' . BuilderPage::PAGE_SLUG ) ) ); ?>"><?php echo esc_html__( 'Create a report page', 'roxyapi' ); ?></a>
+			<a href="<?php echo esc_url( admin_url( 'admin.php?page=' . SettingsPage::PAGE_SLUG . '&tab=reports' ) ); ?>"><?php echo esc_html__( 'Reports', 'roxyapi' ); ?></a>
+		</p>
+	</details>
+	<details class="roxyapi-faq">
 		<summary><?php echo esc_html__( 'Is client data safe?', 'roxyapi' ); ?></summary>
 		<p><?php echo esc_html__( 'Birth details are used only to calculate the reading. Your key stays on your server and never reaches the browser.', 'roxyapi' ); ?></p>
 		<p><a href="<?php echo esc_url( Onboarding::docs_url( 'data-protection' ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html__( 'Learn more', 'roxyapi' ); ?></a></p>

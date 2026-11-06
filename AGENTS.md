@@ -62,7 +62,7 @@ Browsing months: the two monthly ephemeris readings render Previous and Next lin
 
 `[roxy_report report="natal"]` (block: Branded report) renders the visitor form of a report template. The visitor fills in their details, the plugin builds the report server side, and the browser receives it as a PDF download, or as a page with `format="html"`. `report` is the last segment of the template's path in the Reports section of the API reference (`natal`, `kundli`, `synastry`, `yearly-forecast` and the rest); a new template is picked up on regeneration with no plugin change. The form posts to `/wp-json/roxyapi/v1/report/{report}` with the REST nonce, the same consent checkbox and rate limit as every visitor form. A refused post returns to the form with a message. Neither the visitor input nor the document is stored.
 
-The brand name, logo, footer, page size and report language come from the Reports tab; the palette, colours and font come from the Branding tab, so a report wears the look of the readings. The fonts offered are the ones the pinned `@roxyapi/ui` catalogue publishes. `hide_readings="1"` (or the Display tab setting) delivers a chart-only report without the written readings.
+The brand name, logo, footer, page size and report language come from the Reports tab (an empty name takes the site title, an empty logo the site logo, and the site address prints as the website); the palette, colours and font come from the Branding tab, so a report wears the look of the readings. The fonts offered are the ones the pinned `@roxyapi/ui` catalogue publishes. `hide_readings="1"` (or the Display tab setting) delivers a chart-only report without the written readings.
 
 ### Form mode: visitors pick their own values
 

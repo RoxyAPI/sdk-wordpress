@@ -121,7 +121,7 @@ class Test_Settings_Screen extends Mock_Http_TestCase {
 		$this->assertSame( 'Help. Quick answers.', preg_replace( '/\s+/', ' ', trim( $document->getElementsByTagName( 'h1' )->item( 0 )->textContent ) ) );
 		$this->assertStringNotContainsString( 'roxyapi-page-intro', $html, 'The Help page opens on its questions, with no intro line.' );
 		$items = $document->getElementsByTagName( 'details' );
-		$this->assertCount( 8, $items );
+		$this->assertCount( 9, $items );
 		$expected = array(
 			array(
 				'How do I add a reading to a page?',
@@ -139,6 +139,14 @@ class Test_Settings_Screen extends Mock_Http_TestCase {
 				array(
 					admin_url( 'admin.php?page=' . SettingsPage::PAGE_SLUG . '&tab=sell-readings' ) => 'Sell readings',
 					'https://roxyapi.com/docs/monetization' => 'Read the full guide',
+				),
+			),
+			array(
+				'Can I sell branded reports?',
+				'Your visitor fills in their details and downloads a finished PDF under your name. Add your brand on the Reports tab, then create the report page.',
+				array(
+					admin_url( 'admin.php?page=' . BuilderPage::PAGE_SLUG . '&reading=roxy_report' ) => 'Create a report page',
+					admin_url( 'admin.php?page=' . SettingsPage::PAGE_SLUG . '&tab=reports' ) => 'Reports',
 				),
 			),
 			array(

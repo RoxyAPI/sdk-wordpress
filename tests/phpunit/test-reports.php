@@ -188,8 +188,39 @@ class Test_Reports extends \WP_UnitTestCase {
 		$this->assertStringContainsString( 'roxyapi-error-setup', do_shortcode( '[roxy_report report="nope"]' ) );
 	}
 
-	public function test_empty_settings_send_only_the_format(): void {
-		$this->assertSame( array( 'format' => 'html' ), ReportRoute::request( 'html' ) );
+	public function test_empty_settings_brand_the_report_with_the_site_title_and_address(): void {
+		$this->assertSame(
+			array(
+				'format'   => 'html',
+				'branding' => array(
+					'name'    => get_bloginfo( 'name' ),
+					'website' => home_url( '/' ),
+				),
+			),
+			ReportRoute::request( 'html' )
+		);
+	}
+
+	public function test_the_site_title_is_decoded_and_held_to_the_length_a_report_prints(): void {
+		update_option( 'blogname', 'Luna &amp; Sol ' . str_repeat( 'x', 100 ) );
+		$name = ReportRoute::site_name();
+		$this->assertStringStartsWith( 'Luna & Sol ', $name );
+		$this->assertSame( Reports::NAME_MAX_LENGTH, mb_strlen( $name ) );
+		$this->assertStringContainsString( 'placeholder="' . esc_attr( $name ) . '"', SettingsFields::report_text_html( 'report_name' ) );
+		$this->assertStringContainsString( 'placeholder=""', SettingsFields::report_text_html( 'report_footer' ) );
+	}
+
+	public function test_an_empty_logo_takes_the_site_logo_and_a_chosen_one_wins(): void {
+		$scheme = static fn( string $url ): string => set_url_scheme( $url, 'https' );
+		add_filter( 'wp_get_attachment_url', $scheme );
+		$site  = self::factory()->attachment->create_object( 'site-logo.png', 0, array( 'post_mime_type' => 'image/png' ) );
+		$brand = self::factory()->attachment->create_object( 'brand-logo.png', 0, array( 'post_mime_type' => 'image/png' ) );
+		set_theme_mod( 'custom_logo', $site );
+		$this->assertStringEndsWith( 'site-logo.png', (string) ReportRoute::request( 'pdf' )['branding']['logo'] );
+		update_option( SettingsPage::OPTION_NAME, array( 'report_logo' => $brand ) );
+		$this->assertStringEndsWith( 'brand-logo.png', (string) ReportRoute::request( 'pdf' )['branding']['logo'] );
+		remove_theme_mod( 'custom_logo' );
+		remove_filter( 'wp_get_attachment_url', $scheme );
 	}
 
 	public function test_every_reports_tab_setting_and_the_branding_tab_look_reach_the_request(): void {
@@ -210,14 +241,15 @@ class Test_Reports extends \WP_UnitTestCase {
 				'format'   => 'pdf',
 				'lang'     => 'hi',
 				'branding' => array(
-					'name'   => 'Luna Rivera Astrology',
-					'footer' => 'Book a reading at example.com.',
-					'colors' => array(
+					'name'    => 'Luna Rivera Astrology',
+					'footer'  => 'Book a reading at example.com.',
+					'website' => home_url( '/' ),
+					'colors'  => array(
 						'primary' => $preset['fg'],
 						'accent'  => $preset['accent'],
 					),
-					'font'   => 'geist',
-					'theme'  => 'practitioner',
+					'font'    => 'geist',
+					'theme'   => 'practitioner',
 				),
 				'page'     => array( 'size' => 'Letter' ),
 			),
@@ -258,7 +290,9 @@ class Test_Reports extends \WP_UnitTestCase {
 			array(
 				'format'   => 'pdf',
 				'branding' => array(
-					'colors' => array(
+					'name'    => get_bloginfo( 'name' ),
+					'website' => home_url( '/' ),
+					'colors'  => array(
 						'primary' => '#1e293b',
 						'accent'  => '#bb4455',
 					),
@@ -280,7 +314,7 @@ class Test_Reports extends \WP_UnitTestCase {
 
 		$plain = static fn( string $url ): string => set_url_scheme( $url, 'http' );
 		add_filter( 'wp_get_attachment_url', $plain );
-		$this->assertArrayNotHasKey( 'branding', ReportRoute::request( 'pdf' ), 'An http logo would fail the whole report.' );
+		$this->assertArrayNotHasKey( 'logo', ReportRoute::request( 'pdf' )['branding'], 'An http logo would fail the whole report.' );
 		remove_filter( 'wp_get_attachment_url', $plain );
 	}
 
@@ -307,7 +341,13 @@ class Test_Reports extends \WP_UnitTestCase {
 		$this->assertStringContainsString( '/reports/natal', $this->sent[0]['url'] );
 		$body = $this->sent[0]['body'];
 		$this->assertSame( 'pdf', $body['format'] );
-		$this->assertSame( array( 'name' => 'Luna' ), $body['branding'] );
+		$this->assertSame(
+			array(
+				'name'    => 'Luna',
+				'website' => home_url( '/' ),
+			),
+			$body['branding']
+		);
 		$this->assertSame( array( 'size' => 'Letter' ), $body['page'], 'The visitor page size wins over the site default.' );
 		$this->assertSame( '1990-07-15', $body['date'] );
 

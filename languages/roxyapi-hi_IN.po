@@ -372,7 +372,7 @@ msgstr "24 घंटे के HH:MM:SS प्रारूप में जन�
 msgid "Birth year to calculate Life Path automatically"
 msgstr "मूलांक स्वतः निकालने के लिए जन्म वर्ष"
 
-#: src/Plugin.php:245
+#: src/Plugin.php:257
 msgid "City selected."
 msgstr "शहर चुना गया।"
 
@@ -611,7 +611,7 @@ msgstr "पूरा नाम"
 msgid "Full name at birth"
 msgstr "जन्म के समय का पूरा नाम"
 
-#: src/Admin/SettingsFields.php:452
+#: src/Admin/SettingsFields.php:453
 #: src/Generated/Forms/AnalyzeKarmicLessonsForm.php:25
 #: src/Generated/Forms/AnalyzeNumberSequenceForm.php:25
 #: src/Generated/Forms/CalculateAnnualForecastForm.php:25
@@ -1059,7 +1059,7 @@ msgstr "नाम"
 msgid "Natal chart"
 msgstr "जन्म कुंडली"
 
-#: src/Plugin.php:244
+#: src/Plugin.php:256
 msgid "No matching cities. Try a different spelling."
 msgstr "कोई मिलता शहर नहीं मिला। वर्तनी बदलकर पुनः प्रयास करें।"
 
@@ -1148,11 +1148,11 @@ msgstr "अपनी सूर्य राशि चुनें"
 msgid "Question"
 msgstr "प्रश्न"
 
-#: src/Plugin.php:246
+#: src/Plugin.php:258
 msgid "City search is unavailable right now. Please try again in a moment."
 msgstr "शहर खोज अभी उपलब्ध नहीं है। कृपया थोड़ी देर में फिर से प्रयास करें।"
 
-#: src/Plugin.php:243
+#: src/Plugin.php:255
 msgid "Searching cities…"
 msgstr "शहर खोजे जा रहे हैं…"
 
@@ -1310,8 +1310,6 @@ msgstr "क्या मुझे नई नौकरी लेनी चाह�
 msgid "Sidereal frame (ayanamsa) the chart is cast in"
 msgstr "वह निरयन पद्धति (अयनांश) जिसमें कुंडली बनाई गई है"
 
-#: src/Generated/Builder/Manifest.php:15467
-#: src/Generated/Forms/GenerateTarotReportForm.php:49
 #: src/Generated/Forms/TarotCardForm.php:48
 #: blocks/generated/tarot/index.js:19
 msgid "Spread"
@@ -1816,121 +1814,121 @@ msgstr "RoxyAPI डेटा को कितनी देर तक सुर�
 msgid "No visitor data is sent to RoxyAPI when a page renders a static-attribute shortcode (the data is supplied by the site owner). Form-mode shortcodes are the only case where visitor input crosses to the third party."
 msgstr "जब कोई पेज स्टैटिक-एट्रिब्यूट शॉर्टकोड दिखाता है, तो कोई आगंतुक डेटा RoxyAPI को नहीं भेजा जाता (यह डेटा साइट स्वामी द्वारा दिया जाता है)। फ़ॉर्म-मोड शॉर्टकोड ही एकमात्र स्थिति है जहाँ आगंतुक का इनपुट तीसरे पक्ष तक जाता है।"
 
-#: src/Admin/SettingsFields.php:99
+#: src/Admin/SettingsFields.php:100
 msgid "Paste your RoxyAPI key"
 msgstr "अपनी RoxyAPI कुंजी पेस्ट करें"
 
-#: src/Admin/SettingsFields.php:117
+#: src/Admin/SettingsFields.php:118
 msgid "Leave blank to use the localised default."
 msgstr "स्थानीयकृत डिफ़ॉल्ट का उपयोग करने के लिए खाली छोड़ें।"
 
-#: src/Admin/SettingsFields.php:306
+#: src/Admin/SettingsFields.php:307
 msgid "Auto: follow the visitor device setting"
 msgstr "ऑटो: आगंतुक के डिवाइस सेटिंग का पालन करें"
 
-#: src/Admin/SettingsFields.php:197
-#: src/Admin/SettingsFields.php:307
+#: src/Admin/SettingsFields.php:198
+#: src/Admin/SettingsFields.php:308
 msgid "Light"
 msgstr "लाइट"
 
-#: src/Admin/SettingsFields.php:198
-#: src/Admin/SettingsFields.php:308
+#: src/Admin/SettingsFields.php:199
+#: src/Admin/SettingsFields.php:309
 msgid "Dark"
 msgstr "डार्क"
 
-#: src/Admin/SettingsFields.php:323
+#: src/Admin/SettingsFields.php:324
 msgid "Match site language"
 msgstr "साइट की भाषा के अनुसार"
 
-#: src/Admin/SettingsFields.php:335
+#: src/Admin/SettingsFields.php:336
 msgid "English"
 msgstr "अंग्रेज़ी"
 
-#: src/Admin/SettingsFields.php:336
+#: src/Admin/SettingsFields.php:337
 msgid "German"
 msgstr "जर्मन"
 
-#: src/Admin/SettingsFields.php:337
+#: src/Admin/SettingsFields.php:338
 msgid "Hindi"
 msgstr "हिन्दी"
 
-#: src/Admin/SettingsFields.php:338
+#: src/Admin/SettingsFields.php:339
 msgid "Spanish"
 msgstr "स्पेनिश"
 
-#: src/Admin/SettingsFields.php:339
+#: src/Admin/SettingsFields.php:340
 msgid "Turkish"
 msgstr "तुर्की"
 
-#: src/Admin/SettingsFields.php:340
+#: src/Admin/SettingsFields.php:341
 msgid "Portuguese"
 msgstr "पुर्तगाली"
 
-#: src/Admin/SettingsFields.php:341
+#: src/Admin/SettingsFields.php:342
 msgid "French"
 msgstr "फ़्रेंच"
 
-#: src/Admin/SettingsFields.php:342
+#: src/Admin/SettingsFields.php:343
 msgid "Russian"
 msgstr "रूसी"
 
-#: src/Admin/SettingsFields.php:360
+#: src/Admin/SettingsFields.php:361
 msgid "Hide the written text on every reading. Charts, tables, and values still show."
 msgstr "हर विश्लेषण पर लिखा हुआ टेक्स्ट छिपाएँ। चार्ट, टेबल और वैल्यू फिर भी दिखेंगी।"
 
-#: src/Admin/SettingsFields.php:406
+#: src/Admin/SettingsFields.php:407
 msgid "Show a disclaimer line at the bottom of every reading."
 msgstr "हर विश्लेषण के नीचे एक अस्वीकरण पंक्ति दिखाएँ।"
 
-#: src/Admin/SettingsFields.php:418
+#: src/Admin/SettingsFields.php:419
 msgid "Leave blank to use the localised default (\"For entertainment purposes only…\")."
 msgstr "स्थानीयकृत डिफ़ॉल्ट (\"केवल मनोरंजन के लिए…\") इस्तेमाल करने के लिए खाली छोड़ें।"
 
-#: src/Admin/SettingsFields.php:437
+#: src/Admin/SettingsFields.php:438
 msgid "Your reading"
 msgstr "आपका विश्लेषण"
 
-#: src/Admin/SettingsFields.php:466
+#: src/Admin/SettingsFields.php:467
 msgid "Fresh: 15 minutes (most up-to-date, more API calls)"
 msgstr "ताज़ा: 15 मिनट (सबसे अपडेट, ज़्यादा API कॉल)"
 
-#: src/Admin/SettingsFields.php:467
+#: src/Admin/SettingsFields.php:468
 msgid "Balanced: 1 hour (recommended)"
 msgstr "संतुलित: 1 घंटा (अनुशंसित)"
 
-#: src/Admin/SettingsFields.php:468
+#: src/Admin/SettingsFields.php:469
 msgid "Quota saver: 24 hours (fewer API calls, less fresh)"
 msgstr "कोटा बचत: 24 घंटे (कम API कॉल, कम ताज़ा)"
 
-#: src/Admin/SettingsFields.php:559
+#: src/Admin/SettingsFields.php:561
 msgid "Show source line on each reading."
 msgstr "हर विश्लेषण पर स्रोत पंक्ति दिखाएँ।"
 
-#: src/Admin/SettingsFields.php:594
+#: src/Admin/SettingsFields.php:596
 msgid "Defined via ROXYAPI_KEY constant in wp-config.php. The settings field is locked."
 msgstr "wp-config.php में ROXYAPI_KEY कॉन्स्टेंट के ज़रिए तय किया गया है। सेटिंग्स फ़ील्ड लॉक है।"
 
-#: src/Admin/SettingsFields.php:597
+#: src/Admin/SettingsFields.php:599
 msgid "A key is saved. Paste a new one to replace it. Leave blank to keep the current key."
 msgstr "एक कुंजी सेव है। इसे बदलने के लिए नई कुंजी पेस्ट करें। मौजूदा कुंजी बनाए रखने के लिए खाली छोड़ें।"
 
 #. translators: %s URL to RoxyAPI pricing page
-#: src/Admin/SettingsFields.php:601
+#: src/Admin/SettingsFields.php:603
 #, php-format
 msgid "No key yet? Get one at %s."
 msgstr "अभी तक कुंजी नहीं है? %s पर एक पाएँ।"
 
-#: src/Admin/SettingsFields.php:802
+#: src/Admin/SettingsFields.php:804
 msgid "API key format is invalid. Get a key at roxyapi.com."
 msgstr "API कुंजी का फ़ॉर्मेट अमान्य है। roxyapi.com पर कुंजी पाएँ।"
 
-#: src/Admin/SettingsFields.php:811
+#: src/Admin/SettingsFields.php:813
 msgid "Could not encrypt API key. Check that PHP openssl is installed."
 msgstr "API कुंजी एन्क्रिप्ट नहीं हो सकी। जांचें कि PHP openssl स्थापित है।"
 
 #: src/Admin/SettingsPage.php:110
 #: src/Admin/SettingsPage.php:111
-#: templates/admin-help.php:59
+#: templates/admin-help.php:67
 msgid "Shortcodes"
 msgstr "शॉर्टकोड"
 
@@ -1978,14 +1976,14 @@ msgstr "अनुवाद फ़ाइल लोड हुई"
 
 #: src/Admin/SiteHealth.php:77
 #: src/Admin/SiteHealth.php:119
-#: src/Support/GenericRenderer.php:903
-#: src/Support/GenericRenderer.php:906
+#: src/Support/GenericRenderer.php:908
+#: src/Support/GenericRenderer.php:911
 #: assets/js/builder.js:71
 msgid "Yes"
 msgstr "हाँ"
 
 #: src/Admin/SiteHealth.php:77
-#: src/Support/GenericRenderer.php:906
+#: src/Support/GenericRenderer.php:911
 #: assets/js/builder.js:72
 msgid "No"
 msgstr "नहीं"
@@ -2043,7 +2041,7 @@ msgid "The reading service is temporarily unavailable. Please try again in a few
 msgstr "विश्लेषण सेवा अभी अस्थायी रूप से उपलब्ध नहीं है। कृपया कुछ मिनट बाद फिर कोशिश करें।"
 
 #: src/Api/Client.php:268
-#: src/Api/ReportRoute.php:215
+#: src/Api/ReportRoute.php:217
 msgid "This reading could not be loaded right now. Please try again."
 msgstr "यह विश्लेषण अभी लोड नहीं हो सका। कृपया फिर कोशिश करें।"
 
@@ -2089,17 +2087,17 @@ msgstr "RoxyAPI द्वारा %s डेटा"
 msgid "For entertainment purposes only. Not a substitute for medical, legal, or financial advice."
 msgstr "केवल मनोरंजन के लिए। यह चिकित्सा, कानूनी या वित्तीय सलाह का विकल्प नहीं है।"
 
-#: src/Api/ReportRoute.php:171
+#: src/Api/ReportRoute.php:173
 #: src/Support/FormRouter.php:74
 msgid "Could not verify the form. Reload the page and try again."
 msgstr "फ़ॉर्म सत्यापित नहीं हो सका। पेज दोबारा लोड करें और फिर से प्रयास करें।"
 
-#: src/Api/ReportRoute.php:174
+#: src/Api/ReportRoute.php:176
 #: src/Support/FormRouter.php:82
 msgid "Too many submissions. Please wait a minute and try again."
 msgstr "बहुत अधिक अनुरोध। कृपया एक मिनट प्रतीक्षा करें और फिर से प्रयास करें।"
 
-#: src/Api/ReportRoute.php:177
+#: src/Api/ReportRoute.php:179
 #: src/Support/FormRouter.php:96
 msgid "Please confirm consent before submitting."
 msgstr "भेजने से पहले कृपया सहमति की पुष्टि करें।"
@@ -2117,7 +2115,7 @@ msgid "Connect"
 msgstr "कनेक्ट करें"
 
 #: src/Admin/SettingsPage.php:175
-#: templates/admin-help.php:53
+#: templates/admin-help.php:61
 msgid "Branding"
 msgstr "ब्रांडिंग"
 
@@ -3528,15 +3526,6 @@ msgid "Search query to match against symbol names and meanings"
 msgstr ""
 
 #: src/Generated/Builder/Manifest.php:14978
-#: src/Generated/Forms/GenerateBaziReportForm.php:40
-#: src/Generated/Forms/GenerateHumanDesignReportForm.php:40
-#: src/Generated/Forms/GenerateKundliReportForm.php:40
-#: src/Generated/Forms/GenerateMatchmakingReportForm.php:144
-#: src/Generated/Forms/GenerateNatalReportForm.php:40
-#: src/Generated/Forms/GenerateNumerologyReportForm.php:40
-#: src/Generated/Forms/GenerateSynastryReportForm.php:176
-#: src/Generated/Forms/GenerateTarotReportForm.php:40
-#: src/Generated/Forms/GenerateYearlyForecastReportForm.php:40
 #: src/Generated/Forms/GetHebrewLetterForm.php:33
 #: blocks/generated/search-dream-symbols/index.js:18
 msgid "Letter"
@@ -3579,8 +3568,8 @@ msgstr ""
 msgid "Select an option"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:208
-#: src/Admin/SettingsFields.php:522
+#: src/Admin/SettingsFields.php:209
+#: src/Admin/SettingsFields.php:524
 #: blocks/_shared/generated-edit.js:157
 msgid "Default"
 msgstr "डिफ़ॉल्ट"
@@ -5093,40 +5082,40 @@ msgstr "पाश्चात्य ज्योतिष पूर्वान�
 msgid "Live preview of every shortcode the plugin ships. Click \"Run\" on a row to render that one reading. Each run is a live call against your plan, so rows render one at a time and never in bulk. Results are cached server-side for an hour by default."
 msgstr "प्लगइन के साथ आने वाले हर शॉर्टकोड का लाइव पूर्वावलोकन। किसी पंक्ति में उस एक विश्लेषण को दिखाने के लिए \"चलाएँ\" पर क्लिक करें। हर बार चलाना आपकी योजना पर एक लाइव कॉल है, इसलिए पंक्तियाँ एक-एक करके दिखती हैं, कभी एक साथ नहीं। परिणाम डिफ़ॉल्ट रूप से सर्वर साइड पर एक घंटे के लिए कैश किए जाते हैं।"
 
-#: src/Admin/SettingsFields.php:270
+#: src/Admin/SettingsFields.php:271
 msgid "Custom"
 msgstr "कस्टम"
 
-#: src/Admin/SettingsFields.php:284
+#: src/Admin/SettingsFields.php:285
 msgid "Accent"
 msgstr "एक्सेंट"
 
-#: src/Admin/SettingsFields.php:286
+#: src/Admin/SettingsFields.php:287
 msgid "Page background"
 msgstr "पेज बैकग्राउंड"
 
-#: src/Admin/SettingsFields.php:287
+#: src/Admin/SettingsFields.php:288
 msgid "Card background"
 msgstr "कार्ड बैकग्राउंड"
 
-#: src/Admin/SettingsFields.php:288
+#: src/Admin/SettingsFields.php:289
 #: blocks/generated/calculate-gematria/index.js:11
 msgid "Text"
 msgstr "टेक्स्ट"
 
-#: src/Admin/SettingsFields.php:285
+#: src/Admin/SettingsFields.php:286
 msgid "Labels"
 msgstr "लेबल"
 
-#: src/Admin/SettingsFields.php:289
+#: src/Admin/SettingsFields.php:290
 msgid "Secondary text"
 msgstr "द्वितीयक टेक्स्ट"
 
-#: src/Admin/SettingsFields.php:290
+#: src/Admin/SettingsFields.php:291
 msgid "Borders"
 msgstr "बॉर्डर"
 
-#: src/Admin/SettingsFields.php:291
+#: src/Admin/SettingsFields.php:292
 msgid "Warnings"
 msgstr "चेतावनी"
 
@@ -6449,7 +6438,7 @@ msgid "Single card, three card, or Celtic Cross spreads."
 msgstr ""
 
 #. translators: %s: comma-separated list of section names that matched no block.
-#: src/Admin/SettingsFields.php:859
+#: src/Admin/SettingsFields.php:861
 #, php-format
 msgid "Hide sections does not recognise %s, so nothing is hidden for it. These are internal names and stay the same whatever language your site is in. Click the field to see every name this version supports."
 msgstr "अनुभाग छिपाएँ, %s को नहीं पहचानता, इसलिए इसके लिए कुछ भी नहीं छिपाया जाता। ये आंतरिक नाम हैं और आपकी साइट किसी भी भाषा में हो, ये वैसे ही रहते हैं। यह वर्शन जिन नामों को सपोर्ट करता है, वे देखने के लिए फ़ील्ड पर क्लिक करें।"
@@ -8795,7 +8784,7 @@ msgstr ""
 msgid "Picking a city fills the coordinates and timezone below."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:226
+#: src/Admin/SettingsFields.php:227
 msgid "Clear every colour and use the defaults"
 msgstr "सभी रंग हटाएँ और डिफ़ॉल्ट का उपयोग करें"
 
@@ -9728,7 +9717,7 @@ msgstr "योग विवरण"
 #: src/Admin/SettingsPage.php:101
 #: src/Admin/SettingsPage.php:102
 #: templates/admin-help.php:25
-#: templates/admin-help.php:60
+#: templates/admin-help.php:68
 #: templates/admin-quick-start.php:23
 msgid "Create a reading"
 msgstr "रीडिंग बनाएं"
@@ -9967,8 +9956,8 @@ msgid "Yes. Choose Ask my visitor and the reading shows a form. Each visitor see
 msgstr "हाँ। «मेरे आगंतुकों से पूछें» चुनें। रीडिंग में एक फ़ॉर्म दिखेगा। हर आगंतुक को अपनी जानकारी के अनुसार बनी रीडिंग दिखेगी।"
 
 #: templates/admin-help.php:30
-#: templates/admin-help.php:43
-#: templates/admin-help.php:48
+#: templates/admin-help.php:51
+#: templates/admin-help.php:56
 msgid "Learn more"
 msgstr "और जानें"
 
@@ -9980,43 +9969,43 @@ msgstr "क्या मैं रीडिंग के लिए शुल्�
 msgid "Yes. Keep one reading free and put the deeper ones on a page only paying members can open."
 msgstr "हाँ। एक रीडिंग मुफ़्त रखें। विस्तृत रीडिंग ऐसे पेज पर रखें जिसे सिर्फ़ भुगतान करने वाले सदस्य खोल सकें।"
 
-#: templates/admin-help.php:41
+#: templates/admin-help.php:49
 msgid "Is client data safe?"
 msgstr "क्या मेरे ग्राहकों की जानकारी सुरक्षित है?"
 
-#: templates/admin-help.php:42
+#: templates/admin-help.php:50
 msgid "Birth details are used only to calculate the reading. Your key stays on your server and never reaches the browser."
 msgstr "जन्म की जानकारी सिर्फ़ रीडिंग की गणना के लिए इस्तेमाल होती है। आपकी कुंजी आपके सर्वर पर रहती है। यह कभी ब्राउज़र तक नहीं पहुंचती।"
 
-#: templates/admin-help.php:46
+#: templates/admin-help.php:54
 msgid "Which language do readings use?"
 msgstr "रीडिंग किस भाषा में होती हैं?"
 
-#: templates/admin-help.php:47
+#: templates/admin-help.php:55
 msgid "Readings follow your site language. To choose another, open Settings and pick a reading language on the Branding tab."
 msgstr "रीडिंग आपकी साइट की भाषा में होती हैं। दूसरी भाषा चुनने के लिए «सेटिंग्स» खोलें। «ब्रांडिंग» टैब में रीडिंग की भाषा चुनें।"
 
-#: templates/admin-help.php:51
+#: templates/admin-help.php:59
 msgid "Will readings match my theme?"
 msgstr "क्या रीडिंग मेरी थीम से मेल खाएंगी?"
 
-#: templates/admin-help.php:52
+#: templates/admin-help.php:60
 msgid "Yes. Readings follow your light or dark theme, and you can set the chart style on the Branding tab."
 msgstr "हाँ। रीडिंग आपकी लाइट या डार्क थीम के अनुसार दिखती हैं। «ब्रांडिंग» टैब में आप चार्ट की शैली चुन सकते हैं।"
 
-#: templates/admin-help.php:56
+#: templates/admin-help.php:64
 msgid "Where can I see every reading?"
 msgstr "मुझे सारी रीडिंग कहां मिलेंगी?"
 
-#: templates/admin-help.php:57
+#: templates/admin-help.php:65
 msgid "Open Shortcodes for the full list, or Create a reading to search by name."
 msgstr "पूरी सूची के लिए «शॉर्टकोड» खोलें। नाम से खोजने के लिए «रीडिंग बनाएं» खोलें।"
 
-#: templates/admin-help.php:64
+#: templates/admin-help.php:72
 msgid "I still need help."
 msgstr "मुझे अभी और मदद चाहिए।"
 
-#: templates/admin-help.php:66
+#: templates/admin-help.php:74
 msgid "Contact us"
 msgstr "हमसे संपर्क करें"
 
@@ -10444,7 +10433,7 @@ msgstr "सहायता।"
 msgid "Quick answers."
 msgstr "त्वरित उत्तर।"
 
-#: templates/admin-help.php:65
+#: templates/admin-help.php:73
 msgid "Send us a message and we will reply by email."
 msgstr "हमें संदेश भेजें, हम ईमेल से जवाब देंगे।"
 
@@ -10831,31 +10820,32 @@ msgstr ""
 msgid "House system of the natal chart that every progressed body is placed in"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:343
+#: src/Admin/SettingsFields.php:344
 msgid "Chinese (Simplified)"
 msgstr "चीनी (सरलीकृत)"
 
-#: src/Admin/SettingsFields.php:344
+#: src/Admin/SettingsFields.php:345
 msgid "Chinese (Traditional)"
 msgstr "चीनी (पारंपरिक)"
 
-#: src/Admin/SettingsFields.php:505
+#: src/Admin/SettingsFields.php:507
 msgid "Choose logo"
 msgstr "लोगो चुनें"
 
-#: src/Admin/SettingsFields.php:506
+#: src/Admin/SettingsFields.php:508
 msgid "Remove logo"
 msgstr "लोगो हटाएं"
 
-#: src/Admin/SettingsFields.php:522
+#: src/Admin/SettingsFields.php:524
 msgid "Same as your readings"
 msgstr "आपकी रीडिंग जैसी"
 
-#: src/Admin/SettingsFields.php:743
+#: src/Admin/SettingsFields.php:745
 msgid "Your logo shows on reports once your site runs on https."
 msgstr "आपकी साइट https पर चलते ही आपका लोगो रिपोर्ट पर दिखेगा।"
 
 #: src/Admin/SettingsPage.php:177
+#: templates/admin-help.php:45
 msgid "Reports"
 msgstr "रिपोर्ट"
 
@@ -10959,46 +10949,6 @@ msgstr "ब्राउज़र में पेज"
 msgid "Create my report"
 msgstr "मेरी रिपोर्ट बनाएं"
 
-#: src/Generated/Forms/GenerateBaziReportForm.php:35
-#: src/Generated/Forms/GenerateHumanDesignReportForm.php:35
-#: src/Generated/Forms/GenerateKundliReportForm.php:35
-#: src/Generated/Forms/GenerateMatchmakingReportForm.php:139
-#: src/Generated/Forms/GenerateNatalReportForm.php:35
-#: src/Generated/Forms/GenerateNumerologyReportForm.php:35
-#: src/Generated/Forms/GenerateSynastryReportForm.php:171
-#: src/Generated/Forms/GenerateTarotReportForm.php:35
-#: src/Generated/Forms/GenerateYearlyForecastReportForm.php:35
-msgid "Size"
-msgstr "आकार"
-
-#: src/Generated/Forms/GenerateBaziReportForm.php:40
-#: src/Generated/Forms/GenerateHumanDesignReportForm.php:40
-#: src/Generated/Forms/GenerateKundliReportForm.php:40
-#: src/Generated/Forms/GenerateMatchmakingReportForm.php:144
-#: src/Generated/Forms/GenerateNatalReportForm.php:40
-#: src/Generated/Forms/GenerateNumerologyReportForm.php:40
-#: src/Generated/Forms/GenerateSynastryReportForm.php:176
-#: src/Generated/Forms/GenerateTarotReportForm.php:40
-#: src/Generated/Forms/GenerateYearlyForecastReportForm.php:40
-msgid "A4"
-msgstr ""
-
-#: src/Generated/Forms/GenerateTarotReportForm.php:54
-msgid "Celtic cross"
-msgstr ""
-
-#: src/Generated/Forms/GenerateTarotReportForm.php:54
-msgid "Three card"
-msgstr ""
-
-#: src/Generated/Forms/GenerateTarotReportForm.php:54
-msgid "Love"
-msgstr ""
-
-#: src/Generated/Forms/GenerateTarotReportForm.php:54
-msgid "Career"
-msgstr ""
-
 #: src/Generated/Heroes/Manifest.php:223
 msgid "A finished report under your own brand. Your visitor fills in their details and downloads it as a PDF."
 msgstr "आपके अपने ब्रांड के साथ तैयार रिपोर्ट। आपका आगंतुक अपनी जानकारी भरता है और उसे PDF के रूप में डाउनलोड करता है।"
@@ -11044,10 +10994,12 @@ msgid "Sell a branded report"
 msgstr "अपने ब्रांड वाली रिपोर्ट बेचें"
 
 #: templates/admin-connected.php:415
+#: templates/admin-help.php:42
 msgid "Your visitor fills in their details and downloads a finished PDF under your name. Add your brand on the Reports tab, then create the report page."
 msgstr "आपका आगंतुक अपनी जानकारी भरता है और आपके नाम से तैयार PDF डाउनलोड करता है। रिपोर्ट टैब में अपना ब्रांड जोड़ें, फिर रिपोर्ट पेज बनाएं।"
 
 #: templates/admin-connected.php:417
+#: templates/admin-help.php:44
 msgid "Create a report page"
 msgstr "रिपोर्ट पेज बनाएं"
 
@@ -11085,13 +11037,13 @@ msgid "branded report"
 msgstr ""
 
 #. translators: %s: name of the font pair the chosen palette was designed with, such as Fraunces with Jost.
-#: src/Admin/SettingsFields.php:243
-#: src/Admin/SettingsFields.php:260
+#: src/Admin/SettingsFields.php:244
+#: src/Admin/SettingsFields.php:261
 msgid "Your site font"
 msgstr "आपकी साइट का फ़ॉन्ट"
 
 #. translators: %s: name of the font pair the chosen palette was designed with, such as Fraunces with Jost.
-#: src/Admin/SettingsFields.php:260
+#: src/Admin/SettingsFields.php:261
 #, php-format
 msgid "Palette default: %s"
 msgstr "पैलेट का डिफ़ॉल्ट: %s"
@@ -11115,3 +11067,7 @@ msgstr "रिपोर्ट ब्रांडिंग टैब का प�
 #: templates/admin-connected.php:418
 msgid "Read the report guide"
 msgstr "रिपोर्ट गाइड पढ़ें"
+
+#: templates/admin-help.php:41
+msgid "Can I sell branded reports?"
+msgstr "क्या मैं अपने ब्रांड वाली रिपोर्ट बेच सकती हूँ?"

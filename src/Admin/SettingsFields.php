@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use RoxyAPI\Api\ReportRoute;
 use RoxyAPI\Generated\ComponentMap;
 use RoxyAPI\Generated\Palettes;
 use RoxyAPI\Generated\Reports;
@@ -472,7 +473,7 @@ class SettingsFields {
 
 	/**
 	 * Pre-escaped text input for one report branding line, held to the length a
-	 * report prints.
+	 * report prints; the name shows the site title it falls back to.
 	 *
 	 * @param string $key Option key: `report_name` or `report_footer`.
 	 * @return string
@@ -480,10 +481,11 @@ class SettingsFields {
 	public static function report_text_html( string $key ): string {
 		$opts = SettingsSchema::get_option();
 		return sprintf(
-			'<input type="text" id="roxyapi_%1$s" name="roxyapi_settings[%1$s]" value="%2$s" maxlength="%3$d" class="regular-text" />',
+			'<input type="text" id="roxyapi_%1$s" name="roxyapi_settings[%1$s]" value="%2$s" maxlength="%3$d" placeholder="%4$s" class="regular-text" />',
 			esc_attr( $key ),
 			esc_attr( (string) ( $opts[ $key ] ?? '' ) ),
-			(int) ( SettingsSchema::fields()[ $key ]['max_length'] ?? 0 )
+			(int) ( SettingsSchema::fields()[ $key ]['max_length'] ?? 0 ),
+			esc_attr( 'report_name' === $key ? ReportRoute::site_name() : '' )
 		);
 	}
 

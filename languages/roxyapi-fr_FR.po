@@ -372,7 +372,7 @@ msgstr "Heure de naissance au format 24 heures HH:MM:SS"
 msgid "Birth year to calculate Life Path automatically"
 msgstr "Année de naissance pour calculer le chemin de vie automatiquement"
 
-#: src/Plugin.php:245
+#: src/Plugin.php:257
 msgid "City selected."
 msgstr "Ville sélectionnée."
 
@@ -611,7 +611,7 @@ msgstr "Nom complet"
 msgid "Full name at birth"
 msgstr "Nom complet à la naissance"
 
-#: src/Admin/SettingsFields.php:452
+#: src/Admin/SettingsFields.php:453
 #: src/Generated/Forms/AnalyzeKarmicLessonsForm.php:25
 #: src/Generated/Forms/AnalyzeNumberSequenceForm.php:25
 #: src/Generated/Forms/CalculateAnnualForecastForm.php:25
@@ -1059,7 +1059,7 @@ msgstr "Nom"
 msgid "Natal chart"
 msgstr "Thème natal"
 
-#: src/Plugin.php:244
+#: src/Plugin.php:256
 msgid "No matching cities. Try a different spelling."
 msgstr "Aucune ville trouvée. Essayez une autre orthographe."
 
@@ -1148,11 +1148,11 @@ msgstr "Choisissez votre signe solaire"
 msgid "Question"
 msgstr "Question"
 
-#: src/Plugin.php:246
+#: src/Plugin.php:258
 msgid "City search is unavailable right now. Please try again in a moment."
 msgstr "La recherche de villes est momentanément indisponible. Veuillez réessayer dans un instant."
 
-#: src/Plugin.php:243
+#: src/Plugin.php:255
 msgid "Searching cities…"
 msgstr "Recherche de villes en cours…"
 
@@ -1310,8 +1310,6 @@ msgstr "Devrais-je accepter ce nouvel emploi"
 msgid "Sidereal frame (ayanamsa) the chart is cast in"
 msgstr "Référentiel sidéral (ayanamsa) utilisé pour le calcul du thème"
 
-#: src/Generated/Builder/Manifest.php:15467
-#: src/Generated/Forms/GenerateTarotReportForm.php:49
 #: src/Generated/Forms/TarotCardForm.php:48
 #: blocks/generated/tarot/index.js:19
 msgid "Spread"
@@ -1816,121 +1814,121 @@ msgstr "Durée de conservation des données par RoxyAPI : consultez la politique
 msgid "No visitor data is sent to RoxyAPI when a page renders a static-attribute shortcode (the data is supplied by the site owner). Form-mode shortcodes are the only case where visitor input crosses to the third party."
 msgstr "Aucune donnée de visiteur n'est envoyée à RoxyAPI lorsqu'une page affiche un shortcode à attributs statiques (les données sont fournies par le propriétaire du site). Les shortcodes en mode formulaire sont le seul cas où les données saisies par le visiteur sont transmises au tiers."
 
-#: src/Admin/SettingsFields.php:99
+#: src/Admin/SettingsFields.php:100
 msgid "Paste your RoxyAPI key"
 msgstr "Collez votre clé RoxyAPI"
 
-#: src/Admin/SettingsFields.php:117
+#: src/Admin/SettingsFields.php:118
 msgid "Leave blank to use the localised default."
 msgstr "Laissez vide pour utiliser la valeur par défaut localisée."
 
-#: src/Admin/SettingsFields.php:306
+#: src/Admin/SettingsFields.php:307
 msgid "Auto: follow the visitor device setting"
 msgstr "Auto : suivre le réglage de l'appareil du visiteur"
 
-#: src/Admin/SettingsFields.php:197
-#: src/Admin/SettingsFields.php:307
+#: src/Admin/SettingsFields.php:198
+#: src/Admin/SettingsFields.php:308
 msgid "Light"
 msgstr "Clair"
 
-#: src/Admin/SettingsFields.php:198
-#: src/Admin/SettingsFields.php:308
+#: src/Admin/SettingsFields.php:199
+#: src/Admin/SettingsFields.php:309
 msgid "Dark"
 msgstr "Sombre"
 
-#: src/Admin/SettingsFields.php:323
+#: src/Admin/SettingsFields.php:324
 msgid "Match site language"
 msgstr "Suivre la langue du site"
 
-#: src/Admin/SettingsFields.php:335
+#: src/Admin/SettingsFields.php:336
 msgid "English"
 msgstr "Anglais"
 
-#: src/Admin/SettingsFields.php:336
+#: src/Admin/SettingsFields.php:337
 msgid "German"
 msgstr "Allemand"
 
-#: src/Admin/SettingsFields.php:337
+#: src/Admin/SettingsFields.php:338
 msgid "Hindi"
 msgstr "Hindi"
 
-#: src/Admin/SettingsFields.php:338
+#: src/Admin/SettingsFields.php:339
 msgid "Spanish"
 msgstr "Espagnol"
 
-#: src/Admin/SettingsFields.php:339
+#: src/Admin/SettingsFields.php:340
 msgid "Turkish"
 msgstr "Turc"
 
-#: src/Admin/SettingsFields.php:340
+#: src/Admin/SettingsFields.php:341
 msgid "Portuguese"
 msgstr "Portugais"
 
-#: src/Admin/SettingsFields.php:341
+#: src/Admin/SettingsFields.php:342
 msgid "French"
 msgstr "Français"
 
-#: src/Admin/SettingsFields.php:342
+#: src/Admin/SettingsFields.php:343
 msgid "Russian"
 msgstr "Russe"
 
-#: src/Admin/SettingsFields.php:360
+#: src/Admin/SettingsFields.php:361
 msgid "Hide the written text on every reading. Charts, tables, and values still show."
 msgstr "Masquer le texte rédigé sur chaque lecture. Les graphiques, tableaux et valeurs restent affichés."
 
-#: src/Admin/SettingsFields.php:406
+#: src/Admin/SettingsFields.php:407
 msgid "Show a disclaimer line at the bottom of every reading."
 msgstr "Afficher une ligne d'avertissement en bas de chaque lecture."
 
-#: src/Admin/SettingsFields.php:418
+#: src/Admin/SettingsFields.php:419
 msgid "Leave blank to use the localised default (\"For entertainment purposes only…\")."
 msgstr "Laissez vide pour utiliser la valeur par défaut localisée (« À des fins de divertissement uniquement… »)."
 
-#: src/Admin/SettingsFields.php:437
+#: src/Admin/SettingsFields.php:438
 msgid "Your reading"
 msgstr "Votre lecture"
 
-#: src/Admin/SettingsFields.php:466
+#: src/Admin/SettingsFields.php:467
 msgid "Fresh: 15 minutes (most up-to-date, more API calls)"
 msgstr "Frais : 15 minutes (le plus à jour, plus d'appels API)"
 
-#: src/Admin/SettingsFields.php:467
+#: src/Admin/SettingsFields.php:468
 msgid "Balanced: 1 hour (recommended)"
 msgstr "Équilibré : 1 heure (recommandé)"
 
-#: src/Admin/SettingsFields.php:468
+#: src/Admin/SettingsFields.php:469
 msgid "Quota saver: 24 hours (fewer API calls, less fresh)"
 msgstr "Économie de quota : 24 heures (moins d'appels API, moins à jour)"
 
-#: src/Admin/SettingsFields.php:559
+#: src/Admin/SettingsFields.php:561
 msgid "Show source line on each reading."
 msgstr "Afficher la ligne de source sur chaque lecture."
 
-#: src/Admin/SettingsFields.php:594
+#: src/Admin/SettingsFields.php:596
 msgid "Defined via ROXYAPI_KEY constant in wp-config.php. The settings field is locked."
 msgstr "Défini via la constante ROXYAPI_KEY dans wp-config.php. Le champ de réglage est verrouillé."
 
-#: src/Admin/SettingsFields.php:597
+#: src/Admin/SettingsFields.php:599
 msgid "A key is saved. Paste a new one to replace it. Leave blank to keep the current key."
 msgstr "Une clé est enregistrée. Collez-en une nouvelle pour la remplacer. Laissez vide pour conserver la clé actuelle."
 
 #. translators: %s URL to RoxyAPI pricing page
-#: src/Admin/SettingsFields.php:601
+#: src/Admin/SettingsFields.php:603
 #, php-format
 msgid "No key yet? Get one at %s."
 msgstr "Pas encore de clé ? Obtenez-en une sur %s."
 
-#: src/Admin/SettingsFields.php:802
+#: src/Admin/SettingsFields.php:804
 msgid "API key format is invalid. Get a key at roxyapi.com."
 msgstr "Le format de la clé API est invalide. Obtenez une clé sur roxyapi.com."
 
-#: src/Admin/SettingsFields.php:811
+#: src/Admin/SettingsFields.php:813
 msgid "Could not encrypt API key. Check that PHP openssl is installed."
 msgstr "Impossible de chiffrer la clé API. Vérifiez que PHP openssl est installé."
 
 #: src/Admin/SettingsPage.php:110
 #: src/Admin/SettingsPage.php:111
-#: templates/admin-help.php:59
+#: templates/admin-help.php:67
 msgid "Shortcodes"
 msgstr "Shortcodes"
 
@@ -1978,14 +1976,14 @@ msgstr "Fichier de traduction chargé"
 
 #: src/Admin/SiteHealth.php:77
 #: src/Admin/SiteHealth.php:119
-#: src/Support/GenericRenderer.php:903
-#: src/Support/GenericRenderer.php:906
+#: src/Support/GenericRenderer.php:908
+#: src/Support/GenericRenderer.php:911
 #: assets/js/builder.js:71
 msgid "Yes"
 msgstr "Oui"
 
 #: src/Admin/SiteHealth.php:77
-#: src/Support/GenericRenderer.php:906
+#: src/Support/GenericRenderer.php:911
 #: assets/js/builder.js:72
 msgid "No"
 msgstr "Non"
@@ -2043,7 +2041,7 @@ msgid "The reading service is temporarily unavailable. Please try again in a few
 msgstr "Le service de lecture est temporairement indisponible. Merci de réessayer dans quelques minutes."
 
 #: src/Api/Client.php:268
-#: src/Api/ReportRoute.php:215
+#: src/Api/ReportRoute.php:217
 msgid "This reading could not be loaded right now. Please try again."
 msgstr "Cette lecture n'a pas pu être chargée pour le moment. Merci de réessayer."
 
@@ -2089,17 +2087,17 @@ msgstr "Données %s par RoxyAPI"
 msgid "For entertainment purposes only. Not a substitute for medical, legal, or financial advice."
 msgstr "À des fins de divertissement uniquement. Ne remplace pas un avis médical, juridique ou financier."
 
-#: src/Api/ReportRoute.php:171
+#: src/Api/ReportRoute.php:173
 #: src/Support/FormRouter.php:74
 msgid "Could not verify the form. Reload the page and try again."
 msgstr "Le formulaire n'a pas pu être vérifié. Rechargez la page et réessayez."
 
-#: src/Api/ReportRoute.php:174
+#: src/Api/ReportRoute.php:176
 #: src/Support/FormRouter.php:82
 msgid "Too many submissions. Please wait a minute and try again."
 msgstr "Trop d'envois. Veuillez patienter une minute et réessayer."
 
-#: src/Api/ReportRoute.php:177
+#: src/Api/ReportRoute.php:179
 #: src/Support/FormRouter.php:96
 msgid "Please confirm consent before submitting."
 msgstr "Veuillez confirmer votre consentement avant d'envoyer."
@@ -2117,7 +2115,7 @@ msgid "Connect"
 msgstr "Connexion"
 
 #: src/Admin/SettingsPage.php:175
-#: templates/admin-help.php:53
+#: templates/admin-help.php:61
 msgid "Branding"
 msgstr "Marque"
 
@@ -3528,15 +3526,6 @@ msgid "Search query to match against symbol names and meanings"
 msgstr ""
 
 #: src/Generated/Builder/Manifest.php:14978
-#: src/Generated/Forms/GenerateBaziReportForm.php:40
-#: src/Generated/Forms/GenerateHumanDesignReportForm.php:40
-#: src/Generated/Forms/GenerateKundliReportForm.php:40
-#: src/Generated/Forms/GenerateMatchmakingReportForm.php:144
-#: src/Generated/Forms/GenerateNatalReportForm.php:40
-#: src/Generated/Forms/GenerateNumerologyReportForm.php:40
-#: src/Generated/Forms/GenerateSynastryReportForm.php:176
-#: src/Generated/Forms/GenerateTarotReportForm.php:40
-#: src/Generated/Forms/GenerateYearlyForecastReportForm.php:40
 #: src/Generated/Forms/GetHebrewLetterForm.php:33
 #: blocks/generated/search-dream-symbols/index.js:18
 msgid "Letter"
@@ -3579,8 +3568,8 @@ msgstr ""
 msgid "Select an option"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:208
-#: src/Admin/SettingsFields.php:522
+#: src/Admin/SettingsFields.php:209
+#: src/Admin/SettingsFields.php:524
 #: blocks/_shared/generated-edit.js:157
 msgid "Default"
 msgstr "Par défaut"
@@ -5093,40 +5082,40 @@ msgstr "Prévisions d'astrologie occidentale"
 msgid "Live preview of every shortcode the plugin ships. Click \"Run\" on a row to render that one reading. Each run is a live call against your plan, so rows render one at a time and never in bulk. Results are cached server-side for an hour by default."
 msgstr "Aperçu en direct de tous les shortcodes fournis par l'extension. Cliquez sur « Exécuter » sur une ligne pour afficher cette lecture. Chaque exécution est un appel réel sur votre forfait, les lignes s'affichent donc une par une et jamais en groupe. Les résultats sont mis en cache côté serveur pendant une heure par défaut."
 
-#: src/Admin/SettingsFields.php:270
+#: src/Admin/SettingsFields.php:271
 msgid "Custom"
 msgstr "Personnalisé"
 
-#: src/Admin/SettingsFields.php:284
+#: src/Admin/SettingsFields.php:285
 msgid "Accent"
 msgstr "Accent"
 
-#: src/Admin/SettingsFields.php:286
+#: src/Admin/SettingsFields.php:287
 msgid "Page background"
 msgstr "Arrière-plan de la page"
 
-#: src/Admin/SettingsFields.php:287
+#: src/Admin/SettingsFields.php:288
 msgid "Card background"
 msgstr "Arrière-plan de la carte"
 
-#: src/Admin/SettingsFields.php:288
+#: src/Admin/SettingsFields.php:289
 #: blocks/generated/calculate-gematria/index.js:11
 msgid "Text"
 msgstr "Texte"
 
-#: src/Admin/SettingsFields.php:285
+#: src/Admin/SettingsFields.php:286
 msgid "Labels"
 msgstr "Libellés"
 
-#: src/Admin/SettingsFields.php:289
+#: src/Admin/SettingsFields.php:290
 msgid "Secondary text"
 msgstr "Texte secondaire"
 
-#: src/Admin/SettingsFields.php:290
+#: src/Admin/SettingsFields.php:291
 msgid "Borders"
 msgstr "Bordures"
 
-#: src/Admin/SettingsFields.php:291
+#: src/Admin/SettingsFields.php:292
 msgid "Warnings"
 msgstr "Avertissements"
 
@@ -6449,7 +6438,7 @@ msgid "Single card, three card, or Celtic Cross spreads."
 msgstr ""
 
 #. translators: %s: comma-separated list of section names that matched no block.
-#: src/Admin/SettingsFields.php:859
+#: src/Admin/SettingsFields.php:861
 #, php-format
 msgid "Hide sections does not recognise %s, so nothing is hidden for it. These are internal names and stay the same whatever language your site is in. Click the field to see every name this version supports."
 msgstr "Masquer des sections ne reconnaît pas %s, rien n'est donc masqué pour cette valeur. Ce sont des noms internes qui restent les mêmes quelle que soit la langue de votre site. Cliquez sur le champ pour voir tous les noms pris en charge par cette version."
@@ -8795,7 +8784,7 @@ msgstr ""
 msgid "Picking a city fills the coordinates and timezone below."
 msgstr ""
 
-#: src/Admin/SettingsFields.php:226
+#: src/Admin/SettingsFields.php:227
 msgid "Clear every colour and use the defaults"
 msgstr "Effacer toutes les couleurs et revenir aux valeurs par défaut"
 
@@ -9728,7 +9717,7 @@ msgstr "Détails du Yoga"
 #: src/Admin/SettingsPage.php:101
 #: src/Admin/SettingsPage.php:102
 #: templates/admin-help.php:25
-#: templates/admin-help.php:60
+#: templates/admin-help.php:68
 #: templates/admin-quick-start.php:23
 msgid "Create a reading"
 msgstr "Créer une lecture"
@@ -9967,8 +9956,8 @@ msgid "Yes. Choose Ask my visitor and the reading shows a form. Each visitor see
 msgstr "Oui. Choisissez « Demander à mes visiteurs ». La lecture affiche alors un formulaire. Chaque visiteur voit une lecture basée sur ses propres informations."
 
 #: templates/admin-help.php:30
-#: templates/admin-help.php:43
-#: templates/admin-help.php:48
+#: templates/admin-help.php:51
+#: templates/admin-help.php:56
 msgid "Learn more"
 msgstr "En savoir plus"
 
@@ -9980,43 +9969,43 @@ msgstr "Puis-je faire payer les lectures ?"
 msgid "Yes. Keep one reading free and put the deeper ones on a page only paying members can open."
 msgstr "Oui. Gardez une lecture gratuite. Placez les plus approfondies sur une page réservée aux membres payants."
 
-#: templates/admin-help.php:41
+#: templates/admin-help.php:49
 msgid "Is client data safe?"
 msgstr "Les données de mes clients sont-elles en sécurité ?"
 
-#: templates/admin-help.php:42
+#: templates/admin-help.php:50
 msgid "Birth details are used only to calculate the reading. Your key stays on your server and never reaches the browser."
 msgstr "Les données de naissance servent uniquement à calculer la lecture. Votre clé reste sur votre serveur. Elle ne parvient jamais au navigateur."
 
-#: templates/admin-help.php:46
+#: templates/admin-help.php:54
 msgid "Which language do readings use?"
 msgstr "Quelle langue les lectures utilisent-elles ?"
 
-#: templates/admin-help.php:47
+#: templates/admin-help.php:55
 msgid "Readings follow your site language. To choose another, open Settings and pick a reading language on the Branding tab."
 msgstr "Les lectures suivent la langue de votre site. Pour en choisir une autre, ouvrez « Réglages ». Choisissez la langue des lectures dans l’onglet « Marque »."
 
-#: templates/admin-help.php:51
+#: templates/admin-help.php:59
 msgid "Will readings match my theme?"
 msgstr "Les lectures s’accorderont-elles à mon thème ?"
 
-#: templates/admin-help.php:52
+#: templates/admin-help.php:60
 msgid "Yes. Readings follow your light or dark theme, and you can set the chart style on the Branding tab."
 msgstr "Oui. Les lectures suivent votre thème clair ou sombre. Vous pouvez choisir le style des graphiques dans l’onglet « Marque »."
 
-#: templates/admin-help.php:56
+#: templates/admin-help.php:64
 msgid "Where can I see every reading?"
 msgstr "Où voir toutes les lectures ?"
 
-#: templates/admin-help.php:57
+#: templates/admin-help.php:65
 msgid "Open Shortcodes for the full list, or Create a reading to search by name."
 msgstr "Ouvrez « Shortcodes » pour voir la liste complète. Ou ouvrez « Créer une lecture » pour chercher par nom."
 
-#: templates/admin-help.php:64
+#: templates/admin-help.php:72
 msgid "I still need help."
 msgstr "J’ai encore besoin d’aide."
 
-#: templates/admin-help.php:66
+#: templates/admin-help.php:74
 msgid "Contact us"
 msgstr "Nous contacter"
 
@@ -10444,7 +10433,7 @@ msgstr "Aide."
 msgid "Quick answers."
 msgstr "Réponses rapides."
 
-#: templates/admin-help.php:65
+#: templates/admin-help.php:73
 msgid "Send us a message and we will reply by email."
 msgstr "Envoyez-nous un message et nous vous répondrons par e-mail."
 
@@ -10831,31 +10820,32 @@ msgstr ""
 msgid "House system of the natal chart that every progressed body is placed in"
 msgstr ""
 
-#: src/Admin/SettingsFields.php:343
+#: src/Admin/SettingsFields.php:344
 msgid "Chinese (Simplified)"
 msgstr "Chinois (simplifié)"
 
-#: src/Admin/SettingsFields.php:344
+#: src/Admin/SettingsFields.php:345
 msgid "Chinese (Traditional)"
 msgstr "Chinois (traditionnel)"
 
-#: src/Admin/SettingsFields.php:505
+#: src/Admin/SettingsFields.php:507
 msgid "Choose logo"
 msgstr "Choisir le logo"
 
-#: src/Admin/SettingsFields.php:506
+#: src/Admin/SettingsFields.php:508
 msgid "Remove logo"
 msgstr "Retirer le logo"
 
-#: src/Admin/SettingsFields.php:522
+#: src/Admin/SettingsFields.php:524
 msgid "Same as your readings"
 msgstr "Comme vos lectures"
 
-#: src/Admin/SettingsFields.php:743
+#: src/Admin/SettingsFields.php:745
 msgid "Your logo shows on reports once your site runs on https."
 msgstr "Votre logo apparaît sur les rapports dès que votre site passe en https."
 
 #: src/Admin/SettingsPage.php:177
+#: templates/admin-help.php:45
 msgid "Reports"
 msgstr "Rapports"
 
@@ -10959,46 +10949,6 @@ msgstr "Page dans le navigateur"
 msgid "Create my report"
 msgstr "Créer mon rapport"
 
-#: src/Generated/Forms/GenerateBaziReportForm.php:35
-#: src/Generated/Forms/GenerateHumanDesignReportForm.php:35
-#: src/Generated/Forms/GenerateKundliReportForm.php:35
-#: src/Generated/Forms/GenerateMatchmakingReportForm.php:139
-#: src/Generated/Forms/GenerateNatalReportForm.php:35
-#: src/Generated/Forms/GenerateNumerologyReportForm.php:35
-#: src/Generated/Forms/GenerateSynastryReportForm.php:171
-#: src/Generated/Forms/GenerateTarotReportForm.php:35
-#: src/Generated/Forms/GenerateYearlyForecastReportForm.php:35
-msgid "Size"
-msgstr "Format"
-
-#: src/Generated/Forms/GenerateBaziReportForm.php:40
-#: src/Generated/Forms/GenerateHumanDesignReportForm.php:40
-#: src/Generated/Forms/GenerateKundliReportForm.php:40
-#: src/Generated/Forms/GenerateMatchmakingReportForm.php:144
-#: src/Generated/Forms/GenerateNatalReportForm.php:40
-#: src/Generated/Forms/GenerateNumerologyReportForm.php:40
-#: src/Generated/Forms/GenerateSynastryReportForm.php:176
-#: src/Generated/Forms/GenerateTarotReportForm.php:40
-#: src/Generated/Forms/GenerateYearlyForecastReportForm.php:40
-msgid "A4"
-msgstr ""
-
-#: src/Generated/Forms/GenerateTarotReportForm.php:54
-msgid "Celtic cross"
-msgstr ""
-
-#: src/Generated/Forms/GenerateTarotReportForm.php:54
-msgid "Three card"
-msgstr ""
-
-#: src/Generated/Forms/GenerateTarotReportForm.php:54
-msgid "Love"
-msgstr ""
-
-#: src/Generated/Forms/GenerateTarotReportForm.php:54
-msgid "Career"
-msgstr ""
-
 #: src/Generated/Heroes/Manifest.php:223
 msgid "A finished report under your own brand. Your visitor fills in their details and downloads it as a PDF."
 msgstr "Un rapport fini à votre propre image. Votre visiteur saisit ses informations et le télécharge en PDF."
@@ -11044,10 +10994,12 @@ msgid "Sell a branded report"
 msgstr "Vendez un rapport à votre image"
 
 #: templates/admin-connected.php:415
+#: templates/admin-help.php:42
 msgid "Your visitor fills in their details and downloads a finished PDF under your name. Add your brand on the Reports tab, then create the report page."
 msgstr "Votre visiteur saisit ses informations et télécharge un PDF fini à votre nom. Ajoutez votre marque dans l'onglet Rapports, puis créez la page du rapport."
 
 #: templates/admin-connected.php:417
+#: templates/admin-help.php:44
 msgid "Create a report page"
 msgstr "Créer une page de rapport"
 
@@ -11085,13 +11037,13 @@ msgid "branded report"
 msgstr ""
 
 #. translators: %s: name of the font pair the chosen palette was designed with, such as Fraunces with Jost.
-#: src/Admin/SettingsFields.php:243
-#: src/Admin/SettingsFields.php:260
+#: src/Admin/SettingsFields.php:244
+#: src/Admin/SettingsFields.php:261
 msgid "Your site font"
 msgstr "La police de votre site"
 
 #. translators: %s: name of the font pair the chosen palette was designed with, such as Fraunces with Jost.
-#: src/Admin/SettingsFields.php:260
+#: src/Admin/SettingsFields.php:261
 #, php-format
 msgid "Palette default: %s"
 msgstr "Par défaut de la palette : %s"
@@ -11115,3 +11067,7 @@ msgstr "Les rapports utilisent la palette et la police de l'onglet Marque."
 #: templates/admin-connected.php:418
 msgid "Read the report guide"
 msgstr "Lire le guide des rapports"
+
+#: templates/admin-help.php:41
+msgid "Can I sell branded reports?"
+msgstr "Puis-je vendre des rapports à mon image ?"
