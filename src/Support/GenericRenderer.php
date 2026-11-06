@@ -629,6 +629,11 @@ class GenericRenderer {
 			if ( in_array( $lc, self::SUPPRESS_ALWAYS, true ) || in_array( $collapsed, self::SUPPRESS_ALWAYS, true ) ) {
 				continue;
 			}
+			// A glyph-valued `symbol` (no letter in it) never prints; a
+			// word-valued one, a sign's `Ram`, is text and stays.
+			if ( 'symbol' === $lc && is_string( $value ) && ! preg_match( '/\p{L}/u', $value ) ) {
+				continue;
+			}
 			if ( $has_named && ( in_array( $lc, self::SUPPRESS_NAMED, true ) || in_array( $collapsed, self::SUPPRESS_NAMED, true ) ) ) {
 				continue;
 			}

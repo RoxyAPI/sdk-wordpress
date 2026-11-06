@@ -114,6 +114,27 @@ class Test_Generic_Renderer extends \WP_UnitTestCase {
 		$this->assertStringNotContainsString( '2026-04-26', $out );
 	}
 
+	public function test_a_glyph_valued_symbol_never_prints_and_a_word_valued_one_does(): void {
+		$glyph = GenericRenderer::render(
+			'getX',
+			array(
+				'name'    => 'Sun',
+				'symbol'  => '☉',
+				'meaning' => 'Vitality',
+			)
+		);
+		$this->assertStringNotContainsString( '☉', $glyph );
+		$this->assertStringContainsString( 'Vitality', $glyph );
+		$word = GenericRenderer::render(
+			'getX',
+			array(
+				'name'   => 'Aries',
+				'symbol' => 'Ram',
+			)
+		);
+		$this->assertStringContainsString( 'Ram', $word );
+	}
+
 	public function test_uniform_object_list_renders_as_table(): void {
 		$data = array(
 			'cards' => array(

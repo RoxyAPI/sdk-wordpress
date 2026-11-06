@@ -275,6 +275,10 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.27.0 =
+* Improved: Pluto draws in the orb form astrologers use, on every chart.
+* Improved: cleaner text for every reading without a chart.
+
 = 1.26.0 =
 * Improved: every zodiac, planet and I Ching symbol in a reading draws in one dedicated symbol font, loaded from your own site, so a chart looks the same on every device.
 * New: the moon calendar shows the Moon sign of every day.
@@ -329,6 +333,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.27.0 =
+Pluto in its astrological orb form, and cleaner readings without a chart.
 
 = 1.26.0 =
 One symbol font for every chart, served from your own site, and the Moon sign on every day of the moon calendar.
