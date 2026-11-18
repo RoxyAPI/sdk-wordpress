@@ -5,7 +5,6 @@
  * Description:       Add Astrology, Vedic, Forecast, Human Design, Chinese Astrology and Feng Shui readings to any WordPress post, page or widget, as Gutenberg blocks and shortcodes. 18 or more domains on one key, readings in your site language, and charts verified against the NASA JPL Horizons ephemeris.
  * Version:           1.27.0
  * Requires at least: 6.5
- * Tested up to:      7.1
  * Requires PHP:      7.4
  * Author:            RoxyAPI
  * Author URI:        https://roxyapi.com
