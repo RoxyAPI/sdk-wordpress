@@ -91,7 +91,7 @@ class Endpoints {
 			'path'          => '/astrology/natal-chart',
 			'method'        => 'POST',
 			'tag'           => 'Western Astrology',
-			'summary'       => 'Generate natal chart - Birth chart calculator API with houses and aspects',
+			'summary'       => 'Generate natal chart - Birth chart API with houses, aspects and a written reading',
 			'display_name'  => 'Natal Chart',
 			'ttl'           => 2592000,
 			'hero'          => true,

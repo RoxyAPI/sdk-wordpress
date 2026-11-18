@@ -143,7 +143,7 @@ class Client {
 	}
 
 	/**
-	 * Generate natal chart - Birth chart calculator API with houses and aspects
+	 * Generate natal chart - Birth chart API with houses, aspects and a written reading
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.

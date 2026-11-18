@@ -31,7 +31,7 @@ const fields = [
 		control: 'text',
 		label: __( 'Timezone', 'roxyapi' ),
 		required: false,
-		help: __( 'Selects which period counts as current when date is omitted', 'roxyapi' ),
+		help: __( 'The clock the week is read on: it decides which events fall inside the Monday to Sunday week, the day each is dated by, and which week is current when date is omitted', 'roxyapi' ),
 	},
 ];
 

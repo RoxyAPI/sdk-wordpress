@@ -3,6 +3,21 @@
 The full release history for the RoxyAPI plugin. The most recent releases are
 also listed in readme.txt, which wordpress.org displays on the plugin page.
 
+= 1.28.0 =
+* New: the natal chart reads the whole chart for your visitor, with an opening, love, career and home, and a closing, plus readings for the Ascendant and Midheaven.
+* Improved: horoscopes show the sky behind each reading: where the planets stand, the Moon phase, eclipses and retrogrades, and a crystal of the day that opens its own card.
+* Improved: a tarot spread reads as a finished result, each card with its own reading, and every tarot card shows at its printed proportion.
+
+= 1.27.0 =
+* New: a report carries your site title, site logo and site address until you set your own brand on the Reports tab.
+* Improved: Pluto draws in the orb form astrologers use, on every chart.
+* Fixed: charts keep their own letter spacing and focus outline on any theme, so labels such as the Vastu mandala names stay readable.
+* Improved: cleaner text for every reading without a chart.
+
+= 1.26.0 =
+* Improved: every zodiac, planet and I Ching symbol in a reading draws in one dedicated symbol font, loaded from your own site, so a chart looks the same on every device.
+* New: the moon calendar shows the Moon sign of every day.
+
 = 1.25.0 =
 * New: branded reports. Place [roxy_report report="natal"] or the Branded report block, and visitors fill in their details and download a finished PDF under your name, logo and footer. Natal chart, synastry, yearly forecast, kundli, matchmaking, Human Design, BaZi, numerology and tarot, in the language of your site.
 * New: a font picker on the Branding tab. Each palette brings its own font pair, or keep Your site font. Sites that already use a palette keep their current font.

@@ -31,7 +31,7 @@ const fields = [
 		control: 'text',
 		label: __( 'Timezone', 'roxyapi' ),
 		required: false,
-		help: __( 'Selects which period counts as current when date is omitted', 'roxyapi' ),
+		help: __( 'The clock the month is read on: it decides which events fall inside the calendar month, the date each is dated by, and which month is current when date is omitted', 'roxyapi' ),
 	},
 ];
 

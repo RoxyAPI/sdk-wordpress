@@ -275,6 +275,11 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.28.0 =
+* New: the natal chart reads the whole chart for your visitor, with an opening, love, career and home, and a closing, plus readings for the Ascendant and Midheaven.
+* Improved: horoscopes show the sky behind each reading: where the planets stand, the Moon phase, eclipses and retrogrades, and a crystal of the day that opens its own card.
+* Improved: a tarot spread reads as a finished result, each card with its own reading, and every tarot card shows at its printed proportion.
+
 = 1.27.0 =
 * New: a report carries your site title, site logo and site address until you set your own brand on the Reports tab.
 * Improved: Pluto draws in the orb form astrologers use, on every chart.
@@ -325,16 +330,12 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Fixed: date and time fields let visitors choose both the day and the time.
 * Fixed: an untouched timezone keeps the reading default instead of choosing UTC.
 
-= 1.22.0 =
-* New: planet meanings, zodiac signs, tarot cards, crystals and I Ching trigrams take a visitor form. Place [roxy_get_planet_meaning] or [roxy_get_zodiac_sign] with nothing inside the brackets and visitors pick from a list, then their reading appears on the same page. Create a reading offers Ask my visitor for all five.
-* Fixed: a reading placed without the details it needs no longer shows visitors an error. Visitors see nothing, and while you are logged in you see a short note on what to fill in.
-* Fixed: on a page with several visitor forms, sending one no longer marks the others as already shown.
-* Fixed: on WordPress 6.5 every RoxyAPI block is back in the block inserter, and the Horoscope block offers exactly its Daily, Weekly, Monthly and Yearly versions on every supported WordPress version.
-* Improved: every settings tab fits a phone screen. Branding shows each colour name above its Light and Dark pickers, and an open picker no longer pushes the page sideways.
-
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.28.0 =
+A written reading of the whole natal chart, horoscopes that show the sky behind each reading, and tarot spreads that read card by card.
 
 = 1.27.0 =
 Reports carry your site name and logo from the start, Pluto in its astrological orb form, and cleaner readings without a chart.
@@ -365,7 +366,4 @@ Keeps plugin downloads lean with only installation files.
 
 = 1.22.1 =
 Visitors can enter the details for ecliptic crossings and KP interval readings, including both date and time.
-
-= 1.22.0 =
-Worth updating if visitors should pick their own planet, sign, tarot card, crystal or trigram, if a page holds several visitor forms, or if your site runs WordPress 6.5.
 
