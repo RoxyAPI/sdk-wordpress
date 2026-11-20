@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-20T02:27:12+00:00\n"
+"POT-Creation-Date: 2026-11-20T03:10:57+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: roxyapi\n"
@@ -515,7 +515,7 @@ msgstr ""
 #: src/Generated/Forms/GetDikpalaDirectionForm.php:25
 #: src/Generated/Forms/GetDinacharyaScheduleForm.php:25
 #: src/Generated/Forms/GetDoshaForm.php:25
-#: src/Generated/Forms/GetDreamSymbolForm.php:25
+#: src/Generated/Forms/GetDreamSymbolForm.php:28
 #: src/Generated/Forms/GetEclipticCrossingsForm.php:25
 #: src/Generated/Forms/GetForecastForm.php:25
 #: src/Generated/Forms/GetGateForm.php:25
@@ -842,8 +842,8 @@ msgid "Too many city lookups. Try again shortly."
 msgstr ""
 
 #: src/Api/GeocodeRoute.php:110
-#: src/Api/SearchRoute.php:112
-#: src/Api/SearchRoute.php:117
+#: src/Api/SearchRoute.php:113
+#: src/Api/SearchRoute.php:119
 msgid "Search is temporarily unavailable."
 msgstr ""
 
@@ -2932,7 +2932,7 @@ msgstr ""
 msgid "Crystal"
 msgstr ""
 
-#: src/Generated/Forms/GetDreamSymbolForm.php:24
+#: src/Generated/Forms/GetDreamSymbolForm.php:27
 msgid "Dream Symbol"
 msgstr ""
 
