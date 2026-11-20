@@ -275,6 +275,10 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.29.0 =
+* New: the kundli reads the whole birth chart for your visitor: how the Lagna and the Moon meet, where the Lagna lord sits, and the yoga or placement that sets the chart apart, beside a table of every planet.
+* Improved: every planet reads in its rashi and nakshatra, and each of the twelve houses reads from its lord and the planets inside it, written for that chart.
+
 = 1.28.0 =
 * New: the natal chart reads the whole chart for your visitor, with an opening, love, career and home, and a closing, plus readings for the Ascendant and Midheaven.
 * Improved: horoscopes show the sky behind each reading: where the planets stand, the Moon phase, eclipses and retrogrades, and a crystal of the day that opens its own card.
@@ -333,6 +337,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.29.0 =
+A written reading of the whole kundli, with every planet and every house read for the chart.
 
 = 1.28.0 =
 A written reading of the whole natal chart, horoscopes that show the sky behind each reading, and tarot spreads that read card by card.

@@ -71,6 +71,23 @@ class Test_Component_Map_Attrs extends Mock_Http_TestCase {
 		);
 	}
 
+	public function test_stacked_components_share_one_response_and_one_fallback(): void {
+		// The kundli draws the chart and the planets table draws the written
+		// reading, both from one response. A no-JS visitor reads the fallback,
+		// so it appears once however many components stack.
+		$out = ComponentRenderer::render( 'generateBirthChart', $this->payload() );
+
+		$this->assertStringContainsString( '<roxy-vedic-kundli', $out );
+		$this->assertStringContainsString( '<roxy-vedic-planets-table', $out );
+		$this->assertSame( 2, substr_count( $out, '<script type="application/json" class="roxy-data">' ) );
+		$this->assertSame( 1, substr_count( $out, 'roxyapi-component-fallback' ) );
+		$this->assertLessThan(
+			strpos( $out, '<roxy-vedic-planets-table' ),
+			strpos( $out, 'roxyapi-component-fallback' ),
+			'The fallback rides the first element, where a no-JS visitor reads it.'
+		);
+	}
+
 	public function test_every_mapped_attribute_name_is_a_safe_attribute_name(): void {
 		// The renderer also serves a hand-written fallback row, so it filters
 		// names itself rather than trusting codegen. Assert the data it is

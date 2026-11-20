@@ -131,7 +131,7 @@ class ComponentRenderer {
 				continue;
 			}
 			$attrs   = isset( $row['attrs'] ) && is_array( $row['attrs'] ) ? $row['attrs'] : array();
-			$markup .= self::render_element( $tag, $operation_id, $data, $hide, $sections, $attrs );
+			$markup .= self::render_element( $tag, $operation_id, $data, $hide, $sections, $attrs, '' === $markup );
 		}
 
 		if ( '' === $markup ) {
@@ -186,19 +186,24 @@ class ComponentRenderer {
 	 * so the element receives the same answer the no-JS fallback below is built
 	 * from and the two views can never disagree about which blocks are gone.
 	 *
+	 * Stacked components draw one response, so only the first carries the
+	 * fallback: each one rendering it would show a no-JS visitor the whole
+	 * reading once per component.
+	 *
 	 * @param string                $tag           Validated `roxy-*` tag name.
 	 * @param string                $operation_id  Spec operationId.
 	 * @param array<string, mixed>  $data          Unwrapped API response.
 	 * @param bool                  $hide_readings Whether written interpretations are suppressed.
 	 * @param array<int, string>    $hide_sections Resolved part names to drop, already sanitized.
 	 * @param array<string, string> $attrs         Variant selectors from the map, e.g. `type="soul-urge"`.
+	 * @param bool                  $with_fallback Whether this element carries the server-rendered fallback.
 	 * @return string Rendered element HTML.
 	 */
-	private static function render_element( string $tag, string $operation_id, array $data, bool $hide_readings, array $hide_sections = array(), array $attrs = array() ): string {
+	private static function render_element( string $tag, string $operation_id, array $data, bool $hide_readings, array $hide_sections = array(), array $attrs = array(), bool $with_fallback = true ): string {
 		$payload = wp_json_encode( $data, JSON_HEX_TAG );
 		if ( false === $payload ) {
 			// Encoding failed; degrade to the server-rendered card.
-			return GenericRenderer::render( $operation_id, $data, true, $hide_readings, $hide_sections );
+			return $with_fallback ? GenericRenderer::render( $operation_id, $data, true, $hide_readings, $hide_sections ) : '';
 		}
 
 		// Variant selectors from the map (`type="soul-urge"`). Names are
@@ -215,7 +220,7 @@ class ComponentRenderer {
 		return sprintf(
 			'<%1$s class="roxyapi-component" data-operation="%2$s"%5$s%7$s%6$s>'
 				. '<script type="application/json" class="roxy-data">%3$s</script>'
-				. '<div class="roxyapi-component-fallback">%4$s</div>'
+				. '%4$s'
 				. '</%1$s>',
 			$tag,
 			esc_attr( $operation_id ),
@@ -224,7 +229,7 @@ class ComponentRenderer {
 			// render(), outside the element, so they survive the upgrade. The
 			// fallback is what a no-JS visitor reads, so it hides the same text
 			// the component hides.
-			GenericRenderer::render( $operation_id, $data, false, $hide_readings, $hide_sections ),
+			$with_fallback ? '<div class="roxyapi-component-fallback">' . GenericRenderer::render( $operation_id, $data, false, $hide_readings, $hide_sections ) . '</div>' : '',
 			$hide_readings ? ' hide-readings' : '',
 			$attr_markup,
 			// Names are already narrowed to `[a-z][a-z0-9-]*`, so the joined value

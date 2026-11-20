@@ -396,6 +396,9 @@ class ComponentMap {
 				array(
 					'component' => 'roxy-vedic-kundli',
 				),
+				array(
+					'component' => 'roxy-vedic-planets-table',
+				),
 			),
 			'generateBodygraph' => array(
 				array(

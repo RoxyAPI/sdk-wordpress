@@ -688,7 +688,7 @@ class Endpoints {
 			'path'          => '/vedic-astrology/birth-chart',
 			'method'        => 'POST',
 			'tag'           => 'Vedic Astrology',
-			'summary'       => 'Get birth chart (D1 Rashi chart) - Kundli Calculator API',
+			'summary'       => 'Get birth chart (D1 Rashi chart) - Kundli API with a written chart reading',
 			'display_name'  => 'Birth Chart (D1 Rashi Chart)',
 			'ttl'           => 2592000,
 			'hero'          => true,

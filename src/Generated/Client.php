@@ -912,7 +912,7 @@ class Client {
 	}
 
 	/**
-	 * Get birth chart (D1 Rashi chart) - Kundli Calculator API
+	 * Get birth chart (D1 Rashi chart) - Kundli API with a written chart reading
 	 *
 	 * @param array $body Request body.
 	 * @param array $query Query parameters.
