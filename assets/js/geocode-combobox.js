@@ -1,18 +1,23 @@
 /**
- * Roxy geocode combobox — ARIA 1.2 editable combobox with list autocomplete.
+ * Roxy search combobox — ARIA 1.2 editable combobox with list autocomplete.
+ * Searches a city for a place, or any searched collection for one entry.
  *
  * Selector: any element with `data-roxyapi-geocode` whose value is a CSS
- * selector pointing at the section or form holding the location controls.
- * `data-roxyapi-geocode-fields` maps latitude, longitude and timezone to their
- * exact posted names. Selecting a city fills only those controls, and editing
- * the search after a pick empties them again, so a form never posts a place
- * its search no longer shows.
+ * selector pointing at the section or form holding the controls it fills.
+ * `data-roxyapi-geocode-fields` maps each role (latitude, longitude and
+ * timezone for a city, value for an entry) to its exact posted name. Selecting
+ * a result fills only those controls, and editing the search after a pick
+ * empties them again, so a form never posts a choice its search no longer
+ * shows. When the input itself carries one of those names, it posts what the
+ * visitor typed without JavaScript; here it hands the name to a hidden field it
+ * fills on a pick.
  * `data-roxyapi-geocode-quiet` keeps the status as descriptive text instead of
  * a live region on screens such as the builder that own one shared announcement.
  *
- * `data-roxyapi-geocode-url` overrides the WordPress endpoint.
- * `data-roxyapi-geocode-response` maps results, label, lat, lon and tz keys
- * in the response; defaults are cities, label, lat, lon and tz.
+ * `data-roxyapi-geocode-url` overrides the city search endpoint.
+ * `data-roxyapi-geocode-response` maps `results`, `label` and each role to its
+ * key in the response; the defaults read the city search.
+ * `data-roxyapi-geocode-i18n` overrides the city search status messages.
  *
  * Implements the WAI-ARIA APG combobox-autocomplete-list pattern:
  *   role="combobox", aria-autocomplete="list", aria-expanded, aria-controls,
@@ -34,6 +39,13 @@
 	const settings = window.RoxyAPIGeocode || {};
 	const REST_URL = settings.restUrl || '';
 	const I18N = settings.i18n || {};
+	const CITY_RESPONSE = {
+		results: 'cities',
+		label: 'label',
+		latitude: 'lat',
+		longitude: 'lon',
+		timezone: 'tz',
+	};
 
 	function debounce( fn, wait ) {
 		let t = null;
@@ -64,16 +76,16 @@
 		if ( ! results || results.length === 0 ) {
 			return;
 		}
-		results.forEach( function ( city, index ) {
+		results.forEach( function ( result, index ) {
 			const option = document.createElement( 'div' );
 			option.id = listbox.id + '-opt-' + index;
 			option.setAttribute( 'role', 'option' );
 			option.className = 'roxyapi-geocode-option';
-			option.textContent = city.label;
+			option.textContent = result.label;
 			option.addEventListener( 'mousedown', function ( e ) {
 				// mousedown so the click resolves before the input blurs.
 				e.preventDefault();
-				onPick( city );
+				onPick( result );
 			} );
 			listbox.appendChild( option );
 		} );
@@ -88,19 +100,14 @@
 		);
 	}
 
-	// A null city empties the controls.
-	function applyCity( section, fields, city ) {
-		const values = city
-			? {
-					latitude: String( city.lat ),
-					longitude: String( city.lon ),
-					timezone: city.tz,
-				}
-			: { latitude: '', longitude: '', timezone: '' };
-		Object.keys( values ).forEach( function ( role ) {
+	// A null result empties the controls.
+	function applyResult( section, fields, result ) {
+		Object.keys( fields ).forEach( function ( role ) {
 			const field = findField( section, fields[ role ] );
 			if ( field ) {
-				field.value = values[ role ];
+				field.value = result
+					? String( result.values[ role ] ?? '' )
+					: '';
 			}
 		} );
 	}
@@ -110,20 +117,32 @@
 		if ( ! sectionSelector ) {
 			return;
 		}
-		const section = document.querySelector( sectionSelector );
+		// The containing scope first: the same form placed twice repeats its ids.
+		const section =
+			input.closest( sectionSelector ) ||
+			document.querySelector( sectionSelector );
 		if ( ! section ) {
 			return;
 		}
 
 		const restUrl =
 			input.getAttribute( 'data-roxyapi-geocode-url' ) || REST_URL;
-		let response = {};
+		let response;
 		let fields;
+		let messages;
 		try {
-			response =
+			response = Object.assign(
+				{},
+				CITY_RESPONSE,
 				JSON.parse(
 					input.getAttribute( 'data-roxyapi-geocode-response' )
-				) || {};
+				)
+			);
+			messages = Object.assign(
+				{},
+				I18N,
+				JSON.parse( input.getAttribute( 'data-roxyapi-geocode-i18n' ) )
+			);
 			fields = JSON.parse(
 				input.getAttribute( 'data-roxyapi-geocode-fields' )
 			);
@@ -132,6 +151,20 @@
 		}
 		if ( ! fields || typeof fields !== 'object' ) {
 			return;
+		}
+
+		// The input posts its own text without JavaScript. From here the
+		// search owns the choice, so the name moves to the field a pick fills,
+		// carrying any value a refused post restored.
+		let picked = false;
+		if ( input.name && Object.values( fields ).includes( input.name ) ) {
+			const hidden = document.createElement( 'input' );
+			hidden.type = 'hidden';
+			hidden.name = input.name;
+			hidden.value = input.value;
+			input.removeAttribute( 'name' );
+			input.parentNode.insertBefore( hidden, input.nextSibling );
+			picked = hidden.value !== '';
 		}
 
 		const listboxId = input.id + '-listbox';
@@ -167,7 +200,6 @@
 
 		let activeIndex = -1;
 		let current = [];
-		let picked = false;
 
 		function open() {
 			if ( current.length === 0 ) {
@@ -222,19 +254,19 @@
 			}
 		}
 
-		function pick( city ) {
-			input.value = city.label;
-			applyCity( section, fields, city );
+		function pick( result ) {
+			input.value = result.label;
+			applyResult( section, fields, result );
 			picked = true;
 			close();
-			setStatus( status, I18N.selected || '' );
+			setStatus( status, messages.selected || '' );
 		}
 
 		const fetchResults = debounce( function ( q ) {
 			if ( ! restUrl ) {
 				return;
 			}
-			setStatus( status, I18N.searching || '' );
+			setStatus( status, messages.searching || '' );
 			const url =
 				restUrl +
 				( restUrl.indexOf( '?' ) === -1 ? '?' : '&' ) +
@@ -258,22 +290,25 @@
 							: '';
 					if ( ! payload.ok || refusal ) {
 						reset();
-						setStatus( status, refusal || I18N.error || '' );
+						setStatus( status, refusal || messages.error || '' );
 						return;
 					}
-					const results = data[ response.results || 'cities' ];
+					const results = data[ response.results ];
 					current = Array.isArray( results )
-						? results.map( ( city ) => ( {
-								label: city[ response.label || 'label' ],
-								lat: city[ response.lat || 'lat' ],
-								lon: city[ response.lon || 'lon' ],
-								tz: city[ response.tz || 'tz' ],
+						? results.map( ( item ) => ( {
+								label: item[ response.label ],
+								values: Object.fromEntries(
+									Object.keys( fields ).map( ( role ) => [
+										role,
+										item[ response[ role ] || role ],
+									] )
+								),
 							} ) )
 						: [];
 					renderResults( listbox, current, pick );
 					if ( current.length === 0 ) {
 						close();
-						setStatus( status, I18N.noResults || '' );
+						setStatus( status, messages.noResults || '' );
 					} else {
 						open();
 						setStatus( status, '' );
@@ -284,14 +319,14 @@
 					// JSON lands here, which is a different problem from a
 					// server answer the visitor can act on.
 					reset();
-					setStatus( status, I18N.error || '' );
+					setStatus( status, messages.error || '' );
 				} );
 		}, DEBOUNCE_MS );
 
 		input.addEventListener( 'input', function () {
 			if ( picked ) {
 				picked = false;
-				applyCity( section, fields, null );
+				applyResult( section, fields, null );
 			}
 			const q = input.value.trim();
 			if ( q.length < MIN_QUERY_LEN ) {

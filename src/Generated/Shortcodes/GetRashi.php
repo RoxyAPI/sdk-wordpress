@@ -21,6 +21,9 @@ class GetRashi {
 
 	public const TAG = 'roxy_get_rashi';
 
+	/** The visitor form this reading offers. */
+	public const FORM = \RoxyAPI\Generated\Forms\GetRashiForm::class;
+
 	/**
 	 * Every attribute this shortcode accepts. shortcode_atts() silently
 	 * discards anything absent from here, so this is also the contract the
@@ -53,7 +56,7 @@ class GetRashi {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['id'] === '' ) ) ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetRashiForm::class, $atts );
+			return \RoxyAPI\Support\FormRenderer::render( self::FORM, $atts );
 		}
 
 		$data = \RoxyAPI\Generated\Client::getRashi( $atts['id'], $atts['lang'] );

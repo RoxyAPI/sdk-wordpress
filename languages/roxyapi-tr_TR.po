@@ -22,7 +22,7 @@ msgstr "1111"
 msgid "Admin only:"
 msgstr "Yalnızca yöneticiler:"
 
-#: src/Generated/Builder/Manifest.php:17637
+#: src/Generated/Builder/Manifest.php:17639
 #: src/Generated/Heroes/Manifest.php:202
 msgid "Angel number"
 msgstr "Melek sayısı"
@@ -372,7 +372,7 @@ msgstr "24 saat biçiminde doğum saati (SS:DD:SS)"
 msgid "Birth year to calculate Life Path automatically"
 msgstr "Yaşam Yolu sayısını otomatik hesaplamak için doğum yılı"
 
-#: src/Plugin.php:257
+#: src/Plugin.php:259
 msgid "City selected."
 msgstr "Şehir seçildi."
 
@@ -587,7 +587,7 @@ msgstr "Bitiş tarihi"
 msgid "Expression"
 msgstr "İfade sayısı"
 
-#: src/Support/FormRenderer.php:379
+#: src/Support/FormRenderer.php:396
 msgid "Find by city"
 msgstr "Şehre göre ara"
 
@@ -732,6 +732,7 @@ msgstr "Doğumdaki tam ad"
 #: src/Generated/Forms/GetDikpalaDirectionForm.php:25
 #: src/Generated/Forms/GetDinacharyaScheduleForm.php:25
 #: src/Generated/Forms/GetDoshaForm.php:25
+#: src/Generated/Forms/GetDreamSymbolForm.php:25
 #: src/Generated/Forms/GetEclipticCrossingsForm.php:25
 #: src/Generated/Forms/GetForecastForm.php:25
 #: src/Generated/Forms/GetGateForm.php:25
@@ -803,7 +804,7 @@ msgstr "Gun Milan"
 msgid "House system"
 msgstr "Ev sistemi"
 
-#: src/Support/FormRenderer.php:407
+#: src/Support/FormRenderer.php:448
 msgid "I consent to sending my inputs to generate this reading. See the Privacy Policy for details."
 msgstr "Bu okumanın oluşturulması için bilgilerimin gönderilmesini onaylıyorum. Ayrıntılar için Gizlilik Politikasına bakın."
 
@@ -1059,7 +1060,7 @@ msgstr "Ad"
 msgid "Natal chart"
 msgstr "Doğum haritası"
 
-#: src/Plugin.php:256
+#: src/Plugin.php:258
 msgid "No matching cities. Try a different spelling."
 msgstr "Eşleşen şehir bulunamadı. Farklı bir yazım deneyin."
 
@@ -1148,11 +1149,11 @@ msgstr "Güneş burcunuzu seçin"
 msgid "Question"
 msgstr "Soru"
 
-#: src/Plugin.php:258
+#: src/Plugin.php:260
 msgid "City search is unavailable right now. Please try again in a moment."
 msgstr "Şehir araması şu anda kullanılamıyor. Lütfen birazdan tekrar deneyin."
 
-#: src/Plugin.php:255
+#: src/Plugin.php:257
 msgid "Searching cities…"
 msgstr "Şehirler aranıyor…"
 
@@ -1325,12 +1326,12 @@ msgstr "Açılım"
 msgid "Start date"
 msgstr "Başlangıç tarihi"
 
-#: src/Support/FormRenderer.php:382
+#: src/Support/FormRenderer.php:399
 #: blocks/_shared/generated-edit.js:111
 msgid "Start typing a city name"
 msgstr "Bir şehir adı yazmaya başlayın"
 
-#: src/Support/FormRenderer.php:164
+#: src/Support/FormRenderer.php:165
 msgid "Submit"
 msgstr "Gönder"
 
@@ -2046,10 +2047,12 @@ msgid "This reading could not be loaded right now. Please try again."
 msgstr "Bu okuma şu anda yüklenemedi. Lütfen tekrar deneyin."
 
 #: src/Api/GeocodeRoute.php:87
+#: src/Api/SearchRoute.php:101
 msgid "Query is too short."
 msgstr "Sorgu çok kısa."
 
 #: src/Api/GeocodeRoute.php:90
+#: src/Api/SearchRoute.php:104
 msgid "Query is too long."
 msgstr "Sorgu çok uzun."
 
@@ -2058,6 +2061,8 @@ msgid "Too many city lookups. Try again shortly."
 msgstr "Çok fazla şehir araması yapıldı. Kısa süre sonra tekrar deneyin."
 
 #: src/Api/GeocodeRoute.php:110
+#: src/Api/SearchRoute.php:112
+#: src/Api/SearchRoute.php:117
 msgid "Search is temporarily unavailable."
 msgstr "Arama geçici olarak kullanılamıyor."
 
@@ -2103,7 +2108,7 @@ msgid "Please confirm consent before submitting."
 msgstr "Göndermeden önce lütfen onayı işaretleyin."
 
 #. translators: %s: field label
-#: src/Support/FormRenderer.php:389
+#: src/Support/FormRenderer.php:406
 #: src/Support/FormRouter.php:435
 #: src/Support/FormRouter.php:449
 #, php-format
@@ -2129,7 +2134,7 @@ msgid "Privacy"
 msgstr "Gizlilik"
 
 #: src/Admin/SettingsPage.php:180
-#: src/Support/FormRenderer.php:234
+#: src/Support/FormRenderer.php:236
 msgid "Advanced"
 msgstr "Gelişmiş"
 
@@ -3372,11 +3377,6 @@ msgstr "Burç"
 
 #: blocks/generated/get-monthly-horoscope/index.js:27
 msgid "Any date inside the target month, in YYYY-MM-DD format"
-msgstr ""
-
-#: blocks/generated/get-monthly-horoscope/index.js:34
-#: blocks/generated/get-weekly-horoscope/index.js:34
-msgid "Selects which period counts as current when date is omitted"
 msgstr ""
 
 #: blocks/generated/get-monthly-parallels/index.js:20
@@ -5064,7 +5064,7 @@ msgstr "Ayı göster"
 msgid "Significant Dates"
 msgstr "Önemli tarihler"
 
-#: src/Support/FormRenderer.php:68
+#: src/Support/FormRenderer.php:69
 msgid "That reading has already been shown. Enter the details below to run it again."
 msgstr "Bu okuma zaten gösterildi. Yeniden oluşturmak için aşağıya bilgileri girin."
 
@@ -8793,7 +8793,7 @@ msgstr "Tüm renkleri temizle ve varsayılanları kullan"
 msgid "Karmic Lessons"
 msgstr "Karmik Dersler"
 
-#: src/Generated/Builder/Manifest.php:17770
+#: src/Generated/Builder/Manifest.php:17772
 #: src/Generated/Forms/AnalyzeNumberSequenceForm.php:24
 msgid "Number Sequence"
 msgstr "Sayı Dizisi"
@@ -9833,7 +9833,7 @@ msgid "In the block editor, add a Shortcode block and paste it there."
 msgstr "Blok düzenleyicide bir Kısa Kod bloğu ekleyin ve kısa kodu içine yapıştırın."
 
 #. translators: %s: field label
-#: src/Support/FormRenderer.php:389
+#: src/Support/FormRenderer.php:406
 #: assets/js/builder.js:66
 msgid "City"
 msgstr "Şehir"
@@ -10385,35 +10385,35 @@ msgstr "Günün Rüya Sembolü"
 msgid "Dream Symbol by ID"
 msgstr "Ada Göre Rüya Sembolü"
 
-#: src/Generated/Builder/Manifest.php:17526
+#: src/Generated/Builder/Manifest.php:17527
 msgid "Random Dream Symbols"
 msgstr "Rastgele Rüya Sembolleri"
 
-#: src/Generated/Builder/Manifest.php:17555
+#: src/Generated/Builder/Manifest.php:17556
 msgid "Search Dream Symbols"
 msgstr "Rüya Sembolü Ara"
 
-#: src/Generated/Builder/Manifest.php:17623
+#: src/Generated/Builder/Manifest.php:17625
 msgid "Symbol Counts by Letter"
 msgstr "Harfe Göre Sembol Sayıları"
 
-#: src/Generated/Builder/Manifest.php:17666
+#: src/Generated/Builder/Manifest.php:17668
 msgid "Angel Numbers"
 msgstr "Melek Sayıları"
 
-#: src/Generated/Builder/Manifest.php:17728
+#: src/Generated/Builder/Manifest.php:17730
 msgid "Daily Angel Number"
 msgstr "Günün Melek Sayısı"
 
-#: src/Generated/Builder/Manifest.php:17819
+#: src/Generated/Builder/Manifest.php:17821
 msgid "Cities in a Country"
 msgstr "Bir Ülkedeki Şehirler"
 
-#: src/Generated/Builder/Manifest.php:17873
+#: src/Generated/Builder/Manifest.php:17875
 msgid "Countries"
 msgstr "Ülkeler"
 
-#: src/Generated/Builder/Manifest.php:17915
+#: src/Generated/Builder/Manifest.php:17917
 msgid "Search Cities Worldwide"
 msgstr "Dünya Genelinde Şehir Ara"
 
@@ -10849,90 +10849,90 @@ msgstr "Siteniz https üzerinden çalıştığında logonuz raporlarda görünü
 msgid "Reports"
 msgstr "Raporlar"
 
-#: src/Generated/Builder/Manifest.php:17969
+#: src/Generated/Builder/Manifest.php:17971
 #: src/Generated/Heroes/Manifest.php:222
 msgid "Branded report"
 msgstr "Markalı rapor"
 
-#: src/Generated/Builder/Manifest.php:17982
+#: src/Generated/Builder/Manifest.php:17984
 #: blocks/generated/report/index.js:11
 msgid "Report"
 msgstr "Rapor"
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateNatalReportForm.php:24
 #: src/Generated/Reports.php:47
 #: blocks/generated/report/index.js:14
 msgid "Natal Chart Report"
 msgstr "Doğum haritası raporu"
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateSynastryReportForm.php:24
 #: src/Generated/Reports.php:51
 #: blocks/generated/report/index.js:14
 msgid "Synastry Report"
 msgstr "Sinastri raporu"
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateKundliReportForm.php:24
 #: src/Generated/Reports.php:55
 #: blocks/generated/report/index.js:14
 msgid "Kundli Report"
 msgstr "Kundli raporu"
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateMatchmakingReportForm.php:24
 #: src/Generated/Reports.php:59
 #: blocks/generated/report/index.js:14
 msgid "Kundli Matching Report"
 msgstr "Kundli uyum raporu"
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateTarotReportForm.php:24
 #: src/Generated/Reports.php:79
 #: blocks/generated/report/index.js:14
 msgid "Tarot Reading Report"
 msgstr "Tarot okuma raporu"
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateNumerologyReportForm.php:24
 #: src/Generated/Reports.php:75
 #: blocks/generated/report/index.js:14
 msgid "Numerology Report"
 msgstr "Numeroloji raporu"
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateHumanDesignReportForm.php:24
 #: src/Generated/Reports.php:67
 #: blocks/generated/report/index.js:14
 msgid "Human Design Report"
 msgstr "Human Design raporu"
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateYearlyForecastReportForm.php:24
 #: src/Generated/Reports.php:63
 #: blocks/generated/report/index.js:14
 msgid "Yearly Forecast Report"
 msgstr "Yıllık öngörü raporu"
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateBaziReportForm.php:24
 #: src/Generated/Reports.php:71
 #: blocks/generated/report/index.js:14
 msgid "BaZi Report"
 msgstr "BaZi raporu"
 
-#: src/Generated/Builder/Manifest.php:18005
+#: src/Generated/Builder/Manifest.php:18007
 #: blocks/generated/report/index.js:19
 msgid "Delivery"
 msgstr "Teslim"
 
-#: src/Generated/Builder/Manifest.php:18011
+#: src/Generated/Builder/Manifest.php:18013
 #: blocks/generated/report/index.js:22
 msgid "PDF download"
 msgstr "PDF indirme"
 
-#: src/Generated/Builder/Manifest.php:18011
+#: src/Generated/Builder/Manifest.php:18013
 #: blocks/generated/report/index.js:22
 msgid "Page in the browser"
 msgstr "Tarayıcıda sayfa"
@@ -11071,3 +11071,39 @@ msgstr "Rapor kılavuzunu okuyun"
 #: templates/admin-help.php:41
 msgid "Can I sell branded reports?"
 msgstr "Kendi markamla rapor satabilir miyim?"
+
+#: src/Api/SearchRoute.php:107
+msgid "Too many searches. Try again shortly."
+msgstr "Çok fazla arama yapıldı. Kısa süre sonra tekrar deneyin."
+
+#: src/Generated/Forms/GetDreamSymbolForm.php:24
+msgid "Dream Symbol"
+msgstr "Rüya Sembolü"
+
+#: src/Support/FormRenderer.php:333
+msgid "Start typing to search"
+msgstr "Aramak için yazmaya başlayın"
+
+#: src/Support/FormRenderer.php:420
+msgid "Searching…"
+msgstr "Aranıyor…"
+
+#: src/Support/FormRenderer.php:421
+msgid "No matches. Try a different word."
+msgstr "Eşleşme yok. Farklı bir kelime deneyin."
+
+#: src/Support/FormRenderer.php:422
+msgid "Selected."
+msgstr "Seçildi."
+
+#: src/Support/FormRenderer.php:423
+msgid "Search is unavailable right now. Please try again in a moment."
+msgstr "Arama şu anda kullanılamıyor. Lütfen birazdan tekrar deneyin."
+
+#: blocks/generated/get-monthly-horoscope/index.js:34
+msgid "The clock the month is read on: it decides which events fall inside the calendar month, the date each is dated by, and which month is current when date is omitted"
+msgstr ""
+
+#: blocks/generated/get-weekly-horoscope/index.js:34
+msgid "The clock the week is read on: it decides which events fall inside the Monday to Sunday week, the day each is dated by, and which week is current when date is omitted"
+msgstr ""

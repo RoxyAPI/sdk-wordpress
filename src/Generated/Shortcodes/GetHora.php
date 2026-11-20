@@ -21,6 +21,9 @@ class GetHora {
 
 	public const TAG = 'roxy_get_hora';
 
+	/** The visitor form this reading offers. */
+	public const FORM = \RoxyAPI\Generated\Forms\GetHoraForm::class;
+
 	/**
 	 * Every attribute this shortcode accepts. shortcode_atts() silently
 	 * discards anything absent from here, so this is also the contract the
@@ -55,7 +58,7 @@ class GetHora {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['date'] === '' || $atts['latitude'] === '' || $atts['longitude'] === '' ) ) ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetHoraForm::class, $atts );
+			return \RoxyAPI\Support\FormRenderer::render( self::FORM, $atts );
 		}
 
 				$body = array_filter(

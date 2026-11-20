@@ -275,6 +275,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.30.0 =
+* New: visitors look up any dream symbol by name. Place [roxy_get_dream_symbol] or [roxy_search_dream_symbols] with nothing inside the brackets, or the matching block, and visitors type a word, pick the symbol and read its meaning.
+
 = 1.29.0 =
 * New: the kundli reads the whole birth chart for your visitor: how the Lagna and the Moon meet, where the Lagna lord sits, and the yoga or placement that sets the chart apart, beside a table of every planet.
 * Improved: every planet reads in its rashi and nakshatra, and each of the twelve houses reads from its lord and the planets inside it, written for that chart.
@@ -327,16 +330,12 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 = 1.22.2 =
 * Plugin downloads contain only the files needed for installation.
 
-= 1.22.1 =
-* Reading lists show names and full details.
-* Long reading tables keep all rows in a scrollable panel.
-* Fixed: ecliptic crossings and KP interval readings take visitor forms when placed without details.
-* Fixed: date and time fields let visitors choose both the day and the time.
-* Fixed: an untouched timezone keeps the reading default instead of choosing UTC.
-
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.30.0 =
+Visitors look up any dream symbol by typing its name.
 
 = 1.29.0 =
 A written reading of the whole kundli, with every planet and every house read for the chart.
@@ -370,7 +369,4 @@ Seven more readings take a visitor form, and charts enlarge for closer reading.
 
 = 1.22.2 =
 Keeps plugin downloads lean with only installation files.
-
-= 1.22.1 =
-Visitors can enter the details for ecliptic crossings and KP interval readings, including both date and time.
 

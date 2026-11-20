@@ -21,6 +21,9 @@ class GetKpSublordChanges {
 
 	public const TAG = 'roxy_get_kp_sublord_changes';
 
+	/** The visitor form this reading offers. */
+	public const FORM = \RoxyAPI\Generated\Forms\GetKpSublordChangesForm::class;
+
 	/**
 	 * Every attribute this shortcode accepts. shortcode_atts() silently
 	 * discards anything absent from here, so this is also the contract the
@@ -57,7 +60,7 @@ class GetKpSublordChanges {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['planet'] === '' || $atts['start_date'] === '' || $atts['end_date'] === '' ) ) ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetKpSublordChangesForm::class, $atts );
+			return \RoxyAPI\Support\FormRenderer::render( self::FORM, $atts );
 		}
 
 				$body = array_filter(

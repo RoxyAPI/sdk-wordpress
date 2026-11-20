@@ -21,6 +21,9 @@ class DrawCards {
 
 	public const TAG = 'roxy_draw_cards';
 
+	/** The visitor form this reading offers. */
+	public const FORM = \RoxyAPI\Generated\Forms\DrawCardsForm::class;
+
 	/**
 	 * Every attribute this shortcode accepts. shortcode_atts() silently
 	 * discards anything absent from here, so this is also the contract the
@@ -56,7 +59,7 @@ class DrawCards {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['count'] === '' ) ) ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\DrawCardsForm::class, $atts );
+			return \RoxyAPI\Support\FormRenderer::render( self::FORM, $atts );
 		}
 
 				$body = array_filter(

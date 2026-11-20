@@ -21,6 +21,9 @@ class GetCenter {
 
 	public const TAG = 'roxy_get_center';
 
+	/** The visitor form this reading offers. */
+	public const FORM = \RoxyAPI\Generated\Forms\GetCenterForm::class;
+
 	/**
 	 * Every attribute this shortcode accepts. shortcode_atts() silently
 	 * discards anything absent from here, so this is also the contract the
@@ -53,7 +56,7 @@ class GetCenter {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['id'] === '' ) ) ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetCenterForm::class, $atts );
+			return \RoxyAPI\Support\FormRenderer::render( self::FORM, $atts );
 		}
 
 		$data = \RoxyAPI\Generated\Client::getCenter( $atts['id'], $atts['lang'] );

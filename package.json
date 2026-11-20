@@ -50,6 +50,7 @@
 		"fetch:ui": "node bin/fetch-ui-bundle.mjs",
 		"check:distignore": "node bin/check-distignore.mjs",
 		"check:component-map": "node bin/check-component-map.mjs",
+		"test:bin": "node --test 'bin/*.test.mjs'",
 		"check:blocks": "node bin/check-block-layout.mjs",
 		"check:geocode": "node bin/check-geocode-armour.mjs",
 		"check:contrast": "node bin/check-frontend-contrast.mjs",

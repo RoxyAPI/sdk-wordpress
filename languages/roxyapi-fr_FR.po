@@ -22,7 +22,7 @@ msgstr "1111"
 msgid "Admin only:"
 msgstr "Administrateurs uniquement :"
 
-#: src/Generated/Builder/Manifest.php:17637
+#: src/Generated/Builder/Manifest.php:17639
 #: src/Generated/Heroes/Manifest.php:202
 msgid "Angel number"
 msgstr "Nombre angélique"
@@ -372,7 +372,7 @@ msgstr "Heure de naissance au format 24 heures HH:MM:SS"
 msgid "Birth year to calculate Life Path automatically"
 msgstr "Année de naissance pour calculer le chemin de vie automatiquement"
 
-#: src/Plugin.php:257
+#: src/Plugin.php:259
 msgid "City selected."
 msgstr "Ville sélectionnée."
 
@@ -587,7 +587,7 @@ msgstr "Date de fin"
 msgid "Expression"
 msgstr "Expression"
 
-#: src/Support/FormRenderer.php:379
+#: src/Support/FormRenderer.php:396
 msgid "Find by city"
 msgstr "Rechercher par ville"
 
@@ -732,6 +732,7 @@ msgstr "Nom complet à la naissance"
 #: src/Generated/Forms/GetDikpalaDirectionForm.php:25
 #: src/Generated/Forms/GetDinacharyaScheduleForm.php:25
 #: src/Generated/Forms/GetDoshaForm.php:25
+#: src/Generated/Forms/GetDreamSymbolForm.php:25
 #: src/Generated/Forms/GetEclipticCrossingsForm.php:25
 #: src/Generated/Forms/GetForecastForm.php:25
 #: src/Generated/Forms/GetGateForm.php:25
@@ -803,7 +804,7 @@ msgstr "Gun Milan"
 msgid "House system"
 msgstr "Système de maisons"
 
-#: src/Support/FormRenderer.php:407
+#: src/Support/FormRenderer.php:448
 msgid "I consent to sending my inputs to generate this reading. See the Privacy Policy for details."
 msgstr "J'accepte l'envoi de mes informations pour générer cette lecture. Consultez la politique de confidentialité pour plus de détails."
 
@@ -1059,7 +1060,7 @@ msgstr "Nom"
 msgid "Natal chart"
 msgstr "Thème natal"
 
-#: src/Plugin.php:256
+#: src/Plugin.php:258
 msgid "No matching cities. Try a different spelling."
 msgstr "Aucune ville trouvée. Essayez une autre orthographe."
 
@@ -1148,11 +1149,11 @@ msgstr "Choisissez votre signe solaire"
 msgid "Question"
 msgstr "Question"
 
-#: src/Plugin.php:258
+#: src/Plugin.php:260
 msgid "City search is unavailable right now. Please try again in a moment."
 msgstr "La recherche de villes est momentanément indisponible. Veuillez réessayer dans un instant."
 
-#: src/Plugin.php:255
+#: src/Plugin.php:257
 msgid "Searching cities…"
 msgstr "Recherche de villes en cours…"
 
@@ -1325,12 +1326,12 @@ msgstr "Tirage"
 msgid "Start date"
 msgstr "Date de début"
 
-#: src/Support/FormRenderer.php:382
+#: src/Support/FormRenderer.php:399
 #: blocks/_shared/generated-edit.js:111
 msgid "Start typing a city name"
 msgstr "Commencez à saisir le nom d'une ville"
 
-#: src/Support/FormRenderer.php:164
+#: src/Support/FormRenderer.php:165
 msgid "Submit"
 msgstr "Envoyer"
 
@@ -2046,10 +2047,12 @@ msgid "This reading could not be loaded right now. Please try again."
 msgstr "Cette lecture n'a pas pu être chargée pour le moment. Merci de réessayer."
 
 #: src/Api/GeocodeRoute.php:87
+#: src/Api/SearchRoute.php:101
 msgid "Query is too short."
 msgstr "La requête est trop courte."
 
 #: src/Api/GeocodeRoute.php:90
+#: src/Api/SearchRoute.php:104
 msgid "Query is too long."
 msgstr "La requête est trop longue."
 
@@ -2058,6 +2061,8 @@ msgid "Too many city lookups. Try again shortly."
 msgstr "Trop de recherches de ville. Réessayez dans un instant."
 
 #: src/Api/GeocodeRoute.php:110
+#: src/Api/SearchRoute.php:112
+#: src/Api/SearchRoute.php:117
 msgid "Search is temporarily unavailable."
 msgstr "La recherche est temporairement indisponible."
 
@@ -2103,7 +2108,7 @@ msgid "Please confirm consent before submitting."
 msgstr "Veuillez confirmer votre consentement avant d'envoyer."
 
 #. translators: %s: field label
-#: src/Support/FormRenderer.php:389
+#: src/Support/FormRenderer.php:406
 #: src/Support/FormRouter.php:435
 #: src/Support/FormRouter.php:449
 #, php-format
@@ -2129,7 +2134,7 @@ msgid "Privacy"
 msgstr "Confidentialité"
 
 #: src/Admin/SettingsPage.php:180
-#: src/Support/FormRenderer.php:234
+#: src/Support/FormRenderer.php:236
 msgid "Advanced"
 msgstr "Avancé"
 
@@ -3372,11 +3377,6 @@ msgstr "Signe"
 
 #: blocks/generated/get-monthly-horoscope/index.js:27
 msgid "Any date inside the target month, in YYYY-MM-DD format"
-msgstr ""
-
-#: blocks/generated/get-monthly-horoscope/index.js:34
-#: blocks/generated/get-weekly-horoscope/index.js:34
-msgid "Selects which period counts as current when date is omitted"
 msgstr ""
 
 #: blocks/generated/get-monthly-parallels/index.js:20
@@ -5064,7 +5064,7 @@ msgstr "Afficher le mois"
 msgid "Significant Dates"
 msgstr "Dates importantes"
 
-#: src/Support/FormRenderer.php:68
+#: src/Support/FormRenderer.php:69
 msgid "That reading has already been shown. Enter the details below to run it again."
 msgstr "Cette lecture a déjà été affichée. Saisissez les informations ci-dessous pour la relancer."
 
@@ -8793,7 +8793,7 @@ msgstr "Effacer toutes les couleurs et revenir aux valeurs par défaut"
 msgid "Karmic Lessons"
 msgstr "Leçons karmiques"
 
-#: src/Generated/Builder/Manifest.php:17770
+#: src/Generated/Builder/Manifest.php:17772
 #: src/Generated/Forms/AnalyzeNumberSequenceForm.php:24
 msgid "Number Sequence"
 msgstr "Séquence de nombres"
@@ -9833,7 +9833,7 @@ msgid "In the block editor, add a Shortcode block and paste it there."
 msgstr "Dans l’éditeur de blocs, ajoutez un bloc shortcode et collez-le dedans."
 
 #. translators: %s: field label
-#: src/Support/FormRenderer.php:389
+#: src/Support/FormRenderer.php:406
 #: assets/js/builder.js:66
 msgid "City"
 msgstr "Ville"
@@ -10385,35 +10385,35 @@ msgstr "Symbole de rêve du jour"
 msgid "Dream Symbol by ID"
 msgstr "Symbole de rêve par nom"
 
-#: src/Generated/Builder/Manifest.php:17526
+#: src/Generated/Builder/Manifest.php:17527
 msgid "Random Dream Symbols"
 msgstr "Symboles de rêve au hasard"
 
-#: src/Generated/Builder/Manifest.php:17555
+#: src/Generated/Builder/Manifest.php:17556
 msgid "Search Dream Symbols"
 msgstr "Rechercher des symboles de rêve"
 
-#: src/Generated/Builder/Manifest.php:17623
+#: src/Generated/Builder/Manifest.php:17625
 msgid "Symbol Counts by Letter"
 msgstr "Nombre de symboles par lettre"
 
-#: src/Generated/Builder/Manifest.php:17666
+#: src/Generated/Builder/Manifest.php:17668
 msgid "Angel Numbers"
 msgstr "Nombres angéliques"
 
-#: src/Generated/Builder/Manifest.php:17728
+#: src/Generated/Builder/Manifest.php:17730
 msgid "Daily Angel Number"
 msgstr "Nombre angélique du jour"
 
-#: src/Generated/Builder/Manifest.php:17819
+#: src/Generated/Builder/Manifest.php:17821
 msgid "Cities in a Country"
 msgstr "Villes d’un pays"
 
-#: src/Generated/Builder/Manifest.php:17873
+#: src/Generated/Builder/Manifest.php:17875
 msgid "Countries"
 msgstr "Pays"
 
-#: src/Generated/Builder/Manifest.php:17915
+#: src/Generated/Builder/Manifest.php:17917
 msgid "Search Cities Worldwide"
 msgstr "Rechercher des villes dans le monde"
 
@@ -10849,90 +10849,90 @@ msgstr "Votre logo apparaît sur les rapports dès que votre site passe en https
 msgid "Reports"
 msgstr "Rapports"
 
-#: src/Generated/Builder/Manifest.php:17969
+#: src/Generated/Builder/Manifest.php:17971
 #: src/Generated/Heroes/Manifest.php:222
 msgid "Branded report"
 msgstr "Rapport à votre image"
 
-#: src/Generated/Builder/Manifest.php:17982
+#: src/Generated/Builder/Manifest.php:17984
 #: blocks/generated/report/index.js:11
 msgid "Report"
 msgstr "Rapport"
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateNatalReportForm.php:24
 #: src/Generated/Reports.php:47
 #: blocks/generated/report/index.js:14
 msgid "Natal Chart Report"
 msgstr "Rapport de thème natal"
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateSynastryReportForm.php:24
 #: src/Generated/Reports.php:51
 #: blocks/generated/report/index.js:14
 msgid "Synastry Report"
 msgstr "Rapport de synastrie"
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateKundliReportForm.php:24
 #: src/Generated/Reports.php:55
 #: blocks/generated/report/index.js:14
 msgid "Kundli Report"
 msgstr "Rapport de kundli"
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateMatchmakingReportForm.php:24
 #: src/Generated/Reports.php:59
 #: blocks/generated/report/index.js:14
 msgid "Kundli Matching Report"
 msgstr "Rapport de compatibilité kundli"
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateTarotReportForm.php:24
 #: src/Generated/Reports.php:79
 #: blocks/generated/report/index.js:14
 msgid "Tarot Reading Report"
 msgstr "Rapport de tirage de tarot"
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateNumerologyReportForm.php:24
 #: src/Generated/Reports.php:75
 #: blocks/generated/report/index.js:14
 msgid "Numerology Report"
 msgstr "Rapport de numérologie"
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateHumanDesignReportForm.php:24
 #: src/Generated/Reports.php:67
 #: blocks/generated/report/index.js:14
 msgid "Human Design Report"
 msgstr "Rapport de Design Humain"
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateYearlyForecastReportForm.php:24
 #: src/Generated/Reports.php:63
 #: blocks/generated/report/index.js:14
 msgid "Yearly Forecast Report"
 msgstr "Rapport de prévisions annuelles"
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateBaziReportForm.php:24
 #: src/Generated/Reports.php:71
 #: blocks/generated/report/index.js:14
 msgid "BaZi Report"
 msgstr "Rapport BaZi"
 
-#: src/Generated/Builder/Manifest.php:18005
+#: src/Generated/Builder/Manifest.php:18007
 #: blocks/generated/report/index.js:19
 msgid "Delivery"
 msgstr "Remise"
 
-#: src/Generated/Builder/Manifest.php:18011
+#: src/Generated/Builder/Manifest.php:18013
 #: blocks/generated/report/index.js:22
 msgid "PDF download"
 msgstr "Téléchargement PDF"
 
-#: src/Generated/Builder/Manifest.php:18011
+#: src/Generated/Builder/Manifest.php:18013
 #: blocks/generated/report/index.js:22
 msgid "Page in the browser"
 msgstr "Page dans le navigateur"
@@ -11071,3 +11071,39 @@ msgstr "Lire le guide des rapports"
 #: templates/admin-help.php:41
 msgid "Can I sell branded reports?"
 msgstr "Puis-je vendre des rapports à mon image ?"
+
+#: src/Api/SearchRoute.php:107
+msgid "Too many searches. Try again shortly."
+msgstr "Trop de recherches. Réessayez dans un instant."
+
+#: src/Generated/Forms/GetDreamSymbolForm.php:24
+msgid "Dream Symbol"
+msgstr "Symbole de rêve"
+
+#: src/Support/FormRenderer.php:333
+msgid "Start typing to search"
+msgstr "Commencez à saisir pour rechercher"
+
+#: src/Support/FormRenderer.php:420
+msgid "Searching…"
+msgstr "Recherche en cours…"
+
+#: src/Support/FormRenderer.php:421
+msgid "No matches. Try a different word."
+msgstr "Aucun résultat. Essayez un autre mot."
+
+#: src/Support/FormRenderer.php:422
+msgid "Selected."
+msgstr "Sélectionné."
+
+#: src/Support/FormRenderer.php:423
+msgid "Search is unavailable right now. Please try again in a moment."
+msgstr "La recherche est momentanément indisponible. Veuillez réessayer dans un instant."
+
+#: blocks/generated/get-monthly-horoscope/index.js:34
+msgid "The clock the month is read on: it decides which events fall inside the calendar month, the date each is dated by, and which month is current when date is omitted"
+msgstr ""
+
+#: blocks/generated/get-weekly-horoscope/index.js:34
+msgid "The clock the week is read on: it decides which events fall inside the Monday to Sunday week, the day each is dated by, and which week is current when date is omitted"
+msgstr ""

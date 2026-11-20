@@ -179,7 +179,6 @@ $roxyapi_owner_placed           = array(
 	'[roxy_get_usage_stats]',       // The site owner's own account.
 	'[roxy_search_cities]',         // A place lookup, not a reading.
 	'[roxy_get_cities_by_country]', // A place lookup, not a reading.
-	'[roxy_get_dream_symbol]',      // A searched dictionary, too large for a list.
 	'[roxy_get_crystal_pairings]',  // No collection names the crystal to pick.
 	'[roxy_get_number_meaning]',    // One number per placement, chosen by the site owner.
 	'[roxy_get_compound_number]',   // One number per placement, chosen by the site owner.

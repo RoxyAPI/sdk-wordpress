@@ -21,6 +21,9 @@ class GetCrystalsByElement {
 
 	public const TAG = 'roxy_get_crystals_by_element';
 
+	/** The visitor form this reading offers. */
+	public const FORM = \RoxyAPI\Generated\Forms\GetCrystalsByElementForm::class;
+
 	/**
 	 * Every attribute this shortcode accepts. shortcode_atts() silently
 	 * discards anything absent from here, so this is also the contract the
@@ -55,7 +58,7 @@ class GetCrystalsByElement {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['element'] === '' ) ) ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetCrystalsByElementForm::class, $atts );
+			return \RoxyAPI\Support\FormRenderer::render( self::FORM, $atts );
 		}
 
 		$data = \RoxyAPI\Generated\Client::getCrystalsByElement( $atts['element'], $atts['lang'], $atts['limit'], $atts['offset'] );

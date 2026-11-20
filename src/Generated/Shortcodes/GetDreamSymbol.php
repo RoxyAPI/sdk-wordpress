@@ -21,6 +21,9 @@ class GetDreamSymbol {
 
 	public const TAG = 'roxy_get_dream_symbol';
 
+	/** The visitor form this reading offers. */
+	public const FORM = \RoxyAPI\Generated\Forms\GetDreamSymbolForm::class;
+
 	/**
 	 * Every attribute this shortcode accepts. shortcode_atts() silently
 	 * discards anything absent from here, so this is also the contract the
@@ -30,6 +33,7 @@ class GetDreamSymbol {
 	 */
 	public const DEFAULTS = array(
 		'id' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -49,6 +53,10 @@ class GetDreamSymbol {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['id'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( self::FORM, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::getDreamSymbol( $atts['id'] );
 

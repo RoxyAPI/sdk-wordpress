@@ -17,7 +17,7 @@ use RoxyAPI\Api\Client;
 /**
  * Server-side twin of the UI library's option picker.
  *
- * A form field whose choices the API serves as a collection (a planet, a sign, a tarot card) carries a `source` from the vendored UI model. The browser never calls the API here, so the collection is read on the server through the cache, once per language per TTL, and the field becomes an ordinary `enum`: the renderer draws it and the router validates a submission against it with no source awareness of their own. Choices are read from the response SHAPE, never its name, by the same rule as the UI library's `optionsFrom`.
+ * A form field whose choices the API serves as a collection (a planet, a sign, a tarot card) carries a `source` from the vendored UI model. The browser never calls the API here, so the collection is read on the server through the cache, once per language per TTL, and the field becomes an ordinary `enum`: the renderer draws it and the router validates a submission against it with no source awareness of their own. A collection too large to list (the dream dictionary) is searched instead, one typed word at a time, through `search()`. Choices are read from the response SHAPE, never its name, by the same rule as the UI library's `optionsFrom`.
  */
 class OptionSource {
 
@@ -47,7 +47,7 @@ class OptionSource {
 	 * @return array<string, mixed>
 	 */
 	private static function resolve_field( array $field ): array {
-		if ( empty( $field['source'] ) || ! is_array( $field['source'] ) ) {
+		if ( empty( $field['source'] ) || ! is_array( $field['source'] ) || ! empty( $field['source']['search'] ) ) {
 			return $field;
 		}
 		$choices = self::choices( $field['source'], (string) $field['name'] );
@@ -68,27 +68,10 @@ class OptionSource {
 	 * @return array<array-key, string> Value to label, empty when the collection cannot be read.
 	 */
 	private static function choices( array $source, string $field ): array {
-		$path  = ltrim( (string) $source['path'], '/' );
 		$limit = (int) ( $source['limit'] ?? 0 );
-		// Choice labels are form chrome, so they follow the screen locale like
-		// every other form label, not the reading language.
-		$lang = empty( $source['lang'] ) ? '' : Language::from_locale( determine_locale() );
-		$out  = array();
+		$out   = array();
 		for ( $page = 0; $page < self::MAX_PAGES; $page++ ) {
-			$query = array_filter(
-				array(
-					'lang'   => $lang,
-					'limit'  => $limit ? (string) $limit : '',
-					'offset' => $out ? (string) count( $out ) : '',
-				),
-				static fn( $v ) => $v !== ''
-			);
-			$json  = Cache::remember(
-				$path,
-				$query,
-				(int) $source['ttl'],
-				static fn() => Client::get( $path, $query )
-			);
+			$json = self::read( $source, array( 'offset' => $out ? (string) count( $out ) : '' ) );
 			if ( ! is_array( $json ) ) {
 				break;
 			}
@@ -100,6 +83,49 @@ class OptionSource {
 			}
 		}
 		return $out;
+	}
+
+	/**
+	 * The matches a searched collection offers for one typed word, one page of them.
+	 *
+	 * @param array<string, mixed> $source `path`, `search` (the query parameter the collection matches on), `ttl`, and optionally `limit` and `lang`.
+	 * @param string               $field  Request field the matches fill.
+	 * @param string               $q      What the visitor typed.
+	 * @return array<array-key, string>|\WP_Error Value to label, or the failed read.
+	 */
+	public static function search( array $source, string $field, string $q ) {
+		$json = self::read( $source, array( (string) $source['search'] => strtolower( $q ) ) );
+		if ( is_wp_error( $json ) ) {
+			return $json;
+		}
+		return is_array( $json ) ? self::options_from( $json, $field ) : array();
+	}
+
+	/**
+	 * One page of a collection through the cache.
+	 *
+	 * @param array<string, mixed>  $source Field source.
+	 * @param array<string, string> $query  Paging or search parameters; empty values are dropped.
+	 * @return mixed Decoded response or WP_Error.
+	 */
+	private static function read( array $source, array $query ) {
+		$path  = ltrim( (string) $source['path'], '/' );
+		$limit = (int) ( $source['limit'] ?? 0 );
+		// Choice labels are form chrome, so they follow the screen locale like
+		// every other form label, not the reading language.
+		$query = array_filter(
+			array(
+				'lang'  => empty( $source['lang'] ) ? '' : Language::from_locale( determine_locale() ),
+				'limit' => $limit ? (string) $limit : '',
+			) + $query,
+			static fn( $v ) => $v !== ''
+		);
+		return Cache::remember(
+			$path,
+			$query,
+			(int) $source['ttl'],
+			static fn() => Client::get( $path, $query )
+		);
 	}
 
 	/**

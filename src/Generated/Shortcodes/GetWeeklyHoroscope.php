@@ -21,6 +21,9 @@ class GetWeeklyHoroscope {
 
 	public const TAG = 'roxy_get_weekly_horoscope';
 
+	/** The visitor form this reading offers. */
+	public const FORM = \RoxyAPI\Generated\Forms\GetWeeklyHoroscopeForm::class;
+
 	/**
 	 * Every attribute this shortcode accepts. shortcode_atts() silently
 	 * discards anything absent from here, so this is also the contract the
@@ -55,7 +58,7 @@ class GetWeeklyHoroscope {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['sign'] === '' ) ) ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetWeeklyHoroscopeForm::class, $atts );
+			return \RoxyAPI\Support\FormRenderer::render( self::FORM, $atts );
 		}
 
 		$data = \RoxyAPI\Generated\Client::getWeeklyHoroscope( $atts['sign'], $atts['lang'], $atts['date'], $atts['timezone'] );

@@ -21,6 +21,9 @@ class CalculateNameCompatibility {
 
 	public const TAG = 'roxy_calculate_name_compatibility';
 
+	/** The visitor form this reading offers. */
+	public const FORM = \RoxyAPI\Generated\Forms\CalculateNameCompatibilityForm::class;
+
 	/**
 	 * Every attribute this shortcode accepts. shortcode_atts() silently
 	 * discards anything absent from here, so this is also the contract the
@@ -58,7 +61,7 @@ class CalculateNameCompatibility {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( ! ( ( $atts['first_name'] !== '' && $atts['second_name'] !== '' ) || ( $atts['first_name'] !== '' && $atts['second_name_hebrew'] !== '' ) || ( $atts['first_name_hebrew'] !== '' && $atts['second_name'] !== '' ) || ( $atts['first_name_hebrew'] !== '' && $atts['second_name_hebrew'] !== '' ) ) ) ) ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CalculateNameCompatibilityForm::class, $atts );
+			return \RoxyAPI\Support\FormRenderer::render( self::FORM, $atts );
 		}
 
 				$body = array_filter(

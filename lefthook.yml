@@ -89,6 +89,11 @@ pre-push:
             run: node bin/check-distignore.mjs
             priority: 1
 
+        # The guard scripts' own tests (node:test, no dependency).
+        bin-tests:
+            run: npm run test:bin
+            priority: 1
+
         # Rebuild the blocks and verify the layout is flat, so every long-tail
         # block registers. Runs before phpunit so its block-registration test
         # sees the fresh build.

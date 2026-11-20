@@ -21,6 +21,9 @@ class SearchDreamSymbols {
 
 	public const TAG = 'roxy_search_dream_symbols';
 
+	/** The visitor form this reading offers. */
+	public const FORM = \RoxyAPI\Generated\Forms\GetDreamSymbolForm::class;
+
 	/**
 	 * Every attribute this shortcode accepts. shortcode_atts() silently
 	 * discards anything absent from here, so this is also the contract the
@@ -33,6 +36,7 @@ class SearchDreamSymbols {
 		'letter' => '',
 		'limit' => '',
 		'offset' => '',
+		'mode' => 'auto',
 		'hide_readings' => 'inherit',
 		'hide_sections' => 'inherit',
 	);
@@ -52,6 +56,10 @@ class SearchDreamSymbols {
 		);
 
 		wp_enqueue_style( 'roxyapi-frontend' );
+
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['q'] === '' && $atts['letter'] === '' && $atts['limit'] === '' && $atts['offset'] === '' ) ) ) {
+			return \RoxyAPI\Support\FormRenderer::render( self::FORM, $atts );
+		}
 
 		$data = \RoxyAPI\Generated\Client::searchDreamSymbols( $atts['q'], $atts['letter'], $atts['limit'], $atts['offset'] );
 

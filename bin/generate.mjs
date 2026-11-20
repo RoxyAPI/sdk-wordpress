@@ -641,9 +641,9 @@ function formInputs( op ) {
 /**
  * Every required input must be enterable by a visitor: no lists, objects or
  * free-text vocabulary identifiers. An identifier whose collection the API
- * lists becomes a dropdown (`OptionSource`); one that is only searchable (the
- * dream dictionary) stays placed by the site owner, as do account readings
- * and non-reading lookups that need a text query.
+ * lists becomes a dropdown (`OptionSource`); one the API only searches (the
+ * dream dictionary) becomes a search box (`SearchRoute`). Account readings and
+ * non-reading lookups that need a text query stay placed by the site owner.
  * @param op
  */
 function offersVisitorForm( op ) {
@@ -666,13 +666,37 @@ function offersVisitorForm( op ) {
 				! f.key.includes( '.' ) &&
 				f.kind !== 'array' &&
 				f.kind !== 'object' &&
-				! f.source?.search &&
 				( f.source ||
 					! (
 						model.path.includes( `{${ f.key }}` ) &&
 						f.kind === 'text'
 					) )
 		)
+	);
+}
+
+/**
+ * The lookup a listing feeds: the generated form whose required identifier is
+ * searched in this operation's own collection (the dream dictionary feeds the
+ * dream symbol lookup). Placed bare, the listing renders that form, because
+ * rows a visitor cannot open are not a reading.
+ * @param  op
+ * @return {Object|null} The lookup operation, or null.
+ */
+function lookupFormFor( op ) {
+	const listed = uiForms[ op.operationId ]?.path;
+	return (
+		generated.find(
+			( other ) =>
+				other !== op &&
+				formInputs( other ).some(
+					( f ) =>
+						f.required &&
+						f.source?.search &&
+						f.source.path === listed
+				) &&
+				offersVisitorForm( other )
+		) || null
 	);
 }
 
@@ -695,6 +719,17 @@ function sampleBodyFields( op ) {
 		.map( ( f ) =>
 			sendable ? { ...f, example: sendable[ f.name ] } : f
 		);
+}
+
+/**
+ * PHP condition true while a placement sets none of the inputs a visitor form asks for.
+ * @param op
+ */
+function bareInputPhp( op ) {
+	return formInputs( op )
+		.filter( ( f ) => ! f.key.includes( '.' ) )
+		.map( ( f ) => `$atts['${ toSnakeAttr( f.key ) }'] === ''` )
+		.join( ' && ' );
 }
 
 /**
@@ -1212,7 +1247,7 @@ function formLabel( entry ) {
 }
 
 /** Catalogue keys the label writers read; never emitted as runtime metadata. */
-const GENERATOR_ONLY_KEYS = [ 'label_key', 'enum_key' ];
+const GENERATOR_ONLY_KEYS = [ 'label_key', 'enum_key', 'posted' ];
 
 /**
  * Adapt field types and catalogue labels once for both input surfaces.
@@ -1286,8 +1321,9 @@ function adaptField( modelField, schema, options = {} ) {
 }
 
 /**
- * The collection a dropdown is filled from at run time, cached for as long as
- * the reading that lists it.
+ * The collection a field draws from at run time, cached for as long as the
+ * reading that lists it: read whole into a dropdown, or searched by `search`,
+ * the query parameter the collection matches a typed word on.
  * @param source UI model `source`.
  */
 function sourceSpec( source ) {
@@ -1301,6 +1337,7 @@ function sourceSpec( source ) {
 		path: source.path,
 		...( source.limit && { limit: source.limit } ),
 		...( source.lang && { lang: true } ),
+		...( source.search && { search: source.search } ),
 		ttl: getTtl( list.operationId ),
 	};
 }
@@ -1339,8 +1376,12 @@ function buildFormFieldSpec( op, modelField ) {
 	if ( adapted.type === 'number' ) {
 		field.step = 'any';
 	}
-	if ( modelField.source && ! modelField.source.search ) {
+	if ( modelField.source ) {
 		field.source = sourceSpec( modelField.source );
+	}
+	// A searched collection is too large to list, so the visitor types a word and picks a match.
+	if ( modelField.source?.search ) {
+		field.type = 'search';
 	}
 	// The form preselects the visitor zone; left empty, the site zone is sent, never the API UTC default.
 	if ( modelField.viewerZone ) {
@@ -1470,6 +1511,9 @@ function uiLabelPhp( category, key, fallback ) {
  * @param field
  */
 function generatedFieldEntryPhp( key, value, field ) {
+	if ( key === 'source' && field.posted ) {
+		return `self::SEARCHED[ ${ phpLiteral( field.posted ) } ]`;
+	}
 	if ( key === 'label' ) {
 		return uiLabelPhp( 'fields', field.label_key, value );
 	}
@@ -1571,6 +1615,22 @@ function phpLiteral( v ) {
 function emitFormPhp( op ) {
 	const className = toPascalCase( op.operationId ) + 'Form';
 	const formSpec = extractFormSpec( op );
+	// A searched field's collection, by posted name, readable without spec(),
+	// which may read other collections the search route has no business with.
+	const searched = {};
+	for ( const [ section, fields ] of [
+		...( formSpec.sections || [] ).map( ( s ) => [ s.name, s.fields ] ),
+		[ '', formSpec.flatFields || [] ],
+	] ) {
+		for ( const f of fields ) {
+			if ( f.source?.search ) {
+				f.posted = section
+					? postedFormName( `${ section }.${ f.name }` )
+					: f.name;
+				searched[ f.posted ] = f.source;
+			}
+		}
+	}
 	// FormRouter hands call() one flat array keyed by input name, so the client
 	// call takes the path parameters back out of it in signature order.
 	const pathParams = extractPathParams( op.path );
@@ -1670,7 +1730,7 @@ ${ fieldsPhp }
 	const sourced = [
 		...( formSpec.flatFields || [] ),
 		...( formSpec.sections || [] ).flatMap( ( sec ) => sec.fields ),
-	].some( ( f ) => f.source );
+	].some( ( f ) => f.source && ! f.source.search );
 
 	// Form labels are page chrome: they follow the screen locale like gettext and
 	// the component catalogues, while the reading follows the reading language.
@@ -1692,7 +1752,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class ${ className } {
-
+${
+	Object.keys( searched ).length
+		? `
+	/** Collection each searched field draws from, by posted name. */
+	public const SEARCHED = ${ phpLiteral( searched ) };
+`
+		: ''
+}
 	public static function spec(): array {
 		$labels = \\RoxyAPI\\Generated\\FormLabels::for_language( \\RoxyAPI\\Support\\Language::from_locale( determine_locale() ) );
 		return ${ sourced ? '\\RoxyAPI\\Support\\OptionSource::resolve( ' : '' }array(
@@ -2566,19 +2633,28 @@ ${ withReservedAtts( [], '\t\t' ).join( '\n' ) }
 `;
 	}
 
-	const formClass = offersVisitorForm( op )
-		? toPascalCase( op.operationId ) + 'Form'
-		: null;
+	const lookup = offersVisitorForm( op ) ? null : lookupFormFor( op );
+	const formClass =
+		offersVisitorForm( op ) || lookup
+			? toPascalCase( ( lookup || op ).operationId ) + 'Form'
+			: null;
 	// `mode` follows the heroes: `auto` shows the visitor form while a required
-	// input is missing, `form` always shows it, `static` keeps the owner notice.
+	// input is missing (for a listing that feeds a lookup, while nothing narrows
+	// it), `form` always shows it, `static` keeps the owner notice.
 	const modeAtt = formClass ? [ `\t\t'mode' => 'auto',` ] : [];
 	const formGate = formClass
 		? `
-		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( ${ missingInputPhp(
-			op
-		) } ) ) ) {
-			return \\RoxyAPI\\Support\\FormRenderer::render( \\RoxyAPI\\Generated\\Forms\\${ formClass }::class, $atts );
+		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( ${
+			lookup ? bareInputPhp( op ) : missingInputPhp( op )
+		} ) ) ) {
+			return \\RoxyAPI\\Support\\FormRenderer::render( self::FORM, $atts );
 		}
+`
+		: '';
+	const formConst = formClass
+		? `
+	/** The visitor form this reading offers. */
+	public const FORM = \\RoxyAPI\\Generated\\Forms\\${ formClass }::class;
 `
 		: '';
 
@@ -2736,7 +2812,7 @@ use RoxyAPI\\Support\\ComponentRenderer;
 class ${ className } {
 
 	public const TAG = '${ shortcodeTag }';
-
+${ formConst }
 	/**
 	 * Every attribute this shortcode accepts. shortcode_atts() silently
 	 * discards anything absent from here, so this is also the contract the
@@ -4661,7 +4737,8 @@ function buildBuilderManifest() {
 			continue;
 		}
 		const formOnly = hasRequiredObjectBody( op );
-		const visitor = formOnly || offersVisitorForm( op );
+		const visitor =
+			formOnly || offersVisitorForm( op ) || !! lookupFormFor( op );
 		const params = extractParams( op );
 		const inputs = formOnly
 			? []

@@ -21,6 +21,9 @@ class GetMonthlyHoroscope {
 
 	public const TAG = 'roxy_get_monthly_horoscope';
 
+	/** The visitor form this reading offers. */
+	public const FORM = \RoxyAPI\Generated\Forms\GetMonthlyHoroscopeForm::class;
+
 	/**
 	 * Every attribute this shortcode accepts. shortcode_atts() silently
 	 * discards anything absent from here, so this is also the contract the
@@ -55,7 +58,7 @@ class GetMonthlyHoroscope {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['sign'] === '' ) ) ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GetMonthlyHoroscopeForm::class, $atts );
+			return \RoxyAPI\Support\FormRenderer::render( self::FORM, $atts );
 		}
 
 		$data = \RoxyAPI\Generated\Client::getMonthlyHoroscope( $atts['sign'], $atts['lang'], $atts['date'], $atts['timezone'] );

@@ -24,6 +24,7 @@
  * Only a confirmed mismatch (manifest fetched, tag missing) is fatal.
  */
 import { readdirSync, readFileSync } from 'node:fs';
+import { bindingGaps, catalogBindings } from './component-bindings.mjs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
@@ -218,14 +219,16 @@ if ( deadOps.length > 0 ) {
 	process.exit( 1 );
 }
 
-// Binding-coverage guard, and the reason it counts OPERATIONS.
+// Binding-coverage guard, and the reason it counts BINDINGS.
 //
 // This check used to report `available.size - referenced.size`: components in
 // the build that no row mentions. That unit cannot see the failure it exists to
 // catch. `roxy-numerology-card` is referenced by ONE row, so it counts as bound
 // while nine of its eleven operations have no row at all and render as raw
 // collapsed JSON. The counter read a clean 0 while 25 shipped shortcodes were
-// broken. Measure the thing that breaks: an OPERATION with no binding.
+// broken. Measure the thing that breaks: a binding with no row, where a
+// binding is (operationId, tag), because one operation can feed several
+// components (bin/component-bindings.mjs).
 //
 // The join is published. `components-catalog.json` is in the @roxyapi/ui npm
 // files whitelist and lists, per component, the operationIds it renders and the
@@ -255,69 +258,38 @@ if ( catalog ) {
 	const components = Array.isArray( catalog )
 		? catalog
 		: catalog.components || [];
-	const upstream = new Map(); // operationId -> { tag, attrs }
-	for ( const component of components ) {
-		for ( const endpoint of component.endpoints || [] ) {
-			if ( endpoint?.operationId ) {
-				upstream.set( endpoint.operationId, {
-					tag: component.tag,
-					attrs: endpoint.attrs || {},
-				} );
+	const bindings = catalogBindings( components );
+	const gaps = bindingGaps( bindings, map.operations || {}, reportOps );
+	const faults = [
+		[
+			gaps.unbound,
+			'binding(s) the catalogue declares have no row in component-map.json, so the operation renders without that component:',
+		],
+		[ gaps.nestFaults, '`nests` entries no longer match the catalogue:' ],
+		[
+			gaps.misordered,
+			'operation(s) stack their components out of catalogue order; expected:',
+		],
+		[
+			gaps.attrDrift,
+			'binding(s) are missing the variant attribute the catalogue declares, so the component renders its default view:',
+		],
+	].filter( ( [ lines ] ) => lines.length > 0 );
+	if ( faults.length > 0 ) {
+		for ( const [ lines, message ] of faults ) {
+			console.error( `${ lines.length } ${ message }` );
+			for ( const line of lines ) {
+				console.error( `  ${ line }` );
 			}
 		}
-	}
-
-	const mapped = map.operations || {};
-	const unboundOps = [ ...upstream.keys() ]
-		.filter( ( op ) => ! mapped[ op ] && ! reportOps.has( op ) )
-		.sort();
-	if ( unboundOps.length > 0 ) {
 		console.error(
-			`${ unboundOps.length } operation(s) are bound to a component upstream but have no row in component-map.json.`
-		);
-		console.error(
-			'Each renders as a generic roxy-data dump today, which looks like a working page.'
-		);
-		for ( const op of unboundOps ) {
-			console.error( `  ${ op } -> ${ upstream.get( op ).tag }` );
-		}
-		console.error( `Add the rows from ${ catalogUrl }.` );
-		process.exit( 1 );
-	}
-
-	// A row can bind the right element to the wrong VIEW by dropping the
-	// variant selector, which renders the component's default and errors
-	// nowhere.
-	const attrDrift = [];
-	for ( const [ op, want ] of upstream ) {
-		const rows = mapped[ op ] || [];
-		const row = rows.find( ( r ) => r.component === want.tag );
-		if ( ! row ) {
-			continue;
-		}
-		for ( const [ key, value ] of Object.entries( want.attrs ) ) {
-			if ( ( row.attrs || {} )[ key ] !== value ) {
-				attrDrift.push(
-					`${ op }: ${ want.tag } needs ${ key }="${ value }"`
-				);
-			}
-		}
-	}
-	if ( attrDrift.length > 0 ) {
-		console.error(
-			`${ attrDrift.length } binding(s) are missing the variant attribute the catalogue declares:`
-		);
-		for ( const line of attrDrift.sort() ) {
-			console.error( `  ${ line }` );
-		}
-		console.error(
-			'Without it the component renders its default view for every one of these operations.'
+			`Stack a row per component, or name a component its row draws inside itself under that row's \`nests\`. Source: ${ catalogUrl }`
 		);
 		process.exit( 1 );
 	}
 
 	console.log(
-		`binding coverage OK: all ${ upstream.size } upstream-bound operation(s) have a row, variant attributes match`
+		`binding coverage OK: every component the catalogue binds to ${ bindings.size } operation(s) is stacked or nested, in catalogue order, variant attributes match`
 	);
 
 	// Documented-part guard: every `part` name readme.txt tells a site owner to

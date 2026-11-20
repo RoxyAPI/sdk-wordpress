@@ -17502,6 +17502,7 @@ class Manifest {
 					'operationId' => 'getDreamSymbol',
 					'hero' => false,
 					'modes' => array(
+						'visitor',
 						'set',
 					),
 					'formOnly' => false,
@@ -17559,6 +17560,7 @@ class Manifest {
 					'operationId' => 'searchDreamSymbols',
 					'hero' => false,
 					'modes' => array(
+						'visitor',
 						'set',
 						'none',
 					),

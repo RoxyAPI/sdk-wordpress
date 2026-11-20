@@ -90,7 +90,8 @@ class Test_Long_Tail_Forms extends \WP_UnitTestCase {
 		$this->assertArrayHasKey( 'getAnnualFlyingStars', $this->form_capable(), 'A GET keyed by a year takes a form too.' );
 		$this->assertArrayHasKey( 'getDailyZodiacReading', $this->form_capable(), 'An `id` with a closed list of values is a picker.' );
 		$this->assertArrayHasKey( 'getCard', $this->form_capable(), 'An identifier whose collection the API lists is a dropdown.' );
-		$this->assertArrayNotHasKey( 'getDreamSymbol', $this->form_capable(), 'An identifier the API only searches stays placed by the site owner.' );
+		$this->assertArrayHasKey( 'getDreamSymbol', $this->form_capable(), 'An identifier the API only searches is a search box.' );
+		$this->assertSame( \RoxyAPI\Generated\Forms\GetDreamSymbolForm::class, \RoxyAPI\Generated\Shortcodes\SearchDreamSymbols::FORM, 'A listing whose rows open nothing offers the lookup it feeds.' );
 	}
 
 	public function test_interval_readings_offer_forms_independently_of_inserter_visibility(): void {
@@ -211,10 +212,10 @@ class Test_Long_Tail_Forms extends \WP_UnitTestCase {
 		$collections = array();
 		foreach ( $this->form_capable() as $op_id => $class ) {
 			$html = $class::render( array(), '', $class::TAG );
-			$this->assertStringContainsString( 'name="roxyapi_form" value="' . $op_id . '"', $html, $op_id );
-			$form = '\\RoxyAPI\\Generated\\Forms\\' . ucfirst( $op_id ) . 'Form';
+			$form = $class::FORM;
+			$this->assertStringContainsString( 'name="roxyapi_form" value="' . $form::spec()['operation_id'] . '"', $html, $op_id );
 			foreach ( $form::spec()['flat_fields'] as $field ) {
-				if ( isset( $field['source'] ) ) {
+				if ( isset( $field['source'] ) && empty( $field['source']['search'] ) ) {
 					$collections[] = (string) $field['source']['path'];
 				}
 			}
@@ -225,16 +226,17 @@ class Test_Long_Tail_Forms extends \WP_UnitTestCase {
 		}
 	}
 
-	/** Every required form field is an attribute the shortcode accepts, so the two describe one reading. */
+	/** Every required form field is an attribute of the shortcode that owns the form, so the two describe one reading. */
 	public function test_every_required_form_field_is_a_shortcode_attribute(): void {
 		foreach ( $this->form_capable() as $op_id => $class ) {
-			$form = '\\RoxyAPI\\Generated\\Forms\\' . ucfirst( $op_id ) . 'Form';
+			$form = $class::FORM;
 			$this->assertTrue( class_exists( $form ), $op_id );
+			$owner    = '\\RoxyAPI\\Generated\\Shortcodes\\' . ucfirst( $form::spec()['operation_id'] );
 			$required = array_filter( $form::spec()['flat_fields'], static fn( $f ) => ! empty( $f['required'] ) );
 			$this->assertNotEmpty( $required, $op_id );
 			foreach ( $required as $field ) {
 				$attr = strtolower( (string) preg_replace( '/([a-z0-9])([A-Z])/', '$1_$2', (string) $field['name'] ) );
-				$this->assertArrayHasKey( $attr, $class::DEFAULTS, $op_id . ' ' . $field['name'] );
+				$this->assertArrayHasKey( $attr, $owner::DEFAULTS, $op_id . ' ' . $field['name'] );
 			}
 		}
 	}
@@ -243,7 +245,7 @@ class Test_Long_Tail_Forms extends \WP_UnitTestCase {
 	 * Listed identifiers the UI model still labels "ID"; its next release names them from the spec.
 	 * The assertion below fails the day one is named, so this list only shrinks.
 	 */
-	private const UNNAMED_PICKERS = array( 'getCard', 'getCrystal', 'getPlanetMeaning', 'getTrigram', 'getZodiacSign' );
+	private const UNNAMED_PICKERS = array( 'getCard', 'getCrystal', 'getDreamSymbol', 'getPlanetMeaning', 'getTrigram', 'getZodiacSign' );
 
 	public function test_an_id_picker_is_labelled_with_what_it_names(): void {
 		$html = \RoxyAPI\Generated\Shortcodes\GetDailyZodiacReading::render( array() );
@@ -251,8 +253,8 @@ class Test_Long_Tail_Forms extends \WP_UnitTestCase {
 		$this->assertMatchesRegularExpression( '#<label[^>]*>\s*Animal#', $html );
 		$this->assertStringContainsString( '<option value="dragon"', $html );
 		$unnamed = array();
-		foreach ( $this->form_capable() as $op_id => $class ) {
-			$form = '\\RoxyAPI\\Generated\\Forms\\' . ucfirst( $op_id ) . 'Form';
+		foreach ( $this->form_capable() as $class ) {
+			$form = $class::FORM;
 			$spec = $form::spec();
 			$fields = $spec['flat_fields'];
 			foreach ( $spec['sections'] as $section ) {
@@ -260,10 +262,11 @@ class Test_Long_Tail_Forms extends \WP_UnitTestCase {
 			}
 			foreach ( $fields as $field ) {
 				if ( strtolower( trim( $field['label'] ) ) === 'id' ) {
-					$unnamed[] = $op_id;
+					$unnamed[] = $spec['operation_id'];
 				}
 			}
 		}
+		$unnamed = array_values( array_unique( $unnamed ) );
 		sort( $unnamed );
 		$this->assertSame( self::UNNAMED_PICKERS, $unnamed );
 	}

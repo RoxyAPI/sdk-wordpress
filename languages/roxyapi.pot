@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology 1.28.0\n"
+"Project-Id-Version: RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology 1.29.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/roxyapi\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-20T01:51:30+00:00\n"
+"POT-Creation-Date: 2026-11-20T02:27:12+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: roxyapi\n"
@@ -515,6 +515,7 @@ msgstr ""
 #: src/Generated/Forms/GetDikpalaDirectionForm.php:25
 #: src/Generated/Forms/GetDinacharyaScheduleForm.php:25
 #: src/Generated/Forms/GetDoshaForm.php:25
+#: src/Generated/Forms/GetDreamSymbolForm.php:25
 #: src/Generated/Forms/GetEclipticCrossingsForm.php:25
 #: src/Generated/Forms/GetForecastForm.php:25
 #: src/Generated/Forms/GetGateForm.php:25
@@ -680,7 +681,7 @@ msgid "Privacy"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:180
-#: src/Support/FormRenderer.php:234
+#: src/Support/FormRenderer.php:236
 msgid "Advanced"
 msgstr ""
 
@@ -827,10 +828,12 @@ msgid "This reading could not be loaded right now. Please try again."
 msgstr ""
 
 #: src/Api/GeocodeRoute.php:87
+#: src/Api/SearchRoute.php:101
 msgid "Query is too short."
 msgstr ""
 
 #: src/Api/GeocodeRoute.php:90
+#: src/Api/SearchRoute.php:104
 msgid "Query is too long."
 msgstr ""
 
@@ -839,6 +842,8 @@ msgid "Too many city lookups. Try again shortly."
 msgstr ""
 
 #: src/Api/GeocodeRoute.php:110
+#: src/Api/SearchRoute.php:112
+#: src/Api/SearchRoute.php:117
 msgid "Search is temporarily unavailable."
 msgstr ""
 
@@ -855,6 +860,10 @@ msgstr ""
 #: src/Api/ReportRoute.php:179
 #: src/Support/FormRouter.php:96
 msgid "Please confirm consent before submitting."
+msgstr ""
+
+#: src/Api/SearchRoute.php:107
+msgid "Too many searches. Try again shortly."
 msgstr ""
 
 #: src/Api/TestKeyRoute.php:52
@@ -2196,132 +2205,132 @@ msgstr ""
 msgid "Dream Symbol by ID"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17526
+#: src/Generated/Builder/Manifest.php:17527
 msgid "Random Dream Symbols"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17555
+#: src/Generated/Builder/Manifest.php:17556
 msgid "Search Dream Symbols"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17623
+#: src/Generated/Builder/Manifest.php:17625
 msgid "Symbol Counts by Letter"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17637
+#: src/Generated/Builder/Manifest.php:17639
 #: src/Generated/Heroes/Manifest.php:202
 msgid "Angel number"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17666
+#: src/Generated/Builder/Manifest.php:17668
 msgid "Angel Numbers"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17728
+#: src/Generated/Builder/Manifest.php:17730
 msgid "Daily Angel Number"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17770
+#: src/Generated/Builder/Manifest.php:17772
 #: src/Generated/Forms/AnalyzeNumberSequenceForm.php:24
 msgid "Number Sequence"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17819
+#: src/Generated/Builder/Manifest.php:17821
 msgid "Cities in a Country"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17873
+#: src/Generated/Builder/Manifest.php:17875
 msgid "Countries"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17915
+#: src/Generated/Builder/Manifest.php:17917
 msgid "Search Cities Worldwide"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17969
+#: src/Generated/Builder/Manifest.php:17971
 #: src/Generated/Heroes/Manifest.php:222
 msgid "Branded report"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17982
+#: src/Generated/Builder/Manifest.php:17984
 #: blocks/generated/report/index.js:11
 msgid "Report"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateNatalReportForm.php:24
 #: src/Generated/Reports.php:47
 #: blocks/generated/report/index.js:14
 msgid "Natal Chart Report"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateSynastryReportForm.php:24
 #: src/Generated/Reports.php:51
 #: blocks/generated/report/index.js:14
 msgid "Synastry Report"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateKundliReportForm.php:24
 #: src/Generated/Reports.php:55
 #: blocks/generated/report/index.js:14
 msgid "Kundli Report"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateMatchmakingReportForm.php:24
 #: src/Generated/Reports.php:59
 #: blocks/generated/report/index.js:14
 msgid "Kundli Matching Report"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateYearlyForecastReportForm.php:24
 #: src/Generated/Reports.php:63
 #: blocks/generated/report/index.js:14
 msgid "Yearly Forecast Report"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateHumanDesignReportForm.php:24
 #: src/Generated/Reports.php:67
 #: blocks/generated/report/index.js:14
 msgid "Human Design Report"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateBaziReportForm.php:24
 #: src/Generated/Reports.php:71
 #: blocks/generated/report/index.js:14
 msgid "BaZi Report"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateNumerologyReportForm.php:24
 #: src/Generated/Reports.php:75
 #: blocks/generated/report/index.js:14
 msgid "Numerology Report"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:17995
+#: src/Generated/Builder/Manifest.php:17997
 #: src/Generated/Forms/GenerateTarotReportForm.php:24
 #: src/Generated/Reports.php:79
 #: blocks/generated/report/index.js:14
 msgid "Tarot Reading Report"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:18005
+#: src/Generated/Builder/Manifest.php:18007
 #: blocks/generated/report/index.js:19
 msgid "Delivery"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:18011
+#: src/Generated/Builder/Manifest.php:18013
 #: blocks/generated/report/index.js:22
 msgid "PDF download"
 msgstr ""
 
-#: src/Generated/Builder/Manifest.php:18011
+#: src/Generated/Builder/Manifest.php:18013
 #: blocks/generated/report/index.js:22
 msgid "Page in the browser"
 msgstr ""
@@ -2923,6 +2932,10 @@ msgstr ""
 msgid "Crystal"
 msgstr ""
 
+#: src/Generated/Forms/GetDreamSymbolForm.php:24
+msgid "Dream Symbol"
+msgstr ""
+
 #: src/Generated/Forms/GetYogaForm.php:24
 msgid "Yoga Details"
 msgstr ""
@@ -3346,19 +3359,19 @@ msgstr ""
 msgid "The date, lat, and lon attributes are required (tz defaults to 5.5 IST). Example: %s"
 msgstr ""
 
-#: src/Plugin.php:255
+#: src/Plugin.php:257
 msgid "Searching cities…"
 msgstr ""
 
-#: src/Plugin.php:256
+#: src/Plugin.php:258
 msgid "No matching cities. Try a different spelling."
 msgstr ""
 
-#: src/Plugin.php:257
+#: src/Plugin.php:259
 msgid "City selected."
 msgstr ""
 
-#: src/Plugin.php:258
+#: src/Plugin.php:260
 msgid "City search is unavailable right now. Please try again in a moment."
 msgstr ""
 
@@ -3454,25 +3467,29 @@ msgstr ""
 msgid "Show month"
 msgstr ""
 
-#: src/Support/FormRenderer.php:68
+#: src/Support/FormRenderer.php:69
 msgid "That reading has already been shown. Enter the details below to run it again."
 msgstr ""
 
-#: src/Support/FormRenderer.php:164
+#: src/Support/FormRenderer.php:165
 msgid "Submit"
 msgstr ""
 
-#: src/Support/FormRenderer.php:379
+#: src/Support/FormRenderer.php:333
+msgid "Start typing to search"
+msgstr ""
+
+#: src/Support/FormRenderer.php:396
 msgid "Find by city"
 msgstr ""
 
-#: src/Support/FormRenderer.php:382
+#: src/Support/FormRenderer.php:399
 #: blocks/_shared/generated-edit.js:111
 msgid "Start typing a city name"
 msgstr ""
 
 #. translators: %s: field label
-#: src/Support/FormRenderer.php:389
+#: src/Support/FormRenderer.php:406
 #: src/Support/FormRouter.php:435
 #: src/Support/FormRouter.php:449
 #, php-format
@@ -3480,12 +3497,28 @@ msgid "%s is required."
 msgstr ""
 
 #. translators: %s: field label
-#: src/Support/FormRenderer.php:389
+#: src/Support/FormRenderer.php:406
 #: assets/js/builder.js:66
 msgid "City"
 msgstr ""
 
-#: src/Support/FormRenderer.php:407
+#: src/Support/FormRenderer.php:420
+msgid "Searching…"
+msgstr ""
+
+#: src/Support/FormRenderer.php:421
+msgid "No matches. Try a different word."
+msgstr ""
+
+#: src/Support/FormRenderer.php:422
+msgid "Selected."
+msgstr ""
+
+#: src/Support/FormRenderer.php:423
+msgid "Search is unavailable right now. Please try again in a moment."
+msgstr ""
+
+#: src/Support/FormRenderer.php:448
 msgid "I consent to sending my inputs to generate this reading. See the Privacy Policy for details."
 msgstr ""
 

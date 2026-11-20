@@ -22,6 +22,7 @@ use RoxyAPI\Admin\ShortcodesPage;
 use RoxyAPI\Admin\SiteHealth;
 use RoxyAPI\Api\GeocodeRoute;
 use RoxyAPI\Api\ReportRoute;
+use RoxyAPI\Api\SearchRoute;
 use RoxyAPI\Api\TestKeyRoute;
 use RoxyAPI\Blocks\Bindings;
 use RoxyAPI\Blocks\Category;
@@ -109,6 +110,7 @@ class Plugin {
 		DashboardWidget::register();
 		TestKeyRoute::register();
 		GeocodeRoute::register();
+		SearchRoute::register();
 		ReportRoute::register();
 		Category::register();
 		BlocksRegistrar::register();
@@ -222,9 +224,9 @@ class Plugin {
 	}
 
 	/**
-	 * Register the geocode autocomplete script. The handle is registered (not
+	 * Register the search combobox script. The handle is registered (not
 	 * enqueued) here so `FormRenderer::render()` can opt-in only on pages
-	 * that actually render a form section with a lat/lon/tz triplet.
+	 * that actually render a city search or a searched field.
 	 *
 	 * Localised data carries the REST URL and a `wp_rest` nonce. The route
 	 * itself is public, but the nonce keeps logged-in visitor traffic on the

@@ -21,6 +21,9 @@ class CalculateTransit {
 
 	public const TAG = 'roxy_calculate_transit';
 
+	/** The visitor form this reading offers. */
+	public const FORM = \RoxyAPI\Generated\Forms\CalculateTransitForm::class;
+
 	/**
 	 * Every attribute this shortcode accepts. shortcode_atts() silently
 	 * discards anything absent from here, so this is also the contract the
@@ -59,7 +62,7 @@ class CalculateTransit {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['birth_date'] === '' || $atts['birth_time'] === '' || $atts['transit_date'] === '' || $atts['latitude'] === '' || $atts['longitude'] === '' ) ) ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\CalculateTransitForm::class, $atts );
+			return \RoxyAPI\Support\FormRenderer::render( self::FORM, $atts );
 		}
 
 				$body = array_filter(

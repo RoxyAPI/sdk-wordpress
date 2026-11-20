@@ -22,6 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use RoxyAPI\Api\SearchRoute;
 use WP_Error;
 
 class FormRenderer {
@@ -97,7 +98,7 @@ class FormRenderer {
 		$out .= $result_html;
 
 		$action      = $rest_url !== '' ? $rest_url : self::current_url();
-		$form_dom_id = 'roxyapi-form-' . sanitize_html_class( $form_id );
+		$form_dom_id = self::form_dom_id( $form_id );
 		$out        .= '<form class="roxyapi-form" id="' . esc_attr( $form_dom_id ) . '" method="post" action="' . esc_url( $action ) . '" novalidate>';
 		// The page post names its form for FormRouter; a REST route already
 		// knows its form from its own path.
@@ -142,10 +143,10 @@ class FormRenderer {
 				$fold,
 				(bool) ( array_filter( $section_prev, static fn( $v ) => is_scalar( $v ) && (string) $v !== '' ) || $section_errs )
 			);
-			$out         .= self::render_fields( $section['fields'] ?? array(), $section_name, $section_id, $section_prev, $section_errs, $city_searches, $fold );
+			$out         .= self::render_fields( $form_id, $section['fields'] ?? array(), $section_name, $section_id, $section_prev, $section_errs, $city_searches, $fold );
 			$out         .= $fold ? '</details>' : '</fieldset>';
 		}
-		$out .= self::render_fields( $spec['flat_fields'] ?? array(), '', $form_dom_id, $prev, $errors_by_key, $city_searches );
+		$out .= self::render_fields( $form_id, $spec['flat_fields'] ?? array(), '', $form_dom_id, $prev, $errors_by_key, $city_searches );
 		if ( $city_searches ) {
 			wp_enqueue_script( 'roxyapi-geocode' );
 		}
@@ -177,6 +178,7 @@ class FormRenderer {
 	 * fills it, so it renders as the hidden field the search writes, under the
 	 * same posted name, and a missing city shows on the search itself.
 	 *
+	 * @param string                              $form_id       Form id.
 	 * @param array<int, array<string, mixed>>    $fields        Field specs.
 	 * @param string                              $section       Posted section name, or empty for flat fields.
 	 * @param string                              $group_id      DOM id of the containing group.
@@ -186,7 +188,7 @@ class FormRenderer {
 	 * @param bool                                $group_folded  Whether the containing section already folds.
 	 * @return string
 	 */
-	private static function render_fields( array $fields, string $section, string $group_id, array $previous, array $errors, array $city_searches, bool $group_folded = false ): string {
+	private static function render_fields( string $form_id, array $fields, string $section, string $group_id, array $previous, array $errors, array $city_searches, bool $group_folded = false ): string {
 		$located = array();
 		foreach ( $city_searches as $search ) {
 			$located += array_flip( array_values( $search['fields'] ) );
@@ -222,7 +224,7 @@ class FormRenderer {
 			$html   = ( $search !== null ? self::render_city_search( $search['scope'], $search['fields'], $search['id'], (bool) array_intersect_key( $required, $group ), (bool) array_intersect_key( $missing, $group ) ) : '' )
 				. ( isset( $located[ $name ] )
 					? '<input type="hidden" name="' . esc_attr( $name ) . '" value="">'
-					: self::render_field( $name, $field, $value, $error ) );
+					: self::render_field( $name, $field, $value, $error, $form_id ) );
 			if ( $group_folded || empty( $field['fold'] ) ) {
 				$shown_html .= $html;
 				continue;
@@ -240,13 +242,14 @@ class FormRenderer {
 	/**
 	 * Render a single labelled control.
 	 *
-	 * @param string              $name  HTML name attribute (may include brackets, e.g. `person1[birthDate]`).
-	 * @param array<string,mixed> $field Field spec.
-	 * @param mixed               $value Previously-submitted value to restore.
-	 * @param string              $error Validation error message, if any.
+	 * @param string              $name    HTML name attribute (may include brackets, e.g. `person1[birthDate]`).
+	 * @param array<string,mixed> $field   Field spec.
+	 * @param mixed               $value   Previously-submitted value to restore.
+	 * @param string              $error   Validation error message, if any.
+	 * @param string              $form_id Form id, which a search box names to the route that answers it.
 	 * @return string
 	 */
-	private static function render_field( string $name, array $field, $value, string $error ): string {
+	private static function render_field( string $name, array $field, $value, string $error, string $form_id ): string {
 		$type     = (string) ( $field['type'] ?? 'text' );
 		$label    = (string) ( $field['label'] ?? $field['name'] );
 		$required = ! empty( $field['required'] );
@@ -257,7 +260,7 @@ class FormRenderer {
 		$req_attr  = $required ? ' required' : '';
 		$err_attr  = $desc_id !== '' ? ' aria-describedby="' . esc_attr( $desc_id ) . '"' : '';
 
-		$out  = '<p class="roxyapi-form-field' . ( $error !== '' ? ' has-error' : '' ) . '">';
+		$out  = '<p class="roxyapi-form-field' . ( $type === 'search' ? ' roxyapi-form-geocode' : '' ) . ( $error !== '' ? ' has-error' : '' ) . '">';
 		$out .= '<label for="' . esc_attr( $id ) . '">' . esc_html( $label );
 		if ( $required ) {
 			$out .= ' <span class="roxyapi-form-required" aria-hidden="true">*</span>';
@@ -320,6 +323,20 @@ class FormRenderer {
 						. '</option>';
 				}
 				$out .= '</select>';
+				break;
+			case 'search':
+				// A typed word posts as it is without JavaScript; the search box
+				// takes the name over and posts the picked entry instead.
+				wp_enqueue_script( 'roxyapi-geocode' );
+				$out .= '<input type="text" id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '" value="' . esc_attr( $value_str ) . '"'
+					. ' class="roxyapi-form-geocode-input"'
+					. ' placeholder="' . esc_attr__( 'Start typing to search', 'roxyapi' ) . '"'
+					. ' data-roxyapi-geocode="' . esc_attr( '#' . self::form_dom_id( $form_id ) ) . '"'
+					. ' data-roxyapi-geocode-fields="' . esc_attr( (string) wp_json_encode( array( 'value' => $name ) ) ) . '"'
+					. ' data-roxyapi-geocode-url="' . esc_url( SearchRoute::url( $form_id, $name ) ) . '"'
+					. ' data-roxyapi-geocode-response="' . esc_attr( (string) wp_json_encode( array( 'results' => 'results' ) ) ) . '"'
+					. ' data-roxyapi-geocode-i18n="' . esc_attr( (string) wp_json_encode( self::search_messages() ) ) . '"'
+					. ' autocomplete="off"' . $req_attr . $err_attr . '>';
 				break;
 			case 'text':
 			default:
@@ -391,6 +408,30 @@ class FormRenderer {
 		}
 		$out .= '</p>';
 		return $out;
+	}
+
+	/**
+	 * Status lines a search box speaks, in place of the city search wording.
+	 *
+	 * @return array<string, string>
+	 */
+	private static function search_messages(): array {
+		return array(
+			'searching' => __( 'Searching…', 'roxyapi' ),
+			'noResults' => __( 'No matches. Try a different word.', 'roxyapi' ),
+			'selected'  => __( 'Selected.', 'roxyapi' ),
+			'error'     => __( 'Search is unavailable right now. Please try again in a moment.', 'roxyapi' ),
+		);
+	}
+
+	/**
+	 * DOM id of a form, which its search boxes name as the scope they fill.
+	 *
+	 * @param string $form_id Form id.
+	 * @return string
+	 */
+	private static function form_dom_id( string $form_id ): string {
+		return 'roxyapi-form-' . sanitize_html_class( $form_id );
 	}
 
 	/**

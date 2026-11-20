@@ -84,14 +84,14 @@ class GeocodeRoute {
 	public static function handle( WP_REST_Request $request ): WP_REST_Response {
 		$q = trim( (string) $request->get_param( 'q' ) );
 		if ( strlen( $q ) < self::MIN_LENGTH ) {
-			return self::error_response( 'roxyapi_geocode_q_short', 400, __( 'Query is too short.', 'roxyapi' ) );
+			return self::refusal( 'cities', 'roxyapi_geocode_q_short', 400, __( 'Query is too short.', 'roxyapi' ) );
 		}
 		if ( strlen( $q ) > self::MAX_LENGTH ) {
-			return self::error_response( 'roxyapi_geocode_q_long', 400, __( 'Query is too long.', 'roxyapi' ) );
+			return self::refusal( 'cities', 'roxyapi_geocode_q_long', 400, __( 'Query is too long.', 'roxyapi' ) );
 		}
 
 		if ( ! RateLimit::check( 'geocode' ) ) {
-			return self::error_response( 'roxyapi_geocode_rate_limit', 429, __( 'Too many city lookups. Try again shortly.', 'roxyapi' ) );
+			return self::refusal( 'cities', 'roxyapi_geocode_rate_limit', 429, __( 'Too many city lookups. Try again shortly.', 'roxyapi' ) );
 		}
 
 		$result = Cache::remember(
@@ -107,7 +107,7 @@ class GeocodeRoute {
 		);
 
 		if ( is_wp_error( $result ) ) {
-			return self::error_response( 'roxyapi_geocode_upstream', 502, __( 'Search is temporarily unavailable.', 'roxyapi' ) );
+			return self::refusal( 'cities', 'roxyapi_geocode_upstream', 502, __( 'Search is temporarily unavailable.', 'roxyapi' ) );
 		}
 
 		return new WP_REST_Response(
@@ -155,10 +155,20 @@ class GeocodeRoute {
 		return $out;
 	}
 
-	private static function error_response( string $code, int $status, string $message ): WP_REST_Response {
+	/**
+	 * A refusal both public search routes share: an empty list under the key the
+	 * route answers with, and a translated message the combobox shows verbatim.
+	 *
+	 * @param string $results Response key of the result list.
+	 * @param string $code    Machine code.
+	 * @param int    $status  HTTP status.
+	 * @param string $message Translated message for the visitor.
+	 * @return WP_REST_Response
+	 */
+	public static function refusal( string $results, string $code, int $status, string $message ): WP_REST_Response {
 		$response = new WP_REST_Response(
 			array(
-				'cities' => array(),
+				$results => array(),
 				'error'  => array(
 					'code'    => $code,
 					'message' => $message,

@@ -384,7 +384,10 @@
 		],
 		"calculateTransitAspects": [
 			{
-				"component": "roxy-transit-wheel"
+				"component": "roxy-transit-wheel",
+				"nests": [
+					"roxy-aspects-table"
+				]
 			}
 		],
 		"calculateTransits": [
@@ -620,7 +623,10 @@
 		],
 		"generateNatalChart": [
 			{
-				"component": "roxy-natal-chart"
+				"component": "roxy-natal-chart",
+				"nests": [
+					"roxy-western-planets-table"
+				]
 			}
 		],
 		"generateNavamsa": [

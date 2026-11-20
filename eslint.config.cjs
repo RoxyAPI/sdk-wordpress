@@ -2,7 +2,7 @@
  * Project ESLint flat config.
  *
  * Extends the @wordpress/scripts default so we keep wp-coding-standards,
- * then layers project-local overrides for the three places the default
+ * then layers project-local overrides for the four places the default
  * is wrong for this repo:
  *
  *   1. blocks/ source uses @wordpress/* packages that wp-scripts maps to
@@ -14,7 +14,10 @@
  *   2. bin/ files are Node CLI scripts. console.log is the output channel,
  *      not a debug leftover. Disable no-console there.
  *
- *   3. bin/generate.mjs is a >2k-line code generator written under speed
+ *   3. bin/*.test.mjs run on the built-in node:test runner, which needs no
+ *      dependency, so the default vitest rules do not apply there.
+ *
+ *   4. bin/generate.mjs is a >2k-line code generator written under speed
  *      not under JSDoc-discipline. Relax jsdoc/require-param-type plus
  *      a handful of stylistic rules that fight the codegen idiom (bitwise
  *      ops in hash functions, intentional shadowing, scratch unused-vars
@@ -136,6 +139,14 @@ module.exports = [
 			'@wordpress/no-unused-vars-before-return': 'off',
 			'jsdoc/require-param-type': 'off',
 			'jsdoc/require-returns-type': 'off',
+		},
+	},
+
+	// The guard scripts' tests run on node:test (`npm run test:bin`).
+	{
+		files: [ 'bin/**/*.test.mjs' ],
+		rules: {
+			'vitest/no-import-node-test': 'off',
 		},
 	},
 ];

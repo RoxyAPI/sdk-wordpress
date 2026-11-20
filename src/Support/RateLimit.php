@@ -69,8 +69,8 @@ class RateLimit {
 	 * Behind a reverse proxy with no opt-in every visitor therefore shares one
 	 * bucket. That trade is deliberate. A shared bucket is a false positive that
 	 * throttles honest visitors during a real attack; a spoofable bucket is not
-	 * a limit at all, and this is the only quota control on the public geocode
-	 * route and on visitor form submissions. Sites that terminate on a proxy
+	 * a limit at all, and this is the only quota control on the public city and
+	 * collection search routes and on visitor form submissions. Sites that terminate on a proxy
 	 * they control opt back in per header via `roxyapi_trusted_proxy_headers`.
 	 *
 	 * The same position is taken by WordPress core, which stores `REMOTE_ADDR`

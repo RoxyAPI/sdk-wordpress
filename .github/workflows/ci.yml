@@ -32,6 +32,8 @@ jobs:
               run: npm run generate:check
             - name: Fail if distribution drifts between local zip and SVN deploy
               run: node bin/check-distignore.mjs
+            - name: Guard scripts behave as their tests pin
+              run: npm run test:bin
             - name: Fail if a mapped component is missing from the pinned UI build
               run: node bin/check-component-map.mjs
 

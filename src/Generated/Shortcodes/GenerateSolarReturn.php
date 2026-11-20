@@ -21,6 +21,9 @@ class GenerateSolarReturn {
 
 	public const TAG = 'roxy_generate_solar_return';
 
+	/** The visitor form this reading offers. */
+	public const FORM = \RoxyAPI\Generated\Forms\GenerateSolarReturnForm::class;
+
 	/**
 	 * Every attribute this shortcode accepts. shortcode_atts() silently
 	 * discards anything absent from here, so this is also the contract the
@@ -59,7 +62,7 @@ class GenerateSolarReturn {
 		wp_enqueue_style( 'roxyapi-frontend' );
 
 		if ( $atts['mode'] === 'form' || ( $atts['mode'] !== 'static' && ( $atts['birth_date'] === '' || $atts['birth_time'] === '' || $atts['return_year'] === '' || $atts['latitude'] === '' || $atts['longitude'] === '' || $atts['timezone'] === '' ) ) ) {
-			return \RoxyAPI\Support\FormRenderer::render( \RoxyAPI\Generated\Forms\GenerateSolarReturnForm::class, $atts );
+			return \RoxyAPI\Support\FormRenderer::render( self::FORM, $atts );
 		}
 
 				$body = array_filter(
