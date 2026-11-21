@@ -275,6 +275,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.31.0 =
+* New: the Human Design bodygraph opens its reading with a written overview of the whole chart, and the incarnation cross and hexagram names appear in your visitor's language.
+
 = 1.30.0 =
 * New: visitors look up any dream symbol by name. Place [roxy_get_dream_symbol] or [roxy_search_dream_symbols] with nothing inside the brackets, or the matching block, and visitors type a word, pick the symbol and read its meaning.
 
@@ -333,6 +336,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.31.0 =
+A written reading of the whole Human Design bodygraph, with cross and hexagram names in your visitor's language.
 
 = 1.30.0 =
 Visitors look up any dream symbol by typing its name.
