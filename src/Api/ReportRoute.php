@@ -59,12 +59,12 @@ class ReportRoute {
 	 */
 	public static function stale_nonce( $result ) {
 		$route = (string) ( $GLOBALS['wp']->query_vars['rest_route'] ?? '' );
-		return is_wp_error( $result ) && $result->get_error_code() === 'rest_cookie_invalid_nonce' && strpos( $route, '/' . GeocodeRoute::NAMESPACE . '/report/' ) === 0 ? null : $result;
+		return is_wp_error( $result ) && $result->get_error_code() === 'rest_cookie_invalid_nonce' && strpos( $route, '/' . GeocodeRoute::REST_NAMESPACE . '/report/' ) === 0 ? null : $result;
 	}
 
 	public static function register_route(): void {
 		register_rest_route(
-			GeocodeRoute::NAMESPACE,
+			GeocodeRoute::REST_NAMESPACE,
 			self::ROUTE,
 			array(
 				array(
@@ -100,7 +100,7 @@ class ReportRoute {
 		$query = array( 'format' => $format ) + ( $readings ? array() : array( 'readings' => '0' ) ) + array(
 			'placement' => $post_id . '.' . $expires . '.' . self::sign( $report, $format, $readings, $post_id, $expires ),
 		);
-		return FormRenderer::render( $form, $atts, add_query_arg( $query, rest_url( GeocodeRoute::NAMESPACE . '/report/' . $report ) ) );
+		return FormRenderer::render( $form, $atts, add_query_arg( $query, rest_url( GeocodeRoute::REST_NAMESPACE . '/report/' . $report ) ) );
 	}
 
 	/**
@@ -298,7 +298,7 @@ class ReportRoute {
 	 * @return bool
 	 */
 	public static function serve( $served, $result, $request ): bool {
-		if ( $served || ! $result instanceof WP_REST_Response || ! is_string( $result->get_data() ) || strpos( $request->get_route(), '/' . GeocodeRoute::NAMESPACE . '/report/' ) !== 0 ) {
+		if ( $served || ! $result instanceof WP_REST_Response || ! is_string( $result->get_data() ) || strpos( $request->get_route(), '/' . GeocodeRoute::REST_NAMESPACE . '/report/' ) !== 0 ) {
 			return (bool) $served;
 		}
 		echo $result->get_data(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- The document itself, sent with its own Content-Type; HTML is sandboxed by its Content-Security-Policy.

@@ -77,7 +77,7 @@ class Test_Search_Route extends \WP_UnitTestCase {
 	}
 
 	private function search( array $query ) {
-		$request = new WP_REST_Request( 'GET', '/' . GeocodeRoute::NAMESPACE . SearchRoute::ROUTE );
+		$request = new WP_REST_Request( 'GET', '/' . GeocodeRoute::REST_NAMESPACE . SearchRoute::ROUTE );
 		$request->set_query_params( $query );
 		return rest_do_request( $request );
 	}

@@ -30,8 +30,8 @@ use WP_REST_Response;
 
 class GeocodeRoute {
 
-	public const NAMESPACE = 'roxyapi/v1';
-	public const ROUTE     = '/geocode';
+	public const REST_NAMESPACE = 'roxyapi/v1';
+	public const ROUTE          = '/geocode';
 
 	/** Minimum query length before the route accepts a request. */
 	private const MIN_LENGTH = 2;
@@ -51,7 +51,7 @@ class GeocodeRoute {
 
 	public static function register_route(): void {
 		register_rest_route(
-			self::NAMESPACE,
+			self::REST_NAMESPACE,
 			self::ROUTE,
 			array(
 				array(

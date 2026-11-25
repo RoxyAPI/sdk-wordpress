@@ -68,6 +68,8 @@ jobs:
               run: npm run check:blocks
             - name: Every mapped component exists in the pinned UI build
               run: npm run check:component-map
+            - name: Tested up to names the newest WordPress
+              run: npm run check:tested-up-to
             - name: Local zip and SVN deploy ship the same files
               run: npm run check:distignore
             # The geocode check renders the real stylesheet in a browser. With

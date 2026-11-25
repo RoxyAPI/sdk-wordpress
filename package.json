@@ -48,6 +48,7 @@
 		"generate": "node bin/generate.mjs",
 		"generate:check": "ROXYAPI_SPEC_FILE=specs/openapi.json node bin/generate.mjs && git diff --exit-code specs/openapi.json src/Generated blocks/generated",
 		"fetch:ui": "node bin/fetch-ui-bundle.mjs",
+		"check:tested-up-to": "node bin/check-tested-up-to.mjs",
 		"check:distignore": "node bin/check-distignore.mjs",
 		"check:component-map": "node bin/check-component-map.mjs",
 		"test:bin": "node --test 'bin/*.test.mjs'",

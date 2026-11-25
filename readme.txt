@@ -2,7 +2,7 @@
 Contributors: roxyapi
 Tags: astrology, horoscope, tarot, vedic, human design
 Requires at least: 6.5
-Tested up to: 7.1
+Tested up to: 7.2
 Requires PHP: 7.4
 Stable tag: 1.32.0
 License: GPLv2 or later
@@ -275,6 +275,10 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.32.1 =
+* Improved: tested against WordPress 7.2 and PHP 8.6.
+* Fixed: a deprecation notice on PHP 8.6.
+
 = 1.32.0 =
 * New: transits open on a written reading of the whole sky for your visitor's chart, then read every aspect with the dates it is in effect and each exact pass.
 * Improved: forecast events read as written entries, and transit rows show planets and aspects in your visitor's language.
@@ -327,6 +331,9 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.32.1 =
+Tested against WordPress 7.2 and PHP 8.6.
 
 = 1.32.0 =
 A written reading of the whole sky on transits, with dated aspects.

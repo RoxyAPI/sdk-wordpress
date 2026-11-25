@@ -55,7 +55,7 @@ class Test_Geocode_Route extends \WP_UnitTestCase {
 	}
 
 	private function dispatch( string $q ) {
-		$request = new WP_REST_Request( 'GET', '/' . GeocodeRoute::NAMESPACE . GeocodeRoute::ROUTE );
+		$request = new WP_REST_Request( 'GET', '/' . GeocodeRoute::REST_NAMESPACE . GeocodeRoute::ROUTE );
 		$request->set_query_params( array( 'q' => $q ) );
 		return rest_do_request( $request );
 	}

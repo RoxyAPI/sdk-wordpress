@@ -101,7 +101,7 @@ jobs:
                 php: ['7.4', '8.1', '8.3']
                 wp: ['6.5', 'latest']
                 include:
-                    - php: '8.3'
+                    - php: '8.6'
                       wp: 'trunk'
         services:
             mysql:
@@ -134,6 +134,17 @@ jobs:
             - run: sudo apt-get install -y -qq subversion
             - run: bash bin/install-wp-tests.sh wordpress_test root root 127.0.0.1 ${{ matrix.wp }}
             - run: vendor/bin/phpunit
+            # The plugin compiles before PHPUnit installs its error handler, so
+            # a compile-time deprecation passes the suite.
+            - name: Shipped PHP compiles without a notice
+              run: |
+                  out=$(find roxyapi.php uninstall.php src templates build languages -name '*.php' -print0 \
+                    | xargs -0 -n1 php -d error_reporting=-1 -d display_errors=1 -d log_errors=0 -l 2>&1 \
+                    | grep -v '^No syntax errors' | grep . || true)
+                  if [ -n "$out" ]; then
+                    echo "$out"
+                    exit 1
+                  fi
 
     build:
         name: Build distribution zip

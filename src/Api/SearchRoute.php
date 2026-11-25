@@ -40,7 +40,7 @@ class SearchRoute {
 
 	public static function register_route(): void {
 		register_rest_route(
-			GeocodeRoute::NAMESPACE,
+			GeocodeRoute::REST_NAMESPACE,
 			self::ROUTE,
 			array(
 				array(
@@ -83,7 +83,7 @@ class SearchRoute {
 				'form'  => $form,
 				'field' => $field,
 			),
-			rest_url( GeocodeRoute::NAMESPACE . self::ROUTE )
+			rest_url( GeocodeRoute::REST_NAMESPACE . self::ROUTE )
 		);
 	}
 
