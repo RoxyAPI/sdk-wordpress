@@ -275,6 +275,10 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 
 == Changelog ==
 
+= 1.32.0 =
+* New: transits open on a written reading of the whole sky for your visitor's chart, then read every aspect with the dates it is in effect and each exact pass.
+* Improved: forecast events read as written entries, and transit rows show planets and aspects in your visitor's language.
+
 = 1.31.0 =
 * New: the Human Design bodygraph opens its reading with a written overview of the whole chart, and the incarnation cross and hexagram names appear in your visitor's language.
 
@@ -320,22 +324,12 @@ Yes. All RoxyAPI shortcodes work inside any page builder that supports WordPress
 * Fixed: transit and forecast forms show the transit date up front, labelled Transit date.
 * Improved: on a translated site, zodiac sign, Chinese zodiac and dasha choices read in the site language.
 
-= 1.23.1 =
-* New: Human Design Penta, custom tarot spreads and Vastu room placement take a visitor form, one card per person, position or room.
-* Fixed: numerology compatibility and the Vastu plot, entrance and mandala readings ask for the details each reading needs.
-* Fixed: shortcode library samples for gematria, name profile, name compatibility, Long Count and lunar dates show a reading when pasted.
-
-= 1.23.0 =
-* New: Eight Mansions, Flying Star chart, Long Count conversion, gematria, name profile, name compatibility and Maturity number take a visitor form. Place the shortcode with nothing inside the brackets and visitors enter their own details.
-* Fixed: a reading placed without the details it needs never shows visitors an error, including city search.
-* Improved: charts enlarge for closer reading, comparison wheels separate both charts clearly, relationship readings and Human Design connections show every activation, and divisional chart reference values are labelled.
-
-= 1.22.2 =
-* Plugin downloads contain only the files needed for installation.
-
 Older entries are in changelog.txt: https://github.com/RoxyAPI/sdk-wordpress/blob/main/changelog.txt
 
 == Upgrade Notice ==
+
+= 1.32.0 =
+A written reading of the whole sky on transits, with dated aspects.
 
 = 1.31.0 =
 A written reading of the whole Human Design bodygraph, with cross and hexagram names in your visitor's language.
@@ -366,13 +360,4 @@ Forms follow the clock of each visitor, and seven more charts show planet names 
 
 = 1.23.2 =
 Karmic debt takes a visitor form, transit forms show the transit date up front, and more choices read in your site language.
-
-= 1.23.1 =
-Group, spread and room readings take a visitor form, and every library sample shows a reading.
-
-= 1.23.0 =
-Seven more readings take a visitor form, and charts enlarge for closer reading.
-
-= 1.22.2 =
-Keeps plugin downloads lean with only installation files.
 

@@ -1060,6 +1060,7 @@ class ComponentMap {
 			'partners',
 			'pattern',
 			'patterns',
+			'periods',
 			'personal-year',
 			'pillar',
 			'pinnacles',

@@ -3,6 +3,10 @@
 The full release history for the RoxyAPI plugin. The most recent releases are
 also listed in readme.txt, which wordpress.org displays on the plugin page.
 
+= 1.32.0 =
+* New: transits open on a written reading of the whole sky for your visitor's chart, then read every aspect with the dates it is in effect and each exact pass.
+* Improved: forecast events read as written entries, and transit rows show planets and aspects in your visitor's language.
+
 = 1.31.0 =
 * New: the Human Design bodygraph opens its reading with a written overview of the whole chart, and the incarnation cross and hexagram names appear in your visitor's language.
 

@@ -45,7 +45,7 @@ const fields = [
 		control: 'text',
 		label: __( 'Timezone', 'roxyapi' ),
 		required: true,
-		help: __( 'IANA name (e.g. "America/New_York", "Europe/London", "UTC"), decimal hours (e.g. -5 for EST, 1 for CET), or a fixed UTC offset (e.g. "-05:00", "+01:00")', 'roxyapi' ),
+		help: __( 'IANA name (e.g. "America/New_York", "Europe/London", "UTC"), decimal hours (e.g. -5 for EST, 1 for CET), or a fixed UTC offset (e.g. "-05:00", "+01:00", "-06:20:19")', 'roxyapi' ),
 	},
 	{
 		name: 'houseSystem',
